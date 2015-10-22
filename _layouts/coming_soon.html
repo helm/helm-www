@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <div id="coming-soon">
+      <div class="marquee">
+        Coming Soon: HELM
+      </div>
+      <div class="logo"><img src="/images/by-deis.png"></div>
+      <div class="heading">
+        <!--A package manager for Kubernetes-->
+      </div>
+      <div class="description">
+        <!--Helm helps you manage pod, replication controller, and service manifests. Helm is the best way to find software built for Kubernetes.-->
+      </div>
+    </div>
+    <div id="boat"></div>
+    <div id="waves"></div>
+    <div id="water"></div>
+  </body>
+</html>
+<script src="{{site.baseurl}}/javascripts/konami.js"></script>
+<script>
+  var boat = document.getElementById('boat');
+  var boatOffset = Number(window.getComputedStyle(boat).marginBottom.split('px')[0]);
+  var comingSoon = document.getElementById('coming-soon');
+  var waves = document.getElementById('waves');
+  var height = window.innerHeight -
+      (comingSoon.offsetHeight + waves.offsetHeight + boat.offsetHeight) - boatOffset;
+  document.getElementById("water").style.height = height + "px";
+  var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
+</script>

@@ -1,0 +1,80 @@
+/**
+ * Fonts
+ */
+@font-face {
+  font-family: SourceSansPro;
+  src: url("/fonts/SourceSansPro-Regular.ttf");
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url("/images/topo.png");
+}
+
+#coming-soon {
+  font-family: SourceSansPro, sans-serif;
+  color: #277A9F;
+  padding-top: 2em;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  .marquee {
+    font-size: 1.5em;
+  }
+  .heading {
+    padding-top: 1em;
+    font-size: 3em;
+  }
+  .description {
+    padding-top: 1em;
+    padding-bottom: 2em;
+    font-size: 1.5em;
+  }
+}
+
+@keyframes animatedBoat {
+  0% { background-position: -30% 25%; }
+  100% { background-position: 130% 0; }
+}
+
+@-moz-keyframes animatedBoat {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-webkit-keyframes animatedBoat {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-ms-keyframes animatedBoat {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-o-keyframes animatedBoat {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+
+#boat {
+  background-image: url("/images/boat.png");
+  background-repeat: no-repeat;
+  height: 149px; //TODO programmatize this!
+  margin-bottom: -10px; //TODO programmatize this!
+
+  animation: animatedBoat 10s linear infinite;
+  -moz-animation: animatedBoat 10s linear infinite;
+  -webkit-animation: animatedBoat 10s linear infinite;
+  -ms-animation: animatedBoat 10s linear infinite;
+  -o-animation: animatedBoat 10s linear infinite;
+}
+
+#waves {
+  background-image: url("/images/waves.png");
+  height: 22px; //TODO programmatize this!
+}
+
+#water {
+  background-color: #37B0E7;
+}
