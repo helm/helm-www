@@ -1,36 +1,124 @@
-/**
- * Fonts
- */
-@font-face {
-  font-family: SourceSansPro;
-  src: url("/fonts/SourceSansPro-Regular.ttf");
-}
-
 html, body {
   height: 100%;
 }
 
 body {
   background-image: url("/images/topo.png");
+  font-family: Source Sans Pro, sans-serif;
+  text-align: center;
 }
 
-#coming-soon {
-  font-family: SourceSansPro, sans-serif;
+#top-matter, #coming-soon {
   color: #277A9F;
   padding-top: 2em;
-  text-align: center;
   margin-left: 25%;
   margin-right: 25%;
-  .marquee {
-    font-size: 1.5em;
+}
+
+#top-matter {
+  .logo {
+    float: left;
+  }
+  .fork {
+    float: right;
   }
   .heading {
-    padding-top: 1em;
+    padding-top: 3em;
     font-size: 3em;
+    font-weight: 300;
   }
   .description {
     padding-top: 1em;
     padding-bottom: 2em;
+    font-size: 1.5em;
+  }
+}
+
+#water {
+  text-align: left;
+  background-color: #37B0E7;
+  padding-left: 25%;
+  padding-right: 25%;
+  .instruct:first-child {
+    padding-top: 2em;
+  }
+  .instruct:last-child {
+    padding-bottom: 6em;
+  }
+  .instruct {
+    background-color: #37B0E7;
+    color: #FFFFFF;
+    padding-bottom: 2em;
+  }
+  .logo {
+    visibility: hidden;
+  }
+  .heading {
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 0.5em;
+  }
+
+  .howto {
+    overflow: auto;
+    .description, .console {
+      display: inline-block;
+    }
+    .description {
+      font-size: 0.9em;
+      width: 40%;
+      float: left;
+    }
+    .console {
+      width: 50%;
+      font-family: 'Inconsolata';
+      padding: 1em;
+      background-color: #FFFFFF;
+      color: #277A9F;
+      float: right;
+    }
+  }
+}
+
+#contribute {
+  overflow: auto;
+  background-color: #FFFFFF;
+  color: #277A9F;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  .heading {
+    font-size: 2em;
+    font-weight: 400;
+  }
+  .description {
+    padding-top: 1em;
+    padding-bottom: 2em;
+    font-size: 1em;
+    font-weight: 400;
+  }
+  .buttons {
+    > * {
+      display: inline-block;
+      padding-right: 2em;
+    }
+    > *:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+#footer {
+  background-image: url("/images/topo-inverse.png");
+  > * {
+    padding-top: 4em;
+  }
+  > *:last-child {
+    padding-bottom: 4em;
+  }
+}
+
+#coming-soon {
+  .marquee {
     font-size: 1.5em;
   }
 }
@@ -73,8 +161,4 @@ body {
 #waves {
   background-image: url("/images/waves.png");
   height: 22px; //TODO programmatize this!
-}
-
-#water {
-  background-color: #37B0E7;
 }
