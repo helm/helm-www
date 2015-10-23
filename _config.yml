@@ -10,3 +10,4 @@ github_username:  deis
 
 # Build settings
 markdown: kramdown
+exclude: [vendor]
