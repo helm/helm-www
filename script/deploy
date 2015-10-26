@@ -4,16 +4,7 @@ set -x
 
 export APP="helm-www"
 
-if [[ "$ENV" == "production" ]]; then
-  export S3_ID=# establish appropriate production AWS id here
-  export S3_KEY=# establish appropriate production AWS key here
-  export S3_BUCKET=# establish appropriate production S3 bucket here
-else
-  export S3_ID=# establish appropriate staging AWS id here
-  export S3_KEY=# establish appropriate staging AWS key here
-  export S3_BUCKET=# establish appropriate staging S3 bucket here
-fi
-
+gem install bundler -v "~> 1.10" --conservative --no-ri --no-rdoc
 bundle install
 bundle exec jekyll build
 bundle exec s3_website cfg apply
