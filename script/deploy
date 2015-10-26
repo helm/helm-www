@@ -4,6 +4,7 @@ set -x
 
 export APP="helm-www"
 
+sudo apt-get install --assume-yes openjdk-7-jre
 gem install bundler -v "~> 1.10" --conservative --no-ri --no-rdoc
 bundle install
 bundle exec jekyll build
