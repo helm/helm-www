@@ -101,6 +101,7 @@ $footer-padding: 4em;
    @include sourceFont;
    background: url('/images/pattern_topo.png') left top repeat;
    background-size: 376px;
+   font-size: 18px;
    line-height: 1.5;
    text-align: center;
  }
@@ -161,52 +162,95 @@ $footer-padding: 4em;
   }
 }
 
+// Steps
+.code-steps__item {
+  padding: 30px 0;
+  .description {
+    float: left;
+    padding: 1rem;
+    text-align: left;
+    width: 33.33%;
 
-#water {
-  text-align: left;
-  background-color: $lightBlue;
-  padding-left: $vertical-margin;
-  padding-right: $vertical-margin;
-  .instruct:first-child {
-    padding-top: 2em;
+    h2 {
+      font-size: 32px;
+      margin: {
+        top: 0;
+        bottom: 1rem;
+      }
+    }
   }
-  .instruct:last-child {
-    padding-bottom: 6em;
-  }
-  .instruct {
-    background-color: $lightBlue;
-    color: $white;
-    padding-bottom: 2em;
-  }
-  .logo {
-    visibility: hidden;
-  }
-  .heading {
-    font-size: 2em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-  }
+  .console {
+    float: left;
+    padding: 1rem;
+    width: 66.66%;
 
-  .howto {
-    overflow: auto;
-    .description, .console {
-      display: inline-block;
-    }
-    .description {
-      font-size: 0.9em;
-      width: 40%;
-      float: left;
-    }
-    .console {
-      @include inconsolataFont;
-      width: 50%;
-      padding: 1em;
+    code {
       background-color: $white;
-      color: $darkBlue;
-      float: right;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      color: #444;
+      display: block;
+      margin-top: 10px;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .line {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-term {
+      background-color: #F7F7F9;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      color: $pink;
+      display: inline-block;
+      font-family: monospace, serif;
+      font-size: 0.875em;
+      padding: 0 0.35em;
     }
   }
 }
+
+.panel.panel--contribute {
+  background-color: #f2f2f2;
+
+  h2 {
+    color: $darkBlue;
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 21px;
+  }
+  .buttons {
+    margin-top: 30px;
+  }
+  .button {
+    font-size: 18px;
+    margin: 0.5rem;
+  }
+}
+
+.main-footer {
+  background: $darkBlue url('/images/pattern_topo_white.png') left top repeat;
+  background-size: 376px;
+  color: #fff;
+
+  .small-text {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    max-width: 125px;
+  }
+}
+
 
 #contribute {
   overflow: auto;
@@ -277,6 +321,10 @@ $footer-padding: 4em;
 .panel {
   padding: 75px 0;
 
+  h2 {
+    font-size: 32px;
+  }
+
   &.-blue {
     background-color: $lightBlue;
     color: $white;
@@ -336,9 +384,8 @@ a.button, button {
       color: $pink;
 
       &:hover {
-        background-color: transparent;
-        border-color: lighten($pink, 15);
-        color: lighten($pink, 15);
+        background-color: $pink;
+        color: #fff;
       }
     }
   }

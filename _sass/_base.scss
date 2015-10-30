@@ -19,6 +19,10 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   color: $lightBlue;
   text-decoration: none;
