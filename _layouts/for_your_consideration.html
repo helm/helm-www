@@ -2,65 +2,70 @@
 <html>
   {% include head.html %}
   <body>
-    <div id="top-matter">
-      <div class="logo"><img src="/images/deis-logo.png" alt="deis"></div>
-      <div class="fork"><img src="/images/fork-github.png" alt="fork me on github"></div>
-      <div class="heading">
-        A package manager for Kubernetes
+
+    {% include header.html %}
+    <header class="fixed-header" data-purpose="fixed-header">
+      <div class="container">
+        <h1 class="logo">Helm</h1>
       </div>
-      <div class="description">
-        Helm helps you manage pod, replication controller, and service manifests. Helm is the best way to find software built for Kubernetes.
+    </header>
+
+    <section class="billboard">
+      <div class="container">
+        <h1>A package manager for Kubernetes</h1>
+        <h2>Helm helps you manage pod, replication controller, and service manifests. Helm is the best way to find software built for Kubernetes.</h2>
       </div>
-    </div>
-    <div id="boat"></div>
-    <div id="waves"></div>
-    <div id="water">
-      <div class="instruct">
-        <div class="logo"><img src="/images/deis-logo.png" alt="deis"></div>
-        <div class="heading">
-          Install
+      <div id="boat"></div>
+    </section>
+
+
+    <section class="panel -blue" data-purpose="code-steps">
+      <div class="code-steps">
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Install</h2>
+            <p>Instructions description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in metus ante. Nam at sagittis quam. Integer et mauris quis purus dignissim convallis. Vivamus feugiat justo nec tristique accumsan.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line">$ helm help</div>
+            </code>
+          </article>
         </div>
-        <div class="howto">
-          <div class="description">
-            This is how you install. This is how you install. This is how you install. This is how you install. This is how you install. This is how you install.
-          </div>
-          <div class="console">
-            $ helm help
-          </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Usage</h2>
+            <p>Instructions description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in metus ante. Nam at sagittis quam. Integer et mauris quis purus dignissim convallis. Vivamus feugiat justo nec tristique accumsan.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line">$ <span class="code-term">helm use</span></div>
+              <div class="line">$ <span class="code-term">helm other command</span></div>
+              <div class="line">$ stuuuuuufffffff</div>
+            </code>
+          </article>
         </div>
       </div>
-      <div class="instruct">
-        <div class="logo"><img src="/images/deis-logo.png" alt="deis"></div>
-        <div class="heading">
-          Usage
-        </div>
-        <div class="howto">
-          <div class="description">
-            This is how you use. This is how you use. This is how you use. This is how you use. This is how you use. This is how you use.
-          </div>
-          <div class="console">
-            $ helm use
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="contribute">
-      <div class="heading">
-        Contribute
-      </div>
-      <div class="description">
-        We want you to contribute!
-      </div>
+    </section>
+
+    <section class="panel panel--contribute">
+      <h2>Contribute</h2>
+      <p>We want you to contribute!</p>
       <div class="buttons">
-        <div class="email"><img src="/images/drop-us-a-line.png" alt="contact deis"></div>
-        <div class="fork"><img src="/images/fork-us-button.png" alt="fork us on github"></div>
+        <a href="https://deis.com/contact" class="button -secondary"><i class="icon -left ion-ios-email"></i> Drop us a line</a>
+        <a href="https://github.com/deis/helm" class="button -cta"><i class="icon -left ion-social-github"></i> Fork on Github</a>
       </div>
-    </div>
-    <div id="footer">
-      <div class="logo"><img src="/images/deis-project.png" alt="a deis project"></div>
-    </div>
+    </section>
+
+    <footer class="main-footer panel">
+      <p class="small-text">A project by the folks at Deis</p>
+      <a href="http://deis.com"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
+    </footer>
+
   </body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{site.baseurl}}/javascripts/ui.js"></script>
 <script src="{{site.baseurl}}/javascripts/konami.js"></script>
 <script>
   window.onload = function () {

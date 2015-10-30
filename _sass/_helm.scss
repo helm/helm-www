@@ -1,12 +1,9 @@
 /**
  * Main units and mixins
  */
-$water-color: #37B0E7;
-$foreground-color: #277A9F;
-$white: #FFFFFF;
 $boat-animation: animatedBoat 10s linear infinite;
-$main-font-set: Source Sans Pro, Helvetica, sans-serif;
-$console-font-set: 'Inconsolata', Fixed, monospace;
+$source-font: Source Sans Pro, Helvetica, sans-serif;
+$inconsolata-font: 'Inconsolata', Fixed, monospace;
 $vertical-margin: 25%;
 $footer-padding: 4em;
 /**
@@ -18,119 +15,289 @@ $footer-padding: 4em;
  */
 @mixin boat-animation-rules($startX, $startY, $endX, $endY) {
   @keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-moz-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-webkit-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-ms-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-o-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
 }
 /**
  * End mixins
  */
 
-/**
- * Helm rules
- */
-html, body {
-  height: 100%;
-}
 
-body {
-  background-image: url("/images/topo.png");
-  font-family: $main-font-set;
-  text-align: center;
-}
+ // Fonts
+ @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Inconsolata:400,700);
+ @mixin sourceFont {
+   font-family: 'Source Sans Pro', Helvetica, sans-serif;
+   font-weight: 400;
+ }
+ @mixin inconsolataFont {
+   font-family: 'Inconsolata', Fixed, monospace;
+   font-weight: 400;
+ }
 
-#top-matter, #coming-soon {
-  color: $foreground-color;
-  padding-top: 2em;
-  margin-left: $vertical-margin;
-  margin-right: $vertical-margin;
-}
 
-#top-matter {
+ body {
+   @include sourceFont;
+   background: url('/images/pattern_topo.png') left top repeat;
+   background-size: 376px;
+   font-size: 18px;
+   line-height: 1.5;
+   text-align: center;
+ }
+
+
+// Main Header
+.main-header {
+  padding: 1.5rem 0;
   .logo {
+    background: url('/images/logo-withdeis.png') left center no-repeat;
+    background-size: 100%;
     float: left;
+    height: 79px;
+    max-width: 170px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
   }
-  .fork {
-    float: right;
-  }
-  .heading {
-    padding-top: 3em;
-    font-size: 3em;
-    font-weight: 300;
-  }
-  .description {
-    padding-top: 1em;
-    padding-bottom: 2em;
-    font-size: 1.5em;
-  }
+   nav {
+     float: right;
+     padding: 1rem 0;
+   }
 }
 
-#water {
-  text-align: left;
-  background-color: $water-color;
-  padding-left: $vertical-margin;
-  padding-right: $vertical-margin;
-  .instruct:first-child {
-    padding-top: 2em;
-  }
-  .instruct:last-child {
-    padding-bottom: 6em;
-  }
-  .instruct {
-    background-color: $water-color;
-    color: $white;
-    padding-bottom: 2em;
-  }
+
+// Fixed Header
+.fixed-header {
+  background-color: $lightBlue;
+  border-bottom: 1px solid darken($lightBlue, 8);
+  padding: 1rem 0;
+  position: fixed;
+  top: -100px;
+  transition: all 0.15s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 10;
+
   .logo {
-    visibility: hidden;
-  }
-  .heading {
-    font-size: 2em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
+    background: url('/images/logo.png') left center no-repeat;
+    background-size: 100%;
+    height: 60px;
+    margin: 0 auto;
+    max-width: 60px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
   }
 
-  .howto {
-    overflow: auto;
-    .description, .console {
-      display: inline-block;
+  .container {
+    padding: 0 1rem;
+  }
+
+  &.-show {
+    top: 0;
+    visibility: visible;
+  }
+}
+
+
+// Billboard
+.billboard {
+  padding: 80px 0 0 0;
+  position: relative;
+  text-align: center;
+
+  h1, h2 {
+    color: $darkBlue;
+    font-weight: 400;
+  }
+  h1 {
+    font-size: 54px;
+  }
+  h2 {
+    font-size: 21px;
+    max-width: 800px;
+    margin: {
+      right: auto;
+      left: auto;
     }
-    .description {
-      font-size: 0.9em;
-      width: 40%;
-      float: left;
+  }
+
+  // water
+  &:after {
+    background: url('/images/pattern_waves.png') left top repeat-x;
+    background-size: 20px;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 6px;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+// Steps
+.code-steps__item {
+  padding: 30px 0;
+  .description {
+    float: left;
+    padding: 1rem;
+    text-align: left;
+    width: 33.33%;
+
+    h2 {
+      font-size: 32px;
+      margin: {
+        top: 0;
+        bottom: 1rem;
+      }
     }
-    .console {
-      width: 50%;
-      font-family: $console-font-set;
-      padding: 1em;
+  }
+  .console {
+    float: left;
+    padding: 1rem;
+    width: 66.66%;
+
+    code {
       background-color: $white;
-      color: $foreground-color;
-      float: right;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+      color: #444;
+      display: block;
+      margin-top: 10px;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .line {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-term {
+      background-color: #F7F7F9;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      color: $pink;
+      display: inline-block;
+      font-family: monospace, serif;
+      font-size: 0.875em;
+      padding: 0 0.35em;
+    }
+  }
+
+  &:last-child {
+    .console {
+      background: url('/images/fish.png') center bottom no-repeat;
+      background-size: 210px;
+      padding-bottom: 150px;
     }
   }
 }
+
+.panel.panel--contribute {
+  background-color: #f2f2f2;
+
+  h2 {
+    color: $darkBlue;
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 21px;
+  }
+  .buttons {
+    margin-top: 30px;
+  }
+  .button {
+    font-size: 18px;
+    margin: 0.5rem;
+  }
+}
+
+.main-footer {
+  background: $darkBlue url('/images/pattern_topo_white.png') left top repeat;
+  background-size: 376px;
+  color: #fff;
+
+  .small-text {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    max-width: 125px;
+  }
+}
+
 
 #contribute {
   overflow: auto;
   background-color: $white;
-  color: $foreground-color;
+  color: $darkBlue;
   padding-top: $footer-padding;
   padding-bottom: $footer-padding;
   .heading {
@@ -170,25 +337,107 @@ body {
   }
 }
 
-@include boat-animation-rules(-30%, 25%, 130%, 0);
+@include boat-animation-rules(-20%, 25%, 120%, 0);
 
 #boat {
-  background-image: url("/images/boat.png");
-  background-repeat: no-repeat;
-  height: 149px; //TODO programmatize this!
-  margin-bottom: -10px; //TODO programmatize this!
+  background: url('/images/boat.png') no-repeat;
+  background-size: 220px;
+  height: 169px; //TODO programmatize this!
+  margin-top: 75px;
+  position: relative;
+  bottom: -13px;
 
-  animation: $boat-animation;
   -moz-animation: $boat-animation;
   -webkit-animation: $boat-animation;
   -ms-animation: $boat-animation;
   -o-animation: $boat-animation;
+  animation: $boat-animation;
+  -webkit-animation-duration: 20s;
+  -moz-animation-duration: 20s;
+  -ms-animation-duration: 20s;
+  -o-animation-duration: 20s;
+  animation-duration: 20s;
 }
 
-#waves {
-  background-image: url("/images/waves.png");
-  height: 22px; //TODO programmatize this!
+// Panels
+.panel {
+  padding: 75px 0;
+
+  h2 {
+    font-size: 32px;
+  }
+
+  &.-blue {
+    background-color: $lightBlue;
+    color: $white;
+  }
 }
-/**
- * End helm rules
- */
+
+
+// Buttons
+a.button, button {
+  background-color: $lightBlue;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0;
+  padding: 0.75em 1.5em;
+  text-transform: uppercase;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+
+  .icon {
+    font-size: 1.25em;
+    &.-right {
+      margin-left: 5px;
+    }
+    &.-left {
+      margin-right: 5px;
+    }
+  }
+  &:hover {
+    background-color: lighten($lightBlue, 10);
+  }
+
+  &.-cta {
+    background-color: $pink;
+
+    &:hover {
+      background-color: lighten($pink, 10);
+    }
+  }
+
+  &.-outline {
+    background-color: transparent;
+    border: 1px solid $lightBlue;
+    color: $lightBlue;
+
+    &:hover {
+      background-color: transparent;
+      border-color: lighten($lightBlue, 15);
+      color: lighten($lightBlue, 15);
+    }
+
+    &.-pink {
+      border-color: $pink;
+      color: $pink;
+
+      &:hover {
+        background-color: $pink;
+        color: #fff;
+      }
+    }
+  }
+
+  &.-secondary {
+    background-color: #ccc;
+
+    &:hover {
+      background-color: lighten(#ccc, 7);
+    }
+  }
+}
