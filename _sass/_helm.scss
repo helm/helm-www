@@ -127,6 +127,40 @@ $footer-padding: 4em;
 }
 
 
+// Fixed Header
+.fixed-header {
+  background-color: $lightBlue;
+  border-bottom: 1px solid darken($lightBlue, 8);
+  padding: 1rem 0;
+  position: fixed;
+  top: -100px;
+  transition: all 0.15s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 10;
+
+  .logo {
+    background: url('/images/logo.png') left center no-repeat;
+    background-size: 100%;
+    height: 60px;
+    margin: 0 auto;
+    max-width: 60px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  &.-show {
+    top: 0;
+    visibility: visible;
+  }
+}
+
+
 // Billboard
 .billboard {
   padding: 80px 0 0 0;
@@ -212,6 +246,14 @@ $footer-padding: 4em;
       font-family: monospace, serif;
       font-size: 0.875em;
       padding: 0 0.35em;
+    }
+  }
+
+  &:last-child {
+    .console {
+      background: url('/images/fish.png') center bottom no-repeat;
+      background-size: 210px;
+      padding-bottom: 150px;
     }
   }
 }
