@@ -1,9 +1,41 @@
+
+// Colors
+$lightBlue:   #37B0E7;
+$darkBlue:    #277A9F;
+$pink:        #FF2E57;
+$white:       #FFFFFF;
+
 /**
  * Reset some basic elements
  */
+
+html, body {
+   height: 100%;
+}
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
     margin: 0;
     padding: 0;
+}
+
+a {
+  color: $lightBlue;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($lightBlue, 10);
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
