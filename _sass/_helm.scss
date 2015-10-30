@@ -15,24 +15,69 @@ $footer-padding: 4em;
  */
 @mixin boat-animation-rules($startX, $startY, $endX, $endY) {
   @keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-moz-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-webkit-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-ms-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
   @-o-keyframes animatedBoat {
-    0% { background-position: $startX $startY; }
-    100% { background-position: $endX $endY; }
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
 }
 /**
@@ -226,6 +271,16 @@ $footer-padding: 4em;
   -ms-animation-duration: 20s;
   -o-animation-duration: 20s;
   animation-duration: 20s;
+}
+
+// Panels
+.panel {
+  padding: 75px 0;
+
+  &.-blue {
+    background-color: $lightBlue;
+    color: $white;
+  }
 }
 
 
