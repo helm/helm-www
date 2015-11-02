@@ -270,10 +270,10 @@ $footer-padding: 4em;
   .logo {
     display: inline-block;
     padding-top: 1em;
-    padding-right: 1em;
+    padding-right: 10px;
     &+.logo {
       position: relative;
-      bottom: 40px;
+      bottom: 1em;
       padding-right: 0;
     }
   }
