@@ -267,10 +267,28 @@ $footer-padding: 4em;
     padding-top: 2em;
   }
 
-  .logo.helm {
-    background: url('/images/logo-blue.png') no-repeat center;
-    height: 200px;
+  .logo {
+    display: inline-block;
+    padding-top: 1em;
+    padding-right: 1em;
+    &+.logo {
+      position: relative;
+      bottom: 40px;
+      padding-right: 0;
+    }
   }
+  @media only screen and (max-device-width: 414px) {
+    padding-bottom: 50px;
+  }
+}
+
+#waves {
+  background-image: url("/images/waves.png");
+  height: 22px; //TODO programmatize this!
+}
+
+#water {
+  background-color: #37B0E7;
 }
 
 .panel.panel--contribute {
@@ -352,7 +370,6 @@ $footer-padding: 4em;
   background: url('/images/boat.png') no-repeat;
   background-size: 220px;
   height: 169px; //TODO programmatize this!
-  margin-top: 75px;
   position: relative;
   bottom: -13px;
 
