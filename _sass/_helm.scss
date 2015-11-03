@@ -276,7 +276,6 @@ $boat-size: 220px;
       padding: 1rem;
       text-align: left;
       overflow: scroll;
-      white-space: nowrap;
       line-height: 1em;
       @media only screen and (max-device-width: $mobile-maximum-width) {
         margin-top: 20px;
@@ -287,6 +286,8 @@ $boat-size: 220px;
     .line {
       display: block;
       margin-bottom: 0.5rem;
+      text-indent: -1em;
+      padding-left: 1em;
       @media only screen and (min-device-width: $mobile-maximum-width + 1) {
         font-size: 0.875em;
       }
@@ -304,6 +305,7 @@ $boat-size: 220px;
       font-family: monospace, serif;
       font-size: 0.875em;
       padding: 0 0.35em;
+      text-indent: initial;
       line-height: 1.5;
     }
   }
