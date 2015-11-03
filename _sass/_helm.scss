@@ -222,6 +222,17 @@ $boat-size: 220px;
   }
 }
 
+@media only screen and (min-device-width: $mobile-maximum-width + 1) {
+  aside.description {
+    > p {
+      padding-top: 20px;
+    }
+    > h2 + p {
+      padding-top: 0;
+    }
+  }
+}
+
 // Steps
 .code-steps__item {
   padding: 30px 0;
@@ -241,7 +252,6 @@ $boat-size: 220px;
       @media only screen and (min-device-width: $mobile-maximum-width + 1) {
         margin: {
           top: 0;
-          bottom: 1rem;
         }
       }
     }
@@ -265,14 +275,24 @@ $boat-size: 220px;
       margin-top: 10px;
       padding: 1rem;
       text-align: left;
+      overflow: scroll;
+      white-space: nowrap;
+      line-height: 1em;
       @media only screen and (max-device-width: $mobile-maximum-width) {
         margin-top: 20px;
+        font-size: 0.75em;
       }
     }
 
     .line {
       display: block;
       margin-bottom: 0.5rem;
+      @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+        font-size: 0.875em;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .code-term {
@@ -284,6 +304,7 @@ $boat-size: 220px;
       font-family: monospace, serif;
       font-size: 0.875em;
       padding: 0 0.35em;
+      line-height: 1.5;
     }
   }
 

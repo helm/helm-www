@@ -42,3 +42,14 @@ function centerLogo () {
     $(logoQuery).css('margin-left', (logoHeaderSpace / 2));
   }
 }
+
+
+function selectElement (elem) {
+  var range = typeof document.createRange === "function" ? document.createRange() : null;
+  if (range) {
+    range.selectNode(elem);
+    if (typeof window.getSelection === "function") {
+      window.getSelection().addRange(range);
+    }
+  }
+}
