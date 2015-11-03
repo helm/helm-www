@@ -51,10 +51,10 @@ site: _site/
 #   about.php: about.html
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
 
-# routing_rules:
-#   - condition:
-#       key_prefix_equals: blog/some_path
-#     redirect:
-#       host_name: blog.example.com
-#       replace_key_prefix_with: some_new_path/
-#       http_redirect_code: 301
+routing_rules:
+  - condition:
+      key_prefix_equals: docs/
+    redirect:
+      host_name: helm.readthedocs.org
+      replace_key_prefix_with: en/latest/
+      http_redirect_code: 301
