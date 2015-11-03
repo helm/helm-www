@@ -52,8 +52,8 @@ site: _site/
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 routing_rules:
-  - condition:
-      key_prefix_equals: docs/
+  - condition:  
+      key_prefix_equals: docs
     redirect:
       host_name: helm.readthedocs.org
       replace_key_prefix_with: en/latest/
