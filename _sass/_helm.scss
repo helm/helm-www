@@ -201,6 +201,9 @@ $boat-size: 220px;
       right: auto;
       left: auto;
     }
+    strong {
+      font-size: 1.2em;
+    }
     @media only screen and (max-device-width: $mobile-maximum-width) {
       margin-top: 1em;
     }
@@ -367,6 +370,9 @@ $boat-size: 220px;
   .small-text {
     font-size: 14px;
     margin-bottom: 1rem;
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .logo {
