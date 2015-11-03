@@ -123,10 +123,9 @@ $boat-size: 220px;
     text-indent: 100%;
     white-space: nowrap;
     @media only screen and (max-device-width: $mobile-maximum-width) {
-      background: no-repeat center/60% url('/images/logo-withdeis.png');
+      background: no-repeat center/100% url('/images/logo-withdeis.png');
       float: none;
       width: 100%;
-      max-width: initial;
     }
   }
    nav {

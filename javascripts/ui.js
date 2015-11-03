@@ -1,14 +1,21 @@
 $(document).ready(function() {
-
   // Main header behavior
-  var $fixedHeader = $('[data-purpose="fixed-header"]');
-  var triggerPos = $('[data-purpose="code-steps"]').offset().top;
-  var scrolled;
-  var scrollPos;
+  var $fixedHeader = $('[data-purpose="fixed-header"]'),
+      triggerPos = $('[data-purpose="code-steps"]').offset().top,
+      scrolled,
+      scrollPos;
 
   $(window).scroll(function() {
     scrollPos = $(this).scrollTop();
     scrolled = true;
+  });
+
+  if (window.matchMedia) {
+    centerLogo();
+  }
+
+  $(window).on("orientationchange", function (event) {
+    centerLogo();
   });
 
   setInterval(function() {
@@ -24,3 +31,14 @@ $(document).ready(function() {
   }, 150);
 
 });
+
+function centerLogo () {
+  var logoQuery = '[data-purpose="logo"]',
+      logoContainerWidth = $('.main-header > .container').css('width'),
+      logoWidth = $(logoQuery).css('width'),
+      logoHeaderSpace = parseInt(logoContainerWidth, 10) - parseInt(logoWidth, 10);
+
+  if (window.matchMedia("(max-device-width: 414px)").matches) {
+    $(logoQuery).css('margin-left', (logoHeaderSpace / 2));
+  }
+}
