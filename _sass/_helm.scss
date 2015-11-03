@@ -122,10 +122,21 @@ $boat-size: 220px;
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      background: no-repeat center/100% url('/images/logo-withdeis.png');
+      float: none;
+      width: 100%;
+    }
   }
    nav {
      float: right;
+     @media only screen and (max-device-width: $mobile-maximum-width) {
+       float: none;
+     }
      padding: 1rem 0;
+     @media only screen and (max-device-width: $mobile-maximum-width) {
+       padding-top: 20px;
+     }
    }
 }
 
@@ -143,7 +154,7 @@ $boat-size: 220px;
   z-index: 10;
 
   .logo {
-    background: url('/images/logo-blue.png') left center no-repeat;
+    background: url('/images/logo.png') left center no-repeat;
     background-size: 100%;
     height: 60px;
     margin: 0 auto;
@@ -158,15 +169,19 @@ $boat-size: 220px;
   }
 
   &.-show {
-    top: 0;
-    visibility: visible;
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      top: 0;
+      visibility: visible;
+    }
   }
 }
 
 
 // Billboard
 .billboard {
-  padding: 80px 0 0 0;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    padding: 80px 0 0 0;
+  }
   position: relative;
   text-align: center;
 
@@ -174,8 +189,10 @@ $boat-size: 220px;
     color: $darkBlue;
     font-weight: 400;
   }
-  h1 {
-    font-size: 54px;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    h1 {
+      font-size: 54px;
+    }
   }
   h2 {
     font-size: 21px;
@@ -183,6 +200,9 @@ $boat-size: 220px;
     margin: {
       right: auto;
       left: auto;
+    }
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      margin-top: 1em;
     }
   }
 
@@ -202,24 +222,33 @@ $boat-size: 220px;
 // Steps
 .code-steps__item {
   padding: 30px 0;
+  @media only screen and (max-device-width: $mobile-maximum-width) {
+    padding-bottom: 0;
+  }
   .description {
-    float: left;
-    padding: 1rem;
     text-align: left;
-    width: 33.33%;
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      float: left;
+      padding: 1rem;
+      width: 33.33%;
+    }
 
     h2 {
       font-size: 32px;
-      margin: {
-        top: 0;
-        bottom: 1rem;
+      @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+        margin: {
+          top: 0;
+          bottom: 1rem;
+        }
       }
     }
   }
   .console {
-    float: left;
-    padding: 1rem;
-    width: 66.66%;
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      float: left;
+      padding: 1rem;
+      width: 66.66%;
+    }
 
     code {
       background-color: $white;
@@ -233,6 +262,9 @@ $boat-size: 220px;
       margin-top: 10px;
       padding: 1rem;
       text-align: left;
+      @media only screen and (max-device-width: $mobile-maximum-width) {
+        margin-top: 20px;
+      }
     }
 
     .line {
@@ -257,6 +289,10 @@ $boat-size: 220px;
       background: url('/images/fish.png') center bottom no-repeat;
       background-size: 210px;
       padding-bottom: 150px;
+      @media only screen and (max-device-width: $mobile-maximum-width) {
+        padding-bottom: 120px;
+        margin-bottom: 20px;
+      }
     }
   }
 }
@@ -294,17 +330,25 @@ $boat-size: 220px;
 
 .panel.panel--contribute {
   background-color: #f2f2f2;
+  @media only screen and (max-device-width: $mobile-maximum-width) {
+    padding: 20px 0 30px 0;
+  }
 
   h2 {
     color: $darkBlue;
     font-size: 40px;
-    margin-bottom: 0.5rem;
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      margin-bottom: 0.5rem;
+    }
   }
   p {
     font-size: 21px;
   }
   .buttons {
     margin-top: 30px;
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      margin-top: 20px;
+    }
   }
   .button {
     font-size: 18px;
@@ -316,6 +360,9 @@ $boat-size: 220px;
   background: $darkBlue url('/images/pattern_topo_white.png') left top repeat;
   background-size: 376px;
   color: #fff;
+  @media only screen and (max-device-width: $mobile-maximum-width) {
+    padding: 20px 0;
+  }
 
   .small-text {
     font-size: 14px;
@@ -370,30 +417,32 @@ $boat-size: 220px;
 }
 
 #boat {
-  background: url('/images/boat.png') no-repeat;
-  background-size: $boat-size;
-  height: 169px; //TODO programmatize this!
-  position: relative;
-  bottom: -13px;
+  height: 2em;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    background: url('/images/boat.png') no-repeat;
+    background-size: $boat-size;
+    height: 169px; //TODO programmatize this!
+    position: relative;
+    bottom: -13px;
 
-  -moz-animation: $boat-animation;
-  -webkit-animation: $boat-animation;
-  -ms-animation: $boat-animation;
-  -o-animation: $boat-animation;
-  animation: $boat-animation;
-  -webkit-animation-duration: 20s;
-  -moz-animation-duration: 20s;
-  -ms-animation-duration: 20s;
-  -o-animation-duration: 20s;
-  animation-duration: 20s;
-  @media only screen and (max-device-width: $mobile-maximum-width) {
-    display: none;
+    -moz-animation: $boat-animation;
+    -webkit-animation: $boat-animation;
+    -ms-animation: $boat-animation;
+    -o-animation: $boat-animation;
+    animation: $boat-animation;
+    -webkit-animation-duration: 20s;
+    -moz-animation-duration: 20s;
+    -ms-animation-duration: 20s;
+    -o-animation-duration: 20s;
+    animation-duration: 20s;
   }
 }
 
 // Panels
 .panel {
-  padding: 75px 0;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    padding: 75px 0;
+  }
 
   h2 {
     font-size: 32px;
