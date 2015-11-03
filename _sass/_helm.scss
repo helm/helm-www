@@ -6,6 +6,9 @@ $source-font: Source Sans Pro, Helvetica, sans-serif;
 $inconsolata-font: 'Inconsolata', Fixed, monospace;
 $vertical-margin: 25%;
 $footer-padding: 4em;
+$mobile-maximum-width: 414px;
+$tablet-maximum-width: 768px;
+$boat-size: 220px;
 /**
  * End main units
  */
@@ -14,73 +17,71 @@ $footer-padding: 4em;
  * Mixins
  */
 @mixin boat-animation-rules($startX, $startY, $endX, $endY) {
-  @media only screen and (min-device-width: 415px) {
-    @keyframes animatedBoat {
-      0%    { background-position: $startX $startY; bottom: -7px;}
-      10%   { bottom: -12px; }
-      20%   { bottom: -7px; }
-      30%   { bottom: -12px; }
-      40%   { bottom: -7px; }
-      50%   { bottom: -12px; }
-      60%   { bottom: -7px; }
-      70%   { bottom: -12px; }
-      80%   { bottom: -7px; }
-      90%   { bottom: -12px; }
-      100%  { background-position: $endX $endY; bottom: -7px; }
-    }
-    @-moz-keyframes animatedBoat {
-      0%    { background-position: $startX $startY; bottom: -7px;}
-      10%   { bottom: -12px; }
-      20%   { bottom: -7px; }
-      30%   { bottom: -12px; }
-      40%   { bottom: -7px; }
-      50%   { bottom: -12px; }
-      60%   { bottom: -7px; }
-      70%   { bottom: -12px; }
-      80%   { bottom: -7px; }
-      90%   { bottom: -12px; }
-      100%  { background-position: $endX $endY; bottom: -7px; }
-    }
-    @-webkit-keyframes animatedBoat {
-      0%    { background-position: $startX $startY; bottom: -7px;}
-      10%   { bottom: -12px; }
-      20%   { bottom: -7px; }
-      30%   { bottom: -12px; }
-      40%   { bottom: -7px; }
-      50%   { bottom: -12px; }
-      60%   { bottom: -7px; }
-      70%   { bottom: -12px; }
-      80%   { bottom: -7px; }
-      90%   { bottom: -12px; }
-      100%  { background-position: $endX $endY; bottom: -7px; }
-    }
-    @-ms-keyframes animatedBoat {
-      0%    { background-position: $startX $startY; bottom: -7px;}
-      10%   { bottom: -12px; }
-      20%   { bottom: -7px; }
-      30%   { bottom: -12px; }
-      40%   { bottom: -7px; }
-      50%   { bottom: -12px; }
-      60%   { bottom: -7px; }
-      70%   { bottom: -12px; }
-      80%   { bottom: -7px; }
-      90%   { bottom: -12px; }
-      100%  { background-position: $endX $endY; bottom: -7px; }
-    }
-    @-o-keyframes animatedBoat {
-      0%    { background-position: $startX $startY; bottom: -7px;}
-      10%   { bottom: -12px; }
-      20%   { bottom: -7px; }
-      30%   { bottom: -12px; }
-      40%   { bottom: -7px; }
-      50%   { bottom: -12px; }
-      60%   { bottom: -7px; }
-      70%   { bottom: -12px; }
-      80%   { bottom: -7px; }
-      90%   { bottom: -12px; }
-      100%  { background-position: $endX $endY; bottom: -7px; }
-    }
+  @keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
   }
+  /*@-moz-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
+  }
+  @-webkit-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
+  }
+  @-ms-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
+  }
+  @-o-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: -7px;}
+    10%   { bottom: -12px; }
+    20%   { bottom: -7px; }
+    30%   { bottom: -12px; }
+    40%   { bottom: -7px; }
+    50%   { bottom: -12px; }
+    60%   { bottom: -7px; }
+    70%   { bottom: -12px; }
+    80%   { bottom: -7px; }
+    90%   { bottom: -12px; }
+    100%  { background-position: $endX $endY; bottom: -7px; }
+  }*/
 }
 /**
  * End mixins
@@ -277,7 +278,7 @@ $footer-padding: 4em;
       padding-right: 0;
     }
   }
-  @media only screen and (max-device-width: 414px) {
+  @media only screen and (max-device-width: $mobile-maximum-width) {
     padding-bottom: 50px;
   }
 }
@@ -364,11 +365,13 @@ $footer-padding: 4em;
   }
 }
 
-@include boat-animation-rules(-20%, 25%, 120%, 0);
+@media only screen and (min-device-width: $mobile-maximum-width + 1) {
+  @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
+}
 
 #boat {
   background: url('/images/boat.png') no-repeat;
-  background-size: 220px;
+  background-size: $boat-size;
   height: 169px; //TODO programmatize this!
   position: relative;
   bottom: -13px;
@@ -383,7 +386,7 @@ $footer-padding: 4em;
   -ms-animation-duration: 20s;
   -o-animation-duration: 20s;
   animation-duration: 20s;
-  @media only screen and (max-device-width: 414px) {
+  @media only screen and (max-device-width: $mobile-maximum-width) {
     display: none;
   }
 }
