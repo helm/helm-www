@@ -117,6 +117,10 @@ $boat-size: 220px;
     background: url('/images/logo-withdeis.png') left center no-repeat;
     background-size: 100%;
     float: left;
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      float: none;
+      margin-left: 25%;
+    }
     height: 79px;
     max-width: 170px;
     overflow: hidden;
@@ -125,6 +129,9 @@ $boat-size: 220px;
   }
    nav {
      float: right;
+     @media only screen and (max-device-width: $mobile-maximum-width) {
+       float: none;
+     }
      padding: 1rem 0;
    }
 }
@@ -143,7 +150,7 @@ $boat-size: 220px;
   z-index: 10;
 
   .logo {
-    background: url('/images/logo-blue.png') left center no-repeat;
+    background: url('/images/logo.png') left center no-repeat;
     background-size: 100%;
     height: 60px;
     margin: 0 auto;
@@ -166,7 +173,9 @@ $boat-size: 220px;
 
 // Billboard
 .billboard {
-  padding: 80px 0 0 0;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    padding: 80px 0 0 0;
+  }
   position: relative;
   text-align: center;
 
@@ -174,8 +183,10 @@ $boat-size: 220px;
     color: $darkBlue;
     font-weight: 400;
   }
-  h1 {
-    font-size: 54px;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    h1 {
+      font-size: 54px;
+    }
   }
   h2 {
     font-size: 21px;
@@ -183,6 +194,9 @@ $boat-size: 220px;
     margin: {
       right: auto;
       left: auto;
+    }
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      margin-top: 1em;
     }
   }
 
@@ -370,30 +384,32 @@ $boat-size: 220px;
 }
 
 #boat {
-  background: url('/images/boat.png') no-repeat;
-  background-size: $boat-size;
-  height: 169px; //TODO programmatize this!
-  position: relative;
-  bottom: -13px;
+  height: 2em;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    background: url('/images/boat.png') no-repeat;
+    background-size: $boat-size;
+    height: 169px; //TODO programmatize this!
+    position: relative;
+    bottom: -13px;
 
-  -moz-animation: $boat-animation;
-  -webkit-animation: $boat-animation;
-  -ms-animation: $boat-animation;
-  -o-animation: $boat-animation;
-  animation: $boat-animation;
-  -webkit-animation-duration: 20s;
-  -moz-animation-duration: 20s;
-  -ms-animation-duration: 20s;
-  -o-animation-duration: 20s;
-  animation-duration: 20s;
-  @media only screen and (max-device-width: $mobile-maximum-width) {
-    display: none;
+    -moz-animation: $boat-animation;
+    -webkit-animation: $boat-animation;
+    -ms-animation: $boat-animation;
+    -o-animation: $boat-animation;
+    animation: $boat-animation;
+    -webkit-animation-duration: 20s;
+    -moz-animation-duration: 20s;
+    -ms-animation-duration: 20s;
+    -o-animation-duration: 20s;
+    animation-duration: 20s;
   }
 }
 
 // Panels
 .panel {
-  padding: 75px 0;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    padding: 75px 0;
+  }
 
   h2 {
     font-size: 32px;
