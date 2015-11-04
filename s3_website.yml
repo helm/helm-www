@@ -8,7 +8,12 @@ cloudfront_distribution_id: <%= ENV['CLOUDFRONT_DIST_ID'] %>
 
 site: _site/
 
-cache_control: public, no-transform, max-age=3600, s-maxage=3600
+cache_control:
+  "images/*": public, no-transform, max-age=86400, s-maxage=3600
+  "javascripts/*": public, no-transform, max-age=3600, s-maxage=3600
+  "css/*": public, no-transform, max-age=3600, s-maxage=3600
+
+gzip: true
 
 # index_document: index.html
 # error_document: error.html

@@ -9,4 +9,4 @@ gem install bundler -v "~> 1.10" --conservative --no-ri --no-rdoc
 bundle install
 bundle exec jekyll build
 bundle exec s3_website cfg apply
-bundle exec s3_website push
+bundle exec s3_website push --force
