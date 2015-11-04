@@ -255,6 +255,19 @@ $boat-size: 220px;
         }
       }
     }
+
+    p {
+      strong {
+        font-size: 1.2em;
+        line-height: 0.8em;
+        color: gold;
+      }
+      @media only screen and (max-device-width: $mobile-maximum-width) {
+        + p {
+          text-align: right;
+        }
+      }
+    }
   }
   .console {
     @media only screen and (min-device-width: $mobile-maximum-width + 1) {

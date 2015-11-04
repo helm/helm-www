@@ -23,19 +23,19 @@
       <div class="code-steps">
         <div class="code-steps__item container group">
           <aside class="description">
-            <h2>Install</h2>
+            <h2>Get Helm</h2>
             <p>Get the latest version of helm.</p>
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term" onclick="selectElement(this)">$ curl -sS http://get.helm.sh | bash</span></div>
+              <div class="line"><span class="code-term" onclick="selectElement(this)">$ curl -sS https://get.helm.sh | bash</span></div>
             </code>
           </article>
         </div>
         <div class="code-steps__item container group">
           <aside class="description">
-            <h2>Usage</h2>
-            <p>Update your local helm environment with the latest packages from the community.</p>
+            <h2>Update</h2>
+            <p>Sync your local helm environment with the latest updates from the community. Helm calls a packaged unit of kubernetes software a <strong>chart</strong>.</p>
           </aside>
           <article class="console">
             <code>
@@ -48,7 +48,8 @@
         </div>
         <div class="code-steps__item container group">
           <aside class="description">
-            <p>Search for packages by name.</p>
+            <h2>Search</h2>
+            <p>Discover which charts have already been mapped.</p>
           </aside>
           <article class="console">
             <code>
@@ -60,7 +61,8 @@
         </div>
         <div class="code-steps__item container group">
           <aside class="description">
-            <p>Get detailed info on a package.</p>
+            <h2>Investigate</h2>
+            <p>Get detailed info on a chart.</p>
           </aside>
           <article class="console">
             <code>
@@ -74,7 +76,9 @@
         </div>
         <div class="code-steps__item container group">
           <aside class="description">
-            <p>Install a package.</p>
+            <h2>Install</h2>
+            <p>Apply the chart to your kubernetes cluster!</p>
+            <p>helm + k8s = &#128525</p>
           </aside>
           <article class="console">
             <code>
