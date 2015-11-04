@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
+npm install
+grunt
 bundle exec jekyll build
 bundle exec htmlproof ./_site
