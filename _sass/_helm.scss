@@ -102,7 +102,7 @@ $boat-size: 220px;
 
  body {
    @include sourceFont;
-   background: url('/images/pattern_topo.png') left top repeat;
+   background: url('/images/pattern-topo.png') left top repeat;
    background-size: 376px;
    font-size: 18px;
    line-height: 1.5;
@@ -114,7 +114,7 @@ $boat-size: 220px;
 .main-header {
   padding: 1.5rem 0;
   .logo {
-    background: url('/images/logo-withdeis.png') left center no-repeat;
+    background: url('/images/logo-with-deis.png') left center no-repeat;
     background-size: 100%;
     float: left;
     height: 79px;
@@ -123,7 +123,7 @@ $boat-size: 220px;
     text-indent: 100%;
     white-space: nowrap;
     @media only screen and (max-device-width: $mobile-maximum-width) {
-      background: no-repeat center/100% url('/images/logo-withdeis.png');
+      background: no-repeat center/100% url('/images/logo-with-deis.png');
       float: none;
       width: 100%;
     }
@@ -211,7 +211,7 @@ $boat-size: 220px;
 
   // water
   &:after {
-    background: url('/images/pattern_waves.png') left top repeat-x;
+    background: url('/images/pattern-waves.png') left top repeat-x;
     background-size: 20px;
     bottom: 0;
     content: '';
@@ -336,37 +336,6 @@ $boat-size: 220px;
   }
 }
 
-#coming-soon {
-  .marquee {
-    font-size: 1.5em;
-    font-style: italic;
-    padding-top: 2em;
-  }
-
-  .logo {
-    display: inline-block;
-    padding-top: 1em;
-    padding-right: 10px;
-    &+.logo {
-      position: relative;
-      bottom: 1em;
-      padding-right: 0;
-    }
-  }
-  @media only screen and (max-device-width: $mobile-maximum-width) {
-    padding-bottom: 50px;
-  }
-}
-
-#waves {
-  background-image: url("/images/waves.png");
-  height: 22px; //TODO programmatize this!
-}
-
-#water {
-  background-color: #37B0E7;
-}
-
 .panel.panel--contribute {
   background-color: #f2f2f2;
   @media only screen and (max-device-width: $mobile-maximum-width) {
@@ -396,7 +365,7 @@ $boat-size: 220px;
 }
 
 .main-footer {
-  background: $darkBlue url('/images/pattern_topo_white.png') left top repeat;
+  background: $darkBlue url('/images/pattern-topo-white.png') left top repeat;
   background-size: 376px;
   color: #fff;
   @media only screen and (max-device-width: $mobile-maximum-width) {
@@ -413,44 +382,6 @@ $boat-size: 220px;
 
   .logo {
     max-width: 125px;
-  }
-}
-
-
-#contribute {
-  overflow: auto;
-  background-color: $white;
-  color: $darkBlue;
-  padding-top: $footer-padding;
-  padding-bottom: $footer-padding;
-  .heading {
-    font-size: 2em;
-    font-weight: 400;
-  }
-  .description {
-    padding-top: 1em;
-    padding-bottom: 2em;
-    font-size: 1em;
-    font-weight: 400;
-  }
-  .buttons {
-    > * {
-      display: inline-block;
-      padding-right: 2em;
-    }
-    > *:last-child {
-      padding-right: 0;
-    }
-  }
-}
-
-#footer {
-  background-image: url("/images/topo-inverse.png");
-  > * {
-    padding-top: $footer-padding;
-  }
-  > *:last-child {
-    padding-bottom: $footer-padding;
   }
 }
 
