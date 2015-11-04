@@ -8,6 +8,8 @@ cloudfront_distribution_id: <%= ENV['CLOUDFRONT_DIST_ID'] %>
 
 site: _site/
 
+cache_control: public, no-transform, max-age=3600, s-maxage=3600
+
 # index_document: index.html
 # error_document: error.html
 
@@ -42,7 +44,7 @@ site: _site/
 #     items:
 #       CNAME: your.website.com
 
-# cloudfront_invalidate_root: true
+cloudfront_invalidate_root: true
 
 # concurrency_level: 5
 
