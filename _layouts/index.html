@@ -49,7 +49,7 @@
         <div class="code-steps__item container group">
           <aside class="description">
             <h2>Search</h2>
-            <p>Discover which charts have already been mapped.</p>
+            <p>Search for available charts.</p>
           </aside>
           <article class="console">
             <code>
@@ -77,7 +77,7 @@
         <div class="code-steps__item container group">
           <aside class="description">
             <h2>Install</h2>
-            <p>Apply the chart to your kubernetes cluster!</p>
+            <p>Deploy the chart to your kubernetes cluster!</p>
             <p>helm + k8s = &#128525</p>
           </aside>
           <article class="console">
@@ -98,11 +98,12 @@
     </section>
 
     <section class="panel panel--contribute">
-      <h2>Contribute</h2>
-      <p>We want you to contribute!</p>
+      <h2>Further Exploration</h2>
+      <p>More information about the helm project, and how to contribute!</p>
       <div class="buttons">
-        <a href="https://deis.com/contact" class="button -secondary"><i class="icon -left ion-ios-email"></i> Drop us a line</a>
-        <a href="https://github.com/deis/helm" class="button -cta"><i class="icon -left ion-social-github"></i> Fork on Github</a>
+        <a href="https://helm.sh/docs" class="button -cta"><i class="icon -left ion-document-text"></i> Read the Docs</a>
+        <a href="https://github.com/deis/helm" class="button -gh"><i class="icon -left ion-social-github"></i> GitHub</a>
+        <a href="irc://chat.freenode.net/helm" class="button -irc light"><i class="icon -left ion-chatboxes"></i> #helm</a>
       </div>
     </section>
 
@@ -112,19 +113,11 @@
     </footer>
 
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="{{site.baseurl}}/javascripts/helm.min.js"></script>
+  <script>
+    window.onload = function () {
+      var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
+    };
+  </script>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="{{site.baseurl}}/javascripts/ui.js"></script>
-<script src="{{site.baseurl}}/javascripts/konami.js"></script>
-<script>
-  window.onload = function () {
-    /*var boat = document.getElementById('boat');
-    var boatOffset = Number(window.getComputedStyle(boat).marginBottom.split('px')[0]);
-    var topMatter = document.getElementById('top-matter');
-    var waves = document.getElementById('waves');
-    var height = window.innerHeight -
-        (topMatter.offsetHeight + waves.offsetHeight + boat.offsetHeight) - boatOffset;
-    document.getElementById("water").style.height = height + "px";*/
-    var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
-  };
-</script>

@@ -345,12 +345,10 @@ $boat-size: 220px;
   h2 {
     color: $darkBlue;
     font-size: 40px;
-    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-      margin-bottom: 0.5rem;
-    }
   }
   p {
     font-size: 21px;
+    font-weight: 300;
   }
   .buttons {
     margin-top: 30px;
@@ -414,7 +412,7 @@ $boat-size: 220px;
 // Panels
 .panel {
   @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-    padding: 75px 0;
+    padding: 30px 0;
   }
 
   h2 {
@@ -465,6 +463,22 @@ a.button, button {
     }
   }
 
+  &.-gh {
+    background-color: #001f3f;
+
+    &:hover {
+      background-color: lighten(#001f3f, 10);
+    }
+  }
+
+  &.-irc {
+    background-color: #FFDC00;
+
+    &:hover {
+      background-color: darken(#FFDC00, 10);
+    }
+  }
+
   &.-outline {
     background-color: transparent;
     border: 1px solid $lightBlue;
@@ -485,6 +499,10 @@ a.button, button {
         color: #fff;
       }
     }
+  }
+
+  &.light {
+    color: #111111;
   }
 
   &.-secondary {
