@@ -351,14 +351,14 @@ $boat-size: 220px;
     font-weight: 300;
   }
   .buttons {
-    margin-top: 30px;
-    @media only screen and (max-device-width: $mobile-maximum-width) {
-      margin-top: 20px;
-    }
+    margin-top: 20px;
   }
   .button {
     font-size: 18px;
     margin: 0.5rem;
+    @media only screen and (max-device-width: $mobile-maximum-width) {
+      margin: 15px 30px;
+    }
   }
 }
 
@@ -432,6 +432,9 @@ a.button, button {
   border-radius: 4px;
   color: #fff;
   display: inline-block;
+  @media only screen and (max-device-width: $mobile-maximum-width) {
+    display: block;
+  }
   font-size: 14px;
   margin: 0;
   padding: 0.75em 1.5em;
@@ -455,7 +458,7 @@ a.button, button {
     background-color: lighten($lightBlue, 10);
   }
 
-  &.-cta {
+  &.-gh {
     background-color: $pink;
 
     &:hover {
@@ -463,7 +466,7 @@ a.button, button {
     }
   }
 
-  &.-gh {
+  &.-cta {
     background-color: #001f3f;
 
     &:hover {
