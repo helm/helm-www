@@ -135,7 +135,12 @@ $boat-size: 220px;
      }
      padding: 1rem 0;
      @media only screen and (max-device-width: $mobile-maximum-width) {
-       padding-top: 20px;
+       padding: 0;
+     }
+     .github {
+       @media only screen and (max-device-width: $mobile-maximum-width) {
+         display: none;
+       }
      }
    }
 }
@@ -206,6 +211,11 @@ $boat-size: 220px;
     }
     @media only screen and (max-device-width: $mobile-maximum-width) {
       margin-top: 1em;
+    }
+  }
+  .github {
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      display: none;
     }
   }
 
@@ -336,15 +346,27 @@ $boat-size: 220px;
   }
 }
 
+.mentions {
+  display: none;
+  background-color: #f2f2f2;
+  color: $darkBlue;
+  @media only screen and (max-device-width: $mobile-maximum-width) {
+    display: block;
+    padding: 15px 0;
+  }
+}
+
 .panel.panel--contribute {
   background-color: #f2f2f2;
   @media only screen and (max-device-width: $mobile-maximum-width) {
-    padding: 20px 0 30px 0;
+    padding-bottom: 30px;
   }
 
   h2 {
     color: $darkBlue;
-    font-size: 40px;
+    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+      font-size: 40px;
+    }
   }
   p {
     font-size: 21px;
