@@ -118,15 +118,15 @@
       <h2>Further Exploration</h2>
       <p>More information about the helm project, and how to contribute!</p>
       <div class="buttons">
-        <a href="https://helm.sh/docs" class="button -cta" onclick="App.send();"><i class="icon -left ion-document-text"></i> Read the Docs</a>
-        <a href="https://github.com/deis/helm" class="button -gh"><i class="icon -left ion-social-github"></i> GitHub</a>
-        <a href="irc://chat.freenode.net/helm" class="button -irc light"><i class="icon -left ion-chatboxes"></i> #helm</a>
+        <a href="https://helm.sh/docs" class="button -cta" onclick="App.send('footer', 'documentation');"><i class="icon -left ion-document-text"></i> Read the Docs</a>
+        <a href="https://github.com/deis/helm" class="button -gh" onclick="App.send('footer', 'github');"><i class="icon -left ion-social-github"></i> GitHub</a>
+        <a href="irc://chat.freenode.net/helm" class="button -irc light" onclick="App.send('footer', 'irc');"><i class="icon -left ion-chatboxes"></i> #helm</a>
       </div>
     </section>
 
     <footer class="main-footer panel">
       <p class="small-text">A project by the folks at</p>
-      <a href="http://deis.com"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
+      <a href="https://deis.com" onclick="App.send('footer', 'deis');"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
     </footer>
 
   </body>
@@ -135,16 +135,17 @@
   <script>
     window.onload = function () {
       var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
+      App.send('easter', 'kraken');
     };
   </script>
   <script>
     var App = {};
-    App.send = function () {
+    App.send = function (category, label) {
       ga('send', {
-        hitType: 'action',
-        eventCategory: 'button',
+        hitType: 'event',
+        eventCategory: category,
         eventAction: 'click',
-        eventLabel: 'Helm!'
+        eventLabel: label
       });
     };
   </script>
