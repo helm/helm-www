@@ -304,6 +304,11 @@ $boat-size: 220px;
         margin-top: 20px;
         font-size: 0.75em;
       }
+      #get-helm-sh {
+        @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+          font-size: 1.2em;
+        }
+      }
     }
 
     .line {
