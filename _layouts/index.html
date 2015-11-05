@@ -28,7 +28,7 @@
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term" onclick="selectElement(this); App.send('curl_select');">$ curl -sS https://get.helm.sh | bash</span></div>
+              <div class="line"><span id="get-helm-sh" class="code-term ga-track" data-click-category="curl_select">$ curl -sS https://get.helm.sh | bash</span></div>
             </code>
           </article>
         </div>
@@ -106,34 +106,18 @@
       <h2>Further Exploration</h2>
       <p>More information about the helm project, and how to contribute!</p>
       <div class="buttons">
-        <a href="https://helm.sh/docs" class="button -cta" onclick="App.send('documentation');"><i class="icon -left ion-document-text"></i> Read the Docs</a>
-        <a href="https://github.com/deis/helm" class="button -gh" onclick="App.send('footer_github');"><i class="icon -left ion-social-github"></i> GitHub</a>
-        <a href="irc://chat.freenode.net/helm" class="button -irc light" onclick="App.send('irc');"><i class="icon -left ion-chatboxes"></i> #helm</a>
+        <a href="https://helm.sh/docs" class="button -cta ga-track" data-click-category="documentation"><i class="icon -left ion-document-text"></i> Read the Docs</a>
+        <a href="https://github.com/deis/helm" class="button -gh ga-track" data-click-category="footer_github"><i class="icon -left ion-social-github"></i> GitHub</a>
+        <a href="irc://chat.freenode.net/helm" class="button -irc light ga-track" data-click-category="irc"><i class="icon -left ion-chatboxes"></i> #helm</a>
       </div>
     </section>
 
     <footer class="main-footer panel">
       <p class="small-text">A project by the folks at</p>
-      <a href="https://deis.com" onclick="App.send('footer', 'deis');"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
+      <a href="https://deis.com" class="ga-track" data-click-category="footer_deis"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
     </footer>
 
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="{{site.baseurl}}/javascripts/helm.min.js"></script>
-  <script>
-    window.onload = function () {
-      var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
-      App.send('kraken');
-    };
-  </script>
-  <script>
-    var App = {};
-    App.send = function (category) {
-      ga('send', {
-        hitType: 'event',
-        eventCategory: category,
-        eventAction: 'click'
-      });
-    };
-  </script>
 </html>
