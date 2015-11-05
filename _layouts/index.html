@@ -40,8 +40,9 @@
           <article class="console">
             <code>
               <div class="line"><span class="code-term">$ helm update</span></div>
-              <div class="line">---> Cloning into '$HOME/.helm/cache/charts'...</div>
-              <div class="line">---> Updating cache from https://github.com/deis/charts</div>
+              <div class="line">---> Creating /Users/dev/.helm/config.yaml</div>
+              <div class="line">---> Updating charts</div>
+              <div class="line">---> Cloning into '/Users/dev/.helm/cache/charts'...</div>
               <div class="line">---> Done</div>
             </code>
           </article>
@@ -54,8 +55,10 @@
           <article class="console">
             <code>
               <div class="line"><span class="code-term">$ helm search redis</span></div>
-              <div class="line">--->    redis-cluster (redis-cluster 0.0.5) - Highly available Redis cluster with multiple sentinels and standbys.</div>
-              <div class="line">--->    redis-standalone (redis-standalone 0.0.1) - Standalone Redis Master</div>
+              <div class="line"></div>
+              <div class="line">    redis-cluster (redis-cluster 0.0.5) - Highly available Redis cluster with multiple sentinels and standbys.</div>
+              <div class="line">    redis-standalone (redis-standalone 0.0.1) - Standalone Redis Master</div>
+              <div class="line"></div>
             </code>
           </article>
         </div>
@@ -68,6 +71,7 @@
             <code>
               <div class="line"><span class="code-term">$ helm info redis-cluster</span></div>
               <div class="line">Name: redis-cluster</div>
+              <div class="line">Home: http://github.com/deis/redis-cluster</div>
               <div class="line">Version: 0.0.5</div>
               <div class="line">Description: Highly available Redis cluster with multiple sentinels and standbys.</div>
               <div class="line">Details: This package provides a highly available Redis cluster with multiple sentinels and standbys. Note the `redis-master` pod is used for bootstrapping only and can be deleted once the cluster is up and running.</div>
@@ -78,19 +82,41 @@
           <aside class="description">
             <h2>Install</h2>
             <p>Deploy the chart to your kubernetes cluster!</p>
-            <p>helm + k8s = &#128525</p>
           </aside>
           <article class="console">
             <code>
               <div class="line"><span class="code-term">$ helm install redis-cluster</span></div>
-              <div class="line">---> No chart named "redis-cluster" in your workspace. Fetching now.</div>
-              <div class="line">---> Fetched chart into workspace /Users/gabriel/.helm/workspace/charts/redis-cluster</div>
               <div class="line">---> Running `kubectl create -f` ...</div>
               <div class="line">services/redis-sentinel</div>
               <div class="line">pods/redis-master</div>
               <div class="line">replicationcontrollers/redis</div>
               <div class="line">replicationcontrollers/redis-sentinel</div>
               <div class="line">---> Done</div>
+            </code>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Go Forth</h2>
+            <p>helm + k8s = &#128525</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ kubectl get pods</span></div>
+              <div class="line">NAME                   READY     STATUS    RESTARTS   AGE</div>
+              <div class="line">redis-5p4re            1/1       Running   1          4m</div>
+              <div class="line">redis-gh6x2            1/1       Running   1          4m</div>
+              <div class="line">redis-master           2/2       Running   0          4m</div>
+              <div class="line">redis-sentinel-c0obd   1/1       Running   0          4m</div>
+              <div class="line">redis-sentinel-pbs41   1/1       Running   0          4m</div>
+              <div class="line"><span class="code-term">$ kubectl get rc</span></div>
+              <div class="line">CONTROLLER       CONTAINER(S)   IMAGE(S)            SELECTOR              REPLICAS</div>
+              <div class="line">redis            redis          deis/redis:v0.0.5   name=redis            3</div>
+              <div class="line">redis-sentinel   sentinel       deis/redis:v0.0.5   redis-sentinel=true   3</div>
+              <div class="line"><span class="code-term">$ kubectl get svc</span></div>
+              <div class="line">NAME             LABELS                                     SELECTOR              IP(S)         PORT(S)</div>
+              <div class="line">kubernetes       component=apiserver,provider=kubernetes    &lt;none&gt;                10.0.0.1      443/TCP</div>
+              <div class="line">redis-sentinel   heritage=deis,name=sentinel,role=service   redis-sentinel=true   10.0.16.168   26379/TCP</div>
             </code>
           </article>
         </div>
