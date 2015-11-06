@@ -9,6 +9,16 @@ $footer-padding: 4em;
 $mobile-maximum-width: 414px;
 $tablet-maximum-width: 768px;
 $boat-size: 220px;
+$gutter: 20px;
+$normalWeight: 400;
+$lightWeight: 300;
+$titleFontSize: 54px;
+$bodyFontSize: 18px;
+$helmLogoHeight: 79px;
+$helmLogoWidth: 170px;
+$fishSize: 210px;
+$fishDepth: 150px;
+$deisLogoWidth: 125px;
 /**
  * End main units
  */
@@ -17,97 +27,99 @@ $boat-size: 220px;
  * Mixins
  */
 @mixin boat-animation-rules($startX, $startY, $endX, $endY) {
+  $crest: -7px;
+  $trough: -12px;
   @keyframes animatedBoat {
-    0%    { background-position: $startX $startY; bottom: -7px;}
-    10%   { bottom: -12px; }
-    20%   { bottom: -7px; }
-    30%   { bottom: -12px; }
-    40%   { bottom: -7px; }
-    50%   { bottom: -12px; }
-    60%   { bottom: -7px; }
-    70%   { bottom: -12px; }
-    80%   { bottom: -7px; }
-    90%   { bottom: -12px; }
-    100%  { background-position: $endX $endY; bottom: -7px; }
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
   }
-  /*@-moz-keyframes animatedBoat {
-    0%    { background-position: $startX $startY; bottom: -7px;}
-    10%   { bottom: -12px; }
-    20%   { bottom: -7px; }
-    30%   { bottom: -12px; }
-    40%   { bottom: -7px; }
-    50%   { bottom: -12px; }
-    60%   { bottom: -7px; }
-    70%   { bottom: -12px; }
-    80%   { bottom: -7px; }
-    90%   { bottom: -12px; }
-    100%  { background-position: $endX $endY; bottom: -7px; }
+  @-moz-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
   }
   @-webkit-keyframes animatedBoat {
-    0%    { background-position: $startX $startY; bottom: -7px;}
-    10%   { bottom: -12px; }
-    20%   { bottom: -7px; }
-    30%   { bottom: -12px; }
-    40%   { bottom: -7px; }
-    50%   { bottom: -12px; }
-    60%   { bottom: -7px; }
-    70%   { bottom: -12px; }
-    80%   { bottom: -7px; }
-    90%   { bottom: -12px; }
-    100%  { background-position: $endX $endY; bottom: -7px; }
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
   }
   @-ms-keyframes animatedBoat {
-    0%    { background-position: $startX $startY; bottom: -7px;}
-    10%   { bottom: -12px; }
-    20%   { bottom: -7px; }
-    30%   { bottom: -12px; }
-    40%   { bottom: -7px; }
-    50%   { bottom: -12px; }
-    60%   { bottom: -7px; }
-    70%   { bottom: -12px; }
-    80%   { bottom: -7px; }
-    90%   { bottom: -12px; }
-    100%  { background-position: $endX $endY; bottom: -7px; }
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
   }
   @-o-keyframes animatedBoat {
-    0%    { background-position: $startX $startY; bottom: -7px;}
-    10%   { bottom: -12px; }
-    20%   { bottom: -7px; }
-    30%   { bottom: -12px; }
-    40%   { bottom: -7px; }
-    50%   { bottom: -12px; }
-    60%   { bottom: -7px; }
-    70%   { bottom: -12px; }
-    80%   { bottom: -7px; }
-    90%   { bottom: -12px; }
-    100%  { background-position: $endX $endY; bottom: -7px; }
-  }*/
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
 }
 /**
  * End mixins
  */
 
 
- // Fonts
- @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Inconsolata:400,700);
- @mixin sourceFont {
-   font-family: 'Source Sans Pro', Helvetica, sans-serif;
-   font-weight: 400;
- }
- @mixin inconsolataFont {
-   font-family: 'Inconsolata', Fixed, monospace;
-   font-weight: 400;
- }
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700|Inconsolata:400,700);
+@mixin sourceFont {
+ font-family: 'Source Sans Pro', Helvetica, sans-serif;
+ font-weight: $normalWeight;
+}
+@mixin inconsolataFont {
+ font-family: 'Inconsolata', Fixed, monospace;
+ font-weight: $normalWeight;
+}
 
 
- body {
-   @include sourceFont;
-   background: url('/images/pattern-topo.png') left top repeat;
-   background-size: 376px;
-   font-size: 18px;
-   line-height: 1.5;
-   text-align: center;
- }
+body {
+ @include sourceFont;
+ background: url('/images/pattern-topo.png') left top repeat;
+ background-size: 376px;
+ font-size: $bodyFontSize;
+ line-height: 1.5;
+ text-align: center;
+}
 
 
 // Main Header
@@ -117,8 +129,8 @@ $boat-size: 220px;
     background: url('/images/logo-with-deis.png') left center no-repeat;
     background-size: 100%;
     float: left;
-    height: 79px;
-    max-width: 170px;
+    height: $helmLogoHeight;
+    max-width: $helmLogoWidth;
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
@@ -148,11 +160,12 @@ $boat-size: 220px;
 
 // Fixed Header
 .fixed-header {
+  $dropdownHeight: 100px;
   background-color: $lightBlue;
   border-bottom: 1px solid darken($lightBlue, 8);
   padding: 1rem 0;
   position: fixed;
-  top: -100px;
+  top: -$dropdownHeight;
   transition: all 0.15s;
   visibility: hidden;
   width: 100%;
@@ -161,9 +174,9 @@ $boat-size: 220px;
   .logo {
     background: url('/images/logo.png') left center no-repeat;
     background-size: 100%;
-    height: 60px;
+    height: ($gutter * 3);
     margin: 0 auto;
-    max-width: 60px;
+    max-width: ($gutter * 3);
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
@@ -184,24 +197,25 @@ $boat-size: 220px;
 
 // Billboard
 .billboard {
+  $width: 800px;
   @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-    padding: 80px 0 0 0;
+    padding: ($gutter * 4) 0 0 0;
   }
   position: relative;
   text-align: center;
 
   h1, h2 {
     color: $darkBlue;
-    font-weight: 400;
+    font-weight: $normalWeight;
   }
   @media only screen and (min-device-width: $mobile-maximum-width + 1) {
     h1 {
-      font-size: 54px;
+      font-size: $titleFontSize;
     }
   }
   h2 {
-    font-size: 21px;
-    max-width: 800px;
+    font-size: 1.3rem;
+    max-width: $width;
     margin: {
       right: auto;
       left: auto;
@@ -210,7 +224,7 @@ $boat-size: 220px;
       font-size: 1.2em;
     }
     @media only screen and (max-device-width: $mobile-maximum-width) {
-      margin-top: 1em;
+      margin-top: 1rem;
     }
   }
   .github {
@@ -221,12 +235,13 @@ $boat-size: 220px;
 
   // water
   &:after {
+    $height: 6px;
     background: url('/images/pattern-waves.png') left top repeat-x;
-    background-size: 20px;
+    background-size: $gutter;
     bottom: 0;
     content: '';
     display: block;
-    height: 6px;
+    height: $height;
     position: absolute;
     width: 100%;
   }
@@ -235,7 +250,7 @@ $boat-size: 220px;
 @media only screen and (min-device-width: $mobile-maximum-width + 1) {
   aside.description {
     > p {
-      padding-top: 20px;
+      padding-top: $gutter;
     }
     > h2 + p {
       padding-top: 0;
@@ -245,7 +260,7 @@ $boat-size: 220px;
 
 // Steps
 .code-steps__item {
-  padding: 30px 0;
+  padding: ($gutter * 1.5) 0;
   @media only screen and (max-device-width: $mobile-maximum-width) {
     padding-bottom: 0;
   }
@@ -254,11 +269,11 @@ $boat-size: 220px;
     @media only screen and (min-device-width: $mobile-maximum-width + 1) {
       float: left;
       padding: 1rem;
-      width: 33.33%;
+      width: percentage(1/3);
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 2rem;
       @media only screen and (min-device-width: $mobile-maximum-width + 1) {
         margin: {
           top: 0;
@@ -283,31 +298,42 @@ $boat-size: 220px;
     @media only screen and (min-device-width: $mobile-maximum-width + 1) {
       float: left;
       padding: 1rem;
-      width: 66.66%;
+      width: percentage(2/3);
     }
 
     code {
+      $border-radius: 4px;
       background-color: $white;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      -ms-border-radius: 4px;
-      -o-border-radius: 4px;
-      border-radius: 4px;
-      color: #444;
+      -webkit-border-radius: $border-radius;
+      -moz-border-radius: $border-radius;
+      -ms-border-radius: $border-radius;
+      -o-border-radius: $border-radius;
+      border-radius: $border-radius;
+      color: $black;
       display: block;
-      margin-top: 10px;
+      margin-top: ($gutter / 2);
       padding: 1rem;
       text-align: left;
       overflow: scroll;
       line-height: 1em;
       @media only screen and (max-device-width: $mobile-maximum-width) {
-        margin-top: 20px;
+        margin-top: $gutter;
         font-size: 0.75em;
       }
       #get-helm-sh {
         @media only screen and (min-device-width: $mobile-maximum-width + 1) {
           font-size: 1.2em;
         }
+      }
+
+      +p {
+        @media only screen and (max-device-width: $mobile-maximum-width) {
+          display: none;
+        }
+        position: relative;
+        float: left;
+        left: $gutter;
+        margin-bottom: -($gutter * 1.5);
       }
     }
 
@@ -325,9 +351,10 @@ $boat-size: 220px;
     }
 
     .code-term {
-      background-color: #F7F7F9;
-      border: 1px solid #ddd;
-      border-radius: 3px;
+      $border: 1px;
+      background-color: $whitePastel;
+      border: $border solid darken($whitePastel, 10);
+      border-radius: $border;
       color: $pink;
       display: inline-block;
       font-family: monospace, serif;
@@ -335,17 +362,20 @@ $boat-size: 220px;
       padding: 0 0.35em;
       text-indent: initial;
       line-height: 1.5;
+      @media only screen and (max-device-width: $mobile-maximum-width) {
+        font-weight: ($normalWeight * 1.5);
+      }
     }
   }
 
   &:last-child {
     .console {
       background: url('/images/fish.png') center bottom no-repeat;
-      background-size: 210px;
-      padding-bottom: 150px;
+      background-size: $fishSize;
+      padding-bottom: $fishDepth;
       @media only screen and (max-device-width: $mobile-maximum-width) {
-        padding-bottom: 120px;
-        margin-bottom: 20px;
+        padding-bottom: $fishDepth - ($gutter * 1.5);
+        margin-bottom: $gutter;
       }
     }
   }
@@ -353,38 +383,38 @@ $boat-size: 220px;
 
 .mentions {
   display: none;
-  background-color: #f2f2f2;
+  background-color: $whitePastel;
   color: $darkBlue;
   @media only screen and (max-device-width: $mobile-maximum-width) {
     display: block;
-    padding: 15px 0;
+    padding: ($gutter * .75) 0;
   }
 }
 
 .panel.panel--contribute {
-  background-color: #f2f2f2;
+  background-color: $whitePastel;
   @media only screen and (max-device-width: $mobile-maximum-width) {
-    padding-bottom: 30px;
+    padding-bottom: ($gutter * 1.5);
   }
 
   h2 {
     color: $darkBlue;
     @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-      font-size: 40px;
+      font-size: ($gutter * 2);
     }
   }
   p {
-    font-size: 21px;
-    font-weight: 300;
+    font-size: 1.1rem;
+    font-weight: $lightWeight;
   }
   .buttons {
-    margin-top: 20px;
+    margin-top: $gutter;
   }
   .button {
-    font-size: 18px;
+    font-size: inherit;
     margin: 0.5rem;
     @media only screen and (max-device-width: $mobile-maximum-width) {
-      margin: 15px 30px;
+      margin: ($gutter * .75) ($gutter * 1.5);
     }
   }
 }
@@ -392,13 +422,13 @@ $boat-size: 220px;
 .main-footer {
   background: $darkBlue url('/images/pattern-topo-white.png') left top repeat;
   background-size: 376px;
-  color: #fff;
+  color: $white;
   @media only screen and (max-device-width: $mobile-maximum-width) {
-    padding: 20px 0;
+    padding: $gutter 0;
   }
 
   .small-text {
-    font-size: 14px;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
     @media only screen and (max-device-width: $mobile-maximum-width) {
       margin-bottom: 0.5rem;
@@ -406,7 +436,7 @@ $boat-size: 220px;
   }
 
   .logo {
-    max-width: 125px;
+    max-width: $deisLogoWidth;
   }
 }
 
@@ -417,33 +447,33 @@ $boat-size: 220px;
 #boat {
   height: 2em;
   @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    $duration: 20s;
     background: url('/images/boat.png') no-repeat;
     background-size: $boat-size;
     height: 169px; //TODO programmatize this!
     position: relative;
-    bottom: -13px;
 
     -moz-animation: $boat-animation;
     -webkit-animation: $boat-animation;
     -ms-animation: $boat-animation;
     -o-animation: $boat-animation;
     animation: $boat-animation;
-    -webkit-animation-duration: 20s;
-    -moz-animation-duration: 20s;
-    -ms-animation-duration: 20s;
-    -o-animation-duration: 20s;
-    animation-duration: 20s;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -ms-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
   }
 }
 
 // Panels
 .panel {
   @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-    padding: 30px 0;
+    padding: ($gutter * 1.5) 0;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   &.-blue {
@@ -455,30 +485,31 @@ $boat-size: 220px;
 
 // Buttons
 a.button, button {
+  $transitionTime: 0.25s;
   background-color: $lightBlue;
-  border-radius: 4px;
-  color: #fff;
+  border-radius: ($gutter / 5);
+  color: $white;
   display: inline-block;
   @media only screen and (max-device-width: $mobile-maximum-width) {
     display: block;
   }
-  font-size: 14px;
+  font-size: 0.85rem;
   margin: 0;
   padding: 0.75em 1.5em;
   text-transform: uppercase;
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -ms-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: all $transitionTime;
+  -moz-transition: all $transitionTime;
+  -ms-transition: all $transitionTime;
+  -o-transition: all $transitionTime;
+  transition: all $transitionTime;
 
   .icon {
     font-size: 1.25em;
     &.-right {
-      margin-left: 5px;
+      margin-left: ($gutter / 4);
     }
     &.-left {
-      margin-right: 5px;
+      margin-right: ($gutter / 4);
     }
   }
   &:hover {
@@ -494,18 +525,29 @@ a.button, button {
   }
 
   &.-cta {
-    background-color: #001f3f;
+    background-color: $navy;
 
     &:hover {
-      background-color: lighten(#001f3f, 10);
+      background-color: lighten($navy, 10);
     }
   }
 
   &.-irc {
-    background-color: #FFDC00;
+    background-color: $yellow;
 
     &:hover {
-      background-color: darken(#FFDC00, 10);
+      background-color: darken($yellow, 10);
+    }
+  }
+
+  &.-download {
+    padding: ($gutter / 4) ($gutter / 2);
+    margin-left: $gutter / 2;
+    margin-top: ($gutter * .75);
+    background-color: $grey;
+    border: 1px solid darken($grey, 10);
+    &:hover {
+      background-color: darken($grey, 10);
     }
   }
 
@@ -526,20 +568,12 @@ a.button, button {
 
       &:hover {
         background-color: $pink;
-        color: #fff;
+        color: white;
       }
     }
   }
 
   &.light {
-    color: #111111;
-  }
-
-  &.-secondary {
-    background-color: #ccc;
-
-    &:hover {
-      background-color: lighten(#ccc, 7);
-    }
+    color: $black;
   }
 }
