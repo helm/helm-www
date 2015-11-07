@@ -1,0 +1,12 @@
+{
+  "name": "helm-www",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/deis/helm-www.git"
+  },
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.5.0"
+  }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+
+    {% include header.html %}
+    <header class="fixed-header" data-purpose="fixed-header">
+      <div class="container">
+        <h1 class="logo">Helm</h1>
+      </div>
+    </header>
+
+    <section class="billboard">
+      <div class="container">
+        <h1>The package manager for Kubernetes</h1>
+        <h2><strong>Helm</strong> is the best way to find, share, and use software built for Kubernetes.</h2>
+      </div>
+      <div id="boat"></div>
+    </section>
+
+
+    <section class="panel -blue" data-purpose="code-steps">
+      <div class="code-steps">
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Get Helm</h2>
+            <p>Get the latest version of helm.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span id="get-helm-sh" class="code-term ga-track" data-click-category="curl_select">curl -s https://get.helm.sh | sh</span></div>
+            </code>
+            <p>or <a href="https://bintray.com/deis/helm/helm/_latestVersion#files" class="button -download ga-track" data-click-category="download">Download</a></p>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Update</h2>
+            <p>Sync your local helm environment with the latest updates from the community. Helm calls a packaged unit of kubernetes software a <strong>chart</strong>.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ helm update</span></div>
+              <div class="line">---> Creating /Users/dev/.helm/config.yaml</div>
+              <div class="line">---> Updating charts</div>
+              <div class="line">---> Cloning into '/Users/dev/.helm/cache/charts'...</div>
+              <div class="line">---> Done</div>
+            </code>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Search</h2>
+            <p>Search for available charts.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ helm search redis</span></div>
+              <div class="line"></div>
+              <div class="line">    redis-cluster (redis-cluster 0.0.5) - Highly available Redis cluster with multiple sentinels and standbys.</div>
+              <div class="line">    redis-standalone (redis-standalone 0.0.1) - Standalone Redis Master</div>
+              <div class="line"></div>
+            </code>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Investigate</h2>
+            <p>Get detailed info on a chart.</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ helm info redis-cluster</span></div>
+              <div class="line">Name: redis-cluster</div>
+              <div class="line">Home: http://github.com/deis/redis-cluster</div>
+              <div class="line">Version: 0.0.5</div>
+              <div class="line">Description: Highly available Redis cluster with multiple sentinels and standbys.</div>
+              <div class="line">Details: This package provides a highly available Redis cluster with multiple sentinels and standbys. Note the `redis-master` pod is used for bootstrapping only and can be deleted once the cluster is up and running.</div>
+            </code>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Install</h2>
+            <p>Deploy the chart to your kubernetes cluster!</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ helm install redis-cluster</span></div>
+              <div class="line">---> Running `kubectl create -f` ...</div>
+              <div class="line">services/redis-sentinel</div>
+              <div class="line">pods/redis-master</div>
+              <div class="line">replicationcontrollers/redis</div>
+              <div class="line">replicationcontrollers/redis-sentinel</div>
+              <div class="line">---> Done</div>
+            </code>
+          </article>
+        </div>
+        <div class="code-steps__item container group">
+          <aside class="description">
+            <h2>Go Forth</h2>
+            <p>helm + k8s = &#128525</p>
+          </aside>
+          <article class="console">
+            <code>
+              <div class="line"><span class="code-term">$ kubectl get pods</span></div>
+              <div class="line">NAME                   READY     STATUS    RESTARTS   AGE</div>
+              <div class="line">redis-5p4re            1/1       Running   1          4m</div>
+              <div class="line">redis-gh6x2            1/1       Running   1          4m</div>
+              <div class="line">redis-master           2/2       Running   0          4m</div>
+              <div class="line">redis-sentinel-c0obd   1/1       Running   0          4m</div>
+              <div class="line">redis-sentinel-pbs41   1/1       Running   0          4m</div>
+              <div class="line"><span class="code-term">$ kubectl get rc</span></div>
+              <div class="line">CONTROLLER       CONTAINER(S)   IMAGE(S)            SELECTOR              REPLICAS</div>
+              <div class="line">redis            redis          deis/redis:v0.0.5   name=redis            3</div>
+              <div class="line">redis-sentinel   sentinel       deis/redis:v0.0.5   redis-sentinel=true   3</div>
+              <div class="line"><span class="code-term">$ kubectl get svc</span></div>
+              <div class="line">NAME             LABELS                                     SELECTOR              IP(S)         PORT(S)</div>
+              <div class="line">kubernetes       component=apiserver,provider=kubernetes    &lt;none&gt;                10.0.0.1      443/TCP</div>
+              <div class="line">redis-sentinel   heritage=deis,name=sentinel,role=service   redis-sentinel=true   10.0.16.168   26379/TCP</div>
+            </code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mentions panel">
+      <h2>What they're saying</h2>
+      {% include tweets.html %}
+    </section>
+
+    <section class="panel panel--contribute">
+      <h2>Further Exploration</h2>
+      <p>More information about the helm project, and how to contribute!</p>
+      <div class="buttons">
+        <a href="https://helm.sh/docs" class="button -cta ga-track" data-click-category="documentation"><i class="icon -left ion-document-text"></i> Read the Docs</a>
+        <a href="https://github.com/deis/helm" class="button -gh ga-track" data-click-category="footer_github"><i class="icon -left ion-social-github"></i> GitHub</a>
+        <a href="irc://chat.freenode.net/helm" class="button -irc light ga-track" data-click-category="irc"><i class="icon -left ion-chatboxes"></i> #helm</a>
+      </div>
+    </section>
+
+    <footer class="main-footer panel">
+      <p class="small-text">A project by the folks at</p>
+      <a href="https://deis.com" class="ga-track" data-click-category="footer_deis"><img class="logo" src="/images/deis-logo-white.png" alt="a deis project"></a>
+    </footer>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="{{site.baseurl}}/javascripts/helm.min.js"></script>
+</html>
