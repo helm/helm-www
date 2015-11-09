@@ -42,6 +42,7 @@ var Konami = function (callback) {
       this.iphone.load(link);
     },
     code: function (link) {
+      sendGa('the_real_kraken');
       window.location = link
     },
     iphone: {
@@ -102,4 +103,17 @@ var Konami = function (callback) {
   }
 
   return konami;
+
+  function sendGa (category, label) {
+    if (ga) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: category,
+        eventAction: 'click',
+        eventLabel: label
+      });
+    } else {
+      console.log('ga not loaded!');
+    }
+  }
 };

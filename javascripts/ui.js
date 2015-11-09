@@ -93,7 +93,6 @@
 
   window.onload = function () {
     var easter_egg = new Konami('https://www.youtube.com/watch?v=7SqC_m3yUDU');
-    sendGa('kraken');
   };
 
   function centerLogo () {
