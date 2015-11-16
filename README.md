@@ -1,2 +1,2 @@
 # helm-www
-Helm: Kubernetes Package Manger static www
+Static www site for [helm.sh](https://helm.sh)
