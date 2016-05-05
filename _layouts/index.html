@@ -18,32 +18,52 @@
       <div id="boat"></div>
     </section>
 
+    <section class="panel -blue" data-purpose="news-and-updates">
+      <div class="news-and-updates">
+        <div class="news-and-updates__item container group">
+          <h2>Helm comes in two great flavors!</h2>
+          <article class="console">
+            <p>
+              The teams at Deis and Google are working hard to bring you a new and improved Helm.
+              In the meanwhile, the Deis team is committed to maintaining the original tool as
+              <i>Helm Classic</i> &mdash; new name, same great taste! The name change ensures the original
+              and next generation Helm binaries can exist side-by-side and that the two tools can be
+              discussed unambiguously.
+            </p>
+            <p>
+              For more information and updates about the new Helm check out 
+              <a href="https://github.com/kubernetes/helm">github.com/kubernetes/helm</a>!
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="panel -blue" data-purpose="code-steps">
       <div class="code-steps">
         <div class="code-steps__item container group">
           <aside class="description">
-            <h2>Get Helm</h2>
-            <p>Get the latest version of helm.</p>
+            <h2>Get Helm Classic</h2>
+            <p>Get the latest version of helmc.</p>
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span id="get-helm-sh" class="code-term ga-track" data-click-category="curl_select">curl -s https://get.helm.sh | bash</span></div>
+              <div class="line"><span id="get-helmc-sh" class="code-term ga-track" data-click-category="curl_select">curl -s https://get.helm.sh | bash</span></div>
             </code>
-            <p>or <a href="https://bintray.com/deis/helm/helm/_latestVersion#files" class="button -download ga-track" data-click-category="download">Download</a></p>
+            <p>or <a href="https://bintray.com/deis/helm/helmc/_latestVersion#files" class="button -download ga-track" data-click-category="download">Download</a></p>
           </article>
         </div>
         <div class="code-steps__item container group">
           <aside class="description">
             <h2>Update</h2>
-            <p>Sync your local helm environment with the latest updates from the community. Helm calls a packaged unit of kubernetes software a <strong>chart</strong>.</p>
+            <p>Sync your local helmc environment with the latest updates from the community. Helm Classic calls a packaged unit of Kubernetes software a <strong>chart</strong>.</p>
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term">$ helm update</span></div>
-              <div class="line">---> Creating /Users/dev/.helm/config.yaml</div>
+              <div class="line"><span class="code-term">$ helmc update</span></div>
+              <div class="line">---> Creating /Users/dev/.helmc/config.yaml</div>
               <div class="line">---> Updating charts</div>
-              <div class="line">---> Cloning into '/Users/dev/.helm/cache/charts'...</div>
+              <div class="line">---> Cloning into '/Users/dev/.helmc/cache/charts'...</div>
               <div class="line">---> Done</div>
             </code>
           </article>
@@ -55,7 +75,7 @@
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term">$ helm search redis</span></div>
+              <div class="line"><span class="code-term">$ helmc search redis</span></div>
               <div class="line"></div>
               <div class="line">    redis-cluster (redis-cluster 0.0.5) - Highly available Redis cluster with multiple sentinels and standbys.</div>
               <div class="line">    redis-standalone (redis-standalone 0.0.1) - Standalone Redis Master</div>
@@ -70,7 +90,7 @@
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term">$ helm info redis-cluster</span></div>
+              <div class="line"><span class="code-term">$ helmc info redis-cluster</span></div>
               <div class="line">Name: redis-cluster</div>
               <div class="line">Home: http://github.com/deis/redis-cluster</div>
               <div class="line">Version: 0.0.5</div>
@@ -86,7 +106,7 @@
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term">$ helm install redis-cluster</span></div>
+              <div class="line"><span class="code-term">$ helmc install redis-cluster</span></div>
               <div class="line">---> Running `kubectl create -f` ...</div>
               <div class="line">services/redis-sentinel</div>
               <div class="line">pods/redis-master</div>
@@ -104,9 +124,9 @@
           </aside>
           <article class="console">
             <code>
-              <div class="line"><span class="code-term">$ helm repo add mycharts https://github.com/dev/mycharts</span></div>
-              <div class="line">---> Cloning into '/Users/dev/.helm/cache/mycharts'...</div>
-              <div class="line"><span class="code-term">~ $ helm repo list</span></div>
+              <div class="line"><span class="code-term">$ helmc repo add mycharts https://github.com/dev/mycharts</span></div>
+              <div class="line">---> Cloning into '/Users/dev/.helmc/cache/mycharts'...</div>
+              <div class="line"><span class="code-term">~ $ helmc repo list</span></div>
               <div class="line">charts          https://github.com/helm/charts</div>
               <div class="line">mycharts        https://github.com/mycharts/charts</div>
             </code>
@@ -116,7 +136,7 @@
         <div class="code-steps__item container group">
           <aside class="description">
             <h2>Go Forth</h2>
-            <p>helm + k8s = &#128525;</p>
+            <p>helmc + k8s = &#128525;</p>
           </aside>
           <article class="console">
             <code>
@@ -148,10 +168,10 @@
 
     <section class="panel panel--contribute">
       <h2>Further Exploration</h2>
-      <p>More information about the helm project, and how to contribute!</p>
+      <p>More information about the Helm Classic project, and how to contribute!</p>
       <div class="buttons">
         <a href="https://helm.sh/docs" class="button -cta ga-track" data-click-category="documentation"><i class="icon -left ion-document-text"></i> Read the Docs</a>
-        <a href="https://github.com/helm/helm" class="button -gh ga-track" data-click-category="footer_github"><i class="icon -left ion-social-github"></i> GitHub</a>
+        <a href="https://github.com/helm/helm-classic" class="button -gh ga-track" data-click-category="footer_github"><i class="icon -left ion-social-github"></i> GitHub</a>
         <a href="irc://chat.freenode.net/helm" class="button -irc light ga-track" data-click-category="irc"><i class="icon -left ion-chatboxes"></i> #helm</a>
       </div>
     </section>

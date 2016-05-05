@@ -63,6 +63,6 @@ routing_rules:
   - condition:  
       key_prefix_equals: docs
     redirect:
-      host_name: helm.readthedocs.org
+      host_name: helm-classic.readthedocs.org
       replace_key_prefix_with: en/latest/
       http_redirect_code: 301
