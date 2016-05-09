@@ -258,6 +258,21 @@ body {
   }
 }
 
+// News and updates
+.news-and-updates__item {
+  padding: ($gutter * 1.5) 0;
+
+  p {
+    margin-top: $gutter;
+    text-align: justify;
+  }
+
+  a {
+    color: gold;
+  }
+
+}
+
 // Steps
 .code-steps__item {
   padding: ($gutter * 1.5) 0;
@@ -320,7 +335,7 @@ body {
         margin-top: $gutter;
         font-size: 0.75em;
       }
-      #get-helm-sh {
+      #get-helmc-sh {
         @media only screen and (min-device-width: $mobile-maximum-width + 1) {
           font-size: 1.2em;
         }

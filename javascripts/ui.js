@@ -35,9 +35,9 @@
     });
 
     /**
-     * Register a click event for the 'id="get-helm-sh"' element
+     * Register a click event for the 'id="get-helmc-sh"' element
      */
-    $('#get-helm-sh').click(function (event) {
+    $('#get-helmc-sh').click(function (event) {
       selectElement(this);
     });
 
