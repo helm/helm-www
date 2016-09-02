@@ -3,7 +3,7 @@ rvm:
 - 2.1
 
 before_script:
- - npm install -g grunt-cli
+ - npm install -g gulp
  - chmod +x ./script/cibuild # or do this locally and commit
 
 # Assume bundler is being used, therefore
