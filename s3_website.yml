@@ -50,7 +50,9 @@ exclude_from_upload:
 #     items:
 #       CNAME: your.website.com
 
-cloudfront_invalidate_root: true
+# cloudfront_invalidate_root: true
+
+cloudfront_wildcard_invalidation: true
 
 # concurrency_level: 5
 
@@ -60,7 +62,7 @@ cloudfront_invalidate_root: true
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 routing_rules:
-  - condition:  
+  - condition:
       key_prefix_equals: docs
     redirect:
       host_name: helm-classic.readthedocs.org
