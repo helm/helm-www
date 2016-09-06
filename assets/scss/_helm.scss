@@ -191,6 +191,10 @@ $deisLogoWidth: 125px;
     margin-bottom: 2em;
     padding-bottom: 4rem;
 
+    .large-3 {
+      min-height: 280px;
+    }
+
     h2 {
       @include klinicBold;
       color: $darkblue;
