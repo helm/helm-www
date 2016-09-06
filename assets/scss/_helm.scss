@@ -205,6 +205,8 @@ $deisLogoWidth: 125px;
       .fa {
         color: $pink;
       }
+
+
     }
 
     h3 {
@@ -212,7 +214,18 @@ $deisLogoWidth: 125px;
       margin: 0.25em 0 0.5em;
       font-size: 1.5rem;
       padding-top: 90px;
+      position: relative;
       @include klinicBold;
+
+      small {
+        position: absolute;
+        top: 8.667em;
+        color: red;
+        width: 10em;
+        left: 50%;
+        font-size: 0.6em;
+        margin-left: -5em;
+      }
     }
 
     .columns {
