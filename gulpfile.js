@@ -33,30 +33,6 @@ gulp.task('styles', function () {
 });
 
 
-// Inline Critical CSS
-gulp.task('inline', function (cb) {
-  critical.generate({
-    base: '_site/',
-    src: 'index.html',
-    css: ['assets/css/app.min.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    },{
-      width: 768,
-      height: 1024
-    },{
-      width: 1280,
-      height: 960
-    }],
-    dest: '_includes/critical.min.css',
-    minify: true,
-    extract: false,
-    ignore: ['font-face']
-  })
-});
-
-
 // Images
 gulp.task('images', function () {
   return streamqueue({objectMode: true},
