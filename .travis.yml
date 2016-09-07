@@ -22,3 +22,7 @@ branches:
   except:
   - deploy
   - /\Av\d\d\d\d\Z/
+
+cache:
+  directories:
+    - node_modules
