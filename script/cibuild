@@ -4,4 +4,4 @@ set -e # halt script on error
 npm install
 gulp
 bundle exec jekyll build
-bundle exec htmlproof ./_site --only-4xx --check-html
+bundle exec htmlproofer ./_site --only-4xx
