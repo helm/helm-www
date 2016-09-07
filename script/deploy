@@ -7,9 +7,9 @@ export APP="helm-www"
 sudo apt-get install --assume-yes openjdk-7-jre
 gem install bundler -v "~> 1.10" --conservative --no-ri --no-rdoc
 bundle install
-sudo npm install -g grunt-cli
+sudo npm install -g gulp
 npm install
-grunt
+gulp
 bundle exec jekyll build
 bundle exec s3_website cfg apply
 bundle exec s3_website push --force
