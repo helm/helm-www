@@ -368,6 +368,10 @@ $deisLogoWidth: 125px;
         min-height: 125px;
         position: relative;
 
+        p {
+          color: darken($light2, 5%);
+        }
+
         &:first-child {
           min-height: 175px;
         }
