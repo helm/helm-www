@@ -1,4 +1,4 @@
-_site/
+rootfs/_build
 .sass-cache/
 node_modules/
 javascripts/*.min.js

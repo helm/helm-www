@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: helmsh-caddyfile
+data:
+  Caddyfile: |-
+    :2015{{ if ne .Values.hostname "" }}, {{ .Values.hostname }}{{ end }} {
+      root /svc
+      gzip {
+        not /healthz /assets/images
+      }
+      minify /assets/css{{ if ne .Values.tls.key "" }}
+      tls /etc/tls/cert.pem /etc/tls/key.pem{{ else if not .Values.tls.letsencrypt }}
+      tls off{{ end }}
+      status 200 /healthz
+    }

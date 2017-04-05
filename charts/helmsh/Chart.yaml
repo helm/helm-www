@@ -1,0 +1,7 @@
+name: helmsh
+home: https://github.com/helm/helm-www
+version: v0.1.0
+description: Helm marketing website
+maintainers:
+  - name: Deis Team
+    email: engineering@deis.com
