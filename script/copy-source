@@ -9,5 +9,6 @@ DEST=$2
 rsync -a --stats ${SOURCE}/ ${DEST}/ \
 	--exclude=.git \
 	--exclude=_site \
+	--exclude=rootfs \
 	--exclude=node_modules \
 	--exclude=.sass-cache

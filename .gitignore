@@ -1,4 +1,4 @@
-rootfs/_build
+rootfs/svc
 .sass-cache/
 node_modules/
 javascripts/*.min.js

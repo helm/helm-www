@@ -3,7 +3,7 @@ CONTAINER_SOURCE := /src
 # CONTAINER_BUILD_DEST: container-relative mount for LOCAL_BUILD_DEST
 CONTAINER_BUILD_DEST := /dest
 # LOCAL_BUILD_DEST: destination directory for website
-LOCAL_BUILD_DEST := $(CURDIR)/rootfs/_build
+LOCAL_BUILD_DEST := $(CURDIR)/rootfs/svc
 
 SHORT_NAME ?= gutenberg
 VERSION ?= 0.5.6
@@ -17,7 +17,8 @@ DOCKER_SHELL_CMD := docker run -p 4000:4000 -v $(CURDIR):$(CONTAINER_SOURCE) -v 
 
 HELMSH_SHORT_NAME ?= helmsh
 HELMSH_VERSION ?= 0.1.0
-HELMSH_IMAGE := ${DEIS_REGISTRY}${IMAGE_PREFIX}/${HELMSH_SHORT_NAME}:${HELMSH_VERSION}
+HELMSH_IMAGE_PREFIX ?= deis
+HELMSH_IMAGE := ${DEIS_REGISTRY}${HELMSH_IMAGE_PREFIX}/${HELMSH_SHORT_NAME}:${HELMSH_VERSION}
 
 prep:
 	$(CURDIR)/script/prep $(LOCAL_BUILD_DEST)
@@ -30,6 +31,9 @@ build-image:
 	  --pull \
 	  --build-arg BUILD_DATE=`date -u +'%Y-%m-%dT%H:%M:%SZ'` \
 	  -t ${HELMSH_IMAGE} rootfs
+
+push:
+	docker push ${HELMSH_IMAGE}
 
 serve:
 	$(DOCKER_SHELL_CMD) /src/script/serve

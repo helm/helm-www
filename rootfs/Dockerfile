@@ -1,13 +1,13 @@
 FROM alpine:3.5
 
-ARG plugins=cors,git,ipfilter,minify,prometheus
+ARG plugins=cors,ipfilter,minify,prometheus
 ARG BUILD_DATE
 
 RUN apk upgrade --no-cache --available \
   && apk add --no-cache \
+    bash \
     ca-certificates \
     curl \
-    libcap \
     libressl \
     openssh-client \
     tar \
@@ -18,12 +18,11 @@ RUN curl --silent --show-error --fail --location \
       "https://caddyserver.com/download/build?os=linux&arch=amd64&features=${plugins}" \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
  && chmod 0755 /usr/bin/caddy \
- && /usr/bin/caddy -version \
- && setcap 'cap_net_bind_service=+ep' /usr/bin/caddy
+ && /usr/bin/caddy -version
 
-COPY _build /svc
+COPY . /
 
-EXPOSE 80 443 2015
+EXPOSE 2015
 
 USER caddy
 ENTRYPOINT ["/usr/bin/caddy"]

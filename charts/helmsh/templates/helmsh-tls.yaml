@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: helmsh-tls
-data:
-  key.pem: {{ .Values.tls.key }}
-  cert.pem: {{ .Values.tls.cert }}
-type: Opaque
