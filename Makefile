@@ -16,7 +16,7 @@ DOCKER_RUN_CMD := docker run -p 4000:4000 -v $(CURDIR):$(CONTAINER_SOURCE) -v $(
 DOCKER_SHELL_CMD := docker run -p 4000:4000 -v $(CURDIR):$(CONTAINER_SOURCE) -v $(LOCAL_BUILD_DEST):$(CONTAINER_BUILD_DEST) --rm -it $(IMAGE)
 
 HELMSH_SHORT_NAME ?= helmsh
-HELMSH_VERSION ?= 0.1.0
+HELMSH_VERSION ?= latest
 HELMSH_IMAGE_PREFIX ?= deis
 HELMSH_IMAGE := ${DEIS_REGISTRY}${HELMSH_IMAGE_PREFIX}/${HELMSH_SHORT_NAME}:${HELMSH_VERSION}
 
@@ -37,7 +37,7 @@ push:
 
 deploy:
 	deis login ${DEIS_URL} --username="${DEIS_USERNAME}" --password="${DEIS_PASSWORD}"
-	deis pull -a ${HELMSH_IMAGE} -a helm-sh
+	deis pull ${HELMSH_IMAGE} -a helm-sh
 
 serve:
 	$(DOCKER_SHELL_CMD) /src/script/serve
