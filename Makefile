@@ -35,6 +35,10 @@ build-image:
 push:
 	docker push ${HELMSH_IMAGE}
 
+deploy:
+	deis login ${DEIS_URL} --username="${DEIS_USERNAME}" --password="${DEIS_PASSWORD}"
+	deis pull -a ${HELMSH_IMAGE} -a helm-sh
+
 serve:
 	$(DOCKER_SHELL_CMD) /src/script/serve
 
