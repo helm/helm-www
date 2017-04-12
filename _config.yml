@@ -10,4 +10,4 @@ github_username:  deis
 
 # Build settings
 markdown: kramdown
-exclude: [vendor, script, node_modules, script, Gruntfile.js, Gemfile, Gemfile.lock, package.json, s3_website.yaml]
+exclude: [vendor, script, node_modules, Gruntfile.js, Gemfile, Gemfile.lock, package.json, s3_website.yml, gulpfile.js, README.md, Makefile]
