@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ARG plugins=cors,ipfilter,minify,prometheus
+ARG plugins=http.cors,http.ipfilter,http.minify
 ARG BUILD_DATE
 
 RUN apk upgrade --no-cache --available \
@@ -15,7 +15,7 @@ RUN apk upgrade --no-cache --available \
 
 RUN curl --silent --show-error --fail --location \
       --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
-      "https://caddyserver.com/download/build?os=linux&arch=amd64&features=${plugins}" \
+      "https://caddyserver.com/download/linux/amd64?plugins=${plugins}" \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version
