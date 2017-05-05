@@ -1,4 +1,5 @@
 @charset "UTF-8";
+<<<<<<< c9921f2595053ad055d1111dba999aca35f3df7a
 /* ==========================================================================
 / Barricade Docs
 / https://github.com/barricadeio/docs
@@ -11,6 +12,8 @@
 / ---------------------------------------------------
 /
 **/
+=======
+>>>>>>> Initial Hugo docs site setup
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -5650,6 +5653,7 @@ th.hide-for-touch {
   content: '\e83f';
 }
 
+<<<<<<< c9921f2595053ad055d1111dba999aca35f3df7a
 /* '' */
 /* ==========================================================================
 / Barricade Styleguide
@@ -5668,6 +5672,8 @@ th.hide-for-touch {
 /* Typography & Vertical Rythm
 //
 */
+=======
+>>>>>>> Initial Hugo docs site setup
 .x0 {
   font-size: 11.428px;
 }
