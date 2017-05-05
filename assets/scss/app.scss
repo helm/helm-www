@@ -435,3 +435,64 @@ h2, h3, h4, h5 {
     padding: 80px 20px 20px 20px;
   }
 }
+
+#announcement {
+  background: white;
+  border-bottom: 1px solid $light2;
+  position: fixed;
+  width: 100%;
+  z-index: 11500;
+  text-align: center;
+  overflow: hidden;
+  color: $dark2;
+  letter-spacing: 0.025em;
+  @include transition;
+
+  &.show-announcement {
+    display: block !important;
+  }
+
+  img {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    max-width: 60px;
+    margin-left: 350px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    display: block !important;
+    @include transition;
+  }
+
+  a {
+    color: $dark2;
+    padding: 0.75em 5%;
+    display: block;
+    position: relative;
+    z-index: 1100;
+    background:
+      rgba(215, 215, 215, 0.35)
+      url("../images/geometry3.png") repeat 0 50px;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    @include transition;
+
+    &:hover {
+      padding-bottom: 20px;
+      color: $blue;
+
+      background:
+        rgba(225, 225, 225, 0.35)
+        url("../images/geometry3.png") repeat 0 0;
+
+      img {
+        top: 0.5em;
+        display: block !important;
+      }
+    }
+  }
+}
