@@ -4,4 +4,5 @@ set -x
 set -e
 
 npm install gulp
+npm install
 bundle install --deployment --path ${HOME}/_bundle
