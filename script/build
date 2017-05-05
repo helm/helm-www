@@ -11,4 +11,5 @@ cd /app/
 /src/script/link-dependencies
 /src/script/install
 
+gulp
 bundle exec jekyll build -d ${build_dest}
