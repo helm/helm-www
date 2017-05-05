@@ -1,0 +1,10 @@
+.tmp
+.idea
+.DS_Store
+
+### Hugo ###
+_site/
+.sass-cache/
+
+### NPM ###
+node_modules/
