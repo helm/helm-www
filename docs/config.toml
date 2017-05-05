@@ -1,0 +1,46 @@
+baseurl = "http://helm.sh"
+languageCode = "en-us"
+title = "Helm Docs"
+theme = "helmdocs"
+
+[params]
+    title = "Helm Docs"
+    author = "Ronan Flynn-Curran"
+    description = "Documentation for Helm - The Kubernetes Package Manager."
+
+publishdir = "static"
+
+canonifyURLs = "true"
+relativeURLs = "false"
+pluralizeListTitles = "false"
+plainIdAnchors = "true"
+
+[[menu.main]]
+    name = "Using Helm"
+    url = "/using-helm/"
+    identifier = "using-helm"
+    weight = 1
+[[menu.main]]
+    name = "Helm Commands"
+    url = "/helm-commands/"
+    identifier = "helm-commands"
+    weight = 2
+[[menu.main]]
+    name = "Chart Best Practices"
+    url = "/chart-best-practices/"
+    identifier = "chart-best-practices"
+    weight = 3
+[[menu.main]]
+    name = "Chart Templates"
+    url = "/chart-template-guide/"
+    identifier = "chart-template-guide"
+    weight = 4
+[[menu.main]]
+    name = "Chart Examples"
+    url = "/chart-examples/"
+    identifier = "chart-examples"
+    weight = 5
+[[menu.main]]
+    name = "Browse Charts"
+    url = "https://kubeapps"
+    weight = 6
