@@ -2,13 +2,12 @@ baseurl = "http://helm.sh"
 languageCode = "en-us"
 title = "Helm Docs"
 theme = "helmdocs"
+publishdir = "static"
 
 [params]
     title = "Helm Docs"
     author = "Ronan Flynn-Curran"
     description = "Documentation for Helm - The Kubernetes Package Manager."
-
-publishdir = "static"
 
 canonifyURLs = "true"
 relativeURLs = "false"
