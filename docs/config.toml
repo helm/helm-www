@@ -2,7 +2,7 @@ baseurl = "http://helm.sh"
 languageCode = "en-us"
 title = "Helm Docs"
 theme = "helmdocs"
-publishdir = "static"
+publishdir = "app"
 
 [params]
     title = "Helm Docs"
