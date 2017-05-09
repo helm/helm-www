@@ -1,16 +1,16 @@
 +++
-title = "Developing Charts"
-weight = "7"
+title = "Kubernetes Distribution Notes"
+weight = "3"
 
-tags = ["charts", "example", "intro", "structure", "format"]
+tags = ["setup", "install", "release", "distros", "minikube", "Ubuntu", "coreos"]
 section = "using-helm"
 categories = ["using-helm"]
 type = "page"
 
-slug = "developing-charts"
+slug = "kubernetes-distribution-notes"
 
 [menu.main]
-  url = "developing-charts"
+  url = "kubernetes-distribution-notes"
   parent = "using-helm"
 
 +++

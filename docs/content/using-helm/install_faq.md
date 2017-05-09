@@ -1,6 +1,6 @@
 +++
 title = "Install FAQ"
-weight = "3"
+weight = "4"
 
 tags = ["setup", "install", "release", "faq"]
 section = "using-helm"

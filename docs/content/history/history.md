@@ -1,26 +1,20 @@
 +++
-title = "Developing Charts"
-weight = "7"
+title = "History"
+weight = "1"
 
-tags = ["charts", "example", "intro", "structure", "format"]
-section = "using-helm"
-categories = ["using-helm"]
+tags = ["team", "history", "about", "deis", "cncf"]
+section = "history"
+categories = ["history"]
 type = "page"
 
-slug = "developing-charts"
-
-[menu.main]
-  url = "developing-charts"
-  parent = "using-helm"
+slug = "history"
 
 +++
 
-## The History of the Project
+# History of the Helm Project
 
 Kubernetes Helm is the merged result of [Helm
-Classic](https://github.com/helm/helm) and the Kubernetes port of GCS Deployment
-Manager. The project was jointly started by Google and Deis, though it
-is now part of the CNCF. Many companies now contribute regularly to Helm.
+Classic](https://github.com/helm/helm) and the Kubernetes port of GCS Deployment Manager. The project was jointly started by Google and Deis, though it is now part of the CNCF. Many companies now contribute regularly to Helm.
 
 Differences from Helm Classic:
 

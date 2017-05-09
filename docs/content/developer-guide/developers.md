@@ -1,17 +1,13 @@
 +++
-title = "Developing Charts"
-weight = "7"
+title = "Developers Guide"
+weight = "1"
 
-tags = ["charts", "example", "intro", "structure", "format"]
-section = "using-helm"
-categories = ["using-helm"]
+tags = ["team", "developers", "about"]
+section = "developer-guide"
+categories = ["developer-guide"]
 type = "page"
 
-slug = "developing-charts"
-
-[menu.main]
-  url = "developing-charts"
-  parent = "using-helm"
+slug = "developer-guide"
 
 +++
 
