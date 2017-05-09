@@ -3,7 +3,7 @@ title = "Built-in Objects"
 weight = "3"
 
 tags = ["objects", "template", "builtin"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

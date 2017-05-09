@@ -3,7 +3,7 @@ title = "Debugging Templates"
 weight = "12"
 
 tags = ["debugging", "template"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

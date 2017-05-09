@@ -3,7 +3,7 @@ title = "Creating a NOTES.txt File"
 weight = "10"
 
 tags = ["creating", "notes", "txt"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

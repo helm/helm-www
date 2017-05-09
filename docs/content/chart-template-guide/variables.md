@@ -3,7 +3,7 @@ title = "Variables"
 weight = "7"
 
 tags = ["variables", "template", "yaml"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

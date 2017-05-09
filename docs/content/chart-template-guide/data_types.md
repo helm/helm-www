@@ -3,7 +3,7 @@ title = "Appendix: Go Data Types & Templates"
 weight = "15"
 
 tags = ["appendix", "data types", "templates"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

@@ -1,16 +1,16 @@
 +++
-title = "Intro"
+title = "Template Functions and Pipelines"
 weight = "5"
 
 tags = ["chart", "template", "guide"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 
-slug = "intro"
+slug = "template-functions--pipelines"
 
 [menu.main]
-  url = "intro"
+  url = "template-functions--pipelines"
   parent = "chart-template-guide"
 
 +++

@@ -3,14 +3,14 @@ title = "Getting Started"
 weight = "2"
 
 tags = ["chart", "template", "guide"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 
-slug = "getting-started"
+slug = "getting-started-charts"
 
 [menu.main]
-  url = "getting-started"
+  url = "getting-started-charts"
   parent = "chart-template-guide"
 
 +++

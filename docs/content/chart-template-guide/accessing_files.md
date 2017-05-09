@@ -3,7 +3,7 @@ title = "Accessing Files Inside Templates"
 weight = "9"
 
 tags = ["access", "template", "ConfigMap"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 
