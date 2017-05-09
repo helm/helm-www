@@ -3,7 +3,7 @@ title = "Flow Control"
 weight = "6"
 
 tags = ["chart", "template", "guide"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

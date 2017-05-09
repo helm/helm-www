@@ -3,7 +3,7 @@ title = "Next Steps"
 weight = "13"
 
 tags = ["community", "contribute", "resources"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

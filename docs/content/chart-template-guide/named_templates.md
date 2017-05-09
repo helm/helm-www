@@ -3,7 +3,7 @@ title = "Named Templates"
 weight = "8"
 
 tags = ["partials", "template", "definition"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

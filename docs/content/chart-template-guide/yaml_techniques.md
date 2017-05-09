@@ -3,7 +3,7 @@ title = "Appendix: YAML Techniques"
 weight = "14"
 
 tags = ["appendix", "yaml"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

@@ -3,7 +3,7 @@ title = "Values Files"
 weight = "4"
 
 tags = ["values", "template", "yaml"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 

@@ -7,10 +7,10 @@ section = "developing-charts"
 categories = ["developing-charts"]
 type = "page"
 
-slug = "intro-charts"
+slug = "intro-dev-charts"
 
 [menu.main]
-  url = "intro"
+  url = "intro-dev-charts"
   parent = "developing-charts"
 
 +++

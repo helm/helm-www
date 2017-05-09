@@ -1,5 +1,5 @@
 +++
-title = "Values Files"
+title = "Values"
 weight = "2"
 
 tags = ["chart", "template", "guide"]
@@ -7,19 +7,17 @@ section = "chart-best-practices"
 categories = ["chart-best-practices"]
 type = "page"
 
-slug = "values-files"
+slug = "values"
 
 [menu.main]
-  url = "values-files"
+  url = "values"
   parent = "chart-best-practices"
 
 +++
 
 # Values
 
-This part of the best practices guide covers using values. In this part of the
-guide, we provide recommendations on how you should structure and use your
-values, with focus on designing a chart's `values.yaml` file.
+This part of the best practices guide covers using values. In this part of the guide, we provide recommendations on how you should structure and use your values, with focus on designing a chart's `values.yaml` file.
 
 ## Naming Conventions
 

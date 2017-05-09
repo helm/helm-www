@@ -3,7 +3,7 @@ title = "Subcharts & Global Values"
 weight = "11"
 
 tags = ["chart", "subcharts", "global"]
-section = "using-helm"
+section = "chart-template-guide"
 categories = ["chart-template-guide"]
 type = "page"
 
