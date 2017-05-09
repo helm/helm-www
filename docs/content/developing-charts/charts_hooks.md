@@ -1,17 +1,17 @@
 +++
 title = "Chart Lifecycle Hooks"
-weight = "8"
+weight = "2"
 
 tags = ["charts", "hooks", "lifecycle", "pre", "post"]
-section = "using-helm"
-categories = ["using-helm"]
+section = "developing-charts"
+categories = ["developing-charts"]
 type = "page"
 
 slug = "chart-lifecycle-hooks"
 
 [menu.main]
   url = "chart-lifecycle-hooks"
-  parent = "using-helm"
+  parent = "developing-charts"
 
 +++
 

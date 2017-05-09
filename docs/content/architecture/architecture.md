@@ -1,17 +1,13 @@
 +++
-title = "Developing Charts"
-weight = "7"
+title = "Architecture"
+weight = "1"
 
-tags = ["charts", "example", "intro", "structure", "format"]
-section = "using-helm"
-categories = ["using-helm"]
+tags = ["stack", "architecture"]
+section = "architecture"
+categories = ["architecture"]
 type = "page"
 
-slug = "developing-charts"
-
-[menu.main]
-  url = "developing-charts"
-  parent = "using-helm"
+slug = "architecture"
 
 +++
 

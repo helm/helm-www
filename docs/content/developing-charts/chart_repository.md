@@ -1,17 +1,17 @@
 +++
 title = "Chart Repository Guide"
-weight = "10"
+weight = "4"
 
 tags = ["charts", "repo", "guide"]
-section = "using-helm"
-categories = ["using-helm"]
+section = "developing-charts"
+categories = ["developing-charts"]
 type = "page"
 
 slug = "chart-repo-guide"
 
 [menu.main]
   url = "chart-repo-guide"
-  parent = "using-helm"
+  parent = "developing-charts"
 
 +++
 

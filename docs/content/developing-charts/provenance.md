@@ -1,17 +1,17 @@
 +++
-title = "Signing Charts - Helm Provenance & Integrity"
-weight = "12"
+title = "Signing Charts"
+weight = "6"
 
 tags = ["charts", "signing", "provenance", "integrity", "PGP", "key", "keypair"]
-section = "using-helm"
-categories = ["using-helm"]
+section = "developing-charts"
+categories = ["developing-charts"]
 type = "page"
 
 slug = "signing-charts"
 
 [menu.main]
   url = "signing-charts"
-  parent = "using-helm"
+  parent = "developing-charts"
 
 +++
 

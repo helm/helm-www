@@ -1,17 +1,17 @@
 +++
 title = "Chart Tests"
-weight = "13"
+weight = "7"
 
 tags = ["charts", "tests", "valid", "hooks"]
-section = "using-helm"
-categories = ["using-helm"]
+section = "developing-charts"
+categories = ["developing-charts"]
 type = "page"
 
 slug = "chart-tests"
 
 [menu.main]
   url = "chart-tests"
-  parent = "using-helm"
+  parent = "developing-charts"
 
 +++
 

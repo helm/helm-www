@@ -1,17 +1,17 @@
 +++
 title = "Chart Tips and Tricks"
-weight = "9"
+weight = "3"
 
 tags = ["charts", "example", "tips", "tricks", "functions", "include"]
-section = "using-helm"
-categories = ["using-helm"]
+section = "developing-charts"
+categories = ["developing-charts"]
 type = "page"
 
 slug = "chart-tips-tricks"
 
 [menu.main]
   url = "chart-tips-tricks"
-  parent = "using-helm"
+  parent = "developing-charts"
 
 +++
 
