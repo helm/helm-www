@@ -24,8 +24,8 @@ $bower : '../../../../../bower_components';
 // font awesome
 // load customized (smaller) set from Fontello, for smaller load
 $fa-font-path: "../fonts" !default;
-// @import "../../../../../bower_components/font-awesome/scss/font-awesome.scss";
-@import "fontawesome.scss";
+@import "../../../../../bower_components/font-awesome/scss/font-awesome.scss";
+// @import "fontawesome.scss";
 
 // load helm styles
 @import "helm/var-mixins";
