@@ -1,5 +1,6 @@
+var destination = process.env.GULP_DESTINATION || 'app';
+
 // Load plugins
-var destination = process.env.GULP_DESTINATION || 'static';
 var gulp = require('gulp'),
   sass = require('gulp-ruby-sass'),
   autoprefixer = require('gulp-autoprefixer'),
@@ -23,6 +24,11 @@ gulp.task('copy', function () {
   return gulp.src('themes/helmdocs/static/src/fonts/*')
     .pipe(gulp.dest(destination + '/src/fonts'))
     .pipe(notify({message: 'Fonts moved.'}));
+});
+gulp.task('copyall', function () {
+  return gulp.src('app/src/*')
+    .pipe(gulp.dest(destination + 'static/src/*'))
+    .pipe(notify({message: 'Copied all.'}));
 });
 
 
@@ -93,7 +99,7 @@ gulp.task('clean', function () {
 
 // Default task
 gulp.task('default', ['clean'], function () {
-  gulp.start('styles', 'scripts', 'images', 'copy');
+  gulp.start('styles', 'scripts', 'images', 'copy', 'copyall');
 });
 
 // Watch for changes
