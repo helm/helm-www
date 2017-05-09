@@ -126,6 +126,21 @@ $deisLogoWidth: 125px;
       right: 5rem;
       color: $dark2;
 
+      &.docs {
+        right: 13.5rem;
+        top: 7rem;
+
+        em {
+          font-size: 1.25rem;
+          font-style: normal;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: $darkblue;
+          @include klinicBold;
+          letter-spacing: 0.075em;
+        }
+      }
+
       &.fa-twitter {
         right: 9rem;
         color: $blue;
