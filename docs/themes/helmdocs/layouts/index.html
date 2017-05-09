@@ -5,9 +5,61 @@
 
     <div class="main home" id="scrollpane">
 
-        {{ partial "topbar.html" . }}
+      <div class="row collapse" id="helm">
+        <div class="small-12 columns home-intro-wrap">
 
-        Helm Docs Homepage
+          <section class="billboard">
+            <div class="container">
+              <a href="https://helm.sh"><img src="src/img/helm-logo-microsoft.svg" alt="Helm supported by Microsoft" class="helm-logo"></a>
+
+              <h1>The package manager for Kubernetes</h1>
+              <h2>Helm is the best way to find, share, and use software built for Kubernetes.</h2>
+
+              <a href="https://twitter.com/helmpack" class="fa fa-twitter hide-for-small-only" title="Helm on Twitter"></a>
+              <a href="https://github.com/kubernetes/helm" class="fa fa-github hide-for-small-only" title="Helm on Github"></a>
+            </div>
+            <div id="boat"></div>
+          </section>
+
+          <div class="row home-featured">
+            <div class="small-10 small-offset-1 columns">
+              <div class="row">
+
+                <!-- pinned / featured content -->
+                <div class="small-12 large-4 columns">
+                  <div class="panel">
+                    <a href="using-helm/#quick-start">
+                      <h3>Quickstart Guide</h3>
+                      <p>How to install and get started with Helm including instructions for distros, FAQs and plugins.</p>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="small-12 large-4 columns">
+                  <div class="panel">
+                    <a href="developing-charts/">
+                      <h3>Chart Guide</h3>
+                      <p>Practical guidance for building charts with Helm - how to structure, sign and sync your charts.</p>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="small-12 large-4 columns">
+                  <div class="panel">
+                    <a href="developer-guide/">
+                      <h3>Developer Guide</h3>
+
+                      <p>How to set up your environment for developing on Helm and Tiller, and contribution guidelines.</p>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
 </div>
