@@ -30,11 +30,12 @@
 
   h2 {
     color: darken($blue3, 5%);
-    font-size: $scalex5;
+    font-size: $scalex7;
+    letter-spacing: 0.05em;
     @include klinicBold;
     @include upperCase;
     letter-spacing: 0.125em;
-    margin: 2.5em 0 0.875em;
+    margin: 2em 0 0.875em;
   }
 
   h3 {

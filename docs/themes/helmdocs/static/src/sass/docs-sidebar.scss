@@ -82,7 +82,7 @@
         display: block;
         padding: 0em 15% 0.25em;
         color: $grey3;
-        letter-spacing: 0.025em;
+        letter-spacing: 0.035em;
         line-height: 1.4;
         text-transform: capitalize;
         font-size: 1.5em;
@@ -115,21 +115,37 @@
         }
       }
 
+      &:last-child {
+        a.sidebar-nav-item:after {
+          content: '\f08e';
+          font-family: "FontAwesome";
+          display: inline-block;
+          padding-left: 0.5em;
+          width: 1em;
+          height: 1em;
+          color: $blue1;
+          font-size: $scalex4;
+          opacity: 0.5;
+        }
+      }
+
       ul {
         margin: 0;
-        padding: 0 0 1.25em;
+        padding: 0.5em 0 1.25em;
         display: none;
 
         li {
           margin: 0;
 
           a {
-            padding: 0.425em 0 0.425em 20%;
-            line-height: 1.125;
-            font-size: $scalex5;
+            padding: 0.25em 0 0.25em 17.5%;
+            line-height: 1;
+            font-size: $scalex4;
             border-right: 4px solid transparent;
             color: $blue1;
             @include transition;
+            font-family: $base;
+            font-weight: bold;
 
             &:hover {
               color: $blue4;
