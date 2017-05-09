@@ -1,5 +1,5 @@
 // Load plugins
-var destination = process.env.GULP_DESTINATION || 'static';
+var destination = process.env.GULP_DESTINATION || 'app';
 var gulp = require('gulp'),
   sass = require('gulp-ruby-sass'),
   autoprefixer = require('gulp-autoprefixer'),
