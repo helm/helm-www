@@ -1,3 +1,20 @@
++++
+title = "helm repo update"
+weight = "33"
+
+tags = ["commands"]
+section = "helm-commands"
+categories = ["helm-commands"]
+type = "page"
+
+slug = "helm repo update"
+
+[menu.main]
+  url = "helm repo update"
+  parent = "helm-commands"
+
++++
+
 ## helm repo update
 
 update information on available charts in the chart repositories

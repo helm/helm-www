@@ -1,4 +1,21 @@
-#Alpine: A simple Helm chart
++++
+title = "alpine"
+weight = "1"
+
+tags = ["alpine", "example", "chart"]
+section = "chart-examples"
+categories = ["chart-examples"]
+type = "page"
+
+slug = "alpine"
+
+[menu.main]
+  url = "alpine"
+  parent = "chart-examples"
+
++++
+
+# Alpine: A simple Helm chart
 
 Run a single pod of Alpine Linux.
 

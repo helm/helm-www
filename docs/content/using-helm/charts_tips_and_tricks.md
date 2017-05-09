@@ -1,3 +1,20 @@
++++
+title = "Chart Tips and Tricks"
+weight = "9"
+
+tags = ["charts", "example", "tips", "tricks", "functions", "include"]
+section = "using-helm"
+categories = ["using-helm"]
+type = "page"
+
+slug = "chart-tips-tricks"
+
+[menu.main]
+  url = "chart-tips-tricks"
+  parent = "using-helm"
+
++++
+
 # Chart Development Tips and Tricks
 
 This guide covers some of the tips and tricks Helm chart developers have

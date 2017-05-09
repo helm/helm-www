@@ -1,3 +1,20 @@
++++
+title = "Intro"
+weight = "1"
+
+tags = ["chart", "template", "guide"]
+section = "using-helm"
+categories = ["chart-template-guide"]
+type = "page"
+
+slug = "intro"
+
+[menu.main]
+  url = "intro"
+  parent = "chart-template-guide"
+
++++
+
 # The Chart Template Developer's Guide
 
 This guide provides an introduction to Helm's chart templates, with emphasis on

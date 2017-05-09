@@ -1,3 +1,20 @@
++++
+title = "Values Files"
+weight = "2"
+
+tags = ["chart", "template", "guide"]
+section = "chart-best-practices"
+categories = ["chart-best-practices"]
+type = "page"
+
+slug = "values-files"
+
+[menu.main]
+  url = "values-files"
+  parent = "chart-best-practices"
+
++++
+
 # Values
 
 This part of the best practices guide covers using values. In this part of the

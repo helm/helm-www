@@ -1,3 +1,20 @@
++++
+title = "Getting Started"
+weight = "2"
+
+tags = ["chart", "template", "guide"]
+section = "using-helm"
+categories = ["chart-template-guide"]
+type = "page"
+
+slug = "getting-started"
+
+[menu.main]
+  url = "getting-started"
+  parent = "chart-template-guide"
+
++++
+
 # Getting Started with a Chart Template
 
 In this section of the guide, we'll create a chart and then add a first template. The chart we created here will be used throughout the rest of the guide.

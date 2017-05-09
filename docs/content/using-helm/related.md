@@ -1,3 +1,20 @@
++++
+title = "Developing Charts"
+weight = "7"
+
+tags = ["charts", "example", "intro", "structure", "format"]
+section = "using-helm"
+categories = ["using-helm"]
+type = "page"
+
+slug = "developing-charts"
+
+[menu.main]
+  url = "developing-charts"
+  parent = "using-helm"
+
++++
+
 # Related Projects and Documentation
 
 The Helm community has produced many extra tools, plugins, and documentation about

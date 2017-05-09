@@ -1,3 +1,20 @@
++++
+title = "nginx"
+weight = "2"
+
+tags = ["nginx", "example", "chart"]
+section = "chart-examples"
+categories = ["chart-examples"]
+type = "page"
+
+slug = "nginx"
+
+[menu.main]
+  url = "nginx"
+  parent = "chart-examples"
+
++++
+
 # nginx: An advanced example chart
 
 This Helm chart provides examples of some of Helm's more powerful

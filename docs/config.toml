@@ -25,21 +25,26 @@ plainIdAnchors = "true"
     identifier = "helm-commands"
     weight = 2
 [[menu.main]]
-    name = "Chart Best Practices"
-    url = "/chart-best-practices/"
-    identifier = "chart-best-practices"
-    weight = 3
-[[menu.main]]
-    name = "Chart Templates"
+    name = "Developing Templates"
     url = "/chart-template-guide/"
     identifier = "chart-template-guide"
+    weight = 3
+[[menu.main]]
+    name = "Best Practices"
+    url = "/chart-best-practices/"
+    identifier = "chart-best-practices"
     weight = 4
+[[menu.main]]
+    name = "Glossary"
+    url = "/glossary/"
+    identifier = "glossary"
+    weight = 5
 [[menu.main]]
     name = "Chart Examples"
     url = "/chart-examples/"
     identifier = "chart-examples"
-    weight = 5
-[[menu.main]]
-    name = "Browse Charts"
-    url = "https://kubeapps"
     weight = 6
+[[menu.main]]
+    name = "Find Charts"
+    url = "https://kubeapps.com/"
+    weight = 7

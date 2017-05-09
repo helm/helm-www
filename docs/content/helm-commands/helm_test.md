@@ -1,3 +1,20 @@
++++
+title = "helm test"
+weight = "39"
+
+tags = ["commands"]
+section = "helm-commands"
+categories = ["helm-commands"]
+type = "page"
+
+slug = "helm test"
+
+[menu.main]
+  url = "helm test"
+  parent = "helm-commands"
+
++++
+
 ## helm test
 
 test a release
