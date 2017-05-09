@@ -1,3 +1,20 @@
++++
+title = "Chart Tests"
+weight = "13"
+
+tags = ["charts", "tests", "valid", "hooks"]
+section = "using-helm"
+categories = ["using-helm"]
+type = "page"
+
+slug = "chart-tests"
+
+[menu.main]
+  url = "chart-tests"
+  parent = "using-helm"
+
++++
+
 # Chart Tests
 
 A chart contains a number of Kubernetes resources and components that work together. As a chart author, you may want to write some tests that validate that your charts works as expected when it is installed. These tests also help the chart consumer understand what your chart is supposed to do.

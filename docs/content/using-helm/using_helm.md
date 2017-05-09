@@ -1,16 +1,16 @@
 +++
-title = "Helm Basics"
-weight = "4"
+title = "Using Helm"
+weight = "5"
 
-tags = ["setup", "install", "release", "faq"]
+tags = ["setup", "usage", "commands"]
 section = "using-helm"
 categories = ["using-helm"]
 type = "page"
 
-slug = "helm-basics"
+slug = "helm-usage"
 
 [menu.main]
-  url = "helm-basics"
+  url = "helm-usage"
   parent = "using-helm"
 
 +++

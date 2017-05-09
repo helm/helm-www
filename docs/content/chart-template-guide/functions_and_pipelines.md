@@ -1,3 +1,20 @@
++++
+title = "Intro"
+weight = "5"
+
+tags = ["chart", "template", "guide"]
+section = "using-helm"
+categories = ["chart-template-guide"]
+type = "page"
+
+slug = "intro"
+
+[menu.main]
+  url = "intro"
+  parent = "chart-template-guide"
+
++++
+
 # Template Functions and Pipelines
 
 So far, we've seen how to place information into a template. But that information is placed into the template unmodified. Sometimes we want to transform the supplied data in a way that makes it more useable to us.

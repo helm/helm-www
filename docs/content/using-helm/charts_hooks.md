@@ -1,3 +1,20 @@
++++
+title = "Chart Lifecycle Hooks"
+weight = "8"
+
+tags = ["charts", "hooks", "lifecycle", "pre", "post"]
+section = "using-helm"
+categories = ["using-helm"]
+type = "page"
+
+slug = "chart-lifecycle-hooks"
+
+[menu.main]
+  url = "chart-lifecycle-hooks"
+  parent = "using-helm"
+
++++
+
 # Hooks
 
 Helm provides a _hook_ mechanism to allow chart developers to intervene

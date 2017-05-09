@@ -1,3 +1,20 @@
++++
+title = "Developing Charts"
+weight = "7"
+
+tags = ["charts", "example", "intro", "structure", "format"]
+section = "using-helm"
+categories = ["using-helm"]
+type = "page"
+
+slug = "developing-charts"
+
+[menu.main]
+  url = "developing-charts"
+  parent = "using-helm"
+
++++
+
 # Developers Guide
 
 This guide explains how to set up your environment for developing on
