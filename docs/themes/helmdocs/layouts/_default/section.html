@@ -9,12 +9,6 @@
       <div class="row">
         <div class="small-1 columns">&nbsp;</div>
         <div class="small-10 columns content-wrap">
-          <h1>{{ .Title }}</h1>
-
-          <!-- {{ range .Data.Pages.ByDate  }}
-            {{ .Render "card"}}
-          {{ end }} -->
-
           {{ range .Data.Pages.ByDate  }}
             {{ .Render "article"}}
           {{ end }}
