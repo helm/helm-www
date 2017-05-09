@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+cd /app/
+
+/src/script/copy-source /src /app
+/src/script/link-dependencies
+/src/script/install
+
+hugo server
