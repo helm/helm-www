@@ -9,8 +9,8 @@ publishdir = "app"
     author = "Ronan Flynn-Curran"
     description = "Documentation for Helm - The Kubernetes Package Manager."
 
-canonifyURLs = "true"
-relativeURLs = "false"
+canonifyURLs = "false"
+relativeURLs = "true"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
 
