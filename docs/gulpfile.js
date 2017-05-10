@@ -1,4 +1,4 @@
-var destination = process.env.GULP_DESTINATION || 'app';
+var destination = process.env.GULP_DESTINATION || 'static';
 
 // Load plugins
 var gulp = require('gulp'),
@@ -111,7 +111,7 @@ gulp.task('watch', function () {
   gulp.watch('themes/helmdocs/static/img/src/**/*.{png,gif,jpg}', ['images']);
 
   // Watch SASS
-  gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', ['styles']);
+  gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', ['styles', 'copyall']);
 
   // Create LiveReload server
   livereload.listen();
