@@ -43,7 +43,7 @@ push:
 
 deploy:
 	deis login ${DEIS_URL} --username="${DEIS_USERNAME}" --password="${DEIS_PASSWORD}"
-	deis pull ${HELMSH_DOCS_IMAGE} -a helm-sh-docs
+	deis pull ${HELMSH_DOCS_IMAGE} -a docs-helm-sh
 
 serve:
 	$(DOCKER_SHELL_CMD) /src/script/serve

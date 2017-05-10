@@ -3,8 +3,6 @@
 set -x
 set -e
 
-# sudo npm install -g bower
-# sudo npm install -g gulp
 npm install
 bower install
 gulp
