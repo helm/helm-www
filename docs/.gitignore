@@ -1,0 +1,15 @@
+.tmp
+.idea
+.DS_Store
+
+### Bower ###
+bower_components/
+
+### Hugo ###
+_site/
+.sass-cache/
+
+### NPM ###
+node_modules/
+
+rootfs/public
