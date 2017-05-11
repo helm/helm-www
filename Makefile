@@ -6,7 +6,7 @@ CONTAINER_BUILD_DEST := /dest
 LOCAL_BUILD_DEST := $(CURDIR)/rootfs/svc
 
 SHORT_NAME ?= gutenberg
-VERSION ?= 0.5.6
+VERSION ?= 0.6.0
 IMAGE_PREFIX ?= jhansen
 DEV_REGISTRY ?= quay.io
 DEIS_REGISTRY ?= ${DEV_REGISTRY}/
