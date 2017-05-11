@@ -1,4 +1,4 @@
-var destination = process.env.GULP_DESTINATION || 'static';
+var destination = process.env.GULP_DESTINATION || 'app';
 
 // Load plugins
 var gulp = require('gulp'),
@@ -26,8 +26,8 @@ gulp.task('copy', function () {
     .pipe(notify({message: 'Fonts moved.'}));
 });
 gulp.task('copyall', function () {
-  return gulp.src('app/src/*')
-    .pipe(gulp.dest(destination + 'static/src/*'))
+  return gulp.src('app/src/**/*')
+    .pipe(gulp.dest('static/src'))
     .pipe(notify({message: 'Copied all.'}));
 });
 
