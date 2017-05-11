@@ -1,4 +1,4 @@
-var destination = process.env.GULP_DESTINATION || 'app';
+var destination = process.env.GULP_DESTINATION || 'static';
 
 // Load plugins
 var gulp = require('gulp'),
@@ -26,8 +26,8 @@ gulp.task('copy', function () {
     .pipe(notify({message: 'Fonts moved.'}));
 });
 gulp.task('copyall', function () {
-  return gulp.src('app/src/**/*')
-    .pipe(gulp.dest('static/src'))
+  return gulp.src('static/src/**/*')
+    .pipe(gulp.dest('app/src'))
     .pipe(notify({message: 'Copied all.'}));
 });
 
@@ -111,7 +111,7 @@ gulp.task('watch', function () {
   gulp.watch('themes/helmdocs/static/img/src/**/*.{png,gif,jpg}', ['images']);
 
   // Watch SASS
-  gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', ['styles', 'copyall']);
+  gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', ['styles']);
 
   // Create LiveReload server
   livereload.listen();

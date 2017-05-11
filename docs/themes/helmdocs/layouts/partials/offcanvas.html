@@ -2,9 +2,19 @@
   <div class="drawer-wrap">
 
   <ul class="off-canvas-list">
-      <li><a href="https://helm.sh/docs">Helm Docs Home</a></li>
+      <li><a href="{{ .Site.BaseURL }}">Helm Docs Home</a></li>
       {{ range .Site.Menus.main }}
-      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+      <li><a class="sidebar-nav-item{{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">
+          <span class="ripple">{{ .Name }} <span></span></span>
+        </a>
+        {{ if .HasChildren }}
+        <ul>
+          {{ range .Children.ByWeight }}
+            <li{{if $.IsMenuCurrent "main" . }} class="active"{{end}}><a href="#{{.URL}}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+        {{end}}
+      </li>
       {{ end }}
     </ul>
 

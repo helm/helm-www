@@ -89,26 +89,40 @@ $deisLogoWidth: 125px;
 
 
 .home {
-  position: relative;
-  min-height: 800px;
   box-sizing: border-box;
   height: 100%;
-  background-color: $blue1;
 
   .home-intro-wrap {
     box-sizing: border-box;
     height: 100%;
   }
 
+  h3 {
+    color: #f6fbfe;
+    font-size: 1.125rem;
+    @include klinicBold;
+  }
+
   #helm {
     background: $blue1;
     max-width: 100%;
+    position: relative;
+    z-index: 500;
+
+    &:after {
+      z-index: -100;
+      display: block;
+      height: 850px;
+      width: 100%;
+      bottom: 0;
+      background-color: $blue1;
+      position: fixed;
+    }
 
     .billboard {
       background-color: white;
       background: url('../img/pattern-topo.png') left top repeat;
       background-size: 376px;
-      min-height: 500px;
       padding-top: 230px;
       position: relative;
       text-align: center;
@@ -120,7 +134,7 @@ $deisLogoWidth: 125px;
       h1 {
         @include klinicBold;
         color: $blue1;
-        font-size: 2.5rem;
+        font-size: 2.57rem;
         text-transform: none;
       }
 
@@ -199,15 +213,20 @@ $deisLogoWidth: 125px;
 
   .home-featured {
     background-color: $blue1;
-    min-height: 400px;
-    padding-top: 60px;
+    padding-top: 20px;
     padding-bottom: 40px;
+    min-height: 400px;
+
+    .panels {
+      max-width: 1140px;
+    }
 
     .panel {
       background-color: white;
       @include box-shadow(0,1px,4px,$blue4);
       @include border-radius(0.25em,0.25em);
       text-align: center;
+      min-height: 125px;
       color: $grey4;
 
       h3 {

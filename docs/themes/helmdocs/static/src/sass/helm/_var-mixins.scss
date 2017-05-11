@@ -71,6 +71,10 @@ $mono: "Lucida Console", "Courier New", monaco, monospace;
   letter-spacing: 0.0075em;
   -webkit-font-smoothing: antialiased;
 }
+@mixin helvetica {
+  font-family: $base;
+  letter-spacing: 0;
+}
 
 @mixin upperCase {
   text-transform: uppercase;

@@ -6,8 +6,8 @@
   }
 
   .left-off-canvas-toggle .fa {
-    padding: 2em 1.125em;
-    line-height: 3.825;
+    padding: 1em 1.25em;
+    line-height: 3;
   }
 
   .sidebar {
@@ -16,35 +16,6 @@
 
   .headroom {
     left: 0;
-  }
-
-  .top-bar .breadcrumb {
-    left: 2.25em;
-
-    a:first-child {
-      display: none;
-    }
-  }
-
-  #searchOverlay {
-    .prompt {
-      left: 2.925em;
-      top: 1.12em;
-    }
-
-    input.st-default-search-input {
-      padding: 1.75em 5% 0.667em !important;
-    }
-
-    &.active {
-      form input[type=text] {
-        padding: 3em 5% 2em 5%;
-      }
-
-      .overlay-footer {
-        display: none !important;
-      }
-    }
   }
 
   .st-default-autocomplete {
@@ -56,36 +27,28 @@
   .home {
     min-height: 500px;
 
-    h1 {
-      font-size: $scalex5;
-
-      .fa {
-        display: none;
-      }
+    .fa {
+      display: none;
     }
 
-    .feature-box a {
-      margin-bottom: 0.5em;
-      min-height: auto;
-      background-size: 35px auto;
+    #helm {
+      .billboard {
+        padding-top: 180px;
 
-      &:after {
-        top: 48%;
-        right: 3%;
+        .container {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .helm-logo {
+          max-width: 60% !important;
+          left: 20% !important;
+        }
       }
-
-      h4 {
-        font-size: $scalex5;
-        margin: 0.25em 0;
-      }
-
-      p {
-        display: none;
-      }
-    }
-
-    .home-contact {
-      padding-bottom: 2em;
     }
   }
 
@@ -97,6 +60,10 @@
     padding: 0 0 0.5em;
 
     h1 {
+      font-size: $scalex8;
+    }
+
+    h2 {
       font-size: $scalex6;
     }
 
@@ -106,48 +73,83 @@
     }
   }
 
-  .styleguide-footer{
-    padding-top: 0.2em;
+  aside.left-off-canvas-menu {
+    ul {
+      background: $blue2 !important;
 
-    p {
-      text-align: center !important;
-      display: block;
-      margin: 0.5em auto 0;
+      li {
+        @include klinicBold;
+        font-size: 1.25rem;
 
-      img {
-        float: none;
-      }
-    }
-  }
+        a {
+          color: white !important;
+          border-bottom: none !important;
 
-  aside.left-off-canvas-menu .button-wrap {
-    padding: 0.75em 5%;
+          &:hover {
+            background: $blue2 !important;
+          }
 
-    .button {
-      margin: 0.4em 0;
-    }
-  }
+          &.active {
+            color: white !important;
+            background: $blue4 !important;
+          }
+        }
 
-  .changelog.content-wrap {
-    ul#list li {
-      margin: 1em 0;
+        a + ul {
+          display: none;
+          background: $blue4 !important;
+          margin-left: 0;
+          padding: 0.5em 0 1em 1.5em;
 
-      a {
-        font-size: $scalex4;
-        padding: 0em 1em 0em 3.25em;
+          li {
+            @include helvetica;
+            font-size: 1rem;
+            list-style: none;
 
-        span.date {
+            a {
+              padding: 0.1em 0.66667rem;
+              border-bottom: none;
+              color: $light2 !important;
+            }
+          }
+        }
+
+        a.active + ul {
           display: block;
-          width: 100%;
-          font-size: $scalex2;
-          position: relative;
-          top: auto;
-          right: auto;
-          text-align: left;
-          line-height: 1;
         }
       }
     }
+
+    .button-wrap {
+      padding: 0.75em 5%;
+
+      .button {
+        margin: 0.4em 0;
+      }
+    }
+  }
+
+  .top-bar {
+    .breadcrumb {
+      left: 2.75rem;
+    }
+    .right {
+      li {
+        display: none;
+
+        &:nth-child(2) {
+          display: inline-block;
+
+          a {
+            position: absolute;
+            right: -4em;
+            top: -0.35em;
+            font-size: 1.75rem;
+          }
+        }
+      }
+    }
+
   }
 }
 
