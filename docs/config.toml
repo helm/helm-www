@@ -1,0 +1,75 @@
+baseurl = "http://docs.helm.sh"
+languageCode = "en-us"
+title = "Helm Docs"
+theme = "helmdocs"
+publishdir = "app"
+
+[params]
+    title = "Helm Docs"
+    author = "Ronan Flynn-Curran"
+    description = "Documentation for Helm - The Kubernetes Package Manager."
+
+canonifyURLs = "false"
+relativeURLs = "true"
+pluralizeListTitles = "false"
+plainIdAnchors = "true"
+
+[[menu.main]]
+    name = "Using Helm"
+    url = "/using-helm/"
+    identifier = "using-helm"
+    weight = 1
+[[menu.main]]
+    name = "Helm Commands"
+    url = "/helm-commands/"
+    identifier = "helm-commands"
+    weight = 2
+[[menu.main]]
+    name = "Developing Charts"
+    url = "/developing-charts/"
+    identifier = "developing-charts"
+    weight = 3
+[[menu.main]]
+    name = "Developing Templates"
+    url = "/chart-template-guide/"
+    identifier = "chart-template-guide"
+    weight = 4
+[[menu.main]]
+    name = "Best Practices"
+    url = "/chart-best-practices/"
+    identifier = "chart-best-practices"
+    weight = 5
+[[menu.main]]
+    name = "Chart Examples"
+    url = "/chart-examples/"
+    identifier = "chart-examples"
+    weight = 6
+[[menu.main]]
+    name = "Related Projects"
+    url = "/related/"
+    identifier = "related-projects"
+    weight = 7
+[[menu.main]]
+    name = "Architecture"
+    url = "/architecture/"
+    identifier = "architecture"
+    weight = 8
+[[menu.main]]
+    name = "Developer Guide"
+    url = "/developer-guide/"
+    identifier = "developer-guide"
+    weight = 9
+[[menu.main]]
+    name = "History"
+    url = "/history/"
+    identifier = "history"
+    weight = 10
+[[menu.main]]
+    name = "Glossary"
+    url = "/glossary/"
+    identifier = "glossary"
+    weight = 11
+[[menu.main]]
+    name = "Find Charts"
+    url = "https://kubeapps.com/"
+    weight = 12

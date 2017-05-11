@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+SOURCE=$1
+DEST=$2
+
+rsync -a --stats ${SOURCE}/ ${DEST}/ \
+	--exclude=.git \
+	--exclude=_site \
+	--exclude=node_modules \
+	--exclude=.sass-cache \
+	--exclude=bower_components

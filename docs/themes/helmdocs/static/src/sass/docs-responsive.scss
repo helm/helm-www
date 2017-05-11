@@ -1,0 +1,169 @@
+
+// mobile style
+@media only screen and (max-width: 64.063em) {
+  .container-full {
+    padding-left: 0;
+  }
+
+  .left-off-canvas-toggle .fa {
+    padding: 2em 1.125em;
+    line-height: 3.825;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .headroom {
+    left: 0;
+  }
+
+  .top-bar .breadcrumb {
+    left: 2.25em;
+
+    a:first-child {
+      display: none;
+    }
+  }
+
+  #searchOverlay {
+    .prompt {
+      left: 2.925em;
+      top: 1.12em;
+    }
+
+    input.st-default-search-input {
+      padding: 1.75em 5% 0.667em !important;
+    }
+
+    &.active {
+      form input[type=text] {
+        padding: 3em 5% 2em 5%;
+      }
+
+      .overlay-footer {
+        display: none !important;
+      }
+    }
+  }
+
+  .st-default-autocomplete {
+    width: 90% !important;
+    min-width: 320px !important;
+    left: 5% !important;
+  }
+
+  .home {
+    min-height: 500px;
+
+    h1 {
+      font-size: $scalex5;
+
+      .fa {
+        display: none;
+      }
+    }
+
+    .feature-box a {
+      margin-bottom: 0.5em;
+      min-height: auto;
+      background-size: 35px auto;
+
+      &:after {
+        top: 48%;
+        right: 3%;
+      }
+
+      h4 {
+        font-size: $scalex5;
+        margin: 0.25em 0;
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    .home-contact {
+      padding-bottom: 2em;
+    }
+  }
+
+  .main .content-wrap h1 {
+    font-size: $scalex8;
+  }
+
+  .main .content-wrap article {
+    padding: 0 0 0.5em;
+
+    h1 {
+      font-size: $scalex6;
+    }
+
+    p:first-child {
+      padding-right: 0;
+      font-size: $scalex5;
+    }
+  }
+
+  .styleguide-footer{
+    padding-top: 0.2em;
+
+    p {
+      text-align: center !important;
+      display: block;
+      margin: 0.5em auto 0;
+
+      img {
+        float: none;
+      }
+    }
+  }
+
+  aside.left-off-canvas-menu .button-wrap {
+    padding: 0.75em 5%;
+
+    .button {
+      margin: 0.4em 0;
+    }
+  }
+
+  .changelog.content-wrap {
+    ul#list li {
+      margin: 1em 0;
+
+      a {
+        font-size: $scalex4;
+        padding: 0em 1em 0em 3.25em;
+
+        span.date {
+          display: block;
+          width: 100%;
+          font-size: $scalex2;
+          position: relative;
+          top: auto;
+          right: auto;
+          text-align: left;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+
+// affix the sidebar buttons, if the screen is tall enough
+@media screen and ( min-height: 575px ){
+  .sidebar {
+    padding-bottom: 0px;
+
+    .sidebar-nav {
+      padding-bottom: 180px;
+    }
+
+    .sidebar-buttons {
+      position: fixed;
+      bottom: 0;
+    }
+  }
+}
