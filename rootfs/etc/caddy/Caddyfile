@@ -1,9 +1,5 @@
 :2015 {
   root /svc
-  gzip {
-    not /healthz /assets/images
-  }
-  minify /assets/css{{ if ne .Values.tls.key "" }}
   tls off
   status 200 /healthz
 }
