@@ -218,7 +218,9 @@ $deisLogoWidth: 125px;
     min-height: 400px;
 
     .panels {
+      width: 92%;
       max-width: 1140px;
+      min-width: 800px;
     }
 
     .panel {
@@ -233,7 +235,7 @@ $deisLogoWidth: 125px;
         padding: 0.75rem 0 0.5rem;
         border-bottom: 1px solid $light2;
         margin-bottom: 1rem;
-        font-size: 1.125rem;
+        font-size: 1rem;
         color: $blue3;
         @include klinicBold;
         letter-spacing: 0.02em;

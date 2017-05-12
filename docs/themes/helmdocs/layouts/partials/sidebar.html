@@ -9,7 +9,7 @@
   <nav class="sidebar-nav">
     <ul>
       {{ range .Site.Menus.main }}
-      <li><a class="sidebar-nav-item{{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">
+      <li><a class="sidebar-nav-item{{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}/#">
           <span class="ripple">{{ .Name }} <span></span></span>
         </a>
         {{ if .HasChildren }}

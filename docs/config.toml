@@ -16,57 +16,57 @@ plainIdAnchors = "true"
 
 [[menu.main]]
     name = "Using Helm"
-    url = "/using-helm/"
+    url = "/using-helm/#"
     identifier = "using-helm"
     weight = 1
 [[menu.main]]
     name = "Helm Commands"
-    url = "/helm-commands/"
+    url = "/helm-commands/#"
     identifier = "helm-commands"
     weight = 2
 [[menu.main]]
     name = "Developing Charts"
-    url = "/developing-charts/"
+    url = "/developing-charts/#"
     identifier = "developing-charts"
     weight = 3
 [[menu.main]]
     name = "Developing Templates"
-    url = "/chart-template-guide/"
+    url = "/chart-template-guide/#"
     identifier = "chart-template-guide"
     weight = 4
 [[menu.main]]
     name = "Best Practices"
-    url = "/chart-best-practices/"
+    url = "/chart-best-practices/#"
     identifier = "chart-best-practices"
     weight = 5
 [[menu.main]]
     name = "Chart Examples"
-    url = "/chart-examples/"
+    url = "/chart-examples/#"
     identifier = "chart-examples"
     weight = 6
 [[menu.main]]
     name = "Related Projects"
-    url = "/related/"
+    url = "/related/#"
     identifier = "related-projects"
     weight = 7
 [[menu.main]]
     name = "Architecture"
-    url = "/architecture/"
+    url = "/architecture/#"
     identifier = "architecture"
     weight = 8
 [[menu.main]]
     name = "Developer Guide"
-    url = "/developer-guide/"
+    url = "/developer-guide/#"
     identifier = "developer-guide"
     weight = 9
 [[menu.main]]
     name = "History"
-    url = "/history/"
+    url = "/history/#"
     identifier = "history"
     weight = 10
 [[menu.main]]
     name = "Glossary"
-    url = "/glossary/"
+    url = "/glossary/#"
     identifier = "glossary"
     weight = 11
 [[menu.main]]
