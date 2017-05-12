@@ -1,9 +1,5 @@
 :2015 {
   root /public
-  gzip {
-    not /healthz /images
-  }
-  minify /javascripts /css
   tls off
   status 200 /healthz
 }
