@@ -6,5 +6,9 @@
 _site/
 .sass-cache/
 
+### Ignore Generated Contents ###
+app/
+static/
+
 ### NPM ###
 node_modules/
