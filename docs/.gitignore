@@ -1,12 +1,11 @@
 .tmp
 .idea
 .DS_Store
-
-### Hugo ###
-_site/
+.jekyll-metadata
 .sass-cache/
 
 ### Ignore Generated Contents ###
+_site/
 app/
 static/
 
