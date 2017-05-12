@@ -34,7 +34,7 @@ gulp.task('copyall', function () {
 
 // Styles
 gulp.task('styles', function () {
-  return sass('themes/helmdocs/static/src/sass/styles.scss', {style: 'expanded'})
+  return sass('themes/helmdocs/static/src/sass/styles.scss', {style: 'compressed'})
     .pipe(autoprefixer('last 2 version'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
