@@ -28,8 +28,8 @@ repository. This guide explains how to do so.
 
 ## Prerequisites
 
-* Go through the [Quickstart](quickstart.md) Guide
-* Read through the [Charts](charts.md) document
+* Go through the [Quickstart](../using-helm/#quick-start) Guide
+* Read through the [Charts](../developing-charts/#) document
 
 ## Create a chart repository
 
@@ -52,7 +52,7 @@ own web server.
 A chart repository consists of packaged charts and a special file called
 `index.yaml` which contains an index of all of the charts in the repository.
 Frequently, the charts that `index.yaml` describes are also hosted on the same
-server, as are the [provenance files](provenance.md).
+server, as are the [provenance files](../developing-charts/#signing-charts).
 
 For example, the layout of the repository `https://example.com/charts` might
 look like this:
@@ -253,7 +253,7 @@ given directory path.
 
 Now you can upload the chart and the index file to your chart repository using
 a sync tool or manually. If you're using Google Cloud Storage, check out this
-[example workflow](chart_repository_sync_example.md) using the gsutil client. For
+[example workflow](../developing-charts/#syncing-your-chart-repo) using the gsutil client. For
 GitHub, you can simply put the charts in the appropriate destination branch.
 
 ### Add new charts to an existing repository

@@ -17,11 +17,11 @@ slug = "helm-usage"
 
 This guide explains the basics of using Helm (and Tiller) to manage
 packages on your Kubernetes cluster. It assumes that you have already
-[installed](install.md) the Helm client and the Tiller server (typically by `helm
+[installed](#install-helm) the Helm client and the Tiller server (typically by `helm
 init`).
 
 If you are simply interested in running a few quick commands, you may
-wish to begin with the [Quickstart Guide](quickstart.md). This chapter
+wish to begin with the [Quickstart Guide](#quick-start). This chapter
 covers the particulars of Helm commands, and explains how to use Helm.
 
 ## Three Big Concepts
@@ -451,7 +451,7 @@ sure your Helm client is up to date by running `helm repo update`.
 
 ## Creating Your Own Charts
 
-The [Chart Development Guide](charts.md) explains how to develop your own
+The [Chart Development Guide](../developing-charts/#) explains how to develop your own
 charts. But you can get started quickly by using the `helm create`
 command:
 

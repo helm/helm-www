@@ -33,7 +33,7 @@ In the previous section, we use `{{.Release.Name}}` to insert the name of a rele
   - `Release.IsInstall`: This is set to `true` if the current operation is an install.
 - `Values`: Values passed into the template from the `values.yaml` file and from user-supplied files. By default, `Values` is empty.
 - `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will be accessible here. For example `{{.Chart.Name}}-{{.Chart.Version}}` will print out the `mychart-0.1.0`.
-  - The available fields are listed in the [Charts Guide](https://github.com/kubernetes/helm/blob/master/docs/charts.md#the-chartyaml-file)
+  - The available fields are listed in the [Charts Guide](../developing-charts/#)
 - `Files`: This provides access to all non-special files in a chart. While you cannot use it to access templates, you can use it to access other files in the chart. See the section _Accessing Files_ for more.
   - `Files.Get` is a function for getting a file by name (`.Files.Get config.ini`)
   - `Files.GetBytes` is a function for getting the contents of a file as an array of bytes instead of as a string. This is useful for things like images.
@@ -44,7 +44,7 @@ In the previous section, we use `{{.Release.Name}}` to insert the name of a rele
   - `Capabilities.TillerVersion` provides a way to look up the Tiller version. It has the following values: `SemVer`, `GitCommit`, and `GitTreeState`.
 - `Template`: Contains information about the current template that is being executed
   - `Name`: A namespaced filepath to the current template (e.g. `mychart/templates/mytemplate.yaml`)
-  - `BasePath`: The namespaced path to the templates directory of the current chart (e.g. `mychart/templates`). This can be used to [include template files](https://github.com/kubernetes/helm/blob/master/docs/charts_tips_and_tricks.md#automatically-roll-deployments-when-configmaps-or-secrets-change)
+  - `BasePath`: The namespaced path to the templates directory of the current chart (e.g. `mychart/templates`). This can be used to [include template files](../developing-charts/#chart-tips-tricks)
 
 The values are available to any top-level template. As we will see later, this does not necessarily mean that they will be available _everywhere_.
 

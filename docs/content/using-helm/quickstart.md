@@ -43,7 +43,7 @@ Download a binary release of the Helm client. You can use tools like
 `homebrew`, or look at [the official releases page](https://github.com/kubernetes/helm/releases).
 
 For more details, or for other options, see [the installation
-guide](install.md).
+guide](#install-helm).
 
 ## Initialize Helm and Install Tiller
 
@@ -84,7 +84,7 @@ independently managed and upgraded.
 
 The `helm install` command is a very powerful command with many
 capabilities. To learn more about it, check out the [Using Helm
-Guide](using_helm.md)
+Guide](#helm-usage)
 
 ## Learn About Releases
 
