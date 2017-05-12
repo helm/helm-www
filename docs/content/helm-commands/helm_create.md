@@ -7,10 +7,10 @@ section = "helm-commands"
 categories = ["helm-commands"]
 type = "page"
 
-slug = "helm create"
+slug = "helm-create"
 
 [menu.main]
-  url = "helm create"
+  url = "helm-create"
   parent = "helm-commands"
 
 +++
