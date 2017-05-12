@@ -4,10 +4,15 @@
 .jekyll-metadata
 .sass-cache/
 
-### Ignore Generated Contents ###
+### Bower ###
+bower_components/
+
+### Hugo ###
 _site/
 app/
 static/
 
 ### NPM ###
 node_modules/
+
+rootfs/public

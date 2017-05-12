@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+set -x
+
+build_dest=$1
+
+if [ -z "${build_dest}" ]; then
+    echo "[ERROR] build_dest is empty!"
+    exit 1
+fi
+
+# Work around node's inability to load modules from an alternative path. This
+# hack allows us to offload npm install and native module compilation to the
+# docker build process which has stashed these modules in $HOME/node_modules
+# If this location changes, it _must_ also be updated in
+# gutenberg/script/build-dependencies and the subsequent Docker image must be
+# rebuilt
+ln -sf ${HOME}/node_modules ./node_modules
