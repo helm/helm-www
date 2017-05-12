@@ -1,0 +1,28 @@
+{
+  "name": "helm-docs",
+  "description": "Helm Docs",
+  "main": "gulpfile.js/index.js",
+  "authors": [
+    "Ronan Flynn-Curran"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "framework",
+    "helm",
+    "grid"
+  ],
+  "homepage": "https://github.com/helm/helm-www",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "^5.5.3",
+    "font-awesome": "^4.7.0"
+  }
+}

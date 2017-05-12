@@ -1,0 +1,28 @@
+<aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
+  <div class="drawer-wrap">
+
+  <ul class="off-canvas-list">
+      <li><a href="{{ .Site.BaseURL }}">Helm Docs Home</a></li>
+      {{ range .Site.Menus.main }}
+      <li><a class="sidebar-nav-item{{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">
+          <span class="ripple">{{ .Name }} <span></span></span>
+        </a>
+        {{ if .HasChildren }}
+        <ul>
+          {{ range .Children.ByWeight }}
+            <li{{if $.IsMenuCurrent "main" . }} class="active"{{end}}><a href="#{{.URL}}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+        {{end}}
+      </li>
+      {{ end }}
+    </ul>
+
+    <div class="drawer-line"></div>
+
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github-o"></i> Help Improve These Docs!</a>
+    </div>
+
+  </div>
+</aside>

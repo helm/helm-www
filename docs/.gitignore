@@ -1,0 +1,13 @@
+.tmp
+.idea
+.DS_Store
+.jekyll-metadata
+.sass-cache/
+
+### Ignore Generated Contents ###
+_site/
+app/
+static/
+
+### NPM ###
+node_modules/

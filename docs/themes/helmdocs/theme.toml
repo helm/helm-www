@@ -1,0 +1,6 @@
+name = "helmdocs"
+license = "MIT"
+licenselink = "//github.com/helm/helm-www"
+description = "Theme for the Helm Project Docs"
+homepage = "//github.com/kubernetes/helm"
+tags = [documentation", "helm", "kubernetes"]
