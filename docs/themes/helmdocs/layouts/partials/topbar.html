@@ -1,14 +1,6 @@
 <nav class="top-bar">
   <div class="breadcrumb">
-    <!-- <a href="../">Documentation</a> -->
-    {{ if eq .Section "changelog" }}
-      <a href="../">{{ .Section }}</a>
-    {{ else }}
-      <a href="../">{{ .Title }}</a>
-    {{ end }}
-    {{ if eq .Section "changelog" }}
-      <a href="../">{{ .Title }}</a>
-    {{ end }}
+    <a href="../">{{replace .Title "-" " " | title }}</a>
   </div>
   <ul class="inline right text-right">
     <li><a href="https://helm.sh" target="_blank" title="Find out more about Helm."><i class="fa fa-home"></i> Helm.sh</a></li>
