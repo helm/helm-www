@@ -1,6 +1,6 @@
 +++
 title = "helm repo remove"
-weight = "32"
+weight = "33"
 
 tags = ["commands"]
 section = "helm-commands"

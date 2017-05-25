@@ -1,6 +1,6 @@
 +++
 title = "helm reset"
-weight = "34"
+weight = "35"
 
 tags = ["commands"]
 section = "helm-commands"
@@ -35,7 +35,7 @@ helm reset
 ### Options
 
 ```
-  -f, --force                forces Tiller uninstall even if there are releases installed
+  -f, --force                forces Tiller uninstall even if there are releases installed, or if tiller is not in ready state
       --remove-helm-home     if set deletes $HELM_HOME
       --tls                  enable TLS for request
       --tls-ca-cert string   path to TLS CA certificate file (default "$HELM_HOME/ca.pem")
