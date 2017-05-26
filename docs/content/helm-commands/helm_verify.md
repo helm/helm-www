@@ -1,6 +1,6 @@
 +++
 title = "helm verify"
-weight = "41"
+weight = "42"
 
 tags = ["commands"]
 section = "helm-commands"

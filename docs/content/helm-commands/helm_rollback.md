@@ -1,6 +1,6 @@
 +++
 title = "helm rollback"
-weight = "35"
+weight = "36"
 
 tags = ["commands"]
 section = "helm-commands"

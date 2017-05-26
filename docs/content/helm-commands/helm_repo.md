@@ -1,6 +1,6 @@
 +++
 title = "helm repo"
-weight = "28"
+weight = "29"
 
 tags = ["commands"]
 section = "helm-commands"

@@ -1,6 +1,6 @@
 +++
 title = "helm upgrade"
-weight = "40"
+weight = "41"
 
 tags = ["commands"]
 section = "helm-commands"
@@ -55,6 +55,7 @@ helm upgrade [RELEASE] [CHART]
 ```
       --ca-file string       verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string     identify HTTPS client using this SSL certificate file
+      --devel                use development versions, too. Equivalent to version '>0.0.0-a'. If --version is set, this is ignored.
       --dry-run              simulate an upgrade
   -i, --install              if a release by this name doesn't already exist, run an install
       --key-file string      identify HTTPS client using this SSL key file

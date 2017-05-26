@@ -11,7 +11,7 @@ slug = "glossary"
 
 +++
 
-# Glossary
+# Helm Glossary
 
 Helm uses a few special terms to describe components of the
 architecture.

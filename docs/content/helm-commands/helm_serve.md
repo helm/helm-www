@@ -1,6 +1,6 @@
 +++
 title = "helm serve"
-weight = "37"
+weight = "38"
 
 tags = ["commands"]
 section = "helm-commands"
@@ -44,7 +44,7 @@ helm serve
 
 ```
       --address string     address to listen on (default "127.0.0.1:8879")
-      --repo-path string   local directory path from which to serve charts (default "~/.helm/repository/local")
+      --repo-path string   local directory path from which to serve charts
       --url string         external URL of chart repository
 ```
 
