@@ -17,6 +17,8 @@ var gulp = require('gulp'),
   streamqueue = require('streamqueue');
   cssnano = require('gulp-cssnano');
   sourcemaps = require('gulp-sourcemaps');
+  git = require('gulp-git');
+  gutil = require('gulp-util');
 
 
 // Copy
@@ -96,10 +98,20 @@ gulp.task('clean', function () {
   return del(destination + '/src/**/*', {force: true});
 });
 
+// Clone Docs
+gulp.task('clone', function() {
+  git.clone('https://github.com/kubernetes/helm', {args: './source'}, function(err) {
+    // handle err
+  });
+});
+gulp.task('fetch', function () {
+  gulp.start('clone');
+});
+
 
 // Default task
 gulp.task('default', ['clean'], function () {
-  gulp.start('styles', 'scripts', 'images', 'copy', 'copyall');
+  gulp.start('fetch', 'styles', 'scripts', 'images', 'copy', 'copyall');
 });
 
 // Watch for changes
