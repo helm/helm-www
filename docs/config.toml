@@ -326,57 +326,57 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Charts"
-  url = "/developing-charts/#"
-  identifier = "developing-charts"
+  url = "/developing_charts/#"
+  identifier = "developing_charts"
   weight = 200
   [[menu.main]]
     name = "Intro to Charts"
     url = "charts"
     identifier = "charts"
     weight = 201
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Chart Lifecycle Hooks"
     url = "hooks"
     identifier = "hooks"
     weight = 202
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Charts Tips and Tricks"
     url = "chart-development-tips-and-tricks"
     identifier = "chart-development-tips-and-tricks"
     weight = 203
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Charts Repository Guide"
     url = "the-chart-repository-guide"
     identifier = "chart-repo-guide"
     weight = 204
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Syncing Your Chart Repo"
     url = "syncing-your-chart-repository"
     identifier = "syncing-your-chart-repo"
     weight = 205
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Signing Charts"
     url = "helm-provenance-and-integrity"
     identifier = "helm-provenance-and-integrity"
     weight = 206
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Chart Tests"
     url = "chart-tests"
     identifier = "chart-tests"
     weight = 207
-    parent = "developing-charts"
+    parent = "developing_charts"
   [[menu.main]]
     name = "Chart Repository FAQ"
     url = "chart-repositories-frequently-asked-questions"
     identifier = "chart-repositories-frequently-asked-questions"
     weight = 208
-    parent = "developing-charts"
+    parent = "developing_charts"
 
 [[menu.main]]
   name = "Developing Templates"

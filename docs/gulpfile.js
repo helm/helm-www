@@ -128,7 +128,7 @@ gulp.task('reorg-charts', function() {
     gulp.src('source/docs/chart_repository_faq.md')
   )
   .pipe(concat('index.md'))
-  .pipe(gulp.dest('source/docs/developing-charts/'))
+  .pipe(gulp.dest('source/docs/developing_charts/'))
 });
 gulp.task('fetch', function () {
   gulp.start('clone', 'reorg-using', 'reorg-charts');
