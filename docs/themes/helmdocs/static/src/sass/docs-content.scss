@@ -1,5 +1,5 @@
 .main .content-wrap {
-  padding-top: 6.25em;
+  padding-top: 1em;
   padding-bottom: 10em;
   font-size: $scalex5;
   font-weight: normal;
@@ -15,12 +15,13 @@
   }
 
   article {
-    padding: 5em 0 0;
+    padding: 1em 0 0;
 
     h1 {
       font-size: $scalex8;
       color: $blue3;
       margin: 1em 0 1em;
+      padding-top: 3.5em;
     }
   }
 
