@@ -33,7 +33,6 @@ gulp.task('copyall', function () {
     .pipe(notify({message: 'Copied all.'}));
 });
 
-
 // Styles
 gulp.task('styles', function () {
   return sass('themes/helmdocs/static/src/sass/styles.scss', {style: 'compressed'})
@@ -95,7 +94,7 @@ gulp.task('images', function () {
 
 // Clean
 gulp.task('clean', function () {
-  return del(destination + '/src/**/*', {force: true});
+  return del(destination + '/src/**/*', '/source/**/*', {force: true});
 });
 
 // Clone Docs
@@ -104,10 +103,34 @@ gulp.task('clone', function() {
     // handle err
   });
 });
-gulp.task('fetch', function () {
-  gulp.start('clone');
+// Reorg Docs
+gulp.task('reorg-using', function() {
+  return gulp.src([
+    'source/docs/quickstart.md',
+    'source/docs/install.md',
+    'source/docs/kubernetes_distros.md',
+    'source/docs/install_faq.md',
+    'source/docs/using_helm.md',
+    'source/docs/plugins.md'
+  ])
+  .pipe(gulp.dest('source/docs/using_helm/'))
 });
-
+gulp.task('reorg-charts', function() {
+  return gulp.src([
+    'source/docs/charts.md',
+    'source/docs/charts_hooks.md',
+    'source/docs/charts_tips_and_tricks.md',
+    'source/docs/chart_repository.md',
+    'source/docs/chart_repository_sync_example.md',
+    'source/docs/provenance.md',
+    'source/docs/chart_tests.md',
+    'source/docs/chart_repository_faq.md',
+  ])
+  .pipe(gulp.dest('source/docs/developing-charts/'))
+});
+gulp.task('fetch', function () {
+  gulp.start('clone', 'reorg-using', 'reorg-charts');
+});
 
 // Default task
 gulp.task('default', ['clean'], function () {
@@ -130,5 +153,4 @@ gulp.task('watch', function () {
 
   // Watch any files in static/, reload on change
   gulp.watch([destination + '/**', destination + '/src/**']).on('change', livereload.changed);
-
 });

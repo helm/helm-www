@@ -19,351 +19,399 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Using Helm"
-  url = "/using_helm/#"
-  identifier = "using_helm"
+  url = "/using_helm/"
+  identifier = "using-helm"
   weight = 1
-  [[menu.main]]
-    name = "Quickstart"
-    url = "/quickstart/#"
-    identifier = "quickstart"
-    weight = 21
-    parent = "using_helm"
-  [[menu.main]]
-    name = "Installing Helm"
-    url = "/install/#"
-    identifier = "install"
-    weight = 22
-    parent = "using_helm"
-  [[menu.main]]
-    name = "Kubernetes Distro Notes"
-    url = "/kubernetes_distros/#"
-    identifier = "kubernetes_distros"
-    weight = 23
-    parent = "using_helm"
-  [[menu.main]]
-    name = "Install FAQ"
-    url = "/install_faq/#"
-    identifier = "install_faq"
-    weight = 24
-    parent = "using_helm"
-  [[menu.main]]
-    name = "Using Helm"
-    url = "/using_helm/#"
-    identifier = "usinghelm"
-    weight = 25
-    parent = "using_helm"
-  [[menu.main]]
-    name = "Plugins"
-    url = "/plugins/#"
-    identifier = "plugins"
-    weight = 26
-    parent = "using_helm"
-
+[[menu.main]]
+  name = "Quickstart"
+  url = "quickstart-guide"
+  identifier = "quickstart-guide"
+  weight = 11
+  parent = "using-helm"
+[[menu.main]]
+  name = "Installing Helm"
+  url = "install-helm"
+  identifier = "install-helm"
+  weight = 12
+  parent = "using-helm"
+[[menu.main]]
+  name = "Kubernetes Distro Notes"
+  url = "kubernetes-distribution-guide"
+  identifier = "kubernetes-distribution-guide"
+  weight = 13
+  parent = "using-helm"
+[[menu.main]]
+  name = "Install FAQ"
+  url = "installation-frequently-asked-questions"
+  identifier = "installation-frequently-asked-questions"
+  weight = 14
+  parent = "using-helm"
+[[menu.main]]
+  name = "Using Helm"
+  url = "using-helm"
+  identifier = "helm-usage"
+  weight = 15
+  parent = "using-helm"
+[[menu.main]]
+  name = "Plugins"
+  url = "the-helm-plugins-guide"
+  identifier = "the-helm-plugins-guide"
+  weight = 16
+  parent = "using-helm"
 [[menu.main]]
     name = "Helm Commands"
     url = "/helm/"
     identifier = "helm"
-    weight = 2
+    weight = 102
     [[menu.main]]
       name = "Helm"
       url = "helm"
       identifier = "helm-command"
-      weight = 21
+      weight = 121
       parent = "helm"
     [[menu.main]]
       name = "Helm Completion"
       url = "helm-completion"
       identifier = "helm-completion"
-      weight = 22
+      weight = 122
       parent = "helm"
     [[menu.main]]
       name = "Helm Create"
       url = "helm-create"
       identifier = "helm-create"
-      weight = 23
+      weight = 123
       parent = "helm"
     [[menu.main]]
       name = "Helm Delete"
       url = "helm-delete"
       identifier = "helm-delete"
-      weight = 24
+      weight = 124
       parent = "helm"
     [[menu.main]]
       name = "Helm Dependency"
       url = "helm-dependency"
       identifier = "helm-dependency"
-      weight = 25
+      weight = 125
       parent = "helm"
     [[menu.main]]
       name = "Helm Dependency Build"
       url = "helm-dependency-build"
       identifier = "helm-dependency-build"
-      weight = 26
+      weight = 126
       parent = "helm"
     [[menu.main]]
       name = "Helm Dependency List"
       url = "helm-dependency-list"
       identifier = "helm-dependency-list"
-      weight = 27
+      weight = 127
       parent = "helm"
     [[menu.main]]
       name = "Helm Dependency Update"
       url = "helm-dependency-update"
       identifier = "helm-dependency-update"
-      weight = 28
+      weight = 128
       parent = "helm"
     [[menu.main]]
       name = "Helm Fetch"
       url = "helm-dependency-update"
       identifier = "helm-dependency-update"
-      weight = 29
+      weight = 129
       parent = "helm"
     [[menu.main]]
       name = "Helm Get"
       url = "helm-get"
       identifier = "helm-get"
-      weight = 30
+      weight = 130
       parent = "helm"
     [[menu.main]]
       name = "Helm Get Hooks"
       url = "helm-get-hooks"
       identifier = "helm-get-hooks"
-      weight = 31
+      weight = 131
       parent = "helm"
     [[menu.main]]
       name = "Helm Get Manifest"
       url = "helm-get-manifest"
       identifier = "helm-get-manifest"
-      weight = 32
+      weight = 132
       parent = "helm"
     [[menu.main]]
       name = "Helm Get Values"
       url = "helm-get-values"
       identifier = "helm-get-values"
-      weight = 33
+      weight = 133
       parent = "helm"
     [[menu.main]]
       name = "Helm History"
       url = "helm-history"
       identifier = "helm-history"
-      weight = 34
+      weight = 134
       parent = "helm"
     [[menu.main]]
       name = "Helm Home"
       url = "helm-home"
       identifier = "helm-home"
-      weight = 35
+      weight = 135
       parent = "helm"
     [[menu.main]]
       name = "Helm Init"
       url = "helm-init"
       identifier = "helm-init"
-      weight = 36
+      weight = 136
       parent = "helm"
     [[menu.main]]
       name = "Helm Inspect"
       url = "helm-inspect"
       identifier = "helm-inspect"
-      weight = 37
+      weight = 137
       parent = "helm"
     [[menu.main]]
       name = "Helm Inspect Chart"
       url = "helm-inspect-chart"
       identifier = "helm-inspect-chart"
-      weight = 38
+      weight = 138
       parent = "helm"
     [[menu.main]]
       name = "Helm Inspect Values"
       url = "helm-inspect-values"
       identifier = "helm-inspect-values"
-      weight = 39
+      weight = 139
       parent = "helm"
     [[menu.main]]
       name = "Helm Install"
       url = "helm-install"
       identifier = "helm-install"
-      weight = 40
+      weight = 140
       parent = "helm"
     [[menu.main]]
       name = "Helm Lint"
       url = "helm-lint"
       identifier = "helm-lint"
-      weight = 41
+      weight = 141
       parent = "helm"
     [[menu.main]]
       name = "Helm List"
       url = "helm-list"
       identifier = "helm-list"
-      weight = 42
+      weight = 142
       parent = "helm"
     [[menu.main]]
       name = "Helm Package"
       url = "helm-package"
       identifier = "helm-package"
-      weight = 43
+      weight = 143
       parent = "helm"
     [[menu.main]]
       name = "Helm Plugin"
       url = "helm-plugin"
       identifier = "helm-plugin"
-      weight = 44
+      weight = 144
       parent = "helm"
     [[menu.main]]
       name = "Helm Plugin Install"
       url = "helm-plugin-install"
       identifier = "helm-plugin-install"
-      weight = 45
+      weight = 145
       parent = "helm"
     [[menu.main]]
       name = "Helm Plugin List"
       url = "helm-plugin-list"
       identifier = "helm-plugin-list"
-      weight = 46
+      weight = 146
       parent = "helm"
     [[menu.main]]
       name = "Helm Plugin Remove"
       url = "helm-plugin-remove"
       identifier = "helm-plugin-remove"
-      weight = 47
+      weight = 147
       parent = "helm"
     [[menu.main]]
       name = "Helm Plugin Update"
       url = "helm-plugin-update"
       identifier = "helm-plugin-update"
-      weight = 48
+      weight = 148
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo"
       url = "helm-repo"
       identifier = "helm-repo"
-      weight = 49
+      weight = 149
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo Add"
       url = "helm-repo-add"
       identifier = "helm-repo-add"
-      weight = 50
+      weight = 150
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo Index"
       url = "helm-repo-index"
       identifier = "helm-repo-index"
-      weight = 51
+      weight = 151
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo List"
       url = "helm-rep-listo"
       identifier = "helm-repo-list"
-      weight = 52
+      weight = 152
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo Remove"
       url = "helm-repo-remove"
       identifier = "helm-repo-remove"
-      weight = 53
+      weight = 153
       parent = "helm"
     [[menu.main]]
       name = "Helm Repo Update"
       url = "helm-repo-update"
       identifier = "helm-repo-update"
-      weight = 54
+      weight = 154
       parent = "helm"
     [[menu.main]]
       name = "Helm Reset"
       url = "helm-reset"
       identifier = "helm-reset"
-      weight = 55
+      weight = 155
       parent = "helm"
     [[menu.main]]
       name = "Helm Rollback"
       url = "helm-rollback"
       identifier = "helm-rollback"
-      weight = 56
+      weight = 156
       parent = "helm"
     [[menu.main]]
       name = "Helm Search"
       url = "helm-search"
       identifier = "helm-search"
-      weight = 57
+      weight = 157
       parent = "helm"
     [[menu.main]]
       name = "Helm Serve"
       url = "helm-serve"
       identifier = "helm-serve"
-      weight = 58
+      weight = 158
       parent = "helm"
     [[menu.main]]
       name = "Helm Status"
       url = "helm-status"
       identifier = "helm-status"
-      weight = 59
+      weight = 159
       parent = "helm"
     [[menu.main]]
       name = "Helm Test"
       url = "helm-test"
       identifier = "helm-test"
-      weight = 60
+      weight = 160
       parent = "helm"
     [[menu.main]]
       name = "Helm Upgrade"
       url = "helm-upgrade"
       identifier = "helm-upgrade"
-      weight = 61
+      weight = 161
       parent = "helm"
     [[menu.main]]
       name = "Helm Verify"
       url = "helm-verify"
       identifier = "helm-verify"
-      weight = 62
+      weight = 162
       parent = "helm"
     [[menu.main]]
       name = "Helm Version"
       url = "helm-version"
       identifier = "helm-version"
-      weight = 63
+      weight = 163
       parent = "helm"
 
 [[menu.main]]
-    name = "Charts"
-    url = "/charts/#"
-    identifier = "developing-charts"
-    weight = 3
+  name = "Charts"
+  url = "/charts/#"
+  identifier = "developing-charts"
+  weight = 200
+  [[menu.main]]
+    name = "Intro to Charts"
+    url = "intro-dev-charts"
+    identifier = "intro-dev-charts"
+    weight = 201
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Chart Lifecycle Hooks"
+    url = "chart-lifecycle-hooks"
+    identifier = "chart-lifecycle-hooks"
+    weight = 202
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Charts Tips and Tricks"
+    url = "chart-tips-tricks"
+    identifier = "chart-tips-tricks"
+    weight = 203
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Charts Repository Guide"
+    url = "the-chart-repository-guide"
+    identifier = "chart-repo-guide"
+    weight = 204
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Syncing Your Chart Repo"
+    url = "syncing-your-chart-repo"
+    identifier = "syncing-your-chart-repo"
+    weight = 205
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Signing Charts"
+    url = "signing-charts"
+    identifier = "signing-charts"
+    weight = 206
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Chart Tests"
+    url = "chart-tests"
+    identifier = "chart-tests"
+    weight = 207
+    parent = "developing-charts"
+  [[menu.main]]
+    name = "Chart Repository FAQ"
+    url = "chart-repo-faq"
+    identifier = "chart-repo-faq"
+    weight = 208
+    parent = "developing-charts"
+
 [[menu.main]]
     name = "Developing Templates"
     url = "/chart_template_guide/#"
     identifier = "chart_template_guide"
-    weight = 4
+    weight = 304
 [[menu.main]]
     name = "Best Practices"
     url = "/chart_best_practices/#"
     identifier = "chart_best_practices"
-    weight = 5
+    weight = 405
 [[menu.main]]
     name = "Related Projects"
     url = "/related/#"
     identifier = "related-projects"
-    weight = 6
+    weight = 506
 [[menu.main]]
     name = "Architecture"
     url = "/architecture/#"
     identifier = "architecture"
-    weight = 7
+    weight = 507
 [[menu.main]]
     name = "Developer Guide"
     url = "/developers/#"
     identifier = "developer-guide"
-    weight = 8
+    weight = 508
 [[menu.main]]
     name = "History"
     url = "/history/#"
     identifier = "history"
-    weight = 9
+    weight = 509
 [[menu.main]]
     name = "Glossary"
     url = "/glossary/#"
     identifier = "glossary"
-    weight = 10
+    weight = 510
 [[menu.main]]
     name = "Find Charts"
     url = "https://kubeapps.com/"
-    weight = 11
+    weight = 511
