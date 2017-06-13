@@ -105,27 +105,29 @@ gulp.task('clone', function() {
 });
 // Reorg Docs
 gulp.task('reorg-using', function() {
-  return gulp.src([
-    'source/docs/quickstart.md',
-    'source/docs/install.md',
-    'source/docs/kubernetes_distros.md',
-    'source/docs/install_faq.md',
-    'source/docs/using_helm.md',
-    'source/docs/plugins.md'
-  ])
+  return streamqueue({ objectMode: true },
+    gulp.src('source/docs/quickstart.md'),
+    gulp.src('source/docs/install.md'),
+    gulp.src('source/docs/kubernetes_distros.md'),
+    gulp.src('source/docs/install_faq.md'),
+    gulp.src('source/docs/using_helm.md'),
+    gulp.src('source/docs/plugins.md')
+  )
+  .pipe(concat('index.md'))
   .pipe(gulp.dest('source/docs/using_helm/'))
 });
 gulp.task('reorg-charts', function() {
-  return gulp.src([
-    'source/docs/charts.md',
-    'source/docs/charts_hooks.md',
-    'source/docs/charts_tips_and_tricks.md',
-    'source/docs/chart_repository.md',
-    'source/docs/chart_repository_sync_example.md',
-    'source/docs/provenance.md',
-    'source/docs/chart_tests.md',
-    'source/docs/chart_repository_faq.md',
-  ])
+  return streamqueue({ objectMode: true },
+    gulp.src('source/docs/charts.md'),
+    gulp.src('source/docs/charts_hooks.md'),
+    gulp.src('source/docs/charts_tips_and_tricks.md'),
+    gulp.src('source/docs/chart_repository.md'),
+    gulp.src('source/docs/chart_repository_sync_example.md'),
+    gulp.src('source/docs/provenance.md'),
+    gulp.src('source/docs/chart_tests.md'),
+    gulp.src('source/docs/chart_repository_faq.md')
+  )
+  .pipe(concat('index.md'))
   .pipe(gulp.dest('source/docs/developing-charts/'))
 });
 gulp.task('fetch', function () {
