@@ -10,6 +10,7 @@ var gulp = require('gulp'),
   notify = require('gulp-notify'),
   cache = require('gulp-cache'),
   jshint = require('gulp-jshint'),
+  replace = require('gulp-string-replace'),
   uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
@@ -112,83 +113,94 @@ gulp.task('clone', function() {
   });
 });
 
-// Reorg Docs for Hugo
-gulp.task('reorg-using', function() {
-  return streamqueue({ objectMode: true },
-    gulp.src('source/docs/quickstart.md'),
-    gulp.src('source/docs/install.md'),
-    gulp.src('source/docs/kubernetes_distros.md'),
-    gulp.src('source/docs/install_faq.md'),
-    gulp.src('source/docs/using_helm.md'),
-    gulp.src('source/docs/plugins.md')
-  )
-  .pipe(concat('index.md'))
-  .pipe(gulp.dest('source/docs/using_helm/'))
-});
 
-gulp.task('reorg-charts', function() {
-  return streamqueue({ objectMode: true },
-    gulp.src('source/docs/charts.md'),
-    gulp.src('source/docs/charts_hooks.md'),
-    gulp.src('source/docs/charts_tips_and_tricks.md'),
-    gulp.src('source/docs/chart_repository.md'),
-    gulp.src('source/docs/chart_repository_sync_example.md'),
-    gulp.src('source/docs/provenance.md'),
-    gulp.src('source/docs/chart_tests.md'),
-    gulp.src('source/docs/chart_repository_faq.md')
-  )
-  .pipe(concat('index.md'))
-  .pipe(gulp.dest('source/docs/developing_charts/'))
-});
+/*
+  Edits to control how Hugo outputs the .md content:
 
-var templatefiles = 'source/docs/chart_template_guide/**.md';
-gulp.task('template-rename', function() {
-  return gulp.src('source/docs/chart_template_guide/index.md')
-    .pipe(rename('intro.md'))
+  * concat contents for each subsection, to enforce the sort order
+    (in lieu of TOML that defines the weight of each page)
+  * remove the index chart_template_guide to avoid conflict
+  *
+
+*/
+
+  // Reorg Docs for Hugo
+  gulp.task('reorg-using', function() {
+    return streamqueue({ objectMode: true },
+      gulp.src('source/docs/quickstart.md'),
+      gulp.src('source/docs/install.md'),
+      gulp.src('source/docs/kubernetes_distros.md'),
+      gulp.src('source/docs/install_faq.md'),
+      gulp.src('source/docs/using_helm.md'),
+      gulp.src('source/docs/plugins.md')
+    )
+    .pipe(concat('index.md'))
+    .pipe(gulp.dest('source/docs/using_helm/'))
+  });
+
+  gulp.task('reorg-charts', function() {
+    return streamqueue({ objectMode: true },
+      gulp.src('source/docs/charts.md'),
+      gulp.src('source/docs/charts_hooks.md'),
+      gulp.src('source/docs/charts_tips_and_tricks.md'),
+      gulp.src('source/docs/chart_repository.md'),
+      gulp.src('source/docs/chart_repository_sync_example.md'),
+      gulp.src('source/docs/provenance.md'),
+      gulp.src('source/docs/chart_tests.md'),
+      gulp.src('source/docs/chart_repository_faq.md')
+    )
+    .pipe(concat('index.md'))
+    .pipe(gulp.dest('source/docs/developing_charts/'))
+  });
+
+  var templatefiles = 'source/docs/chart_template_guide/**.md';
+  gulp.task('template-rename', function() {
+    return gulp.src('source/docs/chart_template_guide/index.md')
+      .pipe(rename('intro.md'))
+      .pipe(gulp.dest('source/docs/chart_template_guide/'))
+      del([templatefiles, '!source/docs/chart_template_guide/index.md'])
+  });
+  gulp.task('template-move', function() {
+    return gulp.src(templatefiles)
+      .pipe(gulp.dest('source/docs/chart_template_guide/tmp/'))
+  });
+  gulp.task('template-concat', function() {
+    return streamqueue({ objectMode: true },
+      gulp.src('source/docs/chart_template_guide/tmp/intro.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/getting_started.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/builtin_objects.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/values_files.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/functions_and_pipelines.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/control_structures.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/variables.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/named_templates.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/accessing_files.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/notes_files.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/subcharts_and_globals.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/debugging.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/wrapping_up.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/yaml_techniques.md'),
+      gulp.src('source/docs/chart_template_guide/tmp/data_types.md')
+    )
+    .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/chart_template_guide/'))
-    del([templatefiles, '!source/docs/chart_template_guide/index.md'])
-});
-gulp.task('template-move', function() {
-  return gulp.src(templatefiles)
-    .pipe(gulp.dest('source/docs/chart_template_guide/tmp/'))
-});
-gulp.task('template-concat', function() {
-  return streamqueue({ objectMode: true },
-    gulp.src('source/docs/chart_template_guide/tmp/intro.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/getting_started.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/builtin_objects.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/values_files.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/functions_and_pipelines.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/control_structures.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/variables.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/named_templates.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/accessing_files.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/notes_files.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/subcharts_and_globals.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/debugging.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/wrapping_up.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/yaml_techniques.md'),
-    gulp.src('source/docs/chart_template_guide/tmp/data_types.md')
-  )
-  .pipe(concat('index.md'))
-  .pipe(gulp.dest('source/docs/chart_template_guide/'))
-});
-gulp.task('template-del', function() {
-  del([templatefiles, 'source/docs/chart_template_guide/tmp/', '!source/docs/chart_template_guide/index.md'])
-});
-gulp.task('reorg-templates', function () {
-  runSequence('template-rename',
-              'template-move',
-              'template-concat',
-              'template-del');
-});
+  });
+  gulp.task('template-del', function() {
+    del([templatefiles, 'source/docs/chart_template_guide/tmp/', '!source/docs/chart_template_guide/index.md'])
+  });
+  gulp.task('reorg-templates', function () {
+    runSequence('template-rename',
+                'template-move',
+                'template-concat',
+                'template-del');
+  });
 
-gulp.task('reorg', function () {
-  gulp.start('reorg-using', 'reorg-charts', 'reorg-templates');
-});
+  gulp.task('reorg', function () {
+    gulp.start('reorg-using', 'reorg-charts', 'reorg-templates');
+  });
 
 
-// Default task
+// 'gulp' default task to build the site assets
 gulp.task('default', function () {
   runSequence('clean',
               'clone',
@@ -196,20 +208,17 @@ gulp.task('default', function () {
               'reorg')
 });
 
-// Watch for changes
+
+// 'gulp watch' to watch for changes during dev
 gulp.task('watch', function () {
-  // Watch JS
+
   gulp.watch('themes/helmdocs/static/src/js/custom/init.js', ['scripts']);
 
-  // Watch Images
   gulp.watch('themes/helmdocs/static/img/src/**/*.{png,gif,jpg}', ['images']);
 
-  // Watch SASS
   gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', ['styles']);
 
-  // Create LiveReload server
   livereload.listen();
 
-  // Watch any files in static/, reload on change
   gulp.watch([destination + '/**', destination + '/src/**']).on('change', livereload.changed);
 });
