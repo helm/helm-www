@@ -478,48 +478,54 @@ defaultContentLanguage = "en"
   name = "Best Practices"
   url = "/chart_best_practices/"
   identifier = "chart_best_practices"
-  weight = 400
+  weight = 401
+  [[menu.main]]
+    name = "Intro"
+    url = "the-chart-best-practices-guide"
+    identifier = "the-chart-best-practices-guide"
+    weight = 402
+    parent = "chart_best_practices"
   [[menu.main]]
     name = "General Conventions"
     url = "general-conventions"
     identifier = "general-conventions"
-    weight = 401
+    weight = 403
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Values"
     url = "values"
     identifier = "values"
-    weight = 402
+    weight = 404
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Templates"
     url = "templates"
     identifier = "templates"
-    weight = 403
+    weight = 405
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Requirements"
     url = "requirements-files"
     identifier = "requirements-files"
-    weight = 404
+    weight = 406
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Labels & Annotations"
     url = "labels-and-annotations"
     identifier = "labels-and-annotations"
-    weight = 405
+    weight = 407
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Pods & PodTemplates"
     url = "pods-and-podtemplates"
     identifier = "pods-and-podtemplates"
-    weight = 406
+    weight = 408
     parent = "chart_best_practices"
   [[menu.main]]
     name = "Third Party Resources"
     url = "third-party-resources"
     identifier = "third-party-resources"
-    weight = 407
+    weight = 409
     parent = "chart_best_practices"
 
 [[menu.main]]
