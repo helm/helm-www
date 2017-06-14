@@ -18,7 +18,7 @@ var gulp = require('gulp'),
   cssnano = require('gulp-cssnano');
   sourcemaps = require('gulp-sourcemaps');
   git = require('gulp-git');
-  gutil = require('gulp-util');
+  runSequence = require('run-sequence');
 
 
 // Copy
@@ -33,6 +33,7 @@ gulp.task('copyall', function () {
     .pipe(notify({message: 'Copied all.'}));
 });
 
+
 // Styles
 gulp.task('styles', function () {
   return sass('themes/helmdocs/static/src/sass/styles.scss', {style: 'compressed'})
@@ -45,6 +46,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(destination + '/src/css'))
     .pipe(notify({message: 'Styles compiled.'}));
 });
+
 
 // Scripts
 gulp.task('scriptconcat', function () {
@@ -80,6 +82,7 @@ gulp.task('scripts', function () {
   gulp.start('scriptconcat', 'scriptminify');
 });
 
+
 // Images
 gulp.task('images', function () {
   return streamqueue({objectMode: true},
@@ -92,18 +95,24 @@ gulp.task('images', function () {
   )
 });
 
+
 // Clean
 gulp.task('clean', function () {
-  return del(destination + '/src/**/*', '/source/**/*', {force: true});
+  return del([
+    destination + '/src/**/*',
+    'source/'
+  ], {force: true});
 });
 
-// Clone Docs
+
+// Clone Docs for Hugo
 gulp.task('clone', function() {
   git.clone('https://github.com/kubernetes/helm', {args: './source'}, function(err) {
     // handle err
   });
 });
-// Reorg Docs
+
+// Reorg Docs for Hugo
 gulp.task('reorg-using', function() {
   return streamqueue({ objectMode: true },
     gulp.src('source/docs/quickstart.md'),
@@ -116,6 +125,7 @@ gulp.task('reorg-using', function() {
   .pipe(concat('index.md'))
   .pipe(gulp.dest('source/docs/using_helm/'))
 });
+
 gulp.task('reorg-charts', function() {
   return streamqueue({ objectMode: true },
     gulp.src('source/docs/charts.md'),
@@ -130,13 +140,60 @@ gulp.task('reorg-charts', function() {
   .pipe(concat('index.md'))
   .pipe(gulp.dest('source/docs/developing_charts/'))
 });
-gulp.task('fetch', function () {
-  gulp.start('clone', 'reorg-using', 'reorg-charts');
+
+var templatefiles = 'source/docs/chart_template_guide/**.md';
+gulp.task('template-rename', function() {
+  return gulp.src('source/docs/chart_template_guide/index.md')
+    .pipe(rename('intro.md'))
+    .pipe(gulp.dest('source/docs/chart_template_guide/'))
+    del([templatefiles, '!source/docs/chart_template_guide/index.md'])
+});
+gulp.task('template-move', function() {
+  return gulp.src(templatefiles)
+    .pipe(gulp.dest('source/docs/chart_template_guide/tmp/'))
+});
+gulp.task('template-concat', function() {
+  return streamqueue({ objectMode: true },
+    gulp.src('source/docs/chart_template_guide/tmp/intro.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/getting_started.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/builtin_objects.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/values_files.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/functions_and_pipelines.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/control_structures.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/variables.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/named_templates.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/accessing_files.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/notes_files.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/subcharts_and_globals.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/debugging.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/wrapping_up.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/yaml_techniques.md'),
+    gulp.src('source/docs/chart_template_guide/tmp/data_types.md')
+  )
+  .pipe(concat('index.md'))
+  .pipe(gulp.dest('source/docs/chart_template_guide/'))
+});
+gulp.task('template-del', function() {
+  del([templatefiles, 'source/docs/chart_template_guide/tmp/', '!source/docs/chart_template_guide/index.md'])
+});
+gulp.task('reorg-templates', function () {
+  runSequence('template-rename',
+              'template-move',
+              'template-concat',
+              'template-del');
 });
 
+gulp.task('reorg', function () {
+  gulp.start('reorg-using', 'reorg-charts', 'reorg-templates');
+});
+
+
 // Default task
-gulp.task('default', ['clean'], function () {
-  gulp.start('fetch', 'styles', 'scripts', 'images', 'copy', 'copyall');
+gulp.task('default', function () {
+  runSequence('clean',
+              'clone',
+              ['styles', 'scripts', 'images', 'copy', 'copyall'],
+              'reorg')
 });
 
 // Watch for changes

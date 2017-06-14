@@ -31,6 +31,7 @@
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
     "remove-markdown": "0.1.0",
+    "run-sequence": "^1.2.2",
     "streamqueue": "^1.1.1"
   }
 }
