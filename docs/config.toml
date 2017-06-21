@@ -11,58 +11,63 @@ publishdir = "app"
     author = "Ronan Flynn-Curran"
     description = "Documentation for Helm - The Kubernetes Package Manager."
 
-canonifyURLs = "false"
-relativeURLs = "true"
+canonifyURLs = "true"
+relativeURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
 defaultContentLanguage = "en"
 
 
 [[menu.main]]
-  name = "Using Helm"
-  url = "/using_helm/"
-  identifier = "intro-using-helm"
+  name = "Home"
+  url = "https://docs.helm.sh"
+  identifier = "home"
   weight = 1
+[[menu.main]]
+  name = "Using Helm"
+  url = "using_helm"
+  identifier = "using_helm"
+  weight = 2
   [[menu.main]]
     name = "Quickstart"
     url = "quickstart-guide"
     identifier = "quickstart-guide"
     weight = 11
-    parent = "intro-using-helm"
+    parent = "using_helm"
   [[menu.main]]
     name = "Installing Helm"
     url = "installing-helm"
     identifier = "installing-helm"
     weight = 12
-    parent = "intro-using-helm"
+    parent = "using_helm"
   [[menu.main]]
     name = "Kubernetes Distro Notes"
     url = "kubernetes-distribution-guide"
     identifier = "kubernetes-distribution-guide"
     weight = 13
-    parent = "intro-using-helm"
+    parent = "using_helm"
   [[menu.main]]
     name = "Install FAQ"
     url = "installation-frequently-asked-questions"
     identifier = "installation-frequently-asked-questions"
     weight = 14
-    parent = "intro-using-helm"
+    parent = "using_helm"
   [[menu.main]]
     name = "Using Helm"
     url = "using-helm"
     identifier = "using-helm"
     weight = 15
-    parent = "intro-using-helm"
+    parent = "using_helm"
   [[menu.main]]
     name = "Plugins"
     url = "the-helm-plugins-guide"
     identifier = "the-helm-plugins-guide"
     weight = 16
-    parent = "intro-using-helm"
+    parent = "using_helm"
 
 [[menu.main]]
   name = "Helm Commands"
-  url = "/helm/"
+  url = "helm"
   identifier = "helm"
   weight = 102
   [[menu.main]]
@@ -115,8 +120,8 @@ defaultContentLanguage = "en"
     parent = "helm"
   [[menu.main]]
     name = "Helm Fetch"
-    url = "helm-dependency-update"
-    identifier = "helm-dependency-update"
+    url = "helm-fetch"
+    identifier = "helm-fetch"
     weight = 129
     parent = "helm"
   [[menu.main]]
@@ -326,7 +331,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Charts"
-  url = "/developing_charts/#"
+  url = "developing_charts"
   identifier = "developing_charts"
   weight = 200
   [[menu.main]]
@@ -380,7 +385,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Developing Templates"
-  url = "/chart_template_guide/"
+  url = "chart_template_guide"
   identifier = "chart_template_guide"
   weight = 300
   [[menu.main]]

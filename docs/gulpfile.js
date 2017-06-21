@@ -10,15 +10,20 @@ var gulp = require('gulp'),
   notify = require('gulp-notify'),
   cache = require('gulp-cache'),
   jshint = require('gulp-jshint'),
-  replace = require('gulp-string-replace'),
   uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
-  del = require('del');
-  streamqueue = require('streamqueue');
-  cssnano = require('gulp-cssnano');
-  sourcemaps = require('gulp-sourcemaps');
-  git = require('gulp-git');
+  del = require('del'),
+  streamqueue = require('streamqueue'),
+  cssnano = require('gulp-cssnano'),
+  sourcemaps = require('gulp-sourcemaps'),
+  git = require('gulp-git'),
+  foreach = require('gulp-foreach'),
+  tap = require("gulp-tap"),
+  filenames = require("gulp-filenames"),
+  inject = require('gulp-inject-string'),
+  replace = require('gulp-replace'),
+  stringreplace  = require('gulp-string-replace'),
   runSequence = require('run-sequence');
 
 
@@ -186,7 +191,11 @@ gulp.task('clone', function() {
     .pipe(gulp.dest('source/docs/chart_template_guide/'))
   });
   gulp.task('template-del', function() {
-    del([templatefiles, 'source/docs/chart_template_guide/tmp/', '!source/docs/chart_template_guide/index.md'])
+    return del([
+      templatefiles,
+      'source/docs/chart_template_guide/tmp/',
+      '!source/docs/chart_template_guide/index.md'
+    ], {force: true});
   });
   gulp.task('reorg-templates', function () {
     runSequence('template-rename',
@@ -194,18 +203,80 @@ gulp.task('clone', function() {
                 'template-concat',
                 'template-del');
   });
-
   gulp.task('reorg', function () {
     gulp.start('reorg-using', 'reorg-charts', 'reorg-templates');
   });
 
+  // inject TOML redirects for Hugo, to point '**/*.md' to '**/'
+  gulp.task('redirect-inject', function() {
+    return gulp.src('source/docs/**/*.md', {base: './'})
+      .pipe(foreach(function(stream, file){
+        var aliasname = file.path.replace(/^.*[\\\/]/, '');
+        var diraliasname = file.path.split("/").slice(-2).join("/");
+        return stream
+          .pipe(inject.prepend('+++\naliases = [\n\"' + aliasname + '\"\,\n\"' + diraliasname + '\"\,\n\"using\_helm\/' + aliasname + '\"\,\n\"developing\_charts\/' + aliasname + '\"\n]\n+++\n\n'))
+      }))
+      .pipe(gulp.dest('./'))
+  });
+
+  // links
+  gulp.task('redirect-anchor', function() {
+    return gulp.src('source/docs/**/*.md')
+      .pipe(foreach(function(stream, file){
+        var anchorurl = (/(\)\])(.*)\.md/, "g")[1];
+        return stream
+          .pipe(stringreplace( anchorurl, '](#' ))
+      }))
+      .pipe(gulp.dest('source/docs/'))
+  });
+
+  gulp.task('redirect-subfolder', function() {
+    return gulp.src('source/docs/helm/*.md')
+      // update internal urls within the helm_commands
+      .pipe(replace('](helm', '](../../helm/#helm'))
+      .pipe(replace('.md)', ')'))
+      .pipe(gulp.dest('source/docs/helm/'))
+  });
+
+  gulp.task('redirect-anchor', function() {
+    return gulp.src('source/docs/**/*.md')
+      // update installation guides
+      .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
+      // update charts urls
+      .pipe(replace('chart_repository', 'developing_charts'))
+      // update internal links from '*.md' to '#*'
+      .pipe(replace(/(\]\()(.*)(\.md\))/g, '](./#$2)'))
+      // update the provenance urls
+      .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
+      // update the image paths in 'developing_charts'
+      .pipe(replace('](images/', '](https://raw.githubusercontent.com/kubernetes/helm/master/docs/images/'))
+      .pipe(replace('.png)', '.png)'))
+
+      .pipe(gulp.dest('source/docs/'))
+  });
+
 
 // 'gulp' default task to build the site assets
-gulp.task('default', function () {
+gulp.task('default', function(callback) {
   runSequence('clean',
-              'clone',
+              ['clone'],
               ['styles', 'scripts', 'images', 'copy', 'copyall'],
-              'reorg')
+              'redirect-inject',
+              'redirect-subfolder',
+              ['reorg-using', 'reorg-charts'],
+              'template-rename',
+              'template-move',
+              'template-concat',
+              'template-del',
+              'redirect-anchor',
+              callback);
+});
+
+
+gulp.task('copyall', function () {
+  return gulp.src('static/src/**/*')
+    .pipe(gulp.dest('app/src'))
+    .pipe(notify({message: 'Copied all.'}));
 });
 
 
