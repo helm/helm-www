@@ -1,5 +1,38 @@
 $(document).ready(function() {
   $(document).foundation();
+
+  // custom theme js for sidebar links
+  var allClosed;
+
+  // close all accordions, besides the menu containing the page that you've clicked on.
+  $('.toctree-l1 a:first-child').each(function(){
+    var myHref= $(this).attr('href');
+    // alert('the current section is ' + myHref);
+
+    if(window.location.href.indexOf(myHref) > -1) {
+      $(this).addClass('active').attr({state: "open"});
+      return false;
+    }
+  });
+
+
+  if (allClosed == true) { }
+
+  // if menu is closed when clicked, expand it
+  $('.toctree-l1 > a').click(function() {
+
+    //Make the titles of open accordions dead links
+    if ($(this).attr('state') == 'open') {return false;}
+
+    //Clicking on a title of a closed accordion
+    if($(this).attr('state') != 'open' && $(this).siblings().size() > 0) {
+      $('.toctree-l1 > ul').hide();
+      $('.toctree-l1 > a').attr('state', '');
+      $(this).attr('state', 'open');
+      $(this).next().slideDown(function(){});
+      return false;
+    }
+  });
 }); // document ready
 
 
@@ -21,7 +54,7 @@ $(document).ready(function() {
 // scrollspy, as per https://jsfiddle.net/mekwall/up4nu/
 // Cache selectors
 var lastId,
-    topMenu = $(".sidebar ul ul"),
+    topMenu = $(".sidebar-nav ul ul"),
     topMenuHeight = topMenu.outerHeight()+15,
     // All list items
     menuItems = topMenu.find("a"),

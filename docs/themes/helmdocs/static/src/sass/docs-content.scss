@@ -12,6 +12,7 @@
     text-transform: none;
     letter-spacing: 0.03em;
     margin-top: 1em;
+    padding-top: 1.5em;
   }
 
   article {
@@ -32,7 +33,8 @@
     @include klinicBold;
     @include upperCase;
     letter-spacing: 0.125em;
-    margin: 2em 0 0.875em;
+    margin: 0em 0 0.875em;
+    padding-top: 3.5em;
   }
 
   h3 {
