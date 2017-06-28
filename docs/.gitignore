@@ -11,6 +11,8 @@ bower_components/
 _site/
 app/
 static/
+!themes/helmdocs/static
+source/
 
 ### NPM ###
 node_modules/

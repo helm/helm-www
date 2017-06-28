@@ -95,7 +95,8 @@
           background: lighten($blue3, 37.5%);
         }
 
-        &.active {
+        &.active,
+        &[state="open"] {
           color: $blue4;
           background: transparent;
 
@@ -126,6 +127,12 @@
           color: $blue1;
           font-size: $scalex4;
           opacity: 0.5;
+        }
+      }
+
+      &.toctree-l1.current {
+        ul {
+          display: block !important;
         }
       }
 
