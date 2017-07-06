@@ -251,7 +251,8 @@ gulp.task('clone', function() {
       // update the image paths in 'developing_charts'
       .pipe(replace('](images/', '](https://raw.githubusercontent.com/kubernetes/helm/master/docs/images/'))
       .pipe(replace('.png)', '.png)'))
-
+      // update tips and tricks link
+      .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
       .pipe(gulp.dest('source/docs/'))
   });
 
