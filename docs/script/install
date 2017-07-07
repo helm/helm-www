@@ -5,4 +5,5 @@ set -e
 
 npm install
 bower install
-gulp
+gulp clonedocs
+gulp build
