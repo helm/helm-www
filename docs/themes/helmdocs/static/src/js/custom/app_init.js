@@ -51,30 +51,6 @@ $(document).ready(function() {
   }).init();
 }());
 
-// scrollspy, as per https://jsfiddle.net/mekwall/up4nu/
-// Cache selectors
-var lastId,
-    topMenu = $(".sidebar-nav ul ul"),
-    topMenuHeight = topMenu.outerHeight()+15,
-    // All list items
-    menuItems = topMenu.find("a"),
-    // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function(){
-      var item = $($(this).attr("href"));
-      if (item.length) { return item; }
-    });
-
-  // Bind click handler to menu items
-  // so we can get a fancy scroll animation
-menuItems.click(function(f){
-  var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-  $('html, body').stop().animate({
-      scrollTop: offsetTop
-  }, 300);
-});
-
-
 // add permalinks to titles
 $(function() {
   return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {
