@@ -7,6 +7,7 @@ build_dest=$1
 
 npm install
 bower install --config.interactive=false
-gulp
+gulp clonedocs
+gulp build
 
 hugo -d ${build_dest}

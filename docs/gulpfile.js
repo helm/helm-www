@@ -256,11 +256,22 @@ gulp.task('clone', function() {
   });
 
 
-// 'gulp' default task to build the site assets
-gulp.task('default', function(callback) {
+  gulp.task('copyall', function () {
+    return gulp.src('static/src/**/*')
+      .pipe(gulp.dest('app/src'))
+      .pipe(notify({message: 'Copied all.'}));
+  });
+
+
+// gulp clonedocs - use in conjunction with gulp build
+gulp.task('clonedocs', function(callback) {
   runSequence('clean',
-              ['clone'],
-              ['styles', 'scripts', 'images', 'copy', 'copyall'],
+              'clone',
+              callback);
+});
+gulp.task('build', function(callback) {
+  runSequence(['styles', 'scripts', 'images', 'copy'],
+              'copyall',
               'redirect-inject',
               'redirect-subfolder',
               ['reorg-using', 'reorg-charts'],
@@ -272,11 +283,21 @@ gulp.task('default', function(callback) {
               callback);
 });
 
-
-gulp.task('copyall', function () {
-  return gulp.src('static/src/**/*')
-    .pipe(gulp.dest('app/src'))
-    .pipe(notify({message: 'Copied all.'}));
+// 'gulp' default task to build the site assets
+gulp.task('default', function(callback) {
+  runSequence('clean',
+              'clone',
+              ['styles', 'scripts', 'images', 'copy'],
+              'copyall',
+              'redirect-inject',
+              'redirect-subfolder',
+              ['reorg-using', 'reorg-charts'],
+              'template-rename',
+              'template-move',
+              'template-concat',
+              'template-del',
+              'redirect-anchor',
+              callback);
 });
 
 
