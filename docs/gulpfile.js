@@ -285,18 +285,8 @@ gulp.task('build', function(callback) {
 
 // 'gulp' default task to build the site assets
 gulp.task('default', function(callback) {
-  runSequence('clean',
-              'clone',
-              ['styles', 'scripts', 'images', 'copy'],
-              'copyall',
-              'redirect-inject',
-              'redirect-subfolder',
-              ['reorg-using', 'reorg-charts'],
-              'template-rename',
-              'template-move',
-              'template-concat',
-              'template-del',
-              'redirect-anchor',
+  runSequence('clonedocs',
+              'build',
               callback);
 });
 
