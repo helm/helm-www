@@ -150,6 +150,33 @@
     }
   }
 
+  .header-link {
+    position: absolute;
+    left: -0.4em;
+    opacity: 0;
+    font-size: 1rem;
+    padding-top: 0.333em;
+    @include transition(all, 0.3s, ease-in-out);
+
+    &:hover {
+      border-bottom: none;
+      background-color: transparent;
+    }
+  }
+
+  h2:hover,
+  h3:hover,
+  h4:hover,
+  h5:hover,
+  h6:hover {
+    color: $blue4;
+
+    .header-link {
+      opacity: 1;
+      left: -0.825em;
+    }
+  }
+
   img {
     box-shadow: 0 0 3px $grey1;
     padding: 0.5em;
