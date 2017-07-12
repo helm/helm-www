@@ -8,6 +8,11 @@
 
   <nav class="sidebar-nav">
     <ul class="current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
       {{ range .Site.Menus.main }}
       <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
         <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">

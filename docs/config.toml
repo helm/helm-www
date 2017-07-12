@@ -19,11 +19,6 @@ defaultContentLanguage = "en"
 
 
 [[menu.main]]
-  name = "Home"
-  url = "https://docs.helm.sh"
-  identifier = "home"
-  weight = 1
-[[menu.main]]
   name = "Using Helm"
   url = "using_helm"
   identifier = "using_helm"

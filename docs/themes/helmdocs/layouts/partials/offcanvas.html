@@ -1,16 +1,25 @@
 <aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
   <div class="drawer-wrap">
 
-  <ul class="off-canvas-list">
-      <li><a href="{{ .Site.BaseURL }}">Helm Docs Home</a></li>
+    <ul class="off-canvas-list current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
       {{ range .Site.Menus.main }}
-      <li><a class="sidebar-nav-item{{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active{{end}}" href="{{.URL}}">
+      <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
+        <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
           <span class="ripple">{{ .Name }} <span></span></span>
         </a>
         {{ if .HasChildren }}
-        <ul>
+        <ul class="current">
           {{ range .Children.ByWeight }}
-            <li{{if $.IsMenuCurrent "main" . }} class="active"{{end}}><a href="#{{.URL}}">{{ .Name }}</a></li>
+          <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
+            <a href="../../{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
+              {{ .Name }}
+            </a>
+          </li>
           {{ end }}
         </ul>
         {{end}}
