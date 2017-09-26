@@ -95,7 +95,7 @@ $deisLogoWidth: 125px;
     background: url('../images/pattern-topo.png') left top repeat;
     background-size: 376px;
     min-height: 480px;
-    padding-top: 290px;
+    padding-top: 250px;
     position: relative;
     text-align: center;
 
@@ -115,20 +115,20 @@ $deisLogoWidth: 125px;
     .helm-logo {
       position: absolute;
       left: 5rem;
-      top: 5rem;
+      top: 2.5rem;
       max-width: 400px;
     }
 
     .fa {
       position: absolute;
       font-size: 2.5rem;
-      top: 7.5rem;
+      top: 4.75rem;
       right: 5rem;
       color: $dark2;
 
       &.docs {
         right: 13.5rem;
-        top: 7rem;
+        top: 4.25rem;
 
         em {
           font-size: 1.25rem;
