@@ -87,6 +87,25 @@ $fishSize: 210px;
 $fishDepth: 150px;
 $deisLogoWidth: 125px;
 
+#cookie-banner {
+  background: rgba(238,238,238,0.85);
+  padding: 0.75rem 0;
+  text-align: center;
+  z-index: 1501;
+  position: static;
+
+  .cc-container   {
+    max-width: 75rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.825rem;
+    line-height: 1.2;
+    color: $darkblue;
+  }
+}
+
 #helm {
   background: $blue;
 
