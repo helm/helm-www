@@ -1,0 +1,8 @@
+:2015 {
+  root /svc
+  tls off
+  status 200 /healthz
+}
+:2015/docs {
+  redir / https://helm-classic.readthedocs.io/en/latest{uri}
+}

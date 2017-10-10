@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Helm - The Kubernetes Package Manager</title>
+  <meta name="description" content="The Kubernetes Package Manager">
+  <meta name="keywords" content="Helm,Charts,Packages,Package,Manager,Production,Kubernetes,Containers">
+
+  <!-- twitter card-->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="@opendeis" />
+  <meta name="twitter:site" content="@opendeis" />
+  <meta name="twitter:title" content="Helm - The Kubernetes Package Manager" />
+  <meta name="twitter:description" content="The Kubernetes Package Manager" />
+  <meta name="twitter:image" content="https://deis.com/assets/images/helm-logo.png" />
+
+  <link rel="alternate" type="application/rss+xml" title="Deis Sitemap" href="//deis.com/sitemap.xml" />
+
+  <link rel="stylesheet" href="/assets/css/app.min.css" />
+  
+    <link rel="canonical" href="https://helm.sh/" />
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+</head>
+
+
+  <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        <section class="main-section">
+          <div id="announcement" style="display: none;" class="show-announcement">
+  <a href="https://deis.com/blog/2017/deis-to-join-microsoft/" title="We're joining forces with Microsoft! Find out more on our blog.">
+    <img src="/assets/images/phippy-sm-smiling.png" alt="Phippy" style="display:none;" alt="We're joining forces with Microsoft! Find out more on our blog." />
+    We're joining Microsoft! <span class="hidden-for-small-only">Find out more on our blog.</span>
+  </a>
+</div>
+<div id="helm">
+
+  <section class="billboard">
+    <div class="container">
+      <img src="/assets/images/helm-logo-microsoft.svg" alt="Helm supported by Microsoft" class="helm-logo">
+
+      <h1>The package manager for Kubernetes</h1>
+      <h2>Helm is the best way to find, share, and use software built for Kubernetes.</h2>
+
+      <a href="https://docs.helm.sh/" class="fa docs hide-for-small-only" title="Helm Documentation"><em>Docs</em></a>
+      <a href="https://twitter.com/helmpack" class="fa fa-twitter hide-for-small-only" title="Helm on Twitter"></a>
+      <a href="https://github.com/kubernetes/helm" class="fa fa-github hide-for-small-only" title="Helm on Github"></a>
+    </div>
+    <div id="boat"></div>
+  </section>
+
+  <div class="container content">
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <h2>What is Helm?</h2>
+
+        <p>Helm helps you manage Kubernetes applications — Helm Charts helps you define, install, and upgrade even the most complex Kubernetes application.</p>
+
+        <p>Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste madness.</p>
+
+        <p>The latest version of Helm is maintained by the <a href="https://www.cncf.io/">CNCF</a> - in collaboration with <a href="https://helm.sh">Microsoft</a>, <a href="https://github.com/kubernetes/helm">Google</a>, <a href="https://bitnami.com/">Bitnami</a> and the <a href="https://github.com/kubernetes/helm">Helm contributor community</a>.</p>
+
+        <p class="github-stats">
+          <a class="github-button" href="https://github.com/kubernetes/helm" data-icon="octicon-star" data-style="mega" data-count-href="/kubernetes/helm/stargazers" data-count-api="/repos/kubernetes/helm#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star kubernetes/helm on GitHub">Star</a>
+           &nbsp;
+          <a class="github-button" href="https://github.com/kubernetes/helm" data-icon="octicon-eye" data-style="mega" data-count-href="/kubernetes/helm/watchers" data-count-api="/repos/kubernetes/helm#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch kubernetes/helm on GitHub">Watch</a>
+           &nbsp;
+          <a class="github-button" href="https://github.com/kubernetes/helm/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/kubernetes/helm/network" data-count-api="/repos/kubernetes/helm#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork kubernetes/helm on GitHub" data-proofer-ignore>Fork</a>
+        </p>
+
+        <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+      </div>
+
+      <div class="hide-for-small-down medium-6 columns">
+        <img src="/assets/images/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="container helm-features">
+    <div class="row ">
+      <div class="small-12 columns">
+        <h2>Why Teams <i class="fa fa-heart"></i> Helm</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 medium-6 large-3 columns">
+        <img src="/assets/images/feature-icon-1.png" alt="Manage Complexity">
+        <h3>Manage Complexity</h3>
+        <p>Charts describe even the most complex apps; provide repeatable application installation, and serve as a single point of authority.</p>
+      </div>
+      <div class="small-6 medium-6 large-3 columns">
+        <img src="/assets/images/feature-icon-2.png" alt="Easy Updates">
+        <h3>Easy Updates</h3>
+        <p>Take the pain out of updates with in-place upgrades and custom hooks.</p>
+      </div>
+      <div class="small-6 medium-6 large-3 columns">
+        <img src="/assets/images/feature-icon-3.png" alt="Easy Sharing">
+        <h3>Simple Sharing</h3>
+        <p>Charts are easy to version, share, and host on public or private servers.</p>
+      </div>
+      <div class="small-6 medium-6 large-3 columns">
+        <img src="/assets/images/feature-icon-4.png" alt="Rollbacks">
+        <h3>Rollbacks</h3>
+        <p>Use <code>helm rollback</code> to roll back to an older version of a release with ease.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content">
+    <div class="row">
+
+      <div class="small-12 medium-12 large-7 get-helm columns">
+        <h2>Get Helm!</h2>
+        <p>The Helm project can be found <a href="https://github.com/kubernetes/helm">here on Github</a>:</p>
+
+        <p><a href="https://github.com/kubernetes/helm"><img src="/assets/images/btn-get-helm.png" alt="Get Helm"></a></p>
+
+        <p>For documentation, see <a href="https://docs.helm.sh/">docs.helm.sh</a></p>
+
+        <p>The previous version — <a href="https://github.com/deis/helm">Helm Classic</a> — can be found <a href="https://github.com/deis/helm">here</a>.</p>
+      </div>
+
+      <div class="small-12 medium-12 large-5 get-charts columns">
+        <h2>Get Charts</h2>
+
+        <p>Looking for sample charts?</p>
+
+        <p><a href="https://kubeapps.com/"><img src="/assets/images/helm-charts.png" alt="Sample Charts"></a></p>
+
+        <p>Visit the <a href="https://kubeapps.com/">Chart Directory</a> at <a href="https://kubeapps.com/">kubeapps.com</a> to explore and use community charts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content helm-community">
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <h2 class="text-center">Join the Community</h2>
+        <p class="text-center">More information about the Helm project, and how to contribute.</p>
+
+        <div class="row">
+          <div class="small-12 medium-12 large-5 helm-community-links columns">
+            <ul>
+              <li><i class="fa fa-book"></i> <a href="https://docs.helm.sh/">Read the Docs</a></li>
+              <li><i class="fa fa-tags"></i> <a href="https://github.com/kubernetes/helm/releases">Releases</a></li>
+              <li><i class="fa fa-github"></i> <a href="https://github.com/kubernetes/helm">Helm on Github</a></li>
+              <li><i class="fa fa-comments"></i> <a href="http://slack.k8s.io/">Chat #Helm on Slack</a></li>
+            </ul>
+          </div>
+
+          <div class="hide-for-medium-down medium-7 helm-community-blocks columns">
+            <section>
+              <h4>SIG-Apps</h4>
+              <p><a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">SIG-Apps</a> is a Special Interest Group for deploying and operating apps in Kubernetes. They <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">meet each week</a> to demo and discuss tools and projects.</p>
+              <iframe data-proofer-ignore width="220" height="130" src="" data-src="//youtube.com/embed/?listType=playlist&list=PLI1CvzwXi1cUVsxm2QBIyJgeCkf62ylun" frameborder="0" allowfullscreen></iframe>
+
+              <script type="text/javascript">
+                var vidDefer = document.getElementsByTagName('iframe');
+                function videoLoad() {
+                  for (var i=0; i<vidDefer.length; i++) {
+                    if(vidDefer[i].getAttribute('data-src')) {
+                      vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+                    }
+                  }
+                };
+                window.onload = videoLoad;
+              </script>
+            </section>
+
+            <section>
+              <h4>Developer Standups</h4>
+              <p>Each week, the Helm teams meet on <a href="https://goo.gl/jH3UoX">Zoom</a>.</p>
+              <div class="right">
+                <a href="https://goo.gl/jH3UoX">
+                  <i class="fa fa-calendar"></i>
+                  <em>Thursdays</em>
+                  <small>9:30-10am, PT</small>
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="row helm-contrib-logos">
+          <div class="small-12 medium-12 large-12 columns">
+            <img src="/assets/images/helm-logo-microsoft.svg" alt="Helm supported by Microsoft" class="helm-logo">
+          </div>
+          <hr>
+          <div class="small-12 medium-6 large-3 columns">
+            <p class="contributors text-left">Built with a community of <a href="https://github.com/kubernetes/helm/graphs/contributors">100+ contributors</a>, including:</p>
+          </div>
+          <div class="small-12 medium-6 large-3 columns">
+            <a target="_blank" href="http://kubernetes.io/"><img src="/assets/images/google.png" alt="Google"></a>
+          </div>
+          <div class="small-12 medium-6 large-3 columns">
+            <a target="_blank" href="https://bitnami.com/"><img src="/assets/images/bitnami.png" alt="Bitnami"></a>
+          </div>
+          <div class="small-12 medium-6 large-3 columns">
+            <a target="_blank" href="http://www.skippbox.com/"><img src="/assets/images/skippbox.png" alt="Skippbox"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+        </section>
+
+        <a class="exit-off-canvas" data-proofer-ignore></a>
+      </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42867143-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+  </body>
+</html>
