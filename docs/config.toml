@@ -300,28 +300,34 @@ defaultContentLanguage = "en"
     weight = 159
     parent = "helm"
   [[menu.main]]
+    name = "Helm Template"
+    url = "helm-template"
+    identifier = "helm-template"
+    weight = 160
+    parent = "helm"
+  [[menu.main]]
     name = "Helm Test"
     url = "helm-test"
     identifier = "helm-test"
-    weight = 160
+    weight = 161
     parent = "helm"
   [[menu.main]]
     name = "Helm Upgrade"
     url = "helm-upgrade"
     identifier = "helm-upgrade"
-    weight = 161
+    weight = 162
     parent = "helm"
   [[menu.main]]
     name = "Helm Verify"
     url = "helm-verify"
     identifier = "helm-verify"
-    weight = 162
+    weight = 163
     parent = "helm"
   [[menu.main]]
     name = "Helm Version"
     url = "helm-version"
     identifier = "helm-version"
-    weight = 163
+    weight = 164
     parent = "helm"
 
 [[menu.main]]
