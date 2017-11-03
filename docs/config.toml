@@ -253,7 +253,7 @@ defaultContentLanguage = "en"
     parent = "helm"
   [[menu.main]]
     name = "Helm Repo List"
-    url = "helm-rep-listo"
+    url = "helm-rep-list"
     identifier = "helm-repo-list"
     weight = 152
     parent = "helm"
