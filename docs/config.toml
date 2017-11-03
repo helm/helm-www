@@ -59,6 +59,12 @@ defaultContentLanguage = "en"
     identifier = "the-helm-plugins-guide"
     weight = 16
     parent = "using_helm"
+  [[menu.main]]
+    name = "Tiller and RBAC"
+    url = "tiller-and-role-based-access-control"
+    identifier = "tiller-and-role-based-access-control"
+    weight = 16
+    parent = "using_helm"
 
 [[menu.main]]
   name = "Helm Commands"
