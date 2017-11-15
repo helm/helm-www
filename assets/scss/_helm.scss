@@ -88,7 +88,7 @@ $fishDepth: 150px;
 $deisLogoWidth: 125px;
 
 #cookie-banner {
-  background: rgba(238,238,238,0.85);
+  background: rgba(238,238,238,0.5);
   padding: 0.75rem 0;
   text-align: center;
   z-index: 1501;
@@ -96,13 +96,14 @@ $deisLogoWidth: 125px;
 
   .cc-container   {
     max-width: 75rem;
+    margin: 0 auto;
   }
 
   p {
     margin: 0;
-    font-size: 0.825rem;
+    font-size: 0.75rem;
     line-height: 1.2;
-    color: $darkblue;
+    color: lighten($darkblue, 20%);
   }
 }
 
@@ -113,6 +114,7 @@ $deisLogoWidth: 125px;
     background-color: white;
     background: url('../images/pattern-topo.png') left top repeat;
     background-size: 376px;
+    background-attachment: fixed;
     min-height: 480px;
     padding-top: 250px;
     position: relative;
@@ -134,8 +136,8 @@ $deisLogoWidth: 125px;
     .helm-logo {
       position: absolute;
       left: 5rem;
-      top: 2.5rem;
-      max-width: 400px;
+      top: 2.3rem;
+      max-width: 112px;
     }
 
     .fa {
