@@ -4,3 +4,4 @@ node_modules/
 javascripts/*.min.js
 bower_components/
 _site/*
+_site/
