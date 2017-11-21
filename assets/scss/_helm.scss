@@ -473,15 +473,20 @@ $deisLogoWidth: 125px;
     .helm-contrib-logos {
       text-align: center;
 
+      .helm-contrib-logos {
+        padding-top: 1.5rem;
+      }
+
       img {
         padding: 0;
         display: inline-block;
         margin: 0;
+        max-width: 18%;
       }
 
       .helm-logo {
         margin: 0 auto;
-        margin-bottom: 4em;
+        margin-bottom: 2.25em;
         display: block;
         text-align: center;
         padding: 3.5em 0 0;
@@ -495,7 +500,7 @@ $deisLogoWidth: 125px;
         margin: 1rem 25%;
       }
 
-      p.contributors {
+      p {
         color: $dark1;
         text-align: center;
         padding: 0;
@@ -514,25 +519,10 @@ $deisLogoWidth: 125px;
             border-bottom: 2px solid $blue;
           }
         }
-      }
 
-      .contrib-logos-1 {
-        padding-top: 2rem;
-
-        img {
-          width: auto;
-          height: auto;
-          max-height: 148px;
-          // max-width: 19.99%;
-        }
-      }
-
-      .contrib-logos-2 {
-        img {
-          width: auto;
-          height: auto;
-          max-height: 129px;
-          // max-width: 16.5%;
+        small {
+          padding-top: 1rem;
+          font-size: 0.925em;
         }
       }
     }
