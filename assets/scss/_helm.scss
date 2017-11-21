@@ -477,6 +477,7 @@ $deisLogoWidth: 125px;
         padding: 0;
         display: inline-block;
         margin: 0;
+        max-width: 18%;
       }
 
       .helm-logo {
@@ -513,26 +514,6 @@ $deisLogoWidth: 125px;
           &:hover {
             border-bottom: 2px solid $blue;
           }
-        }
-      }
-
-      .contrib-logos-1 {
-        padding-top: 3rem;
-
-        img {
-          width: auto;
-          height: auto;
-          max-height: 148px;
-          // max-width: 19.99%;
-        }
-      }
-
-      .contrib-logos-2 {
-        img {
-          width: auto;
-          height: auto;
-          max-height: 129px;
-          // max-width: 16.5%;
         }
       }
 
