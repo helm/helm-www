@@ -473,6 +473,10 @@ $deisLogoWidth: 125px;
     .helm-contrib-logos {
       text-align: center;
 
+      .helm-contrib-logos {
+        padding-top: 1.5rem;
+      }
+
       img {
         padding: 0;
         display: inline-block;
@@ -482,7 +486,7 @@ $deisLogoWidth: 125px;
 
       .helm-logo {
         margin: 0 auto;
-        margin-bottom: 4em;
+        margin-bottom: 2.25em;
         display: block;
         text-align: center;
         padding: 3.5em 0 0;
@@ -496,7 +500,7 @@ $deisLogoWidth: 125px;
         margin: 1rem 25%;
       }
 
-      p.contributors {
+      p {
         color: $dark1;
         text-align: center;
         padding: 0;
@@ -514,6 +518,11 @@ $deisLogoWidth: 125px;
           &:hover {
             border-bottom: 2px solid $blue;
           }
+        }
+
+        small {
+          padding-top: 1rem;
+          font-size: 0.925em;
         }
       }
     }
