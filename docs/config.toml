@@ -60,9 +60,9 @@ defaultContentLanguage = "en"
     weight = 16
     parent = "using_helm"
   [[menu.main]]
-    name = "Tiller and RBAC"
-    url = "tiller-and-role-based-access-control"
-    identifier = "tiller-and-role-based-access-control"
+    name = "Role-Based Access Control"
+    url = "rbac"
+    identifier = "rbac"
     weight = 16
     parent = "using_helm"
 
