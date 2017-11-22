@@ -61,9 +61,9 @@ defaultContentLanguage = "en"
     parent = "using_helm"
   [[menu.main]]
     name = "Role-Based Access Control"
-    url = "rbac"
-    identifier = "rbac"
-    weight = 16
+    url = "role-based-access-control"
+    identifier = "role-based-access-control"
+    weight = 17
     parent = "using_helm"
 
 [[menu.main]]
