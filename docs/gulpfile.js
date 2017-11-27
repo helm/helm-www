@@ -137,7 +137,8 @@ gulp.task('clone', function() {
       gulp.src('source/docs/kubernetes_distros.md'),
       gulp.src('source/docs/install_faq.md'),
       gulp.src('source/docs/using_helm.md'),
-      gulp.src('source/docs/plugins.md')
+      gulp.src('source/docs/plugins.md'),
+      gulp.src('source/docs/rbac.md')
     )
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/using_helm/'))

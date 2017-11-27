@@ -59,6 +59,12 @@ defaultContentLanguage = "en"
     identifier = "the-helm-plugins-guide"
     weight = 16
     parent = "using_helm"
+  [[menu.main]]
+    name = "Role-Based Access Control"
+    url = "role-based-access-control"
+    identifier = "role-based-access-control"
+    weight = 17
+    parent = "using_helm"
 
 [[menu.main]]
   name = "Helm Commands"
