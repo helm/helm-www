@@ -255,6 +255,8 @@ gulp.task('clone', function() {
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
+      // update security anchor link
+      .pipe(replace('securing_installation', 'securing-your-helm-installation'))
       .pipe(gulp.dest('source/docs/'))
   });
 

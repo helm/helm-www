@@ -65,6 +65,12 @@ defaultContentLanguage = "en"
     identifier = "role-based-access-control"
     weight = 17
     parent = "using_helm"
+  [[menu.main]]
+    name = "Securing Helm"
+    url = "securing-your-helm-installation"
+    identifier = "securing-your-helm-installation"
+    weight = 18
+    parent = "using_helm"
 
 [[menu.main]]
   name = "Helm Commands"
