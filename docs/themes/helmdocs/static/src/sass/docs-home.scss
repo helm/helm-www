@@ -104,7 +104,7 @@ $deisLogoWidth: 125px;
   }
 
   #helm {
-    background: $blue1;
+    // background: $blue1;
     max-width: 100%;
     position: relative;
     z-index: 500;
@@ -115,7 +115,7 @@ $deisLogoWidth: 125px;
       height: 850px;
       width: 100%;
       bottom: 0;
-      background-color: $blue1;
+      // background-color: $blue1;
       position: fixed;
     }
 
@@ -149,6 +149,7 @@ $deisLogoWidth: 125px;
         position: absolute;
         left: 5rem;
         top: 2rem;
+        max-width: 102px;
       }
 
       .fa {
@@ -214,7 +215,7 @@ $deisLogoWidth: 125px;
   .home-featured {
     background-color: $blue1;
     padding-top: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 65px;
     min-height: 400px;
 
     .panels {
