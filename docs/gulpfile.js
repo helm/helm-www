@@ -138,7 +138,8 @@ gulp.task('clone', function() {
       gulp.src('source/docs/install_faq.md'),
       gulp.src('source/docs/using_helm.md'),
       gulp.src('source/docs/plugins.md'),
-      gulp.src('source/docs/rbac.md')
+      gulp.src('source/docs/rbac.md'),
+      gulp.src('source/docs/securing_installation.md')
     )
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/using_helm/'))
@@ -254,6 +255,8 @@ gulp.task('clone', function() {
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
+      // update security anchor link
+      .pipe(replace('securing_installation', 'securing-your-helm-installation'))
       .pipe(gulp.dest('source/docs/'))
   });
 
