@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
+
 set -e
 set -x
 
-export APP="helmsh-docs"
 build_dest=$1
 
+cd /app/
+
 npm install
-bower install --config.interactive=false
+bower install
 gulp clonedocs
 gulp build
 

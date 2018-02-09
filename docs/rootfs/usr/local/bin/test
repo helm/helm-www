@@ -7,13 +7,10 @@ set -x
 
 build_dest=$1
 
-id
-ls -ld ${build_dest}
-
 cd /app
 
 echo "Building site..."
-/src/script/build ${build_dest}
+build ${build_dest}
 
 echo "Checking links..."
 bundle exec htmlproofer ${build_dest} --only-4xx --check-html --disable-external --file-ignore "/contact\/index\.html/" || exit 0
