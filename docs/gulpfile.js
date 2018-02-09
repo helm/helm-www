@@ -195,6 +195,7 @@ gulp.task('clone', function() {
   gulp.task('template-del', function() {
     return del([
       templatefiles,
+      'source/docs/index.md',
       'source/docs/chart_template_guide/tmp/',
       '!source/docs/chart_template_guide/index.md'
     ], {force: true});
@@ -211,7 +212,7 @@ gulp.task('clone', function() {
 
   // inject TOML redirects for Hugo, to point '**/*.md' to '**/'
   gulp.task('redirect-inject', function() {
-    return gulp.src('source/docs/**/*.md', {base: './'})
+    return gulp.src(('source/docs/**/*.md', '!source/docs/**/index.md'), {base: './'})
       .pipe(foreach(function(stream, file){
         var aliasname = file.path.replace(/^.*[\\\/]/, '');
         var diraliasname = file.path.split("/").slice(-2).join("/");

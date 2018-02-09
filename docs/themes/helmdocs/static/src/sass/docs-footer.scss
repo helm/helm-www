@@ -167,3 +167,46 @@
     }
   }
 }
+
+#contrib {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.contrib-text {
+  p {
+    color: $grey2;
+    font-size: 1rem;
+    margin: 0 auto;
+    padding-left: 2rem;
+
+    &.lead {
+      font-size: 1.2rem;
+      margin: 3rem auto 3rem;
+      position: relative;
+      line-height: 4;
+
+      &:after {
+        content: " ";
+        display: block;
+        width: 14%;
+        position: absolute;
+        bottom: 0;
+        left: 43%;
+        height: 5px;
+        background: $grey1;
+        opacity: 0.25;
+      }
+    }
+
+    img {
+      max-height: 24px;
+      margin: -2px 0 0 22px;
+    }
+
+    a {
+      // color: white;
+      font-weight: bold;
+    }
+  }
+}
