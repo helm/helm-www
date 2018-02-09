@@ -22,7 +22,7 @@ deploy_docs_helm_sh() {
   make -C docs.helm.sh docker-push VERSION="${VERSION}"
 }
 
-case "${CIRCLE_NODE_INDEX}" in
-  0) deploy_helm_sh   ;;
+case "${CIRCLE_NODE_INDEX-0}" in
+  0) deploy_helm_sh      ;;
   1) deploy_docs_helm_sh ;;
 esac
