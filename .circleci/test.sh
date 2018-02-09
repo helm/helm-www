@@ -15,11 +15,11 @@ else
   VERSION="${CIRCLE_BRANCH}"
 fi
 
-build_helm_sh() {
+test_helm_sh() {
   make -C helm.sh test VERSION="${VERSION}"
 }
 
-build_docs_helm_sh() {
+test_docs_helm_sh() {
   make -C docs.helm.sh test VERSION="${VERSION}"
 }
 
