@@ -15,6 +15,8 @@
 # limitations under the License.
 set -euo pipefail
 
+apt-get update && apt-get install -yq curl
+
 echo "Install docker client"
 VER="17.03.0-ce"
 curl -L https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz | tar -xz -C /tmp
