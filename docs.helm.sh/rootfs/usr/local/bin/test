@@ -9,8 +9,4 @@ build_dest=$1
 
 cd /app
 
-echo "Building site..."
-build ${build_dest}
-
 echo "Checking links..."
-bundle exec htmlproofer ${build_dest} --only-4xx --check-html --disable-external --file-ignore "/contact\/index\.html/" || exit 0
