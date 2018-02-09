@@ -4,7 +4,7 @@
 # http://redsymbol.net/articles/unofficial-bash-strict-mode
 set -euo pipefail
 
-apt-get update && apt-get install -yq curl
+apt-get update && apt-get install -yq curl make
 
 echo "Install docker client"
 VER="17.03.0-ce"
