@@ -13,6 +13,7 @@ elif [[ "${CIRCLE_BRANCH:-}" == "master" ]]; then
   VERSION="canary"
 else
   VERSION="${CIRCLE_BRANCH}"
+fi
 
 build_helm_sh() {
   make -C helm.sh test VERSION="${VERSION}"

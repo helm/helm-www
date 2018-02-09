@@ -4,6 +4,8 @@
 # http://redsymbol.net/articles/unofficial-bash-strict-mode
 set -euo pipefail
 
+set -x
+
 VERSION=
 if [[ -n "${CIRCLE_PR_NUMBER:-}" ]]; then
   VERSION="pr-${CIRCLE_PR_NUMBER}"
@@ -13,6 +15,7 @@ elif [[ "${CIRCLE_BRANCH:-}" == "master" ]]; then
   VERSION="canary"
 else
   VERSION="${CIRCLE_BRANCH}"
+fi
 
 build_helm_sh() {
   make -C helm.sh docker-build VERSION="${VERSION}"
