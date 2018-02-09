@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+## This script is used for testing on Jenkins @ ci.deis.io
+
+set -e # halt script on error
+set -x
+
+build_dest=$1
+
+cd /app
+
+echo "Checking links..."

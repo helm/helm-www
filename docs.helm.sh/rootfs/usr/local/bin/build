@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+build_dest=$1
+
+cd /app/
+
+npm install
+bower install
+gulp clonedocs
+gulp build
+
+hugo -d ${build_dest}

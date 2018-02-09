@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    parallelism: 2
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: bootstrap
+          command: .circleci/bootstrap.sh
+      - run:
+          name: build
+          command: .circleci/build.sh
+      - run:
+          name: test
+          command: .circleci/test.sh
+      - deploy:
+          name: deploy
+          command: .circleci/deploy.sh
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
