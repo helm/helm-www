@@ -66,10 +66,16 @@ defaultContentLanguage = "en"
     weight = 17
     parent = "using_helm"
   [[menu.main]]
+    name = "TLS/SSL for Helm and Tiller"
+    url = "using-ssl-between-helm-and-tiller"
+    identifier = "using-ssl-between-helm-and-tiller"
+    weight = 18
+    parent = "using_helm"
+  [[menu.main]]
     name = "Securing Helm"
     url = "securing-your-helm-installation"
     identifier = "securing-your-helm-installation"
-    weight = 18
+    weight = 19
     parent = "using_helm"
 
 [[menu.main]]
