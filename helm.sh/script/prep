@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -x
+set -e
+
+build_dest=$1
+
+# detect if we are running in Jenkins and fix-up the path
+if [[ ! -z "${JENKINS_HOME}" ]]; then
+	if [[ ! -d ${build_dest} ]]; then
+		mkdir -p ${build_dest}
+	fi
+	chown -R ${USER}:${USER} ${build_dest}
+fi

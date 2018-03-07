@@ -1,0 +1,13 @@
+# Site settings
+title: "Helm: The Kubernetes Package Manager"
+email: ""
+description: > # this means to ignore newlines until "baseurl:"
+  Helm: The Kubernetes Package Manager
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://helm.sh" # the base hostname & protocol for your site
+twitter_username: opendeis
+github_username:  deis
+
+# Build settings
+markdown: kramdown
+exclude: [docs, vendor, script, node_modules, Gruntfile.js, Gemfile, Gemfile.lock, package.json, s3_website.yml, gulpfile.js, README.md, Makefile]

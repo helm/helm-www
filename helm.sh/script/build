@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+build_dest=$1
+
+cd /app/
+
+/src/script/copy-source /src /app
+/src/script/link-dependencies
+/src/script/install
+
+gulp
+bundle exec jekyll build -d ${build_dest}

@@ -1,0 +1,587 @@
+@mixin boat-animation-rules($startX, $startY, $endX, $endY) {
+  $crest: -7px;
+  $trough: -12px;
+  @keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
+  @-moz-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
+  @-webkit-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
+  @-ms-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
+  @-o-keyframes animatedBoat {
+    0%    { background-position: $startX $startY; bottom: $crest;}
+    10%   { bottom: $trough; }
+    20%   { bottom: $crest; }
+    30%   { bottom: $trough; }
+    40%   { bottom: $crest; }
+    50%   { bottom: $trough; }
+    60%   { bottom: $crest; }
+    70%   { bottom: $trough; }
+    80%   { bottom: $crest; }
+    90%   { bottom: $trough; }
+    100%  { background-position: $endX $endY; bottom: $crest; }
+  }
+}
+
+$boat-animation: animatedBoat 10s linear infinite;
+$source-font: Source Sans Pro, Helvetica, sans-serif;
+$inconsolata-font: 'Inconsolata', Fixed, monospace;
+$vertical-margin: 25%;
+$footer-padding: 4em;
+$mobile-maximum-width: 414px;
+$tablet-maximum-width: 768px;
+$boat-size: 220px;
+$gutter: 20px;
+$normalWeight: 400;
+$lightWeight: 300;
+$titleFontSize: 54px;
+$bodyFontSize: 18px;
+$helmLogoHeight: 79px;
+$helmLogoWidth: 170px;
+$fishSize: 210px;
+$fishDepth: 150px;
+$deisLogoWidth: 125px;
+
+#cookie-banner {
+  background: rgba(238,238,238,0.5);
+  padding: 0.75rem 0;
+  text-align: center;
+  z-index: 1501;
+  position: static;
+
+  .cc-container   {
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: lighten($darkblue, 20%);
+  }
+}
+
+#helm {
+  background: $blue;
+
+  .billboard {
+    background-color: white;
+    background: url('../images/pattern-topo.png') left top repeat;
+    background-size: 376px;
+    background-attachment: fixed;
+    min-height: 480px;
+    padding-top: 250px;
+    position: relative;
+    text-align: center;
+
+    h1 {
+      @include klinicBold;
+      color: $blue;
+      font-size: 2.925rem;
+    }
+
+    h2 {
+      @include helvetica;
+      color: $darkblue;
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .helm-logo {
+      position: absolute;
+      left: 5rem;
+      top: 2.3rem;
+      max-width: 112px;
+    }
+
+    .fa {
+      position: absolute;
+      font-size: 2.5rem;
+      top: 4.75rem;
+      right: 5rem;
+      color: $dark2;
+
+      &.docs {
+        right: 13.5rem;
+        top: 4.25rem;
+
+        em {
+          font-size: 1.25rem;
+          font-style: normal;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: $darkblue;
+          @include klinicBold;
+          letter-spacing: 0.075em;
+        }
+      }
+
+      &.fa-twitter {
+        right: 9rem;
+        color: $blue;
+        @include transition;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &:after {
+      $height: 6px;
+      background: url('../images/pattern-waves.png') left top repeat-x;
+      background-size: $gutter;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: $height;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .content {
+    h1, h2, h3, h5 {
+      color: white;
+      @include klinicBold;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin: 2rem 0;
+      padding-top: 1em;
+    }
+
+    p {
+      color: white;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      margin-bottom: 1.4rem;
+      @include helvetica;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .github-stats {
+      padding-top: 1em;
+    }
+
+    a {
+      color: white;
+      font-weight: bold;
+    }
+
+    .helm-overview-img {
+      margin: 3.5rem 0 3rem;
+    }
+  }
+
+  .helm-features {
+    background: url('../images/features-bg.png') no-repeat center 0;
+    background-size: cover;
+    text-align: center;
+    margin-bottom: 2em;
+    padding-bottom: 4rem;
+
+    .large-3 {
+      min-height: 280px;
+    }
+
+    h2 {
+      @include klinicBold;
+      color: $darkblue;
+      border-bottom: 4px solid lighten($blue, 25%);
+      margin: 1.5rem 0 2.5rem;
+      display: inline-block;
+
+      .fa {
+        color: $pink;
+      }
+
+
+    }
+
+    h3 {
+      color: $darkblue;
+      margin: 0.25em 0 0.5em;
+      font-size: 1.5rem;
+      padding-top: 90px;
+      position: relative;
+      @include klinicBold;
+
+      small {
+        position: absolute;
+        top: 8.667em;
+        color: red;
+        width: 10em;
+        left: 50%;
+        font-size: 0.6em;
+        margin-left: -5em;
+      }
+    }
+
+    .columns {
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -29px;
+    }
+
+    p {
+      font-size: 0.925rem;
+      padding: 0 5%;
+
+      code {
+        border: none;
+      }
+    }
+
+    .row {
+      background-color: white;
+
+      &:first-child {
+        border-radius: 0.5em 0.5em 0 0;
+      }
+      &:last-child {
+        padding-bottom: 0.5em;
+        border-radius: 0 0 0.5em 0.5em;
+      }
+    }
+  }
+
+  .get-helm {
+    padding-bottom: 50px;
+    border: 2px dashed $lightblue;
+    padding: 2em;
+    margin-bottom: 4em;
+    position: relative;
+    z-index: 100;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: " ";
+      top: 0.667em;
+      left: -0.25em;
+      width: 100%;
+      height: 375px;
+      z-index: -5;
+      background-color: $darkblue;
+      transform: rotateX(12deg);
+      opacity: 0.425;
+    }
+
+    h2 {
+      margin: 0 0 0.5em;
+      padding: 0;
+    }
+
+    img {
+      margin: 0.333em 0;
+    }
+  }
+
+  .get-charts {
+    padding-left: 3.5rem;
+
+    h2 {
+      margin: 2.5rem 0 1rem;
+      padding: 0;
+    }
+  }
+
+  .helm-community {
+    background-color: white;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    color: $darkblue;
+    background: linear-gradient( 0deg, #fff, #F7F7F7);
+
+    h2, p {
+      color: $darkblue;
+    }
+
+    h2 {
+      margin-bottom: 0.5em;
+
+      & + p {
+        margin-bottom: 4.5rem;
+      }
+    }
+
+    .helm-community-links {
+      ul {
+        background-color: white;
+        padding: 1.5em 2.25em;
+        border-radius: 1em;
+
+        li {
+          font-size: 1.5rem;
+          list-style: none;
+          color: $darkblue;
+          line-height: 2.5;
+          padding-left: 2.25em;
+          position: relative;
+          @include klinicReg;
+
+          a {
+            color: $darkblue;
+            border-bottom: 3px solid $blue;
+
+            &:hover {
+              color: $blue;
+              border-color: $lightblue;
+            }
+          }
+
+          .fa {
+            color: $blue;
+            font-size: 2rem;
+            width: 1.25em;
+            padding-right: 0em;
+            position: absolute;
+            left: 0;
+            top: 0.525em;
+          }
+        }
+      }
+    }
+
+    .helm-community-blocks {
+      section {
+        border: 1px solid $darkblue;
+        border-radius: 1rem;
+        margin: 0 0 2em;
+        padding: 1.25rem 1.5rem;
+        min-height: 125px;
+        position: relative;
+
+        &:first-child {
+          min-height: 175px;
+        }
+
+        h4 {
+          color: $darkblue;
+          font-size: 1.5em;
+          @include klinicBold;
+          margin: -0.25em 0 0.667em;
+        }
+
+        p {
+          color: $darkblue;
+          font-size: 1rem;
+          float: left;
+          max-width: 60%;
+        }
+
+        a {
+          color: $darkblue;
+        }
+
+        iframe {
+          width: 35%;
+          display: inline-block;
+          min-width: 200px;
+          position: absolute;
+          right: 1em;
+          top: 1em;
+        }
+
+        .right {
+          background-color: lighten($light1, 1.5%);
+          text-align: center;
+          padding: 1.25em 2em 1em;
+          width: 33.3%;
+          position: absolute;
+          top: 1em;
+          right: 1em;
+
+          .fa {
+            font-size: 2.75rem;
+            float: left;
+            display: inline-block;
+            padding-right: 0.333em;
+            color: $blue;
+          }
+          em {
+            font-style: normal;
+            font-size: 1.125em;
+            display: inline-block;
+            min-width: 50%;
+            color: $blue;
+            font-weight: bold;
+          }
+          small {
+            display: inline-block;
+            font-size: 0.667rem;
+            min-width: 50%;
+            color: $blue;
+          }
+        }
+      }
+    }
+
+    .helm-contrib-logos {
+      text-align: center;
+
+      .helm-contrib-logos {
+        padding-top: 1.5rem;
+      }
+
+      img {
+        padding: 0;
+        display: inline-block;
+        margin: 0;
+        max-width: 15%;
+      }
+
+      .helm-logo {
+        margin: 0 auto;
+        margin-bottom: 2.25em;
+        display: block;
+        text-align: center;
+        padding: 3.5em 0 0;
+      }
+
+      hr {
+        background-color: $lightblue;
+        height: 2px;
+        opacity: 0.25;
+        width: 50%;
+        margin: 1rem 25%;
+      }
+
+      p {
+        color: $dark1;
+        text-align: center;
+        padding: 0;
+        margin: 0 auto;
+        font-size: 1.333em;
+        line-height: 2;
+        letter-spacing: 0.025em;
+        color: #9B9B9B;
+
+        a {
+          font-weight: bold;
+          color: $darkblue;
+          border-bottom: 2px solid transparent;
+
+          &:hover {
+            border-bottom: 2px solid $blue;
+          }
+        }
+
+        small {
+          padding-top: 1rem;
+          font-size: 0.925em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: $mobile-maximum-width + 1) {
+  @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
+}
+
+#boat {
+  height: 2em;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    $duration: 20s;
+    background: url('../images/boat.png') no-repeat;
+    background-size: $boat-size;
+    height: 169px; //TODO programmatize this!
+    position: relative;
+
+    -moz-animation: $boat-animation;
+    -webkit-animation: $boat-animation;
+    -ms-animation: $boat-animation;
+    -o-animation: $boat-animation;
+    animation: $boat-animation;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -ms-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #helm {
+    .billboard {
+      .helm-logo {
+        position: absolute;
+        left: 50%;
+        top: 2.3rem;
+        max-width: 112px;
+        margin-left: -66px;
+      }
+
+      h1 {
+        margin: -3rem 10% 0;
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        margin: 1rem 12.5%;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .contrib-logos-1,
+  .contrib-logos-2 {
+    img {
+      max-height: 80px;
+    }
+  }
+}
