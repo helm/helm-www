@@ -6,4 +6,6 @@ _site/
 node_modules/
 bower_components/
 vendor/
+source/*
 javascripts/*.min.js
+docs.helm.sh/source
