@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+set -x
+
+export APP="helmsh-docs"
+build_dest=$1
+
+npm install
+bower install --config.interactive=false
+gulp clonedocs
+gulp build
+
+hugo -d ${build_dest}

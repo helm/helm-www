@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Examples on Helm Docs</title>
+    <link>https://docs.helm.sh/examples/</link>
+    <description>Recent content in Examples on Helm Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://docs.helm.sh/examples/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/examples/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/examples/readme/</guid>
+      <description>Helm Examples This directory contains example charts to help you get started with chart development.
+Alpine The alpine chart is very simple, and is a good starting point.
+It simply deploys a single pod running Alpine Linux.
+Nginx The nginx chart shows how to compose several resources into one chart, and it illustrates more complex template usage.
+It deploys a deployment (which creates a replica set), a config map, and a service.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/examples/alpine/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/examples/alpine/readme/</guid>
+      <description>Alpine: A simple Helm chart Run a single pod of Alpine Linux.
+The templates/ directory contains a very simple pod resource with a couple of parameters.
+The values.yaml file contains the default values for the alpine-pod.yaml template.
+You can install this example using helm install docs/examples/alpine.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/examples/nginx/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/examples/nginx/readme/</guid>
+      <description>nginx: An advanced example chart This Helm chart provides examples of some of Helm&amp;rsquo;s more powerful features.
+This is not a production-grade chart. It is an example.
+The chart installs a simple nginx server according to the following pattern:
+ A ConfigMap is used to store the files the server will serve. (templates/configmap.yaml) A Deployment is used to create a Replica Set of nginx pods. (templates/deployment.yaml) A Service is used to create a gateway to the pods running in the replica set (templates/service.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Using_helm</title>
+    <link>https://docs.helm.sh/using_helm/</link>
+    <language>en-us</language>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/using_helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      <guid>https://docs.helm.sh/using_helm/</guid>
+      <description>
+
+&lt;h1 id=&#34;quickstart-guide&#34;&gt;Quickstart Guide&lt;/h1&gt;
+
+&lt;p&gt;This guide covers how you can quickly get started using Helm.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;The following prerequisites are required for a successful and properly secured use of Helm.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A Kubernetes cluster&lt;/li&gt;
+&lt;li&gt;Deciding what security configurations to apply to your installation, if any&lt;/li&gt;
+&lt;li&gt;Installing and configuring Helm and Tiller, the cluster-side service.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;install-kubernetes-or-have-access-to-a-cluster&#34;&gt;Install Kubernetes or have access to a cluster&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable release of Kubernetes, which in most cases is the second-latest minor release.&lt;/li&gt;
+&lt;li&gt;You should also have a local configured copy of &lt;code&gt;kubectl&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;NOTE: Kubernetes versions prior to 1.6 have limited or no support for role-based access controls (RBAC).&lt;/p&gt;
+
+&lt;p&gt;Helm will figure out where to install Tiller by reading your Kubernetes
+configuration file (usually &lt;code&gt;$HOME/.kube/config&lt;/code&gt;). This is the same file
+that &lt;code&gt;kubectl&lt;/code&gt; uses.&lt;/p&gt;
+
+&lt;p&gt;To find out which cluster Tiller would install to, you can run
+&lt;code&gt;kubectl config current-context&lt;/code&gt; or &lt;code&gt;kubectl cluster-info&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl config current-context
+my-cluster
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;understand-your-security-context&#34;&gt;Understand your Security Context&lt;/h3&gt;
+
+&lt;p&gt;As with all powerful tools, ensure you are installing it correctly for your scenario.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re using Helm on a cluster that you completely control, like minikube or a cluster on a private network in which sharing is not a concern, the default installation &amp;ndash; which applies no security configuration &amp;ndash; is fine, and it&amp;rsquo;s definitely the easiest. To install Helm without additional security steps, &lt;a href=&#34;#Install-Helm&#34;&gt;install Helm&lt;/a&gt; and then &lt;a href=&#34;#initialize-helm-and-install-tiller&#34;&gt;initialize Helm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, if your cluster is exposed to a larger network or if you share your cluster with others &amp;ndash; production clusters fall into this category &amp;ndash; you must take extra steps to secure your installation to prevent careless or malicious actors from damaging the cluster or its data. To apply configurations that secure Helm for use in production environments and other multi-tenant scenarios, see &lt;a href=&#34;./#securing-your-helm-installation&#34;&gt;Securing a Helm installation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If your cluster has Role-Based Access Control (RBAC) enabled, you may want
+to &lt;a href=&#34;./#rbac&#34;&gt;configure a service account and rules&lt;/a&gt; before proceeding.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-helm&#34;&gt;Install Helm&lt;/h2&gt;
+
+&lt;p&gt;Download a binary release of the Helm client. You can use tools like
+&lt;code&gt;homebrew&lt;/code&gt;, or look at &lt;a href=&#34;https://github.com/kubernetes/helm/releases&#34;&gt;the official releases page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more details, or for other options, see &lt;a href=&#34;../using_helm/#installing-helm&#34;&gt;the installation
+guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;initialize-helm-and-install-tiller&#34;&gt;Initialize Helm and Install Tiller&lt;/h2&gt;
+
+&lt;p&gt;Once you have Helm ready, you can initialize the local CLI and also
+install Tiller into your Kubernetes cluster in one step:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will install Tiller into the Kubernetes cluster you saw with
+&lt;code&gt;kubectl config current-context&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TIP:&lt;/strong&gt; Want to install into a different cluster? Use the
+&lt;code&gt;--kube-context&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TIP:&lt;/strong&gt; When you want to upgrade Tiller, just run &lt;code&gt;helm init --upgrade&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;By default, when Tiller is installed,it does not have authentication enabled.
+To learn more about configuring strong TLS authentication for Tiller, consult
+&lt;a href=&#34;./#using-ssl-between-helm-and-tiller&#34;&gt;the Tiller TLS guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-an-example-chart&#34;&gt;Install an Example Chart&lt;/h2&gt;
+
+&lt;p&gt;To install a chart, you can run the &lt;code&gt;helm install&lt;/code&gt; command. Helm has
+several ways to find and install a chart, but the easiest is to use one
+of the official &lt;code&gt;stable&lt;/code&gt; charts.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm repo update              # Make sure we get the latest list of charts
+$ helm install stable/mysql
+Released smiling-penguin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above, the &lt;code&gt;stable/mysql&lt;/code&gt; chart was released, and the name of
+our new release is &lt;code&gt;smiling-penguin&lt;/code&gt;. You get a simple idea of the
+features of this MySQL chart by running &lt;code&gt;helm inspect stable/mysql&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Whenever you install a chart, a new release is created. So one chart can
+be installed multiple times into the same cluster. And each can be
+independently managed and upgraded.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;helm install&lt;/code&gt; command is a very powerful command with many
+capabilities. To learn more about it, check out the &lt;a href=&#34;./#using_helm&#34;&gt;Using Helm
+Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;learn-about-releases&#34;&gt;Learn About Releases&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy to see what has been released using Helm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm ls
+NAME             VERSION   UPDATED                   STATUS    CHART
+smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;helm list&lt;/code&gt; function will show you a list of all deployed releases.&lt;/p&gt;
+
+&lt;h2 id=&#34;uninstall-a-release&#34;&gt;Uninstall a Release&lt;/h2&gt;
+
+&lt;p&gt;To uninstall a release, use the &lt;code&gt;helm delete&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm delete smiling-penguin
+Removed smiling-penguin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will uninstall &lt;code&gt;smiling-penguin&lt;/code&gt; from Kubernetes, but you will
+still be able to request information about that release:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm status smiling-penguin
+Status: DELETED
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because Helm tracks your releases even after you&amp;rsquo;ve deleted them, you
+can audit a cluster&amp;rsquo;s history, and even undelete a release (with &lt;code&gt;helm
+rollback&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;reading-the-help-text&#34;&gt;Reading the Help Text&lt;/h2&gt;
+
+&lt;p&gt;To learn more about the available Helm commands, use &lt;code&gt;helm help&lt;/code&gt; or type
+a command followed by the &lt;code&gt;-h&lt;/code&gt; flag:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm get -h
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;installing-helm&#34;&gt;Installing Helm&lt;/h1&gt;
+
+&lt;p&gt;There are two parts to Helm: The Helm client (&lt;code&gt;helm&lt;/code&gt;) and the Helm
+server (Tiller). This guide shows how to install the client, and then
+proceeds to show two ways to install the server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IMPORTANT&lt;/strong&gt;: If you are responsible for ensuring your cluster is a controlled environment, especially when resources are shared, it is strongly recommended installing Tiller using a secured configuration. For guidance, see &lt;a href=&#34;./#securing-your-helm-installation&#34;&gt;Securing your Helm Installation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-the-helm-client&#34;&gt;Installing the Helm Client&lt;/h2&gt;
+
+&lt;p&gt;The Helm client can be installed either from source, or from pre-built binary
+releases.&lt;/p&gt;
+
+&lt;h3 id=&#34;from-the-binary-releases&#34;&gt;From the Binary Releases&lt;/h3&gt;
+
+&lt;p&gt;Every &lt;a href=&#34;https://github.com/kubernetes/helm/releases&#34;&gt;release&lt;/a&gt; of Helm
+provides binary releases for a variety of OSes. These binary versions
+can be manually downloaded and installed.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download your &lt;a href=&#34;https://github.com/kubernetes/helm/releases&#34;&gt;desired version&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Unpack it (&lt;code&gt;tar -zxvf helm-v2.0.0-linux-amd64.tgz&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Find the &lt;code&gt;helm&lt;/code&gt; binary in the unpacked directory, and move it to its
+desired destination (&lt;code&gt;mv linux-amd64/helm /usr/local/bin/helm&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;From there, you should be able to run the client: &lt;code&gt;helm help&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;from-homebrew-macos&#34;&gt;From Homebrew (macOS)&lt;/h3&gt;
+
+&lt;p&gt;Members of the Kubernetes community have contributed a Helm formula build to
+Homebrew. This formula is generally up to date.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install kubernetes-helm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(Note: There is also a formula for emacs-helm, which is a different
+project.)&lt;/p&gt;
+
+&lt;h2 id=&#34;from-script&#34;&gt;From Script&lt;/h2&gt;
+
+&lt;p&gt;Helm now has an installer script that will automatically grab the latest version
+of the Helm client and &lt;a href=&#34;https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get&#34;&gt;install it locally&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can fetch that script, and then execute it locally. It&amp;rsquo;s well documented so
+that you can read through it and understand what it is doing before you run it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get &amp;gt; get_helm.sh
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yes, you can &lt;code&gt;curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash&lt;/code&gt; that if you want to live on the edge.&lt;/p&gt;
+
+&lt;h3 id=&#34;from-canary-builds&#34;&gt;From Canary Builds&lt;/h3&gt;
+
+&lt;p&gt;&amp;ldquo;Canary&amp;rdquo; builds are versions of the Helm software that are built from
+the latest master branch. They are not official releases, and may not be
+stable. However, they offer the opportunity to test the cutting edge
+features.&lt;/p&gt;
+
+&lt;p&gt;Canary Helm binaries are stored in the &lt;a href=&#34;https://kubernetes-helm.storage.googleapis.com&#34;&gt;Kubernetes Helm GCS bucket&lt;/a&gt;.
+Here are links to the common builds:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes-helm.storage.googleapis.com/helm-canary-linux-amd64.tar.gz&#34;&gt;Linux AMD64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes-helm.storage.googleapis.com/helm-canary-darwin-amd64.tar.gz&#34;&gt;macOS AMD64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes-helm.storage.googleapis.com/helm-canary-windows-amd64.zip&#34;&gt;Experimental Windows AMD64&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;from-source-linux-macos&#34;&gt;From Source (Linux, macOS)&lt;/h3&gt;
+
+&lt;p&gt;Building Helm from source is slightly more work, but is the best way to
+go if you want to test the latest (pre-release) Helm version.&lt;/p&gt;
+
+&lt;p&gt;You must have a working Go environment with
+&lt;a href=&#34;https://github.com/Masterminds/glide&#34;&gt;glide&lt;/a&gt; and Mercurial installed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ cd $GOPATH
+$ mkdir -p src/k8s.io
+$ cd src/k8s.io
+$ git clone https://github.com/kubernetes/helm.git
+$ cd helm
+$ make bootstrap build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;bootstrap&lt;/code&gt; target will attempt to install dependencies, rebuild the
+&lt;code&gt;vendor/&lt;/code&gt; tree, and validate configuration.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; target will compile &lt;code&gt;helm&lt;/code&gt; and place it in &lt;code&gt;bin/helm&lt;/code&gt;.
+Tiller is also compiled, and is placed in &lt;code&gt;bin/tiller&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-tiller&#34;&gt;Installing Tiller&lt;/h2&gt;
+
+&lt;p&gt;Tiller, the server portion of Helm, typically runs inside of your
+Kubernetes cluster. But for development, it can also be run locally, and
+configured to talk to a remote Kubernetes cluster.&lt;/p&gt;
+
+&lt;h3 id=&#34;easy-in-cluster-installation&#34;&gt;Easy In-Cluster Installation&lt;/h3&gt;
+
+&lt;p&gt;The easiest way to install &lt;code&gt;tiller&lt;/code&gt; into the cluster is simply to run
+&lt;code&gt;helm init&lt;/code&gt;. This will validate that &lt;code&gt;helm&lt;/code&gt;&amp;rsquo;s local environment is set
+up correctly (and set it up if necessary). Then it will connect to
+whatever cluster &lt;code&gt;kubectl&lt;/code&gt; connects to by default (&lt;code&gt;kubectl config
+view&lt;/code&gt;). Once it connects, it will install &lt;code&gt;tiller&lt;/code&gt; into the
+&lt;code&gt;kube-system&lt;/code&gt; namespace.&lt;/p&gt;
+
+&lt;p&gt;After &lt;code&gt;helm init&lt;/code&gt;, you should be able to run &lt;code&gt;kubectl get pods --namespace
+kube-system&lt;/code&gt; and see Tiller running.&lt;/p&gt;
+
+&lt;p&gt;You can explicitly tell &lt;code&gt;helm init&lt;/code&gt; to&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install the canary build with the &lt;code&gt;--canary-image&lt;/code&gt; flag&lt;/li&gt;
+&lt;li&gt;Install a particular image (version) with &lt;code&gt;--tiller-image&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install to a particular cluster with &lt;code&gt;--kube-context&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install into a particular namespace with &lt;code&gt;--tiller-namespace&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once Tiller is installed, running &lt;code&gt;helm version&lt;/code&gt; should show you both
+the client and server version. (If it shows only the client version,
+&lt;code&gt;helm&lt;/code&gt; cannot yet connect to the server. Use &lt;code&gt;kubectl&lt;/code&gt; to see if any
+&lt;code&gt;tiller&lt;/code&gt; pods are running.)&lt;/p&gt;
+
+&lt;p&gt;Helm will look for Tiller in the &lt;code&gt;kube-system&lt;/code&gt; namespace unless
+&lt;code&gt;--tiller-namespace&lt;/code&gt; or &lt;code&gt;TILLER_NAMESPACE&lt;/code&gt; is set.&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-tiller-canary-builds&#34;&gt;Installing Tiller Canary Builds&lt;/h3&gt;
+
+&lt;p&gt;Canary images are built from the &lt;code&gt;master&lt;/code&gt; branch. They may not be
+stable, but they offer you the chance to test out the latest features.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to install a canary image is to use &lt;code&gt;helm init&lt;/code&gt; with the
+&lt;code&gt;--canary-image&lt;/code&gt; flag:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init --canary-image
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will use the most recently built container image. You can always
+uninstall Tiller by deleting the Tiller deployment from the
+&lt;code&gt;kube-system&lt;/code&gt; namespace using &lt;code&gt;kubectl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;running-tiller-locally&#34;&gt;Running Tiller Locally&lt;/h3&gt;
+
+&lt;p&gt;For development, it is sometimes easier to work on Tiller locally, and
+configure it to connect to a remote Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;The process of building Tiller is explained above.&lt;/p&gt;
+
+&lt;p&gt;Once &lt;code&gt;tiller&lt;/code&gt; has been built, simply start it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ bin/tiller
+Tiller running on :44134
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When Tiller is running locally, it will attempt to connect to the
+Kubernetes cluster that is configured by &lt;code&gt;kubectl&lt;/code&gt;. (Run &lt;code&gt;kubectl config
+view&lt;/code&gt; to see which cluster that is.)&lt;/p&gt;
+
+&lt;p&gt;You must tell &lt;code&gt;helm&lt;/code&gt; to connect to this new local Tiller host instead of
+connecting to the one in-cluster. There are two ways to do this. The
+first is to specify the &lt;code&gt;--host&lt;/code&gt; option on the command line. The second
+is to set the &lt;code&gt;$HELM_HOST&lt;/code&gt; environment variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ export HELM_HOST=localhost:44134
+$ helm version # Should connect to localhost.
+Client: &amp;amp;version.Version{SemVer:&amp;quot;v2.0.0-alpha.4&amp;quot;, GitCommit:&amp;quot;db...&amp;quot;, GitTreeState:&amp;quot;dirty&amp;quot;}
+Server: &amp;amp;version.Version{SemVer:&amp;quot;v2.0.0-alpha.4&amp;quot;, GitCommit:&amp;quot;a5...&amp;quot;, GitTreeState:&amp;quot;dirty&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Importantly, even when running locally, Tiller will store release
+configuration in ConfigMaps inside of Kubernetes.&lt;/p&gt;
+
+&lt;h2 id=&#34;upgrading-tiller&#34;&gt;Upgrading Tiller&lt;/h2&gt;
+
+&lt;p&gt;As of Helm 2.2.0, Tiller can be upgraded using &lt;code&gt;helm init --upgrade&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For older versions of Helm, or for manual upgrades, you can use &lt;code&gt;kubectl&lt;/code&gt; to modify
+the Tiller image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ export TILLER_TAG=v2.0.0-beta.1        # Or whatever version you want
+$ kubectl --namespace=kube-system set image deployments/tiller-deploy tiller=gcr.io/kubernetes-helm/tiller:$TILLER_TAG
+deployment &amp;quot;tiller-deploy&amp;quot; image updated
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting &lt;code&gt;TILLER_TAG=canary&lt;/code&gt; will get the latest snapshot of master.&lt;/p&gt;
+
+&lt;h2 id=&#34;deleting-or-reinstalling-tiller&#34;&gt;Deleting or Reinstalling Tiller&lt;/h2&gt;
+
+&lt;p&gt;Because Tiller stores its data in Kubernetes ConfigMaps, you can safely
+delete and re-install Tiller without worrying about losing any data. The
+recommended way of deleting Tiller is with &lt;code&gt;kubectl delete deployment
+tiller-deploy --namespace kube-system&lt;/code&gt;, or more concisely &lt;code&gt;helm reset&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tiller can then be re-installed from the client with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;advanced-usage&#34;&gt;Advanced Usage&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;helm init&lt;/code&gt; provides additional flags for modifying Tiller&amp;rsquo;s deployment
+manifest before it is installed.&lt;/p&gt;
+
+&lt;h3 id=&#34;using-node-selectors&#34;&gt;Using &lt;code&gt;--node-selectors&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;--node-selectors&lt;/code&gt; flag allows us to specify the node labels required
+for scheduling the Tiller pod.&lt;/p&gt;
+
+&lt;p&gt;The example below will create the specified label under the nodeSelector
+property.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;helm init --node-selectors &amp;quot;beta.kubernetes.io/os&amp;quot;=&amp;quot;linux&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The installed deployment manifest will contain our node selector label.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+spec:
+  template:
+    spec:
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;using-override&#34;&gt;Using &lt;code&gt;--override&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;--override&lt;/code&gt; allows you to specify properties of Tiller&amp;rsquo;s
+deployment manifest. Unlike the &lt;code&gt;--set&lt;/code&gt; command used elsewhere in Helm,
+&lt;code&gt;helm init --override&lt;/code&gt; manipulates the specified properties of the final
+manifest (there is no &amp;ldquo;values&amp;rdquo; file). Therefore you may specify any valid
+value for any valid property in the deployment manifest.&lt;/p&gt;
+
+&lt;h4 id=&#34;override-annotation&#34;&gt;Override annotation&lt;/h4&gt;
+
+&lt;p&gt;In the example below we use &lt;code&gt;--override&lt;/code&gt; to add the revision property and set
+its value to 1.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;helm init --override metadata.annotations.&amp;quot;deployment\.kubernetes\.io/revision&amp;quot;=&amp;quot;1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: &amp;quot;1&amp;quot;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;override-affinity&#34;&gt;Override affinity&lt;/h4&gt;
+
+&lt;p&gt;In the example below we set properties for node affinity. Multiple
+&lt;code&gt;--override&lt;/code&gt; commands may be combined to modify different properties of the
+same list item.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;helm init --override &amp;quot;spec.template.spec.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].weight&amp;quot;=&amp;quot;1&amp;quot; --override &amp;quot;spec.template.spec.affinity.nodeAffinity.preferredDuringSchedulingIgnoredDuringExecution[0].preference.matchExpressions[0].key&amp;quot;=&amp;quot;e2e-az-name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The specified properties are combined into the
+&amp;ldquo;preferredDuringSchedulingIgnoredDuringExecution&amp;rdquo; property&amp;rsquo;s first
+list item.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+spec:
+  strategy: {}
+  template:
+    ...
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - preference:
+              matchExpressions:
+              - key: e2e-az-name
+                operator: &amp;quot;&amp;quot;
+            weight: 1
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;using-output&#34;&gt;Using &lt;code&gt;--output&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;--output&lt;/code&gt; flag allows us skip the installation of Tiller&amp;rsquo;s deployment
+manifest and simply output the deployment manifest to stdout in either
+JSON or YAML format. The output may then be modified with tools like &lt;code&gt;jq&lt;/code&gt;
+and installed manually with &lt;code&gt;kubectl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the example below we execute &lt;code&gt;helm init&lt;/code&gt; with the &lt;code&gt;--output json&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;helm init --output json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The Tiller installation is skipped and the manifest is output to stdout
+in JSON format.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;apiVersion&amp;quot;: &amp;quot;extensions/v1beta1&amp;quot;,
+&amp;quot;kind&amp;quot;: &amp;quot;Deployment&amp;quot;,
+&amp;quot;metadata&amp;quot;: {
+    &amp;quot;creationTimestamp&amp;quot;: null,
+    &amp;quot;labels&amp;quot;: {
+        &amp;quot;app&amp;quot;: &amp;quot;helm&amp;quot;,
+        &amp;quot;name&amp;quot;: &amp;quot;tiller&amp;quot;
+    },
+    &amp;quot;name&amp;quot;: &amp;quot;tiller-deploy&amp;quot;,
+    &amp;quot;namespace&amp;quot;: &amp;quot;kube-system&amp;quot;
+},
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;storage-backends&#34;&gt;Storage backends&lt;/h3&gt;
+
+&lt;p&gt;By default, &lt;code&gt;tiller&lt;/code&gt; stores release information in &lt;code&gt;ConfigMaps&lt;/code&gt; in the namespace
+where it is running. As of Helm 2.7.0, there is now a beta storage backend that
+uses &lt;code&gt;Secrets&lt;/code&gt; for storing release information. This was added for additional
+security in protecting charts in conjunction with the release of &lt;code&gt;Secret&lt;/code&gt;
+encryption in Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;To enable the secrets backend, you&amp;rsquo;ll need to init Tiller with the following
+options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;helm init --override &#39;spec.template.spec.containers[0].command&#39;=&#39;{/tiller,--storage=secret}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Currently, if you want to switch from the default backend to the secrets
+backend, you&amp;rsquo;ll have to do the migration for this on your own. When this backend
+graduates from beta, there will be a more official path of migration&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In most cases, installation is as simple as getting a pre-built &lt;code&gt;helm&lt;/code&gt; binary
+and running &lt;code&gt;helm init&lt;/code&gt;. This document covers additional cases for those
+who want to do more sophisticated things with Helm.&lt;/p&gt;
+
+&lt;p&gt;Once you have the Helm Client and Tiller successfully installed, you can
+move on to using Helm to manage charts.&lt;/p&gt;
+
+&lt;h1 id=&#34;kubernetes-distribution-guide&#34;&gt;Kubernetes Distribution Guide&lt;/h1&gt;
+
+&lt;p&gt;This document captures information about using Helm in specific Kubernetes
+environments.&lt;/p&gt;
+
+&lt;p&gt;We are trying to add more details to this document. Please contribute via Pull
+Requests if you can.&lt;/p&gt;
+
+&lt;h2 id=&#34;minikube&#34;&gt;MiniKube&lt;/h2&gt;
+
+&lt;p&gt;Helm is tested and known to work with &lt;a href=&#34;https://github.com/kubernetes/minikube&#34;&gt;minikube&lt;/a&gt;.
+It requires no additional configuration.&lt;/p&gt;
+
+&lt;h2 id=&#34;scripts-local-cluster-and-hyperkube&#34;&gt;&lt;code&gt;scripts/local-cluster&lt;/code&gt; and Hyperkube&lt;/h2&gt;
+
+&lt;p&gt;Hyperkube configured via &lt;code&gt;scripts/local-cluster.sh&lt;/code&gt; is known to work. For raw
+Hyperkube you may need to do some manual configuration.&lt;/p&gt;
+
+&lt;h2 id=&#34;gke&#34;&gt;GKE&lt;/h2&gt;
+
+&lt;p&gt;Google&amp;rsquo;s GKE hosted Kubernetes platform is known to work with Helm, and requires
+no additional configuration.&lt;/p&gt;
+
+&lt;h2 id=&#34;ubuntu-with-kubeadm&#34;&gt;Ubuntu with &amp;lsquo;kubeadm&amp;rsquo;&lt;/h2&gt;
+
+&lt;p&gt;Kubernetes bootstrapped with &lt;code&gt;kubeadm&lt;/code&gt; is known to work on the following Linux
+distributions:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 16.04&lt;/li&gt;
+&lt;li&gt;Fedora release 25&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some versions of Helm (v2.0.0-beta2) require you to &lt;code&gt;export KUBECONFIG=/etc/kubernetes/admin.conf&lt;/code&gt;
+or create a &lt;code&gt;~/.kube/config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;container-linux-by-coreos&#34;&gt;Container Linux by CoreOS&lt;/h2&gt;
+
+&lt;p&gt;Helm requires that kubelet have access to a copy of the &lt;code&gt;socat&lt;/code&gt; program to proxy connections to the Tiller API. On Container Linux the Kubelet runs inside of a &lt;a href=&#34;https://github.com/kubernetes/kubernetes/tree/master/cluster/images/hyperkube&#34;&gt;hyperkube&lt;/a&gt; container image that has socat. So, even though Container Linux doesn&amp;rsquo;t ship &lt;code&gt;socat&lt;/code&gt; the container filesystem running kubelet does have socat. To learn more read the &lt;a href=&#34;https://coreos.com/kubernetes/docs/latest/kubelet-wrapper.html&#34;&gt;Kubelet Wrapper&lt;/a&gt; docs.&lt;/p&gt;
+
+&lt;h2 id=&#34;openshift&#34;&gt;Openshift&lt;/h2&gt;
+
+&lt;p&gt;Helm works straightforward on OpenShift Online, OpenShift Dedicated, OpenShift Container Platform (version &amp;gt;= 3.6) or OpenShift Origin (version &amp;gt;= 3.6). To learn more read &lt;a href=&#34;https://blog.openshift.com/getting-started-helm-openshift/&#34;&gt;this blog&lt;/a&gt; post.&lt;/p&gt;
+
+&lt;h2 id=&#34;platform9&#34;&gt;Platform9&lt;/h2&gt;
+
+&lt;p&gt;Helm Client and Helm Server (Tiller) are pre-installed with &lt;a href=&#34;https://platform9.com/managed-kubernetes/?utm_source=helm_distro_notes&#34;&gt;Platform9 Managed Kubernetes&lt;/a&gt;. Platform9 provides access to all official Helm charts through the App Catalog UI and native Kubernetes CLI. Additional repositories can be manually added. Further details are availble in this &lt;a href=&#34;https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes&#34;&gt;Platform9 App Catalog article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation-frequently-asked-questions&#34;&gt;Installation: Frequently Asked Questions&lt;/h1&gt;
+
+&lt;p&gt;This section tracks some of the more frequently encountered issues with installing
+or getting started with Helm.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We&amp;rsquo;d love your help&lt;/strong&gt; making this document better. To add, correct, or remove
+information, &lt;a href=&#34;https://github.com/kubernetes/helm/issues&#34;&gt;file an issue&lt;/a&gt; or
+send us a pull request.&lt;/p&gt;
+
+&lt;h2 id=&#34;downloading&#34;&gt;Downloading&lt;/h2&gt;
+
+&lt;p&gt;I want to know more about my downloading options.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: I can&amp;rsquo;t get to GitHub releases of the newest Helm. Where are they?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: We no longer use GitHub releases. Binaries are now stored in a
+&lt;a href=&#34;https://kubernetes-helm.storage.googleapis.com&#34;&gt;GCS public bucket&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Why aren&amp;rsquo;t there Debian/Fedora/&amp;hellip; native packages of Helm?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;d love to provide these or point you toward a trusted provider. If you&amp;rsquo;re
+interested in helping, we&amp;rsquo;d love it. This is how the Homebrew formula was
+started.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Why do you provide a &lt;code&gt;curl ...|bash&lt;/code&gt; script?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: There is a script in our repository (&lt;code&gt;scripts/get&lt;/code&gt;) that can be executed as
+a &lt;code&gt;curl ..|bash&lt;/code&gt; script. The transfers are all protected by HTTPS, and the script
+does some auditing of the packages it fetches. However, the script has all the
+usual dangers of any shell script.&lt;/p&gt;
+
+&lt;p&gt;We provide it because it is useful, but we suggest that users carefully read the
+script first. What we&amp;rsquo;d really like, though, are better packaged releases of
+Helm.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing&#34;&gt;Installing&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m trying to install Helm/Tiller, but something is not right.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: How do I put the Helm client files somewhere other than ~/.helm?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Set the &lt;code&gt;$HELM_HOME&lt;/code&gt; environment variable, and then run &lt;code&gt;helm init&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;export HELM_HOME=/some/path
+helm init --client-only
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that if you have existing repositories, you will need to re-add them
+with &lt;code&gt;helm repo add...&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: How do I configure Helm, but not install Tiller?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: By default, &lt;code&gt;helm init&lt;/code&gt; will ensure that the local &lt;code&gt;$HELM_HOME&lt;/code&gt; is configured,
+and then install Tiller on your cluster. To locally configure, but not install
+Tiller, use &lt;code&gt;helm init --client-only&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: How do I manually install Tiller on the cluster?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: Tiller is installed as a Kubernetes &lt;code&gt;deployment&lt;/code&gt;. You can get the manifest
+by running &lt;code&gt;helm init --dry-run --debug&lt;/code&gt;, and then manually install it with
+&lt;code&gt;kubectl&lt;/code&gt;. It is suggested that you do not remove or change the labels on that
+deployment, as they are sometimes used by supporting scripts and tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Why do I get &lt;code&gt;Error response from daemon: target is unknown&lt;/code&gt; during Tiller install?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: Users have reported being unable to install Tiller on Kubernetes instances that
+are using Docker 1.13.0. The root cause of this was a bug in Docker that made
+that one version incompatible with images pushed to the Docker registry by
+earlier versions of Docker.&lt;/p&gt;
+
+&lt;p&gt;This &lt;a href=&#34;https://github.com/docker/docker/issues/30083&#34;&gt;issue&lt;/a&gt; was fixed shortly
+after the release, and is available in Docker 1.13.1-RC1 and later.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;I successfully installed Helm/Tiller but I can&amp;rsquo;t use it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Trying to use Helm, I get the error &amp;ldquo;client transport was broken&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;E1014 02:26:32.885226   16143 portforward.go:329] an error occurred forwarding 37008 -&amp;gt; 44134: error forwarding port 44134 to pod tiller-deploy-2117266891-e4lev_kube-system, uid : unable to do port forwarding: socat not found.
+2016/10/14 02:26:32 transport: http2Client.notifyError got notified that the client transport was broken EOF.
+Error: transport is closing
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A: This is usually a good indication that Kubernetes is not set up to allow port forwarding.&lt;/p&gt;
+
+&lt;p&gt;Typically, the missing piece is &lt;code&gt;socat&lt;/code&gt;. If you are running CoreOS, we have been
+told that it may have been misconfigured on installation. The CoreOS team
+recommends reading this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://coreos.com/kubernetes/docs/latest/kubelet-wrapper.html&#34;&gt;https://coreos.com/kubernetes/docs/latest/kubelet-wrapper.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here are a few resolved issues that may help you get started:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/helm/issues/1371&#34;&gt;https://github.com/kubernetes/helm/issues/1371&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/helm/issues/966&#34;&gt;https://github.com/kubernetes/helm/issues/966&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Trying to use Helm, I get the error &amp;ldquo;lookup XXXXX on 8.8.8.8:53: no such host&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error: Error forwarding ports: error upgrading connection: dial tcp: lookup kube-4gb-lon1-02 on 8.8.8.8:53: no such host
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A: We have seen this issue with Ubuntu and Kubeadm in multi-node clusters. The
+issue is that the nodes expect certain DNS records to be obtainable via global
+DNS. Until this is resolved upstream, you can work around the issue as
+follows. On each of the control plane nodes:&lt;/p&gt;
+
+&lt;p&gt;1) Add entries to &lt;code&gt;/etc/hosts&lt;/code&gt;, mapping your hostnames to their public IPs
+2) Install &lt;code&gt;dnsmasq&lt;/code&gt; (e.g. &lt;code&gt;apt install -y dnsmasq&lt;/code&gt;)
+3) Remove the k8s api server container (kubelet will recreate it)
+4) Then &lt;code&gt;systemctl restart docker&lt;/code&gt; (or reboot the node) for it to pick up the /etc/resolv.conf changes&lt;/p&gt;
+
+&lt;p&gt;See this issue for more information: &lt;a href=&#34;https://github.com/kubernetes/helm/issues/1455&#34;&gt;https://github.com/kubernetes/helm/issues/1455&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: On GKE (Google Container Engine) I get &amp;ldquo;No SSH tunnels currently open&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error: Error forwarding ports: error upgrading connection: No SSH tunnels currently open. Were the targets able to accept an ssh-key for user &amp;quot;gke-[redacted]&amp;quot;?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another variation of the error message is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Unable to connect to the server: x509: certificate signed by unknown authority
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A: The issue is that your local Kubernetes config file must have the correct credentials.&lt;/p&gt;
+
+&lt;p&gt;When you create a cluster on GKE, it will give you credentials, including SSL
+certificates and certificate authorities. These need to be stored in a Kubernetes
+config file (Default: &lt;code&gt;~/.kube/config&lt;/code&gt; so that &lt;code&gt;kubectl&lt;/code&gt; and &lt;code&gt;helm&lt;/code&gt; can access
+them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: When I run a Helm command, I get an error about the tunnel or proxy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A: Helm uses the Kubernetes proxy service to connect to the Tiller server.
+If the command &lt;code&gt;kubectl proxy&lt;/code&gt; does not work for you, neither will Helm.
+Typically, the error is related to a missing &lt;code&gt;socat&lt;/code&gt; service.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: Tiller crashes with a panic&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When I run a command on Helm, Tiller crashes with an error like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Tiller is listening on :44134
+Probes server is listening on :44135
+Storage driver is ConfigMap
+Cannot initialize Kubernetes connection: the server has asked for the client to provide credentials 2016-12-20 15:18:40.545739 I | storage.go:37: Getting release &amp;quot;bailing-chinchilla&amp;quot; (v1) from storage
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x8053d5]
+
+goroutine 77 [running]:
+panic(0x1abbfc0, 0xc42000a040)
+        /usr/local/go/src/runtime/panic.go:500 +0x1a1
+k8s.io/helm/vendor/k8s.io/kubernetes/pkg/client/unversioned.(*ConfigMaps).Get(0xc4200c6200, 0xc420536100, 0x15, 0x1ca7431, 0x6, 0xc42016b6a0)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/vendor/k8s.io/kubernetes/pkg/client/unversioned/configmap.go:58 +0x75
+k8s.io/helm/pkg/storage/driver.(*ConfigMaps).Get(0xc4201d6190, 0xc420536100, 0x15, 0xc420536100, 0x15, 0xc4205360c0)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/storage/driver/cfgmaps.go:69 +0x62
+k8s.io/helm/pkg/storage.(*Storage).Get(0xc4201d61a0, 0xc4205360c0, 0x12, 0xc400000001, 0x12, 0x0, 0xc420200070)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/storage/storage.go:38 +0x160
+k8s.io/helm/pkg/tiller.(*ReleaseServer).uniqName(0xc42002a000, 0x0, 0x0, 0xc42016b800, 0xd66a13, 0xc42055a040, 0xc420558050, 0xc420122001)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/tiller/release_server.go:577 +0xd7
+k8s.io/helm/pkg/tiller.(*ReleaseServer).prepareRelease(0xc42002a000, 0xc42027c1e0, 0xc42002a001, 0xc42016bad0, 0xc42016ba08)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/tiller/release_server.go:630 +0x71
+k8s.io/helm/pkg/tiller.(*ReleaseServer).InstallRelease(0xc42002a000, 0x7f284c434068, 0xc420250c00, 0xc42027c1e0, 0x0, 0x31a9, 0x31a9)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/tiller/release_server.go:604 +0x78
+k8s.io/helm/pkg/proto/hapi/services._ReleaseService_InstallRelease_Handler(0x1c51f80, 0xc42002a000, 0x7f284c434068, 0xc420250c00, 0xc42027c190, 0x0, 0x0, 0x0, 0x0, 0x0)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/pkg/proto/hapi/services/tiller.pb.go:747 +0x27d
+k8s.io/helm/vendor/google.golang.org/grpc.(*Server).processUnaryRPC(0xc4202f3ea0, 0x28610a0, 0xc420078000, 0xc420264690, 0xc420166150, 0x288cbe8, 0xc420250bd0, 0x0, 0x0)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/vendor/google.golang.org/grpc/server.go:608 +0xc50
+k8s.io/helm/vendor/google.golang.org/grpc.(*Server).handleStream(0xc4202f3ea0, 0x28610a0, 0xc420078000, 0xc420264690, 0xc420250bd0)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/vendor/google.golang.org/grpc/server.go:766 +0x6b0
+k8s.io/helm/vendor/google.golang.org/grpc.(*Server).serveStreams.func1.1(0xc420124710, 0xc4202f3ea0, 0x28610a0, 0xc420078000, 0xc420264690)
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/vendor/google.golang.org/grpc/server.go:419 +0xab
+created by k8s.io/helm/vendor/google.golang.org/grpc.(*Server).serveStreams.func1
+        /home/ubuntu/.go_workspace/src/k8s.io/helm/vendor/google.golang.org/grpc/server.go:420 +0xa3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A: Check your security settings for Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;A panic in Tiller is almost always the result of a failure to negotiate with the
+Kubernetes API server (at which point Tiller can no longer do anything useful, so
+it panics and exits).&lt;/p&gt;
+
+&lt;p&gt;Often, this is a result of authentication failing because the Pod in which Tiller
+is running does not have the right token.&lt;/p&gt;
+
+&lt;p&gt;To fix this, you will need to change your Kubernetes configuration. Make sure
+that &lt;code&gt;--service-account-private-key-file&lt;/code&gt; from &lt;code&gt;controller-manager&lt;/code&gt; and
+&lt;code&gt;--service-account-key-file&lt;/code&gt; from apiserver point to the &lt;em&gt;same&lt;/em&gt; x509 RSA key.&lt;/p&gt;
+
+&lt;h2 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h2&gt;
+
+&lt;p&gt;My Helm used to work, then I upgrade. Now it is broken.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: After upgrade, I get the error &amp;ldquo;Client version is incompatible&amp;rdquo;. What&amp;rsquo;s wrong?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tiller and Helm have to negotiate a common version to make sure that they can safely
+communicate without breaking API assumptions. That error means that the version
+difference is too great to safely continue. Typically, you need to upgrade
+Tiller manually for this.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;./#install&#34;&gt;Installation Guide&lt;/a&gt; has definitive information about safely
+upgrading Helm and Tiller.&lt;/p&gt;
+
+&lt;p&gt;The rules for version numbers are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pre-release versions are incompatible with everything else. &lt;code&gt;Alpha.1&lt;/code&gt; is incompatible with &lt;code&gt;Alpha.2&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Patch revisions &lt;em&gt;are compatible&lt;/em&gt;: 1.2.3 is compatible with 1.2.4&lt;/li&gt;
+&lt;li&gt;Minor revisions &lt;em&gt;are not compatible&lt;/em&gt;: 1.2.0 is not compatible with 1.3.0,
+though we may relax this constraint in the future.&lt;/li&gt;
+&lt;li&gt;Major revisions &lt;em&gt;are not compatible&lt;/em&gt;: 1.0.0 is not compatible with 2.0.0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;uninstalling&#34;&gt;Uninstalling&lt;/h2&gt;
+
+&lt;p&gt;I am trying to remove stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: When I delete the Tiller deployment, how come all the releases are still there?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Releases are stored in ConfigMaps inside of the &lt;code&gt;kube-system&lt;/code&gt; namespace. You will
+have to manually delete them to get rid of the record.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q: I want to delete my local Helm. Where are all its files?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Along with the &lt;code&gt;helm&lt;/code&gt; binary, Helm stores some files in &lt;code&gt;$HELM_HOME&lt;/code&gt;, which is
+located by default in &lt;code&gt;~/.helm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;using-helm&#34;&gt;Using Helm&lt;/h1&gt;
+
+&lt;p&gt;This guide explains the basics of using Helm (and Tiller) to manage
+packages on your Kubernetes cluster. It assumes that you have already
+&lt;a href=&#34;./#install&#34;&gt;installed&lt;/a&gt; the Helm client and the Tiller server (typically by &lt;code&gt;helm
+init&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;If you are simply interested in running a few quick commands, you may
+wish to begin with the &lt;a href=&#34;./#quickstart&#34;&gt;Quickstart Guide&lt;/a&gt;. This chapter
+covers the particulars of Helm commands, and explains how to use Helm.&lt;/p&gt;
+
+&lt;h2 id=&#34;three-big-concepts&#34;&gt;Three Big Concepts&lt;/h2&gt;
+
+&lt;p&gt;A &lt;em&gt;Chart&lt;/em&gt; is a Helm package. It contains all of the resource definitions
+necessary to run an application, tool, or service inside of a Kubernetes
+cluster. Think of it like the Kubernetes equivalent of a Homebrew formula,
+an Apt dpkg, or a Yum RPM file.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;Repository&lt;/em&gt; is the place where charts can be collected and shared.
+It&amp;rsquo;s like Perl&amp;rsquo;s &lt;a href=&#34;http://www.cpan.org&#34;&gt;CPAN archive&lt;/a&gt; or the
+&lt;a href=&#34;https://admin.fedoraproject.org/pkgdb/&#34;&gt;Fedora Package Database&lt;/a&gt;, but for
+Kubernetes packages.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;Release&lt;/em&gt; is an instance of a chart running in a Kubernetes cluster.
+One chart can often be installed many times into the same cluster. And
+each time it is installed, a new &lt;em&gt;release&lt;/em&gt; is created. Consider a MySQL
+chart. If you want two databases running in your cluster, you can
+install that chart twice. Each one will have its own &lt;em&gt;release&lt;/em&gt;, which
+will in turn have its own &lt;em&gt;release name&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;With these concepts in mind, we can now explain Helm like this:&lt;/p&gt;
+
+&lt;p&gt;Helm installs &lt;em&gt;charts&lt;/em&gt; into Kubernetes, creating a new &lt;em&gt;release&lt;/em&gt; for
+each installation. And to find new charts, you can search Helm chart
+&lt;em&gt;repositories&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;helm-search-finding-charts&#34;&gt;&amp;lsquo;helm search&amp;rsquo;: Finding Charts&lt;/h2&gt;
+
+&lt;p&gt;When you first install Helm, it is preconfigured to talk to the official
+Kubernetes charts repository. This repository contains a number of
+carefully curated and maintained charts. This chart repository is named
+&lt;code&gt;stable&lt;/code&gt; by default.&lt;/p&gt;
+
+&lt;p&gt;You can see which charts are available by running &lt;code&gt;helm search&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm search
+NAME                 	VERSION 	DESCRIPTION
+stable/drupal   	0.3.2   	One of the most versatile open source content m...
+stable/jenkins  	0.1.0   	A Jenkins Helm chart for Kubernetes.
+stable/mariadb  	0.5.1   	Chart for MariaDB
+stable/mysql    	0.1.0   	Chart for MySQL
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With no filter, &lt;code&gt;helm search&lt;/code&gt; shows you all of the available charts. You
+can narrow down your results by searching with a filter:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm search mysql
+NAME               	VERSION	DESCRIPTION
+stable/mysql  	0.1.0  	Chart for MySQL
+stable/mariadb	0.5.1  	Chart for MariaDB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you will only see the results that match your filter.&lt;/p&gt;
+
+&lt;p&gt;Why is
+&lt;code&gt;mariadb&lt;/code&gt; in the list? Because its package description relates it to
+MySQL. We can use &lt;code&gt;helm inspect chart&lt;/code&gt; to see this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm inspect stable/mariadb
+Fetched stable/mariadb to mariadb-0.5.1.tgz
+description: Chart for MariaDB
+engine: gotpl
+home: https://mariadb.org
+keywords:
+- mariadb
+- mysql
+- database
+- sql
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Search is a good way to find available packages. Once you have found a
+package you want to install, you can use &lt;code&gt;helm install&lt;/code&gt; to install it.&lt;/p&gt;
+
+&lt;h2 id=&#34;helm-install-installing-a-package&#34;&gt;&amp;lsquo;helm install&amp;rsquo;: Installing a Package&lt;/h2&gt;
+
+&lt;p&gt;To install a new package, use the &lt;code&gt;helm install&lt;/code&gt; command. At its
+simplest, it takes only one argument: The name of the chart.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm install stable/mariadb
+Fetched stable/mariadb-0.3.0 to /Users/mattbutcher/Code/Go/src/k8s.io/helm/mariadb-0.3.0.tgz
+happy-panda
+Last Deployed: Wed Sep 28 12:32:28 2016
+Namespace: default
+Status: DEPLOYED
+
+Resources:
+==&amp;gt; extensions/Deployment
+NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+happy-panda-mariadb   1         0         0            0           1s
+
+==&amp;gt; v1/Secret
+NAME                     TYPE      DATA      AGE
+happy-panda-mariadb   Opaque    2         1s
+
+==&amp;gt; v1/Service
+NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+happy-panda-mariadb   10.0.0.70    &amp;lt;none&amp;gt;        3306/TCP   1s
+
+
+Notes:
+MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
+happy-panda-mariadb.default.svc.cluster.local
+
+To connect to your database run the following command:
+
+   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now the &lt;code&gt;mariadb&lt;/code&gt; chart is installed. Note that installing a chart
+creates a new &lt;em&gt;release&lt;/em&gt; object. The release above is named
+&lt;code&gt;happy-panda&lt;/code&gt;. (If you want to use your own release name, simply use the
+&lt;code&gt;--name&lt;/code&gt; flag on &lt;code&gt;helm install&lt;/code&gt;.)&lt;/p&gt;
+
+&lt;p&gt;During installation, the &lt;code&gt;helm&lt;/code&gt; client will print useful information
+about which resources were created, what the state of the release is,
+and also whether there are additional configuration steps you can or
+should take.&lt;/p&gt;
+
+&lt;p&gt;Helm does not wait until all of the resources are running before it
+exits. Many charts require Docker images that are over 600M in size, and
+may take a long time to install into the cluster.&lt;/p&gt;
+
+&lt;p&gt;To keep track of a release&amp;rsquo;s state, or to re-read configuration
+information, you can use &lt;code&gt;helm status&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm status happy-panda
+Last Deployed: Wed Sep 28 12:32:28 2016
+Namespace: default
+Status: DEPLOYED
+
+Resources:
+==&amp;gt; v1/Service
+NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+happy-panda-mariadb   10.0.0.70    &amp;lt;none&amp;gt;        3306/TCP   4m
+
+==&amp;gt; extensions/Deployment
+NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+happy-panda-mariadb   1         1         1            1           4m
+
+==&amp;gt; v1/Secret
+NAME                     TYPE      DATA      AGE
+happy-panda-mariadb   Opaque    2         4m
+
+
+Notes:
+MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
+happy-panda-mariadb.default.svc.cluster.local
+
+To connect to your database run the following command:
+
+   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above shows the current state of your release.&lt;/p&gt;
+
+&lt;h3 id=&#34;customizing-the-chart-before-installing&#34;&gt;Customizing the Chart Before Installing&lt;/h3&gt;
+
+&lt;p&gt;Installing the way we have here will only use the default configuration
+options for this chart. Many times, you will want to customize the chart
+to use your preferred configuration.&lt;/p&gt;
+
+&lt;p&gt;To see what options are configurable on a chart, use &lt;code&gt;helm inspect
+values&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;helm inspect values stable/mariadb
+Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/k8s.io/helm/mariadb-0.3.0.tgz
+## Bitnami MariaDB image version
+## ref: https://hub.docker.com/r/bitnami/mariadb/tags/
+##
+## Default: none
+imageTag: 10.1.14-r3
+
+## Specify a imagePullPolicy
+## Default to &#39;Always&#39; if imageTag is &#39;latest&#39;, else set to &#39;IfNotPresent&#39;
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+# imagePullPolicy:
+
+## Specify password for root user
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
+##
+# mariadbRootPassword:
+
+## Create a database user
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
+##
+# mariadbUser:
+# mariadbPassword:
+
+## Create a database
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
+##
+# mariadbDatabase:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can then override any of these settings in a YAML formatted file,
+and then pass that file during installation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ echo &#39;{mariadbUser: user0, mariadbDatabase: user0db}&#39; &amp;gt; config.yaml
+$ helm install -f config.yaml stable/mariadb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above will create a default MariaDB user with the name &lt;code&gt;user0&lt;/code&gt;, and
+grant this user access to a newly created &lt;code&gt;user0db&lt;/code&gt; database, but will
+accept all the rest of the defaults for that chart.&lt;/p&gt;
+
+&lt;p&gt;There are two ways to pass configuration data during install:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--values&lt;/code&gt; (or &lt;code&gt;-f&lt;/code&gt;): Specify a YAML file with overrides. This can be specified multiple times
+and the rightmost file will take precedence&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--set&lt;/code&gt;: Specify overrides on the command line.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If both are used, &lt;code&gt;--set&lt;/code&gt; values are merged into &lt;code&gt;--values&lt;/code&gt; with higher precedence.
+Overrides specified with &lt;code&gt;--set&lt;/code&gt; are persisted in a configmap. Values that have been
+&lt;code&gt;--set&lt;/code&gt; can be viewed for a given release with &lt;code&gt;helm get values &amp;lt;release-name&amp;gt;&lt;/code&gt;.
+Values that have been &lt;code&gt;--set&lt;/code&gt; can be cleared by running &lt;code&gt;helm upgrade&lt;/code&gt; with &lt;code&gt;--reset-values&lt;/code&gt;
+specified.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-format-and-limitations-of-set&#34;&gt;The Format and Limitations of &lt;code&gt;--set&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;--set&lt;/code&gt; option takes zero or more name/value pairs. At its simplest, it is
+used like this: &lt;code&gt;--set name=value&lt;/code&gt;. The YAML equivalent of that is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Multiple values are separated by &lt;code&gt;,&lt;/code&gt; characters. So &lt;code&gt;--set a=b,c=d&lt;/code&gt; becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;a: b
+c: d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More complex expressions are supported. For example, &lt;code&gt;--set outer.inner=value&lt;/code&gt; is
+translated into this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;outer:
+  inner: value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lists can be expressed by enclosing values in &lt;code&gt;{&lt;/code&gt; and &lt;code&gt;}&lt;/code&gt;. For example,
+&lt;code&gt;--set name={a, b, c}&lt;/code&gt; translates to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name:
+  - a
+  - b
+  - c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As of Helm 2.5.0, it is possible to access list items using an array index syntax.
+For example, &lt;code&gt;--set servers[0].port=80&lt;/code&gt; becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;servers:
+  - port: 80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Multiple values can be set this way. The line &lt;code&gt;--set servers[0].port=80,servers[0].host=example&lt;/code&gt; becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;servers:
+  - port: 80
+    host: example
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sometimes you need to use special characters in your &lt;code&gt;--set&lt;/code&gt; lines. You can use
+a backslash to escape the characters; &lt;code&gt;--set name=value1\,value2&lt;/code&gt; will become:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;name: &amp;quot;value1,value2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Similarly, you can escape dot sequences as well, which may come in handy when charts use the
+&lt;code&gt;toYaml&lt;/code&gt; function to parse annotations, labels and node selectors. The syntax for
+&lt;code&gt;--set nodeSelector.&amp;quot;kubernetes\.io/role&amp;quot;=master&lt;/code&gt; becomes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;nodeSelector:
+  kubernetes.io/role: master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deeply nested data structures can be difficult to express using &lt;code&gt;--set&lt;/code&gt;. Chart
+designers are encouraged to consider the &lt;code&gt;--set&lt;/code&gt; usage when designing the format
+of a &lt;code&gt;values.yaml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&#34;more-installation-methods&#34;&gt;More Installation Methods&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;helm install&lt;/code&gt; command can install from several sources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A chart repository (as we&amp;rsquo;ve seen above)&lt;/li&gt;
+&lt;li&gt;A local chart archive (&lt;code&gt;helm install foo-0.1.1.tgz&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;An unpacked chart directory (&lt;code&gt;helm install path/to/foo&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;A full URL (&lt;code&gt;helm install https://example.com/charts/foo-1.2.3.tgz&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure&#34;&gt;&amp;lsquo;helm upgrade&amp;rsquo; and &amp;lsquo;helm rollback&amp;rsquo;: Upgrading a Release, and Recovering on Failure&lt;/h2&gt;
+
+&lt;p&gt;When a new version of a chart is released, or when you want to change
+the configuration of your release, you can use the &lt;code&gt;helm upgrade&lt;/code&gt;
+command.&lt;/p&gt;
+
+&lt;p&gt;An upgrade takes an existing release and upgrades it according to the
+information you provide. Because Kubernetes charts can be large and
+complex, Helm tries to perform the least invasive upgrade. It will only
+update things that have changed since the last release.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm upgrade -f panda.yaml happy-panda stable/mariadb
+Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/k8s.io/helm/mariadb-0.3.0.tgz
+happy-panda has been upgraded. Happy Helming!
+Last Deployed: Wed Sep 28 12:47:54 2016
+Namespace: default
+Status: DEPLOYED
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above case, the &lt;code&gt;happy-panda&lt;/code&gt; release is upgraded with the same
+chart, but with a new YAML file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;mariadbUser: user1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can use &lt;code&gt;helm get values&lt;/code&gt; to see whether that new setting took
+effect.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm get values happy-panda
+mariadbUser: user1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;helm get&lt;/code&gt; command is a useful tool for looking at a release in the
+cluster. And as we can see above, it shows that our new values from
+&lt;code&gt;panda.yaml&lt;/code&gt; were deployed to the cluster.&lt;/p&gt;
+
+&lt;p&gt;Now, if something does not go as planned during a release, it is easy to
+roll back to a previous release using &lt;code&gt;helm rollback [RELEASE] [REVISION]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm rollback happy-panda 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above rolls back our happy-panda to its very first release version.
+A release version is an incremental revision. Every time an install,
+upgrade, or rollback happens, the revision number is incremented by 1.
+The first revision number is always 1. And we can use &lt;code&gt;helm history [RELEASE]&lt;/code&gt;
+to see revision numbers for a certain release.&lt;/p&gt;
+
+&lt;h2 id=&#34;helpful-options-for-install-upgrade-rollback&#34;&gt;Helpful Options for Install/Upgrade/Rollback&lt;/h2&gt;
+
+&lt;p&gt;There are several other helpful options you can specify for customizing the
+behavior of Helm during an install/upgrade/rollback. Please note that this
+is not a full list of cli flags. To see a description of all flags, just run
+&lt;code&gt;helm &amp;lt;command&amp;gt; --help&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--timeout&lt;/code&gt;: A value in seconds to wait for Kubernetes commands to complete
+This defaults to 300 (5 minutes)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--wait&lt;/code&gt;: Waits until all Pods are in a ready state, PVCs are bound, Deployments
+have minimum (&lt;code&gt;Desired&lt;/code&gt; minus &lt;code&gt;maxUnavailable&lt;/code&gt;) Pods in ready state and
+Services have an IP address (and Ingress if a &lt;code&gt;LoadBalancer&lt;/code&gt;) before
+marking the release as successful. It will wait for as long as the
+&lt;code&gt;--timeout&lt;/code&gt; value. If timeout is reached, the release will be marked as
+&lt;code&gt;FAILED&lt;/code&gt;. Note: In scenario where Deployment has &lt;code&gt;replicas&lt;/code&gt; set to 1 and
+&lt;code&gt;maxUnavailable&lt;/code&gt; is not set to 0 as part of rolling update strategy,
+&lt;code&gt;--wait&lt;/code&gt; will return as ready as it has satisfied the minimum Pod in ready condition.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--no-hooks&lt;/code&gt;: This skips running hooks for the command&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--recreate-pods&lt;/code&gt; (only available for &lt;code&gt;upgrade&lt;/code&gt; and &lt;code&gt;rollback&lt;/code&gt;): This flag
+will cause all pods to be recreated (with the exception of pods belonging to
+deployments)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;helm-delete-deleting-a-release&#34;&gt;&amp;lsquo;helm delete&amp;rsquo;: Deleting a Release&lt;/h2&gt;
+
+&lt;p&gt;When it is time to uninstall or delete a release from the cluster, use
+the &lt;code&gt;helm delete&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm delete happy-panda
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will remove the release from the cluster. You can see all of your
+currently deployed releases with the &lt;code&gt;helm list&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ helm list
+NAME           	VERSION	UPDATED                        	STATUS         	CHART
+inky-cat       	1      	Wed Sep 28 12:59:46 2016       	DEPLOYED       	alpine-0.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From the output above, we can see that the &lt;code&gt;happy-panda&lt;/code&gt; release was
+deleted.&lt;/p&gt;
+
+&lt;p&gt;However, Helm always keeps records of what releases happened. Need to
+see the deleted releases? &lt;code&gt;helm list --deleted&lt;/code&gt; shows those, and &lt;code&gt;helm
+list --all&lt;/code&gt; shows all of the releases (deleted and currently deployed,
+as well as releases that failed):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;⇒  helm list --all
+NAME           	VERSION	UPDATED                        	STATUS         	CHART
+happy-panda   	2      	Wed Sep 28 12:47:54 2016       	DELETED        	mariadb-0.3.0
+inky-cat       	1      	Wed Sep 28 12:59:46 2016       	DEPLOYED       	alpine-0.1.0
+kindred-angelf 	2      	Tue Sep 27 16:16:10 2016       	DELETED        	alpine-0.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because Helm keeps records of deleted releases, a release name cannot be
+re-used. (If you &lt;em&gt;really&lt;/em&gt; need to re-use a release name, you can use the
+&lt;code&gt;--replace&lt;/code&gt; flag, but it will simply re-use the existing release and
+replace its resources.)&lt;/p&gt;
+
+&lt;p&gt;Note that because releases are preserved in this way, you can rollback a
+deleted resource, and have it re-activate.&lt;/p&gt;
+
+&lt;h2 id=&#34;helm-repo-working-with-repositories&#34;&gt;&amp;lsquo;helm repo&amp;rsquo;: Working with Repositories&lt;/h2&gt;
+
+&lt;p&gt;So far, we&amp;rsquo;ve been installing charts only from the &lt;code&gt;stable&lt;/code&gt; repository.
+But you can configure &lt;code&gt;helm&lt;/code&gt; to use other repositories. Helm provides
+several repository tools under the &lt;code&gt;helm repo&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;You can see which repositories are configured using &lt;code&gt;helm repo list&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm repo list
+NAME           	URL
+stable         	https://kubernetes-charts.storage.googleapis.com
+local          	http://localhost:8879/charts
+mumoshu        	https://mumoshu.github.io/charts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And new repositories can be added with &lt;code&gt;helm repo add&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm repo add dev https://example.com/dev-charts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because chart repositories change frequently, at any point you can make
+sure your Helm client is up to date by running &lt;code&gt;helm repo update&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-your-own-charts&#34;&gt;Creating Your Own Charts&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;./#charts&#34;&gt;Chart Development Guide&lt;/a&gt; explains how to develop your own
+charts. But you can get started quickly by using the &lt;code&gt;helm create&lt;/code&gt;
+command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm create deis-workflow
+Creating deis-workflow
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now there is a chart in &lt;code&gt;./deis-workflow&lt;/code&gt;. You can edit it and create
+your own templates.&lt;/p&gt;
+
+&lt;p&gt;As you edit your chart, you can validate that it is well-formatted by
+running &lt;code&gt;helm lint&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When it&amp;rsquo;s time to package the chart up for distribution, you can run the
+&lt;code&gt;helm package&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm package deis-workflow
+deis-workflow-0.1.0.tgz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that chart can now easily be installed by &lt;code&gt;helm install&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm install ./deis-workflow-0.1.0.tgz
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Charts that are archived can be loaded into chart repositories. See the
+documentation for your chart repository server to learn how to upload.&lt;/p&gt;
+
+&lt;p&gt;Note: The &lt;code&gt;stable&lt;/code&gt; repository is managed on the &lt;a href=&#34;https://github.com/kubernetes/charts&#34;&gt;Kubernetes Charts
+GitHub repository&lt;/a&gt;. That project
+accepts chart source code, and (after audit) packages those for you.&lt;/p&gt;
+
+&lt;h2 id=&#34;tiller-namespaces-and-rbac&#34;&gt;Tiller, Namespaces and RBAC&lt;/h2&gt;
+
+&lt;p&gt;In some cases you may wish to scope Tiller or deploy multiple Tillers to a single cluster. Here are some best practices when operating in those circumstances.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Tiller can be &lt;a href=&#34;./#install&#34;&gt;installed&lt;/a&gt; into any namespace. By default, it is installed into kube-system. You can run multiple Tillers provided they each run in their own namespace.&lt;/li&gt;
+&lt;li&gt;Limiting Tiller to only be able to install into specific namespaces and/or resource types is controlled by Kubernetes &lt;a href=&#34;./#https://kubernetes.io/docs/admin/authorization/rbac/&#34;&gt;RBAC&lt;/a&gt; roles and rolebindings. You can add a service account to Tiller when configuring Helm via &lt;code&gt;helm init --service-account &amp;lt;NAME&amp;gt;&lt;/code&gt;. You can find more information about that &lt;a href=&#34;rbac&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Release names are unique PER TILLER INSTANCE.&lt;/li&gt;
+&lt;li&gt;Charts should only contain resources that exist in a single namespace.&lt;/li&gt;
+&lt;li&gt;It is not recommended to have multiple Tillers configured to manage resources in the same namespace.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;conclusion-1&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This chapter has covered the basic usage patterns of the &lt;code&gt;helm&lt;/code&gt; client,
+including searching, installation, upgrading, and deleting. It has also
+covered useful utility commands like &lt;code&gt;helm status&lt;/code&gt;, &lt;code&gt;helm get&lt;/code&gt;, and
+&lt;code&gt;helm repo&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more information on these commands, take a look at Helm&amp;rsquo;s built-in
+help: &lt;code&gt;helm help&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the next chapter, we look at the process of developing charts.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-helm-plugins-guide&#34;&gt;The Helm Plugins Guide&lt;/h1&gt;
+
+&lt;p&gt;Helm 2.1.0 introduced the concept of a client-side Helm &lt;em&gt;plugin&lt;/em&gt;. A plugin is a
+tool that can be accessed through the &lt;code&gt;helm&lt;/code&gt; CLI, but which is not part of the
+built-in Helm codebase.&lt;/p&gt;
+
+&lt;p&gt;Existing plugins can be found on &lt;a href=&#34;related.md#helm-plugins&#34;&gt;related&lt;/a&gt; section or by searching &lt;a href=&#34;https://github.com/search?q=topic%3Ahelm-plugin&amp;amp;type=Repositories&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This guide explains how to use and create plugins.&lt;/p&gt;
+
+&lt;h2 id=&#34;an-overview&#34;&gt;An Overview&lt;/h2&gt;
+
+&lt;p&gt;Helm plugins are add-on tools that integrate seamlessly with Helm. They provide
+a way to extend the core feature set of Helm, but without requiring every new
+feature to be written in Go and added to the core tool.&lt;/p&gt;
+
+&lt;p&gt;Helm plugins have the following features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;They can be added and removed from a Helm installation without impacting the
+core Helm tool.&lt;/li&gt;
+&lt;li&gt;They can be written in any programming language.&lt;/li&gt;
+&lt;li&gt;They integrate with Helm, and will show up in &lt;code&gt;helm help&lt;/code&gt; and other places.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Helm plugins live in &lt;code&gt;$(helm home)/plugins&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Helm plugin model is partially modeled on Git&amp;rsquo;s plugin model. To that end,
+you may sometimes hear &lt;code&gt;helm&lt;/code&gt; referred to as the &lt;em&gt;porcelain&lt;/em&gt; layer, with
+plugins being the &lt;em&gt;plumbing&lt;/em&gt;. This is a shorthand way of suggesting that
+Helm provides the user experience and top level processing logic, while the
+plugins do the &amp;ldquo;detail work&amp;rdquo; of performing a desired action.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-a-plugin&#34;&gt;Installing a Plugin&lt;/h2&gt;
+
+&lt;p&gt;Plugins are installed using the &lt;code&gt;$ helm plugin install &amp;lt;path|url&amp;gt;&lt;/code&gt; command. You can pass in a path to a plugin on your local file system or a url of a remote VCS repo. The &lt;code&gt;helm plugin install&lt;/code&gt; command clones or copies the plugin at the path/url given into &lt;code&gt;$ (helm home)/plugins&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm plugin install https://github.com/technosophos/helm-template
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you have a plugin tar distribution, simply untar the plugin into the
+&lt;code&gt;$(helm home)/plugins&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;You can also install tarball plugins directly from url by issuing &lt;code&gt;helm plugin install http://domain/path/to/plugin.tar.gz&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;building-plugins&#34;&gt;Building Plugins&lt;/h2&gt;
+
+&lt;p&gt;In many ways, a plugin is similar to a chart. Each plugin has a top-level
+directory, and then a &lt;code&gt;plugin.yaml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$(helm home)/plugins/
+  |- keybase/
+      |
+      |- plugin.yaml
+      |- keybase.sh
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above, the &lt;code&gt;keybase&lt;/code&gt; plugin is contained inside of a directory
+named &lt;code&gt;keybase&lt;/code&gt;. It has two files: &lt;code&gt;plugin.yaml&lt;/code&gt; (required) and an executable
+script, &lt;code&gt;keybase.sh&lt;/code&gt; (optional).&lt;/p&gt;
+
+&lt;p&gt;The core of a plugin is a simple YAML file named &lt;code&gt;plugin.yaml&lt;/code&gt;.
+Here is a plugin YAML for a plugin that adds support for Keybase operations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;name: &amp;quot;keybase&amp;quot;
+version: &amp;quot;0.1.0&amp;quot;
+usage: &amp;quot;Integrate Keybase.io tools with Helm&amp;quot;
+description: |-
+  This plugin provides Keybase services to Helm.
+ignoreFlags: false
+useTunnel: false
+command: &amp;quot;$HELM_PLUGIN_DIR/keybase.sh&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;name&lt;/code&gt; is the name of the plugin. When Helm executes it plugin, this is the
+name it will use (e.g. &lt;code&gt;helm NAME&lt;/code&gt; will invoke this plugin).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;code&gt;name&lt;/code&gt; should match the directory name.&lt;/em&gt; In our example above, that means the
+plugin with &lt;code&gt;name: keybase&lt;/code&gt; should be contained in a directory named &lt;code&gt;keybase&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Restrictions on &lt;code&gt;name&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt; cannot duplicate one of the existing &lt;code&gt;helm&lt;/code&gt; top-level commands.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt; must be restricted to the characters ASCII a-z, A-Z, 0-9, &lt;code&gt;_&lt;/code&gt; and &lt;code&gt;-&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;version&lt;/code&gt; is the SemVer 2 version of the plugin.
+&lt;code&gt;usage&lt;/code&gt; and &lt;code&gt;description&lt;/code&gt; are both used to generate the help text of a command.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;ignoreFlags&lt;/code&gt; switch tells Helm to &lt;em&gt;not&lt;/em&gt; pass flags to the plugin. So if a
+plugin is called with &lt;code&gt;helm myplugin --foo&lt;/code&gt; and &lt;code&gt;ignoreFlags: true&lt;/code&gt;, then &lt;code&gt;--foo&lt;/code&gt;
+is silently discarded.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;useTunnel&lt;/code&gt; switch indicates that the plugin needs a tunnel to Tiller. This
+should be set to &lt;code&gt;true&lt;/code&gt; &lt;em&gt;anytime a plugin talks to Tiller&lt;/em&gt;. It will cause Helm
+to open a tunnel, and then set &lt;code&gt;$TILLER_HOST&lt;/code&gt; to the right local address for that
+tunnel. But don&amp;rsquo;t worry: if Helm detects that a tunnel is not necessary because
+Tiller is running locally, it will not create the tunnel.&lt;/p&gt;
+
+&lt;p&gt;Finally, and most importantly, &lt;code&gt;command&lt;/code&gt; is the command that this plugin will
+execute when it is called. Environment variables are interpolated before the plugin
+is executed. The pattern above illustrates the preferred way to indicate where
+the plugin program lives.&lt;/p&gt;
+
+&lt;p&gt;There are some strategies for working with plugin commands:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If a plugin includes an executable, the executable for a &lt;code&gt;command:&lt;/code&gt; should be
+packaged in the plugin directory.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;command:&lt;/code&gt; line will have any environment variables expanded before
+execution. &lt;code&gt;$HELM_PLUGIN_DIR&lt;/code&gt; will point to the plugin directory.&lt;/li&gt;
+&lt;li&gt;The command itself is not executed in a shell. So you can&amp;rsquo;t oneline a shell script.&lt;/li&gt;
+&lt;li&gt;Helm injects lots of configuration into environment variables. Take a look at
+the environment to see what information is available.&lt;/li&gt;
+&lt;li&gt;Helm makes no assumptions about the language of the plugin. You can write it
+in whatever you prefer.&lt;/li&gt;
+&lt;li&gt;Commands are responsible for implementing specific help text for &lt;code&gt;-h&lt;/code&gt; and &lt;code&gt;--help&lt;/code&gt;.
+Helm will use &lt;code&gt;usage&lt;/code&gt; and &lt;code&gt;description&lt;/code&gt; for &lt;code&gt;helm help&lt;/code&gt; and &lt;code&gt;helm help myplugin&lt;/code&gt;,
+but will not handle &lt;code&gt;helm myplugin --help&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;downloader-plugins&#34;&gt;Downloader Plugins&lt;/h2&gt;
+
+&lt;p&gt;By default, Helm is able to fetch Charts using HTTP/S. As of Helm 2.4.0, plugins
+can have a special capability to download Charts from arbitrary sources.&lt;/p&gt;
+
+&lt;p&gt;Plugins shall declare this special capability in the &lt;code&gt;plugin.yaml&lt;/code&gt; file (top level):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;downloaders:
+- command: &amp;quot;bin/mydownloader&amp;quot;
+  protocols:
+  - &amp;quot;myprotocol&amp;quot;
+  - &amp;quot;myprotocols&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If such plugin is installed, Helm can interact with the repository using the specified
+protocol scheme by invoking the &lt;code&gt;command&lt;/code&gt;. The special repository shall be added
+similarily to the regular ones: &lt;code&gt;helm repo add favorite myprotocol://example.com/&lt;/code&gt;
+The rules for the special repos are the same to the regular ones: Helm must be able
+to download the &lt;code&gt;index.yaml&lt;/code&gt; file in order to discover and cache the list of
+available Charts.&lt;/p&gt;
+
+&lt;p&gt;The defined command will be invoked with the following scheme:
+&lt;code&gt;command certFile keyFile caFile full-URL&lt;/code&gt;. The SSL credentials are coming from the
+repo definition, stored in &lt;code&gt;$HELM_HOME/repository/repositories.yaml&lt;/code&gt;. Downloader
+plugin is expected to dump the raw content to stdout and report errors on stderr.&lt;/p&gt;
+
+&lt;h2 id=&#34;environment-variables&#34;&gt;Environment Variables&lt;/h2&gt;
+
+&lt;p&gt;When Helm executes a plugin, it passes the outer environment to the plugin, and
+also injects some additional environment variables.&lt;/p&gt;
+
+&lt;p&gt;Variables like &lt;code&gt;KUBECONFIG&lt;/code&gt; are set for the plugin if they are set in the
+outer environment.&lt;/p&gt;
+
+&lt;p&gt;The following variables are guaranteed to be set:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HELM_PLUGIN&lt;/code&gt;: The path to the plugins directory&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HELM_PLUGIN_NAME&lt;/code&gt;: The name of the plugin, as invoked by &lt;code&gt;helm&lt;/code&gt;. So
+&lt;code&gt;helm myplug&lt;/code&gt; will have the short name &lt;code&gt;myplug&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HELM_PLUGIN_DIR&lt;/code&gt;: The directory that contains the plugin.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HELM_BIN&lt;/code&gt;: The path to the &lt;code&gt;helm&lt;/code&gt; command (as executed by the user).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HELM_HOME&lt;/code&gt;: The path to the Helm home.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HELM_PATH_*&lt;/code&gt;: Paths to important Helm files and directories are stored in
+environment variables prefixed by &lt;code&gt;HELM_PATH&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TILLER_HOST&lt;/code&gt;: The &lt;code&gt;domain:port&lt;/code&gt; to Tiller. If a tunnel is created, this
+will point to the local endpoint for the tunnel. Otherwise, it will point
+to &lt;code&gt;$HELM_HOST&lt;/code&gt;, &lt;code&gt;--host&lt;/code&gt;, or the default host (according to Helm&amp;rsquo;s rules of
+precedence).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While &lt;code&gt;HELM_HOST&lt;/code&gt; &lt;em&gt;may&lt;/em&gt; be set, there is no guarantee that it will point to the
+correct Tiller instance. This is done to allow plugin developer to access
+&lt;code&gt;HELM_HOST&lt;/code&gt; in its raw state when the plugin itself needs to manually configure
+a connection.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-note-on-usetunnel&#34;&gt;A Note on &lt;code&gt;useTunnel&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;If a plugin specifies &lt;code&gt;useTunnel: true&lt;/code&gt;, Helm will do the following (in order):&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Parse global flags and the environment&lt;/li&gt;
+&lt;li&gt;Create the tunnel&lt;/li&gt;
+&lt;li&gt;Set &lt;code&gt;TILLER_HOST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Execute the plugin&lt;/li&gt;
+&lt;li&gt;Close the tunnel&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The tunnel is removed as soon as the &lt;code&gt;command&lt;/code&gt; returns. So, for example, a
+command cannot background a process and assume that that process will be able
+to use the tunnel.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-note-on-flag-parsing&#34;&gt;A Note on Flag Parsing&lt;/h2&gt;
+
+&lt;p&gt;When executing a plugin, Helm will parse global flags for its own use. Some of
+these flags are &lt;em&gt;not&lt;/em&gt; passed on to the plugin.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--debug&lt;/code&gt;: If this is specified, &lt;code&gt;$HELM_DEBUG&lt;/code&gt; is set to &lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--home&lt;/code&gt;: This is converted to &lt;code&gt;$HELM_HOME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--host&lt;/code&gt;: This is converted to &lt;code&gt;$HELM_HOST&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--kube-context&lt;/code&gt;: This is simply dropped. If your plugin uses &lt;code&gt;useTunnel&lt;/code&gt;, this
+is used to set up the tunnel for you.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Plugins &lt;em&gt;should&lt;/em&gt; display help text and then exit for &lt;code&gt;-h&lt;/code&gt; and &lt;code&gt;--help&lt;/code&gt;. In all
+other cases, plugins may use flags as appropriate.&lt;/p&gt;
+
+&lt;h1 id=&#34;role-based-access-control&#34;&gt;Role-based Access Control&lt;/h1&gt;
+
+&lt;p&gt;In Kubernetes, granting a role to an application-specific service account is a best practice to ensure that your application is operating in the scope that you have specified. Read more about service account permissions &lt;a href=&#34;https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions&#34;&gt;in the official Kubernetes docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bitnami also has a fantastic guide for &lt;a href=&#34;https://docs.bitnami.com/kubernetes/how-to/configure-rbac-in-your-kubernetes-cluster/&#34;&gt;configuring RBAC in your cluster&lt;/a&gt; that takes you through RBAC basics.&lt;/p&gt;
+
+&lt;p&gt;This guide is for users who want to restrict tiller&amp;rsquo;s capabilities to install resources to certain namespaces, or to grant a helm client running access to a tiller instance.&lt;/p&gt;
+
+&lt;h2 id=&#34;tiller-and-role-based-access-control&#34;&gt;Tiller and Role-based Access Control&lt;/h2&gt;
+
+&lt;p&gt;You can add a service account to Tiller using the &lt;code&gt;--service-account &amp;lt;NAME&amp;gt;&lt;/code&gt; flag while you&amp;rsquo;re configuring helm. As a prerequisite, you&amp;rsquo;ll have to create a role binding which specifies a &lt;a href=&#34;https://kubernetes.io/docs/admin/authorization/rbac/#role-and-clusterrole&#34;&gt;role&lt;/a&gt; and a &lt;a href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/&#34;&gt;service account&lt;/a&gt; name that have been set up in advance.&lt;/p&gt;
+
+&lt;p&gt;Once you have satisfied the pre-requisite and have a service account with the correct permissions, you&amp;rsquo;ll run a command like this: &lt;code&gt;helm init --service-account &amp;lt;NAME&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;example-service-account-with-cluster-admin-role&#34;&gt;Example: Service account with cluster-admin role&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create serviceaccount tiller --namespace kube-system
+serviceaccount &amp;quot;tiller&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;code&gt;rbac-config.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note: The cluster-admin role is created by default in a Kubernetes cluster, so you don&amp;rsquo;t have to define it explicitly.&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f rbac-config.yaml
+serviceaccount &amp;quot;tiller&amp;quot; created
+clusterrolebinding &amp;quot;tiller&amp;quot; created
+$ helm init --service-account tiller
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace&#34;&gt;Example: Deploy tiller in a namespace, restricted to deploying resources only in that namespace&lt;/h3&gt;
+
+&lt;p&gt;In the example above, we gave Tiller admin access to the entire cluster. You are not at all required to give Tiller cluster-admin access for it to work. Instead of specifying a ClusterRole or a ClusterRoleBinding, you can specify a Role and RoleBinding to limit Tiller&amp;rsquo;s scope to a particular namespace.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create namespace tiller-world
+namespace &amp;quot;tiller-world&amp;quot; created
+$ kubectl create serviceaccount tiller --namespace tiller-world
+serviceaccount &amp;quot;tiller&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Define a Role that allows tiller to manage all resources in &lt;code&gt;tiller-world&lt;/code&gt; like in &lt;code&gt;role-tiller.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-manager
+  namespace: tiller-world
+rules:
+- apiGroups: [&amp;quot;&amp;quot;, &amp;quot;extensions&amp;quot;, &amp;quot;apps&amp;quot;]
+  resources: [&amp;quot;*&amp;quot;]
+  verbs: [&amp;quot;*&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f role-tiller.yaml
+role &amp;quot;tiller-manager&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;code&gt;rolebinding-tiller.yaml&lt;/code&gt;,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-binding
+  namespace: tiller-world
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: tiller-world
+roleRef:
+  kind: Role
+  name: tiller-manager
+  apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f rolebinding-tiller.yaml
+rolebinding &amp;quot;tiller-binding&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Afterwards you can run &lt;code&gt;helm init&lt;/code&gt; to install tiller in the &lt;code&gt;tiller-world&lt;/code&gt; namespace.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init --service-account tiller --tiller-namespace tiller-world
+$HELM_HOME has been configured at /Users/awesome-user/.helm.
+
+Tiller (the helm server side component) has been installed into your Kubernetes Cluster.
+Happy Helming!
+
+$ helm install nginx --tiller-namespace tiller-world --namespace tiller-world
+NAME:   wayfaring-yak
+LAST DEPLOYED: Mon Aug  7 16:00:16 2017
+NAMESPACE: tiller-world
+STATUS: DEPLOYED
+
+RESOURCES:
+==&amp;gt; v1/Pod
+NAME                  READY  STATUS             RESTARTS  AGE
+wayfaring-yak-alpine  0/1    ContainerCreating  0         0s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-in-another-namespace&#34;&gt;Example: Deploy tiller in a namespace, restricted to deploying resources in another namespace&lt;/h3&gt;
+
+&lt;p&gt;In the example above, we gave Tiller admin access to the namespace it was deployed inside. Now, let&amp;rsquo;s limit Tiller&amp;rsquo;s scope to deploy resources in a different namespace!&lt;/p&gt;
+
+&lt;p&gt;For example, let&amp;rsquo;s install tiller in the namespace &lt;code&gt;myorg-system&lt;/code&gt; and allow tiller to deploy resources in the namespace &lt;code&gt;myorg-users&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create namespace myorg-system
+namespace &amp;quot;myorg-system&amp;quot; created
+$ kubectl create serviceaccount tiller --namespace myorg-system
+serviceaccount &amp;quot;tiller&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Define a Role that allows tiller to manage all resources in &lt;code&gt;myorg-users&lt;/code&gt; like in &lt;code&gt;role-tiller.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-manager
+  namespace: myorg-users
+rules:
+- apiGroups: [&amp;quot;&amp;quot;, &amp;quot;extensions&amp;quot;, &amp;quot;apps&amp;quot;]
+  resources: [&amp;quot;*&amp;quot;]
+  verbs: [&amp;quot;*&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f role-tiller.yaml
+role &amp;quot;tiller-manager&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bind the service account to that role. In &lt;code&gt;rolebinding-tiller.yaml&lt;/code&gt;,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-binding
+  namespace: myorg-users
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: myorg-system
+roleRef:
+  kind: Role
+  name: tiller-manager
+  apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f rolebinding-tiller.yaml
+rolebinding &amp;quot;tiller-binding&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;ll also need to grant tiller access to read configmaps in myorg-system so it can store release information. In &lt;code&gt;role-tiller-myorg-system.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: myorg-system
+  name: tiller-manager
+rules:
+- apiGroups: [&amp;quot;&amp;quot;, &amp;quot;extensions&amp;quot;, &amp;quot;apps&amp;quot;]
+  resources: [&amp;quot;configmaps&amp;quot;]
+  verbs: [&amp;quot;*&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f role-tiller-myorg-system.yaml
+role &amp;quot;tiller-manager&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the respective role binding. In &lt;code&gt;rolebinding-tiller-myorg-system.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-binding
+  namespace: myorg-system
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: myorg-system
+roleRef:
+  kind: Role
+  name: tiller-manager
+  apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f rolebinding-tiller-myorg-system.yaml
+rolebinding &amp;quot;tiller-binding&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;helm-and-role-based-access-control&#34;&gt;Helm and Role-based Access Control&lt;/h2&gt;
+
+&lt;p&gt;When running a helm client in a pod, in order for the helm client to talk to a tiller instance, it will need certain privileges to be granted. Specifically, the helm client will need to be able to create pods, forward ports and be able to list pods in the namespace where tiller is running (so it can find tiller).&lt;/p&gt;
+
+&lt;h3 id=&#34;example-deploy-helm-in-a-namespace-talking-to-tiller-in-another-namespace&#34;&gt;Example: Deploy Helm in a namespace, talking to Tiller in another namespace&lt;/h3&gt;
+
+&lt;p&gt;In this example, we will assume tiller is running in a namespace called &lt;code&gt;tiller-world&lt;/code&gt; and that the helm client is running in a namespace called &lt;code&gt;helm-world&lt;/code&gt;. By default, tiller is running in the &lt;code&gt;kube-system&lt;/code&gt; namespace.&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;helm-user.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: helm
+  namespace: helm-world
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: tiller-user
+  namespace: tiller-world
+rules:
+- apiGroups:
+  - &amp;quot;&amp;quot;
+  resources:
+  - pods/portforward
+  verbs:
+  - create
+- apiGroups:
+  - &amp;quot;&amp;quot;
+  resources:
+  - pods
+  verbs:
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: tiller-user-binding
+  namespace: tiller-world
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: tiller-user
+subjects:
+- kind: ServiceAccount
+  name: helm
+  namespace: helm-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl create -f helm-user.yaml
+serviceaccount &amp;quot;helm&amp;quot; created
+role &amp;quot;tiller-user&amp;quot; created
+rolebinding &amp;quot;tiller-user-binding&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;using-ssl-between-helm-and-tiller&#34;&gt;Using SSL Between Helm and Tiller&lt;/h1&gt;
+
+&lt;p&gt;This document explains how to create strong SSL/TLS connections between Helm and
+Tiller. The emphasis here is on creating an internal CA, and using both the
+cryptographic and identity functions of SSL.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Support for TLS-based auth was introduced in Helm 2.3.0&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Configuring SSL is considered an advanced topic, and knowledge of Helm and Tiller
+is assumed.&lt;/p&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The Tiller authentication model uses client-side SSL certificates. Tiller itself
+verifies these certificates using a certificate authority. Likewise, the client
+also verifies Tiller&amp;rsquo;s identity by certificate authority.&lt;/p&gt;
+
+&lt;p&gt;There are numerous possible configurations for setting up certificates and authorities,
+but the method we cover here will work for most situations.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;As of Helm 2.7.2, Tiller &lt;em&gt;requires&lt;/em&gt; that the client certificate be validated
+by its CA. In prior versions, Tiller used a weaker validation strategy that
+allowed self-signed certificates.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this guide, we will show how to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a private CA that is used to issue certificates for Tiller clients and
+servers.&lt;/li&gt;
+&lt;li&gt;Create a certificate for Tiller&lt;/li&gt;
+&lt;li&gt;Create a certificate for the Helm client&lt;/li&gt;
+&lt;li&gt;Create a Tiller instance that uses the certificate&lt;/li&gt;
+&lt;li&gt;Configure the Helm client to use the CA and client-side certificate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By the end of this guide, you should have a Tiller instance running that will
+only accept connections from clients who can be authenticated by SSL certificate.&lt;/p&gt;
+
+&lt;h2 id=&#34;generating-certificate-authorities-and-certificates&#34;&gt;Generating Certificate Authorities and Certificates&lt;/h2&gt;
+
+&lt;p&gt;One way to generate SSL CAs is via the &lt;code&gt;openssl&lt;/code&gt; command line tool. There are many
+guides and best practices documents available online. This explanation is focused
+on getting ready within a small amount of time. For production configurations,
+we urge readers to read &lt;a href=&#34;https://www.openssl.org&#34;&gt;the official documentation&lt;/a&gt; and
+consult other resources.&lt;/p&gt;
+
+&lt;h3 id=&#34;generate-a-certificate-authority&#34;&gt;Generate a Certificate Authority&lt;/h3&gt;
+
+&lt;p&gt;The simplest way to generate a certificate authority is to run two commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl genrsa -out ./ca.key.pem 4096
+$ openssl req -key ca.key.pem -new -x509 -days 7300 -sha256 -out ca.cert.pem -extensions v3_ca
+Enter pass phrase for ca.key.pem:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CO
+Locality Name (eg, city) []:Boulder
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:tiller
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:tiller
+Email Address []:tiller@example.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that the data input above is &lt;em&gt;sample data&lt;/em&gt;. You should customize to your own
+specifications.&lt;/p&gt;
+
+&lt;p&gt;The above will generate both a secret key and a CA. Note that these two files are
+very important. The key in particular should be handled with particular care.&lt;/p&gt;
+
+&lt;p&gt;Often, you will want to generate an intermediate signing key. For the sake of brevity,
+we will be signing keys with our root CA.&lt;/p&gt;
+
+&lt;h3 id=&#34;generating-certificates&#34;&gt;Generating Certificates&lt;/h3&gt;
+
+&lt;p&gt;We will be generating two certificates, each representing a type of certificate:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One certificate is for Tiller. You will want one of these &lt;em&gt;per tiller host&lt;/em&gt; that
+you run.&lt;/li&gt;
+&lt;li&gt;One certificate is for the user. You will want one of these &lt;em&gt;per helm user&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since the commands to generate these are the same, we&amp;rsquo;ll be creating both at the
+same time. The names will indicate their target.&lt;/p&gt;
+
+&lt;p&gt;First, the Tiller key:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl genrsa -out ./tiller.key.pem 4096
+Generating RSA private key, 4096 bit long modulus
+..........................................................................................................................................................................................................................................................................................................................++
+............................................................................++
+e is 65537 (0x10001)
+Enter pass phrase for ./tiller.key.pem:
+Verifying - Enter pass phrase for ./tiller.key.pem:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, generate the Helm client&amp;rsquo;s key:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl genrsa -out ./helm.key.pem 4096
+Generating RSA private key, 4096 bit long modulus
+.....++
+......................................................................................................................................................................................++
+e is 65537 (0x10001)
+Enter pass phrase for ./helm.key.pem:
+Verifying - Enter pass phrase for ./helm.key.pem:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Again, for production use you will generate one client certificate for each user.&lt;/p&gt;
+
+&lt;p&gt;Next we need to create certificates from these keys. For each certificate, this is
+a two-step process of creating a CSR, and then creating the certificate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl req -key tiller.key.pem -new -sha256 -out tiller.csr.pem
+Enter pass phrase for tiller.key.pem:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CO
+Locality Name (eg, city) []:Boulder
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Tiller Server
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:tiller-server
+Email Address []:
+
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we repeat this step for the Helm client certificate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl req -key helm.key.pem -new -sha256 -out helm.csr.pem
+# Answer the questions with your client user&#39;s info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(In rare cases, we&amp;rsquo;ve had to add the &lt;code&gt;-nodes&lt;/code&gt; flag when generating the request.)&lt;/p&gt;
+
+&lt;p&gt;Now we sign each of these CSRs with the CA certificate we created:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl x509 -req -CA ca.cert.pem -CAkey ca.key.pem -CAcreateserial -in tiller.csr.pem -out tiller.cert.pem
+Signature ok
+subject=/C=US/ST=CO/L=Boulder/O=Tiller Server/CN=tiller-server
+Getting CA Private Key
+Enter pass phrase for ca.key.pem:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And again for the client certificate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ openssl x509 -req -CA ca.cert.pem -CAkey ca.key.pem -CAcreateserial -in helm.csr.pem -out helm.cert.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point, the important files for us are these:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# The CA. Make sure the key is kept secret.
+ca.cert.pem
+ca.key.pem
+# The Helm client files
+helm.cert.pem
+helm.key.pem
+# The Tiller server files.
+tiller.cert.pem
+tiller.key.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we&amp;rsquo;re ready to move on to the next steps.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-a-custom-tiller-installation&#34;&gt;Creating a Custom Tiller Installation&lt;/h2&gt;
+
+&lt;p&gt;Helm includes full support for creating a deployment configured for SSL. By specifying
+a few flags, the &lt;code&gt;helm init&lt;/code&gt; command can create a new Tiller installation complete
+with all of our SSL configuration.&lt;/p&gt;
+
+&lt;p&gt;To take a look at what this will generate, run this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init --dry-run --debug --tiller-tls --tiller-tls-cert ./tiller.cert.pem --tiller-tls-key ./tiller.key.pem --tiller-tls-verify --tls-ca-cert ca.cert.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output will show you a Deployment, a Secret, and a Service. Your SSL information
+will be preloaded into the Secret, which the Deployment will mount to pods as they
+start up.&lt;/p&gt;
+
+&lt;p&gt;If you want to customize the manifest, you can save that output to a file and then
+use &lt;code&gt;kubectl create&lt;/code&gt; to load it into your cluster.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;We strongly recommend enabling RBAC on your cluster and adding &lt;a href=&#34;./#rbac&#34;&gt;service accounts&lt;/a&gt;
+with RBAC.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Otherwise, you can remove the &lt;code&gt;--dry-run&lt;/code&gt; and &lt;code&gt;--debug&lt;/code&gt; flags. We also recommend
+putting Tiller in a non-system namespace (&lt;code&gt;--tiller-namespace=something&lt;/code&gt;) and enable
+a service account (&lt;code&gt;--service-account=somename&lt;/code&gt;). But for this example we will stay
+with the basics:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm init --tiller-tls --tiller-tls-cert ./tiller.cert.pem --tiller-tls-key ./tiller.key.pem --tiller-tls-verify --tls-ca-cert ca.cert.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In a minute or two it should be ready. We can check Tiller like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ kubectl -n kube-system get deployment
+NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+... other stuff
+tiller-deploy   1         1         1            1           2m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If there is a problem, you may want to use &lt;code&gt;kubectl get pods -n kube-system&lt;/code&gt; to
+find out what went wrong. With the SSL/TLS support, the most common problems all
+have to do with improperly generated TLS certificates or accidentally swapping the
+cert and the key.&lt;/p&gt;
+
+&lt;p&gt;At this point, you should get a &lt;em&gt;failure&lt;/em&gt; when you run basic Helm commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ helm ls
+Error: transport is closing
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is because your Helm client does not have the correct certificate to authenticate
+to Tiller.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuring-the-helm-client&#34;&gt;Configuring the Helm Client&lt;/h2&gt;
+
+&lt;p&gt;The Tiller server is now running with TLS protection. It&amp;rsquo;s time to configure the
+Helm client to also perform TLS operations.&lt;/p&gt;
+
+&lt;p&gt;For a quick test, we can specify our configuration manually. We&amp;rsquo;ll run a normal
+Helm command (&lt;code&gt;helm ls&lt;/code&gt;), but with SSL/TLS enabled.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;helm ls --tls --tls-ca-cert ca.cert.pem --tls-cert helm.cert.pem --tls-key helm.key.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This configuration sends our client-side certificate to establish identity, uses
+the client key for encryption, and uses the CA certificate to validate the remote
+Tiller&amp;rsquo;s identity.&lt;/p&gt;
+
+&lt;p&gt;Typing a line that that is cumbersome, though. The shortcut is to move the key,
+cert, and CA into &lt;code&gt;$HELM_HOME&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;$ cp ca.cert.pem $(helm home)/ca.pem
+$ cp helm.cert.pem $(helm home)/cert.pem
+$ cp helm.key.pem $(helm home)/key.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this, you can simply run &lt;code&gt;helm ls --tls&lt;/code&gt; to enable TLS.&lt;/p&gt;
+
+&lt;h3 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Running a command, I get &lt;code&gt;Error: transport is closing&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is almost always due to a configuration error in which the client is missing
+a certificate (&lt;code&gt;--tls-cert&lt;/code&gt;) or the certificate is bad.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I&amp;rsquo;m using a certificate, but get &lt;code&gt;Error: remote error: tls: bad certificate&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This means that Tiller&amp;rsquo;s CA cannot verify your certificate. In the examples above,
+we used a single CA to generate both the client and server certificates. In these
+examples, the CA has &lt;em&gt;signed&lt;/em&gt; the client&amp;rsquo;s certificate. We then load that CA
+up to Tiller. So when the client certificate is sent to the server, Tiller
+checks the client certificate against the CA.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If I use &lt;code&gt;--tls-verify&lt;/code&gt; on the client, I get &lt;code&gt;Error: x509: certificate is valid for tiller-server, not localhost&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;If you plan to use &lt;code&gt;--tls-verify&lt;/code&gt; on the client, you will need to make sure that
+the host name that Helm connects to matches the host name on the certificate. In
+some cases this is awkward, since Helm will connect over localhost, or the FQDN is
+not available for public resolution.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/denji/golang-tls&#34;&gt;https://github.com/denji/golang-tls&lt;/a&gt;
+&lt;a href=&#34;https://www.openssl.org/docs/&#34;&gt;https://www.openssl.org/docs/&lt;/a&gt;
+&lt;a href=&#34;https://jamielinux.com/docs/openssl-certificate-authority/sign-server-and-client-certificates.html&#34;&gt;https://jamielinux.com/docs/openssl-certificate-authority/sign-server-and-client-certificates.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;securing-your-helm-installation&#34;&gt;Securing your Helm Installation&lt;/h1&gt;
+
+&lt;p&gt;Helm is a powerful and flexible package-management and operations tool for Kubernetes. Installing it using the default installation command &amp;ndash; &lt;code&gt;helm init&lt;/code&gt; &amp;ndash; quickly and easily installs &lt;strong&gt;Tiller&lt;/strong&gt;, the server-side component with which Helm corresponds.&lt;/p&gt;
+
+&lt;p&gt;This default installation applies &lt;strong&gt;&lt;em&gt;no security configurations&lt;/em&gt;&lt;/strong&gt;, however. It&amp;rsquo;s completely appropriate to use this type of installation when you are working against a cluster with no or very few security concerns, such as local development with Minikube or with a cluster that is well-secured in a private network with no data-sharing or no other users or teams. If this is the case, then the default installation is fine, but remember: With great power comes great responsibility. Always use due diligence when deciding to use the default installation.&lt;/p&gt;
+
+&lt;h2 id=&#34;who-needs-security-configurations&#34;&gt;Who Needs Security Configurations?&lt;/h2&gt;
+
+&lt;p&gt;For the following types of clusters we strongly recommend that you apply the proper security configurations to Helm and Tiller to ensure the safety of the cluster, the data in it, and the network to which it is connected.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clusters that are exposed to uncontrolled network environments: either untrusted network actors can access the cluster, or untrusted applications that can access the network environment.&lt;/li&gt;
+&lt;li&gt;Clusters that are for many people to use &amp;ndash; &lt;em&gt;multitenant&lt;/em&gt; clusters &amp;ndash; as a shared environment&lt;/li&gt;
+&lt;li&gt;Clusters that have access to or use high-value data or networks of any type&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Often, environments like these are referred to as &lt;em&gt;production grade&lt;/em&gt; or &lt;em&gt;production quality&lt;/em&gt; because the damage done to any company by misuse of the cluster can be profound for either customers, the company itself, or both. Once the risk of damage becomes high enough, you need to ensure the integrity of your cluster no matter what the actual risk.&lt;/p&gt;
+
+&lt;p&gt;To configure your installation properly for your environment, you must:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Understand the security context of your cluster&lt;/li&gt;
+&lt;li&gt;Choose the Best Practices you should apply to your helm installation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following assumes you have a Kubernetes configuration file (a &lt;em&gt;kubeconfig&lt;/em&gt; file) or one was given to you to access a cluster.&lt;/p&gt;
+
+&lt;h2 id=&#34;understanding-the-security-context-of-your-cluster&#34;&gt;Understanding the Security Context of your Cluster&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;helm init&lt;/code&gt; installs Tiller into the cluster in the &lt;code&gt;kube-system&lt;/code&gt; namespace and without any RBAC rules applied. This is appropriate for local development and other private scenarios because it enables you to be productive immediately. It also enables you to continue running Helm with existing Kubernetes clusters that do not have role-based access control (RBAC) support until you can move your workloads to a more recent Kubernetes version.&lt;/p&gt;
+
+&lt;p&gt;There are four main areas to consider when securing a tiller installation:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Role-based access control, or RBAC&lt;/li&gt;
+&lt;li&gt;Tiller&amp;rsquo;s gRPC endpoint and its usage by Helm&lt;/li&gt;
+&lt;li&gt;Tiller release information&lt;/li&gt;
+&lt;li&gt;Helm charts&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;rbac&#34;&gt;RBAC&lt;/h3&gt;
+
+&lt;p&gt;Recent versions of Kubernetes employ a &lt;a href=&#34;https://en.wikipedia.org/wiki/Role-based_access_control&#34;&gt;role-based access control (or RBAC)&lt;/a&gt; system (as do modern operating systems) to help mitigate the damage that can done if credentials are misused or bugs exist. Even where an identity is hijacked, the identity has only so many permissions to a controlled space. This effectively adds a layer of security to limit the scope of any attack with that identity.&lt;/p&gt;
+
+&lt;p&gt;Helm and Tiller are designed to install, remove, and modify logical applications that can contain many services interacting together. As a result, often its usefulness involves cluster-wide operations, which in a multitenant cluster means that great care must be taken with access to a cluster-wide Tiller installation to prevent improper activity.&lt;/p&gt;
+
+&lt;p&gt;Specific users and teams &amp;ndash; developers, operators, system and network administrators &amp;ndash; will need their own portion of the cluster in which they can use Helm and Tiller without risking other portions of the cluster. This means using a Kubernetes cluster with RBAC enabled and Tiller configured to enforce them. For more information about using RBAC in Kubernetes, see &lt;a href=&#34;./#rbac&#34;&gt;Using RBAC Authorization&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;tiller-and-user-permissions&#34;&gt;Tiller and User Permissions&lt;/h4&gt;
+
+&lt;p&gt;Tiller in its current form does not provide a way to map user credentials to specific permissions within Kubernetes. When Tiller is running inside of the cluster, it operates with the permissions of its service account. If no service account name is supplied to Tiller, it runs with the default service account for that namespace. This means that all Tiller operations on that server are executed using the Tiller pod&amp;rsquo;s credentials and permissions.&lt;/p&gt;
+
+&lt;p&gt;To properly limit what Tiller itself can do, the standard Kubernetes RBAC mechanisms must be attached to Tiller, including Roles and RoleBindings that place explicit limits on what things a Tiller instance can install, and where.&lt;/p&gt;
+
+&lt;p&gt;This situation may change in the future. While the community has several methods that might address this, at the moment performing actions using the rights of the client, instead of the rights of Tiller, is contingent upon the outcome of the Pod Identity Working Group, which has taken on the task of solving the problem in a general way.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-tiller-grpc-endpoint-and-tls&#34;&gt;The Tiller gRPC Endpoint and TLS&lt;/h3&gt;
+
+&lt;p&gt;In the default installation the gRPC endpoint that Tiller offers is available inside the cluster (not external to the cluster) without authentication configuration applied. Without applying authentication, any process in the cluster can use the gRPC endpoint to perform operations inside the cluster. In a local or secured private cluster, this enables rapid usage and is normal. (When running outside the cluster, Helm authenticates through the Kubernetes API server to reach Tiller, leveraging existing Kubernetes authentication support.)&lt;/p&gt;
+
+&lt;p&gt;Shared and production clusters &amp;ndash; for the most part &amp;ndash; should use Helm 2.7.2 at a minimum and configure TLS for each the Tiller gRPC endpoint to ensure that within the cluster usage of gRPC endpoints is only for the properly authenticated identity for that endpoint. Doing so enables any number of Tiller instances to be deployed in any number of namespaces and yet no unauthenticated usage of any gRPC endpoint is possible. Finally, usage of Helm &lt;code&gt;init&lt;/code&gt; with the &lt;code&gt;--tiller-tls-verify&lt;/code&gt; option to install Tiller with TLS enabled and to verify remote certificates, and other Helm commands should use the &lt;code&gt;--tls&lt;/code&gt; with all other commands.&lt;/p&gt;
+
+&lt;p&gt;For more information about the proper steps to configure Tiller and use Helm properly with TLS configured, see &lt;a href=&#34;./#using-ssl-between-helm-and-tiller&#34;&gt;Using SSL between Helm and Tiller&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When Helm clients are connecting from outside of the cluster, the security between the Helm client and the API server is managed by Kubernetes itself. You may want to ensure that this link is secure. Note that if you are using the TLS configuration recommended above, not even the Kubernetes API server has access to the unencrypted messages between the client and Tiller.&lt;/p&gt;
+
+&lt;h3 id=&#34;tiller-s-release-information&#34;&gt;Tiller&amp;rsquo;s Release Information&lt;/h3&gt;
+
+&lt;p&gt;For historical reasons, Tiller stores its release information in ConfigMaps. We suggest changing the default to Secrets.&lt;/p&gt;
+
+&lt;p&gt;Secrets are the Kubernetes accepted mechanism for saving configuration data that is considered sensitive. While secrets don&amp;rsquo;t themselves offer many protections, Kubernetes cluster management software often treats them differently than other objects. Thus, we suggest using secrets to store releases.&lt;/p&gt;
+
+&lt;p&gt;Enabling this feature currently requires setting the &lt;code&gt;--storage=secret&lt;/code&gt; flag in the tiller-deploy deployment. This entails directly modifying the deployment or using &lt;code&gt;helm init --override=...&lt;/code&gt;, as no helm init flag is currently available to do this for you. For more information, see &lt;a href=&#34;install.md#using---override&#34;&gt;Using &amp;ndash;override&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;thinking-about-charts&#34;&gt;Thinking about Charts&lt;/h3&gt;
+
+&lt;p&gt;Because of the relative longevity of Helm, the Helm chart ecosystem evolved without the immediate concern for cluster-wide control, and especially in the developer space this makes complete sense. However, charts are a kind of package that not only installs containers you may or may not have validated yourself, but it may also install into more than one namespace.&lt;/p&gt;
+
+&lt;p&gt;As with all shared software, in a controlled or shared environment you must validate all software you install yourself &lt;em&gt;before&lt;/em&gt; you install it. If you have secured Tiller with TLS and have installed it with permissions to only one or a subset of namespaces, some charts may fail to install &amp;ndash; but in these environments, that is exactly what you want. If you need to use the chart, you may have to work with the creator or modify it yourself in order to use it securely in a mulitenant cluster with proper RBAC rules applied. The &lt;code&gt;helm template&lt;/code&gt; command renders the chart locally and displays the output.&lt;/p&gt;
+
+&lt;p&gt;Once vetted, you can use Helm&amp;rsquo;s provenance tools to &lt;a href=&#34;./#helm-provenance-and-integrity&#34;&gt;ensure the provenance and integrity of charts&lt;/a&gt; that you use.&lt;/p&gt;
+
+&lt;h3 id=&#34;grpc-tools-and-secured-tiller-configurations&#34;&gt;gRPC Tools and Secured Tiller Configurations&lt;/h3&gt;
+
+&lt;p&gt;Many very useful tools use the gRPC interface directly, and having been built against the default installation &amp;ndash; which provides cluster-wide access &amp;ndash; may fail once security configurations have been applied. RBAC policies are controlled by you or by the cluster operator, and either can be adjusted for the tool, or the tool can be configured to work properly within the constraints of specific RBAC policies applied to Tiller. The same may need to be done if the gRPC endpoint is secured: the tools need their own secure TLS configuration in order to use a specific Tiller instance. The combination of RBAC policies and a secured gRPC endpoint configured in conjunction with gRPC tools enables you to control your cluster environment as you should.&lt;/p&gt;
+
+&lt;h2 id=&#34;best-practices-for-securing-helm-and-tiller&#34;&gt;Best Practices for Securing Helm and Tiller&lt;/h2&gt;
+
+&lt;p&gt;The following guidelines reiterate the Best Practices for securing Helm and Tiller and using them correctly.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a cluster with RBAC enabled&lt;/li&gt;
+&lt;li&gt;Configure each Tiller gRPC endpoint to use a separate TLS certificate&lt;/li&gt;
+&lt;li&gt;Release information should be a Kubernetes Secret&lt;/li&gt;
+&lt;li&gt;Install one Tiller per user, team, or other organizational entity with the &lt;code&gt;--service-account&lt;/code&gt; flag, Roles, and RoleBindings&lt;/li&gt;
+&lt;li&gt;Use the &lt;code&gt;--tiller-tls-verify&lt;/code&gt; option with &lt;code&gt;helm init&lt;/code&gt; and the &lt;code&gt;--tls&lt;/code&gt; flag with other Helm commands to enforce verification&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If these steps are followed, an example &lt;code&gt;helm init&lt;/code&gt; command might look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ helm init \ 
+–tiller-tls \ 
+–tiller-tls-verify \ 
+–tiller-tls-ca-cert=ca.pem \ 
+–tiller-tls-cert=cert.pem \ 
+–tiller-tls-key=key.pem \ 
+–service-account=accountname  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will start Tiller with both strong authentication over gRPC, and a service account to which RBAC policies have been applied.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

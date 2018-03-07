@@ -1,0 +1,5 @@
+:2015 {
+  root /public
+  tls off
+  status 200 /healthz
+}

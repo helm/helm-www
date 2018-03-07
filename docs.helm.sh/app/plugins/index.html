@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title></title>
+
+  <meta name="description" content="Documentation for Helm - The Kubernetes Package Manager.">
+  <meta name="author" content="">
+  <meta property="og:title" content="Helm - The Package Manager for Kubernetes." />
+  <meta property="og:url" content="https://docs.helm.sh/" />
+  <meta property="og:image" content="https://docs.helm.sh//src/img/favicon-152.png" />
+  <meta name="google-site-verification" content="dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I" />
+
+  <link rel="icon" href="../src/img/favicon-152.png" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="../src/img/apple-touch-icon-precomposed.png">
+  <link href="../src/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body id="landing">
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+      <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+        <i class="fa fa-bars"></i>
+      </a>
+      <aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
+  <div class="drawer-wrap">
+
+    <ul class="off-canvas-list current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-ssl-between-helm-and-tiller" title="Switch to TLS/SSL for Helm and Tiller">
+              TLS/SSL for Helm and Tiller
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+
+    <div class="drawer-line"></div>
+
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+
+  </div>
+</aside>
+
+  <div class="container container-full">
+    <div class="sidebar show-for-large-up">
+  <h1>
+    <a href="../">
+      <svg height="50" viewBox="0 0 121 126" xmlns="http://www.w3.org/2000/svg"><title>Helm Logo</title><g fill="none" fill-rule="evenodd"><g fill="#277A9F"><path d="M85.218 94.1435c2.0246-1.4178 6.6492 1.6934 10.3293 6.949 3.68 5.2556 5.0218 10.6654 2.997 12.0832-2.0247 1.4177-6.6493-1.6935-10.3293-6.949-3.68-5.2557-5.022-10.6655-2.997-12.0832zM36.782 94.1435c-2.0246-1.4178-6.6492 1.6934-10.3293 6.949-3.68 5.2556-5.0218 10.6654-2.997 12.0832 2.0247 1.4177 6.6493-1.6935 10.3293-6.949 3.68-5.2557 5.022-10.6655 2.997-12.0832zM60.9755 102.3724c-2.4717 0-4.4755 5.201-4.4755 11.617 0 6.416 2.0038 11.617 4.4755 11.617 2.4718 0 4.4755-5.201 4.4755-11.617 0-6.416-2.0037-11.617-4.4755-11.617z"/></g><g fill="#277A9F"><path d="M85.218 31.8565c2.0246 1.4178 6.6492-1.6934 10.3293-6.949 3.68-5.2556 5.0218-10.6654 2.997-12.0832-2.0247-1.4177-6.6493 1.6935-10.3293 6.949-3.68 5.2557-5.022 10.6655-2.997 12.0832zM36.782 31.8565c-2.0246 1.4178-6.6492-1.6934-10.3293-6.949-3.68-5.2556-5.0218-10.6654-2.997-12.0832 2.0247-1.4177 6.6493 1.6935 10.3293 6.949 3.68 5.2557 5.022 10.6655 2.997 12.0832zM60.9755 23.6276c-2.4717 0-4.4755-5.201-4.4755-11.617 0-6.416 2.0038-11.617 4.4755-11.617 2.4718 0 4.4755 5.201 4.4755 11.617 0 6.416-2.0037 11.617-4.4755 11.617z"/></g><path d="M95.5044 42.1636c-7.2176-11.883-20.2966-19.8232-35.2333-19.8232-14.528 0-27.2986 7.5117-34.6276 18.8568m.7842 45.6688c7.4352 10.689 19.8207 17.6872 33.8435 17.6872 14.0484 0 26.4534-7.0237 33.884-17.7455" stroke="#277A9F" stroke-width="7.1608"/><path d="M.609 47.6948h8.6217v12.1304h9.7244V47.6948h8.6218v32.5818H18.955V67.344H9.2308v12.9326H.609V47.6948zm34.186 0h21.0528v7.218H43.4166v5.113h10.6266v7.218H43.4166v5.8147H56.349v7.218H34.795V47.695zm27.87 0h8.6215v25.3637h12.331v7.218H62.665V47.695zm26.5666 0h8.9224l5.113 13.534 1.8044 5.3133h.2005l1.8044-5.3132 4.9124-13.534h8.9224v32.5818h-8.0202v-9.6242c0-.8354.0418-1.7544.1253-2.757.0836-1.0024.1755-2.03.2757-3.0826.1003-1.0527.2172-2.0803.351-3.0828.1336-1.0025.2505-1.9048.3508-2.7068h-.2005l-2.7068 7.6192-4.5113 10.9775h-3.208l-4.5114-10.9776-2.6066-7.6192h-.2005c.1003.802.2172 1.7043.351 2.7068.1336 1.0025.2505 2.03.3508 3.0828.1002 1.0526.192 2.0802.2757 3.0827.0835 1.0025.1253 1.9215.1253 2.757v9.624h-7.92V47.695z" fill="#277A9F"/></g></svg>
+      <span>Documentation</span>
+    </a>
+  </h1>
+
+  <nav class="sidebar-nav">
+    <ul class="current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-ssl-between-helm-and-tiller" title="Switch to TLS/SSL for Helm and Tiller">
+              TLS/SSL for Helm and Tiller
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+  </nav>
+
+  <aside class="sidebar-buttons">
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+  </aside>
+</div>
+
+
+    <div class="main page" id="scrollpane">
+      <nav class="top-bar">
+  <div class="breadcrumb">
+    <a href="../"></a>
+  </div>
+  <ul class="inline right text-right">
+    <li><a href="https://helm.sh" target="_blank" title="Find out more about Helm."><i class="fa fa-home"></i> Helm.sh</a></li>
+    <li><a href="https://github.com/kubernetes/helm" target="_blank" title="Go to the Helm project on Github."><i class="fa fa-github"></i> Github</a></li>
+    <li><a href="https://hub.kubeapps.com" target="_blank" title="Go search and discover apps via Monocular, the Chart directory for Helm."><i class="fa fa-search"></i> Find Charts</a></li>
+  </ul>
+</nav>
+
+
+      <div class="row">
+        <div class="small-1 columns">&nbsp;</div>
+        <div class="small-10 columns content-wrap">
+          <h3></h3>
+          
+
+<h1 id="the-helm-plugins-guide">The Helm Plugins Guide</h1>
+
+<p>Helm 2.1.0 introduced the concept of a client-side Helm <em>plugin</em>. A plugin is a
+tool that can be accessed through the <code>helm</code> CLI, but which is not part of the
+built-in Helm codebase.</p>
+
+<p>Existing plugins can be found on <a href="related.md#helm-plugins">related</a> section or by searching <a href="https://github.com/search?q=topic%3Ahelm-plugin&amp;type=Repositories">Github</a>.</p>
+
+<p>This guide explains how to use and create plugins.</p>
+
+<h2 id="an-overview">An Overview</h2>
+
+<p>Helm plugins are add-on tools that integrate seamlessly with Helm. They provide
+a way to extend the core feature set of Helm, but without requiring every new
+feature to be written in Go and added to the core tool.</p>
+
+<p>Helm plugins have the following features:</p>
+
+<ul>
+<li>They can be added and removed from a Helm installation without impacting the
+core Helm tool.</li>
+<li>They can be written in any programming language.</li>
+<li>They integrate with Helm, and will show up in <code>helm help</code> and other places.</li>
+</ul>
+
+<p>Helm plugins live in <code>$(helm home)/plugins</code>.</p>
+
+<p>The Helm plugin model is partially modeled on Git&rsquo;s plugin model. To that end,
+you may sometimes hear <code>helm</code> referred to as the <em>porcelain</em> layer, with
+plugins being the <em>plumbing</em>. This is a shorthand way of suggesting that
+Helm provides the user experience and top level processing logic, while the
+plugins do the &ldquo;detail work&rdquo; of performing a desired action.</p>
+
+<h2 id="installing-a-plugin">Installing a Plugin</h2>
+
+<p>Plugins are installed using the <code>$ helm plugin install &lt;path|url&gt;</code> command. You can pass in a path to a plugin on your local file system or a url of a remote VCS repo. The <code>helm plugin install</code> command clones or copies the plugin at the path/url given into <code>$ (helm home)/plugins</code></p>
+
+<pre><code class="language-console">$ helm plugin install https://github.com/technosophos/helm-template
+</code></pre>
+
+<p>If you have a plugin tar distribution, simply untar the plugin into the
+<code>$(helm home)/plugins</code> directory.</p>
+
+<p>You can also install tarball plugins directly from url by issuing <code>helm plugin install http://domain/path/to/plugin.tar.gz</code></p>
+
+<h2 id="building-plugins">Building Plugins</h2>
+
+<p>In many ways, a plugin is similar to a chart. Each plugin has a top-level
+directory, and then a <code>plugin.yaml</code> file.</p>
+
+<pre><code>$(helm home)/plugins/
+  |- keybase/
+      |
+      |- plugin.yaml
+      |- keybase.sh
+
+</code></pre>
+
+<p>In the example above, the <code>keybase</code> plugin is contained inside of a directory
+named <code>keybase</code>. It has two files: <code>plugin.yaml</code> (required) and an executable
+script, <code>keybase.sh</code> (optional).</p>
+
+<p>The core of a plugin is a simple YAML file named <code>plugin.yaml</code>.
+Here is a plugin YAML for a plugin that adds support for Keybase operations:</p>
+
+<pre><code>name: &quot;keybase&quot;
+version: &quot;0.1.0&quot;
+usage: &quot;Integrate Keybase.io tools with Helm&quot;
+description: |-
+  This plugin provides Keybase services to Helm.
+ignoreFlags: false
+useTunnel: false
+command: &quot;$HELM_PLUGIN_DIR/keybase.sh&quot;
+</code></pre>
+
+<p>The <code>name</code> is the name of the plugin. When Helm executes it plugin, this is the
+name it will use (e.g. <code>helm NAME</code> will invoke this plugin).</p>
+
+<p><em><code>name</code> should match the directory name.</em> In our example above, that means the
+plugin with <code>name: keybase</code> should be contained in a directory named <code>keybase</code>.</p>
+
+<p>Restrictions on <code>name</code>:</p>
+
+<ul>
+<li><code>name</code> cannot duplicate one of the existing <code>helm</code> top-level commands.</li>
+<li><code>name</code> must be restricted to the characters ASCII a-z, A-Z, 0-9, <code>_</code> and <code>-</code>.</li>
+</ul>
+
+<p><code>version</code> is the SemVer 2 version of the plugin.
+<code>usage</code> and <code>description</code> are both used to generate the help text of a command.</p>
+
+<p>The <code>ignoreFlags</code> switch tells Helm to <em>not</em> pass flags to the plugin. So if a
+plugin is called with <code>helm myplugin --foo</code> and <code>ignoreFlags: true</code>, then <code>--foo</code>
+is silently discarded.</p>
+
+<p>The <code>useTunnel</code> switch indicates that the plugin needs a tunnel to Tiller. This
+should be set to <code>true</code> <em>anytime a plugin talks to Tiller</em>. It will cause Helm
+to open a tunnel, and then set <code>$TILLER_HOST</code> to the right local address for that
+tunnel. But don&rsquo;t worry: if Helm detects that a tunnel is not necessary because
+Tiller is running locally, it will not create the tunnel.</p>
+
+<p>Finally, and most importantly, <code>command</code> is the command that this plugin will
+execute when it is called. Environment variables are interpolated before the plugin
+is executed. The pattern above illustrates the preferred way to indicate where
+the plugin program lives.</p>
+
+<p>There are some strategies for working with plugin commands:</p>
+
+<ul>
+<li>If a plugin includes an executable, the executable for a <code>command:</code> should be
+packaged in the plugin directory.</li>
+<li>The <code>command:</code> line will have any environment variables expanded before
+execution. <code>$HELM_PLUGIN_DIR</code> will point to the plugin directory.</li>
+<li>The command itself is not executed in a shell. So you can&rsquo;t oneline a shell script.</li>
+<li>Helm injects lots of configuration into environment variables. Take a look at
+the environment to see what information is available.</li>
+<li>Helm makes no assumptions about the language of the plugin. You can write it
+in whatever you prefer.</li>
+<li>Commands are responsible for implementing specific help text for <code>-h</code> and <code>--help</code>.
+Helm will use <code>usage</code> and <code>description</code> for <code>helm help</code> and <code>helm help myplugin</code>,
+but will not handle <code>helm myplugin --help</code>.</li>
+</ul>
+
+<h2 id="downloader-plugins">Downloader Plugins</h2>
+
+<p>By default, Helm is able to fetch Charts using HTTP/S. As of Helm 2.4.0, plugins
+can have a special capability to download Charts from arbitrary sources.</p>
+
+<p>Plugins shall declare this special capability in the <code>plugin.yaml</code> file (top level):</p>
+
+<pre><code>downloaders:
+- command: &quot;bin/mydownloader&quot;
+  protocols:
+  - &quot;myprotocol&quot;
+  - &quot;myprotocols&quot;
+</code></pre>
+
+<p>If such plugin is installed, Helm can interact with the repository using the specified
+protocol scheme by invoking the <code>command</code>. The special repository shall be added
+similarily to the regular ones: <code>helm repo add favorite myprotocol://example.com/</code>
+The rules for the special repos are the same to the regular ones: Helm must be able
+to download the <code>index.yaml</code> file in order to discover and cache the list of
+available Charts.</p>
+
+<p>The defined command will be invoked with the following scheme:
+<code>command certFile keyFile caFile full-URL</code>. The SSL credentials are coming from the
+repo definition, stored in <code>$HELM_HOME/repository/repositories.yaml</code>. Downloader
+plugin is expected to dump the raw content to stdout and report errors on stderr.</p>
+
+<h2 id="environment-variables">Environment Variables</h2>
+
+<p>When Helm executes a plugin, it passes the outer environment to the plugin, and
+also injects some additional environment variables.</p>
+
+<p>Variables like <code>KUBECONFIG</code> are set for the plugin if they are set in the
+outer environment.</p>
+
+<p>The following variables are guaranteed to be set:</p>
+
+<ul>
+<li><code>HELM_PLUGIN</code>: The path to the plugins directory</li>
+<li><code>HELM_PLUGIN_NAME</code>: The name of the plugin, as invoked by <code>helm</code>. So
+<code>helm myplug</code> will have the short name <code>myplug</code>.</li>
+<li><code>HELM_PLUGIN_DIR</code>: The directory that contains the plugin.</li>
+<li><code>HELM_BIN</code>: The path to the <code>helm</code> command (as executed by the user).</li>
+<li><code>HELM_HOME</code>: The path to the Helm home.</li>
+<li><code>HELM_PATH_*</code>: Paths to important Helm files and directories are stored in
+environment variables prefixed by <code>HELM_PATH</code>.</li>
+<li><code>TILLER_HOST</code>: The <code>domain:port</code> to Tiller. If a tunnel is created, this
+will point to the local endpoint for the tunnel. Otherwise, it will point
+to <code>$HELM_HOST</code>, <code>--host</code>, or the default host (according to Helm&rsquo;s rules of
+precedence).</li>
+</ul>
+
+<p>While <code>HELM_HOST</code> <em>may</em> be set, there is no guarantee that it will point to the
+correct Tiller instance. This is done to allow plugin developer to access
+<code>HELM_HOST</code> in its raw state when the plugin itself needs to manually configure
+a connection.</p>
+
+<h2 id="a-note-on-usetunnel">A Note on <code>useTunnel</code></h2>
+
+<p>If a plugin specifies <code>useTunnel: true</code>, Helm will do the following (in order):</p>
+
+<ol>
+<li>Parse global flags and the environment</li>
+<li>Create the tunnel</li>
+<li>Set <code>TILLER_HOST</code></li>
+<li>Execute the plugin</li>
+<li>Close the tunnel</li>
+</ol>
+
+<p>The tunnel is removed as soon as the <code>command</code> returns. So, for example, a
+command cannot background a process and assume that that process will be able
+to use the tunnel.</p>
+
+<h2 id="a-note-on-flag-parsing">A Note on Flag Parsing</h2>
+
+<p>When executing a plugin, Helm will parse global flags for its own use. Some of
+these flags are <em>not</em> passed on to the plugin.</p>
+
+<ul>
+<li><code>--debug</code>: If this is specified, <code>$HELM_DEBUG</code> is set to <code>1</code></li>
+<li><code>--home</code>: This is converted to <code>$HELM_HOME</code></li>
+<li><code>--host</code>: This is converted to <code>$HELM_HOST</code></li>
+<li><code>--kube-context</code>: This is simply dropped. If your plugin uses <code>useTunnel</code>, this
+is used to set up the tunnel for you.</li>
+</ul>
+
+<p>Plugins <em>should</em> display help text and then exit for <code>-h</code> and <code>--help</code>. In all
+other cases, plugins may use flags as appropriate.</p>
+
+        </div>
+        <div class="small-1 columns">&nbsp;</div>
+      </div>
+    </div>
+
+    
+    </div> 
+
+    <a class="exit-off-canvas"></a>
+
+    </div> 
+  </div> 
+
+    
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../src/js/main.min.js"></script>
+  <script src="../src/js/app_init.min.js"></script>
+
+</body>
+</html>

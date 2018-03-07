@@ -1,0 +1,45 @@
+/* ==
+Helm Docs
+*/
+
+// point to the bower directory
+$bower : '../../../../../bower_components';
+
+// load reset (normalize)
+@import "../../../../../bower_components/foundation/scss/normalize.scss";
+
+// load foundation
+@import "../../../../../bower_components/foundation/scss/foundation/components/grid.scss";
+@import "../../../../../bower_components/foundation/scss/foundation/components/block-grid.scss";
+
+@import "../../../../../bower_components/foundation/scss/foundation/components/buttons.scss";
+
+@import "../../../../../bower_components/foundation/scss/foundation/components/inline-lists.scss";
+@import "../../../../../bower_components/foundation/scss/foundation/components/top-bar.scss";
+@import "../../../../../bower_components/foundation/scss/foundation/components/type.scss";
+@import "../../../../../bower_components/foundation/scss/foundation/components/offcanvas.scss";
+@import "../../../../../bower_components/foundation/scss/foundation/components/visibility.scss";
+
+
+// font awesome
+// load customized (smaller) set from Fontello, for smaller load
+$fa-font-path: "../fonts" !default;
+@import "../../../../../bower_components/font-awesome/scss/font-awesome.scss";
+// @import "fontawesome.scss";
+
+// load helm styles
+@import "helm/var-mixins";
+@import "helm/buttons";
+@import "helm/animation";
+@import "helm/typography";
+
+
+// load documentation styles
+@import "docs-layout.scss";
+@import "docs-sidebar.scss";
+@import "docs-topbar.scss";
+@import "docs-footer.scss";
+@import "docs-home.scss";
+@import "docs-content.scss";
+@import "docs-responsive.scss";
+@import "docs-404.scss";

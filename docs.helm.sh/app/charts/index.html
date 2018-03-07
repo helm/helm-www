@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title></title>
+
+  <meta name="description" content="Documentation for Helm - The Kubernetes Package Manager.">
+  <meta name="author" content="">
+  <meta property="og:title" content="Helm - The Package Manager for Kubernetes." />
+  <meta property="og:url" content="https://docs.helm.sh/" />
+  <meta property="og:image" content="https://docs.helm.sh//src/img/favicon-152.png" />
+  <meta name="google-site-verification" content="dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I" />
+
+  <link rel="icon" href="../src/img/favicon-152.png" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="../src/img/apple-touch-icon-precomposed.png">
+  <link href="../src/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body id="landing">
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+      <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+        <i class="fa fa-bars"></i>
+      </a>
+      <aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
+  <div class="drawer-wrap">
+
+    <ul class="off-canvas-list current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-ssl-between-helm-and-tiller" title="Switch to TLS/SSL for Helm and Tiller">
+              TLS/SSL for Helm and Tiller
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+
+    <div class="drawer-line"></div>
+
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+
+  </div>
+</aside>
+
+  <div class="container container-full">
+    <div class="sidebar show-for-large-up">
+  <h1>
+    <a href="../">
+      <svg height="50" viewBox="0 0 121 126" xmlns="http://www.w3.org/2000/svg"><title>Helm Logo</title><g fill="none" fill-rule="evenodd"><g fill="#277A9F"><path d="M85.218 94.1435c2.0246-1.4178 6.6492 1.6934 10.3293 6.949 3.68 5.2556 5.0218 10.6654 2.997 12.0832-2.0247 1.4177-6.6493-1.6935-10.3293-6.949-3.68-5.2557-5.022-10.6655-2.997-12.0832zM36.782 94.1435c-2.0246-1.4178-6.6492 1.6934-10.3293 6.949-3.68 5.2556-5.0218 10.6654-2.997 12.0832 2.0247 1.4177 6.6493-1.6935 10.3293-6.949 3.68-5.2557 5.022-10.6655 2.997-12.0832zM60.9755 102.3724c-2.4717 0-4.4755 5.201-4.4755 11.617 0 6.416 2.0038 11.617 4.4755 11.617 2.4718 0 4.4755-5.201 4.4755-11.617 0-6.416-2.0037-11.617-4.4755-11.617z"/></g><g fill="#277A9F"><path d="M85.218 31.8565c2.0246 1.4178 6.6492-1.6934 10.3293-6.949 3.68-5.2556 5.0218-10.6654 2.997-12.0832-2.0247-1.4177-6.6493 1.6935-10.3293 6.949-3.68 5.2557-5.022 10.6655-2.997 12.0832zM36.782 31.8565c-2.0246 1.4178-6.6492-1.6934-10.3293-6.949-3.68-5.2556-5.0218-10.6654-2.997-12.0832 2.0247-1.4177 6.6493 1.6935 10.3293 6.949 3.68 5.2557 5.022 10.6655 2.997 12.0832zM60.9755 23.6276c-2.4717 0-4.4755-5.201-4.4755-11.617 0-6.416 2.0038-11.617 4.4755-11.617 2.4718 0 4.4755 5.201 4.4755 11.617 0 6.416-2.0037 11.617-4.4755 11.617z"/></g><path d="M95.5044 42.1636c-7.2176-11.883-20.2966-19.8232-35.2333-19.8232-14.528 0-27.2986 7.5117-34.6276 18.8568m.7842 45.6688c7.4352 10.689 19.8207 17.6872 33.8435 17.6872 14.0484 0 26.4534-7.0237 33.884-17.7455" stroke="#277A9F" stroke-width="7.1608"/><path d="M.609 47.6948h8.6217v12.1304h9.7244V47.6948h8.6218v32.5818H18.955V67.344H9.2308v12.9326H.609V47.6948zm34.186 0h21.0528v7.218H43.4166v5.113h10.6266v7.218H43.4166v5.8147H56.349v7.218H34.795V47.695zm27.87 0h8.6215v25.3637h12.331v7.218H62.665V47.695zm26.5666 0h8.9224l5.113 13.534 1.8044 5.3133h.2005l1.8044-5.3132 4.9124-13.534h8.9224v32.5818h-8.0202v-9.6242c0-.8354.0418-1.7544.1253-2.757.0836-1.0024.1755-2.03.2757-3.0826.1003-1.0527.2172-2.0803.351-3.0828.1336-1.0025.2505-1.9048.3508-2.7068h-.2005l-2.7068 7.6192-4.5113 10.9775h-3.208l-4.5114-10.9776-2.6066-7.6192h-.2005c.1003.802.2172 1.7043.351 2.7068.1336 1.0025.2505 2.03.3508 3.0828.1002 1.0526.192 2.0802.2757 3.0827.0835 1.0025.1253 1.9215.1253 2.757v9.624h-7.92V47.695z" fill="#277A9F"/></g></svg>
+      <span>Documentation</span>
+    </a>
+  </h1>
+
+  <nav class="sidebar-nav">
+    <ul class="current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-ssl-between-helm-and-tiller" title="Switch to TLS/SSL for Helm and Tiller">
+              TLS/SSL for Helm and Tiller
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+  </nav>
+
+  <aside class="sidebar-buttons">
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+  </aside>
+</div>
+
+
+    <div class="main page" id="scrollpane">
+      <nav class="top-bar">
+  <div class="breadcrumb">
+    <a href="../"></a>
+  </div>
+  <ul class="inline right text-right">
+    <li><a href="https://helm.sh" target="_blank" title="Find out more about Helm."><i class="fa fa-home"></i> Helm.sh</a></li>
+    <li><a href="https://github.com/kubernetes/helm" target="_blank" title="Go to the Helm project on Github."><i class="fa fa-github"></i> Github</a></li>
+    <li><a href="https://hub.kubeapps.com" target="_blank" title="Go search and discover apps via Monocular, the Chart directory for Helm."><i class="fa fa-search"></i> Find Charts</a></li>
+  </ul>
+</nav>
+
+
+      <div class="row">
+        <div class="small-1 columns">&nbsp;</div>
+        <div class="small-10 columns content-wrap">
+          <h3></h3>
+          
+
+<h1 id="charts">Charts</h1>
+
+<p>Helm uses a packaging format called <em>charts</em>. A chart is a collection of files
+that describe a related set of Kubernetes resources. A single chart
+might be used to deploy something simple, like a memcached pod, or
+something complex, like a full web app stack with HTTP servers,
+databases, caches, and so on.</p>
+
+<p>Charts are created as files laid out in a particular directory tree,
+then they can be packaged into versioned archives to be deployed.</p>
+
+<p>This document explains the chart format, and provides basic guidance for
+building charts with Helm.</p>
+
+<h2 id="the-chart-file-structure">The Chart File Structure</h2>
+
+<p>A chart is organized as a collection of files inside of a directory. The
+directory name is the name of the chart (without versioning information). Thus,
+a chart describing WordPress would be stored in the <code>wordpress/</code> directory.</p>
+
+<p>Inside of this directory, Helm will expect a structure that matches this:</p>
+
+<pre><code>wordpress/
+  Chart.yaml          # A YAML file containing information about the chart
+  LICENSE             # OPTIONAL: A plain text file containing the license for the chart
+  README.md           # OPTIONAL: A human-readable README file
+  requirements.yaml   # OPTIONAL: A YAML file listing dependencies for the chart
+  values.yaml         # The default configuration values for this chart
+  charts/             # OPTIONAL: A directory containing any charts upon which this chart depends.
+  templates/          # OPTIONAL: A directory of templates that, when combined with values,
+                      # will generate valid Kubernetes manifest files.
+  templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
+</code></pre>
+
+<p>Helm reserves use of the <code>charts/</code> and <code>templates/</code> directories, and of
+the listed file names. Other files will be left as they are.</p>
+
+<p>While the <code>charts</code> and <code>templates</code> directories are optional there must be at least one chart dependency or template file for the chart to be valid.</p>
+
+<h2 id="the-chart-yaml-file">The Chart.yaml File</h2>
+
+<p>The <code>Chart.yaml</code> file is required for a chart. It contains the following fields:</p>
+
+<pre><code class="language-yaml">name: The name of the chart (required)
+version: A SemVer 2 version (required)
+description: A single-sentence description of this project (optional)
+keywords:
+  - A list of keywords about this project (optional)
+home: The URL of this project's home page (optional)
+sources:
+  - A list of URLs to source code for this project (optional)
+maintainers: # (optional)
+  - name: The maintainer's name (required for each maintainer)
+    email: The maintainer's email (optional for each maintainer)
+    url: A URL for the maintainer (optional for each maintainer)
+engine: gotpl # The name of the template engine (optional, defaults to gotpl)
+icon: A URL to an SVG or PNG image to be used as an icon (optional).
+appVersion: The version of the app that this contains (optional). This needn't be SemVer.
+deprecated: Whether this chart is deprecated (optional, boolean)
+tillerVersion: The version of Tiller that this chart requires. This should be expressed as a SemVer range: &quot;&gt;2.0.0&quot; (optional)
+</code></pre>
+
+<p>If you are familiar with the <code>Chart.yaml</code> file format for Helm Classic, you will
+notice that fields specifying dependencies have been removed. That is because
+the new Chart format expresses dependencies using the <code>charts/</code> directory.</p>
+
+<p>Other fields will be silently ignored.</p>
+
+<h3 id="charts-and-versioning">Charts and Versioning</h3>
+
+<p>Every chart must have a version number. A version must follow the
+<a href="http://semver.org/">SemVer 2</a> standard. Unlike Helm Classic, Kubernetes
+Helm uses version numbers as release markers. Packages in repositories
+are identified by name plus version.</p>
+
+<p>For example, an <code>nginx</code> chart whose version field is set to <code>version:
+1.2.3</code> will be named:</p>
+
+<pre><code>nginx-1.2.3.tgz
+</code></pre>
+
+<p>More complex SemVer 2 names are also supported, such as
+<code>version: 1.2.3-alpha.1+ef365</code>. But non-SemVer names are explicitly
+disallowed by the system.</p>
+
+<p><strong>NOTE:</strong> Whereas Helm Classic and Deployment Manager were both
+very GitHub oriented when it came to charts, Kubernetes Helm does not
+rely upon or require GitHub or even Git. Consequently, it does not use
+Git SHAs for versioning at all.</p>
+
+<p>The <code>version</code> field inside of the <code>Chart.yaml</code> is used by many of the
+Helm tools, including the CLI and the Tiller server. When generating a
+package, the <code>helm package</code> command will use the version that it finds
+in the <code>Chart.yaml</code> as a token in the package name. The system assumes
+that the version number in the chart package name matches the version number in
+the <code>Chart.yaml</code>. Failure to meet this assumption will cause an error.</p>
+
+<h3 id="the-appversion-field">The appVersion field</h3>
+
+<p>Note that the <code>appVersion</code> field is not related to the <code>version</code> field. It is
+a way of specifying the version of the application. For example, the <code>drupal</code>
+chart may have an <code>appVersion: 8.2.1</code>, indicating that the version of Drupal
+included in the chart (by default) is <code>8.2.1</code>. This field is informational, and
+has no impact on chart version calculations.</p>
+
+<h3 id="deprecating-charts">Deprecating Charts</h3>
+
+<p>When managing charts in a Chart Repository, it is sometimes necessary to
+deprecate a chart. The optional <code>deprecated</code> field in <code>Chart.yaml</code> can be used
+to mark a chart as deprecated. If the <strong>latest</strong> version of a chart in the
+repository is marked as deprecated, then the chart as a whole is considered to
+be deprecated. The chart name can later be reused by publishing a newer version
+that is not marked as deprecated. The workflow for deprecating charts, as
+followed by the <a href="https://github.com/kubernetes/charts">kubernetes/charts</a>
+project is:
+  - Update chart&rsquo;s <code>Chart.yaml</code> to mark the chart as deprecated, bumping the
+  version
+  - Release the new chart version in the Chart Repository
+  - Remove the chart from the source repository (e.g. git)</p>
+
+<h2 id="chart-license-readme-and-notes">Chart LICENSE, README and NOTES</h2>
+
+<p>Charts can also contain files that describe the installation, configuration, usage and license of a
+chart. A README for a chart should be formatted in Markdown (README.md), and should generally
+contain:</p>
+
+<ul>
+<li>A description of the application or service the chart provides</li>
+<li>Any prerequisites or requirements to run the chart</li>
+<li>Descriptions of options in <code>values.yaml</code> and default values</li>
+<li>Any other information that may be relevant to the installation or configuration of the chart</li>
+</ul>
+
+<p>The chart can also contain a short plain text <code>templates/NOTES.txt</code> file that will be printed out
+after installation, and when viewing the status of a release. This file is evaluated as a
+<a href="#templates-and-values">template</a>, and can be used to display usage notes, next steps, or any other
+information relevant to a release of the chart. For example, instructions could be provided for
+connecting to a database, or accessing a web UI. Since this file is printed to STDOUT when running
+<code>helm install</code> or <code>helm status</code>, it is recommended to keep the content brief and point to the README
+for greater detail.</p>
+
+<h2 id="chart-dependencies">Chart Dependencies</h2>
+
+<p>In Helm, one chart may depend on any number of other charts.
+These dependencies can be dynamically linked through the <code>requirements.yaml</code>
+file or brought in to the <code>charts/</code> directory and managed manually.</p>
+
+<p>Although manually managing your dependencies has a few advantages some teams need,
+the preferred method of declaring dependencies is by using a
+<code>requirements.yaml</code> file inside of your chart.</p>
+
+<p><strong>Note:</strong> The <code>dependencies:</code> section of the <code>Chart.yaml</code> from Helm
+Classic has been completely removed.</p>
+
+<h3 id="managing-dependencies-with-requirements-yaml">Managing Dependencies with <code>requirements.yaml</code></h3>
+
+<p>A <code>requirements.yaml</code> file is a simple file for listing your
+dependencies.</p>
+
+<pre><code class="language-yaml">dependencies:
+  - name: apache
+    version: 1.2.3
+    repository: http://example.com/charts
+  - name: mysql
+    version: 3.2.1
+    repository: http://another.example.com/charts
+</code></pre>
+
+<ul>
+<li>The <code>name</code> field is the name of the chart you want.</li>
+<li>The <code>version</code> field is the version of the chart you want.</li>
+<li>The <code>repository</code> field is the full URL to the chart repository. Note
+that you must also use <code>helm repo add</code> to add that repo locally.</li>
+</ul>
+
+<p>Once you have a dependencies file, you can run <code>helm dependency update</code>
+and it will use your dependency file to download all the specified
+charts into your <code>charts/</code> directory for you.</p>
+
+<pre><code class="language-console">$ helm dep up foochart
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &quot;local&quot; chart repository
+...Successfully got an update from the &quot;stable&quot; chart repository
+...Successfully got an update from the &quot;example&quot; chart repository
+...Successfully got an update from the &quot;another&quot; chart repository
+Update Complete. Happy Helming!
+Saving 2 charts
+Downloading apache from repo http://example.com/charts
+Downloading mysql from repo http://another.example.com/charts
+</code></pre>
+
+<p>When <code>helm dependency update</code> retrieves charts, it will store them as
+chart archives in the <code>charts/</code> directory. So for the example above, one
+would expect to see the following files in the charts directory:</p>
+
+<pre><code>charts/
+  apache-1.2.3.tgz
+  mysql-3.2.1.tgz
+</code></pre>
+
+<p>Managing charts with <code>requirements.yaml</code> is a good way to easily keep
+charts updated, and also share requirements information throughout a
+team.</p>
+
+<h4 id="alias-field-in-requirements-yaml">Alias field in requirements.yaml</h4>
+
+<p>In addition to the other fields above, each requirements entry may contain
+the optional field <code>alias</code>.</p>
+
+<p>Adding an alias for a dependency chart would put
+a chart in dependencies using alias as name of new dependency.</p>
+
+<p>One can use <code>alias</code> in cases where they need to access a chart
+with other name(s).</p>
+
+<pre><code class="language-yaml"># parentchart/requirements.yaml
+dependencies:
+  - name: subchart
+    repository: http://localhost:10191
+    version: 0.1.0
+    alias: new-subchart-1
+  - name: subchart
+    repository: http://localhost:10191
+    version: 0.1.0
+    alias: new-subchart-2
+  - name: subchart
+    repository: http://localhost:10191
+    version: 0.1.0
+</code></pre>
+
+<p>In the above example we will get 3 dependencies in all for <code>parentchart</code></p>
+
+<pre><code>subchart
+new-subchart-1
+new-subchart-2
+</code></pre>
+
+<p>The manual way of achieving this is by copy/pasting the same chart in the
+<code>charts/</code> directory multiple times with different names.</p>
+
+<h4 id="tags-and-condition-fields-in-requirements-yaml">Tags and Condition fields in requirements.yaml</h4>
+
+<p>In addition to the other fields above, each requirements entry may contain
+the optional fields <code>tags</code> and <code>condition</code>.</p>
+
+<p>All charts are loaded by default. If <code>tags</code> or <code>condition</code> fields are present,
+they will be evaluated and used to control loading for the chart(s) they are applied to.</p>
+
+<p>Condition - The condition field holds one or more YAML paths (delimited by commas).
+If this path exists in the top parent&rsquo;s values and resolves to a boolean value,
+the chart will be enabled or disabled based on that boolean value.  Only the first
+valid path found in the list is evaluated and if no paths exist then the condition has no effect.</p>
+
+<p>Tags - The tags field is a YAML list of labels to associate with this chart.
+In the top parent&rsquo;s values, all charts with tags can be enabled or disabled by
+specifying the tag and a boolean value.</p>
+
+<pre><code># parentchart/requirements.yaml
+dependencies:
+      - name: subchart1
+        repository: http://localhost:10191
+        version: 0.1.0
+        condition: subchart1.enabled, global.subchart1.enabled
+        tags:
+          - front-end
+          - subchart1
+
+      - name: subchart2
+        repository: http://localhost:10191
+        version: 0.1.0
+        condition: subchart2.enabled,global.subchart2.enabled
+        tags:
+          - back-end
+          - subchart2
+
+</code></pre>
+
+<pre><code># parentchart/values.yaml
+
+subchart1:
+  enabled: true
+tags:
+  front-end: false
+  back-end: true
+</code></pre>
+
+<p>In the above example all charts with the tag <code>front-end</code> would be disabled but since the
+<code>subchart1.enabled</code> path evaluates to &lsquo;true&rsquo; in the parent&rsquo;s values, the condition will override the
+<code>front-end</code> tag and <code>subchart1</code> will be enabled.</p>
+
+<p>Since <code>subchart2</code> is tagged with <code>back-end</code> and that tag evaluates to <code>true</code>, <code>subchart2</code> will be
+enabled. Also notes that although <code>subchart2</code> has a condition specified in <code>requirements.yaml</code>, there
+is no corresponding path and value in the parent&rsquo;s values so that condition has no effect.</p>
+
+<h5 id="using-the-cli-with-tags-and-conditions">Using the CLI with Tags and Conditions</h5>
+
+<p>The <code>--set</code> parameter can be used as usual to alter tag and condition values.</p>
+
+<pre><code>helm install --set tags.front-end=true --set subchart2.enabled=false
+
+</code></pre>
+
+<h5 id="tags-and-condition-resolution">Tags and Condition Resolution</h5>
+
+<ul>
+<li><strong>Conditions (when set in values) always override tags.</strong> The first condition
+path that exists wins and subsequent ones for that chart are ignored.</li>
+<li>Tags are evaluated as &lsquo;if any of the chart&rsquo;s tags are true then enable the chart&rsquo;.</li>
+<li>Tags and conditions values must be set in the top parent&rsquo;s values.</li>
+<li>The <code>tags:</code> key in values must be a top level key. Globals and nested <code>tags:</code> tables
+are not currently supported.</li>
+</ul>
+
+<h4 id="importing-child-values-via-requirements-yaml">Importing Child Values via requirements.yaml</h4>
+
+<p>In some cases it is desirable to allow a child chart&rsquo;s values to propagate to the parent chart and be
+shared as common defaults. An additional benefit of using the <code>exports</code> format is that it will enable future
+tooling to introspect user-settable values.</p>
+
+<p>The keys containing the values to be imported can be specified in the parent chart&rsquo;s <code>requirements.yaml</code> file
+using a YAML list. Each item in the list is a key which is imported from the child chart&rsquo;s <code>exports</code> field.</p>
+
+<p>To import values not contained in the <code>exports</code> key, use the <a href="#using-the-child-parent-format">child-parent</a> format.
+Examples of both formats are described below.</p>
+
+<h5 id="using-the-exports-format">Using the exports format</h5>
+
+<p>If a child chart&rsquo;s <code>values.yaml</code> file contains an <code>exports</code> field at the root, its contents may be imported
+directly into the parent&rsquo;s values by specifying the keys to import as in the example below:</p>
+
+<pre><code class="language-yaml"># parent's requirements.yaml file
+    ...
+    import-values:
+      - data
+</code></pre>
+
+<pre><code class="language-yaml"># child's values.yaml file
+...
+exports:
+  data:
+    myint: 99
+</code></pre>
+
+<p>Since we are specifying the key <code>data</code> in our import list, Helm looks in the <code>exports</code> field of the child
+chart for <code>data</code> key and imports its contents.</p>
+
+<p>The final parent values would contain our exported field:</p>
+
+<pre><code class="language-yaml"># parent's values file
+...
+myint: 99
+
+</code></pre>
+
+<p>Please note the parent key <code>data</code> is not contained in the parent&rsquo;s final values. If you need to specify the
+parent key, use the &lsquo;child-parent&rsquo; format.</p>
+
+<h5 id="using-the-child-parent-format">Using the child-parent format</h5>
+
+<p>To access values that are not contained in the <code>exports</code> key of the child chart&rsquo;s values, you will need to
+specify the source key of the values to be imported (<code>child</code>) and the destination path in the parent chart&rsquo;s
+values (<code>parent</code>).</p>
+
+<p>The <code>import-values</code> in the example below instructs Helm to take any values found at <code>child:</code> path and copy them
+to the parent&rsquo;s values at the path specified in <code>parent:</code></p>
+
+<pre><code class="language-yaml"># parent's requirements.yaml file
+dependencies:
+  - name: subchart1
+    repository: http://localhost:10191
+    version: 0.1.0
+    ...
+    import-values:
+      - child: default.data
+        parent: myimports
+</code></pre>
+
+<p>In the above example, values found at <code>default.data</code> in the subchart1&rsquo;s values will be imported
+to the <code>myimports</code> key in the parent chart&rsquo;s values as detailed below:</p>
+
+<pre><code class="language-yaml"># parent's values.yaml file
+
+myimports:
+  myint: 0
+  mybool: false
+  mystring: &quot;helm rocks!&quot;
+  
+</code></pre>
+
+<pre><code class="language-yaml"># subchart1's values.yaml file
+
+default:
+  data:
+    myint: 999
+    mybool: true
+    
+</code></pre>
+
+<p>The parent chart&rsquo;s resulting values would be:</p>
+
+<pre><code class="language-yaml"># parent's final values
+
+myimports:
+  myint: 999
+  mybool: true
+  mystring: &quot;helm rocks!&quot;
+
+</code></pre>
+
+<p>The parent&rsquo;s final values now contains the <code>myint</code> and <code>mybool</code> fields imported from subchart1.</p>
+
+<h3 id="managing-dependencies-manually-via-the-charts-directory">Managing Dependencies manually via the <code>charts/</code> directory</h3>
+
+<p>If more control over dependencies is desired, these dependencies can
+be expressed explicitly by copying the dependency charts into the
+<code>charts/</code> directory.</p>
+
+<p>A dependency can be either a chart archive (<code>foo-1.2.3.tgz</code>) or an
+unpacked chart directory. But its name cannot start with <code>_</code> or <code>.</code>.
+Such files are ignored by the chart loader.</p>
+
+<p>For example, if the WordPress chart depends on the Apache chart, the
+Apache chart (of the correct version) is supplied in the WordPress
+chart&rsquo;s <code>charts/</code> directory:</p>
+
+<pre><code>wordpress:
+  Chart.yaml
+  requirements.yaml
+  # ...
+  charts/
+    apache/
+      Chart.yaml
+      # ...
+    mysql/
+      Chart.yaml
+      # ...
+</code></pre>
+
+<p>The example above shows how the WordPress chart expresses its dependency
+on Apache and MySQL by including those charts inside of its <code>charts/</code>
+directory.</p>
+
+<p><strong>TIP:</strong> <em>To drop a dependency into your <code>charts/</code> directory, use the
+<code>helm fetch</code> command</em></p>
+
+<h3 id="operational-aspects-of-using-dependencies">Operational aspects of using dependencies</h3>
+
+<p>The above sections explain how to specify chart dependencies, but how does this affect
+chart installation using <code>helm install</code> and <code>helm upgrade</code>?</p>
+
+<p>Suppose that a chart named &ldquo;A&rdquo; creates the following Kubernetes objects</p>
+
+<ul>
+<li>namespace &ldquo;A-Namespace&rdquo;</li>
+<li>statefulset &ldquo;A-StatefulSet&rdquo;</li>
+<li>service &ldquo;A-Service&rdquo;</li>
+</ul>
+
+<p>Furthermore, A is dependent on chart B that creates objects</p>
+
+<ul>
+<li>namespace &ldquo;B-Namespace&rdquo;</li>
+<li>replicaset &ldquo;B-ReplicaSet&rdquo;</li>
+<li>service &ldquo;B-Service&rdquo;</li>
+</ul>
+
+<p>After installation/upgrade of chart A a single Helm release is created/modified. The release will
+create/update all of the above Kubernetes objects in the following order:</p>
+
+<ul>
+<li>A-Namespace</li>
+<li>B-Namespace</li>
+<li>A-StatefulSet</li>
+<li>B-ReplicaSet</li>
+<li>A-Service</li>
+<li>B-Service</li>
+</ul>
+
+<p>This is because when Helm installs/upgrades charts,
+the Kubernetes objects from the charts and all its dependencies are</p>
+
+<ul>
+<li>aggregrated into a single set; then</li>
+<li>sorted by type followed by name; and then</li>
+<li>created/updated in that order.</li>
+</ul>
+
+<p>Hence a single release is created with all the objects for the chart and its dependencies.</p>
+
+<p>The install order of Kubernetes types is given by the enumeration InstallOrder in kind_sorter.go
+(see <a href="https://github.com/kubernetes/helm/blob/master/pkg/tiller/kind_sorter.go#L26">the Helm source file</a>).</p>
+
+<h2 id="templates-and-values">Templates and Values</h2>
+
+<p>Helm Chart templates are written in the
+<a href="https://golang.org/pkg/text/template/">Go template language</a>, with the
+addition of 50 or so add-on template
+functions <a href="https://github.com/Masterminds/sprig">from the Sprig library</a> and a
+few other <a href="./#chart-development-tips-and-tricks">specialized functions</a>.</p>
+
+<p>All template files are stored in a chart&rsquo;s <code>templates/</code> folder. When
+Helm renders the charts, it will pass every file in that directory
+through the template engine.</p>
+
+<p>Values for the templates are supplied two ways:</p>
+
+<ul>
+<li>Chart developers may supply a file called <code>values.yaml</code> inside of a
+chart. This file can contain default values.</li>
+<li>Chart users may supply a YAML file that contains values. This can be
+provided on the command line with <code>helm install</code>.</li>
+</ul>
+
+<p>When a user supplies custom values, these values will override the
+values in the chart&rsquo;s <code>values.yaml</code> file.</p>
+
+<h3 id="template-files">Template Files</h3>
+
+<p>Template files follow the standard conventions for writing Go templates
+(see <a href="https://golang.org/pkg/text/template/">the text/template Go package documentation</a>
+for details).
+An example template file might look something like this:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: deis-database
+  namespace: deis
+  labels:
+    heritage: deis
+spec:
+  replicas: 1
+  selector:
+    app: deis-database
+  template:
+    metadata:
+      labels:
+        app: deis-database
+    spec:
+      serviceAccount: deis-database
+      containers:
+        - name: deis-database
+          image: {{.Values.imageRegistry}}/postgres:{{.Values.dockerTag}}
+          imagePullPolicy: {{.Values.pullPolicy}}
+          ports:
+            - containerPort: 5432
+          env:
+            - name: DATABASE_STORAGE
+              value: {{default &quot;minio&quot; .Values.storage}}
+</code></pre>
+
+<p>The above example, based loosely on <a href="https://github.com/deis/charts">https://github.com/deis/charts</a>, is a template for a Kubernetes replication controller.
+It can use the following four template values (usually defined in a
+<code>values.yaml</code> file):</p>
+
+<ul>
+<li><code>imageRegistry</code>: The source registry for the Docker image.</li>
+<li><code>dockerTag</code>: The tag for the docker image.</li>
+<li><code>pullPolicy</code>: The Kubernetes pull policy.</li>
+<li><code>storage</code>: The storage backend, whose default is set to <code>&quot;minio&quot;</code></li>
+</ul>
+
+<p>All of these values are defined by the template author. Helm does not
+require or dictate parameters.</p>
+
+<p>To see many working charts, check out the <a href="https://github.com/kubernetes/charts">Kubernetes Charts
+project</a></p>
+
+<h3 id="predefined-values">Predefined Values</h3>
+
+<p>Values that are supplied via a <code>values.yaml</code> file (or via the <code>--set</code>
+flag) are accessible from the <code>.Values</code> object in a template. But there
+are other pre-defined pieces of data you can access in your templates.</p>
+
+<p>The following values are pre-defined, are available to every template, and
+cannot be overridden. As with all values, the names are <em>case
+sensitive</em>.</p>
+
+<ul>
+<li><code>Release.Name</code>: The name of the release (not the chart)</li>
+<li><code>Release.Time</code>: The time the chart release was last updated. This will
+match the <code>Last Released</code> time on a Release object.</li>
+<li><code>Release.Namespace</code>: The namespace the chart was released to.</li>
+<li><code>Release.Service</code>: The service that conducted the release. Usually
+this is <code>Tiller</code>.</li>
+<li><code>Release.IsUpgrade</code>: This is set to true if the current operation is an upgrade or rollback.</li>
+<li><code>Release.IsInstall</code>: This is set to true if the current operation is an
+install.</li>
+<li><code>Release.Revision</code>: The revision number. It begins at 1, and increments with
+each <code>helm upgrade</code>.</li>
+<li><code>Chart</code>: The contents of the <code>Chart.yaml</code>. Thus, the chart version is
+obtainable as <code>Chart.Version</code> and the maintainers are in
+<code>Chart.Maintainers</code>.</li>
+<li><code>Files</code>: A map-like object containing all non-special files in the chart. This
+will not give you access to templates, but will give you access to additional
+files that are present (unless they are excluded using <code>.helmignore</code>). Files can be
+accessed using <code>{{index .Files &quot;file.name&quot;}}</code> or using the <code>{{.Files.Get name}}</code> or
+<code>{{.Files.GetString name}}</code> functions. You can also access the contents of the file
+as <code>[]byte</code> using <code>{{.Files.GetBytes}}</code></li>
+<li><code>Capabilities</code>: A map-like object that contains information about the versions
+of Kubernetes (<code>{{.Capabilities.KubeVersion}}</code>, Tiller
+(<code>{{.Capabilities.TillerVersion}}</code>, and the supported Kubernetes API versions
+(<code>{{.Capabilities.APIVersions.Has &quot;batch/v1&quot;</code>)</li>
+</ul>
+
+<p><strong>NOTE:</strong> Any unknown Chart.yaml fields will be dropped. They will not
+be accessible inside of the <code>Chart</code> object. Thus, Chart.yaml cannot be
+used to pass arbitrarily structured data into the template. The values
+file can be used for that, though.</p>
+
+<h3 id="values-files">Values files</h3>
+
+<p>Considering the template in the previous section, a <code>values.yaml</code> file
+that supplies the necessary values would look like this:</p>
+
+<pre><code class="language-yaml">imageRegistry: &quot;quay.io/deis&quot;
+dockerTag: &quot;latest&quot;
+pullPolicy: &quot;Always&quot;
+storage: &quot;s3&quot;
+</code></pre>
+
+<p>A values file is formatted in YAML. A chart may include a default
+<code>values.yaml</code> file. The Helm install command allows a user to override
+values by supplying additional YAML values:</p>
+
+<pre><code class="language-console">$ helm install --values=myvals.yaml wordpress
+</code></pre>
+
+<p>When values are passed in this way, they will be merged into the default
+values file. For example, consider a <code>myvals.yaml</code> file that looks like
+this:</p>
+
+<pre><code class="language-yaml">storage: &quot;gcs&quot;
+</code></pre>
+
+<p>When this is merged with the <code>values.yaml</code> in the chart, the resulting
+generated content will be:</p>
+
+<pre><code class="language-yaml">imageRegistry: &quot;quay.io/deis&quot;
+dockerTag: &quot;latest&quot;
+pullPolicy: &quot;Always&quot;
+storage: &quot;gcs&quot;
+</code></pre>
+
+<p>Note that only the last field was overridden.</p>
+
+<p><strong>NOTE:</strong> The default values file included inside of a chart <em>must</em> be named
+<code>values.yaml</code>. But files specified on the command line can be named
+anything.</p>
+
+<p><strong>NOTE:</strong> If the <code>--set</code> flag is used on <code>helm install</code> or <code>helm upgrade</code>, those
+values are simply converted to YAML on the client side.</p>
+
+<p><strong>NOTE:</strong> If any required entries in the values file exist, they can be declared
+as required in the chart template by using the <a href="./#chart-development-tips-and-tricks">&lsquo;required&rsquo; function</a></p>
+
+<p>Any of these values are then accessible inside of templates using the
+<code>.Values</code> object:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: deis-database
+  namespace: deis
+  labels:
+    heritage: deis
+spec:
+  replicas: 1
+  selector:
+    app: deis-database
+  template:
+    metadata:
+      labels:
+        app: deis-database
+    spec:
+      serviceAccount: deis-database
+      containers:
+        - name: deis-database
+          image: {{.Values.imageRegistry}}/postgres:{{.Values.dockerTag}}
+          imagePullPolicy: {{.Values.pullPolicy}}
+          ports:
+            - containerPort: 5432
+          env:
+            - name: DATABASE_STORAGE
+              value: {{default &quot;minio&quot; .Values.storage}}
+
+</code></pre>
+
+<h3 id="scope-dependencies-and-values">Scope, Dependencies, and Values</h3>
+
+<p>Values files can declare values for the top-level chart, as well as for
+any of the charts that are included in that chart&rsquo;s <code>charts/</code> directory.
+Or, to phrase it differently, a values file can supply values to the
+chart as well as to any of its dependencies. For example, the
+demonstration WordPress chart above has both <code>mysql</code> and <code>apache</code> as
+dependencies. The values file could supply values to all of these
+components:</p>
+
+<pre><code class="language-yaml">title: &quot;My WordPress Site&quot; # Sent to the WordPress template
+
+mysql:
+  max_connections: 100 # Sent to MySQL
+  password: &quot;secret&quot;
+
+apache:
+  port: 8080 # Passed to Apache
+</code></pre>
+
+<p>Charts at a higher level have access to all of the variables defined
+beneath. So the WordPress chart can access the MySQL password as
+<code>.Values.mysql.password</code>. But lower level charts cannot access things in
+parent charts, so MySQL will not be able to access the <code>title</code> property. Nor,
+for that matter, can it access <code>apache.port</code>.</p>
+
+<p>Values are namespaced, but namespaces are pruned. So for the WordPress
+chart, it can access the MySQL password field as <code>.Values.mysql.password</code>. But
+for the MySQL chart, the scope of the values has been reduced and the
+namespace prefix removed, so it will see the password field simply as
+<code>.Values.password</code>.</p>
+
+<h4 id="global-values">Global Values</h4>
+
+<p>As of 2.0.0-Alpha.2, Helm supports special &ldquo;global&rdquo; value. Consider
+this modified version of the previous example:</p>
+
+<pre><code class="language-yaml">title: &quot;My WordPress Site&quot; # Sent to the WordPress template
+
+global:
+  app: MyWordPress
+
+mysql:
+  max_connections: 100 # Sent to MySQL
+  password: &quot;secret&quot;
+
+apache:
+  port: 8080 # Passed to Apache
+</code></pre>
+
+<p>The above adds a <code>global</code> section with the value <code>app: MyWordPress</code>.
+This value is available to <em>all</em> charts as <code>.Values.global.app</code>.</p>
+
+<p>For example, the <code>mysql</code> templates may access <code>app</code> as <code>{{.Values.global.app}}</code>, and
+so can the <code>apache</code> chart. Effectively, the values file above is
+regenerated like this:</p>
+
+<pre><code class="language-yaml">title: &quot;My WordPress Site&quot; # Sent to the WordPress template
+
+global:
+  app: MyWordPress
+
+mysql:
+  global:
+    app: MyWordPress
+  max_connections: 100 # Sent to MySQL
+  password: &quot;secret&quot;
+
+apache:
+  global:
+    app: MyWordPress
+  port: 8080 # Passed to Apache
+</code></pre>
+
+<p>This provides a way of sharing one top-level variable with all
+subcharts, which is useful for things like setting <code>metadata</code> properties
+like labels.</p>
+
+<p>If a subchart declares a global variable, that global will be passed
+<em>downward</em> (to the subchart&rsquo;s subcharts), but not <em>upward</em> to the parent
+chart. There is no way for a subchart to influence the values of the
+parent chart.</p>
+
+<p>Also, global variables of parent charts take precedence over the global variables from subcharts.</p>
+
+<h3 id="references">References</h3>
+
+<p>When it comes to writing templates and values files, there are several
+standard references that will help you out.</p>
+
+<ul>
+<li><a href="https://godoc.org/text/template">Go templates</a></li>
+<li><a href="https://godoc.org/github.com/Masterminds/sprig">Extra template functions</a></li>
+<li><a href="http://yaml.org/spec/">The YAML format</a></li>
+</ul>
+
+<h2 id="using-helm-to-manage-charts">Using Helm to Manage Charts</h2>
+
+<p>The <code>helm</code> tool has several commands for working with charts.</p>
+
+<p>It can create a new chart for you:</p>
+
+<pre><code class="language-console">$ helm create mychart
+Created mychart/
+</code></pre>
+
+<p>Once you have edited a chart, <code>helm</code> can package it into a chart archive
+for you:</p>
+
+<pre><code class="language-console">$ helm package mychart
+Archived mychart-0.1.-.tgz
+</code></pre>
+
+<p>You can also use <code>helm</code> to help you find issues with your chart&rsquo;s
+formatting or information:</p>
+
+<pre><code class="language-console">$ helm lint mychart
+No issues found
+</code></pre>
+
+<h2 id="chart-repositories">Chart Repositories</h2>
+
+<p>A <em>chart repository</em> is an HTTP server that houses one or more packaged
+charts. While <code>helm</code> can be used to manage local chart directories, when
+it comes to sharing charts, the preferred mechanism is a chart
+repository.</p>
+
+<p>Any HTTP server that can serve YAML files and tar files and can answer
+GET requests can be used as a repository server.</p>
+
+<p>Helm comes with built-in package server for developer testing (<code>helm
+serve</code>). The Helm team has tested other servers, including Google Cloud
+Storage with website mode enabled, and S3 with website mode enabled.</p>
+
+<p>A repository is characterized primarily by the presence of a special
+file called <code>index.yaml</code> that has a list of all of the packages supplied
+by the repository, together with metadata that allows retrieving and
+verifying those packages.</p>
+
+<p>On the client side, repositories are managed with the <code>helm repo</code>
+commands. However, Helm does not provide tools for uploading charts to
+remote repository servers. This is because doing so would add
+substantial requirements to an implementing server, and thus raise the
+barrier for setting up a repository.</p>
+
+<h2 id="chart-starter-packs">Chart Starter Packs</h2>
+
+<p>The <code>helm create</code> command takes an optional <code>--starter</code> option that lets you
+specify a &ldquo;starter chart&rdquo;.</p>
+
+<p>Starters are just regular charts, but are located in <code>$HELM_HOME/starters</code>.
+As a chart developer, you may author charts that are specifically designed
+to be used as starters. Such charts should be designed with the following
+considerations in mind:</p>
+
+<ul>
+<li>The <code>Chart.yaml</code> will be overwritten by the generator.</li>
+<li>Users will expect to modify such a chart&rsquo;s contents, so documentation
+should indicate how users can do so.</li>
+<li>All occurances of <code>&lt;CHARTNAME&gt;</code> will be replaced with the specified chart
+name so that starter charts can be used as templates.</li>
+</ul>
+
+<p>Currently the only way to add a chart to <code>$HELM_HOME/starters</code> is to manually
+copy it there. In your chart&rsquo;s documentation, you may want to explain that
+process.</p>
+
+        </div>
+        <div class="small-1 columns">&nbsp;</div>
+      </div>
+    </div>
+
+    
+    </div> 
+
+    <a class="exit-off-canvas"></a>
+
+    </div> 
+  </div> 
+
+    
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../src/js/main.min.js"></script>
+  <script src="../src/js/app_init.min.js"></script>
+
+</body>
+</html>

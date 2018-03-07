@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chart_best_practices on Helm Docs</title>
+    <link>https://docs.helm.sh/chart_best_practices/</link>
+    <description>Recent content in Chart_best_practices on Helm Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://docs.helm.sh/chart_best_practices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/readme/</guid>
+      <description>The Chart Best Practices Guide This guide covers the Helm Team&amp;rsquo;s considered best practices for creating charts. It focuses on how charts should be structured.
+We focus primarily on best practices for charts that may be publicly deployed. We know that many charts are for internal-use only, and authors of such charts may find that their internal interests override our suggestions here.
+Table of Contents  General Conventions: Learn about general chart conventions.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/conventions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/conventions/</guid>
+      <description>General Conventions This part of the Best Practices Guide explains general conventions.
+Chart Names Chart names should be lower case letters and numbers. Words may be separated with dashes (-):
+Examples:
+drupal nginx-lego aws-cluster-autoscaler  Neither uppercase letters nor underscores should be used in chart names. Dots should not be used in chart names.
+The directory that contains a chart MUST have the same name as the chart. Thus, the chart nginx-lego MUST be created in a directory called nginx-lego/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/labels/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/labels/</guid>
+      <description>Labels and Annotations This part of the Best Practices Guide discusses the best practices for using labels and annotations in your chart.
+Is it a Label or an Annotation? An item of metadata should be a label under the following conditions:
+ It is used by Kubernetes to identify this resource It is useful to expose to operators for the purpose of querying the system.  For example, we suggest using chart: NAME-VERSION as a label so that operators can conveniently find all of the instances of a particular chart to use.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/pods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/pods/</guid>
+      <description>Pods and PodTemplates This part of the Best Practices Guide discusses formatting the Pod and PodTemplate portions in chart manifests.
+The following (non-exhaustive) list of resources use PodTemplates:
+ Deployment ReplicationController ReplicaSet DaemonSet StatefulSet  Images A container image should use a fixed tag or the SHA of the image. It should not use the tags latest, head, canary, or other tags that are designed to be &amp;ldquo;floating&amp;rdquo;.
+Images may be defined in the values.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/rbac/</guid>
+      <description>Role-Based Access Control This part of the Best Practices Guide discusses the creation and formatting of RBAC resources in chart manifests.
+RBAC resources are:
+ ServiceAccount (namespaced) Role (namespaced) ClusterRole RoleBinding (namespaced) ClusterRoleBinding  YAML Configuration RBAC and ServiceAccount configuration should happen under separate keys. They are separate things. Splitting these two concepts out in the YAML disambiguates them and make this clearer.
+rbac: # Specifies whether RBAC resources should be created create: true serviceAccount: # Specifies whether a ServiceAccount should be created create: true # The name of the ServiceAccount to use.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/requirements/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/requirements/</guid>
+      <description>Requirements Files This section of the guide covers best practices for requirements.yaml files.
+Versions Where possible, use version ranges instead of pinning to an exact version. The suggested default is to use a patch-level version match:
+version: ~1.2.3  This will match version 1.2.3 and any patches to that release. In other words, ~1.2.3 is equivalent to &amp;gt;= 1.2.3, &amp;lt; 1.3.0
+For the complete version matching syntax, please see the semver documentation</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/templates/</guid>
+      <description>Templates This part of the Best Practices Guide focuses on templates.
+Structure of templates/ The templates directory should be structured as follows:
+ Template files should have the extension .yaml if they produce YAML output. The extension .tpl may be used for template files that produce no formatted content. Template file names should use dashed notation (my-example-configmap.yaml), not camelcase. Each resource definition should be in its own template file. Template file names should reflect the resource kind in the name.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/third_party_resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/third_party_resources/</guid>
+      <description>Third Party Resources This section of the Best Practices Guide deals with creating and using Third Party Resource objects.
+When working with Third Party Resources (TPRs), it is important to distinguish two different pieces:
+ There is a declaration of a TPR. This is the YAML file that has the kind ThirdPartyResource Then there are resources that use the TPR. Say a TPR defines foo.example.com/v1. Any resource that has apiVersion: example.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/chart_best_practices/values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/chart_best_practices/values/</guid>
+      <description>Values This part of the best practices guide covers using values. In this part of the guide, we provide recommendations on how you should structure and use your values, with focus on designing a chart&amp;rsquo;s values.yaml file.
+Naming Conventions Variables names should begin with a lowercase letter, and words should be separated with camelcase:
+Correct:
+chicken: true chickenNoodleSoup: true  Incorrect:
+Chicken: true # initial caps may conflict with built-ins chicken-noodle-soup: true # do not use hyphens in the name  Note that all of Helm&amp;rsquo;s built-in variables begin with an uppercase letter to easily distinguish them from user-defined values: .</description>
+    </item>
+    
+  </channel>
+</rss>

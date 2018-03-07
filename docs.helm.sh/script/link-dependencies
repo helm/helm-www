@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+cd /app
+ln -sf ${HOME}/node_modules ./node_modules
+ln -sf ${HOME}/bower_components ./bower_components
+ln -sf ${HOME}/sass-cache ./.sass-cache
