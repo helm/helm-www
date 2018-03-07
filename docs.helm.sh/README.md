@@ -17,9 +17,12 @@ This site uses [Hugo](https://gohugo.io), a static site generator. It can be ins
 
 `brew update && brew install hugo`
 
-then:
+then install the packages needed for Gulp to run:
 
-`npm install`
+```
+npm install -g gulp
+npm install && bower install
+```
 
 ### Running the site
 
