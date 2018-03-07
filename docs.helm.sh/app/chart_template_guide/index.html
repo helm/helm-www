@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Chart Template Guide</title>
+
+  <meta name="description" content="Documentation for Helm - The Kubernetes Package Manager.">
+  <meta name="author" content="">
+  <meta property="og:title" content="Helm - The Package Manager for Kubernetes." />
+  <meta property="og:url" content="https://docs.helm.sh/" />
+  <meta property="og:image" content="https://docs.helm.sh//src/img/favicon-152.png" />
+  <meta name="google-site-verification" content="dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I" />
+
+  <link rel="icon" href="../src/img/favicon-152.png" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="../src/img/apple-touch-icon-precomposed.png">
+  <link href="../src/css/styles.min.css" rel="stylesheet">
+</head>
+
+<body id="landing">
+
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+
+      <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+        <i class="fa fa-bars"></i>
+      </a>
+      <aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
+  <div class="drawer-wrap">
+
+    <ul class="off-canvas-list current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+
+    <div class="drawer-line"></div>
+
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+
+  </div>
+</aside>
+
+  <div class="container container-full">
+    <div class="sidebar show-for-large-up">
+  <h1>
+    <a href="../">
+      <svg height="50" viewBox="0 0 121 126" xmlns="http://www.w3.org/2000/svg"><title>Helm Logo</title><g fill="none" fill-rule="evenodd"><g fill="#277A9F"><path d="M85.218 94.1435c2.0246-1.4178 6.6492 1.6934 10.3293 6.949 3.68 5.2556 5.0218 10.6654 2.997 12.0832-2.0247 1.4177-6.6493-1.6935-10.3293-6.949-3.68-5.2557-5.022-10.6655-2.997-12.0832zM36.782 94.1435c-2.0246-1.4178-6.6492 1.6934-10.3293 6.949-3.68 5.2556-5.0218 10.6654-2.997 12.0832 2.0247 1.4177 6.6493-1.6935 10.3293-6.949 3.68-5.2557 5.022-10.6655 2.997-12.0832zM60.9755 102.3724c-2.4717 0-4.4755 5.201-4.4755 11.617 0 6.416 2.0038 11.617 4.4755 11.617 2.4718 0 4.4755-5.201 4.4755-11.617 0-6.416-2.0037-11.617-4.4755-11.617z"/></g><g fill="#277A9F"><path d="M85.218 31.8565c2.0246 1.4178 6.6492-1.6934 10.3293-6.949 3.68-5.2556 5.0218-10.6654 2.997-12.0832-2.0247-1.4177-6.6493 1.6935-10.3293 6.949-3.68 5.2557-5.022 10.6655-2.997 12.0832zM36.782 31.8565c-2.0246 1.4178-6.6492-1.6934-10.3293-6.949-3.68-5.2556-5.0218-10.6654-2.997-12.0832 2.0247-1.4177 6.6493 1.6935 10.3293 6.949 3.68 5.2557 5.022 10.6655 2.997 12.0832zM60.9755 23.6276c-2.4717 0-4.4755-5.201-4.4755-11.617 0-6.416 2.0038-11.617 4.4755-11.617 2.4718 0 4.4755 5.201 4.4755 11.617 0 6.416-2.0037 11.617-4.4755 11.617z"/></g><path d="M95.5044 42.1636c-7.2176-11.883-20.2966-19.8232-35.2333-19.8232-14.528 0-27.2986 7.5117-34.6276 18.8568m.7842 45.6688c7.4352 10.689 19.8207 17.6872 33.8435 17.6872 14.0484 0 26.4534-7.0237 33.884-17.7455" stroke="#277A9F" stroke-width="7.1608"/><path d="M.609 47.6948h8.6217v12.1304h9.7244V47.6948h8.6218v32.5818H18.955V67.344H9.2308v12.9326H.609V47.6948zm34.186 0h21.0528v7.218H43.4166v5.113h10.6266v7.218H43.4166v5.8147H56.349v7.218H34.795V47.695zm27.87 0h8.6215v25.3637h12.331v7.218H62.665V47.695zm26.5666 0h8.9224l5.113 13.534 1.8044 5.3133h.2005l1.8044-5.3132 4.9124-13.534h8.9224v32.5818h-8.0202v-9.6242c0-.8354.0418-1.7544.1253-2.757.0836-1.0024.1755-2.03.2757-3.0826.1003-1.0527.2172-2.0803.351-3.0828.1336-1.0025.2505-1.9048.3508-2.7068h-.2005l-2.7068 7.6192-4.5113 10.9775h-3.208l-4.5114-10.9776-2.6066-7.6192h-.2005c.1003.802.2172 1.7043.351 2.7068.1336 1.0025.2505 2.03.3508 3.0828.1002 1.0526.192 2.0802.2757 3.0827.0835 1.0025.1253 1.9215.1253 2.757v9.624h-7.92V47.695z" fill="#277A9F"/></g></svg>
+      <span>Documentation</span>
+    </a>
+  </h1>
+
+  <nav class="sidebar-nav">
+    <ul class="current sidebar-main">
+      <li>
+        <a class="sidebar-nav-item" href="https://docs.helm.sh/">
+          <span class="ripple">Docs Home <span></span></span>
+        </a>
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="using_helm" state="">
+          <span class="ripple">Using Helm <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#quickstart-guide" title="Switch to Quickstart">
+              Quickstart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installing-helm" title="Switch to Installing Helm">
+              Installing Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#kubernetes-distribution-guide" title="Switch to Kubernetes Distro Notes">
+              Kubernetes Distro Notes
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#installation-frequently-asked-questions" title="Switch to Install FAQ">
+              Install FAQ
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#using-helm" title="Switch to Using Helm">
+              Using Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#the-helm-plugins-guide" title="Switch to Plugins">
+              Plugins
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#role-based-access-control" title="Switch to Role-Based Access Control">
+              Role-Based Access Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../using_helm/#securing-your-helm-installation" title="Switch to Securing Helm">
+              Securing Helm
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="helm" state="">
+          <span class="ripple">Helm Commands <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm" title="Switch to Helm">
+              Helm
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-completion" title="Switch to Helm Completion">
+              Helm Completion
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-create" title="Switch to Helm Create">
+              Helm Create
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-delete" title="Switch to Helm Delete">
+              Helm Delete
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency" title="Switch to Helm Dependency">
+              Helm Dependency
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-build" title="Switch to Helm Dependency Build">
+              Helm Dependency Build
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-list" title="Switch to Helm Dependency List">
+              Helm Dependency List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-dependency-update" title="Switch to Helm Dependency Update">
+              Helm Dependency Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-fetch" title="Switch to Helm Fetch">
+              Helm Fetch
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get" title="Switch to Helm Get">
+              Helm Get
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-hooks" title="Switch to Helm Get Hooks">
+              Helm Get Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-manifest" title="Switch to Helm Get Manifest">
+              Helm Get Manifest
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-get-values" title="Switch to Helm Get Values">
+              Helm Get Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-history" title="Switch to Helm History">
+              Helm History
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-home" title="Switch to Helm Home">
+              Helm Home
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-init" title="Switch to Helm Init">
+              Helm Init
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect" title="Switch to Helm Inspect">
+              Helm Inspect
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-chart" title="Switch to Helm Inspect Chart">
+              Helm Inspect Chart
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-inspect-values" title="Switch to Helm Inspect Values">
+              Helm Inspect Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-install" title="Switch to Helm Install">
+              Helm Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-lint" title="Switch to Helm Lint">
+              Helm Lint
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-list" title="Switch to Helm List">
+              Helm List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-package" title="Switch to Helm Package">
+              Helm Package
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin" title="Switch to Helm Plugin">
+              Helm Plugin
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-install" title="Switch to Helm Plugin Install">
+              Helm Plugin Install
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-list" title="Switch to Helm Plugin List">
+              Helm Plugin List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-remove" title="Switch to Helm Plugin Remove">
+              Helm Plugin Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-plugin-update" title="Switch to Helm Plugin Update">
+              Helm Plugin Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo" title="Switch to Helm Repo">
+              Helm Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-add" title="Switch to Helm Repo Add">
+              Helm Repo Add
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-index" title="Switch to Helm Repo Index">
+              Helm Repo Index
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rep-list" title="Switch to Helm Repo List">
+              Helm Repo List
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-remove" title="Switch to Helm Repo Remove">
+              Helm Repo Remove
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-repo-update" title="Switch to Helm Repo Update">
+              Helm Repo Update
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-reset" title="Switch to Helm Reset">
+              Helm Reset
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-rollback" title="Switch to Helm Rollback">
+              Helm Rollback
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-search" title="Switch to Helm Search">
+              Helm Search
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-serve" title="Switch to Helm Serve">
+              Helm Serve
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-status" title="Switch to Helm Status">
+              Helm Status
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-template" title="Switch to Helm Template">
+              Helm Template
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-test" title="Switch to Helm Test">
+              Helm Test
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-upgrade" title="Switch to Helm Upgrade">
+              Helm Upgrade
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-verify" title="Switch to Helm Verify">
+              Helm Verify
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../helm/#helm-version" title="Switch to Helm Version">
+              Helm Version
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="developing_charts" state="">
+          <span class="ripple">Charts <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#charts" title="Switch to Intro to Charts">
+              Intro to Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#hooks" title="Switch to Chart Lifecycle Hooks">
+              Chart Lifecycle Hooks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-development-tips-and-tricks" title="Switch to Charts Tips and Tricks">
+              Charts Tips and Tricks
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#the-chart-repository-guide" title="Switch to Charts Repository Guide">
+              Charts Repository Guide
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#syncing-your-chart-repository" title="Switch to Syncing Your Chart Repo">
+              Syncing Your Chart Repo
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#helm-provenance-and-integrity" title="Switch to Signing Charts">
+              Signing Charts
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-tests" title="Switch to Chart Tests">
+              Chart Tests
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../developing_charts/#chart-repositories-frequently-asked-questions" title="Switch to Chart Repository FAQ">
+              Chart Repository FAQ
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="chart_template_guide" state="">
+          <span class="ripple">Developing Templates <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#the-chart-template-developer-s-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#getting-started-with-a-chart-template" title="Switch to Getting Started">
+              Getting Started
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#built-in-objects" title="Switch to Built-In Objects">
+              Built-In Objects
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#values-files" title="Switch to Values Files">
+              Values Files
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#template-functions-and-pipelines" title="Switch to Template Functions and Pipelines">
+              Template Functions and Pipelines
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#flow-control" title="Switch to Flow Control">
+              Flow Control
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#variables" title="Switch to Variables">
+              Variables
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#named-templates" title="Switch to Named Templates">
+              Named Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#accessing-files-inside-templates" title="Switch to Accessing Files Inside Templates">
+              Accessing Files Inside Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#creating-a-notes-txt-file" title="Switch to Creating a NOTES.txt File">
+              Creating a NOTES.txt File
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#subcharts-and-global-values" title="Switch to Subcharts and Global Values">
+              Subcharts and Global Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#debugging-templates" title="Switch to Debugging Templates">
+              Debugging Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#wrapping-up" title="Switch to Next Steps">
+              Next Steps
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#yaml-techniques" title="Switch to Appendix: YAML Techniques">
+              Appendix: YAML Techniques
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_template_guide/#appendix-go-data-types-and-templates" title="Switch to Appendix: Go Data Types and Templates">
+              Appendix: Go Data Types and Templates
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../chart_best_practices/" state="">
+          <span class="ripple">Best Practices <span></span></span>
+        </a>
+        
+        <ul class="current">
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#the-chart-best-practices-guide" title="Switch to Intro">
+              Intro
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#general-conventions" title="Switch to General Conventions">
+              General Conventions
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#values" title="Switch to Values">
+              Values
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#templates" title="Switch to Templates">
+              Templates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#requirements-files" title="Switch to Requirements">
+              Requirements
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#labels-and-annotations" title="Switch to Labels &amp; Annotations">
+              Labels &amp; Annotations
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#pods-and-podtemplates" title="Switch to Pods &amp; PodTemplates">
+              Pods &amp; PodTemplates
+            </a>
+          </li>
+          
+          <li class="toctree-l2 ">
+            <a href="../../chart_best_practices/#third-party-resources" title="Switch to Third Party Resources">
+              Third Party Resources
+            </a>
+          </li>
+          
+        </ul>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../related/" state="">
+          <span class="ripple">Related Projects <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../architecture/" state="">
+          <span class="ripple">Architecture <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../developers/" state="">
+          <span class="ripple">Developer Guide <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../history/" state="">
+          <span class="ripple">History <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="../glossary/" state="">
+          <span class="ripple">Glossary <span></span></span>
+        </a>
+        
+      </li>
+      
+      <li class="sidebar-nav-item toctree-l1 ">
+        <a class="reference internal" href="https://hub.kubeapps.com/" state="">
+          <span class="ripple">Find Charts <span></span></span>
+        </a>
+        
+      </li>
+      
+    </ul>
+  </nav>
+
+  <aside class="sidebar-buttons">
+    <div class="button-wrap">
+      <a href="https://github.com/kubernetes/helm" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
+    </div>
+  </aside>
+</div>
+
+
+    <div class="main page" id="scrollpane">
+      <nav class="top-bar">
+  <div class="breadcrumb">
+    <a href="../">Chart Template Guide</a>
+  </div>
+  <ul class="inline right text-right">
+    <li><a href="https://helm.sh" target="_blank" title="Find out more about Helm."><i class="fa fa-home"></i> Helm.sh</a></li>
+    <li><a href="https://github.com/kubernetes/helm" target="_blank" title="Go to the Helm project on Github."><i class="fa fa-github"></i> Github</a></li>
+    <li><a href="https://hub.kubeapps.com" target="_blank" title="Go search and discover apps via Monocular, the Chart directory for Helm."><i class="fa fa-search"></i> Find Charts</a></li>
+  </ul>
+</nav>
+
+
+      <div class="row">
+        <div class="small-1 columns">&nbsp;</div>
+        <div class="small-10 columns content-wrap">
+          
+            <article id="">
+  <div>
+
+<h1 id="the-chart-template-developer-s-guide">The Chart Template Developer&rsquo;s Guide</h1>
+
+<p>This guide provides an introduction to Helm&rsquo;s chart templates, with emphasis on
+the template language.</p>
+
+<p>Templates generate manifest files, which are YAML-formatted resource descriptions
+that Kubernetes can understand. We&rsquo;ll look at how templates are structured,
+how they can be used, how to write Go templates, and how to debug your work.</p>
+
+<p>This guide focuses on the following concepts:</p>
+
+<ul>
+<li>The Helm template language</li>
+<li>Using values</li>
+<li>Techniques for working with templates</li>
+</ul>
+
+<p>This guide is oriented toward learning the ins and outs of the Helm template language. Other guides provide introductory material, examples, and best practices.</p>
+
+<h1 id="getting-started-with-a-chart-template">Getting Started with a Chart Template</h1>
+
+<p>In this section of the guide, we&rsquo;ll create a chart and then add a first template. The chart we created here will be used throughout the rest of the guide.</p>
+
+<p>To get going, let&rsquo;s take a brief look at a Helm chart.</p>
+
+<h2 id="charts">Charts</h2>
+
+<p>As described in the <a href="./#../charts">Charts Guide</a>, Helm charts are structured like
+this:</p>
+
+<pre><code>mychart/
+  Chart.yaml
+  values.yaml
+  charts/
+  templates/
+  ...
+</code></pre>
+
+<p>The <code>templates/</code> directory is for template files. When Tiller evaluates a chart,
+it will send all of the files in the <code>templates/</code> directory through the
+template rendering engine. Tiller then collects the results of those templates
+and sends them on to Kubernetes.</p>
+
+<p>The <code>values.yaml</code> file is also important to templates. This file contains the
+<em>default values</em> for a chart. These values may be overridden by users during
+<code>helm install</code> or <code>helm upgrade</code>.</p>
+
+<p>The <code>Chart.yaml</code> file contains a description of the chart. You can access it
+from within a template. The <code>charts/</code> directory <em>may</em> contain other charts (which
+we call <em>subcharts</em>). Later in this guide we will see how those work when it
+comes to template rendering.</p>
+
+<h2 id="a-starter-chart">A Starter Chart</h2>
+
+<p>For this guide, we&rsquo;ll create a simple chart called <code>mychart</code>, and then we&rsquo;ll
+create some templates inside of the chart.</p>
+
+<pre><code class="language-console">$ helm create mychart
+Creating mychart
+</code></pre>
+
+<p>From here on, we&rsquo;ll be working in the <code>mychart</code> directory.</p>
+
+<h3 id="a-quick-glimpse-of-mychart-templates">A Quick Glimpse of <code>mychart/templates/</code></h3>
+
+<p>If you take a look at the <code>mychart/templates/</code> directory, you&rsquo;ll notice a few files
+already there.</p>
+
+<ul>
+<li><code>NOTES.txt</code>: The &ldquo;help text&rdquo; for your chart. This will be displayed to your users
+when they run <code>helm install</code>.</li>
+<li><code>deployment.yaml</code>: A basic manifest for creating a Kubernetes <a href="http://kubernetes.io/docs/user-guide/deployments/">deployment</a></li>
+<li><code>service.yaml</code>: A basic manifest for creating a <a href="http://kubernetes.io/docs/user-guide/services/">service endpoint</a> for your deployment</li>
+<li><code>_helpers.tpl</code>: A place to put template helpers that you can re-use throughout the chart</li>
+</ul>
+
+<p>And what we&rsquo;re going to do is&hellip; <em>remove them all!</em> That way we can work through our tutorial from scratch. We&rsquo;ll actually create our own <code>NOTES.txt</code> and <code>_helpers.tpl</code> as we go.</p>
+
+<pre><code class="language-console">$ rm -rf mychart/templates/*.*
+</code></pre>
+
+<p>When you&rsquo;re writing production grade charts, having basic versions of these charts can be really useful. So in your day-to-day chart authoring, you probably won&rsquo;t want to remove them.</p>
+
+<h2 id="a-first-template">A First Template</h2>
+
+<p>The first template we are going to create will be a <code>ConfigMap</code>. In Kubernetes,
+a ConfigMap is simply a container for storing configuration data. Other things,
+like pods, can access the data in a ConfigMap.</p>
+
+<p>Because ConfigMaps are basic resources, they make a great starting point for us.</p>
+
+<p>Let&rsquo;s begin by creating a file called <code>mychart/templates/configmap.yaml</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mychart-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+</code></pre>
+
+<p><strong>TIP:</strong> Template names do not follow a rigid naming pattern. However, we recommend
+using the suffix <code>.yaml</code> for YAML files and <code>.tpl</code> for helpers.</p>
+
+<p>The YAML file above is a bare-bones ConfigMap, having the minimal necessary fields.
+In virtue of the fact that this file is in the <code>templates/</code> directory, it will
+be sent through the template engine.</p>
+
+<p>It is just fine to put a plain YAML file like this in the <code>templates/</code> directory.
+When Tiller reads this template, it will simply send it to Kubernetes as-is.</p>
+
+<p>With this simple template, we now have an installable chart. And we can install
+it like this:</p>
+
+<pre><code class="language-console">$ helm install ./mychart
+NAME: full-coral
+LAST DEPLOYED: Tue Nov  1 17:36:01 2016
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME                DATA      AGE
+mychart-configmap   1         1m
+</code></pre>
+
+<p>In the output above, we can see that our ConfigMap was created. Using Helm, we
+can retrieve the release and see the actual template that was loaded.</p>
+
+<pre><code class="language-console">$ helm get manifest full-coral
+
+---
+# Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mychart-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+</code></pre>
+
+<p>The <code>helm get manifest</code> command takes a release name (<code>full-coral</code>) and prints
+out all of the Kubernetes resources that were uploaded to the server. Each file
+begins with <code>---</code> to indicate the start of a YAML document, and then is followed
+by an automatically generated comment line that tells us what template file
+generated this YAML document.</p>
+
+<p>From there on, we can see that the YAML data is exactly what we put in our
+<code>configmap.yaml</code> file.</p>
+
+<p>Now we can delete our release: <code>helm delete full-coral</code>.</p>
+
+<h3 id="adding-a-simple-template-call">Adding a Simple Template Call</h3>
+
+<p>Hard-coding the <code>name:</code> into a resource is usually considered to be bad practice.
+Names should be unique to a release. So we might want to generate a name field
+by inserting the release name.</p>
+
+<p><strong>TIP:</strong> The <code>name:</code> field is limited to 63 characters because of limitations to
+the DNS system. For that reason, release names are limited to 53 characters.
+Kubernetes 1.3 and earlier limited to only 24 characters (thus 14 character names).</p>
+
+<p>Let&rsquo;s alter <code>configmap.yaml</code> accordingly.</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+</code></pre>
+
+<p>The big change comes in the value of the <code>name:</code> field, which is now
+<code>{{ .Release.Name }}-configmap</code>.</p>
+
+<blockquote>
+<p>A template directive is enclosed in <code>{{</code> and <code>}}</code> blocks.</p>
+</blockquote>
+
+<p>The template directive <code>{{ .Release.Name }}</code> injects the release name into the template. The values that are passed into a template can be thought of as <em>namespaced objects</em>, where a dot (<code>.</code>) separates each namespaced element.</p>
+
+<p>The leading dot before <code>Release</code> indicates that we start with the top-most namespace for this scope (we&rsquo;ll talk about scope in a bit). So we could read <code>.Release.Name</code> as &ldquo;start at the top namespace, find the <code>Release</code> object, then look inside of it for an object called <code>Name</code>&rdquo;.</p>
+
+<p>The <code>Release</code> object is one of the built-in objects for Helm, and we&rsquo;ll cover it in more depth later. But for now, it is sufficient to say that this will display the release name that Tiller assigns to our release.</p>
+
+<p>Now when we install our resource, we&rsquo;ll immediately see the result of using this template directive:</p>
+
+<pre><code class="language-console">$ helm install ./mychart
+NAME: clunky-serval
+LAST DEPLOYED: Tue Nov  1 17:45:37 2016
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/ConfigMap
+NAME                      DATA      AGE
+clunky-serval-configmap   1         1m
+</code></pre>
+
+<p>Note that in the <code>RESOURCES</code> section, the name we see there is <code>clunky-serval-configmap</code>
+instead of <code>mychart-configmap</code>.</p>
+
+<p>You can run <code>helm get manifest clunky-serval</code> to see the entire generated YAML.</p>
+
+<p>At this point, we&rsquo;ve seen templates at their most basic: YAML files that have template directives embedded in <code>{{</code> and <code>}}</code>. In the next part, we&rsquo;ll take a deeper look into templates. But before moving on, there&rsquo;s one quick trick that can make building templates faster: When you want to test the template rendering, but not actually install anything, you can use <code>helm install --debug --dry-run ./mychart</code>. This will send the chart to the Tiller server, which will render the templates. But instead of installing the chart, it will return the rendered template to you so you can see the output:</p>
+
+<pre><code class="language-console">$ helm install --debug --dry-run ./mychart
+SERVER: &quot;localhost:44134&quot;
+CHART PATH: /Users/mattbutcher/Code/Go/src/k8s.io/helm/_scratch/mychart
+NAME:   goodly-guppy
+TARGET NAMESPACE:   default
+CHART:  mychart 0.1.0
+MANIFEST:
+---
+# Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: goodly-guppy-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+
+</code></pre>
+
+<p>Using <code>--dry-run</code> will make it easier to test your code, but it won&rsquo;t ensure that Kubernetes itself will accept the templates you generate. It&rsquo;s best not to assume that your chart will install just because <code>--dry-run</code> works.</p>
+
+<p>In the next few sections, we&rsquo;ll take the basic chart we defined here and explore the Helm template language in detail. And we&rsquo;ll get started with built-in objects.</p>
+
+<h1 id="built-in-objects">Built-in Objects</h1>
+
+<p>Objects are passed into a template from the template engine. And your code can pass objects around (we&rsquo;ll see examples when we look at the <code>with</code> and <code>range</code> statements). There are even a few ways to create new objects within your templates, like with the <code>tuple</code> function we&rsquo;ll see later.</p>
+
+<p>Objects can be simple, and have just one value. Or they can contain other objects or functions. For example. the <code>Release</code> object contains several objects (like <code>Release.Name</code>) and the <code>Files</code> object has a few functions.</p>
+
+<p>In the previous section, we use <code>{{.Release.Name}}</code> to insert the name of a release into a template. <code>Release</code> is one of the top-level objects that you can access in your templates.</p>
+
+<ul>
+<li><code>Release</code>: This object describes the release itself. It has several objects inside of it:
+
+<ul>
+<li><code>Release.Name</code>: The release name</li>
+<li><code>Release.Time</code>: The time of the release</li>
+<li><code>Release.Namespace</code>: The namespace to be released into (if the manifest doesn&rsquo;t override)</li>
+<li><code>Release.Service</code>: The name of the releasing service (always <code>Tiller</code>).</li>
+<li><code>Release.Revision</code>: The revision number of this release. It begins at 1 and is incremented for each <code>helm upgrade</code>.</li>
+<li><code>Release.IsUpgrade</code>: This is set to <code>true</code> if the current operation is an upgrade or rollback.</li>
+<li><code>Release.IsInstall</code>: This is set to <code>true</code> if the current operation is an install.</li>
+</ul></li>
+<li><code>Values</code>: Values passed into the template from the <code>values.yaml</code> file and from user-supplied files. By default, <code>Values</code> is empty.</li>
+<li><code>Chart</code>: The contents of the <code>Chart.yaml</code> file. Any data in <code>Chart.yaml</code> will be accessible here. For example <code>{{.Chart.Name}}-{{.Chart.Version}}</code> will print out the <code>mychart-0.1.0</code>.
+
+<ul>
+<li>The available fields are listed in the <a href="https://github.com/kubernetes/helm/blob/master/docs/charts.md#the-chartyaml-file">Charts Guide</a></li>
+</ul></li>
+<li><code>Files</code>: This provides access to all non-special files in a chart. While you cannot use it to access templates, you can use it to access other files in the chart. See the section <em>Accessing Files</em> for more.
+
+<ul>
+<li><code>Files.Get</code> is a function for getting a file by name (<code>.Files.Get config.ini</code>)</li>
+<li><code>Files.GetBytes</code> is a function for getting the contents of a file as an array of bytes instead of as a string. This is useful for things like images.</li>
+</ul></li>
+<li><code>Capabilities</code>: This provides information about what capabilities the Kubernetes cluster supports.
+
+<ul>
+<li><code>Capabilities.APIVersions</code> is a set of versions.</li>
+<li><code>Capabilities.APIVersions.Has $version</code> indicates whether a version (<code>batch/v1</code>) is enabled on the cluster.</li>
+<li><code>Capabilities.KubeVersion</code> provides a way to look up the Kubernetes version. It has the following values: <code>Major</code>, <code>Minor</code>, <code>GitVersion</code>, <code>GitCommit</code>, <code>GitTreeState</code>, <code>BuildDate</code>, <code>GoVersion</code>, <code>Compiler</code>, and <code>Platform</code>.</li>
+<li><code>Capabilities.TillerVersion</code> provides a way to look up the Tiller version. It has the following values: <code>SemVer</code>, <code>GitCommit</code>, and <code>GitTreeState</code>.</li>
+</ul></li>
+<li><code>Template</code>: Contains information about the current template that is being executed
+
+<ul>
+<li><code>Name</code>: A namespaced filepath to the current template (e.g. <code>mychart/templates/mytemplate.yaml</code>)</li>
+<li><code>BasePath</code>: The namespaced path to the templates directory of the current chart (e.g. <code>mychart/templates</code>).</li>
+</ul></li>
+</ul>
+
+<p>The values are available to any top-level template. As we will see later, this does not necessarily mean that they will be available <em>everywhere</em>.</p>
+
+<p>The built-in values always begin with a capital letter. This is in keeping with Go&rsquo;s naming convention. When you create your own names, you are free to use a convention that suits your team. Some teams, like the <a href="https://github.com/kubernetes/charts">Kubernetes Charts</a> team, choose to use only initial lower case letters in order to distinguish local names from those built-in. In this guide, we follow that convention.</p>
+
+<h1 id="values-files">Values Files</h1>
+
+<p>In the previous section we looked at the built-in objects that Helm templates offer. One of the four built-in objects is <code>Values</code>. This object provides access to values passed into the chart. Its contents come from four sources:</p>
+
+<ul>
+<li>The <code>values.yaml</code> file in the chart</li>
+<li>If this is a subchart, the <code>values.yaml</code> file of a parent chart</li>
+<li>A values file if passed into <code>helm install</code> or <code>helm update</code> with the <code>-f</code> flag (<code>helm install -f myvals.yaml ./mychart</code>)</li>
+<li>Individual parameters passed with <code>--set</code> (such as <code>helm install --set foo=bar ./mychart</code>)</li>
+</ul>
+
+<p>The list above is in order of specificity: <code>values.yaml</code> is the default, which can be overridden by a parent chart&rsquo;s <code>values.yaml</code>, which can in turn be overridden by a user-supplied values file, which can in turn be overridden by <code>--set</code> parameters.</p>
+
+<p>Values files are plain YAML files. Let&rsquo;s edit <code>mychart/values.yaml</code> and then edit our ConfigMap template.</p>
+
+<p>Removing the defaults in <code>values.yaml</code>, we&rsquo;ll set just one parameter:</p>
+
+<pre><code class="language-yaml">favoriteDrink: coffee
+</code></pre>
+
+<p>Now we can use this inside of a template:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favoriteDrink }}
+</code></pre>
+
+<p>Notice on the last line we access <code>favoriteDrink</code> as an attribute of <code>Values</code>: <code>{{ .Values.favoriteDrink}}</code>.</p>
+
+<p>Let&rsquo;s see how this renders.</p>
+
+<pre><code class="language-console">$ helm install --dry-run --debug ./mychart
+SERVER: &quot;localhost:44134&quot;
+CHART PATH: /Users/mattbutcher/Code/Go/src/k8s.io/helm/_scratch/mychart
+NAME:   geared-marsupi
+TARGET NAMESPACE:   default
+CHART:  mychart 0.1.0
+MANIFEST:
+---
+# Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: geared-marsupi-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: coffee
+</code></pre>
+
+<p>Because <code>favoriteDrink</code> is set in the default <code>values.yaml</code> file to <code>coffee</code>, that&rsquo;s the value displayed in the template. We can easily override that by adding a <code>--set</code> flag in our call to <code>helm install</code>:</p>
+
+<pre><code>helm install --dry-run --debug --set favoriteDrink=slurm ./mychart
+SERVER: &quot;localhost:44134&quot;
+CHART PATH: /Users/mattbutcher/Code/Go/src/k8s.io/helm/_scratch/mychart
+NAME:   solid-vulture
+TARGET NAMESPACE:   default
+CHART:  mychart 0.1.0
+MANIFEST:
+---
+# Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: solid-vulture-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: slurm
+</code></pre>
+
+<p>Since <code>--set</code> has a higher precedence than the default <code>values.yaml</code> file, our template generates <code>drink: slurm</code>.</p>
+
+<p>Values files can contain more structured content, too. For example, we could create a <code>favorite</code> section in our <code>values.yaml</code> file, and then add several keys there:</p>
+
+<pre><code class="language-yaml">favorite:
+  drink: coffee
+  food: pizza
+</code></pre>
+
+<p>Now we would have to modify the template slightly:</p>
+
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink }}
+  food: {{ .Values.favorite.food }}
+</code></pre>
+
+<p>While structuring data this way is possible, the recommendation is that you keep your values trees shallow, favoring flatness. When we look at assigning values to subcharts, we&rsquo;ll see how values are named using a tree structure.</p>
+
+<h2 id="deleting-a-default-key">Deleting a default key</h2>
+
+<p>If you need to delete a key from the default values, you may override the value of the key to be <code>null</code>, in which case Helm will remove the key from the overridden values merge.</p>
+
+<p>For example, the stable Drupal chart allows configuring the liveness probe, in case you configure a custom image. Here are the default values:</p>
+
+<pre><code class="language-yaml">livenessProbe:
+  httpGet:
+    path: /user/login
+    port: http
+  initialDelaySeconds: 120
+</code></pre>
+
+<p>If you try to override the livenessProbe handler to <code>exec</code> instead of <code>httpGet</code> using <code>--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]</code>, Helm will coalesce the default and overridden keys together, resulting in the following YAML:</p>
+
+<pre><code class="language-yaml">livenessProbe:
+  httpGet:
+    path: /user/login
+    port: http
+  exec:
+    command:
+    - cat
+    - docroot/CHANGELOG.txt
+  initialDelaySeconds: 120
+</code></pre>
+
+<p>However, Kubernetes would then fail because you can not declare more than one livenessProbe handler. To overcome this, you may instruct Helm to delete the <code>livenessProbe.httpGet</code> by setting it to null:</p>
+
+<pre><code class="language-sh">helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+</code></pre>
+
+<p>At this point, we&rsquo;ve seen several built-in objects, and used them to inject information into a template. Now we will take a look at another aspect of the template engine: functions and pipelines.</p>
+
+<h1 id="template-functions-and-pipelines">Template Functions and Pipelines</h1>
+
+<p>So far, we&rsquo;ve seen how to place information into a template. But that information is placed into the template unmodified. Sometimes we want to transform the supplied data in a way that makes it more useable to us.</p>
+
+<p>Let&rsquo;s start with a best practice: When injecting strings from the <code>.Values</code> object into the template, we ought to quote these strings. We can do that by calling the <code>quote</code> function in the template directive:</p>
+
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ quote .Values.favorite.drink }}
+  food: {{ quote .Values.favorite.food }}
+</code></pre>
+
+<p>Template functions follow the syntax <code>functionName arg1 arg2...</code>. In the snippet above, <code>quote .Values.favorite.drink</code> calls the <code>quote</code> function and passes it a single argument.</p>
+
+<p>Helm has over 60 available functions. Some of them are defined by the <a href="https://godoc.org/text/template">Go template language</a> itself. Most of the others are part of the <a href="https://godoc.org/github.com/Masterminds/sprig">Sprig template library</a>. We&rsquo;ll see many of them as we progress through the examples.</p>
+
+<blockquote>
+<p>While we talk about the &ldquo;Helm template language&rdquo; as if it is Helm-specific, it is actually a combination of the Go template language, some extra functions, and a variety of wrappers to expose certain objects to the templates. Many resources on Go templates may be helpful as you learn about templating.</p>
+</blockquote>
+
+<h2 id="pipelines">Pipelines</h2>
+
+<p>One of the powerful features of the template language is its concept of <em>pipelines</em>. Drawing on a concept from UNIX, pipelines are a tool for chaining together a series of template commands to compactly express a series of transformations. In other words, pipelines are an efficient way of getting several things done in sequence. Let&rsquo;s rewrite the above example using a pipeline.</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | quote }}
+  food: {{ .Values.favorite.food | quote }}
+</code></pre>
+
+<p>In this example, instead of calling <code>quote ARGUMENT</code>, we inverted the order. We &ldquo;sent&rdquo; the argument to the function using a pipeline (<code>|</code>): <code>.Values.favorite.drink | quote</code>. Using pipelines, we can chain several functions together:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+</code></pre>
+
+<blockquote>
+<p>Inverting the order is a common practice in templates. You will see <code>.val | quote</code> more often than <code>quote .val</code>. Either practice is fine.</p>
+</blockquote>
+
+<p>When evaluated, that template will produce this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trendsetting-p-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+</code></pre>
+
+<p>Note that our original <code>pizza</code> has now been transformed to <code>&quot;PIZZA&quot;</code>.</p>
+
+<p>When pipelining arguments like this, the result of the first evaluation (<code>.Values.favorite.drink</code>) is sent as the <em>last argument to the function</em>. We can modify the drink example above to illustrate with a function that takes two arguments: <code>repeat COUNT STRING</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | repeat 5 | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+</code></pre>
+
+<p>The <code>repeat</code> function will echo the given string the given number of times, so we will get this for output:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: melting-porcup-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffeecoffeecoffeecoffeecoffee&quot;
+  food: &quot;PIZZA&quot;
+</code></pre>
+
+<h2 id="using-the-default-function">Using the <code>default</code> function</h2>
+
+<p>One function frequently used in templates is the <code>default</code> function: <code>default DEFAULT_VALUE GIVEN_VALUE</code>. This function allows you to specify a default value inside of the template, in case the value is omitted. Let&rsquo;s use it to modify the drink example above:</p>
+
+<pre><code class="language-yaml">drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+</code></pre>
+
+<p>If we run this as normal, we&rsquo;ll get our <code>coffee</code>:</p>
+
+<pre><code># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: virtuous-mink-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+</code></pre>
+
+<p>Now, we will remove the favorite drink setting from <code>values.yaml</code>:</p>
+
+<pre><code class="language-yaml">favorite:
+  #drink: coffee
+  food: pizza
+</code></pre>
+
+<p>Now re-running <code>helm install --dry-run --debug ./mychart</code> will produce this YAML:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fair-worm-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;tea&quot;
+  food: &quot;PIZZA&quot;
+</code></pre>
+
+<p>In an actual chart, all static default values should live in the values.yaml, and should not be repeated using the <code>default</code> command (otherwise they would be redundant). However, the <code>default</code> command is perfect for computed values, which can not be declared inside values.yaml. For example:</p>
+
+<pre><code class="language-yaml">drink: {{ .Values.favorite.drink | default (printf &quot;%s-tea&quot; (include &quot;fullname&quot; .)) }}
+</code></pre>
+
+<p>In some places, an <code>if</code> conditional guard may be better suited than <code>default</code>. We&rsquo;ll see those in the next section.</p>
+
+<p>Template functions and pipelines are a powerful way to transform information and then insert it into your YAML. But sometimes it&rsquo;s necessary to add some template logic that is a little more sophisticated than just inserting a string. In the next section we will look at the control structures provided by the template language.</p>
+
+<h2 id="operators-are-functions">Operators are functions</h2>
+
+<p>For templates, the operators (<code>eq</code>, <code>ne</code>, <code>lt</code>, <code>gt</code>, <code>and</code>, <code>or</code> and so on) are all implemented as functions. In pipelines, operations can be grouped with parentheses (<code>(</code>, and <code>)</code>).</p>
+
+<p>Now we can turn from functions and pipelines to flow control with conditions, loops, and scope modifiers.</p>
+
+<h1 id="flow-control">Flow Control</h1>
+
+<p>Control structures (called &ldquo;actions&rdquo; in template parlance) provide you, the template author, with the ability to control the flow of a template&rsquo;s generation. Helm&rsquo;s template language provides the following control structures:</p>
+
+<ul>
+<li><code>if</code>/<code>else</code> for creating conditional blocks</li>
+<li><code>with</code> to specify a scope</li>
+<li><code>range</code>, which provides a &ldquo;for each&rdquo;-style loop</li>
+</ul>
+
+<p>In addition to these, it provides a few actions for declaring and using named template segments:</p>
+
+<ul>
+<li><code>define</code> declares a new named template inside of your template</li>
+<li><code>template</code> imports a named template</li>
+<li><code>block</code> declares a special kind of fillable template area</li>
+</ul>
+
+<p>In this section, we&rsquo;ll talk about <code>if</code>, <code>with</code>, and <code>range</code>. The others are covered in the &ldquo;Named Templates&rdquo; section later in this guide.</p>
+
+<h2 id="if-else">If/Else</h2>
+
+<p>The first control structure we&rsquo;ll look at is for conditionally including blocks of text in a template. This is the <code>if</code>/<code>else</code> block.</p>
+
+<p>The basic structure for a conditional looks like this:</p>
+
+<pre><code>{{ if PIPELINE }}
+  # Do something
+{{ else if OTHER PIPELINE }}
+  # Do something else
+{{ else }}
+  # Default case
+{{ end }}
+</code></pre>
+
+<p>Notice that we&rsquo;re now talking about <em>pipelines</em> instead of values. The reason for this is to make it clear that control structures can execute an entire pipeline, not just evaluate a value.</p>
+
+<p>A pipeline is evaluated as <em>false</em> if the value is:</p>
+
+<ul>
+<li>a boolean false</li>
+<li>a numeric zero</li>
+<li>an empty string</li>
+<li>a <code>nil</code> (empty or null)</li>
+<li>an empty collection (<code>map</code>, <code>slice</code>, <code>tuple</code>, <code>dict</code>, <code>array</code>)</li>
+</ul>
+
+<p>Under all other conditions, the condition is true.</p>
+
+<p>Let&rsquo;s add a simple conditional to our ConfigMap. We&rsquo;ll add another setting if the drink is set to coffee:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  {{ if eq .Values.favorite.drink &quot;coffee&quot; }}mug: true{{ end }}
+</code></pre>
+
+<p>Since we commented out <code>drink: coffee</code> in our last example, the output should not include a <code>mug: true</code> flag. But if we add that line back into our <code>values.yaml</code> file, the output should look like this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eyewitness-elk-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+  mug: true
+</code></pre>
+
+<h2 id="controlling-whitespace">Controlling Whitespace</h2>
+
+<p>While we&rsquo;re looking at conditionals, we should take a quick look at the way whitespace is controlled in templates. Let&rsquo;s take the previous example and format it to be a little easier to read:</p>
+
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  {{if eq .Values.favorite.drink &quot;coffee&quot;}}
+    mug: true
+  {{end}}
+</code></pre>
+
+<p>Initially, this looks good. But if we run it through the template engine, we&rsquo;ll get an unfortunate result:</p>
+
+<pre><code class="language-console">$ helm install --dry-run --debug ./mychart
+SERVER: &quot;localhost:44134&quot;
+CHART PATH: /Users/mattbutcher/Code/Go/src/k8s.io/helm/_scratch/mychart
+Error: YAML parse error on mychart/templates/configmap.yaml: error converting YAML to JSON: yaml: line 9: did not find expected key
+</code></pre>
+
+<p>What happened? We generated incorrect YAML because of the whitespacing above.</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eyewitness-elk-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+    mug: true
+</code></pre>
+
+<p><code>mug</code> is incorrectly indented. Let&rsquo;s simply out-dent that one line, and re-run:</p>
+
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  {{if eq .Values.favorite.drink &quot;coffee&quot;}}
+  mug: true
+  {{end}}
+</code></pre>
+
+<p>When we sent that, we&rsquo;ll get YAML that is valid, but still looks a little funny:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telling-chimp-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+
+  mug: true
+
+</code></pre>
+
+<p>Notice that we received a few empty lines in our YAML. Why? When the template engine runs, it <em>removes</em> the contents inside of <code>{{</code> and <code>}}</code>, but it leaves the remaining whitespace exactly as is.</p>
+
+<p>YAML ascribes meaning to whitespace, so managing the whitespace becomes pretty important. Fortunately, Helm templates have a few tools to help.</p>
+
+<p>First, the curly brace syntax of template declarations can be modified with special characters to tell the template engine to chomp whitespace. <code>{{-</code> (with the dash and space added) indicates that whitespace should be chomped left, while <code>-}}</code> means whitespace to the right should be consumed. <em>Be careful! Newlines are whitespace!</em></p>
+
+<blockquote>
+<p>Make sure there is a space between the <code>-</code> and the rest of your directive. <code>{{- 3 }}</code> means &ldquo;trim left whitespace and print 3&rdquo; while <code>{{-3}}</code> means &ldquo;print -3&rdquo;.</p>
+</blockquote>
+
+<p>Using this syntax, we can modify our template to get rid of those new lines:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  {{- if eq .Values.favorite.drink &quot;coffee&quot;}}
+  mug: true
+  {{- end}}
+</code></pre>
+
+<p>Just for the sake of making this point clear, let&rsquo;s adjust the above, and substitute an <code>*</code> for each whitespace that will be deleted following this rule. an <code>*</code> at the end of the line indicates a newline character that would be removed</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: {{ .Values.favorite.drink | default &quot;tea&quot; | quote }}
+  food: {{ .Values.favorite.food | upper | quote }}*
+**{{- if eq .Values.favorite.drink &quot;coffee&quot;}}
+  mug: true*
+**{{- end}}
+
+</code></pre>
+
+<p>Keeping that in mind, we can run our template through Helm and see the result:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clunky-cat-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+  mug: true
+</code></pre>
+
+<p>Be careful with the chomping modifiers. It is easy to accidentally do things like this:</p>
+
+<pre><code class="language-yaml">  food: {{ .Values.favorite.food | upper | quote }}
+  {{- if eq .Values.favorite.drink &quot;coffee&quot; -}}
+  mug: true
+  {{- end -}}
+
+</code></pre>
+
+<p>That will produce <code>food: &quot;PIZZA&quot;mug:true</code> because it consumed newlines on both sides.</p>
+
+<blockquote>
+<p>For the details on whitespace control in templates, see the <a href="https://godoc.org/text/template">Official Go template documentation</a></p>
+</blockquote>
+
+<p>Finally, sometimes it&rsquo;s easier to tell the template system how to indent for you instead of trying to master the spacing of template directives. For that reason, you may sometimes find it useful to use the <code>indent</code> function (<code>{{indent 2 &quot;mug:true&quot;}}</code>).</p>
+
+<h2 id="modifying-scope-using-with">Modifying scope using <code>with</code></h2>
+
+<p>The next control structure to look at is the <code>with</code> action. This controls variable scoping. Recall that <code>.</code> is a reference to <em>the current scope</em>. So <code>.Values</code> tells the template to find the <code>Values</code> object in the current scope.</p>
+
+<p>The syntax for <code>with</code> is similar to a simple <code>if</code> statement:</p>
+
+<pre><code>{{ with PIPELINE }}
+  # restricted scope
+{{ end }}
+</code></pre>
+
+<p>Scopes can be changed. <code>with</code> can allow you to set the current scope (<code>.</code>) to a particular object. For example, we&rsquo;ve been working with <code>.Values.favorites</code>. Let&rsquo;s rewrite our ConfigMap to alter the <code>.</code> scope to point to <code>.Values.favorites</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  {{- end }}
+</code></pre>
+
+<p>(Note that we removed the <code>if</code> conditional from the previous exercise)</p>
+
+<p>Notice that now we can reference <code>.drink</code> and <code>.food</code> without qualifying them. That is because the <code>with</code> statement sets <code>.</code> to point to <code>.Values.favorite</code>. The <code>.</code> is reset to its previous scope after <code>{{ end }}</code>.</p>
+
+<p>But here&rsquo;s a note of caution! Inside of the restricted scope, you will not be able to access the other objects from the parent scope. This, for example, will fail:</p>
+
+<pre><code class="language-yaml">  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  release: {{ .Release.Name }}
+  {{- end }}
+</code></pre>
+
+<p>It will produce an error because <code>Release.Name</code> is not inside of the restricted scope for <code>.</code>. However, if we swap the last two lines, all will work as expected because the scope is reset after <code>{{end}}</code>.</p>
+
+<pre><code class="language-yaml">  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  {{- end }}
+  release: {{ .Release.Name }}
+</code></pre>
+
+<p>After looking a <code>range</code>, we will take a look at template variables, which offer one solution to the scoping issue above.</p>
+
+<h2 id="looping-with-the-range-action">Looping with the <code>range</code> action</h2>
+
+<p>Many programming languages have support for looping using <code>for</code> loops, <code>foreach</code> loops, or similar functional mechanisms. In Helm&rsquo;s template language, the way to iterate through a collection is to use the <code>range</code> operator.</p>
+
+<p>To start, let&rsquo;s add a list of pizza toppings to our <code>values.yaml</code> file:</p>
+
+<pre><code class="language-yaml">favorite:
+  drink: coffee
+  food: pizza
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+</code></pre>
+
+<p>Now we have a list (called a <code>slice</code> in templates) of <code>pizzaToppings</code>. We can modify our template to print this list into our ConfigMap:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  {{- end }}
+  toppings: |-
+    {{- range .Values.pizzaToppings }}
+    - {{ . | title | quote }}
+    {{- end }}
+
+</code></pre>
+
+<p>Let&rsquo;s take a closer look at the <code>toppings:</code> list. The <code>range</code> function will &ldquo;range over&rdquo; (iterate through) the <code>pizzaToppings</code> list. But now something interesting happens. Just like <code>with</code> sets the scope of <code>.</code>, so does a <code>range</code> operator. Each time through the loop, <code>.</code> is set to the current pizza topping. That is, the first time, <code>.</code> is set to <code>mushrooms</code>. The second iteration it is set to <code>cheese</code>, and so on.</p>
+
+<p>We can send the value of <code>.</code> directly down a pipeline, so when we do <code>{{ . | title | quote }}</code>, it sends <code>.</code> to <code>title</code> (title case function) and then to <code>quote</code>. If we run this template, the output will be:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: edgy-dragonfly-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+  toppings: |-
+    - &quot;Mushrooms&quot;
+    - &quot;Cheese&quot;
+    - &quot;Peppers&quot;
+    - &quot;Onions&quot;
+</code></pre>
+
+<p>Now, in this example we&rsquo;ve done something tricky. The <code>toppings: |-</code> line is declaring a multi-line string. So our list of toppings is actually not a YAML list. It&rsquo;s a big string. Why would we do this? Because the data in ConfigMaps <code>data</code> is composed of key/value pairs, where both the key and the value are simple strings. To understand why this is the case, take a look at the <a href="http://kubernetes.io/docs/user-guide/configmap/">Kubernetes ConfigMap docs</a>. For us, though, this detail doesn&rsquo;t matter much.</p>
+
+<blockquote>
+<p>The <code>|-</code> marker in YAML takes a multi-line string. This can be a useful technique for embedding big blocks of data inside of your manifests, as exemplified here.</p>
+</blockquote>
+
+<p>Sometimes it&rsquo;s useful to be able to quickly make a list inside of your template, and then iterate over that list. Helm templates have a function to make this easy: <code>tuple</code>. In computer science, a tuple is a list-like collection of fixed size, but with arbitrary data types. This roughly conveys the way a <code>tuple</code> is used.</p>
+
+<pre><code class="language-yaml">  sizes: |-
+    {{- range tuple &quot;small&quot; &quot;medium&quot; &quot;large&quot; }}
+    - {{ . }}
+    {{- end }}
+</code></pre>
+
+<p>The above will produce this:</p>
+
+<pre><code class="language-yaml">  sizes: |-
+    - small
+    - medium
+    - large
+</code></pre>
+
+<p>In addition to lists and tuples, <code>range</code> can be used to iterate over collections that have a key and a value (like a <code>map</code> or <code>dict</code>). We&rsquo;ll see how to do that in the next section when we introduce template variables.</p>
+
+<h1 id="variables">Variables</h1>
+
+<p>With functions, pipelines, objects, and control structures under our belts, we can turn to one of the more basic ideas in many programming languages: variables. In templates, they are less frequently used. But we will see how to use them to simplify code, and to make better use of <code>with</code> and <code>range</code>.</p>
+
+<p>In an earlier example, we saw that this code will fail:</p>
+
+<pre><code class="language-yaml">  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  release: {{ .Release.Name }}
+  {{- end }}
+</code></pre>
+
+<p><code>Release.Name</code> is not inside of the scope that&rsquo;s restricted in the <code>with</code> block. One way to work around scoping issues is to assign objects to variables that can be accessed without respect to the present scope.</p>
+
+<p>In Helm templates, a variable is a named reference to another object. It follows the form <code>$name</code>. Variables are assigned with a special assignment operator: <code>:=</code>. We can rewrite the above to use a variable for <code>Release.Name</code>.</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- $relname := .Release.Name -}}
+  {{- with .Values.favorite }}
+  drink: {{ .drink | default &quot;tea&quot; | quote }}
+  food: {{ .food | upper | quote }}
+  release: {{ $relname }}
+  {{- end }}
+</code></pre>
+
+<p>Notice that before we start the <code>with</code> block, we assign <code>$relname := .Release.Name</code>. Now inside of the <code>with</code> block, the <code>$relname</code> variable still points to the release name.</p>
+
+<p>Running that will produce this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: viable-badger-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;PIZZA&quot;
+  release: viable-badger
+</code></pre>
+
+<p>Variables are particularly useful in <code>range</code> loops. They can be used on list-like objects to capture both the index and the value:</p>
+
+<pre><code class="language-yaml">  toppings: |-
+    {{- range $index, $topping := .Values.pizzaToppings }}
+      {{ $index }}: {{ $topping }}
+    {{- end }}
+
+</code></pre>
+
+<p>Note that <code>range</code> comes first, then the variables, then the assignment operator, then the list. This will assign the integer index (starting from zero) to <code>$index</code> and the value to <code>$topping</code>. Running it will produce:</p>
+
+<pre><code class="language-yaml">  toppings: |-
+      0: mushrooms
+      1: cheese
+      2: peppers
+      3: onions
+</code></pre>
+
+<p>For data structures that have both a key and a value, we can use <code>range</code> to get both. For example, we can loop through <code>.Values.favorite</code> like this:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end}}
+</code></pre>
+
+<p>Now on the first iteration, <code>$key</code> will be <code>drink</code> and <code>$val</code> will be <code>coffee</code>, and on the second, <code>$key</code> will be <code>food</code> and <code>$val</code> will be <code>pizza</code>. Running the above will generate this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eager-rabbit-configmap
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;pizza&quot;
+</code></pre>
+
+<p>Variables are normally not &ldquo;global&rdquo;. They are scoped to the block in which they are declared. Earlier, we assigned <code>$relname</code> in the top level of the template. That variable will be in scope for the entire template. But in our last example, <code>$key</code> and <code>$val</code> will only be in scope inside of the <code>{{range...}}{{end}}</code> block.</p>
+
+<p>However, there is one variable that is always global - <code>$</code> - this
+variable will always point to the root context.  This can be very
+useful when you are looping in a range need to know the chart&rsquo;s release
+name.</p>
+
+<p>An example illustrating this:</p>
+
+<pre><code class="language-yaml">{{- range .Values.tlsSecrets }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .name }}
+  labels:
+    # Many helm templates would use `.` below, but that will not work, 
+    # however `$` will work here 
+    app: {{ template &quot;fullname&quot; $ }}
+    # I cannot reference .Chart.Name, but I can do $.Chart.Name
+    chart: &quot;{{ $.Chart.Name }}-{{ $.Chart.Version }}&quot;
+    release: &quot;{{ $.Release.Name }}&quot;
+    heritage: &quot;{{ $.Release.Service }}&quot;
+type: kubernetes.io/tls
+data:
+  tls.crt: {{ .certificate }}
+  tls.key: {{ .key }}
+---
+{{- end }}
+</code></pre>
+
+<p>So far we have looked at just one template declared in just one file. But one of the powerful features of the Helm template language is its ability to declare multiple templates and use them together. We&rsquo;ll turn to that in the next section.</p>
+
+<h1 id="named-templates">Named Templates</h1>
+
+<p>It is time to move beyond one template, and begin to create others. In this section, we will see how to define <em>named templates</em> in one file, and then use them elsewhere. A <em>named template</em> (sometimes called a <em>partial</em> or a <em>subtemplate</em>) is simply a template defined inside of a file, and given a name. We&rsquo;ll see two ways to create them, and a few different ways to use them.</p>
+
+<p>In the &ldquo;Flow Control&rdquo; section we introduced three actions for declaring and managing templates: <code>define</code>, <code>template</code>, and <code>block</code>. In this section, we&rsquo;ll cover those three actions, and also introduce a special-purpose <code>include</code> function that works similarly to the <code>template</code> action.</p>
+
+<h2 id="partials-and-files">Partials and <code>_</code> files</h2>
+
+<p>So far, we&rsquo;ve used one file, and that one file has contained a single template. But Helm&rsquo;s template language allows you to create named embedded templates, that can be accessed by name elsewhere.</p>
+
+<p>Before we get to the nuts-and-bolts of writing those templates, there is file naming convention that deserves mention:</p>
+
+<ul>
+<li>Most files in <code>templates/</code> are treated as if they contain Kubernetes manifests</li>
+<li>The <code>NOTES.txt</code> is one exception</li>
+<li>But files whose name begins with an underscore (<code>_</code>) are assumed to <em>not</em> have a manifest inside. These files are not rendered to Kubernetes object definitions, but are available everywhere within other chart templates for use.</li>
+</ul>
+
+<p>These files are used to store partials and helpers. In fact, when we first created <code>mychart</code>, we saw a file called <code>_helpers.tpl</code>. That file is the default location for template partials.</p>
+
+<h2 id="declaring-and-using-templates-with-define-and-template">Declaring and using templates with <code>define</code> and <code>template</code></h2>
+
+<p>The <code>define</code> action allows us to create a named template inside of a template file. Its syntax goes like this:</p>
+
+<pre><code class="language-yaml">{{ define &quot;MY_NAME&quot; }}
+  # body of template here
+{{ end }}
+</code></pre>
+
+<p>For example, we can define a template to encapsulate a Kubernetes block of labels:</p>
+
+<pre><code class="language-yaml">{{- define &quot;my_labels&quot; }}
+  labels:
+    generator: helm
+    date: {{ now | htmlDate }}
+{{- end }}
+</code></pre>
+
+<p>Now we can embed this template inside of our existing ConfigMap, and then include it with the <code>template</code> action:</p>
+
+<pre><code class="language-yaml">{{- define &quot;my_labels&quot; }}
+  labels:
+    generator: helm
+    date: {{ now | htmlDate }}
+{{- end }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  {{- template &quot;my_labels&quot; }}
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}
+</code></pre>
+
+<p>When the template engine reads this file, it will store away the reference to <code>my_labels</code> until <code>template &quot;my_labels&quot;</code> is called. Then it will render that template inline. So the result will look like this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: running-panda-configmap
+  labels:
+    generator: helm
+    date: 2016-11-02
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;pizza&quot;
+</code></pre>
+
+<p>Conventionally, Helm charts put these templates inside of a partials file, usually <code>_helpers.tpl</code>. Let&rsquo;s move this function there:</p>
+
+<pre><code class="language-yaml">{{/* Generate basic labels */}}
+{{- define &quot;my_labels&quot; }}
+  labels:
+    generator: helm
+    date: {{ now | htmlDate }}
+{{- end }}
+</code></pre>
+
+<p>By convention, <code>define</code> functions should have a simple documentation block (<code>{{/* ... */}}</code>) describing what they do.</p>
+
+<p>Even though this definition is in <code>_helpers.tpl</code>, it can still be accessed in <code>configmap.yaml</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  {{- template &quot;my_labels&quot; }}
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}
+</code></pre>
+
+<p>There is one <em>really important detail</em> to keep in mind when naming templates: <strong>template names are global</strong>. If you declare two templates with the same name, whichever one is loaded last will be the one used. Because templates in subcharts are compiled together with top-level templates, you should be careful to name your templates with chart-specific names.</p>
+
+<p>One popular naming convention is to prefix each defined template with the name of the chart: <code>{{ define &quot;mychart.labels&quot; }}</code> or <code>{{ define &quot;mychart_labels&quot; }}</code>.</p>
+
+<h2 id="setting-the-scope-of-a-template">Setting the scope of a template</h2>
+
+<p>In the template we defined above, we did not use any objects. We just used functions. Let&rsquo;s modify our defined template to include the chart name and chart version:</p>
+
+<pre><code class="language-yaml">{{/* Generate basic labels */}}
+{{- define &quot;my_labels&quot; }}
+  labels:
+    generator: helm
+    date: {{ now | htmlDate }}
+    chart: {{ .Chart.Name }}
+    version: {{ .Chart.Version }}
+{{- end }}
+</code></pre>
+
+<p>If we render this, the result will not be what we expect:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: moldy-jaguar-configmap
+  labels:
+    generator: helm
+    date: 2016-11-02
+    chart:
+    version:
+</code></pre>
+
+<p>What happened to the name and version? They weren&rsquo;t in the scope for our defined template. When a named template (created with <code>define</code>) is rendered, it will receive the scope passed in by the <code>template</code> call. In our example, we included the template like this:</p>
+
+<pre><code class="language-yaml">{{- template &quot;my_labels&quot; }}
+</code></pre>
+
+<p>No scope was passed in, so within the template we cannot access anything in <code>.</code>. This is easy enough to fix, though. We simply pass a scope to the template:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  {{- template &quot;my_labels&quot; . }}
+</code></pre>
+
+<p>Note that we pass <code>.</code> at the end of the <code>template</code> call. We could just as easily pass <code>.Values</code> or <code>.Values.favorite</code> or whatever scope we want. But what we want is the top-level scope.</p>
+
+<p>Now when we execute this template with <code>helm install --dry-run --debug ./mychart</code>, we get this:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plinking-anaco-configmap
+  labels:
+    generator: helm
+    date: 2016-11-02
+    chart: mychart
+    version: 0.1.0
+</code></pre>
+
+<p>Now <code>{{ .Chart.Name }}</code> resolves to <code>mychart</code>, and <code>{{ .Chart.Version }}</code> resolves to <code>0.1.0</code>.</p>
+
+<h2 id="the-include-function">The <code>include</code> function</h2>
+
+<p>Say we&rsquo;ve defined a simple template that looks like this:</p>
+
+<pre><code>{{- define &quot;mychart_app&quot; -}}
+app_name: {{ .Chart.Name }}
+app_version: &quot;{{ .Chart.Version }}+{{ .Release.Time.Seconds }}&quot;
+{{- end -}}
+</code></pre>
+
+<p>Now say I want to insert this both into the <code>labels:</code> section of my template, and also the <code>data:</code> section:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+    {{ template &quot;mychart_app&quot; .}}
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}
+  {{ template &quot;mychart_app&quot; . }}
+
+</code></pre>
+
+<p>The output will not be what we expect:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: measly-whippet-configmap
+  labels:
+    app_name: mychart
+app_version: &quot;0.1.0+1478129847&quot;
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;pizza&quot;
+  app_name: mychart
+app_version: &quot;0.1.0+1478129847&quot;
+</code></pre>
+
+<p>Note that the indentation on <code>app_version</code> is wrong in both places. Why? Because the template that is substituted in has the text aligned to the right. Because <code>template</code> is an action, and not a function, there is no way to pass the output of a <code>template</code> call to other functions; the data is simply inserted inline.</p>
+
+<p>To work around this case, Helm provides an alternative to <code>template</code> that will import the contents of a template into the present pipeline where it can be passed along to other functions in the pipeline.</p>
+
+<p>Here&rsquo;s the example above, corrected to use <code>indent</code> to indent the <code>mychart_app</code> template correctly:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+{{ include &quot;mychart_app&quot; . | indent 4 }}
+data:
+  myvalue: &quot;Hello World&quot;
+  {{- range $key, $val := .Values.favorite }}
+  {{ $key }}: {{ $val | quote }}
+  {{- end }}
+{{ include &quot;mychart_app&quot; . | indent 2 }}
+</code></pre>
+
+<p>Now the produced YAML is correctly indented for each section:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: edgy-mole-configmap
+  labels:
+    app_name: mychart
+    app_version: &quot;0.1.0+1478129987&quot;
+data:
+  myvalue: &quot;Hello World&quot;
+  drink: &quot;coffee&quot;
+  food: &quot;pizza&quot;
+  app_name: mychart
+  app_version: &quot;0.1.0+1478129987&quot;
+</code></pre>
+
+<blockquote>
+<p>It is considered preferable to use <code>include</code> over <code>template</code> in Helm templates simply so that the output formatting can be handled better for YAML documents.</p>
+</blockquote>
+
+<p>Sometimes we want to import content, but not as templates. That is, we want to import files verbatim. We can achieve this by accessing files through the <code>.Files</code> object described in the next section.</p>
+
+<h1 id="accessing-files-inside-templates">Accessing Files Inside Templates</h1>
+
+<p>In the previous section we looked at several ways to create and access named templates. This makes it easy to import one template from within another template. But sometimes it is desirable to import a <em>file that is not a template</em> and inject its contents without sending the contents through the template renderer.</p>
+
+<p>Helm provides access to files through the <code>.Files</code> object. Before we get going with the template examples, though, there are a few things to note about how this works:</p>
+
+<ul>
+<li>It is okay to add extra files to your Helm chart. These files will be bundled and sent to Tiller. Be careful, though. Charts must be smaller than 1M because of the storage limitations of Kubernetes objects.</li>
+<li>Some files cannot be accessed through the <code>.Files</code> object, usually for security reasons.
+
+<ul>
+<li>Files in <code>templates/</code> cannot be accessed.</li>
+<li>Files excluded using <code>.helmignore</code> cannot be accessed.</li>
+</ul></li>
+<li>Charts do not preserve UNIX mode information, so file-level permissions will have no impact on the availability of a file when it comes to the <code>.Files</code> object.</li>
+</ul>
+
+<!-- (see https://github.com/jonschlinkert/markdown-toc) -->
+
+<!-- toc -->
+
+<ul>
+<li><a href="#basic-example">Basic example</a></li>
+<li><a href="#path-helpers">Path helpers</a></li>
+<li><a href="#glob-patterns">Glob patterns</a></li>
+<li><a href="#configmap-and-secrets-utility-functions">ConfigMap and Secrets utility functions</a></li>
+<li><a href="#encoding">Encoding</a></li>
+<li><a href="#lines">Lines</a></li>
+</ul>
+
+<!-- tocstop -->
+
+<h2 id="basic-example">Basic example</h2>
+
+<p>With those caveats behind, let&rsquo;s write a template that reads three files into our ConfigMap. To get started, we will add three files to the chart, putting all three directly inside of the <code>mychart/</code> directory.</p>
+
+<p><code>config1.toml</code>:</p>
+
+<pre><code class="language-toml">message = Hello from config 1
+</code></pre>
+
+<p><code>config2.toml</code>:</p>
+
+<pre><code class="language-toml">message = This is config 2
+</code></pre>
+
+<p><code>config3.toml</code>:</p>
+
+<pre><code class="language-toml">message = Goodbye from config 3
+</code></pre>
+
+<p>Each of these is a simple TOML file (think old-school Windows INI files). We know the names of these files, so we can use a <code>range</code> function to loop through them and inject their contents into our ConfigMap.</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  {{- $files := .Files }}
+  {{- range tuple &quot;config1.toml&quot; &quot;config2.toml&quot; &quot;config3.toml&quot; }}
+  {{ . }}: |-
+    {{ $files.Get . }}
+  {{- end }}
+</code></pre>
+
+<p>This config map uses several of the techniques discussed in previous sections. For example, we create a <code>$files</code> variable to hold a reference to the <code>.Files</code> object. We also use the <code>tuple</code> function to create a list of files that we loop through. Then we print each file name (<code>{{.}}: |-</code>) followed by the contents of the file <code>{{ $files.Get . }}</code>.</p>
+
+<p>Running this template will produce a single ConfigMap with the contents of all three files:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quieting-giraf-configmap
+data:
+  config1.toml: |-
+    message = Hello from config 1
+
+  config2.toml: |-
+    message = This is config 2
+
+  config3.toml: |-
+    message = Goodbye from config 3
+</code></pre>
+
+<h2 id="path-helpers">Path helpers</h2>
+
+<p>When working with files, it can be very useful to perform some standard
+operations on the file paths themselves. To help with this, Helm imports many of
+the functions from Go&rsquo;s <a href="https://golang.org/pkg/path/">path</a> package for your
+use. They are all accessible with the same names as in the Go package, but
+with a lowercase first letter. For example, <code>Base</code> becomes <code>base</code>, etc.</p>
+
+<p>The imported functions are:
+- Base
+- Dir
+- Ext
+- IsAbs
+- Clean</p>
+
+<h2 id="glob-patterns">Glob patterns</h2>
+
+<p>As your chart grows, you may find you have a greater need to organize your
+files more, and so we provide a <code>Files.Glob(pattern string)</code> method to assist
+in extracting certain files with all the flexibility of <a href="https://godoc.org/github.com/gobwas/glob">glob patterns</a>.</p>
+
+<p><code>.Glob</code> returns a <code>Files</code> type, so you may call any of the <code>Files</code> methods on
+the returned object.</p>
+
+<p>For example, imagine the directory structure:</p>
+
+<pre><code>foo/: 
+  foo.txt foo.yaml
+
+bar/:
+  bar.go bar.conf baz.yaml
+</code></pre>
+
+<p>You have multiple options with Globs:</p>
+
+<pre><code class="language-yaml">{{ range $path := .Files.Glob &quot;**.yaml&quot; }}
+{{ $path }}: |
+{{ .Files.Get $path }}
+{{ end }}
+</code></pre>
+
+<p>Or</p>
+
+<pre><code class="language-yaml">{{ range $path, $bytes := .Files.Glob &quot;foo/*&quot; }}
+{{ $path }}: '{{ b64enc $bytes }}'
+{{ end }}
+</code></pre>
+
+<h2 id="configmap-and-secrets-utility-functions">ConfigMap and Secrets utility functions</h2>
+
+<p>(Not present in version 2.0.2 or prior)</p>
+
+<p>It is very common to want to place file content into both configmaps and
+secrets, for mounting into your pods at run time. To help with this, we provide a
+couple utility methods on the <code>Files</code> type.</p>
+
+<p>For further organization, it is especially useful to use these methods in
+conjunction with the <code>Glob</code> method.</p>
+
+<p>Given the directory structure from the <a href="#glob-patterns">Glob</a> example above:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conf
+data:
+{{ (.Files.Glob &quot;foo/*&quot;).AsConfig | indent 2 }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: very-secret
+type: Opaque
+data:
+{{ (.Files.Glob &quot;bar/*&quot;).AsSecrets | indent 2 }}
+</code></pre>
+
+<h2 id="encoding">Encoding</h2>
+
+<p>You can import a file and have the template base-64 encode it to ensure successful transmission:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-secret
+type: Opaque
+data:
+  token: |-
+    {{ .Files.Get &quot;config1.toml&quot; | b64enc }}
+</code></pre>
+
+<p>The above will take the same <code>config1.toml</code> file we used before and encode it:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: lucky-turkey-secret
+type: Opaque
+data:
+  token: |-
+    bWVzc2FnZSA9IEhlbGxvIGZyb20gY29uZmlnIDEK
+</code></pre>
+
+<h2 id="lines">Lines</h2>
+
+<p>Sometimes it is desirable to access each line of a file in your template. We
+provide a convenient <code>Lines</code> method for this.</p>
+
+<pre><code class="language-yaml">data:
+  some-file.txt: {{ range .Files.Lines &quot;foo/bar.txt&quot; }}
+    {{ . }}{{ end }}
+</code></pre>
+
+<p>Currently, there is no way to pass files external to the chart during <code>helm install</code>. So if you are asking users to supply data, it must be loaded using <code>helm install -f</code> or <code>helm install --set</code>.</p>
+
+<p>This discussion wraps up our dive into the tools and techniques for writing Helm templates. In the next section we will see how you can use one special file, <code>templates/NOTES.txt</code>, to send post-installation instructions to the users of your chart.</p>
+
+<h1 id="creating-a-notes-txt-file">Creating a NOTES.txt File</h1>
+
+<p>In this section we are going to look at Helm&rsquo;s tool for providing instructions to your chart users. At the end of a <code>chart install</code> or <code>chart upgrade</code>, Helm can print out a block of helpful information for users. This information is highly customizable using templates.</p>
+
+<p>To add installation notes to your chart, simply create a <code>templates/NOTES.txt</code> file. This file is plain text, but it is processed like as a template, and has all the normal template functions and objects available.</p>
+
+<p>Let&rsquo;s create a simple <code>NOTES.txt</code> file:</p>
+
+<pre><code>Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}
+
+</code></pre>
+
+<p>Now if we run <code>helm install ./mychart</code> we will see this message at the bottom:</p>
+
+<pre><code>RESOURCES:
+==&gt; v1/Secret
+NAME                   TYPE      DATA      AGE
+rude-cardinal-secret   Opaque    1         0s
+
+==&gt; v1/ConfigMap
+NAME                      DATA      AGE
+rude-cardinal-configmap   3         0s
+
+
+NOTES:
+Thank you for installing mychart.
+
+Your release is named rude-cardinal.
+
+To learn more about the release, try:
+
+  $ helm status rude-cardinal
+  $ helm get rude-cardinal
+</code></pre>
+
+<p>Using <code>NOTES.txt</code> this way is a great way to give your users detailed information about how to use their newly installed chart. Creating a <code>NOTES.txt</code> file is strongly recommended, though it is not required.</p>
+
+<h1 id="subcharts-and-global-values">Subcharts and Global Values</h1>
+
+<p>To this point we have been working only with one chart. But charts can have dependencies, called <em>subcharts</em>, that also have their own values and templates. In this section we will create a subchart and see the different ways we can access values from within templates.</p>
+
+<p>Before we dive into the code, there are a few important details to learn about subcharts.</p>
+
+<ol>
+<li>A subchart is considered &ldquo;stand-alone&rdquo;, which means a subchart can never explicitly depend on its parent chart.</li>
+<li>For that reason, a subchart cannot access the values of its parent.</li>
+<li>A parent chart can override values for subcharts.</li>
+<li>Helm has a concept of <em>global values</em> that can be accessed by all charts.</li>
+</ol>
+
+<p>As we walk through the examples in this section, many of these concepts will become clearer.</p>
+
+<h2 id="creating-a-subchart">Creating a Subchart</h2>
+
+<p>For these exercises, we&rsquo;ll start with the <code>mychart/</code> chart we created at the beginning of this guide, and we&rsquo;ll add a new chart inside of it.</p>
+
+<pre><code class="language-console">$ cd mychart/charts
+$ helm create mysubchart
+Creating mysubchart
+$ rm -rf mysubchart/templates/*.*
+</code></pre>
+
+<p>Notice that just as before, we deleted all of the base templates so that we can start from scratch. In this guide, we are focused on how templates work, not on managing dependencies. But the <a href="./#../charts">Charts Guide</a> has more information on how subcharts work.</p>
+
+<h2 id="adding-values-and-a-template-to-the-subchart">Adding Values and a Template to the Subchart</h2>
+
+<p>Next, let&rsquo;s create a simple template and values file for our <code>mysubchart</code> chart. There should already be a <code>values.yaml</code> in <code>mychart/charts/mysubchart</code>. We&rsquo;ll set it up like this:</p>
+
+<pre><code class="language-yaml">dessert: cake
+</code></pre>
+
+<p>Next, we&rsquo;ll create a new ConfigMap template in <code>mychart/charts/mysubchart/templates/configmap.yaml</code>:</p>
+
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cfgmap2
+data:
+  dessert: {{ .Values.dessert }}
+</code></pre>
+
+<p>Because every subchart is a <em>stand-alone chart</em>, we can test <code>mysubchart</code> on its own:</p>
+
+<pre><code class="language-console">$ helm install --dry-run --debug mychart/charts/mysubchart
+SERVER: &quot;localhost:44134&quot;
+CHART PATH: /Users/mattbutcher/Code/Go/src/k8s.io/helm/_scratch/mychart/charts/mysubchart
+NAME:   newbie-elk
+TARGET NAMESPACE:   default
+CHART:  mysubchart 0.1.0
+MANIFEST:
+---
+# Source: mysubchart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: newbie-elk-cfgmap2
+data:
+  dessert: cake
+</code></pre>
+
+<h2 id="overriding-values-from-a-parent-chart">Overriding Values from a Parent Chart</h2>
+
+<p>Our original chart, <code>mychart</code> is now the <em>parent</em> chart of <code>mysubchart</code>. This relationship is based entirely on the fact that <code>mysubchart</code> is within <code>mychart/charts</code>.</p>
+
+<p>Because <code>mychart</code> is a parent, we can specify configuration in <code>mychart</code> and have that configuration pushed into <code>mysubchart</code>. For example, we can modify <code>mychart/values.yaml</code> like this:</p>
+
+<pre><code class="language-yaml">favorite:
+  drink: coffee
+  food: pizza
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+
+mysubchart:
+  dessert: ice cream
+</code></pre>
+
+<p>Note the last two lines. Any directives inside of the <code>mysubchart</code> section will be sent to the <code>mysubchart</code> chart. So if we run <code>helm install --dry-run --debug mychart</code>, one of the things we will see is the <code>mysubchart</code> ConfigMap:</p>
+
+<pre><code class="language-yaml"># Source: mychart/charts/mysubchart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unhinged-bee-cfgmap2
+data:
+  dessert: ice cream
+</code></pre>
+
+<p>The value at the top level has now overridden the value of the subchart.</p>
+
+<p>There&rsquo;s an important detail to notice here. We didn&rsquo;t change the template of <code>mychart/charts/mysubchart/templates/configmap.yaml</code> to point to <code>.Values.mysubchart.dessert</code>. From that template&rsquo;s perspective, the value is still located at <code>.Values.dessert</code>. As the template engine passes values along, it sets the scope. So for the <code>mysubchart</code> templates, only values specifically for <code>mysubchart</code> will be available in <code>.Values</code>.</p>
+
+<p>Sometimes, though, you do want certain values to be available to all of the templates. This is accomplished using global chart values.</p>
+
+<h2 id="global-chart-values">Global Chart Values</h2>
+
+<p>Global values are values that can be accessed from any chart or subchart by exactly the same name. Globals require explicit declaration. You can&rsquo;t use an existing non-global as if it were a global.</p>
+
+<p>The Values data type has a reserved section called <code>Values.global</code> where global values can be set. Let&rsquo;s set one in our <code>mychart/values.yaml</code> file.</p>
+
+<pre><code class="language-yaml">favorite:
+  drink: coffee
+  food: pizza
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+
+mysubchart:
+  dessert: ice cream
+
+global:
+  salad: caesar
+</code></pre>
+
+<p>Because of the way globals work, both <code>mychart/templates/configmap.yaml</code> and <code>mysubchart/templates/configmap.yaml</code> should be able to access that value as <code>{{ .Values.global.salad}}</code>.</p>
+
+<p><code>mychart/templates/configmap.yaml</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  salad: {{ .Values.global.salad }}
+</code></pre>
+
+<p><code>mysubchart/templates/configmap.yaml</code>:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cfgmap2
+data:
+  dessert: {{ .Values.dessert }}
+  salad: {{ .Values.global.salad }}
+</code></pre>
+
+<p>Now if we run a dry run install, we&rsquo;ll see the same value in both outputs:</p>
+
+<pre><code class="language-yaml"># Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: silly-snake-configmap
+data:
+  salad: caesar
+
+---
+# Source: mychart/charts/mysubchart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: silly-snake-cfgmap2
+data:
+  dessert: ice cream
+  salad: caesar
+</code></pre>
+
+<p>Globals are useful for passing information like this, though it does take some planning to make sure the right templates are configured to use globals.</p>
+
+<h2 id="sharing-templates-with-subcharts">Sharing Templates with Subcharts</h2>
+
+<p>Parent charts and subcharts can share templates. Any defined block in any chart is
+available to other charts.</p>
+
+<p>For example, we can define a simple template like this:</p>
+
+<pre><code class="language-yaml">{{- define &quot;labels&quot; }}from: mychart{{ end }}
+</code></pre>
+
+<p>Recall how the labels on templates are <em>globally shared</em>. Thus, the <code>labels</code> chart
+can be included from any other chart.</p>
+
+<p>While chart developers have a choice between <code>include</code> and <code>template</code>, one advantage
+of using <code>include</code> is that <code>include</code> can dynamically reference templates:</p>
+
+<pre><code class="language-yaml">{{ include $mytemplate }}
+</code></pre>
+
+<p>The above will dereference <code>$mytemplate</code>. The <code>template</code> function, in contrast,
+will only accept a string literal.</p>
+
+<h2 id="avoid-using-blocks">Avoid Using Blocks</h2>
+
+<p>The Go template language provides a <code>block</code> keyword that allows developers to provide
+a default implementation which is overridden later. In Helm charts, blocks are not
+the best tool for overriding because it if multiple implementations of the same block
+are provided, the one selected is unpredictable.</p>
+
+<p>The suggestion is to instead use <code>include</code>.</p>
+
+<h1 id="debugging-templates">Debugging Templates</h1>
+
+<p>Debugging templates can be tricky simply because the templates are rendered on the Tiller server, not the Helm client. And then the rendered templates are sent to the Kubernetes API server, which may reject the YAML files for reasons other than formatting.</p>
+
+<p>There are a few commands that can help you debug.</p>
+
+<ul>
+<li><code>helm lint</code> is your go-to tool for verifying that your chart follows best practices</li>
+<li><code>helm install --dry-run --debug</code>: We&rsquo;ve seen this trick already. It&rsquo;s a great way to have the server render your templates, then return the resulting manifest file.</li>
+<li><code>helm get manifest</code>: This is a good way to see what templates are installed on the server.</li>
+</ul>
+
+<p>When your YAML is failing to parse, but you want to see what is generated, one
+easy way to retrieve the YAML is to comment out the problem section in the template,
+and then re-run <code>helm install --dry-run --debug</code>:</p>
+
+<pre><code class="language-YAML">apiVersion: v1
+# some: problem section
+# {{ .Values.foo | quote }}
+</code></pre>
+
+<p>The above will be rendered and returned with the comments intact:</p>
+
+<pre><code class="language-YAML">apiVersion: v1
+# some: problem section
+#  &quot;bar&quot;
+</code></pre>
+
+<p>This provides a quick way of viewing the generated content without YAML parse
+errors blocking.</p>
+
+<h1 id="wrapping-up">Wrapping Up</h1>
+
+<p>This guide is intended to give you, the chart developer, a strong understanding of how to use Helm&rsquo;s template language. The guide focuses on the technical aspects of template development.</p>
+
+<p>But there are many things this guide has not covered when it comes to the practical day-to-day development of charts. Here are some useful pointers to other documentation that will help you as you create new charts:</p>
+
+<ul>
+<li>The <a href="https://github.com/kubernetes/charts">Kubernetes Charts project</a> is an indispensable source of charts. That project is also sets the standard for best practices in chart development.</li>
+<li>The Kubernetes <a href="http://kubernetes.io/docs/user-guide/">User&rsquo;s Guide</a> provides detailed examples of the various resource kinds that you can use, from ConfigMaps and Secrets to DaemonSets and Deployments.</li>
+<li>The Helm <a href="./#../charts">Charts Guide</a> explains the workflow of using charts.</li>
+<li>The Helm <a href="./#../charts_hooks">Chart Hooks Guide</a> explains how to create lifecycle hooks.</li>
+<li>The Helm <a href="./#../chart-development-tips-and-tricks">Charts Tips and Tricks</a> article provides some useful tips for writing charts.</li>
+<li>The <a href="https://github.com/Masterminds/sprig">Sprig documentation</a> documents more than sixty of the template functions.</li>
+<li>The <a href="https://godoc.org/text/template">Go template docs</a> explain the template syntax in detail.</li>
+<li>The <a href="https://github.com/databus23/schelm">Schelm tool</a> is a nice helper utility for debugging charts.</li>
+</ul>
+
+<p>Sometimes it&rsquo;s easier to ask a few questions and get answers from experienced developers. The best place to do that is in the Kubernetes <code>#Helm</code> Slack channel:</p>
+
+<ul>
+<li><a href="https://slack.k8s.io/">Kubernetes Slack</a>: <code>#helm</code></li>
+</ul>
+
+<p>Finally, if you find errors or omissions in this document, want to suggest some new content, or would like to contribute, visit <a href="https://github.com/kubernetes/helm">The Helm Project</a>.</p>
+
+<h1 id="yaml-techniques">YAML Techniques</h1>
+
+<p>Most of this guide has been focused on writing the template language. Here,
+we&rsquo;ll look at the YAML format. YAML has some useful features that we, as
+template authors, can use to make our templates less error prone and easier
+to read.</p>
+
+<h2 id="scalars-and-collections">Scalars and Collections</h2>
+
+<p>According to the <a href="http://yaml.org/spec/1.2/spec.html">YAML spec</a>, there are two
+types of collections, and many scalar types.</p>
+
+<p>The two types of collections are maps and sequences:</p>
+
+<pre><code class="language-yaml">map:
+  one: 1
+  two: 2
+  three: 3
+
+sequence:
+  - one
+  - two
+  - three
+</code></pre>
+
+<p>Scalar values are individual values (as opposed to collections)</p>
+
+<h3 id="scalar-types-in-yaml">Scalar Types in YAML</h3>
+
+<p>In Helm&rsquo;s dialect of YAML, the scalar data type of a value is determined by a
+complex set of rules, including the Kubernetes schema for resource definitions.
+But when inferring types, the following rules tend to hold true.</p>
+
+<p>If an integer or float is an unquoted bare word, it is typically treated as
+a numeric type:</p>
+
+<pre><code class="language-yaml">count: 1
+size: 2.34
+</code></pre>
+
+<p>But if they are quoted, they are treated as strings:</p>
+
+<pre><code class="language-yaml">count: &quot;1&quot; # &lt;-- string, not int
+size: '2.34' # &lt;-- string, not float
+</code></pre>
+
+<p>The same is true of booleans:</p>
+
+<pre><code class="language-yaml">isGood: true   # bool
+answer: &quot;true&quot; # string
+</code></pre>
+
+<p>The word for an empty value is <code>null</code> (not <code>nil</code>).</p>
+
+<p>Note that <code>port: &quot;80&quot;</code> is valid YAML, and will pass through both the
+template engine and the YAML parser, but will fail if Kubernetes expects
+<code>port</code> to be an integer.</p>
+
+<p>In some cases, you can force a particular type inference using YAML node tags:</p>
+
+<pre><code class="language-yaml">coffee: &quot;yes, please&quot;
+age: !!str 21
+port: !!int &quot;80&quot;
+</code></pre>
+
+<p>In the above, <code>!!str</code> tells the parser that <code>age</code> is a string, even if it looks
+like an int. And <code>port</code> is treated as an int, even though it is quoted.</p>
+
+<h2 id="strings-in-yaml">Strings in YAML</h2>
+
+<p>Much of the data that we place in YAML documents are strings. YAML has more than
+one way to represent a string. This section explains the ways and demonstrates
+how to use some of them.</p>
+
+<p>There are three &ldquo;inline&rdquo; ways of declaring a string:</p>
+
+<pre><code class="language-yaml">way1: bare words
+way2: &quot;double-quoted strings&quot;
+way3: 'single-quoted strings'
+</code></pre>
+
+<p>All inline styles must be on one line.</p>
+
+<ul>
+<li>Bare words are unquoted, and are not escaped. For this reason, you have to
+be careful what characters you use.</li>
+<li>Double-quoted strings can have specific characters escaped with <code>\</code>. For
+example <code>&quot;\&quot;Hello\&quot;, she said&quot;</code>. You can escape line breaks with <code>\n</code>.</li>
+<li>Single-quoted strings are &ldquo;literal&rdquo; strings, and do not use the <code>\</code> to
+escape characters. The only escape sequence is <code>''</code>, which is decoded as
+a single <code>'</code>.</li>
+</ul>
+
+<p>In addition to the one-line strings, you can declare multi-line strings:</p>
+
+<pre><code class="language-yaml">coffee: |
+  Latte
+  Cappuccino
+  Espresso
+</code></pre>
+
+<p>The above will treat the value of <code>coffee</code> as a single string equivalent to
+<code>Latte\nCappuccino\nEspresso\n</code>.</p>
+
+<p>Note that the first line after the <code>|</code> must be correctly indented. So we could
+break the example above by doing this:</p>
+
+<pre><code class="language-yaml">coffee: |
+         Latte
+  Cappuccino
+  Espresso
+
+</code></pre>
+
+<p>Because <code>Latte</code> is incorrectly indented, we&rsquo;d get an error like this:</p>
+
+<pre><code>Error parsing file: error converting YAML to JSON: yaml: line 7: did not find expected key
+</code></pre>
+
+<p>In templates, it is sometimes safer to put a fake &ldquo;first line&rdquo; of content in a
+multi-line document just for protection from the above error:</p>
+
+<pre><code class="language-yaml">coffee: |
+  # Commented first line
+         Latte
+  Cappuccino
+  Espresso
+
+</code></pre>
+
+<p>Note that whatever that first line is, it will be preserved in the output of the
+string. So if you are, for example, using this technique to inject a file&rsquo;s contents
+into a ConfigMap, the comment should be of the type expected by whatever is
+reading that entry.</p>
+
+<h3 id="controlling-spaces-in-multi-line-strings">Controlling Spaces in Multi-line Strings</h3>
+
+<p>In the example above, we used <code>|</code> to indicate a multi-line string. But notice
+that the content of our string was followed with a trailing <code>\n</code>. If we want
+the YAML processor to strip off the trailing newline, we can add a <code>-</code> after the
+<code>|</code>:</p>
+
+<pre><code class="language-yaml">coffee: |-
+  Latte
+  Cappuccino
+  Espresso
+</code></pre>
+
+<p>Now the <code>coffee</code> value will be: <code>Latte\nCappuccino\nEspresso</code> (with no trailing
+<code>\n</code>).</p>
+
+<p>Other times, we might want all trailing whitespace to be preserved. We can do
+this with the <code>|+</code> notation:</p>
+
+<pre><code class="language-yaml">coffee: |+
+  Latte
+  Cappuccino
+  Espresso
+
+
+another: value
+</code></pre>
+
+<p>Now the value of <code>coffee</code> will be <code>Latte\nCappuccino\nEspresso\n\n\n</code>.</p>
+
+<p>Indentation inside of a text block is preserved, and results in the preservation
+of line breaks, too:</p>
+
+<pre><code>coffee: |-
+  Latte
+    12 oz
+    16 oz
+  Cappuccino
+  Espresso
+</code></pre>
+
+<p>In the above case, <code>coffee</code> will be <code>Latte\n  12 oz\n  16 oz\nCappuccino\nEspresso</code>.</p>
+
+<h3 id="indenting-and-templates">Indenting and Templates</h3>
+
+<p>When writing templates, you may find yourself wanting to inject the contents of
+a file into the template. As we saw in previous chapters, there are two ways
+of doing this:</p>
+
+<ul>
+<li>Use <code>{{ .Files.Get &quot;FILENAME&quot; }}</code> to get the contents of a file in the chart.</li>
+<li>Use <code>{{ include &quot;TEMPLATE&quot; . }}</code> to render a template and then place its
+contents into the chart.</li>
+</ul>
+
+<p>When inserting files into YAML, it&rsquo;s good to understand the multi-line rules above.
+Often times, the easiest way to insert a static file is to do something like
+this:</p>
+
+<pre><code class="language-yaml">myfile: |
+{{ .Files.Get &quot;myfile.txt&quot; | indent 2 }}
+</code></pre>
+
+<p>Note how we do the indentation above: <code>indent 2</code> tells the template engine to
+indent every line in &ldquo;myfile.txt&rdquo; with two spaces. Note that we do not indent
+that template line. That&rsquo;s because if we did, the file content of the first line
+would be indented twice.</p>
+
+<h3 id="folded-multi-line-strings">Folded Multi-line Strings</h3>
+
+<p>Sometimes you want to represent a string in your YAML with multiple lines, but
+want it to be treated as one long line when it is interpreted. This is called
+&ldquo;folding&rdquo;. To declare a folded block, use <code>&gt;</code> instead of <code>|</code>:</p>
+
+<pre><code class="language-yaml">coffee: &gt;
+  Latte
+  Cappuccino
+  Espresso
+
+
+</code></pre>
+
+<p>The value of <code>coffee</code> above will be <code>Latte Cappuccino Espresso\n</code>. Note that all
+but the last line feed will be converted to spaces. You can combine the whitespace
+controls with the folded text marker, so <code>&gt;-</code> will replace or trim all newlines.</p>
+
+<p>Note that in the folded syntax, indenting text will cause lines to be preserved.</p>
+
+<pre><code class="language-yaml">coffee: &gt;-
+  Latte
+    12 oz
+    16 oz
+  Cappuccino
+  Espresso
+</code></pre>
+
+<p>The above will produce <code>Latte\n  12 oz\n  16 oz\nCappuccino Espresso</code>. Note that
+both the spacing and the newlines are still there.</p>
+
+<h2 id="embedding-multiple-documents-in-one-file">Embedding Multiple Documents in One File</h2>
+
+<p>It is possible to place more than one YAML documents into a single file. This
+is done by prefixing a new document with <code>---</code> and ending the document with
+<code>...</code></p>
+
+<pre><code class="language-yaml">
+---
+document:1
+...
+---
+document: 2
+...
+</code></pre>
+
+<p>In many cases, either the <code>---</code> or the <code>...</code> may be omitted.</p>
+
+<p>Some files in Helm cannot contain more than one doc. If, for example, more
+than one document is provided inside of a <code>values.yaml</code> file, only the first
+will be used.</p>
+
+<p>Template files, however, may have more than one document. When this happens,
+the file (and all of its documents) is treated as one object during
+template rendering. But then the resulting YAML is split into multiple
+documents before it is fed to Kubernetes.</p>
+
+<p>We recommend only using multiple documents per file when it is absolutely
+necessary. Having multiple documents in a file can be difficult to debug.</p>
+
+<h2 id="yaml-is-a-superset-of-json">YAML is a Superset of JSON</h2>
+
+<p>Because YAML is a superset of JSON, any valid JSON document <em>should</em> be valid
+YAML.</p>
+
+<pre><code class="language-json">{
+  &quot;coffee&quot;: &quot;yes, please&quot;,
+  &quot;coffees&quot;: [
+    &quot;Latte&quot;, &quot;Cappuccino&quot;, &quot;Espresso&quot;
+  ]
+}
+</code></pre>
+
+<p>The above is another way of representing this:</p>
+
+<pre><code class="language-yaml">coffee: yes, please
+coffees:
+- Latte
+- Cappuccino
+- Espresso
+</code></pre>
+
+<p>And the two can be mixed (with care):</p>
+
+<pre><code class="language-yaml">coffee: &quot;yes, please&quot;
+coffees: [ &quot;Latte&quot;, &quot;Cappuccino&quot;, &quot;Espresso&quot;]
+</code></pre>
+
+<p>All three of these should parse into the same internal representation.</p>
+
+<p>While this means that files such as <code>values.yaml</code> may contain JSON data, Helm
+does not treat the file extension <code>.json</code> as a valid suffix.</p>
+
+<h2 id="yaml-anchors">YAML Anchors</h2>
+
+<p>The YAML spec provides a way to store a reference to a value, and later
+refer to that value by reference. YAML refers to this as &ldquo;anchoring&rdquo;:</p>
+
+<pre><code class="language-yaml">coffee: &quot;yes, please&quot;
+favorite: &amp;favoriteCoffee &quot;Cappucino&quot;
+coffees:
+  - Latte
+  - *favoriteCoffee
+  - Espresso
+</code></pre>
+
+<p>In the above, <code>&amp;favoriteCoffee</code> sets a reference to <code>Cappuccino</code>. Later, that
+reference is used as <code>*favoriteCoffee</code>. So <code>coffees</code> becomes
+<code>Latte, Cappuccino, Espresso</code>.</p>
+
+<p>While there are a few cases where anchors are useful, there is one aspect of
+them that can cause subtle bugs: The first time the YAML is consumed, the
+reference is expanded and then discarded.</p>
+
+<p>So if we were to decode and then re-encode the example above, the resulting
+YAML would be:</p>
+
+<pre><code class="language-YAML">coffee: yes, please
+favorite: Cappucino
+coffees:
+- Latte
+- Cappucino
+- Espresso
+</code></pre>
+
+<p>Because Helm and Kubernetes often read, modify, and then rewrite YAML files,
+the anchors will be lost.</p>
+
+<h1 id="appendix-go-data-types-and-templates">Appendix: Go Data Types and Templates</h1>
+
+<p>The Helm template language is implemented in the strongly typed Go programming language. For that reason, variables in templates are <em>typed</em>. For the most part, variables will be exposed as one of the following types:</p>
+
+<ul>
+<li>string: A string of text</li>
+<li>bool: a <code>true</code> or <code>false</code></li>
+<li>int: An integer value (there are also 8, 16, 32, and 64 bit signed and unsigned variants of this)</li>
+<li>float64: a 64-bit floating point value (there are also 8, 16, and 32 bit varieties of this)</li>
+<li>a byte slice (<code>[]byte</code>), often used to hold (potentially) binary data</li>
+<li>struct: an object with properties and methods</li>
+<li>a slice (indexed list) of one of the previous types</li>
+<li>a string-keyed map (<code>map[string]interface{}</code>) where the value is one of the previous types</li>
+</ul>
+
+<p>There are many other types in Go, and sometimes you will have to convert between them in your templates. The easiest way to debug an object&rsquo;s type is to pass it through <code>printf &quot;%t&quot;</code> in a template, which will print the type. Also see the <code>typeOf</code> and <code>kindOf</code> functions.</p>
+</div>
+</article>
+          
+        </div>
+        <div class="small-1 columns">&nbsp;</div>
+      </div>
+
+      <div class="row collapse" id="contrib">
+        <div class="contrib-text">
+          <p class="text-center lead">
+            <a href="https://helm.sh">Helm</a> is supported by and built with a community of over 250 developers.
+          </p>
+          <p class="text-center">
+            <a href="https://helm.sh">helm.sh</a> and <a href="https://docs.helm.sh">docs.helm.sh</a> are maintained by <img src="../src/img/microsoft.png" alt="Microsoft" class="">
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+    </div> 
+
+    <a class="exit-off-canvas"></a>
+
+    </div> 
+  </div> 
+
+    
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../src/js/main.min.js"></script>
+  <script src="../src/js/app_init.min.js"></script>
+
+</body>
+</html>

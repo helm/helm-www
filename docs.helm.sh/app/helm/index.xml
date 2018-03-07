@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Helm on Helm Docs</title>
+    <link>https://docs.helm.sh/helm/</link>
+    <description>Recent content in Helm on Helm Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://docs.helm.sh/helm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm/</guid>
+      <description>helm The Helm package manager for Kubernetes.
+Synopsis The Kubernetes package manager
+To begin working with Helm, run the &amp;lsquo;helm init&amp;rsquo; command:
+$ helm init  This will install Tiller to your running Kubernetes cluster. It will also set up any necessary local configuration.
+Common actions from this point include:
+ helm search: search for charts helm fetch: download a chart to your local directory to view helm install: upload the chart to Kubernetes helm list: list releases of charts  Environment: $HELM_HOME set an alternative location for Helm files.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_completion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_completion/</guid>
+      <description>helm completion Generate autocompletions script for the specified shell (bash or zsh)
+Synopsis Generate autocompletions script for Helm for the specified shell (bash or zsh).
+This command can generate shell autocompletions. e.g.
+$ helm completion bash  Can be sourced as such
+$ source &amp;lt;(helm completion bash)  helm completion SHELL  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_create/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_create/</guid>
+      <description>helm create create a new chart with the given name
+Synopsis This command creates a chart directory along with the common files and directories used in a chart.
+For example, &amp;lsquo;helm create foo&amp;rsquo; will create a directory structure that looks something like this:
+foo/ | |- .helmignore # Contains patterns to ignore when packaging Helm charts. | |- Chart.yaml # Information about your chart | |- values.yaml # The default values for your templates | |- charts/ # Charts that this chart depends on | |- templates/ # The template files  &amp;lsquo;helm create&amp;rsquo; takes a path for an argument.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_delete/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_delete/</guid>
+      <description>helm delete given a release name, delete the release from Kubernetes
+Synopsis This command takes a release name, and then deletes the release from Kubernetes. It removes all of the resources associated with the last release of the chart.
+Use the &amp;lsquo;&amp;ndash;dry-run&amp;rsquo; flag to see which releases will be deleted without actually deleting them.
+helm delete [flags] RELEASE_NAME [...]  Options  --dry-run simulate a delete --no-hooks prevent hooks from running during deletion --purge remove the release from the store and make its name free for later use --timeout int time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300) --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_dependency/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_dependency/</guid>
+      <description>helm dependency manage a chart&amp;rsquo;s dependencies
+Synopsis Manage the dependencies of a chart.
+Helm charts store their dependencies in &amp;lsquo;charts/&amp;rsquo;. For chart developers, it is often easier to manage a single dependency file (&amp;lsquo;requirements.yaml&amp;rsquo;) which declares all dependencies.
+The dependency commands operate on that file, making it easy to synchronize between the desired dependencies and the actual dependencies stored in the &amp;lsquo;charts/&amp;rsquo; directory.
+A &amp;lsquo;requirements.yaml&amp;rsquo; file is a YAML file in which developers can declare chart dependencies, along with the location of the chart and the desired version.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_dependency_build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_dependency_build/</guid>
+      <description>helm dependency build rebuild the charts/ directory based on the requirements.lock file
+Synopsis Build out the charts/ directory from the requirements.lock file.
+Build is used to reconstruct a chart&amp;rsquo;s dependencies to the state specified in the lock file. This will not re-negotiate dependencies, as &amp;lsquo;helm dependency update&amp;rsquo; does.
+If no lock file is found, &amp;lsquo;helm dependency build&amp;rsquo; will mirror the behavior of &amp;lsquo;helm dependency update&amp;rsquo;.
+helm dependency build [flags] CHART  Options  --keyring string keyring containing public keys (default &amp;quot;~/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_dependency_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_dependency_list/</guid>
+      <description>helm dependency list list the dependencies for the given chart
+Synopsis List all of the dependencies declared in a chart.
+This can take chart archives and chart directories as input. It will not alter the contents of a chart.
+This will produce an error if the chart cannot be loaded. It will emit a warning if it cannot find a requirements.yaml.
+helm dependency list [flags] CHART  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_dependency_update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_dependency_update/</guid>
+      <description>helm dependency update update charts/ based on the contents of requirements.yaml
+Synopsis Update the on-disk dependencies to mirror the requirements.yaml file.
+This command verifies that the required charts, as expressed in &amp;lsquo;requirements.yaml&amp;rsquo;, are present in &amp;lsquo;charts/&amp;rsquo; and are at an acceptable version. It will pull down the latest charts that satisfy the dependencies, and clean up old dependencies.
+On successful update, this will generate a lock file that can be used to rebuild the requirements to an exact version.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_fetch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_fetch/</guid>
+      <description>helm fetch download a chart from a repository and (optionally) unpack it in local directory
+Synopsis Retrieve a package from a package repository, and download it locally.
+This is useful for fetching packages to inspect, modify, or repackage. It can also be used to perform cryptographic verification of a chart without installing the chart.
+There are options for unpacking the chart after download. This will create a directory for the chart and uncompress into that directory.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_get/</guid>
+      <description>helm get download a named release
+Synopsis This command shows the details of a named release.
+It can be used to get extended information about the release, including:
+ The values used to generate the release The chart used to generate the release The generated manifest file  By default, this prints a human readable collection of information about the chart, the supplied values, and the generated manifest file.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_get_hooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_get_hooks/</guid>
+      <description>helm get hooks download all hooks for a named release
+Synopsis This command downloads hooks for a given release.
+Hooks are formatted in YAML and separated by the YAML &amp;lsquo;&amp;mdash;\n&amp;rsquo; separator.
+helm get hooks [flags] RELEASE_NAME  Options  --revision int32 get the named release with revision --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.pem&amp;quot;) --tls-cert string path to TLS certificate file (default &amp;quot;$HELM_HOME/cert.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_get_manifest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_get_manifest/</guid>
+      <description>helm get manifest download the manifest for a named release
+Synopsis This command fetches the generated manifest for a given release.
+A manifest is a YAML-encoded representation of the Kubernetes resources that were generated from this release&amp;rsquo;s chart(s). If a chart is dependent on other charts, those resources will also be included in the manifest.
+helm get manifest [flags] RELEASE_NAME  Options  --revision int32 get the named release with revision --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_get_values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_get_values/</guid>
+      <description>helm get values download the values file for a named release
+Synopsis This command downloads a values file for a given release.
+helm get values [flags] RELEASE_NAME  Options  -a, --all dump all (computed) values --revision int32 get the named release with revision --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.pem&amp;quot;) --tls-cert string path to TLS certificate file (default &amp;quot;$HELM_HOME/cert.pem&amp;quot;) --tls-key string path to TLS key file (default &amp;quot;$HELM_HOME/key.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_history/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_history/</guid>
+      <description>helm history fetch release history
+Synopsis History prints historical revisions for a given release.
+A default maximum of 256 revisions will be returned. Setting &amp;lsquo;&amp;ndash;max&amp;rsquo; configures the maximum length of the revision list returned.
+The historical release set is printed as a formatted table, e.g:
+$ helm history angry-bird --max=4 REVISION UPDATED STATUS CHART DESCRIPTION 1 Mon Oct 3 10:15:13 2016 SUPERSEDED alpine-0.1.0 Initial install 2 Mon Oct 3 10:15:13 2016 SUPERSEDED alpine-0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_home/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_home/</guid>
+      <description>helm home displays the location of HELM_HOME
+Synopsis This command displays the location of HELM_HOME. This is where any helm configuration files live.
+helm home  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm - The Helm package manager for Kubernetes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_init/</guid>
+      <description>helm init initialize Helm on both client and server
+Synopsis This command installs Tiller (the Helm server-side component) onto your Kubernetes Cluster and sets up local configuration in $HELM_HOME (default ~/.helm/).
+As with the rest of the Helm commands, &amp;lsquo;helm init&amp;rsquo; discovers Kubernetes clusters by reading $KUBECONFIG (default &amp;lsquo;~/.kube/config&amp;rsquo;) and using the default context.
+To set up just a local environment, use &amp;lsquo;&amp;ndash;client-only&amp;rsquo;. That will configure $HELM_HOME, but not attempt to connect to a Kubernetes cluster and install the Tiller deployment.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_inspect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_inspect/</guid>
+      <description>helm inspect inspect a chart
+Synopsis This command inspects a chart and displays information. It takes a chart reference (&amp;lsquo;stable/drupal&amp;rsquo;), a full path to a directory or packaged chart, or a URL.
+Inspect prints the contents of the Chart.yaml file and the values.yaml file.
+helm inspect [CHART]  Options  --ca-file string chart repository url where to locate the requested chart --cert-file string verify certificates of HTTPS-enabled servers using this CA bundle --key-file string identify HTTPS client using this SSL key file --keyring string path to the keyring containing public verification keys (default &amp;quot;~/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_inspect_chart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_inspect_chart/</guid>
+      <description>helm inspect chart shows inspect chart
+Synopsis This command inspects a chart (directory, file, or URL) and displays the contents of the Charts.yaml file
+helm inspect chart [CHART]  Options  --ca-file string chart repository url where to locate the requested chart --cert-file string verify certificates of HTTPS-enabled servers using this CA bundle --key-file string identify HTTPS client using this SSL key file --keyring string path to the keyring containing public verification keys (default &amp;quot;~/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_inspect_values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_inspect_values/</guid>
+      <description>helm inspect values shows inspect values
+Synopsis This command inspects a chart (directory, file, or URL) and displays the contents of the values.yaml file
+helm inspect values [CHART]  Options  --ca-file string chart repository url where to locate the requested chart --cert-file string verify certificates of HTTPS-enabled servers using this CA bundle --key-file string identify HTTPS client using this SSL key file --keyring string path to the keyring containing public verification keys (default &amp;quot;~/.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_install/</guid>
+      <description>helm install install a chart archive
+Synopsis This command installs a chart archive.
+The install argument must be a chart reference, a path to a packaged chart, a path to an unpacked chart directory or a URL.
+To override values in a chart, use either the &amp;lsquo;&amp;ndash;values&amp;rsquo; flag and pass in a file or use the &amp;lsquo;&amp;ndash;set&amp;rsquo; flag and pass configuration from the command line.
+$ helm install -f myvalues.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_lint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_lint/</guid>
+      <description>helm lint examines a chart for possible issues
+Synopsis This command takes a path to a chart and runs a series of tests to verify that the chart is well-formed.
+If the linter encounters things that will cause the chart to fail installation, it will emit [ERROR] messages. If it encounters issues that break with convention or recommendation, it will emit [WARNING] messages.
+helm lint [flags] PATH  Options  --namespace string namespace to install the release into (only used if --install is set) (default &amp;quot;default&amp;quot;) --set stringArray set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2) --strict fail on lint warnings -f, --values valueFiles specify values in a YAML file (can specify multiple) (default [])  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_list/</guid>
+      <description>helm list list releases
+Synopsis This command lists all of the releases.
+By default, it lists only releases that are deployed or failed. Flags like &amp;lsquo;&amp;ndash;deleted&amp;rsquo; and &amp;lsquo;&amp;ndash;all&amp;rsquo; will alter this behavior. Such flags can be combined: &amp;lsquo;&amp;ndash;deleted &amp;ndash;failed&amp;rsquo;.
+By default, items are sorted alphabetically. Use the &amp;lsquo;-d&amp;rsquo; flag to sort by release date.
+If an argument is provided, it will be treated as a filter. Filters are regular expressions (Perl compatible) that are applied to the list of releases.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_package/</guid>
+      <description>helm package package a chart directory into a chart archive
+Synopsis This command packages a chart into a versioned chart archive file. If a path is given, this will look at that path for a chart (which must contain a Chart.yaml file) and then package that directory.
+If no path is given, this will look in the present working directory for a Chart.yaml file, and (if found) build the current directory into a chart.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_plugin/</guid>
+      <description> helm plugin add, list, or remove Helm plugins
+Synopsis Manage client-side Helm plugins.
+Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm - The Helm package manager for Kubernetes. helm plugin install - install one or more Helm plugins helm plugin list - list installed Helm plugins helm plugin remove - remove one or more Helm plugins helm plugin update - update one or more Helm plugins  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_plugin_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_plugin_install/</guid>
+      <description>helm plugin install install one or more Helm plugins
+Synopsis This command allows you to install a plugin from a url to a VCS repo or a local path.
+Example usage: $ helm plugin install https://github.com/technosophos/helm-template
+helm plugin install [options] &amp;lt;path|url&amp;gt;...  Options  --version string specify a version constraint. If this is not specified, the latest version is installed  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_plugin_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_plugin_list/</guid>
+      <description> helm plugin list list installed Helm plugins
+Synopsis list installed Helm plugins
+helm plugin list  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm plugin - add, list, or remove Helm plugins  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_plugin_remove/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_plugin_remove/</guid>
+      <description> helm plugin remove remove one or more Helm plugins
+Synopsis remove one or more Helm plugins
+helm plugin remove &amp;lt;plugin&amp;gt;...  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm plugin - add, list, or remove Helm plugins  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_plugin_update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_plugin_update/</guid>
+      <description> helm plugin update update one or more Helm plugins
+Synopsis update one or more Helm plugins
+helm plugin update &amp;lt;plugin&amp;gt;...  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm plugin - add, list, or remove Helm plugins  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo/</guid>
+      <description>helm repo add, list, remove, update, and index chart repositories
+Synopsis This command consists of multiple subcommands to interact with chart repositories.
+It can be used to add, remove, list, and index chart repositories. Example usage: $ helm repo add [NAME] [REPO_URL]
+Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm - The Helm package manager for Kubernetes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo_add/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo_add/</guid>
+      <description>helm repo add add a chart repository
+Synopsis add a chart repository
+helm repo add [flags] [NAME] [URL]  Options  --ca-file string verify certificates of HTTPS-enabled servers using this CA bundle --cert-file string identify HTTPS client using this SSL certificate file --key-file string identify HTTPS client using this SSL key file --no-update raise error if repo is already registered  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo_index/</guid>
+      <description>helm repo index generate an index file given a directory containing packaged charts
+Synopsis Read the current directory and generate an index file based on the charts found.
+This tool is used for creating an &amp;lsquo;index.yaml&amp;rsquo; file for a chart repository. To set an absolute URL to the charts, use &amp;lsquo;&amp;ndash;url&amp;rsquo; flag.
+To merge the generated index with an existing index file, use the &amp;lsquo;&amp;ndash;merge&amp;rsquo; flag. In this case, the charts found in the current directory will be merged into the existing index, with local charts taking priority over existing charts.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo_list/</guid>
+      <description> helm repo list list chart repositories
+Synopsis list chart repositories
+helm repo list [flags]  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm repo - add, list, remove, update, and index chart repositories  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo_remove/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo_remove/</guid>
+      <description> helm repo remove remove a chart repository
+Synopsis remove a chart repository
+helm repo remove [flags] [NAME]  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config. Overrides $HELM_HOME (default &amp;quot;~/.helm&amp;quot;) --host string address of Tiller. Overrides $HELM_HOST --kube-context string name of the kubeconfig context to use --tiller-namespace string namespace of Tiller (default &amp;quot;kube-system&amp;quot;)  SEE ALSO  helm repo - add, list, remove, update, and index chart repositories  Auto generated by spf13/cobra on 25-Jan-2018 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_repo_update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_repo_update/</guid>
+      <description>helm repo update update information of available charts locally from chart repositories
+Synopsis Update gets the latest information about charts from the respective chart repositories. Information is cached locally, where it is used by commands like &amp;lsquo;helm search&amp;rsquo;.
+&amp;lsquo;helm update&amp;rsquo; is the deprecated form of &amp;lsquo;helm repo update&amp;rsquo;. It will be removed in future releases.
+helm repo update  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_reset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_reset/</guid>
+      <description>helm reset uninstalls Tiller from a cluster
+Synopsis This command uninstalls Tiller (the Helm server-side component) from your Kubernetes Cluster and optionally deletes local configuration in $HELM_HOME (default ~/.helm/)
+helm reset  Options  -f, --force forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state --remove-helm-home if set deletes $HELM_HOME --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_rollback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_rollback/</guid>
+      <description>helm rollback roll back a release to a previous revision
+Synopsis This command rolls back a release to a previous revision.
+The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run &amp;lsquo;helm history RELEASE&amp;rsquo;.
+helm rollback [flags] [RELEASE] [REVISION]  Options  --dry-run simulate a rollback --force force resource update through delete/recreate if needed --no-hooks prevent hooks from running during rollback --recreate-pods performs pods restart for the resource if applicable --timeout int time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300) --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_search/</guid>
+      <description>helm search search for a keyword in charts
+Synopsis Search reads through all of the repositories configured on the system, and looks for matches.
+Repositories are managed with &amp;lsquo;helm repo&amp;rsquo; commands.
+helm search [keyword]  Options  -r, --regexp use regular expressions for searching -v, --version string search using semantic versioning constraints -l, --versions show the long listing, with each version of each chart on its own line  Options inherited from parent commands  --debug enable verbose output --home string location of your Helm config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_serve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_serve/</guid>
+      <description>helm serve start a local http web server
+Synopsis This command starts a local chart repository server that serves charts from a local directory.
+The new server will provide HTTP access to a repository. By default, it will scan all of the charts in &amp;lsquo;$HELM_HOME/repository/local&amp;rsquo; and serve those over the local IPv4 TCP port (default &amp;lsquo;127.0.0.1:8879&amp;rsquo;).
+This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_status/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_status/</guid>
+      <description>helm status displays the status of the named release
+Synopsis This command shows the status of a named release. The status consists of: - last deployment time - k8s namespace in which the release lives - state of the release (can be: UNKNOWN, DEPLOYED, DELETED, SUPERSEDED, FAILED or DELETING) - list of resources that this release consists of, sorted by kind - details on last test suite run, if applicable - additional notes provided by the chart</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_template/</guid>
+      <description>helm template locally render templates
+Synopsis Render chart templates locally and display the output.
+This does not require Tiller. However, any values that would normally be looked up or retrieved in-cluster will be faked locally. Additionally, none of the server-side testing of chart validity (e.g. whether an API is supported) is done.
+To render just one template in a chart, use &amp;lsquo;-x&amp;rsquo;:
+$ helm template mychart -x templates/deployment.yaml  helm template [flags] CHART  Options  -x, --execute stringArray only execute the given templates --kube-version string kubernetes version used as Capabilities.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_test/</guid>
+      <description>helm test test a release
+Synopsis The test command runs the tests for a release.
+The argument this command takes is the name of a deployed release. The tests to be run are defined in the chart that was installed.
+helm test [RELEASE]  Options  --cleanup delete test pods upon completion --timeout int time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300) --tls enable TLS for request --tls-ca-cert string path to TLS CA certificate file (default &amp;quot;$HELM_HOME/ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_upgrade/</guid>
+      <description>helm upgrade upgrade a release
+Synopsis This command upgrades a release to a new version of a chart.
+The upgrade arguments must be a release and chart. The chart argument can be either: a chart reference(&amp;lsquo;stable/mariadb&amp;rsquo;), a path to a chart directory, a packaged chart, or a fully qualified URL. For chart references, the latest version will be specified unless the &amp;lsquo;&amp;ndash;version&amp;rsquo; flag is set.
+To override values in a chart, use either the &amp;lsquo;&amp;ndash;values&amp;rsquo; flag and pass in a file or use the &amp;lsquo;&amp;ndash;set&amp;rsquo; flag and pass configuration from the command line.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_verify/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_verify/</guid>
+      <description>helm verify verify that a chart at the given path has been signed and is valid
+Synopsis Verify that the given chart has a valid provenance file.
+Provenance files provide crytographic verification that a chart has not been tampered with, and was packaged by a trusted provider.
+This command can be used to verify a local chart. Several other commands provide &amp;lsquo;&amp;ndash;verify&amp;rsquo; flags that run the same validation. To generate a signed package, use the &amp;lsquo;helm package &amp;ndash;sign&amp;rsquo; command.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/helm/helm_version/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/helm/helm_version/</guid>
+      <description>helm version print the client/server version information
+Synopsis Show the client and server versions for Helm and tiller.
+This will print a representation of the client and server versions of Helm and Tiller. The output will look something like this:
+Client: &amp;amp;version.Version{SemVer:&amp;ldquo;v2.0.0&amp;rdquo;, GitCommit:&amp;ldquo;ff52399e51bb880526e9cd0ed8386f6433b74da1&amp;rdquo;, GitTreeState:&amp;ldquo;clean&amp;rdquo;} Server: &amp;amp;version.Version{SemVer:&amp;ldquo;v2.0.0&amp;rdquo;, GitCommit:&amp;ldquo;b0c113dfb9f612a9add796549da66c0d294508a3&amp;rdquo;, GitTreeState:&amp;ldquo;clean&amp;rdquo;}
+ SemVer is the semantic version of the release. GitCommit is the SHA for the commit that this version was built from.</description>
+    </item>
+    
+  </channel>
+</rss>

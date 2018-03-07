@@ -1,0 +1,42 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: url('../img/pattern-topo-sm.png') repeat 0 0, linear-gradient(170deg, $light2 5%, white 100%);
+  background: url(../img/pattern-topo-sm.png) repeat 0 0, -moz-linear-gradient(170deg, $light2 5%, white 100%);
+  background: url(../img/pattern-topo-sm.png) repeat 0 0, -webkit-gradient(170deg, right top, color-stop(5%, $light2), color-stop(100%, white));
+  background: url(../img/pattern-topo-sm.png) repeat 0 0, -webkit-linear-gradient(170deg, $light2 5%, white 100%);
+  background-position: static;
+  background-attachment: fixed;
+}
+
+// holy grail layout - 100% height content is breaking headroom.js
+// .inner-wrap,
+// .off-canvas-wrap,
+// .main {
+//   height: 100%;
+// }
+
+.main {
+  min-height: 760px;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.container-full {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-x: hidden;
+  padding-left: 300px;
+  width: 100%;
+}
+
+.sidebar {
+  width: 25%;
+  width: 300px;
+}

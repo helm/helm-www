@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Using_helm on Helm Docs</title>
+    <link>https://docs.helm.sh/using_helm/</link>
+    <description>Recent content in Using_helm on Helm Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://docs.helm.sh/using_helm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://docs.helm.sh/using_helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.helm.sh/using_helm/</guid>
+      <description>Quickstart Guide This guide covers how you can quickly get started using Helm.
+Prerequisites The following prerequisites are required for a successful and properly secured use of Helm.
+ A Kubernetes cluster Deciding what security configurations to apply to your installation, if any Installing and configuring Helm and Tiller, the cluster-side service.  Install Kubernetes or have access to a cluster  You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable release of Kubernetes, which in most cases is the second-latest minor release.</description>
+    </item>
+    
+  </channel>
+</rss>
