@@ -46,3 +46,9 @@ Hugo then targets the `/source/docs` directory to generate the website, applying
 ## Editing Docs
 
 Edits to the Docs themselves should be carried out via pull requests on the [kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs) repo. This Docs site will then extract those files and publish them to [docs.helm.sh](https://docs.helm.sh).
+
+## Deployment
+
+The helm website is deployed to an ACS cluster using the [Deis team credentials](https://github.com/deis/deployment/tree/master/production/workflow). Helm core members and folks within ACS should have access to this subscription.
+
+Normally the site is deployed via Jenkins CI when changes are merged to master, though this process is currently being updated. Manual deploys are possible using Deis Workflow and the above creds.
