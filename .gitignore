@@ -1,4 +1,5 @@
 .DS_Store
+.jekyll-metadata
 rootfs/svc
 .sass-cache/
 _site/*
@@ -7,5 +8,7 @@ node_modules/
 bower_components/
 vendor/
 source/*
-javascripts/*.min.js
-docs.helm.sh/source
+docs.helm.sh/app/
+docs.helm.sh/source/
+docs.helm.sh/rootfs/
+helm.sh/javascripts/*.min.js

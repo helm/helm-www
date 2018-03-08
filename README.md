@@ -1,6 +1,6 @@
 ![https://helm.sh/assets/images/apple-touch-icon.png](https://helm.sh/assets/images/apple-touch-icon.png)
 
-Helm is a tool that streamlines installing and managing Kubernetes applications.
+[Helm](https://github.com/kubernetes/helm) is a tool that streamlines installing and managing Kubernetes applications.
 
 ---
 

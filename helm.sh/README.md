@@ -31,5 +31,4 @@ Then, with everything in place - you can run Jekyll locally via:
 
 The helm website is deployed to an ACS cluster using the [Deis team credentials](https://github.com/deis/deployment/tree/master/production/workflow). Helm core members and folks within ACS should have access to this subscription.
 
-Normally the site is deployed via Jenkins CI when changes are merged to master, though this process is currently being updated.
-
+Normally the site is deployed via Jenkins CI when changes are merged to master, though this process is currently being updated. Manual deploys are possible using Deis Workflow and the above creds.
