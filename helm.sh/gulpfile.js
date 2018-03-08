@@ -12,7 +12,6 @@ var gulp = require('gulp'),
   cssnano = require('gulp-cssnano'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
-  minifycss = require('gulp-minify-css'),
   notify = require('gulp-notify'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
@@ -23,7 +22,6 @@ gulp.task('styles', function () {
   return sass('assets/scss/app.scss', {style: 'expanded'})
     .pipe(autoprefixer('last 2 version'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
     .pipe(sourcemaps.init())
     .pipe(cssnano())
     .pipe(sourcemaps.write('.'))
