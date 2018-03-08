@@ -8,4 +8,5 @@ bower_components/
 vendor/
 source/*
 javascripts/*.min.js
+docs.helm.sh/app
 docs.helm.sh/source
