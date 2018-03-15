@@ -369,10 +369,6 @@ h2, h3, h4, h5 {
         border-color: white;
     }
 
-    .quote {
-        @include quote;
-    }
-
     a.ripple {
         @include ripple;
         display: inline;

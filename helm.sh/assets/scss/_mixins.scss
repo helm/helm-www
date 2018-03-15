@@ -59,29 +59,6 @@ $mobileCeiling: 40em;
   font-family: $font-family-sans-serif;
 }
 
-@mixin quote {
-    font-size: 0.875em;
-    font-family: $font-family-serif;
-    line-height: 1.7;
-    color: darken($light2, 33.33%);
-    padding: 0.5em 5%;
-    margin-right: -3.333em;
-    font-style: italic;
-    letter-spacing: 0.015em;
-    position: relative;
-
-    &:before {
-        content: "\“";
-        position: absolute;
-        font-size: 3em;
-        left: -0.125em;
-        top: -0.25em;
-        width: 1em;
-        opacity: 0.3;
-        z-index: 500;
-    }
-}
-
 
 // vertical alignment
 
