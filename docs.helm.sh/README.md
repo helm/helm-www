@@ -2,8 +2,8 @@
 
 [docs.helm.sh](https://helm.sh) is the documentation website for Helm.
 
-* [Project Docs: github.com/kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs)
-* [Docs Website: docs.helm.sh](https://docs.helm.sh/)
+* Source: [github.com/kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs)
+* Website: [docs.helm.sh](https://docs.helm.sh/)
 
 --
 
@@ -21,7 +21,7 @@ then install the packages needed for Gulp to run:
 
 ```
 npm install -g gulp
-npm install && bower install
+npm install
 ```
 
 ### Running the site
