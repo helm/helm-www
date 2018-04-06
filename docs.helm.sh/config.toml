@@ -540,9 +540,9 @@ defaultContentLanguage = "en"
     weight = 408
     parent = "chart_best_practices"
   [[menu.main]]
-    name = "Third Party Resources"
-    url = "third-party-resources"
-    identifier = "third-party-resources"
+    name = "Custom Resource Definitions"
+    url = "custom-resource-definitions"
+    identifier = "custom-resource-definitions"
     weight = 409
     parent = "chart_best_practices"
 
