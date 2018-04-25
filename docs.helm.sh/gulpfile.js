@@ -139,6 +139,7 @@ gulp.task('clone', function() {
       gulp.src('source/docs/using_helm.md'),
       gulp.src('source/docs/plugins.md'),
       gulp.src('source/docs/rbac.md'),
+      gulp.src('source/docs/tiller_ssl.md'),
       gulp.src('source/docs/securing_installation.md')
     )
     .pipe(concat('index.md'))
@@ -258,6 +259,8 @@ gulp.task('clone', function() {
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
       // update security anchor link
       .pipe(replace('securing_installation', 'securing-your-helm-installation'))
+      // update tiller ssl link
+      .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
       .pipe(gulp.dest('source/docs/'))
   });
 
