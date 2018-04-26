@@ -3,8 +3,7 @@ title: "Helm: The Kubernetes Package Manager"
 email: ""
 description: > # this means to ignore newlines until "baseurl:"
   Helm: The Kubernetes Package Manager
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.helm.sh" # the base hostname & protocol for your site
+baseurl: "/"
 twitter_username: opendeis
 github_username:  deis
 
