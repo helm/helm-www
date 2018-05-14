@@ -2,6 +2,7 @@
 .jekyll-metadata
 rootfs/svc
 .sass-cache/
+.ncurc.*
 _site/*
 _site/
 node_modules/
