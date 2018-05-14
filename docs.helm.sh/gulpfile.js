@@ -197,6 +197,7 @@ gulp.task('clone', function() {
     return del([
       templatefiles,
       'source/docs/index.md',
+      'source/docs/readme.md',
       'source/docs/chart_template_guide/tmp/',
       '!source/docs/chart_template_guide/index.md'
     ], {force: true});
