@@ -30,21 +30,6 @@ $(document).ready(function() {
 }); // document ready
 
 
-// headroom
-(function() {
-  var searchBar = document.querySelector(".top-bar");
-  new Headroom(searchBar, {
-    offset: 50,
-    classes: {
-      "initial": "headroom",
-      "pinned": "headroom--pinned",
-      "unpinned": "headroom--unpinned",
-      "top" : "headroom--top",
-      "notTop" : "headroom--not-top"
-    }
-  }).init();
-}());
-
 // add permalinks to titles
 $(function() {
   return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {

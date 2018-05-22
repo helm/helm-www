@@ -59,13 +59,11 @@ gulp.task('scriptconcat', function () {
   return gulp.src([
       'themes/helmdocs/static/src/js/custom/jquery.js',
       'themes/helmdocs/static/src/js/custom/foundation.js',
-      'themes/helmdocs/static/src/js/custom/foundation.topbar.js',
       'themes/helmdocs/static/src/js/custom/foundation.offcanvas.js',
       'themes/helmdocs/static/src/js/custom/foundation.accordion.js',
       'themes/helmdocs/static/src/js/custom/foundation.dropdown.js',
       'themes/helmdocs/static/src/js/custom/foundation.slider.js',
-      'themes/helmdocs/static/src/js/custom/foundation.tooltip.js',
-      'themes/helmdocs/static/src/js/custom/headroom.min.js',
+      'themes/helmdocs/static/src/js/custom/foundation.tooltip.js'
     ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('themes/helmdocs/static/src/js'))
