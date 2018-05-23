@@ -12,17 +12,18 @@
     text-transform: none;
     letter-spacing: 0.03em;
     margin-top: 1em;
-    padding-top: 1.5em;
+    padding-top: 2.5em;
   }
 
   article {
-    padding: 1em 0 0;
+    padding: 2em 0 0;
+    overflow:auto;
 
     h1 {
       font-size: $scalex8;
       color: $blue3;
       margin: 1em 0 1em;
-      padding-top: 3.5em;
+      padding-top: 4.5em;
     }
   }
 
@@ -40,7 +41,7 @@
   h3 {
     color: $grey4;
     @include klinicBold;
-    margin: 1.25em 0 1.825em;
+    margin: 1.825em 0 1.825em;
   }
 
   h4 {
@@ -88,7 +89,7 @@
     width: 100%;
     height: 220px;
     border-bottom: 3px solid $grey1;
-    overflow: scroll;
+    overflow: auto;
   }
 
   strong {
