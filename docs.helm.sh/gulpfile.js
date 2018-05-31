@@ -262,8 +262,8 @@ gulp.task('clone', function(cb) {
       // update tiller ssl link
       .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
       // update rbac links
-      .pipe(replace('rbac', '#role-based-access-control'))
       .pipe(replace('#rbac', '#role-based-access-control'))
+      .pipe(replace('rbac', '#role-based-access-control'))
       .pipe(gulp.dest('source/docs/'))
   });
 
