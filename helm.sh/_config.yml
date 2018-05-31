@@ -11,3 +11,11 @@ github_username:  deis
 # Build settings
 markdown: kramdown
 exclude: [docs, vendor, script, node_modules, Gruntfile.js, Gemfile, Gemfile.lock, package.json, s3_website.yml, gulpfile.js, README.md, Makefile]
+
+# Plugin settings
+gems:
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-tagging-related_posts
+paginate_path: "/blog/page:num/"
+paginate: 5

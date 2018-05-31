@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 gem 'jekyll'
+gem 'jekyll-paginate'
+gem 'jekyll-tagging-related_posts'
+gem 'jekyll-redirect-from'
 gem 'html-proofer'
 gem 's3_website'
