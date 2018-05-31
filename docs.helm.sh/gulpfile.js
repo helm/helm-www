@@ -244,8 +244,12 @@ gulp.task('clone', function(cb) {
 
   gulp.task('redirect-anchor', function() {
     return gulp.src('source/docs/**/*.md')
-      // update installation guides
+      // update quickstart and install links
       .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
+      .pipe(replace('#Install-Helm', '#installing-helm'))
+      .pipe(replace('#quickstart]', '#quickstart-guide]'))
+      .pipe(replace('#install]', '#installing-helm]'))
+      .pipe(replace('#using_helm', '#using-helm'))
       // update charts urls
       .pipe(replace('chart_repository', 'developing_charts'))
       // update internal links from '*.md' to '#*'
