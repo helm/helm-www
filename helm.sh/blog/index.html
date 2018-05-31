@@ -1,0 +1,40 @@
+---
+layout: default
+title: "Helm Blog"
+description: "Helm Blog: The Kubernetes Package Manager"
+categories:
+- blog
+---
+
+{% for post in paginator.posts %}
+  <div class="post post-list">
+    <div class="row">
+      <article class="post__content small-12 large-10 large-offset-1 columns">
+        <span class="publish-date">{{post.date | date: "%e %b %Y"}}</span>
+
+        <h1><a href="{{ post.url }}">{{post.title}}</a></h1>
+        {% if post.content contains '<!--more-->' %}
+          {{post.content | split:'<!--more-->' | first}}
+          <a href="{{post.url}}" class="text-link">Read More <span class="ss-navigateright"></span></a>
+        {% else %}
+          {{post.content}}
+        {% endif %}
+      </article>
+
+    </div>
+  </div>
+{% endfor %}
+
+<div class="more">
+  <div class="row">
+    <div class="small-12 large-10 large-offset-1 columns">
+      {% if paginator.previous_page %}
+        <a href="{{paginator.previous_page_path}}" class="button secondary">Newer <i class="fa fa fa-long-arrow-left"></i></a>
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <a href="{{paginator.next_page_path}}" class="button secondary">Older <i class="fa fa-long-arrow-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
