@@ -110,9 +110,10 @@ gulp.task('clean', function () {
 
 
 // Clone Docs for Hugo
-gulp.task('clone', function() {
-  git.clone('https://github.com/kubernetes/helm', {args: './source'}, function(err) {
+gulp.task('clone', function(cb) {
+  git.clone('https://github.com/kubernetes/helm', {args: './source', quiet: false}, function(err) {
     // handle err
+    cb(err);
   });
 });
 
@@ -243,8 +244,12 @@ gulp.task('clone', function() {
 
   gulp.task('redirect-anchor', function() {
     return gulp.src('source/docs/**/*.md')
-      // update installation guides
+      // update quickstart and install links
       .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
+      .pipe(replace('#Install-Helm', '#installing-helm'))
+      .pipe(replace('#quickstart]', '#quickstart-guide]'))
+      .pipe(replace('#install]', '#installing-helm]'))
+      .pipe(replace('#using_helm', '#using-helm'))
       // update charts urls
       .pipe(replace('chart_repository', 'developing_charts'))
       // update internal links from '*.md' to '#*'
@@ -260,6 +265,9 @@ gulp.task('clone', function() {
       .pipe(replace('securing_installation', 'securing-your-helm-installation'))
       // update tiller ssl link
       .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
+      // update rbac links
+      .pipe(replace('#rbac', '#role-based-access-control'))
+      .pipe(replace('rbac', '#role-based-access-control'))
       .pipe(gulp.dest('source/docs/'))
   });
 
