@@ -110,9 +110,10 @@ gulp.task('clean', function () {
 
 
 // Clone Docs for Hugo
-gulp.task('clone', function() {
-  git.clone('https://github.com/kubernetes/helm', {args: './source'}, function(err) {
+gulp.task('clone', function(cb) {
+  git.clone('https://github.com/kubernetes/helm', {args: './source', quiet: false}, function(err) {
     // handle err
+    cb(err);
   });
 });
 
