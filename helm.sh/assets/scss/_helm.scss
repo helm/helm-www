@@ -211,6 +211,7 @@ nav {
     background: $blue;
     background: linear-gradient(180deg, rgba(76,179,225,1) 0%, rgba(42,140,184,1) 100%);
     margin-bottom: 6rem;
+    min-height: 450px;
 
     .blog-section {
       h1.blog-subhead {
