@@ -4,12 +4,18 @@
   {% include head.html %}
 
   <body>
+    {% include cookie.html %}
+
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
+
+        {% include nav.html %}
 
         <section class="main-section">
           {{ content }}
         </section>
+
+        {% include footer.html %}
 
         <a class="exit-off-canvas" data-proofer-ignore></a>
       </div>

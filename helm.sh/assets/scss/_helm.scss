@@ -107,6 +107,62 @@ $deisLogoWidth: 125px;
   }
 }
 
+nav {
+  position: absolute;
+  min-height: 300px;
+  left: 0;
+  right: 0;
+  top: 20px;
+  z-index: 2000;
+
+  .helm-logo {
+    position: absolute;
+    left: 10%;
+    top: 1.5rem;
+    max-width: 112px;
+  }
+
+  ul {
+    position: absolute;
+    top: 2.5rem;
+    right: 7.5%;
+
+    li {
+      list-style: none;
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        margin: 0 1.333rem;
+        font-size: 1.25rem;
+        line-height: 2;
+        position: relative;
+        letter-spacing: 0.0125em;
+        color: $darkblue;
+        @include klinicBold;
+        @include ripple;
+
+        &.fa {
+          font-size: 1.5rem;
+          color: $dark2;
+          line-height: 2.5;
+          padding-top: 0.5rem;
+          margin: 0 -1rem 0 3rem;
+
+          &.fa-twitter {
+            color: $blue;
+            @include transition;
+          }
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+
 #helm {
   background: $blue;
 
@@ -133,46 +189,6 @@ $deisLogoWidth: 125px;
       margin-bottom: 30px;
     }
 
-    .helm-logo {
-      position: absolute;
-      left: 5rem;
-      top: 2.3rem;
-      max-width: 112px;
-    }
-
-    .fa {
-      position: absolute;
-      font-size: 2.5rem;
-      top: 4.75rem;
-      right: 5rem;
-      color: $dark2;
-
-      &.docs {
-        right: 13.5rem;
-        top: 4.25rem;
-
-        em {
-          font-size: 1.25rem;
-          font-style: normal;
-          font-weight: bold;
-          text-transform: uppercase;
-          color: $darkblue;
-          @include klinicBold;
-          letter-spacing: 0.075em;
-        }
-      }
-
-      &.fa-twitter {
-        right: 9rem;
-        color: $blue;
-        @include transition;
-      }
-
-      &:hover {
-        opacity: 0.7;
-      }
-    }
-
     &:after {
       $height: 6px;
       background: url('../images/pattern-waves.png') left top repeat-x;
@@ -183,6 +199,42 @@ $deisLogoWidth: 125px;
       height: $height;
       position: absolute;
       width: 100%;
+    }
+
+    &.blog-billboard {
+      min-height: 180px;
+      padding-top: 50px;
+    }
+  }
+
+  #blog {
+    background: $blue;
+    background: linear-gradient(180deg, rgba(76,179,225,1) 0%, rgba(42,140,184,1) 100%);
+    margin-bottom: 6rem;
+
+    .blog-section {
+      h1.blog-subhead {
+        font-size: 1.5rem;
+        padding: 2rem 5rem;
+        opacity: 0.75;
+      }
+    }
+
+    article.post__content {
+      padding-top: 2rem;
+      padding-bottom: 7.5rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        padding-right: 2%;
+        font-size: 1.333rem;
+        line-height: 1.636;
+        margin-top: 1.2rem;
+        margin-bottom: 2rem;
+      }
     }
   }
 
@@ -242,8 +294,6 @@ $deisLogoWidth: 125px;
       .fa {
         color: $pink;
       }
-
-
     }
 
     h3 {
@@ -469,62 +519,63 @@ $deisLogoWidth: 125px;
         }
       }
     }
+  }
+}
 
-    .helm-contrib-logos {
-      text-align: center;
+.helm-contrib-logos {
+  text-align: center;
+  padding-bottom: 50px;
 
-      .helm-contrib-logos {
-        padding-top: 1.5rem;
+  .helm-contrib-logos {
+    padding-top: 1.5rem;
+  }
+
+  img {
+    padding: 0;
+    display: inline-block;
+    margin: 0;
+    max-width: 15%;
+  }
+
+  .helm-logo {
+    margin: 0 auto;
+    margin-bottom: 2.25em;
+    display: block;
+    text-align: center;
+    padding: 3.5em 0 0;
+  }
+
+  hr {
+    background-color: $lightblue;
+    height: 2px;
+    opacity: 0.25;
+    width: 50%;
+    margin: 1rem 25%;
+  }
+
+  p {
+    color: $dark1;
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 1.333em;
+    line-height: 2;
+    letter-spacing: 0.025em;
+    color: #9B9B9B;
+
+    a {
+      font-weight: bold;
+      color: $darkblue;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom: 2px solid $blue;
       }
+    }
 
-      img {
-        padding: 0;
-        display: inline-block;
-        margin: 0;
-        max-width: 15%;
-      }
-
-      .helm-logo {
-        margin: 0 auto;
-        margin-bottom: 2.25em;
-        display: block;
-        text-align: center;
-        padding: 3.5em 0 0;
-      }
-
-      hr {
-        background-color: $lightblue;
-        height: 2px;
-        opacity: 0.25;
-        width: 50%;
-        margin: 1rem 25%;
-      }
-
-      p {
-        color: $dark1;
-        text-align: center;
-        padding: 0;
-        margin: 0 auto;
-        font-size: 1.333em;
-        line-height: 2;
-        letter-spacing: 0.025em;
-        color: #9B9B9B;
-
-        a {
-          font-weight: bold;
-          color: $darkblue;
-          border-bottom: 2px solid transparent;
-
-          &:hover {
-            border-bottom: 2px solid $blue;
-          }
-        }
-
-        small {
-          padding-top: 1rem;
-          font-size: 0.925em;
-        }
-      }
+    small {
+      padding-top: 1rem;
+      font-size: 0.925em;
     }
   }
 }

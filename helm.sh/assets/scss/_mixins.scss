@@ -134,7 +134,7 @@ $mobileCeiling: 40em;
 
 
 // link effect
-@mixin ripple($color: $pink) {
+@mixin ripple($color: $salmon) {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -145,14 +145,19 @@ $mobileCeiling: 40em;
     content: "";
     background: $color;
     height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
     width: 10%;
     opacity: 0;
-    margin: -0.75em auto 0;
+    margin: 0 0 0 -5%;
     @include transition;
   }
 
   &:hover::after {
     width: 100%;
+    left: 0;
+    margin-left: 0;
     opacity: 1;
   }
 }
