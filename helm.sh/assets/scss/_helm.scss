@@ -227,13 +227,29 @@ nav {
       h1 {
         font-size: 3rem;
       }
+    }
 
-      p {
-        padding-right: 2%;
-        font-size: 1.333rem;
-        line-height: 1.636;
-        margin-top: 1.2rem;
-        margin-bottom: 2rem;
+    p {
+      padding-right: 2%;
+      font-size: 1.333rem;
+      line-height: 1.636;
+      margin-top: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    p.date {
+      font-size: 0.925rem;
+      font-weight: bold;
+      margin: -0.5rem 0 2.5rem;
+      color: $darkblue;
+    }
+
+    p.author {
+      margin-top: 2.5rem;
+      line-height: 1.2;
+
+      small {
+        font-size: 1rem;
       }
     }
   }

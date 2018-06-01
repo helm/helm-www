@@ -26,8 +26,11 @@
                   <section class="blog-section">
                     <article class="post__content">
                       <h1>{{ page.title }}</h1>
+                      <p class="date">{{ page.date | date: "%e %b %Y"}}</p>
 
                       {{ content }}
+
+                      <p class="author"><a href="{{ page.authorlink }}" target="_blank">{{ page.authorname }}<br> <small>- {{ page.author }}</a></small></p>
                     </article>
                   </section>
 
