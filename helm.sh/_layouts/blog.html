@@ -11,9 +11,30 @@
 
         {% include nav.html %}
 
-        <section class="main-section">
-          {{ content }}
-        </section>
+        <div id="helm">
+          <section class="billboard blog-billboard">
+            <div class="container">
+
+            </div>
+          </section>
+
+          <section class="main-section" id="blog">
+            <div class="container content">
+              <div class="row">
+                <div class="small-12 medium-10 medium-offset-1 columns">
+
+                  <section class="blog-section">
+                    <h1 class="blog-subhead">{{ post.title }}</h1>
+
+                    {{ content }}
+                  </section>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
 
         {% include footer.html %}
 
