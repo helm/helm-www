@@ -122,5 +122,8 @@ DEPENDENCIES
   jekyll-tagging-related_posts
   s3_website
 
+RUBY VERSION
+   ruby 2.2.5p319
+
 BUNDLED WITH
-   1.16.1
+   1.16.2
