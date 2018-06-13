@@ -1,4 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
+ruby "2.2.5"
+
 gem 'jekyll'
 gem 'jekyll-paginate'
 gem 'jekyll-tagging-related_posts'
