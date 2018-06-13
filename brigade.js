@@ -5,7 +5,7 @@ const timeout = 600000 * 20;
 events.on("exec", (e, p) => {
   const docsOut = "/mnt/brigade/share/docs.helm.sh"
   const helmOut = "/mnt/brigade/share/helm.sh"
-  const bucket  = "https://docshelmshtest.blob.core.windows.net/docshelmtest"
+  const bucket  = "https://helmshprod.blob.core.windows.net"
 
   // This job renders docs.helm.sh
   const buildDocs = new Job("docs-helm-sh", "node:9");
