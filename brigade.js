@@ -31,7 +31,7 @@ events.on("exec", (e, p) => {
   buildHelmSh.timeout = timeout
   buildHelmSh.storage.enabled = true
   buildHelmSh.tasks = [
-    "apt-get update -y && apt-get install -yq ruby ruby-dev",
+    "apt-get update -y && apt-get install -yq ruby2.2 ruby2.2dev",
     "npm install -g gulp",
     "gem install bundler",
     "gem install nokogiri -v '1.8.1'", // This is a temporary fix for an install problem
