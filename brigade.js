@@ -27,11 +27,12 @@ events.on("exec", (e, p) => {
   ];
 
   // This job renders helm.sh
-  const buildHelmSh = new Job("helm-sh", "node:9");
+  const buildHelmSh = new Job("helm-sh", "ruby:2.3");
   buildHelmSh.timeout = timeout
   buildHelmSh.storage.enabled = true
   buildHelmSh.tasks = [
-    "apt-get update -y && apt-get install -yq ruby2.2 ruby2.2dev",
+    "curl -sL https://deb.nodesource.com/setup_9.x | bash -",
+    "apt-get install -y nodejs",
     "npm install -g gulp",
     "gem install bundler",
     "gem install nokogiri -v '1.8.1'", // This is a temporary fix for an install problem
