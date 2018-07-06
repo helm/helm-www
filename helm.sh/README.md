@@ -29,6 +29,8 @@ Then, with everything in place - you can run Jekyll locally via:
 
 ## Deployment
 
-The helm website is deployed to an ACS cluster using the [Deis team credentials](https://github.com/deis/deployment/tree/master/production/workflow). Helm core members and folks within ACS should have access to this subscription.
+The helm.sh jekyll website is deployed to [blob storage](https://helmshprod.blob.core.windows.net/helm-sh/index.html) via Brigade, which runs a build and deploy pipeline outlined in the root [brigade.js](https://github.com/helm/helm-www/blob/master/brigade.js) of this repo.
 
-Normally the site is deployed via Jenkins CI when changes are merged to master, though this process is currently being updated. Manual deploys are possible using Deis Workflow and the above creds.
+Builds can be triggered via the [brigly](https://github.com/deis/brigly-actions) slackbot. Helm core members should have access to this bot and the storage account subscription.
+
+You [can view](https://azure.github.io/kashti/#!/project/brigade-fb9a3793086c96c531b5cea078a84782e32410914cd059a026b2ad) build status and log details in kashti.
