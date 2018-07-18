@@ -2,7 +2,10 @@ const { events, Job, Group } = require("brigadier");
 
 const timeout = 600000 * 20;
 
-events.on("exec", (e, p) => {
+events.on("push", generateSite)
+events.on("exec", generateSite)
+
+function generateSite (e, p) {
   const docsOut = "/mnt/brigade/share/docs.helm.sh"
   const helmOut = "/mnt/brigade/share/helm.sh"
   const bucket  = "https://helmshprod.blob.core.windows.net"
@@ -60,4 +63,4 @@ events.on("exec", (e, p) => {
   // Run buildDocs and buildHelmSh in parallel because they can safely share the
   // same storage space, then run az once and upload all the things.
   Group.runAll([buildDocs, buildHelmSh]).then(() => az.run());
-});
+};
