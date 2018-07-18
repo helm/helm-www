@@ -4,10 +4,13 @@ rootfs/svc
 .sass-cache/
 _site/*
 _site/
+.ncurc.yml
+.publish/*
 node_modules/
 bower_components/
 vendor/
 source/*
+docs.helm.sh/.publish/
 docs.helm.sh/app/
 docs.helm.sh/source/
 docs.helm.sh/rootfs/
