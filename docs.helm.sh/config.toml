@@ -579,5 +579,5 @@ defaultContentLanguage = "en"
   weight = 504
 [[menu.main]]
   name = "Find Charts"
-  url = "https://hub.kubeapps.com/"
+  url = "http://github.com/kubernetes/charts"
   weight = 505
