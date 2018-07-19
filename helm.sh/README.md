@@ -2,7 +2,7 @@
 
 [helm.sh](https://helm.sh) is the project website, providing information and links for the Helm Project.
 
-* [Project: github.com/kubernetes/helm](https://github.com/kubernetes/helm)
+* [Project: github.com/helm/helm](https://github.com/helm/helm)
 * [Website: helm.sh](https://helm.sh/)
 
 --
