@@ -2,7 +2,7 @@
 
 [docs.helm.sh](https://helm.sh) is the documentation website for Helm.
 
-* Source: [github.com/kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs)
+* Source: [github.com/helm/helm](https://github.com/helm/helm/tree/master/docs)
 * Website: [docs.helm.sh](https://docs.helm.sh/)
 
 --
@@ -38,14 +38,14 @@ The site uses Gulp to build and optimize the site assets. If you're work on the 
 
 ## Structure
 
-The documentation contents are pulled in from their home in the [kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs) repo, as part of the Gulp build process.
+The documentation contents are pulled in from their home in the [helm/helm](https://github.com/helm/helm/tree/master/docs) repo, as part of the Gulp build process.
 
 Gulp clones the files to the `/source` directory.
 Hugo then targets the `/source/docs` directory to generate the website, applying the theme (html layouts and css/js assets) in `/themes/hugodocs`.
 
 ## Editing Docs
 
-Edits to the Docs themselves should be carried out via pull requests on the [kubernetes/helm](https://github.com/kubernetes/helm/tree/master/docs) repo. This Docs site will then extract those files and publish them to [docs.helm.sh](https://docs.helm.sh).
+Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) repo. This Docs site will then extract those files and publish them to [docs.helm.sh](https://docs.helm.sh).
 
 ## Deployment
 
