@@ -11,19 +11,18 @@ body {
   background-attachment: fixed;
 }
 
-// holy grail layout - 100% height content is breaking headroom.js
-// .inner-wrap,
-// .off-canvas-wrap,
-// .main {
-//   height: 100%;
-// }
+.inner-wrap,
+.off-canvas-wrap,
+.main {
+  height: 100%;
+}
 
 .main {
   min-height: 760px;
 }
 
 .sidebar {
-  height: 100%;
+  min-height: 100%;
 }
 
 .container-full {

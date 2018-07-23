@@ -27,6 +27,10 @@
   .home {
     min-height: 500px;
 
+    .home-featured .panels {
+      min-width: 100%;
+    }
+
     .fa {
       display: none;
     }
@@ -45,8 +49,9 @@
         }
 
         .helm-logo {
-          max-width: 60% !important;
-          left: 20% !important;
+          max-width: 6rem !important;
+          left: 50% !important;
+          margin-left: -3rem !important;
         }
       }
     }
@@ -150,6 +155,28 @@
       }
     }
 
+  }
+
+  .contrib-text .lead {
+    display: none;
+  }
+
+  .cncf-wrap {
+    .cncf {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      img,
+      p {
+        float: none;
+        min-width: 80%;
+        margin: 1.5rem auto;
+      }
+
+      img {
+        max-width: 51%;
+      }
+    }
   }
 }
 
