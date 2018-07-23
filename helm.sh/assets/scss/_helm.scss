@@ -597,6 +597,36 @@ nav {
   }
 }
 
+.full-width {
+  min-width: 100%;
+}
+
+.cncf {
+  background: RGBA(246, 246, 246, 1.00);
+  min-height: 5rem;
+  margin-top: 4rem;
+  text-align: center;
+
+  img {
+    float: left;
+    display: inline-block;
+    max-width: 14rem;
+    margin: 3rem 5%;
+  }
+
+  p {
+    float: right;
+    margin: 3.5rem 5%;
+    display: inline-block;
+    font-family: helvetica;
+    color: #777;
+
+    &:hover {
+      color: $lightblue;
+    }
+  }
+}
+
 @media only screen and (min-device-width: $mobile-maximum-width + 1) {
   @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
 }
@@ -650,6 +680,22 @@ nav {
   .contrib-logos-2 {
     img {
       max-height: 80px;
+    }
+  }
+
+  .cncf {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    img,
+    p {
+      float: none;
+      min-width: 80%;
+      margin: 1.5rem auto;
+    }
+
+    img {
+      max-width: 51%;
     }
   }
 }
