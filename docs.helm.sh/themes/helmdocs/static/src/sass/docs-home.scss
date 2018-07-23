@@ -90,11 +90,11 @@ $deisLogoWidth: 125px;
 
 .home {
   box-sizing: border-box;
-  height: 100%;
+  min-height: 100%;
 
   .home-intro-wrap {
     box-sizing: border-box;
-    height: 100%;
+    min-height: 100%;
   }
 
   h3 {
