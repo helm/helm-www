@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ARG plugins=http.cors,http.ipfilter,http.minify
+ARG plugins=http.cors,http.ipfilter,http.minify,http.gopkg
 ARG BUILD_DATE
 
 RUN apk upgrade --no-cache --available \
