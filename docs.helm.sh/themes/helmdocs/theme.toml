@@ -3,4 +3,4 @@ license = "MIT"
 licenselink = "//github.com/helm/helm-www"
 description = "Theme for the Helm Project Docs"
 homepage = "//github.com/helm/helm"
-tags = [documentation", "helm", "kubernetes"]
+tags = ["documentation", "helm", "kubernetes"]
