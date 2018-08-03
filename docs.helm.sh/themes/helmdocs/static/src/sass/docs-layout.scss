@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   padding: 0;
   margin: 0;
   background: url('../img/pattern-topo-sm.png') repeat 0 0, linear-gradient(170deg, $light2 5%, white 100%);
@@ -11,11 +11,11 @@ body {
   background-attachment: fixed;
 }
 
-.inner-wrap,
-.off-canvas-wrap,
-.main {
-  min-height: 100%;
-}
+// .inner-wrap,
+// .off-canvas-wrap,
+// .main {
+//   min-height: 100%;
+// }
 
 .main {
   min-height: 760px;
@@ -30,7 +30,8 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding-left: 300px;
   width: 100%;
 }
