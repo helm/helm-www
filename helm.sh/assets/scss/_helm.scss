@@ -267,13 +267,16 @@ nav {
       padding-top: 1em;
     }
 
-    p {
+    p, ul, li {
       color: white;
       font-size: 1.25rem;
       line-height: 1.4;
-      margin-bottom: 1.4rem;
       @include helvetica;
       -webkit-font-smoothing: antialiased;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
     }
 
     .github-stats {
