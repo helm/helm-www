@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Using the Community Chart Testing Tools Yourself"
-permalink: "/blog/chart-testing-intro/"
+title: "Introducing the Helm Org Maintainers"
+permalink: "/blog/intro-helm-org-maintainers/"
 author: "Matt Farina & Matt Butcher"
 authorlink: "https://helm.sh"
 ---
