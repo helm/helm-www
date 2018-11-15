@@ -2,12 +2,11 @@
 layout: post
 title: "Helm Moves To DCO"
 permalink: "/blog/helm-dco/"
-author: "Matt Farina"
+authorname: "Matt Farina"
 authorlink: "https://mattfarina.com"
 ---
 
-When Helm was part of the Kubernetes project it, like the rest of Kubernetes, used the [CNCF Contributor License Agreement (CLA)](https://github.com/cncf/cla). This served Helm well for years. But, most of the CNCF projects use a [Developers Certificate of Origin (DCO)](https://developercertificate.org/) instead of a CLA. The exceptions are Kubernetes and gRPC. Upon Helm becoming a CNCF project itself we were asked if we wanted to move Helm to a DCO. After some careful consideration and a little research, the Helm maintainers voted to move to a DCO.
-
+When Helm was part of the Kubernetes project it, like the rest of Kubernetes, used the [CNCF Contributor License Agreement (CLA)](https://github.com/cncf/cla). This served Helm well for years. But, most of the CNCF projects use a [Developers Certificate of Origin (DCO)](https://developercertificate.org/) instead of a CLA. The exceptions are Kubernetes and gRPC. Upon Helm becoming a CNCF project itself we were asked if we wanted to move Helm to a DCO. After some careful consideration and a little research, the Helm maintainers voted to move to a DCO.  <!--more-->
 ## What Does This Solve? Why Switch?
 
 Making a change like this should have a good reason and we have one. It is often easier to get started contributing under a DCO than a CLA.
