@@ -2,11 +2,11 @@
 layout: post
 title: "New Governance And Elections"
 permalink: "/blog/new-gov-and-elections/"
-author: "Matt Farina"
+authorname: "Matt Farina"
 authorlink: "https://mattfarina.com"
 ---
 
-Being a top level incubating CNCF project requires having a governance structure to ensure that there is a publicly documented process for making decisions regarding the project and the community. While Helm was under Kubernetes, we relied on Kubernetes governance. As part of the transition to CNCF, the Helm project is required to have its own governance structure. To handle this we set up a [provisional governance](https://github.com/helm/community/blob/aa0586011786dfbc3993e7edd959a841241c96e3/governance/provisional-governance.md) with a goal of creating a long term one. After a few months we are happy to announce that the new governance structure as been written and approved.
+Being a top level incubating CNCF project requires having a governance structure to ensure that there is a publicly documented process for making decisions regarding the project and the community. While Helm was under Kubernetes, we relied on Kubernetes governance. As part of the transition to CNCF, the Helm project is required to have its own governance structure. To handle this we set up a [provisional governance](https://github.com/helm/community/blob/aa0586011786dfbc3993e7edd959a841241c96e3/governance/provisional-governance.md) with a goal of creating a long term one. After a few months we are happy to announce that the new governance structure has been written and approved.  <!--more-->
 
 The gist of the new governance is that it organizes those responsible into a couple groups (org and project maintainers), spells out their responsibilities, and provides for decision making processes. You can read all the details in the [governance doc (here)](https://github.com/helm/community/blob/master/governance/governance.md).
 

@@ -2,6 +2,7 @@
 layout: post
 title: "Helm Emeritus Maintainer Rimas Mocevicius"
 permalink: "/helm-emeritus-maintainer-rimas-mocevicius/"
+authorname: "Matt Butcher"
 author: "@technosophos"
 authorlink: "https://twitter.com/technosophos"
 ---

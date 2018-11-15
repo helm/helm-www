@@ -41,13 +41,14 @@ This is a quick start guide for creating new blog post entries. Blog posts are
 created via pull requests. The following steps are used to add them.
 
 1) Add a new file to the `_posts` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
-2) Add the header meta-data to the file. It should be in the format (note the permalink structure):
+2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s) and `author` which should be handle(s); these are displayed verbatim. `authorlink` is the link used by both `authorname` and `author`.
 ```yaml
 ---
 layout: post
 title: "A Fancy Title"
 permalink: "/blog/2018/fancy-title/"
-author: "Captain Awesome"
+authorname: "Captain Awesome"
+author: "@captainawesome"
 authorlink: "https://example.com"
 ---
 ```
