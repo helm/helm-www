@@ -30,7 +30,7 @@ function generateSite (e, p) {
   ];
 
   // This job renders helm.sh
-  const buildHelmSh = new Job("helm-sh", "ruby:2.3");
+  const buildHelmSh = new Job("helm-sh", "ruby:2.3.7");
   buildHelmSh.timeout = timeout
   buildHelmSh.storage.enabled = true
   buildHelmSh.tasks = [
