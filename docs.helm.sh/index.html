@@ -1,4 +1,12 @@
-{{ partial "header.html" . }}
+---
+layout: default
+title: Helm - The Kubernetes Package Manager
+description: The Kubernetes Package Manager
+keywords: Helm,Charts,Packages,Package,Manager,Production,Kubernetes,Containers
+categories:
+- project
+- helm
+---
 
 <div id="helm">
 
@@ -32,7 +40,7 @@
       </div>
 
       <div class="hide-for-small-down medium-6 columns">
-        <img src="{{ .Site.BaseURL }}/assets/images/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
+        <img src="{{site.baseurl}}/assets/images/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
       </div>
     </div>
   </div>
@@ -46,22 +54,22 @@
 
     <div class="row">
       <div class="small-6 medium-6 large-3 columns">
-        <img src="{{ .Site.BaseURL }}/assets/images/feature-icon-1.png" alt="Manage Complexity">
+        <img src="{{site.baseurl}}/assets/images/feature-icon-1.png" alt="Manage Complexity">
         <h3>Manage Complexity</h3>
         <p>Charts describe even the most complex apps, provide repeatable application installation, and serve as a single point of authority.</p>
       </div>
       <div class="small-6 medium-6 large-3 columns">
-        <img src="{{ .Site.BaseURL }}/assets/images/feature-icon-2.png" alt="Easy Updates">
+        <img src="{{site.baseurl}}/assets/images/feature-icon-2.png" alt="Easy Updates">
         <h3>Easy Updates</h3>
         <p>Take the pain out of updates with in-place upgrades and custom hooks.</p>
       </div>
       <div class="small-6 medium-6 large-3 columns">
-        <img src="{{ .Site.BaseURL }}/assets/images/feature-icon-3.png" alt="Easy Sharing">
+        <img src="{{site.baseurl}}/assets/images/feature-icon-3.png" alt="Easy Sharing">
         <h3>Simple Sharing</h3>
         <p>Charts are easy to version, share, and host on public or private servers.</p>
       </div>
       <div class="small-6 medium-6 large-3 columns">
-        <img src="{{ .Site.BaseURL }}/assets/images/feature-icon-4.png" alt="Rollbacks">
+        <img src="{{site.baseurl}}/assets/images/feature-icon-4.png" alt="Rollbacks">
         <h3>Rollbacks</h3>
         <p>Use <code>helm rollback</code> to roll back to an older version of a release with ease.</p>
       </div>
@@ -75,7 +83,7 @@
         <h2>Get Helm!</h2>
         <p>The Helm project can be found <a href="https://github.com/helm/helm">here on Github</a>:</p>
 
-        <p><a href="https://github.com/helm/helm"><img src="{{ .Site.BaseURL }}/assets/images/btn-get-helm.png" alt="Get Helm"></a></p>
+        <p><a href="https://github.com/helm/helm"><img src="{{site.baseurl}}/assets/images/btn-get-helm.png" alt="Get Helm"></a></p>
 
         <p>For documentation, see <a href="https://docs.helm.sh/">docs.helm.sh</a></p>
 
@@ -87,7 +95,7 @@
 
         <p>Looking for sample charts?</p>
 
-        <p><a href="http://github.com/helm/charts"><img src="{{ .Site.BaseURL }}/assets/images/helm-charts.png" alt="Sample Charts"></a></p>
+        <p><a href="http://github.com/helm/charts"><img src="{{site.baseurl}}/assets/images/helm-charts.png" alt="Sample Charts"></a></p>
 
         <p>Visit the <a href="http://github.com/helm/charts">Helm > Charts</a> repo on <a href="http://github.com/helm/charts">github.com/helm/charts</a> to explore and use community charts.</p>
       </div>
