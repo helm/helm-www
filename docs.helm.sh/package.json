@@ -32,7 +32,7 @@
     "gulp-regex-replace": "^0.2.3",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "gulp-ruby-sass": "^4.0.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-string-replace": "^1.1.2",
     "gulp-tap": "^1.0.1",
