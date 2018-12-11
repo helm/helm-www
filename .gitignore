@@ -10,7 +10,8 @@ _site/
 node_modules/
 bower_components/
 vendor/
+rootfs/
+app/*
 source/*
 content/docs/
-app/*
-rootfs/
+static/src/css/
