@@ -6,13 +6,11 @@ _site/*
 _site/
 .ncurc.yml
 .publish/*
+.publish/
 node_modules/
 bower_components/
 vendor/
 source/*
-docs.helm.sh/content/docs/
-docs.helm.sh/.publish/
-docs.helm.sh/app/
-docs.helm.sh/source/
-docs.helm.sh/rootfs/
-helm.sh/javascripts/*.min.js
+content/docs/
+app/*
+rootfs/
