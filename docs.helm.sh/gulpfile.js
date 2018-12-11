@@ -198,7 +198,9 @@ gulp.task('clone', function(cb) {
       'source/docs/index.md',
       'source/docs/readme.md',
       'source/docs/chart_template_guide/tmp/',
-      '!source/docs/chart_template_guide/index.md'
+      '!source/docs/chart_template_guide/index.md',
+      'source/.git',
+      'source/.github'
     ], {force: true});
   });
   gulp.task('reorg-templates', function () {
