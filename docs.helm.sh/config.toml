@@ -1,7 +1,7 @@
-baseurl = "https://docs.helm.sh/"
+baseurl = "https://helm.sh/"
 languageCode = "en-us"
-title = "Helm Docs"
-theme = "helmdocs"
+title = "Helm"
+theme = "helm"
 
 contentDir = "content"
 publishdir = "app"
@@ -552,30 +552,30 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Related Projects"
-  url = "/related/"
+  url = "/docs/related/"
   identifier = "related-projects"
   weight = 500
 [[menu.main]]
   name = "Architecture"
-  url = "/architecture/"
+  url = "/docs/architecture/"
   identifier = "architecture"
   weight = 501
 [[menu.main]]
   name = "Developer Guide"
-  url = "/developers/"
+  url = "/docs/developers/"
   identifier = "developer-guide"
   weight = 502
 [[menu.main]]
   name = "History"
-  url = "/history/"
+  url = "/docs/history/"
   identifier = "history"
   weight = 503
 [[menu.main]]
   name = "Glossary"
-  url = "/glossary/"
+  url = "/docs/glossary/"
   identifier = "glossary"
   weight = 504
 [[menu.main]]
   name = "Find Charts"
-  url = "http://github.com/kubernetes/charts"
+  url = "http://github.com/helm/charts"
   weight = 505

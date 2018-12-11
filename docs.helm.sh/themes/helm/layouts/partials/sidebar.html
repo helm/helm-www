@@ -11,7 +11,7 @@
     <nav class="sidebar-nav">
       <ul class="current sidebar-main">
         <li>
-          <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}">
+          <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}docs">
             <span class="ripple">Docs Home <span></span></span>
           </a>
         </li>
@@ -24,7 +24,7 @@
           <ul class="current">
             {{ range .Children.ByWeight }}
             <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-              <a href="../../{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
+              <a href="../../docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
                 {{ .Name }}
               </a>
             </li>
