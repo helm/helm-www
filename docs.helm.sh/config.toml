@@ -20,7 +20,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Using Helm"
-  url = "using_helm"
+  url = "/using_helm/"
   identifier = "using_helm"
   weight = 2
   [[menu.main]]
@@ -80,7 +80,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Helm Commands"
-  url = "helm"
+  url = "/helm/"
   identifier = "helm"
   weight = 102
   [[menu.main]]
@@ -350,7 +350,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Charts"
-  url = "developing_charts"
+  url = "/developing_charts/"
   identifier = "developing_charts"
   weight = 200
   [[menu.main]]
@@ -404,7 +404,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Developing Templates"
-  url = "chart_template_guide"
+  url = "/chart_template_guide/"
   identifier = "chart_template_guide"
   weight = 300
   [[menu.main]]
