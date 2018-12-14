@@ -11,7 +11,7 @@
 
 The site is built on top of [Hugo](https://gohugo.io/), and uses [Gulp](https://gulpjs.com/) to build and manage the asset pipeline.
 
-### Install Dependancies
+### Install Dependencies
 
 This site uses [Hugo](https://gohugo.io), a static site generator. It can be installed via homebrew:
 
