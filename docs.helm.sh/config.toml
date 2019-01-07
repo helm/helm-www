@@ -1,4 +1,4 @@
-baseurl = "https://brave-brahmagupta-4ced99.netlify.com/"
+baseurl = "https://helm.sh/"
 languageCode = "en-us"
 title = "Helm"
 theme = "helm"
