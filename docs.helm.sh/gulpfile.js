@@ -111,7 +111,7 @@ gulp.task('clean', function () {
 
 // Clone Docs for Hugo
 gulp.task('clone', function(cb) {
-  git.clone('https://github.com/kubernetes/helm', {args: './source', quiet: false}, function(err) {
+  git.clone('https://github.com/helm/helm', {args: './source', quiet: false}, function(err) {
     // handle err
     cb(err);
   });
@@ -257,7 +257,7 @@ gulp.task('clone', function(cb) {
       // update the provenance urls
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
-      .pipe(replace('](images/', '](https://raw.githubusercontent.com/kubernetes/helm/master/docs/images/'))
+      .pipe(replace('](images/', '](https://raw.githubusercontent.com/helm/helm/master/docs/images/'))
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
