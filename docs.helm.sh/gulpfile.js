@@ -224,7 +224,7 @@ gulp.task('clone', function(cb) {
   });
 
   // links
-  gulp.task('redirect-anchor', function() {
+  gulp.task('redirect-anchor-temp', function() {
     return gulp.src('source/docs/**/*.md')
       .pipe(foreach(function(stream, file){
         var anchorurl = (/(\)\])(.*)\.md/, "g")[1];
@@ -242,7 +242,7 @@ gulp.task('clone', function(cb) {
       .pipe(gulp.dest('source/docs/helm/'))
   });
 
-  gulp.task('redirect-anchor', function() {
+  gulp.task('redirect-anchor-replace', function() {
     return gulp.src('source/docs/**/*.md')
       // update quickstart and install links
       .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
@@ -253,7 +253,7 @@ gulp.task('clone', function(cb) {
       // update charts urls
       .pipe(replace('chart_repository', 'developing_charts'))
       // update internal links from '*.md' to '#*'
-      .pipe(replace(/(\]\()(.*)(\.md\))/g, '](./#$2)'))
+      .pipe(replace(/(\]\()(?!https)(.*)(\.md\))/g, '](./#$2)'))
       // update the provenance urls
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
@@ -266,8 +266,8 @@ gulp.task('clone', function(cb) {
       // update tiller ssl link
       .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
       // update rbac links
-      .pipe(replace('#rbac', '#role-based-access-control'))
-      .pipe(replace('/rbac', '/#role-based-access-control'))
+      .pipe(replace('using_helm/#rbac', 'using_helm/#role-based-access-control'))
+      .pipe(replace('using_helm/rbac', 'using_helm/#role-based-access-control'))
       .pipe(gulp.dest('source/docs/'))
   });
 
@@ -295,7 +295,7 @@ gulp.task('build', function(callback) {
               'template-move',
               'template-concat',
               'template-del',
-              'redirect-anchor',
+              'redirect-anchor-replace',
               callback);
 });
 
