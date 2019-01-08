@@ -111,7 +111,7 @@ gulp.task('clean', function () {
 
 // Clone Docs for Hugo
 gulp.task('clone', function(cb) {
-  git.clone('https://github.com/kubernetes/helm', {args: './source', quiet: false}, function(err) {
+  git.clone('https://github.com/helm/helm', {args: './source', quiet: false}, function(err) {
     // handle err
     cb(err);
   });
@@ -224,7 +224,7 @@ gulp.task('clone', function(cb) {
   });
 
   // links
-  gulp.task('redirect-anchor', function() {
+  gulp.task('redirect-anchor-temp', function() {
     return gulp.src('source/docs/**/*.md')
       .pipe(foreach(function(stream, file){
         var anchorurl = (/(\)\])(.*)\.md/, "g")[1];
@@ -242,22 +242,23 @@ gulp.task('clone', function(cb) {
       .pipe(gulp.dest('source/docs/helm/'))
   });
 
-  gulp.task('redirect-anchor', function() {
+  gulp.task('redirect-anchor-replace', function() {
     return gulp.src('source/docs/**/*.md')
+      // update internal links from '*.md' to '#*'
+        // omitting external links
+      .pipe(replace(/(\]\()(?!http)(.*)(\.md\))/g, '](./#$2)'))
       // update quickstart and install links
       .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
       .pipe(replace('#Install-Helm', '#installing-helm'))
       .pipe(replace('#quickstart]', '#quickstart-guide]'))
-      .pipe(replace('#install]', '#installing-helm]'))
+      .pipe(replace('#install)', '#installing-helm)'))
       .pipe(replace('#using_helm', '#using-helm'))
       // update charts urls
       .pipe(replace('chart_repository', 'developing_charts'))
-      // update internal links from '*.md' to '#*'
-      .pipe(replace(/(\]\()(.*)(\.md\))/g, '](./#$2)'))
       // update the provenance urls
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
-      .pipe(replace('](images/', '](https://raw.githubusercontent.com/kubernetes/helm/master/docs/images/'))
+      .pipe(replace('](images/', '](https://raw.githubusercontent.com/helm/helm/master/docs/images/'))
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
@@ -265,9 +266,23 @@ gulp.task('clone', function(cb) {
       .pipe(replace('securing_installation', 'securing-your-helm-installation'))
       // update tiller ssl link
       .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
+      .pipe(replace('(tiller_ssl', '(#using-ssl-between-helm-and-tiller'))
+      // related
+      .pipe(replace('(related.md#', '(../related/#'))
       // update rbac links
       .pipe(replace('#rbac', '#role-based-access-control'))
+      .pipe(replace('using_helm/rbac', 'using_helm/#role-based-access-control'))
+      .pipe(replace('(rbac', '(#role-based-access-control'))
+      .pipe(replace('##best-practices-for-securing-helm-and-tiller', '#best-practices-for-securing-helm-and-tiller'))
+      .pipe(replace('](securing-your-helm-installation.md#role-based-access-control)', '](#rbac)'))
+
       .pipe(gulp.dest('source/docs/'))
+  });
+
+  gulp.task('redirect-underscores', function() {
+    return gulp.src('source/docs/helm/*.md')
+    .pipe(replace('_', '-'))
+    .pipe(gulp.dest('source/docs/helm/'))
   });
 
 
@@ -294,7 +309,8 @@ gulp.task('build', function(callback) {
               'template-move',
               'template-concat',
               'template-del',
-              'redirect-anchor',
+              'redirect-anchor-replace',
+              'redirect-underscores',
               callback);
 });
 
