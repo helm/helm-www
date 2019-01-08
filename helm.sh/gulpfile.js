@@ -44,19 +44,17 @@ gulp.task('images', function () {
 
 
 // Default task
-gulp.task('default', function () {
-  gulp.start('styles', 'images');
-});
+gulp.task('default', gulp.series('styles', 'images'), function () {});
 
 
 // Watch task
 gulp.task('watch', function () {
 
   // Watch .scss files
-  gulp.watch('assets/scss/**/*.scss', ['styles']);
+  gulp.watch('assets/scss/**/*.scss', gulp.series('styles'));
 
   // Watch image files
-  gulp.watch('images/**/*.{png,gif,jpg}', ['images']);
+  gulp.watch('images/**/*.{png,gif,jpg}', gulp.series('images'));
 
   // Create LiveReload server
   livereload.listen();
