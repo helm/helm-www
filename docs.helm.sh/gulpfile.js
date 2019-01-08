@@ -274,6 +274,8 @@ gulp.task('clone', function(cb) {
       .pipe(replace('using_helm/rbac', 'using_helm/#role-based-access-control'))
       .pipe(replace('(rbac', '(#role-based-access-control'))
       .pipe(replace('##best-practices-for-securing-helm-and-tiller', '#best-practices-for-securing-helm-and-tiller'))
+      .pipe(replace('](securing-your-helm-installation.md#role-based-access-control)', '](#rbac)'))
+
       .pipe(gulp.dest('source/docs/'))
   });
 
