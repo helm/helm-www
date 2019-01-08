@@ -244,16 +244,17 @@ gulp.task('clone', function(cb) {
 
   gulp.task('redirect-anchor-replace', function() {
     return gulp.src('source/docs/**/*.md')
+      // update internal links from '*.md' to '#*'
+        // omitting external links
+      .pipe(replace(/(\]\()(?!http)(.*)(\.md\))/g, '](./#$2)'))
       // update quickstart and install links
       .pipe(replace(/\]\(.*install\.md/, '](../using_helm/#installing-helm'))
       .pipe(replace('#Install-Helm', '#installing-helm'))
       .pipe(replace('#quickstart]', '#quickstart-guide]'))
-      .pipe(replace('#install]', '#installing-helm]'))
+      .pipe(replace('#install)', '#installing-helm)'))
       .pipe(replace('#using_helm', '#using-helm'))
       // update charts urls
       .pipe(replace('chart_repository', 'developing_charts'))
-      // update internal links from '*.md' to '#*'
-      .pipe(replace(/(\]\()(?!https)(.*)(\.md\))/g, '](./#$2)'))
       // update the provenance urls
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
@@ -265,10 +266,21 @@ gulp.task('clone', function(cb) {
       .pipe(replace('securing_installation', 'securing-your-helm-installation'))
       // update tiller ssl link
       .pipe(replace('#tiller_ssl', '#using-ssl-between-helm-and-tiller'))
+      .pipe(replace('(tiller_ssl', '(#using-ssl-between-helm-and-tiller'))
+      // related
+      .pipe(replace('(related.md#', '(../related/#'))
       // update rbac links
-      .pipe(replace('using_helm/#rbac', 'using_helm/#role-based-access-control'))
+      .pipe(replace('#rbac', '#role-based-access-control'))
       .pipe(replace('using_helm/rbac', 'using_helm/#role-based-access-control'))
+      .pipe(replace('(rbac', '(#role-based-access-control'))
+      .pipe(replace('##best-practices-for-securing-helm-and-tiller', '#best-practices-for-securing-helm-and-tiller'))
       .pipe(gulp.dest('source/docs/'))
+  });
+
+  gulp.task('redirect-underscores', function() {
+    return gulp.src('source/docs/helm/*.md')
+    .pipe(replace('_', '-'))
+    .pipe(gulp.dest('source/docs/helm/'))
   });
 
 
@@ -296,6 +308,7 @@ gulp.task('build', function(callback) {
               'template-concat',
               'template-del',
               'redirect-anchor-replace',
+              'redirect-underscores',
               callback);
 });
 
