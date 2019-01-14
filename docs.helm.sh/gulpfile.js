@@ -332,7 +332,7 @@ gulp.task('watch', function () {
 
   gulp.watch('themes/helm/static/img/src/**/*.{png,gif,jpg}', gulp.series('images'));
 
-  gulp.watch('themes/helmdocs/static/src/sass/**/*.scss', gulp.series('styles'));
+  gulp.watch('themes/helm/static/src/sass/**/*.scss', gulp.series('styles'));
 
   livereload.listen();
 
