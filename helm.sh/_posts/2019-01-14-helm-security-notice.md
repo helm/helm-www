@@ -13,7 +13,7 @@ A specially crafted chart may be able to unpack content into locations on the fi
 
 No version of Tiller is known to be impacted. This is a client-only issue.
 
-The following Helm commands may unsafely unpack malformed charts onto a local folder: `helm fetch –-untar` and `helm lint some.tgz`.
+The following Helm commands may unsafely unpack malformed charts onto a local folder: `helm fetch --untar` and `helm lint some.tgz`.
 
 We are unaware of any public exploits caused by this issue.<!--more-->
 
