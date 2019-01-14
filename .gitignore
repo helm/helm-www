@@ -15,4 +15,5 @@ app/*
 source/*
 static/*
 content/docs/
-static/src/css/
+helm.sh/
+docs.helm.sh/
