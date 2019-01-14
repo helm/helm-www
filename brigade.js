@@ -11,7 +11,7 @@ function generateSite (e, p) {
   const bucket  = "https://helmshprod.blob.core.windows.net"
 
   // This job renders docs.helm.sh
-  const buildDocs = new Job("docs-helm-sh", "node:9");
+  const buildDocs = new Job("docs-helm-sh", "node:10");
   buildDocs.timeout = timeout
   buildDocs.storage.enabled = true
   buildDocs.env = {
