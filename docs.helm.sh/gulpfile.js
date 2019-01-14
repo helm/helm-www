@@ -21,9 +21,10 @@ var gulp = require('gulp'),
   foreach = require('gulp-foreach'),
   inject = require('gulp-inject-string'),
   replace = require('gulp-replace'),
-  stringreplace  = require('gulp-string-replace'),
+  stringreplace  = require('gulp-string-replace');
   sass.compiler = require('node-sass');
 
+  
 // Copy
 gulp.task('copy', function () {
   return gulp.src('themes/helmdocs/static/src/fonts/*')
