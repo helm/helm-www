@@ -1,0 +1,49 @@
+.blog-layout {
+  padding-left: 0 !important;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    min-height: 5rem;
+    z-index: 1020;
+    position: relative;
+    text-transform: none;
+    position: fixed;
+    width: 300px;
+    left: 0;
+    top: 0;
+
+    a {
+      display: block;
+      width: 100%;
+      padding: 0.333em 2.25rem;
+      background-color: white;
+      text-align: left;
+
+      img,
+      svg {
+        display: block;
+        fill: currentColor;
+        @include transition;
+      }
+
+      span {
+        top: 1em;
+        position: absolute;
+        font-size: 1.5rem;
+        color: $blue3;
+        left: 6.5rem;
+        letter-spacing: -0.125rem;
+        @include klinicReg;
+      }
+
+      &:hover {
+        background: $light2;
+
+        svg {
+          color: white !important;
+        }
+      }
+    }
+  }
+}

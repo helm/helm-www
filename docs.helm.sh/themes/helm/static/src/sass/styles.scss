@@ -35,6 +35,7 @@ $fa-font-path: "../fonts" !default;
 
 // load main helm.sh page
 @import "helm-home.scss";
+@import "helm-blog.scss";
 
 // load documentation styles
 @import "docs-layout.scss";
