@@ -303,8 +303,9 @@ gulp.task('clone', function(cb) {
 gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
 
 gulp.task('build',
-  gulp.parallel(['styles', 'scripts', 'images', 'copy']),
+  gulp.parallel(['styles', 'scripts', 'images']),
   gulp.series([
+    'copy',
     'copyall',
     'redirect-inject',
     'redirect-subfolder'
