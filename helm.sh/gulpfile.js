@@ -1,12 +1,12 @@
 /*!
  * gulp
- * $ npm install del gulp gulp-ruby-sass gulp-autoprefixer gulp-cache gulp-cssnano gulp-imagemin gulp-livereload gulp-minify-css gulp-notify gulp-rename gulp-sourcemaps streamqueue --save-dev
+ * $ npm install del gulp gulp-sass node-sass gulp-autoprefixer gulp-cache gulp-cssnano gulp-imagemin gulp-livereload gulp-minify-css gulp-notify gulp-rename gulp-sourcemaps streamqueue --save-dev
 */
 
 // Load plugins
 var gulp = require('gulp'),
   del = require('del');
-  sass = require('gulp-ruby-sass'),
+  sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
   cache = require('gulp-cache'),
   cssnano = require('gulp-cssnano'),
@@ -15,11 +15,13 @@ var gulp = require('gulp'),
   notify = require('gulp-notify'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
-  streamqueue = require('streamqueue')
+  streamqueue = require('streamqueue'),
+  sass.compiler = require('node-sass');
 
 // Styles
 gulp.task('styles', function () {
-  return sass('assets/scss/app.scss', {style: 'expanded'})
+  return gulp.src('assets/scss/app.scss')
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 2 version'))
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
