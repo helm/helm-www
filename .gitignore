@@ -12,6 +12,7 @@ bower_components/
 vendor/
 rootfs/
 app/*
+source/
 source/*
 static/*
 content/docs/
