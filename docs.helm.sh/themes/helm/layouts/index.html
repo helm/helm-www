@@ -22,25 +22,20 @@
 
 <body id="landing">
 
-  <div id="cookie-banner" style="display: block;">
-    <div class="cc-container">
   
-      <p class="center text-center">This site uses cookies for analytics and security purposes. By continuing to browse this site, you agree to this use.</p>
-    </div>
-  </div>
 
   <div class="off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
 
       <nav class="home-nav">
-        <a href="{{ .Site.BaseURL }}" title="Helm.sh"><img src="{{ .Site.BaseURL }}src/img/helm-logo.svg" alt="Helm" class="helm-logo"></a>
+        <h1>
+          <a href="{{ .Site.BaseURL }}" title="Helm.sh">
+            {{ partial "logo.html" . }}
+          </a>
+        </h1>
 
         <ul class="inline">
-          <li><a href="https://github.com/helm/helm" title="Get Helm">Get Helm</a></li>
-          <li><a href="{{ .Site.BaseURL}}/blog" title="Helm Blog">Blog</a></li>
-          <li><a href="{{ .Site.BaseURL }}docs" title="Helm Documentation">Docs</a></li>
-          <li><a href="https://twitter.com/helmpack" class="fa fa-twitter hide-for-small-only" title="Helm on Twitter"></a></li>
-          <li><a href="https://github.com/helm/helm" class="fa fa-github hide-for-small-only" title="Helm on Github"></a></li>
+          {{ partial "nav.html" . }}
         </ul>
       </nav>
 

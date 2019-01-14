@@ -48,11 +48,16 @@ nav.home-nav {
   top: 20px;
   z-index: 2000;
 
-  .helm-logo {
+  h1 {
     position: absolute;
     left: 10%;
     top: 1.5rem;
     max-width: 112px;
+
+    img,
+    svg {
+      min-height: 112px;
+    }
   }
 
   ul {
