@@ -13,5 +13,6 @@ vendor/
 rootfs/
 app/*
 source/*
+static/*
 content/docs/
 static/src/css/
