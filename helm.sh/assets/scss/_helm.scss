@@ -120,11 +120,16 @@ nav {
     left: 10%;
     top: 1.5rem;
     max-width: 112px;
+
+    img,
+    svg {
+      min-height: 96px;
+    }
   }
 
   ul {
     position: absolute;
-    top: 2.5rem;
+    top: 4.5rem;
     right: 7.5%;
 
     li {
@@ -142,17 +147,12 @@ nav {
         @include klinicBold;
         @include ripple;
 
-        &.fa {
-          font-size: 1.5rem;
+        img {
+          max-height: 2rem;
           color: $dark2;
           line-height: 2.5;
           padding-top: 0.5rem;
-          margin: 0 -1rem 0 3rem;
-
-          &.fa-twitter {
-            color: $blue;
-            @include transition;
-          }
+          margin: -0.5rem -1rem 0 1rem;
 
           &:hover {
             opacity: 0.7;
