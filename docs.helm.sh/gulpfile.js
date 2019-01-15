@@ -57,14 +57,14 @@ gulp.task('styles', function () {
 // Scripts
 gulp.task('scriptconcat', function () {
   return gulp.src([
-      'themes/helmdocs/static/src/js/custom/jquery.js',
-      'themes/helmdocs/static/src/js/custom/foundation.js',
-      'themes/helmdocs/static/src/js/custom/foundation.offcanvas.js',
-      'themes/helmdocs/static/src/js/custom/foundation.accordion.js',
-      'themes/helmdocs/static/src/js/custom/foundation.dropdown.js',
-      'themes/helmdocs/static/src/js/custom/foundation.slider.js',
-      'themes/helmdocs/static/src/js/custom/foundation.tooltip.js'
-    ])
+      'themes/helm/static/src/js/custom/jquery.js',
+      'themes/helm/static/src/js/custom/foundation.js',
+      'themes/helm/static/src/js/custom/foundation.offcanvas.js',
+      'themes/helm/static/src/js/custom/foundation.accordion.js',
+      'themes/helm/static/src/js/custom/foundation.dropdown.js',
+      'themes/helm/static/src/js/custom/foundation.slider.js',
+      'themes/helm/static/src/js/custom/foundation.tooltip.js'
+    ], { allowEmpty: true })
     .pipe(concat('main.js'))
     .pipe(gulp.dest('themes/helmdocs/static/src/js'))
     .pipe(notify({message: 'Scripts concated.'}));
@@ -172,23 +172,22 @@ gulp.task('clone', function(cb) {
       .pipe(gulp.dest('source/docs/chart_template_guide/tmp/'))
   });
   gulp.task('template-concat', function() {
-    return streamqueue({ objectMode: true },
-      gulp.src('source/docs/chart_template_guide/tmp/intro.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/getting_started.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/builtin_objects.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/values_files.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/functions_and_pipelines.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/control_structures.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/variables.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/named_templates.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/accessing_files.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/notes_files.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/subcharts_and_globals.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/debugging.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/wrapping_up.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/yaml_techniques.md'),
-      gulp.src('source/docs/chart_template_guide/tmp/data_types.md')
-    )
+    return gulp.src([
+        'source/docs/chart_template_guide/tmp/intro.md',
+        'source/docs/chart_template_guide/tmp/getting_started.md',
+        'source/docs/chart_template_guide/tmp/builtin_objects.md',
+        'source/docs/chart_template_guide/tmp/values_files.md','source/docs/chart_template_guide/tmp/functions_and_pipelines.md',
+        'source/docs/chart_template_guide/tmp/control_structures.md',
+        'source/docs/chart_template_guide/tmp/variables.md',
+        'source/docs/chart_template_guide/tmp/named_templates.md',
+        'source/docs/chart_template_guide/tmp/accessing_files.md',
+        'source/docs/chart_template_guide/tmp/notes_files.md',
+        'source/docs/chart_template_guide/tmp/subcharts_and_globals.md',
+        'source/docs/chart_template_guide/tmp/debugging.md',
+        'source/docs/chart_template_guide/tmp/wrapping_up.md',
+        'source/docs/chart_template_guide/tmp/yaml_techniques.md',
+        'source/docs/chart_template_guide/tmp/data_types.md'
+    ], { allowEmpty: true })
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/chart_template_guide/'))
   });
@@ -217,14 +216,14 @@ gulp.task('clone', function(cb) {
 
   // inject TOML redirects for Hugo, to point '**/*.md' to '**/'
   gulp.task('redirect-inject', function() {
-    return gulp.src('source/docs/**/*.md', '!source/docs/**/index.md')
+    return gulp.src('content/docs/**/*.md', '!content/docs/**/index.md')
       .pipe(foreach(function(stream, file){
         var aliasname = file.path.replace(/^.*[\\\/]/, '');
         var diraliasname = file.path.split("/").slice(-2).join("/");
         return stream
           .pipe(inject.prepend('+++\naliases = [\n\"' + aliasname + '\"\,\n\"' + diraliasname + '\"\,\n\"using\_helm\/' + aliasname + '\"\,\n\"developing\_charts\/' + aliasname + '\"\n]\n+++\n\n'))
       }))
-      .pipe(gulp.dest('./'))
+      .pipe(gulp.dest('./content/docs'))
   });
 
   // links
@@ -289,11 +288,11 @@ gulp.task('clone', function(cb) {
     .pipe(gulp.dest('source/docs/helm/'))
   });
 
-  // gulp.task('copy-docs-source', function () {
-  //   return gulp.src('source/docs/**/*')
-  //     .pipe(gulp.dest('content/docs/'))
-  //     .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
-  // });
+  gulp.task('copy-docs-source', function () {
+    return gulp.src('source/docs/**/*')
+      .pipe(gulp.dest('content/docs/'))
+      .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
+  });
 
 
   gulp.task('copyall', function () {
@@ -322,8 +321,8 @@ gulp.task('build',
     'template-concat',
     'template-del',
     'redirect-anchor-replace',
-    'redirect-underscores'
-    // 'copy-docs-source'
+    'redirect-underscores',
+    'copy-docs-source'
   ]),
   function() { }
 );
