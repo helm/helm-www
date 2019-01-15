@@ -1,0 +1,4 @@
+[build]
+  base    = ""
+  command = "gulp && hugo"
+  publish = "app"
