@@ -289,11 +289,11 @@ gulp.task('clone', function(cb) {
     .pipe(gulp.dest('source/docs/helm/'))
   });
 
-  gulp.task('copy-docs-source', function () {
-    return gulp.src('source/docs/**/*')
-      .pipe(gulp.dest('content/docs/'))
-      .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
-  });
+  // gulp.task('copy-docs-source', function () {
+  //   return gulp.src('source/docs/**/*')
+  //     .pipe(gulp.dest('content/docs/'))
+  //     .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
+  // });
 
 
   gulp.task('copyall', function () {
@@ -322,8 +322,8 @@ gulp.task('build',
     'template-concat',
     'template-del',
     'redirect-anchor-replace',
-    'redirect-underscores',
-    'copy-docs-source'
+    'redirect-underscores'
+    // 'copy-docs-source'
   ]),
   function() { }
 );
