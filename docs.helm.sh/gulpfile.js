@@ -335,7 +335,7 @@ gulp.task('build',
 );
 
 // 'gulp' default task to build the site assets
-gulp.task('default', gulp.series('clean', 'clonedocs', 'build'), function() { });
+gulp.task('default', gulp.series('clonedocs', 'build'), function() { });
 
 
 // 'gulp watch' to watch for changes during dev
