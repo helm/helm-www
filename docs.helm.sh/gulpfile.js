@@ -102,7 +102,9 @@ gulp.task('images', function () {
 gulp.task('clean', function () {
   return del([
     destination + '/src/**/*',
-    'source/'
+    'source/',
+    'content/docs/*',
+    '!content/docs/README.md'
   ], {force: true});
 });
 
@@ -128,17 +130,17 @@ gulp.task('clone', function(cb) {
 
   // Reorg Docs for Hugo
   gulp.task('reorg-using', function() {
-    return streamqueue({ objectMode: true },
-      gulp.src('source/docs/quickstart.md'),
-      gulp.src('source/docs/install.md'),
-      gulp.src('source/docs/kubernetes_distros.md'),
-      gulp.src('source/docs/install_faq.md'),
-      gulp.src('source/docs/using_helm.md'),
-      gulp.src('source/docs/plugins.md'),
-      gulp.src('source/docs/rbac.md'),
-      gulp.src('source/docs/tiller_ssl.md'),
-      gulp.src('source/docs/securing_installation.md')
-    )
+    return gulp.src([
+        'source/docs/quickstart.md',
+        'source/docs/install.md',
+        'source/docs/kubernetes_distros.md',
+        'source/docs/install_faq.md',
+        'source/docs/using_helm.md',
+        'source/docs/plugins.md',
+        'source/docs/rbac.md',
+        'source/docs/tiller_ssl.md',
+        'source/docs/securing_installation.md'
+    ])
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/using_helm/'))
   });
@@ -193,8 +195,10 @@ gulp.task('clone', function(cb) {
   gulp.task('template-del', function() {
     return del([
       templatefiles,
+      'content/README.md',
+      'content/docs/README.md',
       'source/docs/index.md',
-      'source/docs/readme.md',
+      'source/docs/README.md',
       'source/docs/chart_template_guide/tmp/',
       '!source/docs/chart_template_guide/index.md',
       'source/.git',
@@ -213,7 +217,7 @@ gulp.task('clone', function(cb) {
 
   // inject TOML redirects for Hugo, to point '**/*.md' to '**/'
   gulp.task('redirect-inject', function() {
-    return gulp.src(('source/docs/**/*.md', '!source/docs/**/index.md'), {base: './'})
+    return gulp.src('source/docs/**/*.md', '!source/docs/**/index.md')
       .pipe(foreach(function(stream, file){
         var aliasname = file.path.replace(/^.*[\\\/]/, '');
         var diraliasname = file.path.split("/").slice(-2).join("/");
@@ -287,7 +291,7 @@ gulp.task('clone', function(cb) {
 
   gulp.task('copy-docs-source', function () {
     return gulp.src('source/docs/**/*')
-      .pipe(gulp.dest('content/docs'))
+      .pipe(gulp.dest('content/docs/'))
       .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
   });
 
@@ -303,27 +307,29 @@ gulp.task('clone', function(cb) {
 gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
 
 gulp.task('build',
-  gulp.parallel(['styles', 'scripts', 'images']),
   gulp.series([
+    'styles',
+    'scripts',
+    'images',
     'copy',
     'copyall',
     'redirect-inject',
-    'redirect-subfolder'
-  ]),
-  gulp.parallel(['reorg-using', 'reorg-charts']),
-  gulp.series([
+    'redirect-subfolder',
+    'reorg-using',
+    'reorg-charts',
     'template-rename',
     'template-move',
     'template-concat',
     'template-del',
     'redirect-anchor-replace',
-    'redirect-underscores'
+    'redirect-underscores',
+    'copy-docs-source'
   ]),
   function() { }
 );
 
 // 'gulp' default task to build the site assets
-gulp.task('default', gulp.series('clonedocs', 'build'), function() { });
+gulp.task('default', gulp.series('clean', 'clonedocs', 'build'), function() { });
 
 
 // 'gulp watch' to watch for changes during dev
