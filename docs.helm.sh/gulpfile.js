@@ -140,22 +140,28 @@ gulp.task('clone', function(cb) {
         'source/docs/rbac.md',
         'source/docs/tiller_ssl.md',
         'source/docs/securing_installation.md'
-    ])
+    ], { allowEmpty: true })
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/using_helm/'))
   });
 
+  gulp.task('reorg-helmcmd', function() {
+    return gulp.src(['source/docs/helm/*.md'], { allowEmpty: true })
+    .pipe(concat('index.md'))
+    .pipe(gulp.dest('source/docs/helm/'))
+  });
+
   gulp.task('reorg-charts', function() {
-    return streamqueue({ objectMode: true },
-      gulp.src('source/docs/charts.md'),
-      gulp.src('source/docs/charts_hooks.md'),
-      gulp.src('source/docs/charts_tips_and_tricks.md'),
-      gulp.src('source/docs/chart_repository.md'),
-      gulp.src('source/docs/chart_repository_sync_example.md'),
-      gulp.src('source/docs/provenance.md'),
-      gulp.src('source/docs/chart_tests.md'),
-      gulp.src('source/docs/chart_repository_faq.md')
-    )
+    return gulp.src([
+      'source/docs/charts.md',
+      'source/docs/charts_hooks.md',
+      'source/docs/charts_tips_and_tricks.md',
+      'source/docs/chart_repository.md',
+      'source/docs/chart_repository_sync_example.md',
+      'source/docs/provenance.md',
+      'source/docs/chart_tests.md',
+      'source/docs/chart_repository_faq.md'
+    ], { allowEmpty: true })
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/developing_charts/'))
   });
@@ -211,7 +217,7 @@ gulp.task('clone', function(cb) {
     'template-del'
   ), function () {});
   gulp.task('reorg', function () {
-    gulp.start('reorg-using', 'reorg-charts', 'reorg-templates');
+    gulp.start('reorg-using', 'reorg-helmcmd', 'reorg-charts', 'reorg-templates');
   });
 
   // inject TOML redirects for Hugo, to point '**/*.md' to '**/'
@@ -315,6 +321,7 @@ gulp.task('build',
     'redirect-inject',
     'redirect-subfolder',
     'reorg-using',
+    'reorg-helmcmd',
     'reorg-charts',
     'template-rename',
     'template-move',
