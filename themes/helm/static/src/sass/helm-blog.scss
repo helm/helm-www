@@ -5,7 +5,7 @@
   h1.blog-logo {
     margin: 0;
     padding: 0;
-    min-height: 5rem;
+    min-height: 5.125rem;
     z-index: 1020;
     text-transform: none;
     position: fixed;
@@ -20,14 +20,18 @@
       padding: 0.333em 2.25rem;
       background-color: white;
       display: inline-block;
-      max-height: 5rem;
-      line-height: 5rem;
+      max-height: 4rem;
+      line-height: 4rem;
       position: absolute;
       font-size: 1.5rem;
       color: $blue3;
       letter-spacing: -0.125rem;
       text-align: left;
       @include klinicReg;
+
+      em {
+        font-style: normal;
+      }
 
       &:first-of-type {
         min-width: 30%;
@@ -44,6 +48,10 @@
         display: block;
         fill: currentColor;
         @include transition;
+      }
+
+      svg {
+        margin-top: 0.5rem;
       }
 
       span {

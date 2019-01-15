@@ -26,8 +26,12 @@
         img {
           padding-right: 0.333em;
           max-height: 1.2rem;
-          margin-right: -0.5rem;
         }
+      }
+
+      &:last-child,
+      &:nth-last-child(2) {
+        margin-right: -1rem;
       }
     }
   }

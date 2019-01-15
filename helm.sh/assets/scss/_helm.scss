@@ -112,13 +112,13 @@ nav {
   min-height: 300px;
   left: 0;
   right: 0;
-  top: 20px;
+  top: 0;
   z-index: 2000;
 
   .helm-logo {
     position: absolute;
-    left: 10%;
-    top: 1.5rem;
+    left: 5%;
+    top: 0.5rem;
     max-width: 112px;
 
     img,
@@ -129,8 +129,8 @@ nav {
 
   ul {
     position: absolute;
-    top: 4.25rem;
-    right: 7.5%;
+    top: 3.25rem;
+    right: 2%;
 
     li {
       list-style: none;
