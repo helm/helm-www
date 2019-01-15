@@ -15,6 +15,5 @@ app/*
 source/
 source/*
 static/*
-content/docs/
 helm.sh/
 docs.helm.sh/
