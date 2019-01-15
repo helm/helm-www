@@ -5,6 +5,7 @@ permalink: "/blog/bringing-helm-home/"
 authorname: "Matt Butcher"
 author: "@technosophos"
 authorlink: "https://twitter.com/technosophos"
+date: "2018-07-23"
 ---
 
 Earlier this summer, we announced that [Helm joined the CNCF](https://www.cncf.io/blog/2018/06/01/cncf-to-host-helm/) as an official incubating project. Part of that transition involves moving the Helm project out of the Kubernetes GitHub org and into its org. We’re excited to announce that we’ve completed that process. As of last week, we have moved the Helm code repository to [https://github.com/helm/helm](https://github.com/helm/helm).  <!--more-->

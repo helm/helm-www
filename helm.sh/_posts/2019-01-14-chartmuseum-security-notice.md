@@ -4,6 +4,7 @@ title: "ChartMuseum Vulnerability: Authorization Bypass [CVE-2019-1000009]"
 permalink: "/blog/chartmuseum-security-notice-2019/"
 authorname: "Matt Farina & Josh Dolitsky"
 authorlink: "https://helm.sh"
+date: "2019-01-14"
 ---
 
 Security researcher Bernard Wagner of [Entersekt](https://www.entersekt.com/) discovered a vulnerability in ChartMuseum, impacting **all versions of ChartMuseum between ChartMuseum >=0.1.0 and < 0.8.1**. A specially crafted chart could be uploaded that caused the uploaded archive to be saved outside of the intended location.

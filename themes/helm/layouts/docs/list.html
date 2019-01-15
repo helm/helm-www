@@ -5,12 +5,18 @@
 
     <div class="main home" id="scrollpane">
 
+      <nav class="top-bar">
+        <ul class="inline right text-right">
+          {{ partial "nav.html" . }}
+        </ul>
+      </nav>
+
       <div class="row collapse" id="helm">
         <div class="small-12 columns home-intro-wrap">
 
           <section class="billboard">
             <div class="container">
-              <a href="https://helm.sh"><img src="/src/img/helm-logo.svg" alt="Helm" class="helm-logo"></a>
+              <!-- <a href="https://helm.sh"><img src="/src/img/helm-logo.svg" alt="Helm" class="helm-logo"></a> -->
 
               <h1>The package manager for Kubernetes</h1>
               <h2>Helm is the best way to find, share, and use software built for Kubernetes.</h2>

@@ -2,13 +2,13 @@
 
 <div class="container container-full blog-layout">
 
-  <div class="main page" id="scrollpane">
-    <h1>
+  <div class="main blog blog-single page" id="scrollpane">
+    <h1 class="blog-logo">
       <a href="/">
         {{ partial "logo.html" . }}
       </a>
       <a href="/blog">
-        <span>Blog</span>
+        Blog
       </a>
     </h1>
     
@@ -21,11 +21,11 @@
     <div class="row">
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-10 columns content-wrap">
-        BLOGGGY LIST
-        
-        {{ range .Pages }}
-            {{ .Render "li"}}
-        {{ end }}
+        <article id="content">
+          <h1>{{ .Title }}</h1>
+          {{ .Content }}
+
+       </article>
       </div>
       <div class="small-1 columns">&nbsp;</div>
     </div>
