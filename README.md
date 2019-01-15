@@ -13,7 +13,6 @@ created via pull requests. The following steps are used to add them.
 2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
 ```yaml
 ---
-
 layout: post
 title: "A Fancy Title"
 permalink: "/blog/2018/fancy-title/"
@@ -28,7 +27,7 @@ date: "yyyy-mm-dd"
 
 ---
 
-## How to Edit Docs
+## How to Edit The Helm Docs
 
 Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) main repo.  
 This site will then extract those files during the build process, and publish them to [docs.helm.sh](https://docs.helm.sh).
