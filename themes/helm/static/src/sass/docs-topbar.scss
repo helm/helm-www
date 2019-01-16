@@ -14,14 +14,18 @@
   ul {
     min-width: 33.333%;
     margin-right: 0;
-    margin-top: 1.75em;
+    margin-top: 0.75em;
     padding-right: 3.5%;
 
     li {
       display: inline-block;
+      margin: 0 0.5rem;
 
       a {
         padding: 1em;
+        color: $blue4;
+        font-size: 1.125rem;
+        @include klinicBold;
 
         img {
           padding-right: 0.333em;

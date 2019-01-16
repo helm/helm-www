@@ -1,0 +1,581 @@
+baseurl = "https://vigorous-banach-0c4d85.netlify.com/"
+languageCode = "en-us"
+title = "Helm"
+theme = "helm"
+
+contentDir = "content"
+publishdir = "app"
+
+canonifyURLs = "false"
+pluralizeListTitles = "false"
+plainIdAnchors = "true"
+defaultContentLanguage = "en"
+
+[params]
+  title = "Helm Docs"
+  author = "Ronan Flynn-Curran"
+  description = "Documentation for Helm - The Kubernetes Package Manager."
+
+[[menu.main]]
+  name = "Using Helm"
+  url = "using_helm"
+  identifier = "using_helm"
+  weight = 2
+  [[menu.main]]
+    name = "Quickstart"
+    url = "quickstart-guide"
+    identifier = "quickstart-guide"
+    weight = 11
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Installing Helm"
+    url = "installing-helm"
+    identifier = "installing-helm"
+    weight = 12
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Kubernetes Distro Notes"
+    url = "kubernetes-distribution-guide"
+    identifier = "kubernetes-distribution-guide"
+    weight = 13
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Install FAQ"
+    url = "installation-frequently-asked-questions"
+    identifier = "installation-frequently-asked-questions"
+    weight = 14
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Using Helm"
+    url = "using-helm"
+    identifier = "using-helm"
+    weight = 15
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Plugins"
+    url = "the-helm-plugins-guide"
+    identifier = "the-helm-plugins-guide"
+    weight = 16
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Role-Based Access Control"
+    url = "role-based-access-control"
+    identifier = "role-based-access-control"
+    weight = 17
+    parent = "using_helm"
+  [[menu.main]]
+    name = "TLS/SSL for Helm and Tiller"
+    url = "using-ssl-between-helm-and-tiller"
+    identifier = "using-ssl-between-helm-and-tiller"
+    weight = 18
+    parent = "using_helm"
+  [[menu.main]]
+    name = "Securing Helm"
+    url = "securing-your-helm-installation"
+    identifier = "securing-your-helm-installation"
+    weight = 19
+    parent = "using_helm"
+
+[[menu.main]]
+  name = "Helm Commands"
+  url = "helm"
+  identifier = "helm"
+  weight = 102
+  [[menu.main]]
+    name = "Helm"
+    url = "helm"
+    identifier = "helm-command"
+    weight = 121
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Completion"
+    url = "helm-completion"
+    identifier = "helm-completion"
+    weight = 122
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Create"
+    url = "helm-create"
+    identifier = "helm-create"
+    weight = 123
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Delete"
+    url = "helm-delete"
+    identifier = "helm-delete"
+    weight = 124
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Dependency"
+    url = "helm-dependency"
+    identifier = "helm-dependency"
+    weight = 125
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Dependency Build"
+    url = "helm-dependency-build"
+    identifier = "helm-dependency-build"
+    weight = 126
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Dependency List"
+    url = "helm-dependency-list"
+    identifier = "helm-dependency-list"
+    weight = 127
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Dependency Update"
+    url = "helm-dependency-update"
+    identifier = "helm-dependency-update"
+    weight = 128
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Fetch"
+    url = "helm-fetch"
+    identifier = "helm-fetch"
+    weight = 129
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Get"
+    url = "helm-get"
+    identifier = "helm-get"
+    weight = 130
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Get Hooks"
+    url = "helm-get-hooks"
+    identifier = "helm-get-hooks"
+    weight = 131
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Get Manifest"
+    url = "helm-get-manifest"
+    identifier = "helm-get-manifest"
+    weight = 132
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Get Values"
+    url = "helm-get-values"
+    identifier = "helm-get-values"
+    weight = 133
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm History"
+    url = "helm-history"
+    identifier = "helm-history"
+    weight = 134
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Home"
+    url = "helm-home"
+    identifier = "helm-home"
+    weight = 135
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Init"
+    url = "helm-init"
+    identifier = "helm-init"
+    weight = 136
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Inspect"
+    url = "helm-inspect"
+    identifier = "helm-inspect"
+    weight = 137
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Inspect Chart"
+    url = "helm-inspect-chart"
+    identifier = "helm-inspect-chart"
+    weight = 138
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Inspect Values"
+    url = "helm-inspect-values"
+    identifier = "helm-inspect-values"
+    weight = 139
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Install"
+    url = "helm-install"
+    identifier = "helm-install"
+    weight = 140
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Lint"
+    url = "helm-lint"
+    identifier = "helm-lint"
+    weight = 141
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm List"
+    url = "helm-list"
+    identifier = "helm-list"
+    weight = 142
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Package"
+    url = "helm-package"
+    identifier = "helm-package"
+    weight = 143
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Plugin"
+    url = "helm-plugin"
+    identifier = "helm-plugin"
+    weight = 144
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Plugin Install"
+    url = "helm-plugin-install"
+    identifier = "helm-plugin-install"
+    weight = 145
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Plugin List"
+    url = "helm-plugin-list"
+    identifier = "helm-plugin-list"
+    weight = 146
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Plugin Remove"
+    url = "helm-plugin-remove"
+    identifier = "helm-plugin-remove"
+    weight = 147
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Plugin Update"
+    url = "helm-plugin-update"
+    identifier = "helm-plugin-update"
+    weight = 148
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo"
+    url = "helm-repo"
+    identifier = "helm-repo"
+    weight = 149
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo Add"
+    url = "helm-repo-add"
+    identifier = "helm-repo-add"
+    weight = 150
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo Index"
+    url = "helm-repo-index"
+    identifier = "helm-repo-index"
+    weight = 151
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo List"
+    url = "helm-rep-list"
+    identifier = "helm-repo-list"
+    weight = 152
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo Remove"
+    url = "helm-repo-remove"
+    identifier = "helm-repo-remove"
+    weight = 153
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Repo Update"
+    url = "helm-repo-update"
+    identifier = "helm-repo-update"
+    weight = 154
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Reset"
+    url = "helm-reset"
+    identifier = "helm-reset"
+    weight = 155
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Rollback"
+    url = "helm-rollback"
+    identifier = "helm-rollback"
+    weight = 156
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Search"
+    url = "helm-search"
+    identifier = "helm-search"
+    weight = 157
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Serve"
+    url = "helm-serve"
+    identifier = "helm-serve"
+    weight = 158
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Status"
+    url = "helm-status"
+    identifier = "helm-status"
+    weight = 159
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Template"
+    url = "helm-template"
+    identifier = "helm-template"
+    weight = 160
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Test"
+    url = "helm-test"
+    identifier = "helm-test"
+    weight = 161
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Upgrade"
+    url = "helm-upgrade"
+    identifier = "helm-upgrade"
+    weight = 162
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Verify"
+    url = "helm-verify"
+    identifier = "helm-verify"
+    weight = 163
+    parent = "helm"
+  [[menu.main]]
+    name = "Helm Version"
+    url = "helm-version"
+    identifier = "helm-version"
+    weight = 164
+    parent = "helm"
+
+[[menu.main]]
+  name = "Charts"
+  url = "developing_charts"
+  identifier = "developing_charts"
+  weight = 200
+  [[menu.main]]
+    name = "Intro to Charts"
+    url = "charts"
+    identifier = "charts"
+    weight = 201
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Chart Lifecycle Hooks"
+    url = "hooks"
+    identifier = "hooks"
+    weight = 202
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Charts Tips and Tricks"
+    url = "chart-development-tips-and-tricks"
+    identifier = "chart-development-tips-and-tricks"
+    weight = 203
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Charts Repository Guide"
+    url = "the-chart-repository-guide"
+    identifier = "chart-repo-guide"
+    weight = 204
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Syncing Your Chart Repo"
+    url = "syncing-your-chart-repository"
+    identifier = "syncing-your-chart-repo"
+    weight = 205
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Signing Charts"
+    url = "helm-provenance-and-integrity"
+    identifier = "helm-provenance-and-integrity"
+    weight = 206
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Chart Tests"
+    url = "chart-tests"
+    identifier = "chart-tests"
+    weight = 207
+    parent = "developing_charts"
+  [[menu.main]]
+    name = "Chart Repository FAQ"
+    url = "chart-repositories-frequently-asked-questions"
+    identifier = "chart-repositories-frequently-asked-questions"
+    weight = 208
+    parent = "developing_charts"
+
+[[menu.main]]
+  name = "Developing Templates"
+  url = "chart_template_guide"
+  identifier = "chart_template_guide"
+  weight = 300
+  [[menu.main]]
+    name = "Intro"
+    url = "the-chart-template-developer-s-guide"
+    identifier = "the-chart-template-developer-s-guide"
+    weight = 301
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Getting Started"
+    url = "getting-started-with-a-chart-template"
+    identifier = "getting-started-with-a-chart-template"
+    weight = 302
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Built-In Objects"
+    url = "built-in-objects"
+    identifier = "built-in-objects"
+    weight = 303
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Values Files"
+    url = "values-files"
+    identifier = "values-files"
+    weight = 304
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Template Functions and Pipelines"
+    url = "template-functions-and-pipelines"
+    identifier = "template-functions-and-pipelines"
+    weight = 305
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Flow Control"
+    url = "flow-control"
+    identifier = "flow-control"
+    weight = 306
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Variables"
+    url = "variables"
+    identifier = "variables"
+    weight = 307
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Named Templates"
+    url = "named-templates"
+    identifier = "named-templates"
+    weight = 308
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Accessing Files Inside Templates"
+    url = "accessing-files-inside-templates"
+    identifier = "accessing-files-inside-templates"
+    weight = 310
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Creating a NOTES.txt File"
+    url = "creating-a-notes-txt-file"
+    identifier = "creating-a-notes-txt-file"
+    weight = 311
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Subcharts and Global Values"
+    url = "subcharts-and-global-values"
+    identifier = "subcharts-and-global-values"
+    weight = 312
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Debugging Templates"
+    url = "debugging-templates"
+    identifier = "debugging-templates"
+    weight = 313
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Next Steps"
+    url = "wrapping-up"
+    identifier = "wrapping-up"
+    weight = 314
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Appendix: YAML Techniques"
+    url = "yaml-techniques"
+    identifier = "yaml-techniques"
+    weight = 315
+    parent = "chart_template_guide"
+  [[menu.main]]
+    name = "Appendix: Go Data Types and Templates"
+    url = "appendix-go-data-types-and-templates"
+    identifier = "appendix-go-data-types-and-templates"
+    weight = 316
+    parent = "chart_template_guide"
+
+[[menu.main]]
+  name = "Best Practices"
+  url = "/chart_best_practices/"
+  identifier = "chart_best_practices"
+  weight = 401
+  [[menu.main]]
+    name = "Intro"
+    url = "the-chart-best-practices-guide"
+    identifier = "the-chart-best-practices-guide"
+    weight = 402
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "General Conventions"
+    url = "general-conventions"
+    identifier = "general-conventions"
+    weight = 403
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Values"
+    url = "values"
+    identifier = "values"
+    weight = 404
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Templates"
+    url = "templates"
+    identifier = "templates"
+    weight = 405
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Requirements"
+    url = "requirements-files"
+    identifier = "requirements-files"
+    weight = 406
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Labels & Annotations"
+    url = "labels-and-annotations"
+    identifier = "labels-and-annotations"
+    weight = 407
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Pods & PodTemplates"
+    url = "pods-and-podtemplates"
+    identifier = "pods-and-podtemplates"
+    weight = 408
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "Custom Resource Definitions"
+    url = "custom-resource-definitions"
+    identifier = "custom-resource-definitions"
+    weight = 409
+    parent = "chart_best_practices"
+
+[[menu.main]]
+  name = "Related Projects"
+  url = "/docs/related/"
+  identifier = "related-projects"
+  weight = 500
+[[menu.main]]
+  name = "Architecture"
+  url = "/docs/architecture/"
+  identifier = "architecture"
+  weight = 501
+[[menu.main]]
+  name = "Developer Guide"
+  url = "/docs/developers/"
+  identifier = "developer-guide"
+  weight = 502
+[[menu.main]]
+  name = "History"
+  url = "/docs/history/"
+  identifier = "history"
+  weight = 503
+[[menu.main]]
+  name = "Glossary"
+  url = "/docs/glossary/"
+  identifier = "glossary"
+  weight = 504
+[[menu.main]]
+  name = "Find Charts"
+  url = "http://github.com/helm/charts"
+  weight = 505
