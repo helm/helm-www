@@ -13,10 +13,12 @@ In alphabetical order, by first name, they are:
 
 * Adam Reese (adamreese)
 * Adnan Abdulhussein (prydonius)
+* Josh Dolitsky (jdolitsky)
 * Matt Butcher (technosophos)
 * Matt Farina (mattfarina)
 * Matt Fisher (bacongobbler)
 * Reinhard Nägele (unguiculus)
+* Scott Rigby (scottrigby)
 * Vic Iglesias (viglesiasce)
 
 Thanks to everyone who ran. Helm is off to a great start under the CNCF and this is another step in our journey.
