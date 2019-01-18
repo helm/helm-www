@@ -27,6 +27,10 @@ $npm : '../../../../../node_modules';
 @import "helm-buttons.scss";
 @import "helm-typography.scss";
 
+
+$fa-font-path: "../fonts" !default;
+@import 'fontawesome/font-awesome.scss';
+
 // load main helm.sh page
 @import "helm-home.scss";
 @import "helm-blog.scss";
