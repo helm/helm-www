@@ -12,9 +12,9 @@ plainIdAnchors = "true"
 defaultContentLanguage = "en"
 
 [params]
-  title = "Helm Docs"
-  author = "Ronan Flynn-Curran"
-  description = "Documentation for Helm - The Kubernetes Package Manager."
+    title = "Helm"
+    author = "Ronan Flynn-Curran"
+    description = "Helm - The Kubernetes Package Manager."
 
 [[menu.main]]
   name = "Using Helm"
