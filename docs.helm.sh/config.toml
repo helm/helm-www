@@ -6,17 +6,16 @@ theme = "helmdocs"
 contentDir = "source/docs"
 publishdir = "app"
 
-[params]
-    title = "Helm Docs"
-    author = "Ronan Flynn-Curran"
-    description = "Documentation for Helm - The Kubernetes Package Manager."
-
 canonifyURLs = "false"
 relativeURLs = "true"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
 defaultContentLanguage = "en"
 
+[params]
+  title = "Helm Docs"
+  author = "Ronan Flynn-Curran"
+  description = "Documentation for Helm - The Kubernetes Package Manager."
 
 [[menu.main]]
   name = "Using Helm"
