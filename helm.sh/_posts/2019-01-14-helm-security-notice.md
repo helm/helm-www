@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Helm Vulnerability: Client Unpacking Chart that Contains Malicious Content"
+title: "Helm Vulnerability: Client Unpacking Chart that Contains Malicious Content [CVE-2019-1000008]"
 permalink: "/blog/helm-security-notice-2019/"
 authorname: "Matt Butcher"
 author: "@technosophos"
