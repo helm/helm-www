@@ -18,7 +18,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Using Helm"
-  url = "/using_helm/"
+  url = "/docs/using_helm/"
   identifier = "using_helm"
   weight = 2
   [[menu.main]]
@@ -78,7 +78,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Helm Commands"
-  url = "/helm/"
+  url = "/docs/helm/"
   identifier = "helm"
   weight = 102
   [[menu.main]]
@@ -348,7 +348,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Charts"
-  url = "/developing_charts/"
+  url = "/docs/developing_charts/"
   identifier = "developing_charts"
   weight = 200
   [[menu.main]]
@@ -402,7 +402,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Developing Templates"
-  url = "/chart_template_guide/"
+  url = "/docs/chart_template_guide/"
   identifier = "chart_template_guide"
   weight = 300
   [[menu.main]]
@@ -498,7 +498,7 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
   name = "Best Practices"
-  url = "/chart_best_practices/"
+  url = "/docs/chart_best_practices/"
   identifier = "chart_best_practices"
   weight = 401
   [[menu.main]]
@@ -548,6 +548,12 @@ defaultContentLanguage = "en"
     url = "custom-resource-definitions"
     identifier = "custom-resource-definitions"
     weight = 409
+    parent = "chart_best_practices"
+  [[menu.main]]
+    name = "RBAC"
+    url = "rbac"
+    identifier = "rbac"
+    weight = 410
     parent = "chart_best_practices"
 
 [[menu.main]]
