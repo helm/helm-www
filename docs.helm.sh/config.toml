@@ -7,7 +7,6 @@ contentDir = "source/docs"
 publishdir = "app"
 
 canonifyURLs = "false"
-relativeURLs = "true"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
 defaultContentLanguage = "en"
