@@ -177,6 +177,10 @@ gulp.task('clone', function(cb) {
     return gulp.src(templatefiles)
       .pipe(gulp.dest('source/docs/chart_template_guide/tmp/'))
   });
+  gulp.task('template-best-move', function() {
+    return gulp.src('source/docs/chart_best_practices/**.md')
+      .pipe(gulp.dest('source/docs/chart_best_practices/tmp/'))
+  });
   gulp.task('template-concat', function() {
     return gulp.src([
         'source/docs/chart_template_guide/tmp/intro.md',
@@ -197,6 +201,21 @@ gulp.task('clone', function(cb) {
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/chart_template_guide/'))
   });
+  gulp.task('template-bestpractices', function() {
+    return gulp.src([
+        'source/docs/chart_best_practices/tmp/README.md',
+        'source/docs/chart_best_practices/tmp/conventions.md',
+        'source/docs/chart_best_practices/tmp/values.md',
+        'source/docs/chart_best_practices/tmp/templates.md',
+        'source/docs/chart_best_practices/tmp/requirements.md',
+        'source/docs/chart_best_practices/tmp/labels.md',
+        'source/docs/chart_best_practices/tmp/pods.md',
+        'source/docs/chart_best_practices/tmp/custom_resource_definitions.md',
+        'source/docs/chart_best_practices/tmp/rbac.md'
+    ], { allowEmpty: false })
+    .pipe(concat('index.md'))
+    .pipe(gulp.dest('source/docs/chart_best_practices/'))
+  });
   gulp.task('template-del', function() {
     return del([
       templatefiles,
@@ -213,7 +232,9 @@ gulp.task('clone', function(cb) {
   gulp.task('reorg-templates', gulp.series(
     'template-rename',
     'template-move',
+    'template-best-move',
     'template-concat',
+    'template-bestpractices',
     'template-del'
   ), function () {});
   gulp.task('reorg', function () {
@@ -324,7 +345,9 @@ gulp.task('build',
     'reorg-charts',
     'template-rename',
     'template-move',
+    'template-best-move',
     'template-concat',
+    'template-bestpractices',
     'template-del',
     'redirect-anchor-replace',
     'redirect-underscores',

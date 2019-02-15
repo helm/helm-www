@@ -551,7 +551,7 @@ defaultContentLanguage = "en"
     parent = "chart_best_practices"
   [[menu.main]]
     name = "RBAC"
-    url = "rbac"
+    url = "role-based-access-control"
     identifier = "rbac"
     weight = 410
     parent = "chart_best_practices"
