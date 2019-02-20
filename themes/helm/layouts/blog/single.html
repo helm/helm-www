@@ -23,7 +23,11 @@
       <div class="small-10 columns content-wrap">
         <article id="content">
           <h1>{{ .Title }}</h1>
+          <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+          
           {{ .Content }}
+
+          <p class="author"><a href="{{ .Params.authorlink }}" target="_blank">{{ .Params.authorname }}<br> <small>{{ .Params.author }}</a></small></p>
 
        </article>
       </div>

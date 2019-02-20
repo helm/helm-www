@@ -22,11 +22,11 @@
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-10 columns content-wrap">        
         
-        {{ range .Paginator.Pages }}
+        {{ range .Pages }}
           <article>
             <header>
               <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-              <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+              <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
             </header>
             
             {{ .Summary }}
