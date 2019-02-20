@@ -22,7 +22,7 @@
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-10 columns content-wrap">        
         
-        {{ range .Pages }}
+        {{ range (.Paginate .Pages).Pages }}
           <article>
             <header>
               <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
@@ -34,8 +34,19 @@
             <a href="{{ .RelPermalink }}">Read More…</a>
             {{ end }}
           </article>
-  
         {{ end }}
+
+        <div class="pagination">
+          {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="left arrow">&#8592;</a>
+          {{ end }}
+          {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="right arrow">&#8594;</a>
+          {{ end }}
+        
+          <span>{{ .Paginator.PageNumber }}</span>
+        </div>
+
       </div>
       <div class="small-1 columns">&nbsp;</div>
     </div>

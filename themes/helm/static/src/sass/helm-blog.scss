@@ -99,6 +99,18 @@
           }
         }
       }
+
+      .pagination {
+        padding-top: 3.5rem;
+
+        span, a {
+          padding: 1rem;
+          font-size: 1.25rem;
+          font-weight: bold;
+          background: $light2;
+          @include box-shadow;
+        }
+      }
     }
 
     &.blog-single {
