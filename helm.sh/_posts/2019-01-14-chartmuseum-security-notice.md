@@ -10,7 +10,7 @@ Security researcher Bernard Wagner of [Entersekt](https://www.entersekt.com/) di
 
 When ChartMuseum is configured for multitenancy the specially crafted chart could be uploaded to one tenant but saved in the location of another tenant. This includes overwriting a chart at a version in the other tenant.
 
-Additionally, if ChartMusem is configured to use a file system the uploaded Chart archive may be uploaded to locations outside of the storage directory. It could be uploaded to any place the ChartMuseum application binary has write permission to.
+Additionally, if ChartMuseum is configured to use a file system the uploaded Chart archive may be uploaded to locations outside of the storage directory. It could be uploaded to any place the ChartMuseum application binary has write permission to.
 
 We are unaware of any public exploits caused by this issue.<!--more-->
 
