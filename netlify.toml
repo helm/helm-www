@@ -1,0 +1,19 @@
+[build]
+  base    = ""
+  command = "gulp && hugo"
+  publish = "app"
+
+[context.production.environment]
+  HUGO_VERSION = "0.40.3"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+# redirect docs homepage
+[[redirects]]
+  from = "https://docs.helm.sh/"
+  to = "https://helm.sh/docs/"
+
+# redirect docs subpages 
+[[redirects]]
+  from = "https://docs.helm.sh/*"
+  to = "https://helm.sh/docs/:splat"
