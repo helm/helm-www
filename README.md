@@ -1,4 +1,4 @@
-![https://helm.sh/assets/images/apple-touch-icon.png](https://helm.sh/assets/images/apple-touch-icon.png)
+![https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png](https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png)
 
 [helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
