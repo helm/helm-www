@@ -7,3 +7,8 @@
   HUGO_VERSION = "0.40.3"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
+
+# A basic redirect rule
+[[redirects]]
+  from = "https://docs.helm.sh"
+  to = "https://helm.sh/docs/"
