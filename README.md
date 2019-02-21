@@ -2,6 +2,8 @@
 
 [helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/82538e29-5fcd-4196-8fa5-8de57cc096ed/deploy-status)](https://app.netlify.com/sites/brigade-docs/deploys)
+
 ---
 
 ## How To Add A Blog Post
