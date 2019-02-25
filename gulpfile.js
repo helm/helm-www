@@ -267,7 +267,7 @@ gulp.task('clone', function(cb) {
   gulp.task('redirect-subfolder', function() {
     return gulp.src('source/docs/helm/*.md')
       // update internal urls within the helm_commands
-      .pipe(replace('](helm', '](../../helm/#helm'))
+      .pipe(replace('](helm', '](../../docs/helm/#helm'))
       .pipe(replace('.md)', ')'))
       .pipe(gulp.dest('source/docs/helm/'))
   });
