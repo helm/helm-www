@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Bringing Helm Home"
-permalink: "/blog/bringing-helm-home/"
+slug: "bringing-helm-home"
+aliases: "/blog/2018-07-23-bring-helm-home/"
 authorname: "Matt Butcher"
 author: "@technosophos"
 authorlink: "https://twitter.com/technosophos"

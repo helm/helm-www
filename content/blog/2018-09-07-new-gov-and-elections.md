@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "New Governance And Elections"
-permalink: "/blog/new-gov-and-elections/"
+slug: "new-gov-and-elections"
+aliases: "/blog/2018-09-07-new-gov-and-elections/"
 authorname: "Matt Farina"
 authorlink: "https://mattfarina.com"
 date: "2018-09-07"

@@ -17,7 +17,7 @@ created via pull requests. The following steps are used to add them.
 ---
 layout: post
 title: "A Fancy Title"
-permalink: "/blog/2018/fancy-title/"
+slug: "fancy-title"
 authorname: "Captain Awesome"
 authorlink: "https://example.com"
 date: "yyyy-mm-dd"
