@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Introducing the Helm Org Maintainers"
-permalink: "/blog/intro-helm-org-maintainers/"
+slug: "intro-helm-org-maintainers"
+aliases: "/blog/2018-10-04-helm-org-maintainers/"
 authorname: "Matt Farina & Matt Butcher"
 authorlink: "https://helm.sh"
 date: "2018-10-04"

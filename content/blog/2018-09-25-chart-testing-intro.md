@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Using the Community Chart Testing Tools Yourself"
-permalink: "/blog/chart-testing-intro/"
+slug: "chart-testing-intro"
+aliases: "/blog/2018-09-25-chart-testing-intro/"
 authorname: "Matt Farina"
 authorlink: "https://mattfarina.com"
 date: "2018-09-25"

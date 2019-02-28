@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Helm Moves To DCO"
-permalink: "/blog/helm-dco/"
+slug: "helm-dco"
+aliases: "/blog/2018-08-27-helm-switch-dco/"
 authorname: "Matt Farina"
 authorlink: "https://mattfarina.com"
 date: "2018-08-27"

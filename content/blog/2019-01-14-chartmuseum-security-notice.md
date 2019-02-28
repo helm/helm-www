@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "ChartMuseum Vulnerability: Authorization Bypass [CVE-2019-1000009]"
-permalink: "/blog/chartmuseum-security-notice-2019/"
+slug: "chartmuseum-security-notice-2019"
+aliases: "/blog/2019-01-14-chartmuseum-security-notice/"
 authorname: "Matt Farina & Josh Dolitsky"
 authorlink: "https://helm.sh"
 date: "2019-01-14"
