@@ -24,7 +24,7 @@ date: "yyyy-mm-dd"
 ---
 ```
 3) Add the content below the `---` as Markdown. The title does not need to be included in this section
-4) Any images should be placed in the `/assets/images/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+4) Any images should be placed in the `/src/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 5) To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link. 
 
 ---
