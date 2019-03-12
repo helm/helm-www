@@ -16,6 +16,9 @@ defaultContentLanguage = "en"
     author = "Ronan Flynn-Curran"
     description = "Helm - The Kubernetes Package Manager."
 
+[Permalinks]
+  code = "/:filename/"
+
 [[menu.main]]
   name = "Using Helm"
   url = "/docs/using_helm/"

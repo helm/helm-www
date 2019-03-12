@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="go-import" content="https://helm.sh{{substr .RelPermalink 0 -1}} git {{.Params.vanity}}">
+  <meta name="go-source" content="https://helm.sh{{substr .RelPermalink 0 -1}} {{.Params.vanity}} {{.Params.vanity}}/tree/master{/dir} {{.Params.vanity}}/blob/master{/dir}/{file}#L{line}">
+
+  <meta http-equiv="refresh" content="0; url={{.Params.vanity}}">
+</head>
+
+<body>
+  Nothing to see here; <a href="{{ .Params.vanity }}">move along</a>.
+</body>
+
+</html>
