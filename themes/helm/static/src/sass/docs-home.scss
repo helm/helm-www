@@ -99,19 +99,6 @@
     }
   }
 
-  // #boat {
-  //   height: 2em;
-  //   @include animation(0, 20s, imonaboat);
-
-  //   @media only screen and (min-device-width: 414px + 1) {
-  //     background: url('../img/boat.png') no-repeat;
-  //     background-size: 150px;
-  //     height: 120px; //TODO programmatize this!
-  //     position: relative;
-  //     margin-top: 40px;
-  //   }
-  // }
-
   .home-featured {
     background-color: $blue1;
     padding-top: 20px;
