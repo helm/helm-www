@@ -57,9 +57,43 @@
       display: none;
     }
 
+    nav.home-nav {
+      h1 {
+        max-width: 44px;
+        left: 50%;
+        margin-left: -22px;
+        top: 0.5rem;
+
+        svg {
+          min-height: 44px;
+        }
+      }
+
+      ul {
+        width: 96%;
+        padding: 0;
+        top: 6rem;
+        text-align: center;
+        
+        li {
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          
+          a {
+            margin: 0;
+            padding: 0 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+
     #helm {
       .billboard {
         padding-top: 180px;
+        min-height: 480px;
 
         .container {
           margin-left: 5%;
@@ -67,7 +101,11 @@
         }
 
         h1 {
-          font-size: 2rem;
+          font-size: 1.825rem;
+        }
+
+        h2 {
+          font-size: 1rem;
         }
 
         .helm-logo {

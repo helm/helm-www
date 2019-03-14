@@ -616,48 +616,29 @@ nav.home-nav {
 
 @media screen and (max-width: 1024px) {
   #helm {
-    .billboard {
-      .helm-logo {
-        position: absolute;
-        left: 50%;
-        top: 2.3rem;
-        max-width: 112px;
-        margin-left: -66px;
-      }
 
-      h1 {
-        margin: -3rem 10% 0;
-        font-size: 2.25rem;
-      }
-
-      h2 {
-        margin: 1rem 12.5%;
-        font-size: 1rem;
+    .contrib-logos-1,
+    .contrib-logos-2 {
+      img {
+        max-height: 80px;
       }
     }
-  }
 
-  .contrib-logos-1,
-  .contrib-logos-2 {
-    img {
-      max-height: 80px;
-    }
-  }
+    .cncf {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      padding-left: 0 !important;
 
-  .cncf {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 0 !important;
+      img,
+      p {
+        float: none;
+        min-width: 80%;
+        margin: 1.5rem auto;
+      }
 
-    img,
-    p {
-      float: none;
-      min-width: 80%;
-      margin: 1.5rem auto;
-    }
-
-    img {
-      max-width: 51%;
+      img {
+        max-width: 51%;
+      }
     }
   }
 }
