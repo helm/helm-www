@@ -80,6 +80,11 @@ defaultContentLanguage = "en"
     parent = "using_helm"
 
 [[menu.main]]
+  name = "FAQs"
+  url = "/docs/faq/"
+  identifier = "faq"
+  weight = 101
+[[menu.main]]
   name = "Helm Commands"
   url = "/docs/helm/"
   identifier = "helm"
