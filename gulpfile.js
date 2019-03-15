@@ -289,6 +289,13 @@ gulp.task('clone', function(cb) {
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
       .pipe(replace('](images/', '](https://raw.githubusercontent.com/helm/helm/master/docs/images/'))
+      // chart best practices toc
+      .pipe(replace('](./#conventions', '](./#general-conventions'))
+      .pipe(replace('](./#requirements', '](./#requirements-files'))
+      .pipe(replace('](./#labels', '](./#labels-and-annotations'))
+      .pipe(replace('](./#pods', '](./#pods-and-podtemplates'))
+      .pipe(replace('](./#custom_resource_definitions', '](./#custom-resource-definitions'))
+      // misc
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
