@@ -111,7 +111,7 @@ gulp.task('clean', function () {
 
 // Clone Docs for Hugo
 gulp.task('clone', function(cb) {
-  git.clone('https://github.com/helm/helm', {args: '-b v3-dev ./source', quiet: false}, function(err) {
+  git.clone('https://github.com/helm/helm', {args: '-b dev-v3 ./source', quiet: false}, function(err) {
     // handle err
     cb(err);
   });
