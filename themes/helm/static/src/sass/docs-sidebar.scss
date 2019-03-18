@@ -93,7 +93,7 @@
 
   ul {
     margin: 0 auto 0.5em;
-    padding: 7.5rem 0 6rem;
+    padding: 6rem 0 6rem;
 
     li {
       a {
@@ -211,6 +211,16 @@
         color: $blue3;
         font-size: $scalex3;
       }
+    }
+  }
+  .search-container{
+    z-index: 1020;
+    position: "relative";
+    padding-top: 1rem;
+    & > .algolia-autocomplete{
+      display: block !important;
+      margin: auto;
+      width: 90%;
     }
   }
 }
