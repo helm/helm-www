@@ -32,7 +32,6 @@
       height: 850px;
       width: 100%;
       bottom: 0;
-      // background-color: $blue1;
       position: fixed;
     }
 
@@ -88,44 +87,15 @@
       }
 
       &:after {
-        $height: 6px;
         background: url('../img/pattern-waves.png') left top repeat-x;
-        background-size: $gutter;
+        background-size: 20px;
         bottom: 0;
         content: '';
         display: block;
-        height: $height;
+        height: 6px;
         position: absolute;
         width: 100%;
       }
-    }
-  }
-
-  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-    @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
-  }
-
-  #boat {
-    height: 2em;
-
-    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-      $duration: 20s;
-      background: url('../img/boat.png') no-repeat;
-      background-size: $boat-size;
-      height: 120px; //TODO programmatize this!
-      position: relative;
-      margin-top: 40px;
-
-      -moz-animation: $boat-animation;
-      -webkit-animation: $boat-animation;
-      -ms-animation: $boat-animation;
-      -o-animation: $boat-animation;
-      animation: $boat-animation;
-      -webkit-animation-duration: $duration;
-      -moz-animation-duration: $duration;
-      -ms-animation-duration: $duration;
-      -o-animation-duration: $duration;
-      animation-duration: $duration;
     }
   }
 
