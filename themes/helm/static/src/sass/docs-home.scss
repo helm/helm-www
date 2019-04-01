@@ -39,7 +39,7 @@
       background-color: white;
       background: url('../img/pattern-topo.png') left top repeat;
       background-size: 376px;
-      padding-top: 230px;
+      padding-top: 440px;
       position: relative;
       // text-align: center;
 
@@ -51,6 +51,7 @@
         @include klinicBold;
         color: $blue1;
         font-size: 2.57rem;
+        margin-top: -250px;
         text-transform: none !important;
       }
 
