@@ -1,4 +1,5 @@
 ---
-title: "helm"
-vanity: "https://github.com/helm/helm"
+name: "helm"
+repoURL: "https://github.com/helm/helm"
+branch: "dev-v3"
 ---
