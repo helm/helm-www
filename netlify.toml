@@ -17,3 +17,8 @@
 [[redirects]]
   from = "https://docs.helm.sh/*"
   to = "https://helm.sh/docs/:splat"
+
+## redirect to the latest version of the docs
+[[redirects]]
+  from = "https://helm.sh/docs/"
+  to = "https://helm.sh/docs/latest/"

@@ -1,3 +1,5 @@
+{{- $currentVersion := default "latest" (index (split .File.Path "/") 1) }}
+
 <div class="sidebar show-for-large-up">
   <h1>
     <a href="/">
@@ -18,22 +20,26 @@
             <span class="ripple">Docs Home <span></span></span>
           </a>
         </li>
-        {{ range .Site.Menus.main }}
-        <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-          <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
-            <span class="ripple">{{ .Name }} <span></span></span>
+        {{ range (index .Site.Data.docs $currentVersion).nav }}
+        {{- $url := printf "/docs/%s/%s" $currentVersion .url }}
+        {{- $isCurrentPage := eq $url $.URL }}
+        <li class="sidebar-nav-item toctree-l1 {{if $isCurrentPage }} active {{ end }}">
+          <a class="reference internal" href="{{ $url | safeHTMLAttr }}" state="">
+            <span class="ripple">{{ .name }} <span></span></span>
           </a>
-          {{ if .HasChildren }}
+          {{ with .children }}
           <ul class="current">
-            {{ range .Children.ByWeight }}
-            <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-              <a href="../../docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
-                {{ .Name }}
+            {{ range sort . "weight" "desc" }}
+            {{- $url := printf "%s/%s" $url .url }}
+            {{- $isCurrentPage := eq $url $.URL }}
+            <li class="toctree-l2 {{if $isCurrentPage }} active {{ end }}">
+              <a href="{{ $url | safeHTMLAttr }}" title="Switch to {{ .name }}">
+                {{ .name }}
               </a>
             </li>
             {{ end }}
           </ul>
-          {{end}}
+          {{ end }}
         </li>
         {{ end }}
       </ul>

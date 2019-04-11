@@ -242,7 +242,7 @@ gulp.task('clone', function(cb) {
         return stream
           .pipe(inject.prepend('+++\naliases = [\n\"' + aliasname + '\"\,\n\"' + diraliasname + '\"\,\n\"using\_helm\/' + aliasname + '\"\,\n\"developing\_charts\/' + aliasname + '\"\n]\n+++\n\n'))
       }))
-      .pipe(gulp.dest('./content/docs'))
+      .pipe(gulp.dest('./content/docs/latest'))
   });
 
   // links
@@ -316,7 +316,7 @@ gulp.task('clone', function(cb) {
 
   gulp.task('copy-docs-source', function () {
     return gulp.src('source/docs/**/*')
-      .pipe(gulp.dest('content/docs/'))
+      .pipe(gulp.dest('content/docs/latest'))
   });
 
   gulp.task('copyall', function () {
