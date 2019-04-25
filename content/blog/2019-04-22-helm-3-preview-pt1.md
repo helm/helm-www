@@ -68,4 +68,5 @@ Since the release of Helm 2 in 2016, Kubernetes added several major features. Ro
 
 Throughout all of these changes, Helm continued to serve the needs of Kubernetes users. After 3 years and many new feature additions, it became a good idea to introduce some major changes to the code base so that Helm would continue to meet the needs of this evolving ecosystem.
 
-This brings us to Helm 3 --  check back in later this week as we discuss the fate of Tiller in our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks. 
+This brings us to Helm 3 --  check out our next blog post [here](https://helm.sh/blog/helm-3-preview-pt2/) where we discuss the fate of Tiller in our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks. 
+
