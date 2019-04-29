@@ -21,5 +21,5 @@ Tiller’s primary goal could be accomplished without Tiller, so one of the firs
 
 With Tiller gone, the security model for Helm is radically simplified. Helm 3 now supports all the modern security, identity, and authorization features of modern Kubernetes. Helm's permissions are evaluated using your [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). Cluster administrators can restrict user permissions at whatever granularity they see fit. Releases are still recorded in-cluster, and the rest of Helm's functionality remains.
 
-Check back in next week as we discuss chart repositories in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
+Read the next blog post [here](https://helm.sh/blog/helm-3-preview-pt2/) where we discuss chart repositories in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
  
