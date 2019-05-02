@@ -28,4 +28,4 @@ Thanks to the efforts of the [Open Container Initiative (or OCI for short)](http
 
 I wrote a more detailed deep-dive on some of the [upcoming changes to Helm Chart Repositories](https://blog.bacongobbler.com/post/2019-01-25-distributing-with-distribution/) if you'd like to read more on the subject.
 
-Check back in later this week as we discuss release management in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
+You can check out the next blog [here](https://helm.sh/blog/helm-3-preview-pt4/) where we discuss release management in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
