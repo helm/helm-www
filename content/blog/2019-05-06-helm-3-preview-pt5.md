@@ -43,4 +43,4 @@ dependencies:
 
 Charts are still downloaded and placed in the charts/ directory, so subcharts vendored into the charts/ directory will continue to work without modification.
 
-Check back in later this week as we introduce library charts in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
+Click [here](https://helm.sh/blog/helm-3-preview-pt6/) to read the next blog where we introduce library charts in the next part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
