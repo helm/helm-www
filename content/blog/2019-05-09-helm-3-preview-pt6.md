@@ -24,4 +24,4 @@ dependencies:
 
 We're very excited to see the use cases this feature opens up for chart developers, as well as any best practices that arise from consuming library charts.
 
-Check back in next week as we discuss what's next in the final part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
+Click [here](https://helm.sh/blog/helm-3-preview-pt7/) to read the final part of our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
