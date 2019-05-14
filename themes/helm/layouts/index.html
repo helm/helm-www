@@ -28,6 +28,8 @@
     <div class="inner-wrap">
 
       <nav class="home-nav">
+        {{ partial "banner.html" . }}
+          
         <h1>
           <a href="{{ .Site.BaseURL }}" title="Helm.sh">
             {{ partial "logo.html" . }}
