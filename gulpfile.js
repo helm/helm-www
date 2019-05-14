@@ -7,7 +7,6 @@ var gulp = require('gulp'),
   minifycss = require('gulp-clean-css'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
-  notify = require('gulp-notify'),
   cache = require('gulp-cache'),
   jshint = require('gulp-jshint'),
   uglify = require('gulp-uglify'),
@@ -30,12 +29,10 @@ var gulp = require('gulp'),
 gulp.task('copy', function () {
   return gulp.src('themes/helm/static/src/fonts/*')
     .pipe(gulp.dest(destination + '/src/fonts'))
-    .pipe(notify({message: 'Fonts moved.'}));
 });
 gulp.task('copyall', function () {
   return gulp.src('static/src/**/*')
     .pipe(gulp.dest('app/src'))
-    .pipe(notify({message: 'Copied all.'}));
 });
 
 
@@ -49,8 +46,7 @@ gulp.task('styles', function () {
     .pipe(sourcemaps.init())
     .pipe(cssnano())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(destination + '/src/css'))
-    .pipe(notify({message: 'Styles compiled.'}));
+    .pipe(gulp.dest(destination + '/src/css'));
 });
 
 
@@ -66,8 +62,7 @@ gulp.task('scriptconcat', function () {
       'themes/helm/static/src/js/custom/foundation.tooltip.js'
     ], { allowEmpty: true })
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('themes/helm/static/src/js'))
-    .pipe(notify({message: 'Scripts concated.'}));
+    .pipe(gulp.dest('themes/helm/static/src/js'));
 });
 gulp.task('scriptminify', function () {
   return gulp.src([
@@ -79,8 +74,7 @@ gulp.task('scriptminify', function () {
     // .pipe(concat())
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest(destination + '/src/js'))
-    .pipe(notify({message: 'Scripts minified.'}));
+    .pipe(gulp.dest(destination + '/src/js'));
 });
 gulp.task('scripts', gulp.series('scriptconcat', 'scriptminify'), function () {});
 
@@ -89,10 +83,8 @@ gulp.task('scripts', gulp.series('scriptconcat', 'scriptminify'), function () {}
 gulp.task('images', function () {
   return streamqueue({objectMode: true},
     gulp.src('themes/helm/static/src/img/**/*{.jpg, .png, .gif}')
-      .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true})))
-      .pipe(notify({message: 'Images minifed.'})),
+      .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true}))),
     gulp.src('themes/helm/static/src/img/**/*')
-      .pipe(notify({message: 'Images moved.'}))
       .pipe(gulp.dest(destination + '/src/img'))
   )
 });
@@ -289,6 +281,13 @@ gulp.task('clone', function(cb) {
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
       // update the image paths in 'developing_charts'
       .pipe(replace('](images/', '](https://raw.githubusercontent.com/helm/helm/master/docs/images/'))
+      // chart best practices toc
+      .pipe(replace('](./#conventions', '](./#general-conventions'))
+      .pipe(replace('](./#requirements', '](./#requirements-files'))
+      .pipe(replace('](./#labels', '](./#labels-and-annotations'))
+      .pipe(replace('](./#pods', '](./#pods-and-podtemplates'))
+      .pipe(replace('](./#custom_resource_definitions', '](./#custom-resource-definitions'))
+      // misc
       .pipe(replace('.png)', '.png)'))
       // update tips and tricks link
       .pipe(replace('charts_tips_and_tricks', 'chart-development-tips-and-tricks'))
@@ -318,13 +317,11 @@ gulp.task('clone', function(cb) {
   gulp.task('copy-docs-source', function () {
     return gulp.src('source/docs/**/*')
       .pipe(gulp.dest('content/docs/'))
-      .pipe(notify({message: 'Copied the re-rendered Docs content.'}));
   });
 
   gulp.task('copyall', function () {
     return gulp.src('static/src/**/*')
       .pipe(gulp.dest('app/src'))
-      .pipe(notify({message: 'Copied all.'}));
   });
 
 
