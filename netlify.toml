@@ -21,23 +21,35 @@
 [[redirects]] # from v3 to latest
   from = "/blog/"
   to = "https://helm.sh/blog"
+  status = 301
+  force = true
 
 [[redirects]] # from v3 to latest
   from = "/blog/*"
-  to = "https://helm.sh/blog"
+  to = "https://helm.sh/blog/:splat"
+  status = 301
+  force = true
 
 [[redirects]] # from v3 to latest
   from = "https://helm-v3-dev.netlify.com/blog/"
   to = "https://helm.sh/blog"
+  status = 301
+  force = true
 
 [[redirects]] # from v3 to latest
   from = "https://helm-v3-dev.netlify.com/blog/*"
-  to = "https://helm.sh/blog"
+  to = "https://helm.sh/blog/:splat"
+  status = 301
+  force = true
 
 [[redirects]] # from v3 to latest
   from = "https://v3.helm.sh/blog/"
   to = "https://helm.sh/blog"
+  status = 301
+  force = true
 
 [[redirects]] # from v3 to latest
   from = "https://v3.helm.sh/blog/*"
-  to = "https://helm.sh/blog"
+  to = "https://helm.sh/blog/:splat"
+  status = 301
+  force = true
