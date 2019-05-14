@@ -16,6 +16,28 @@
 
   .top-bar {
     left: 0;
+    overflow: visible;
+  }
+
+  .left-off-canvas-toggle {
+    top: 30px;
+  }
+
+   .blog-layout .main.blog nav.top-bar #banner,
+  .sidebar+.main nav.top-bar #banner {
+    margin-left: 0;
+    min-width: 100%;
+  }
+
+   .blog-layout h1.blog-logo {
+    a:first-of-type {
+      left: 25px;
+    }
+
+     a:last-of-type {
+      right: auto;
+      left: 125px;
+    }
   }
 
   .st-default-autocomplete {
@@ -40,7 +62,7 @@
         max-width: 44px;
         left: 50%;
         margin-left: -22px;
-        top: 0.5rem;
+        top: 2.5rem;
 
         svg {
           min-height: 44px;
@@ -50,7 +72,7 @@
       ul {
         width: 96%;
         padding: 0;
-        top: 6rem;
+        top: 8.5rem;
         text-align: center;
         
         li {
