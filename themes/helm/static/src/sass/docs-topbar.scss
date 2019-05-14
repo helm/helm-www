@@ -8,13 +8,13 @@
   position: fixed;
   left: 300px;
   right: 0;
-  top: 0;
+  top: 30px;
   z-index: 1000;
 
   ul {
     min-width: 33.333%;
     margin-right: 0;
-    margin-top: 0.75em;
+    margin-top: -0.5rem;
     padding-right: 3.5%;
 
     li {
@@ -89,5 +89,40 @@
   img {
     padding: 1.425em 0.925em;
     color: $grey4;
+  }
+}
+
+// offset banner center when there is a left nav space
+.blog-layout .main.blog,
+.sidebar + .main {
+  nav.top-bar #banner {
+    margin-left: -300px;
+  }
+
+  h1.blog-logo {
+    top: 30px;
+  }
+}
+
+
+#banner {
+  background: $blue4;
+  color: white;
+  position: static;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: -30px;
+  text-align: center;
+  z-index: 1150;
+
+  p {
+    color: white;
+  }
+
+  a {
+    color: white;
+    font-weight: bold;
   }
 }
