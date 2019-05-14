@@ -22,3 +22,8 @@
   from = "/blog"
   to = "https://helm.sh/blog"
   status = 200
+
+[[redirects]] # from v3 to latest
+  from = "https://helm-v3-dev.netlify.com/blog/"
+  to = "https://helm.sh/blog"
+  status = 200
