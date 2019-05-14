@@ -17,3 +17,8 @@
 [[redirects]]
   from = "https://docs.helm.sh/*"
   to = "https://helm.sh/docs/:splat"
+
+[[redirects]] # from v3 to latest
+  from = "/blog"
+  to = "https://helm.sh/blog"
+  status = 200
