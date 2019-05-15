@@ -96,6 +96,23 @@ nav.home-nav {
   }
 }
 
+// offset for banner
+.home nav.home-nav  {
+  // top: 30px;
+
+  #banner {
+    margin-top: 0 !important;
+  }
+
+  h1 {
+    top: 38px;
+  }
+
+  ul {
+    top: 4rem;
+  }
+}
+
 #helm.home {
   background: $blue;
 
