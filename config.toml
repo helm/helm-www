@@ -408,7 +408,7 @@ defaultContentLanguage = "en"
     weight = 208
     parent = "developing_charts"
   [[menu.main]]
-    name = "Registries"
+    name = "OCI Registry Guide"
     url = "registries"
     identifier = "registries"
     weight = 209
