@@ -407,6 +407,12 @@ defaultContentLanguage = "en"
     identifier = "chart-repositories-frequently-asked-questions"
     weight = 208
     parent = "developing_charts"
+  [[menu.main]]
+    name = "OCI Registry Guide"
+    url = "registries"
+    identifier = "registries"
+    weight = 209
+    parent = "developing_charts"
 
 [[menu.main]]
   name = "Developing Templates"

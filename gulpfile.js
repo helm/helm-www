@@ -152,7 +152,8 @@ gulp.task('clone', function(cb) {
       'source/docs/chart_repository_sync_example.md',
       'source/docs/provenance.md',
       'source/docs/chart_tests.md',
-      'source/docs/chart_repository_faq.md'
+      'source/docs/chart_repository_faq.md',
+      'source/docs/registries.md'
     ], { allowEmpty: true })
     .pipe(concat('index.md'))
     .pipe(gulp.dest('source/docs/developing_charts/'))
