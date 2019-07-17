@@ -73,9 +73,11 @@
     background-color: #e4f3f9;
     color: black;
     border: none;
-    padding: 0.75em 1em;
+    padding: 0.75em 2rem 0.75rem 1rem;
     margin: 0.25em 0 2.5em;
     font-size: 1rem;
+    min-width: 65vw;
+    overflow: scroll;
 
     code {
       padding: 0;
@@ -84,9 +86,6 @@
     }
 
     &:hover {
-      min-width: 65vw;
-      overflow: scroll;
-      padding-right: 2rem;
       background-color: lighten(#e4f3f9, 2.5%);
 
       code {
