@@ -80,7 +80,17 @@
     code {
       padding: 0;
       background-color: #e4f3f9;
-      font-size: 1rem;
+      font-size: 1rem; 
+    }
+
+    &:hover {
+      min-width: 67vw;
+      overflow: scroll;
+      background-color: lighten(#e4f3f9, 2.5%);
+
+      code {
+        background-color: lighten(#e4f3f9, 2.5%);
+      }
     }
   }
 
