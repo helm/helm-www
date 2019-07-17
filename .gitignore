@@ -2,6 +2,7 @@
 .jekyll-metadata
 rootfs/svc
 .sass-cache/
+.yarnclean
 _site/*
 _site/
 .ncurc.yml
