@@ -84,8 +84,9 @@
     }
 
     &:hover {
-      min-width: 67vw;
+      min-width: 65vw;
       overflow: scroll;
+      padding-right: 2rem;
       background-color: lighten(#e4f3f9, 2.5%);
 
       code {
