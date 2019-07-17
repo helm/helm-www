@@ -276,6 +276,7 @@ gulp.task('clone', function(cb) {
       .pipe(replace('#install)', '#installing-helm)'))
       .pipe(replace('#using_helm', '#using-helm'))
       // update charts urls
+      .pipe(replace('Chart Development Guide](./#charts', 'Chart Development Guide](../developing_charts/'))
       .pipe(replace('chart_repository', 'developing_charts'))
       // update the provenance urls
       .pipe(replace('#provenance', '#helm-provenance-and-integrity'))
