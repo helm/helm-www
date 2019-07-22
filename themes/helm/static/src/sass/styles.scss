@@ -2,23 +2,21 @@
 Helm
 */
 
-// point to the node_modules directory
-$npm : '../../../../../node_modules';
 
 // load reset (normalize)
-@import "../../../../../node_modules/foundation-sites/scss/normalize.scss";
+@import "foundation/normalize.scss";
 
 // load foundation
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/grid.scss";
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/block-grid.scss";
+@import "foundation/foundation/components/grid.scss";
+@import "foundation/foundation/components/block-grid.scss";
 
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/buttons.scss";
+@import "foundation/foundation/components/buttons.scss";
 
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/inline-lists.scss";
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/top-bar.scss";
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/type.scss";
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/offcanvas.scss";
-@import "../../../../../node_modules/foundation-sites/scss/foundation/components/visibility.scss";
+@import "foundation/foundation/components/inline-lists.scss";
+@import "foundation/foundation/components/top-bar.scss";
+@import "foundation/foundation/components/type.scss";
+@import "foundation/foundation/components/offcanvas.scss";
+@import "foundation/foundation/components/visibility.scss";
 
 
 // load helm styles

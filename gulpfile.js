@@ -3,8 +3,7 @@ var destination = process.env.GULP_DESTINATION || 'static';
 // Load plugins
 var gulp = require('gulp'),
   sass = require('gulp-sass'),
-  autoprefixer = require('gulp-autoprefixer'),
-  minifycss = require('gulp-clean-css'),
+  autoprefixer = require('autoprefixer'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   cache = require('gulp-cache'),
@@ -13,8 +12,9 @@ var gulp = require('gulp'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
   del = require('del'),
+  postcss = require('gulp-postcss'),
+  cssnano = require('cssnano'),
   streamqueue = require('streamqueue'),
-  cssnano = require('gulp-cssnano'),
   sourcemaps = require('gulp-sourcemaps'),
   git = require('gulp-git'),
   foreach = require('gulp-foreach'),
@@ -38,14 +38,15 @@ gulp.task('copyall', function () {
 
 // Styles
 gulp.task('styles', function () {
+  var processors = [
+    autoprefixer(),
+    cssnano
+  ];
+  
   return gulp.src('themes/helm/static/src/sass/styles.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer('last 2 version'))
+    .pipe(postcss(processors))
     .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
-    .pipe(sourcemaps.init())
-    .pipe(cssnano())
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(destination + '/src/css'));
 });
 
