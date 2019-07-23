@@ -94,9 +94,7 @@ gulp.task('images', function () {
 gulp.task('clean', function () {
   return del([
     destination + '/src/**/*',
-    'source/',
-    'content/docs/*',
-    '!content/docs/README.md'
+    'source/'
   ], {force: true});
 });
 
