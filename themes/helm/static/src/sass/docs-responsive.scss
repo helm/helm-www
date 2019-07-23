@@ -55,13 +55,13 @@
 
     nav.home-nav {
       h1 {
-        max-width: 44px;
+        max-width: 64px;
         left: 50%;
-        margin-left: -22px;
+        margin-left: -32px;
         top: 2.5rem;
 
         svg {
-          min-height: 44px;
+          min-height: 64px;
         }
       }
 
@@ -224,10 +224,6 @@
     .right {
       li {
         display: none;
-
-        &.versioner {
-          display: inline-block !important;
-        }
       }
     }
 

@@ -50,6 +50,7 @@
       &.versioner {
         padding: 0 !important;
         margin: 0 0 -1px !important;
+        display: none;
         
         a.versioner-trigger {
           padding-left: 1.667rem;
@@ -194,11 +195,6 @@
       }
 
       li.versioner {
-        // margin-right: -1.75rem;
-        // position: absolute;
-        // top: 3rem;
-        // right: -10rem;
-        // left: auto;
         opacity: 0.75;
 
         a {
@@ -206,6 +202,12 @@
         }
       }
     }
+  }
+}
+
+.docs {
+  .top-bar ul li.versioner {
+    display: inline-block;
   }
 }
 
