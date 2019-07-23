@@ -124,6 +124,12 @@
     padding: 0;
     text-align: left;
     min-width: auto;
+
+    &.f-open-dropdown {
+      left: auto !important;
+      right: 0 !important;
+      top: 80px !important;
+    }
     
     li {
       margin: 0;
@@ -188,11 +194,11 @@
       }
 
       li.versioner {
-        margin-right: -1.75rem;
-        position: absolute;
-        top: 3rem;
-        right: -10rem;
-        left: auto;
+        // margin-right: -1.75rem;
+        // position: absolute;
+        // top: 3rem;
+        // right: -10rem;
+        // left: auto;
         opacity: 0.75;
 
         a {
