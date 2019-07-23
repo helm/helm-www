@@ -1,4 +1,4 @@
-baseurl = "https://v2.14.0.helm.sh/"
+baseurl = "https://v2-14-0.helm.sh/"
 languageCode = "en-us"
 title = "Helm v2.14.0"
 theme = "helm"
