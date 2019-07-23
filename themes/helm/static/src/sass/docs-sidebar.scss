@@ -215,8 +215,9 @@
   }
   .search-container{
     z-index: 1020;
-    position: "relative";
+    position: relative;
     padding-top: 1rem;
+    
     & > .algolia-autocomplete{
       display: block !important;
       margin: auto;
