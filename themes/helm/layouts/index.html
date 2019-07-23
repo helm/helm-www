@@ -22,21 +22,22 @@
 
 <body id="landing" class="home">
 
-  
-
-  <div class="off-canvas-wrap" data-offcanvas>
+  <div class="off-canvas-wrap" data-offcanvas>    
     <div class="inner-wrap">
 
-      <nav class="home-nav">
-        {{ partial "banner.html" . }}
-          
+      <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+        <i class="fa fa-bars"></i>
+      </a>
+      {{ partial "offcanvas.html" . }}
+
+      <nav class="top-bar home-nav">
         <h1>
           <a href="{{ .Site.BaseURL }}" title="Helm.sh">
             {{ partial "logo.html" . }}
           </a>
         </h1>
-
-        <ul class="inline">
+        
+        <ul class="inline right text-right">
           {{ partial "nav.html" . }}
         </ul>
       </nav>
