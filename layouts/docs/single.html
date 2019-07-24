@@ -1,0 +1,39 @@
+{{ partial "header.html" . }}
+
+<div class="container container-full blog-layout">
+    {{ partial "sidebar.html" . }}
+
+  <div class="main docs docs-single page" id="scrollpane">
+    <h1 class="docs-logo">
+      <a href="/">
+        {{ partial "logo.html" . }}
+      </a>
+      <a href="/docs">
+        <em>Docs</em>
+      </a>
+    </h1>
+    
+    <nav class="top-bar">
+      {{ partial "banner.html" . }}
+        
+      <ul class="inline right text-right">
+        {{ partial "nav.html" . }}
+      </ul>
+    </nav>
+
+    <div class="row">
+      <div class="small-1 columns">&nbsp;</div>
+      <div class="small-10 columns content-wrap">
+        <article id="content">
+          <h1>{{ .Title }}</h1>
+          
+          {{ .Content }}
+
+          <p class="author"><a href="{{ .Params.authorlink }}" target="_blank">{{ .Params.authorname }}<br> <small>{{ .Params.author }}</a></small></p>
+
+       </article>
+      </div>
+      <div class="small-1 columns">&nbsp;</div>
+    </div>
+  </div>
+</div>

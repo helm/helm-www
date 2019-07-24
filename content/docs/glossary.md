@@ -1,7 +1,10 @@
-# Helm Glossary
-
-Helm uses a few special terms to describe components of the
-architecture.
+---
+title: "Glossary"
+description: "Terms used to describe components of Helm's architecture."
+menu:
+  docs:
+    weight: 100
+---
 
 ## Chart
 
@@ -37,7 +40,11 @@ are bundled with it.
 ## Chart Version
 
 Charts are versioned according to the [SemVer 2
+<<<<<<< HEAD
 spec](https://semver.org). A version number is required on every chart.
+=======
+spec](http://semver.org). A version number is required on every chart.
+>>>>>>> upstream/dev-v3-docs
 
 ## Chart.yaml
 
@@ -94,7 +101,11 @@ chart repository server or any other HTTP server.
 
 ## Release
 
+<<<<<<< HEAD
 When a chart is installed, Tiller (the Helm server) creates a _release_
+=======
+When a chart is installed, the Helm library creates a _release_
+>>>>>>> upstream/dev-v3-docs
 to track that installation.
 
 A single chart may be installed many times into the same cluster, and
@@ -130,12 +141,19 @@ rollback 1| release 4 (but running the same config as release 1)
 The above table illustrates how release numbers increment across
 install, upgrade, and rollback.
 
+<<<<<<< HEAD
 ## Tiller
 
 Tiller is the in-cluster component of Helm. It interacts directly with
 the Kubernetes API server to install, upgrade, query, and remove
 Kubernetes resources. It also stores the objects that represent
 releases.
+=======
+## Helm Library
+
+It interacts directly with the Kubernetes API server to install,
+upgrade, query, and remove Kubernetes resources.
+>>>>>>> upstream/dev-v3-docs
 
 ## Repository (Repo, Chart Repository)
 
