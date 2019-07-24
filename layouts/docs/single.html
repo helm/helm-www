@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 
-<div class="container container-full blog-layout">
+<div class="container container-full">
     {{ partial "sidebar.html" . }}
 
   <div class="main docs docs-single page" id="scrollpane">
@@ -24,14 +24,9 @@
     <div class="row">
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-10 columns content-wrap">
-        <article id="content">
-          <h1>{{ .Title }}</h1>
-          
-          {{ .Content }}
-
-          <p class="author"><a href="{{ .Params.authorlink }}" target="_blank">{{ .Params.authorname }}<br> <small>{{ .Params.author }}</a></small></p>
-
-       </article>
+        <h1>{{ .Title }}</h1>
+        
+        {{ .Content }}
       </div>
       <div class="small-1 columns">&nbsp;</div>
     </div>
