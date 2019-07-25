@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 
   <div class="container container-full 
-    {{ if in .Page.Permalink "docs" }} docs {{ else }} not-docs {{ end }} ">
+    {{ if in .Page.RelPermalink "docs" }} docs {{ else }} not-docs {{ end }} ">
     
     {{ partial "sidebar.html" . }}
 
