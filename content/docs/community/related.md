@@ -72,6 +72,7 @@ Tools layered on top of Helm.
 - [Armada](https://github.com/att-comdev/armada) - Manage prefixed releases throughout various Kubernetes namespaces, and removes completed jobs for complex deployments. Used by the [Openstack-Helm](https://github.com/openstack/openstack-helm) team.
 - [ChartMuseum](https://github.com/chartmuseum/chartmuseum) - Helm Chart Repository with support for Amazon S3 and Google Cloud Storage
 - [Codefresh](https://codefresh.io) - Kubernetes native CI/CD and management platform with UI dashboards for managing Helm charts and releases
+- [Captain](https://github.com/alauda/captain) - A Helm3 Controller using HelmRequest and Release CRD
 
 ## Helm Included
 
