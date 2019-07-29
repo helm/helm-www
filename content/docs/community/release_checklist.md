@@ -44,6 +44,18 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
 ```
 
+We are also going to be adding security and verification of the release process by hashing the binaries and providing signature files. We perform this using [GitHub and GPG](https://help.github.com/en/articles/about-commit-signature-verification). If you do not have GPG already setup you can follow these steps:
+
+1. [Install GPG](https://gnupg.org/index.html)
+2. [Generate GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key)
+3. [Add key to GitHub account](https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account)
+4. [Set signing key in Git](https://help.github.com/en/articles/telling-git-about-your-signing-key)
+
+Once you have a signing key you need to add it to the KEYS file at the root of
+the repository. The instructions for adding it to the KEYS file are in the file.
+If you have not done so already, you need to add your public key to the keyserver
+network. If you use GnuPG you can follow the [instructions provided by Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to_a_keyserver).
+
 ## 1. Create the Release Branch
 
 ### Major/Minor Releases
@@ -108,6 +120,24 @@ git add .
 git commit -m "bump version to $RELEASE_CANDIDATE_NAME"
 ```
 
+This will update it for the $RELEASE_BRANCH_NAME only. You will also need to pull
+this change into the master branch for when the next release is being created.
+
+```shell
+# get the last commit id i.e. commit to bump the version
+git log --format="%H" -n 1
+
+# create new branch off master
+git checkout master
+git checkout -b bump-version-<release_version>
+
+# cherry pick the commit using id from first command
+git cherry-pick -x <commit-id>
+
+# commit the change
+git push origin bump-version-<release-version>
+```
+
 ## 3. Commit and Push the Release Branch
 
 In order for others to start testing, we can now push the release branch upstream and start the test process.
@@ -131,7 +161,7 @@ git push upstream $RELEASE_CANDIDATE_NAME
 
 CircleCI will automatically create a tagged release image and client binary to test with.
 
-After CircleCI finishes building the artifacts, use the following commands to fetch the client for testing:
+For testers, the process to start testing after CircleCI finishes building the artifacts involves the following steps to grab the client:
 
 linux/amd64, using /bin/bash:
 
@@ -187,7 +217,26 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-## 7. Write the Release Notes
+Verify that the release succeeded in CI. If not, you will need to fix the release and push the release again.
+
+## 7. PGP Sign the downloads
+
+While hashes provide a signature that the content of the downloads is what it was generated, signed packages provide traceability of where the package came from.
+
+To do this, run the following `make` commands:
+
+```shell
+export VERSION="$RELEASE_NAME"
+make clean
+make fetch-dist
+make sign
+```
+
+This will generate ascii armored signature files for each of the files pushed by CI.
+
+All of the signature files need to be uploaded to the release on GitHub.
+
+## 8. Write the Release Notes
 
 We will auto-generate a changelog based on the commits that occurred during a release cycle, but it is usually more beneficial to the end-user if the release notes are hand-written by a human being/marketing team/dog.
 
@@ -200,21 +249,35 @@ An example release note for a minor release would look like this:
 
 Helm vX.Y.Z is a feature release. This release, we focused on <insert focal point>. Users are encouraged to upgrade for the best experience.
 
-The community keeps growing, and we'd love to see you there.
+The community keeps growing, and we'd love to see you there!
 
-- Join the discussion in [Kubernetes Slack](https://slack.k8s.io/):
+- Join the discussion in [Kubernetes Slack](https://kubernetes.slack.com):
   - `#helm-users` for questions and just to hang out
   - `#helm-dev` for discussing PRs, code, and bugs
-- Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom.us/j/4526666954)
-- Test, debug, and contribute charts: [GitHub/kubernetes/charts](https://github.com/helm/charts)
+- Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom.us/j/696660622)
+- Test, debug, and contribute charts: [GitHub/helm/charts](https://github.com/helm/charts)
+
+## Features and Changes
+
+- Major
+- features
+- list
+- here
 
 ## Installation and Upgrading
 
 Download Helm X.Y. The common platform binaries are here:
 
-- [OSX](https://get.helm.sh/helm-vX.Y.Z-darwin-amd64.tar.gz)
-- [Linux](https://get.helm.sh/helm-vX.Y.Z-linux-amd64.tar.gz)
-- [Windows](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.tar.gz)
+- [MacOS amd64](https://get.helm.sh/helm-vX.Y.Z-darwin-amd64.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-darwin-amd64.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux amd64](https://get.helm.sh/helm-vX.Y.Z-linux-amd64.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-amd64.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux arm](https://get.helm.sh/helm-vX.Y.Z-linux-arm.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-arm.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux arm64](https://get.helm.sh/helm-vX.Y.Z-linux-arm64.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-arm64.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux i386](https://get.helm.sh/helm-vX.Y.Z-linux-386.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-386.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux ppc64le](https://get.helm.sh/helm-vX.Y.Z-linux-ppc64le.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-ppc64le.tar.gz.sha256) / CHECKSUM_VAL)
+- [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256) / CHECKSUM_VAL)
+- [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256) / CHECKSUM_VAL)
+
+Once you have the client installed, upgrade Tiller with `helm init --upgrade`.
 
 The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/master/scripts/get) on any system with `bash`.
 
@@ -225,8 +288,19 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 
 ## Changelog
 
-- chore(*): bump version to v2.7.0 08c1144f5eb3e3b636d9775617287cc26e53dba4 (Adam Reese)
+### Features
+- ref(*): kubernetes v1.11 support efadbd88035654b2951f3958167afed014c46bc6 (Adam Reese)
+- feat(helm): add $HELM_KEY_PASSPHRASE environment variable for signing helm charts (#4778) 1e26b5300b5166fabb90002535aacd2f9cc7d787
+
+### Bug fixes
 - fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
+
+### Code cleanup
+- ref(kube): Gets rid of superfluous Sprintf call 3071a16f5eb3a2b646d9795617287cc26e53dba4  (Taylor Thomas)
+- chore(*): bump version to v2.7.0 08c1144f5eb3e3b636d9775617287cc26e53dba4 (Adam Reese)
+
+### Documentation Changes
+- docs(release_checklist): fix changelog generation command (#4694) 8442851a5c566a01d9b4c69b368d64daa04f6a7f (Matthew Fisher)
 ```
 
 The changelog at the bottom of the release notes can be generated with this command:
@@ -236,7 +310,17 @@ PREVIOUS_RELEASE=vX.Y.Z
 git log --no-merges --pretty=format:'- %s %H (%aN)' $RELEASE_NAME $PREVIOUS_RELEASE
 ```
 
+After generating the changelog, you will need to categorize the changes as shown in the example above.
+
 Once finished, go into GitHub and edit the release notes for the tagged release with the notes written here.
+
+Remember to attach the ascii armored signatures generated in the previous step to the release notes.
+
+It is now worth getting other people to take a look at the release notes before the release is published. Send
+a request out to [#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for review. It is always
+beneficial as it can be easy to miss something.
+
+When you are ready to go, hit `publish`.
 
 ## 9. Evangelize
 
