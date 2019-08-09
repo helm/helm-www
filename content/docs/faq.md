@@ -41,6 +41,114 @@ identity, and authorization features of modern Kubernetes. Helm’s permissions 
 Cluster administrators can restrict user permissions at whatever granularity they see fit. Releases are still recorded
 in-cluster, and the rest of Helm’s functionality remains.
 
+### Improved Upgrade Strategy: 3-way Strategic Merge Patches
+
+Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the most recent chart's manifest
+against the proposed chart's manifest (the one supplied during `helm upgrade`). It compared the differences between
+these two charts to determine what changes needed to be applied to the resources in Kubernetes. If changes were
+applied to the cluster out-of-band (like during a `kubectl edit`), those changes were not considered. This resulted in
+resources being unable to roll back to its previous state: because Helm only considered the last applied chart's
+manifest as its current state, if there were no changes in the chart's state, the live state was left unchanged.
+
+In Helm 3, Helm now uses a three-way strategic merge patch. Helm now considers the old manifest, its live state, and the
+new manifest when generating a patch.
+
+#### Examples
+
+Let's go through a few common examples what this change impacts.
+
+##### Rolling back where live state has changed
+
+Your team just deployed their application to production on Kubernetes using Helm. The chart contains a Deployment object
+where the number of replicas is set to three:
+
+```
+$ helm install myapp ./myapp
+```
+
+A new developer joins the team. On their first day while observing the production cluster, a horrible
+coffee-spilling-on-the-keyboard accident happens and they `kubectl scale` the production deployment from three replicas down
+to zero.
+
+```
+$ kubectl scale --replicas=0 deployment/myapp
+```
+
+Another developer on your team notices that the production site is down and decides to rollback the release to its
+previous state:
+
+```
+$ helm rollback myapp
+```
+
+What happens?
+
+In Helm 2, it would generate a patch, comparing the old manifest against the new manifest. Because this is a
+rollback, it's the same manifest. Helm would determine that there is nothing to change because there is no difference
+between the old manifest and the new manifest. The replica count continues to stay at zero. Panic ensues.
+
+In Helm 3, the patch is generated using the old manifest, the live state, and the new manifest. Helm recognizes that the
+old state was at three, the live state is at zero and the new manifest wishes to change it back to three, so it
+generates a patch to change the state back to three.
+
+##### Upgrades where live state has changed
+
+Many service meshes and other controller-based applications inject data into Kubernetes objects. This can be something
+like a sidecar, labels, or other information. Previously if you had the given manifest rendered from a Chart:
+
+```
+containers:
+- name: server
+  image: nginx:2.0.0
+```
+
+And the live state was modified by another application to
+
+```
+containers:
+- name: server
+  image: nginx:2.0.0
+- name: my-injected-sidecar
+  image: my-cool-mesh:1.0.0
+```
+
+Now, you want to upgrade the `nginx` image tag to `2.1.0`. So, you upgrade to a chart with the given manifest:
+
+```
+containers:
+- name: server
+  image: nginx:2.1.0
+```
+
+What happens?
+
+In Helm 2, Helm generates a patch of the `containers` object between the old manifest and the new manifest. The
+cluster's live state is not considered during the patch generation.
+
+The cluster's live state is modified to look like the following:
+
+```
+containers:
+- name: server
+  image: nginx:2.1.0
+```
+
+The sidecar pod is removed from live state. More panic ensues.
+
+In Helm 3, Helm generates a patch of the `containers` object between the old manifest, the live state, and the new
+manifest. It notices that the new manifest changes the image tag to `2.1.0`, but live state contains a sidecar
+container.
+
+The cluster's live state is modified to look like the following:
+
+```
+containers:
+- name: server
+  image: nginx:2.1.0
+- name: my-injected-sidecar
+  image: my-cool-mesh:1.0.0
+```
+
 ### Release Names are now scoped to the Namespace
 
 With the removal of Tiller, the information about each release had to go somewhere. In Helm 2, this was stored in the
@@ -50,6 +158,11 @@ that same name, even if it was deployed in a different namespace.
 In Helm 3, release information about a particular release is now stored in the same namespace as the release itself.
 This means that users can now `helm install wordpress stable/wordpress` in two separate namespaces, and each can be
 referred with `helm list` by changing the current namespace context.
+
+### Secrets as the default storage driver
+
+Helm 2 used ConfigMaps by default to store release information. In Helm 3, Secrets are now used as the default storage
+driver.
 
 ### Go import path changes
 
@@ -165,6 +278,31 @@ dependencies:
 
 We’re very excited to see the use cases this feature opens up for chart developers, as well as any best practices that
 arise from consuming library charts.
+
+### XDG Base Directory Support
+
+[The XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) is
+a portable standard defining where configuration, data, and cached files should be stored on the filesystem.
+
+In Helm 2, Helm stored all this information in `~/.helm` (affectionately known as `helm home`), which could be changed
+by setting the `$HELM_HOME` environment variable, or by using the global flag `--home`.
+
+In Helm 3, Helm now respects the following environment variables as per the XDG Base Directory Specification:
+
+- `$XDG_CACHE_HOME`
+- `$XDG_CONFIG_HOME`
+- `$XDG_DATA_HOME`
+
+Helm plugins are still passed `$HELM_HOME` as an alias to `$XDG_DATA_HOME` for backwards compatibility with plugins
+looking to use `$HELM_HOME` as a scratchpad environment.
+
+Several new environment variables are also passed in to the plugin's environment to accomodate this change:
+
+- `$HELM_PATH_CACHE` for the cache path
+- `$HELM_PATH_CONFIG` for the config path
+- `$HELM_PATH_DATA` for the data path
+
+Helm plugins looking to support Helm 3 should consider using these new environment variables instead.
 
 ### CLI Command Renames
 
