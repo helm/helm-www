@@ -231,6 +231,8 @@ you.
 
 ### Pushing Charts to OCI Registries
 
+This is an experimental feature introduced in Helm 3. To use, set the environment variable HELM_EXPERIMENTAL_OCI=1.
+
 At a high level, a Chart Repository is a location where Charts can be stored and shared. The Helm client packs and ships
 Helm Charts to a Chart Repository. Simply put, a Chart Repository is a basic HTTP server that houses an index.yaml file
 and some packaged charts.
@@ -278,6 +280,17 @@ dependencies:
 
 We’re very excited to see the use cases this feature opens up for chart developers, as well as any best practices that
 arise from consuming library charts.
+
+### Chart.yaml apiVersion bump
+
+With the introduction of library chart support and the consolidation of requirements.yaml into Chart.yaml, clients that
+understood Helm 2's package format won't understand these new features. So, we bumped the apiVersion in Chart.yaml
+from `v1` to `v2`.
+
+`helm create` now creates charts using this new format, so the default apiVersion was bumped there as well.
+
+Clients wishing to support both versions of Helm charts should inspect the `apiVersion` field in Chart.yaml to
+understand how to parse the package format.
 
 ### XDG Base Directory Support
 
