@@ -169,8 +169,7 @@ Charts stored using the commands above will be cached on the filesystem.
 The [OCI Image Layout Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
 is adhered to strictly for filesystem layout, for example:
 ```
-$ tree ~/.helm/registry
-tree ~/Library/Caches/helm/
+$ tree ~/Library/Caches/helm/
 /Users/myuser/Library/Caches/helm/
 └── registry
     ├── cache
