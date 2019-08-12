@@ -7,7 +7,19 @@ menu:
 ---
 
 
-Helm 3 uses <a href="https://www.opencontainers.org/" target="_blank">OCI</a> for package distribution. Chart packages are stored and shared across OCI-based registries.
+Helm 3 supports <a href="https://www.opencontainers.org/" target="_blank">OCI</a> for package distribution.
+Chart packages are able to be stored and shared across OCI-based registries.
+
+## Enabling OCI Support
+
+Currently OCI support is considered *experimental*.
+
+In order to use the commands described below,
+please set `HELM_EXPERIMENTAL_OCI` in the enironment:
+
+```
+export HELM_EXPERIMENTAL_OCI=1
+```
 
 ## Running a registry
 
@@ -74,10 +86,11 @@ save a chart directory to local cache
 
 ```
 $ helm chart save mychart/ localhost:5000/myrepo/mychart:2.7.0
-Name: mychart
-Version: 2.7.0
-Meta: sha256:ca9588a9340fb83a62777cd177dae4ba5ab52061a1618ce2e21930b86c412d9e
-Content: sha256:a66666c6b35ee25aa8ecd7d0e871389b5a2a0576295d6c366aefe836001cb90d
+ref:     localhost:5000/myrepo/mychart:2.7.0
+digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
+size:    2.4 KiB
+name:    mychart
+version: 0.1.0
 2.7.0: saved
 ```
 
@@ -102,11 +115,12 @@ export a chart to directory
 
 ```
 $ helm chart export localhost:5000/myrepo/mychart:2.7.0
-Name: mychart
-Version: 2.7.0
-Meta: sha256:3344059bb81c49cc6f2599a379da0a6c14313cf969f7b821aca18e489ba3991b
-Content: sha256:84059d7403f496a1c63caf97fdc5e939ea39e561adbd98d0aa864d1b9fc9653f
-Exported to mychart/
+ref:     localhost:5000/myrepo/mychart:2.7.0
+digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
+size:    2.4 KiB
+name:    mychart
+version: 0.1.0
+Exported chart to mychart/
 ```
 
 #### `push`
@@ -116,11 +130,12 @@ push a chart to remote
 ```
 $ helm chart push localhost:5000/myrepo/mychart:2.7.0
 The push refers to repository [localhost:5000/myrepo/mychart]
-Name: mychart
-Version: 2.7.0
-Meta: sha256:ca9588a9340fb83a62777cd177dae4ba5ab52061a1618ce2e21930b86c412d9e
-Content: sha256:a66666c6b35ee25aa8ecd7d0e871389b5a2a0576295d6c366aefe836001cb90d
-2.7.0: pushed to remote (2 layers, 478 B total)
+ref:     localhost:5000/myrepo/mychart:2.7.0
+digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
+size:    2.4 KiB
+name:    mychart
+version: 0.1.0
+2.7.0: pushed to remote (1 layer, 2.4 KiB total)
 ```
 
 #### `remove`
@@ -139,42 +154,73 @@ pull a chart from remote
 ```
 $ helm chart pull localhost:5000/myrepo/mychart:2.7.0
 2.7.0: Pulling from localhost:5000/myrepo/mychart
-Name: mychart
-Version: 2.7.0
-Meta: sha256:ca9588a9340fb83a62777cd177dae4ba5ab52061a1618ce2e21930b86c412d9e
-Content: sha256:a66666c6b35ee25aa8ecd7d0e871389b5a2a0576295d6c366aefe836001cb90d
-Status: Chart is up to date for localhost:5000/myrepo/mychart:2.7.0
+ref:     localhost:5000/myrepo/mychart:2.7.0
+digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
+size:    2.4 KiB
+name:    mychart
+version: 0.1.0
+Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 ```
 
 ## Where are my charts?
 
-Charts stored using the commands above will be cached on disk at `~/.helm/registry` (or somewhere else depending on `$HELM_HOME`).
+Charts stored using the commands above will be cached on the filesystem.
 
-Chart content (tarball) and chart metadata (json) are stored as separate content-addressable blobs.  This prevents storing the same content twice when, for example, you are simply modifying some fields in `Chart.yaml`. They are joined together and converted back into regular chart format when using the `export` command.
-
-The chart name and chart version are treated as "first-class" properties and stored separately. They are extracted out of `Chart.yaml` prior to building the metadata blob.
-
-The following shows an example of a single chart stored in the cache (`localhost:5000/myrepo/mychart:2.7.0`):
+The [OCI Image Layout Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
+is adhered to strictly for filesystem layout, for example:
 ```
 $ tree ~/.helm/registry
-/Users/me/.helm/registry
-├── blobs
-│   └── sha256
-│       ├── 3344059bb81c49cc6f2599a379da0a6c14313cf969f7b821aca18e489ba3991b
-│       └── 84059d7403f496a1c63caf97fdc5e939ea39e561adbd98d0aa864d1b9fc9653f
-├── charts
-│   └── mychart
-│       └── versions
-│           └── 2.7.0
-└── refs
-    └── localhost_5000
-        └── myrepo
-            └── mychart
-                └── tags
-                    └── 2.7.0
-                        ├── chart -> /Users/me/.helm/registry/charts/mychart/versions/2.7.0
-                        ├── content -> /Users/me/.helm/registry/blobs/sha256/3344059bb81c49cc6f2599a379da0a6c14313cf969f7b821aca18e489ba3991b
-                        └── meta -> /Users/me/.helm/registry/blobs/sha256/84059d7403f496a1c63caf97fdc5e939ea39e561adbd98d0aa864d1b9fc9653f
+tree ~/Library/Caches/helm/
+/Users/myuser/Library/Caches/helm/
+└── registry
+    ├── cache
+    │   ├── blobs
+    │   │   └── sha256
+    │   │       ├── 1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
+    │   │       ├── 31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef
+    │   │       └── 8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111
+    │   ├── index.json
+    │   ├── ingest
+    │   └── oci-layout
+    └── config.json
+```
+
+Example index.json, which contains refs to all Helm chart manifests:
+```
+$ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
+{
+  "schemaVersion": 2,
+  "manifests": [
+    {
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "digest": "sha256:31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef",
+      "size": 354,
+      "annotations": {
+        "org.opencontainers.image.ref.name": "localhost:5000/myrepo/mychart:2.7.0"
+      }
+    }
+  ]
+}
+```
+
+Example Helm chart manifest (note the `mediaType` fields):
+```
+$ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
+{
+  "schemaVersion": 2,
+  "config": {
+    "mediaType": "application/vnd.cncf.helm.config.v1+json",
+    "digest": "sha256:8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111",
+    "size": 117
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.content.layer.v1+tar",
+      "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
+      "size": 2487
+    }
+  ]
+}
 ```
 
 ## Migrating from chart repos
