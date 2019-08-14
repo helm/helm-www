@@ -1328,8 +1328,9 @@ is not a full list of cli flags. To see a description of all flags, just run
   This defaults to 300 (5 minutes)
 - `--wait`: Waits until all Pods are in a ready state, PVCs are bound, Deployments
   have minimum (`Desired` minus `maxUnavailable`) Pods in ready state and
-  Services have an IP address (and Ingress if a `LoadBalancer`) before
-  marking the release as successful. It will wait for as long as the
+  Services have an IP address (and Ingress if a `LoadBalancer`) and StorageClasses
+  It will wait for as long as the have a provisioner in place before marking the 
+  release as successful. --
   `--timeout` value. If timeout is reached, the release will be marked as
   `FAILED`. Note: In scenario where Deployment has `replicas` set to 1 and
   `maxUnavailable` is not set to 0 as part of rolling update strategy,

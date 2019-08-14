@@ -111,7 +111,7 @@ helm install [CHART] [flags]
   -f, --values valueFiles        Specify values in a YAML file or a URL(can specify multiple) (default [])
       --verify                   Verify the package before installing it
       --version string           Specify the exact chart version to install. If this is not specified, the latest version is installed
-      --wait                     If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout
+      --wait                     If set, will wait until all Pods, PVCs, Services, StorageClasses and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout
 ```
 
 ### Options inherited from parent commands
