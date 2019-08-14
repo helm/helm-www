@@ -1,7 +1,6 @@
 {{ partial "header.html" . }}
 
-  <div class="container container-full 
-    {{ if eq .Section "docs" }} docs {{ else }} not-docs {{ end }} ">
+  <div class="container container-full docs">
     {{ partial "sidebar.html" . }}
 
     <div class="main page" id="scrollpane">
@@ -10,9 +9,9 @@
       <div class="row">
         <div class="small-1 columns">&nbsp;</div>
         <div class="small-10 columns content-wrap">
-          {{ range .Data.Pages.ByDate  }}
-            {{ .Render "article"}}
-          {{ end }}
+          <h3>{{ .Title }}</h3>
+
+          {{ .Content }}
         </div>
         <div class="small-1 columns">&nbsp;</div>
       </div>
