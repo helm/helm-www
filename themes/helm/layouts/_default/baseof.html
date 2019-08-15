@@ -22,7 +22,8 @@
         {{ block "main" . }}
         {{ end }}
 
-        {{ partial "footer-blog.html" . }}
+        {{ block "footer" . }}
+        {{ end }}
       </div>
     </div>
   </body>
