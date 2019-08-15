@@ -3,8 +3,10 @@
   command = "hugo --minify"
   publish = "app"
 
-[context.production.environment]
+[build.environment]
   HUGO_VERSION = "0.55.6"
+
+[context.production.environment]
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 
