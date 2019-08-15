@@ -1,21 +1,24 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
+<div class="container container-full 
+  {{ if eq .Section "docs" }} docs {{ else }} not-docs {{ end }} ">
+  
+  {{ partial "sidebar.html" . }}
 
-  <div class="container container-full 
-    {{ if eq .Section "docs" }} docs {{ else }} not-docs {{ end }} ">
-    
-    {{ partial "sidebar.html" . }}
+  <div class="main page" id="scrollpane">
+    {{ partial "topbar.html" . }}
 
-    <div class="main page" id="scrollpane">
-      {{ partial "topbar.html" . }}
-
-      <div class="row">
-        <div class="small-1 columns">&nbsp;</div>
-        <div class="small-10 columns content-wrap">
-          <h3>{{ .Title }}</h3>
-          {{ .Content }}
-        </div>
-        <div class="small-1 columns">&nbsp;</div>
+    <div class="row">
+      <div class="small-1 columns">&nbsp;</div>
+      <div class="small-10 columns content-wrap">
+        <h3>{{ .Title }}</h3>
+        {{ .Content }}
       </div>
+      <div class="small-1 columns">&nbsp;</div>
     </div>
+  </div>
+</div>
+{{ end }}
 
-    {{ partial "footer.html" . }}
+{{ define "footer" }}
+{{ partial "cncf.html" . }}
+{{ end }}

@@ -1,5 +1,4 @@
-{{ partial "header.html" . }}
-
+{{ define "main" }}
 <div class="container container-full 
   {{ if eq .Section "docs" }} docs {{ else }} not-docs {{ end }} ">
   {{ partial "sidebar.html" . }}
@@ -17,5 +16,9 @@
       <div class="small-1 columns">&nbsp;</div>
     </div>
   </div>
+</div>
+{{ end }}
 
-  {{ partial "footer.html" . }}
+{{ define "footer" }}
+{{ partial "cncf.html" . }}
+{{ end }}
