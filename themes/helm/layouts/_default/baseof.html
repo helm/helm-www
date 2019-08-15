@@ -1,0 +1,29 @@
+{{ $langCode := site.LanguageCode | default "en-us" }}
+{{ $isHome   := .IsHome }}
+<!DOCTYPE html>
+<html lang="{{ $langCode }}">
+  <head>
+    {{ partial "meta.html" . }}
+    <title>
+      {{ block "title" . }}{{ site.Title }}{{ end }}
+    </title>
+    {{ partial "css.html" . }}
+  </head>
+
+  <body id="landing"{{ if $isHome }} class="home"{{ end }}>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+  
+        <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+          <i class="fa fa-bars"></i>
+        </a>
+        {{ partial "offcanvas.html" . }}
+
+        {{ block "main" . }}
+        {{ end }}
+
+        {{ partial "footer-blog.html" . }}
+      </div>
+    </div>
+  </body>
+</html>

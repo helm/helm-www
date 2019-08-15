@@ -1,0 +1,22 @@
+{{ $isHome := .IsHome }}
+{{ $desc   := .Param "description" }}
+{{ $title  := .Title }}
+{{ $url    := .Permalink }}
+{{ $img    := "src/img/favicon-152.png" | absURL }}
+{{ $icon   := "src/img/apple-touch-icon-precomposed.png" | relURL }}
+{{ $gsv    := site.Params.googleSiteVerification }}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+{{ with $desc }}
+<meta name="description" content="{{ . }}">
+{{ end }}
+
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:image" content="{{ $img }}">
+<meta name="google-site-verification" content="{{ $gsv }}">
+
+<link rel="icon" href="{{ $img }}" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" href="{{ $icon }}">
