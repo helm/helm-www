@@ -3,11 +3,7 @@
 <!DOCTYPE html>
 <html lang="{{ $langCode }}">
   <head>
-    {{ partial "meta.html" . }}
-    <title>
-      {{ block "title" . }}{{ site.Title }}{{ end }}
-    </title>
-    {{ partial "css.html" . }}
+    {{ partial "header.html" . }}
   </head>
 
   <body id="landing"{{ if $isHome }} class="home"{{ end }}>
