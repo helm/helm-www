@@ -3,6 +3,12 @@
 <!DOCTYPE html>
 <html lang="{{ $langCode }}">
   <head>
+    <title>
+      {{ block "title" . }}
+      Helm | {{ .Title }}
+      {{ end }}
+    </title>
+
     {{ partial "header.html" . }}
   </head>
 

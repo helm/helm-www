@@ -1,9 +1,5 @@
 {{ partial "meta.html" . }}
 
-<title>
-  {{ block "title" . }}{{ site.Title }}{{ end }}
-</title>
-
 {{ partial "css.html" . }}
 
 {{ with .OutputFormats.Get "rss" }}
