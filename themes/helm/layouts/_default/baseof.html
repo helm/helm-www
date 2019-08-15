@@ -20,7 +20,14 @@
 
         {{ block "footer" . }}
         {{ end }}
+
+        <a class="exit-off-canvas" data-proofer-ignore></a>
+
+        <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
       </div>
     </div>
+
+    {{ partial "js.html" . }}
+    {{ partial "google-analytics.html" . }}
   </body>
 </html>
