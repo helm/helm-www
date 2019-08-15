@@ -12,9 +12,10 @@ plainIdAnchors = "true"
 defaultContentLanguage = "en"
 
 [params]
-    title = "Helm"
-    author = "Ronan Flynn-Curran"
-    description = "Helm - The Kubernetes Package Manager."
+  title = "Helm"
+  author = "Ronan Flynn-Curran"
+  description = "Helm - The Kubernetes Package Manager."
+  googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
 
 [Permalinks]
   code = "/:filename/"

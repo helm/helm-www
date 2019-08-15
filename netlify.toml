@@ -1,6 +1,6 @@
 [build]
   base    = ""
-  command = "gulp && hugo"
+  command = "gulp && hugo --minify"
   publish = "app"
 
 [context.production.environment]
