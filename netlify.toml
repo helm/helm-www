@@ -1,10 +1,12 @@
 [build]
   base    = ""
-  command = "gulp && hugo"
+  command = "gulp && hugo --minify"
   publish = "app"
 
+[build.environment]
+  HUGO_VERSION = "0.55.6"
+
 [context.production.environment]
-  HUGO_VERSION = "0.54.0"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 

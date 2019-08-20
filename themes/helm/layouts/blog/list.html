@@ -1,5 +1,8 @@
-{{ partial "header.html" . }}
+{{ define "title" }}
+Helm | Blog
+{{ end }}
 
+{{ define "main" }}
 <div class="container container-full blog-layout">
 
   <div class="main blog page" id="scrollpane">
@@ -60,5 +63,9 @@
       </span>
     </a>
   </section>
+</div>
+{{ end }}
 
-  {{ partial "footer-blog.html" . }}
+{{ define "footer" }}
+{{ partial "footer.html" . }}
+{{ end }}

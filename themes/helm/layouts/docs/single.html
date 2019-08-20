@@ -1,21 +1,28 @@
-{{ partial "header.html" . }}
+{{ define "title" }}
+Helm | {{ .Title }}
+{{ end }}
 
-  <div class="container container-full docs">
-    {{ partial "sidebar.html" . }}
+{{ define "main" }}
+<div class="container container-full docs">
+  {{ partial "sidebar.html" . }}
 
-    <div class="main page" id="scrollpane">
-      {{ partial "topbar.html" . }}
+  <div class="main page" id="scrollpane">
+    {{ partial "topbar.html" . }}
 
-      <div class="row">
-        <div class="small-1 columns">&nbsp;</div>
-        <div class="small-10 columns content-wrap">
-          <h3>{{ .Title }}</h3>
+    <div class="row">
+      <div class="small-1 columns">&nbsp;</div>
+      <div class="small-10 columns content-wrap">
+        <h3>{{ .Title }}</h3>
 
-          {{ .Content }}
-        </div>
-        <div class="small-1 columns">&nbsp;</div>
+        {{ .Content }}
       </div>
-
+      <div class="small-1 columns">&nbsp;</div>
     </div>
 
-    {{ partial "footer.html" . }}
+  </div>
+</div>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "cncf.html" . }}
+{{ end }}
