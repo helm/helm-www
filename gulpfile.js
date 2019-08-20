@@ -2,7 +2,6 @@ var destination = process.env.GULP_DESTINATION || 'static';
 
 // Load plugins
 var gulp = require('gulp'),
-  autoprefixer = require('autoprefixer'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   cache = require('gulp-cache'),
@@ -12,7 +11,6 @@ var gulp = require('gulp'),
   livereload = require('gulp-livereload'),
   del = require('del'),
   streamqueue = require('streamqueue'),
-  sourcemaps = require('gulp-sourcemaps'),
   git = require('gulp-git'),
   foreach = require('gulp-foreach'),
   inject = require('gulp-inject-string'),
