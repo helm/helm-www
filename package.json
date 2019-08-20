@@ -23,8 +23,6 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-string-replace": "^1.1.2",
-    "gulp-uglify": "^3.0.2",
-    "jshint": "^2.10.2",
     "streamqueue": "^1.1.2"
   }
 }

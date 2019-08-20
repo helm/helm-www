@@ -5,8 +5,6 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   cache = require('gulp-cache'),
-  jshint = require('gulp-jshint'),
-  uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
   del = require('del'),
@@ -16,34 +14,6 @@ var gulp = require('gulp'),
   inject = require('gulp-inject-string'),
   replace = require('gulp-replace'),
   stringreplace  = require('gulp-string-replace');
-
-// Scripts
-gulp.task('scriptconcat', function () {
-  return gulp.src([
-      'themes/helm/static/js/custom/jquery.js',
-      'themes/helm/static/js/custom/foundation.js',
-      'themes/helm/static/js/custom/foundation.offcanvas.js',
-      'themes/helm/static/js/custom/foundation.accordion.js',
-      'themes/helm/static/js/custom/foundation.dropdown.js',
-      'themes/helm/static/js/custom/foundation.slider.js',
-      'themes/helm/static/js/custom/foundation.tooltip.js'
-    ], { allowEmpty: true })
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('themes/helm/static/js'));
-});
-gulp.task('scriptminify', function () {
-  return gulp.src([
-      'themes/helm/static/js/main.js',
-      'themes/helm/static/js/custom/app_init.js'
-    ])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    // .pipe(concat())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest(destination + '/js'));
-});
-gulp.task('scripts', gulp.series('scriptconcat', 'scriptminify'), function () {});
 
 
 // Images
@@ -292,7 +262,6 @@ gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
 
 gulp.task('build',
   gulp.series([
-    'scripts',
     'images',
     'redirect-inject',
     'redirect-subfolder',
@@ -318,9 +287,6 @@ gulp.task('default', gulp.series('clonedocs', 'build'), function() { });
 
 // 'gulp watch' to watch for changes during dev
 gulp.task('watch', function () {
-
-  gulp.watch('themes/helm/static/js/custom/app_init.js', gulp.series('scripts'));
-
   gulp.watch('themes/helm/static/img/**/*.{png,gif,jpg}', gulp.series('images'));
 
   livereload.listen();
