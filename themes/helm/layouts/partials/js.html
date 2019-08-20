@@ -1,12 +1,15 @@
-  <!-- load scripts -->
+{{ $isDoc := eq .Section "docs" }}
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="/src/js/main.min.js"></script>
-  <script src="/src/js/app_init.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
-    apiKey: '8bca76b0664b04581dc9f9854e844a90',
-    indexName: 'helm',
-    inputSelector: '#q',
-    debug: false // Set debug to true if you want to inspect the dropdown
-    })" async></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/src/js/main.min.js"></script>
+<script src="/src/js/app_init.min.js"></script>
+
+{{ if $isDoc }}
+<script async src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '8bca76b0664b04581dc9f9854e844a90',
+  indexName: 'helm',
+  inputSelector: '#q',
+  debug: false // Set debug to true if you want to inspect the dropdown
+  })"></script>
+{{ end }}
