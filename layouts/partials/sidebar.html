@@ -22,7 +22,7 @@
         </li>
         {{ range site.Menus.main }}
         {{ $active := $.IsMenuCurrent "main" . }}
-        <li class="sidebar-nav-item toctree-l1 {{ if $active }} active {{end}}">
+        <li class="sidebar-nav-item toctree-l1{{ if $active }} active {{end}}">
           <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
             <span class="ripple">
               {{ .Name }}
@@ -31,9 +31,12 @@
           {{ if .HasChildren }}
             <ul class="current">
             {{ range .Children.ByWeight }}
-              <li class="toctree-l2 {{ if $.IsMenuCurrent "main" . }}active{{ end }}">
-                <a href="{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">{{ .Name }}</a>
-              </li>
+            {{ $active := $.IsMenuCurrent "main" . }}
+            <li class="toctree-l2{{ if $active }} active {{end}}">
+              <a href="/docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
+                {{ .Name }}
+              </a>
+            </li>
             {{ end }}
             </ul>
           {{ end }}
