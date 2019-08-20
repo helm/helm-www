@@ -13,9 +13,9 @@ bower_components/
 vendor/
 rootfs/
 app/*
+resources/
 source/
 source/*
-static/*
 content/docs/*
 helm.sh/
 docs.helm.sh/
