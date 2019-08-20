@@ -283,13 +283,3 @@ gulp.task('build',
 
 // 'gulp' default task to build the site assets
 gulp.task('default', gulp.series('clonedocs', 'build'), function() { });
-
-
-// 'gulp watch' to watch for changes during dev
-gulp.task('watch', function () {
-  gulp.watch('themes/helm/static/img/**/*.{png,gif,jpg}', gulp.series('images'));
-
-  livereload.listen();
-
-  gulp.watch([destination + '/**', destination + '/src/**']).on('change', livereload.changed);
-});
