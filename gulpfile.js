@@ -2,7 +2,6 @@ var destination = process.env.GULP_DESTINATION || 'static';
 
 // Load plugins
 var gulp = require('gulp'),
-  sass = require('gulp-sass'),
   autoprefixer = require('autoprefixer'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
@@ -12,8 +11,6 @@ var gulp = require('gulp'),
   imagemin = require('gulp-imagemin'),
   livereload = require('gulp-livereload'),
   del = require('del'),
-  postcss = require('gulp-postcss'),
-  cssnano = require('cssnano'),
   streamqueue = require('streamqueue'),
   sourcemaps = require('gulp-sourcemaps'),
   git = require('gulp-git'),
@@ -21,8 +18,6 @@ var gulp = require('gulp'),
   inject = require('gulp-inject-string'),
   replace = require('gulp-replace'),
   stringreplace  = require('gulp-string-replace');
-
-  sass.compiler = require('node-sass');
 
 
 // Copy
@@ -33,21 +28,6 @@ gulp.task('copy', function () {
 gulp.task('copyall', function () {
   return gulp.src('static/src/**/*')
     .pipe(gulp.dest('app/src'))
-});
-
-
-// Styles
-gulp.task('styles', function () {
-  var processors = [
-    autoprefixer(),
-    cssnano
-  ];
-  
-  return gulp.src('themes/helm/static/src/sass/styles.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(processors))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(destination + '/src/css'));
 });
 
 
@@ -332,7 +312,6 @@ gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
 
 gulp.task('build',
   gulp.series([
-    'styles',
     'scripts',
     'images',
     'copy',
@@ -365,8 +344,6 @@ gulp.task('watch', function () {
   gulp.watch('themes/helm/static/src/js/custom/init.js', gulp.series('scripts'));
 
   gulp.watch('themes/helm/static/img/src/**/*.{png,gif,jpg}', gulp.series('images'));
-
-  gulp.watch('themes/helm/static/src/sass/**/*.scss', gulp.series('styles'));
 
   livereload.listen();
 
