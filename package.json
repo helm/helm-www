@@ -10,6 +10,7 @@
     "url": "git+https://github.com/helm/helm-www"
   },
   "devDependencies": {
+    "autoprefixer": "^9.6.1",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.2",
@@ -24,5 +25,8 @@
     "gulp-replace": "^1.0.0",
     "gulp-string-replace": "^1.1.2",
     "streamqueue": "^1.1.2"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
