@@ -1,4 +1,4 @@
-![https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png](https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png)
+![https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/img/apple-touch-icon.png](https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/img/apple-touch-icon.png)
 
 [helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
@@ -24,7 +24,7 @@ date: "yyyy-mm-dd"
 ---
 ```
 3) Add the content below the `---` as Markdown. The title does not need to be included in this section
-4) Any images should be placed in the `/src/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+4) Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 5) To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link. 
 
 ---

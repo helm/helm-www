@@ -1,4 +1,4 @@
-var destination = process.env.GULP_DESTINATION || 'static';
+var destination = process.env.GULP_DESTINATION || 'app';
 
 // Load plugins
 var gulp = require('gulp'),
@@ -17,43 +17,31 @@ var gulp = require('gulp'),
   replace = require('gulp-replace'),
   stringreplace  = require('gulp-string-replace');
 
-
-// Copy
-gulp.task('copy', function () {
-  return gulp.src('themes/helm/static/src/fonts/*')
-    .pipe(gulp.dest(destination + '/src/fonts'))
-});
-gulp.task('copyall', function () {
-  return gulp.src('static/src/**/*')
-    .pipe(gulp.dest('app/src'))
-});
-
-
 // Scripts
 gulp.task('scriptconcat', function () {
   return gulp.src([
-      'themes/helm/static/src/js/custom/jquery.js',
-      'themes/helm/static/src/js/custom/foundation.js',
-      'themes/helm/static/src/js/custom/foundation.offcanvas.js',
-      'themes/helm/static/src/js/custom/foundation.accordion.js',
-      'themes/helm/static/src/js/custom/foundation.dropdown.js',
-      'themes/helm/static/src/js/custom/foundation.slider.js',
-      'themes/helm/static/src/js/custom/foundation.tooltip.js'
+      'themes/helm/static/js/custom/jquery.js',
+      'themes/helm/static/js/custom/foundation.js',
+      'themes/helm/static/js/custom/foundation.offcanvas.js',
+      'themes/helm/static/js/custom/foundation.accordion.js',
+      'themes/helm/static/js/custom/foundation.dropdown.js',
+      'themes/helm/static/js/custom/foundation.slider.js',
+      'themes/helm/static/js/custom/foundation.tooltip.js'
     ], { allowEmpty: true })
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('themes/helm/static/src/js'));
+    .pipe(gulp.dest('themes/helm/static/js'));
 });
 gulp.task('scriptminify', function () {
   return gulp.src([
-      'themes/helm/static/src/js/main.js',
-      'themes/helm/static/src/js/custom/app_init.js'
+      'themes/helm/static/js/main.js',
+      'themes/helm/static/js/custom/app_init.js'
     ])
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     // .pipe(concat())
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest(destination + '/src/js'));
+    .pipe(gulp.dest(destination + '/js'));
 });
 gulp.task('scripts', gulp.series('scriptconcat', 'scriptminify'), function () {});
 
@@ -61,10 +49,10 @@ gulp.task('scripts', gulp.series('scriptconcat', 'scriptminify'), function () {}
 // Images
 gulp.task('images', function () {
   return streamqueue({objectMode: true},
-    gulp.src('themes/helm/static/src/img/**/*{.jpg, .png, .gif}')
+    gulp.src('themes/helm/static/img/**/*{.jpg, .png, .gif}')
       .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true}))),
-    gulp.src('themes/helm/static/src/img/**/*')
-      .pipe(gulp.dest(destination + '/src/img'))
+    gulp.src('themes/helm/static/img/**/*')
+      .pipe(gulp.dest(destination + '/img'))
   )
 });
 
@@ -72,7 +60,6 @@ gulp.task('images', function () {
 // Clean
 gulp.task('clean', function () {
   return del([
-    destination + '/src/**/*',
     'source/',
     'content/docs/*',
     '!content/docs/README.md'
@@ -299,11 +286,6 @@ gulp.task('clone', function(cb) {
       .pipe(gulp.dest('content/docs/'))
   });
 
-  gulp.task('copyall', function () {
-    return gulp.src('static/src/**/*')
-      .pipe(gulp.dest('app/src'))
-  });
-
 
 // gulp clonedocs - use in conjunction with gulp build
 gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
@@ -312,8 +294,6 @@ gulp.task('build',
   gulp.series([
     'scripts',
     'images',
-    'copy',
-    'copyall',
     'redirect-inject',
     'redirect-subfolder',
     'reorg-using',
@@ -329,7 +309,7 @@ gulp.task('build',
     'redirect-underscores',
     'copy-docs-source'
   ]),
-  function() { }
+  function() {}
 );
 
 // 'gulp' default task to build the site assets
@@ -339,9 +319,9 @@ gulp.task('default', gulp.series('clonedocs', 'build'), function() { });
 // 'gulp watch' to watch for changes during dev
 gulp.task('watch', function () {
 
-  gulp.watch('themes/helm/static/src/js/custom/init.js', gulp.series('scripts'));
+  gulp.watch('themes/helm/static/js/custom/app_init.js', gulp.series('scripts'));
 
-  gulp.watch('themes/helm/static/img/src/**/*.{png,gif,jpg}', gulp.series('images'));
+  gulp.watch('themes/helm/static/img/**/*.{png,gif,jpg}', gulp.series('images'));
 
   livereload.listen();
 
