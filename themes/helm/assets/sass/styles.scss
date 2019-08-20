@@ -1,0 +1,48 @@
+/* ==
+Helm
+*/
+
+
+// load reset (normalize)
+@import "foundation/normalize.scss";
+
+// load foundation
+@import "foundation/foundation/components/grid.scss";
+@import "foundation/foundation/components/block-grid.scss";
+
+@import "foundation/foundation/components/buttons.scss";
+@import "foundation/foundation/components/dropdown.scss";
+
+@import "foundation/foundation/components/inline-lists.scss";
+@import "foundation/foundation/components/top-bar.scss";
+@import "foundation/foundation/components/type.scss";
+@import "foundation/foundation/components/offcanvas.scss";
+@import "foundation/foundation/components/visibility.scss";
+
+
+// load helm styles
+@import "helm-mixins.scss";
+@import "helm-buttons.scss";
+@import "helm-typography.scss";
+
+
+$fa-font-path: "../fonts" !default;
+@import 'fontawesome/font-awesome.scss';
+
+// load main helm.sh page
+@import "helm-home.scss";
+@import "helm-blog.scss";
+
+// load documentation styles
+@import "docs-layout.scss";
+@import "docs-sidebar.scss";
+@import "docs-topbar.scss";
+@import "docs-footer.scss";
+@import "docs-home.scss";
+@import "docs-content.scss";
+@import "docs-responsive.scss";
+@import "docs-404.scss";
+
+html {
+  background: white !important;
+}

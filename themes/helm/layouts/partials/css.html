@@ -1,5 +1,17 @@
-{{ $isDoc := eq .Section "docs" }}
-<link href="/src/css/styles.min.css" rel="stylesheet">
+{{ $serverMode  := site.IsServer }}
+{{ $isDoc       := eq .Section "docs" }}
+{{ $sass        := "sass/styles.scss" }}
+{{ $cssOut      := "css/style.css" }}
+{{ $cssDevOpts  := (dict "targetPath" $cssOut "enableSourceMap" true) }}
+{{ $cssProdOpts := (dict "targetPath" $cssOut "outputStyle" "compressed") }}
+{{ $cssOpts     := cond $serverMode $cssDevOpts $cssProdOpts }}
+{{ $css         := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
+{{ if $serverMode }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ else }}
+{{ $prodCss := $css | fingerprint }}
+<link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
+{{ end }}
 
 {{ if $isDoc }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
