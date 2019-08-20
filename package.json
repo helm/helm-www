@@ -28,6 +28,9 @@
     "streamqueue": "^1.1.2"
   },
   "browserslist": [
-    "last 2 versions"
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
   ]
 }
