@@ -9,7 +9,7 @@
 {{ if $serverMode }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ else }}
-{{ $prodCss := $css | fingerprint }}
+{{ $prodCss := $css | postCSS | fingerprint }}
 <link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
 {{ end }}
 
