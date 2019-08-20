@@ -11,7 +11,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
-    "cssnano": "^4.1.10",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.2",
@@ -30,7 +29,6 @@
     "gulp-string-replace": "^1.1.2",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.10.2",
-    "node-sass": "^4.12.0",
     "streamqueue": "^1.1.2"
   }
 }
