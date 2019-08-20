@@ -5,7 +5,7 @@ Helm Docs | Helm
 {{ define "main" }}
 <nav class="top-bar home-nav">
   <h1>
-    <a href="{{ .Site.BaseURL }}" title="Helm.sh">
+    <a href="{{ site.BaseURL }}" title="Helm.sh">
       {{ partial "logo.html" . }}
     </a>
   </h1>
@@ -51,7 +51,7 @@ Helm Docs | Helm
         </div>
 
         <div class="hide-for-small-down medium-6 columns">
-          <img src="{{ .Site.BaseURL }}src/img/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
+          <img src="/img/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
         </div>
       </div>
     </div>
@@ -65,22 +65,22 @@ Helm Docs | Helm
 
       <div class="row">
         <div class="small-6 medium-6 large-3 columns">
-          <img src="{{ .Site.BaseURL }}src/img/feature-icon-1.png" alt="Manage Complexity">
+          <img src="/img/feature-icon-1.png" alt="Manage Complexity">
           <h3>Manage Complexity</h3>
           <p>Charts describe even the most complex apps, provide repeatable application installation, and serve as a single point of authority.</p>
         </div>
         <div class="small-6 medium-6 large-3 columns">
-          <img src="{{ .Site.BaseURL }}src/img/feature-icon-2.png" alt="Easy Updates">
+          <img src="/img/feature-icon-2.png" alt="Easy Updates">
           <h3>Easy Updates</h3>
           <p>Take the pain out of updates with in-place upgrades and custom hooks.</p>
         </div>
         <div class="small-6 medium-6 large-3 columns">
-          <img src="{{ .Site.BaseURL }}src/img/feature-icon-3.png" alt="Easy Sharing">
+          <img src="/img/feature-icon-3.png" alt="Easy Sharing">
           <h3>Simple Sharing</h3>
           <p>Charts are easy to version, share, and host on public or private servers.</p>
         </div>
         <div class="small-6 medium-6 large-3 columns">
-          <img src="{{ .Site.BaseURL }}src/img/feature-icon-4.png" alt="Rollbacks">
+          <img src="/img/feature-icon-4.png" alt="Rollbacks">
           <h3>Rollbacks</h3>
           <p>Use <code>helm rollback</code> to roll back to an older version of a release with ease.</p>
         </div>
@@ -94,7 +94,7 @@ Helm Docs | Helm
           <h2>Get Helm!</h2>
           <p>The Helm project can be found <a href="https://github.com/helm/helm">here on Github</a>:</p>
 
-          <p><a href="https://github.com/helm/helm"><img src="{{ .Site.BaseURL }}src/img/btn-get-helm.png" alt="Get Helm"></a></p>
+          <p><a href="https://github.com/helm/helm"><img src="/img/btn-get-helm.png" alt="Get Helm"></a></p>
 
           <p>For documentation, see <a href="https://docs.helm.sh/">docs.helm.sh</a></p>
 
@@ -106,7 +106,7 @@ Helm Docs | Helm
 
           <p>Looking for charts?</p>
 
-          <p><a href="https://hub.helm.sh"><img src="{{ .Site.BaseURL }}src/img/helm-charts.png" alt="Helm Hub"></a></p>
+          <p><a href="https://hub.helm.sh"><img src="/img/helm-charts.png" alt="Helm Hub"></a></p>
 
           <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
         </div>
