@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Bringing Helm Home"
 slug: "bringing-helm-home"
 aliases: "/blog/2018-07-23-bring-helm-home/"

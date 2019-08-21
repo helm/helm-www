@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm 3 Preview: Charting Our Future – Part 5: Changes to Chart Dependencies"
 slug: "helm-3-preview-pt5"
 aliases: ["/blog/2019-05-06-helm-3-preview-pt5/", "/helm-3-preview-pt5/"]

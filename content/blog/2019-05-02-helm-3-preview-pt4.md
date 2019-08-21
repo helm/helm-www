@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm 3 Preview: Charting Our Future – Part 4: Release Management"
 slug: "helm-3-preview-pt4"
 aliases: ["/blog/2019-05-02-helm-3-preview-pt4/", "/helm-3-preview-pt4/"]

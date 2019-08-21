@@ -17,7 +17,16 @@ defaultContentLanguage = "en"
   description = "Helm - The Kubernetes Package Manager."
   googleAnalyticsId = "UA-42867143-2"
   googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
-
+  jsFiles = [
+    "foundation",
+    "foundation.accordion",
+    "foundation.dropdown",
+    "foundation.offcanvas",
+    "foundation.slider",
+    "foundation.tooltip",
+    "modernizr",
+    "app"
+  ]
 
 [Permalinks]
   code = "/:filename/"

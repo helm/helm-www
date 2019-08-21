@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm 3 Preview: Charting Our Future – Part 2: A Gentle Farewell to Tiller"
 slug: "helm-3-preview-pt2"
 aliases: ["/blog/2019-04-25-helm-3-preview-pt2/", "/helm-3-preview-pt2/"]

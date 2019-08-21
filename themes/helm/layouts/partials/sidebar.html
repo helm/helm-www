@@ -14,19 +14,25 @@
     <nav class="sidebar-nav">
       <ul class="current sidebar-main">
         <li>
-          <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}docs">
-            <span class="ripple">Docs Home <span></span></span>
+          <a class="sidebar-nav-item" href="/docs">
+            <span class="ripple">
+              Docs Home
+            </span>
           </a>
         </li>
-        {{ range .Site.Menus.main }}
-        <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
+        {{ range site.Menus.main }}
+        {{ $active := $.IsMenuCurrent "main" . }}
+        <li class="sidebar-nav-item toctree-l1{{ if $active }} active {{end}}">
           <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
-            <span class="ripple">{{ .Name }} <span></span></span>
+            <span class="ripple">
+              {{ .Name }}
+            <span>
           </a>
           {{ if .HasChildren }}
           <ul class="current">
             {{ range .Children.ByWeight }}
-            <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
+            {{ $active := $.IsMenuCurrent "main" . }}
+            <li class="toctree-l2{{ if $active }} active {{end}}">
               <a href="../../docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
                 {{ .Name }}
               </a>

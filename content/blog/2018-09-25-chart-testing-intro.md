@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Using the Community Chart Testing Tools Yourself"
 slug: "chart-testing-intro"
 aliases: "/blog/2018-09-25-chart-testing-intro/"

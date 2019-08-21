@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm 3 Preview: Charting Our Future – Part 6: Introducing Library Charts"
 slug: "helm-3-preview-pt6"
 aliases: ["/blog/2019-05-09-helm-3-preview-pt6/", "/helm-3-preview-pt6/"]
