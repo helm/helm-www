@@ -15,7 +15,6 @@ created via pull requests. The following steps are used to add them.
 2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
 ```yaml
 ---
-layout: post
 title: "A Fancy Title"
 slug: "fancy-title"
 authorname: "Captain Awesome"

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Introducing the Helm Org Maintainers"
 slug: "intro-helm-org-maintainers"
 aliases: "/blog/2018-10-04-helm-org-maintainers/"

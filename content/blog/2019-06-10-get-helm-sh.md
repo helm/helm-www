@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Announcing get.helm.sh"
 slug: "get-helm-sh"
 authorname: "Matt Fisher"

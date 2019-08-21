@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm Moves To DCO"
 slug: "helm-dco"
 aliases: "/blog/2018-08-27-helm-switch-dco/"
