@@ -2,25 +2,24 @@
 Helm
 */
 
-
 // load reset (normalize)
-@import "foundation/normalize.scss";
+@import "foundation-sites/scss/normalize.scss";
 
 // load foundation
-@import "foundation/foundation/components/grid.scss";
-@import "foundation/foundation/components/block-grid.scss";
+@import "foundation-sites/scss/foundation/components/grid.scss";
+@import "foundation-sites/scss/foundation/components/block-grid.scss";
 
-@import "foundation/foundation/components/buttons.scss";
-@import "foundation/foundation/components/dropdown.scss";
+@import "foundation-sites/scss/foundation/components/buttons.scss";
 
-@import "foundation/foundation/components/inline-lists.scss";
-@import "foundation/foundation/components/top-bar.scss";
-@import "foundation/foundation/components/type.scss";
-@import "foundation/foundation/components/offcanvas.scss";
-@import "foundation/foundation/components/visibility.scss";
+@import "foundation-sites/scss/foundation/components/inline-lists.scss";
+@import "foundation-sites/scss/foundation/components/top-bar.scss";
+@import "foundation-sites/scss/foundation/components/type.scss";
+@import "foundation-sites/scss/foundation/components/offcanvas.scss";
+@import "foundation-sites/scss/foundation/components/visibility.scss";
 
 
 // load helm styles
+@import "helm-animation.scss";
 @import "helm-mixins.scss";
 @import "helm-buttons.scss";
 @import "helm-typography.scss";

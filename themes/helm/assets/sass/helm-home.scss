@@ -40,6 +40,61 @@ body.home {
   }
 }
 
+nav.home-nav {
+  position: absolute;
+  min-height: 300px;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+
+  h1 {
+    position: absolute;
+    left: 5%;
+    top: 0.5rem;
+    max-width: 112px;
+
+    img,
+    svg {
+      min-height: 96px;
+    }
+  }
+
+  ul {
+    position: absolute;
+    top: 3.25rem;
+    right: 2%;
+
+    li {
+      list-style: none;
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        margin: 0 1.333rem;
+        font-size: 1.25rem;
+        line-height: 2;
+        position: relative;
+        letter-spacing: 0.0125em;
+        color: $darkblue;
+        @include klinicBold;
+        @include ripple;
+
+        img {
+          max-height: 2rem;
+          color: $dark2;
+          line-height: 2.5;
+          padding-top: 0.5rem;
+          margin: -0.5rem -1rem 0 1rem;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
 
 #helm.home {
   background: $blue;
@@ -68,12 +123,13 @@ body.home {
     }
 
     &:after {
+      $height: 6px;
       background: url('../img/pattern-waves.png') left top repeat-x;
-      background-size: 20px;
+      background-size: $gutter;
       bottom: 0;
       content: '';
       display: block;
-      height: 6px;
+      height: $height;
       position: absolute;
       width: 100%;
     }
@@ -508,64 +564,77 @@ body.home {
     }
   }
 }
- 
 
-@-webkit-keyframes imonaboat {
-  0%   { left: -10%; }
-  100% { left: 110%; }
-}
-@-moz-keyframes imonaboat {
-  0%   { left: -10%; }
-  100% { left: 110%; }
-}
-@-o-keyframes imonaboat {
-  0%   { left: -10%; }
-  100% { left: 110%; }
-}
-@keyframes imonaboat {
-  0%   { left: -10%; }
-  100% { left: 110%; }
+@media only screen and (min-device-width: $mobile-maximum-width + 1) {
+  @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
 }
 
 #boat {
-  width: 150px;
-  position: absolute;
-  z-index: 1200;
-  bottom: -15px;
+  height: 2em;
+  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
+    $duration: 20s;
+    background: url('../img/boat.png') no-repeat;
+    background-size: $boat-size;
+    height: 169px; //TODO programmatize this!
+    position: relative;
 
-  img {
-    width: 100%;
+    -moz-animation: $boat-animation;
+    -webkit-animation: $boat-animation;
+    -ms-animation: $boat-animation;
+    -o-animation: $boat-animation;
+    animation: $boat-animation;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -ms-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
   }
-
-  @include animation(0, 30s, imonaboat);
-  animation-iteration-count: infinite;
 }
 
 @media screen and (max-width: 1024px) {
   #helm {
+    .billboard {
+      .helm-logo {
+        position: absolute;
+        left: 50%;
+        top: 2.3rem;
+        max-width: 112px;
+        margin-left: -66px;
+      }
 
-    .contrib-logos-1,
-    .contrib-logos-2 {
-      img {
-        max-height: 80px;
+      h1 {
+        margin: -3rem 10% 0;
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        margin: 1rem 12.5%;
+        font-size: 1rem;
       }
     }
+  }
 
-    .cncf {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      padding-left: 0 !important;
+  .contrib-logos-1,
+  .contrib-logos-2 {
+    img {
+      max-height: 80px;
+    }
+  }
 
-      img,
-      p {
-        float: none;
-        min-width: 80%;
-        margin: 1.5rem auto;
-      }
+  .cncf {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 0 !important;
 
-      img {
-        max-width: 51%;
-      }
+    img,
+    p {
+      float: none;
+      min-width: 80%;
+      margin: 1.5rem auto;
+    }
+
+    img {
+      max-width: 51%;
     }
   }
 }
@@ -575,7 +644,7 @@ body.home {
 #helm {
   .panel {
     font-size: 21px;
-    padding: (20px / 1.5) 0;
+    padding: ($gutter / 1.5) 0;
     width: 100%;
     position: relative;
 
@@ -587,7 +656,7 @@ body.home {
       background-color: $blue;
       color: #fff;
       @include tablet {
-      padding-top: 20px;
+      padding-top: $gutter;
     }
     h1, h2, p {
       color: $black;
@@ -724,7 +793,7 @@ body.home {
 
     code,
     pre {
-      font-family: $mono;
+      font-family: $font-family-monospace;
       background: darken($light1, 1.5%);
       border: none;
       color: $dark2;

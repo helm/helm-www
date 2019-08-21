@@ -1,9 +1,10 @@
 {{ $serverMode  := site.IsServer }}
 {{ $isDoc       := eq .Section "docs" }}
 {{ $sass        := "sass/styles.scss" }}
+{{ $includes    := (slice "node_modules") }}
 {{ $cssOut      := "css/style.css" }}
-{{ $cssDevOpts  := (dict "targetPath" $cssOut "enableSourceMap" true) }}
-{{ $cssProdOpts := (dict "targetPath" $cssOut "outputStyle" "compressed") }}
+{{ $cssDevOpts  := (dict "includePaths" $includes "targetPath" $cssOut "enableSourceMap" true) }}
+{{ $cssProdOpts := (dict "includePaths" $includes "targetPath" $cssOut "outputStyle" "compressed") }}
 {{ $cssOpts     := cond $serverMode $cssDevOpts $cssProdOpts }}
 {{ $css         := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
 {{ if $serverMode }}

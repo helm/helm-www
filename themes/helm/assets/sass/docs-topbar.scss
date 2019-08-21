@@ -230,4 +230,30 @@
   nav.top-bar #banner {
     margin-left: -300px;
   }
+
+  h1.blog-logo {
+    top: 30px;
+  }
+}
+
+
+#banner {
+  background: $blue4;
+  color: white;
+  position: static;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: -30px;
+  text-align: center;
+  z-index: 1150;
+
+  p {
+    color: white;
+  }
+
+  a {
+    color: white;
+  }
 }
