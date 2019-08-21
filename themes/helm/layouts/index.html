@@ -1,0 +1,85 @@
+{{ define "title" }}
+Helm Docs | Helm
+{{ end }}
+
+{{ define "main" }}
+{{ $home := site.BaseURL }}
+<nav class="home-nav">
+  {{ partial "banner.html" . }}
+    
+  <h1>
+    <a href="{{ $home }}" title="Helm.sh">
+      {{ partial "logo.html" . }}
+    </a>
+  </h1>
+
+  <ul class="inline">
+    {{ partial "nav.html" . }}
+  </ul>
+</nav>
+
+<section class="main-section">
+  
+  <div id="helm" class="home">
+
+    <section class="billboard">
+      <div class="container">
+        <h1>Helm 3: The package manager for Kubernetes</h1>
+        <h2>Helm is the best way to find, share, and use software built for <a href="https://kubernetes.io/" title="Kubernetes" target="_blank">Kubernetes</a>.</h2>
+      </div>
+      <div id="boat"></div>
+    </section>
+
+    <div class="container content">
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <h2>What is Helm?</h2>
+
+          <p>Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.</p>
+
+          <p>Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.</p>
+
+          <p>The latest version of Helm is maintained by the <a href="https://www.cncf.io/">CNCF</a> - in collaboration with <a href="https://microsoft.com">Microsoft</a>, <a href="https://google.com">Google</a>, <a href="https://bitnami.com/">Bitnami</a> and the <a href="https://github.com/helm/community">Helm contributor community</a>.</p>
+
+          <p class="github-stats">
+            <a class="github-button" href="https://github.com/helm/helm" data-size="large" data-show-count="true" aria-label="Star helm/helm on GitHub">Star</a>
+            &nbsp;
+            <a class="github-button" href="https://github.com/helm/helm/subscription" data-size="large" data-show-count="true" aria-label="Watch helm/helm on GitHub">Watch</a>
+            &nbsp;
+            <a class="github-button" href="https://github.com/helm/helm/fork" data-size="large" data-show-count="true" aria-label="Fork helm/helm on GitHub">Fork</a>
+          </p>
+
+        </div>
+
+        <div class="hide-for-small-down medium-6 columns">
+          <img src="/img/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
+        </div>
+      </div>
+
+      <div class="hide-for-medium-down medium-7 helm-community-blocks columns">
+        <section>
+          <h4>SIG-Apps</h4>
+          <p><a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">SIG-Apps</a> is a Special Interest Group for deploying and operating apps in Kubernetes. They <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">meet each week</a> to demo and discuss tools and projects. Community meetings are recorded and <a href="https://www.youtube.com/results?search_query=kubernetes+sig+apps" target="_blank">shared to YouTube</a>.</p>
+        </section>
+
+        <section>
+          <h4>Developer Standups</h4>
+          <p>Each week, the Helm teams meet on <a href="https://zoom.us/j/696660622">Zoom</a>.</p>
+          <div class="right">
+            <a href="https://github.com/helm/community/blob/master/communication.md">
+              <i class="fa fa-calendar"></i>
+              <em>Thursdays</em>
+              <small>9:30-10am, PT</small>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>  
+  </div> <!-- / #helm -->
+
+</section>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "footer.html" . }}
+{{ end }}

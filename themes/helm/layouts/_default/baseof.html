@@ -24,20 +24,6 @@
 
         {{ partial "offcanvas.html" . }}
         {{ end }}
-  
-        <nav class="home-nav">
-          {{ partial "banner.html" . }}
-            
-          <h1>
-            <a href="{{ $home }}" title="Helm.sh">
-              {{ partial "logo.html" . }}
-            </a>
-          </h1>
-  
-          <ul class="inline">
-            {{ partial "nav.html" . }}
-          </ul>
-        </nav>
 
         {{ block "main" . }}
         {{ end }}
