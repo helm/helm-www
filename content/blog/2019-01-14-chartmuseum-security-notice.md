@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "ChartMuseum Vulnerability: Authorization Bypass [CVE-2019-1000009]"
 slug: "chartmuseum-security-notice-2019"
 aliases: "/blog/2019-01-14-chartmuseum-security-notice/"

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Helm 3 Preview: Charting Our Future – Part 7: What's Next?"
 slug: "helm-3-preview-pt7"
 aliases: ["/blog/2019-05-13-helm-3-preview-pt7/", "/helm-3-preview-pt7/"]
