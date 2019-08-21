@@ -4,28 +4,12 @@ var destination = process.env.GULP_DESTINATION || 'app';
 var gulp = require('gulp'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
-  cache = require('gulp-cache'),
-  imagemin = require('gulp-imagemin'),
-  livereload = require('gulp-livereload'),
   del = require('del'),
-  streamqueue = require('streamqueue'),
   git = require('gulp-git'),
   foreach = require('gulp-foreach'),
   inject = require('gulp-inject-string'),
   replace = require('gulp-replace'),
   stringreplace  = require('gulp-string-replace');
-
-
-// Images
-gulp.task('images', function () {
-  return streamqueue({objectMode: true},
-    gulp.src('themes/helm/static/img/**/*{.jpg, .png, .gif}')
-      .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true}))),
-    gulp.src('themes/helm/static/img/**/*')
-      .pipe(gulp.dest(destination + '/img'))
-  )
-});
-
 
 // Clean
 gulp.task('clean', function () {
@@ -262,7 +246,6 @@ gulp.task('clonedocs', gulp.series('clean', 'clone'), function() { });
 
 gulp.task('build',
   gulp.series([
-    'images',
     'redirect-inject',
     'redirect-subfolder',
     'reorg-using',
