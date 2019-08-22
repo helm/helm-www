@@ -1,9 +1,6 @@
 ---
 title: "Debugging Templates"
 description: "Troubleshooting charts that are failing to deploy."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 Debugging templates can be tricky because the rendered templates are sent to the Kubernetes API server, which may reject the YAML files for reasons other than formatting.

@@ -1,9 +1,6 @@
 ---
 title: "Labels and Annotations"
 description: "Covers best practices for using labels and annotations in your Chart."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This part of the Best Practices Guide discusses the best practices for using

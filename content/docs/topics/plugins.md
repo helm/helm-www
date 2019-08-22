@@ -1,9 +1,6 @@
 ---
 title: "The Helm Plugins Guide"
 description: "Introduces how to use and create plugins to extend Helm's functionality."
-menu:
-  docs:
-    parent: "topics"
 ---
 
 Helm 2.1.0 introduced the concept of a client-side Helm _plugin_. A plugin is a

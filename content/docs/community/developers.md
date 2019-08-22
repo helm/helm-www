@@ -2,9 +2,6 @@
 title: "Developer Guide"
 description: "Instructions for setting up your environment for developing Helm."
 weight: 1
-menu:
-  docs:
-    parent: "community"
 ---
 
 This guide explains how to set up your environment for developing on

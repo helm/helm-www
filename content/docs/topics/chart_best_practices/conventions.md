@@ -1,9 +1,6 @@
 ---
 title: "General Conventions"
 description: "general conventions for charts."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This part of the Best Practices Guide explains general conventions.

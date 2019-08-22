@@ -2,9 +2,6 @@
 title: "Quickstart Guide"
 description: "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
 weight: 1
-menu:
-  docs:
-    parent: "intro"
 ---
 
 This guide covers how you can quickly get started using Helm.

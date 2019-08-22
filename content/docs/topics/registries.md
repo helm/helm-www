@@ -1,9 +1,6 @@
 ---
 title: "Registries"
 description: "Describes how to use OCI for Chart distribution."
-menu:
-  docs:
-    parent: "topics"
 ---
 
 
