@@ -26,7 +26,7 @@ Helm
 
 
 $fa-font-path: "../fonts" !default;
-@import 'fontawesome/font-awesome.scss';
+@import "fontawesome/font-awesome.scss";
 
 // load main helm.sh page
 @import "helm-home.scss";

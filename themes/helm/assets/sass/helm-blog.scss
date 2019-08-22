@@ -76,7 +76,7 @@
   }
 
   .main {
-    padding-top: 0;
+    padding-top: 2rem;
 
     &.blog {
 
@@ -123,30 +123,5 @@
         }
       }
     }
-  }
-}
-
-.rss {
-  background-color: lighten($light2, 5%);
-  margin: -2rem auto 7.5rem;
-  max-width: 50rem;
-  display: block;
-  text-align: center;
-  border-radius: 0.75rem;
-
-  a {
-    padding: 1rem 2rem 1.8255rem;
-    display: block;
-    text-align: center;
-
-    span {
-      margin: 0 1rem 0 0;
-    }
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  h1.blog-logo {
-    margin-left: 2rem !important;
   }
 }
