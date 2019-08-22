@@ -6,39 +6,24 @@ Helm | Blog
 <div class="container container-full blog-layout">
 
   <div class="main blog page" id="scrollpane">
-    <h1 class="blog-logo">
-      <a href="/">
-        {{ partial "logo.html" . }}
-      </a>
-      <a href="/blog">
-        <em>Blog</em>
-      </a>
-    </h1>
-    
-    <nav class="top-bar">
-      {{ partial "banner.html" . }}
-      
-      <ul class="inline right text-right">
-        {{ partial "nav.html" . }}
-      </ul>
-    </nav>
+    {{ partial "blog/topbar.html" . }}
 
     <div class="row">
       <div class="small-1 columns">&nbsp;</div>
       <div class="small-10 columns content-wrap">        
         
         {{ range (.Paginate .Pages).Pages }}
-          <article>
-            <header>
-              <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-              <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
-            </header>
-            
-            {{ .Summary }}
-            {{ if .Truncated }}
-            <a href="{{ .RelPermalink }}">Read More…</a>
-            {{ end }}
-          </article>
+        <article>
+          <header>
+            <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+            <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+          </header>
+          
+          {{ .Summary }}
+          {{ if .Truncated }}
+          <a href="{{ .RelPermalink }}">Read More…</a>
+          {{ end }}
+        </article>
         {{ end }}
 
         <div class="pagination">
