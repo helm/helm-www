@@ -14,12 +14,5 @@ vendor/
 rootfs/
 app/*
 resources/
-source/
-source/*
-<<<<<<< HEAD
-static/*
-=======
-content/docs/*
->>>>>>> Convert Sass pipeline to Hugo
 helm.sh/
 docs.helm.sh/
