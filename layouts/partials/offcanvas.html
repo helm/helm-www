@@ -3,11 +3,11 @@
 
     <ul class="off-canvas-list current sidebar-main">
       <li>
-        <a class="sidebar-nav-item" href="{{ .Site.BaseURL | safeHTMLAttr }}docs">
+        <a class="sidebar-nav-item" href="/docs">
           <span class="ripple">Docs Home <span></span></span>
         </a>
       </li>
-      {{ range .Site.Menus.main }}
+      {{ range site.Menus.main }}
       <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
         <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
           <span class="ripple">{{ .Name }} <span></span></span>
@@ -16,7 +16,7 @@
         <ul class="current">
           {{ range .Children.ByWeight }}
           <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-            <a href="../../docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
+            <a href="/docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
               {{ .Name }}
             </a>
           </li>
