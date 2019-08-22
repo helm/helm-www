@@ -1,9 +1,6 @@
 ---
 title: "Built-in Objects"
 description: "Built-in objects available to templates."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 Objects are passed into a template from the template engine. And your code can pass objects around (we'll see examples when we look at the `with` and `range` statements). There are even a few ways to create new objects within your templates, like with the `tuple` function we'll see later.

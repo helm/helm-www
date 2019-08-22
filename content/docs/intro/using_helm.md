@@ -2,9 +2,6 @@
 title: "Using Helm"
 description: "Explains the basics of Helm."
 weight: 3
-menu:
-  docs:
-    parent: "intro"
 ---
 
 This guide explains the basics of using Helm to manage

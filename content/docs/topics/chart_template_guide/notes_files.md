@@ -1,9 +1,6 @@
 ---
 title: "Creating a NOTES.txt File"
 description: "How to provide instructions to your Chart users."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 In this section we are going to look at Helm's tool for providing instructions to your chart users. At the end of a `chart install` or `chart upgrade`, Helm can print out a block of helpful information for users. This information is highly customizable using templates.

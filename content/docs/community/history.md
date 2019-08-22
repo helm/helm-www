@@ -1,10 +1,6 @@
 ---
 title: "The History of the Project"
 description: "Provides a high-level overview of the project's history."
-weight: 4
-menu:
-  docs:
-    parent: "community"
 ---
 
 Kubernetes Helm is the merged result of [Helm

@@ -1,9 +1,6 @@
 ---
 title: "Getting Started with a Chart Template"
 description: "A quick guide on Chart templates."
-menu:
-  docs:
-    parent: "intro"
 ---
 
 In this section of the guide, we'll create a chart and then add a first template. The chart we created here will be used throughout the rest of the guide.

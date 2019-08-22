@@ -1,9 +1,6 @@
 ---
 title: "Flow Control"
 description: "A quick overview on the flow structure within templates."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 Control structures (called "actions" in template parlance) provide you, the template author, with the ability to control the flow of a template's generation. Helm's template language provides the following control structures:

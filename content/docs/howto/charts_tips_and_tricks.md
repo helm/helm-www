@@ -2,9 +2,6 @@
 title: "Chart Development Tips and Tricks"
 description: "Covers some of the tips and tricks Helm chart developers have learned while building production-quality charts."
 weight: 1
-menu:
-  docs:
-    parent: "howto"
 ---
 
 This guide covers some of the tips and tricks Helm chart developers have

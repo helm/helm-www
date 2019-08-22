@@ -1,9 +1,6 @@
 ---
 title: "Subcharts and Global Values"
 description: "Interacting with a subchart's and global values."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 To this point we have been working only with one chart. But charts can have dependencies, called _subcharts_, that also have their own values and templates. In this section we will create a subchart and see the different ways we can access values from within templates.

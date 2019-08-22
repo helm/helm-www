@@ -1,9 +1,6 @@
 ---
 title: "Values Files"
 description: "Instructions on how to use the --values flag."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 In the previous section we looked at the built-in objects that Helm templates offer. One of the four built-in objects is `Values`. This object provides access to values passed into the chart. Its contents come from four sources:

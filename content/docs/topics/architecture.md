@@ -1,9 +1,6 @@
 ---
 title: "Helm Architecture"
 description: "Describes the Helm architecture at a high level."
-menu:
-  docs:
-    parent: "topics"
 ---
 
 

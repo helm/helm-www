@@ -1,9 +1,6 @@
 ---
 title: "Named Templates"
 description: "How to define named templates."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 It is time to move beyond one template, and begin to create others. In this section, we will see how to define _named templates_ in one file, and then use them elsewhere. A _named template_ (sometimes called a _partial_ or a _subtemplate_) is simply a template defined inside of a file, and given a name. We'll see two ways to create them, and a few different ways to use them.
