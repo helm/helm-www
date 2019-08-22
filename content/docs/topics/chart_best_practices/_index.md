@@ -1,5 +1,7 @@
 ---
 title: "Best Practices"
+sidebar: true
+weight: 4
 ---
 
 # The Chart Best Practices Guide

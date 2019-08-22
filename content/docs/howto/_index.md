@@ -1,5 +1,6 @@
 ---
-title: "Howto"
+title: "How-to"
+weight: 2
 ---
 
 # How-to Guides

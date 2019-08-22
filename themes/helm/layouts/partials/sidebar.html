@@ -1,3 +1,5 @@
+{{ $docsHome      := .FirstSection }}
+{{ $docsSections  := where site.Sections "Section" "docs" }}
 <div class="sidebar show-for-large-up">
   <h1>
     <a href="/">
@@ -10,25 +12,28 @@
 
     <nav class="sidebar-nav">
       <ul class="current sidebar-main">
-        {{ $currentPage := . }}
-        {{ range site.Menus.docs }}
-          <li class="sidebar-nav-item toctree-l1 {{ if $.IsMenuCurrent "main" . }}active{{ end }}">
-            <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
-              <span class="ripple">{{ .Name }}</span>
-            </a>
-          {{ if .HasChildren }}
-            <ul class="current">
-            {{ range .Children.ByWeight }}
-            {{ $active := $.IsMenuCurrent "main" . }}
-            <li class="toctree-l2{{ if $active }} active {{end}}">
-              <a href="/docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
-                {{ .Name }}
-              </a>
-            </li>
-            {{ end }}
-            </ul>
-          {{ end }}
-          </li>
+        <li class="sidebar-nav-item toctree-l1">
+          <a class="reference internal" href="{{ $docsHome.RelPermalink }}" state="">
+            <span class="ripple">
+              {{ $docsHome.Title }}
+            </span>
+          </a>
+        </li>
+
+        {{ range $docsSections }}
+        {{ range .Sections }}
+        {{ .Render "section-link" }}
+
+        {{ range .Sections }}
+        {{ .Render "section-link" }}
+        {{ end }}
+        {{ end }}
+
+        {{ range .Pages }}
+        {{ if .Title }}
+        {{ .Render "section-link" }}
+        {{ end }}
+        {{ end }}
         {{ end }}
       </ul>
     </nav>
