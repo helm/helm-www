@@ -19,18 +19,22 @@
     overflow: visible;
   }
 
-   .blog-layout .main.blog nav.top-bar #banner,
+  .left-off-canvas-toggle {
+    top: 30px;
+  }
+
+  .blog-layout .main.blog nav.top-bar #banner,
   .sidebar+.main nav.top-bar #banner {
     margin-left: 0;
     min-width: 100%;
   }
 
-   .blog-layout h1.blog-logo {
+  .blog-layout h1.blog-logo {
     a:first-of-type {
       left: 25px;
     }
 
-     a:last-of-type {
+    a:last-of-type {
       right: auto;
       left: 125px;
     }
@@ -49,47 +53,13 @@
       min-width: 100%;
     }
 
-    // .fa {
-    //   display: none;
-    // }
-
-    nav.home-nav {
-      h1 {
-        max-width: 64px;
-        left: 50%;
-        margin-left: -32px;
-        top: 2.5rem;
-
-        svg {
-          min-height: 64px;
-        }
-      }
-
-      ul {
-        width: 96%;
-        padding: 0;
-        top: 8.5rem;
-        text-align: center;
-        
-        li {
-          margin-left: auto;
-          margin-right: auto;
-          text-align: center;
-          
-          a {
-            margin: 0;
-            padding: 0 1rem;
-            font-size: 1rem;
-            line-height: 1.5;
-          }
-        }
-      }
+    .fa {
+      display: none;
     }
 
     #helm {
       .billboard {
         padding-top: 180px;
-        min-height: 480px;
 
         .container {
           margin-left: 5%;
@@ -97,12 +67,7 @@
         }
 
         h1 {
-          font-size: 1.825rem;
-          margin-top: 0;
-        }
-
-        h2 {
-          font-size: 1rem;
+          font-size: 2rem;
         }
 
         .helm-logo {
@@ -157,12 +122,6 @@
           }
         }
 
-        small {
-          font-size: 1rem;
-          padding-left: 0.7rem;
-          color: lighten($blue2, 33.333%);
-        }
-
         a + ul {
           display: none;
           background: $blue4 !important;
@@ -182,28 +141,8 @@
           }
         }
 
-        &.social {
-          display: none !important;
-        }
-
-        &.versioner {
-          display: none;
-        }
-
         a.active + ul {
           display: block;
-        }
-      }
-
-      ul {
-        li {
-          list-style: none;
-          
-          a {
-            font-size: 1rem;
-            padding-left: 0.667rem;
-            line-height: 1.25;
-          }
         }
       }
     }
@@ -224,6 +163,17 @@
     .right {
       li {
         display: none;
+
+        &:nth-child(2) {
+          display: inline-block;
+
+          a {
+            position: absolute;
+            right: -4em;
+            top: -0.35em;
+            font-size: 1.75rem;
+          }
+        }
       }
     }
 
