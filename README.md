@@ -1,4 +1,4 @@
-![https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png](https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/src/img/apple-touch-icon.png)
+![Helm project logo](./themes/helm/static/img/apple-touch-icon.png)
 
 [helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
@@ -11,27 +11,28 @@
 This is a quick start guide for creating new blog post entries. Blog posts are
 created via pull requests. The following steps are used to add them.
 
-1) Add a new file to the `_posts` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
-2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
-```yaml
----
-layout: post
-title: "A Fancy Title"
-slug: "fancy-title"
-authorname: "Captain Awesome"
-authorlink: "https://example.com"
-date: "yyyy-mm-dd"
----
-```
-3) Add the content below the `---` as Markdown. The title does not need to be included in this section
-4) Any images should be placed in the `/src/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
-5) To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link. 
+1. Add a new file to the `_posts` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
+2. Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
+
+    ```yaml
+    ---
+    title: "A Fancy Title"
+    slug: "fancy-title"
+    authorname: "Captain Awesome"
+    authorlink: "https://example.com"
+    date: "yyyy-mm-dd"
+    ---
+    ```
+
+3. Add the content below the `---` as Markdown. The title does not need to be included in this section
+4. Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+5. To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link. 
 
 ---
 
 ## How to Edit The Helm Docs
 
-Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) main repo.  
+Edits to the docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) main repo.  
 This site will then extract those files during the build process, and publish them to [docs.helm.sh](https://docs.helm.sh).
 
 ---

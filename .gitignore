@@ -2,6 +2,7 @@
 .jekyll-metadata
 rootfs/svc
 .sass-cache/
+.yarnclean
 _site/*
 _site/
 .ncurc.yml
@@ -12,8 +13,6 @@ bower_components/
 vendor/
 rootfs/
 app/*
-source/
-source/*
-static/*
+resources/
 helm.sh/
 docs.helm.sh/

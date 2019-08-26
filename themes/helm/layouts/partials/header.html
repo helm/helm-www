@@ -1,0 +1,7 @@
+{{ partial "meta.html" . }}
+
+{{ partial "css.html" . }}
+
+{{ with .OutputFormats.Get "rss" }}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}

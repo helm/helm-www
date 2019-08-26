@@ -1,0 +1,43 @@
+{{ $langCode := site.LanguageCode | default "en-us" }}
+{{ $isHome   := .IsHome }}
+{{ $home     := site.BaseURL }}
+<!DOCTYPE html>
+<html lang="{{ $langCode }}">
+  <head>
+    <title>
+      {{ block "title" . }}
+      Helm | {{ .Title }}
+      {{ end }}
+    </title>
+
+    {{ partial "header.html" . }}
+  </head>
+
+  <body id="landing"{{ if $isHome }} class="home"{{ end }}>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        {{ if not $isHome }}
+        <a class="left-off-canvas-toggle show-for-medium-down" href="#off-canvas-navigation">
+          <i class="fa fa-bars"></i>
+        </a>
+
+        {{ partial "offcanvas.html" . }}
+        {{ end }}
+
+        {{ block "main" . }}
+        {{ end }}
+
+        {{ block "footer" . }}
+        {{ end }}
+
+        <a class="exit-off-canvas" data-proofer-ignore></a>
+
+        <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+      </div>
+    </div>
+
+    {{ partial "js.html" . }}
+    {{ partial "google-analytics.html" . }}
+  </body>
+</html>

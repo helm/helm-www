@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "New Governance And Elections"
 slug: "new-gov-and-elections"
 aliases: "/blog/2018-09-07-new-gov-and-elections/"
