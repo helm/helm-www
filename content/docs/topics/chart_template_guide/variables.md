@@ -1,9 +1,6 @@
 ---
 title: "Variables"
 description: "Using variables in templates."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 With functions, pipelines, objects, and control structures under our belts, we can turn to one of the more basic ideas in many programming languages: variables. In templates, they are less frequently used. But we will see how to use them to simplify code, and to make better use of `with` and `range`.

@@ -1,9 +1,6 @@
 ---
 title: "Template Functions and Pipelines"
 description: "Using functions in templates."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 So far, we've seen how to place information into a template. But that information is placed into the template unmodified. Sometimes we want to transform the supplied data in a way that makes it more useable to us.

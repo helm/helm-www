@@ -2,9 +2,6 @@
 title: "Installing Helm"
 description: "Learn how to install and get running with Helm."
 weight: 2
-menu:
-  docs:
-    parent: "intro"
 ---
 
 This guide shows how to install the Helm CLI. Helm can be installed either from source, or from pre-built binary releases.

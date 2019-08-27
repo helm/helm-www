@@ -1,5 +1,7 @@
 ---
 title: "Developing Templates"
+sidebar: true
+weight: 5
 ---
 
 # The Chart Template Developer's Guide

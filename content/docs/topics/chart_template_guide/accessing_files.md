@@ -1,9 +1,6 @@
 ---
 title: "Accessing Files Inside Templates"
 description: "How to access files from within a template."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 In the previous section we looked at several ways to create and access named templates. This makes it easy to import one template from within another template. But sometimes it is desirable to import a _file that is not a template_ and inject its contents without sending the contents through the template renderer.

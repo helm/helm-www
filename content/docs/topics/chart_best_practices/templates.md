@@ -1,9 +1,6 @@
 ---
 title: "Templates"
 description: "A closer look at best practices surrounding templates."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This part of the Best Practices Guide focuses on templates.

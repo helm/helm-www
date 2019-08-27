@@ -1,9 +1,6 @@
 ---
 title: "Values"
 description: "Focuses on how you should structure and use your values."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This part of the best practices guide covers using values. In this part of the

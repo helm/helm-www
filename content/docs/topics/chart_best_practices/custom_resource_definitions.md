@@ -1,9 +1,6 @@
 ---
 title: "Custom Resource Definitions"
 description: "How to handle creating and using CRDs."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This section of the Best Practices Guide deals with creating and using Custom Resource Definition

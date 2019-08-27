@@ -2,9 +2,6 @@
 title: "Related Projects and Documentation"
 description: "third-party tools, plugins and documentation provided by the community!"
 weight: 3
-menu:
-  docs:
-    parent: "community"
 ---
 
 The Helm community has produced many extra tools, plugins, and documentation about

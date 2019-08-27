@@ -2,9 +2,6 @@
 title: "Release Checklist"
 description: "Checklist for maintainers when releasing the next version of Helm."
 weight: 2
-menu:
-  docs:
-    parent: "community"
 ---
 
 **IMPORTANT**: If your experience deviates from this document, please document the changes to keep it up-to-date.

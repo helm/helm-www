@@ -1,9 +1,6 @@
 ---
 title: "Chart Tests"
 description: "Describes how to run and test your charts."
-menu:
-  docs:
-    parent: "topics"
 ---
 
 A chart contains a number of Kubernetes resources and components that work together. As a chart author, you may want to write some tests that validate that your chart works as expected when it is installed. These tests also help the chart consumer understand what your chart is supposed to do.

@@ -2,9 +2,6 @@
 title: "Quickstart Guide"
 description: "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
 weight: 1
-menu:
-  docs:
-    parent: "intro"
 ---
 
 This guide covers how you can quickly get started using Helm.
@@ -19,6 +16,7 @@ The following prerequisites are required for a successful and properly secured u
 
 
 ### Install Kubernetes or have access to a cluster
+
 - You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable release of Kubernetes, which in most cases is the second-latest minor release.
 - You should also have a local configured copy of `kubectl`.
 

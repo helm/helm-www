@@ -1,9 +1,6 @@
 ---
 title: "Dependencies"
 description: "Covers best practices for Chart dependencies."
-menu:
-  docs:
-    parent: "chart_best_practices"
 ---
 
 This section of the guide covers best practices for `dependencies` declared in `Chart.yaml`.

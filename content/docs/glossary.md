@@ -1,9 +1,7 @@
 ---
 title: "Glossary"
 description: "Terms used to describe components of Helm's architecture."
-menu:
-  docs:
-    weight: 100
+weight: 2
 ---
 
 ## Chart

@@ -1,9 +1,6 @@
 ---
 title: "YAML Techniques"
 description: "A closer look at the YAML specification and how it applies to Helm."
-menu:
-  docs:
-    parent: "chart_template_guide"
 ---
 
 Most of this guide has been focused on writing the template language. Here,

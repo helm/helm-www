@@ -1,9 +1,6 @@
 ---
 title: "The Chart Repository Guide"
 description: "How to create and work with Helm chart repositories."
-menu:
-  docs:
-    parent: "topics"
 ---
 
 # The Chart Repository Guide
