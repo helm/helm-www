@@ -31,3 +31,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [Permalinks]
   code = "/:filename/"
+
+[[params.quicklinks]]
+title = "Quickstart Guide"
+description = "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
+url = "/docs/intro/quickstart"
