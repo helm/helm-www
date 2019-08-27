@@ -36,3 +36,20 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 title = "Quickstart Guide"
 description = "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
 url = "/docs/intro/quickstart"
+
+[[params.quicklinks]]
+title = "Chart Guide"
+description = "Practical steps for building Helm charts—how to structure, sign, and sync your charts."
+url = "/docs/topics/charts"
+
+[[params.quicklinks]]
+title = "Deploying to Kubernetes"
+description = "Helm can deploy apps to Kubernetes, with release and rollback versioning"
+url = "https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes"
+via = "daemonza"
+
+[[params.quicklinks]]
+title = "CI/CD for Kubernetes"
+description = "Instructions on using Helm as the missing CI/CD Kubernetes component"
+url = "https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes"
+via = "hackernoon"
