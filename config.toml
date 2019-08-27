@@ -10,6 +10,7 @@ canonifyURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
 defaultContentLanguage = "en"
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
   title = "Helm"
