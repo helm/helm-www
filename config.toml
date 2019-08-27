@@ -30,39 +30,3 @@ defaultContentLanguage = "en"
 
 [Permalinks]
   code = "/:filename/"
-
-[[menu.docs]]
-  name = "Docs Home"
-  identifier = "home"
-  url = "/docs"
-  weight = 1
-[[menu.docs]]
-  name = "Introduction"
-  identifier = "intro"
-  url = "/docs/intro"
-  weight = 2
-[[menu.docs]]
-  name = "How-to"
-  identifier = "howto"
-  url = "/docs/howto"
-  weight = 3
-[[menu.docs]]
-  name = "Topics"
-  identifier = "topics"
-  url = "/docs/topics"
-  weight = 4
-[[menu.docs]]
-  name = "Best Practices"
-  identifier = "chart_best_practices"
-  url = "/docs/topics/chart_best_practices"
-  weight = 5
-[[menu.docs]]
-  name = "Developing Templates"
-  identifier = "chart_template_guide"
-  url = "/docs/topics/chart_template_guide"
-  weight = 6
-[[menu.docs]]
-  name = "Community"
-  identifier = "community"
-  url = "/docs/community"
-  weight = 7
