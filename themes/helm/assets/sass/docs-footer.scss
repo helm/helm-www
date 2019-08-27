@@ -210,6 +210,49 @@
   }
 }
 
+dl {
+  font-family: 'Space Mono';
+
+  dt,
+  dd {
+    color: $blue3;
+    @include klinicReg;
+    font-family: 'Space Mono';
+  }
+  dt {
+    @include klinicBold;
+    margin: 1.2rem 0;
+    color: black;
+  }
+
+  dd {
+    a {
+      color: $dark1;
+    }
+
+    em {
+      color: darken($light2, 15%);
+      font-style: normal;
+      font-size: 0.825rem;
+      padding-left: 0.8em;
+    }
+  }
+}
+
+.footer-social {
+  list-style: none;
+  text-align: right;
+  margin: 1rem 0 -1.75rem;
+  padding: 0 0.75rem 0 0;
+
+  li {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: 0.333rem auto;
+    padding: 0 1.125rem;
+  }
+}
+
 .cncf-wrap {
   max-width: 100%;
 }
@@ -219,6 +262,7 @@
   min-height: 2rem;
   text-align: center;
   padding-left: 300px;
+  border-top: 1px solid darken($light1, 2.5%);
 
   img {
     float: left;
@@ -229,9 +273,8 @@
 
   p {
     float: right;
-    margin: 1.5rem 2.5% 0 0;
+    margin: 1.125rem 2.5% 0 0;
     display: inline-block;
-    font-family: helvetica;
     color: #222;
 
     &:hover {

@@ -33,11 +33,17 @@ Helm | {{ .Title }}
       </div>
       <div class="small-1 columns">&nbsp;</div>
     </div>
+  
+    {{ end }}
+
+    {{ define "footer" }}
+
+    <div class="row">
+      {{ partial "footer-links.html"}}
+      {{ partial "footer-social.html"}}
+    </div>
+
+    {{ partial "cncf.html" . }}
   </div>
-
-  {{ end }}
-
-  {{ define "footer" }}
-  {{ partial "cncf.html" . }}
 </div>
 {{ end }}
