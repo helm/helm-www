@@ -6,7 +6,7 @@
 
 // Typography Variables
 
-  $base-font-size: 16px;
+  $base-font-size: 17px;
 
   //scale down
   $scalex0: $base-font-size * 0.625;     // 11.4  / 10
@@ -24,8 +24,8 @@
   $scalex10: $base-font-size * 2.95;     // 54.9  / 48
 
 
-$base-line-height: 1.5;
-$base-vertical-space: 2.5rem;
+$base-line-height: 1.636;
+$base-vertical-space: 2.5em;
 $base-pad-right: 5%;
 
 
@@ -132,6 +132,7 @@ p, ol, ul, dl, blockquote {
   font-size: $scalex3;
   padding-right: $base-pad-right;
   font-family: $base;
+  letter-spacing: 0.01em;
 }
 
 p {

@@ -19,10 +19,12 @@ Helm | Blog
             <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
           </header>
           
-          {{ .Summary }}
-          {{ if .Truncated }}
-          <a href="{{ .RelPermalink }}">Read More…</a>
-          {{ end }}
+          <p>
+            {{ .Summary }}
+            {{ if .Truncated }}
+              <a href="{{ .RelPermalink }}">Read More…</a>
+            {{ end }}
+          </p>
         </article>
         {{ end }}
 

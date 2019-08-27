@@ -10,7 +10,6 @@
 
   h1 {
     text-transform: none;
-    letter-spacing: 0.03em;
     margin-top: 1em;
     padding-top: 2.5em;
     padding-bottom: 1.5rem;
@@ -51,14 +50,13 @@
 
   p {
     color: $grey4;
-    line-height: 1.725;
     margin: 0.825rem 0 1.667rem;
     font-size: $scalex5;
 
     &:first-child {
       font-size: $scalex6;
       color: $grey4;
-      line-height: 1.636;
+      line-height: 1.575;
       margin-bottom: 1.925rem;
       padding-right: 7.5%;
     }
