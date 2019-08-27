@@ -1,19 +1,38 @@
-{{ $versions := site.Params.versions }}
-{{ $primary  := index (where $versions ".primary" true) 0 }}
-<li><a href="https://github.com/helm/helm" title="Get Helm">Get Helm</a></li>
-<li><a href="/blog" title="Helm Blog">Blog</a></li>
-<li><a href="/docs" title="Helm Documentation">Docs</a></li>
-<li><a href="https://hub.helm.sh/" target="_blank" title="Browse charts for Helm">Charts</a></li>
+{{ $versions  := site.Params.versions }}
+{{ $primary   := index (where $versions ".primary" true) 0 }}
+{{ $lang      := .Lang }}
+{{ $isEnglish := eq $lang "en" }}
+{{ $menu      := site.Menus.main }}
+
+{{ range $menu }}
+<li>
+  <a href="{{ .URL | relLangURL }}">
+    {{ .Name  }}
+  </a>
+</li>
+{{ end }}
+
+<!--
+{{ range .Translations }}
+<li>
+  <a href="{{ .RelPermalink }}">
+    {{ .Language.LanguageName }}
+  </a>
+</li>
+{{ end }}
+-->
+
 <li><a href="https://twitter.com/helmpack" target="_blank" class="hide-for-small-only" title="Helm on Twitter"><img src="/img/twitter.svg" alt="Helm on twitter" /></a></li>
 <li><a href="https://github.com/helm/helm" target="_blank" class="hide-for-small-only" title="Helm on Github"><img src="/img/github.svg" alt="Github" /></a></li>
-<li class="versioner">
+
+<li class="nav-dropdown">
   {{ with $primary }}
-  <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger">
+  <a data-dropdown="version-drop" aria-controls="version-drop" aria-expanded="false" class="nav-dropdown-trigger">
     {{ .version }}{{ with .patch }} {{ . }}{{ end }} <i class="fa fa-caret-down"></i>
   </a>
   {{ end }}
 
-  <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <ul id="version-drop" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
     {{ range $versions }}
     <li>
       <a href="{{ .url }}">

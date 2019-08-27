@@ -1,6 +1,5 @@
 baseurl = "https://helm.sh/"
 languageCode = "en-us"
-title = "Helm"
 theme = "helm"
 
 contentDir = "content"
@@ -9,8 +8,10 @@ publishdir = "app"
 canonifyURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
-defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[blackfriday]
+  hrefTargetBlank = true
 
 [params]
   title = "Helm"
@@ -69,3 +70,66 @@ url = "/blog/migrate-from-helm-v2-to-helm-v3/"
 title = "Helm Security Audit"
 description = "Helm has been audited and deemed as recommended for public deployment  during a third-party security audit funded by the CNCF."
 url = "/blog/2019-11-04-helm-security-audit-results/"
+
+# Multilingual configuration
+defaultContentLanguage = "en"
+disableLanguages = ["zh"]
+
+# English
+[languages.en]
+title = "Helm"
+description = "Helm - The Kubernetes Package Manager."
+contentDir = "content/en"
+languageName = "English"
+weight = 1
+
+[[languages.en.menus.main]]
+name = "Get Helm"
+url = "https://github.com/helm/helm"
+weight = 1
+
+[[languages.en.menus.main]]
+name = "Blog"
+url = "/blog"
+weight = 2
+
+[[languages.en.menus.main]]
+name = "Docs"
+url = "/docs"
+weight = 3
+
+[[languages.en.menus.main]]
+name = "Charts"
+url = "https://hub.helm.sh/"
+weight = 4
+
+# Chinese
+[languages.zh]
+title = "Helm"
+description = "Helm - The Kubernetes Package Manager."
+contentDir = "content/zh"
+languageName = "中文 Chinese"
+weight = 1
+
+[[languages.zh.menus.main]]
+name = "Get Helm"
+url = "https://github.com/helm/helm"
+weight = 1
+
+#[[languages.zh.menus.main]]
+#name = "Blog"
+#url = "/blog"
+#weight = 2
+
+[[languages.zh.menus.main]]
+name = "Docs"
+url = "/docs"
+weight = 3
+
+[[languages.zh.menus.main]]
+name = "Charts"
+url = "https://hub.helm.sh/"
+weight = 4
+
+[languages.zh.params]
+language_alternatives = ["en"]
