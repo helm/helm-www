@@ -4,7 +4,7 @@ Helm | Docs
 
 {{ define "main" }}
 {{ $isDocsRoot := eq .CurrentSection .FirstSection }}
-<div class="container container-full">
+<div class="container container-full docs docs-home">
   {{ partial "sidebar.html" . }}
 
   <div class="main home page" id="scrollpane">

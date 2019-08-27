@@ -42,11 +42,13 @@ body.home {
 
 nav.home-nav {
   position: absolute;
-  min-height: 300px;
+  min-height: 170px;
   left: 0;
   right: 0;
   top: 0;
   z-index: 2000;
+  background: transparent;
+  border: none;
 
   h1 {
     position: absolute;
@@ -62,7 +64,7 @@ nav.home-nav {
 
   ul {
     position: absolute;
-    top: 3.25rem;
+    top: 5.25rem;
     right: 2%;
 
     li {
@@ -72,6 +74,7 @@ nav.home-nav {
       a {
         display: inline-block;
         margin: 0 1.333rem;
+        padding: 0.333rem 0;
         font-size: 1.25rem;
         line-height: 2;
         position: relative;
@@ -98,7 +101,6 @@ nav.home-nav {
 
 // offset for banner
 .home nav.home-nav  {
-  // top: 30px;
 
   #banner {
     margin-top: 0 !important;
@@ -106,10 +108,6 @@ nav.home-nav {
 
   h1 {
     top: 38px;
-  }
-
-  ul {
-    top: 4rem;
   }
 }
 
