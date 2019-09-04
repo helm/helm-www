@@ -19,6 +19,10 @@
     overflow: visible;
   }
 
+  .left-off-canvas-toggle {
+    top: 30px;
+  }
+
    .blog-layout .main.blog nav.top-bar #banner,
   .sidebar+.main nav.top-bar #banner {
     margin-left: 0;
@@ -49,9 +53,9 @@
       min-width: 100%;
     }
 
-    // .fa {
-    //   display: none;
-    // }
+    .fa {
+      display: none;
+    }
 
     nav.home-nav {
       h1 {
@@ -69,7 +73,7 @@
         width: 96%;
         padding: 0;
         top: 8.5rem;
-        text-align: center;
+        text-align: center !important;
         
         li {
           margin-left: auto;
@@ -81,6 +85,10 @@
             padding: 0 1rem;
             font-size: 1rem;
             line-height: 1.5;
+          }
+
+          &.versioner {
+            display: none !important;
           }
         }
       }
@@ -187,7 +195,7 @@
         }
 
         &.versioner {
-          display: none;
+          display: none !important;
         }
 
         a.active + ul {
@@ -227,6 +235,9 @@
       }
     }
 
+    li.versioner {
+      display: none !important;
+    }
   }
 
   .contrib-text .lead {

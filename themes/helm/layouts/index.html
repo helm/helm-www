@@ -3,7 +3,9 @@ Helm Docs | Helm
 {{ end }}
 
 {{ define "main" }}
-<nav class="top-bar home-nav">
+<nav class="home-nav">
+  {{ partial "banner.html" . }}
+  
   <h1>
     <a href="{{ site.BaseURL }}" title="Helm.sh">
       {{ partial "logo.html" . }}

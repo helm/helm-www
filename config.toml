@@ -28,6 +28,21 @@ defaultContentLanguage = "en"
     "app"
   ]
 
+[[params.versions]]
+version = "v3.0.0"
+patch = "beta.2"
+url = "https://v3.helm.sh/docs"
+primary = true
+
+[[params.versions]]
+version = "v2.14.3"
+patch = "stable"
+url = "https://helm.sh/docs"
+
+[[params.versions]]
+version = "v2.14.0"
+url = "https://v2-14-0.helm.sh/docs"
+
 [Permalinks]
   code = "/:filename/"
 

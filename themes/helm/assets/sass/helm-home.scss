@@ -40,6 +40,79 @@ body.home {
   }
 }
 
+nav.home-nav {
+  position: absolute;
+  min-height: 300px;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+
+  h1 {
+    position: absolute;
+    left: 5%;
+    top: 0.5rem;
+    max-width: 112px;
+
+    img,
+    svg {
+      min-height: 96px;
+    }
+  }
+
+  ul {
+    position: absolute;
+    top: 3.25rem;
+    right: 2%;
+
+    li {
+      list-style: none;
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        margin: 0 1.333rem;
+        font-size: 1.25rem;
+        line-height: 2;
+        position: relative;
+        letter-spacing: 0.0125em;
+        color: $darkblue;
+        @include klinicBold;
+        @include ripple;
+
+        img {
+          max-height: 2rem;
+          color: $dark2;
+          line-height: 2.5;
+          padding-top: 0.5rem;
+          margin: -0.5rem -1rem 0 1rem;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+
+// offset for banner
+.home nav.home-nav {
+  // top: 30px;
+
+  #banner {
+    margin-top: 0 !important;
+  }
+
+  h1 {
+    top: 38px;
+  }
+
+  ul {
+    top: 4rem;
+  }
+}
+
 
 #helm.home {
   background: $blue;
