@@ -9,7 +9,7 @@
 <li class="versioner">
   {{ with $primary }}
   <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger">
-    {{ .version }}{{ with .patch }} {{ . }}{{ end }} <i class="fa fa-caret-down"></i>
+    {{ .version }}{{ with .stable }} {{ . }}{{ end }} <i class="fa fa-caret-down"></i>
   </a>
   {{ end }}
 
