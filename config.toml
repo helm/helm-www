@@ -32,12 +32,12 @@ defaultContentLanguage = "en"
 version = "v3.0.0"
 patch = "beta.2"
 url = "https://v3.helm.sh/docs"
-primary = true
 
 [[params.versions]]
 version = "v2.14.3"
 patch = "stable"
 url = "https://helm.sh/docs"
+primary = true
 
 [[params.versions]]
 version = "v2.14.0"
