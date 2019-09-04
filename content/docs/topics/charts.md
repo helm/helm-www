@@ -31,12 +31,13 @@ wordpress/
   values.yaml         # The default configuration values for this chart
   values.schema.json  # OPTIONAL: A JSON Schema for imposing a structure on the values.yaml file
   charts/             # A directory containing any charts upon which this chart depends.
+  crds/               # Custom Resource Definitions
   templates/          # A directory of templates that, when combined with values,
                       # will generate valid Kubernetes manifest files.
   templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
 ```
 
-Helm reserves use of the `charts/` and `templates/` directories, and of
+Helm reserves use of the `charts/`, `crds/`, and `templates/` directories, and of
 the listed file names. Other files will be left as they are.
 
 ## The Chart.yaml File
@@ -864,6 +865,71 @@ standard references that will help you out.
 - [Extra template functions](https://godoc.org/github.com/Masterminds/sprig)
 - [The YAML format](http://yaml.org/spec/)
 - [JSON Schema](https://json-schema.org/)
+
+## Custom Resource Definitions (CRDs)
+
+Kubernetes provides a mechanism for declaring new types of Kubernetes objects. Using CustomResourceDefinitions (CRDs), Kubernetes developers can declare custom resource types.
+
+In Helm 3, CRDs are treated as a special kind of object. They are installed before the rest of the chart, and are subject to some limitations.
+
+CRD YAML files should be placed in the `crds/` directory inside of a chart. Multiple CRDs (separated by YAML start and end markers) may be placed in the same file. Helm will attempt to load _all_ of the files in the CRD directory into Kubernetes.
+
+CRD files _cannot be templated_. They must be plain YAML documents.
+
+When Helm installs a new chart, it will upload the CRDs, pause until the CRDs are made available by the API server, and then start the template engine, render the rest of the chart, and upload it to Kubernetes. Because of this ordering, CRD information is available in the `.Capabilities` object in Helm templates, and Helm templates may create new instances of objects that were declared in CRDs.
+
+For example, if your chart had a CRD for `CronTab` in the `crds/` directory, you may create instances of the `CronTab` kind in the `templates/` directory:
+
+```
+crontabs/
+  Chart.yaml
+  crds/
+    crontab.yaml
+  templates/
+    mycrontab.yaml
+```
+
+The `crontab.yaml` file must contain the CRD with no template directives:
+
+```yaml
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+spec:
+  group: stable.example.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+  scope: Namespaced
+  names:
+    plural: crontabs
+    singular: crontab
+    kind: CronTab
+```
+
+Then the template `mycrontab.yaml` may create a new `CronTab` (using templates as usual):
+
+```yaml
+apiVersion: stable.example.com
+kind: CronTab
+metadata:
+  name: {{ .Values.name }}
+spec:
+   # ...
+```
+
+Helm will make sure that the `CronTab` kind has been installed and is available from the Kubernetes API server before it proceeds installing the things in `templates/`.
+
+#### Limitations on CRDs
+
+Unlike most objects in Kubernetes, CRDs are installed globally. For that reason, Helm takes a very cautious approach in managing CRDs. CRDs are subject to the following limitations:
+
+- CRDs are never reinstalled. If Helm determines that the CRDs in the `crds/` directory are already present (regardless of version), Helm will not attempt to install or upgrade.
+- CRDs are never installed on upgrade or rollback. Helm will only create CRDs on installation operations.
+- CRDs are never deleted. Deleting a CRD automatically deletes all of the CRD's contents across all namespaces in the cluster. Consequently, Helm will not delete CRDs.
+
+Operators who want to upgrade or delete CRDs are encouraged to do this manually and with great care.
 
 ## Using Helm to Manage Charts
 
