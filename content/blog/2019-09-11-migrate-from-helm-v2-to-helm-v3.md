@@ -1,7 +1,7 @@
 ---
 title: "How to migrate from Helm v2 to Helm v3"
 slug: "migrate-to-helm-v3"
-authorname: "Rimas Mocevicius
+authorname: "Rimas Mocevicius"
 author: "@rimusz"
 authorlink: "https://rimusz.net"
 date: "2019-09-11"
