@@ -199,7 +199,7 @@ NAME    	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART
 postgres	postgres 	1       	2019-09-11 12:52:32.529413 +0000 UTC	deployed	postgresql-6.3.5
 ```
 
-**Note:** As we did not specify `--delete-v2-releases` flag Helm v2 `postgres` release information was left in-tact, it can be deleted with `kubectl` later one.
+**Note:** As we did not specify `--delete-v2-releases` flag Helm v2 `postgres` release information was left in-tact, it can be deleted with `kubectl` later on.
 
 When are you ready to move all your releases, you can automate it with running `helm list` in a loop and applying `helm3 2to3 convert RELEASE` for each Helm v2 release.
 
