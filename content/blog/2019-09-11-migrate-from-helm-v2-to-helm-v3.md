@@ -7,13 +7,13 @@ authorlink: "https://rimusz.net"
 date: "2019-09-11"
 ---
 
-One of the most important parts of upgrading to a new release is the migration of data. This is especially true of Helm v2 to v3 considering the architectural changes between the releases. This is where the [helm-2to3](https://github.com/helm/helm-2to3) plugin comes in.
+One of the most important parts of upgrading to a new major release of Helm is the migration of data. This is especially true of Helm v2 to v3 considering the architectural changes between the releases. This is where the [helm-2to3](https://github.com/helm/helm-2to3) plugin comes in.
 
 ## Setting up Helm v3
 
-As we do not want to override Helm v2 cli binary, we need to perform an additional step to ensure that both cli versions can co-exist till we are ready to remove Helm v2 cli and all it's related data:
+As we do not want to override Helm v2 CLI binary, we need to perform an additional step to ensure that both CLI versions can co-exist until we are ready to remove Helm v2 CLI and all it's related data:
 
-- Download latest Helm v3 beta release from [here](https://github.com/helm/helm/releases/tag/v3.0.0-beta.3), rename the binary to `helm3` and store it in your path.
+Download latest Helm v3 beta release from [here](https://github.com/helm/helm/releases), rename the binary to `helm3` and store it in your path.
 
 We are ready to use `helm3`:
 
@@ -26,9 +26,9 @@ As you see there are no repositories set, let's fix it up.
 
 ## helm-2to3 plugin
 
-`helm-2to3` plugin will allow us to migrate Helm v2 configuration and releases to Helm v3 in-place:
+`helm-2to3` plugin will allow us to migrate Helm v2 configuration and releases to Helm v3 in-place.
 
-- Installed Kubernetes objects will not be modified or removed.
+Installed Kubernetes objects will not be modified or removed.
 
 ### Installing
 
@@ -88,7 +88,7 @@ It will migrate:
 - Repositories
 - Plugins
 
-**Note:** Please check that all Helm v2 plugins work fine with the Helm v3, and remove not working ones.
+**Note:** Please check that all Helm v2 plugins work fine with the Helm v3, and remove plugins that do not work.
 
 Now let's run `helm3 repo list` again:
 
@@ -211,13 +211,4 @@ $ helm3 2to3 convert postgres --tiller-out-cluster
 
 Very cool and simple, right :-)
 
-## Clean up of Helm v2 data
-The last step is cleaning up the old data. While this is not required, we strongly recommend it.
-
-To clean up Helm v2 data:
-
-- Delete home folder `.helm`
-- Delete Tiller releases if you haven't used `--delete-v2-releases` flag
-- Uninstall Tiller
-
-### Happy Helm v3 sailing
+**Happy Helm v3 sailing**
