@@ -28,7 +28,7 @@ As you see there are no repositories set, let's fix it up.
 
 ## helm-2to3 plugin
 
-`helm-2to3` plugin will allow us to migrate Helm v2 configuration and releases to Helm v3 in-place.
+`helm-2to3` plugin will allow us to migrate and cleanup Helm v2 configuration and releases to Helm v3 in-place.
 
 Installed Kubernetes objects will not be modified or removed.
 
@@ -38,25 +38,26 @@ Let's install it:
 
 ```
 $ helm3 plugin install https://github.com/helm/helm-2to3
-Downloading and installing helm-2to3 v0.1.0 ...
-https://github.com/helm/helm-2to3/releases/download/v0.1.0/helm-2to3_0.1.0_darwin_amd64.tar.gz
+Downloading and installing helm-2to3 v0.1.2 ...
+https://github.com/helm/helm-2to3/releases/download/v0.1.0/helm-2to3_0.1.2_darwin_amd64.tar.gz
 Installed plugin: 2to3
 ```
 
 ```
 $ helm3 plugin list
 NAME	VERSION	DESCRIPTION
-2to3	0.1.0  	migrate Helm v2 configuration and releases in-place to Helm v3
+2to3	0.1.2  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
 ```
 
 ```
 $ helm3 2to3
-Migrate Helm v2 configuration and releases in-place to Helm v3
+Migrate and Cleanup Helm v2 configuration and releases in-place to Helm v3
 
 Usage:
   2to3 [command]
 
 Available Commands:
+  cleanup     cleanup Helm v2 configuration, release data and Tiller deployment
   convert     migrate Helm v2 release in-place to Helm v3
   help        Help about any command
   move        migrate Helm v2 configuration in-place to Helm v3
@@ -75,6 +76,7 @@ Currently plugin supports:
 
 - Migration of Helm v2 configuration
 - Migration of Helm v2 releases
+- Clean up Helm v2 configuration, release data and Tiller deployment
 
 ## Migrate Helm v2 configuration
 
@@ -201,7 +203,7 @@ NAME    	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART
 postgres	postgres 	1       	2019-09-11 12:52:32.529413 +0000 UTC	deployed	postgresql-6.3.5
 ```
 
-**Note:** As we did not specify `--delete-v2-releases` flag Helm v2 `postgres` release information was left in-tact, it can be deleted with `kubectl` later on.
+**Note:** As we did not specify `--delete-v2-releases` flag Helm v2 `postgres` release information was left in-tact, it can be deleted with `helm3 2to3 cleanup` later on.
 
 When are you ready to move all your releases, you can automate it with running `helm list` in a loop and applying `helm3 2to3 convert RELEASE` for each Helm v2 release.
 
@@ -212,5 +214,67 @@ $ helm3 2to3 convert postgres --tiller-out-cluster
 ```
 
 Very cool and simple, right :-)
+
+## Clean up of Helm v2 data
+
+The last step is cleaning up the old data. While this is not required, we strongly recommend it.
+
+Let's check available options:
+
+```
+$ helm3 2to3 cleanup -h
+cleanup Helm v2 configuration, release data and Tiller deployment
+
+Usage:
+  2to3 cleanup [flags]
+
+Flags:
+      --dry-run                  simulate a command
+  -h, --help                     help for cleanup
+  -l, --label string             label to select tiller resources by (default "OWNER=TILLER")
+  -s, --release-storage string   v2 release storage type/object. It can be 'secrets' or 'configmaps'. This is only used with the 'tiller-out-cluster' flag (default "secrets")
+  -t, --tiller-ns string         namespace of Tiller (default "kube-system")
+      --tiller-out-cluster       when  Tiller is not running in the cluster e.g. Tillerless
+```
+
+It will clean:
+- Configuration (Helm home directory)
+- v2 release data
+- Tiller deployment
+
+And of course the safest way is to start with `--dry-run` flag:
+
+```
+$ helm3 2to3 cleanup --dry-run
+NOTE: This is in dry-run mode, the following actions will not be executed.
+Run without --dry-run to take the actions described below:
+
+WARNING: Helm v2 Configuration, Release Data and Tiller Deployment will be removed.
+This will clean up all releases managed by Helm v2. It will not be possible to restore them if you haven't made a backup of the releases.
+Helm v2 will not be usable afterwards.
+
+[Cleanup/confirm] Are you sure you want to cleanup Helm v2 data? [y/N]: y
+
+Helm v2 data will be cleaned up.
+[Helm 2] Releases will be deleted.
+[Helm 2] ReleaseVersion "redis.v1" will be deleted.
+[Helm 2] Tiller service in "kube-system" namespace will be removed.
+[Helm 2] Home folder "/Users/rimas/.helm" will be deleted.
+```
+
+It will show what releases going to be deleted, Tiller service to be removed from `kube-system` namespace and Helm v2 home folder will be deleted.
+
+When you are ready to clean up Hem v2 data, just run that command without `--dry-run` flag.
+
+**NOTE:** The `cleanup` command will remove the Helm v2 Configuration, Release Data and Tiller Deployment. It cleans up all releases managed by Helm v2. It will not be possible to restore them if you haven't made a backup of the releases. Helm v2 will not be usable afterwards.
+
+If you are using Tillerless Helm v2, just add `--tiller-out-cluster` to clean up Helm v2 data.
+
+The plugin also supports non default Helm v2 `home` data folder and Tiller releases `namespace`:
+
+```
+$ export HELM_V2_HOME=$PWD/.helm2
+$ helm 2to3 cleanup --tiller-ns some_namespace
+```
 
 **Happy Helm v3 sailing**
