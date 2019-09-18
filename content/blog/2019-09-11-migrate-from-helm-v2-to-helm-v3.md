@@ -273,7 +273,8 @@ If you are using Tillerless Helm v2, just add `--tiller-out-cluster` to clean up
 The plugin also supports non default Helm v2 `home` data folder and Tiller releases `namespace`:
 
 ```
-$ export HELM_V2_HOME=$PWD/.helm2$ helm 2to3 cleanup --tiller-ns some_namespace
+$ export HELM_V2_HOME=$PWD/.helm2
+$ helm 2to3 cleanup --tiller-ns some_namespace
 ```
 
 **Happy Helm v3 sailing**
