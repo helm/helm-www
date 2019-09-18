@@ -46,7 +46,7 @@ Installed plugin: 2to3
 ```
 $ helm3 plugin list
 NAME	VERSION	DESCRIPTION
-2to3	0.1.2  	migrate Helm v2 configuration and releases in-place to Helm v3
+2to3	0.1.2  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
 ```
 
 ```
