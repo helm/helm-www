@@ -28,7 +28,7 @@ As you see there are no repositories set, let's fix it up.
 
 ## helm-2to3 plugin
 
-`helm-2to3` plugin will allow us to migrate Helm v2 configuration and releases to Helm v3 in-place.
+`helm-2to3` plugin will allow us to migrate and cleanup Helm v2 configuration and releases to Helm v3 in-place.
 
 Installed Kubernetes objects will not be modified or removed.
 
