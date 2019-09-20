@@ -137,17 +137,17 @@ data:
   .dockerconfigjson: {{ template "imagePullSecret" . }}
 ```
 
-## Automatically Roll Deployments When ConfigMaps or Secrets change
+## Automatically Roll Deployments
 
-Often times configmaps or secrets are injected as configuration
-files in containers.
-Depending on the application a restart may be required should those
-be updated with a subsequent `helm upgrade`, but if the
-deployment spec itself didn't change the application keeps running
-with the old configuration resulting in an inconsistent deployment.
+Often times configmaps or secrets are injected as configuration files in
+containers or there are other external dependencies changes that require rolling
+pods. Depending on the application a restart may be required should those be
+updated with a subsequent `helm upgrade`, but if the deployment spec itself
+didn't change the application keeps running with the old configuration resulting
+in an inconsistent deployment.
 
-The `sha256sum` function can be used to ensure a deployment's
-annotation section is updated if another file changes: 
+The `sha256sum` function can be used to ensure a deployment's annotation section
+is updated if another file changes: 
 
 ```yaml
 kind: Deployment
@@ -159,8 +159,26 @@ spec:
 [...]
 ```
 
-See also the `helm upgrade --recreate-pods` flag for a slightly
-different way of addressing this issue.
+In the event you always want to roll your deployment, you can use a similar
+annotation step as above, instead replacing with a random string so it always
+changes and causes the deployment to roll:
+
+```yaml
+kind: Deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+[...]
+```
+
+Both of these methods allow your Deployment to leverage the built in update
+strategy logic to avoid taking downtime.
+
+NOTE: In the past we recommended using the `--recreate-pods` flag as another
+option. This flag has been marked as deprecated in Helm 3 in favor of the more
+declarative method above. 
 
 ## Tell Helm Not To Uninstall a Resource
 
