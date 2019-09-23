@@ -33,7 +33,7 @@ The following is a summary of some of those changes that a user should be aware 
      - Helm client (helm) only (no tiller)
      - Run-as-is paradigm
    - `local` or `stable` repositories are not set-up by default
-   - `crd-install` hook removed and replaced with `crd` directory in chart where all CRDs defined in it will be installed before any rendering of the chart
+   - `crd-install` hook removed and replaced with `crds` directory in chart where all CRDs defined in it will be installed before any rendering of the chart
    - `test-failure` target removed. Use `test-success` instead
    - Commands removed/replaced/added:
        - delete --> uninstall : removes all release history by default (previously needed `--purge`)
