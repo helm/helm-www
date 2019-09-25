@@ -15,7 +15,7 @@ The following is a summary of some of those changes that a user should be aware 
    - Replaces client/server with client/library architecture (`helm` binary only)
    - Security is now on per user basis (delegated to Kubernetes user cluster security)
    - Releases are now stored as in-cluster secrets and the release object metadata has changed
-   - Releases are persisted on a release namespace basis and not in the Tiller namepsace anymore
+   - Releases are persisted on a release namespace basis and not in the Tiller namespace anymore
 2. Chart repository updated:
    - `helm search` now supports both local repository searches and making search queries against Helm Hub
 3. Chart apiVersion bumped to "v2" for following specification changes:
@@ -45,7 +45,7 @@ The following is a summary of some of those changes that a user should be aware 
        - reset (removed)
        - serve (removed)
        - upgrade: Added argument `maxHistory` which limits the maximum number of revisions saved per release (0 for no limit)
-   - Helm 3 Go library has undergone a lot of changes and it incompatible with the Helm 2 library
+   - Helm 3 Go library has undergone a lot of changes and is incompatible with the Helm 2 library
    - Release binaries are now hosted on `get.helm.sh`
 
 ## Migration Use Cases
@@ -57,7 +57,7 @@ The migration use cases are as follows:
    - Helm v2 and v3 can quite happily manage the same cluster. The Helm versions can be installed on the same or separate systems
    - If installing Helm v3 on the same system, you need to to perform an additional step to ensure that both client versions can co-exist until ready to remove Helm v2 client. Rename or put the Helm v3 binary in a different folder to avoid conflict
    - Otherwise there are no conflicts between both versions because of the following distinctions: 
-     - v2 and v3 release (history) storage are independent of each other. The changes includes the Kubernetes resource for storage and the release object metadata contained in the resource. Releases will also be on a per user namespace instead of using the the Tiller namespace (for example, v2 default Tiller namespace kube-system). v2 uses "ConfigMaps" or "Secrets" under the Tiller namespace and `TILLER`ownership. v3 uses "Secrets" in the user namespace and `helm` ownership. Releases are incremental in both v2 and v3
+     - v2 and v3 release (history) storage are independent of each other. The changes includes the Kubernetes resource for storage and the release object metadata contained in the resource. Releases will also be on a per user namespace instead of using the Tiller namespace (for example, v2 default Tiller namespace kube-system). v2 uses "ConfigMaps" or "Secrets" under the Tiller namespace and `TILLER`ownership. v3 uses "Secrets" in the user namespace and `helm` ownership. Releases are incremental in both v2 and v3
      - The only issue could be if Kubernetes cluster scoped resources (e.g. `clusterroles.rbac`) are defined in a chart. The v3 deployment would then fail even if unique in the namespace as the resources would clash
      - v3 configuration no longer uses `HELM_HOME` and uses XDG directory specification instead. It is also created on the fly as need be. It is therefore independent of v2 configuration. This is applicable only when both versions are installed on the same system
  
@@ -66,7 +66,7 @@ The migration use cases are as follows:
    - It should be noted that a Helm client: 
      - can manage 1 to many Kubernetes clusters
      - can connect to 1 to many Tiller instances for  a cluster 
-   - This means that you have to cognisant of this when migrating as releases are deployed into clusters by Tiller and its namespace. You have to therefore be aware of migrating for each cluster and each Tiller instance that is managed by the Helm v2 client instance
+   - This means that you have to be cognisant of this when migrating as releases are deployed into clusters by Tiller and its namespace. You have to therefore be aware of migrating for each cluster and each Tiller instance that is managed by the Helm v2 client instance
    - The recommended data migration path is as follows:
      1. Backup v2 data
      2. Migrate Helm v2 configuration
