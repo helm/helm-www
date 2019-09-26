@@ -171,7 +171,7 @@ to upgrade to the Helm 3 Go client libraries, make sure to change your import pa
 
 The `.Capabilities` built-in object available during the rendering stage has been simplified.
 
-[Built-in Objects](chart_template_guide/builtin_objects.md)
+[Built-in Objects](/docs/topics/chart_template_guide/builtin_objects/)
 
 ### Validating Chart Values with JSONSchema
 
@@ -186,7 +186,7 @@ Validation occurs when any of the following commands are invoked:
 * `helm template`
 * `helm lint`
 
-See the documentation on [Schema files](charts.md#schema-files) for more information.
+See the documentation on [Schema files](/docs/topics/charts#schema-files) for more information.
 
 ### Consolidation of requirements.yaml into Chart.yaml
 
@@ -251,7 +251,7 @@ battle-testing.
 Please have a look at `helm help chart` and `helm help registry` for more information on how to package a chart and
 push it to a Docker registry.
 
-For more info, please see [this page](./registries.md).
+For more info, please see [this page](/docs/topics/registries/).
 
 ### Removal of helm serve
 
