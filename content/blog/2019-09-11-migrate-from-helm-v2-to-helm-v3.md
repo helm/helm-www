@@ -11,6 +11,12 @@ date: "2019-09-11"
 
 One of the most important parts of upgrading to a new major release of Helm is the migration of data. This is especially true of Helm v2 to v3 considering the architectural changes between the releases. This is where the [helm-2to3](https://github.com/helm/helm-2to3) plugin comes in.
 
+It helps with this migration by supporting:
+
+- Migration of Helm v2 configuration.
+- Migration of Helm v2 releases.
+- Clean up Helm v2 configuration, release data and Tiller deployment.
+
 ## Setting up Helm v3
 
 As we do not want to override Helm v2 CLI binary, we need to perform an additional step to ensure that both CLI versions can co-exist until we are ready to remove Helm v2 CLI and all it's related data:
@@ -24,7 +30,7 @@ $ helm3 repo list
 Error: no repositories to show
 ```
 
-As you see there are no repositories set, let's fix it up.
+As you see there are no repositories set as Helm v3 comes without `stable` repository setup by default, let's fix it up.
 
 ## helm-2to3 plugin
 
@@ -38,15 +44,15 @@ Let's install it:
 
 ```
 $ helm3 plugin install https://github.com/helm/helm-2to3
-Downloading and installing helm-2to3 v0.1.2 ...
-https://github.com/helm/helm-2to3/releases/download/v0.1.0/helm-2to3_0.1.2_darwin_amd64.tar.gz
+Downloading and installing helm-2to3 v0.1.3 ...
+https://github.com/helm/helm-2to3/releases/download/v0.1.3/helm-2to3_0.1.3_darwin_amd64.tar.gz
 Installed plugin: 2to3
 ```
 
 ```
 $ helm3 plugin list
-NAME	VERSION	DESCRIPTION
-2to3	0.1.2  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
+NAME  	VERSION	DESCRIPTION
+2to3  	0.1.3  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
 ```
 
 ```
@@ -83,7 +89,15 @@ Currently plugin supports:
 First we need to migrate Helm v2 config and data folders:
 
 ```
-$ helm3 2to3 move config
+$ helm3 2to3 move config -h
+migrate Helm v2 configuration in-place to Helm v3
+
+Usage:
+  2to3 move config [flags]
+
+Flags:
+      --dry-run   simulate a command
+  -h, --help      help for move
 ```
 
 It will migrate:
@@ -92,7 +106,52 @@ It will migrate:
 - Repositories
 - Plugins
 
-**Note:** Please check that all Helm v2 plugins work fine with the Helm v3, and remove plugins that do not work.
+The safest way is to start with --dry-run flag:
+
+```
+$ helm3 2to3 move config --dry-run
+NOTE: This is in dry-run mode, the following actions will not be executed.
+Run without --dry-run to take the actions described below:
+
+WARNING: Helm v3 configuration maybe overwritten during this operation.
+
+[Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
+
+Helm v2 configuration will be moved to Helm v3 configration.
+[Helm 2] Home directory: /Users/rimas/.helm
+[Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
+[Helm 3] Data directory: /Users/rimas/Library/helm
+[Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
+[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+[Helm 3] Create data folder "/Users/rimas/Library/helm" .
+[Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+[Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+```
+
+Cool, now let's do the actual migration:
+
+```
+$ helm3 2to3 move config
+WARNING: Helm v3 configuration maybe overwritten during this operation.
+
+[Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
+
+Helm v2 configuration will be moved to Helm v3 configration.
+[Helm 2] Home directory: /Users/rimas/.helm
+[Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
+[Helm 3] Data directory: /Users/rimas/Library/helm
+[Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
+[Helm 3] Config folder "/Users/rimas/Library/Preferences/helm" created.
+[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" copied successfully to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+[Helm 3] Create data folder "/Users/rimas/Library/helm" .
+[Helm 3] data folder "/Users/rimas/Library/helm" created.
+[Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+[Helm 2] plugins "/Users/rimas/.helm/plugins" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+[Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+[Helm 2] starters "/Users/rimas/.helm/starters" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+Helm v2 configuration was moved successfully to Helm v3 configration.
+```
 
 Now let's run `helm3 repo list` again:
 
@@ -119,6 +178,8 @@ monitor	0.3.0  	Query at a given interval a Prometheus, ElasticSearch or Sentry 
 ```
 
 Nice, now I can use the same Helm repositories and plugins which I have in Helm v2.
+
+**Note:** Please check that all Helm v2 plugins work fine with the Helm v3, and remove plugins that do not work.
 
 The move config will create the Helm v3 `config` and `data` folders if they don't exist, and will override the `repositories.yaml` file if it does exist.
 
@@ -255,10 +316,9 @@ Helm v2 will not be usable afterwards.
 
 [Cleanup/confirm] Are you sure you want to cleanup Helm v2 data? [y/N]: y
 
-Helm v2 data will be cleaned up.
-[Helm 2] Releases will be deleted.
+Helm v2 data will be cleaned up.[Helm 2] Releases will be deleted.
 [Helm 2] ReleaseVersion "redis.v1" will be deleted.
-[Helm 2] Tiller service in "kube-system" namespace will be removed.
+[Helm 2] Tiller in "kube-system" namespace will be removed.
 [Helm 2] Home folder "/Users/rimas/.helm" will be deleted.
 ```
 
