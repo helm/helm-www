@@ -72,4 +72,5 @@ The migration use cases are as follows:
      2. Migrate Helm v2 configuration
      3. Migrate Helm v2 releases
      4. When happy that Helm v3 is managing all Helm v2 data (for all clusters and Tiller instances of the Helm v2 client instance) as expected, then clean up Helm v2 data
-   - The migration process is automated by the Helm [2to3](https://github.com/helm/helm-2to3) plugin
+   - The migration process is automated by the Helm v3 [2to3](https://github.com/helm/helm-2to3) plugin:
+     - `2to3` plugin usage with examples is explained in [blog post](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
