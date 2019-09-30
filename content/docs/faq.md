@@ -357,14 +357,14 @@ We provide it because it is useful, but we suggest that users carefully read the
 script first. What we'd really like, though, are better packaged releases of
 Helm.
 
-### How do I put the Helm client files somewhere other than ~/.helm?
+### How do I put the Helm client files somewhere other than their defaults?
 
-Set the `$HELM_HOME` environment variable, and then run `helm init`:
+Helm uses the XDG structure for storing files. There are environment
+variables you can use to override these locations:
 
-```console
-export HELM_HOME=/some/path
-helm init --client-only
-```
+- `$XDG_CACHE_HOME`: set an alternative location for storing cached files.
+- `$XDG_CONFIG_HOME`: set an alternative location for storing Helm configuration.
+- `$XDG_DATA_HOME`: set an alternative location for storing Helm data.
 
 Note that if you have existing repositories, you will need to re-add them
 with `helm repo add...`.
