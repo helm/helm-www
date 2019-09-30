@@ -42,14 +42,25 @@ Download a binary release of the Helm client. You can use tools like
 For more details, or for other options, see [the installation
 guide](install.md).
 
-## Initialize Helm
+## Initialize a Helm Chart Repository
 
-Once you have Helm ready, you can initialize the local CLI:
+Once you have Helm ready, you can add a chart repository. One popular starting location is the official Helm stable charts:
 
 ```console
-$ helm init
+$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
+Once this is installed, you will be able to list the charts you can install:
+
+```console
+helm search repo stable
+NAME                                 	CHART VERSION	APP VERSION                 	DESCRIPTION
+stable/acs-engine-autoscaler         	2.2.2        	2.1.1                       	DEPRECATED Scales worker nodes within agent pools
+stable/aerospike                     	0.2.8        	v4.5.0.5                    	A Helm chart for Aerospike in Kubernetes
+stable/airflow                       	4.1.0        	1.10.4                      	Airflow is a platform to programmatically autho...
+stable/ambassador                    	4.1.0        	0.81.0                      	A Helm chart for Datawire Ambassador
+# ... and many more
+```
 
 ## Install an Example Chart
 
