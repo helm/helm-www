@@ -93,9 +93,9 @@ place it in `bin/helm`.
 
 ## Conclusion
 
-In most cases, installation is as simple as getting a pre-built `helm` binary
-and running `helm init`. This document covers additional cases for those
-who want to do more sophisticated things with Helm.
+In most cases, installation is as simple as getting a pre-built `helm` 
+binary. This document covers additional cases for those who want to do
+more sophisticated things with Helm.
 
 Once you have the Helm Client successfully installed, you can
 move on to using Helm to manage charts.

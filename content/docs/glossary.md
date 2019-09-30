@@ -55,13 +55,10 @@ While _Helm_ is the name of the project, the command line client is also
 named `helm`. By convention, when speaking of the project, _Helm_ is
 capitalized. When speaking of the client, _helm_ is in lowercase.
 
-## Helm Home (HELM_HOME)
+## Helm Configuration Files (XDG)
 
-The Helm client stores information in a local directory referred to as
-_helm home_. By default, this is in the `$HOME/.helm` directory.
-
-This directory contains configuration and cache data, and is created by
-`helm init`.
+Helm stores its configuration files in XDG directories. These
+directories are created the first time `helm` is run.
 
 ## Kube Config (KUBECONFIG)
 
