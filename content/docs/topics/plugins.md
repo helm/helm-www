@@ -157,7 +157,7 @@ available Charts.
 
 The defined command will be invoked with the following scheme:
 `command certFile keyFile caFile full-URL`. The SSL credentials are coming from the
-repo definition, stored in `$HELM_HOME/repository/repositories.yaml`. Downloader
+repo definition, stored in `$XDG_DATA_HOME/helm/repositories.yaml`. Downloader
 plugin is expected to dump the raw content to stdout and report errors on stderr.
 
 The downloader command also supports sub-commands or arguments, allowing you to specify
@@ -180,7 +180,7 @@ The following variables are guaranteed to be set:
   `helm myplug` will have the short name `myplug`.
 - `HELM_PLUGIN_DIR`: The directory that contains the plugin.
 - `HELM_BIN`: The path to the `helm` command (as executed by the user).
-- `HELM_HOME`: The path to the Helm home.
+- `HELM_HOME`: The path to `$XDG_DATA_HOME/helm`.
 - `HELM_PATH_*`: Paths to important Helm files and directories are stored in
   environment variables prefixed by `HELM_PATH`.
 
