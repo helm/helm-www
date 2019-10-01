@@ -307,7 +307,7 @@ In Helm 3, Helm now respects the following environment variables as per the XDG 
 Helm plugins are still passed `$HELM_HOME` as an alias to `$XDG_DATA_HOME` for backwards compatibility with plugins
 looking to use `$HELM_HOME` as a scratchpad environment.
 
-Several new environment variables are also passed in to the plugin's environment to accomodate this change:
+Several new environment variables are also passed in to the plugin's environment to accommodate this change:
 
 - `$HELM_PATH_CACHE` for the cache path
 - `$HELM_PATH_CONFIG` for the config path
@@ -322,7 +322,7 @@ In order to better align the verbiage from other package managers, `helm delete`
 can be used.
 
 In Helm 2, in order to purge the release ledger, the `--purge` flag had to be provided. This
-functionality is now enabled by default. To retain the previous behaviour, use
+functionality is now enabled by default. To retain the previous behavior, use
 `helm uninstall --keep-history`.
 
 Additionally, several other commands were re-named to accommodate the same conventions:
@@ -374,9 +374,19 @@ with `helm repo add...`.
 
 ### I want to delete my local Helm. Where are all its files?
 
-Along with the `helm` binary, Helm stores some files in `$HELM_HOME`, which is
-located by default in `~/.helm`.
+Along with the `helm` binary, Helm stores some files in the following locations:
 
+- $XDG_CACHE_HOME
+- $XDG_CONFIG_HOME
+- $XDG_DATA_HOME
+
+The following table gives the default folder for each of these, by OS:
+
+| Operating System | Cache Path                | Configuration Path             | Data Path               |
+| ---------------- | ------------------------- | ------------------------------ | ----------------------- |
+| Linux            | $HOME/.cache/helm         | $HOME/.config/helm             | $HOME/.local/share/helm |
+| macOS            | $HOME/Library/Caches/helm | $HOME/Library/Preferences/helm | $HOME/Library/helm      |
+| Windows          | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm          |
 
 ## Troubleshooting
 

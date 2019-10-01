@@ -994,7 +994,7 @@ barrier for setting up a repository.
 The `helm create` command takes an optional `--starter` option that lets you
 specify a "starter chart".
 
-Starters are just regular charts, but are located in `$HELM_HOME/starters`.
+Starters are just regular charts, but are located in `$XDG_DATA_HOME/helm/starters`.
 As a chart developer, you may author charts that are specifically designed
 to be used as starters. Such charts should be designed with the following
 considerations in mind:
@@ -1005,6 +1005,6 @@ considerations in mind:
 - All occurrences of `<CHARTNAME>` will be replaced with the specified chart
   name so that starter charts can be used as templates.
 
-Currently the only way to add a chart to `$HELM_HOME/starters` is to manually
+Currently the only way to add a chart to `$XDG_DATA_HOME/helm/starters` is to manually
 copy it there. In your chart's documentation, you may want to explain that
 process.
