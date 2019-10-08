@@ -30,7 +30,7 @@ defaultContentLanguage = "en"
 
 [[params.versions]]
 version = "v3.0.0"
-patch = "beta.2"
+patch = "beta.4"
 url = "https://v3.helm.sh/docs"
 
 [[params.versions]]
