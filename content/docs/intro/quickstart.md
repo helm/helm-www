@@ -70,7 +70,7 @@ of the official `stable` charts.
 
 ```console
 $ helm repo update              # Make sure we get the latest list of charts
-$ helm install stable/mysql
+$ helm install stable/mysql --generate-name
 Released smiling-penguin
 ```
 
