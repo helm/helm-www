@@ -73,7 +73,7 @@ directory that contains packaged charts.
 
 This is an example of an index file:
 
-```
+```yaml
 apiVersion: v1
 entries:
   alpine:

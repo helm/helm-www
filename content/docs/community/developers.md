@@ -26,7 +26,7 @@ NOTE: This will fail if not running from the path `$GOPATH/src/helm.sh/helm`. Th
 directory `helm.sh` should not be a symlink or `build` will not find the relevant
 packages.
 
-If required, this will first install dependencies, rebuild the `vendor/` tree, and 
+If required, this will first install dependencies, rebuild the `vendor/` tree, and
 validate configuration. It will then compile `helm` and place it in `bin/helm`.
 
 To run all the tests (without running the tests for `vendor/`), run
@@ -44,7 +44,7 @@ generate the documentation using `make docs`.
 To expose the Helm man pages to your `man` client, you can put the files in your
 `$MANPATH`:
 
-```
+```console
 $ export MANPATH=$GOPATH/src/helm.sh/helm/docs/man:$MANPATH
 $ man helm
 ```

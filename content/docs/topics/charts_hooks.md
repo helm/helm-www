@@ -115,12 +115,12 @@ declares a job to be run on `post-install`:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{.Release.Name}}"
+  name: "{{ .Release.Name }}"
   labels:
-    app.kubernetes.io/managed-by: {{.Release.Service | quote }}
-    app.kubernetes.io/instance: {{.Release.Name | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/instance: {{ .Release.Name | quote }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
@@ -130,30 +130,30 @@ metadata:
 spec:
   template:
     metadata:
-      name: "{{.Release.Name}}"
+      name: "{{ .Release.Name }}"
       labels:
-        app.kubernetes.io/managed-by: {{.Release.Service | quote }}
-        app.kubernetes.io/instance: {{.Release.Name | quote }}
-        helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+        app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+        app.kubernetes.io/instance: {{ .Release.Name | quote }}
+        helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       restartPolicy: Never
       containers:
       - name: post-install-job
         image: "alpine:3.3"
-        command: ["/bin/sleep","{{default "10" .Values.sleepyTime}}"]
+        command: ["/bin/sleep","{{ default "10" .Values.sleepyTime }}"]
 
 ```
 
 What makes this template a hook is the annotation:
 
-```
+```yaml
   annotations:
     "helm.sh/hook": post-install
 ```
 
 One resource can implement multiple hooks:
 
-```
+```yaml
   annotations:
     "helm.sh/hook": post-install,post-upgrade
 ```
@@ -175,11 +175,11 @@ deterministic executing order. Weights are defined using the following annotatio
 
 Hook weights can be positive or negative numbers but must be represented as
 strings. When Helm starts the execution cycle of hooks of a particular Kind it
-will sort those hooks in ascending order. 
+will sort those hooks in ascending order.
 
 It is also possible to define policies that determine when to delete corresponding hook resources. Hook deletion policies are defined using the following annotation:
 
-```
+```yaml
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
 ```

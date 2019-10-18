@@ -194,7 +194,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-    {{ template "mychart.app" .}}
+    {{ template "mychart.app" . }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}

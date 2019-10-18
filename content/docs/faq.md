@@ -60,7 +60,7 @@ Let's go through a few common examples what this change impacts.
 Your team just deployed their application to production on Kubernetes using Helm. The chart contains a Deployment object
 where the number of replicas is set to three:
 
-```
+```console
 $ helm install myapp ./myapp
 ```
 
@@ -68,14 +68,14 @@ A new developer joins the team. On their first day while observing the productio
 coffee-spilling-on-the-keyboard accident happens and they `kubectl scale` the production deployment from three replicas down
 to zero.
 
-```
+```console
 $ kubectl scale --replicas=0 deployment/myapp
 ```
 
 Another developer on your team notices that the production site is down and decides to rollback the release to its
 previous state:
 
-```
+```console
 $ helm rollback myapp
 ```
 
@@ -94,7 +94,7 @@ generates a patch to change the state back to three.
 Many service meshes and other controller-based applications inject data into Kubernetes objects. This can be something
 like a sidecar, labels, or other information. Previously if you had the given manifest rendered from a Chart:
 
-```
+```yaml
 containers:
 - name: server
   image: nginx:2.0.0
@@ -102,7 +102,7 @@ containers:
 
 And the live state was modified by another application to
 
-```
+```yaml
 containers:
 - name: server
   image: nginx:2.0.0
@@ -112,7 +112,7 @@ containers:
 
 Now, you want to upgrade the `nginx` image tag to `2.1.0`. So, you upgrade to a chart with the given manifest:
 
-```
+```yaml
 containers:
 - name: server
   image: nginx:2.1.0
@@ -125,7 +125,7 @@ cluster's live state is not considered during the patch generation.
 
 The cluster's live state is modified to look like the following:
 
-```
+```yaml
 containers:
 - name: server
   image: nginx:2.1.0
@@ -139,7 +139,7 @@ container.
 
 The cluster's live state is modified to look like the following:
 
-```
+```yaml
 containers:
 - name: server
   image: nginx:2.1.0
@@ -195,7 +195,7 @@ meaning that charts that relied on the `helm dependency` subcommands will need s
 
 In Helm 2, this is how a requirements.yaml looked:
 
-```
+```yaml
 dependencies:
 - name: mariadb
   version: 5.x.x
@@ -207,7 +207,7 @@ dependencies:
 
 In Helm 3, the dependency is expressed the same way, but now from your Chart.yaml:
 
-```
+```yaml
 dependencies:
 - name: mariadb
   version: 5.x.x
@@ -269,7 +269,7 @@ many charts, avoiding redundancy and keeping charts [DRY](https://en.wikipedia.o
 Library charts are declared in the dependencies directive in Chart.yaml, and are installed and managed like any other
 chart.
 
-```
+```yaml
 dependencies:
   - name: mylib
     version: 1.x.x

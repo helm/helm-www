@@ -24,7 +24,7 @@ For example, this template snippet includes a template called `mytpl`, then
 lowercases the result, then wraps that in double quotes.
 
 ```yaml
-value: {{include "mytpl" . | lower | quote}}
+value: {{ include "mytpl" . | lower | quote }}
 ```
 
 The `required` function allows you to declare a particular
@@ -35,7 +35,7 @@ The following example of the `required` function declares an entry for .Values.w
 is required, and will print an error message when that entry is missing:
 
 ```yaml
-value: {{required "A valid .Values.who entry required!" .Values.who }}
+value: {{ required "A valid .Values.who entry required!" .Values.who }}
 ```
 
 ## Quote Strings, Don't Quote Integers
@@ -43,24 +43,24 @@ value: {{required "A valid .Values.who entry required!" .Values.who }}
 When you are working with string data, you are always safer quoting the
 strings than leaving them as bare words:
 
-```
-name: {{.Values.MyName | quote }}
+```yaml
+name: {{ .Values.MyName | quote }}
 ```
 
 But when working with integers _do not quote the values._ That can, in
 many cases, cause parsing errors inside of Kubernetes.
 
-```
+```yaml
 port: {{ .Values.Port }}
 ```
 
 This remark does not apply to env variables values which are expected to be string, even if they represent integers:
 
-```
+```yaml
 env:
-  -name: HOST
+  - name: HOST
     value: "http://host"
-  -name: PORT
+  - name: PORT
     value: "1234"
 ```
 
@@ -112,12 +112,12 @@ to render and exit when .Values.foo is undefined.
 Image pull secrets are essentially a combination of _registry_, _username_, and _password_.  You may need them in an application you are deploying, but to create them requires running _base64_ a couple of times.  We can write a helper template to compose the Docker configuration file for use as the Secret's payload.  Here is an example:
 
 First, assume that the credentials are defined in the `values.yaml` file like so:
-```
+```yaml
 imageCredentials:
   registry: quay.io
   username: someone
   password: sillyness
-```  
+```
 
 We then define our helper template as follows:
 ```
@@ -127,7 +127,7 @@ We then define our helper template as follows:
 ```
 
 Finally, we use the helper template in a larger template to create the Secret manifest:
-```
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -147,7 +147,7 @@ didn't change the application keeps running with the old configuration resulting
 in an inconsistent deployment.
 
 The `sha256sum` function can be used to ensure a deployment's annotation section
-is updated if another file changes: 
+is updated if another file changes:
 
 ```yaml
 kind: Deployment
@@ -178,7 +178,7 @@ strategy logic to avoid taking downtime.
 
 NOTE: In the past we recommended using the `--recreate-pods` flag as another
 option. This flag has been marked as deprecated in Helm 3 in favor of the more
-declarative method above. 
+declarative method above.
 
 ## Tell Helm Not To Uninstall a Resource
 

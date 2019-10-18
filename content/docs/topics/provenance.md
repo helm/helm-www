@@ -33,7 +33,7 @@ that passphrase for any commands that support the `--sign` option.
 
 Creating a new chart is the same as before:
 
-```
+```console
 $ helm create mychart
 Creating mychart
 ```
@@ -41,7 +41,7 @@ Creating mychart
 Once ready to package, add the `--sign` flag to `helm package`. Also, specify
 the name under which the signing key is known and the keyring containing the corresponding private key:
 
-```
+```console
 $ helm package --sign --key 'helm signing key' --keyring path/to/keyring.secret mychart
 ```
 
@@ -50,7 +50,7 @@ use `gpg --list-secret-keys` to list the keys you have.
 
 **Warning:**  the GnuPG v2 store your secret keyring using a new format 'kbx' on the default location  '~/.gnupg/pubring.kbx'. Please use the following command to convert your keyring to the legacy gpg format:
 
-```
+```console
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
@@ -59,20 +59,20 @@ Both files should eventually be uploaded to your desired chart repository.
 
 You can verify a chart using `helm verify`:
 
-```
+```console
 $ helm verify mychart-0.1.0.tgz
 ```
 
 A failed verification looks like this:
 
-```
+```console
 $ helm verify topchart-0.1.0.tgz
 Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
 ```
 
 To verify during an install, use the `--verify` flag.
 
-```
+```console
 $ helm install --verify mychart-0.1.0.tgz
 ```
 
@@ -97,7 +97,7 @@ Prerequisites:
 
 The first step is to import your keybase keys into your local GnuPG keyring:
 
-```
+```console
 $ keybase pgp export -s | gpg --import
 ```
 
@@ -106,7 +106,7 @@ locally into your `~/.gnupg/secring.gpg` file.
 
 You can double check by running `gpg --list-secret-keys`.
 
-```
+```console
 $ gpg --list-secret-keys                                                                                                       1 ↵
 /Users/mattbutcher/.gnupg/secring.gpg
 -------------------------------------
@@ -126,7 +126,7 @@ That is the full name of your key.
 Next, you can package and sign a chart with `helm package`. Make sure you use at
 least part of that name string in `--key`.
 
-```
+```console
 $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
 ```
 
@@ -139,7 +139,7 @@ You can also use a similar technique to verify a chart signed by someone else's
 Keybase key. Say you want to verify a package signed by `keybase.io/technosophos`.
 To do this, use the `keybase` tool:
 
-```
+```console
 $ keybase follow technosophos
 $ keybase pgp pull
 ```
@@ -151,7 +151,7 @@ your GnuPG keyring (`~/.gnupg/pubring.gpg`).
 At this point, you can now use `helm verify` or any of the commands with a `--verify`
 flag:
 
-```
+```console
 $ helm verify somechart-1.2.3.tgz
 ```
 

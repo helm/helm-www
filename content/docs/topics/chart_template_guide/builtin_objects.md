@@ -7,7 +7,7 @@ Objects are passed into a template from the template engine. And your code can p
 
 Objects can be simple, and have just one value. Or they can contain other objects or functions. For example. the `Release` object contains several objects (like `Release.Name`) and the `Files` object has a few functions.
 
-In the previous section, we use `{{.Release.Name}}` to insert the name of a release into a template. `Release` is one of the top-level objects that you can access in your templates.
+In the previous section, we use `{{ .Release.Name }}` to insert the name of a release into a template. `Release` is one of the top-level objects that you can access in your templates.
 
 - `Release`: This object describes the release itself. It has several objects inside of it:
   - `Release.Name`: The release name
@@ -15,7 +15,7 @@ In the previous section, we use `{{.Release.Name}}` to insert the name of a rele
   - `Release.IsUpgrade`: This is set to `true` if the current operation is an upgrade or rollback.
   - `Release.IsInstall`: This is set to `true` if the current operation is an install.
 - `Values`: Values passed into the template from the `values.yaml` file and from user-supplied files. By default, `Values` is empty.
-- `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will be accessible here. For example `{{.Chart.Name}}-{{.Chart.Version}}` will print out the `mychart-0.1.0`.
+- `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will be accessible here. For example `{{ .Chart.Name }}-{{ .Chart.Version }}` will print out the `mychart-0.1.0`.
   - The available fields are listed in the [Charts Guide](https://github.com/helm/helm/blob/master/docs/charts.md#the-chartyaml-file)
 - `Files`: This provides access to all non-special files in a chart. While you cannot use it to access templates, you can use it to access other files in the chart. See the section _Accessing Files_ for more.
   - `Files.Get` is a function for getting a file by name (`.Files.Get config.ini`)

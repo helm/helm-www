@@ -37,7 +37,7 @@ dessert: cake
 
 Next, we'll create a new ConfigMap template in `mychart/charts/mysubchart/templates/configmap.yaml`:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -127,7 +127,7 @@ global:
   salad: caesar
 ```
 
-Because of the way globals work, both `mychart/templates/configmap.yaml` and `mysubchart/templates/configmap.yaml` should be able to access that value as `{{ .Values.global.salad}}`.
+Because of the way globals work, both `mychart/templates/configmap.yaml` and `mysubchart/templates/configmap.yaml` should be able to access that value as `{{ .Values.global.salad }}`.
 
 `mychart/templates/configmap.yaml`:
 
