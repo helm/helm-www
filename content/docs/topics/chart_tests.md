@@ -37,7 +37,7 @@ mariadb/
   templates/tests/test-mariadb-connection.yaml
 ```
 In `wordpress/templates/tests/test-mariadb-connection.yaml`:
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

@@ -63,7 +63,7 @@ script, `keybase.sh` (optional).
 The core of a plugin is a simple YAML file named `plugin.yaml`.
 Here is a plugin YAML for a plugin that adds support for Keybase operations:
 
-```
+```yaml
 name: "last"
 version: "0.1.0"
 usage: "get the last release name"
@@ -140,7 +140,7 @@ can have a special capability to download Charts from arbitrary sources.
 
 Plugins shall declare this special capability in the `plugin.yaml` file (top level):
 
-```
+```yaml
 downloaders:
 - command: "bin/mydownloader"
   protocols:

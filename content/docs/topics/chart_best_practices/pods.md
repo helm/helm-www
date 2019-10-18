@@ -21,13 +21,13 @@ A container image should use a fixed tag or the SHA of the image. It should not 
 
 Images _may_ be defined in the `values.yaml` file to make it easy to swap out images.
 
-```
+```yaml
 image: {{ .Values.redisImage | quote }}
 ```
 
 An image and a tag _may_ be defined in `values.yaml` as two separate fields:
 
-```
+```yaml
 image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 ```
 

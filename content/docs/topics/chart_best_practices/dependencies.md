@@ -42,7 +42,7 @@ When multiple subcharts (dependencies) together provide an optional or swappable
 For example, if both `nginx` and `memcached` together provided performance optimizations for the main app in the chart, and were required to both be present when that feature is enabled, then they might both have a
 tags section like this:
 
-```
+```yaml
 tags:
   - webaccelerator
 ```

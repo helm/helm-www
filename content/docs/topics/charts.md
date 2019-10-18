@@ -266,7 +266,7 @@ Tags - The tags field is a YAML list of labels to associate with this chart.
 In the top parent's values, all charts with tags can be enabled or disabled by
 specifying the tag and a boolean value.
 
-````
+```yaml
 # parentchart/Chart.yaml
 dependencies:
       - name: subchart1
@@ -285,8 +285,8 @@ dependencies:
           - back-end
           - subchart2
 
-````
-````
+```
+```yaml
 # parentchart/values.yaml
 
 subchart1:
@@ -294,7 +294,7 @@ subchart1:
 tags:
   front-end: false
   back-end: true
-````
+```
 
 In the above example all charts with the tag `front-end` would be disabled but since the
 `subchart1.enabled` path evaluates to 'true' in the parent's values, the condition will override the
@@ -308,10 +308,10 @@ is no corresponding path and value in the parent's values so that condition has 
 
 The `--set` parameter can be used as usual to alter tag and condition values.
 
-````
+```console
 helm install --set tags.front-end=true --set subchart2.enabled=false
 
-````
+```
 
 ##### Tags and Condition Resolution
 
@@ -442,7 +442,7 @@ For example, if the WordPress chart depends on the Apache chart, the
 Apache chart (of the correct version) is supplied in the WordPress
 chart's `charts/` directory:
 
-```
+```yaml
 wordpress:
   Chart.yaml
   # ...
@@ -550,13 +550,13 @@ spec:
       serviceAccount: deis-database
       containers:
         - name: deis-database
-          image: {{.Values.imageRegistry}}/postgres:{{.Values.dockerTag}}
-          imagePullPolicy: {{.Values.pullPolicy}}
+          image: {{ .Values.imageRegistry }}/postgres:{{ .Values.dockerTag }}
+          imagePullPolicy: {{ .Values.pullPolicy }}
           ports:
             - containerPort: 5432
           env:
             - name: DATABASE_STORAGE
-              value: {{default "minio" .Values.storage}}
+              value: {{ default "minio" .Values.storage }}
 ```
 
 The above example, based loosely on [https://github.com/deis/charts](https://github.com/deis/charts), is a template for a Kubernetes replication controller.
@@ -596,12 +596,12 @@ sensitive_.
 - `Files`: A map-like object containing all non-special files in the chart. This
   will not give you access to templates, but will give you access to additional
   files that are present (unless they are excluded using `.helmignore`). Files can be
-  accessed using `{{index .Files "file.name"}}` or using the `{{.Files.Get name}}` or
-  `{{.Files.GetString name}}` functions. You can also access the contents of the file
-  as `[]byte` using `{{.Files.GetBytes}}`
+  accessed using `{{ index .Files "file.name" }}` or using the `{{ .Files.Get name }}` or
+  `{{ .Files.GetString name }}` functions. You can also access the contents of the file
+  as `[]byte` using `{{ .Files.GetBytes }}`
 - `Capabilities`: A map-like object that contains information about the versions
-  of Kubernetes (`{{.Capabilities.KubeVersion}}` and the supported Kubernetes
- API versions (`{{.Capabilities.APIVersions.Has "batch/v1"`)
+  of Kubernetes (`{{ .Capabilities.KubeVersion }}` and the supported Kubernetes
+ API versions (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
 
 **NOTE:** Any unknown Chart.yaml fields will be dropped. They will not
 be accessible inside of the `Chart` object. Thus, Chart.yaml cannot be
@@ -681,13 +681,13 @@ spec:
       serviceAccount: deis-database
       containers:
         - name: deis-database
-          image: {{.Values.imageRegistry}}/postgres:{{.Values.dockerTag}}
-          imagePullPolicy: {{.Values.pullPolicy}}
+          image: {{ .Values.imageRegistry }}/postgres:{{ .Values.dockerTag }}
+          imagePullPolicy: {{ .Values.pullPolicy }}
           ports:
             - containerPort: 5432
           env:
             - name: DATABASE_STORAGE
-              value: {{default "minio" .Values.storage}}
+              value: {{ default "minio" .Values.storage }}
 
 ```
 
@@ -746,7 +746,7 @@ apache:
 The above adds a `global` section with the value `app: MyWordPress`.
 This value is available to _all_ charts as `.Values.global.app`.
 
-For example, the `mysql` templates may access `app` as `{{.Values.global.app}}`, and
+For example, the `mysql` templates may access `app` as `{{ .Values.global.app }}`, and
 so can the `apache` chart. Effectively, the values file above is
 regenerated like this:
 
@@ -852,9 +852,9 @@ name: frontend
 protocol: https
 ```
 
-````
+```console
 helm install --set port=443
-````
+```
 
 Furthermore, the final `.Values` object is checked against *all* subchart
 schemas. This means that restrictions on a subchart can't be circumvented by a

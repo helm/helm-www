@@ -24,7 +24,7 @@ From there, you should be able to run the client: `helm help`.
 Members of the Kubernetes community have contributed a Helm formula build to
 Homebrew. This formula is generally up to date.
 
-```
+```console
 brew install kubernetes-helm
 ```
 
@@ -36,7 +36,7 @@ project.)
 Members of the Kubernetes community have contributed a [Helm package](https://chocolatey.org/packages/kubernetes-helm) build to
 [Chocolatey](https://chocolatey.org/). This package is generally up to date.
 
-```
+```console
 choco install kubernetes-helm
 ```
 
@@ -48,7 +48,7 @@ of Helm and [install it locally](https://raw.githubusercontent.com/helm/helm/mas
 You can fetch that script, and then execute it locally. It's well documented so
 that you can read through it and understand what it is doing before you run it.
 
-```
+```console
 $ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
@@ -93,7 +93,7 @@ place it in `bin/helm`.
 
 ## Conclusion
 
-In most cases, installation is as simple as getting a pre-built `helm` 
+In most cases, installation is as simple as getting a pre-built `helm`
 binary. This document covers additional cases for those who want to do
 more sophisticated things with Helm.
 

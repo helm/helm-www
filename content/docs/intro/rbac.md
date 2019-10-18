@@ -54,13 +54,13 @@ Additionally, you may also create a RoleBinding with `cluster-admin` access. Gra
 
 For this example, we will create a user with the `edit` Role. First, create the namespace:
 
-```
+```console
 $ kubectl create namespace foo
 ```
 
 Now, create a RoleBinding in that namespace, granting the user the `edit` role.
 
-```
+```console
 $ kubectl create rolebinding sam-edit
     --clusterrole edit \​
     --user sam \​
@@ -75,7 +75,7 @@ To do that, grant the user either `admin` or `cluster-admin` access.
 
 Granting a user `cluster-admin` access grants them access to absolutely every resource available in Kubernetes, including node access with `kubectl drain` and other administrative tasks. It is highly recommended to consider providing the user `admin` access instead, or to create a custom ClusterRole tailored to their needs.
 
-```
+```console
 $ kubectl create clusterrolebinding sam-view
     --clusterrole view \​
     --user sam
@@ -93,7 +93,7 @@ In order for a user to run `helm list`, they need to be able to read these secre
 
 Create the file `cluster-role-secret-reader.yaml` and write the following content into the file:
 
-```
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1​
 kind: ClusterRole​
 metadata:​
@@ -106,13 +106,13 @@ rules:​
 
 Then, create the ClusterRole using
 
-```
+```console
 $ kubectl create -f clusterrole-secret-reader.yaml​
 ```
 
 Once that's done, we can grant a user read access to most resources, and then grant them read access to secrets:
 
-```
+```console
 $ kubectl create namespace foo
 
 $ kubectl create rolebinding sam-view
@@ -132,7 +132,7 @@ In certain scenarios, it may be beneficial to grant a user cluster-scope access.
 
 To do that, grant the user both `view` and `secret-reader` access as described above, but with a ClusterRoleBinding.
 
-```
+```console
 $ kubectl create clusterrolebinding sam-view
     --clusterrole view \​
     --user sam

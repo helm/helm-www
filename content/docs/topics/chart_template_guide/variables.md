@@ -82,7 +82,7 @@ data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
-  {{- end}}
+  {{- end }}
 ```
 
 Now on the first iteration, `$key` will be `drink` and `$val` will be `coffee`, and on the second, `$key` will be `food` and `$val` will be `pizza`. Running the above will generate this:
@@ -99,7 +99,7 @@ data:
   food: "pizza"
 ```
 
-Variables are normally not "global". They are scoped to the block in which they are declared. Earlier, we assigned `$relname` in the top level of the template. That variable will be in scope for the entire template. But in our last example, `$key` and `$val` will only be in scope inside of the `{{range...}}{{end}}` block.
+Variables are normally not "global". They are scoped to the block in which they are declared. Earlier, we assigned `$relname` in the top level of the template. That variable will be in scope for the entire template. But in our last example, `$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}` block.
 
 However, there is one variable that is always global - `$` - this
 variable will always point to the root context.  This can be very
@@ -114,8 +114,8 @@ kind: Secret
 metadata:
   name: {{ .name }}
   labels:
-    # Many helm templates would use `.` below, but that will not work, 
-    # however `$` will work here 
+    # Many helm templates would use `.` below, but that will not work,
+    # however `$` will work here
     app.kubernetes.io/name: {{ template "fullname" $ }}
     # I cannot reference .Chart.Name, but I can do $.Chart.Name
     helm.sh/chart: "{{ $.Chart.Name }}-{{ $.Chart.Version }}"

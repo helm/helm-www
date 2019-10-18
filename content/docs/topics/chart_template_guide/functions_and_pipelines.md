@@ -7,7 +7,7 @@ So far, we've seen how to place information into a template. But that informatio
 
 Let's start with a best practice: When injecting strings from the `.Values` object into the template, we ought to quote these strings. We can do that by calling the `quote` function in the template directive:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -107,7 +107,7 @@ drink: {{ .Values.favorite.drink | default "tea" | quote }}
 
 If we run this as normal, we'll get our `coffee`:
 
-```
+```yaml
 # Source: mychart/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap

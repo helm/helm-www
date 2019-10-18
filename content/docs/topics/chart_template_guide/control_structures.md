@@ -78,7 +78,7 @@ data:
 
 While we're looking at conditionals, we should take a quick look at the way whitespace is controlled in templates. Let's take the previous example and format it to be a little easier to read:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -87,9 +87,9 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{if eq .Values.favorite.drink "coffee"}}
+  {{ if eq .Values.favorite.drink "coffee" }}
     mug: true
-  {{end}}
+  {{ end }}
 ```
 
 Initially, this looks good. But if we run it through the template engine, we'll get an unfortunate result:
@@ -101,7 +101,7 @@ CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
 Error: YAML parse error on mychart/templates/configmap.yaml: error converting YAML to JSON: yaml: line 9: did not find expected key
 ```
 
-What happened? We generated incorrect YAML because of the whitespacing above. 
+What happened? We generated incorrect YAML because of the whitespacing above.
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -118,7 +118,7 @@ data:
 
 `mug` is incorrectly indented. Let's simply out-dent that one line, and re-run:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -127,9 +127,9 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{if eq .Values.favorite.drink "coffee"}}
+  {{ if eq .Values.favorite.drink "coffee" }}
   mug: true
-  {{end}}
+  {{ end }}
 ```
 
 When we sent that, we'll get YAML that is valid, but still looks a little funny:
@@ -155,7 +155,7 @@ YAML ascribes meaning to whitespace, so managing the whitespace becomes pretty i
 
 First, the curly brace syntax of template declarations can be modified with special characters to tell the template engine to chomp whitespace. `{{- ` (with the dash and space added) indicates that whitespace should be chomped left, while ` -}}` means whitespace to the right should be consumed. _Be careful! Newlines are whitespace!_
 
-> Make sure there is a space between the `-` and the rest of your directive. `{{- 3 }}` means "trim left whitespace and print 3" while `{{-3}}` means "print -3".
+> Make sure there is a space between the `-` and the rest of your directive. `{{- 3 }}` means "trim left whitespace and print 3" while `{{-3 }}` means "print -3".
 
 Using this syntax, we can modify our template to get rid of those new lines:
 
@@ -168,9 +168,9 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{- if eq .Values.favorite.drink "coffee"}}
+  {{- if eq .Values.favorite.drink "coffee" }}
   mug: true
-  {{- end}}
+  {{- end }}
 ```
 
 Just for the sake of making this point clear, let's adjust the above, and substitute an `*` for each whitespace that will be deleted following this rule. an `*` at the end of the line indicates a newline character that would be removed
@@ -184,9 +184,9 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}*
-**{{- if eq .Values.favorite.drink "coffee"}}
+**{{- if eq .Values.favorite.drink "coffee" }}
   mug: true*
-**{{- end}}
+**{{- end }}
 
 ```
 
@@ -219,7 +219,7 @@ That will produce `food: "PIZZA"mug:true` because it consumed newlines on both s
 
 > For the details on whitespace control in templates, see the [Official Go template documentation](https://godoc.org/text/template)
 
-Finally, sometimes it's easier to tell the template system how to indent for you instead of trying to master the spacing of template directives. For that reason, you may sometimes find it useful to use the `indent` function (`{{indent 2 "mug:true"}}`).
+Finally, sometimes it's easier to tell the template system how to indent for you instead of trying to master the spacing of template directives. For that reason, you may sometimes find it useful to use the `indent` function (`{{ indent 2 "mug:true" }}`).
 
 ## Modifying scope using `with`
 
@@ -262,7 +262,7 @@ But here's a note of caution! Inside of the restricted scope, you will not be ab
   {{- end }}
 ```
 
-It will produce an error because `Release.Name` is not inside of the restricted scope for `.`. However, if we swap the last two lines, all will work as expected because the scope is reset after `{{end}}`.
+It will produce an error because `Release.Name` is not inside of the restricted scope for `.`. However, if we swap the last two lines, all will work as expected because the scope is reset after `{{ end }}`.
 
 ```yaml
   {{- with .Values.favorite }}
