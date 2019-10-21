@@ -24,14 +24,14 @@ date: "yyyy-mm-dd"
 ```
 3) Add the content below the `---` as Markdown. The title does not need to be included in this section
 4) Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
-5) To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link. 
+5) To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
 
 ---
 
 ## How to Edit The Helm Docs
 
-Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) main repo.  
-This site will then extract those files during the build process, and publish them to [docs.helm.sh](https://docs.helm.sh).
+Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/dev-v2/docs) main repo.
+This site will then extract those files during the build process, and publish them to [helm.sh/docs](https://helm.sh/docs).
 
 ---
 
@@ -75,12 +75,12 @@ Markdown:
 
 ```
 /content/blog/                  < posts go here
-/content/docs/                  < docs are imported to here   
+/content/docs/                  < docs are imported to here
 ```
 
 The documentation content is pulled in from their home in the [helm/helm](https://github.com/helm/helm/tree/master/docs) repo, as part of the Gulp build process.
 
-Gulp clones the files to the `/source` directory, makes some edits (to hugo-ify markdown and fix some url issues), exporting the compiled docs to `/content/docs`. 
+Gulp clones the files to the `/source` directory, makes some edits (to hugo-ify markdown and fix some url issues), exporting the compiled docs to `/content/docs`.
 
 Hugo then targets the `/content/docs` directory to generate the website, applying the theme (html layouts and css/js assets) in `/themes/hugo`.
 
