@@ -1,6 +1,5 @@
 baseurl = "https://v3.helm.sh/"
 languageCode = "en-us"
-title = "Helm"
 theme = "helm"
 
 contentDir = "content"
@@ -9,13 +8,10 @@ publishdir = "app"
 canonifyURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
-defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
-  title = "Helm"
   author = "Ronan Flynn-Curran"
-  description = "Helm - The Kubernetes Package Manager."
   googleAnalyticsId = "UA-42867143-2"
   googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
   jsFiles = [
@@ -68,3 +64,34 @@ title = "CI/CD for Kubernetes"
 description = "Instructions on using Helm as the missing CI/CD Kubernetes component"
 url = "https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes"
 via = "hackernoon"
+
+# Multilingual configuration
+DefaultContentLanguage = "en"
+
+# English
+[languages.en]
+title = "Helm"
+description = "Helm - The Kubernetes Package Manager."
+contentDir = "content/en"
+languageName = "English"
+weight = 1
+
+[[languages.en.menus.main]]
+name = "Get Helm"
+url = "https://github.com/helm/helm"
+weight = 1
+
+[[languages.en.menus.main]]
+name = "Blog"
+url = "/blog"
+weight = 2
+
+[[languages.en.menus.main]]
+name = "Docs"
+url = "/docs"
+weight = 3
+
+[[languages.en.menus.main]]
+name = "Charts"
+url = "https://hub.helm.sh/"
+weight = 4
