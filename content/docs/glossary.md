@@ -100,9 +100,6 @@ create many different releases. For example, one can install three
 PostgreSQL databases by running `helm install` three times with a
 different release name.
 
-(Prior to 2.0.0-Alpha.1, releases were called _deployments_. But this
-caused confusion with the Kubernetes _Deployment_ kind.)
-
 ## Release Number (Release Version)
 
 A single release can be updated multiple times. A sequential counter is
@@ -128,10 +125,12 @@ rollback 1| release 4 (but running the same config as release 1)
 The above table illustrates how release numbers increment across
 install, upgrade, and rollback.
 
-## Helm Library
+## Helm Library (or SDK)
 
-It interacts directly with the Kubernetes API server to install,
-upgrade, query, and remove Kubernetes resources.
+The Helm Library (or SDK) refers to the Go code that interacts directly with the
+Kubernetes API server to install, upgrade, query, and remove Kubernetes
+resources. It can be imported into a project to use Helm as a client library
+instead of a CLI.
 
 ## Repository (Repo, Chart Repository)
 
@@ -143,9 +142,9 @@ A chart repository server is a simple HTTP server that can serve an
 information on where each chart can be downloaded from. (Many chart
 repositories serve the charts as well as the `index.yaml` file.)
 
-A Helm client can point to zero or more chart repositories. By default,
-Helm clients point to the `stable` official Kubernetes chart
-repository.
+A Helm client can point to zero or more chart repositories. By default, Helm
+clients are not configured with any chart repositories. Chart repositories can
+be added at any time using the `helm repo add` command.
 
 ## Values (Values Files, values.yaml)
 
@@ -159,8 +158,7 @@ user name for a service.
 
 These exposed variables are called _values_ in Helm parlance.
 
-Values can be set during `helm install` and `helm upgrade` operations,
-either by passing them in directly, or by uploading a `values.yaml`
-file.
+Values can be set during `helm install` and `helm upgrade` operations, either by
+passing them in directly, or by using a `values.yaml` file.
 
 
