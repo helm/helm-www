@@ -5,8 +5,8 @@ description: "A closer look at the YAML specification and how it applies to Helm
 
 Most of this guide has been focused on writing the template language. Here,
 we'll look at the YAML format. YAML has some useful features that we, as
-template authors, can use to make our templates less error prone and easier
-to read.
+template authors, can use to make our templates less error prone and easier to
+read.
 
 ## Scalars and Collections
 
@@ -35,8 +35,8 @@ In Helm's dialect of YAML, the scalar data type of a value is determined by a
 complex set of rules, including the Kubernetes schema for resource definitions.
 But when inferring types, the following rules tend to hold true.
 
-If an integer or float is an unquoted bare word, it is typically treated as
-a numeric type:
+If an integer or float is an unquoted bare word, it is typically treated as a
+numeric type:
 
 ```yaml
 count: 1
@@ -59,9 +59,9 @@ answer: "true" # string
 
 The word for an empty value is `null` (not `nil`).
 
-Note that `port: "80"` is valid YAML, and will pass through both the
-template engine and the YAML parser, but will fail if Kubernetes expects
-`port` to be an integer.
+Note that `port: "80"` is valid YAML, and will pass through both the template
+engine and the YAML parser, but will fail if Kubernetes expects `port` to be an
+integer.
 
 In some cases, you can force a particular type inference using YAML node tags:
 
@@ -91,13 +91,13 @@ way3: 'single-quoted strings'
 
 All inline styles must be on one line.
 
-- Bare words are unquoted, and are not escaped. For this reason, you have to
-  be careful what characters you use.
+- Bare words are unquoted, and are not escaped. For this reason, you have to be
+  careful what characters you use.
 - Double-quoted strings can have specific characters escaped with `\`. For
   example `"\"Hello\", she said"`. You can escape line breaks with `\n`.
-- Single-quoted strings are "literal" strings, and do not use the `\` to
-  escape characters. The only escape sequence is `''`, which is decoded as
-  a single `'`.
+- Single-quoted strings are "literal" strings, and do not use the `\` to escape
+  characters. The only escape sequence is `''`, which is decoded as a single
+  `'`.
 
 In addition to the one-line strings, you can declare multi-line strings:
 
@@ -141,15 +141,15 @@ coffee: |
 ```
 
 Note that whatever that first line is, it will be preserved in the output of the
-string. So if you are, for example, using this technique to inject a file's contents
-into a ConfigMap, the comment should be of the type expected by whatever is
-reading that entry.
+string. So if you are, for example, using this technique to inject a file's
+contents into a ConfigMap, the comment should be of the type expected by
+whatever is reading that entry.
 
 ### Controlling Spaces in Multi-line Strings
 
 In the example above, we used `|` to indicate a multi-line string. But notice
-that the content of our string was followed with a trailing `\n`. If we want
-the YAML processor to strip off the trailing newline, we can add a `-` after the
+that the content of our string was followed with a trailing `\n`. If we want the
+YAML processor to strip off the trailing newline, we can add a `-` after the
 `|`:
 
 ```yaml
@@ -189,21 +189,22 @@ coffee: |-
   Espresso
 ```
 
-In the above case, `coffee` will be `Latte\n  12 oz\n  16 oz\nCappuccino\nEspresso`.
+In the above case, `coffee` will be `Latte\n  12 oz\n  16
+oz\nCappuccino\nEspresso`.
 
 ### Indenting and Templates
 
 When writing templates, you may find yourself wanting to inject the contents of
-a file into the template. As we saw in previous chapters, there are two ways
-of doing this:
+a file into the template. As we saw in previous chapters, there are two ways of
+doing this:
 
 - Use `{{ .Files.Get "FILENAME" }}` to get the contents of a file in the chart.
 - Use `{{ include "TEMPLATE" . }}` to render a template and then place its
   contents into the chart.
 
-When inserting files into YAML, it's good to understand the multi-line rules above.
-Often times, the easiest way to insert a static file is to do something like
-this:
+When inserting files into YAML, it's good to understand the multi-line rules
+above. Often times, the easiest way to insert a static file is to do something
+like this:
 
 ```yaml
 myfile: |
@@ -231,8 +232,9 @@ coffee: >
 ```
 
 The value of `coffee` above will be `Latte Cappuccino Espresso\n`. Note that all
-but the last line feed will be converted to spaces. You can combine the whitespace
-controls with the folded text marker, so `>-` will replace or trim all newlines.
+but the last line feed will be converted to spaces. You can combine the
+whitespace controls with the folded text marker, so `>-` will replace or trim
+all newlines.
 
 Note that in the folded syntax, indenting text will cause lines to be preserved.
 
@@ -250,8 +252,8 @@ both the spacing and the newlines are still there.
 
 ## Embedding Multiple Documents in One File
 
-It is possible to place more than one YAML documents into a single file. This
-is done by prefixing a new document with `---` and ending the document with
+It is possible to place more than one YAML documents into a single file. This is
+done by prefixing a new document with `---` and ending the document with
 `...`
 
 ```yaml
@@ -266,14 +268,14 @@ document: 2
 
 In many cases, either the `---` or the `...` may be omitted.
 
-Some files in Helm cannot contain more than one doc. If, for example, more
-than one document is provided inside of a `values.yaml` file, only the first
-will be used.
+Some files in Helm cannot contain more than one doc. If, for example, more than
+one document is provided inside of a `values.yaml` file, only the first will be
+used.
 
-Template files, however, may have more than one document. When this happens,
-the file (and all of its documents) is treated as one object during
-template rendering. But then the resulting YAML is split into multiple
-documents before it is fed to Kubernetes.
+Template files, however, may have more than one document. When this happens, the
+file (and all of its documents) is treated as one object during template
+rendering. But then the resulting YAML is split into multiple documents before
+it is fed to Kubernetes.
 
 We recommend only using multiple documents per file when it is absolutely
 necessary. Having multiple documents in a file can be difficult to debug.
@@ -316,8 +318,8 @@ does not treat the file extension `.json` as a valid suffix.
 
 ## YAML Anchors
 
-The YAML spec provides a way to store a reference to a value, and later
-refer to that value by reference. YAML refers to this as "anchoring":
+The YAML spec provides a way to store a reference to a value, and later refer to
+that value by reference. YAML refers to this as "anchoring":
 
 ```yaml
 coffee: "yes, please"
@@ -329,15 +331,15 @@ coffees:
 ```
 
 In the above, `&favoriteCoffee` sets a reference to `Cappuccino`. Later, that
-reference is used as `*favoriteCoffee`. So `coffees` becomes
-`Latte, Cappuccino, Espresso`.
+reference is used as `*favoriteCoffee`. So `coffees` becomes `Latte, Cappuccino,
+Espresso`.
 
 While there are a few cases where anchors are useful, there is one aspect of
 them that can cause subtle bugs: The first time the YAML is consumed, the
 reference is expanded and then discarded.
 
-So if we were to decode and then re-encode the example above, the resulting
-YAML would be:
+So if we were to decode and then re-encode the example above, the resulting YAML
+would be:
 
 ```yaml
 coffee: yes, please
@@ -348,5 +350,5 @@ coffees:
 - Espresso
 ```
 
-Because Helm and Kubernetes often read, modify, and then rewrite YAML files,
-the anchors will be lost.
+Because Helm and Kubernetes often read, modify, and then rewrite YAML files, the
+anchors will be lost.

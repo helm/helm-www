@@ -7,7 +7,8 @@ This part of the Best Practices Guide explains general conventions.
 
 ## Chart Names
 
-Chart names should be lower case letters and numbers. Words _may_ be separated with dashes (-):
+Chart names should be lower case letters and numbers. Words _may_ be separated
+with dashes (-):
 
 Examples:
 
@@ -17,15 +18,22 @@ nginx-lego
 aws-cluster-autoscaler
 ```
 
-Neither uppercase letters nor underscores should be used in chart names. Dots should not be used in chart names.
+Neither uppercase letters nor underscores should be used in chart names. Dots
+should not be used in chart names.
 
-The directory that contains a chart MUST have the same name as the chart. Thus, the chart `nginx-lego` MUST be created in a directory called `nginx-lego/`. This is not merely a stylistic detail, but a requirement of the Helm Chart format.
+The directory that contains a chart MUST have the same name as the chart. Thus,
+the chart `nginx-lego` MUST be created in a directory called `nginx-lego/`. This
+is not merely a stylistic detail, but a requirement of the Helm Chart format.
 
 ## Version Numbers
 
-Wherever possible, Helm uses [SemVer 2](http://semver.org) to represent version numbers. (Note that Docker image tags do not necessarily follow SemVer, and are thus considered an unfortunate exception to the rule.)
+Wherever possible, Helm uses [SemVer 2](http://semver.org) to represent version
+numbers. (Note that Docker image tags do not necessarily follow SemVer, and are
+thus considered an unfortunate exception to the rule.)
 
-When SemVer versions are stored in Kubernetes labels, we conventionally alter the `+` character to an `_` character, as labels do not allow the `+` sign as a value.
+When SemVer versions are stored in Kubernetes labels, we conventionally alter
+the `+` character to an `_` character, as labels do not allow the `+` sign as a
+value.
 
 ## Formatting YAML
 

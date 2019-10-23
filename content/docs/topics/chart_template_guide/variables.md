@@ -3,7 +3,10 @@ title: "Variables"
 description: "Using variables in templates."
 ---
 
-With functions, pipelines, objects, and control structures under our belts, we can turn to one of the more basic ideas in many programming languages: variables. In templates, they are less frequently used. But we will see how to use them to simplify code, and to make better use of `with` and `range`.
+With functions, pipelines, objects, and control structures under our belts, we
+can turn to one of the more basic ideas in many programming languages:
+variables. In templates, they are less frequently used. But we will see how to
+use them to simplify code, and to make better use of `with` and `range`.
 
 In an earlier example, we saw that this code will fail:
 
@@ -15,9 +18,13 @@ In an earlier example, we saw that this code will fail:
   {{- end }}
 ```
 
-`Release.Name` is not inside of the scope that's restricted in the `with` block. One way to work around scoping issues is to assign objects to variables that can be accessed without respect to the present scope.
+`Release.Name` is not inside of the scope that's restricted in the `with` block.
+One way to work around scoping issues is to assign objects to variables that can
+be accessed without respect to the present scope.
 
-In Helm templates, a variable is a named reference to another object. It follows the form `$name`. Variables are assigned with a special assignment operator: `:=`. We can rewrite the above to use a variable for `Release.Name`.
+In Helm templates, a variable is a named reference to another object. It follows
+the form `$name`. Variables are assigned with a special assignment operator:
+`:=`. We can rewrite the above to use a variable for `Release.Name`.
 
 ```yaml
 apiVersion: v1
@@ -34,7 +41,9 @@ data:
   {{- end }}
 ```
 
-Notice that before we start the `with` block, we assign `$relname := .Release.Name`. Now inside of the `with` block, the `$relname` variable still points to the release name.
+Notice that before we start the `with` block, we assign `$relname :=
+.Release.Name`. Now inside of the `with` block, the `$relname` variable still
+points to the release name.
 
 Running that will produce this:
 
@@ -51,7 +60,8 @@ data:
   release: viable-badger
 ```
 
-Variables are particularly useful in `range` loops. They can be used on list-like objects to capture both the index and the value:
+Variables are particularly useful in `range` loops. They can be used on
+list-like objects to capture both the index and the value:
 
 ```yaml
   toppings: |-
@@ -61,7 +71,9 @@ Variables are particularly useful in `range` loops. They can be used on list-lik
 
 ```
 
-Note that `range` comes first, then the variables, then the assignment operator, then the list. This will assign the integer index (starting from zero) to `$index` and the value to `$topping`. Running it will produce:
+Note that `range` comes first, then the variables, then the assignment operator,
+then the list. This will assign the integer index (starting from zero) to
+`$index` and the value to `$topping`. Running it will produce:
 
 ```yaml
   toppings: |-
@@ -71,7 +83,8 @@ Note that `range` comes first, then the variables, then the assignment operator,
       3: onions
 ```
 
-For data structures that have both a key and a value, we can use `range` to get both. For example, we can loop through `.Values.favorite` like this:
+For data structures that have both a key and a value, we can use `range` to get
+both. For example, we can loop through `.Values.favorite` like this:
 
 ```yaml
 apiVersion: v1
@@ -85,7 +98,9 @@ data:
   {{- end }}
 ```
 
-Now on the first iteration, `$key` will be `drink` and `$val` will be `coffee`, and on the second, `$key` will be `food` and `$val` will be `pizza`. Running the above will generate this:
+Now on the first iteration, `$key` will be `drink` and `$val` will be `coffee`,
+and on the second, `$key` will be `food` and `$val` will be `pizza`. Running the
+above will generate this:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -99,12 +114,15 @@ data:
   food: "pizza"
 ```
 
-Variables are normally not "global". They are scoped to the block in which they are declared. Earlier, we assigned `$relname` in the top level of the template. That variable will be in scope for the entire template. But in our last example, `$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}` block.
+Variables are normally not "global". They are scoped to the block in which they
+are declared. Earlier, we assigned `$relname` in the top level of the template.
+That variable will be in scope for the entire template. But in our last example,
+`$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}`
+block.
 
-However, there is one variable that is always global - `$` - this
-variable will always point to the root context.  This can be very
-useful when you are looping in a range need to know the chart's release
-name.
+However, there is one variable that is always global - `$` - this variable will
+always point to the root context.  This can be very useful when you are looping
+in a range need to know the chart's release name.
 
 An example illustrating this:
 ```yaml
@@ -131,4 +149,7 @@ data:
 {{- end }}
 ```
 
-So far we have looked at just one template declared in just one file. But one of the powerful features of the Helm template language is its ability to declare multiple templates and use them together. We'll turn to that in the next section.
+So far we have looked at just one template declared in just one file. But one of
+the powerful features of the Helm template language is its ability to declare
+multiple templates and use them together. We'll turn to that in the next
+section.
