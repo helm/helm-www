@@ -3,16 +3,16 @@ title: "Registries"
 description: "Describes how to use OCI for Chart distribution."
 ---
 
-
-Helm 3 supports <a href="https://www.opencontainers.org/" target="_blank">OCI</a> for package distribution.
-Chart packages are able to be stored and shared across OCI-based registries.
+Helm 3 supports <a href="https://www.opencontainers.org/"
+target="_blank">OCI</a> for package distribution. Chart packages are able to be
+stored and shared across OCI-based registries.
 
 ## Enabling OCI Support
 
 Currently OCI support is considered *experimental*.
 
-In order to use the commands described below,
-please set `HELM_EXPERIMENTAL_OCI` in the enironment:
+In order to use the commands described below, please set `HELM_EXPERIMENTAL_OCI`
+in the enironment:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
@@ -20,18 +20,22 @@ export HELM_EXPERIMENTAL_OCI=1
 
 ## Running a registry
 
-Starting a registry for test purposes is trivial. As long as you have Docker installed, run the following command:
+Starting a registry for test purposes is trivial. As long as you have Docker
+installed, run the following command:
 ```console
 docker run -dp 5000:5000 --restart=always --name registry registry
 ```
 
 This will start a registry server at `localhost:5000`.
 
-Use `docker logs -f registry` to see the logs and `docker rm -f registry` to stop.
+Use `docker logs -f registry` to see the logs and `docker rm -f registry` to
+stop.
 
-If you wish to persist storage, you can add `-v $(pwd)/registry:/var/lib/registry` to the command above.
+If you wish to persist storage, you can add `-v
+$(pwd)/registry:/var/lib/registry` to the command above.
 
-For more configuration options, please see [the docs](https://docs.docker.com/registry/deploying/).
+For more configuration options, please see [the
+docs](https://docs.docker.com/registry/deploying/).
 
 ### Auth
 
@@ -42,7 +46,8 @@ First, create file `auth.htpasswd` with username and password combo:
 htpasswd -cB -b auth.htpasswd myuser mypass
 ```
 
-Then, start the server, mounting that file and setting the `REGISTRY_AUTH` env var:
+Then, start the server, mounting that file and setting the `REGISTRY_AUTH` env
+var:
 ```console
 docker run -dp 5000:5000 --restart=always --name registry \
   -v $(pwd)/auth.htpasswd:/etc/docker/registry/auth.htpasswd \
@@ -52,7 +57,8 @@ docker run -dp 5000:5000 --restart=always --name registry \
 
 ## Commands for working with registries
 
-Commands are available under both `helm registry` and `helm chart` that allow you to work with registries and local cache.
+Commands are available under both `helm registry` and `helm chart` that allow
+you to work with registries and local cache.
 
 ### The `registry` subcommand
 
@@ -163,7 +169,8 @@ Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 
 Charts stored using the commands above will be cached on the filesystem.
 
-The [OCI Image Layout Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
+The [OCI Image Layout
+Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
 is adhered to strictly for filesystem layout, for example:
 ```console
 $ tree ~/Library/Caches/helm/
@@ -221,4 +228,6 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 
 ## Migrating from chart repos
 
-Migrating from classic [chart repositories](./chart_repository.md) (index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm chart save`, `helm chart push`.
+Migrating from classic [chart repositories](./chart_repository.md)
+(index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm
+chart save`, `helm chart push`.

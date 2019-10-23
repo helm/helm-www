@@ -69,21 +69,21 @@ and use.
 {{ default "none" .Values.serverName }}
 ```
 
-When there are a large number of related variables, and at least one of them
-is non-optional, nested values may be used to improve readability.
+When there are a large number of related variables, and at least one of them is
+non-optional, nested values may be used to improve readability.
 
 ## Make Types Clear
 
-YAML's type coercion rules are sometimes counterintuitive. For example,
-`foo: false` is not the same as `foo: "false"`. Large integers like `foo: 12345678`
+YAML's type coercion rules are sometimes counterintuitive. For example, `foo:
+false` is not the same as `foo: "false"`. Large integers like `foo: 12345678`
 will get converted to scientific notation in some cases.
 
 The easiest way to avoid type conversion errors is to be explicit about strings,
 and implicit about everything else. Or, in short, _quote all strings_.
 
 Often, to avoid the integer casting issues, it is advantageous to store your
-integers as strings as well, and use `{{ int $value }}` in the template to convert
-from a string back to an integer.
+integers as strings as well, and use `{{ int $value }}` in the template to
+convert from a string back to an integer.
 
 In most cases, explicit type tags are respected, so `foo: !!string 1234` should
 treat `1234` as a string. _However_, the YAML parser consumes tags, so the type
@@ -95,14 +95,15 @@ There are three potential sources of values:
 
 - A chart's `values.yaml` file
 - A values file supplied by `helm install -f` or `helm upgrade -f`
-- The values passed to a `--set` or `--set-string` flag on `helm install` or `helm upgrade`
+- The values passed to a `--set` or `--set-string` flag on `helm install` or
+  `helm upgrade`
 
 When designing the structure of your values, keep in mind that users of your
 chart may want to override them via either the `-f` flag or with the `--set`
 option.
 
-Since `--set` is more limited in expressiveness, the first guidelines for writing
-your `values.yaml` file is _make it easy to override from `--set`_.
+Since `--set` is more limited in expressiveness, the first guidelines for
+writing your `values.yaml` file is _make it easy to override from `--set`_.
 
 For this reason, it's often better to structure your values file using maps.
 
@@ -135,7 +136,9 @@ Accessing foo's port is much more obvious: `--set servers.foo.port=80`.
 
 ## Document 'values.yaml'
 
-Every defined property in 'values.yaml' should be documented. The documentation string should begin with the name of the property that it describes, and then give at least a one-sentence description.
+Every defined property in 'values.yaml' should be documented. The documentation
+string should begin with the name of the property that it describes, and then
+give at least a one-sentence description.
 
 Incorrect:
 
@@ -155,4 +158,6 @@ serverPort = 9191
 
 ```
 
-Beginning each comment with the name of the parameter it documents makes it easy to grep out documentation, and will enable documentation tools to reliably correlate doc strings with the parameters they describe.
+Beginning each comment with the name of the parameter it documents makes it easy
+to grep out documentation, and will enable documentation tools to reliably
+correlate doc strings with the parameters they describe.

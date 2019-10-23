@@ -3,15 +3,17 @@ title: "Custom Resource Definitions"
 description: "How to handle creating and using CRDs."
 ---
 
-This section of the Best Practices Guide deals with creating and using Custom Resource Definition
-objects.
+This section of the Best Practices Guide deals with creating and using Custom
+Resource Definition objects.
 
-When working with Custom Resource Definitions (CRDs), it is important to distinguish
-two different pieces:
+When working with Custom Resource Definitions (CRDs), it is important to
+distinguish two different pieces:
 
-- There is a declaration of a CRD. This is the YAML file that has the kind `CustomResourceDefinition`
-- Then there are resources that _use_ the CRD. Say a CRD defines `foo.example.com/v1`. Any resource
-  that has `apiVersion: example.com/v1` and kind `Foo` is a resource that uses the CRD.
+- There is a declaration of a CRD. This is the YAML file that has the kind
+  `CustomResourceDefinition`
+- Then there are resources that _use_ the CRD. Say a CRD defines
+  `foo.example.com/v1`. Any resource that has `apiVersion: example.com/v1` and
+  kind `Foo` is a resource that uses the CRD.
 
 ## Install a CRD Declaration Before Using the Resource
 

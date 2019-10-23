@@ -3,9 +3,14 @@ title: "Creating a NOTES.txt File"
 description: "How to provide instructions to your Chart users."
 ---
 
-In this section we are going to look at Helm's tool for providing instructions to your chart users. At the end of a `chart install` or `chart upgrade`, Helm can print out a block of helpful information for users. This information is highly customizable using templates.
+In this section we are going to look at Helm's tool for providing instructions
+to your chart users. At the end of a `chart install` or `chart upgrade`, Helm
+can print out a block of helpful information for users. This information is
+highly customizable using templates.
 
-To add installation notes to your chart, simply create a `templates/NOTES.txt` file. This file is plain text, but it is processed like as a template, and has all the normal template functions and objects available.
+To add installation notes to your chart, simply create a `templates/NOTES.txt`
+file. This file is plain text, but it is processed like as a template, and has
+all the normal template functions and objects available.
 
 Let's create a simple `NOTES.txt` file:
 
@@ -45,4 +50,6 @@ To learn more about the release, try:
   $ helm get rude-cardinal
 ```
 
-Using `NOTES.txt` this way is a great way to give your users detailed information about how to use their newly installed chart. Creating a `NOTES.txt` file is strongly recommended, though it is not required.
+Using `NOTES.txt` this way is a great way to give your users detailed
+information about how to use their newly installed chart. Creating a `NOTES.txt`
+file is strongly recommended, though it is not required.
