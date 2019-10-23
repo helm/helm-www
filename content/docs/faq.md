@@ -7,7 +7,7 @@ weight: 1
 This page provides help with the most common questions about Helm.
 
 **We'd love your help** making this document better. To add, correct, or remove
-information, [file an issue](https://github.com/helm/helm/issues) or
+information, [file an issue](https://github.com/helm/helm-www/issues) or
 send us a pull request.
 
 ## Changes since Helm 2
@@ -44,11 +44,11 @@ in-cluster, and the rest of Helm’s functionality remains.
 Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the most recent chart's manifest
 against the proposed chart's manifest (the one supplied during `helm upgrade`). It compared the differences between
 these two charts to determine what changes needed to be applied to the resources in Kubernetes. If changes were
-applied to the cluster out-of-band (like during a `kubectl edit`), those changes were not considered. This resulted in
+applied to the cluster out-of-band (such as during a `kubectl edit`), those changes were not considered. This resulted in
 resources being unable to roll back to its previous state: because Helm only considered the last applied chart's
 manifest as its current state, if there were no changes in the chart's state, the live state was left unchanged.
 
-In Helm 3, Helm now uses a three-way strategic merge patch. Helm now considers the old manifest, its live state, and the
+In Helm 3, we now use a three-way strategic merge patch. Helm considers the old manifest, its live state, and the
 new manifest when generating a patch.
 
 #### Examples
@@ -155,7 +155,7 @@ that same name, even if it was deployed in a different namespace.
 
 In Helm 3, release information about a particular release is now stored in the same namespace as the release itself.
 This means that users can now `helm install wordpress stable/wordpress` in two separate namespaces, and each can be
-referred with `helm list` by changing the current namespace context.
+referred with `helm list` by changing the current namespace context (e.g. `helm list --namespace foo`).
 
 ### Secrets as the default storage driver
 
@@ -164,7 +164,7 @@ driver.
 
 ### Go import path changes
 
-In Helm 3, Helm switched the Go import path over from `k8s.io/helm` to `helm.sh/helm`. If you intend
+In Helm 3, Helm switched the Go import path over from `k8s.io/helm` to `helm.sh/helm/v3`. If you intend
 to upgrade to the Helm 3 Go client libraries, make sure to change your import paths.
 
 ### Capabilities
@@ -188,24 +188,13 @@ Validation occurs when any of the following commands are invoked:
 
 See the documentation on [Schema files](/docs/topics/charts#schema-files) for more information.
 
-### Consolidation of requirements.yaml into Chart.yaml
+### Consolidation of `requirements.yaml` into `Chart.yaml`
 
-The Chart dependency management system moved from requirements.yaml and requirements.lock to Chart.yaml and Chart.lock,
-meaning that charts that relied on the `helm dependency` subcommands will need some tweaking to work in Helm 3.
+The Chart dependency management system moved from requirements.yaml and requirements.lock to Chart.yaml and Chart.lock. 
+We recommend that new charts meant for Helm 3 use the new format. However, Helm 3 still understands Chart API version 1 (`v1`)
+and will load existing `requirements.yaml` files
 
-In Helm 2, this is how a requirements.yaml looked:
-
-```yaml
-dependencies:
-- name: mariadb
-  version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  condition: mariadb.enabled
-  tags:
-    - database
-```
-
-In Helm 3, the dependency is expressed the same way, but now from your Chart.yaml:
+In Helm 2, this is how a `requirements.yaml` looked:
 
 ```yaml
 dependencies:
@@ -217,7 +206,19 @@ dependencies:
     - database
 ```
 
-Charts are still downloaded and placed in the charts/ directory, so subcharts vendored into the charts/ directory will continue to work without modification.
+In Helm 3, the dependency is expressed the same way, but now from your `Chart.yaml`:
+
+```yaml
+dependencies:
+- name: mariadb
+  version: 5.x.x
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  condition: mariadb.enabled
+  tags:
+    - database
+```
+
+Charts are still downloaded and placed in the `charts/` directory, so subcharts vendored into the `charts/` directory will continue to work without modification.
 
 ### Name (or --generate-name) is now required on install
 
@@ -229,7 +230,7 @@ you.
 
 ### Pushing Charts to OCI Registries
 
-This is an experimental feature introduced in Helm 3. To use, set the environment variable HELM_EXPERIMENTAL_OCI=1.
+This is an experimental feature introduced in Helm 3. To use, set the environment variable `HELM_EXPERIMENTAL_OCI=1`.
 
 At a high level, a Chart Repository is a location where Charts can be stored and shared. The Helm client packs and ships
 Helm Charts to a Chart Repository. Simply put, a Chart Repository is a basic HTTP server that houses an index.yaml file
@@ -253,7 +254,7 @@ push it to a Docker registry.
 
 For more info, please see [this page](/docs/topics/registries/).
 
-### Removal of helm serve
+### Removal of `helm serve`
 
 `helm serve` ran a local Chart Repository on your machine for development purposes. However, it didn't receive much
 uptake as a development tool and had numerous issues with its design. In the end, we decided to remove it and split it
@@ -335,7 +336,7 @@ These commands have also retained their older verbs as aliases, so you can conti
 ### Automatically creating namespaces
 
 When creating a release in a namespace that does not exist, Helm 2 created the
-namespace.  Helm 3 follows the behavior of other Kubernetes objects and returns
+namespace.  Helm 3 follows the behavior of other Kubernetes tooling and returns
 an error if the namespace does not exist.
 
 ## Installing
@@ -382,11 +383,11 @@ Along with the `helm` binary, Helm stores some files in the following locations:
 
 The following table gives the default folder for each of these, by OS:
 
-| Operating System | Cache Path                | Configuration Path             | Data Path               |
-| ---------------- | ------------------------- | ------------------------------ | ----------------------- |
-| Linux            | $HOME/.cache/helm         | $HOME/.config/helm             | $HOME/.local/share/helm |
-| macOS            | $HOME/Library/Caches/helm | $HOME/Library/Preferences/helm | $HOME/Library/helm      |
-| Windows          | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm          |
+| Operating System | Cache Path                  | Configuration Path               | Data Path                 |
+|------------------|-----------------------------|----------------------------------|---------------------------|
+| Linux            | `$HOME/.cache/helm `        | `$HOME/.config/helm `            | `$HOME/.local/share/helm` |
+| macOS            | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm `     |
+| Windows          | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
 
 ## Troubleshooting
 
@@ -401,7 +402,6 @@ Another variation of the error message is:
 
 ```
 Unable to connect to the server: x509: certificate signed by unknown authority
-
 ```
 
 The issue is that your local Kubernetes config file must have the correct credentials.
@@ -410,11 +410,3 @@ When you create a cluster on GKE, it will give you credentials, including SSL
 certificates and certificate authorities. These need to be stored in a Kubernetes
 config file (Default: `~/.kube/config` so that `kubectl` and `helm` can access
 them.
-
-### Why do I get a `unsupported protocol scheme ""` error when trying to pull a chart from my custom repo?**
-
-(Helm < 2.5.0) This is likely caused by you creating your chart repo index without specifying the `--url` flag.
-Try recreating your `index.yaml` file with a command like `helm repo index --url http://my-repo/charts .`,
-and then re-uploading it to your custom charts repo.
-
-This behavior was changed in Helm 2.5.0.
