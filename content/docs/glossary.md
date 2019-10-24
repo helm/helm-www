@@ -141,12 +141,8 @@ chart can be downloaded from. (Many chart repositories serve the charts as well
 as the `index.yaml` file.)
 
 A Helm client can point to zero or more chart repositories. By default, Helm
-<<<<<<< HEAD
 clients are not configured with any chart repositories. Chart repositories can
 be added at any time using the `helm repo add` command.
-=======
-clients are not configured with any chart repositories.
->>>>>>> Formats all docs to use same wrapping
 
 ## Values (Values Files, values.yaml)
 

@@ -9,7 +9,12 @@ environments. Distros are sorted alphabetically so as to not imply any sort of
 preference.
 
 We are trying to add more details to this document. Please contribute via Pull
-Requests if you can. 
+Requests if you can.
+
+## AKS
+
+Helm works with [Azure Kubernetes
+Service](https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm).
 
 ## DC/OS
 
@@ -26,10 +31,30 @@ no additional configuration.
 Hyperkube configured via `scripts/local-cluster.sh` is known to work. For raw
 Hyperkube you may need to do some manual configuration.
 
-## MiniKube
+## IKS
+
+Helm works with [IBM Cloud Kubernetes
+Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started).
+
+## KubeOne
+
+Helm works in clusters that are set up by KubeOne without caveats.
+
+## Kubermatic
+
+Helm works in user clusters that are created by Kubermatic without caveats.
+Since seed cluster can be setup up in different ways Helm support depends on
+their configuration.
+
+## MicroK8s
+
+Helm can be enabled in [MicroK8s](https://microk8s.io) using the command:
+`microk8s.enable helm`
+
+## Minikube
 
 Helm is tested and known to work with
-[minikube](https://github.com/kubernetes/minikube). It requires no additional
+[Minikube](https://github.com/kubernetes/minikube). It requires no additional
 configuration.
 
 ## Openshift
