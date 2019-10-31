@@ -105,6 +105,7 @@ gulp.task('clone', function(cb) {
         'source/docs/chart_template_guide/tmp/accessing_files.md',
         'source/docs/chart_template_guide/tmp/notes_files.md',
         'source/docs/chart_template_guide/tmp/subcharts_and_globals.md',
+        'source/docs/chart_template_guide/tmp/helm_ignore_file.md',
         'source/docs/chart_template_guide/tmp/debugging.md',
         'source/docs/chart_template_guide/tmp/wrapping_up.md',
         'source/docs/chart_template_guide/tmp/yaml_techniques.md',
