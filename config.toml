@@ -502,28 +502,34 @@ url = "https://v2-14-0.helm.sh/docs"
     weight = 312
     parent = "chart_template_guide"
   [[menu.main]]
+    name = "The .helmignore File"
+    url = "the-helmignore-file"
+    identifier = "the-helmignore-file"
+    weight = 313
+    parent = "chart_template_guide"
+  [[menu.main]]
     name = "Debugging Templates"
     url = "debugging-templates"
     identifier = "debugging-templates"
-    weight = 313
+    weight = 314
     parent = "chart_template_guide"
   [[menu.main]]
     name = "Next Steps"
     url = "wrapping-up"
     identifier = "wrapping-up"
-    weight = 314
+    weight = 315
     parent = "chart_template_guide"
   [[menu.main]]
     name = "Appendix: YAML Techniques"
     url = "yaml-techniques"
     identifier = "yaml-techniques"
-    weight = 315
+    weight = 316
     parent = "chart_template_guide"
   [[menu.main]]
     name = "Appendix: Go Data Types and Templates"
     url = "appendix-go-data-types-and-templates"
     identifier = "appendix-go-data-types-and-templates"
-    weight = 316
+    weight = 317
     parent = "chart_template_guide"
 
 [[menu.main]]
