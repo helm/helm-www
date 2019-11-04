@@ -183,21 +183,20 @@
     display: none;
   }
 
-  .cncf-wrap {
-    .cncf {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+  .cncf {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
-      img,
-      p {
-        float: none;
-        min-width: 80%;
-        margin: 1.5rem auto;
-      }
+    img,
+    p {
+      float: none;
+      min-width: 80%;
+      margin: 1.5rem auto;
+    }
 
-      img {
-        max-width: 51%;
-      }
+    img {
+      min-width: 10%;
+      max-width: 40vw;
     }
   }
 }

@@ -37,3 +37,53 @@ body {
   width: 25%;
   width: 300px;
 }
+
+
+.main .content-wrap {
+  .quick-links {
+    padding-top: 5rem;
+
+    h3 {
+      color: $blue;
+    }
+    .quick-item {
+      position: relative;
+      display: block;
+      clear: both;
+      padding: 1rem 1rem 1.5rem;
+      background: transparent;
+
+      &:hover {
+        color: $blue4;
+        border-bottom: none;
+      }
+
+      &:after {
+        height: 2px;
+        background: desaturate(lighten($blue1, 35%), 20%);
+        width: 100%;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 1px;
+      }
+
+      h4 {
+        display: inline-block;
+        float: left;
+        clear: both;
+        color: $blue4;
+        font-size: 1.125em;
+        width: 30%;
+      }
+      p {
+        display: inline-block;
+        float: right;
+        text-align: left;
+        width: 58%;
+
+      }
+
+    }
+  }
+}

@@ -10,75 +10,62 @@ Helm | Docs
   <div class="main home page" id="scrollpane">
 
     <nav class="top-bar">
-
       {{ partial "banner.html" . }}
-        
       <ul class="inline right text-right">
         {{ partial "nav.html" . }}
       </ul>
     </nav>
 
-    <div class="row collapse" id="helm">
-      <div class="small-12 columns home-intro-wrap">
+    <div class="row">
+      <div class="small-1 columns">&nbsp;</div>
+      <div class="small-10 columns content-wrap">
+        {{ .Content }}
 
-        <section class="billboard">
-          <div class="container">
-            {{ .Content }}
-          </div>
-        </section>
-
-        <div class="row home-featured">
-          <div class="small-12 medium-10 small-centered medium-centered columns panels">
-            <h3 class="text-center">Quicklinks</h3>
-            <div class="row">
-              {{ if $isDocsRoot }}
-              {{ $quicklinks := site.Params.quicklinks }}
-              {{ range $quicklinks }}
-              <div class="small-12 large-4 columns">
-                <div class="panel">
-                  <a href="{{ .url }}">
-                    <h3>
-                      {{ .title }}
-                      {{ with .via }}
-                      &nbsp;<small><i class="fa fa-external-link"></i></small>
-                      {{ end }}
-                    </h3>
-                    <p>
-                      {{ .description }}
-                      {{ with .via }}
-                      - <small>
-                        (via {{ . }})
-                      </small>
-                      {{ end }}
-                    </p>
-                  </a>
-                </div>
-              </div>
+        <div class="quick-links">
+          <h3 class="text-center">Quicklinks</h3>
+          
+          {{ if $isDocsRoot }}
+          {{ $quicklinks := site.Params.quicklinks }}
+          {{ range $quicklinks }}
+          <a href="{{ .url }}" class="quick-item"> 
+            <h4>
+              {{ .title }}
+              {{ with .via }}
+              &nbsp;<small><i class="fa fa-external-link"></i></small>
               {{ end }}
-              {{ else }}
-              {{ range .Pages }}
-              <div class="small-12 large-4 columns">
-                <div class="panel">
-                  <a href="{{ .RelPermalink }}">
-                    <h3>
-                      {{ .Title }}
-                    </h3>
-                    <p>
-                      {{ .Description }}
-                    </p>
-                  </a>
-                </div>
-              </div>
+            </h4>
+            <p>
+              {{ .description }}
+              {{ with .via }}
+              - <small>
+                (via {{ . }})
+              </small>
               {{ end }}
-              {{ end }}
-            </div>
-          </div>
+            </p>
+          </a>
+          {{ end }}
+          
+          {{ else }}
+          
+          {{ range .Pages }}
+          <a href="{{ .RelPermalink }}" class="quick-item">
+            <h4>
+              {{ .Title }}
+            </h4>
+            <p>
+              {{ .Description }}
+            </p>
+          </a>
+          {{ end }}
+          {{ end }}
         </div>
 
-        {{ partial "cncf.html" . }}
-
       </div>
-    </div>  
+      <div class="small-1 columns">&nbsp;</div>
+    </div>
   </div>
+
+  {{ partial "cncf.html" . }}
 </div>
+
 {{ end }}

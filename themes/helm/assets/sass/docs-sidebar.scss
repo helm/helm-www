@@ -203,8 +203,14 @@
       display: block;
       padding-top: .5rem;
       padding-bottom: .575rem;
-      background-color: $light2;
+      background-color: desaturate(lighten($blue1, 35%), 20%);
+      border: 2px solid lighten($blue1, 17.5%);
       color: $blue3;
+
+      &:hover {
+        background-color: $blue;
+        color: white;
+      }
 
       i {
         margin: -0.05em 0.5em 0 -0.667em;

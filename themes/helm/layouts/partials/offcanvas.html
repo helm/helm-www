@@ -1,3 +1,5 @@
+{{ $docsHome      := .FirstSection }}
+{{ $docsSections  := where site.Sections "Section" "docs" }}
 <aside class="left-off-canvas-menu" id="off-canvas-navigation" data-topbar>
   <div class="drawer-wrap">
 
@@ -7,23 +9,20 @@
           <span class="ripple">Docs Home <span></span></span>
         </a>
       </li>
-      {{ range site.Menus.main }}
-      <li class="sidebar-nav-item toctree-l1 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-        <a class="reference internal" href="{{ .URL | safeHTMLAttr }}" state="">
-          <span class="ripple">{{ .Name }} <span></span></span>
-        </a>
-        {{ if .HasChildren }}
-        <ul class="current">
-          {{ range .Children.ByWeight }}
-          <li class="toctree-l2 {{if $.IsMenuCurrent "main" . }} active {{end}}">
-            <a href="/docs/{{ .Parent | safeHTMLAttr }}/#{{ .URL | safeHTMLAttr }}" title="Switch to {{ .Name }}">
-              {{ .Name }}
-            </a>
-          </li>
-          {{ end }}
-        </ul>
-        {{end}}
-      </li>
+      {{ range $docsSections }}
+      {{ range .Sections }}
+      {{ .Render "section-link" }}
+
+      {{ range .Sections }}
+      {{ .Render "section-link" }}
+      {{ end }}
+      {{ end }}
+
+      {{ range .Pages }}
+      {{ if .Title }}
+      {{ .Render "section-link" }}
+      {{ end }}
+      {{ end }}
       {{ end }}
     </ul>
 
