@@ -215,7 +215,7 @@
 }
 
 .cncf {
-  background: desaturate($light2, 50%);
+  background: lighten(desaturate($light2, 50%), 7.5%);
   min-height: 2rem;
   text-align: center;
   padding-left: 300px;
