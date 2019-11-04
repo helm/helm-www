@@ -145,6 +145,11 @@
         color: white;
       }
 
+      &:hover {
+        background-color: $blue;
+        color: white;
+      }
+
       i {
         margin: -0.05em 0.5em 0 -0.667em;
         // color: $blue3;
