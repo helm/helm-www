@@ -3,9 +3,8 @@ title: "The Helm Plugins Guide"
 description: "Introduces how to use and create plugins to extend Helm's functionality."
 ---
 
-Helm 2.1.0 introduced the concept of a client-side Helm _plugin_. A plugin is a
-tool that can be accessed through the `helm` CLI, but which is not part of the
-built-in Helm codebase.
+A Helm plugin is a tool that can be accessed through the `helm` CLI, but which
+is not part of the built-in Helm codebase.
 
 Existing plugins can be found on [related](related.md#helm-plugins) section or
 by searching
@@ -26,7 +25,7 @@ Helm plugins have the following features:
 - They can be written in any programming language.
 - They integrate with Helm, and will show up in `helm help` and other places.
 
-Helm plugins live in `$(helm home)/plugins`.
+Helm plugins live in `$XDG_DATA_HOME/plugins`.
 
 The Helm plugin model is partially modeled on Git's plugin model. To that end,
 you may sometimes hear `helm` referred to as the _porcelain_ layer, with plugins
@@ -39,7 +38,7 @@ the user experience and top level processing logic, while the plugins do the
 Plugins are installed using the `$ helm plugin install <path|url>` command. You
 can pass in a path to a plugin on your local file system or a url of a remote
 VCS repo. The `helm plugin install` command clones or copies the plugin at the
-path/url given into `$ (helm home)/plugins`
+path/url given into `$XDG_DATA_HOME/plugins`
 
 ```console
 $ helm plugin install https://github.com/technosophos/helm-template
@@ -55,7 +54,7 @@ In many ways, a plugin is similar to a chart. Each plugin has a top-level
 directory, and then a `plugin.yaml` file.
 
 ```
-$(helm home)/plugins/
+$XDG_DATA_HOME/plugins/
   |- keybase/
       |
       |- plugin.yaml
@@ -184,14 +183,23 @@ environment.
 
 The following variables are guaranteed to be set:
 
-- `HELM_PLUGIN`: The path to the plugins directory
+- `HELM_PLUGINS`: The path to the plugins directory.
 - `HELM_PLUGIN_NAME`: The name of the plugin, as invoked by `helm`. So `helm
   myplug` will have the short name `myplug`.
 - `HELM_PLUGIN_DIR`: The directory that contains the plugin.
 - `HELM_BIN`: The path to the `helm` command (as executed by the user).
-- `HELM_HOME`: The path to `$XDG_DATA_HOME/helm`.
-- `HELM_PATH_*`: Paths to important Helm files and directories are stored in
-  environment variables prefixed by `HELM_PATH`.
+- `HELM_DEBUG`: Indicates if the debug flag was set by helm.
+- `HELM_REGISTRY_CONFIG`: The location for the registry configuration (if
+  using). Note that the use of Helm with registries is an experimental feature.
+- `HELM_REPOSITORY_CACHE`: The path to the repository cache files.
+- `HELM_REPOSITORY_CONFIG`: The path to the repository configuration file.
+- `HELM_NAMESPACE`: The namespace given to the `helm` command (generally using
+  the `-n` flag).
+- `HELM_KUBECONTEXT`: The name of the Kubernetes config context given to the
+  `helm` command.
+
+Additionally, if a Kubernetes configuration file was explicitly specified, it
+will be set as the `KUBECONFIG` variable
 
 ## A Note on Flag Parsing
 
@@ -199,8 +207,7 @@ When executing a plugin, Helm will parse global flags for its own use. Some of
 these flags are _not_ passed on to the plugin.
 
 - `--debug`: If this is specified, `$HELM_DEBUG` is set to `1`
-- `--home`: This is converted to `$HELM_HOME`
-- `--kube-context`: This is simply dropped.
+- `--kube-context`: This is converted to `$HELM_KUBECONTEXT`
 
 Plugins _should_ display help text and then exit for `-h` and `--help`. In all
 other cases, plugins may use flags as appropriate.
