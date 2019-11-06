@@ -1,7 +1,6 @@
 ---
 title: "Migrating Helm v2 to v3"
 description: "Learn how to migrate Helm v2 to v3."
-weight: 5
 ---
 
 This guide shows how to migrate  Helm v2 to v3. Helm v2 needs to be installed
@@ -14,7 +13,7 @@ section](https://v3.helm.sh/docs/faq/#changes-since-helm-2). The following is a
 summary of some of those changes that a user should be aware of before and
 during migration:
 
-1. Removal of Tiller: 
+1. Removal of Tiller:
    - Replaces client/server with client/library architecture (`helm` binary
      only)
    - Security is now on per user basis (delegated to Kubernetes user cluster
@@ -81,7 +80,7 @@ The migration use cases are as follows:
      ready to remove Helm v2 client. Rename or put the Helm v3 binary in a
      different folder to avoid conflict
    - Otherwise there are no conflicts between both versions because of the
-     following distinctions: 
+     following distinctions:
      - v2 and v3 release (history) storage are independent of each other. The
        changes includes the Kubernetes resource for storage and the release
        object metadata contained in the resource. Releases will also be on a per
@@ -101,9 +100,9 @@ The migration use cases are as follows:
 2. Migrating Helm v2 to Helm v3:
    - This use case applies when you want Helm v3 to manage existing Helm v2
      releases
-   - It should be noted that a Helm client: 
+   - It should be noted that a Helm client:
      - can manage 1 to many Kubernetes clusters
-     - can connect to 1 to many Tiller instances for  a cluster 
+     - can connect to 1 to many Tiller instances for  a cluster
    - This means that you have to be cognisant of this when migrating as releases
      are deployed into clusters by Tiller and its namespace. You have to
      therefore be aware of migrating for each cluster and each Tiller instance
@@ -116,7 +115,7 @@ The migration use cases are as follows:
         and Tiller instances of the Helm v2 client instance) as expected, then
         clean up Helm v2 data
    - The migration process is automated by the Helm v3
-     [2to3](https://github.com/helm/helm-2to3) plugin  
+     [2to3](https://github.com/helm/helm-2to3) plugin
 
 ## Reference
 
