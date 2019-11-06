@@ -6,7 +6,7 @@ description: "Introduces how to use and create plugins to extend Helm's function
 A Helm plugin is a tool that can be accessed through the `helm` CLI, but which
 is not part of the built-in Helm codebase.
 
-Existing plugins can be found on [related](related.md#helm-plugins) section or
+Existing plugins can be found on [related]({{< ref "related.md#helm-plugins" >}}) section or
 by searching
 [Github](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 

@@ -17,7 +17,7 @@ which serves a chart repository.*
 
 ## Set up a local chart repository directory
 Create a local directory like we did in [the chart repository
-guide](chart_repository.md), and place your packaged charts in that directory.
+guide]({{< ref "/docs/topics/chart_repository.md" >}}), and place your packaged charts in that directory.
 
 For example:
 ```console
@@ -86,7 +86,7 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Helpful Links:
 * Documentation on [gsutil
   rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [The Chart Repository Guide](chart_repository.md)
+* [The Chart Repository Guide]({{< ref "/docs/topics/chart_repository.md" >}})
 * Documentation on [object versioning and concurrency
   control](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)
   in Google Cloud Storage
