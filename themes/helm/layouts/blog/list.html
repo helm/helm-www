@@ -3,10 +3,12 @@ Helm | Blog
 {{ end }}
 
 {{ define "main" }}
-<div class="container container-full blog-layout">
+<div class="blog-layout">
 
   <div class="main blog page" id="scrollpane">
-    {{ partial "blog/topbar.html" . }}
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
 
     <div class="row">
       <div class="small-1 columns">&nbsp;</div>

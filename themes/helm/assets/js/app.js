@@ -30,6 +30,19 @@ $(document).ready(function() {
 }); // document ready
 
 
+//Navbar Clone
+if ($('.navbar-top-fixed').length) {
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 200) {
+          $(".navbar-top-fixed").addClass('is-active');
+      } else{
+          $(".navbar-top-fixed").removeClass('is-active');
+      }
+  });
+}
+
+
 // add permalinks to titles
 $(function() {
   return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {

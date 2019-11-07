@@ -3,9 +3,42 @@ body {
   min-height: 100%;
   padding: 0;
   margin: 0;
-  background: white;
-  background-position: static;
-  background-attachment: fixed;
+
+  // page blue border style
+  .page-wrapper {
+    border: 8px solid $navy;
+    position: relative;
+
+    &:before,
+    &:after {
+      position: fixed;
+      z-index: 1200;
+      content: " ";
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      width: 100%;
+      background: $navy;
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+      top: auto;
+    }
+  }
+
+  
+}
+
+#helm,
+.off-canvas-wrap {
+  // margin-top: -1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .main {
@@ -16,7 +49,7 @@ body {
   min-height: 100%;
 }
 
-.container-full {
+.docs {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -25,6 +58,12 @@ body {
   overflow-x: hidden;
   padding-left: 300px;
   width: 100%;
+
+  .navbar {
+    .navbar-brand {
+      display: none;
+    }
+  }
 }
 
 .sidebar {

@@ -1,12 +1,9 @@
 {{- $navbar := .Site.Params.navbar }}
-{{ $versions  := site.Params.versions }}
-{{ $primary   := index (where $versions ".primary" true) 0 }}
-{{ $lang      := .Lang }}
-{{ $isEnglish := eq $lang "en" }}
-{{ $menu      := site.Menus.main }}
-
-<nav class="navbar navbar-top" role="navigation" aria-label="main navigation">
+{{ $versions := site.Params.versions }}
+{{ $primary  := index (where $versions ".primary" true) 0 }}
+<nav class="navbar navbar-top navbar-top-fixed" role="navigation" aria-label="main navigation">
   <div class="container is-fluid">
+    
     <div class="column navbar-brand">
       <h1>
         <a href="/">
@@ -38,16 +35,6 @@
             <i class="fa fa-github"></i>
           </span>
         </li> -->
-
-        <!--
-        {{ range .Translations }}
-        <li>
-          <a href="{{ .RelPermalink }}">
-            {{ .Language.LanguageName }}
-          </a>
-        </li>
-        {{ end }}
-        -->
         <li class="versioner navbar-item has-dropdown is-hoverable">
           {{ with $primary }}
           <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
@@ -66,7 +53,7 @@
           </ul>
         </li>
         <li class="navbar-item is-hoverable">
-            <a class="button is-primary is-medium is-info is-outlined" href="https://github.com/helm/helm">Get Helm</a>
+          <a class="button is-primary is-medium is-info is-outlined" href="https://github.com/helm/helm">Get Helm</a>
         </li>
       </ul>
     </div>

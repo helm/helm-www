@@ -16,7 +16,7 @@ Helm | {{ .Title }}
       </a>
     </h1>
     
-    <nav class="top-bar">
+    <nav class="top-bar" role="navigation" aria-label="main navigation">
       {{ partial "banner.html" . }}
         
       <ul class="inline right text-right">
@@ -24,21 +24,21 @@ Helm | {{ .Title }}
       </ul>
     </nav>
 
-    <div class="row">
-      <div class="small-1 columns">&nbsp;</div>
-      <div class="small-10 columns content-wrap">
+    <div class="columns">
+      <div class="column">&nbsp;</div>
+      <div class="column content-wrap">
         <h1>{{ .Title }}</h1>
         
         {{ .Content }}
       </div>
-      <div class="small-1 columns">&nbsp;</div>
+      <div class="column">&nbsp;</div>
     </div>
   
     {{ end }}
 
     {{ define "footer" }}
 
-    <div class="row">
+    <div class="columns">
       {{ partial "footer-links.html"}}
       {{ partial "footer-social.html"}}
     </div>

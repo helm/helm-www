@@ -2,18 +2,6 @@
   box-sizing: border-box;
   min-height: 100%;
 
-  .docs-home {
-    #helm {
-      background: $blue1;
-    }
-  }
-
-  .home-intro-wrap {
-    box-sizing: border-box;
-    min-height: 100%;
-    background: $blue1;
-  }
-
   h3 {
     color: #f6fbfe;
     font-size: 1.125rem;
@@ -32,21 +20,20 @@
       height: 850px;
       width: 100%;
       bottom: 0;
-      // background-color: $blue1;
       position: fixed;
     }
 
     .billboard {
-      background-color: white;
-      background: url('../img/pattern-topo.png') left top repeat;
-      background-size: 376px;
-      padding-top: 230px;
-      position: relative;
+      // background-color: white;
+      // background: url('../img/pattern-topo.png') left top repeat;
+      // background-size: 376px;
+      // padding-top: 230px;
+      // position: relative;
       // text-align: center;
 
-      .helm-logo {
-        max-width: 120px;
-      }
+      // .helm-logo {
+      //   max-width: 120px;
+      // }
 
       h1 {
         @include klinicBold;
@@ -101,36 +88,7 @@
     }
   }
 
-  @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-    @include boat-animation-rules(-$boat-size, 25%, 145%, 0);
-  }
-
-  #boat {
-    height: 2em;
-
-    @media only screen and (min-device-width: $mobile-maximum-width + 1) {
-      $duration: 20s;
-      background: url('../img/boat.png') no-repeat;
-      background-size: $boat-size;
-      height: 120px; //TODO programmatize this!
-      position: relative;
-      margin-top: 40px;
-
-      -moz-animation: $boat-animation;
-      -webkit-animation: $boat-animation;
-      -ms-animation: $boat-animation;
-      -o-animation: $boat-animation;
-      animation: $boat-animation;
-      -webkit-animation-duration: $duration;
-      -moz-animation-duration: $duration;
-      -ms-animation-duration: $duration;
-      -o-animation-duration: $duration;
-      animation-duration: $duration;
-    }
-  }
-
   .home-featured {
-    background-color: $blue1;
     padding-top: 20px;
     padding-bottom: 65px;
     min-height: 400px;
@@ -142,7 +100,6 @@
     }
 
     .panel {
-      background-color: white;
       @include box-shadow(0,1px,4px,$blue4);
       @include border-radius(0.25em,0.25em);
       text-align: center;
