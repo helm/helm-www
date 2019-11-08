@@ -1,4 +1,4 @@
-.main .content-wrap {
+.content-wrapper {
   padding-top: 1em;
   padding-bottom: 10em;
   font-size: $scalex5;
@@ -9,7 +9,6 @@
   @include klinicReg;
 
   h1 {
-    text-transform: none;
     margin-top: 1em;
     padding-top: 2.5em;
     padding-bottom: 1.5rem;
@@ -21,20 +20,18 @@
 
     h1 {
       font-size: $scalex8;
-      color: $blue3;
+      color: $navy;
       margin: 1em 0 1em;
       padding-top: 4.5em;
     }
   }
 
   h2 {
-    color: darken($grey3, 5%);
+    color: $navyl;
     font-size: $scalex7;
-    letter-spacing: 0.05em;
     @include klinicBold;
-    @include upperCase;
-    letter-spacing: 0.125em;
-    margin: 0em 0 0.875em;
+    letter-spacing: 0.01rem;
+    margin: 0 0 0.875em;
     padding-top: 3.5em;
   }
 
@@ -46,6 +43,10 @@
 
   h4 {
     font-size: $scalex5;
+  }
+
+  h1, h2, h3, h4, p, ul, ol, blockquote {
+    max-width: 75rem;
   }
 
   p {
@@ -62,8 +63,8 @@
     }
 
     a {
-      padding-left: 0.25em;
-      padding-right: 0.25em;
+      padding-left: 0.35em;
+      padding-right: 0.35em;
     }
   }
 
@@ -128,6 +129,7 @@
     padding: 0.75em 1em;
     margin: 0.25em 0 2.5em;
     font-size: 1rem;
+    border-left: 2px solid $yellow;
 
     code {
       padding: 0;
@@ -165,6 +167,11 @@
 
     li {
       font-size: 1.125em;
+
+      a {
+        padding-left: 0.35em;
+        padding-right: 0.35em;
+      }
     }
   }
 
@@ -189,14 +196,59 @@
   }
 
   a {
-    color: darken($blue3, 7.5%);
-    background-color: #f6fbfe;
+    color: $navyd;
+    background: lighten($blue, 40%);
     @include transition;
 
     &:hover {
-      color: darken($blue2, 5%);
-      border-bottom: 2px solid $blue1;
-      background: white;
+      color: darken($navyd, 5%);
+      border-bottom: 2px solid $navyd;
+      background: lighten($salmon, 15%);
+    }
+  }
+
+  .quick-links {
+    padding-top: 5rem;
+  
+    h3 {
+      color: $blue;
+    }
+    .quick-item {
+      position: relative;
+      display: block;
+      clear: both;
+      padding: 1rem 1rem 1.5rem;
+      background: transparent;
+  
+      &:hover {
+        color: $blue4;
+        border-bottom: none;
+      }
+  
+      &:after {
+        height: 2px;
+        background: desaturate(lighten($blue1, 35%), 20%);
+        width: 100%;
+        display: block;
+        content: " ";
+        position: absolute;
+        top: 1px;
+      }
+  
+      h4 {
+        display: inline-block;
+        float: left;
+        clear: both;
+        color: $blue4;
+        font-size: 1.125em;
+        width: 30%;
+      }
+      p {
+        display: inline-block;
+        float: right;
+        text-align: left;
+        width: 58%;
+      }
     }
   }
 
@@ -219,7 +271,6 @@
   h4:hover,
   h5:hover,
   h6:hover {
-    color: $blue4;
 
     .header-link {
       opacity: 1;

@@ -65,10 +65,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  color: $blue4;
-  font-size: $scalex10;
-  @include upperCase;
+  color: $navy;
+  font-size: $scalex9;
   @include klinicBold;
+  letter-spacing: -0.0125rem;
 }
 
 h2 {
@@ -100,15 +100,14 @@ h2 {
 }
 
 h3 {
-  font-size: $base-font-size * 1.5;
+  font-size: $base-font-size * 1.25;
 }
 
 .content {
   h3 {
-    @include upperCase;
     @include klinicBold;
-    font-size: $scalex2;
-    color: $grey2;
+    font-size: $scalex1;
+    color: $dark;
   }
 }
 

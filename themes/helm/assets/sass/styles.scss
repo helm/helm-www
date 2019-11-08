@@ -7,7 +7,7 @@ Helm
 
 // load helm styles
 @import "helm-mixins.scss";
-@import "helm-animation.scss";
+@import "helm-layout.scss";
 @import "helm-buttons.scss";
 @import "helm-typography.scss";
 
@@ -16,7 +16,6 @@ Helm
 @import "helm-blog.scss";
 
 // load documentation styles
-@import "docs-layout.scss";
 @import "docs-sidebar.scss";
 @import "docs-topbar.scss";
 @import "docs-footer.scss";
@@ -24,7 +23,3 @@ Helm
 @import "docs-content.scss";
 @import "docs-responsive.scss";
 @import "docs-404.scss";
-
-html {
-  background: white !important;
-}

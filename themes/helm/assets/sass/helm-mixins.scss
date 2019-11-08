@@ -13,6 +13,8 @@
 // Primary Colors
 
 $navy:#091C84;
+$navyd:#090E6F;
+$navyl:#1B53C2;
 
 $dark: #050843;
 $light2: #B7C2E9;
@@ -106,6 +108,7 @@ $mono: "Space Mono", "Courier New", monaco, monospace;
 @mixin klinicBold {
   font-family: $mono;
   font-weight: bold;
+  letter-spacing: 0.035rem;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -246,7 +249,7 @@ $mono: "Space Mono", "Courier New", monaco, monospace;
  }
  
  // link effect
- @mixin ripple($color: $salmon) {
+ @mixin ripple($color: $navyl) {
    position: relative;
    display: inline-block;
    text-align: center;

@@ -4,25 +4,24 @@ Helm | Docs
 
 {{ define "main" }}
 {{ $isDocsRoot := eq .CurrentSection .FirstSection }}
-{{ partial "banner.html" . }}
-<div class="docs docs-home">
-  {{ partial "nav.html" . }}
-  {{ partial "nav-fixed.html" . }}
 
-  <div class="main home page" id="scrollpane">
+<div id="helm" class="page-docs page-wrapper page-docs-list">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
 
-    {{ partial "sidebar.html" . }}
+  <div class="columns" id="helm">
+    <aside class="column is-narrow is-gapless is-hidden-mobile sidebar-wrapper">
+      {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <section class="column content-docs">
+      <article class="content-wrapper">
+        {{ .Content }}
 
-    <div class="collapse" id="helm">
-      <div class="home-intro-wrap">
-
-        <section class="billboard">
-          <div class="container">
-            {{ .Content }}
-          </div>
-        </section>
-
-        <div class="quick-links">
+        <section class="quick-links">
           <h3 class="text-center">Quicklinks</h3>
           
           {{ if $isDocsRoot }}
@@ -59,14 +58,10 @@ Helm | Docs
           </a>
           {{ end }}
           {{ end }}
-        </div>
-
-      </div>
-      <div class="small-1 columns">&nbsp;</div>
-    </div>
+        </section>
+      </article>
+    </section>
   </div>
-
-  {{ partial "cncf.html" . }}
 </div>
 
 {{ end }}

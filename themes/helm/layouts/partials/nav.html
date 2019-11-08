@@ -6,16 +6,14 @@
 {{ $menu      := site.Menus.main }}
 
 <nav class="navbar navbar-top" role="navigation" aria-label="main navigation">
-  <div class="container is-fluid">
-    <div class="column navbar-brand">
-      <h1>
-        <a href="/">
-          <{{ partial "logo.html" . }}>
-        </a>
-      </h1>
+  <div class="container is-fluid is-vcentered">
+    <div class="navbar-brand">
+      <a href="/">
+        {{ partial "logo.html" . }}
+      </a>
     </div>
 
-    <div class="column navbar-menu is-centered" id="topnav">
+    <div class="navbar-menu is-centered" id="topnav">
       <div class="navbar-start">
         {{- range $navbar }}
         <a href="{{ .url }}" class="navbar-item">
@@ -26,8 +24,8 @@
     </div>
 
     <!-- desktop menu -->
-    <div class="column navbar-end is-hidden-mobile">
-      <ul>
+    <div class="navbar-end is-hidden-mobile">
+      <ul class="is-pulled-right">
         <!-- <li>
           <span class="icon">
             <i class="fa fa-twitter"></i>
@@ -65,14 +63,14 @@
             {{ end }}
           </ul>
         </li>
-        <li class="navbar-item is-hoverable">
-            <a class="button is-primary is-medium is-info is-outlined" href="https://github.com/helm/helm">Get Helm</a>
+        <li>
+          <a class="button not-fixed is-outlined" href="https://github.com/helm/helm">Get Helm</a>
         </li>
       </ul>
     </div>
 
     <!-- mobile menu -->
-    <div class="column navbar-end is-hidden-tablet">
+    <div class="navbar-end is-hidden-tablet">
       <div id="navbarBurger" class="navbar-burger burger" data-target="navMenuDocumentation">
         <span></span>
         <span></span>

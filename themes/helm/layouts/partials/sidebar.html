@@ -1,51 +1,43 @@
 {{ $docsHome      := .FirstSection }}
 {{ $docsSections  := where site.Sections "Section" "docs" }}
-<div class="sidebar show-for-large-up">
-  <h1>
-    <a href="/">
-      {{ partial "logo.html" . }}
-      <span>Documentation</span>
-    </a>
-  </h1>
+<div class="sidebar">
 
   <div class="search-container">
     <input id="q" placeholder="Search..." autofocus>
   </div>
 
-  <div class="sidebar-wrap">
+  <!-- <div class="sidebar-wrap"> -->
+  <nav class="sidebar-nav">
+    <ul class="current sidebar-main">
+      <li class="sidebar-nav-item toctree-l1">
+        <a class="reference internal" href="{{ $docsHome.RelPermalink }}" state="">
+          <span class="ripple">
+            {{ $docsHome.Title }}
+          </span>
+        </a>
+      </li>
 
-    <nav class="sidebar-nav">
-      <ul class="current sidebar-main">
-        <li class="sidebar-nav-item toctree-l1">
-          <a class="reference internal" href="{{ $docsHome.RelPermalink }}" state="">
-            <span class="ripple">
-              {{ $docsHome.Title }}
-            </span>
-          </a>
-        </li>
+      {{ range $docsSections }}
+      {{ range .Sections }}
+      {{ .Render "section-link" }}
 
-        {{ range $docsSections }}
-        {{ range .Sections }}
-        {{ .Render "section-link" }}
+      {{ range .Sections }}
+      {{ .Render "section-link" }}
+      {{ end }}
+      {{ end }}
 
-        {{ range .Sections }}
-        {{ .Render "section-link" }}
-        {{ end }}
-        {{ end }}
+      {{ range .Pages }}
+      {{ if .Title }}
+      {{ .Render "section-link" }}
+      {{ end }}
+      {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
 
-        {{ range .Pages }}
-        {{ if .Title }}
-        {{ .Render "section-link" }}
-        {{ end }}
-        {{ end }}
-        {{ end }}
-      </ul>
-    </nav>
-
-    <aside class="sidebar-buttons">
-      <div class="button-wrap">
-        <a href="https://github.com/helm/helm-www/blob/master/README.md" class="button small primary expand email-support"><i class="fa fa-github"></i> Contribute to Docs</a>
-      </div>
-    </aside>
-  </div>
+  <aside class="sidebar-buttons">
+    <div class="button-wrap">
+      <a href="https://github.com/helm/helm-www/tree/master/content/docs" class="button is-outline is-fullwidth">Contribute to Docs</a>
+    </div>
+  </aside>
 </div>

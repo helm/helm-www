@@ -1,21 +1,22 @@
 #banner {
-  background: white;
-  color:$navy;
+  background: $light2;
+  color: white;
   position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
   margin: 0;
   text-align: center;
   z-index: 850;
 
   p {
     color: $navy;
-    padding: 0.75rem 0;
+    padding: 0.75rem 0 1rem;
   }
 
   a {
-    color: $navy;
+    color: $navyl;
+    @include ripple;
   }
 }
 
@@ -27,16 +28,18 @@
   right: 0;
   padding-top: 4.5rem;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  @include transition;
 
   &.navbar-top-fixed {
     position: fixed;
     left: 8px;
     right: 8px;
-    top: -108px;
+    top: -120px;
     padding-top: 0;
     background: url('/img/topography.png') left top repeat;
     background-attachment: fixed;
-
 
     &.is-active {
       display: block;
@@ -44,12 +47,39 @@
     }
   }
 
-  a {
-    padding: 1em;
-    color: $blue4;
+  a.navbar-item {
+    color: $navy;
     font-size: 1.125rem;
+    @include ripple;
     @include klinicBold;
+    padding: 1.75rem 2.5vw;
+
+    &:hover {
+      background-color: lighten($salmon, 12.5%);
+    }
   }
+
+  a.button {
+    margin: 1rem 3vw;
+    background-color: transparent;
+    font-size: 1.125rem;
+    position: absolute;
+    height: 3rem !important;
+    right: 1rem;
+    padding: 1rem 2.5vw;
+    border-color: $navy;
+    color: $navy;
+
+    &:hover {
+      background-color: $navyl;
+      color: white;
+      border-color: $navyl;
+    }
+  }
+}
+
+a.button.not-fixed {
+  margin-right: -1.5rem;
 }
 
 .navbar-brand {
@@ -64,54 +94,53 @@
   }
 }
 
-.home {
-  .navbar-brand {
-    display: none;
-  }
-}
 
-.navbar-menu {
-  a {
-    padding: 1.5rem 3vw;
-    color: $navy;
-  }
-}
+// Modifiers
 
-
-.navbar-burger {
-  position: fixed;
-  top: 0.5rem;
-  right: 0.5rem;
-  display: none;
-}
-
-.docs .navbar-burger {
-  position: fixed;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-
-.home,
-.blog {
-  .versioner {
-    display: none;
-  }
-}
-
-.navbar-end {
-  // position: absolute;
-  // right: 0;
-  
-  .versioner {
-    em {
-      font-size: 0.7em;
-      position: absolute;
-      bottom: 0;
+  // Home
+  .home {
+    .navbar-brand {
+      display: none;
     }
-
   }
-}
+
+  .home,
+  .blog {
+    .versioner {
+      display: none;
+    }
+  }
+
+
+  // Docs
+  .navbar-burger {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: none;
+  }
+
+  .docs .navbar-burger {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+
+
+
+// .navbar-end {
+//   position: absolute;
+//   right: 0;
+//
+//   .versioner {
+//     em {
+//       font-size: 0.7em;
+//       position: absolute;
+//       bottom: 0;
+//     }
+//   }
+// }
 
   // ul {
 
