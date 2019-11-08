@@ -16,8 +16,8 @@ explains how to do so.
 
 ## Prerequisites
 
-* Go through the [Quickstart](quickstart.md) Guide
-* Read through the [Charts](charts.md) document
+* Go through the [Quickstart]({{< ref "quickstart.md" >}}) Guide
+* Read through the [Charts]({{< ref "/docs/topics/charts.md" >}}) document
 
 ## Create a chart repository
 
@@ -40,7 +40,7 @@ own web server.
 A chart repository consists of packaged charts and a special file called
 `index.yaml` which contains an index of all of the charts in the repository.
 Frequently, the charts that `index.yaml` describes are also hosted on the same
-server, as are the [provenance files](provenance.md).
+server, as are the [provenance files]({{< ref "provenance.md" >}}).
 
 For example, the layout of the repository `https://example.com/charts` might
 look like this:
@@ -251,7 +251,7 @@ the given directory path.
 
 Now you can upload the chart and the index file to your chart repository using a
 sync tool or manually. If you're using Google Cloud Storage, check out this
-[example workflow](chart_repository_sync_example.md) using the gsutil client.
+[example workflow]({{< ref "/docs/howto/chart_repository_sync_example.md" >}}) using the gsutil client.
 For GitHub, you can simply put the charts in the appropriate destination branch.
 
 ### Add new charts to an existing repository

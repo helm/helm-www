@@ -228,6 +228,6 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 
 ## Migrating from chart repos
 
-Migrating from classic [chart repositories](./chart_repository.md)
+Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}})
 (index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm
 chart save`, `helm chart push`.

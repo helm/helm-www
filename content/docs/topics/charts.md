@@ -528,7 +528,7 @@ Helm Chart templates are written in the [Go template
 language](https://golang.org/pkg/text/template/), with the addition of 50 or so
 add-on template functions [from the Sprig
 library](https://github.com/Masterminds/sprig) and a few other [specialized
-functions](charts_tips_and_tricks.md).
+functions]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}}).
 
 All template files are stored in a chart's `templates/` folder. When Helm
 renders the charts, it will pass every file in that directory through the
@@ -676,7 +676,7 @@ values are simply converted to YAML on the client side.
 
 **NOTE:** If any required entries in the values file exist, they can be declared
 as required in the chart template by using the ['required'
-function](charts_tips_and_tricks.md)
+function]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})
 
 Any of these values are then accessible inside of templates using the `.Values`
 object:

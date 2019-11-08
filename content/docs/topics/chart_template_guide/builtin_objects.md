@@ -31,7 +31,7 @@ access in your templates.
   be accessible here. For example `{{ .Chart.Name }}-{{ .Chart.Version }}` will
   print out the `mychart-0.1.0`.
   - The available fields are listed in the [Charts
-    Guide](https://github.com/helm/helm/blob/master/docs/charts.md#the-chartyaml-file)
+    Guide]({{< ref "/docs/topics/charts.md#the-chartyaml-file" >}})
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
   chart. See the section _Accessing Files_ for more.
