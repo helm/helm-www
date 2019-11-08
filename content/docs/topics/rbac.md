@@ -1,7 +1,6 @@
 ---
 title: "Role-based Access Control"
 description: "Explains how Helm interacts with Kubernetes' Role-Based Access Control."
-weight: 3
 ---
 
 In Kubernetes, granting roles to a user or an application-specific service

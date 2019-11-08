@@ -1,7 +1,6 @@
 ---
 title: "Kubernetes Distribution Guide"
 description: "captures information about using Helm in specific Kubernetes environments."
-weight: 4
 ---
 
 This document captures information about using Helm in specific Kubernetes
