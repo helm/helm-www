@@ -44,6 +44,7 @@ of the listed file names. Other files will be left as they are.
 The `Chart.yaml` file is required for a chart. It contains the following fields:
 
 ```yaml
+apiVersion: The chart API version (required)
 name: The name of the chart (required)
 version: A SemVer 2 version (required)
 kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
@@ -99,7 +100,20 @@ name. The system assumes that the version number in the chart package name
 matches the version number in the `Chart.yaml`. Failure to meet this assumption
 will cause an error.
 
-### The appVersion field
+### The `apiVersion` Field
+
+The `apiVersion` field should be `v2` for Helm charts that require at least 
+Helm 3. Charts supporting previous Helm versions have an `apiVersion` set 
+to `v1` and are still installable by Helm 3. 
+
+Changes from `v1` to `v2`:
+ * A `dependencies` field defining chart dependencies, which where  
+ located in a separate `requirements.yaml` file for `v1` charts
+ (see [Chart Dependencies](#chart-dependencies)).
+ * The `type` field, discriminating application and library charts 
+ (see [Chart Types](#chart-types)).
+
+### The `appVersion` Field
 
 Note that the `appVersion` field is not related to the `version` field. It is a
 way of specifying the version of the application. For example, the `drupal`
@@ -123,9 +137,9 @@ followed by the [kubernetes/charts](https://github.com/helm/charts) project is:
 
 ### Chart Types
 
-The `type` field defines the type of chart. There are 2 types: `application` and
-`library`.  Application is the default type and it is the standard chart which
-can be operated on fully. The [library or helper
+The `type` field defines the type of chart. There are two types: `application` 
+and `library`.  Application is the default type and it is the standard chart 
+which can be operated on fully. The [library or helper
 chart](https://github.com/helm/charts/tree/master/incubator/common) provides
 utilities or functions for the chart builder. A library chart differs from an
 application chart because it has no resource object and is therefore not
