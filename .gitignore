@@ -16,3 +16,6 @@ app/*
 resources/
 helm.sh/
 docs.helm.sh/
+
+# JetBrains IDEs (GoLand, IntelliJ, ...) config folder
+.idea
