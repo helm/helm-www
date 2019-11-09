@@ -1,95 +1,70 @@
-![Helm project logo](./themes/helm/static/img/apple-touch-icon.png)
+![github-banner-helm-helmwww](https://user-images.githubusercontent.com/686194/68531441-f4ad4e00-02c6-11ea-982b-74d7c3ff0071.png)
 
-[helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
+This is where you'll find all of the assets that make up [helm.sh](https://helm.sh/), the website for the [Helm](https://github.com/helm/helm) project. If you'll looking to edit docs, report a website bug or write a new blog post, you've come to the right place!
+
+
+## Development
+
+Helm.sh is a simple [Hugo](https://gohugo.io/) static site, built with a custom theme. To run the website locally, you'll need to first [install](https://gohugo.io/getting-started) Hugo and any dependencies.
+
+```
+brew install hugo
+yarn install
+```
+
+You can then compile and run the site locally:
+
+```
+hugo serve
+```
+
+## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
+
+Changes are automatically deployed to [Netlify](https://app.netlify.com/sites/helm-merge/deploys) when merged to master. Build logs can be found [here](https://app.netlify.com/sites/helm-merge/deploys).
+
 
 ---
 
-## How To Add A Blog Post
+## Contributing
 
-This is a quick start guide for creating new blog post entries. Blog posts are
-created via pull requests. The following steps are used to add them.
+Anyone can submit a PR to edit Helm.sh. We require commits be signed - please refer to the [contributing guide](https://github.com/helm/helm/blob/master/CONTRIBUTING.md#sign-your-work).
 
-1. Add a new file to the `_posts` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
-2. Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
+Pull requests require [maintainer](https://github.com/helm/helm-www/blob/master/OWNERS) approval before merge.
 
-    ```yaml
-    ---
-    title: "A Fancy Title"
-    slug: "fancy-title"
-    authorname: "Captain Awesome"
-    authorlink: "https://example.com"
-    date: "yyyy-mm-dd"
-    ---
-    ```
 
-3. Add the content below the `---` as Markdown. The title does not need to be included in this section
-4. Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
-5. To summarize content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
+### How to Edit The Helm Docs
+
+Since the release of Helm 3, all project documentation is located in this repo under `content/docs/`. 
+
+For earlier versions, see the `dev-v2` branch of the main Helm repo [here](https://github.com/helm/helm/tree/dev-v2/docs).
+
+
+### How to Write a Blog Post
+
+Blog posts are created via pull requests. The following steps are used to add them:
+
+1) Add a new file to the `content/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
+2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
+```yaml
+---
+title: "A Fancy Title"
+slug: "fancy-title"
+authorname: "Captain Awesome"
+authorlink: "https://example.com"
+date: "yyyy-mm-dd"
+---
+```
+3) Add the content below the `---` as Markdown. The title does not need to be included in this section
+4) Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+5) To summarize the content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
+
+Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/master/OWNERS) before merge.
 
 ---
 
-## How to Edit The Helm Docs
+### Code of Conduct
+Participation in the Helm community is governed by the Helm [Code of Conduct](https://github.com/helm/helm/blob/master/code-of-conduct.md).
 
-Edits to the docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/master/docs) main repo.
-This site will then extract those files during the build process, and publish them to [docs.helm.sh](https://docs.helm.sh).
-
----
-
-# Website Development
-
-The site is built on top of [Hugo](https://gohugo.io/) with a custom theme, and uses [Gulp](https://gulpjs.com/) to build and manage the asset pipeline, and to fetch and arrange the docs for publishing.
-
-### Installation
-
-Hugo can be installed via `brew update && brew install hugo`
-Then install the packages needed for Gulp to run:
-
-```console
-npm install -g gulp
-npm install
-```
-
-### Running the site
-
-When these packages are installed, you can generate the Docs site by:
-
-`hugo && hugo server --watch`
-
-### Local Dev
-
-The site uses Gulp to build and optimize the site assets. If you're work on the styles or scripts in the site, re-compile and reload your changes with:
-
-`gulp && gulp watch`
-
-## Structure
-
-Main Templates:
-
-```
-themes/helm/layouts/index.html  < site homepage
-themes/helm/layouts/docs/       < docs homepage
-themes/helm/layouts/blog/       < blog layouts
-```
-
-Markdown:
-
-```
-/content/blog/                  < posts go here
-/content/docs/                  < docs are imported to here
-```
-
-The documentation content is pulled in from their home in the [helm/helm](https://github.com/helm/helm/tree/master/docs) repo, as part of the Gulp build process.
-
-Gulp clones the files to the `/source` directory, makes some edits (to hugo-ify markdown and fix some url issues), exporting the compiled docs to `/content/docs`.
-
-Hugo then targets the `/content/docs` directory to generate the website, applying the theme (html layouts and css/js assets) in `/themes/hugo`.
-
----
-
-## Deployment
-
-The helm website is continuousy deployed to Netlify via merges to master. The Netlify account is administered by CNCF and Helm maintainer personnel.
-
-Previously, the site was pushed to blob storage using brigade - it would be nice to wire this up to a Netlify webhook so that our bot could deploy on demand too.
+### Thank You!
+We appreciate your contributions to our website and our documentation! :clap:
