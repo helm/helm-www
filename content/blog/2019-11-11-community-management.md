@@ -6,7 +6,7 @@ authorlink: "https://mattfarina.com"
 date: "2019-11-11"
 ---
 
-[Devstats](https://helm.devstats.cncf.io/) and stats on GitHub are able to capture many different types of contributions to an open source project. But there is one type of contribution we have yet to figure out a good metric for and it has been essential for Helm's success. That is community management.
+[Devstats](https://helm.devstats.cncf.io/) and stats on GitHub are able to capture many different types of contributions to an open source project. But there is one type of contribution for which we have yet to figure out a good metric, and it has been essential for Helm's success. That is community management.
 
 Karen Chu has handled community management for Helm since the project was first announced at the inaugural KubeCon in San Francisco. Her work ranges from big things, like planning and executing two Helm Summits, down to smaller (but still essential) things like managing the [Helm twitter account](https://twitter.com/HelmPack).
 
