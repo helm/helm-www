@@ -1,8 +1,7 @@
 ![https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/img/apple-touch-icon.png](https://raw.githubusercontent.com/helm/helm-www/master/themes/helm/static/img/apple-touch-icon.png)
 
-[helm.sh](https://helm.sh) provides information and resources for the [Helm Project](https://github.com/helm/helm).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
+This is an archival version of the Helm website, displaying documentation and information for Helm V2 - [v2.helm.sh](https://v2.helm.sh/)
 
 ---
 
@@ -30,8 +29,11 @@ date: "yyyy-mm-dd"
 
 ## How to Edit The Helm Docs
 
-Edits to the Docs themselves should be carried out via pull requests on the [helm/helm](https://github.com/helm/helm/tree/dev-v2/docs) main repo.
-This site will then extract those files during the build process, and publish them to [helm.sh/docs](https://helm.sh/docs).
+For **Helm 2** (and prior releases), all documentation is located in the main [helm/helm repo](https://github.com/helm/helm/tree/dev-v2/docs) under the `dev-v2` branch. Please [go here](https://github.com/helm/helm/tree/dev-v2/docs) to make edits and open PRs on those docs.
+
+This website extracts the doc files from `helm/helm` and publishes them to the website during the `gulp` build process. With the release of Helm 3, this version of the site will be maintained at [v2.helm.sh](https://v2.helm.sh/)
+
+For **Helm 3**, all documentation files have been moved to this website at `content/docs/`. You can directly edit [the docs](https://github.com/helm/helm-www/tree/master/content/docs), pull requests are welcome!
 
 ---
 
@@ -90,4 +92,6 @@ Hugo then targets the `/content/docs` directory to generate the website, applyin
 
 The helm website is continuousy deployed to Netlify via merges to master. The Netlify account is administered by CNCF and Helm maintainer personnel.
 
-Previously, the site was pushed to blob storage using brigade - it would be nice to wire this up to a Netlify webhook so that our bot could deploy on demand too.
+v2.helm.sh logs:
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae8c7a84-1600-4a90-bc29-27c80d5a28f3/deploy-status)](https://app.netlify.com/sites/v2-helm/deploys)
