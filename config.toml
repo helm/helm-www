@@ -1,4 +1,4 @@
-baseurl = "https://v3.helm.sh/"
+baseurl = "https://helm.sh/"
 languageCode = "en-us"
 title = "Helm"
 theme = "helm"
@@ -14,7 +14,6 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
   title = "Helm"
-  author = "Ronan Flynn-Curran"
   description = "Helm - The Kubernetes Package Manager."
   googleAnalyticsId = "UA-42867143-2"
   googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
@@ -31,14 +30,13 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [[params.versions]]
 version = "v3.0.0"
-patch = "unreleased"
-url = "https://v3.helm.sh/docs"
+patch = "stable"
+url = "https://helm.sh/docs"
 primary = true
 
 [[params.versions]]
-version = "v2.14.3"
-patch = "stable"
-url = "https://helm.sh/docs"
+version = "v2.16.1"
+url = "https://v2.helm.sh/docs"
 
 [[params.versions]]
 version = "v2.14.0"
