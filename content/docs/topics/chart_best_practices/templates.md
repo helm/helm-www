@@ -60,9 +60,9 @@ Correct:
 
 Incorrect:
 ```
-{{ .foo }}
-{{ print "foo" }}
-{{- print "bar" -}}
+{{.foo}}
+{{print "foo"}}
+{{-print "bar"-}}
 ```
 
 Templates should chomp whitespace where possible:
