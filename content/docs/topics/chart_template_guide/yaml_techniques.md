@@ -10,7 +10,7 @@ read.
 
 ## Scalars and Collections
 
-According to the [YAML spec](http://yaml.org/spec/1.2/spec.html), there are two
+According to the [YAML spec](https://yaml.org/spec/1.2/spec.html), there are two
 types of collections, and many scalar types.
 
 The two types of collections are maps and sequences:

@@ -194,7 +194,7 @@ The following pieces of provenance data are added:
 * The signature (SHA256, just like Docker) of the chart package (the .tgz file)
   is included, and may be used to verify the integrity of the chart package.
 * The entire body is signed using the algorithm used by PGP (see
-  [http://keybase.io] for an emerging way of making crypto signing and
+  [https://keybase.io] for an emerging way of making crypto signing and
   verification easy).
 
 The combination of this gives users the following assurances:
@@ -216,7 +216,7 @@ keywords:
   - proxy
 source:
 - https://github.com/foo/bar
-home: http://nginx.com
+home: https://nginx.com
 
 ...
 files:
@@ -235,7 +235,7 @@ first is the Chart.yaml. The second is the checksums, a map of filenames to
 SHA-256 digests (value shown is fake/truncated)
 
 The signature block is a standard PGP signature, which provides [tamper
-resistance](http://www.rossde.com/PGP/pgp_signatures.html).
+resistance](https://www.rossde.com/PGP/pgp_signatures.html).
 
 ## Chart Repositories
 

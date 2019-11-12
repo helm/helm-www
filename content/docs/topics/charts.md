@@ -72,7 +72,7 @@ Other fields will be silently ignored.
 ### Charts and Versioning
 
 Every chart must have a version number. A version must follow the [SemVer
-2](http://semver.org/) standard. Unlike Helm Classic, Kubernetes Helm uses
+2](https://semver.org/) standard. Unlike Helm Classic, Kubernetes Helm uses
 version numbers as release markers. Packages in repositories are identified by
 name plus version.
 
@@ -180,10 +180,10 @@ The charts required by the current chart are defined as a list in the
 dependencies:
   - name: apache
     version: 1.2.3
-    repository: http://example.com/charts
+    repository: https://example.com/charts
   - name: mysql
     version: 3.2.1
-    repository: http://another.example.com/charts
+    repository: https://another.example.com/charts
 ```
 
 - The `name` field is the name of the chart you want.
@@ -204,8 +204,8 @@ Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "another" chart repository
 Update Complete. Happy Helming!
 Saving 2 charts
-Downloading apache from repo http://example.com/charts
-Downloading mysql from repo http://another.example.com/charts
+Downloading apache from repo https://example.com/charts
+Downloading mysql from repo https://another.example.com/charts
 ```
 
 When `helm dependency update` retrieves charts, it will store them as chart
@@ -805,7 +805,7 @@ something like this:
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "properties": {
     "image": {
       "description": "Container Image",
@@ -885,7 +885,7 @@ standard references that will help you out.
 
 - [Go templates](https://godoc.org/text/template)
 - [Extra template functions](https://godoc.org/github.com/Masterminds/sprig)
-- [The YAML format](http://yaml.org/spec/)
+- [The YAML format](https://yaml.org/spec/)
 - [JSON Schema](https://json-schema.org/)
 
 ## Custom Resource Definitions (CRDs)

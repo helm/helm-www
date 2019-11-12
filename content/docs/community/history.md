@@ -11,12 +11,12 @@ part of the CNCF. Many companies now contribute regularly to Helm.
 Differences from Helm Classic:
 
 - Helm now has both a client (`helm`) and a library. In version 2 it had a
-  server (`tiller`) but the capability is now contained within the library. 
+  server (`tiller`) but the capability is now contained within the library.
 - Helm's chart format has changed for the better:
   - Dependencies are immutable and stored inside of a chart's `charts/`
     directory.
   - Charts are strongly versioned using [SemVer
-    2](http://semver.org/spec/v2.0.0.html)
+    2](https://semver.org/spec/v2.0.0.html)
   - Charts can be loaded from directories or from chart archive files
   - Helm supports Go templates without requiring you to run `generate` or
     `template` commands.

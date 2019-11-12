@@ -17,12 +17,12 @@ request](https://github.com/helm/helm/pulls).
 - [Honestbee's Helm Chart
   Conventions](https://gist.github.com/so0k/f927a4b60003cedd101a0911757c605a)
 - [Deploying Kubernetes Applications with
-  Helm](http://cloudacademy.com/blog/deploying-kubernetes-applications-with-helm/)
+  Helm](https://cloudacademy.com/blog/deploying-kubernetes-applications-with-helm/)
 - [Releasing backward-incompatible changes: Kubernetes, Jenkins, Prometheus
   Operator, Helm and
   Traefik](https://medium.com/@enxebre/releasing-backward-incompatible-changes-kubernetes-jenkins-plugin-prometheus-operator-helm-self-6263ca61a1b1#.e0c7elxhq)
 - [CI/CD with Kubernetes, Helm & Wercker
-  ](http://www.slideshare.net/Diacode/cicd-with-kubernetes-helm-wercker-madscalability)
+  ](https://www.slideshare.net/Diacode/cicd-with-kubernetes-helm-wercker-madscalability)
 - [The missing CI/CD Kubernetes component: Helm package
   manager](https://hackernoon.com/the-missing-ci-cd-kubernetes-component-helm-package-manager-1fe002aac680#.691sk2zhu)
 - [The Workflow "Umbrella" Helm
@@ -32,7 +32,7 @@ request](https://github.com/helm/helm/pulls).
 - [Writing a Helm
   Chart](https://www.influxdata.com/packaged-kubernetes-deployments-writing-helm-chart/)
 - [Creating a Helm Plugin in 3
-  Steps](http://technosophos.com/2017/03/21/creating-a-helm-plugin.html)
+  Steps](https://technosophos.com/2017/03/21/creating-a-helm-plugin.html)
 
 ## Video, Audio, and Podcast
 
@@ -107,10 +107,10 @@ Tools layered on top of Helm.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version
-  controlled desired state files (described in a simple TOML format).  
+  controlled desired state files (described in a simple TOML format).
 - [Schelm](https://github.com/databus23/schelm) - Render a Helm manifest to a
   directory
-- [Drone.io Helm Plugin](http://plugins.drone.io/ipedrazas/drone-helm/) - Run
+- [Drone.io Helm Plugin](https://plugins.drone.io/ipedrazas/drone-helm/) - Run
   Helm inside of the Drone CI/CD system
 - [Cog](https://github.com/ohaiwalt/cog-helm) - Helm chart to deploy Cog on
   Kubernetes
@@ -134,13 +134,13 @@ Tools layered on top of Helm.
 Platforms, distributions, and services that include Helm support.
 
 - [Kubernetic](https://kubernetic.com/) - Kubernetes Desktop Client
-- [Cabin](http://www.skippbox.com/cabin/) - Mobile App for Managing Kubernetes
+- [Cabin](https://www.skippbox.com/cabin/) - Mobile App for Managing Kubernetes
 - [Qstack](https://qstack.com)
 - [Fabric8](https://fabric8.io) - Integrated development platform for Kubernetes
-- [Jenkins X](http://jenkins-x.io/) - open source automated CI/CD for Kubernetes
-  which uses Helm for [promoting](http://jenkins-x.io/about/features/#promotion)
+- [Jenkins X](https://jenkins-x.io/) - open source automated CI/CD for Kubernetes
+  which uses Helm for [promoting](https://jenkins-x.io/about/features/#promotion)
   applications through [environments via
-  GitOps](http://jenkins-x.io/about/features/#environments)
+  GitOps](https://jenkins-x.io/about/features/#environments)
 
 ## Misc
 
@@ -148,4 +148,4 @@ Grab bag of useful things for Chart authors and Helm users
 
 - [Await](https://github.com/saltside/await) - Docker image to "await" different
   conditions--especially useful for init containers. [More
-  Info](http://blog.slashdeploy.com/2017/02/16/introducing-await/)
+  Info](https://blog.slashdeploy.com/2017/02/16/introducing-await/)

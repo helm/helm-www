@@ -79,7 +79,7 @@ doing this is as follows:
    open a new pull request with us.
 
 For Git commit messages, we follow the [Semantic Commit
-Messages](http://karma-runner.github.io/0.13/dev/git-commit-msg.html):
+Messages](https://karma-runner.github.io/0.13/dev/git-commit-msg.html):
 
 ```
 fix(helm): add --foo flag to 'helm install'
@@ -109,7 +109,7 @@ Read more:
   Guidelines](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md)
   were the inspiration for this section.
 - Karma Runner
-  [defines](http://karma-runner.github.io/0.13/dev/git-commit-msg.html) the
+  [defines](https://karma-runner.github.io/0.13/dev/git-commit-msg.html) the
   semantic commit message idea.
 
 ### Go Conventions
