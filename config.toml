@@ -1,4 +1,4 @@
-baseurl = "https://helm.sh/"
+baseurl = "https://v2.helm.sh/"
 languageCode = "en-us"
 title = "Helm"
 theme = "helm"
@@ -13,7 +13,6 @@ defaultContentLanguage = "en"
 
 [params]
   title = "Helm"
-  author = "Ronan Flynn-Curran"
   description = "Helm - The Kubernetes Package Manager."
   googleAnalyticsId = "UA-42867143-2"
   googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
@@ -30,13 +29,13 @@ defaultContentLanguage = "en"
 
 [[params.versions]]
 version = "v3.0.0"
-patch = "unreleased"
-url = "https://v3.helm.sh/docs"
-
-[[params.versions]]
-version = "v2.14.3"
 patch = "stable"
 url = "https://helm.sh/docs"
+
+[[params.versions]]
+version = "v2.16.1"
+patch = "legacy"
+url = "https://v2.helm.sh/docs"
 primary = true
 
 [[params.versions]]
