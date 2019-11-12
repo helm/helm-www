@@ -35,19 +35,6 @@ To run Helm locally, you can run `bin/helm`.
 
 - Helm is known to run on macOS and most Linux distributions, including Alpine.
 
-## Docker Images
-
-To build Docker images, use `make docker-build`.
-
-Pre-build images are already available in the official Kubernetes Helm GCR
-registry.
-
-## Running a Local Cluster
-
-For development, we highly recommend using the [Kubernetes
-Minikube](https://github.com/kubernetes/minikube) developer-oriented
-distribution.
-
 ## Contribution Guidelines
 
 We welcome contributions. This project has set up some guidelines in order to
