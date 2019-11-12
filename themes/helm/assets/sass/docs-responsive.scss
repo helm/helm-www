@@ -1,178 +1,130 @@
 
 // mobile style
 @media only screen and (max-width: 64.063em) {
-  .container-full {
+  html,
+  body,
+  #helm {
+    width: 100vw !important;
+    overflow-x: hidden;
+  }
+
+  // mobile menu
+  .navbar-burger {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1300;
+
+    &.is-active {
+      color: white;
+      background-color: $dark;
+      position: fixed;
+    }
+  }
+
+  // .navbar-top-fixed.is-active,
+  .navbar-brand,
+  .navbar-menu,
+  .navbar-top.navbar-top-fixed.is-active {
+    display: none !important;
+  }
+
+  .navbar-top:not(.navbar-top-fixed) {
+    .navbar-menu.is-active {
+      background-color: $navyd;
+      display: flex !important;
+      left: auto !important;
+      margin: 0 !important;
+      position: fixed;
+      top: 0;
+      padding: 1.5rem 15vw 5rem 5vw;
+      z-index: 1100;
+
+      a.navbar-item {
+        padding: 0.75rem 4vw;
+        color: white;
+      }
+    }
+  }
+
+  #banner {
+    display: none;
+
+    &.is-active {
+      display: block;
+      top: 8.75rem;
+      position: fixed;
+      z-index: 1220;
+      border-top: 1px solid $navyl;
+      border-bottom: 1px solid $navyl;
+      background: $navyl;
+      
+      p {
+        padding: 0.25rem 0;
+      }
+    }
+
+    a, p {
+      color: white;
+    }
+
+    p small {
+      font-size: 3.33vw;
+    }
+  }
+
+  // docs sidebar layout
+  .sidebar-wrapper {
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+  .page-docs .content-docs {
     padding-left: 0;
   }
 
-  .left-off-canvas-toggle .fa {
-    padding: 1em 1.25em;
-    line-height: 3;
+  .page-docs .content-docs {
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .sidebar {
-    display: none;
-  }
-
-  .top-bar {
-    left: 0;
-    overflow: visible;
-  }
-
-  .left-off-canvas-toggle {
-    top: 30px;
-  }
-
-  .blog-layout .main.blog nav.top-bar #banner,
-  .sidebar+.main nav.top-bar #banner {
-    margin-left: 0;
-    min-width: 100%;
-  }
-
-  .blog-layout h1.blog-logo {
-    a:first-of-type {
-      left: 25px;
-    }
-
-    a:last-of-type {
-      right: auto;
-      left: 125px;
-    }
-  }
-
-  .st-default-autocomplete {
-    width: 90% !important;
-    min-width: 320px !important;
-    left: 5% !important;
-  }
-
-  .home {
-    min-height: 500px;
-
-    .home-featured .panels {
-      min-width: 100%;
-    }
-
-    .fa {
-      display: none;
-    }
-
-    #helm {
-      .billboard {
-        padding-top: 180px;
-
-        .container {
-          margin-left: 5%;
-          margin-right: 5%;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        .helm-logo {
-          max-width: 6rem !important;
-          left: 50% !important;
-          margin-left: -3rem !important;
-        }
-      }
-    }
-  }
-
-  .main .content-wrap h1 {
-    font-size: $scalex8;
-  }
-
-  .main .content-wrap article {
-    padding: 0 0 0.5em;
+  // content sizes
+  .content-wrapper {
+    max-width: 90vw !important;
+    padding: 3rem 5vw;
 
     h1 {
-      font-size: $scalex8;
+      font-size: 7.5vw;
+      padding-top: 1rem;
     }
 
-    h2 {
-      font-size: $scalex6;
+    p {
+      font-size: 4vw;
     }
 
-    p:first-child {
+    p, ol, ul, dl, blockquote {
       padding-right: 0;
-      font-size: $scalex5;
     }
-  }
 
-  aside.left-off-canvas-menu {
-    ul {
-      background: $blue2 !important;
-
-      li {
-        @include klinicBold;
-        font-size: 1.25rem;
-
-        a {
-          color: white !important;
-          border-bottom: none !important;
-
-          &:hover {
-            background: $blue2 !important;
-          }
-
-          &.active {
-            color: white !important;
-            background: $blue4 !important;
-          }
+    .quick-links {
+      .quick-item {
+        border: 1px solid $navyl;
+        min-height: 7.25rem;
+        padding: 1rem 1.5rem;
+        background: $light1;
+        margin-bottom: 0.5em;
+        
+        h4 {
+          font-size: 4vw;
+          width: 100%;
+          margin: 0;
         }
-
-        a + ul {
-          display: none;
-          background: $blue4 !important;
-          margin-left: 0;
-          padding: 0.5em 0 1em 1.5em;
-
-          li {
-            @include helvetica;
-            font-size: 1rem;
-            list-style: none;
-
-            a {
-              padding: 0.1em 0.66667rem;
-              border-bottom: none;
-              color: $light2 !important;
-            }
-          }
-        }
-
-        a.active + ul {
-          display: block;
-        }
-      }
-    }
-
-    .button-wrap {
-      padding: 0.75em 5%;
-
-      .button {
-        margin: 0.4em 0;
-      }
-    }
-  }
-
-  .top-bar {
-    .breadcrumb {
-      left: 2.75rem;
-    }
-    .right {
-      li {
-        display: none;
-
-        &:nth-child(2) {
-          display: inline-block;
-
-          a {
-            position: absolute;
-            right: -4em;
-            top: -0.35em;
-            font-size: 1.75rem;
-          }
+        p {
+          width: 100%;
+          font-size: 3.25vw;
+          line-height: 1.6;
         }
 
         &.nav-dropdown {
@@ -180,11 +132,13 @@
         }
       }
     }
-
   }
 
-  .contrib-text .lead {
-    display: none;
+  // algolia search
+  .st-default-autocomplete {
+    width: 90% !important;
+    min-width: 320px !important;
+    left: 5% !important;
   }
 
   .cncf {
@@ -201,19 +155,6 @@
     img {
       min-width: 10%;
       max-width: 40vw;
-    }
-  }
-}
-
-
-// affix the sidebar buttons, if the screen is tall enough
-@media screen and ( min-height: 575px ){
-  .sidebar {
-    padding-bottom: 0px;
-
-    .sidebar-buttons {
-      position: fixed;
-      bottom: 0;
     }
   }
 }

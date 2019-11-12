@@ -27,7 +27,7 @@ Helm | Docs
           {{ if $isDocsRoot }}
           {{ $quicklinks := site.Params.quicklinks }}
           {{ range $quicklinks }}
-          <a href="{{ .url }}" class="quick-item"> 
+          <a href="{{ .url }}" class="quick-item clearfix"> 
             <h4>
               {{ .title }}
               {{ with .via }}

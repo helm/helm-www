@@ -42,6 +42,14 @@ if ($('.navbar-top-fixed').length) {
   });
 }
 
+//Navbar mobile burger menu (bulma)
+$(".navbar-burger").click(function() {
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+  $("#banner").toggleClass("is-active");
+  $(".sidebar-wrapper").toggleClass("is-active");
+});
+
 
 // add permalinks to titles
 $(function() {

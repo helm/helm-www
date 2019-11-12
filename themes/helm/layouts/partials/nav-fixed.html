@@ -11,7 +11,7 @@
     </div>
 
     <div class="navbar-menu is-centered" id="topnav">
-      <div class="navbar-start">
+      <div class="">
         {{- range $navbar }}
         <a href="{{ .url }}" class="navbar-item">
           {{ .title }}
@@ -36,11 +36,11 @@
         <li class="versioner navbar-item has-dropdown is-hoverable">
           {{ with $primary }}
           <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
-            {{ .version }}{{ with .patch }} <em>{{ . }}</em>{{ end }} <i class="fa fa-caret-down"></i>
+            {{ .version }}{{ with .patch }} {{ end }} <i class="fa fa-caret-down"></i>
           </a>
           {{ end }}
     
-          <ul id="drop1" class="navbar-dropdown f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
             {{ range $versions }}
             <li>
               <a href="{{ .url }}" class="navbar-item">
@@ -55,15 +55,5 @@
         </li>
       </ul>
     </div>
-
-    <!-- mobile menu -->
-    <div class="navbar-end is-hidden-tablet">
-      <div id="navbarBurger" class="navbar-burger burger" data-target="navMenuDocumentation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-    
   </div>
 </nav>
