@@ -57,9 +57,9 @@ files already there.
 - `NOTES.txt`: The "help text" for your chart. This will be displayed to your
   users when they run `helm install`.
 - `deployment.yaml`: A basic manifest for creating a Kubernetes
-  [deployment](http://kubernetes.io/docs/user-guide/deployments/)
+  [deployment](https://kubernetes.io/docs/user-guide/deployments/)
 - `service.yaml`: A basic manifest for creating a [service
-  endpoint](http://kubernetes.io/docs/user-guide/services/) for your deployment
+  endpoint](https://kubernetes.io/docs/user-guide/services/) for your deployment
 - `_helpers.tpl`: A place to put template helpers that you can re-use throughout
   the chart
 

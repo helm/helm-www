@@ -27,7 +27,7 @@ is not merely a stylistic detail, but a requirement of the Helm Chart format.
 
 ## Version Numbers
 
-Wherever possible, Helm uses [SemVer 2](http://semver.org) to represent version
+Wherever possible, Helm uses [SemVer 2](https://semver.org) to represent version
 numbers. (Note that Docker image tags do not necessarily follow SemVer, and are
 thus considered an unfortunate exception to the rule.)
 
