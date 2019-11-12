@@ -35,20 +35,6 @@ To run Helm locally, you can run `bin/helm`.
 
 - Helm is known to run on macOS and most Linux distributions, including Alpine.
 
-### Man pages
-
-Man pages and Markdown documentation are not pre-built in `docs/` but you can
-generate the documentation using `make docs`.
-
-To expose the Helm man pages to your `man` client, you can put the files in your
-`$MANPATH`:
-
-```console
-$ export MANPATH=$GOPATH/src/helm.sh/helm/docs/man:$MANPATH
-$ man helm
-```
-
-
 ## Docker Images
 
 To build Docker images, use `make docker-build`.
