@@ -26,7 +26,7 @@ access in your templates.
   - `Release.IsInstall`: This is set to `true` if the current operation is an
     install.
   - `Release.Revision`: The revision number for this release. On install, this is
-    0, and it is incremented with each upgrade and rollback.
+    1, and it is incremented with each upgrade and rollback.
   - `Release.Service`: The service that is rendering the present template. On
     Helm, this is always `Helm`.
 - `Values`: Values passed into the template from the `values.yaml` file and from
