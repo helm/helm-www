@@ -5,9 +5,9 @@ description: "A closer look at best practices surrounding templates."
 
 This part of the Best Practices Guide focuses on templates.
 
-## Structure of templates/
+## Structure of `templates/`
 
-The templates directory should be structured as follows:
+The `templates/` directory should be structured as follows:
 
 - Template files should have the extension `.yaml` if they produce YAML output.
   The extension `.tpl` may be used for template files that produce no formatted
@@ -174,7 +174,7 @@ mychart.shortname provides a 6 char truncated version of the release name.
 Inside of templates, YAML comments may be used when it is useful for Helm users
 to (possibly) see the comments during debugging.
 
-```
+```yaml
 # This may cause problems if the value is more than 100Gi
 memory: {{ .Values.maxMem | quote }}
 ```
