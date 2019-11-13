@@ -35,7 +35,7 @@ Pull requests require [maintainer](https://github.com/helm/helm-www/blob/master/
 
 ### How to Edit The Helm Docs
 
-Since the release of Helm 3, all project documentation is located in this repo under `content/docs/`. 
+Since the release of Helm 3, all project documentation is located in this repo under `/content/en/docs/`. 
 
 For earlier versions, see the `dev-v2` branch of the main Helm repo [here](https://github.com/helm/helm/tree/dev-v2/docs).
 
@@ -44,7 +44,7 @@ For earlier versions, see the `dev-v2` branch of the main Helm repo [here](https
 
 Blog posts are created via pull requests. The following steps are used to add them:
 
-1) Add a new file to the `content/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
+1) Add a new file to the `content/en/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
 2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
 ```yaml
 ---
@@ -56,7 +56,7 @@ date: "yyyy-mm-dd"
 ---
 ```
 3) Add the content below the `---` as Markdown. The title does not need to be included in this section
-4) Any images should be placed in the `/img/blog/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+4) Any images should be placed in the `/content/en/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 5) To summarize the content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
 
 Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/master/OWNERS) before merge.
