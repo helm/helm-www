@@ -29,7 +29,7 @@ single argument.
 Helm has over 60 available functions. Some of them are defined by the [Go
 template language](https://godoc.org/text/template) itself. Most of the others
 are part of the [Sprig template
-library](https://godoc.org/github.com/Masterminds/sprig). We'll see many of them
+library](https://masterminds.github.io/sprig/). We'll see many of them
 as we progress through the examples.
 
 > While we talk about the "Helm template language" as if it is Helm-specific, it
@@ -171,10 +171,10 @@ data:
   food: "PIZZA"
 ```
 
-In an actual chart, all static default values should live in the values.yaml,
+In an actual chart, all static default values should live in the `values.yaml`,
 and should not be repeated using the `default` command (otherwise they would be
 redundant). However, the `default` command is perfect for computed values, which
-can not be declared inside values.yaml. For example:
+can not be declared inside `values.yaml`. For example:
 
 ```yaml
 drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" .)) }}
