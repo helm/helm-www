@@ -134,28 +134,27 @@ servers:
 
 Accessing foo's port is much more obvious: `--set servers.foo.port=80`.
 
-## Document 'values.yaml'
+## Document `values.yaml`
 
-Every defined property in 'values.yaml' should be documented. The documentation
+Every defined property in `values.yaml` should be documented. The documentation
 string should begin with the name of the property that it describes, and then
 give at least a one-sentence description.
 
 Incorrect:
 
-```
+```yaml
 # the host name for the webserver
-serverHost = example
-serverPort = 9191
+serverHost: example
+serverPort: 9191
 ```
 
 Correct:
 
-```
+```yaml
 # serverHost is the host name for the webserver
-serverHost = example
+serverHost: example
 # serverPort is the HTTP listener port for the webserver
-serverPort = 9191
-
+serverPort: 9191
 ```
 
 Beginning each comment with the name of the parameter it documents makes it easy
