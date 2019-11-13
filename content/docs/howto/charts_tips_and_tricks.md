@@ -15,7 +15,7 @@ resource files. While Go ships several built-in functions, we have added many
 others.
 
 First, we added all of the functions in the [Sprig
-library](https://godoc.org/github.com/Masterminds/sprig).
+library](https://masterminds.github.io/sprig/).
 
 We also added two special template functions: `include` and `required`. The
 `include` function allows you to bring in another template, and then pass the
@@ -91,14 +91,14 @@ context.
 
 Go provides a way for setting template options to control behavior when a map is
 indexed with a key that's not present in the map. This is typically set with
-template.Options("missingkey=option"), where option can be default, zero, or
-error. While setting this option to error will stop execution with an error,
+`template.Options("missingkey=option")`, where `option` can be `default`, `zero`, or
+`error`. While setting this option to error will stop execution with an error,
 this would apply to every missing key in the map. There may be situations where
 a chart developer wants to enforce this behavior for select values in the
-values.yml file.
+`values.yaml` file.
 
 The `required` function gives developers the ability to declare a value entry as
-required for template rendering. If the entry is empty in values.yml, the
+required for template rendering. If the entry is empty in `values.yaml`, the
 template will not render and will return an error message supplied by the
 developer.
 
@@ -108,13 +108,13 @@ For example:
 {{ required "A valid foo is required!" .Values.foo }}
 ```
 
-The above will render the template when .Values.foo is defined, but will fail to
-render and exit when .Values.foo is undefined.
+The above will render the template when `.Values.foo` is defined, but will fail to
+render and exit when `.Values.foo` is undefined.
 
 ## Creating Image Pull Secrets
 Image pull secrets are essentially a combination of _registry_, _username_, and
 _password_.  You may need them in an application you are deploying, but to
-create them requires running _base64_ a couple of times.  We can write a helper
+create them requires running `base64` a couple of times.  We can write a helper
 template to compose the Docker configuration file for use as the Secret's
 payload.  Here is an example:
 
@@ -148,7 +148,7 @@ data:
 
 ## Automatically Roll Deployments
 
-Often times configmaps or secrets are injected as configuration files in
+Often times ConfigMaps or Secrets are injected as configuration files in
 containers or there are other external dependencies changes that require rolling
 pods. Depending on the application a restart may be required should those be
 updated with a subsequent `helm upgrade`, but if the deployment spec itself
@@ -234,23 +234,6 @@ parts is to create a top-level umbrella chart that exposes the global
 configurations, and then use the `charts/` subdirectory to embed each of the
 components.
 
-Two strong design patterns are illustrated by these projects:
-
-**SAP's [OpenStack chart](https://github.com/sapcc/openstack-helm):** This chart
-installs a full OpenStack IaaS on Kubernetes. All of the charts are collected
-together in one GitHub repository.
-
-**Deis's
-[Workflow](https://github.com/deis/workflow/tree/master/charts/workflow):** This
-chart exposes the entire Deis PaaS system with one chart. But it's different
-from the SAP chart in that this umbrella chart is built from each component, and
-each component is tracked in a different Git repository. Check out the
-`requirements.yaml` file to see how this chart is composed by their CI/CD
-pipeline.
-
-Both of these charts illustrate proven techniques for standing up complex
-environments using Helm.
-
 ## YAML is a Superset of JSON
 
 According to the YAML specification, YAML is a superset of JSON. That means that
@@ -270,10 +253,13 @@ cryptographic keys, and so on. These are fine to use. But be aware that during
 upgrades, templates are re-executed. When a template run generates data that
 differs from the last run, that will trigger an update of that resource.
 
-## Upgrade a release idempotently
+## Install or Upgrade a Release with One Command
 
-In order to use the same command when installing and upgrading a release, use
-the following command:
-```shell
-helm upgrade --install <release name> --values <values file> <chart directory>
+Helm provides a way to perform an install-or-upgrade as a single command. Use
+`helm upgrade` with the `--install` command. This will cause Helm to see if the
+release is already installed. If not, it will run an install. If it is, then the
+existing release will be upgraded.
+
+```console
+$ helm upgrade --install <release name> --values <values file> <chart directory>
 ```
