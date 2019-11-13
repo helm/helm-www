@@ -15,7 +15,7 @@ resource files. While Go ships several built-in functions, we have added many
 others.
 
 First, we added all of the functions in the [Sprig
-library](http://masterminds.github.io/sprig/).
+library](https://masterminds.github.io/sprig/).
 
 We also added two special template functions: `include` and `required`. The
 `include` function allows you to bring in another template, and then pass the
