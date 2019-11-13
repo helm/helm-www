@@ -639,8 +639,8 @@ cannot be overridden. As with all values, the names are _case sensitive_.
   of Kubernetes (`{{ .Capabilities.KubeVersion }}` and the supported Kubernetes
   API versions (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
 
-**NOTE:** Any unknown Chart.yaml fields will be dropped. They will not be
-accessible inside of the `Chart` object. Thus, Chart.yaml cannot be used to pass
+**NOTE:** Any unknown `Chart.yaml` fields will be dropped. They will not be
+accessible inside of the `Chart` object. Thus, `Chart.yaml` cannot be used to pass
 arbitrarily structured data into the template. The values file can be used for
 that, though.
 

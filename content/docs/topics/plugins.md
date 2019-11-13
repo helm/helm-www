@@ -42,7 +42,7 @@ VCS repo. The `helm plugin install` command clones or copies the plugin at the
 path/url given into `$XDG_DATA_HOME/plugins`
 
 ```console
-$ helm plugin install https://github.com/technosophos/helm-template
+$ helm plugin install https://github.com/adamreese/helm-env
 ```
 
 If you have a plugin tar distribution, simply untar the plugin into the `$(helm

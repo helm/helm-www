@@ -36,6 +36,10 @@ Hyperkube you may need to do some manual configuration.
 Helm works with [IBM Cloud Kubernetes
 Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started).
 
+## KIND (Kubernetes IN Docker)
+
+Helm is regularly tested on [KIND](https://github.com/kubernetes-sigs/kind).
+
 ## KubeOne
 
 Helm works in clusters that are set up by KubeOne without caveats.
@@ -73,7 +77,7 @@ and native Kubernetes CLI. Additional repositories can be manually added.
 Further details are available in this [Platform9 App Catalog
 article](https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes).
 
-## Ubuntu with 'kubeadm'
+## Ubuntu with `kubeadm`
 
 Kubernetes bootstrapped with `kubeadm` is known to work on the following Linux
 distributions:
