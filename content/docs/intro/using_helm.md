@@ -36,7 +36,7 @@ installation. And to find new charts, you can search Helm chart _repositories_.
 
 ## 'helm search': Finding Charts
 
-Helm comes with a powerful  search command. It can be used to search two different
+Helm comes with a powerful search command. It can be used to search two different
 types of source:
 
 - `helm search hub` searches [the Helm Hub](https://hub.helm.sh), which comprises
