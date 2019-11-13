@@ -57,7 +57,7 @@ The code for the Helm project is organized as follows:
 - The `scripts/` directory contains a number of utility scripts. Most of these
   are used by the CI/CD pipeline.
 
-Go dependency management is in flux, and it is likely to change during the course of Helm's lifecycle. We encourage developers to _not_ try to manually manage dependencies. Instead, we suggest relying upon the project's `Makefile` to do that for you. With Helm 3, it is recommended that you are on Go version 1.12 or later.
+Go dependency management is in flux, and it is likely to change during the course of Helm's lifecycle. We encourage developers to _not_ try to manually manage dependencies. Instead, we suggest relying upon the project's `Makefile` to do that for you. With Helm 3, it is recommended that you are on Go version 1.13 or later.
 
 ### Writing Documentation
 
