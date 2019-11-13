@@ -3,31 +3,14 @@ title: "The History of the Project"
 description: "Provides a high-level overview of the project's history."
 ---
 
-Kubernetes Helm is the merged result of [Helm
-Classic](https://github.com/helm/helm) and the Kubernetes port of GCS Deployment
-Manager. The project was jointly started by Google and Deis, though it is now
-part of the CNCF. Many companies now contribute regularly to Helm.
+Helm 3 is a [CNCF project](https://www.cncf.io/projects/) in the [final stages of incubation](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc).
 
-Differences from Helm Classic:
+Helm began as what is now known as [Helm Classic](https://github.com/helm/helm-classic), a Deis project begun in 2015 and introduced at the innaugural KubeCon.
 
-- Helm now has both a client (`helm`) and a library. In version 2 it had a
-  server (`tiller`) but the capability is now contained within the library.
-- Helm's chart format has changed for the better:
-  - Dependencies are immutable and stored inside of a chart's `charts/`
-    directory.
-  - Charts are strongly versioned using [SemVer
-    2](https://semver.org/spec/v2.0.0.html)
-  - Charts can be loaded from directories or from chart archive files
-  - Helm supports Go templates without requiring you to run `generate` or
-    `template` commands.
-  - Helm makes it easy to configure your releases -- and share the configuration
-    with the rest of your team.
-- Helm chart repositories now use plain HTTP(S) instead of Git/GitHub. There is
-  no longer any GitHub dependency.
-  - A chart server is a simple HTTP server
-  - Charts are referenced by version
-  - The `helm serve` command will run a local chart server, though you can
-    easily use object storage (S3, GCS) or a regular web server.
-  - And you can still load charts from a local directory.
-- The Helm workspace is gone. You can now work anywhere on your filesystem that
-  you want to work.
+In January of 2016, the project merged with a GCS tool called Kubernetes Deployment Manager, and the project was moved under [Kubernetes](https://kubernetes.io). As a result of the merging of codebases, Helm 2.0 was released later that year. The key feature of Deployment Manager that survived in Helm 2 was the server-side component, renamed from DM to Tiller for the final Helm 2.0 release.
+
+Helm was promoted from a Kubernetes subproject to a full-fledged CNCF project in June, 2018. Helm formed a top-level governing body and several projects were subsumed under the Helm project, including Monocular, the Helm Chart Repo, Chart Museum, and later the Helm Hub.
+
+When the Helm 3 development cycle began, Tiller was removed, bringing Helm closer to its original vision of being a client tool. But Helm 3 continues to track releases inside of the Kubernetes cluster, making it possible for teams to work together on a common set of Helm releases.
+
+Helm 3 was released in November 2019.
