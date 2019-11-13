@@ -11,9 +11,9 @@ There are a few commands that can help you debug.
 
 - `helm lint` is your go-to tool for verifying that your chart follows best
   practices
-- `helm install --dry-run --debug`: We've seen this trick already. It's a great
-  way to have the server render your templates, then return the resulting
-  manifest file.
+- `helm install --dry-run --debug` or `helm template --debug`: We've seen this
+  trick already. It's a great way to have the server render your templates,
+  then return the resulting manifest file.
 - `helm get manifest`: This is a good way to see what templates are installed on
   the server.
 
@@ -22,7 +22,7 @@ easy way to retrieve the YAML is to comment out the problem section in the
 template, and then re-run `helm install --dry-run --debug`:
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 # some: problem section
 # {{ .Values.foo | quote }}
 ```
@@ -30,7 +30,7 @@ apiVersion: v1
 The above will be rendered and returned with the comments intact:
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 # some: problem section
 #  "bar"
 ```
