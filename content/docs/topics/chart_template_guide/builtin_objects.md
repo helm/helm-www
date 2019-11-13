@@ -25,6 +25,10 @@ access in your templates.
     upgrade or rollback.
   - `Release.IsInstall`: This is set to `true` if the current operation is an
     install.
+  - `Release.Revision`: The revision number for this release. On install, this is
+    0, and it is incremented with each upgrade and rollback.
+  - `Release.Service`: The service that is rendering the present template. On
+    Helm, this is always `Helm`.
 - `Values`: Values passed into the template from the `values.yaml` file and from
   user-supplied files. By default, `Values` is empty.
 - `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will
@@ -40,6 +44,13 @@ access in your templates.
   - `Files.GetBytes` is a function for getting the contents of a file as an
     array of bytes instead of as a string. This is useful for things like
     images.
+  - `Files.Glob` is a function that returns a list of files whose names match
+    the given shell glob pattern.
+  - `Files.Lines` is a function that reads a file line-by-line. This is useful
+    for iterating over each line in a file.
+  - `Files.AsSecrets` is a function that returns the file bodies as Base 64 encoded
+    strings.
+  - `Files.AsConfig` is a function that returns file bodies as a YAML map.
 - `Capabilities`: This provides information about what capabilities the
   Kubernetes cluster supports.
   - `Capabilities.APIVersions` is a set of versions.
@@ -52,13 +63,10 @@ access in your templates.
   - `Capabilities.Kube.Minor` is the Kubernetes minor version.
 - `Template`: Contains information about the current template that is being
   executed
-  - `Name`: A namespaced filepath to the current template (e.g.
+  - `Name`: A namespaced file path to the current template (e.g.
     `mychart/templates/mytemplate.yaml`)
   - `BasePath`: The namespaced path to the templates directory of the current
     chart (e.g. `mychart/templates`).
-
-The values are available to any top-level template. As we will see later, this
-does not necessarily mean that they will be available _everywhere_.
 
 The built-in values always begin with a capital letter. This is in keeping with
 Go's naming convention. When you create your own names, you are free to use a
@@ -66,4 +74,3 @@ convention that suits your team. Some teams, like the [Kubernetes
 Charts](https://github.com/helm/charts) team, choose to use only initial lower
 case letters in order to distinguish local names from those built-in. In this
 guide, we follow that convention.
-
