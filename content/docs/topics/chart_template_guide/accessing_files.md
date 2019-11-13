@@ -159,10 +159,10 @@ Or
 
 ## ConfigMap and Secrets utility functions
 
-(Not present in version 2.0.2 or prior)
+(Available Helm 2.0.2 and after)
 
-It is very common to want to place file content into both configmaps and
-secrets, for mounting into your pods at run time. To help with this, we provide
+It is very common to want to place file content into both ConfigMaps and
+Secrets, for mounting into your pods at run time. To help with this, we provide
 a couple utility methods on the `Files` type.
 
 For further organization, it is especially useful to use these methods in
@@ -222,13 +222,15 @@ data:
 Sometimes it is desirable to access each line of a file in your template. We
 provide a convenient `Lines` method for this.
 
+You can loop through `Lines` using a `range` function:
+
 ```yaml
 data:
   some-file.txt: {{ range .Files.Lines "foo/bar.txt" }}
     {{ . }}{{ end }}
 ```
 
-Currently, there is no way to pass files external to the chart during `helm
+There is no way to pass files external to the chart during `helm
 install`. So if you are asking users to supply data, it must be loaded using
 `helm install -f` or `helm install --set`.
 
