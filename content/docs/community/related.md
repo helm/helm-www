@@ -7,8 +7,8 @@ weight: 3
 The Helm community has produced many extra tools, plugins, and documentation
 about Helm. We love to hear about these projects. If you have anything you'd
 like to add to this list, please open an
-[issue](https://github.com/helm/helm/issues) or [pull
-request](https://github.com/helm/helm/pulls).
+[issue](https://github.com/helm/helm-www/issues) or [pull
+request](https://github.com/helm/helm-www/pulls).
 
 ## Article, Blogs, How-Tos, and Extra Documentation
 
