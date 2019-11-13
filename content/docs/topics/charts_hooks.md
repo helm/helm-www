@@ -1,6 +1,7 @@
 ---
 title: "Chart Hooks"
 description: "Describes how to work with chart hooks."
+aliases: ["/docs/charts_hooks/"]
 ---
 
 Helm provides a _hook_ mechanism to allow chart developers to intervene at

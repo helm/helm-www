@@ -2,6 +2,7 @@
 title: "Best Practices"
 sidebar: true
 weight: 4
+aliases: ["/docs/chart_best_practices/"]
 ---
 
 # The Chart Best Practices Guide

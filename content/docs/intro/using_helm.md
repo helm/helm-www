@@ -2,6 +2,7 @@
 title: "Using Helm"
 description: "Explains the basics of Helm."
 weight: 3
+aliases: ["/docs/using_helm/#using-helm"]
 ---
 
 This guide explains the basics of using Helm to manage packages on your

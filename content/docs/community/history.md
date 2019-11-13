@@ -1,6 +1,7 @@
 ---
 title: "The History of the Project"
 description: "Provides a high-level overview of the project's history."
+aliases: ["/docs/history/"]
 ---
 
 Helm 3 is a [CNCF project](https://www.cncf.io/projects/) in the [final stages of incubation](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc).
