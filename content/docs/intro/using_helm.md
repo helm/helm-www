@@ -6,7 +6,7 @@ weight: 3
 
 This guide explains the basics of using Helm to manage packages on your
 Kubernetes cluster. It assumes that you have already [installed]({{< ref "install.md" >}}) the
-Helm client and library (typically by `helm init`).
+Helm client.
 
 If you are simply interested in running a few quick commands, you may wish to
 begin with the [Quickstart Guide]({{< ref "quickstart.md" >}}). This chapter covers the
@@ -36,49 +36,50 @@ installation. And to find new charts, you can search Helm chart _repositories_.
 
 ## 'helm search': Finding Charts
 
-When you first install Helm, it is preconfigured to talk to the official
-Kubernetes charts repository. This repository contains a number of carefully
-curated and maintained charts. This chart repository is named `stable` by
-default.
+Helm comes with a powerful search command. It can be used to search two different
+types of source:
 
-You can see which charts are available by running `helm search`:
+- `helm search hub` searches [the Helm Hub](https://hub.helm.sh), which comprises
+  helm charts from dozens of different repositories.
+- `helm search repo` searches the repositories that you have added to your local
+  helm client (with `helm repo add`). This search is done over local data, and no
+  public network connection is needed.
+
+You can find publicly available charts by running `helm search hub`:
 
 ```console
-$ helm search
-NAME                  VERSION   DESCRIPTION
-stable/drupal     0.3.2     One of the most versatile open source content m...
-stable/jenkins    0.1.0     A Jenkins Helm chart for Kubernetes.
-stable/mariadb    0.5.1     Chart for MariaDB
-stable/mysql      0.1.0     Chart for MySQL
-...
+$ helm search hub wordpress
+URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
+https://hub.helm.sh/charts/bitnami/wordpress      	7.6.7        	5.2.4      	Web publishing platform for building blogs and ...
+https://hub.helm.sh/charts/presslabs/wordpress-...	v0.6.3       	v0.6.3     	Presslabs WordPress Operator Helm Chart
+https://hub.helm.sh/charts/presslabs/wordpress-...	v0.7.1       	v0.7.1     	A Helm chart for deploying a WordPress site on ...
 ```
 
-With no filter, `helm search` shows you all of the available charts. You can
-narrow down your results by searching with a filter:
+The above searches for all `wordpress` charts on Helm Hub.
+
+With no filter, `helm search hub` shows you all of the available charts.
+
+Using `helm search repo`, you can find the names of the charts in repositories you have already added:
 
 ```console
-$ helm search mysql
-NAME                VERSION DESCRIPTION
-stable/mysql    0.1.0   Chart for MySQL
-stable/mariadb  0.5.1   Chart for MariaDB
+$ helm repo add brigade https://brigadecore.github.io/charts
+"brigade" has been added to your repositories
+$ helm search repo brigade
+NAME                        	CHART VERSION	APP VERSION	DESCRIPTION
+brigade/brigade             	1.3.2        	v1.2.1     	Brigade provides event-driven scripting of Kube...
+brigade/brigade-github-app  	0.4.1        	v0.2.1     	The Brigade GitHub App, an advanced gateway for...
+brigade/brigade-github-oauth	0.2.0        	v0.20.0    	The legacy OAuth GitHub Gateway for Brigade
+brigade/brigade-k8s-gateway 	0.1.0        	           	A Helm chart for Kubernetes
+brigade/brigade-project     	1.0.0        	v1.0.0     	Create a Brigade project
+brigade/kashti              	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
 ```
 
-Now you will only see the results that match your filter.
-
-Why is `mariadb` in the list? Because its package description relates it to
-MySQL. We can use `helm inspect chart` to see this:
+Helm search uses a fuzzy string matching algorithm, so you can type parts of words or phrases:
 
 ```console
-$ helm inspect stable/mariadb
-Fetched stable/mariadb to mariadb-0.5.1.tgz
-description: Chart for MariaDB
-home: https://mariadb.org
-keywords:
-- mariadb
-- mysql
-- database
-- sql
-...
+$ helm search repo kash
+NAME          	CHART VERSION	APP VERSION	DESCRIPTION
+brigade/kashti	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
 ```
 
 Search is a good way to find available packages. Once you have found a package
@@ -87,10 +88,10 @@ you want to install, you can use `helm install` to install it.
 ## 'helm install': Installing a Package
 
 To install a new package, use the `helm install` command. At its simplest, it
-takes only one argument: The name of the chart.
+takes two arguments: A release name that you pick, and the name of the chart you want to install.
 
 ```console
-$ helm install --generate-name stable/mariadb
+$ helm install happy-panda stable/mariadb
 Fetched stable/mariadb-0.3.0 to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
 happy-panda
 Last Deployed: Wed Sep 28 12:32:28 2016
@@ -121,8 +122,8 @@ To connect to your database run the following command:
 ```
 
 Now the `mariadb` chart is installed. Note that installing a chart creates a new
-_release_ object. The release above is named `happy-panda`. (If you want to use
-your own release name, simply use the `--name` flag on `helm install`.)
+_release_ object. The release above is named `happy-panda`. (If you want Helm to generate
+a name for you, leave off the release name and use `--generate-name`.)
 
 During installation, the `helm` client will print useful information about which
 resources were created, what the state of the release is, and also whether there
@@ -175,7 +176,7 @@ preferred configuration.
 To see what options are configurable on a chart, use `helm inspect values`:
 
 ```console
-helm inspect values stable/mariadb
+$ helm inspect values stable/mariadb
 Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
 ## Bitnami MariaDB image version
 ## ref: https://hub.docker.com/r/bitnami/mariadb/tags/
@@ -204,6 +205,7 @@ imageTag: 10.1.14-r3
 ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
 ##
 # mariadbDatabase:
+# ...
 ```
 
 You can then override any of these settings in a YAML formatted file, and then
@@ -225,7 +227,7 @@ There are two ways to pass configuration data during install:
 - `--set`: Specify overrides on the command line.
 
 If both are used, `--set` values are merged into `--values` with higher
-precedence. Overrides specified with `--set` are persisted in a configmap.
+precedence. Overrides specified with `--set` are persisted in a ConfigMap.
 Values that have been `--set` can be viewed for a given release with `helm get
 values <release-name>`. Values that have been `--set` can be cleared by running
 `helm upgrade` with `--reset-values` specified.
@@ -362,6 +364,7 @@ number is always 1. And we can use `helm history [RELEASE]` to see revision
 numbers for a certain release.
 
 ## Helpful Options for Install/Upgrade/Rollback
+
 There are several other helpful options you can specify for customizing the
 behavior of Helm during an install/upgrade/rollback. Please note that this is
 not a full list of cli flags. To see a description of all flags, just run `helm
@@ -380,7 +383,7 @@ not a full list of cli flags. To see a description of all flags, just run `helm
 - `--no-hooks`: This skips running hooks for the command
 - `--recreate-pods` (only available for `upgrade` and `rollback`): This flag
   will cause all pods to be recreated (with the exception of pods belonging to
-  deployments)
+  deployments). (DEPRECATED in Helm 3)
 
 ## 'helm uninstall': Uninstalling a Release
 
@@ -403,32 +406,30 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 From the output above, we can see that the `happy-panda` release was
 uninstalled.
 
-However, Helm always keeps records of what releases happened. Need to see the
-uninstalled releases? `helm list --uninstalled` shows those, and `helm list
---all` shows all of the releases (uninstalled and currently deployed, as well as
-releases that failed):
+In previous versions of Helm, when a release was deleted, a record of its
+deletion would remain. In Helm 3, deletion removes the release record as well.
+If you wish to keep a deletion release record, use `helm uninstall --keep-history`.
+Using `helm list --uninstalled` will only show releases that where uninstalled
+with the `--keep-history` flag.
+
+The `helm list --all` flag will show you all release records that Helm has retained,
+including records for failed or deleted items (if `--keep-history` was specified):
 
 ```console
-⇒  helm list --all
+$  helm list --all
 NAME            VERSION UPDATED                         STATUS          CHART
 happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     mariadb-0.3.0
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
 ```
 
-Because Helm keeps records of uninstalled releases, a release name cannot be
-re-used. (If you _really_ need to re-use a release name, you can use the
-`--replace` flag, but it will simply re-use the existing release and replace its
-resources.)
-
-Note that because releases are preserved in this way, you can rollback a
-uninstalled resource, and have it re-activate.
+Note that because releases are now deleted by default, it is no longer possible to
+rollback an uninstalled resource.
 
 ## 'helm repo': Working with Repositories
 
-So far, we've been installing charts only from the `stable` repository. But you
-can configure `helm` to use other repositories. Helm provides several repository
-tools under the `helm repo` command.
+Helm 3 no longer ships with a default chart repository. The `helm repo` command
+group provides commands to add, list, and remove repositories.
 
 You can see which repositories are configured using `helm repo list`:
 
@@ -448,6 +449,8 @@ $ helm repo add dev https://example.com/dev-charts
 Because chart repositories change frequently, at any point you can make sure
 your Helm client is up to date by running `helm repo update`.
 
+Repositories can be removed with `helm repo remove`.
+
 ## Creating Your Own Charts
 
 The [Chart Development Guide]({{< ref "/docs/topics/charts.md" >}}) explains how to develop your own
@@ -461,7 +464,7 @@ Creating deis-workflow
 Now there is a chart in `./deis-workflow`. You can edit it and create your own
 templates.
 
-As you edit your chart, you can validate that it is well-formatted by running
+As you edit your chart, you can validate that it is well-formed by running
 `helm lint`.
 
 When it's time to package the chart up for distribution, you can run the `helm
@@ -479,7 +482,7 @@ $ helm install ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-Charts that are archived can be loaded into chart repositories. See the
+Charts that are packaged can be loaded into chart repositories. See the
 documentation for your chart repository server to learn how to upload.
 
 Note: The `stable` repository is managed on the [Kubernetes Charts GitHub
