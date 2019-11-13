@@ -408,7 +408,7 @@ started.
 
 ### Why do you provide a `curl ...|bash` script?
 
-There is a script in our repository (`scripts/get`) that can be executed as a
+There is a script in our repository (`scripts/get-helm-3`) that can be executed as a
 `curl ..|bash` script. The transfers are all protected by HTTPS, and the script
 does some auditing of the packages it fetches. However, the script has all the
 usual dangers of any shell script.
