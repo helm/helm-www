@@ -21,7 +21,7 @@ Helm | Docs
       <article class="content-wrapper">
         {{ .Content }}
 
-        <section class="quick-links">
+        <section class="quick-links clearfix">
           <h3 class="text-center">Quicklinks</h3>
           
           {{ if $isDocsRoot }}
@@ -59,6 +59,8 @@ Helm | Docs
           {{ end }}
           {{ end }}
         </section>
+
+        {{ partial "footer-links.html" . }}
       </article>
     </section>
   </div>

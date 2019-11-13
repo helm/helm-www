@@ -216,7 +216,8 @@
     }
     .quick-item {
       position: relative;
-      display: block;
+      display: inline-block;
+      width: 100%;
       clear: both;
       padding: 1rem 1rem 1.5rem;
       background: transparent;

@@ -226,15 +226,21 @@ dl {
   }
 
   dd {
+    margin: 0 0 0.5rem;
+    
     a {
-      color: $dark1;
+      color: $navyl !important;
+      line-height: 1.5;
+      display: inline-block;
+      background-color: transparent !important;
+      border-bottom: 2px solid transparent;
     }
 
     em {
-      color: darken($light2, 15%);
+      color: darken($light2, 25%);
       font-style: normal;
-      font-size: 0.825rem;
-      padding-left: 0.8em;
+      font-size: 0.7rem;
+      padding-left: 0.333sem;
     }
   }
 }
