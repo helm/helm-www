@@ -1,6 +1,7 @@
 ---
 title: "The Chart Repository Guide"
 description: "How to create and work with Helm chart repositories."
+aliases: ["/docs/chart_repository/"]
 ---
 
 # The Chart Repository Guide

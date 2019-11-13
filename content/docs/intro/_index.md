@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
 weight: 1
+aliases: ["/docs/using_helm/"]
 ---
 
 # Introduction to Helm

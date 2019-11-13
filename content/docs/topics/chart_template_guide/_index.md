@@ -2,6 +2,7 @@
 title: "Developing Templates"
 sidebar: true
 weight: 5
+aliases: ["/docs/chart_template_guide/"]
 ---
 
 # The Chart Template Developer's Guide

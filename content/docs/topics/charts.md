@@ -1,6 +1,7 @@
 ---
 title: "Charts"
 description: "Explains the chart format, and provides basic guidance for building charts with Helm."
+aliases: ["docs/developing_charts/"]
 ---
 
 Helm uses a packaging format called _charts_. A chart is a collection of files

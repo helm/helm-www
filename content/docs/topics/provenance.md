@@ -1,6 +1,7 @@
 ---
 title: "Helm Provenance and Integrity"
 description: "Describes how to verify the integrity and origin of a Chart."
+aliases: ["/docs/provenance/"]
 ---
 
 Helm has provenance tools which help chart users verify the integrity and origin
