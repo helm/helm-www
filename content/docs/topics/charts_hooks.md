@@ -21,6 +21,9 @@ pattern for hooks.
 
 The following hooks are defined:
 
+- crd-install: Executes after templates are rendered, but before the regular
+  installation has been run. Use with caution, and when possible use the
+  `crds/` directory instead.
 - pre-install: Executes after templates are rendered, but before any resources
   are created in Kubernetes.
 - post-install: Executes after all resources are loaded into Kubernetes
@@ -56,21 +59,23 @@ lifecycle is altered like this:
 
 1. User runs `helm install foo`
 2. The Helm library install API is called
-3. After some verification, the library renders the `foo` templates
-4. The library prepares to execute the `pre-install` hooks (loading hook
+3. CRDs in the `crds/` directory are installed
+4. After some verification, the library renders the `foo` templates
+5. The `crd-install` hooks are executed
+6. The library prepares to execute the `pre-install` hooks (loading hook
    resources into Kubernetes)
-5. The library sorts hooks by weight (assigning a weight of 0 by default) and by
+7. The library sorts hooks by weight (assigning a weight of 0 by default) and by
    name for those hooks with the same weight in ascending order.
-6. The library then loads the hook with the lowest weight first (negative to
+8. The library then loads the hook with the lowest weight first (negative to
    positive)
-7. The library waits until the hook is "Ready" (except for CRDs)
-8. The library loads the resulting resources into Kubernetes. Note that if the
+9. The library waits until the hook is "Ready" (except for CRDs)
+10. The library loads the resulting resources into Kubernetes. Note that if the
    `--wait` flag is set, the library will wait until all resources are in a
    ready state and will not run the `post-install` hook until they are ready.
-9. The library executes the `post-install` hook (loading hook resources)
-10. The library waits until the hook is "Ready"
-11. The library returns the release object (and other data) to the client
-12. The client exits
+11. The library executes the `post-install` hook (loading hook resources)
+12. The library waits until the hook is "Ready"
+13. The library returns the release object (and other data) to the client
+14. The client exits
 
 What does it mean to wait until a hook is ready? This depends on the resource
 declared in the hook. If the resources is a `Job` kind, the library will wait
@@ -86,7 +91,6 @@ not guaranteed. (In Helm 2.3.0 and after, they are sorted alphabetically. That
 behavior, though, is not considered binding and could change in the future.) It
 is considered good practice to add a hook weight, and set it to `0` if weight is
 not important.
-
 
 ### Hook resources are not managed with corresponding releases
 
@@ -168,7 +172,7 @@ It is possible to define a weight for a hook which will help build a
 deterministic executing order. Weights are defined using the following
 annotation:
 
-```
+```yaml
   annotations:
     "helm.sh/hook-weight": "5"
 ```
