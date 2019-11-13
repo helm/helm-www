@@ -21,9 +21,9 @@ pattern for hooks.
 
 The following hooks are defined:
 
-- crd-install: Executes after templates are rendered, but before the regular
-  installation has been run. Use with caution, and when possible use the
-  `crds/` directory instead.
+- crd-install: In Helm 2, this executes after templates are rendered, but before the regular
+  installation has been run. In Helm 3, this has been deprecated in favor of the `crds/`
+  directory.
 - pre-install: Executes after templates are rendered, but before any resources
   are created in Kubernetes.
 - post-install: Executes after all resources are loaded into Kubernetes
@@ -61,21 +61,20 @@ lifecycle is altered like this:
 2. The Helm library install API is called
 3. CRDs in the `crds/` directory are installed
 4. After some verification, the library renders the `foo` templates
-5. The `crd-install` hooks are executed
-6. The library prepares to execute the `pre-install` hooks (loading hook
+5. The library prepares to execute the `pre-install` hooks (loading hook
    resources into Kubernetes)
-7. The library sorts hooks by weight (assigning a weight of 0 by default) and by
+6. The library sorts hooks by weight (assigning a weight of 0 by default) and by
    name for those hooks with the same weight in ascending order.
-8. The library then loads the hook with the lowest weight first (negative to
+7. The library then loads the hook with the lowest weight first (negative to
    positive)
-9. The library waits until the hook is "Ready" (except for CRDs)
-10. The library loads the resulting resources into Kubernetes. Note that if the
+8. The library waits until the hook is "Ready" (except for CRDs)
+9. The library loads the resulting resources into Kubernetes. Note that if the
    `--wait` flag is set, the library will wait until all resources are in a
    ready state and will not run the `post-install` hook until they are ready.
-11. The library executes the `post-install` hook (loading hook resources)
-12. The library waits until the hook is "Ready"
-13. The library returns the release object (and other data) to the client
-14. The client exits
+10. The library executes the `post-install` hook (loading hook resources)
+11. The library waits until the hook is "Ready"
+12. The library returns the release object (and other data) to the client
+13. The client exits
 
 What does it mean to wait until a hook is ready? This depends on the resource
 declared in the hook. If the resources is a `Job` kind, the library will wait
