@@ -99,8 +99,11 @@ $ helm uninstall smiling-penguin
 Removed smiling-penguin
 ```
 
-This will uninstall `smiling-penguin` from Kubernetes, but you will still be
-able to request information about that release:
+This will uninstall `smiling-penguin` from Kubernetes, which will remove all
+resources associated with the release as well as the release history.
+
+If the flag `--keep-history` is provided, release history will be kept. You will 
+be able to request information about that release:
 
 ```console
 $ helm status smiling-penguin
