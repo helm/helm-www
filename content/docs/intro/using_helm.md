@@ -173,10 +173,10 @@ Installing the way we have here will only use the default configuration options
 for this chart. Many times, you will want to customize the chart to use your
 preferred configuration.
 
-To see what options are configurable on a chart, use `helm inspect values`:
+To see what options are configurable on a chart, use `helm show values`:
 
 ```console
-$ helm inspect values stable/mariadb
+$ helm show values stable/mariadb
 Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
 ## Bitnami MariaDB image version
 ## ref: https://hub.docker.com/r/bitnami/mariadb/tags/
