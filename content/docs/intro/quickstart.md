@@ -68,8 +68,11 @@ Released smiling-penguin
 ```
 
 In the example above, the `stable/mysql` chart was released, and the name of our
-new release is `smiling-penguin`. You get a simple idea of the features of this
-MySQL chart by running `helm inspect stable/mysql`.
+new release is `smiling-penguin`.
+
+You get a simple idea of the features of this MySQL chart by running 
+`helm show chart stable/mysql`. Or you could run `helm show all stable/mysql` 
+to get all information about the chart.
 
 Whenever you install a chart, a new release is created. So one chart can be
 installed multiple times into the same cluster. And each can be independently
