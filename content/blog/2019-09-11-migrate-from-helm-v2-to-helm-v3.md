@@ -21,7 +21,7 @@ It helps with this migration by supporting:
 
 As we do not want to override Helm v2 CLI binary, we need to perform an additional step to ensure that both CLI versions can co-exist until we are ready to remove Helm v2 CLI and all it's related data:
 
-Download latest Helm v3 beta release from [here](https://github.com/helm/helm/releases), rename the binary to `helm3` and store it in your path.
+Download latest Helm v3 release from [here](https://github.com/helm/helm/releases), rename the binary to `helm3` and store it in your path.
 
 We are ready to use `helm3`:
 
@@ -44,15 +44,15 @@ Let's install it:
 
 ```
 $ helm3 plugin install https://github.com/helm/helm-2to3
-Downloading and installing helm-2to3 v0.1.3 ...
-https://github.com/helm/helm-2to3/releases/download/v0.1.3/helm-2to3_0.1.3_darwin_amd64.tar.gz
+Downloading and installing helm-2to3 v0.2.0 ...
+https://github.com/helm/helm-2to3/releases/download/v0.2.0/helm-2to3_0.2.0_darwin_amd64.tar.gz
 Installed plugin: 2to3
 ```
 
 ```
 $ helm3 plugin list
 NAME  	VERSION	DESCRIPTION
-2to3  	0.1.3  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
+2to3  	0.2.0  	migrate and cleanup Helm v2 configuration and releases in-place to Helm v3
 ```
 
 ```
@@ -110,22 +110,22 @@ The safest way is to start with --dry-run flag:
 
 ```
 $ helm3 2to3 move config --dry-run
-NOTE: This is in dry-run mode, the following actions will not be executed.
-Run without --dry-run to take the actions described below:
-
-WARNING: Helm v3 configuration maybe overwritten during this operation.
-
+2019/11/14 14:54:04 NOTE: This is in dry-run mode, the following actions will not be executed.
+2019/11/14 14:54:04 Run without --dry-run to take the actions described below:
+2019/11/14 14:54:04
+2019/11/14 14:54:04 WARNING: Helm v3 configuration maybe overwritten during this operation.
+2019/11/14 14:54:04
 [Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
-
+2019/11/14 14:54:12
 Helm v2 configuration will be moved to Helm v3 configration.
-[Helm 2] Home directory: /Users/rimas/.helm
-[Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
-[Helm 3] Data directory: /Users/rimas/Library/helm
-[Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
-[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
-[Helm 3] Create data folder "/Users/rimas/Library/helm" .
-[Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
-[Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+2019/11/14 14:54:12 [Helm 2] Home directory: /Users/rimas/.helm
+2019/11/14 14:54:12 [Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
+2019/11/14 14:54:12 [Helm 3] Data directory: /Users/rimas/Library/helm
+2019/11/14 14:54:12 [Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
+2019/11/14 14:54:12 [Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+2019/11/14 14:54:12 [Helm 3] Create data folder "/Users/rimas/Library/helm" .
+2019/11/14 14:54:12 [Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+2019/11/14 14:54:12 [Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
 ```
 
 Cool, now let's do the actual migration:
@@ -136,21 +136,21 @@ WARNING: Helm v3 configuration maybe overwritten during this operation.
 
 [Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
 
-Helm v2 configuration will be moved to Helm v3 configration.
-[Helm 2] Home directory: /Users/rimas/.helm
-[Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
-[Helm 3] Data directory: /Users/rimas/Library/helm
-[Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
-[Helm 3] Config folder "/Users/rimas/Library/Preferences/helm" created.
-[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
-[Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" copied successfully to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
-[Helm 3] Create data folder "/Users/rimas/Library/helm" .
-[Helm 3] data folder "/Users/rimas/Library/helm" created.
-[Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
-[Helm 2] plugins "/Users/rimas/.helm/plugins" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
-[Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
-[Helm 2] starters "/Users/rimas/.helm/starters" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
-Helm v2 configuration was moved successfully to Helm v3 configration.
+2019/11/14 14:55:00 Helm v2 configuration will be moved to Helm v3 configration.
+2019/11/14 14:55:00 [Helm 2] Home directory: /Users/rimas/.helm
+2019/11/14 14:55:00 [Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
+2019/11/14 14:55:00 [Helm 3] Data directory: /Users/rimas/Library/helm
+2019/11/14 14:55:00 [Helm 3] Create config folder "/Users/rimas/Library/Preferences/helm" .
+2019/11/14 14:55:00 [Helm 3] Config folder "/Users/rimas/Library/Preferences/helm" created.
+2019/11/14 14:55:00 [Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" will copy to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+2019/11/14 14:55:00 [Helm 2] repositories file "/Users/rimas/.helm/repository/repositories.yaml" copied successfully to [Helm 3] config folder "/Users/rimas/Library/Preferences/helm/repositories.yaml" .
+2019/11/14 14:55:00 [Helm 3] Create data folder "/Users/rimas/Library/helm" .
+2019/11/14 14:55:00 [Helm 3] data folder "/Users/rimas/Library/helm" created.
+2019/11/14 14:55:00 [Helm 2] plugins "/Users/rimas/.helm/plugins" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+2019/11/14 14:55:00 [Helm 2] plugins "/Users/rimas/.helm/plugins" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
+2019/11/14 14:55:00 [Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+2019/11/14 14:55:00 [Helm 2] starters "/Users/rimas/.helm/starters" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
+2019/11/14 14:55:00 Helm v2 configuration was moved successfully to Helm v3 configration.
 ```
 
 Now let's run `helm3 repo list` again:
@@ -206,13 +206,14 @@ Usage:
   2to3 convert [flags] RELEASE
 
 Flags:
-      --delete-v2-releases       v2 releases are deleted after migration. By default, the v2 releases are retained
-      --dry-run                  simulate a convert
-  -h, --help                     help for convert
-  -l, --label string             label to select tiller resources by (default "OWNER=TILLER")
-  -s, --release-storage string   v2 release storage type/object. It can be 'secrets' or 'configmaps'. This is only used with the 'tiller-out-cluster' flag (default "secrets")
-  -t, --tiller-ns string         namespace of Tiller (default "kube-system")
-      --tiller-out-cluster       when  Tiller is not running in the cluster e.g. Tillerless
+      --delete-v2-releases         v2 release versions are deleted after migration. By default, the v2 release versions are retained
+      --dry-run                    simulate a command
+  -h, --help                       help for convert
+  -l, --label string               label to select Tiller resources by (default "OWNER=TILLER")
+  -s, --release-storage string     v2 release storage type/object. It can be 'secrets' or 'configmaps'. This is only used with the 'tiller-out-cluster' flag (default "secrets")
+      --release-versions-max int   limit the maximum number of versions converted per release. Use 0 for no limit (default 10)
+  -t, --tiller-ns string           namespace of Tiller (default "kube-system")
+      --tiller-out-cluster         when  Tiller is not running in the cluster e.g. Tillerless
 ```
 
 Nice, the plugin even supports the [Tillerless Helm v2](https://github.com/rimusz/helm-tiller).
@@ -223,32 +224,34 @@ Let's check out for Helm v2 releases and pick one to test out the migration:
 $ helm list
 
 NAME    	REVISION	UPDATED                 	STATUS  	CHART           	APP VERSION	NAMESPACE
-postgres	1       	Wed Sep 11 14:52:32 2019	DEPLOYED	postgresql-6.3.5	11.5.0     	postgres
-redis   	1       	Wed Sep 11 14:52:57 2019	DEPLOYED	redis-9.1.7     	5.0.5      	redis
+postgres	1       	Thu Nov 14 15:01:00 2019	DEPLOYED	postgresql-7.1.0	11.5.0     	postgres
+redis   	1       	Thu Nov 14 15:02:12 2019	DEPLOYED	redis-9.5.4     	5.0.6      	redis
 ```
 
 The safest way of course to start with `--dry-run` flag:
 
 ```
 $ helm3 2to3 convert --dry-run postgres
-NOTE: This is in dry-run mode, the following actions will not be executed.
-Run without --dry-run to take the actions described below:
-
-Release "postgres" will be converted from Helm 2 to Helm 3.
-[Helm 3] Release "postgres" will be created.
-[Helm 3] ReleaseVersion "postgres.v1" will be created.
+2019/11/14 15:03:17 NOTE: This is in dry-run mode, the following actions will not be executed.
+2019/11/14 15:03:17 Run without --dry-run to take the actions described below:
+2019/11/14 15:03:17
+2019/11/14 15:03:17 Release "postgres" will be converted from Helm v2 to Helm v3.
+2019/11/14 15:03:17 [Helm 3] Release "postgres" will be created.
+2019/11/14 15:03:17 [Helm 3] ReleaseVersion "postgres.v1" will be created.
 ```
 
 Now, let's run the actual migration:
 
 ```
 $ helm3 2to3 convert postgres
-Release "postgres" will be converted from Helm 2 to Helm 3.
-[Helm 3] Release "postgres" will be created.
-[Helm 3] ReleaseVersion "postgres.v1" will be created.
-[Helm 3] ReleaseVersion "postgres.v1" created.
-[Helm 3] Release "postgres" created.
-Release "postgres" was converted successfully from Helm 2 to Helm 3. Note: the v2 releases still remain and should be removed to avoid conflicts with the migrated v3 releases.
+2019/11/14 15:03:57 Release "postgres" will be converted from Helm v2 to Helm v3.
+2019/11/14 15:03:57 [Helm 3] Release "postgres" will be created.
+2019/11/14 15:03:57 [Helm 3] ReleaseVersion "postgres.v1" will be created.
+2019/11/14 15:03:57 [Helm 3] ReleaseVersion "postgres.v1" created.
+2019/11/14 15:03:57 [Helm 3] Release "postgres" created.
+2019/11/14 15:03:57 Release "postgres" was converted successfully from Helm v2 to Helm v3.
+2019/11/14 15:03:57 Note: The v2 release information still remains and should be removed to avoid conflicts with the migrated v3 release.
+2019/11/14 15:03:57 v2 release information should only be removed using `helm 2to3` cleanup and when all releases have been migrated over.
 ```
 
 Check out whether it was succesful:
@@ -256,12 +259,12 @@ Check out whether it was succesful:
 ```
 $ helm list
 NAME    	REVISION	UPDATED                 	STATUS  	CHART           	APP VERSION	NAMESPACE
-postgres	1       	Wed Sep 11 14:52:32 2019	DEPLOYED	postgresql-6.3.5	11.5.0     	postgres
-redis   	1       	Wed Sep 11 14:52:57 2019	DEPLOYED	redis-9.1.7     	5.0.5      	redis
+postgres	1       	Thu Nov 14 15:01:00 2019	DEPLOYED	postgresql-7.1.0	11.5.0     	postgres
+redis   	1       	Thu Nov 14 15:02:12 2019	DEPLOYED	redis-9.5.4     	5.0.6      	redis
 
-$ helm3 list
-NAME    	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART
-postgres	postgres 	1       	2019-09-11 12:52:32.529413 +0000 UTC	deployed	postgresql-6.3.5
+$ helm3 list -n postgres
+NAME    	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART           	APP VERSION
+postgres	postgres 	1       	2019-11-14 13:01:00.188487 +0000 UTC	deployed	postgresql-7.1.0	11.5.0
 ```
 
 **Note:** As we did not specify `--delete-v2-releases` flag Helm v2 `postgres` release information was left in-tact, it can be deleted with `helm3 2to3 cleanup` later on.
@@ -290,10 +293,13 @@ Usage:
   2to3 cleanup [flags]
 
 Flags:
+      --config-cleanup           if set, configuration cleanup performed
       --dry-run                  simulate a command
   -h, --help                     help for cleanup
-  -l, --label string             label to select tiller resources by (default "OWNER=TILLER")
+  -l, --label string             label to select Tiller resources by (default "OWNER=TILLER")
+      --release-cleanup          if set, release data cleanup performed
   -s, --release-storage string   v2 release storage type/object. It can be 'secrets' or 'configmaps'. This is only used with the 'tiller-out-cluster' flag (default "secrets")
+      --tiller-cleanup           if set, Tiller cleanup performed
   -t, --tiller-ns string         namespace of Tiller (default "kube-system")
       --tiller-out-cluster       when  Tiller is not running in the cluster e.g. Tillerless
 ```
@@ -307,19 +313,20 @@ And of course the safest way is to start with `--dry-run` flag:
 
 ```
 $ helm3 2to3 cleanup --dry-run
-NOTE: This is in dry-run mode, the following actions will not be executed.
-Run without --dry-run to take the actions described below:
-
-WARNING: Helm v2 Configuration, Release Data and Tiller Deployment will be removed.
+2019/11/14 15:06:59 NOTE: This is in dry-run mode, the following actions will not be executed.
+2019/11/14 15:06:59 Run without --dry-run to take the actions described below:
+2019/11/14 15:06:59
+WARNING: "Helm v2 Configuration" "Release Data" "Release Data" will be removed.
 This will clean up all releases managed by Helm v2. It will not be possible to restore them if you haven't made a backup of the releases.
-Helm v2 will not be usable afterwards.
+Helm v2 may not be usable afterwards.
 
 [Cleanup/confirm] Are you sure you want to cleanup Helm v2 data? [y/N]: y
-
-Helm v2 data will be cleaned up.[Helm 2] Releases will be deleted.
-[Helm 2] ReleaseVersion "redis.v1" will be deleted.
-[Helm 2] Tiller in "kube-system" namespace will be removed.
-[Helm 2] Home folder "/Users/rimas/.helm" will be deleted.
+2019/11/14 15:07:01
+Helm v2 data will be cleaned up.
+2019/11/14 15:07:01 [Helm 2] Releases will be deleted.
+2019/11/14 15:07:01 [Helm 2] ReleaseVersion "postgres.v1" will be deleted.
+2019/11/14 15:07:01 [Helm 2] ReleaseVersion "redis.v1" will be deleted.
+2019/11/14 15:07:01 [Helm 2] Home folder "/Users/rimasm/.helm" will be deleted.
 ```
 
 It will show what releases going to be deleted, Tiller service to be removed from `kube-system` namespace and Helm v2 home folder will be deleted.
