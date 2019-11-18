@@ -174,7 +174,7 @@ somewhere. In Helm 2, this was stored in the same namespace as Tiller. In
 practice, this meant that once a name was used by a release, no other release
 could use that same name, even if it was deployed in a different namespace.
 
-In Helm 3, release information about a particular release is now stored in the
+In Helm 3, information about a particular release is now stored in the
 same namespace as the release itself. This means that users can now `helm
 install wordpress stable/wordpress` in two separate namespaces, and each can be
 referred with `helm list` by changing the current namespace context (e.g. `helm
