@@ -75,7 +75,7 @@ The migration use cases are as follows:
      deployed releases are updated/removed by v2 only
    - Helm v2 and v3 can quite happily manage the same cluster. The Helm versions
      can be installed on the same or separate systems
-   - If installing Helm v3 on the same system, you need to to perform an
+   - If installing Helm v3 on the same system, you need to perform an
      additional step to ensure that both client versions can co-exist until
      ready to remove Helm v2 client. Rename or put the Helm v3 binary in a
      different folder to avoid conflict
