@@ -64,5 +64,5 @@ via = "daemonza"
 [[params.quicklinks]]
 title = "CI/CD for Kubernetes"
 description = "Instructions on using Helm as the missing CI/CD Kubernetes component"
-url = "https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes"
+url = "https://medium.com/@gajus/the-missing-ci-cd-kubernetes-component-helm-package-manager-1fe002aac680"
 via = "hackernoon"
