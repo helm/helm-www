@@ -120,6 +120,10 @@
     }
   }
 
+  .helm-commands > .quick-item h4 {
+    width: auto;
+  }
+
   &.markdown pre,
   pre {
     background-color: #e4f3f9;

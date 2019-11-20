@@ -1,7 +1,7 @@
 ---
 title: "Frequently Asked Questions"
 description: "What are the key differences between Helm 2 and Helm 3? Visit the FAQs for insights."
-weight: 1
+weight: 8
 ---
 
 This page provides help with the most common questions about Helm.
