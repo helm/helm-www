@@ -1,6 +1,7 @@
 ---
 title: "Templates"
 description: "A closer look at best practices surrounding templates."
+weight: 3
 ---
 
 This part of the Best Practices Guide focuses on templates.

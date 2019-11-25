@@ -1,6 +1,7 @@
 ---
 title: "Subcharts and Global Values"
 description: "Interacting with a subchart's and global values."
+weight: 10
 ---
 
 To this point we have been working only with one chart. But charts can have

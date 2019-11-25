@@ -1,6 +1,7 @@
 ---
 title: "Accessing Files Inside Templates"
 description: "How to access files from within a template."
+weight: 8
 ---
 
 In the previous section we looked at several ways to create and access named

@@ -1,6 +1,7 @@
 ---
 title: "Custom Resource Definitions"
 description: "How to handle creating and using CRDs."
+weight: 7
 ---
 
 This section of the Best Practices Guide deals with creating and using Custom

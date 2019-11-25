@@ -1,6 +1,7 @@
 ---
 title: "Values"
 description: "Focuses on how you should structure and use your values."
+weight: 2
 ---
 
 This part of the best practices guide covers using values. In this part of the

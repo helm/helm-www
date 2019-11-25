@@ -1,6 +1,7 @@
 ---
 title: "Creating a NOTES.txt File"
 description: "How to provide instructions to your Chart users."
+weight: 9
 ---
 
 In this section we are going to look at Helm's tool for providing instructions

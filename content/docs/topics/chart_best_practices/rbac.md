@@ -1,6 +1,7 @@
 ---
 title: "Role-Based Access Control"
 description: "Discusses the creation and formatting of RBAC resources in Chart manifests."
+weight: 8
 ---
 
 This part of the Best Practices Guide discusses the creation and formatting of
