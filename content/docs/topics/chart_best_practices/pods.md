@@ -1,6 +1,7 @@
 ---
 title: "Pods and PodTemplates"
 description: "Discusses formatting the Pod and PodTemplate portions in Chart manifests."
+weight: 6
 ---
 
 This part of the Best Practices Guide discusses formatting the Pod and

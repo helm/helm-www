@@ -1,6 +1,7 @@
 ---
 title: "Dependencies"
 description: "Covers best practices for Chart dependencies."
+weight: 4
 ---
 
 This section of the guide covers best practices for `dependencies` declared in

@@ -1,6 +1,7 @@
 ---
 title: "Labels and Annotations"
 description: "Covers best practices for using labels and annotations in your Chart."
+weight: 5
 ---
 
 This part of the Best Practices Guide discusses the best practices for using

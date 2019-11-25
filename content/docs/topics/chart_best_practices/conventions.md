@@ -1,6 +1,7 @@
 ---
 title: "General Conventions"
 description: "general conventions for charts."
+weight: 1
 ---
 
 This part of the Best Practices Guide explains general conventions.

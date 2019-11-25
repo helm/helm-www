@@ -1,6 +1,7 @@
 ---
 title: "Built-in Objects"
 description: "Built-in objects available to templates."
+weight: 2
 ---
 
 Objects are passed into a template from the template engine. And your code can
