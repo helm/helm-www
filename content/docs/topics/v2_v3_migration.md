@@ -100,7 +100,7 @@ The migration use cases are as follows:
 2. Migrating Helm v2 to Helm v3:
    - This use case applies when you want Helm v3 to manage existing Helm v2
      releases
-   - It should be noted that a Helm client:
+   - It should be noted that a Helm v2 client:
      - can manage 1 to many Kubernetes clusters
      - can connect to 1 to many Tiller instances for  a cluster
    - This means that you have to be cognisant of this when migrating as releases
