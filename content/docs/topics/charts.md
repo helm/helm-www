@@ -1026,9 +1026,7 @@ sharing charts, the preferred mechanism is a chart repository.
 
 Any HTTP server that can serve YAML files and tar files and can answer GET
 requests can be used as a repository server.
-
-Helm comes with built-in package server for developer testing (`helm serve`).
-The Helm team has tested other servers, including Google Cloud Storage with
+The Helm team has tested some servers, including Google Cloud Storage with
 website mode enabled, and S3 with website mode enabled.
 
 A repository is characterized primarily by the presence of a special file called
