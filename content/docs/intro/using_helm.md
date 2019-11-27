@@ -308,9 +308,9 @@ of a `values.yaml` file.
 The `helm install` command can install from several sources:
 
 - A chart repository (as we've seen above)
-- A local chart archive (`helm install foo-0.1.1.tgz`)
-- An unpacked chart directory (`helm install path/to/foo`)
-- A full URL (`helm install https://example.com/charts/foo-1.2.3.tgz`)
+- A local chart archive (`helm install foo foo-0.1.1.tgz`)
+- An unpacked chart directory (`helm install foo path/to/foo`)
+- A full URL (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
 ## 'helm upgrade' and 'helm rollback': Upgrading a Release, and Recovering on Failure
 
@@ -478,7 +478,7 @@ deis-workflow-0.1.0.tgz
 And that chart can now easily be installed by `helm install`:
 
 ```console
-$ helm install ./deis-workflow-0.1.0.tgz
+$ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
