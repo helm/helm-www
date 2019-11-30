@@ -82,6 +82,8 @@ request](https://github.com/helm/helm-www/pulls).
   docker tag hash digests as values
 - [helm-unittest](https://github.com/lrills/helm-unittest) - Plugin for unit
   testing chart locally with YAML
+- [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit
+  testing charts locally using OPA (Open Policy Agent) & Rego
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
