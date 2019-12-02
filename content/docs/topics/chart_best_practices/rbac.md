@@ -11,7 +11,7 @@ RBAC resources are:
 
 - ServiceAccount (namespaced)
 - Role (namespaced)
-- ClusterRole 
+- ClusterRole
 - RoleBinding (namespaced)
 - ClusterRoleBinding
 
@@ -38,11 +38,12 @@ This structure can be extended for more complex charts that require multiple
 ServiceAccounts.
 
 ```yaml
-serviceAccounts:
-  client:
+someComponent:
+  serviceAccount:
     create: true
     name:
-  server: 
+anotherComponent:
+  serviceAccount:
     create: true
     name:
 ```
