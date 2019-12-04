@@ -41,7 +41,7 @@ during migration:
    - `helm init` and `helm home` removed
 5. Additional changes:
    - Helm install/set-up is simplified:
-     - Helm client (helm) only (no tiller)
+     - Helm client (helm binary) only (no Tiller)
      - Run-as-is paradigm
    - `local` or `stable` repositories are not set-up by default
    - `crd-install` hook removed and replaced with `crds` directory in chart
@@ -58,7 +58,7 @@ during migration:
        - inspect --> show
        - reset (removed)
        - serve (removed)
-       - upgrade: Added argument `maxHistory` which limits the maximum number of
+       - upgrade: Added argument `--maxHistory` which limits the maximum number of
          revisions saved per release (0 for no limit)
    - Helm 3 Go library has undergone a lot of changes and is incompatible with
      the Helm 2 library
@@ -92,7 +92,7 @@ The migration use cases are as follows:
      - The only issue could be if Kubernetes cluster scoped resources (e.g.
        `clusterroles.rbac`) are defined in a chart. The v3 deployment would then
        fail even if unique in the namespace as the resources would clash
-     - v3 configuration no longer uses `HELM_HOME` and uses XDG directory
+     - v3 configuration no longer uses `$HELM_HOME` and uses XDG directory
        specification instead. It is also created on the fly as need be. It is
        therefore independent of v2 configuration. This is applicable only when
        both versions are installed on the same system
