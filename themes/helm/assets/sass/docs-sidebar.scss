@@ -219,6 +219,18 @@
       }
     }
   }
+
+  .search-container{
+    z-index: 1020;
+    position: relative;
+    padding-top: 1rem;
+    
+    & > .algolia-autocomplete{
+      display: block !important;
+      margin: auto;
+      width: 90%;
+    }
+  }
 }
 
 .left-off-canvas-toggle .fa {
