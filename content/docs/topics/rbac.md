@@ -55,7 +55,7 @@ to the API server, or be treated as an anonymous user.
 In Kubernetes, user accounts and service accounts can only view and edit
 resources they have been granted access to. This access is granted through the
 use of Roles and RoleBindings. Roles and RoleBindings are bound to a particular
-namespace, which grant users the ability to view and/pr edit resources within
+namespace, which grant users the ability to view and/or edit resources within
 that namespace the Role provides them access to.
 
 At a cluster scope, these are called ClusterRoles and ClusterRoleBindings.
