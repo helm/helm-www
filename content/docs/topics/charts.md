@@ -23,7 +23,7 @@ a chart describing WordPress would be stored in the `wordpress/` directory.
 
 Inside of this directory, Helm will expect a structure that matches this:
 
-```
+```text
 wordpress/
   Chart.yaml          # A YAML file containing information about the chart
   LICENSE             # OPTIONAL: A plain text file containing the license for the chart
@@ -81,7 +81,7 @@ name plus version.
 For example, an `nginx` chart whose version field is set to `version: 1.2.3`
 will be named:
 
-```
+```text
 nginx-1.2.3.tgz
 ```
 
@@ -103,16 +103,17 @@ will cause an error.
 
 ### The `apiVersion` Field
 
-The `apiVersion` field should be `v2` for Helm charts that require at least 
-Helm 3. Charts supporting previous Helm versions have an `apiVersion` set 
-to `v1` and are still installable by Helm 3. 
+The `apiVersion` field should be `v2` for Helm charts that require at least
+Helm 3. Charts supporting previous Helm versions have an `apiVersion` set
+to `v1` and are still installable by Helm 3.
 
 Changes from `v1` to `v2`:
- * A `dependencies` field defining chart dependencies, which where  
- located in a separate `requirements.yaml` file for `v1` charts
- (see [Chart Dependencies](#chart-dependencies)).
- * The `type` field, discriminating application and library charts 
- (see [Chart Types](#chart-types)).
+
+- A `dependencies` field defining chart dependencies, which were located in a
+  separate `requirements.yaml` file for `v1` charts
+  (see [Chart Dependencies](#chart-dependencies)).
+- The `type` field, discriminating application and library charts
+  (see [Chart Types](#chart-types)).
 
 ### The `appVersion` Field
 
@@ -131,15 +132,16 @@ repository is marked as deprecated, then the chart as a whole is considered to
 be deprecated. The chart name can later be reused by publishing a newer version
 that is not marked as deprecated. The workflow for deprecating charts, as
 followed by the [kubernetes/charts](https://github.com/helm/charts) project is:
-  - Update chart's `Chart.yaml` to mark the chart as deprecated, bumping the
-    version
-  - Release the new chart version in the Chart Repository
-  - Remove the chart from the source repository (e.g. git)
+
+1. Update chart's `Chart.yaml` to mark the chart as deprecated, bumping the
+  version
+2. Release the new chart version in the Chart Repository
+3. Remove the chart from the source repository (e.g. git)
 
 ### Chart Types
 
-The `type` field defines the type of chart. There are two types: `application` 
-and `library`.  Application is the default type and it is the standard chart 
+The `type` field defines the type of chart. There are two types: `application`
+and `library`.  Application is the default type and it is the standard chart
 which can be operated on fully. The [library or helper
 chart](https://github.com/helm/charts/tree/master/incubator/common) provides
 utilities or functions for the chart builder. A library chart differs from an
@@ -227,7 +229,7 @@ When `helm dependency update` retrieves charts, it will store them as chart
 archives in the `charts/` directory. So for the example above, one would expect
 to see the following files in the charts directory:
 
-```
+```text
 charts/
   apache-1.2.3.tgz
   mysql-3.2.1.tgz
@@ -246,6 +248,7 @@ name(s).
 
 ```yaml
 # parentchart/Chart.yaml
+
 dependencies:
   - name: subchart
     repository: http://localhost:10191
@@ -260,8 +263,9 @@ dependencies:
     version: 0.1.0
 ```
 
-In the above example we will get 3 dependencies in all for `parentchart`
-```
+In the above example we will get 3 dependencies in all for `parentchart`:
+
+```text
 subchart
 new-subchart-1
 new-subchart-2
@@ -291,6 +295,7 @@ specifying the tag and a boolean value.
 
 ```yaml
 # parentchart/Chart.yaml
+
 dependencies:
       - name: subchart1
         repository: http://localhost:10191
@@ -307,8 +312,8 @@ dependencies:
         tags:
           - back-end
           - subchart2
-
 ```
+
 ```yaml
 # parentchart/values.yaml
 
@@ -334,20 +339,17 @@ The `--set` parameter can be used as usual to alter tag and condition values.
 
 ```console
 helm install --set tags.front-end=true --set subchart2.enabled=false
-
 ```
 
 ##### Tags and Condition Resolution
 
-
-  * **Conditions (when set in values) always override tags.** The first
-    condition path that exists wins and subsequent ones for that chart are
-    ignored.
-  * Tags are evaluated as 'if any of the chart's tags are true then enable the
-    chart'.
-  * Tags and conditions values must be set in the top parent's values.
-  * The `tags:` key in values must be a top level key. Globals and nested
-    `tags:` tables are not currently supported.
+- **Conditions (when set in values) always override tags.** The first condition
+  path that exists wins and subsequent ones for that chart are ignored.
+- Tags are evaluated as 'if any of the chart's tags are true then enable the
+  chart'.
+- Tags and conditions values must be set in the top parent's values.
+- The `tags:` key in values must be a top level key. Globals and nested `tags:`
+  tables are not currently supported.
 
 #### Importing Child Values via dependencies
 
@@ -380,9 +382,10 @@ dependencies:
     import-values:
       - data
 ```
+
 ```yaml
 # child's values.yaml file
-...
+
 exports:
   data:
     myint: 99
@@ -394,10 +397,9 @@ Since we are specifying the key `data` in our import list, Helm looks in the
 The final parent values would contain our exported field:
 
 ```yaml
-# parent's values file
-...
-myint: 99
+# parent's values
 
+myint: 99
 ```
 
 Please note the parent key `data` is not contained in the parent's final values.
@@ -416,6 +418,7 @@ at `child:` path and copy them to the parent's values at the path specified in
 
 ```yaml
 # parent's Chart.yaml file
+
 dependencies:
   - name: subchart1
     repository: http://localhost:10191
@@ -425,6 +428,7 @@ dependencies:
       - child: default.data
         parent: myimports
 ```
+
 In the above example, values found at `default.data` in the subchart1's values
 will be imported to the `myimports` key in the parent chart's values as detailed
 below:
@@ -436,8 +440,8 @@ myimports:
   myint: 0
   mybool: false
   mystring: "helm rocks!"
-
 ```
+
 ```yaml
 # subchart1's values.yaml file
 
@@ -445,8 +449,8 @@ default:
   data:
     myint: 999
     mybool: true
-
 ```
+
 The parent chart's resulting values would be:
 
 ```yaml
@@ -456,7 +460,6 @@ myimports:
   myint: 999
   mybool: true
   mystring: "helm rocks!"
-
 ```
 
 The parent's final values now contains the `myint` and `mybool` fields imported
@@ -551,10 +554,10 @@ template engine.
 
 Values for the templates are supplied two ways:
 
-  - Chart developers may supply a file called `values.yaml` inside of a chart.
-    This file can contain default values.
-  - Chart users may supply a YAML file that contains values. This can be
-    provided on the command line with `helm install`.
+- Chart developers may supply a file called `values.yaml` inside of a chart.
+  This file can contain default values.
+- Chart users may supply a YAML file that contains values. This can be
+  provided on the command line with `helm install`.
 
 When a user supplies custom values, these values will override the values in the
 chart's `values.yaml` file.
@@ -723,7 +726,6 @@ spec:
           env:
             - name: DATABASE_STORAGE
               value: {{ default "minio" .Values.storage }}
-
 ```
 
 ### Scope, Dependencies, and Values
@@ -859,10 +861,10 @@ something like this:
 This schema will be applied to the values to validate it. Validation occurs when
 any of the following commands are invoked:
 
-* `helm install`
-* `helm upgrade`
-* `helm lint`
-* `helm template`
+- `helm install`
+- `helm upgrade`
+- `helm lint`
+- `helm template`
 
 An example of a `values.yaml` file that meets the requirements of this schema
 might look something like this:
@@ -929,7 +931,7 @@ CRDs.
 For example, if your chart had a CRD for `CronTab` in the `crds/` directory, you
 may create instances of the `CronTab` kind in the `templates/` directory:
 
-```
+```text
 crontabs/
   Chart.yaml
   crds/
@@ -973,7 +975,7 @@ Helm will make sure that the `CronTab` kind has been installed and is available
 from the Kubernetes API server before it proceeds installing the things in
 `templates/`.
 
-#### Limitations on CRDs
+### Limitations on CRDs
 
 Unlike most objects in Kubernetes, CRDs are installed globally. For that reason,
 Helm takes a very cautious approach in managing CRDs. CRDs are subject to the
