@@ -73,7 +73,7 @@ spec:
 
 ## Steps to Run a Test Suite on a Release
 
-1. `$ helm install mariadb --name quirky-walrus --namespace default`
+1. `$ helm install quirky-walrus mariadb --namespace default`
 2. `$ helm test quirky-walrus`
 
 ```cli
