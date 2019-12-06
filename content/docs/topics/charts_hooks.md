@@ -21,24 +21,19 @@ pattern for hooks.
 
 The following hooks are defined:
 
-- crd-install: In Helm 2, this executes after templates are rendered, but before the regular
-  installation has been run. In Helm 3, this has been deprecated in favor of the `crds/`
-  directory.
-- pre-install: Executes after templates are rendered, but before any resources
-  are created in Kubernetes.
-- post-install: Executes after all resources are loaded into Kubernetes
-- pre-delete: Executes on a deletion request before any resources are deleted
-  from Kubernetes.
-- post-delete: Executes on a deletion request after all of the release's
-  resources have been deleted.
-- pre-upgrade: Executes on an upgrade request after templates are rendered, but
-  before any resources are loaded into Kubernetes (e.g. before a Kubernetes
-  apply operation).
-- post-upgrade: Executes on an upgrade after all resources have been upgraded.
-- pre-rollback: Executes on a rollback request after templates are rendered, but
-  before any resources have been rolled back.
-- post-rollback: Executes on a rollback request after all resources have been
-  modified.
+| Annotation Value | Description                                                                                           |
+| ---------------- | ----------------------------------------------------------------------------------------------------- |
+| `pre-install`    | Executes after templates are rendered, but before any resources,are created in Kubernetes             |
+| `post-install`   | Executes after all resources are loaded into Kubernetes                                               |
+| `pre-delete`     | Executes on a deletion request before any resources are deleted from Kubernetes                       |
+| `post-delete`    | Executes on a deletion request after all of the release's resources have been deleted                 |
+| `pre-upgrade`    | Executes on an upgrade request after templates are rendered, but before any resources are updated     |
+| `post-upgrade`   | Executes on an upgrade after all resources have been upgraded                                         |
+| `pre-rollback`   | Executes on a rollback request after templates are rendered, but before any resources are rolled back |
+| `post-rollback`  | Executes on a rollback request after all resources have been modified                                 |
+| `test`           | Executes when the Helm test subcommand is invoked ([view test docs](/docs/chart_tests/))              |
+
+_Note that the `crd-install` hook has been removed in favor of the `crds/` directory in Helm 3._
 
 ## Hooks and the Release Lifecycle
 
@@ -77,8 +72,8 @@ lifecycle is altered like this:
 13. The client exits
 
 What does it mean to wait until a hook is ready? This depends on the resource
-declared in the hook. If the resources is a `Job` kind, the library will wait
-until the job successfully runs to completion. And if the job fails, the release
+declared in the hook. If the resource is a `Job` or `Pod` kind, Helm will wait
+until it successfully runs to completion. And if the hook fails, the release
 will fail. This is a _blocking operation_, so the Helm client will pause while
 the Job is run.
 
@@ -93,15 +88,18 @@ not important.
 
 ### Hook resources are not managed with corresponding releases
 
-The resources that a hook creates are not tracked or managed as part of the
-release. Once Helm verifies that the hook has reached its ready state, it will
-leave the hook resource alone.
+The resources that a hook creates are currently not tracked or managed as part
+of the release. Once Helm verifies that the hook has reached its ready state,
+it will leave the hook resource alone. Garbage collection of hook resources when
+the corresponding release is deleted may be added to Helm 3 in the future, so any
+hook resources that must never be deleted should be annotated with
+`helm.sh/resource-policy: keep`.
 
 Practically speaking, this means that if you create resources in a hook, you
 cannot rely upon `helm uninstall` to remove the resources. To destroy such
-resources, you need to either write code to perform this operation in a
-`pre-delete` or `post-delete` hook or add `"helm.sh/hook-delete-policy"`
-annotation to the hook template file.
+resources, you need to either [add a custom `helm.sh/hook-delete-policy` annotation](#hook-deletion-policies)
+to the hook template file, or [set the time to live (TTL) field of a
+Job resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
 ## Writing a Hook
 
@@ -149,15 +147,15 @@ spec:
 What makes this template a hook is the annotation:
 
 ```yaml
-  annotations:
-    "helm.sh/hook": post-install
+annotations:
+  "helm.sh/hook": post-install
 ```
 
 One resource can implement multiple hooks:
 
 ```yaml
-  annotations:
-    "helm.sh/hook": post-install,post-upgrade
+annotations:
+  "helm.sh/hook": post-install,post-upgrade
 ```
 
 Similarly, there is no limit to the number of different resources that may
@@ -172,47 +170,30 @@ deterministic executing order. Weights are defined using the following
 annotation:
 
 ```yaml
-  annotations:
-    "helm.sh/hook-weight": "5"
+annotations:
+  "helm.sh/hook-weight": "5"
 ```
 
 Hook weights can be positive or negative numbers but must be represented as
 strings. When Helm starts the execution cycle of hooks of a particular Kind it
 will sort those hooks in ascending order.
 
-It is also possible to define policies that determine when to delete
-corresponding hook resources. Hook deletion policies are defined using the
-following annotation:
+### Hook deletion policies
+
+It is possible to define policies that determine when to delete corresponding hook
+resources. Hook deletion policies are defined using the following annotation:
 
 ```yaml
-  annotations:
-    "helm.sh/hook-delete-policy": hook-succeeded
+annotations:
+  "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 ```
 
 You can choose one or more defined annotation values:
-* `"hook-succeeded"` specifies Helm should delete the hook after the hook is
-  successfully executed.
-* `"hook-failed"` specifies Helm should delete the hook if the hook failed
-  during execution.
-* `"before-hook-creation"` specifies Helm should delete the previous hook before
-  the new hook is launched.
 
-### Automatically uninstall hook from previous release
+| Annotation Value       | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `before-hook-creation` | Delete the previous resource before a new hook is launched (default) |
+| `hook-succeeded`       | Delete the resource after the hook is successfully executed          |
+| `hook-failed`          | Delete the resource if the hook failed during execution              |
 
-When helm release being updated it is possible, that hook resource already
-exists in cluster. By default helm will try to create resource and fail with
-`"... already exists"` error.
-
-One might choose `"helm.sh/hook-delete-policy": "before-hook-creation"` over
-`"helm.sh/hook-delete-policy": "hook-succeeded,hook-failed"` because:
-
-* It is convenient to keep failed hook job resource in kubernetes for example
-  for manual debug.
-* It may be necessary to keep succeeded hook resource in kubernetes for some
-  reason.
-* At the same time it is not desirable to do manual resource deletion before
-  helm release upgrade.
-
-`"helm.sh/hook-delete-policy": "before-hook-creation"` annotation on hook causes
-Helm to remove the hook from previous release if there is one before the new
-hook is launched and can be used with another policy.
+If no hook deletion policy annotation is specified, the `before-hook-creation` behavior applies by default.

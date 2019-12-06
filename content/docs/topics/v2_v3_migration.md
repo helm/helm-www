@@ -47,7 +47,7 @@ during migration:
    - `crd-install` hook removed and replaced with `crds` directory in chart
      where all CRDs defined in it will be installed before any rendering of the
      chart
-   - `test-failure` target removed. Use `test-success` instead
+   - `test-failure` hook annotation value removed, and `test-success` deprecated. Use `test` instead
    - Commands removed/replaced/added:
        - delete --> uninstall : removes all release history by default
          (previously needed `--purge`)
