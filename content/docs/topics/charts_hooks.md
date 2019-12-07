@@ -23,7 +23,7 @@ The following hooks are defined:
 
 | Annotation Value | Description                                                                                           |
 | ---------------- | ----------------------------------------------------------------------------------------------------- |
-| `pre-install`    | Executes after templates are rendered, but before any resources,are created in Kubernetes             |
+| `pre-install`    | Executes after templates are rendered, but before any resources are created in Kubernetes             |
 | `post-install`   | Executes after all resources are loaded into Kubernetes                                               |
 | `pre-delete`     | Executes on a deletion request before any resources are deleted from Kubernetes                       |
 | `post-delete`    | Executes on a deletion request after all of the release's resources have been deleted                 |
