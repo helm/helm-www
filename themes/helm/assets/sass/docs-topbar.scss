@@ -33,12 +33,12 @@
         }
       }
 
-      &.versioner {
+      &.nav-dropdown {
         padding: 0 !important;
         margin: 0 0 -1px !important;
         display: none;
         
-        a.versioner-trigger {
+        a.nav-dropdown-trigger {
           padding-left: 1.667rem;
           padding-right: 2rem;
           background-color: lighten($blue1, 45%);
@@ -138,7 +138,7 @@
 }
 
 .docs {
-  .top-bar ul li.versioner {
+  .top-bar ul li.nav-dropdown {
     display: inline-block;
   }
 }
