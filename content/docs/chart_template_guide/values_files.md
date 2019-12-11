@@ -1,7 +1,7 @@
 ---
 title: "Values Files"
 description: "Instructions on how to use the --values flag."
-weight: 3
+weight: 4
 ---
 
 In the previous section we looked at the built-in objects that Helm templates

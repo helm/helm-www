@@ -1,7 +1,7 @@
 ---
 title: "Named Templates"
 description: "How to define named templates."
-weight: 7
+weight: 8
 ---
 
 It is time to move beyond one template, and begin to create others. In this
