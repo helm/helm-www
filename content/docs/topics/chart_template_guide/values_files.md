@@ -5,7 +5,7 @@ weight: 3
 ---
 
 In the previous section we looked at the built-in objects that Helm templates
-offer. One of the four built-in objects is `Values`. This object provides access
+offer. One of the six built-in objects is `Values`. This object provides access
 to values passed into the chart. Its contents come from four sources:
 
 - The `values.yaml` file in the chart
