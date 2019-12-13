@@ -135,15 +135,15 @@ This part shows several ways to serve a chart repository.
 The first step is to **create your GCS bucket**. We'll call ours
 `fantastic-charts`.
 
-![Create a GCS Bucket](images/create-a-bucket.png)
+![Create a GCS Bucket](../images/create-a-bucket.png)
 
 Next, make your bucket public by **editing the bucket permissions**.
 
-![Edit Permissions](images/edit-permissions.png)
+![Edit Permissions](../images/edit-permissions.png)
 
 Insert this line item to **make your bucket public**:
 
-![Make Bucket Public](images/make-bucket-public.png)
+![Make Bucket Public](../images/make-bucket-public.png)
 
 Congratulations, now you have an empty GCS bucket ready to serve charts!
 
@@ -181,13 +181,13 @@ $ git checkout -b gh-pages
 
 Or via web browser using **Branch** button on your Github repository:
 
-![Create Github Pages branch](images/create-a-gh-page-button.png)
+![Create Github Pages branch](../images/create-a-gh-page-button.png)
 
 Next, you'll want to make sure your **gh-pages branch** is set as Github Pages,
 click on your repo **Settings** and scroll down to **Github pages** section and
 set as per below:
 
-![Create Github Pages branch](images/set-a-gh-page.png)
+![Create Github Pages branch](../images/set-a-gh-page.png)
 
 By default **Source** usually gets set to **gh-pages branch**. If this is not
 set by default, then select it.
