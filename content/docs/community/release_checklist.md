@@ -365,7 +365,7 @@ command:
 
 ```shell
 PREVIOUS_RELEASE=vX.Y.Z
-git log --no-merges --pretty=format:'- %s %H (%aN)' $RELEASE_NAME $PREVIOUS_RELEASE
+git log --no-merges --pretty=format:'- %s %H (%aN)' ${PREVIOUS_RELEASE}..${RELEASE_NAME}
 ```
 
 After generating the changelog, you will need to categorize the changes as shown
