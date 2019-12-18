@@ -19,7 +19,7 @@ and installed.
 3. Find the `helm` binary in the unpacked directory, and move it to its desired
    destination (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-From there, you should be able to run the client: `helm help`.
+From there, you should be able to run the client and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
 
 ### From Homebrew (macOS)
 
@@ -102,4 +102,4 @@ This document covers additional cases for those who want to do more
 sophisticated things with Helm.
 
 Once you have the Helm Client successfully installed, you can move on to using
-Helm to manage charts.
+Helm to manage charts and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
