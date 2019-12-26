@@ -222,12 +222,48 @@ the chart, it will return the rendered template to you so you can see the
 output:
 
 ```console
-$ helm install --debug --dry-run ./mychart
-SERVER: "localhost:44134"
-CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
-NAME:   goodly-guppy
-TARGET NAMESPACE:   default
-CHART:  mychart 0.1.0
+$ helm install --debug --dry-run goodly-guppy ./mychart
+install.go:149: [debug] Original chart version: ""
+install.go:166: [debug] CHART PATH: /Users/ninja/mychart
+
+NAME: goodly-guppy
+LAST DEPLOYED: Thu Dec 26 17:24:13 2019
+NAMESPACE: default
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+affinity: {}
+fullnameOverride: ""
+image:
+  pullPolicy: IfNotPresent
+  repository: nginx
+imagePullSecrets: []
+ingress:
+  annotations: {}
+  enabled: false
+  hosts:
+  - host: chart-example.local
+    paths: []
+  tls: []
+nameOverride: ""
+nodeSelector: {}
+podSecurityContext: {}
+replicaCount: 1
+resources: {}
+securityContext: {}
+service:
+  port: 80
+  type: ClusterIP
+serviceAccount:
+  create: true
+  name: null
+tolerations: []
+
+HOOKS:
 MANIFEST:
 ---
 # Source: mychart/templates/configmap.yaml
