@@ -71,7 +71,7 @@ our tutorial from scratch. We'll actually create our own `NOTES.txt` and
 `_helpers.tpl` as we go.
 
 ```console
-$ rm -rf mychart/templates/*.*
+$ rm -rf mychart/templates/*
 ```
 
 When you're writing production grade charts, having basic versions of these
