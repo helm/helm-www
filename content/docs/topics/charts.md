@@ -59,7 +59,14 @@ sources:
 dependencies: # A list of the chart requirements (optional)
   - name: The name of the chart (nginx)
     version: The version of the chart ("1.2.3")
-    repository: The repository URL ("https://example.com/charts")
+    repository: The repository URL ("https://example.com/charts") or alias ("@repo-name")
+    condition: (optional) A yaml path that resolves to a boolean, used for enabling/disabling charts (e.g. subchart1.enabled )
+    tags: # (optional)
+      - Tags can be used to group charts for enabling/disabling together
+    enabled: (optional) Enabled bool determines if chart should be loaded
+    import-values: # (optional)
+      - ImportValues holds the mapping of source values to parent key to be imported. Each item can be a string or pair of child/parent sublist items.
+    alias: (optional) Alias usable alias to be used for the chart. Useful when you have to add the same chart multiple times
 maintainers: # (optional)
   - name: The maintainer's name (required for each maintainer)
     email: The maintainer's email (optional for each maintainer)
@@ -207,6 +214,18 @@ dependencies:
 - The `version` field is the version of the chart you want.
 - The `repository` field is the full URL to the chart repository. Note that you
   must also use `helm repo add` to add that repo locally.
+- You might use the name of the repo instead of URL
+
+```console
+$ helm repo add fantastic-charts https://fantastic-charts.storage.googleapis.com
+```
+
+```yaml
+dependencies:
+  - name: awesomeness
+    version: 1.0.0
+    repository: "@fantastic-charts"
+```
 
 Once you have defined dependencies, you can run `helm dependency update` and it
 will use your dependency file to download all the specified charts into your
