@@ -84,6 +84,7 @@ request](https://github.com/helm/helm-www/pulls).
   testing chart locally with YAML
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit
   testing charts locally using OPA (Open Policy Agent) & Rego
+- [helm-s3](https://github.com/hypnoglow/helm-s3) - Helm plugin that allows to use AWS S3 as a [private] chart repository
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
