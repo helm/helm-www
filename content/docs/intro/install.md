@@ -15,7 +15,7 @@ releases for a variety of OSes. These binary versions can be manually downloaded
 and installed.
 
 1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
+2. Unpack it (`tar -zxvf helm-v3.0.2-linux-amd64.tar.gz`)
 3. Find the `helm` binary in the unpacked directory, and move it to its desired
    destination (`mv linux-amd64/helm /usr/local/bin/helm`)
 
