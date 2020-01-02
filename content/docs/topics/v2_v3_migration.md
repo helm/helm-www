@@ -58,7 +58,7 @@ during migration:
        - inspect --> show
        - reset (removed)
        - serve (removed)
-       - upgrade: Added argument `--maxHistory` which limits the maximum number of
+       - upgrade: Added argument `--history-max` which limits the maximum number of
          revisions saved per release (0 for no limit)
    - Helm 3 Go library has undergone a lot of changes and is incompatible with
      the Helm 2 library
