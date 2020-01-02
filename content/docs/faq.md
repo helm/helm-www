@@ -180,6 +180,12 @@ install wordpress stable/wordpress` in two separate namespaces, and each can be
 referred with `helm list` by changing the current namespace context (e.g. `helm
 list --namespace foo`).
 
+With this greater alignment to native cluster namespaces, the `helm list` command
+no longer lists all releases by default. Instead, it will list only the releases
+in the namespace of your current kubernetes context (i.e. the namespace shown
+when you run `kubectl config view --minify`). It also means you must supply the
+`--all-namespaces` flag to `helm list` to get behaviour similar to Helm 2.
+
 ### Secrets as the default storage driver
 
 Helm 2 used ConfigMaps by default to store release information. In Helm 3,
@@ -477,3 +483,17 @@ When you create a cluster on GKE, it will give you credentials, including SSL
 certificates and certificate authorities. These need to be stored in a
 Kubernetes config file (Default: `~/.kube/config` so that `kubectl` and `helm`
 can access them.
+
+### After migration from Helm 2, `helm list` shows only some (or none) of my releases
+
+It is likely that you have missed the fact that Helm 3 now uses cluster
+namespaces throughout to scope releases. This means that for all commands
+referencing a release you must either:
+
+* rely on the current namespace in the active kubernetes context (as
+  described by the `kubectl config show --minify` command),
+* specify the correct namespace using the `--namespace`/`-n` flag, or
+* for the `helm list` command, specify the `--all-namespaces`/`-A` flag
+
+This applies to `helm ls`, `helm uninstall`, and all other `helm`
+commands referencing a release.
