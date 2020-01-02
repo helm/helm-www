@@ -294,6 +294,7 @@ fantastic-charts    https://fantastic-charts.storage.googleapis.com
 
 **Note:** A repository will not be added if it does not contain a valid
 `index.yaml`.
+**Note:** If your helm repository is e.g. using a self signed certificate, you can use `help repo add --insecure-skip-tls-verify ...` in order to skip the CA verification.
 
 After that, your users will be able to search through your charts. After you've
 updated the repository, they can use the `helm repo update` command to get the
