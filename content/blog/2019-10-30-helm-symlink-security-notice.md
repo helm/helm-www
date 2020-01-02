@@ -1,5 +1,5 @@
 ---
-title: "Helm Vulnerability: Client Loading and Packaging Chart Directory Containing Malicious Symlinked Content"
+title: "Helm Vulnerability: Client Loading and Packaging Chart Directory Containing Malicious Symlinked Content [CVE-2019-18658]"
 authorname: "Matt Farina"
 author: "@mattfarina"
 authorlink: "https://mattfarina.com"
