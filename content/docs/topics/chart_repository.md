@@ -112,20 +112,6 @@ entries:
 generated: 2016-10-06T16:23:20.499029981-06:00
 ```
 
-A generated index and packages can be served from a basic webserver. You can
-test things out locally with the `helm serve` command, which starts a local
-server.
-
-```console
-$ helm serve --repo-path ./charts
-Regenerating index. This may take a moment.
-Now serving you on 127.0.0.1:8879
-```
-
-The above starts a local webserver, serving the charts it finds in `./charts`.
-The serve command will automatically generate an `index.yaml` file for you
-during startup.
-
 ## Hosting Chart Repositories
 
 This part shows several ways to serve a chart repository.
@@ -217,6 +203,25 @@ the following:
 For example, if you want to serve your charts out of `$WEBROOT/charts`, make
 sure there is a `charts/` directory in your web root, and put the index file and
 charts inside of that folder.
+
+### ChartMuseum Repository Server
+
+ChartMuseum is an open-source Helm Chart Repository server written in Go (Golang),
+with support for cloud storage backends, including
+[Google Cloud Storage](https://cloud.google.com/storage/),
+[Amazon S3](https://aws.amazon.com/s3/),
+[Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/),
+[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss),
+[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/),
+[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage),
+[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html),
+[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos),
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+[Minio](https://min.io/), and [etcd](https://etcd.io/).
+
+You can also use the
+[ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)
+server to host a chart repository from a local file system.
 
 
 ## Managing Chart Repositories

@@ -305,6 +305,12 @@ purposes. However, it didn't receive much uptake as a development tool and had
 numerous issues with its design. In the end, we decided to remove it and split
 it out as a plugin.
 
+For a similar experience to `helm serve`, have a look at the local filesystem
+storage option in
+[ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)
+and the [servecm plugin](https://github.com/jdolitsky/helm-servecm).
+
+
 ### Library chart support
 
 Helm 3 supports a class of chart called a “library chart”. This is a chart that
