@@ -52,7 +52,7 @@ You can fetch that script, and then execute it locally. It's well documented so
 that you can read through it and understand what it is doing before you run it.
 
 ```console
-$ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
