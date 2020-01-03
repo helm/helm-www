@@ -1,7 +1,7 @@
 ---
 title: "Debugging Templates"
 description: "Troubleshooting charts that are failing to deploy."
-weight: 11
+weight: 13
 ---
 
 Debugging templates can be tricky because the rendered templates are sent to the

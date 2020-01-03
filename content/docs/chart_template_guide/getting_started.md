@@ -1,7 +1,9 @@
 ---
-title: "Getting Started with a Chart Template"
+title: "Getting Started"
+weight: 2
 description: "A quick guide on Chart templates."
-aliases: ["/docs/getting_started/"]
+aliases: ["/intro/getting_started/"]
+
 ---
 
 In this section of the guide, we'll create a chart and then add a first

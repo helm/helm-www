@@ -1,7 +1,7 @@
 ---
 title: "Subcharts and Global Values"
 description: "Interacting with a subchart's and global values."
-weight: 10
+weight: 11
 ---
 
 To this point we have been working only with one chart. But charts can have
@@ -35,7 +35,7 @@ $ rm -rf mysubchart/templates/*.*
 
 Notice that just as before, we deleted all of the base templates so that we can
 start from scratch. In this guide, we are focused on how templates work, not on
-managing dependencies. But the [Charts Guide]({{< ref "../charts.md" >}}) has more information
+managing dependencies. But the [Charts Guide]({{< ref "../topics/charts.md" >}}) has more information
 on how subcharts work.
 
 ## Adding Values and a Template to the Subchart

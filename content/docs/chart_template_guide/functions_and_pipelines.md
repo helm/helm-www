@@ -1,7 +1,7 @@
 ---
 title: "Template Functions and Pipelines"
 description: "Using functions in templates."
-weight: 4
+weight: 5
 ---
 
 So far, we've seen how to place information into a template. But that
