@@ -112,7 +112,7 @@ With this simple template, we now have an installable chart. And we can install
 it like this:
 
 ```console
-$ helm install ./mychart
+$ helm install full-coral ./mychart
 NAME: full-coral
 LAST DEPLOYED: Tue Nov  1 17:36:01 2016
 NAMESPACE: default
@@ -195,7 +195,7 @@ Now when we install our resource, we'll immediately see the result of using this
 template directive:
 
 ```console
-$ helm install ./mychart
+$ helm install clunky-serval ./mychart
 NAME: clunky-serval
 LAST DEPLOYED: Tue Nov  1 17:45:37 2016
 NAMESPACE: default
