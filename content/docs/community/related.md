@@ -133,6 +133,7 @@ Tools layered on top of Helm.
   platform with UI dashboards for managing Helm charts and releases
 - [Captain](https://github.com/alauda/captain) - A Helm3 Controller using
   HelmRequest and Release CRD
+- [chart-registry](https://github.com/hangyan/chart-registry) - Helm Charts Hosts on OCI Registry 
 
 ## Helm Included
 
