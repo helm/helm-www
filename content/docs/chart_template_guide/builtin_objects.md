@@ -58,10 +58,9 @@ access in your templates.
   - `Capabilities.APIVersions.Has $version` indicates whether a version (e.g.,
     `batch/v1`) or resource (e.g., `apps/v1/Deployment`) is available on the
     cluster.
-  - `Capabilities.Kube.Version` is the Kubernetes version.
-  - `Capabilities.Kube` is a short form for Kubernetes version.
-  - `Capabilities.Kube.Major` is the Kubernetes major version.
-  - `Capabilities.Kube.Minor` is the Kubernetes minor version.
+  - `Capabilities.KubeVersion` and `Capabilities.KubeVersion.Version` is the Kubernetes version.
+  - `Capabilities.KubeVersion.Major` is the Kubernetes major version.
+  - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
 - `Template`: Contains information about the current template that is being
   executed
   - `Name`: A namespaced file path to the current template (e.g.
