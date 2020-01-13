@@ -1,3 +1,8 @@
+---
+title: "Helm Template"
+weight: 39
+---
+
 ## helm template
 
 locally render templates

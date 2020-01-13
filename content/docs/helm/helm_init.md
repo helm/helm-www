@@ -1,3 +1,8 @@
+---
+title: "Helm Init"
+weight: 16
+---
+
 ## helm init
 
 initialize Helm on both client and server

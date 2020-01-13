@@ -1,3 +1,8 @@
+---
+title: "Helm Rollback"
+weight: 35
+---
+
 ## helm rollback
 
 roll back a release to a previous revision

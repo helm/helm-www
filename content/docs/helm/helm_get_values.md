@@ -1,3 +1,8 @@
+---
+title: "Helm Get Values"
+weight: 13
+---
+
 ## helm get values
 
 download the values file for a named release

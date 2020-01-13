@@ -1,3 +1,8 @@
+---
+title: "Helm Status"
+weight: 38
+---
+
 ## helm status
 
 displays the status of the named release

@@ -1,3 +1,8 @@
+---
+title: "Helm Plugin Install"
+weight: 25
+---
+
 ## helm plugin install
 
 install one or more Helm plugins

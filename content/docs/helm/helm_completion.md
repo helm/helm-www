@@ -1,3 +1,8 @@
+---
+title: "Helm Completion"
+weight: 2
+---
+
 ## helm completion
 
 Generate autocompletions script for the specified shell (bash or zsh)

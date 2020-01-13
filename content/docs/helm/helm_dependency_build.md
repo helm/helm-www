@@ -1,3 +1,8 @@
+---
+title: "Helm Dependency Build"
+weight: 6
+---
+
 ## helm dependency build
 
 rebuild the charts/ directory based on the requirements.lock file

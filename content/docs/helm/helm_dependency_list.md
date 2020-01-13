@@ -1,3 +1,8 @@
+---
+title: "Helm Dependency List"
+weight: 7
+---
+
 ## helm dependency list
 
 list the dependencies for the given chart

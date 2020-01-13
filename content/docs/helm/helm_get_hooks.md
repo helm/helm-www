@@ -1,3 +1,8 @@
+---
+title: "Helm Get Hooks"
+weight: 11
+---
+
 ## helm get hooks
 
 download all hooks for a named release

@@ -1,3 +1,8 @@
+---
+title: "Helm Get Manifest"
+weight: 12
+---
+
 ## helm get manifest
 
 download the manifest for a named release

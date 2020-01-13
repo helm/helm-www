@@ -1,3 +1,8 @@
+---
+title: "Helm List"
+weight: 26
+---
+
 ## helm plugin list
 
 list installed Helm plugins

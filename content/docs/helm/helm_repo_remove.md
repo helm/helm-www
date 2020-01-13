@@ -1,3 +1,8 @@
+---
+title: "Helm Repo Remove"
+weight: 33
+---
+
 ## helm repo remove
 
 remove a chart repository

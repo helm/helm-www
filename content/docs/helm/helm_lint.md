@@ -1,3 +1,8 @@
+---
+title: "Helm Lint"
+weight: 21
+---
+
 ## helm lint
 
 examines a chart for possible issues

@@ -1,3 +1,8 @@
+---
+title: "Helm Test"
+weight: 40
+---
+
 ## helm test
 
 test a release

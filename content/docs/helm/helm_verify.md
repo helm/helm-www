@@ -1,3 +1,8 @@
+---
+title: "Helm Verify"
+weight: 42
+---
+
 ## helm verify
 
 verify that a chart at the given path has been signed and is valid

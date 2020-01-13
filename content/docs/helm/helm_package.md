@@ -1,3 +1,8 @@
+---
+title: "Helm Package"
+weight: 23
+---
+
 ## helm package
 
 package a chart directory into a chart archive

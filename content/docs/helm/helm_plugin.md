@@ -1,3 +1,8 @@
+---
+title: "Helm Plugin"
+weight: 24
+---
+
 ## helm plugin
 
 add, list, or remove Helm plugins

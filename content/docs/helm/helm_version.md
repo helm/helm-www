@@ -1,3 +1,8 @@
+---
+title: "Helm Version"
+weight: 43
+---
+
 ## helm version
 
 print the client/server version information

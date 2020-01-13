@@ -1,3 +1,8 @@
+---
+title: "Helm Fetch"
+weight: 9
+---
+
 ## helm fetch
 
 download a chart from a repository and (optionally) unpack it in local directory

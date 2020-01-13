@@ -1,3 +1,8 @@
+---
+title: "Helm History"
+weight: 14
+---
+
 ## helm history
 
 fetch release history

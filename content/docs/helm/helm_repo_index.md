@@ -1,3 +1,8 @@
+---
+title: "Helm Repo Index"
+weight: 31
+---
+
 ## helm repo index
 
 generate an index file given a directory containing packaged charts

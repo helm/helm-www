@@ -1,3 +1,8 @@
+---
+title: "Helm Inspect"
+weight: 20
+---
+
 ## helm inspect
 
 inspect a chart

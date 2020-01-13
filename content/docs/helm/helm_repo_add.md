@@ -1,3 +1,8 @@
+---
+title: "Helm Repo Add"
+weight: 30
+---
+
 ## helm repo add
 
 add a chart repository

@@ -1,3 +1,8 @@
+---
+title: "Helm Repo Update"
+weight: 33
+---
+
 ## helm repo update
 
 update information of available charts locally from chart repositories

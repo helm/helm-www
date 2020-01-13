@@ -1,3 +1,8 @@
+---
+title: "Helm List"
+weight: 22
+---
+
 ## helm list
 
 list releases

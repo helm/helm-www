@@ -1,3 +1,8 @@
+---
+title: "Helm Get"
+weight: 10
+---
+
 ## helm get
 
 download a named release

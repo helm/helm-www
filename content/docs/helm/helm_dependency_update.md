@@ -1,3 +1,8 @@
+---
+title: "Helm Dependency Update"
+weight: 8
+---
+
 ## helm dependency update
 
 update charts/ based on the contents of requirements.yaml

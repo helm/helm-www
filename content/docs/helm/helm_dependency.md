@@ -1,3 +1,8 @@
+---
+title: "Helm Dependency"
+weight: 5
+---
+
 ## helm dependency
 
 manage a chart's dependencies

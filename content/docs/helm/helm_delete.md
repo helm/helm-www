@@ -1,3 +1,8 @@
+---
+title: "Helm Delete"
+weight: 4
+---
+
 ## helm delete
 
 given a release name, delete the release from Kubernetes

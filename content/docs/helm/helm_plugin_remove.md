@@ -1,3 +1,8 @@
+---
+title: "Helm Plugin Remove"
+weight: 27
+---
+
 ## helm plugin remove
 
 remove one or more Helm plugins

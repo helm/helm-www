@@ -1,3 +1,8 @@
+---
+title: "Helm Search"
+weight: 36
+---
+
 ## helm search
 
 search for a keyword in charts

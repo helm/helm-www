@@ -1,3 +1,8 @@
+---
+title: "Helm Upgrade"
+weight: 41
+---
+
 ## helm upgrade
 
 upgrade a release

@@ -1,3 +1,8 @@
+---
+title: "Helm Install"
+weight: 17
+---
+
 ## helm install
 
 install a chart archive

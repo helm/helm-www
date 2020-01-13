@@ -1,3 +1,8 @@
+---
+title: "Helm Repo List"
+weight: 32
+---
+
 ## helm repo list
 
 list chart repositories

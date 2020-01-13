@@ -1,3 +1,8 @@
+---
+title: "Helm Plugin Update"
+weight: 28
+---
+
 ## helm plugin update
 
 update one or more Helm plugins

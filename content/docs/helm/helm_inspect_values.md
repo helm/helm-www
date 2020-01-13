@@ -1,3 +1,8 @@
+---
+title: "Helm Inspect Values"
+weight: 19
+---
+
 ## helm inspect values
 
 shows inspect values

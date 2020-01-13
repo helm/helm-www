@@ -1,3 +1,8 @@
+---
+title: "Helm Home"
+weight: 15
+---
+
 ## helm home
 
 displays the location of HELM_HOME

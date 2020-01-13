@@ -1,3 +1,8 @@
+---
+title: "Helm Reset"
+weight: 34
+---
+
 ## helm reset
 
 uninstalls Tiller from a cluster

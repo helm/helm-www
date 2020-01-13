@@ -1,3 +1,8 @@
+---
+title: "Helm Repo"
+weight: 29
+---
+
 ## helm repo
 
 add, list, remove, update, and index chart repositories

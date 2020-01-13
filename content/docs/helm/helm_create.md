@@ -1,3 +1,8 @@
+---
+title: "Helm Create"
+weight: 3
+---
+
 ## helm create
 
 create a new chart with the given name
