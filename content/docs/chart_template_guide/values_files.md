@@ -47,7 +47,7 @@ Notice on the last line we access `favoriteDrink` as an attribute of `Values`:
 Let's see how this renders.
 
 ```console
-$ helm install --dry-run --debug ./mychart
+$ helm install --dry-run --debug mychart ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
 NAME:   geared-marsupi
