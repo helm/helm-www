@@ -130,6 +130,38 @@ chart may have an `appVersion: 8.2.1`, indicating that the version of Drupal
 included in the chart (by default) is `8.2.1`. This field is informational, and
 has no impact on chart version calculations.
 
+### The `kubeVersion` Field
+
+The optional `kubeVersion` field can define semver constraints on supported 
+Kubernetes versions. Helm will validate the version constraints when installing 
+the chart and fail if the cluster runs an unsupported Kubernetes version. 
+
+Version constraints may comprise space separated AND comparisons such as 
+```
+>= 1.13.0 < 1.15.0
+```
+which themselves can be combined with the OR `||` operator like in the 
+following example 
+```
+>= 1.13.0 < 1.14.0 || >= 1.14.1 < 1.15.0
+```
+In this example the version `1.14.0` is excluded, which can make sense if a bug
+in certain versions is known to prevent the chart from running properly.
+
+Apart from version constrains employing operators 
+`=` `!=` `>` `<` `>=` `<=` the following shorthand notations are supported
+
+ * hyphen ranges for closed intervals, 
+  where `1.1 - 2.3.4` is equivalent to `>= 1.1 <= 2.3.4`.
+ * wildcards `x`, `X` and `*`, where `1.2.x` is equivalent to `>= 1.2.0 < 1.3.0`.
+ * tilde ranges (patch version changes allowed), 
+ where `~1.2.3` is equivalent to `>= 1.2.3 < 1.3.0`. 
+ * caret ranges (major version changes allowed), 
+ where `^1.2.3` is equivalent to `>= 1.2.3 < 2.0.0`. 
+
+For a detailed explanation of supported semver constraints see 
+[Masterminds/semver](https://github.com/Masterminds/semver). 
+
 ### Deprecating Charts
 
 When managing charts in a Chart Repository, it is sometimes necessary to
