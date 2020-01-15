@@ -222,7 +222,7 @@ the chart, it will return the rendered template to you so you can see the
 output:
 
 ```console
-$ helm install --debug --dry-run ./mychart
+$ helm install --debug --dry-run goodly-guppy ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
 NAME:   goodly-guppy
