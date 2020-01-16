@@ -1,7 +1,12 @@
 // overwrites global styles on homepage
 .page-home {
   .navbar-top {
-    padding-top: 3.5rem;
+    padding-top: 0.5rem;
+    min-height: 4rem;
+
+    .container {
+      min-height: 1rem;
+    }
   }
 }
 
@@ -50,13 +55,21 @@
 
 // v2 era layout
 
-.home-overview {
-  background: url('../img/features-bg.png') no-repeat center 0;
-  background-size: cover;
+.home-overview-wrap {
+  background: 
+    url('/img/topography.png') repeat top left,
+    linear-gradient(180deg, darken($navy, 3.5%) 0%, $navy 100%);
+  background-blend-mode: color-burn;
+  background-attachment: fixed;
   text-align: center;
   margin-top: 5em;
   margin-bottom: 2em;
   padding-bottom: 4rem;
+  min-height: 80vh;
+}
+
+.home-overview {
+  position: relative;
 
   .large-3 {
     min-height: 280px;
@@ -170,17 +183,16 @@
 
 .helm-community {
   background-color: white;
-  padding-top: 50px;
-  padding-bottom: 100px;
   color: $darkblue;
   background: linear-gradient( 0deg, #fff, #F7F7F7);
 
   h2, p {
-    color: $darkblue;
+    color: $navy;
   }
 
   h2 {
     margin-bottom: 0.5em;
+    @include klinicBold;
 
     & + p {
       margin-bottom: 4.5rem;
@@ -227,8 +239,6 @@
 
   .helm-community-blocks {
     section {
-      border: 1px solid $darkblue;
-      border-radius: 1rem;
       margin: 0 0 2em;
       padding: 1.25rem 1.5rem;
       min-height: 125px;
@@ -236,13 +246,6 @@
 
       &:first-child {
         min-height: 175px;
-      }
-
-      h4 {
-        color: $darkblue;
-        font-size: 1.5em;
-        @include klinicBold;
-        margin: -0.25em 0 0.667em;
       }
 
       p {
@@ -300,91 +303,88 @@
   }
 }
 
-.helm-contrib-logos {
-text-align: center;
-padding-bottom: 50px;
-
-.helm-contrib-logos {
+.contrib-logos {
+  text-align: center;
+  padding-bottom: 50px;
   padding-top: 1.5rem;
-}
 
-img {
-  padding: 0;
-  display: inline-block;
-  margin: 0;
-  max-width: 15%;
-}
+  img {
+    padding: 0;
+    display: inline-block;
+    margin: 0;
+    max-width: 100%;
+  }
 
-.helm-logo {
-  margin: 0 auto;
-  margin-bottom: 2.25em;
-  display: block;
-  text-align: center;
-  padding: 3.5em 0 0;
-}
+  .helm-logo {
+    margin: 0 auto;
+    margin-bottom: 2.25em;
+    display: block;
+    text-align: center;
+    padding: 3.5em 0 0;
+  }
 
-hr {
-  background-color: $lightblue;
-  height: 2px;
-  opacity: 0.25;
-  width: 50%;
-  margin: 1rem 25%;
-}
+  hr {
+    background-color: $lightblue;
+    height: 2px;
+    opacity: 0.25;
+    width: 50%;
+    margin: 1rem 25%;
+  }
 
-p {
-  color: $dark1;
-  text-align: center;
-  padding: 0;
-  margin: 0 auto;
-  font-size: 1.333em;
-  line-height: 2;
-  letter-spacing: 0.025em;
-  color: #9B9B9B;
+  p {
+    color: $dark1;
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 1.333em;
+    line-height: 2;
+    letter-spacing: 0.025em;
+    color: #9B9B9B;
 
-  a {
-    font-weight: bold;
-    color: $darkblue;
-    border-bottom: 2px solid transparent;
+    a {
+      font-weight: bold;
+      color: $darkblue;
+      border-bottom: 2px solid transparent;
 
-    &:hover {
-      border-bottom: 2px solid $blue;
+      &:hover {
+        border-bottom: 2px solid $blue;
+      }
+    }
+
+    small {
+      padding-top: 1rem;
+      font-size: 0.925em;
     }
   }
-
-  small {
-    padding-top: 1rem;
-    font-size: 0.925em;
-  }
-}
 }
 
 .full-width {
-min-width: 100%;
+  min-width: 100%;
 }
 
 .cncf {
-background: RGBA(246, 246, 246, 1.00);
-min-height: 5rem;
-margin-top: 4rem;
-text-align: center;
-padding-left: 0 !important;
+  background: RGBA(246, 246, 246, 1.00);
+  min-height: 5rem;
+  margin-top: 4rem;
+  text-align: center;
+  padding-left: 0 !important;
 
-img {
-  float: left;
-  display: inline-block;
-  max-width: 14rem;
-  margin: 3rem 5%;
-}
-
-p {
-  float: right;
-  margin: 3.5rem 5%;
-  display: inline-block;
-  font-family: helvetica;
-  color: #777;
-
-  &:hover {
-    color: $lightblue;
+  img {
+    float: left;
+    display: inline-block;
+    max-width: 14rem;
+    margin: 3rem 5%;
   }
-}
+
+  p {
+    float: right;
+    margin: 3.5rem 5%;
+    display: inline-block;
+    font-family: helvetica;
+    color: #777;
+
+    &:hover {
+      color: $lightblue;
+    }
+  }
 }

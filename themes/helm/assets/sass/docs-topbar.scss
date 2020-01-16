@@ -18,6 +18,12 @@
     color: $navyl;
     @include ripple;
   }
+
+  display: none;
+}
+
+.page-docs #banner {
+  display: block;
 }
 
 .navbar-top {
@@ -39,7 +45,7 @@
     right: 8px;
     top: -120px;
     padding-top: 0;
-    min-height: 5.25rem;
+    min-height: 5rem;
     background: white url('/img/topography.png') left top repeat;
     background-attachment: fixed;
     z-index: 1140;
@@ -51,6 +57,12 @@
 
     li.versioner {
       right: 16.67vw;
+    }
+
+    a.button {
+      margin-right: 0;
+      right: 1.75rem;
+
     }
   }
 

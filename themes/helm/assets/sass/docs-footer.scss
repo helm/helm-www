@@ -12,6 +12,7 @@
 
   dl {
     font-family: 'Space Mono';
+    padding-bottom: 2rem;
     
     dt,
     dd {
@@ -113,29 +114,23 @@
   }
 }
 
-.cncf-wrap {
-  max-width: 100%;
-}
 
-.cncf {
-  background: lighten($light2, 7.5%);
+.cncf-wrap {
   min-height: 2rem;
   text-align: center;
-  padding-left: 300px;
-  border-top: 1px solid darken($light1, 2.5%);
 
   img {
-    float: left;
-    display: inline-block;
     max-width: 10rem;
-    margin: 1.5rem 0 1.5rem 7.5%;
+    min-width: 20vw;
+    margin: 1.25rem 1.667vw;
   }
 
   p {
-    float: right;
-    margin: 1.125rem 2.5% 0 0;
+    margin: 1.5rem 2.5% 0 0;
     display: inline-block;
-    color: #222;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
 
     &:hover {
       color: $blue2;
