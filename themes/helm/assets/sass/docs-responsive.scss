@@ -47,29 +47,36 @@
     }
   }
 
-  #banner {
-    display: none;
+  .page-docs {
+    #banner {
+      display: none;
 
-    &.is-active {
-      display: block;
-      top: 8.75rem;
-      position: fixed;
-      z-index: 1220;
-      border-top: 1px solid $navyl;
-      border-bottom: 1px solid $navyl;
-      background: $navyl;
-      
-      p {
-        padding: 0.25rem 0;
+      &.is-active {
+        display: block;
+        top: 8.75rem;
+        position: fixed;
+        z-index: 1220;
+        border-top: 1px solid $navyl;
+        border-bottom: 1px solid $navyl;
+        background: $navyl;
+        
+        p {
+          padding: 0.25rem 0;
+        }
+      }
+
+      a, p {
+        color: white;
+      }
+  
+      p small {
+        font-size: 3.33vw;
       }
     }
 
-    a, p {
-      color: white;
-    }
-
-    p small {
-      font-size: 3.33vw;
+    .navbar-top {
+      padding-top: 0;
+      min-height: 3rem;
     }
   }
 
@@ -83,6 +90,7 @@
   }
   .page-docs .content-docs {
     padding-left: 0;
+    padding-top: 3rem;
   }
 
   .page-docs .content-docs {
@@ -93,7 +101,7 @@
   // content sizes
   .content-wrapper {
     max-width: 90vw !important;
-    padding: 3rem 5vw;
+    padding: 0 5vw 3rem;
 
     h1 {
       font-size: 7.5vw;
@@ -155,6 +163,14 @@
     img {
       min-width: 10%;
       max-width: 40vw;
+    }
+  }
+
+  .footer-links {
+    margin-left: 0;
+
+    p.lead {
+      font-size: 1rem;
     }
   }
 }

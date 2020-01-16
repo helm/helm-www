@@ -182,8 +182,9 @@
 }
 
 .helm-community {
-  background-color: white;
-  color: $darkblue;
+  color: $navy;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
   background: linear-gradient( 0deg, #fff, #F7F7F7);
 
   h2, p {
@@ -191,7 +192,7 @@
   }
 
   h2 {
-    margin-bottom: 0.5em;
+    margin: 5rem auto 0;
     @include klinicBold;
 
     & + p {
@@ -259,15 +260,6 @@
         color: $darkblue;
       }
 
-      iframe {
-        width: 35%;
-        display: inline-block;
-        min-width: 200px;
-        position: absolute;
-        right: 1em;
-        top: 1em;
-      }
-
       .right {
         background-color: lighten($light1, 1.5%);
         text-align: center;
@@ -303,7 +295,7 @@
   }
 }
 
-.contrib-logos {
+.helm-contrib-logos {
   text-align: center;
   padding-bottom: 50px;
   padding-top: 1.5rem;
@@ -311,13 +303,13 @@
   img {
     padding: 0;
     display: inline-block;
-    margin: 0;
-    max-width: 100%;
+    margin: 0 2vw;
+    width: 23vw;
+    max-width: 12rem;
   }
 
   .helm-logo {
-    margin: 0 auto;
-    margin-bottom: 2.25em;
+    margin: 0 auto 2.25em;
     display: block;
     text-align: center;
     padding: 3.5em 0 0;
