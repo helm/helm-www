@@ -1,7 +1,21 @@
+// overwrites global styles on homepage
 .page-home {
-
+  .navbar-top {
+    padding-top: 3.5rem;
+  }
 }
 
+.page-home + .footer-links {
+  margin-left: 0;
+
+  dl {
+    dt {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// unique homepage layouts
 .home-intro {
   min-height: 90vh;
   background: url('/img/topography.png') left top repeat;
@@ -9,21 +23,368 @@
 
   .logo img {
     position: absolute;
-    top: 15vw;
-    left: 20vw;
-    width: 15vw;
+    top: 22vw;
+    right: 60vw;
+    width: 10vw;
   }
 
   h1 {
-    font-size: 3.5vw;
+    font-size: 2.775vw;
     position: absolute;
-    top: 15vw;
-    left: 45vw;
+    top: 20.5vw;
+    left: 44vw;
     max-width: 40vw;
-    letter-spacing: 0.2rem;
+    line-height: 1.2;
+    letter-spacing: -0.015rem;
+
+    em {
+      margin-bottom: -0.25vw;
+      display: block;
+    }
 
     span {
       display: block;
     }
   }
+}
+
+// v2 era layout
+
+.home-overview {
+  background: url('../img/features-bg.png') no-repeat center 0;
+  background-size: cover;
+  text-align: center;
+  margin-top: 5em;
+  margin-bottom: 2em;
+  padding-bottom: 4rem;
+
+  .large-3 {
+    min-height: 280px;
+  }
+
+  h2 {
+    @include klinicBold;
+    color: $darkblue;
+    border-bottom: 4px solid lighten($blue, 25%);
+    margin: 1.5rem 0 2.5rem;
+    display: inline-block;
+
+    .fa {
+      color: $pink;
+    }
+  }
+
+  h3 {
+    color: $darkblue;
+    margin: 0.25em 0 0.5em;
+    font-size: 1.5rem;
+    padding-top: 90px;
+    position: relative;
+    @include klinicBold;
+
+    small {
+      position: absolute;
+      top: 8.667em;
+      color: red;
+      width: 10em;
+      left: 50%;
+      font-size: 0.6em;
+      margin-left: -5em;
+    }
+  }
+
+  .columns {
+    position: relative;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -29px;
+  }
+
+  p {
+    font-size: 0.925rem;
+    padding: 0 5%;
+    line-height: 1.5;
+
+    code {
+      border: none;
+    }
+  }
+
+  .row {
+    background-color: white;
+
+    &:first-child {
+      border-radius: 0.5em 0.5em 0 0;
+    }
+    &:last-child {
+      padding-bottom: 0.5em;
+      border-radius: 0 0 0.5em 0.5em;
+    }
+  }
+}
+
+.get-helm {
+  padding-bottom: 50px;
+  border: 2px dashed $lightblue;
+  padding: 2em;
+  margin-bottom: 4em;
+  position: relative;
+  z-index: 100;
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: " ";
+    top: 0.667em;
+    left: -0.25em;
+    width: 100%;
+    height: 375px;
+    z-index: -5;
+    background-color: $darkblue;
+    transform: rotateX(12deg);
+    opacity: 0.425;
+  }
+
+  h2 {
+    margin: 0 0 0.5em;
+    padding: 0;
+  }
+
+  img {
+    margin: 0.333em 0;
+  }
+}
+
+.get-charts {
+  padding-left: 3.5rem;
+
+  h2 {
+    margin: 2.5rem 0 1rem;
+    padding: 0;
+  }
+}
+
+.helm-community {
+  background-color: white;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  color: $darkblue;
+  background: linear-gradient( 0deg, #fff, #F7F7F7);
+
+  h2, p {
+    color: $darkblue;
+  }
+
+  h2 {
+    margin-bottom: 0.5em;
+
+    & + p {
+      margin-bottom: 4.5rem;
+    }
+  }
+
+  .helm-community-links {
+    ul {
+      background-color: white;
+      padding: 1.5em 2.25em;
+      border-radius: 1em;
+
+      li {
+        font-size: 1.5rem;
+        list-style: none;
+        color: $darkblue;
+        line-height: 2.5;
+        padding-left: 2.25em;
+        position: relative;
+        @include klinicReg;
+
+        a {
+          color: $darkblue;
+          border-bottom: 3px solid $blue;
+
+          &:hover {
+            color: $blue;
+            border-color: $lightblue;
+          }
+        }
+
+        .fa {
+          color: $blue;
+          font-size: 2rem;
+          width: 1.25em;
+          padding-right: 0em;
+          position: absolute;
+          left: 0;
+          top: 0.525em;
+        }
+      }
+    }
+  }
+
+  .helm-community-blocks {
+    section {
+      border: 1px solid $darkblue;
+      border-radius: 1rem;
+      margin: 0 0 2em;
+      padding: 1.25rem 1.5rem;
+      min-height: 125px;
+      position: relative;
+
+      &:first-child {
+        min-height: 175px;
+      }
+
+      h4 {
+        color: $darkblue;
+        font-size: 1.5em;
+        @include klinicBold;
+        margin: -0.25em 0 0.667em;
+      }
+
+      p {
+        color: $darkblue;
+        font-size: 1rem;
+        float: left;
+        line-height: 1.65;
+      }
+
+      a {
+        color: $darkblue;
+      }
+
+      iframe {
+        width: 35%;
+        display: inline-block;
+        min-width: 200px;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+      }
+
+      .right {
+        background-color: lighten($light1, 1.5%);
+        text-align: center;
+        padding: 1.25em 2em 1em;
+        width: 33.3%;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+
+        .fa {
+          font-size: 2.75rem;
+          float: left;
+          display: inline-block;
+          padding-right: 0.333em;
+          color: $blue;
+        }
+        em {
+          font-style: normal;
+          font-size: 1.125em;
+          display: inline-block;
+          min-width: 50%;
+          color: $blue;
+          font-weight: bold;
+        }
+        small {
+          display: inline-block;
+          font-size: 0.667rem;
+          min-width: 50%;
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+.helm-contrib-logos {
+text-align: center;
+padding-bottom: 50px;
+
+.helm-contrib-logos {
+  padding-top: 1.5rem;
+}
+
+img {
+  padding: 0;
+  display: inline-block;
+  margin: 0;
+  max-width: 15%;
+}
+
+.helm-logo {
+  margin: 0 auto;
+  margin-bottom: 2.25em;
+  display: block;
+  text-align: center;
+  padding: 3.5em 0 0;
+}
+
+hr {
+  background-color: $lightblue;
+  height: 2px;
+  opacity: 0.25;
+  width: 50%;
+  margin: 1rem 25%;
+}
+
+p {
+  color: $dark1;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 1.333em;
+  line-height: 2;
+  letter-spacing: 0.025em;
+  color: #9B9B9B;
+
+  a {
+    font-weight: bold;
+    color: $darkblue;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      border-bottom: 2px solid $blue;
+    }
+  }
+
+  small {
+    padding-top: 1rem;
+    font-size: 0.925em;
+  }
+}
+}
+
+.full-width {
+min-width: 100%;
+}
+
+.cncf {
+background: RGBA(246, 246, 246, 1.00);
+min-height: 5rem;
+margin-top: 4rem;
+text-align: center;
+padding-left: 0 !important;
+
+img {
+  float: left;
+  display: inline-block;
+  max-width: 14rem;
+  margin: 3rem 5%;
+}
+
+p {
+  float: right;
+  margin: 3.5rem 5%;
+  display: inline-block;
+  font-family: helvetica;
+  color: #777;
+
+  &:hover {
+    color: $lightblue;
+  }
+}
 }

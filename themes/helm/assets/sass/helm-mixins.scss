@@ -61,6 +61,7 @@ $light1: lighten($light2, 2.5%);
   $darkgreen      : #44A653;
 
   $salmon         : #F99EAC;
+  $salmonl        : #F8DCDF;
 
   $lightpink      : #FF7590;
   $lightblue      : #7FCCF0;
@@ -178,6 +179,14 @@ $mono: "Space Mono", "Courier New", monaco, monospace;
   animation-duration: $duration;
   animation-name: $animation;
   animation-fill-mode: forwards;
+}
+
+@mixin opacity($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
 }
 
 /**

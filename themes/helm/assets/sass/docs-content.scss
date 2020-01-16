@@ -38,7 +38,16 @@
   h3 {
     color: $grey4;
     @include klinicBold;
-    margin: 1.825em 0 1.825em;
+    margin: 3em 0 1.825em;
+
+    pre,
+    code {
+      padding: 0 0.2em;
+      background: lighten($light2, 1%);
+      font-weight: bold;
+      font-size: 1.35rem;
+
+    }
   }
 
   h4 {
@@ -129,6 +138,7 @@
     padding: 0.75em 1em;
     margin: 0.25em 0 2.5em;
     font-size: 1rem;
+    line-height: 1.636;
     border-left: 2px solid $yellow;
 
     code {
@@ -172,6 +182,25 @@
         padding-left: 0.35em;
         padding-right: 0.35em;
       }
+    }
+  }
+
+  ul {
+    list-style: disc;
+    color: $navy;
+    font-size: $scalex5;
+
+    li {
+      padding-bottom: 0.25em;
+      color: $grey4;
+      line-height: 1.85;
+      font-size: $scalex5;
+    }
+
+    li::before {
+      // content: "\2022";
+      // color: $navy;
+      // padding-bottom: 0.5em;
     }
   }
 

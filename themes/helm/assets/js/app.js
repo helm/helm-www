@@ -7,8 +7,10 @@ $(document).ready(function() {
   // close all accordions, besides that of the page that is currently active
   var doclocation = window.location.pathname;
   var docpath = doclocation.substring(0, doclocation.lastIndexOf("/"));
-  var directoryName = docpath.substring(docpath.lastIndexOf("/")+1);
-  $(".toctree-l1 > a[href='" + directoryName + "']").addClass('active').attr({state: "open"});
+  var parentName = docpath.replace(/\/[^\/]+$/, '')
+  var pageName = docpath.substring(docpath.lastIndexOf("/")+1);
+  $(".toctree-l1 > a[href*='" + parentName + "']").addClass("active");
+  $(".toctree-12 > a[href$='" + pageName + "/']").addClass("active");
 
   if (allClosed === true) { }
 
@@ -50,6 +52,17 @@ $(".navbar-burger").click(function() {
   $(".sidebar-wrapper").toggleClass("is-active");
 });
 
+// adjust docs sidebar after scroll
+if ($('.page-docs').length) {
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 50) {
+        $(".sidebar-main").addClass('is-scrolled');
+      } else{
+        $(".sidebar-main").removeClass('is-scrolled');
+      }
+  });
+}
 
 // add permalinks to titles
 $(function() {

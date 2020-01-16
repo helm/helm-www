@@ -12,39 +12,39 @@ Helm
     {{ partial "nav-fixed.html" . }}
   </header>
 
-  <div id="helm" class="home">
+  <section class="home-intro hero">
+    <article>
+      <a href="/" class="logo">
+        <img src="/img/helm.svg" alt="Helm" />
+      </a>
+      <h1>
+        {{ T "main_title" }}
+      </h1>
+      <h2>
+        {{ T "main_subtitle" | markdownify }}
+      </h2>
+    </article>
+  </section>
 
-    <section class="billboard">
-      <div class="container">
-        <h1>
-          {{ T "main_title" }}
-        </h1>
+  <section class="home-overview">
+    <div class="columns">
+      <div class="column">
         <h2>
-          {{ T "main_subtitle" | markdownify }}
+          {{ T "main_what_is_helm_title" }}
         </h2>
-      </div>
-      <div id="boat"></div>
-    </section>
 
-    <div class="container content">
-      <div class="row">
-        <div class="small-12 medium-6 columns">
-          <h2>
-            {{ T "main_what_is_helm_title" }}
-          </h2>
+        <p>
+          {{ T "main_what_is_helm_description" | markdownify }}
+        </p>
 
-          <p>
-            {{ T "main_what_is_helm_description" | markdownify }}
-          </p>
+        <p class="github-stats">
+          <a class="github-button" href="https://github.com/helm/helm" data-size="large" data-show-count="true" aria-label="Star helm/helm on GitHub">Star</a>
+          &nbsp;
+          <a class="github-button" href="https://github.com/helm/helm/subscription" data-size="large" data-show-count="true" aria-label="Watch helm/helm on GitHub">Watch</a>
+          &nbsp;
+          <a class="github-button" href="https://github.com/helm/helm/fork" data-size="large" data-show-count="true" aria-label="Fork helm/helm on GitHub">Fork</a>
+        </p>
 
-          <p class="github-stats">
-            <a class="github-button" href="https://github.com/helm/helm" data-size="large" data-show-count="true" aria-label="Star helm/helm on GitHub">Star</a>
-            &nbsp;
-            <a class="github-button" href="https://github.com/helm/helm/subscription" data-size="large" data-show-count="true" aria-label="Watch helm/helm on GitHub">Watch</a>
-            &nbsp;
-            <a class="github-button" href="https://github.com/helm/helm/fork" data-size="large" data-show-count="true" aria-label="Fork helm/helm on GitHub">Fork</a>
-          </p>
-        </div>
       </div>
 
       <div class="column">
@@ -148,8 +148,9 @@ Helm
     </div>
   </section>
 
-  {{ partial "footer-links.html" . }}
   {{ partial "footer.html" . }}
+
+  {{ partial "footer-links.html" . }}
 </div> <!-- / #helm .page-home -->
 
 {{ end }}

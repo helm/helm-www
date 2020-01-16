@@ -40,7 +40,7 @@
     top: -120px;
     padding-top: 0;
     min-height: 5.25rem;
-    background: url('/img/topography.png') left top repeat;
+    background: white url('/img/topography.png') left top repeat;
     background-attachment: fixed;
     z-index: 1140;
 
@@ -59,10 +59,10 @@
     font-size: 1.125rem;
     @include ripple;
     @include klinicBold;
-    padding: 1.75rem 2vw;
+    padding: 1.75rem 1.75vw;
 
     &:hover {
-      background-color: lighten($salmon, 12.5%);
+      @include opacity(rgba($salmon, 0.5), white);
     }
   }
 
@@ -77,8 +77,8 @@
     font-size: 1.125rem;
     position: absolute;
     height: 3rem !important;
-    right: 1rem;
-    padding: 1rem 2.25vw;
+    right: 1.25vw;
+    padding: 1rem 1.925vw;
     border-color: $navy;
     color: $navy;
 
