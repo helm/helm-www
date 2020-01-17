@@ -202,7 +202,7 @@ make sure to change your import paths.
 The `.Capabilities` built-in object available during the rendering stage has
 been simplified.
 
-[Built-in Objects](/docs/topics/chart_template_guide/builtin_objects/)
+[Built-in Objects](/docs/chart_template_guide/builtin_objects/)
 
 ### Validating Chart Values with JSONSchema
 
