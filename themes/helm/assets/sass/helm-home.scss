@@ -62,9 +62,8 @@
   background-blend-mode: color-burn;
   background-attachment: fixed;
   text-align: center;
-  margin-top: 5em;
-  margin-bottom: 2em;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   min-height: 80vh;
 }
 
@@ -186,6 +185,7 @@
   padding-top: 2rem;
   padding-bottom: 5rem;
   background: linear-gradient( 0deg, #fff, #F7F7F7);
+  border-bottom: 1px solid $light1;
 
   h2, p {
     color: $navy;
@@ -297,7 +297,7 @@
 
 .helm-contrib-logos {
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 8rem;
   padding-top: 1.5rem;
 
   img {
