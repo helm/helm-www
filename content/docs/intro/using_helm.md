@@ -213,7 +213,7 @@ pass that file during installation.
 
 ```console
 $ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
-$ helm install -f config.yaml stable/mariadb
+$ helm install -f config.yaml stable/mariadb --generate-name
 ```
 
 The above will create a default MariaDB user with the name `user0`, and grant
