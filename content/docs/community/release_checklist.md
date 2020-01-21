@@ -40,7 +40,7 @@ following:
 
 ```shell
 export RELEASE_NAME=vX.Y.0
-export RELEASE_BRANCH_NAME="release-$RELEASE_NAME"
+export RELEASE_BRANCH_NAME="release-X.Y"
 export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
 ```
 
@@ -94,12 +94,11 @@ iterate upon later.
 ### Patch releases
 
 Patch releases are a few critical cherry-picked fixes to existing releases.
-Start by creating a `release-vX.Y.Z` branch from the latest patch release.
+Start by creating a `release-vX.Y.Z` branch:
 
 ```shell
-git fetch upstream --tags
-git checkout $PREVIOUS_PATCH_RELEASE
-git checkout -b $RELEASE_BRANCH_NAME
+git fetch upstream
+git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
 ```
 
 From here, we can cherry-pick the commits we want to bring into the patch
@@ -110,11 +109,19 @@ release:
 git log --oneline
 # cherry-pick the commits starting from the oldest one, without including merge commits
 git cherry-pick -x <commit-id>
-git cherry-pick -x <commit-id>
 ```
 
-This new branch is going to be the base for the release, which we are going to
-iterate upon later.
+Finally, we create the tag for the patch on the branch and push upstream:
+
+```shell
+git tag --sign --annotate "$RELEASE_NAME" --message "Helm release $RELEASE_NAME"
+git push upstream "$RELEASE_NAME"
+```
+
+This new tag is going to be the base for the patch release.
+
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
+see that the release passed CI before proceeding.
 
 ## 2. Change the Version Number in Git
 
@@ -137,9 +144,6 @@ index 2109a0a..6f5a1a4 100644
         // BuildMetadata is extra build time data
         BuildMetadata = "unreleased"
 ```
-
-For patch releases, the old version number will be the latest patch release, so
-just bump the patch number, incrementing Z by one.
 
 ```shell
 git add .
@@ -165,7 +169,7 @@ git cherry-pick -x <commit-id>
 git push origin bump-version-<release-version>
 ```
 
-## 3. Commit and Push the Release Branch
+## 3. Major/Minor releases: Commit and Push the Release Branch
 
 In order for others to start testing, we can now push the release branch
 upstream and start the test process.
@@ -174,14 +178,14 @@ upstream and start the test process.
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) and
-make sure the release passed CI before proceeding.
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
+see that the release passed CI before proceeding.
 
 If anyone is available, let others peer-review the branch before continuing to
 ensure that all the proper changes have been made and all of the commits for the
 release are there.
 
-## 4. Create a Release Candidate
+## 4. Major/Minor releases: Create a Release Candidate
 
 Now that the release branch is out and ready, it is time to start creating and
 iterating on release candidates.
@@ -219,7 +223,7 @@ Then, unpack and move the binary to somewhere on your $PATH, or move it
 somewhere and add it to your $PATH (e.g. /usr/local/bin/helm for linux/macOS,
 C:\Program Files\helm\helm.exe for Windows).
 
-## 5. Iterate on Successive Release Candidates
+## 5. Major/Minor releases: Iterate on Successive Release Candidates
 
 Spend several days explicitly investing time and resources to try and break helm
 in every possible way, documenting any findings pertinent to the release. This
@@ -256,7 +260,7 @@ git push upstream $RELEASE_CANDIDATE_NAME
 From here on just repeat this process, continuously testing until you're happy
 with the release candidate.
 
-## 6. Finalize the Release
+## 6. Major/Minor releases: Finalize the Release
 
 When you're finally happy with the quality of a release candidate, you can move
 on and create the real thing. Double-check one last time to make sure everything
@@ -289,7 +293,7 @@ make sign
 This will generate ascii armored signature files for each of the files pushed by
 CI.
 
-All of the signature files need to be uploaded to the release on GitHub.
+All of the signature files (`*.asc`) need to be uploaded to the release on GitHub.
 
 ## 8. Write the Release Notes
 
@@ -316,12 +320,10 @@ The community keeps growing, and we'd love to see you there!
 - Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom.us/j/696660622)
 - Test, debug, and contribute charts: [GitHub/helm/charts](https://github.com/helm/charts)
 
-## Features and Changes
+## Notable Changes
 
-- Major
-- features
-- list
-- here
+- Kubernetes 1.16 is now supported including new manifest apiVersions
+- Sprig was upgraded to 2.22
 
 ## Installation and Upgrading
 
@@ -345,19 +347,8 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 
 ## Changelog
 
-### Features
-- ref(*): kubernetes v1.11 support efadbd88035654b2951f3958167afed014c46bc6 (Adam Reese)
-- feat(helm): add $HELM_KEY_PASSPHRASE environment variable for signing helm charts (#4778) 1e26b5300b5166fabb90002535aacd2f9cc7d787
-
-### Bug fixes
-- fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
-
-### Code cleanup
-- ref(kube): Gets rid of superfluous Sprintf call 3071a16f5eb3a2b646d9795617287cc26e53dba4  (Taylor Thomas)
 - chore(*): bump version to v2.7.0 08c1144f5eb3e3b636d9775617287cc26e53dba4 (Adam Reese)
-
-### Documentation Changes
-- docs(release_checklist): fix changelog generation command (#4694) 8442851a5c566a01d9b4c69b368d64daa04f6a7f (Matthew Fisher)
+- fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
 ```
 
 The changelog at the bottom of the release notes can be generated with this
@@ -367,9 +358,6 @@ command:
 PREVIOUS_RELEASE=vX.Y.Z
 git log --no-merges --pretty=format:'- %s %H (%aN)' ${PREVIOUS_RELEASE}..${RELEASE_NAME}
 ```
-
-After generating the changelog, you will need to categorize the changes as shown
-in the example above.
 
 Once finished, go into GitHub and edit the release notes for the tagged release
 with the notes written here.
@@ -390,10 +378,7 @@ Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
 it.
 
 After enjoying a nice $DRINK_OF_CHOICE, go forth and announce the glad tidings
-of the new release in Slack and on Twitter. You should also notify any key
-partners in the helm community such as the homebrew formula maintainers, the
-owners of incubator projects (e.g. ChartMuseum) and any other interested
-parties.
+of the new release in Slack and on Twitter.
 
 Optionally, write a blog post about the new release and showcase some of the new
 features on there!
