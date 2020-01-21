@@ -1,0 +1,50 @@
+[main_title]
+other = "The package manager for Kubernetes"
+
+[main_subtitle]
+other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io)."
+
+[main_what_is_helm_title]
+other = "What is Helm?"
+
+[main_what_is_helm_description]
+other = """
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+
+The latest version of Helm is maintained by the [CNCF](https://cncf.io) - in collaboration with [Microsoft](https://microsoft.com), [Google](https://google.com), [Bitnami](https://bitnami.com) and the [Helm contributor community](https://github.com/helm/community).
+"""
+
+[main_why_teams_love]
+other = 'Why Teams <i class="fa fa-heart"></i> Helm'
+
+[manage_complexity_title]
+other = "Manage Complexity"
+
+[manage_complexity_description]
+other = "Charts describe even the most complex apps, provide repeatable application installation, and serve as a single point of authority."
+
+[easy_updates_title]
+other = "Easy Updates"
+
+[easy_updates_description]
+other = "Take the pain out of updates with in-place upgrades and custom hooks."
+
+[easy_sharing_title]
+other = "Simple Sharing"
+
+[easy_sharing_description]
+other = "Charts are easy to version, share, and host on public or private servers."
+
+[rollbacks_title]
+other = "Rollbacks"
+
+[rollbacks_description]
+other = "Use `helm rollback` to roll back to an older version of a release with ease."
+
+[banner_1]
+other = "You are viewing info for Helm 3 - check the **[version FAQs](https://helm.sh/docs/faq/)** or **[see to Helm 2](https://v2.helm.sh)** for prior versions."
+
+[banner_2]
+other = "Viewing **Helm 3** release. For **Helm 2** go [here](https://v2.helm.sh/)."
