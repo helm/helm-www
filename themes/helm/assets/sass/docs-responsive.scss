@@ -6,6 +6,7 @@
   #helm {
     width: 100vw !important;
     overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   // mobile menu
@@ -43,6 +44,56 @@
       a.navbar-item {
         padding: 0.75rem 4vw;
         color: white;
+      }
+    }
+  }
+
+  .home-intro {
+
+    .logo img {
+      position: absolute;
+      top: 8rem;
+      left: 10vw;
+      right: auto;
+      margin: 0;
+      width: 22.5vw;
+    }
+    
+    h1 {
+      font-size: 5vw;
+      // font-size: 2.775vw;
+      position: absolute;
+      left: 40%;
+      top: 10rem;
+      margin: 0;
+      max-width: 50%;
+      line-height: 1.2;
+      letter-spacing: -0.015rem;
+    }
+
+    h2 {
+      border: 4px solid white;
+      top: 70vw;
+      left: 2.5vw;
+      right: 15vw;
+      font-size: 4.5vw;
+      position: absolute;
+      background: rgba(183,194,233,0.25);
+      bottom: auto;
+      width: 92.5vw;
+      padding: 3.5vw 5vw 3.5vw 5vw;
+      outline: 2px solid $navy;
+
+      strong {
+        position: absolute;
+        right: 1rem;
+        top: 0;
+        margin-top: -1.25rem;
+        color: white;
+        display: inline-block;
+        background: $navyl;
+        padding: 1vw 2vw;
+        font-size: 0.825rem;
       }
     }
   }
