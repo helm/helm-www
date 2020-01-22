@@ -327,3 +327,22 @@
     min-height: 320px;
   }
 }
+
+a.external {
+  position: relative;
+  @include transition;
+  
+  .icon {
+    position: absolute;
+    margin-top: -0.5em;
+    margin-right: -0.5em;
+    opacity: 0;
+    font-size: 0.825em;
+  }
+
+  &:hover {
+    .icon {
+      opacity: 1;
+    }
+  }
+}

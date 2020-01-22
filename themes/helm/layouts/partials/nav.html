@@ -1,4 +1,3 @@
-{{- $navbar := .Site.Params.navbar }}
 {{ $versions  := site.Params.versions }}
 {{ $primary   := index (where $versions ".primary" true) 0 }}
 {{ $lang      := .Lang }}
@@ -13,30 +12,23 @@
       </a>
     </div>
 
+    <!-- desktop menu -->
     <div class="navbar-menu is-centered" id="navMenuDocumentation">
-      <div class="">
-        {{- range $navbar }}
-        <a href="{{ .url }}" class="navbar-item">
-          {{ .title }}
-        </a>
-      {{- end }}
-      </div>
+      {{ range $menu }}
+        {{ if in (print .URL) "http"}}
+          <a href="{{ .URL | relLangURL }}" class="navbar-item external" target="_blank">
+            {{ .Name }} <span class="icon"><i class="mdi mdi-open-in-new"></i></span>
+          </a>
+        {{ else }}
+          <a href="{{ .URL | relLangURL }}" class="navbar-item">
+            {{ .Name }}
+          </a>
+        {{ end }}
+      {{ end }}
     </div>
 
-    <!-- desktop menu -->
     <div class="navbar-end is-hidden-mobile">
       <ul class="is-pulled-right">
-        <!-- <li>
-          <span class="icon">
-            <i class="fa fa-twitter"></i>
-          </span>
-        </li>
-        <li>
-          <span class="icon">
-            <i class="fa fa-github"></i>
-          </span>
-        </li> -->
-
         <!--
         {{ range .Translations }}
         <li>

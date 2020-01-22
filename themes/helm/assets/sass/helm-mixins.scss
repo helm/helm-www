@@ -103,8 +103,8 @@ $mono: "Space Mono", "Courier New", monaco, monospace;
        url('../fonts/spacemono-bold-webfont.woff') format('woff');
   font-weight: bold;
   font-style: normal;
-
 }
+
 
 @mixin klinicBold {
   font-family: $mono;
