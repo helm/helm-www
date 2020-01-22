@@ -328,6 +328,10 @@
   }
 }
 
+a {
+  color: $navy;
+}
+
 a.external {
   position: relative;
   @include transition;

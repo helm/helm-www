@@ -25,10 +25,12 @@
   min-height: 90vh;
   background: url('/img/topography.png') left top repeat;
   background-attachment: fixed;
+  position: relative;
 
   .logo img {
     position: absolute;
-    top: 22vw;
+    top: 50vh;
+    margin-top: -14vw;
     right: 60vw;
     width: 10vw;
   }
@@ -36,21 +38,52 @@
   h1 {
     font-size: 2.775vw;
     position: absolute;
-    top: 20.5vw;
     left: 44vw;
+    top: 50vh;
+    margin-top: -13.25vw;
     max-width: 40vw;
     line-height: 1.2;
     letter-spacing: -0.015rem;
 
-    em {
-      margin-bottom: -0.25vw;
+    strong {
       display: block;
+      font-style: normal;
+      color: $navy;
     }
 
-    span {
-      display: block;
+    em {
+      margin-bottom: -0.25vw;
     }
   }
+
+  h2 {
+    border: 8px solid $navy;
+    left: 15vw;
+    right: 15vw;
+    font-size: 2vw;
+    position: absolute;
+    background: rgba(183,194,233,0.5);
+    bottom: 24px;
+    width: 70vw;
+    // max-width: 1000px;
+    padding: 2vw 20% 2vw 2vw;
+    line-height: 1.5;
+    letter-spacing: -0.015rem;
+    vertical-align: center;
+
+    strong {
+      position: absolute;
+      right: -2.25vw;
+      // bottom: 3vw;
+      margin-top: -2.75em;
+      color: white;
+      display: block;
+      background: $navy;
+      padding: 1vw 2vw;
+
+    }
+  }
+
 }
 
 // v2 era layout

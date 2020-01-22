@@ -18,7 +18,7 @@ Helm
         <img src="/img/helm.svg" alt="Helm" />
       </a>
       <h1>
-        {{ T "main_title" }}
+        {{ T "main_title" | markdownify }}
       </h1>
       <h2>
         {{ T "main_subtitle" | markdownify }}
@@ -30,7 +30,7 @@ Helm
     <section class="home-overview columns">
       <div class="column text-left">
         <h2>
-          {{ T "main_what_is_helm_title" }}
+          {{ T "main_what_is_helm_title" | markdownify }}
         </h2>
 
         <p>

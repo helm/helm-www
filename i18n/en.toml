@@ -1,8 +1,8 @@
 [main_title]
-other = "The package manager for Kubernetes"
+other = "**The** **package manager** **_for_ Kubernetes**"
 
 [main_subtitle]
-other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io)."
+other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io). **3rd Edition**"
 
 [main_what_is_helm_title]
 other = "What is Helm?"

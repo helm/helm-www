@@ -45,7 +45,7 @@
     right: 8px;
     top: -120px;
     padding-top: 0;
-    min-height: 5rem;
+    min-height: 5.25rem;
     background: white url('/img/topography.png') left top repeat;
     background-attachment: fixed;
     z-index: 1140;
@@ -56,13 +56,7 @@
     }
 
     li.versioner {
-      right: 16.67vw;
-    }
-
-    a.button {
-      margin-right: 0;
-      right: 1.75rem;
-
+      // right: 16.67vw;
     }
   }
 
@@ -84,7 +78,7 @@
   }
 
   a.button {
-    margin: 1rem 3vw;
+    margin: 1rem 0;
     background-color: rgba(255,255,255,0.5);
     font-size: 1.125rem;
     position: absolute;
@@ -105,8 +99,7 @@
     padding: 1rem 0.5rem 0 !important;
     margin: 0 0 -1px !important;
     position: absolute;
-    right: 11.5vw;
-    // display: none;
+    right: 12.5vw;
     
     a.versioner-trigger {
       background: rgba(255,255,255,0.5);
@@ -165,10 +158,6 @@
   }
 }
 
-a.button.not-fixed {
-  margin-right: -1.5rem;
-}
-
 .navbar-brand {
   a {
     position: absolute;
@@ -202,51 +191,3 @@ a.button.not-fixed {
       display: none;
     }
   }
-
-
-  // Docs
-
-// .navbar-end {
-//   position: absolute;
-//   right: 0;
-//
-// }
-
-  // ul {
-
-  //   li {
-  //     display: inline-block;
-  //     margin: 0 0.75rem;
-  //   }
-//   }
-// }
-
-// .docs {
-//   .navbar-top .versioner {
-//     display: inline-block;
-//   }
-// }
-
-// .left-off-canvas-toggle {
-//   z-index: 1100;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-
-//   img {
-//     padding: 1.425em 0.925em;
-//     color: $grey4;
-//   }
-// }
-
-// offset banner center when there is a left nav space
-// .blog-layout .main.blog,
-// .sidebar + .main {
-//   nav.top-bar #banner {
-//     margin-left: -300px;
-//   }
-
-//   h1.blog-logo {
-//     top: 30px;
-//   }
-// }
