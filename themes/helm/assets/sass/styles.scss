@@ -2,8 +2,9 @@
 Helm
 */
 
-// load reset (normalize)
-@import "../css/bulma.min.css";
+// load vendor libraries
+@import "./bulma/bulma.sass";
+@import "./materialdesignicons/materialdesignicons.scss";
 
 // load helm styles
 @import "helm-mixins.scss";

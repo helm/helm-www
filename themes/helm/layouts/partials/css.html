@@ -7,7 +7,7 @@
 {{ $cssProdOpts := (dict "includePaths" $includes "targetPath" $cssOut "outputStyle" "compressed") }}
 {{ $cssOpts     := cond $serverMode $cssDevOpts $cssProdOpts }}
 {{ $css         := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
-<link rel="stylesheet" href="/css/bulma.min.css" />
+<!-- <link rel="stylesheet" href="/css/bulma.min.css" /> -->
 {{ if $serverMode }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ else }}
