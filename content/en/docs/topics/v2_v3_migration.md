@@ -58,6 +58,7 @@ during migration:
        - inspect --> show
        - reset (removed)
        - serve (removed)
+       - template: `-x`/`--execute` argument renamed to `-s`/`--show-only`
        - upgrade: Added argument `--history-max` which limits the maximum number of
          revisions saved per release (0 for no limit)
    - Helm 3 Go library has undergone a lot of changes and is incompatible with
