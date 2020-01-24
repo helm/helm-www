@@ -59,21 +59,25 @@
   }
 
   h2 {
-    // border: 0.45vw solid lighten($blue2, 37.5%);
-    left: 15vw;
-    right: 15vw;
+    border: 5px solid $light1;
     font-size: 2vw;
     position: absolute;
-    // background: rgba(183,194,233,0.15);
-    bottom: 24px;
-    width: 70vw;
-    padding: 2vw 20% 2vw 2vw;
+    background: rgba(255,255,255,0.67);
+    bottom: 8.5vw;
+    left: 25vw;
+    width: 48vw;
+    padding: 2vw 5.5vw 2vw 2.5vw;
     line-height: 1.5;
     letter-spacing: -0.015rem;
     vertical-align: center;
+    z-index: 1620;
+    letter-spacing: 0.05em;
+    color: $navyd;
+    font-family: $base;
 
     a {
       color: $navyl;
+      @include ripple;
     }
   }
 }

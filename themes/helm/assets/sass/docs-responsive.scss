@@ -58,6 +58,10 @@
       margin: 0;
       width: 22.5vw;
     }
+
+    .boat.boat-badge{
+      display: none;
+    }
     
     h1 {
       font-size: 5vw;
@@ -72,29 +76,16 @@
     }
 
     h2 {
-      border: 4px solid white;
-      top: 70vw;
-      left: 2.5vw;
-      right: 15vw;
-      font-size: 4.5vw;
+      top: 50vh;
+      left: 8vw;
+      right: 8vw;
+      font-size: 4.75vw;
       position: absolute;
-      background: rgba(183,194,233,0.25);
       bottom: auto;
-      width: 92.5vw;
-      padding: 3.5vw 5vw 3.5vw 5vw;
-      outline: 2px solid $navy;
-
-      strong {
-        position: absolute;
-        right: 1rem;
-        top: 0;
-        margin-top: -1.25rem;
-        color: white;
-        display: inline-block;
-        background: $navyl;
-        padding: 1vw 2vw;
-        font-size: 0.825rem;
-      }
+      width: auto;
+      padding: 1.5rem 2.5vw;
+      // background: transparent;
+      border: none;
     }
   }
 

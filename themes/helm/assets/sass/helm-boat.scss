@@ -41,7 +41,7 @@
     left: 3.25vw;
     bottom: 2vw;
     max-width: 15vw;
-    z-index: 800;
+    z-index: 1800;
     animation: boat-bob 7s cubic-bezier(.55,.5,.45,.5) infinite;
     @include transition;
   }
@@ -76,7 +76,7 @@
       bottom: -8px;
     height: 15vw;
     overflow: hidden;
-    z-index: 500;
+    z-index: 1120;
     background-color: transparent;
     @include transition;
 
@@ -153,7 +153,7 @@
   .boat-ship {
     left: 0.636vw;
     top: 0.2vw;
-    z-index: 800;
+    z-index: 1125;
     max-width: 7vw;
     animation: boat-badge-bob 7s cubic-bezier(.55,.5,.45,.5) infinite;
   }
