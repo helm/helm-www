@@ -69,9 +69,9 @@ if ($('.page-docs').length) {
   $(window).scroll(function() {    // this will work when your window scrolled.
       var height = $(window).scrollTop();  //getting the scrolling height of window
       if(height  > 50) {
-        $(".sidebar-main").addClass('is-scrolled');
+        $(".sidebar").addClass('is-scrolled');
       } else{
-        $(".sidebar-main").removeClass('is-scrolled');
+        $(".sidebar").removeClass('is-scrolled');
       }
   });
 }
