@@ -52,6 +52,18 @@ $(".navbar-burger").click(function() {
   $(".sidebar-wrapper").toggleClass("is-active");
 });
 
+// a life at sea
+if ($('.home').length) {
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 600) {
+        $(".boat").addClass('boat-badge');
+      } else{
+        $(".boat").removeClass('boat-badge');
+      }
+  });
+};
+
 // adjust docs sidebar after scroll
 if ($('.page-docs').length) {
   $(window).scroll(function() {    // this will work when your window scrolled.

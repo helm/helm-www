@@ -22,7 +22,7 @@
 
 // unique homepage layouts
 .home-intro {
-  min-height: 90vh;
+  min-height: 100vh;
   background: url('/img/topography.png') left top repeat;
   background-attachment: fixed;
   position: relative;
@@ -57,12 +57,12 @@
   }
 
   h2 {
-    border: 0.5vw solid $navyd;
+    // border: 0.45vw solid lighten($blue2, 37.5%);
     left: 15vw;
     right: 15vw;
     font-size: 2vw;
     position: absolute;
-    background: rgba(183,194,233,0.5);
+    // background: rgba(183,194,233,0.15);
     bottom: 24px;
     width: 70vw;
     padding: 2vw 20% 2vw 2vw;
@@ -70,19 +70,12 @@
     letter-spacing: -0.015rem;
     vertical-align: center;
 
-    strong {
-      position: absolute;
-      right: -2.25vw;
-      margin-top: -2.75em;
-      color: white;
-      display: block;
-      background: $navyl;
-      padding: 1vw 2vw;
-
+    a {
+      color: $navyl;
     }
   }
-
 }
+
 
 // v2 era layout
 

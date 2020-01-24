@@ -17,7 +17,8 @@
     <div class="navbar-menu is-centered" id="navMenuDocumentation">
       {{ range $menu }}
         {{ if in (print .URL) "http"}}
-          <a href="{{ .URL | relLangURL }}" class="navbar-item external" target="_blank">
+          <a href="{{ .URL | relLangURL }}" class
+          ="navbar-item external" target="_blank">
             {{ .Name }} <span class="icon"><i class="mdi mdi-open-in-new"></i></span>
           </a>
         {{ else }}
