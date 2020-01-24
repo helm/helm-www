@@ -1,8 +1,8 @@
 // overwrites global styles on homepage
 .page-home {
   .navbar-top {
-    padding-top: 0.5rem;
-    min-height: 4rem;
+    min-height: 4.25rem;
+    padding-top: 0;
 
     .container {
       min-height: 1rem;
@@ -26,6 +26,8 @@
   background: url('/img/topography.png') left top repeat;
   background-attachment: fixed;
   position: relative;
+  margin-bottom: -16px;
+  // margin: -8px 0;
 
   .logo img {
     position: absolute;
