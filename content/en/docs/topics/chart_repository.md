@@ -4,8 +4,6 @@ description: "How to create and work with Helm chart repositories."
 aliases: ["/docs/chart_repository/"]
 ---
 
-# The Chart Repository Guide
-
 This section explains how to create and work with Helm chart repositories. At a
 high level, a chart repository is a location where packaged charts can be stored
 and shared.
