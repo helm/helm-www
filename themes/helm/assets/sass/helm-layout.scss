@@ -47,7 +47,8 @@ body {
 // docs layout
 $sidebarWidth: 18.5rem;
 
-.page-docs {
+.page-docs,
+.page-blog {
 
   .navbar-top {
     padding-top: 3.5rem;
@@ -104,6 +105,12 @@ $sidebarWidth: 18.5rem;
     }
   }
 
+  .navbar-top-fixed {
+    .navbar-brand a {
+      padding: 0.725rem 1.75rem 0.4rem 1.75rem
+    }
+  }
+
   .navbar-menu {
     position: absolute;
     // margin: 0 0 0 -12.5rem !important;
@@ -125,5 +132,13 @@ $sidebarWidth: 18.5rem;
       width: 300px;
       min-height: 100%;
     }
+  }
+}
+
+.page-blog .navbar-brand a {
+  border-bottom: 1px solid $light1;
+  
+  &:after {
+    content: "Blog";
   }
 }

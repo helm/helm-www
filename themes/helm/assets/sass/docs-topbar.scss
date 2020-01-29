@@ -22,8 +22,11 @@
   display: none;
 }
 
-.page-docs #banner {
-  display: block;
+.page-docs,
+.page-blog {
+  #banner {
+    display: block;
+  }
 }
 
 .navbar-top {
@@ -182,7 +185,7 @@
   }
 
   .home,
-  .blog {
+  .page-blog {
     .versioner {
       display: none;
     }
