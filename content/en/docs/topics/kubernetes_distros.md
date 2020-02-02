@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Distribution Guide"
-description: "captures information about using Helm in specific Kubernetes environments."
+description: "Captures information about using Helm in specific Kubernetes environments."
 aliases: ["/docs/kubernetes_distros/"]
 ---
 
