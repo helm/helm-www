@@ -1,6 +1,6 @@
 ---
 title: "General Conventions"
-description: "general conventions for charts."
+description: "General conventions for charts."
 weight: 1
 ---
 
