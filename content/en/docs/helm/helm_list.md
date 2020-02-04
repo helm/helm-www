@@ -1,6 +1,5 @@
 ---
 title: "Helm List"
-weight: 22
 ---
 
 ## helm list
@@ -10,23 +9,22 @@ list releases
 ### Synopsis
 
 
-
-This command lists all of the releases.
+This command lists all of the releases for a specified namespace (uses current namespace context if namespace not specified).
 
 By default, it lists only releases that are deployed or failed. Flags like
-'--deleted' and '--all' will alter this behavior. Such flags can be combined:
-'--deleted --failed'.
+'--uninstalled' and '--all' will alter this behavior. Such flags can be combined:
+'--uninstalled --failed'.
 
 By default, items are sorted alphabetically. Use the '-d' flag to sort by
 release date.
 
-If an argument is provided, it will be treated as a filter. Filters are
+If the --filter flag is provided, it will be treated as a filter. Filters are
 regular expressions (Perl compatible) that are applied to the list of releases.
 Only items that match the filter will be returned.
 
-	$ helm list 'ara[a-z]+'
-	NAME            	UPDATED                 	CHART
-	maudlin-arachnid	Mon May  9 16:07:08 2016	alpine-0.1.0
+    $ helm list --filter 'ara[a-z]+'
+    NAME                UPDATED                     CHART
+    maudlin-arachnid    Mon May  9 16:07:08 2016    alpine-0.1.0
 
 If no results are found, 'helm list' will exit 0, but with no output (or in
 the case of no '-q' flag, only headers).
@@ -38,42 +36,56 @@ flag with the '--offset' flag allows you to page through results.
 
 
 ```
-helm list [flags] [FILTER]
+helm list [flags]
 ```
 
 ### Options
 
 ```
-  -a, --all                  show all releases, not just the ones marked DEPLOYED
-  -d, --date                 sort by release date
-      --deleted              show deleted releases
-      --deleting             show releases that are currently being deleted
-      --deployed             show deployed releases. If no other is specified, this will be automatically enabled
-      --failed               show failed releases
-  -m, --max int              maximum number of releases to fetch (default 256)
-      --namespace string     show releases within a specific namespace
-  -o, --offset string        next release name in the list, used to offset from start value
-      --pending              show pending releases
-  -r, --reverse              reverse the sort order
-  -q, --short                output short (quiet) listing format
-      --tls                  enable TLS for request
-      --tls-ca-cert string   path to TLS CA certificate file (default "$HELM_HOME/ca.pem")
-      --tls-cert string      path to TLS certificate file (default "$HELM_HOME/cert.pem")
-      --tls-key string       path to TLS key file (default "$HELM_HOME/key.pem")
-      --tls-verify           enable TLS for request and verify remote
+  -a, --all              show all releases without any filter applied
+      --all-namespaces   list releases across all namespaces
+  -d, --date             sort by release date
+      --deployed         show deployed releases. If no other is specified, this will be automatically enabled
+      --failed           show failed releases
+  -f, --filter string    a regular expression (Perl compatible). Any releases that match the expression will be included in the results
+  -h, --help             help for list
+  -m, --max int          maximum number of releases to fetch (default 256)
+      --offset int       next release name in the list, used to offset from start value
+  -o, --output format    prints the output in the specified format. Allowed values: table, json, yaml (default table)
+      --pending          show pending releases
+  -r, --reverse          reverse the sort order
+  -q, --short            output short (quiet) listing format
+      --superseded       show superseded releases
+      --uninstalled      show uninstalled releases
+      --uninstalling     show releases that are currently being uninstalled
 ```
 
 ### Options inherited from parent commands
 
 ```
-      --debug                     enable verbose output
-      --home string               location of your Helm config. Overrides $HELM_HOME (default "/Users/roflynnc/.helm")
-      --host string               address of Tiller. Overrides $HELM_HOST
-      --kube-context string       name of the kubeconfig context to use
-      --tiller-namespace string   namespace of Tiller (default "kube-system")
+      --add-dir-header                   If true, adds the file directory to the header
+      --alsologtostderr                  log to standard error as well as files
+      --debug                            enable verbose output
+      --kube-context string              name of the kubeconfig context to use
+      --kubeconfig string                path to the kubeconfig file
+      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log-dir string                   If non-empty, write log files in this directory
+      --log-file string                  If non-empty, use this log file
+      --log-file-max-size uint           Defines the maximum size a log file can grow to. Unit is megabytes. If the value is 0, the maximum file size is unlimited. (default 1800)
+      --logtostderr                      log to standard error instead of files (default true)
+  -n, --namespace string                 namespace scope for this request
+      --registry-config string           path to the registry config file (default "~/.config/helm/registry.json")
+      --repository-cache string          path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string         path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --skip-headers                     If true, avoid header prefixes in the log messages
+      --skip-log-headers                 If true, avoid headers when opening log files
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          number for the log level verbosity
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
 ```
 
 ### SEE ALSO
+
 * [helm](../helm)	 - The Helm package manager for Kubernetes.
 
-###### Auto generated by spf13/cobra on 13-Jan-2020
+###### Auto generated by spf13/cobra on 4-Feb-2020

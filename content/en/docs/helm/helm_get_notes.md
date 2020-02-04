@@ -1,29 +1,25 @@
 ---
-title: "Helm Get Manifest"
+title: "Helm Get Notes"
 ---
 
-## helm get manifest
+## helm get notes
 
-download the manifest for a named release
+download the notes for a named release
 
 ### Synopsis
 
 
-This command fetches the generated manifest for a given release.
-
-A manifest is a YAML-encoded representation of the Kubernetes resources that
-were generated from this release's chart(s). If a chart is dependent on other
-charts, those resources will also be included in the manifest.
+This command shows notes provided by the chart of a named release.
 
 
 ```
-helm get manifest RELEASE_NAME [flags]
+helm get notes RELEASE_NAME [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help           help for manifest
+  -h, --help           help for notes
       --revision int   get the named release with revision
 ```
 
