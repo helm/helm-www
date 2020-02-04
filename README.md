@@ -39,18 +39,18 @@ Since the release of Helm 3, all project documentation is located in this repo u
 
 For earlier versions, see the dev-v2 branch of the main Helm repo [here](https://github.com/helm/helm/tree/dev-v2/docs).
 
+
 ### Updating the Helm CLI Reference Docs
 
 The documentation for the list of Helm CLI Commands are [exported](https://github.com/helm/helm/blob/a6b2c9e2126753f6f94df231e89b2153c2862764/cmd/helm/root.go#L169) from the main helm project repo and rendered [here on the website](https://helm.sh/docs/helm) as a reference.
 
 To update these docs, you'll need to:
 
-1. Go to the `helm/helm` repo and fetch the latest master.
-2. Run `helm docs --type markdown` to generate the markdown docs files
-3. Copy the generated files (helm.md, helm_create.md, etc)
-4. Return to the `helm/helm-www` repo and navigate to `content/en/docs/helm/`
-5. Paste the latest CLI command docs here, replacing any prior markdown files
-6. Commit the changes and create a PR to update the website.
+1. Delete all plugins currently installed with `helm plugin uninstall`
+2. Navigate to `content/en/docs/helm/`
+3. Run `helm docs --type markdown` to generate the markdown docs files, replacing any prior markdown files
+4. Add back the YAML front-matter to each file that was changed
+5. Commit the changes and create a PR to update the website.
 
 
 ### How to Write a Blog Post
@@ -59,6 +59,7 @@ Blog posts are created via pull requests. The following steps are used to add th
 
 1) Add a new file to the `content/en/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
 2) Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
+
 ```yaml
 ---
 title: "A Fancy Title"
@@ -68,6 +69,7 @@ authorlink: "https://example.com"
 date: "yyyy-mm-dd"
 ---
 ```
+
 3) Add the content below the `---` as Markdown. The title does not need to be included in this section
 4) Any images should be placed in the `/content/en/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 5) To summarize the content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
@@ -77,7 +79,9 @@ Blog PRs require approval from the core Helm [maintainers](https://github.com/he
 ---
 
 ### Code of Conduct
+
 Participation in the Helm community is governed by the Helm [Code of Conduct](https://github.com/helm/helm/blob/master/code-of-conduct.md).
 
 ### Thank You!
+
 We appreciate your contributions to our website and our documentation! :clap:

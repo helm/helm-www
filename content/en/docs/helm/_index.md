@@ -1,6 +1,6 @@
 ---
 title: "Helm Commands"
-description: "Documentation for the full list off helm CLI commands."
+description: "Documentation for the full list of helm CLI commands."
 weight: 6
 slug: helm
 ---
