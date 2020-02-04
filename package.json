@@ -18,5 +18,8 @@
     "last 2 versions",
     "Firefox ESR",
     "not dead"
-  ]
+  ],
+  "scripts": {
+    "update-docs": "./scripts/update-docs/update-docs.sh"
+  }
 }

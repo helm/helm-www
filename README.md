@@ -43,14 +43,7 @@ For earlier versions, see the dev-v2 branch of the main Helm repo [here](https:/
 
 The documentation for the list of Helm CLI Commands are [exported](https://github.com/helm/helm/blob/a6b2c9e2126753f6f94df231e89b2153c2862764/cmd/helm/root.go#L169) from the main helm project repo and rendered [here on the website](https://helm.sh/docs/helm) as a reference.
 
-To update these docs, you'll need to:
-
-1. Go to the `helm/helm` repo and fetch the latest master.
-2. Run `helm docs --type markdown` to generate the markdown docs files
-3. Copy the generated files (helm.md, helm_create.md, etc)
-4. Return to the `helm/helm-www` repo and navigate to `content/en/docs/helm/`
-5. Paste the latest CLI command docs here, replacing any prior markdown files
-6. Commit the changes and create a PR to update the website.
+To update these docs simply run `yarn update-docs`.
 
 
 ### How to Write a Blog Post

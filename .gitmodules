@@ -1,0 +1,3 @@
+[submodule "helm"]
+	path = scripts/update-docs/helm
+	url = git@github.com:helm/helm.git

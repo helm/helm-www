@@ -19,3 +19,5 @@ docs.helm.sh/
 
 # JetBrains IDEs (GoLand, IntelliJ, ...) config folder
 .idea
+
+scripts/update-docs/.tmp.docs
