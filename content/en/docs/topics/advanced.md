@@ -40,12 +40,8 @@ executable you wish to use:
 $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 ```
 
-If the provided path does not contain any separators, it will search first in
-the plugins directory (or directories if multiple are specified. In which case,
-it will return the first result), then in $PATH, otherwise it will resolve any
-relative paths to a fully qualified path. Searching in the Helm plugins
-directory allows you to leverage the plugins system for distributing your
-executables within a team or company.
+If the path does not contain any separators, it will search in $PATH, otherwise
+it will resolve any relative paths to a fully qualified path
 
 If you wish to use multiple post-renderers, call all of them in a script or
 together in whatever binary tool you have built. In bash, this would be as
