@@ -13,7 +13,7 @@ stored and shared across OCI-based registries.
 Currently OCI support is considered *experimental*.
 
 In order to use the commands described below, please set `HELM_EXPERIMENTAL_OCI`
-in the enironment:
+in the environment:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
