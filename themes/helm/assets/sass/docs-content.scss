@@ -63,6 +63,10 @@
     margin: 0.825rem 0 1.667rem;
     font-size: $scalex5;
 
+    &.lead {
+      font-size: $scalex4;
+    }
+
     &:first-child {
       font-size: $scalex6;
       color: $grey4;

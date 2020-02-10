@@ -70,7 +70,6 @@
     line-height: 1.5;
     letter-spacing: -0.015rem;
     vertical-align: center;
-    z-index: 1620;
     letter-spacing: 0.05em;
     color: $navyd;
     font-family: $base;
@@ -88,13 +87,113 @@
 .home-overview-wrap {
   background: 
     url('/img/topography.png') repeat top left,
-    linear-gradient(180deg, darken($navy, 3.5%) 0%, $navy 100%);
+    linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
   background-blend-mode: color-burn;
   background-attachment: fixed;
-  text-align: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  min-height: 80vh;
+  padding-top: 7.5rem;
+  // padding-bottom: 5rem;
+  min-height: 100vh;
+
+  .content-wrapper {
+    max-width: 87.5vw;
+    padding-bottom: 5rem;
+    
+    h2, h3, p {
+      color: white;
+    }
+  
+    .lead {
+      text-align: left;
+
+      p {
+        color: white;
+        padding-right: 5vw;
+      }
+
+      h3 {
+        margin: 2.5rem 0;
+      }
+
+      ul {
+        margin: 0 2vw;
+        padding: 0;
+        color: white;
+      }
+    }
+
+    a {
+      background: $navyd;
+      opacity: 0.9;
+      color: white;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    color: white;
+  }
+
+  img.pyramid {
+    max-width: 10vw;
+  }
+
+  .tile-features {
+    .tile.is-parent {
+      padding: 3rem 0 0;
+    }
+  
+    .tile.is-child {
+      background: darken($navyd, 7%);
+      border-radius: 0.5vw;
+      padding: 0.75rem 1rem;
+      @include box-shadow;
+      
+      p {
+        font-size: 0.925rem;
+        line-height: 1.636;
+        margin: 0.75rem 0 0.25rem;
+  
+        &.title {
+          font-size: 1rem;
+          margin: 0;
+          color: white;
+        }
+  
+        code {
+          background: none;
+          color: white;
+          font-size: 0.925rem;
+        }
+      }
+    }
+  }
+
+  .level-faqs {
+    background-color: $light2;
+    min-width: 66.67vw;
+    margin: 0 auto;
+    padding: 1vw;
+    border-radius: 5rem;
+
+    img {
+      max-width: 10vw;
+    }
+
+    p {
+      min-width: 50vw;
+    }
+
+    p.heading {
+      @include klinicBold;
+      font-size: 2vw;
+      margin-bottom: 0.333rem;
+      text-transform: none;
+    }
+
+    p.title {
+      font-size: 1.667vw;
+    }
+  }
 }
 
 .home-overview {
@@ -106,8 +205,7 @@
 
   h2 {
     @include klinicBold;
-    color: $darkblue;
-    border-bottom: 4px solid lighten($blue, 25%);
+    color: white;
     margin: 1.5rem 0 2.5rem;
     display: inline-block;
 
@@ -117,7 +215,7 @@
   }
 
   h3 {
-    color: $darkblue;
+    color: white;
     margin: 0.25em 0 0.5em;
     font-size: 1.5rem;
     padding-top: 90px;
@@ -127,7 +225,7 @@
     small {
       position: absolute;
       top: 8.667em;
-      color: red;
+      color: white;
       width: 10em;
       left: 50%;
       font-size: 0.6em;

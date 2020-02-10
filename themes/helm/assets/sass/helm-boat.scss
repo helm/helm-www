@@ -78,7 +78,6 @@
     overflow: hidden;
     z-index: 1120;
     background-color: transparent;
-    @include transition;
 
     &:before {
       position: absolute;

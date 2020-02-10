@@ -29,93 +29,95 @@ Helm
   </section>
 
   <section class="home-overview-wrap">
-    <section class="home-overview columns">
-      <div class="column text-left">
-        <h2>
-          {{ T "main_what_is_helm_title" | markdownify }}
-        </h2>
+    <section class="columns">
+      <div class="column has-text-centered">
+        <img src="/img/helm-pyramid.png" alt="Helm" class="pyramid" />
+        <h2>{{ T "main_what_is_helm_title" | markdownify }}</h2>
+      </div>
+    </section>
 
-        <p>
+    <section class="content-wrapper columns">
+
+      <div class="column is-three-fifths">
+        <article class="lead">
           {{ T "main_what_is_helm_description" | markdownify }}
-        </p>
-
-        <p class="github-stats">
-          <a class="github-button" href="https://github.com/helm/helm" data-size="large" data-show-count="true" aria-label="Star helm/helm on GitHub">Star</a>
-          &nbsp;
-          <a class="github-button" href="https://github.com/helm/helm/subscription" data-size="large" data-show-count="true" aria-label="Watch helm/helm on GitHub">Watch</a>
-          &nbsp;
-          <a class="github-button" href="https://github.com/helm/helm/fork" data-size="large" data-show-count="true" aria-label="Fork helm/helm on GitHub">Fork</a>
-        </p>
-
+        </article>
       </div>
-
-      <div class="column">
-        <img src="/img/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
-      </div>
-    </section>
-
-    <section class="helm-features">
-      <h2>
-        {{ T "main_why_teams_love" | markdownify }}
-      </h2>
-
-      <div class="columns">
-        <div class="column">
-          <img src="/img/feature-icon-1.png" alt="Manage Complexity">
-          <h3>
-            {{ T "manage_complexity_title" }}
-          </h3>
-          <p>
-            {{ T "manage_complexity_description" }}
-          </p>
-        </div>
-        <div class="column">
-          <img src="/img/feature-icon-2.png" alt="Easy Updates">
-          <h3>
-            {{ T "easy_updates_title" }}
-          </h3>
-          <p>
-            {{ T "easy_updates_description" }}
-          </p>
-        </div>
-        <div class="column">
-          <img src="/img/feature-icon-3.png" alt="Easy Sharing">
-          <h3>
-            {{ T "easy_sharing_title" }}
-          </h3>
-          <p>
-            {{ T "easy_sharing_description" }}
-          </p>
-        </div>
-        <div class="column">
-          <img src="/img/feature-icon-4.png" alt="Rollbacks">
-          <h3>
-            {{ T "rollbacks_title" }}
-          </h3>
-          <p>
-            {{ T "rollbacks_description" | markdownify }}
-          </p>
+      <div class="column tile-features is-two-fifths">
+        <div class="tile is-parent is-vertical">
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "manage_complexity_title" }}
+            </p>
+            <p>
+              {{ T "manage_complexity_description" }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+                {{ T "easy_updates_title" }}
+            </p>
+              <p>
+              {{ T "easy_updates_description" }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "easy_sharing_title" }}
+            </p>
+            <p>
+              {{ T "easy_sharing_description" }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "rollbacks_title" }}
+            </p>
+            <p>
+              {{ T "rollbacks_description" | markdownify }}
+            </p>
+          </div>
         </div>
       </div>
     </section>
+    
+    <section class="tile is-parent is-horizontal">
+      <div class="tile is-child">
+        <h2>Get Helm!</h2>
+        <p>The Helm project can be found <a href="https://github.com/helm/helm">here on Github</a>:</p>
 
-    <section class="helm-start column">
-      <h2>Get Helm!</h2>
-      <p>The Helm project can be found <a href="https://github.com/helm/helm">here on Github</a>:</p>
+        <p><a href="https://github.com/helm/helm"><img src="/img/btn-get-helm.png" alt="Get Helm"></a></p>
 
-      <p><a href="https://github.com/helm/helm"><img src="/img/btn-get-helm.png" alt="Get Helm"></a></p>
+        <p>For documentation, see <a href="https://helm.sh/docs/">docs.helm.sh</a></p>
 
-      <p>For documentation, see <a href="https://helm.sh/docs/">docs.helm.sh</a></p>
+        <p>The previous version — <a href="https://github.com/deis/helm">Helm Classic</a> — can be found <a href="https://github.com/deis/helm">here</a>.</p>
+      </div>
 
-      <p>The previous version — <a href="https://github.com/deis/helm">Helm Classic</a> — can be found <a href="https://github.com/deis/helm">here</a>.</p>
+      <div class="tile is-child">
+        <h2>Get Charts</h2>
 
-      <h2>Get Charts</h2>
+        <p>Looking for charts?</p>
 
-      <p>Looking for charts?</p>
+        <p><a href="https://hub.helm.sh"><img src="/img/helm-charts.png" alt="Helm Hub"></a></p>
 
-      <p><a href="https://hub.helm.sh"><img src="/img/helm-charts.png" alt="Helm Hub"></a></p>
+        <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
+      </div>
+    </section>
 
-      <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
+    <section class="has-text-centered columns">
+      <nav class="level level-faqs">
+        <div class="level-item has-text-centered">
+          <div>
+            <a><img src="/img/helm-3-badge.svg" alt="Helm 3" class="badge" /></a>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading"><a>Updating from v2 to v3?</a></p>
+            <p class="title"><a>Read the FAQs for migrating to Helm 3.</a></p>
+          </div>
+        </div>
+      </nav>
     </section>
   </section>
 

@@ -14,6 +14,11 @@ Helm helps you manage Kubernetes applications — Helm Charts help you define, i
 Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
 
 The latest version of Helm is maintained by the [CNCF](https://cncf.io) - in collaboration with [Microsoft](https://microsoft.com), [Google](https://google.com), [Bitnami](https://bitnami.com) and the [Helm contributor community](https://github.com/helm/community).
+
+### Learn more:
+
+* [Helm Architecture](./docs/topics/architecture/)
+* [Video: An Introduction to Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
 [main_why_teams_love]
