@@ -217,7 +217,7 @@ template directives embedded in `{{` and `}}`. In the next part, we'll take a
 deeper look into templates. But before moving on, there's one quick trick that
 can make building templates faster: When you want to test the template
 rendering, but not actually install anything, you can use `helm install --debug
---dry-run ./mychart`. This will render the templates. But instead of installing
+--dry-run goodly-guppy ./mychart`. This will render the templates. But instead of installing
 the chart, it will return the rendered template to you so you can see the
 output:
 
