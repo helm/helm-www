@@ -5,11 +5,10 @@ Helm
 {{ define "main" }}
 {{ $home := site.BaseURL }}
 
-<div id="helm" class="page-wrapper page-home">
+<div id="helm" class="page-wrapper page-home page-404">
   <header>
     {{ partial "banner.html" . }}
     {{ partial "nav.html" . }}
-    {{ partial "nav-fixed.html" . }}
   </header>
 
   <section class="home-intro hero">
@@ -114,7 +113,7 @@ Helm
         <p>Once installed, unpack the helm binary and add it to your PATH and you are good to go! Check the <a href="./docs/intro/install/">docs</a> for further <a href="./docs/intro/install/">installation</a> and <a href="./docs/intro/using_helm/">usage instructions</a>.</p>
       </div>
 
-      <div class="tile is-child">
+      <div class="tile is-child is-centered has-text-centered">
         <h2>Get Charts</h2>
 
         <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
