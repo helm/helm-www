@@ -27,7 +27,6 @@
   background-attachment: fixed;
   position: relative;
   margin-bottom: -16px;
-  // margin: -8px 0;
 
   .logo img {
     position: absolute;
@@ -95,7 +94,7 @@
   min-height: 100vh;
 
   .content-wrapper {
-    max-width: 87.5vw;
+    max-width: 80vw;
     padding-bottom: 5rem;
     
     h2, h3, p {
@@ -108,10 +107,11 @@
       p {
         color: white;
         padding-right: 5vw;
+        line-height: 1.925;
       }
 
       h3 {
-        margin: 2.5rem 0;
+        margin: 2.5rem 0 1.25rem;
       }
 
       ul {
@@ -124,6 +124,11 @@
     a {
       background: $navyd;
       opacity: 0.9;
+      color: white;
+    }
+
+    a:hover {
+      background: $navyl;
       color: white;
     }
   }
@@ -146,15 +151,15 @@
       background: darken($navyd, 7%);
       border-radius: 0.5vw;
       padding: 0.75rem 1rem;
-      @include box-shadow;
+      box-shadow: none;
       
       p {
-        font-size: 0.925rem;
+        font-size: 1rem;
         line-height: 1.636;
         margin: 0.75rem 0 0.25rem;
   
         &.title {
-          font-size: 1rem;
+          font-size: 1.333vw;
           margin: 0;
           color: white;
         }
@@ -168,30 +173,158 @@
     }
   }
 
+  .tile-actions {
+    padding: 0;
+    margin: 2rem 6.25vw 4.5rem;
+
+    .tile.is-child {
+      padding: 0.75vw 2.5vw 3vw;
+      border: 10px solid white;
+      background: url('/img/topography.png') left top repeat;
+      background-color: rgba(35,35,35,0.02);
+      background-blend-mode: color-burn;
+      background-attachment: fixed;
+
+      &:first-of-type {
+        border-right: none;
+      }
+
+      p {
+        font-size: 1.25vw;
+        line-height: 1.7;
+        color: $dark1;
+      }
+
+      img {
+        max-width: 66.67%;
+        margin: 2.5vw auto 0;
+        box-shadow: 0 2px 5px $dark1;
+      }
+    }
+
+    h2 {
+      color: $navyd;
+      font-size: 2vw;
+      text-align: center;
+    }
+
+    ul.tabs {
+      border-bottom: 3px solid $light1;
+      margin: 2.5vw 0 0.75vw;
+      position: relative;
+      z-index: 200;
+      overflow: visible;
+
+      li {
+        margin: 0 0 -2px;
+        border: none;
+        padding: 0;
+        z-index: 680;
+        position: relative;
+
+        a {
+          @include klinicBold;
+          font-size: 1vw;
+          border-bottom: 3px solid $light1;
+          margin: 0;
+
+          &.active {
+            color: $navyl;
+            border-bottom: 2px solid $navyl;
+          }
+        }
+      }
+    }
+
+    @keyframes fadeEffect {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .tabcontent {
+      display: none;
+      animation: fadeEffect 1s; /* Fading effect takes 1 second */
+      position: relative;
+      padding-bottom: 4.25rem;
+  
+      &.active {
+        display: block;
+      }
+  
+      code,
+      pre,
+      input {
+        overflow-wrap: break-word;
+        white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+        white-space: -pre-wrap;      /* Opera 4-6 */
+        white-space: -o-pre-wrap;    /* Opera 7 */
+        white-space: pre-wrap;       /* css-3 */
+        word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+        word-break: break-all;
+        white-space: normal;
+        background: $light2;
+        border: none;
+        outline: none;
+        color: $navyd;
+        font-size: 1.333vw;
+        font-family: monospace;
+        font-weight: 400;
+        width: 100%;
+        padding: 1.2rem 6.25rem 1.2rem 1.2rem;
+  
+        &:before {
+          display: none;
+        }
+      }
+  
+      button {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.45rem;
+        background: white;
+        border: 2px solid $navyl;
+        font-size: 1.1vw;
+        color: $navyl;
+        @include transition;
+
+        &:hover {
+          background-color: $navyl;
+          color: white;
+        }
+        &:active {
+          background: $green;
+          color: white;
+        }
+      }
+    }
+  }
+
   .level-faqs {
     background-color: $light2;
-    min-width: 66.67vw;
-    margin: 0 auto;
+    min-width: 33.33vw;
+    margin: 1rem auto 7.5rem;
     padding: 1vw;
     border-radius: 5rem;
 
     img {
-      max-width: 10vw;
+      max-width: 6vw;
+      margin-left: -1vw;
     }
 
     p {
-      min-width: 50vw;
+      min-width: 20vw;
     }
 
     p.heading {
       @include klinicBold;
-      font-size: 2vw;
+      font-size: 1.25vw;
       margin-bottom: 0.333rem;
       text-transform: none;
     }
 
     p.title {
-      font-size: 1.667vw;
+      font-size: 1vw;
     }
   }
 }

@@ -30,7 +30,7 @@
     color: $navyl;
     font-size: $scalex7;
     @include klinicBold;
-    letter-spacing: 0.01rem;
+    letter-spacing: -0.02rem;
     margin: 0 0 0.875em;
     padding-top: 2.5em;
   }
@@ -39,6 +39,7 @@
     color: $grey4;
     @include klinicBold;
     margin: 3em 0 1.825em;
+    letter-spacing: -0.025rem;
 
     pre,
     code {
@@ -166,7 +167,7 @@
   code {
     padding: 0.5em 0.5em;
     border: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   &.markdown ul,

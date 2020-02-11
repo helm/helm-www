@@ -81,26 +81,47 @@ Helm
       </div>
     </section>
     
-    <section class="tile is-parent is-horizontal">
+    <section class="tile tile-actions is-parent is-horizontal">
       <div class="tile is-child">
         <h2>Get Helm!</h2>
-        <p>The Helm project can be found <a href="https://github.com/helm/helm">here on Github</a>:</p>
+        <p>Install Helm with a package manager, or <a href="https://github.com/helm/helm/releases/latest">download a binary</a>.</p>
 
-        <p><a href="https://github.com/helm/helm"><img src="/img/btn-get-helm.png" alt="Get Helm"></a></p>
+        <ul class="tabs" data-tabgroup="tab-group">
+          <li id="tablinks"><a href="#Homebrew" class="active">Homebrew</a></li>
+          <li id="tablinks"><a href="#Chocolatey">Chocolatey</a></li>
+          <li id="tablinks"><a href="#Scoop">Scoop</a></li>
+          <li id="tablinks"><a href="#Gofish">GoFish</a></li>
+        </ul>
+        <div class="tabgroup">
+          <div class="tabcontent" id="Homebrew">
+            <input id="copybrew" value="brew install helm" />
+            <button data-clipboard-target="#copybrew" class="button">Copy</button>
+          </div>
+          <div class="tabcontent " id="Chocolatey">
+            <input id="copychoc" value="choco install kubernetes-helm" />
+            <button data-clipboard-target="#copychoc" class="button">Copy</button>
+          </div>
+          <div class="tabcontent" id="Scoop">
+            <input id="copyscoop" value="scoop install helm" />
+            <button data-clipboard-target="#copyscoop" class="button">Copy</button>
+          </div>
+          <div class="tabcontent" id="Gofish">
+            <input id="copyfish" value="gofish install helm" />
+            <button data-clipboard-target="#copyfish" class="button">Copy</button>
+          </div>
+        </div>
 
-        <p>For documentation, see <a href="https://helm.sh/docs/">docs.helm.sh</a></p>
-
-        <p>The previous version — <a href="https://github.com/deis/helm">Helm Classic</a> — can be found <a href="https://github.com/deis/helm">here</a>.</p>
+        <p>Once installed, unpack the helm binary and add it to your PATH and you are good to go! Check the <a href="./docs/intro/install/">docs</a> for further <a href="./docs/intro/install/">installation</a> and <a href="./docs/intro/using_helm/">usage instructions</a>.</p>
       </div>
 
       <div class="tile is-child">
         <h2>Get Charts</h2>
 
-        <p>Looking for charts?</p>
-
-        <p><a href="https://hub.helm.sh"><img src="/img/helm-charts.png" alt="Helm Hub"></a></p>
-
         <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
+
+        <div class="has-text-center is-centered">
+          <p><a href="https://hub.helm.sh"><img src="/img/helm-hub.jpg" alt="Helm Hub" class="is-centered"></a></p>
+        </div>
       </div>
     </section>
 

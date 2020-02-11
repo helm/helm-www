@@ -32,7 +32,7 @@ $(document).ready(function() {
 }); // document ready
 
 
-//Navbar Clone
+// navbar Clone
 if ($('.navbar-top-fixed').length) {
   $(window).scroll(function() {    // this will work when your window scrolled.
       var height = $(window).scrollTop();  //getting the scrolling height of window
@@ -44,7 +44,7 @@ if ($('.navbar-top-fixed').length) {
   });
 }
 
-//Navbar mobile burger menu (bulma)
+// navbar mobile burger menu (bulma)
 $(".navbar-burger").click(function() {
   $(".navbar-burger").toggleClass("is-active");
   $(".navbar-menu").toggleClass("is-active");
@@ -75,6 +75,38 @@ if ($('.page-docs').length) {
       }
   });
 }
+
+// homepage download tabs
+if ($('.home').length) {
+  $('div.tabcontent').hide();
+  $('div.tabcontent:first-of-type').show();
+  $('.tabs a').click(function(e){
+    e.preventDefault();
+    var $this = $(this),
+        tabgroup = $this.parents('.tabs').data('tab-group'),
+        others = $this.closest('li').siblings().children('a'),
+        target = $this.attr('href');
+    others.removeClass('active');
+    console.log('the tabgroup is ' + tabgroup);
+    $this.addClass('active');
+    $('.tabgroup').children('div').hide();
+    $(target).show();
+  })
+
+  var clipboard = new ClipboardJS('.button');
+  clipboard.on('success', function(e) {
+    e.clearSelection();
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    showTooltip(e.trigger, 'Copied!');
+  });
+  clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+    showTooltip(e.trigger, fallbackMessage(e.action));
+  });
+};
 
 // add permalinks to titles
 $(function() {

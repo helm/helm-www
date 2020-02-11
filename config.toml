@@ -26,6 +26,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     "foundation.slider",
     "foundation.tooltip",
     "modernizr",
+    "clipboard.min",
     "app"
   ]
 
