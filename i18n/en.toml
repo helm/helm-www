@@ -49,6 +49,12 @@ other = "Rollbacks"
 [rollbacks_description]
 other = "Use `helm rollback` to roll back to an older version of a release with ease."
 
+[404_title]
+other = "**404** **Page not found.**"
+
+[404_subtitle]
+other = "Sorry about that. If something is broken please [report it here](https://github.com/helm/helm-www/issues/new)."
+
 [banner_1]
 other = "You are viewing info for Helm 3 - check the **[version FAQs](https://helm.sh/docs/faq/)** or **[see to Helm 2](https://v2.helm.sh)** for prior versions."
 

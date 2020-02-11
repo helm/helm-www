@@ -1,23 +1,38 @@
 {{ define "title" }}
-Helm | 404 Not Found
+Helm
 {{ end }}
 
 {{ define "main" }}
-<div class="container container-full">
-  {{ partial "sidebar.html" . }}
+{{ $home := site.BaseURL }}
 
-  <div class="main section-404">
-
+<div id="helm" class="page-wrapper page-home">
+  <header>
+    {{ partial "banner.html" . }}
     {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
 
-    <div id="particles-js" class="home-intro-wrap"></div>
+  <section class="home-intro hero">
+    <article>
+      <a href="/" class="logo">
+        <img src="/img/helm.svg" alt="Helm" />
+      </a>
+      <h1>
+        {{ T "404_title" | markdownify }}
+      </h1>
+      <h2>
+        {{ T "404_subtitle" | markdownify }}
+      </h2>
+    </article>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <h1 class="center text-center">Page Not Found</h1>
-        <h3 class="center text-center">Sorry, we couldn't find what you're looking for. <a class="search-trigger">Try a search</a>.</h3>
-      </div>
-    </div>
-  </div>
-</div>
+    {{ partial "boat.html" . }}
+  </section>
+
+  {{ partial "footer.html" . }}
+  {{ partial "footer-links.html" . }}
+  
+</div> <!-- / #helm .page-home -->
+
+{{ end }}
+{{ define "footer" }}
 {{ end }}
