@@ -30,7 +30,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   ]
 
 [[params.versions]]
-version = "v3.0.2"
+version = "v3.1.0"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
