@@ -410,7 +410,7 @@ using the `exports` format is that it will enable future tooling to introspect
 user-settable values.
 
 The keys containing the values to be imported can be specified in the parent
-chart's `dependencies` in the field `input-values` using a YAML list. Each item
+chart's `dependencies` in the field `import-values` using a YAML list. Each item
 in the list is a key which is imported from the child chart's `exports` field.
 
 To import values not contained in the `exports` key, use the
