@@ -372,7 +372,11 @@ always beneficial as it can be easy to miss something.
 
 When you are ready to go, hit `publish`.
 
-## 9. Evangelize
+## 9. Update Docs Site
+
+The [Helm website docs section](https://helm.sh/docs) lists the Helm versions for the docs. The minor and patch information needs to be updated on the site. To do that create a pull request against the [helm-www repository](https://github.com/helm/helm-www). In the `config.toml` file find the proper `params.versions` section and updated the Helm version.
+
+## 10. Evangelize
 
 Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
 it.
