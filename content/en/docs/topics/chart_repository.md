@@ -31,7 +31,7 @@ progress](https://github.com/helm/helm/issues/1038) in GitHub.
 Because a chart repository can be any HTTP server that can serve YAML and tar
 files and can answer GET requests, you have a plethora of options when it comes
 down to hosting your own chart repository. For example, you can use a Google
-Cloud Storage (GCS) bucket, Amazon S3 bucket, Github Pages, or even create your
+Cloud Storage (GCS) bucket, Amazon S3 bucket, GitHub Pages, or even create your
 own web server.
 
 ### The chart repository structure
@@ -145,7 +145,7 @@ You can also set up chart repositories using JFrog Artifactory. Read more about
 chart repositories with JFrog Artifactory
 [here](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories)
 
-### Github Pages example
+### GitHub Pages example
 
 In a similar way you can create charts repository using GitHub Pages.
 
@@ -163,15 +163,15 @@ locally as.
 $ git checkout -b gh-pages
 ```
 
-Or via web browser using **Branch** button on your Github repository:
+Or via web browser using **Branch** button on your GitHub repository:
 
-![Create Github Pages branch](https://helm.sh/img/create-a-gh-page-button.png)
+![Create GitHub Pages branch](https://helm.sh/img/create-a-gh-page-button.png)
 
-Next, you'll want to make sure your **gh-pages branch** is set as Github Pages,
-click on your repo **Settings** and scroll down to **Github pages** section and
+Next, you'll want to make sure your **gh-pages branch** is set as GitHub Pages,
+click on your repo **Settings** and scroll down to **GitHub pages** section and
 set as per below:
 
-![Create Github Pages branch](https://helm.sh/img/set-a-gh-page.png)
+![Create GitHub Pages branch](https://helm.sh/img/set-a-gh-page.png)
 
 By default **Source** usually gets set to **gh-pages branch**. If this is not
 set by default, then select it.

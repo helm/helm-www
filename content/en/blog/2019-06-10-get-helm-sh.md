@@ -27,7 +27,7 @@ If you're using the old URL in your CI pipeline, you can replace <https://kubern
 
 If you're using [the get script](https://helm.sh/docs/using_helm/#from-script), it is now [pulling from the new URL](https://github.com/helm/helm/blob/2ca025d48222d6fa188653e2ca5eda6ed799145c/scripts/get#L114), so no changes on your end are required.
 
-All the download URLs in our [Github releases](https://github.com/helm/helm/releases) have also been changed to use the new URL.
+All the download URLs in our [GitHub releases](https://github.com/helm/helm/releases) have also been changed to use the new URL.
 
 ## What's under the hood?
 
