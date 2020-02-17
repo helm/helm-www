@@ -73,7 +73,7 @@ request](https://github.com/helm/helm-www/pulls).
 - [helm-gcs](https://github.com/nouney/helm-gcs) - Plugin to manage repositories
   on Google Cloud Storage
 - [helm-github](https://github.com/sagansystems/helm-github) - Plugin to install
-  Helm Charts from Github repositories
+  Helm Charts from GitHub repositories
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin to
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-k8comp](https://github.com/cststack/k8comp) - Plugin to create Helm

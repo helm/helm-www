@@ -9,7 +9,7 @@ is not part of the built-in Helm codebase.
 
 Existing plugins can be found on [related]({{< ref "related.md#helm-plugins" >}}) section or
 by searching
-[Github](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
+[GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 
 This guide explains how to use and create plugins.
 
