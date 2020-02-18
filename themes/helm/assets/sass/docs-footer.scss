@@ -27,7 +27,7 @@
 
       a {
         color: lighten($blue3, 12.5%);
-        @include ripple;
+        @include wave;
 
         &:hover {
           color: lighten($blue3, 50%);
@@ -44,6 +44,7 @@
         display: inline-block;
         background-color: transparent !important;
         border-bottom: 2px solid transparent;
+        @include wave;
       }
   
       em {
