@@ -45,8 +45,10 @@ the name under which the signing key is known and the keyring containing the
 corresponding private key:
 
 ```console
-$ helm package --sign --key 'helm signing key' --keyring path/to/keyring.secret mychart
+$ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychart
 ```
+
+**Note:** The value of the `--key` argument must be a substring of the desired key's `uid` (in the output of `gpg --list-keys`), for example the name or email. **The fingerprint _cannot_ be used.**
 
 **TIP:** for GnuPG users, your secret keyring is in `~/.gnupg/secring.gpg`. You
 can use `gpg --list-secret-keys` to list the keys you have.
