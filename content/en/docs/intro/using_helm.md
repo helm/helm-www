@@ -400,7 +400,7 @@ deployed releases with the `helm list` command:
 ```console
 $ helm list
 NAME            VERSION UPDATED                         STATUS          CHART
-inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
+happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     mariadb-0.3.0
 ```
 
 From the output above, we can see that the `happy-panda` release was
