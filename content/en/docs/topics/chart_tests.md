@@ -38,7 +38,7 @@ mariadb/
   templates/tests/test-mariadb-connection.yaml
 ```
 
-In `wordpress/templates/tests/test-mariadb-connection.yaml`:
+In `mariadb/templates/tests/test-mariadb-connection.yaml`:
 
 ```yaml
 apiVersion: batch/v1
