@@ -47,12 +47,23 @@ Notice on the last line we access `favoriteDrink` as an attribute of `Values`:
 Let's see how this renders.
 
 ```console
-$ helm install --dry-run --debug good-puppy ./mychart
-SERVER: "localhost:44134"
-CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
-NAME:   good-puppy
-TARGET NAMESPACE:   default
-CHART:  mychart 0.1.0
+$ helm install geared-marsupi ./mychart --dry-run --debug
+install.go:158: [debug] Original chart version: ""
+install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
+
+NAME: geared-marsupi
+LAST DEPLOYED: Wed Feb 19 23:21:13 2020
+NAMESPACE: default
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+favoriteDrink: coffee
+
+HOOKS:
 MANIFEST:
 ---
 # Source: mychart/templates/configmap.yaml
@@ -70,12 +81,23 @@ that's the value displayed in the template. We can easily override that by
 adding a `--set` flag in our call to `helm install`:
 
 ```console
-helm install --dry-run --debug --set favoriteDrink=slurm good-puppy ./mychart
-SERVER: "localhost:44134"
-CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
-NAME:   good-puppy
-TARGET NAMESPACE:   default
-CHART:  mychart 0.1.0
+$ helm install solid-vulture ./mychart --dry-run --debug --set favoriteDrink=slurm
+install.go:158: [debug] Original chart version: ""
+install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
+
+NAME: solid-vulture
+LAST DEPLOYED: Wed Feb 19 23:25:54 2020
+NAMESPACE: default
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+USER-SUPPLIED VALUES:
+favoriteDrink: slurm
+
+COMPUTED VALUES:
+favoriteDrink: slurm
+
+HOOKS:
 MANIFEST:
 ---
 # Source: mychart/templates/configmap.yaml

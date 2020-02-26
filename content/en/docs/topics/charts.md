@@ -10,7 +10,7 @@ that describe a related set of Kubernetes resources. A single chart might be
 used to deploy something simple, like a memcached pod, or something complex,
 like a full web app stack with HTTP servers, databases, caches, and so on.
 
-Charts are created as files laid out in a particular directory tree, then they
+Charts are created as files laid out in a particular directory tree. They
 can be packaged into versioned archives to be deployed.
 
 This document explains the chart format, and provides basic guidance for
@@ -20,7 +20,7 @@ building charts with Helm.
 
 A chart is organized as a collection of files inside of a directory. The
 directory name is the name of the chart (without versioning information). Thus,
-a chart describing WordPress would be stored in the `wordpress/` directory.
+a chart describing WordPress would be stored in a `wordpress/` directory.
 
 Inside of this directory, Helm will expect a structure that matches this:
 
@@ -51,7 +51,7 @@ name: The name of the chart (required)
 version: A SemVer 2 version (required)
 kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
 description: A single-sentence description of this project (optional)
-type: It is the type of chart (optional)
+type: The type of the chart (optional)
 keywords:
   - A list of keywords about this project (optional)
 home: The URL of this projects home page (optional)
@@ -67,7 +67,7 @@ dependencies: # A list of the chart requirements (optional)
     enabled: (optional) Enabled bool determines if chart should be loaded
     import-values: # (optional)
       - ImportValues holds the mapping of source values to parent key to be imported. Each item can be a string or pair of child/parent sublist items.
-    alias: (optional) Alias usable alias to be used for the chart. Useful when you have to add the same chart multiple times
+    alias: (optional) Alias to be used for the chart. Useful when you have to add the same chart multiple times
 maintainers: # (optional)
   - name: The maintainers name (required for each maintainer)
     email: The maintainers email (optional for each maintainer)
@@ -135,35 +135,35 @@ has no impact on chart version calculations.
 
 ### The `kubeVersion` Field
 
-The optional `kubeVersion` field can define semver constraints on supported 
-Kubernetes versions. Helm will validate the version constraints when installing 
-the chart and fail if the cluster runs an unsupported Kubernetes version. 
+The optional `kubeVersion` field can define semver constraints on supported
+Kubernetes versions. Helm will validate the version constraints when installing
+the chart and fail if the cluster runs an unsupported Kubernetes version.
 
-Version constraints may comprise space separated AND comparisons such as 
+Version constraints may comprise space separated AND comparisons such as
 ```
 >= 1.13.0 < 1.15.0
 ```
-which themselves can be combined with the OR `||` operator like in the 
-following example 
+which themselves can be combined with the OR `||` operator like in the
+following example
 ```
 >= 1.13.0 < 1.14.0 || >= 1.14.1 < 1.15.0
 ```
 In this example the version `1.14.0` is excluded, which can make sense if a bug
 in certain versions is known to prevent the chart from running properly.
 
-Apart from version constrains employing operators 
+Apart from version constrains employing operators
 `=` `!=` `>` `<` `>=` `<=` the following shorthand notations are supported
 
- * hyphen ranges for closed intervals, 
+ * hyphen ranges for closed intervals,
   where `1.1 - 2.3.4` is equivalent to `>= 1.1 <= 2.3.4`.
  * wildcards `x`, `X` and `*`, where `1.2.x` is equivalent to `>= 1.2.0 < 1.3.0`.
- * tilde ranges (patch version changes allowed), 
- where `~1.2.3` is equivalent to `>= 1.2.3 < 1.3.0`. 
- * caret ranges (major version changes allowed), 
- where `^1.2.3` is equivalent to `>= 1.2.3 < 2.0.0`. 
+ * tilde ranges (patch version changes allowed),
+ where `~1.2.3` is equivalent to `>= 1.2.3 < 1.3.0`.
+ * caret ranges (major version changes allowed),
+ where `^1.2.3` is equivalent to `>= 1.2.3 < 2.0.0`.
 
-For a detailed explanation of supported semver constraints see 
-[Masterminds/semver](https://github.com/Masterminds/semver). 
+For a detailed explanation of supported semver constraints see
+[Masterminds/semver](https://github.com/Masterminds/semver).
 
 ### Deprecating Charts
 
@@ -171,7 +171,7 @@ When managing charts in a Chart Repository, it is sometimes necessary to
 deprecate a chart. The optional `deprecated` field in `Chart.yaml` can be used
 to mark a chart as deprecated. If the **latest** version of a chart in the
 repository is marked as deprecated, then the chart as a whole is considered to
-be deprecated. The chart name can later be reused by publishing a newer version
+be deprecated. The chart name can be later reused by publishing a newer version
 that is not marked as deprecated. The workflow for deprecating charts, as
 followed by the [kubernetes/charts](https://github.com/helm/charts) project is:
 
@@ -385,7 +385,7 @@ since the `subchart1.enabled` path evaluates to 'true' in the parent's values,
 the condition will override the `front-end` tag and `subchart1` will be enabled.
 
 Since `subchart2` is tagged with `back-end` and that tag evaluates to `true`,
-`subchart2` will be enabled. Also notes that although `subchart2` has a
+`subchart2` will be enabled. Also note that although `subchart2` has a
 condition specified, there is no corresponding path and value in the parent's
 values so that condition has no effect.
 

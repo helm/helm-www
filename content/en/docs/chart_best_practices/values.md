@@ -11,7 +11,7 @@ values, with focus on designing a chart's `values.yaml` file.
 
 ## Naming Conventions
 
-Variables names should begin with a lowercase letter, and words should be
+Variable names should begin with a lowercase letter, and words should be
 separated with camelcase:
 
 Correct:

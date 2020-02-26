@@ -123,7 +123,7 @@ block.
 
 However, there is one variable that is always global - `$` - this variable will
 always point to the root context.  This can be very useful when you are looping
-in a range need to know the chart's release name.
+in a range and you need to know the chart's release name.
 
 An example illustrating this:
 ```yaml

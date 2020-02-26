@@ -84,7 +84,7 @@ The migration use cases are as follows:
    - Otherwise there are no conflicts between both versions because of the
      following distinctions:
      - v2 and v3 release (history) storage are independent of each other. The
-       changes includes the Kubernetes resource for storage and the release
+       changes include the Kubernetes resource for storage and the release
        object metadata contained in the resource. Releases will also be on a per
        user namespace instead of using the Tiller namespace (for example, v2
        default Tiller namespace kube-system). v2 uses "ConfigMaps" or "Secrets"

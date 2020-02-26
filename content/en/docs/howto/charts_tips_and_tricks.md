@@ -131,7 +131,7 @@ name: "Tom"
 Tom
 ```
 
-Rendering a external configuration file:
+Rendering an external configuration file:
 
 ```yaml
 # external configuration file conf/app.conf
@@ -188,7 +188,7 @@ data:
 ## Automatically Roll Deployments
 
 Often times ConfigMaps or Secrets are injected as configuration files in
-containers or there are other external dependencies changes that require rolling
+containers or there are other external dependency changes that require rolling
 pods. Depending on the application a restart may be required should those be
 updated with a subsequent `helm upgrade`, but if the deployment spec itself
 didn't change the application keeps running with the old configuration resulting

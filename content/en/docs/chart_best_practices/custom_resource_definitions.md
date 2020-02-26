@@ -39,7 +39,7 @@ installation step, you can pass the `--skip-crds` flag.
 
 #### Some caveats (and explanations)
 
-There is not support at this time for upgrading or deleting CRDs using Helm.
+There is no support at this time for upgrading or deleting CRDs using Helm.
 This was an explicit decision after much community discussion due to the danger
 for unintentional data loss. Furthermore, there is currently no community
 consensus around how to handle CRDs and their lifecycle. As this evolves, Helm

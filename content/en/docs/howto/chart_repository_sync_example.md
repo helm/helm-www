@@ -33,7 +33,7 @@ and the url of the remote repository to the `helm repo index` command like this:
 ```console
 $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googleapis.com
 ```
-This will generate an updated index.yaml file and place in the
+This will generate an updated index.yaml file and place it in the
 `fantastic-charts/` directory.
 
 ## Sync your local and remote chart repositories
