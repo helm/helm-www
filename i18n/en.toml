@@ -1,5 +1,5 @@
 [main_title]
-other = "**The** **package manager** **_for_ Kubernetes**"
+other = "**The** **package manager** **for Kubernetes**"
 
 [main_subtitle]
 other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io)."
@@ -13,7 +13,7 @@ Helm helps you manage Kubernetes applications — Helm Charts help you define, i
 
 Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
 
-The latest version of Helm is maintained by the [CNCF](https://cncf.io) - in collaboration with [Microsoft](https://microsoft.com), [Google](https://google.com), [Bitnami](https://bitnami.com) and the [Helm contributor community](https://github.com/helm/community).
+Helm is an incubator project in the [CNCF](https://cncf.io) and is maintained by the [Helm community](https://github.com/helm/community).
 
 ### Learn more:
 
