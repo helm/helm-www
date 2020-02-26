@@ -50,7 +50,7 @@ Let's see how this renders.
 $ helm install --dry-run --debug good-puppy ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
-NAME:   geared-marsupi
+NAME:   good-puppy
 TARGET NAMESPACE:   default
 CHART:  mychart 0.1.0
 MANIFEST:
@@ -59,7 +59,7 @@ MANIFEST:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: geared-marsupi-configmap
+  name: good-puppy-configmap
 data:
   myvalue: "Hello World"
   drink: coffee
@@ -73,7 +73,7 @@ adding a `--set` flag in our call to `helm install`:
 helm install --dry-run --debug --set favoriteDrink=slurm good-puppy ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
-NAME:   solid-vulture
+NAME:   good-puppy
 TARGET NAMESPACE:   default
 CHART:  mychart 0.1.0
 MANIFEST:
@@ -82,7 +82,7 @@ MANIFEST:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: solid-vulture-configmap
+  name: good-puppy-configmap
 data:
   myvalue: "Hello World"
   drink: slurm
