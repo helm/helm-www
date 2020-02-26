@@ -28,7 +28,7 @@
   position: relative;
   margin-bottom: -16px;
 
-  .logo img {
+  img.logo {
     position: absolute;
     top: 50vh;
     margin-top: -14vw;
@@ -72,6 +72,7 @@
     letter-spacing: 0.05em;
     color: $navyd;
     font-family: $base;
+    z-index: 1110;
 
     a {
       color: $navyl;
@@ -113,10 +114,14 @@
       h3 {
         margin: 2.5rem 0 1.25rem;
       }
+    }
 
-      ul {
-        margin: 0 2vw;
-        padding: 0;
+    ul {
+      margin: 0 2vw;
+      padding: 0;
+      color: white;
+
+      li {
         color: white;
       }
     }
@@ -125,6 +130,7 @@
       background: $navyd;
       opacity: 0.9;
       color: white;
+      text-decoration: underline;
     }
 
     a:hover {
@@ -302,7 +308,7 @@
 
   .level-faqs {
     background-color: $light2;
-    min-width: 33.33vw;
+    min-width: 37.5vw;
     margin: 1rem auto 7.5rem;
     padding: 1vw;
     border-radius: 5rem;
@@ -313,7 +319,7 @@
     }
 
     p {
-      min-width: 20vw;
+      min-width: 25vw;
     }
 
     p.heading {

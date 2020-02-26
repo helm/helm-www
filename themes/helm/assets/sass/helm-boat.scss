@@ -13,15 +13,12 @@
 @keyframes boat-badge-bob {
   0% {
     top: 0.425vw;
-    left: 0.35vw;
   }
   50% {
     top: 0.75vw;
-    left: 0.825vw;
   }
   100% {
     top: 0.425vw;
-    left: 0.35vw;
   }
 }
 
@@ -34,6 +31,7 @@
   left: 0;
   right: 0;
   min-height: 10vw;
+  z-index: 1050;
 
   .boat-ship {
     position: absolute;
@@ -41,8 +39,8 @@
     left: 3.25vw;
     bottom: 2vw;
     max-width: 15vw;
-    z-index: 1800;
-    animation: boat-bob 7s cubic-bezier(.55,.5,.45,.5) infinite;
+    z-index: 1060;
+    animation: boat-bob 7s ease-in-out infinite;
     @include transition;
   }
 
@@ -57,7 +55,7 @@
     bottom: 8vw;
     left: 13.5vw;
     line-height: 1;
-    z-index: 1520;
+    z-index: 1005;
     opacity: 0;
     @include transition;
   }
@@ -76,7 +74,7 @@
       bottom: -8px;
     height: 15vw;
     overflow: hidden;
-    z-index: 1120;
+    z-index: 1014;
     background-color: transparent;
 
     &:before {
@@ -102,7 +100,7 @@
   }
 
   .parallax > use {
-    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+    animation: move-forever 25s ease-in-out infinite;
   }
   .parallax > use:nth-child(1) {
     animation-delay: -2s;
@@ -152,9 +150,9 @@
   .boat-ship {
     left: 0.636vw;
     top: 0.2vw;
-    z-index: 1125;
+    z-index: 1025;
     max-width: 7vw;
-    animation: boat-badge-bob 7s cubic-bezier(.55,.5,.45,.5) infinite;
+    animation: boat-badge-bob 7s ease-in-out infinite;
   }
 
   .wave-wrapper {
@@ -182,7 +180,7 @@
   &:after {
     left: 5.75vw;
     top: 2.5vw;
-    z-index: 1700;
+    z-index: 1007;
     padding: 0.25rem;
     height: 1.2rem;
     font-size: 0.667rem;

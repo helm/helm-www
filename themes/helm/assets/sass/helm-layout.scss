@@ -3,12 +3,14 @@ body {
   min-height: 100%;
   padding: 0;
   margin: 0;
+  background: $navyd;
 
   // page blue border style
   .page-wrapper {
     border: 8px solid $navy;
     border-bottom: none;
     position: relative;
+    background: white;
 
     &:before,
     &:after {

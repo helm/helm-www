@@ -40,6 +40,7 @@
   background: transparent;
   display: flex;
   justify-content: center;
+  border: none;
   @include transition;
 
   &.navbar-top-fixed {
