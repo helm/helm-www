@@ -140,11 +140,12 @@
   &.markdown pre,
   pre {
     border: none;
-    padding: 0.75em 1em;
+    padding: 1em 1em;
     margin: 0.25em 0 2.5em;
     font-size: 1rem;
     line-height: 1.636;
-    border-left: 2px solid $yellow;
+    border-left: 2px solid $code;
+    border-radius: 0.4vw;
 
     code {
       padding: 0;
