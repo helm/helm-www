@@ -47,7 +47,7 @@ Notice on the last line we access `favoriteDrink` as an attribute of `Values`:
 Let's see how this renders.
 
 ```console
-$ helm install --dry-run --debug ./mychart
+$ helm install --dry-run --debug good-puppy ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
 NAME:   geared-marsupi
@@ -70,7 +70,7 @@ that's the value displayed in the template. We can easily override that by
 adding a `--set` flag in our call to `helm install`:
 
 ```console
-helm install --dry-run --debug --set favoriteDrink=slurm ./mychart
+helm install --dry-run --debug --set favoriteDrink=slurm good-puppy ./mychart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart
 NAME:   solid-vulture
