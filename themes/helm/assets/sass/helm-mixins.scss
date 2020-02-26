@@ -25,6 +25,8 @@ $green: #2F84A7;
 $red: #95297C;
 $yellow: #D1AA9B;
 
+$code: desaturate(lighten($navyl, 50%), 10%);
+
 
 // old colors
 
@@ -234,7 +236,6 @@ $mono: "Space Mono", "Courier New", monaco, monospace;
  }
  
  // vertical alignment
- 
  @mixin fullheight {
    min-height: 100%;
    height: 100%;
