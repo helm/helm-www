@@ -84,7 +84,7 @@
     position: absolute;
     height: 3rem !important;
     right: 1.75vw;
-    padding: 1rem 1.925vw;
+    padding: 1rem 1.5vw;
     border: 2px solid $navyl;
     color: $navyl;
     @include transition;
@@ -100,7 +100,7 @@
     padding: 1rem 0.5rem 0 !important;
     margin: 0 0 -1px !important;
     position: absolute;
-    right: 12.5vw;
+    right: 14.25vw;
     
     a.versioner-trigger {
       background: rgba(255,255,255,0.5);

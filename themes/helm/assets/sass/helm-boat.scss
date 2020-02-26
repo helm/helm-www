@@ -31,7 +31,7 @@
   left: 0;
   right: 0;
   min-height: 10vw;
-  z-index: 1050;
+  z-index: 1070;
 
   .boat-ship {
     position: absolute;
@@ -76,6 +76,7 @@
     overflow: hidden;
     z-index: 1014;
     background-color: transparent;
+    @include transition;
 
     &:before {
       position: absolute;
@@ -86,6 +87,7 @@
       height: 3.5vw;
       width: 100%;
       background: $navyl;
+      @include transition;
     }
 
     .waves {
@@ -96,6 +98,7 @@
       margin-bottom: -7px;
       min-height: 0.5vw;
       max-height: 2vw;
+      @include transition;
     }
   }
 
@@ -146,7 +149,6 @@
     right: auto;
   }
 
-
   .boat-ship {
     left: 0.636vw;
     top: 0.2vw;
@@ -159,9 +161,9 @@
     width: 7.5vw;
     height: 7.5vw;
     border-radius: 50%;
-    border: 3px solid rgba(255,255,255, 0.75);
+    border: 3px solid rgba(255,255,255, 0.05);
     background-blend-mode: screen;
-    background: rgba(219,225,243,1);
+    background: rgba(219,225,243,0.5);
 
     .waves {
       margin-top: 3.75vw;
@@ -178,7 +180,7 @@
   }
 
   &:after {
-    left: 5.75vw;
+    left: 7.5vw;
     top: 2.5vw;
     z-index: 1007;
     padding: 0.25rem;

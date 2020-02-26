@@ -30,7 +30,7 @@
     color: $navyl;
     font-size: $scalex7;
     @include klinicBold;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.0335rem;
     margin: 0 0 0.875em;
     padding-top: 2.5em;
   }
@@ -211,7 +211,8 @@
   }
 
   table {
-    margin: 1.5rem 0;
+    margin: 2.5rem 0;
+    padding: 0;
     border: none;
     width: 100%;
 
@@ -220,13 +221,19 @@
       border: none;
       vertical-align: top;
       text-align: left;
-      padding: 0.425em 0.75em 0.425em 0.2em;
+      padding: 0.5em 0.2em 1.25em 0;
       width: auto;
     }
 
     td {
       color: $grey4;
       font-size: $scalex4;
+
+      code {
+        font-size: 1em;
+        background: transparent;
+        letter-spacing: -0.025em;
+      }
     }
   }
 

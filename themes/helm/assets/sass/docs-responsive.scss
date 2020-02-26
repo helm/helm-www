@@ -23,6 +23,12 @@
     }
   }
 
+  .navbar-top {
+    li.versioner {
+      right: 12em;
+    }
+  }
+
   // .navbar-top-fixed.is-active,
   .navbar-brand,
   .navbar-menu,
@@ -33,16 +39,19 @@
   .navbar-top:not(.navbar-top-fixed) {
     .navbar-menu.is-active {
       background-color: $navyd;
-      display: flex !important;
-      left: auto !important;
+      display: inline-block !important;
+      left: 0 !important;
+      right: 0 !important;
       margin: 0 !important;
       position: fixed;
       top: 0;
-      padding: 1.5rem 15vw 5rem 5vw;
+      padding: 1.5rem 0 4rem 0;
       z-index: 1100;
+      width: 100vw;
+      min-height: 5rem;
 
       a.navbar-item {
-        padding: 0.75rem 4vw;
+        padding: 0.75rem 2rem;
         color: white;
       }
     }
@@ -95,7 +104,7 @@
 
       &.is-active {
         display: block;
-        top: 8.75rem;
+        top: 9.5rem;
         position: fixed;
         z-index: 1220;
         border-top: 1px solid $navyl;
@@ -109,6 +118,14 @@
 
       a, p {
         color: white;
+
+        strong {
+          color: white;
+        }
+      }
+
+      a {
+        text-decoration: underline;
       }
   
       p small {
@@ -122,17 +139,80 @@
     }
   }
 
+  section.content-docs {
+    order: 1;
+  }
+
+  aside.sidebar-wrapper {
+    order: 2;
+  }
+
   // docs sidebar layout
   .sidebar-wrapper {
-    display: none;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    min-height: 2rem;
+    width: 100vw;
+    overflow: visible;
+
+    .sidebar {
+      position: relative;
+      margin-top: 4rem;
+      width: 100vw;
+      min-height: 2rem;
+      padding: 0;
+      border: none;
+    }
 
     &.is-active {
       display: block;
     }
+
+    // toggle docs menu on mobile
+    #sidebar-toggle {
+      width: 100vw;
+      position: relative;
+      text-align: center;
+      margin: 0 auto;
+      padding: 0.5rem 0;
+      background: $light2;
+      z-index: 1211;
+      @include klinicBold;
+
+      &:hover {
+        color: $navyd;
+      }
+
+      &.active .icon {
+        transform: rotate(180deg);
+      }
+    }
+    
+    .sidebar-content-wrapper {
+      display: none;
+      padding: 1rem 7.5vw;
+      border: 12px solid $light2;
+      margin-left: 8px;;
+
+      .search-container {
+        margin-top: 0;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      ul.sidebar-main {
+        padding-bottom: 0;
+
+      }
+    }
   }
   .page-docs .content-docs {
     padding-left: 0;
-    padding-top: 3rem;
+    padding-top: 0;
   }
 
   .page-docs .content-docs {
@@ -143,7 +223,7 @@
   // content sizes
   .content-wrapper {
     max-width: 90vw !important;
-    padding: 0 5vw 3rem;
+    padding: 2rem 5vw 3rem;
 
     h1 {
       font-size: 7.5vw;

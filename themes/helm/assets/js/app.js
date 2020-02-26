@@ -64,8 +64,8 @@ if ($('.home').length) {
   });
 };
 
-// adjust docs sidebar after scroll
 if ($('.page-docs').length) {
+  // adjust docs sidebar after scroll
   $(window).scroll(function() {    // this will work when your window scrolled.
       var height = $(window).scrollTop();  //getting the scrolling height of window
       if(height  > 50) {
@@ -73,6 +73,12 @@ if ($('.page-docs').length) {
       } else{
         $(".sidebar").removeClass('is-scrolled');
       }
+  });
+
+  // toggle sidebar menu for mobile devices
+  $("#sidebar-toggle").click(function() {
+    $(this).toggleClass("active");
+    $(".sidebar-content-wrapper").toggleClass("active");
   });
 }
 
