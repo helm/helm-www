@@ -469,7 +469,6 @@
   }
 
   .community-boxes {
-    max-width: 85rem;
     margin: 0 6vw;
 
     .box {
@@ -480,7 +479,6 @@
         box-shadow: 0 1px 10px $light2;
         @include transition;
       }
-      
       .title {
         font-size: 1.5rem;
       }
