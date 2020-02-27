@@ -157,7 +157,7 @@ favorite:
   food: pizza
 ```
 
-Now re-running `helm install --dry-run --debug ./mychart` will produce this
+Now re-running `helm install --dry-run --debug fair-worm ./mychart` will produce this
 YAML:
 
 ```yaml
