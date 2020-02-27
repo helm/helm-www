@@ -23,7 +23,7 @@ Your release is named {{ .Release.Name }}.
 To learn more about the release, try:
 
   $ helm status {{ .Release.Name }}
-  $ helm get notes {{ .Release.Name }}
+  $ helm get all {{ .Release.Name }}
 
 ```
 
@@ -48,7 +48,7 @@ Your release is named rude-cardinal.
 To learn more about the release, try:
 
   $ helm status rude-cardinal
-  $ helm get notes rude-cardinal
+  $ helm get all rude-cardinal
 ```
 
 Using `NOTES.txt` this way is a great way to give your users detailed
