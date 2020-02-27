@@ -6,7 +6,17 @@ weight: 17
 
 The `lookup` can be used to reources from resources in a running cluster.
 The sinopsys of the lookup function is:
-`lookup apiVersion(string, not-empty), kind (string, not-empty), namespace(string, can be empty), name(string, can be empty) -> resource map[string]interface{}`
+`lookup apiVersion, kind, namespace, name -> resource or resource list `
+
+The parameters and return values have the same properties:
+
+| parameter/return value | type | nil-ability |
+|:---:|:---:|:---:|
+| apiVersion | string | not nil / empty |
+| kind | string | not nil / empty |
+| namespace | string | can be empty (`""`) |
+| name | string | can be empty (`""`) |
+| resource / resource list | dictionary | can be empty (`nil`) when a single resource is not found |
 
 Name and namespace are optional and can be passed an empty string `""`. The following combination of parameters are possible:
 
@@ -21,7 +31,7 @@ Name and namespace are optional and can be passed an empty string `""`. The foll
 | no | empty | non-empty | `kubectl get type name` |
 | no | empty | empty | `kubectl get type`, this returns a list |
 
-When the function call is designed to return an object, it will return a `map[string]interface{}` obtained from the parsing the json of the returned resource. This structure can the be further navigated to extract specific values, for example:
+When the function call is designed to return an object, it will return a dictionary (`map[string]interface{}` in golang) obtained from the parsing the json of the returned resource. This structure can the be further navigated to extract specific values, for example:
 
 ```go
 (lookup "v1" "Namespace" "" "mynamespace").metadata.annotations
@@ -36,14 +46,14 @@ range (lookup "v1" "Service" "mynamespace" "").items
 ... do something with each service
 ```
 
-When no object is found, either a empty object is returned or a list with 0 elements, either case can be a way to check for the existence of an object. For example here is a template that checks for the existence of a namespace before creating it.
+When no object is found, either a empty object is returned or a list with 0 elements, either return value can be used to check for the existence of an object. For example, here is a template that checks for the existence of a namespace before creating it.
 
 ```go
-{{ if (lookup "v1" "Namespace" "" .Release.Namespace) != nil }}
+{{ if (lookup "v1" "Namespace" "" "mynamespace") != nil }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .Release.Namespace }}
+  name: mynamespace
 {{ end }}
 ```
 
