@@ -454,109 +454,95 @@
   background: linear-gradient( 0deg, #fff, #F7F7F7);
   border-bottom: 1px solid $light1;
 
-  h2, p {
-    color: $navy;
-  }
-
   h2 {
-    margin: 5rem auto 0;
     @include klinicBold;
-
-    & + p {
-      margin-bottom: 4.5rem;
-    }
+    margin: 5rem auto 1rem;
   }
 
-  .helm-community-links {
-    ul {
-      background-color: white;
-      padding: 1.5em 2.25em;
-      border-radius: 1em;
+  h2 + p {
+    margin-bottom: 4.25rem;
+  }
 
-      li {
+  p {
+    font-size: 1.25rem;
+    padding-right: 0;
+  }
+
+  .community-boxes {
+    max-width: 85rem;
+    margin: 0 6vw;
+
+    .box {
+      padding: 0.4rem 1.667vw;
+      box-shadow: 0 5px 12px $light2;
+
+      &:hover {
+        box-shadow: 0 1px 10px $light2;
+        @include transition;
+      }
+      
+      .title {
         font-size: 1.5rem;
-        list-style: none;
-        color: $darkblue;
-        line-height: 2.5;
-        padding-left: 2.25em;
-        position: relative;
-        @include klinicReg;
-
-        a {
-          color: $darkblue;
-          border-bottom: 3px solid $blue;
-
-          &:hover {
-            color: $blue;
-            border-color: $lightblue;
-          }
-        }
-
-        .fa {
-          color: $blue;
-          font-size: 2rem;
-          width: 1.25em;
-          padding-right: 0em;
-          position: absolute;
-          left: 0;
-          top: 0.525em;
-        }
-      }
-    }
-  }
-
-  .helm-community-blocks {
-    section {
-      margin: 0 0 2em;
-      padding: 1.25rem 1.5rem;
-      min-height: 125px;
-      position: relative;
-
-      &:first-child {
-        min-height: 175px;
-      }
-
-      p {
-        color: $darkblue;
-        font-size: 1rem;
-        float: left;
-        line-height: 1.65;
       }
 
       a {
-        color: $darkblue;
+        // text-decoration: underline;
+        color: $navy;
+        border-bottom: 1px solid $navyl;
+        @include ripple;
+        text-align: left;
       }
 
-      .right {
-        background-color: lighten($light1, 1.5%);
-        text-align: center;
-        padding: 1.25em 2em 1em;
-        width: 33.3%;
-        position: absolute;
-        top: 1em;
-        right: 1em;
+      dl, p, ul, ol {
+        margin: 0 0 1.5rem
+      }
 
-        .fa {
-          font-size: 2.75rem;
-          float: left;
-          display: inline-block;
-          padding-right: 0.333em;
-          color: $blue;
-        }
+      p, dd, dt {
+        font-size: 1.12rem;
+        line-height: 1.5;
+        color: $dark;
+      }
+
+      .placeholder {
+        background: $salmonl;
+        font-style: italic;
+        padding: 1.125rem 0;
+        text-align: center;
+        margin: 1rem 0;
+        display: inline-block;
+        width: 100%;
+        color: $grey2;
+        border-radius: 0.5rem;
+      }
+
+      dd {
+        padding: 0.25rem 0;
+
         em {
-          font-style: normal;
-          font-size: 1.125em;
-          display: inline-block;
-          min-width: 50%;
-          color: $blue;
-          font-weight: bold;
+          font-size: 1rem;
+          color: darken($light2, 50%);
         }
-        small {
-          display: inline-block;
-          font-size: 0.667rem;
-          min-width: 50%;
-          color: $blue;
+      }
+
+      h3, dl dt {
+        @include klinicBold;
+        color: $navyl;
+        font-size: 1.125rem;
+        margin-top: 1.25rem;
+
+        a {
+          color: $navyl;
         }
+      }
+      
+      .subtitle {
+        font-size: 0.925rem;
+        margin: 0.25rem 0 1.5rem;
+        font-weight: normal;
+        background: $light1;
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        line-height: 1.4;
       }
     }
   }
