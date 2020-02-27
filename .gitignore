@@ -19,3 +19,7 @@ docs.helm.sh/
 
 # JetBrains IDEs (GoLand, IntelliJ, ...) config folder
 .idea
+
+# Link checker artifacts
+bin/
+tmp/
