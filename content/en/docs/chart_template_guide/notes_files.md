@@ -5,7 +5,7 @@ weight: 10
 ---
 
 In this section we are going to look at Helm's tool for providing instructions
-to your chart users. At the end of a `chart install` or `chart upgrade`, Helm
+to your chart users. At the end of a `helm install` or `helm upgrade`, Helm
 can print out a block of helpful information for users. This information is
 highly customizable using templates.
 
@@ -23,11 +23,11 @@ Your release is named {{ .Release.Name }}.
 To learn more about the release, try:
 
   $ helm status {{ .Release.Name }}
-  $ helm get {{ .Release.Name }}
+  $ helm get notes {{ .Release.Name }}
 
 ```
 
-Now if we run `helm install ./mychart` we will see this message at the bottom:
+Now if we run `helm install rude-cardinal ./mychart` we will see this message at the bottom:
 
 ```
 RESOURCES:
@@ -48,7 +48,7 @@ Your release is named rude-cardinal.
 To learn more about the release, try:
 
   $ helm status rude-cardinal
-  $ helm get rude-cardinal
+  $ helm get notes rude-cardinal
 ```
 
 Using `NOTES.txt` this way is a great way to give your users detailed
