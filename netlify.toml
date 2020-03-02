@@ -1,14 +1,19 @@
 [build]
-  base    = ""
-  command = "hugo --minify"
+  command = "make build"
   publish = "app"
 
 [build.environment]
-  HUGO_VERSION = "0.55.6"
+  HUGO_VERSION = "0.65.3"
+  HUGO_ENABLEGITINFO = "true"
 
 [context.production.environment]
   HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview]
+  command = "make build-preview"
+
+[context.branch-deploy]
+  command = "make build-preview"
 
 # redirect docs homepage
 [[redirects]]
