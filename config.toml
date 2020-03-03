@@ -133,3 +133,8 @@ weight = 4
 
 [languages.zh.params]
 language_alternatives = ["en"]
+
+[markup]
+  [markup.highlight]
+    style = "manni"
+    guessSyntax = true
