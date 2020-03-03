@@ -126,8 +126,6 @@
 
   &.markdown pre,
   pre {
-    background-color: #e4f3f9;
-    color: black;
     border: none;
     padding: 0.75em 1em;
     margin: 0.25em 0 2.5em;
@@ -135,7 +133,7 @@
 
     code {
       padding: 0;
-      background-color: #e4f3f9;
+      background: transparent;
       font-size: 1rem;
     }
   }
@@ -144,7 +142,6 @@
     margin: 0px;
     width: 100%;
     height: 220px;
-    border-bottom: 3px solid $grey1;
     overflow: auto;
   }
 
@@ -153,9 +150,7 @@
   }
 
   code {
-    color: black;
     padding: 0.5em 0.5em;
-    background-color: #e4f3f9;
     border: none;
     font-size: 1rem;
   }
