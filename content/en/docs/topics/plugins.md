@@ -204,11 +204,16 @@ will be set as the `KUBECONFIG` variable
 
 ## A Note on Flag Parsing
 
-When executing a plugin, Helm will parse global flags for its own use. Some of
-these flags are _not_ passed on to the plugin.
+When executing a plugin, Helm will parse global flags for its own use. None of
+these flags are passed on to the plugin.
 
 - `--debug`: If this is specified, `$HELM_DEBUG` is set to `1`
+- `--registry-config`: This is converted to `$HELM_REGISTRY_CONFIG`
+- `--repository-cache`: This is converted to `$HELM_REPOSITORY_CACHE`
+- `--repository-config`: This is converted to `$HELM_REPOSITORY_CONFIG`
+- `--namespace` and `-n`: This is converted to `$HELM_NAMESPACE`
 - `--kube-context`: This is converted to `$HELM_KUBECONTEXT`
+- `--kubeconfig`: This is converted to `$KUBECONFIG`
 
 Plugins _should_ display help text and then exit for `-h` and `--help`. In all
 other cases, plugins may use flags as appropriate.
