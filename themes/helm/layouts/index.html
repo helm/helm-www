@@ -45,34 +45,34 @@ Helm
         <div class="tile is-parent is-vertical">
           <div class="tile is-child">
             <p class="title">
-              {{ T "manage_complexity_title" }}
+              {{ T "feature_01_title" }}
             </p>
             <p>
-              {{ T "manage_complexity_description" }}
+              {{ T "feature_01_desc" | markdownify }}
             </p>
           </div>
           <div class="tile is-child">
             <p class="title">
-                {{ T "easy_updates_title" }}
+                {{ T "feature_02_title" }}
             </p>
               <p>
-              {{ T "easy_updates_description" }}
+              {{ T "feature_02_desc" | markdownify }}
             </p>
           </div>
           <div class="tile is-child">
             <p class="title">
-              {{ T "easy_sharing_title" }}
+              {{ T "feature_03_title" }}
             </p>
             <p>
-              {{ T "easy_sharing_description" }}
+              {{ T "feature_03_desc" | markdownify }}
             </p>
           </div>
           <div class="tile is-child">
             <p class="title">
-              {{ T "rollbacks_title" }}
+              {{ T "feature_04_title" }}
             </p>
             <p>
-              {{ T "rollbacks_description" | markdownify }}
+              {{ T "feature_04_desc" | markdownify }}
             </p>
           </div>
         </div>
@@ -81,8 +81,8 @@ Helm
     
     <section class="tile tile-actions is-parent is-horizontal">
       <div class="tile is-child">
-        <h2>Get Helm!</h2>
-        <p>Install Helm with a package manager, or <a href="https://github.com/helm/helm/releases/latest">download a binary</a>.</p>
+        <h2>{{ T "get_helm_title" }}</h2>
+        <p>{{ T "get_helm_desc" | markdownify }}</p>
 
         <ul class="tabs" data-tabgroup="tab-group">
           <li id="tablinks"><a href="#Homebrew" class="active">Homebrew</a></li>
@@ -93,29 +93,29 @@ Helm
         <div class="tabgroup">
           <div class="tabcontent" id="Homebrew">
             <input id="copybrew" value="brew install helm" />
-            <button data-clipboard-target="#copybrew" class="button">Copy</button>
+            <button data-clipboard-target="#copybrew" class="button">{{ T "action_copy" }}</button>
           </div>
           <div class="tabcontent " id="Chocolatey">
             <input id="copychoc" value="choco install kubernetes-helm" />
-            <button data-clipboard-target="#copychoc" class="button">Copy</button>
+            <button data-clipboard-target="#copychoc" class="button">{{ T "action_copy" }}</button>
           </div>
           <div class="tabcontent" id="Scoop">
             <input id="copyscoop" value="scoop install helm" />
-            <button data-clipboard-target="#copyscoop" class="button">Copy</button>
+            <button data-clipboard-target="#copyscoop" class="button">{{ T "action_copy" }}</button>
           </div>
           <div class="tabcontent" id="Gofish">
             <input id="copyfish" value="gofish install helm" />
-            <button data-clipboard-target="#copyfish" class="button">Copy</button>
+            <button data-clipboard-target="#copyfish" class="button">{{ T "action_copy" }}</button>
           </div>
         </div>
 
-        <p>Once installed, unpack the helm binary and add it to your PATH and you are good to go! Check the <a href="./docs/intro/install/">docs</a> for further <a href="./docs/intro/install/">installation</a> and <a href="./docs/intro/using_helm/">usage instructions</a>.</p>
+        <p>{{ T "get_helm_next" | markdownify }}</p>
       </div>
 
       <div class="tile is-child is-centered has-text-centered">
-        <h2>Get Charts</h2>
+        <h2>{{ T "get_charts_title" }}</h2>
 
-        <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
+        <p>{{ T "get_charts_desc" | markdownify }}</p>
 
         <div class="has-text-center is-centered">
           <p><a href="https://hub.helm.sh"><img src="/img/helm-hub.jpg" alt="Helm Hub" class="is-centered"></a></p>
@@ -132,8 +132,8 @@ Helm
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading"><a href="https://helm.sh/docs/topics/v2_v3_migration/">Upgrading from v2 to v3?</a></p>
-            <p class="title"><a href="https://helm.sh/docs/topics/v2_v3_migration/">Read the migration doc for more details.</a></p>
+            <p class="heading">{{ T "get_upgrade_title" | markdownify }}</p>
+            <p class="title">{{ T "get_upgrade_desc" | markdownify }}</p>
           </div>
         </div>
       </nav>
@@ -141,55 +141,53 @@ Helm
   </section>
 
   <section class="helm-community">
-    <h2 class="has-text-centered">Join the Community</h2>
-    <p class="has-text-centered">More information about the Helm project, and how to contribute.</p>
+    <h2 class="has-text-centered">{{ T "community_title" }}</h2>
+    <p class="has-text-centered">{{ T "community_desc" }}</p>
 
     <div class="columns is-mobile community-boxes">
 
       <div class="column is-one-third is-full-mobile">
         <section class="box">
-          <h1 class="title">Events</h1>
+          <h1 class="title">{{ T "community_events_title" }}</h1>
           <dl>
-            <dt>Upcoming Events</dt>
-            <dd><small class="placeholder">Watch this space...</small></dd>
-            <dt>Past Events</dt>
-            <dd><em>Feb 25th 2020</em> - <a href="https://www.cncf.io/webinars/helm-security-a-look-below-deck/">Helm Security Webinar</a></dd>
-            <dd><em>Nov 18 2019</em> - <a href="https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/">KubeCon North America</a></dd>
-            <dd><em>Sep 11 2019</em> - <a href="https://events19.linuxfoundation.org/events/helm-summit-2019/">Helm Summit 2019</a></dd>
+            <dt>{{ T "community_upcoming_events_title" }}</dt>
+            <dd><small class="placeholder">{{ T "community_upcoming_events_desc" | markdownify }}</small></dd>
+            <dt>{{ T "community_past_events_title" }}</dt>
+            <dd>{{ T "community_past_event_01" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_02" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_03" | markdownify }}</dd>
           </dl>
         </section>
 
         <section class="box">
-          <h1 class="title">SIG Apps</h1>
+          <h1 class="title">{{ T "community_sig_title" }}</h1>
           <h2 class="subtitle">
-            A Special Interest Group for deploying and operating apps in Kubernetes.
+            {{ T "community_sig_subtitle" }}
           </h2>
-          <p><a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">SIG-Apps</a> is a Special Interest Group for deploying and operating apps in Kubernetes.</p>
-          
-          <p>They <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">meet each week</a> to demo and discuss tools and projects. Community meetings are recorded and <a href="https://www.youtube.com/results?search_query=kubernetes+sig+apps" target="_blank">shared to YouTube</a>.</p>
+          {{ T "community_sig_desc" | markdownify }}
         </section>
       </div>
 
       <div class="column is-one-third is-full-mobile">
         <section class="box">
-          <h1 class="title">Developer Standups</h1>
+          <h1 class="title">{{ T "community_standup_title" }}</h1>
           <h2 class="subtitle">
-            <a href="https://zoom.us/j/696660622"><span class="icon"><i class="mdi mdi-message-video"></i></span> Thursdays 9:30-10am (PT)</a>
+            <a href="https://zoom.us/j/696660622"><span class="icon"><i class="mdi mdi-message-video"></i></span> {{ T "community_standup_time" }}</a>
           </h2>
-          <p>These meetings are open to all. Check the <a href="https://github.com/helm/community/blob/master/communication.md#meetings">community repo</a> for notes and details.</p>
+          <p>{{ T "community_standup_desc" | markdownify }}</p>
         </section>
         
         <section class="box">
-          <h1 class="title">Slack Chat</h1>
+          <h1 class="title">{{ T "community_slack_title" }}</h1>
           <dl>
-            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-users">Helm Users</a></dt>
-            <dd>Discussion around using Helm, working with charts and solving common errors.</dd>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-users">{{ T "community_slack_group_01_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_01_desc" }}</dd>
 
-            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-dev">Helm Developement</a></dt>
-            <dd>Topics regarding Helm development, ongoing PRs, releases, etc.</dd>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-dev">{{ T "community_slack_group_02_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_02_desc" }}</dd>
 
-            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/charts">Charts</a></dt>
-            <dd>Discussion for users and contributors to Helm Charts.</dd>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/charts">{{ T "community_slack_group_03_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_03_desc" }}</dd>
           </dl>
 
           <h2 class="subtitle">
@@ -200,19 +198,11 @@ Helm
 
       <div class="column is-one-third is-full-mobile">
         <section class="box">
-          <h1 class="title">Contributing</h1>
+          <h1 class="title">{{ T "community_contrib_title" }}</h1>
           <h2 class="subtitle">
-            Helm always welcomes new contributions to the project!
+            {{ T "community_contrib_subtitle" }}
           </h2>
-          <h3>Where to begin?</h3>
-          <p>Helm is a big project with a lot of users and contributors. It can be a lot to take in!</p>
-          
-          <p>We have a list of <a href="https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22">good first issues</a> if you want to help but don't know where to start.</p>
-
-          <h3>What do I do?</h3>
-          <p>Before you contribute some code, please read our <a href="https://github.com/helm/helm/blob/master/CONTRIBUTING.md">Contribution Guide</a>. It goes over the processes around creating and reviewing pull requests.</p>
-
-          <p>Once you write some code, please <a href="https://helm.sh/blog/helm-dco/index.html">sign your commits</a> to ensure Helm adheres to the <a href="https://developercertificate.org/">DCO</a> agreement used by the <a href="https://www.cncf.io/">CNCF</a>.</p>
+          {{ T "community_contrib_desc" | markdownify }}
         </section>
       </div>
     </div>
