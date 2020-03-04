@@ -110,36 +110,36 @@ disableLanguages = ["zh"]
     weight = 5
 
   # Chinese
-  [languages.zh]
-  title = "Helm"
-  description = "Helm - The Kubernetes Package Manager."
-  contentDir = "content/zh"
-  languageName = "中文 Chinese"
-  weight = 1
+  # [languages.zh]
+  # title = "Helm"
+  # description = "Helm - The Kubernetes Package Manager."
+  # contentDir = "content/zh"
+  # languageName = "中文 Chinese"
+  # weight = 1
 
-    [[languages.zh.menus.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
+    # [[languages.zh.menus.main]]
+    # name = "Home"
+    # url = "/"
+    # weight = 1
 
     # [[languages.zh.menus.main]]
     # name = "Docs"
     # url = "/docs"
     # weight = 2
 
-    [[languages.zh.menus.main]]
-    name = "Charts"
-    url = "https://hub.helm.sh/"
-    weight = 3
-    external = "yes"
+    # [[languages.zh.menus.main]]
+    # name = "Charts"
+    # url = "https://hub.helm.sh/"
+    # weight = 3
+    # external = "yes"
 
     #[[languages.zh.menus.main]]
     #name = "Blog"
     #url = "/blog"
     #weight = 2
 
-    [languages.zh.params]
-    language_alternatives = ["en"]
+    # [languages.zh.params]
+    # language_alternatives = ["en"]
 
   [markup]
     [markup.highlight]
