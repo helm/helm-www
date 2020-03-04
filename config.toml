@@ -122,10 +122,10 @@ disableLanguages = ["zh"]
     url = "/"
     weight = 1
 
-    [[languages.zh.menus.main]]
-    name = "Docs"
-    url = "/docs"
-    weight = 2
+    # [[languages.zh.menus.main]]
+    # name = "Docs"
+    # url = "/docs"
+    # weight = 2
 
     [[languages.zh.menus.main]]
     name = "Charts"
