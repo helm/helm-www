@@ -15,6 +15,8 @@
     top: 0.5rem;
     right: 0.5rem;
     z-index: 1300;
+    background: $salmonl;
+    color: $navyl;
 
     &.is-active {
       color: white;
@@ -74,7 +76,6 @@
     
     h1 {
       font-size: 5vw;
-      // font-size: 2.775vw;
       position: absolute;
       left: 40%;
       top: 10rem;
@@ -93,12 +94,108 @@
       bottom: auto;
       width: auto;
       padding: 1.5rem 2.5vw;
-      // background: transparent;
       border: none;
     }
   }
 
-  .page-docs {
+  .home-overview-wrap {
+    padding-bottom: 0.5rem;
+    
+    .content-wrapper {
+      padding: 0 2vw 3rem;
+    }
+    
+    article.lead {
+      padding: 0;
+
+      p:first-child {
+        font-size: 4.25vw;
+
+      }
+    }
+
+    .tile-actions {
+
+      ul.tabs {
+        li a {
+          font-size: 2vw;
+        }
+      }
+
+      .tabcontent {
+        input {
+          font-size: 4vw;
+        }
+        button {
+          font-size: 3.75vw;
+        }
+      }
+      
+      .tile.is-child {
+        h2 {
+          font-size: 5vw;
+          margin-bottom: 2rem;
+        }
+  
+        p {
+          font-size: 4vw;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+
+    .level-faqs {
+      width: 92vw;
+
+      p.heading {
+        font-size: 4vw;
+      }
+      p.title {
+        font-size: 3.5vw;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .helm-community {
+    h2 {
+      font-size: 4.75vw;
+    }
+    p {
+      font-size: 4vw;
+    }
+
+    .community-boxes {
+      .box {
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+    }
+  }
+
+  // blog
+  .page-blog-list,
+  .page-blog-single {
+    section.content-blog {
+
+      .content-wrapper {
+        max-width: 100vw !important;
+        padding: 2rem 0 3rem;
+      }
+    }
+  }
+
+  .blog-single {
+    article.content-wrapper {
+      h1 {
+        font-size: 6.5vw;
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .page-docs,
+  .page-blog {
     #banner {
       display: none;
 
@@ -220,6 +317,13 @@
     padding-right: 0;
   }
 
+  footer {
+    .helm-contrib-logos {
+      padding-left: 4vw;
+      padding-right: 4vw;
+    }
+  }
+
   // content sizes
   .content-wrapper {
     max-width: 90vw !important;
@@ -228,6 +332,16 @@
     h1 {
       font-size: 7.5vw;
       padding-top: 1rem;
+    }
+
+    article {
+      padding-left: 7.5vw;
+      padding-right: 7.5vw;
+
+      h1 {
+        font-size: 5.35vw;
+        padding-top: 2rem;
+      }
     }
 
     p {
