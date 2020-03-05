@@ -4,41 +4,70 @@
 {{ $isEnglish := eq $lang "en" }}
 {{ $menu      := site.Menus.main }}
 
-{{ range $menu }}
-<li>
-  <a href="{{ .URL | relLangURL }}">
-    {{ .Name  }}
-  </a>
-</li>
-{{ end }}
-
-<!--
-{{ range .Translations }}
-<li>
-  <a href="{{ .RelPermalink }}">
-    {{ .Language.LanguageName }}
-  </a>
-</li>
-{{ end }}
--->
-
-<li><a href="https://twitter.com/helmpack" target="_blank" class="hide-for-small-only" title="Helm on Twitter"><img src="/img/twitter.svg" alt="Helm on twitter" /></a></li>
-<li><a href="https://github.com/helm/helm" target="_blank" class="hide-for-small-only" title="Helm on GitHub"><img src="/img/github.svg" alt="GitHub" /></a></li>
-
-<li class="nav-dropdown">
-  {{ with $primary }}
-  <a data-dropdown="version-drop" aria-controls="version-drop" aria-expanded="false" class="nav-dropdown-trigger">
-    {{ .version }}{{ with .patch }} {{ . }}{{ end }} <i class="fa fa-caret-down"></i>
-  </a>
-  {{ end }}
-
-  <ul id="version-drop" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-    {{ range $versions }}
-    <li>
-      <a href="{{ .url }}">
-        {{ .version }}{{ with .patch }} <em>{{ . }}</em>{{ end }}
+<nav class="navbar navbar-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid is-vcentered">
+    <div class="navbar-brand">
+      <a href="/">
+        {{ partial "logo.html" . }}
       </a>
-    </li>
-    {{ end }}
-  </ul>
-</li>
+    </div>
+
+    <!-- desktop menu -->
+    <div class="navbar-menu is-centered" id="navMenuDocumentation">
+      {{ range $menu }}
+        {{ if in (print .URL) "http"}}
+          <a href="{{ .URL | relLangURL }}" class="navbar-item external" target="_blank">
+            {{ .Name }} <span class="icon"><i class="mdi mdi-open-in-new"></i></span>
+          </a>
+        {{ else }}
+          <a href="{{ .URL | relLangURL }}" class="navbar-item">
+            {{ .Name }}
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <div class="navbar-end is-hidden-mobile">
+      <ul class="is-pulled-right">
+        <!--
+        {{ range .Translations }}
+        <li>
+          <a href="{{ .RelPermalink }}">
+            {{ .Language.LanguageName }}
+          </a>
+        </li>
+        {{ end }}
+        -->
+        <li class="versioner navbar-item has-dropdown is-hoverable">
+          {{ with $primary }}
+          <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
+            {{ .version }}{{ with .patch }}{{ end }} <i class="fa fa-caret-down"></i>
+          </a>
+          {{ end }}
+    
+          <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+            {{ range $versions }}
+            <li>
+              <a href="{{ .url }}" class="navbar-item">
+                {{ .version }}{{ with .patch }} <em>{{ . }}</em>{{ end }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        </li>
+        <li>
+          <a class="button not-fixed is-outlined" href="https://helm.sh/docs/intro/quickstart/">{{ T "action_get_started" }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- mobile menu -->
+    <div class="navbar-end is-hidden-tablet">
+      <div id="navbarBurger" class="navbar-burger burger" data-target="navMenuDocumentation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</nav>

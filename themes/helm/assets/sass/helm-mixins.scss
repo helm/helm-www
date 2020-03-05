@@ -8,9 +8,27 @@
 
 
 // 1.
-// Helm Colours
+// Helm 3 Colours
 //
 // Primary Colors
+
+$navy:#091C84;
+$navyd:#090E6F;
+$navyl:#1B53C2;
+
+$dark: #050843;
+$light2: #B7C2E9;
+$light1: #DBE1F3;
+
+$blue: #3B82BF;
+$green: #2F84A7;
+$red: #95297C;
+$yellow: #D1AA9B;
+
+$code: desaturate(lighten($navyl, 50%), 10%);
+
+
+// old colors
 
 $blue1: #2DAFE9;
 $blue2: #2BA0D3;
@@ -23,8 +41,8 @@ $grey2: #999;
 $grey3: #666;
 $grey4: #333333;
 
-$light2: #EBF7FC;
-$light1: lighten($light2, 2.5%);
+// $light2: #EBF7FC;
+// $light1: lighten($light2, 2.5%);
 
 
   // old helm.sh colors, discontinue these
@@ -45,6 +63,7 @@ $light1: lighten($light2, 2.5%);
   $darkgreen      : #44A653;
 
   $salmon         : #F99EAC;
+  $salmonl        : #F8DCDF;
 
   $lightpink      : #FF7590;
   $lightblue      : #7FCCF0;
@@ -55,70 +74,68 @@ $light1: lighten($light2, 2.5%);
 // Fonts
 //
 
-$base: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$mono: "Lucida Console", "Courier New", monaco, monospace;
+$base: "Public Sans", Helvetica, Arial, sans-serif;
+$mono: "Space Mono", "Courier New", monaco, monospace;
 
 @font-face {
-  font-family: 'klinic-reg';
-  src: url('../fonts/klinicslabbook-webfont.eot');
-  src: url('../fonts/klinicslabbook-webfont.eot?#iefix') format('embedded-opentype'),
-   url('../fonts/klinicslabbook-webfont.woff2') format('woff2'),
-   url('../fonts/klinicslabbook-webfont.woff') format('woff'),
-   url('../fonts/klinicslabbook-webfont.ttf') format('truetype'),
-   url('../fonts/klinicslabbook-webfont.svg#klinic_slabbook') format('svg');
-  font-weight: 400;
+  font-family: 'Public Sans';
+  src: url('../fonts/publicsans-regular-webfont.woff2') format('woff2'),
+       url('../fonts/publicsans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Public Sans';
+  src: url('../fonts/publicsans-medium-webfont.woff2') format('woff2'),
+       url('../fonts/publicsans-medium-webfont.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'klinic-bold';
-  src: url('../fonts/klinicslabmedium-webfont.eot');
-  src: url('../fonts/klinicslabmedium-webfont.eot?#iefix') format('embedded-opentype'),
-   url('../fonts/klinicslabmedium-webfont.woff2') format('woff2'),
-   url('../fonts/klinicslabmedium-webfont.woff') format('woff'),
-   url('../fonts/klinicslabmedium-webfont.ttf') format('truetype'),
-   url('../fonts/klinicslabmedium-webfont.svg#klinic_slabmedium') format('svg');
-  font-weight: 500;
+  font-family: 'Space Mono';
+  src: url('../fonts/spacemono-regular-webfont.woff2') format('woff2'),
+       url('../fonts/spacemono-regular-webfont.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../fonts/spacemono-bold-webfont.woff2') format('woff2'),
+       url('../fonts/spacemono-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
 
 @mixin klinicBold {
-  font-family: "klinic-bold", "klinic bold", $base;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-family: $mono;
+  font-weight: bold;
+  letter-spacing: 0.035rem;
   -webkit-font-smoothing: antialiased;
 }
 
 @mixin klinicReg {
-  font-family: "klinic-reg", "klinic", $base;
-  font-weight: 400;
-  letter-spacing: 0.0075em;
+  font-family: $mono;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
 }
 @mixin helvetica {
   font-family: $base;
-  letter-spacing: 0;
 }
 
 @mixin upperCase {
   text-transform: uppercase;
-  letter-spacing: 0.25em;
 }
 
 @mixin normCase {
   text-transform: none;
-  letter-spacing: 0.015em;
 }
 
 
 // 3.
 // Load CSS & Vendor Prefixes
 //
-// via Compass
-// https://github.com/gruntjs/grunt-contrib-compass
-//
-
-//@import "assets/compass/css3";
 
 @mixin transition($property:all, $duration:0.3s, $easing:ease-in-out) {
   transition: $property $duration $easing;
@@ -166,6 +183,14 @@ $mono: "Lucida Console", "Courier New", monaco, monospace;
   animation-fill-mode: forwards;
 }
 
+@mixin opacity($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
+}
+
 /**
  * Media query breakpoints
  */
@@ -211,7 +236,6 @@ $mono: "Lucida Console", "Courier New", monaco, monospace;
  }
  
  // vertical alignment
- 
  @mixin fullheight {
    min-height: 100%;
    height: 100%;
@@ -235,7 +259,7 @@ $mono: "Lucida Console", "Courier New", monaco, monospace;
  }
  
  // link effect
- @mixin ripple($color: $salmon) {
+ @mixin ripple($color: $navyl) {
    position: relative;
    display: inline-block;
    text-align: center;
@@ -262,3 +286,43 @@ $mono: "Lucida Console", "Courier New", monaco, monospace;
      opacity: 1;
    }
  }
+
+// link effect
+@mixin wave($color: $salmon) {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1.5;
+  z-index: 200;
+  margin: 0 -0.5em;
+  padding: 0 0.5em;
+  @include transition;
+
+  &::after {
+    display: inline-block;
+    content: " ";
+    background: $salmon;
+    background-blend-mode: screen;
+    width: 120%;
+    height: 2em;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    bottom: -2.5em;
+    z-index: -10;
+    @include transition;
+  }
+
+  &:hover {
+    color: $navyl !important;
+    // padding-left: 0.2em;
+    // padding-right: 0.2em;
+
+    &::after {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+}

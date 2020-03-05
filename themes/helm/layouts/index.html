@@ -1,196 +1,218 @@
 {{ define "title" }}
-Helm Docs | Helm
+Helm
 {{ end }}
 
 {{ define "main" }}
 {{ $home := site.BaseURL }}
-<nav class="top-bar home-nav">
-  {{ partial "banner.html" . }}
 
-  <h1>
-    <a href="{{ $home }}" title="Helm.sh">
-      {{ partial "logo.html" . }}
-    </a>
-  </h1>
-
-  <ul class="inline">
+<div id="helm" class="page-wrapper page-home">
+  <header>
+    {{ partial "banner.html" . }}
     {{ partial "nav.html" . }}
-  </ul>
-</nav>
+    {{ partial "nav-fixed.html" . }}
+  </header>
 
-<section class="main-section">
+  <section class="home-intro hero">
+    <article>
+      <img src="/img/helm.svg" alt="Helm" class="logo" />
+      <h1>
+        {{ T "main_title" | markdownify }}
+      </h1>
+      <h2>
+        {{ T "main_subtitle" | markdownify }}
+      </h2>
+    </article>
 
-  <div id="helm" class="home">
+    {{ partial "boat.html" . }}
+  </section>
 
-    <section class="billboard">
-      <div class="container">
-        <h1>
-          {{ T "main_title" }}
-        </h1>
-        <h2>
-          {{ T "main_subtitle" | markdownify }}
-        </h2>
+  <section class="home-overview-wrap">
+    <section class="columns">
+      <div class="column has-text-centered">
+        <img src="/img/helm-pyramid.png" alt="Helm" class="pyramid" />
+        <h2>{{ T "main_what_is_helm_title" | markdownify }}</h2>
       </div>
-      <div id="boat"></div>
     </section>
 
-    <div class="container content">
-      <div class="row">
-        <div class="small-12 medium-6 columns">
-          <h2>
-            {{ T "main_what_is_helm_title" }}
+    <section class="content-wrapper columns">
+
+      <div class="column is-three-fifths">
+        <article class="lead">
+          {{ T "main_what_is_helm_description" | markdownify }}
+        </article>
+      </div>
+      <div class="column is-hidden-mobile tile-features is-two-fifths">
+        <div class="tile is-parent is-vertical">
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_01_title" }}
+            </p>
+            <p>
+              {{ T "feature_01_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+                {{ T "feature_02_title" }}
+            </p>
+              <p>
+              {{ T "feature_02_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_03_title" }}
+            </p>
+            <p>
+              {{ T "feature_03_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_04_title" }}
+            </p>
+            <p>
+              {{ T "feature_04_desc" | markdownify }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="tile tile-actions is-parent is-horizontal">
+      <div class="tile is-child">
+        <h2>{{ T "get_helm_title" }}</h2>
+        <p>{{ T "get_helm_desc" | markdownify }}</p>
+
+        <ul class="tabs" data-tabgroup="tab-group">
+          <li id="tablinks"><a href="#Homebrew" class="active">Homebrew</a></li>
+          <li id="tablinks"><a href="#Chocolatey">Chocolatey</a></li>
+          <li id="tablinks"><a href="#Scoop">Scoop</a></li>
+          <li id="tablinks"><a href="#Gofish">GoFish</a></li>
+        </ul>
+        <div class="tabgroup">
+          <div class="tabcontent" id="Homebrew">
+            <input id="copybrew" value="brew install helm" />
+            <button data-clipboard-target="#copybrew" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent " id="Chocolatey">
+            <input id="copychoc" value="choco install kubernetes-helm" />
+            <button data-clipboard-target="#copychoc" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent" id="Scoop">
+            <input id="copyscoop" value="scoop install helm" />
+            <button data-clipboard-target="#copyscoop" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent" id="Gofish">
+            <input id="copyfish" value="gofish install helm" />
+            <button data-clipboard-target="#copyfish" class="button">{{ T "action_copy" }}</button>
+          </div>
+        </div>
+
+        <p>{{ T "get_helm_next" | markdownify }}</p>
+      </div>
+
+      <div class="tile is-child is-centered has-text-centered">
+        <h2>{{ T "get_charts_title" }}</h2>
+
+        <p>{{ T "get_charts_desc" | markdownify }}</p>
+
+        <div class="has-text-center is-centered">
+          <p><a href="https://hub.helm.sh"><img src="/img/helm-hub.jpg" alt="Helm Hub" class="is-centered"></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="has-text-centered columns">
+      <nav class="level level-faqs">
+        <div class="level-item has-text-centered is-hidden-mobile">
+          <div>
+            <a><img src="/img/helm-3-badge.svg" alt="Helm 3" class="badge" /></a>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">{{ T "get_upgrade_title" | markdownify }}</p>
+            <p class="title">{{ T "get_upgrade_desc" | markdownify }}</p>
+          </div>
+        </div>
+      </nav>
+    </section>
+  </section>
+
+  <section class="helm-community">
+    <h2 class="has-text-centered">{{ T "community_title" }}</h2>
+    <p class="has-text-centered">{{ T "community_desc" }}</p>
+
+    <div class="columns is-desktop community-boxes">
+
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_events_title" }}</h1>
+          <dl>
+            <dt>{{ T "community_upcoming_events_title" }}</dt>
+            <dd><small class="placeholder">{{ T "community_upcoming_events_desc" | markdownify }}</small></dd>
+            <dt>{{ T "community_past_events_title" }}</dt>
+            <dd>{{ T "community_past_event_01" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_02" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_03" | markdownify }}</dd>
+          </dl>
+        </section>
+
+        <section class="box">
+          <h1 class="title">{{ T "community_sig_title" }}</h1>
+          <h2 class="subtitle">
+            {{ T "community_sig_subtitle" }}
           </h2>
-
-          <p>
-            {{ T "main_what_is_helm_description" | markdownify }}
-          </p>
-
-          <p class="github-stats">
-            <a class="github-button" href="https://github.com/helm/helm" data-size="large" data-show-count="true" aria-label="Star helm/helm on GitHub">Star</a>
-            &nbsp;
-            <a class="github-button" href="https://github.com/helm/helm/subscription" data-size="large" data-show-count="true" aria-label="Watch helm/helm on GitHub">Watch</a>
-            &nbsp;
-            <a class="github-button" href="https://github.com/helm/helm/fork" data-size="large" data-show-count="true" aria-label="Fork helm/helm on GitHub">Fork</a>
-          </p>
-
-        </div>
-
-        <div class="hide-for-small-down medium-6 columns">
-          <img src="/img/chart-illustration.png" alt="Helm Overview" class="helm-overview-img">
-        </div>
+          {{ T "community_sig_desc" | markdownify }}
+        </section>
       </div>
 
-      <div class="container helm-features">
-        <div class="row ">
-          <div class="small-12 columns">
-            <h2>
-                {{ T "main_why_teams_love" | markdownify }}
-            </h2>
-          </div>
-        </div>
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_standup_title" }}</h1>
+          <h2 class="subtitle">
+            <a href="https://zoom.us/j/696660622"><span class="icon"><i class="mdi mdi-message-video"></i></span> {{ T "community_standup_time" }}</a>
+          </h2>
+          <p>{{ T "community_standup_desc" | markdownify }}</p>
+        </section>
+        
+        <section class="box">
+          <h1 class="title">{{ T "community_slack_title" }}</h1>
+          <dl>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-users">{{ T "community_slack_group_01_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_01_desc" }}</dd>
 
-        <div class="row">
-          <div class="small-6 medium-6 large-3 columns">
-            <img src="/img/feature-icon-1.png" alt="Manage Complexity">
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-dev">{{ T "community_slack_group_02_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_02_desc" }}</dd>
 
-            <h3>
-              {{ T "manage_complexity_title" }}
-            </h3>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/charts">{{ T "community_slack_group_03_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_03_desc" }}</dd>
+          </dl>
 
-            <p>
-              {{ T "manage_complexity_description" }}
-            </p>
-          </div>
-
-          <div class="small-6 medium-6 large-3 columns">
-            <img src="/img/feature-icon-2.png" alt="Easy Updates">
-
-            <h3>
-              {{ T "easy_updates_title" }}
-            </h3>
-
-            <p>
-              {{ T "easy_updates_description" }}
-            </p>
-          </div>
-
-          <div class="small-6 medium-6 large-3 columns">
-            <img src="/img/feature-icon-3.png" alt="Easy Sharing">
-
-            <h3>
-              {{ T "easy_sharing_title" }}
-            </h3>
-
-            <p>
-              {{ T "easy_sharing_description" }}
-            </p>
-          </div>
-          <div class="small-6 medium-6 large-3 columns">
-            <img src="/img/feature-icon-4.png" alt="Rollbacks">
-
-            <h3>
-              {{ T "rollbacks_title" }}
-            </h3>
-
-            <p>
-              {{ T "rollbacks_description" | markdownify }}
-            </p>
-          </div>
-        </div>
+          <h2 class="subtitle">
+            <a href="http://slack.k8s.io/">Request access here</a> to join the Kubernetes Slack team.
+          </h2>
+        </section>
       </div>
 
-      <div class="container content">
-        <div class="row">
-
-          <div class="small-12 medium-12 large-7 get-helm columns">
-            <h2>Get Helm!</h2>
-            <p>The Helm project can be found <a href="https://github.com/helm/helm">here on GitHub</a>:</p>
-
-            <p><a href="https://github.com/helm/helm"><img src="/img/btn-get-helm.png" alt="Get Helm"></a></p>
-
-            <p>The documentation can be found <a href="/docs">here</a>.</p>
-
-            <p>The previous version — <a href="https://github.com/deis/helm">Helm Classic</a> — can be found <a href="https://github.com/deis/helm">here</a>.</p>
-          </div>
-
-          <div class="small-12 medium-12 large-5 get-charts columns">
-            <h2>Get Charts</h2>
-
-            <p>Looking for charts?</p>
-
-            <p><a href="https://hub.helm.sh"><img src="/img/helm-charts.png" alt="Helm Hub"></a></p>
-
-            <p>Visit the <a href="https://hub.helm.sh">Helm Hub</a> to explore charts from numerous public Helm repositories.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container content helm-community">
-        <div class="row">
-          <div class="small-12 medium-12 columns">
-            <h2 class="text-center">Join the Community</h2>
-            <p class="text-center">More information about the Helm project, and how to contribute.</p>
-
-            <div class="row">
-              <div class="small-12 medium-12 large-5 helm-community-links columns">
-                <ul>
-                  <li><i class="fa fa-book"></i> <a href="/docs">Read the Docs</a></li>
-                  <li><i class="fa fa-tags"></i> <a href="https://github.com/helm/helm/releases">Releases</a></li>
-                  <li><i class="fa fa-github"></i> <a href="https://github.com/helm/helm">Helm on GitHub</a></li>
-                  <li><i class="fa fa-comments"></i> <a href="http://slack.k8s.io/">Chat #helm-users on Slack</a></li>
-                </ul>
-              </div>
-
-              <div class="hide-for-medium-down medium-7 helm-community-blocks columns">
-                <section>
-                  <h4>SIG-Apps</h4>
-                  <p><a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">SIG-Apps</a> is a Special Interest Group for deploying and operating apps in Kubernetes. They <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">meet each week</a> to demo and discuss tools and projects. Community meetings are recorded and <a href="https://www.youtube.com/results?search_query=kubernetes+sig+apps" target="_blank">shared to YouTube</a>.</p>
-                </section>
-
-                <section>
-                  <h4>Developer Standups</h4>
-                  <p>Each week, the Helm teams meet on <a href="https://zoom.us/j/4526666954">Zoom</a>.</p>
-                  <div class="right">
-                    <a href="https://github.com/helm/community/blob/master/communication.md">
-                      <i class="fa fa-calendar"></i>
-                      <em>Thursdays</em>
-                      <small>9:30-10am, PT</small>
-                    </a>
-                  </div>
-                </section>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_contrib_title" }}</h1>
+          <h2 class="subtitle">
+            {{ T "community_contrib_subtitle" }}
+          </h2>
+          {{ T "community_contrib_desc" | markdownify }}
+        </section>
       </div>
     </div>
-  </div> <!-- / #helm -->
+  </section>
 
-</section>
+  {{ partial "footer.html" . }}
+  {{ partial "footer-links.html" . }}
+  
+</div> <!-- / #helm .page-home -->
+
 {{ end }}
-
 {{ define "footer" }}
-{{ partial "footer.html" . }}
 {{ end }}

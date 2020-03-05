@@ -4,31 +4,30 @@ Helm | Docs
 
 {{ define "main" }}
 {{ $isDocsRoot := eq .CurrentSection .FirstSection }}
-<div class="container container-full docs docs-home">
 
-  {{ partial "sidebar.html" . }}
+<div id="helm" class="page-docs page-wrapper page-docs-list">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
 
-  <div class="main home page" id="scrollpane">
-
-    <nav class="top-bar">
-      {{ partial "banner.html" . }}
-      <ul class="inline right text-right">
-        {{ partial "nav.html" . }}
-      </ul>
-    </nav>
-
-    <div class="row">
-      <div class="small-1 columns">&nbsp;</div>
-      <div class="small-10 columns content-wrap">
+  <div class="columns" id="helm">
+    <aside class="column is-narrow is-gapless sidebar-wrapper">
+      {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <section class="column content-docs">
+      <article class="content-wrapper">
         {{ .Content }}
 
-        <div class="quick-links">
+        <section class="quick-links clearfix">
           <h3 class="text-center">Quicklinks</h3>
           
           {{ if $isDocsRoot }}
           {{ $quicklinks := site.Params.quicklinks }}
           {{ range $quicklinks }}
-          <a href="{{ .url }}" class="quick-item"> 
+          <a href="{{ .url }}" class="quick-item clearfix"> 
             <h4>
               {{ .title }}
               {{ with .via }}
@@ -59,14 +58,12 @@ Helm | Docs
           </a>
           {{ end }}
           {{ end }}
-        </div>
+        </section>
 
-      </div>
-      <div class="small-1 columns">&nbsp;</div>
-    </div>
+        {{ partial "footer-links.html" . }}
+      </article>
+    </section>
   </div>
-
-  {{ partial "cncf.html" . }}
 </div>
 
 {{ end }}

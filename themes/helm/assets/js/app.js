@@ -7,8 +7,10 @@ $(document).ready(function() {
   // close all accordions, besides that of the page that is currently active
   var doclocation = window.location.pathname;
   var docpath = doclocation.substring(0, doclocation.lastIndexOf("/"));
-  var directoryName = docpath.substring(docpath.lastIndexOf("/")+1);
-  $(".toctree-l1 > a[href='" + directoryName + "']").addClass('active').attr({state: "open"});
+  var parentName = docpath.replace(/\/[^\/]+$/, '')
+  var pageName = docpath.substring(docpath.lastIndexOf("/")+1);
+  $(".toctree-l1 > a[href*='" + parentName + "']").addClass("active");
+  $(".toctree-12 > a[href$='" + pageName + "/']").addClass("active");
 
   if (allClosed === true) { }
 
@@ -29,6 +31,88 @@ $(document).ready(function() {
   });
 }); // document ready
 
+
+// navbar Clone
+if ($('.navbar-top-fixed').length) {
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 200) {
+          $(".navbar-top-fixed").addClass('is-active');
+      } else{
+          $(".navbar-top-fixed").removeClass('is-active');
+      }
+  });
+}
+
+// navbar mobile burger menu (bulma)
+$(".navbar-burger").click(function() {
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+  $("#banner").toggleClass("is-active");
+  $(".sidebar-wrapper").toggleClass("is-active");
+});
+
+// a life at sea
+if ($('.home').length) {
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 600) {
+        $(".boat").addClass('boat-badge');
+      } else{
+        $(".boat").removeClass('boat-badge');
+      }
+  });
+};
+
+if ($('.page-docs').length) {
+  // adjust docs sidebar after scroll
+  $(window).scroll(function() {    // this will work when your window scrolled.
+      var height = $(window).scrollTop();  //getting the scrolling height of window
+      if(height  > 50) {
+        $(".sidebar").addClass('is-scrolled');
+      } else{
+        $(".sidebar").removeClass('is-scrolled');
+      }
+  });
+
+  // toggle sidebar menu for mobile devices
+  $("#sidebar-toggle").click(function() {
+    $(this).toggleClass("active");
+    $(".sidebar-content-wrapper").toggleClass("active");
+  });
+}
+
+// homepage download tabs
+if ($('.home').length) {
+  $('div.tabcontent').hide();
+  $('div.tabcontent:first-of-type').show();
+  $('.tabs a').click(function(e){
+    e.preventDefault();
+    var $this = $(this),
+        tabgroup = $this.parents('.tabs').data('tab-group'),
+        others = $this.closest('li').siblings().children('a'),
+        target = $this.attr('href');
+    others.removeClass('active');
+    console.log('the tabgroup is ' + tabgroup);
+    $this.addClass('active');
+    $('.tabgroup').children('div').hide();
+    $(target).show();
+  })
+
+  var clipboard = new ClipboardJS('.button');
+  clipboard.on('success', function(e) {
+    e.clearSelection();
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    showTooltip(e.trigger, 'Copied!');
+  });
+  clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+    showTooltip(e.trigger, fallbackMessage(e.action));
+  });
+};
 
 // add permalinks to titles
 $(function() {

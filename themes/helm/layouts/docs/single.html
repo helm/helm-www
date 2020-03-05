@@ -3,41 +3,28 @@ Helm | {{ .Title }}
 {{ end }}
 
 {{ define "main" }}
-<div class="container container-full">
-  {{ partial "sidebar.html" . }}
 
-  <div class="main docs docs-single page" id="scrollpane">
-    <h1 class="docs-logo">
-      <a href="/">
-        {{ partial "logo.html" . }}
-      </a>
-      <a href="/docs">
-        <em>Docs</em>
-      </a>
-    </h1>
+<div id="helm" class="page-docs page-wrapper page-docs-list">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
+
+  <div class="columns" id="helm">
+    <aside class="column is-narrow is-gapless sidebar-wrapper">
+      {{ partial "sidebar.html" . }}
+    </aside>
     
-    <nav class="top-bar">
-      {{ partial "banner.html" . }}
-        
-      <ul class="inline right text-right">
-        {{ partial "nav.html" . }}
-      </ul>
-    </nav>
-
-    <div class="row">
-      <div class="small-1 columns">&nbsp;</div>
-      <div class="small-10 columns content-wrap">
+    <section class="column content-docs">
+      <article class="content-wrapper">
         <h1>{{ .Title }}</h1>
         
         {{ .Content }}
-      </div>
-      <div class="small-1 columns">&nbsp;</div>
-    </div>
+      </article>
+    </section>
+
+    {{ partial "footer-links.html" . }}
   </div>
-
-  {{ end }}
-
-  {{ define "footer" }}
-  {{ partial "cncf.html" . }}
 </div>
 {{ end }}
