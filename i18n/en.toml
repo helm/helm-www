@@ -118,7 +118,7 @@ other = "Upcoming Events"
 other = "Watch this space..."
 
 [community_past_events_title]
-other = "Upcoming Events"
+other = "Past Events"
 
 [community_past_event_01]
 other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
