@@ -84,19 +84,15 @@ links to the common builds:
 Building Helm from source is slightly more work, but is the best way to go if
 you want to test the latest (pre-release) Helm version.
 
-You must have a working Go environment with [dep](https://github.com/golang/dep)
-installed.
+You must have a working Go environment.
 
 ```console
-$ cd $GOPATH
-$ mkdir -p src/helm.sh
-$ cd src/helm.sh
 $ git clone https://github.com/helm/helm.git
 $ cd helm
 $ make
 ```
 
-If required, it will first install dependencies, rebuild the `vendor/` tree, and
+If required, it will fetch the dependencies and cache them, and
 validate configuration. It will then compile `helm` and place it in `bin/helm`.
 
 ## Conclusion

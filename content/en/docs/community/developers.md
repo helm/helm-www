@@ -10,7 +10,6 @@ This guide explains how to set up your environment for developing on Helm.
 ## Prerequisites
 
 - The latest version of Go
-- The latest version of Dep
 - A Kubernetes cluster w/ kubectl (optional)
 - Git
 
