@@ -21,19 +21,9 @@
           </a>
         </li>
 
-        {{ range $docsSections }}
-          <!-- {{ range .Sections }}
+        {{ range .Pages }}
+          {{ if .Title }}
             {{ .Render "section-link" }}
-
-            {{ range .Sections }}
-              {{ .Render "section-link" }}
-            {{ end }}
-          {{ end }} -->
-
-          {{ range .Pages }}
-            {{ if .Title }}
-              {{ .Render "section-link" }}
-            {{ end }}
           {{ end }}
         {{ end }}
       </ul>
