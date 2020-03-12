@@ -21,6 +21,10 @@ and installed.
 
 From there, you should be able to run the client and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
 
+**Note:** Helm automated tests are performed for Linux AMD64 only during CircleCi
+builds and releases. Testing of other OSes are the responsibility of the community
+requesting Helm for the OS in question. 
+
 ### From Homebrew (macOS)
 
 Members of the Kubernetes community have contributed a Helm formula build to

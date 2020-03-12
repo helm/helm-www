@@ -6,7 +6,7 @@
 
 // Typography Variables
 
-  $base-font-size: 16px;
+  $base-font-size: 17px;
 
   //scale down
   $scalex0: $base-font-size * 0.625;     // 11.4  / 10
@@ -24,8 +24,8 @@
   $scalex10: $base-font-size * 2.95;     // 54.9  / 48
 
 
-$base-line-height: 1.5;
-$base-vertical-space: 2.5rem;
+$base-line-height: 1.636;
+$base-vertical-space: 2.5em;
 $base-pad-right: 5%;
 
 
@@ -59,11 +59,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: $base-vertical-space / 3;
 }
 
+.title {
+  text-transform: none;
+  color: $navy;
+}
+
 h1 {
-  color: $blue4;
-  font-size: $scalex10;
-  @include upperCase;
+  color: $navy;
+  font-size: $scalex9;
   @include klinicBold;
+  letter-spacing: -0.0125rem;
 }
 
 h2 {
@@ -95,15 +100,14 @@ h2 {
 }
 
 h3 {
-  font-size: $base-font-size * 1.5;
+  font-size: $base-font-size * 1.25;
 }
 
 .content {
   h3 {
-    @include upperCase;
     @include klinicBold;
-    font-size: $scalex2;
-    color: $grey2;
+    font-size: $scalex1;
+    color: $dark;
   }
 }
 
@@ -132,6 +136,7 @@ p, ol, ul, dl, blockquote {
   font-size: $scalex3;
   padding-right: $base-pad-right;
   font-family: $base;
+  letter-spacing: 0.01em;
 }
 
 p {

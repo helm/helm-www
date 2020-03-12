@@ -1,178 +1,374 @@
 
 // mobile style
 @media only screen and (max-width: 64.063em) {
-  .container-full {
-    padding-left: 0;
+  html,
+  body,
+  #helm {
+    width: 100vw !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
-  .left-off-canvas-toggle .fa {
-    padding: 1em 1.25em;
-    line-height: 3;
-  }
+  // mobile menu
+  .navbar-burger {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1300;
+    background: $salmonl;
+    color: $navyl;
 
-  .sidebar {
-    display: none;
-  }
-
-  .top-bar {
-    left: 0;
-    overflow: visible;
-  }
-
-  .left-off-canvas-toggle {
-    top: 30px;
-  }
-
-  .blog-layout .main.blog nav.top-bar #banner,
-  .sidebar+.main nav.top-bar #banner {
-    margin-left: 0;
-    min-width: 100%;
-  }
-
-  .blog-layout h1.blog-logo {
-    a:first-of-type {
-      left: 25px;
-    }
-
-    a:last-of-type {
-      right: auto;
-      left: 125px;
+    &.is-active {
+      color: white;
+      background-color: $dark;
+      position: fixed;
     }
   }
 
-  .st-default-autocomplete {
-    width: 90% !important;
-    min-width: 320px !important;
-    left: 5% !important;
+  .navbar-top {
+    li.versioner {
+      right: 12em;
+    }
   }
 
-  .home {
-    min-height: 500px;
+  // .navbar-top-fixed.is-active,
+  .navbar-brand,
+  .navbar-menu,
+  .navbar-top.navbar-top-fixed.is-active {
+    display: none !important;
+  }
 
-    .home-featured .panels {
-      min-width: 100%;
-    }
+  .navbar-top:not(.navbar-top-fixed) {
+    .navbar-menu.is-active {
+      background-color: $navyd;
+      display: inline-block !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 !important;
+      position: fixed;
+      top: 0;
+      padding: 1.5rem 0 4rem 0;
+      z-index: 1100;
+      width: 100vw;
+      min-height: 5rem;
 
-    .fa {
-      display: none;
-    }
-
-    #helm {
-      .billboard {
-        padding-top: 180px;
-
-        .container {
-          margin-left: 5%;
-          margin-right: 5%;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        .helm-logo {
-          max-width: 6rem !important;
-          left: 50% !important;
-          margin-left: -3rem !important;
-        }
+      a.navbar-item {
+        padding: 0.75rem 2rem;
+        color: white;
       }
     }
   }
 
-  .main .content-wrap h1 {
-    font-size: $scalex8;
-  }
+  .home-intro {
 
-  .main .content-wrap article {
-    padding: 0 0 0.5em;
+    img.logo {
+      position: absolute;
+      top: 8rem;
+      left: 10vw;
+      right: auto;
+      margin: 0;
+      width: 22.5vw;
+    }
 
+    .boat.boat-badge{
+      display: none;
+    }
+    
     h1 {
-      font-size: $scalex8;
+      font-size: 5vw;
+      position: absolute;
+      left: 40%;
+      top: 10rem;
+      margin: 0;
+      max-width: 50%;
+      line-height: 1.2;
+      letter-spacing: -0.015rem;
     }
 
     h2 {
-      font-size: $scalex6;
+      top: 50vh;
+      left: 8vw;
+      right: 8vw;
+      font-size: 4.75vw;
+      position: absolute;
+      bottom: auto;
+      width: auto;
+      padding: 1.5rem 2.5vw;
+      border: none;
+    }
+  }
+
+  .home-overview-wrap {
+    padding-bottom: 0.5rem;
+    
+    .content-wrapper {
+      padding: 0 2vw 3rem;
+    }
+    
+    article.lead {
+      padding: 0;
+
+      p:first-child {
+        font-size: 4.25vw;
+
+      }
     }
 
-    p:first-child {
+    .tile-actions {
+
+      ul.tabs {
+        li a {
+          font-size: 2vw;
+        }
+      }
+
+      .tabcontent {
+        input {
+          font-size: 4vw;
+        }
+        button {
+          font-size: 3.75vw;
+        }
+      }
+      
+      .tile.is-child {
+        h2 {
+          font-size: 5vw;
+          margin-bottom: 2rem;
+        }
+  
+        p {
+          font-size: 4vw;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+
+    .level-faqs {
+      width: 92vw;
+
+      p.heading {
+        font-size: 4vw;
+      }
+      p.title {
+        font-size: 3.5vw;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .helm-community {
+    h2 {
+      font-size: 4.75vw;
+    }
+    p {
+      font-size: 4vw;
+    }
+
+    .community-boxes {
+      .box {
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+    }
+  }
+
+  // blog
+  .page-blog-list,
+  .page-blog-single {
+    section.content-blog {
+
+      .content-wrapper {
+        max-width: 100vw !important;
+        padding: 2rem 0 3rem;
+      }
+    }
+  }
+
+  .blog-single {
+    article.content-wrapper {
+      h1 {
+        font-size: 6.5vw;
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .page-docs,
+  .page-blog {
+    #banner {
+      display: none;
+
+      &.is-active {
+        display: block;
+        top: 9.5rem;
+        position: fixed;
+        z-index: 1220;
+        border-top: 1px solid $navyl;
+        border-bottom: 1px solid $navyl;
+        background: $navyl;
+        
+        p {
+          padding: 0.25rem 0;
+        }
+      }
+
+      a, p {
+        color: white;
+
+        strong {
+          color: white;
+        }
+      }
+
+      a {
+        text-decoration: underline;
+      }
+  
+      p small {
+        font-size: 3.33vw;
+      }
+    }
+
+    .navbar-top {
+      padding-top: 0;
+      min-height: 3rem;
+    }
+  }
+
+  section.content-docs {
+    order: 1;
+  }
+
+  aside.sidebar-wrapper {
+    order: 2;
+  }
+
+  // docs sidebar layout
+  .sidebar-wrapper {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    min-height: 2rem;
+    width: 100vw;
+    overflow: visible;
+
+    .sidebar {
+      position: relative;
+      margin-top: 4rem;
+      width: 100vw;
+      min-height: 2rem;
+      padding: 0;
+      border: none;
+    }
+
+    &.is-active {
+      display: block;
+    }
+
+    // toggle docs menu on mobile
+    #sidebar-toggle {
+      width: 100vw;
+      position: relative;
+      text-align: center;
+      margin: 0 auto;
+      padding: 0.5rem 0;
+      background: $light2;
+      z-index: 1211;
+      @include klinicBold;
+
+      &:hover {
+        color: $navyd;
+      }
+
+      &.active .icon {
+        transform: rotate(180deg);
+      }
+    }
+    
+    .sidebar-content-wrapper {
+      display: none;
+      padding: 1rem 7.5vw;
+      border: 12px solid $light2;
+      margin-left: 8px;;
+
+      .search-container {
+        margin-top: 0;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      ul.sidebar-main {
+        padding-bottom: 0;
+
+      }
+    }
+  }
+  .page-docs .content-docs {
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .page-docs .content-docs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  footer {
+    .helm-contrib-logos {
+      padding-left: 4vw;
+      padding-right: 4vw;
+    }
+  }
+
+  // content sizes
+  .content-wrapper {
+    max-width: 90vw !important;
+    padding: 2rem 5vw 3rem;
+
+    h1 {
+      font-size: 7.5vw;
+      padding-top: 1rem;
+    }
+
+    article {
+      padding-left: 7.5vw;
+      padding-right: 7.5vw;
+
+      h1 {
+        font-size: 5.35vw;
+        padding-top: 2rem;
+      }
+    }
+
+    p {
+      font-size: 4vw;
+    }
+
+    p, ol, ul, dl, blockquote {
       padding-right: 0;
-      font-size: $scalex5;
     }
-  }
 
-  aside.left-off-canvas-menu {
-    ul {
-      background: $blue2 !important;
-
-      li {
-        @include klinicBold;
-        font-size: 1.25rem;
-
-        a {
-          color: white !important;
-          border-bottom: none !important;
-
-          &:hover {
-            background: $blue2 !important;
-          }
-
-          &.active {
-            color: white !important;
-            background: $blue4 !important;
-          }
+    .quick-links {
+      .quick-item {
+        border: 1px solid $navyl;
+        min-height: 7.25rem;
+        padding: 1rem 1.5rem;
+        background: $light1;
+        margin-bottom: 0.5em;
+        
+        h4 {
+          font-size: 4vw;
+          width: 100%;
+          margin: 0;
         }
-
-        a + ul {
-          display: none;
-          background: $blue4 !important;
-          margin-left: 0;
-          padding: 0.5em 0 1em 1.5em;
-
-          li {
-            @include helvetica;
-            font-size: 1rem;
-            list-style: none;
-
-            a {
-              padding: 0.1em 0.66667rem;
-              border-bottom: none;
-              color: $light2 !important;
-            }
-          }
-        }
-
-        a.active + ul {
-          display: block;
-        }
-      }
-    }
-
-    .button-wrap {
-      padding: 0.75em 5%;
-
-      .button {
-        margin: 0.4em 0;
-      }
-    }
-  }
-
-  .top-bar {
-    .breadcrumb {
-      left: 2.75rem;
-    }
-    .right {
-      li {
-        display: none;
-
-        &:nth-child(2) {
-          display: inline-block;
-
-          a {
-            position: absolute;
-            right: -4em;
-            top: -0.35em;
-            font-size: 1.75rem;
-          }
+        p {
+          width: 100%;
+          font-size: 3.25vw;
+          line-height: 1.6;
         }
 
         &.nav-dropdown {
@@ -180,11 +376,13 @@
         }
       }
     }
-
   }
 
-  .contrib-text .lead {
-    display: none;
+  // algolia search
+  .st-default-autocomplete {
+    width: 90% !important;
+    min-width: 320px !important;
+    left: 5% !important;
   }
 
   .cncf {
@@ -203,17 +401,12 @@
       max-width: 40vw;
     }
   }
-}
 
+  .footer-links {
+    margin-left: 0;
 
-// affix the sidebar buttons, if the screen is tall enough
-@media screen and ( min-height: 575px ){
-  .sidebar {
-    padding-bottom: 0px;
-
-    .sidebar-buttons {
-      position: fixed;
-      bottom: 0;
+    p.lead {
+      font-size: 1rem;
     }
   }
 }

@@ -53,7 +53,7 @@ description: A single-sentence description of this project (optional)
 type: It is the type of chart (optional)
 keywords:
   - A list of keywords about this project (optional)
-home: The URL of this project's home page (optional)
+home: The URL of this projects home page (optional)
 sources:
   - A list of URLs to source code for this project (optional)
 dependencies: # A list of the chart requirements (optional)
@@ -68,8 +68,8 @@ dependencies: # A list of the chart requirements (optional)
       - ImportValues holds the mapping of source values to parent key to be imported. Each item can be a string or pair of child/parent sublist items.
     alias: (optional) Alias usable alias to be used for the chart. Useful when you have to add the same chart multiple times
 maintainers: # (optional)
-  - name: The maintainer's name (required for each maintainer)
-    email: The maintainer's email (optional for each maintainer)
+  - name: The maintainers name (required for each maintainer)
+    email: The maintainers email (optional for each maintainer)
     url: A URL for the maintainer (optional for each maintainer)
 icon: A URL to an SVG or PNG image to be used as an icon (optional).
 appVersion: The version of the app that this contains (optional). This needn't be SemVer.
