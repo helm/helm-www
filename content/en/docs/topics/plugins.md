@@ -218,3 +218,180 @@ these flags are passed on to the plugin.
 Plugins _should_ display help text and then exit for `-h` and `--help`. In all
 other cases, plugins may use flags as appropriate.
 
+## Providing shell auto-completion
+
+As of Helm 3.2, a plugin can optionally provide support for shell auto-completion
+as part of Helm's existing auto-completion mechanism.
+
+### Static auto-completion
+
+If a plugin provides its own flags and/or sub-commands, it can inform Helm of them
+by having a `completion.yaml` file located in the plugin's root directory.
+The `completion.yaml` file has the form:
+
+```yaml
+name: <pluginName>
+flags:
+- <flag 1>
+- <flag 2>
+validArgs:
+- <arg value 1>
+- <arg value 2>
+commands:
+  name: <commandName>
+  flags:
+  - <flag 1>
+  - <flag 2>
+  validArgs:
+  - <arg value 1>
+  - <arg value 2>
+  commands:
+     <and so on, recursively>
+```
+
+Notes:
+1. All sections are optional but should be provided if applicable.
+1. Flags should not include the `-` or `--` prefix.
+1. Both short and long flags can and should be specified. A short flag need not be
+associated with its corresponding long form, but both forms should be listed.
+1. Flags need not be ordered in any way, but need to be listed at the correct point
+in the sub-command hierarchy of the file.
+1. Helm's existing global flags are already handled by Helm's auto-completion mechanism,
+therefore plugins need not specify the following flags `--debug`, `--namespace` or `-n`,
+`--kube-context`, and `--kubeconfig`, or any other global flag.
+1. The `validArgs` list provides a static list of possible completions for the first
+parameter following a sub-command.  It is not always possible to provide such a list in
+advance (see the [Dynamic Completion](#dynamic-completion) section below), in which case
+the `validArgs` section can be omitted.
+
+The `completion.yaml` file is entirely optional.  If it is not provided, Helm will simply
+not provide shell auto-completion for the plugin (unless
+[Dynamic Completion](#dynamic-completion) is supported by the plugin).  Also, adding a
+`completion.yaml` file is backwards-compatible and will not impact the behavior of the
+plugin when using older helm versions.
+
+As an example, for the [`fullstatus plugin`](https://github.com/marckhouzam/helm-fullstatus)
+which has no sub-commands but accepts the same flags as the `helm status` command, the
+`completion.yaml` file is:
+
+```yaml
+name: fullstatus
+flags:
+- o
+- output
+- revision
+```
+
+A more intricate example for the [`2to3 plugin`](https://github.com/helm/helm-2to3),
+has a `completion.yaml` file of:
+
+```yaml
+name: 2to3
+commands:
+- name: cleanup
+  flags:
+  - config-cleanup
+  - dry-run
+  - l
+  - label
+  - release-cleanup
+  - s
+  - release-storage
+  - tiller-cleanup
+  - t
+  - tiller-ns
+  - tiller-out-cluster
+- name: convert
+  flags:
+  - delete-v2-releases
+  - dry-run
+  - l
+  - label
+  - s
+  - release-storage
+  - release-versions-max
+  - t
+  - tiller-ns
+  - tiller-out-cluster
+- name: move
+  commands:
+  - name: config
+    flags:
+    - dry-run
+```
+
+### Dynamic completion
+
+Also starting with Helm 3.2, plugins can provide their own dynamic shell auto-completion.
+Dynamic shell auto-completion is the completion of parameter values or flag values that
+cannot be defined in advance.  For example, completion of the names of helm releases
+currently available on the cluster.
+
+For the plugin to support dynamic auto-completion, it must provide an **executable** file
+called `plugin.complete` in its root directory. When the Helm completion script requires
+dynamic completions for the plugin, it will execute the `plugin.complete` file, passing it
+the command-line that needs to be completed.  The `plugin.complete` executable will need
+to have the logic to determine what the proper completion choices are and output them to
+standard output to be consumed by the Helm completion script.
+
+The `plugin.complete` file is entirely optional.  If it is not provided, Helm will simply
+not provide dynamic auto-completion for the plugin.  Also, adding a `plugin.complete`
+file is backwards-compatible and will not impact the behavior of the plugin when using
+older helm versions.
+
+The output of the `plugin.complete` script should be a new-line separated list such as:
+
+```
+rel1
+rel2
+rel3
+```
+
+When `plugin.complete` is called, the plugin environment is set just like when the
+plugin's main script is called. Therefore, the variables `$HELM_NAMESPACE`,
+`$HELM_KUBECONTEXT`, and all other plugin variables will already be set, and their
+corresponding global flags will be removed.
+
+The `plugin.complete` file can be in any executable form; it can be a shell script,
+a Go program, or any other type of program that Helm can execute.
+The `plugin.complete` file ***must*** have executable permissions for the user.
+The `plugin.complete` file ***must*** exit with a success code (value 0).
+
+In some cases, dynamic completion will require to obtain information from the Kubernetes
+cluster.  For example, the `helm fullstatus` plugin requires a release name as input.
+In the `fullstatus` plugin, for its `plugin.complete` script to provide completion for
+current release names, it can simply run `helm list -q` and output the result.
+
+If it is desired to use the same executable for plugin execution and for plugin completion,
+the `plugin.complete` script can be made to call the main plugin executable with some
+special parameter or flag; when the main plugin executable detects the special parameter
+or flag, it will know to run the completion. In our example, `plugin.complete` could be
+implemented like this:
+
+```sh
+#!/usr/bin/env sh
+
+# "$@" is the entire command-line that requires completion.
+# It is important to double-quote the "$@" variable to preserve a possibly empty last parameter.
+$HELM_PLUGIN_DIR/status.sh --complete "$@"
+```
+
+The `fullstatus` plugin's real script (`status.sh`) must then look for the `--complete`
+flag and if found, printout the proper completions.
+
+### Tips and tricks
+
+1. The shell will automatically filter out completion choices that don't match user input.
+A plugin can therefore return all relevant completions without removing the ones that don't
+match the user input.  For example, if the command-line is `helm fullstatus ngin<TAB>`, the
+`plugin.complete` script can print *all* release names (of the `default` namespace), not
+just the ones starting with `ngin`; the shell will only retain the ones starting with `ngin`.
+1. To simplify dynamic completion support, especially if you have a complex plugin, you can
+have your  `plugin.complete` script call your main plugin script and request completion
+choices.  See the [Dynamic Completion](#dynamic-completion) section above for an example.
+1. To debug dynamic completion and the `plugin.complete` file, one can run the following
+to see the completion results :
+    - `helm __complete <pluginName> <arguments to complete>`.  For example:
+    - `helm __complete fullstatus --output js<ENTER>`,
+    - `helm __complete fullstatus -o json ""<ENTER>`
+
