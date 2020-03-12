@@ -351,19 +351,21 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 - fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
 ```
 
-The changelog at the bottom of the release notes can be generated with this
-command:
+A partially completed set of release notes including the changelog can be created by running the following command:
 
 ```shell
 PREVIOUS_RELEASE=vX.Y.Z
-git log --no-merges --pretty=format:'- %s %H (%aN)' ${PREVIOUS_RELEASE}..${RELEASE_NAME}
+make release-notes
 ```
+
+This will create a good baseline set of release notes to which you should just need to fill out the **Notable Changes** and **What's next** sections.
+
+Feel free to add your voice to the release notes; it's nice for people to think we're not all robots.
+
+You should also double check the URLs and checksums are correct in the auto-generated release notes.
 
 Once finished, go into GitHub and edit the release notes for the tagged release
 with the notes written here.
-
-Remember to attach the ascii armored signatures generated in the previous step
-to the release notes.
 
 It is now worth getting other people to take a look at the release notes before
 the release is published. Send a request out to
