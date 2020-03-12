@@ -117,15 +117,11 @@ NAME: full-coral
 LAST DEPLOYED: Tue Nov  1 17:36:01 2016
 NAMESPACE: default
 STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/ConfigMap
-NAME                DATA      AGE
-mychart-configmap   1         1m
+REVISION: 1
+TEST SUITE: None
 ```
 
-In the output above, we can see that our ConfigMap was created. Using Helm, we
-can retrieve the release and see the actual template that was loaded.
+Using Helm, we can retrieve the release and see the actual template that was loaded.
 
 ```console
 $ helm get manifest full-coral
@@ -200,15 +196,12 @@ NAME: clunky-serval
 LAST DEPLOYED: Tue Nov  1 17:45:37 2016
 NAMESPACE: default
 STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/ConfigMap
-NAME                      DATA      AGE
-clunky-serval-configmap   1         1m
+REVISION: 1
+TEST SUITE: None
 ```
 
-Note that in the `RESOURCES` section, the name we see there is
-`clunky-serval-configmap` instead of `mychart-configmap`.
+Note that the config map inside kubernetes name is
+`clunky-serval-configmap` instead of `mychart-configmap` previously.
 
 You can run `helm get manifest clunky-serval` to see the entire generated YAML.
 

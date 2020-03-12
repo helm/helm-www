@@ -3,15 +3,18 @@ Helm | Blog
 {{ end }}
 
 {{ define "main" }}
-<div class="container container-full blog-layout">
+<div id="helm" class="page-blog page-blog-list blog blog-layout page-wrapper">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
 
-  <div class="main blog page" id="scrollpane">
-    {{ partial "blog/topbar.html" . }}
+  <div class="columns" id="helm">
+    <section class="column content-blog">
+      <article class="content-wrapper">
+        {{ .Content }}
 
-    <div class="row">
-      <div class="small-1 columns">&nbsp;</div>
-      <div class="small-10 columns content-wrap">        
-        
         {{ range (.Paginate .Pages).Pages }}
         <article>
           <header>
@@ -19,10 +22,12 @@ Helm | Blog
             <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
           </header>
           
-          {{ .Summary }}
-          {{ if .Truncated }}
-          <a href="{{ .RelPermalink }}">Read More…</a>
-          {{ end }}
+          <p>
+            {{ .Summary }}
+            {{ if .Truncated }}
+              <a href="{{ .RelPermalink }}">Read More…</a>
+            {{ end }}
+          </p>
         </article>
         {{ end }}
 
@@ -37,13 +42,10 @@ Helm | Blog
           <span>{{ .Paginator.PageNumber }}</span>
         </div>
 
-      </div>
-      <div class="small-1 columns">&nbsp;</div>
-    </div>
+        {{ partial "footer-links.html" . }}
+      </article>
+    </section>
   </div>
 </div>
-{{ end }}
 
-{{ define "footer" }}
-{{ partial "footer.html" . }}
 {{ end }}
