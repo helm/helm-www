@@ -1,6 +1,6 @@
 {{ $docsHome      := .FirstSection }}
 <div class="sidebar">
-  <div class="is-visible-mobile" id="sidebar-toggle">Browse Docs <span class="icon"><i class="mdi mdi-arrow-down"></i></span></div>
+  <div class="is-visible-mobile is-hidden-desktop" id="sidebar-toggle">Browse Docs <span class="icon"><i class="mdi mdi-arrow-down"></i></span></div>
 
   <div class="sidebar-content-wrapper">
     <div class="search-container">
@@ -20,11 +20,14 @@
           </a>
         </li>
 
-        {{ range .Pages }}
-          {{ if .Title }}
-            {{ .Render "section-link" }}
+        {{ range (where .Site.Pages "Section" "docs") }}
+          {{ range .Sections }}
+            {{ if .Title }}
+              {{ .Render "section-link" }}
+            {{ end }}
           {{ end }}
         {{ end }}
+
       </ul>
     </nav>
 
