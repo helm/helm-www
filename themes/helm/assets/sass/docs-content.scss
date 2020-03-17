@@ -59,6 +59,32 @@
     max-width: 75rem;
   }
 
+  // show anchors on hover over titles, for deep linking (w/ app.js)
+  a.header-link {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    font-size: 1.25rem;
+    padding-top: 0.333em;
+    background-color: transparent;
+    @include transition(all, 0.3s, ease-in-out);
+  }
+  
+  h1:hover,
+  h2:hover,
+  h3:hover,
+  h4:hover,
+  h5:hover,
+  h6:hover {
+  
+    .header-link {
+      opacity: 1;
+      left: -1.25em;
+      border-bottom: none;
+      background-color: transparent;
+    }
+  }
+
   p {
     color: $grey4;
     margin: 0.825rem 0 1.667rem;
@@ -293,32 +319,6 @@
         text-align: left;
         width: 58%;
       }
-    }
-  }
-
-  .header-link {
-    position: absolute;
-    left: -0.4em;
-    opacity: 0;
-    font-size: 1rem;
-    padding-top: 0.333em;
-    @include transition(all, 0.3s, ease-in-out);
-
-    &:hover {
-      border-bottom: none;
-      background-color: transparent;
-    }
-  }
-
-  h2:hover,
-  h3:hover,
-  h4:hover,
-  h5:hover,
-  h6:hover {
-
-    .header-link {
-      opacity: 1;
-      left: -0.825em;
     }
   }
 
