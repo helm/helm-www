@@ -1,10 +1,16 @@
 ---
 title: "Frequently Asked Questions"
-description: "What are the key differences between Helm 2 and Helm 3? Visit the FAQs for insights."
 weight: 8
+aliases: [
+  "/docs/topics/faq/",
+  "/docs/faq/"
+]
 ---
 
-This page provides help with the most common questions about Helm.
+# Frequently Asked Questions
+
+> What are the key differences between Helm 2 and Helm 3?  
+> This page provides help with the most common questions.
 
 **We'd love your help** making this document better. To add, correct, or remove
 information, [file an issue](https://github.com/helm/helm-www/issues) or send us
