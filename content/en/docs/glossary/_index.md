@@ -4,6 +4,8 @@ description: "Terms used to describe components of Helm's architecture."
 weight: 9
 ---
 
+# Glossary
+
 ## Chart
 
 A Helm package that contains information sufficient for installing a set of
