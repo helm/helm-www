@@ -45,6 +45,14 @@ for unintentional data loss. Furthermore, there is currently no community
 consensus around how to handle CRDs and their lifecycle. As this evolves, Helm
 will add support for those use cases.
 
+The `--dry-run` flag of `helm install` and `helm upgrade` is not currently
+supported for CRDs. The purpose of "Dry Run" is to validate that the output of
+the chart will actually work if sent to the server. But CRDs are a modification
+of the server's behavior. Helm cannot install the CRD on a dry run, so the
+discovery client will not know about that Custom Resource (CR), and validation
+will fail. You can alternatively move the CRDs to their own chart or use
+`helm template` instead.
+
 Another important point to consider in the discussion around CRD support is how
 the rendering of templates is handled. One of the distinct disadvantages of the
 `crd-install` method used in Helm 2 was the inability to properly validate
