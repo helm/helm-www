@@ -3,6 +3,7 @@
 {{ $title  := .Title }}
 {{ $url    := .Permalink }}
 {{ $img    := "img/favicon-152.png" | absURL }}
+{{ $og_img    := "img/og-image.png" | absURL }}
 {{ $icon   := "img/apple-touch-icon-precomposed.png" | relURL }}
 {{ $gsv    := site.Params.googleSiteVerification }}
 <meta charset="utf-8">
@@ -15,7 +16,9 @@
 
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:url" content="{{ $url }}">
-<meta property="og:image" content="{{ $img }}">
+<meta property="og:image" content="{{ $og_img }}">
+<meta name="twitter:image" content="{{ $og_img }}" />
+<meta name="twitter:card" content="summary_large_image"/>
 <meta name="google-site-verification" content="{{ $gsv }}">
 
 <link rel="icon" href="{{ $img }}" type="image/x-icon">
