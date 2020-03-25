@@ -497,7 +497,7 @@ namespaces throughout to scope releases. This means that for all commands
 referencing a release you must either:
 
 * rely on the current namespace in the active kubernetes context (as
-  described by the `kubectl config show --minify` command),
+  described by the `kubectl config view --minify` command),
 * specify the correct namespace using the `--namespace`/`-n` flag, or
 * for the `helm list` command, specify the `--all-namespaces`/`-A` flag
 
