@@ -46,6 +46,15 @@ package](https://chocolatey.org/packages/kubernetes-helm) build to
 choco install kubernetes-helm
 ```
 
+### From Snap (Linux)                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                     
+The [Snapcrafters](https://github.com/snapcrafters) community maintains the
+Snap version of the [Helm package](https://snapcraft.io/helm):
+
+```console
+sudo snap install helm --classic
+```
+
 ## From Script
 
 Helm now has an installer script that will automatically grab the latest version
