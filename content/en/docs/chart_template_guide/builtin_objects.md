@@ -22,6 +22,7 @@ access in your templates.
   - `Release.Name`: The release name
   - `Release.Namespace`: The namespace to be released into (if the manifest
     doesn’t override)
+  - `Release.Time`: The time of release  
   - `Release.IsUpgrade`: This is set to `true` if the current operation is an
     upgrade or rollback.
   - `Release.IsInstall`: This is set to `true` if the current operation is an
