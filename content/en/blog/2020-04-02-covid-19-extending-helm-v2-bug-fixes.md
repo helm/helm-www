@@ -3,7 +3,7 @@ title: "COVID-19: Extending Helm v2 Bug Fixes"
 slug: "covid-19-extending-helm-v2-bug-fixes"
 authorname: "Matt Farina & Bridget Kromhout"
 authorlink: "https://helm.sh"
-date: "2020-04-02"
+date: "2020-04-03"
 ---
 
 As our world comes together to fight the global pandemic, the Helm maintainers want to ensure that we're doing our part to help you maintain your critical systems while they are operating at peak demand in a time where normal development and operation schedules have had to be adjusted.
