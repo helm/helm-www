@@ -153,7 +153,7 @@ namespace of the release. Helm 2 by default stores release information as
 ConfigMaps in the namespace of the Tiller instance. The subsections which follow
 show how to configure different backends. This configuration is based on the
 `HELM_DRIVER` environment variable. It can be set to one of the values:
-`[configmap, secret]`.
+`[configmap, secret, sql]`.
 
 ### ConfigMap storage backend
 
@@ -186,3 +186,38 @@ data can be configured for [encrypted
 storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
 Please keep that in mind if you decide to switch to the ConfigMap backend, as it
 could expose your application's sensitive data.
+
+### SQL storage backend
+
+There is a beta SQL storage backend that stores release information in an SQL
+database.
+
+Using such a storage backend is particularly useful if your release information
+weighs more than 1MB (in which case, it can't be stored in ConfigMaps/Secrets
+because of internal limits in Kubernetes' underlying etcd key-value store).
+
+To enable the SQL backend, you'll need to deploy a SQL database and set the
+environmental variable `HELM_DRIVER` to `sql`. The DB details are set with the
+environmental variable `HELM_DRIVER_SQL_CONNECTION_STRING`.
+
+You can set it in a shell as follows:
+
+```shell
+export HELM_DRIVER=sql
+export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?user=helm&password=changeme
+```
+
+> Note: Only Postgres is supported at this moment.
+
+**PRODUCTION NOTES**: It is recommended to:
+- Make your database production ready [TODO: add link]
+- Enable [permission management](/docs/permissions_sql_storage_backend/) to
+mirror Kubernetes RBAC for release informationse
+
+If you want to switch from the default backend to the SQL backend, you'll have
+to do the migration for this on your own. You can retrieve release information
+with the following command:
+
+```shell
+kubectl get secret --all-namespaces -l "owner=helm"
+```
