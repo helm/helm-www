@@ -219,7 +219,7 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
   },
   "layers": [
     {
-      "mediaType": "application/vnd.cncf.helm.chart.content.layer.v1+tar",
+      "mediaType": "application/tar+gzip",
       "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
       "size": 2487
     }
