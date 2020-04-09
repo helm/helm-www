@@ -143,3 +143,34 @@ func main() {
 }
 
 ```
+
+## Storage backends
+
+Helm 3 changed the default release information storage to Secrets in the namespace
+of the release. Helm 2 by default stores release information as ConfigMaps in the
+namespace of the Tiller instance. The subsections which follow show how to
+configure different backends. This configuration is based on the `HELM_DRIVER` 
+environment variable. It can be set to one of the values: `[configmap, secret]`.
+
+### ConfigMap storage backend
+
+To enable the ConfigMap backend, you'll need to set the environmental variable
+`HELM_DRIVER` to `configmap`.
+
+You can set it in a shell as follows:
+
+```shell
+export HELM_DRIVER=configmap
+```
+
+If you want to switch from the default backend to the ConfigMap
+backend, you'll have to do the migration for this on your own. You can retrieve
+release information with the following command:
+
+```shell
+kubectl get secret --all-namespaces -l "owner=helm"
+```
+
+**PRODUCTION NOTES**: It is not recommended to use ConfigMaps for sensitive data as
+it is stored unencoded and unencrypted. Secrets data is stored base64-encoded and can be
+configured for [encrypted storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
