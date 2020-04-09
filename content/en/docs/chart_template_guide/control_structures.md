@@ -315,7 +315,7 @@ because the scope is reset after `{{ end }}`.
   release: {{ .Release.Name }}
 ```
 
-After looking a `range`, we will take a look at template variables, which offer
+After looking at `range`, we will take a look at template variables, which offer
 one solution to the scoping issue above.
 
 ## Looping with the `range` action
