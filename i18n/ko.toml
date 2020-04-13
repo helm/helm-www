@@ -5,7 +5,7 @@
 other = "시작"
 
 [action_copy]
-other = "Copy"
+other = "복사"
 
 ## site-wide banner about versioning
 [banner_1]
