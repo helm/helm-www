@@ -190,6 +190,53 @@ logic that is a little more sophisticated than just inserting a string. In the
 next section we will look at the control structures provided by the template
 language.
 
+## Using the `lookup` function
+
+The `lookup` function can be used to _look up_ resources in a running cluster. The synopsis of the
+lookup function is `lookup apiVersion, kind, namespace, name -> resource or resource list`.
+
+| parameter  | type   |
+|------------|--------|
+| apiVersion | string |
+| kind       | string |
+| namespace  | string |
+| name       | string |
+
+Both `name` and `namespace` are optional and can be passed as an empty string (`""`).
+
+The following combination of parameters are possible:
+
+| Behavior                               | Lookup function                           |
+|----------------------------------------|-------------------------------------------|
+| `kubectl get pod mypod -n mynamespace` | `lookup "v1" "Pod" "mynamespace" "mypod"` |
+| `kubectl get pods -n mynamespace`      | `lookup "v1" "Pod" "mynamespace" ""`      |
+| `kubectl get pods --all-namespaces`    | `lookup "v1" "Pod" "" ""` |
+
+When `lookup` returns an object, it will return a dictionary. This dictionary can the be further
+navigated to extract specific values.
+
+The following example will return the annotations present for the `mynamespace` object:
+
+```go
+(lookup "v1" "Namespace" "" "mynamespace").metadata.annotations
+```
+
+When `lookup` returns a list of objects, it is possible to access the object list via the `items`
+field:
+
+```go
+{{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
+    {{/* do something with each service */}}
+{{ end }}
+```
+
+When no object is found, an empty value is returned. This can be used to check for the existence of
+an object.
+
+The `lookup` function uses Helm's existing Kubernetes connection configuration to query Kubernetes.
+If any error is returned when interacting with calling the API server (for example due to lack of
+permission to access a resource), helm's template processing will fail.
+
 ## Operators are functions
 
 For templates, the operators (`eq`, `ne`, `lt`, `gt`, `and`, `or` and so on) are
