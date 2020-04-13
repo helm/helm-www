@@ -9,7 +9,7 @@ other = "복사"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "You are viewing info for Helm 3 - check the **[version FAQs](https://helm.sh/docs/faq/)** or **[see to Helm 2](https://v2.helm.sh)** for prior versions."
+other = "Helm 3 정보를 보고 있습니다 - 이전 버전에 대한 정보는 **[버전 FAQs](https://helm.sh/docs/faq/)**를 참고하거나 or **[Helm 2 참조](https://v2.helm.sh)**를 확인하십시오."
 
 [banner_2]
 other = "Viewing **Helm 3** release. For **Helm 2** go [here](https://v2.helm.sh/)."
