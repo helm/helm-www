@@ -244,11 +244,11 @@ metadata:
 
 (Quotation marks are required)
 
-The annotation `"helm.sh/resource-policy": keep` instructs Helm to skip this
-resource during a `helm uninstall` operation. _However_, this resource becomes
-orphaned. Helm will no longer manage it in any way. This can lead to problems if
-using `helm install --replace` on a release that has already been uninstalled,
-but has kept resources.
+The annotation `"helm.sh/resource-policy": keep` instructs Helm to skip deleting this
+resource when a helm operation (such as `helm uninstall`, `helm upgrade` or `helm rollback`) 
+would result in its deletion. _However_, this resource becomes orphaned. Helm will no longer 
+manage it in any way. This can lead to problems if using `helm install --replace` on a release 
+that has already been uninstalled, but has kept resources.
 
 ## Using "Partials" and Template Includes
 
