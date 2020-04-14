@@ -2,6 +2,7 @@
 title: "Chart Tests"
 description: "Describes how to run and test your charts."
 aliases: ["/docs/chart_tests/"]
+weight: 3
 ---
 
 A chart contains a number of Kubernetes resources and components that work

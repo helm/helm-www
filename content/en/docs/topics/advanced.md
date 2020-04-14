@@ -2,6 +2,7 @@
 title: "Advanced Helm Techniques"
 description: "Explains various advanced features for Helm power users"
 aliases: ["/docs/advanced_helm_techniques"]
+weight: 9
 ---
 
 This section explains various advanced features and techniques for using Helm.

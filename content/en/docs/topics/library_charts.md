@@ -2,6 +2,7 @@
 title: "Library Charts"
 description: "Explains library chars and examples of usage"
 aliases: ["docs/library_charts/"]
+weight: 4
 ---
 
 A library chart is a type of [Helm chart]({{< ref "/docs/topics/charts.md" >}}) that defines chart primitives or definitions which can be shared by Helm templates in other charts. This allows users to share snippets of code that can be re-used across charts, avoiding repetition and keeping charts [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).

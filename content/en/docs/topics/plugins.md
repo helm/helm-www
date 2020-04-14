@@ -2,6 +2,7 @@
 title: "The Helm Plugins Guide"
 description: "Introduces how to use and create plugins to extend Helm's functionality."
 aliases: ["/docs/plugins/"]
+weight: 12
 ---
 
 A Helm plugin is a tool that can be accessed through the `helm` CLI, but which
