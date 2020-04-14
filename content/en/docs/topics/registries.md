@@ -2,6 +2,7 @@
 title: "Registries"
 description: "Describes how to use OCI for Chart distribution."
 aliases: ["/docs/registries/"]
+weight: 7
 ---
 
 Helm 3 supports <a href="https://www.opencontainers.org/"

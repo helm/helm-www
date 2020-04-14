@@ -2,6 +2,7 @@
 title: "The Chart Repository Guide"
 description: "How to create and work with Helm chart repositories."
 aliases: ["/docs/chart_repository/"]
+weight: 6
 ---
 
 This section explains how to create and work with Helm chart repositories. At a

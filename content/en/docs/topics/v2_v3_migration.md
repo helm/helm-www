@@ -1,6 +1,7 @@
 ---
 title: "Migrating Helm v2 to v3"
 description: "Learn how to migrate Helm v2 to v3."
+weight: 13
 ---
 
 This guide shows how to migrate  Helm v2 to v3. Helm v2 needs to be installed

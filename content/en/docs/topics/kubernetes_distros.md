@@ -2,6 +2,7 @@
 title: "Kubernetes Distribution Guide"
 description: "Captures information about using Helm in specific Kubernetes environments."
 aliases: ["/docs/kubernetes_distros/"]
+weight: 10
 ---
 
 This document captures information about using Helm in specific Kubernetes

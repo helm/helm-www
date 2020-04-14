@@ -2,6 +2,7 @@
 title: "Role-based Access Control"
 description: "Explains how Helm interacts with Kubernetes' Role-Based Access Control."
 aliases: ["/docs/rbac/"]
+weight: 11
 ---
 
 In Kubernetes, granting roles to a user or an application-specific service
