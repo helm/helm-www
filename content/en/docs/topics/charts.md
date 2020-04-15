@@ -213,6 +213,9 @@ generally contain:
 - Any other information that may be relevant to the installation or
   configuration of the chart
 
+When hubs and other user interfaces display details about a chart that detail
+is pulled from the content in the `README.md` file.
+
 The chart can also contain a short plain text `templates/NOTES.txt` file that
 will be printed out after installation, and when viewing the status of a
 release. This file is evaluated as a [template](#templates-and-values), and can
