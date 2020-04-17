@@ -181,12 +181,12 @@ followed by the [kubernetes/charts](https://github.com/helm/charts) project is:
 ### Chart Types
 
 The `type` field defines the type of chart. There are two types: `application`
-and `library`.  Application is the default type and it is the standard chart
-which can be operated on fully. The [library or helper
-chart](https://github.com/helm/charts/tree/master/incubator/common) provides
+and `library`. Application is the default type and it is the standard chart
+which can be operated on fully.
+The [library chart]({{< ref "/docs/topics/library_charts.md" >}}) provides
 utilities or functions for the chart builder. A library chart differs from an
-application chart because it has no resource object and is therefore not
-installable.
+application chart because it is not installable and usually doesn't contain any
+resource objects.
 
 **Note:** An application chart can be used as a library chart. This is enabled
 by setting the type to `library`. The chart will then be rendered as a library
