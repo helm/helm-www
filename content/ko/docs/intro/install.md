@@ -18,9 +18,8 @@ Helm의 모든 [릴리즈](https://github.com/helm/helm/releases)는 다양한 O
 
 거기서부터, 클라이언트를 구동하고 [stable 저장소를 추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)할 수 있어야 한다: `helm help`.
 
-**Note:** Helm automated tests are performed for Linux AMD64 only during CircleCi
-builds and releases. Testing of other OSes are the responsibility of the community
-requesting Helm for the OS in question. 
+**노트:** Helm 자동화 테스트는 CircleCi 빌드와 릴리즈 사이에, 리눅스 AMD64에서만 수행된다.
+다른 OS들에 대한 테스트는, 대상 OS에 대한 Helm을 요청하는 커뮤니티에서 담당한다.
 
 ### Homebrew로 (맥OS)
 
@@ -64,25 +63,24 @@ $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
-Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` that if
-you want to live on the edge.
+최신(edge)이 필요하다면 `curl
+https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` 을 해보자.
 
-### 카나리 빌드로
 
-"Canary" builds are versions of the Helm software that are built from the latest
-master branch. They are not official releases, and may not be stable. However,
-they offer the opportunity to test the cutting edge features.
+### 카나리아 빌드에서
 
-Canary Helm binaries are stored at [get.helm.sh](https://get.helm.sh). Here are
-links to the common builds:
+"카나리아" 빌드는 최신 마스터 브랜치로부터 빌드된 Helm 소프트웨어의 버전이다.
+공식 릴리즈가 아니며, 안정적이지 않을 수 있다. 하지만 최신(edge) 기능을 테스트할 기회를 제공한다.
 
-- [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
-- [macOS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
-- [Experimental Windows
+카나리아 Helm 바이러리는 [get.helm.sh](https://get.helm.sh)에 저장된다.
+아래는 일반 빌드에 대한 링크들이다:
+
+- [리눅스 AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
+- [맥OS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
+- [Experimental 윈도우 
   AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### 소스로 (리눅스, 맥OS)
+### 소스에서 (리눅스, 맥OS)
 
 소스로 Helm을 빌드하는 것은 약간 작업이 더 많다. 하지만 최신 (프리-릴리즈) Helm 버전을 테스트하기에는 가장 좋은 방법이다.
 
