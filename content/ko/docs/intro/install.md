@@ -24,20 +24,18 @@ requesting Helm for the OS in question.
 
 ### Homebrew로 (맥OS)
 
-Members of the Kubernetes community have contributed a Helm formula build to
-Homebrew. This formula is generally up to date.
+쿠버네티스 커뮤니티 멤버들은 Homebrew용 Helm 포뮬러 빌드에 기여해왔다.
+이 패키지는 보통 최신이다.
 
 ```console
 brew install helm
 ```
 
-(Note: There is also a formula for emacs-helm, which is a different project.)
+(Note: emacs-helm 라는 포뮬러도 있는데, 다른 프로젝트이다.)
 
 ### Chocolatey로 (윈도우)
 
-Members of the Kubernetes community have contributed a [Helm
-package](https://chocolatey.org/packages/kubernetes-helm) build to
-[Chocolatey](https://chocolatey.org/). This package is generally up to date.
+쿠버네티스 커뮤니티 멤버들은 [Chocolatey](https://chocolatey.org/)용 [Helm 패키지](https://chocolatey.org/packages/kubernetes-helm) 빌드에 기여해왔다. 이 패키지는 보통 최신이다.
 
 ```console
 choco install kubernetes-helm
@@ -53,12 +51,12 @@ sudo snap install helm --classic
 
 ## 스크립트로
 
-Helm now has an installer script that will automatically grab the latest version
-of Helm and [install it
-locally](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+이제 Helm은 Helm 최신 버전을 자동으로 가져와서
+[로컬에 설치](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)하는
+인스톨러 스크립트를 가지고 있다.
 
-You can fetch that script, and then execute it locally. It's well documented so
-that you can read through it and understand what it is doing before you run it.
+이 스크립트를 받아서 로컬에서 실행할 수 있다.
+문서화가 잘 되어 있으므로 실행 전에 문서를 읽어보면 무엇을 하는 것인지 이해할 수 있을 것이다.
 
 ```console
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
