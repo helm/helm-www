@@ -35,7 +35,7 @@ Hyperkube you may need to do some manual configuration.
 ## IKS
 
 Helm works with [IBM Cloud Kubernetes
-Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started).
+Service](https://cloud.ibm.com/docs/containers?topic=containers-helm).
 
 ## KIND (Kubernetes IN Docker)
 
