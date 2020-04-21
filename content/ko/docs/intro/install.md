@@ -16,7 +16,7 @@ Helm의 모든 [릴리즈](https://github.com/helm/helm/releases)는 다양한 O
 2. 압축해제한다. (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
 3. 압축해제된 디렉토리에서 `helm` 바이너리를 찾아서, 원하는 목적지로 이동시킨다. (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-From there, you should be able to run the client and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
+거기서부터, 클라이언트를 구동하고 [stable 저장소를 추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)할 수 있어야 한다: `helm help`.
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during CircleCi
 builds and releases. Testing of other OSes are the responsibility of the community
@@ -86,10 +86,9 @@ links to the common builds:
 
 ### 소스로 (리눅스, 맥OS)
 
-Building Helm from source is slightly more work, but is the best way to go if
-you want to test the latest (pre-release) Helm version.
+소스로 Helm을 빌드하는 것은 약간 작업이 더 많다. 하지만 최신 (프리-릴리즈) Helm 버전을 테스트하기에는 가장 좋은 방법이다.
 
-정상 작동하는 Go 환경이 필수적이다.
+작동하는 Go 환경이 필수적이다.
 
 ```console
 $ git clone https://github.com/helm/helm.git
