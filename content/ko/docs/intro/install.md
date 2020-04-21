@@ -47,8 +47,7 @@ choco install kubernetes-helm
 
 ### Snap으로 (리눅스)                                                                                                                                                                                                                                                                
                                                                                                                                                                                                                                                                                      
-The [Snapcrafters](https://github.com/snapcrafters) community maintains the
-Snap version of the [Helm package](https://snapcraft.io/helm):
+[Snapcrafters](https://github.com/snapcrafters) 커뮤니티는 [Helm 패키지](https://snapcraft.io/helm)의 Snap 버전을 유지보수한다.
 
 ```console
 sudo snap install helm --classic
@@ -92,7 +91,7 @@ links to the common builds:
 Building Helm from source is slightly more work, but is the best way to go if
 you want to test the latest (pre-release) Helm version.
 
-You must have a working Go environment.
+정상 작동하는 Go 환경이 필수적이다.
 
 ```console
 $ git clone https://github.com/helm/helm.git
@@ -100,8 +99,8 @@ $ cd helm
 $ make
 ```
 
-If required, it will fetch the dependencies and cache them, and
-validate configuration. It will then compile `helm` and place it in `bin/helm`.
+필요시에는 의존성을 페치(fetch)하고 캐시(cache)하고 설정 유효성검사를 하게 된다.
+그러고 나서 `helm`을 컴파일하여 `bin/helm`에 둔다.
 
 ## 맺음말
 
