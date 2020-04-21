@@ -1,6 +1,6 @@
 ---
-title: "Installing Helm"
-description: "Learn how to install and get running with Helm."
+title: "Helm 설치하기"
+description: "Helm 설치하고 작동하는 방법 배우기."
 weight: 2
 aliases: ["/docs/install/"]
 ---
@@ -106,9 +106,8 @@ validate configuration. It will then compile `helm` and place it in `bin/helm`.
 
 ## Conclusion
 
-In most cases, installation is as simple as getting a pre-built `helm` binary.
-This document covers additional cases for those who want to do more
-sophisticated things with Helm.
+대부분의 경우, 설치는 미리-빌드된(pre-built) `helm` 바이너리를 받는 것만큼 단순하다.
+이 문서는 Helm으로 좀더 복잡한 것을 하려는 사람들을 위해 추가적인 경우를 커버한다.
 
 Once you have the Helm Client successfully installed, you can move on to using
 Helm to manage charts and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
