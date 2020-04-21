@@ -3,8 +3,8 @@ Helm
 */
 
 // load vendor libraries
-@import "./bulma/bulma.sass";
 @import "./materialdesignicons/materialdesignicons.scss";
+@import "./bulma/bulma.sass";
 
 // load helm styles
 @import "helm-mixins.scss";

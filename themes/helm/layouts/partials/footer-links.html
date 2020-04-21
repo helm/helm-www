@@ -1,7 +1,8 @@
-</div>
+{{ $title := site.Title }}
+{{ $year  := now.Year }}
 <section class="container footer-links">
   <div class="columns clearfix">
-    <dl class="column"> 
+    <dl class="column">
       <dt><a href="https://github.com/helm/helm">Helm Project</a></dt>
       <dd><a href="https://helm.sh/blog">Blog</a></dd>
       <dd><a href="https://www.cncf.io/community/kubecon-cloudnativecon-events/">Events</a></dd>
@@ -46,5 +47,17 @@
         <img src="/img/cncf-white.svg" alt="We are a Cloud Native Computing Foundation project" class="">
       </a>
     </div>
+  </div>
+
+  <hr />
+
+  <div class="copyright">
+    <p>
+      &copy; {{ $title }} Authors {{ $year }} | Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0">CC-BY-4.0</a>
+    </p>
+
+    <p>
+      &copy; {{ $year }} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage</a> page.
+    </p>
   </div>
 </section>
