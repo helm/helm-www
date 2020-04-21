@@ -206,13 +206,15 @@ Both `name` and `namespace` are optional and can be passed as an empty string (`
 
 The following combination of parameters are possible:
 
-| Behavior                               | Lookup function                           |
-|----------------------------------------|-------------------------------------------|
-| `kubectl get pod mypod -n mynamespace` | `lookup "v1" "Pod" "mynamespace" "mypod"` |
-| `kubectl get pods -n mynamespace`      | `lookup "v1" "Pod" "mynamespace" ""`      |
-| `kubectl get pods --all-namespaces`    | `lookup "v1" "Pod" "" ""` |
+| Behavior                               | Lookup function                            |
+|----------------------------------------|--------------------------------------------|
+| `kubectl get pod mypod -n mynamespace` | `lookup "v1" "Pod" "mynamespace" "mypod"`  |
+| `kubectl get pods -n mynamespace`      | `lookup "v1" "Pod" "mynamespace" ""`       |
+| `kubectl get pods --all-namespaces`    | `lookup "v1" "Pod" "" ""`                  |
+| `kubectl get namespace mynamespace`    | `lookup "v1" "Namespace" "" "mynamespace"` |
+| `kubectl get namespaces`               | `lookup "v1" "Namespace" "" ""`            |
 
-When `lookup` returns an object, it will return a dictionary. This dictionary can the be further
+When `lookup` returns an object, it will return a dictionary. This dictionary can be further
 navigated to extract specific values.
 
 The following example will return the annotations present for the `mynamespace` object:

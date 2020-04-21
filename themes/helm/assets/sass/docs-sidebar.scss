@@ -4,7 +4,7 @@
 .sidebar-wrapper {
   min-height: 100vh;
   width: $sidebarWidth;
-  z-index: 100;
+  z-index: 550;
   position: fixed;
   top: 8px;
   bottom: 8px;
@@ -126,7 +126,6 @@
       display: block;
       padding: .75rem 0;
       min-height: 3.5rem;
-      // padding: .575rem;
       background-color: desaturate(lighten($blue1, 35%), 20%);
       border: 2px solid lighten($blue1, 17.5%);
       color: $blue3;
@@ -153,7 +152,7 @@
     z-index: 1020;
     position: relative;
     padding-top: 1rem;
-    margin: 8.5rem 2vw 0;
+    margin: 8.5rem 1.5vw 0;
     position: relative;
     @include transition;
 
@@ -204,4 +203,12 @@
     color: $blue3;
   }
   background-color: white;
+}
+
+// custom algolia search results
+.algolia-autocomplete.algolia-autocomplete-left {
+  .ds-dropdown-menu {
+    z-index: 1540 !important;
+    background-color: white !important;
+  }
 }
