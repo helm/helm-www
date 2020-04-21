@@ -5,10 +5,9 @@ weight: 2
 aliases: ["/docs/install/"]
 ---
 
-This guide shows how to install the Helm CLI. Helm can be installed either from
-source, or from pre-built binary releases.
+이 가이드는 Helm CLI를 설치하는 방법을 설명한다. Helm은 소스 또는 미리-빌드된(pre-built) 바이너리 릴리즈로 설치할 수 있다.
 
-### From the Binary Releases
+### 바이너리 릴리즈로
 
 Every [release](https://github.com/helm/helm/releases) of Helm provides binary
 releases for a variety of OSes. These binary versions can be manually downloaded
@@ -36,7 +35,7 @@ brew install helm
 
 (Note: There is also a formula for emacs-helm, which is a different project.)
 
-### From Chocolatey (Windows)
+### Chocolatey로 (윈도우)
 
 Members of the Kubernetes community have contributed a [Helm
 package](https://chocolatey.org/packages/kubernetes-helm) build to
@@ -46,7 +45,7 @@ package](https://chocolatey.org/packages/kubernetes-helm) build to
 choco install kubernetes-helm
 ```
 
-### From Snap (Linux)                                                                                                                                                                                                                                                                
+### Snap으로 (리눅스)                                                                                                                                                                                                                                                                
                                                                                                                                                                                                                                                                                      
 The [Snapcrafters](https://github.com/snapcrafters) community maintains the
 Snap version of the [Helm package](https://snapcraft.io/helm):
@@ -55,7 +54,7 @@ Snap version of the [Helm package](https://snapcraft.io/helm):
 sudo snap install helm --classic
 ```
 
-## From Script
+## 스크립트로
 
 Helm now has an installer script that will automatically grab the latest version
 of Helm and [install it
@@ -74,7 +73,7 @@ Yes, you can `curl
 https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` that if
 you want to live on the edge.
 
-### From Canary Builds
+### 카나리 빌드로
 
 "Canary" builds are versions of the Helm software that are built from the latest
 master branch. They are not official releases, and may not be stable. However,
@@ -88,7 +87,7 @@ links to the common builds:
 - [Experimental Windows
   AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### From Source (Linux, macOS)
+### 소스로 (리눅스, 맥OS)
 
 Building Helm from source is slightly more work, but is the best way to go if
 you want to test the latest (pre-release) Helm version.
@@ -104,10 +103,10 @@ $ make
 If required, it will fetch the dependencies and cache them, and
 validate configuration. It will then compile `helm` and place it in `bin/helm`.
 
-## Conclusion
+## 맺음말
 
 대부분의 경우, 설치는 미리-빌드된(pre-built) `helm` 바이너리를 받는 것만큼 단순하다.
 이 문서는 Helm으로 좀더 복잡한 것을 하려는 사람들을 위해 추가적인 경우를 커버한다.
 
-Once you have the Helm Client successfully installed, you can move on to using
-Helm to manage charts and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+일단 Helm 클라이언트가 성공적으로 설치되면, 
+차트를 관리하고 [stable 저장소를 추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)하기 위해 Helm을 사용할 수 있다.
