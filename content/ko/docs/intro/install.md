@@ -9,14 +9,12 @@ aliases: ["/docs/install/"]
 
 ### 바이너리 릴리즈로
 
-Every [release](https://github.com/helm/helm/releases) of Helm provides binary
-releases for a variety of OSes. These binary versions can be manually downloaded
-and installed.
+Helm의 모든 [릴리즈](https://github.com/helm/helm/releases)는 다양한 OS들의 바이너리 릴리즈를 제공한다.
+이 바이너리 버전들은 수동으로 다운로드하여 설치할 수 있다.
 
-1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. Find the `helm` binary in the unpacked directory, and move it to its desired
-   destination (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. [원하는 버전](https://github.com/helm/helm/releases)을 다운로드한다.
+2. 압축해제한다. (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
+3. 압축해제된 디렉토리에서 `helm` 바이너리를 찾아서, 원하는 목적지로 이동시킨다. (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 From there, you should be able to run the client and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
 
@@ -24,7 +22,7 @@ From there, you should be able to run the client and [add the stable repo](https
 builds and releases. Testing of other OSes are the responsibility of the community
 requesting Helm for the OS in question. 
 
-### From Homebrew (macOS)
+### Homebrew로 (맥OS)
 
 Members of the Kubernetes community have contributed a Helm formula build to
 Homebrew. This formula is generally up to date.
