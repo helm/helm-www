@@ -10,10 +10,28 @@
   padding: 2rem 3.5vw 1.5rem;
   max-width: 100%;
 
+  hr {
+    background-color: $blue1;
+  }
+
+  .copyright {
+    p {
+      color: $grey1;
+
+      a {
+        color: $blue1;
+
+        &:hover {
+          color: $blue2;
+        }
+      }
+    }
+  }
+
   dl {
     font-family: 'Space Mono';
     padding-bottom: 2rem;
-    
+
     dt,
     dd {
       color: lighten($blue3, 12.5%);
@@ -34,7 +52,7 @@
         }
       }
     }
-  
+
     dd {
       margin: 0 0 0.5rem;
       

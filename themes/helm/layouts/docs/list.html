@@ -44,9 +44,9 @@ Helm | Docs
             </p>
           </a>
           {{ end }}
-          
+
           {{ else }}
-          
+
           {{ range .Pages }}
           <a href="{{ .RelPermalink }}" class="quick-item">
             <h4>
@@ -59,11 +59,10 @@ Helm | Docs
           {{ end }}
           {{ end }}
         </section>
-
-        {{ partial "footer-links.html" . }}
       </article>
     </section>
   </div>
 </div>
 
+{{ partial "footer-links.html" . }}
 {{ end }}
