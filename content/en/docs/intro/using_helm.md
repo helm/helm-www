@@ -387,7 +387,7 @@ not a full list of cli flags. To see a description of all flags, just run `helm
 
 ## 'helm uninstall': Uninstalling a Release
 
-When it is time to uninstall or uninstall a release from the cluster, use the
+When it is time to uninstall a release from the cluster, use the
 `helm uninstall` command:
 
 ```console
