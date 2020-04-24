@@ -1,4 +1,4 @@
-baseurl = "https://helm.sh/"
+baseurl = "https://v3-1-0.helm.sh/"
 languageCode = "en-us"
 theme = "helm"
 
@@ -40,6 +40,10 @@ version = "v3.2.0"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
+
+[[params.versions]]
+version = "v3.1.0"
+url = "https://v3-1-0.helm.sh/docs"
 
 [[params.versions]]
 version = "v2.16.3"
