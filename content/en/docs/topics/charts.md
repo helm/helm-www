@@ -75,6 +75,8 @@ maintainers: # (optional)
 icon: A URL to an SVG or PNG image to be used as an icon (optional).
 appVersion: The version of the app that this contains (optional). This needn't be SemVer.
 deprecated: Whether this chart is deprecated (optional, boolean)
+annotations:
+  example: A list of annotations keyed by name (optional).
 ```
 
 Other fields will be silently ignored.
