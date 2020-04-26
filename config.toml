@@ -18,6 +18,12 @@ guessSyntax = true
 [Permalinks]
 code = "/:filename/"
 
+[blackfriday]
+smartypants = false
+smartDashes = false
+angledQuotes = false
+latexDashes = false
+
 [params]
 title = "Helm"
 description = "Helm - The Kubernetes Package Manager."
