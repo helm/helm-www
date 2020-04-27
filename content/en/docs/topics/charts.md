@@ -75,6 +75,8 @@ maintainers: # (optional)
 icon: A URL to an SVG or PNG image to be used as an icon (optional).
 appVersion: The version of the app that this contains (optional). This needn't be SemVer.
 deprecated: Whether this chart is deprecated (optional, boolean)
+annotations:
+  example: A list of annotations keyed by name (optional).
 ```
 
 Other fields will be silently ignored.
@@ -690,7 +692,7 @@ cannot be overridden. As with all values, the names are _case sensitive_.
   will not give you access to templates, but will give you access to additional
   files that are present (unless they are excluded using `.helmignore`). Files
   can be accessed using `{{ index .Files "file.name" }}` or using the `{{
-  .Files.Get name }}` or `{{ .Files.GetString name }}` functions. You can also
+  .Files.Get name }}` function. You can also
   access the contents of the file as `[]byte` using `{{ .Files.GetBytes }}`
 - `Capabilities`: A map-like object that contains information about the versions
   of Kubernetes (`{{ .Capabilities.KubeVersion }}` and the supported Kubernetes
