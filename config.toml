@@ -11,6 +11,9 @@ plainIdAnchors = "true"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [markup]
+[markup.goldmark]
+[markup.goldmark.extensions]
+typographer = false
 [markup.highlight]
 style = "manni"
 guessSyntax = true
