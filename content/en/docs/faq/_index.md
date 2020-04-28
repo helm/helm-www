@@ -194,8 +194,11 @@ when you run `kubectl config view --minify`). It also means you must supply the
 
 ### Secrets as the default storage driver
 
-Helm 2 used ConfigMaps by default to store release information. In Helm 3,
-Secrets are now used as the default storage driver.
+In Helm 3, Secrets are now used as the [default storage driver](/docs/topics/advanced/#storage-backends). Helm 2 used ConfigMaps by default to store release information. In Helm 2.7.0, a new storage backend that uses Secrets for storing release information was implemented, and it is now the default starting in Helm 3.
+
+Changing to Secrets as the Helm 3 default allows for additional security in protecting charts in conjunction with the release of Secret encryption in Kubernetes.
+
+[Encrypting secrets at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) became available as an alpha feature in Kubernetes 1.7 and became stable as of Kubernetes 1.13. This allows users to encrypt Helm release metadata at rest, and so it is a good starting point that can be expanded later into using something like Vault.
 
 ### Go import path changes
 
