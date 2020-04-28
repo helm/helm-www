@@ -5,12 +5,15 @@ aliases: ["/docs/kubernetes_distros/"]
 weight: 10
 ---
 
+Helm should work with any [conformant version of
+Kubernetes](https://github.com/cncf/k8s-conformance) (whether
+[certified](https://www.cncf.io/certification/software-conformance/) or not).
+
 This document captures information about using Helm in specific Kubernetes
-environments. Distros are sorted alphabetically so as to not imply any sort of
+environments. Please contribute more details about any distros (sorted
+alphabetically) if desired.
 preference.
 
-We are trying to add more details to this document. Please contribute via Pull
-Requests if you can.
 
 ## AKS
 
