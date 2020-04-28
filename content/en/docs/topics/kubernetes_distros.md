@@ -12,7 +12,6 @@ Kubernetes](https://github.com/cncf/k8s-conformance) (whether
 This document captures information about using Helm in specific Kubernetes
 environments. Please contribute more details about any distros (sorted
 alphabetically) if desired.
-preference.
 
 
 ## AKS
