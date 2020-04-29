@@ -91,7 +91,7 @@ $ cd helm
 $ make
 ```
 
-필요시에는 의존성(dependencies)를 페치(fetch)하고 캐시(cache)하며 설정 유효성검사를 하게 된다.
+필요시에는 의존성(dependencies)을 페치(fetch)하고 캐시(cache)하며 설정 유효성검사를 하게 된다.
 그러고 나서 `helm`을 컴파일하여 `bin/helm`에 둔다.
 
 ## 맺음말
