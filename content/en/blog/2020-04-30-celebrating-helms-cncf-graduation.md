@@ -5,6 +5,8 @@ authorname: "Matt Butcher"
 author: "@technosophos"
 authorlink: "https://twitter.com/technosophos"
 date: "2020-04-30"
+twittertype: "summary_large_image"
+twitterimage: "blog/images/helmgraduation.png"
 ---
 
 ![../images/helmgraduation.png](../images/helmgraduation.png)
