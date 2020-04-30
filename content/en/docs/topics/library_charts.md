@@ -1,6 +1,6 @@
 ---
 title: "Library Charts"
-description: "Explains library chars and examples of usage"
+description: "Explains library charts and examples of usage"
 aliases: ["docs/library_charts/"]
 weight: 4
 ---
