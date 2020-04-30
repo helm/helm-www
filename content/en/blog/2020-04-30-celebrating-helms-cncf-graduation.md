@@ -11,7 +11,7 @@ twitterimage: "blog/images/helmgraduation-twitter.png"
 
 ![../images/helmgraduation.png](../images/helmgraduation.png)
 
-Today we are happy to see Helm reach the final stage of the CNCF ladder. Helm has moved from the incubating level to the graduated level as a [CNCF project](https://www.cncf.io/projects/), alongside Kubernetes and other select projects.
+Today we are happy to see Helm [reach the final stage of the CNCF ladder](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/). Helm has moved from the incubating level to the graduated level as a [CNCF project](https://www.cncf.io/projects/), alongside Kubernetes and other select projects.
 
 Given Helm's humble beginnings as a hackathon project at Deis, a small startup, we are ecstatic to see our little baby all grown up. And we have certainly learned a lot about coding, community, and organizational politics over the last five years. But those are not the big reasons why we are celebrating Helm's graduation.
 
