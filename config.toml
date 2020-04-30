@@ -26,6 +26,9 @@ title = "Helm"
 description = "Helm - The Kubernetes Package Manager."
 googleAnalyticsId = "UA-42867143-2"
 googleSiteVerification = "dCa3wS47cErhx0IpaxbB85NfcOP-vFxevknVk6fzf5I"
+twittersite = "helmpack"
+twittertype = "summary"
+twitterimage = "img/og-image.png"
 jsFiles = [
   "foundation",
   "foundation.accordion",
