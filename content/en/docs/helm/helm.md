@@ -19,16 +19,15 @@ Common actions for Helm:
 
 Environment variables:
 
-+------------------+-----------------------------------------------------------------------------+
+|------------------|-----------------------------------------------------------------------------|
 | Name             | Description                                                                 |
-+------------------+-----------------------------------------------------------------------------+
+|------------------|-----------------------------------------------------------------------------|
 | $XDG_CACHE_HOME  | set an alternative location for storing cached files.                       |
 | $XDG_CONFIG_HOME | set an alternative location for storing Helm configuration.                 |
 | $XDG_DATA_HOME   | set an alternative location for storing Helm data.                          |
 | $HELM_DRIVER     | set the backend storage driver. Values are: configmap, secret, memory       |
 | $HELM_NO_PLUGINS | disable plugins. Set HELM_NO_PLUGINS=1 to disable plugins.                  |
 | $KUBECONFIG      | set an alternative Kubernetes configuration file (default "~/.kube/config") |
-+------------------+-----------------------------------------------------------------------------+
 
 Helm stores configuration based on the XDG base directory specification, so
 
@@ -38,13 +37,13 @@ Helm stores configuration based on the XDG base directory specification, so
 
 By default, the default directories depend on the Operating System. The defaults are listed below:
 
-+------------------+---------------------------+--------------------------------+-------------------------+
+|------------------|---------------------------|--------------------------------|-------------------------|
 | Operating System | Cache Path                | Configuration Path             | Data Path               |
-+------------------+---------------------------+--------------------------------+-------------------------+
+|------------------|---------------------------|--------------------------------|-------------------------|
 | Linux            | $HOME/.cache/helm         | $HOME/.config/helm             | $HOME/.local/share/helm |
 | macOS            | $HOME/Library/Caches/helm | $HOME/Library/Preferences/helm | $HOME/Library/helm      |
 | Windows          | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm          |
-+------------------+---------------------------+--------------------------------+-------------------------+
+|------------------|---------------------------|--------------------------------|-------------------------|
 
 
 ### Options
