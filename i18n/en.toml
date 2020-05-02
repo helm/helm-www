@@ -43,7 +43,7 @@ Helm helps you manage Kubernetes applications — Helm Charts help you define, i
 
 Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
 
-Helm is an incubator project in the [CNCF](https://cncf.io) and is maintained by the [Helm community](https://github.com/helm/community).
+Helm is a graduated project in the [CNCF](https://cncf.io) and is maintained by the [Helm community](https://github.com/helm/community).
 
 ### Learn more:
 
