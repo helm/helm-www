@@ -172,6 +172,14 @@ release information with the following command:
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**PRODUCTION NOTES**: It is not recommended to use ConfigMaps for sensitive data as
-it is stored unencoded and unencrypted. Secrets data is stored base64-encoded and can be
+**PRODUCTION NOTES**: The release information might contain sensitive data
+(like passwords, private keys, and other credentials) that needs to be protected
+from unauthorized access. When managing Kubernetes authorization, for instance with 
+[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), it
+is possible to grant broader access to ConfigMap resources, while restricting
+access to Secret resources. For instance, the default
+[user-facing role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
+"view" grants access to most resources, but not to Secrets. Furthermore, secrets data can be
 configured for [encrypted storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
+Please keep that in mind if you decide to switch to the ConfigMap backend, as it
+could expose your application's sensitive data.
