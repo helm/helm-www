@@ -9,20 +9,20 @@ other = "복사"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "Helm 3 정보를 보고 있습니다 - 이전 버전에 대한 정보는 **[버전 FAQs](https://helm.sh/docs/faq/)**를 참고하거나 **[Helm 2 참조](https://v2.helm.sh)**를 확인하십시오."
+other = "헬름 3 정보입니다 - 이전 버전에 대한 정보는 **[버전 FAQs](https://helm.sh/docs/faq/)**를 참고하거나 **[헬름 2 참조](https://v2.helm.sh)**를 확인하십시오."
 
 [banner_2]
-other = "**Helm 3** 릴리스 정보를 보고 있습니다. **Helm 2**에 대한 정보는 [here](https://v2.helm.sh/)를 확인하십시오."
+other = "**헬름 3** 릴리스 정보입니다. **헬름 2**에 대한 정보는 [here](https://v2.helm.sh/)를 확인하십시오."
 
 ## footer
 [footer_support_title]
-other = "Helm는 400명 이상의 개발자 커뮤니티가 개발 및 지원에 참여하고 있습니다."
+other = "헬름은 400명 이상의 개발자 커뮤니티가 개발 및 지원에 참여하고 있습니다."
 
 [footer_support_subtitle]
 other = "[helm](https://github.com/helm/helm/blob/master/OWNERS) 및 [charts](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
 
 [footer_cncf_status]
-other = "Helm은 Cloud Native Computing Foundation의 인큐베이팅 프로젝트 중 하나입니다."
+other = "헬름은 Cloud Native Computing Foundation의 인큐베이팅 프로젝트 중 하나입니다."
 # homepage copy
 
 ## homepage intro
