@@ -21,7 +21,7 @@ This will match version `1.2.3` and any patches to that release.  In other
 words, `~1.2.3` is equivalent to `>= 1.2.3, < 1.3.0`
 
 For the complete version matching syntax, please see the [semver
-documentation](https://github.com/Masterminds/semver#checking-version-constraints)
+documentation](https://github.com/Masterminds/semver#checking-version-constraints).
 
 ### Repository URLs
 
@@ -34,6 +34,19 @@ names.
 File URLs (`file://...`) are considered a "special case" for charts that are
 assembled by a fixed deployment pipeline. Charts that use `file://` are not
 allowed in the official Helm repository.
+
+#### Experimental support for Charts hosted on OCI registries
+
+If you have [enabled experimental OCI support](/docs/registries/), you can specify
+an OCI reference (`oci://registry/group/image:tag`) for the repository URL.
+
+When specifying an OCI reference, you may omit the `version` argument if your
+repository URL contains an image tag (`oci://nginx:1.10`). If you do not specify
+a tag on the URL, the `version` will be used as the tag. This means that OCI URLs
+**do not support SemVer constraints**, only tagged versions are supported.
+
+If you specify both a tag and a version, the tag takes precedence and the version
+is ignored.
 
 ## Conditions and Tags
 
