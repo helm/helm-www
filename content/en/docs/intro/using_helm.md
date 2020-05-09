@@ -92,33 +92,71 @@ takes two arguments: A release name that you pick, and the name of the chart you
 
 ```console
 $ helm install happy-panda stable/mariadb
-Fetched stable/mariadb-0.3.0 to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
-happy-panda
-Last Deployed: Wed Sep 28 12:32:28 2016
-Namespace: default
-Status: DEPLOYED
+WARNING: This chart is deprecated
+NAME: happy-panda
+LAST DEPLOYED: Fri May  8 17:46:49 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+This Helm chart is deprecated
 
-Resources:
-==> extensions/Deployment
-NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-happy-panda-mariadb   1         0         0            0           1s
+Given the `stable` deprecation timeline (https://github.com/helm/charts#deprecation-timeline), the Bitnami maintained Helm chart is now located at bitnami/charts (https://github.com/bitnami/charts/).
 
-==> v1/Secret
-NAME                     TYPE      DATA      AGE
-happy-panda-mariadb   Opaque    2         1s
+The Bitnami repository is already included in the Hubs and we will continue providing the same cadence of updates, support, etc that we've been keeping here these years. Installation instructions are very similar, just adding the _bitnami_ repo and using it during the installation (`bitnami/<chart>` instead of `stable/<chart>`)
 
-==> v1/Service
-NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-happy-panda-mariadb   10.0.0.70    <none>        3306/TCP   1s
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm install my-release bitnami/<chart>           # Helm 3
+$ helm install --name my-release bitnami/<chart>    # Helm 2
+```
 
+To update an exisiting _stable_ deployment with a chart hosted in the bitnami repository you can execute
 
-Notes:
-MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
-happy-panda-mariadb.default.svc.cluster.local
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm upgrade my-release bitnami/<chart>
+```
 
-To connect to your database run the following command:
+Issues and PRs related to the chart itself will be redirected to `bitnami/charts` GitHub repository. In the same way, we'll be happy to answer questions related to this migration process in this issue (https://github.com/helm/charts/issues/20969) created as a common place for discussion.
 
-   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+Please be patient while the chart is being deployed
+
+Tip:
+
+  Watch the deployment status using the command: kubectl get pods -w --namespace default -l release=happy-panda
+
+Services:
+
+  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
+  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
+
+Administrator credentials:
+
+  Username: root
+  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+
+To connect to your database:
+
+  1. Run a pod that you can use as a client:
+
+      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+
+  2. To connect to master service (read/write):
+
+      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
+
+  3. To connect to slave service (read-only):
+
+      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
+
+To upgrade this helm chart:
+
+  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
+
+      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
+
 ```
 
 Now the `mariadb` chart is installed. Note that installing a chart creates a new
@@ -137,32 +175,70 @@ To keep track of a release's state, or to re-read configuration information, you
 can use `helm status`:
 
 ```console
-$ helm status happy-panda
-Last Deployed: Wed Sep 28 12:32:28 2016
-Namespace: default
-Status: DEPLOYED
+$ helm status happy-panda                
+NAME: happy-panda
+LAST DEPLOYED: Fri May  8 17:46:49 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+This Helm chart is deprecated
 
-Resources:
-==> v1/Service
-NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-happy-panda-mariadb   10.0.0.70    <none>        3306/TCP   4m
+Given the `stable` deprecation timeline (https://github.com/helm/charts#deprecation-timeline), the Bitnami maintained Helm chart is now located at bitnami/charts (https://github.com/bitnami/charts/).
 
-==> extensions/Deployment
-NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-happy-panda-mariadb   1         1         1            1           4m
+The Bitnami repository is already included in the Hubs and we will continue providing the same cadence of updates, support, etc that we've been keeping here these years. Installation instructions are very similar, just adding the _bitnami_ repo and using it during the installation (`bitnami/<chart>` instead of `stable/<chart>`)
 
-==> v1/Secret
-NAME                     TYPE      DATA      AGE
-happy-panda-mariadb   Opaque    2         4m
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm install my-release bitnami/<chart>           # Helm 3
+$ helm install --name my-release bitnami/<chart>    # Helm 2
+```
 
+To update an exisiting _stable_ deployment with a chart hosted in the bitnami repository you can execute
 
-Notes:
-MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
-happy-panda-mariadb.default.svc.cluster.local
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm upgrade my-release bitnami/<chart>
+```
 
-To connect to your database run the following command:
+Issues and PRs related to the chart itself will be redirected to `bitnami/charts` GitHub repository. In the same way, we'll be happy to answer questions related to this migration process in this issue (https://github.com/helm/charts/issues/20969) created as a common place for discussion.
 
-   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+Please be patient while the chart is being deployed
+
+Tip:
+
+  Watch the deployment status using the command: kubectl get pods -w --namespace default -l release=happy-panda
+
+Services:
+
+  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
+  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
+
+Administrator credentials:
+
+  Username: root
+  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+
+To connect to your database:
+
+  1. Run a pod that you can use as a client:
+
+      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+
+  2. To connect to master service (read/write):
+
+      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
+
+  3. To connect to slave service (read-only):
+
+      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
+
+To upgrade this helm chart:
+
+  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
+
+      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
 ```
 
 The above shows the current state of your release.
