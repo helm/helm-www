@@ -32,14 +32,21 @@
     <div class="navbar-end is-hidden-mobile">
       <ul class="is-pulled-right">
         
-        {{ range .Translations }}
-        <li>
-          <a href="{{ .RelPermalink }}">
-            {{ .Language.LanguageName }}
+        <!-- l18n -->
+        <li class="versioner l18ner navbar-item has-dropdown is-hoverable">
+          <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
+            {{ .Language.LanguageName }} <i class="fa fa-caret-down"></i>
           </a>
+
+          <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+            {{ range $.Site.Home.AllTranslations }}
+            <li>
+              <a href="{{ .Permalink }}" class="navbar-item">{{ .Language.LanguageName }}</a>
+            </li>
+            {{ end }}
+          </ul>
         </li>
-        {{ end }}
-       
+        
         <li class="versioner navbar-item has-dropdown is-hoverable">
           {{ with $primary }}
           <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
