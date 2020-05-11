@@ -32,6 +32,7 @@ helm template [NAME] [CHART] [flags]
       --dry-run                    simulate an install
   -g, --generate-name              generate the name (and omit the NAME parameter)
   -h, --help                       help for template
+      --include-crds               include CRDs in the templated output
       --key-file string            identify HTTPS client using this SSL key file
       --keyring string             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
       --name-template string       specify template used to name the release
