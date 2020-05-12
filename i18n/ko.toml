@@ -27,28 +27,28 @@ other = "헬름은 Cloud Native Computing Foundation의 인큐베이팅 프로�
 
 ## homepage intro
 [main_title]
-other = "**The** **package manager** **for Kubernetes**"
+other = "**쿠버네티스** **패키지 매니저**"
 
 [main_subtitle]
-other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io)."
+other = "[쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하고, 공유하고, 사용하기에는 헬름이 최고입니다."
 
 ## homepage about helm
 [main_what_is_helm_title]
-other = "What is Helm?"
+other = "헬름이란?"
 
 [main_what_is_helm_description]
 other = """
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. 
+헬름을 사용하여 쿠버네티스 애플리케이션 관리 — 헬픔 차트를 사용하면 복잡한 쿠버네티스 애플리케이션이라도 편리하게 정의하고, 설치 및 업그레이드할 수 있습니다. 
 
-Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+간단한 차트 작성, 버전 관리, 공유 및 게시 - 복사, 붙이기 대신 헬름을 사용해 보십시오. 
 
-Helm is an incubator project in the [CNCF](https://cncf.io) and is maintained by the [Helm community](https://github.com/helm/community).
+헬름은 [CNCF](https://cncf.io)의 졸업 프로젝트 중 하나로 [헬름 커뮤니티](https://github.com/helm/community)에서 관리합니다.
 
-### Learn more:
+### 자세한 정보:
 
-* [Helm Architecture](./docs/topics/architecture/)
-* [Quick Start Guide](./docs/intro/quickstart/)
-* [Video: An Introduction to Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+* [헬름 아키텍처](./docs/topics/architecture/)
+* [퀵스타트 가이드](./docs/intro/quickstart/)
+* [비디오: 헬름 소개](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
 [main_why_teams_love]
