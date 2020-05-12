@@ -19,10 +19,10 @@ other = "**헬름 3** 릴리스 정보입니다. **헬름 2**에 대한 정보�
 other = "헬름은 개발자 400명 이상의 커뮤니티가 개발 및 지원에 참여하고 있습니다."
 
 [footer_support_subtitle]
-other = "[helm](https://github.com/helm/helm/blob/master/OWNERS) 및 [charts](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
+other = "[헬름](https://github.com/helm/helm/blob/master/OWNERS) 및 [차트](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
 
 [footer_cncf_status]
-other = "헬름은 Cloud Native Computing Foundation의 인큐베이팅 프로젝트 중 하나입니다."
+other = "헬름은 Cloud Native Computing Foundation의 졸업 프로젝트 중 하나입니다."
 # homepage copy
 
 ## homepage intro
@@ -30,7 +30,7 @@ other = "헬름은 Cloud Native Computing Foundation의 인큐베이팅 프로�
 other = "**쿠버네티스** **패키지 매니저**"
 
 [main_subtitle]
-other = "[쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하고, 공유하고, 사용하기에는 헬름이 최고입니다."
+other = "[쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하거나, 공유하고 사용하기에는 헬름이 최고입니다."
 
 ## homepage about helm
 [main_what_is_helm_title]
