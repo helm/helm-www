@@ -83,7 +83,7 @@ For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found
-at https://pkg.go.dev/helm.sh/helm/v3, but a brief overview of some of the most
+at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), but a brief overview of some of the most
 common packages and a simple example follow below.
 
 ### Package overview
