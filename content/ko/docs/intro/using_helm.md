@@ -69,7 +69,7 @@ brigade/brigade-project     	1.0.0        	v1.0.0     	Create a Brigade project
 brigade/kashti              	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
 ```
 
-helm search는 퍼지 문자열 매칭 알고리즘을 사용하므로, 단어 또는 문구의 일부분만 타이핑해도 된다:
+helm search는 퍼지 문자열 매칭 알고리즘을 사용하므로, 단어 또는 문구의 일부분만 입력해도 된다.
 
 ```console
 $ helm search repo kash
