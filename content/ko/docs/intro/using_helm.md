@@ -220,7 +220,7 @@ $ helm install -f config.yaml stable/mariadb --generate-name
 - `--set`: 명령줄 상에서 오버라이드(override)를 지정한다.
 
 둘 다 사용하면, `--set` 값은 더 높은 우선순위를 가진 `--values` 으로 병합된다.
-`--set`에 명시된 오버라이드 사항들은 컨피그맵으로 보관된다.
+`--set`에 명시된 오버라이드 사항들은 컨피그맵(ConfigMap)으로 보관된다.
 `helm get values <release-name>`로 해당 릴리스에 대한 `--set` 설정값들을 조회할 수 있다.
 `--set` 설정값들은 `helm upgrade`시 `--reset-values`를 명시하여 실행함으로써  제거할 수 있다.
 
