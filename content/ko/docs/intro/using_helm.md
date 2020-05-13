@@ -166,7 +166,7 @@ To connect to your database run the following command:
 여기서는 이 차트의 기본 구성 옵션들만 사용할 것이다.
 대부분의 경우 선호하는 구성을 사용하기 위해 차트를 커스터마이징하게 될 것이다.
 
-차트에 어떤 옵션들이 설정가능한지 보려면, `helm show values`를 사용하자:
+차트에 어떤 옵션이 구성 가능한지 보려면, `helm show values`를 사용하자.
 
 ```console
 $ helm show values stable/mariadb
