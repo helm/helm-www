@@ -213,7 +213,7 @@ $ helm install -f config.yaml stable/mariadb --generate-name
 이 사용자에게는 새로 생성된 `user0db` 데이터베이스에 대한 접근권한이 부여되지만,
 나머지 모든 기본설정은 해당 차트를 따르게 된다.
 
-인스톨 작업에 설정 데이터를 전달하는 방법에는 두가지가 있다:
+설치 작업에 구성 데이터를 전달하는 방법에는 두가지가 있다.
 
 - `--values` (또는 `-f`): Specify a YAML file with overrides. This can be
   specified multiple times and the rightmost file will take precedence
