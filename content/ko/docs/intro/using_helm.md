@@ -127,7 +127,7 @@ To connect to your database run the following command:
 
 많은 차트들이 크기 600M 이상의 Docker 이미지를 필요로 하며, 클러스터에 설치되기까지는 상당한 시간이 걸린다.
 
-릴리스의 상태 추적을 계속하거나, 설정 정보를 재확인하려면, `helm status`를 사용하자:
+릴리스의 상태 추적을 계속하거나, 구성 정보를 재확인하려면, `helm status`를 사용하자.
 
 ```console
 $ helm status happy-panda
