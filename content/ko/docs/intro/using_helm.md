@@ -77,7 +77,7 @@ NAME          	CHART VERSION	APP VERSION	DESCRIPTION
 brigade/kashti	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
 ```
 search는 사용 가능한 패키지를 찾는 좋은 방법이다.
-설치하기 원하는 패키지를 찾았다면 `helm install`을 이용하여 설치할 수 있다.
+설치하려는 패키지를 찾았다면 `helm install`을 이용하여 설치할 수 있다.
 
 ## 'helm install': 패키지 설치
 
