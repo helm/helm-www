@@ -30,7 +30,7 @@ other = "헬름은 Cloud Native Computing Foundation의 졸업 프로젝트 중 
 other = "**쿠버네티스** **패키지 매니저**"
 
 [main_subtitle]
-other = "[쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하거나, 공유하고 사용하기에는 헬름이 최고입니다."
+other = "헬름은 [쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하거나, 공유하고 사용하기에 가장 좋은 방법입니다."
 
 ## homepage about helm
 [main_what_is_helm_title]
@@ -38,9 +38,9 @@ other = "헬름이란?"
 
 [main_what_is_helm_description]
 other = """
-헬름을 사용하여 쿠버네티스 애플리케이션 관리 — 헬픔 차트를 사용하면 복잡한 쿠버네티스 애플리케이션이라도 편리하게 정의하고, 설치 및 업그레이드할 수 있습니다. 
+헬름을 통한 쿠버네티스 애플리케이션 관리 — 헬름 차트는 복잡한 쿠버네티스 애플리케이션도 편리하게 정의하여 설치하거나 업그레이드할 수 있습니다. 
 
-간단한 차트 작성, 버전 관리, 공유 및 게시 - 복사, 붙이기 대신 헬름을 사용해 보십시오. 
+편리한 차트 작성, 버전 관리, 공유 및 게시 - 복사, 붙이기 대신 헬름을 사용해 보세요. 
 
 헬름은 [CNCF](https://cncf.io)의 졸업 프로젝트 중 하나로 [헬름 커뮤니티](https://github.com/helm/community)에서 관리합니다.
 
