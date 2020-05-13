@@ -117,7 +117,7 @@ To connect to your database run the following command:
 ```
 
 이제 `mariadb` 차트가 설치되었다.
-차트를 설치하면 새 _release_ 오브젝트를 생성된다는 점을 알아두자.
+차트를 설치하면 새 _release_ 오브젝트가 생성된다는 점을 알아두자.
 위에서 릴리스의 이름이 `happy-panda`이다. 
 (헬름이 생성해주는 이름을 그대로 사용하려면 릴리스 이름을 넣지 말고 `--generate-name`을 사용하자.)
 
