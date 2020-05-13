@@ -259,7 +259,7 @@ name:
 ```
 
 헬름 2.5.0이라면, 배열 인덱스 문법을 써서 리스트 항목들에 접근할 수 있다.
-예를 들어 `--set servers[0].port=80` 는 다음과 같이 된다:
+예를 들어 `--set servers[0].port=80` 는 다음과 같이 된다.
 
 ```yaml
 servers:
@@ -267,7 +267,7 @@ servers:
 ```
 
 여러 개의 값들이 이런 방식으로 설정될 수 있다.
-`--set servers[0].port=80,servers[0].host=example` 행은 다음과 같이 된다:
+`--set servers[0].port=80,servers[0].host=example` 행은 다음과 같이 된다.
 
 ```yaml
 servers:
@@ -276,7 +276,7 @@ servers:
 ```
 
 때로는 `--set` 행에 특수문자를 써야할 필요가 있을 것이다.
-문자를 이스케이프하기 위해 백슬래시를 사용할 수 있다; `--set name=value1\,value2`는 다음과 같다:
+문자를 이스케이프하기 위해 백슬래시를 사용할 수 있다. `--set name=value1\,value2`는 다음과 같다.
 
 ```yaml
 name: "value1,value2"
