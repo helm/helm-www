@@ -54,7 +54,7 @@ https://hub.helm.sh/charts/presslabs/wordpress-...	v0.7.1       	v0.7.1     	A H
 
 필터 없이 `helm search hub`을 실행하면 사용 가능한 모든 차트를 보여준다.
 
-`helm search repo`를 사용하면, 기존에 추가된 저장소들에 있는 차트들의 이름을 볼 수 있다:
+`helm search repo`를 사용하면, 기존에 추가된 저장소들에 있는 차트 이름을 볼 수 있다.
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
