@@ -227,14 +227,14 @@ $ helm install -f config.yaml stable/mariadb --generate-name
 #### `--set`의 형식과 제한점
 
 `--set` 옵션은 0개 이상의 이름/값 쌍을 받는다.
-가장 간단하게는, 이렇게 사용한다: `--set name=value`.
-YAML로 표현하면 다음과 같다:
+가장 간단하게는 `--set name=value`와 같이 사용할 수 있다.
+YAML로 표현하면 다음과 같다.
 
 ```yaml
 name: value
 ```
 
-여러 개의 값들은 `,` 문자로 구분된다. 그래서 `--set a=b,c=d`는 다음과 같다:
+여러 개의 값들은 `,` 문자로 구분된다. 그래서 `--set a=b,c=d`는 다음과 같다.
 
 ```yaml
 a: b
@@ -242,14 +242,14 @@ c: d
 ```
 
 더 복잡한 표현도 지원한다. 예를 들어, `--set outer.inner=value`
-는 다음과 같이 번역된다:
+는 다음과 같이 표현된다.
 ```yaml
 outer:
   inner: value
 ```
 
 리스트는 `{`과 `}` 로 감싸서 표현할 수 있다.
-예를 들어, `--set name={a, b, c}`는 다음과 같이 번역된다:
+예를 들어, `--set name={a, b, c}`는 다음과 같이 표현된다.
 
 ```yaml
 name:
