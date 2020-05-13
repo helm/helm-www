@@ -40,7 +40,7 @@ MySQL 차트의 경우를 생각해보자.
 - `helm search repo`는 `helm repo add`를 사용하여 로컬 헬름 클라이언트에 추가된 저장소들을 검색한다.
    검색은 로컬 데이터 상에서 이루어지며, 퍼블릭 네트워크 접속이 필요하지 않다.
 
-`helm search hub`를 실행하면 공개적으로 가용한 차트들을 찾아볼 수 있다:
+`helm search hub`를 실행하면 공개적으로 사용 가능한 차트들을 찾아볼 수 있다.
 
 ```console
 $ helm search hub wordpress
