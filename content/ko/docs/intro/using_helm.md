@@ -52,7 +52,7 @@ https://hub.helm.sh/charts/presslabs/wordpress-...	v0.7.1       	v0.7.1     	A H
 
 위와 같이 하면 헬름 허브에서 모든 `wordpress` 차트를 찾는다.
 
-필터 없이 `helm search hub`을 실행하면 모든 가용한 차트를 보여준다.
+필터 없이 `helm search hub`을 실행하면 사용 가능한 모든 차트를 보여준다.
 
 `helm search repo`를 사용하면, 기존에 추가된 저장소들에 있는 차트들의 이름을 볼 수 있다:
 
