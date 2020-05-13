@@ -282,20 +282,20 @@ servers:
 name: "value1,value2"
 ```
 
-비슷하게, 차트에서 애노테이션, 레이블, 노드 셀렉터를 파싱하는 `toYaml` 기능을 사용할 때 편리한, 점 표기를 이스케이프할 수 있다,
-`--set nodeSelector."kubernetes\.io/role"=master`를 나타내는 문법은 다음과 같다:
+비슷한 예로, `toYaml` 기능으로 주석, 레이블, 노드 셀렉터를 파싱하는 차트에서 편리하게 사용되는 점 표기를 이스케이프할 수 있다.
+`--set nodeSelector."kubernetes\.io/role"=master`를 나타내는 구문은 다음과 같다.
 
 ```yaml
 nodeSelector:
   kubernetes.io/role: master
 ```
 
-깊이 중첩된 자료구조는 `--set`로 표현하기 어려울 수 있다.
+여러 단계로 중첩된 자료구조는 `--set`로 표현하기 어려울 수 있다.
 차트 설계자는 `values.yaml` 파일의 형식을 설계할 때 `--set`를 사용하는 경우도 고려해주면 좋다.
 
 ### 더 많은 설치 방법들
 
-`helm install` 명령어는 여러 소스들로부터 설치를 수행할 수 있다:
+`helm install` 명령어를 사용하여 여러 소스에서 설치를 수행할 수 있다.
 
 - 차트 저장소 (위에서 살펴본 것)
 - 로컬 차트 압축파일 (`helm install foo foo-0.1.1.tgz`)
