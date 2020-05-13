@@ -14,7 +14,7 @@ weight: 3
 
 *차트*는 헬름 패키지이다. 
 이 패키지에는 쿠버네티스 클러스터 내에서 애플리게이션, 도구, 서비스를 구동하는데 필요한 모들 리소스 정의가 포함되어 있다.
-쿠버네티스에서의 Homebrew 포뮬러, Apt dpkg, YUM RPM  파일와 같은 것으로 생각할 수 있다.
+쿠버네티스에서의 Homebrew 포뮬러, Apt dpkg, YUM RPM 파일과 같은 것으로 생각할 수 있다.
 
 *저장소*는 차트를 모아두고 공유하는 장소이다.
 이것은 마치 Perl의 [CPAN 아카이브](https://www.cpan.org)나 [페도라 패키지 데이터베이스](https://admin.fedoraproject.org/pkgdb/)와 같은데, 쿠버네티스 패키지용이라고 보면 된다.
