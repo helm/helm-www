@@ -282,7 +282,7 @@ servers:
 name: "value1,value2"
 ```
 
-비슷한 예로, `toYaml` 기능으로 주석, 레이블, 노드 셀렉터를 파싱하는 차트에서 편리하게 사용되는 점 표기를 이스케이프할 수 있다.
+비슷한 예로, `toYaml` 기능으로 어노테이션, 레이블, 노드 셀렉터를 파싱하는 차트에서 편리하게 사용되는 점 표기를 이스케이프할 수 있다.
 `--set nodeSelector."kubernetes\.io/role"=master`를 나타내는 구문은 다음과 같다.
 
 ```yaml
