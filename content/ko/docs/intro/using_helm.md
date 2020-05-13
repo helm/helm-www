@@ -215,9 +215,9 @@ $ helm install -f config.yaml stable/mariadb --generate-name
 
 설치 작업에 구성 데이터를 전달하는 방법에는 두가지가 있다.
 
-- `--values` (또는 `-f`): Specify a YAML file with overrides. This can be
-  specified multiple times and the rightmost file will take precedence
-- `--set`: Specify overrides on the command line.
+- `--values` (또는 `-f`): 오버라이드(override)할 YAML 파일을 지정한다.
+  여러 번 지정할 수 있지만 가장 오른쪽에 있는 파일이 우선시된다.
+- `--set`: 명령줄 상에서 오버라이드(override)를 지정한다.
 
 둘 다 사용하면, `--set` 값은 더 높은 우선순위를 가진 `--values` 으로 병합된다.
 `--set`에 명시된 오버라이드 사항들은 컨피그맵으로 보관된다.
