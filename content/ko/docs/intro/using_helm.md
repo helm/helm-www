@@ -302,7 +302,7 @@ nodeSelector:
 - 압축해제된 차트 디렉토리 (`helm install foo path/to/foo`)
 - 완전한 URL (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
-## 'helm upgrade'과 'helm rollback': 릴리스 업그레이드 및 실패 복구
+## 'helm upgrade' 및 'helm rollback': 릴리스 업그레이드 및 실패 복구
 
 새로운 버전의 차트가 릴리스되었을 때, 또는 릴리스의 설정을 변경하고자 할 때,
 `helm upgrade` 명령어를 사용할 수 있다.
