@@ -19,36 +19,36 @@ other = "**헬름 3** 릴리스 정보입니다. **헬름 2**에 대한 정보�
 other = "헬름은 개발자 400명 이상의 커뮤니티가 개발 및 지원에 참여하고 있습니다."
 
 [footer_support_subtitle]
-other = "[helm](https://github.com/helm/helm/blob/master/OWNERS) 및 [charts](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
+other = "[헬름](https://github.com/helm/helm/blob/master/OWNERS) 및 [차트](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
 
 [footer_cncf_status]
-other = "헬름은 Cloud Native Computing Foundation의 인큐베이팅 프로젝트 중 하나입니다."
+other = "헬름은 Cloud Native Computing Foundation의 졸업 프로젝트 중 하나입니다."
 # homepage copy
 
 ## homepage intro
 [main_title]
-other = "**The** **package manager** **for Kubernetes**"
+other = "**쿠버네티스** **패키지 매니저**"
 
 [main_subtitle]
-other = "Helm is the best way to find, share, and use software built for [Kubernetes](https://kubernetes.io)."
+other = "헬름은 [쿠버네티스](https://kubernetes.io)용 소프트웨어를 검색하거나, 공유하고 사용하기에 가장 좋은 방법입니다."
 
 ## homepage about helm
 [main_what_is_helm_title]
-other = "What is Helm?"
+other = "헬름이란?"
 
 [main_what_is_helm_description]
 other = """
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. 
+헬름을 통한 쿠버네티스 애플리케이션 관리 — 헬름 차트는 복잡한 쿠버네티스 애플리케이션도 편리하게 정의하여 설치하거나 업그레이드할 수 있습니다. 
 
-Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+편리한 차트 작성, 버전 관리, 공유 및 게시 - 복사, 붙이기 대신 헬름을 사용해 보세요. 
 
-Helm is an incubator project in the [CNCF](https://cncf.io) and is maintained by the [Helm community](https://github.com/helm/community).
+헬름은 [CNCF](https://cncf.io)의 졸업 프로젝트 중 하나로 [헬름 커뮤니티](https://github.com/helm/community)에서 관리합니다.
 
-### Learn more:
+### 자세한 정보:
 
-* [Helm Architecture](./docs/topics/architecture/)
-* [Quick Start Guide](./docs/intro/quickstart/)
-* [Video: An Introduction to Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+* [헬름 아키텍처](./docs/topics/architecture/)
+* [퀵스타트 가이드](./docs/intro/quickstart/)
+* [비디오: 헬름 소개](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
 [main_why_teams_love]
