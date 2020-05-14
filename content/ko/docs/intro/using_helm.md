@@ -201,8 +201,7 @@ imageTag: 10.1.14-r3
 # ...
 ```
 
-YAML 형식 파일에 있는 이러한 설정들은 오버라이드(override)할 수 있고,
-설치시 그 파일에 전달된다.
+YAML 형식 파일에 있는 이러한 설정들을 오버라이드(override)하여, 설치시 파일과 함께 반영시킬 수 있다.
 
 ```console
 $ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
@@ -304,7 +303,7 @@ nodeSelector:
 
 ## 'helm upgrade' 및 'helm rollback': 릴리스 업그레이드 및 실패 복구
 
-새로운 버전의 차트가 릴리스되었을 때, 또는 릴리스의 설정을 변경하고자 할 때,
+새로운 버전의 차트가 릴리스되었을 때, 또는 릴리스의 구성을 변경하고자 할 때,
 `helm upgrade` 명령어를 사용할 수 있다.
 
 업그레이드는 현존하는 릴리스를 가지고, 사용자가 입력한 정보에 따라 업그레이드한다.
@@ -321,21 +320,21 @@ Status: DEPLOYED
 ...
 ```
 
-위의 경우, `happy-panda` 릴리스는, 새로운 YAML 파일이 아니라 동일한 차트로 업그레이드된다:
+위의 경우, `happy-panda` 릴리스의 차트가 업그레이드되는데 새 YAML 파일도 반영된다.
 
 ```yaml
 mariadbUser: user1
 ```
 
-`helm get values`를 사용하여 새로운 설정이 효과가 있는지를 확인해볼 수 있다.
+`helm get values`를 사용하여 새로운 설정이 적용되었는지 확인해 볼 수 있다.
 
 ```console
 $ helm get values happy-panda
 mariadbUser: user1
 ```
 
-`helm get` 명령어는 클러스터에서 릴리스를 찾을 때 유용한 도구이다.
-위에서 봤듯이, 클러스터에 배포된 `panda.yaml`에서 새로운 값을 보여준다.
+`helm get` 명령어는 클러스터에서 릴리스 정보를 확인할 때 유용한 도구이다.
+위의 예에서 `panda.yaml`의 새로운 값이 클러스터에 배포되었음을 확인할 수 있다.
 
 릴리스가 계획대로 되지 않는다면, 
 `helm rollback [RELEASE] [REVISION]`를 사용하여 이전 릴리스로 간단히 롤백할 수 있다.
@@ -345,38 +344,41 @@ $ helm rollback happy-panda 1
 ```
 
 위와 같이 하면 happy-panda가 맨 첫번째 릴리스 버전으로 롤백된다.
-릴리스 버전은 증가분 변경사항(revision)이다.
-인스톨, 업그레이드, 롤백 따위가 일어날 때마다, 리비전 번호는 1씩 증가한다.
-첫번째 리비전 번호는 항상 1이다.
-특정 릴리스의 리비전 번호를 확인하귀 위해서는 `helm history [RELEASE]`를 사용할 수 있다.
+릴리스 버전은 증분 리비전(incremental revision)을 나타낸다.
+설치, 업그레이드, 롤백 등이 실행될 때마다, 리비전 번호는 1씩 증가한다.
+첫 번째 리비전 번호는 항상 1이다.
+특정 릴리스의 리비전 번호를 확인하기 위해서는 `helm history [RELEASE]`를 사용할 수 있다.
 
 ## 설치/업그레이드/롤백에 관한 유용한 옵션들
 
-인스톨/업그레이드/롤백 시의 헬름 동작을 커스터마이징하는 다른 여러 유용한 옵션들이 있다.
-여기 있는 것이 CLI 플래그 전체 목록은 아니라는 점에 알아두자.
+설치/업그레이드/롤백 시의 헬름 작동을 커스터마이징하는 다른 여러 유용한 옵션들이 있다.
+아래 나열한 CLI 플래그가 전체 목록은 아니라는 점을 알아두자.
 모든 플래그들에 관한 설명을 보려면, `helm <command> --help`을 실행하자.
 
 - `--timeout`: 쿠버네티스 명령어가 완료되기를 기다려주는 시간 값(초)
   기본값은 5m0s`
-- `--wait`: 릴리스가 성공적이라고 기록하기 전에, 모든 포드들이 준비 상태가 되고, PVC들이 연결되고, 디플로이먼트(deployment)가 최소한(`Desired` - `maxUnavailable`)의 준비 상태 포드 수를 갖출 때까지
+- `--wait`: 릴리스가 성공적이었다고 기록하기 전에,
+  모든 포드들이 준비 상태가 되고 PVC들이 연결되고
+  디플로이먼트가 최소한(`Desired` - `maxUnavailable`)의 준비 상태 포드 수를 갖추며
+  서비스들이 IP 주소(`LoadBalancer`라면 인그레스)를 가질 때까지
   기다린다. `--timeout` 값만큼 기다릴 것이다.
-  타임아웃이 되면, 릴리스는 `FAILED`로 기록될 것이다. 참고: 
-  디플로이먼트의 롤링 업데이트 전략에 관련하여 `replicas`는 1로 설정되고 `maxUnavailable`는 0으로 설정된 경우에는,
-  `--wait`는 최소한의 준비 상태의 포드를 만족하면 준비 상태로 응답할 것이다.
+  타임아웃되면 릴리스는 `FAILED`로 기록될 것이다. 참고: 
+  롤링 업데이트 전략의 일부로서 `replicas` 설정은 1이고 `maxUnavailable` 설정은 0이 아닌 디플로이먼트의 경우,
+  `--wait`는 최소 준비 상태 포드 수를 만족하면 준비 상태로 응답할 것이다.
 - `--no-hooks`: 명령어에 대한 훅(hook) 작동을 생략함
 - `--recreate-pods` (`upgrade`와 `rollback`에만 적용가능): 이 플래그는
-  모든 포드들의 재생성을 유발할 수 있다 (디플로이먼트에 속한 포드들은 예외). (헬름 3에서 DEPRECATED)
+  모든 포드들의 재생성을 일으킬 수 있다 (디플로이먼트에 속한 포드들은 제외). (헬름 3에서 사용 중단(DEPRECATED))
 
 ## 'helm uninstall': 릴리스 언인스톨하기
 
-클러스터에서 릴리스를 언인스톨하고자 할 때, `helm uninstall`를 사용해보자:
+클러스터에서 릴리스를 언인스톨하고자 할 때, `helm uninstall`을 사용해보자.
 
 ```console
 $ helm uninstall happy-panda
 ```
 
 이렇게 하면 클러스터에서 릴리스가 제거될 것이다.
-`helm list` 명령어로 현재 배포된 모든 릴리스들을 확인할 수 있다:
+`helm list` 명령어로 현재 배포된 모든 릴리스들을 확인할 수 있다.
 
 ```console
 $ helm list
@@ -389,10 +391,10 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 Helm 구버전에서는 릴리스를 삭제하면 삭제된 기록이 남았는데,
 Helm 3에서는 삭제시에 릴리스 기록도 제거한다.
 삭제 릴리스 기록을 보존하고 싶다면, `helm uninstall --keep-history`을 사용하자.
-`helm list --uninstalled`는 사용하면, `--keep-history` 플래그로 언인스톨된 릴리스들만 보여준다.
+`helm list --uninstalled`는 사용하면, `--keep-history` 플래그로 언인스톨된 릴리스들만 볼 수 있다.
 
 `helm list --all` 플래그는, 실패하거나 삭제(`--keep-history` 지정된 경우)된 기록을 포함하여,
-헬름이 가지고 있는 모든 릴리스 기록들을 보여준다:
+헬름이 가지고 있는 모든 릴리스 기록들을 보여준다.
 
 
 ```console
@@ -410,7 +412,7 @@ kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0
 헬름 3는 더 이상 기본 차트 저장소를 제공하지 않는다.
 `helm repo` 명령어 그룹은 저장소를 추가, 목록조회, 제거하는 명령어를 제공한다.
 
-`helm repo list`를 사용하여 어떤 저장소들이 설정되어 있는지 확인할 수 있다:
+`helm repo list`를 사용하여 어떤 저장소들이 설정되어 있는지 확인할 수 있다.
 
 ```console
 $ helm repo list
@@ -419,7 +421,7 @@ stable          https://kubernetes-charts.storage.googleapis.com
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-`helm repo add`로 새 저장소들을 추가할 수 있다:
+`helm repo add`로 새 저장소들을 추가할 수 있다.
 
 ```console
 $ helm repo add dev https://example.com/dev-charts
@@ -430,10 +432,10 @@ $ helm repo add dev https://example.com/dev-charts
 
 `helm repo remove`로 저장소들을 삭제할 수 있다.
 
-## 당신만의 차트 만들기
+## 내 차트 만들기
 
 
-[차트 개발 가이드]({{< ref "/docs/topics/charts.md" >}})는 당신만의 차트를 개발하는 방법을 설명한다.
+[차트 개발 가이드]({{< ref "/docs/topics/charts.md" >}})는 내 차트를 개발하는 방법을 설명한다.
 하지만 `helm create` 명령어를 사용하여 빠르게 시작해볼 수 있다:
 
 ```console
@@ -442,7 +444,7 @@ Creating deis-workflow
 ```
 
 이제 `./deis-workflow`에 차트가 생겼다.
-그것을 편집하거나 당신만의 템플릿을 생성할 수 있다.
+생성된 차트를 편집하거나 내 템플릿을 생성할 수 있다.
 
 차트를 편집했다면, `helm lint`를 실행하여 형식이 맞지는 검증할 수 있다.
 
@@ -471,7 +473,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 이 장은 검색, 설치, 업그레이드, 언인스톨을 포함한 `helm` 클라이언트의 기본 사용패턴을 다룬다.
 또한 `helm status`, `helm get`, `helm repo`와 같은 유용한 도구 명령어도 다루었다.
 
-이 명령어들에 대해 더 알아보려면, 헬름의 빌트인 도움말을 보도록 하자:
+이 명령어들에 대해 더 알아보려면, 헬름에 내장된 도움말을 보도록 하자.
 `helm help`
 
 다음 장에서는, 차트 개발 프로세스를 살펴볼 것이다.
