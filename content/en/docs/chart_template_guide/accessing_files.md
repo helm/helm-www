@@ -144,17 +144,19 @@ You have multiple options with Globs:
 
 
 ```yaml
-{{ range $path := .Files.Glob "**.yaml" }}
-{{ $path }}: |
-{{ .Files.Get $path }}
+{{ $currentScope := .}}
+{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
+    {{- with $currentScope}}
+        {{ .Files.Get $path }}
+    {{- end }}
 {{ end }}
 ```
 
 Or
 
 ```yaml
-{{ range $path, $bytes := .Files.Glob "foo/*" }}
-{{ $path }}: '{{ b64enc $bytes }}'
+{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
+      {{ $.Files.Get $path }}
 {{ end }}
 ```
 
