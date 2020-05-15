@@ -417,7 +417,8 @@ continue to use them in either form.
 
 When creating a release in a namespace that does not exist, Helm 2 created the
 namespace.  Helm 3 follows the behavior of other Kubernetes tooling and returns
-an error if the namespace does not exist.
+an error if the namespace does not exist.  Helm 3 will create the namespace if
+you explicitly specify `--create-namespace` flag.
 
 ## Installing
 
