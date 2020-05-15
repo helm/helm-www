@@ -123,15 +123,20 @@ Alternatively, you can follow these manual steps to perform an update of the API
 versions of a release manifest:
 
 - Get the name of the latest deployed release:
-`kubectl get secret -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
+  - Secrets backend: `kubectl get secret -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
+  - ConfigMap backend: `kubectl get configmap -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
 - Get latest deployed release details:
-`kubectl get secret <release_version_secret_name> -n <release_version_namespace> -o yaml > release.bak`
+  - Secrets backend: `kubectl get secret <release_version_secret_name> -n <release_version_namespace> -o yaml > release.bak`
+  - ConfigMap backend: `kubectl get configmap <release_version_secret_name> -n <release_version_namespace> -o yaml > release.bak`
 - Decode the release object: 
-`cat release.bak | grep -oP '(?<=release: ).*' | base64 -d | base64 -d | gzip -d - > release.data.decoded`
+  - Secrets backend:`cat release.bak | grep -oP '(?<=release: ).*' | base64 -d | base64 -d | gzip -d - > release.data.decoded`
+  - ConfigMap backend: `cat release.bak | grep -oP '(?<=release: ).*' | base64 -d | gzip -d - > release.data.decoded`
 - Change API versions of the manifests. Can use any tool (e.g. editor) to make
 the changes. This is in the `manifest` field of your decoded release
 object (`release.data.decoded`)
-- Encode the release object: `cat release.data.decoded | gzip | base64 | base64`
+- Encode the release object:
+  - Secrets backend: `cat release.data.decoded | gzip | base64 | base64`
+  - ConfigMap backend: `cat release.data.decoded | gzip | base64`
 - Replace `data.release` property value in the deployed release file (`release.bak`)
 with the new encoded release object
 - Apply file to namespace: `kubectl apply -f release.bak -n <release_version_namespace>`
