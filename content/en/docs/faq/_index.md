@@ -421,7 +421,7 @@ an error if the namespace does not exist.
 
 ## Installing
 
-### Why aren't there Debian/Fedora/... native packages of Helm?
+### Why aren't there native packages of Helm for Fedora and other Linux distros?
 
 We'd love to provide these or point you toward a trusted provider. If you're
 interested in helping, we'd love it. This is how the Homebrew formula was

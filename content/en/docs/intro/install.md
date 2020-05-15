@@ -46,6 +46,19 @@ package](https://chocolatey.org/packages/kubernetes-helm) build to
 choco install kubernetes-helm
 ```
 
+### From Apt (Debian/Ubuntu)
+
+Members of the Kubernetes community have contributed a [Helm
+package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is generally up to date.
+
+```console
+curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
+
 ### From Snap (Linux)                                                                                                                                                                                                                                                                
                                                                                                                                                                                                                                                                                      
 The [Snapcrafters](https://github.com/snapcrafters) community maintains the
