@@ -112,34 +112,39 @@ for more details on how to recover from this scenario.
 
 The manifest is a property of the Helm release object which is stored in the data
 field of a Secret (default) or ConfigMap in the cluster. The data field contains
-a gzipped object which is base 64 encoded twice. There is a Secret/ConfigMap per
-release version/revision in the namespace of the release.
+a gzipped object which is base 64 encoded (there is an additional base 64
+encoding for a Secret). There is a Secret/ConfigMap per release version/revision
+in the namespace of the release.
 
 You can use the Helm [mapkubeapis](https://github.com/hickeyma/helm-mapkubeapis)
 plugin to perform the update of a release to supported APIs. Check out the
 readme for more details.
 
 Alternatively, you can follow these manual steps to perform an update of the API
-versions of a release manifest:
+versions of a release manifest. Depending on your configuration you will follow
+the steps for the Secret or ConfigMap backend.
 
-- Get the name of the latest deployed release:
+- Get the name of the Secret or Configmap associated with the latest deployed release:
   - Secrets backend: `kubectl get secret -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
   - ConfigMap backend: `kubectl get configmap -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
 - Get latest deployed release details:
-  - Secrets backend: `kubectl get secret <release_version_secret_name> -n <release_version_namespace> -o yaml > release.bak`
-  - ConfigMap backend: `kubectl get configmap <release_version_secret_name> -n <release_version_namespace> -o yaml > release.bak`
+  - Secrets backend: `kubectl get secret <release_secret_name> -n <release_namespace> -o yaml > release.yaml`
+  - ConfigMap backend: `kubectl get configmap <release_configmap_name> -n <release_namespace> -o yaml > release.yaml`
+- Backup the release in case you need to restore if something goes wrong:
+  - `cp release.yaml release.bak`
+  - In case of emergency, restore: `kubectl apply -f release.bak -n <release_namespace>`
 - Decode the release object: 
-  - Secrets backend:`cat release.bak | grep -oP '(?<=release: ).*' | base64 -d | base64 -d | gzip -d - > release.data.decoded`
-  - ConfigMap backend: `cat release.bak | grep -oP '(?<=release: ).*' | base64 -d | gzip -d - > release.data.decoded`
+  - Secrets backend:`cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d | base64 -d | gzip -d > release.data.decoded`
+  - ConfigMap backend: `cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d | gzip -d > release.data.decoded`
 - Change API versions of the manifests. Can use any tool (e.g. editor) to make
 the changes. This is in the `manifest` field of your decoded release
 object (`release.data.decoded`)
 - Encode the release object:
   - Secrets backend: `cat release.data.decoded | gzip | base64 | base64`
   - ConfigMap backend: `cat release.data.decoded | gzip | base64`
-- Replace `data.release` property value in the deployed release file (`release.bak`)
+- Replace `data.release` property value in the deployed release file (`release.yaml`)
 with the new encoded release object
-- Apply file to namespace: `kubectl apply -f release.bak -n <release_version_namespace>`
+- Apply file to namespace: `kubectl apply -f release.yaml -n <release_namespace>`
 - Perform a `helm upgrade` with a version of the chart with supported Kubernetes
 API versions
 - Add a description in the upgrade, something along the lines to not perform a
