@@ -46,7 +46,7 @@ other = """
 
 ### 자세한 정보:
 
-* [헬름 아키텍처](./docs/topics/architecture/)
+* [헬름 아키텍처](https://helm.sh/docs/topics/architecture/)
 * [퀵스타트 가이드](./docs/intro/quickstart/)
 * [비디오: 헬름 소개](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
