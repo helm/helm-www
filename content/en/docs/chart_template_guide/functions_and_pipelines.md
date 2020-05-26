@@ -235,6 +235,9 @@ field:
 When no object is found, an empty value is returned. This can be used to check for the existence of
 an object.
 
+Note that the `lookup` function will also return an empty map when using `helm template`, `helm lint` or
+`helm install` with the `--dry-run` flag.
+
 The `lookup` function uses Helm's existing Kubernetes connection configuration to query Kubernetes.
 If any error is returned when interacting with calling the API server (for example due to lack of
 permission to access a resource), helm's template processing will fail.
