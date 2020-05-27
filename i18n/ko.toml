@@ -129,56 +129,56 @@ other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundat
 other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
 
 [community_sig_title]
-other = "SIG Apps"
+other = "SIG 앱"
 
 [community_sig_subtitle]
-other = "A Special Interest Group for deploying and operating apps in Kubernetes."
+other = "쿠버네티스 내 앱 배포 및 운영에 관한 분과회(SIG)."
 
 [community_sig_desc]
 other = """
-[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) is a Special Interest Group for deploying and operating apps in Kubernetes.
+[SIG-앱](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) 쿠버네티스 내에 앱의 배포와 운영에 관한 분과회입니다.
 
-They [meet each week](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) to demo and discuss tools and projects. Community meetings are recorded and [shared to YouTube](https://www.youtube.com/results?search_query=kubernetes+sig+apps).
+도구와 프로젝트에 관해 설명하고 논의하기 위해 [매주 회의](https://github.com/kubernetes/community/blob/master/sig-apps/README.md)를 합니다. 커뮤니티 회의는 녹화되어 [유튜브에 공유](https://www.youtube.com/results?search_query=kubernetes+sig+apps)됩니다.
 """
 
 [community_standup_title]
-other = "Developer Standups"
+other = "개발자 스탠드업 회의"
 
 [community_standup_time]
-other = "Thursdays 9:30-10am (PT)"
+other = "목요일 9:30-10am (PT)"
 
 [community_standup_desc]
-other = "These meetings are open to all. Check the [community repo](https://github.com/helm/community/blob/master/communication.md#meetings) for notes and details."
+other = "이 회의는 모두에게 열려 있습니다. 자세한 내용은 [커뮤니티 저장소](https://github.com/helm/community/blob/master/communication.md#meetings)을 참고하세요."
 
 [community_slack_title]
-other = "Slack"
+other = "슬랙"
 
 [community_slack_group_01_title]
-other = "Helm Users"
+other = "헬름 사용자"
 
 [community_slack_group_01_desc]
-other = "Discussion around using Helm, working with charts and solving common errors."
+other = "헬름 사용, 차트 작업, 일반적인 오류 해결에 관한 의견 나누기."
 
 [community_slack_group_02_title]
-other = "Helm Development"
+other = "헬름 개발"
 
 [community_slack_group_02_desc]
-other = "Topics regarding Helm development, ongoing PRs, releases, etc."
+other = "헬름 개발, 진행 중인 PR, 릴리스 등에 관한 주제."
 
 [community_slack_group_03_title]
-other = "Charts"
+other = "차트"
 
 [community_slack_group_03_desc]
-other = "Discussion for users and contributors to Helm Charts."
+other = "헬름 차트 사용자 및 기여자들과 의견 나누기."
 
 [community_slack_join]
-other = "[Request access here](http://slack.k8s.io/) to join the Kubernetes Slack team."
+other = "쿠버네티스 슬랙 팀에 가입하려면 [이곳에서 요청하세요](http://slack.k8s.io/)."
 
 [community_contrib_title]
-other = "Contributing"
+other = "기여"
 
 [community_contrib_subtitle]
-other = "Helm always welcomes new contributions to the project!"
+other = "헬름은 프로젝트에 대한 기여를 항상 환영합니다!"
 
 
 [community_contrib_desc]
