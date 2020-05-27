@@ -197,7 +197,7 @@ Once you write some code, please [sign your commits](https://helm.sh/blog/helm-d
 
 # 404 page
 [404_title]
-other = "**404** **Page not found.**"
+other = "**404** **페이지를 찾을 수 없습니다.**"
 
 [404_subtitle]
-other = "Sorry about that. If something is broken please [report it here](https://github.com/helm/helm-www/issues/new)."
+other = "죄송합니다. 뭔가 고장났다면 [이곳에 알려주세요](https://github.com/helm/helm-www/issues/new)."
