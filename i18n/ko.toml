@@ -52,72 +52,72 @@ other = """
 """
 
 [main_why_teams_love]
-other = 'Why Teams <i class="fa fa-heart"></i> Helm'
+other = '헬름이 <i class="fa fa-heart"></i>받는 이유'
 
 [feature_01_title]
-other = "Manage Complexity"
+other = "복잡성 관리"
 
 [feature_01_desc]
-other = "Charts describe even the most complex apps, provide repeatable application installation, and serve as a single point of authority."
+other = "차트는 매우 복잡한 앱도 표현하고, 반복적인 애플리케이션 설치를 제공하며, 단일 권한으로 서비스할 수 있습니다."
 
 [feature_02_title]
-other = "Easy Updates"
+other = "쉬운 업데이트"
 
 [feature_02_desc]
-other = "Take the pain out of updates with in-place upgrades and custom hooks."
+other = "즉석(in-place) 업그레이드와 커스텀 훅을 통해 업데이트하는 수고를 덜어줍니다."
 
 [feature_03_title]
-other = "Simple Sharing"
+other = "간단한 공유"
 
 [feature_03_desc]
-other = "Charts are easy to version, share, and host on public or private servers."
+other = "차트는 버전 관리, 공유, 퍼블릭이나 프라이빗 서버 호스팅이 편리합니다."
 
 [feature_04_title]
-other = "Rollbacks"
+other = "롤백"
 
 [feature_04_desc]
-other = "Use `helm rollback` to roll back to an older version of a release with ease."
+other = "`helm rollback`을 사용하여 릴리스를 예전 버전으로 간편하게 되돌리세요."
 
 ## homepage get helm
 [get_helm_title]
-other = "Get Helm!"
+other = "헬름 설치하기!"
 
 [get_helm_desc]
-other = "Install Helm with a package manager, or [download a binary](https://github.com/helm/helm/releases/latest)."
+other = "패키지 매니저로 헬름을 설치하거나, [바이너리로 다운로드](https://github.com/helm/helm/releases/latest)하세요."
 
 [get_helm_next]
-other = "Once installed, unpack the helm binary and add it to your PATH and you are good to go! Check the [docs](./docs/intro/install/) for further [installation](./docs/intro/install/) and [usage instructions](./docs/intro/using_helm/)."
+other = "설치 후에는, 헬름 바이너리를 풀고 PATH를 추가하여 사용할 수 있습니다! 상세 [설치방법](./docs/intro/install/)과 [사용 설명서](./docs/intro/using_helm/) 등 [문서](./docs/intro/install/)를 참고하세요."
 
 [get_charts_title]
-other = "Get Charts"
+other = "차트 받기"
 
 [get_charts_desc]
-other = "Visit the [Helm Hub](https://hub.helm.sh) to explore charts from numerous public Helm repositories."
+other = "[헬름 허브](https://hub.helm.sh)를 방문하여 공개된 수많은 헬름 저장소의 차트들을 둘러보세요."
 
 [get_upgrade_title]
-other = "[Upgrading from v2 to v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[v2에서 v3으로 업그레이드하기?](https://helm.sh/docs/topics/v2_v3_migration/)"
 
 [get_upgrade_desc]
-other = "[Read the migration doc for more details.](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[자세한 내용은 마이그레이션 문서를 참고하세요.](https://helm.sh/docs/topics/v2_v3_migration/)"
 
 ## homepage community
 [community_title]
-other = "Join the Community"
+other = "커뮤니티 참여"
 
 [community_desc]
-other = "More information about the Helm project, and how to contribute."
+other = "헬름 프로젝트와 기여하는 방법에 관한 추가 정보."
 
 [community_events_title]
-other = "Events"
+other = "행사"
 
 [community_upcoming_events_title]
-other = "Upcoming Events"
+other = "다가오는 행사"
 
 [community_upcoming_events_desc]
-other = "Watch this space..."
+other = "행사가 있으면 여기에..."
 
 [community_past_events_title]
-other = "Past Events"
+other = "지난 행사"
 
 [community_past_event_01]
 other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
