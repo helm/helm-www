@@ -33,7 +33,7 @@ be installed by default when running a `helm install` for the chart. If the CRD
 already exists, it will be skipped with a warning. If you wish to skip the CRD
 installation step, you can pass the `--skip-crds` flag.
 
-#### Some caveats (and explanations)
+#### 주의사항 (및 설명)
 
 There is not support at this time for upgrading or deleting CRDs using Helm.
 This was an explicit decision after much community discussion due to the danger
