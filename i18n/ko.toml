@@ -105,28 +105,28 @@ other = "[자세한 내용은 마이그레이션 문서를 참고하세요.](htt
 other = "커뮤니티 참여"
 
 [community_desc]
-other = "헬름 프로젝트와 기여하는 방법에 관한 추가 정보."
+other = "헬름 프로젝트와 기여하는 방법에 관한 추가 정보"
 
 [community_events_title]
 other = "행사"
 
 [community_upcoming_events_title]
-other = "다가오는 행사"
+other = "예정된 행사"
 
 [community_upcoming_events_desc]
-other = "행사가 있으면 여기에..."
+other = "행사 정보..."
 
 [community_past_events_title]
 other = "지난 행사"
 
 [community_past_event_01]
-other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+other = "_Feb 25th 2020_ - [헬름 보안 웨비나](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
 
 [community_past_event_02]
-other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+other = "_Nov 18th 2019_ - [KubeCon 북아메리카](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
 
 [community_past_event_03]
-other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+other = "_Sep 11th 2019_ - [헬름 서밋 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
 
 [community_sig_title]
 other = "SIG 앱"
@@ -200,4 +200,4 @@ Once you write some code, please [sign your commits](https://helm.sh/blog/helm-d
 other = "**404** **페이지를 찾을 수 없습니다.**"
 
 [404_subtitle]
-other = "죄송합니다. 뭔가 고장났다면 [이곳에 알려주세요](https://github.com/helm/helm-www/issues/new)."
+other = "죄송합니다. 뭔가 오류가 있다면 [이곳에 알려주세요](https://github.com/helm/helm-www/issues/new)."
