@@ -47,7 +47,7 @@ a tag on the URL, the `version` will be used as the tag. This means that OCI URL
 If you specify both a tag and a version, the tag takes precedence and the version
 is ignored.
 
-## Conditions and Tags
+## 조건과 태그
 
 Conditions or tags should be added to any dependencies that _are optional_.
 
