@@ -34,7 +34,7 @@ File URLs (`file://...`) are considered a "special case" for charts that are
 assembled by a fixed deployment pipeline. Charts that use `file://` are not
 allowed in the official Helm repository.
 
-#### OCI 리포지터리에서 호스팅되는 차트에 대한 실험적 기능지원
+#### OCI 레지스트리에서 호스팅되는 차트에 대한 실험적 기능지원
 
 If you have [enabled experimental OCI support](/docs/registries/), you can specify
 an OCI reference (`oci://registry/group/image:tag`) for the repository URL.
