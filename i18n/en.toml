@@ -9,10 +9,7 @@ other = "Copy"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "You are viewing info for Helm 3 - check the **[version FAQs](https://helm.sh/docs/faq/)** or **[see to Helm 2](https://v2.helm.sh)** for prior versions."
-
-[banner_2]
-other = "Viewing **Helm 3** release. For **Helm 2** go [here](https://v2.helm.sh/)."
+other = "[Racism is unacceptable, is incompatible with the Helm project goals, and has no place in our community. #BlackLivesMatter](https://docs.google.com/document/d/1a-lzdtxOlWuzYNGqwlYwxMWADtZ6vJGCpKhtJHHrS54/preview?pru=AAABcqVvUdo*ducxvc88kzBetsUXsohi7A)"
 
 ## footer
 [footer_support_title]

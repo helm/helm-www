@@ -19,14 +19,7 @@
     @include ripple;
   }
 
-  display: none;
-}
-
-.page-docs,
-.page-blog {
-  #banner {
-    display: block;
-  }
+  display: block;
 }
 
 .navbar-top {
