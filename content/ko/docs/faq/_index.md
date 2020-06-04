@@ -172,7 +172,7 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-### 이제 릴리스 이름이 네임스페이스 범위(scope)로
+### 이제 릴리스 이름이 네임스페이스로 구획됨(scope)
 
 With the removal of Tiller, the information about each release had to go
 somewhere. In Helm 2, this was stored in the same namespace as Tiller. In
@@ -491,14 +491,12 @@ can access them.
 
 ### 헬름 2에서 전환 후, `helm list`에는 릴리스들이 일부만 보여요(또는 안 보여요).
 
-It is likely that you have missed the fact that Helm 3 now uses cluster
-namespaces throughout to scope releases. This means that for all commands
-referencing a release you must either:
+헬름 3는 이제 클러스터 네임스페이스를 사용하여 릴리스들을 구획한다는 사실을 깜빡했을지 모르겠다.
+따라서, 릴리스를 참조하는 모든 명령어에 대해:
 
-* rely on the current namespace in the active kubernetes context (as
-  described by the `kubectl config view --minify` command),
-* specify the correct namespace using the `--namespace`/`-n` flag, or
-* for the `helm list` command, specify the `--all-namespaces`/`-A` flag
+* 활성 쿠버네티스 컨텍스트(`kubectl config view --minify` 명령어로 확인)에서의 현재 네임스페이스를 그대로 따르거나
+* `--namespace`/`-n` 플래그를 사용하여 올바른 네임스페이스를 지정해야 한다.
+* 한편 `helm list` 명령어에 대해서는 `--all-namespaces`/`-A` 플래그를 지정할 수 한다.
 
-This applies to `helm ls`, `helm uninstall`, and all other `helm`
-commands referencing a release.
+이는 `helm ls`, `helm uninstall`, 그리고 릴리스를 참조하는 나머지 모든 `helm` 명령어에 적용된다.
+
