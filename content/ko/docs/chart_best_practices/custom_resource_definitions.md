@@ -9,9 +9,9 @@ aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
 
 커스텀 리소스 데피니션(CRD)를 다룰 때에는, 다음 2가지를 구분하는 것이 중요하다.
 
-- CRD의 선언이 있다. 이것은 종류(kind)가 `CustomResourceDefinition` YAML 파일이다.
+- CRD의 선언이 있다. 이것은 종류(kind)가 `CustomResourceDefinition`인 YAML 파일이다.
 - 그리고 그 CRD를 사용하는 리소스들이 있다. 어떤 CRD가 `foo.example.com/v1`를 정의한다고 해보자.
-  `apiVersion: example.com/v1`이고  종류(kind)가 `Foo`인 모든 리소스들은 그 CRD를 사용하는 리소스이다.
+  `apiVersion: example.com/v1`가 있고 종류(kind)가 `Foo`인 모든 리소스들은 그 CRD를 사용하는 리소스이다.
 
 ## 리소스를 사용하기 전에 CRD 선언을 설치하기
 
