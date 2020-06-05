@@ -577,10 +577,10 @@ following order:
 
 - A-Namespace
 - B-Namespace
-- A-StatefulSet
-- B-ReplicaSet
 - A-Service
 - B-Service
+- B-ReplicaSet
+- A-StatefulSet
 
 This is because when Helm installs/upgrades charts, the Kubernetes objects from
 the charts and all its dependencies are
