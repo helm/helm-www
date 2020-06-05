@@ -1,3 +1,7 @@
+---
+title: "Helm Upgrade"
+---
+
 ## helm upgrade
 
 upgrade a release
