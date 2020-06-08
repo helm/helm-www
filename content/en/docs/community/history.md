@@ -7,7 +7,7 @@ weight: 4
 
 Helm 3 is a [CNCF project](https://www.cncf.io/projects/) in the [final stages of incubation](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc).
 
-Helm began as what is now known as [Helm Classic](https://github.com/helm/helm-classic), a Deis project begun in 2015 and introduced at the innaugural KubeCon.
+Helm began as what is now known as [Helm Classic](https://github.com/helm/helm-classic), a Deis project begun in 2015 and introduced at the inaugural KubeCon.
 
 In January of 2016, the project merged with a GCS tool called Kubernetes Deployment Manager, and the project was moved under [Kubernetes](https://kubernetes.io). As a result of the merging of codebases, Helm 2.0 was released later that year. The key feature of Deployment Manager that survived in Helm 2 was the server-side component, renamed from DM to Tiller for the final Helm 2.0 release.
 
