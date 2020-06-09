@@ -521,6 +521,62 @@ myimports:
 The parent's final values now contains the `myint` and `mybool` fields imported
 from subchart1.
 
+
+### Passing encapsulated values to subcharts
+
+Conversely, sometimes it is beneficial to be able to pass values down to subcharts in a
+more organised manner. This is typically most desirable when working with in the umbrella
+chart approach. Consider a scenario where numerous subcharts all require the same values
+to be passed to them, such as:
+
+```yaml
+# parent's values.yaml file
+
+auth:
+  clientSecret: myClientSecret
+  clientId: myClientId
+domain: subdomain.example.com
+```
+
+In these circumstances there are a number of options to achieve this:
+
+- creating a values file where each subchart has its own version of the value required
+- creating a values file using YAML anchors, defining the value once and anchoring it 
+  as a value in each subchart
+- using global variables
+
+However, we would typically want to avoid duplication when generating a values file which
+will become more problematic as the number of subcharts increase. We are using an umbrella
+chart to encapsulate the functionality of the subcharts and this goal is undermined if 
+we have to have deep knowledge of all the subcharts settings. 
+
+Instead it would be desirable for the parent chart to define the mappings to explicit 
+pass these values down to the relevant subcharts and keep the relationship between 
+the parent chart and subcharts well defined.
+
+This can be achieved using the export-values directive:
+
+```yaml
+# parent's Chart.yaml file
+
+dependencies:
+  - name: subchart1
+    repository: http://localhost:10191
+    version: 0.1.0
+    ...
+    export-values:
+      - parent: auth
+        child: auth
+      - parent: domain
+        child: domain
+  - name: subchart2
+  ...
+  - name: subchart3
+```
+
+In the above scenario we can define the variables once it the parent chart and use the
+dependencies to define the variables which get passed down.
+
 ### Managing Dependencies manually via the `charts/` directory
 
 If more control over dependencies is desired, these dependencies can be
