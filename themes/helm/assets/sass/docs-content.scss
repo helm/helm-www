@@ -112,17 +112,6 @@
     margin: 2rem 0 2.5rem 4.5vw;
     background-color: rgba(249, 158, 172, 0.125);
 
-    &:before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -4px;
-      height: 2em;
-      background-color: #fff;
-      width: 5px;
-      margin-top: -1em;
-    }
-
     p,
     p:first-child {
       display: inline-block;
