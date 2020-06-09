@@ -35,7 +35,7 @@ $ rm -rf mysubchart/templates/*.*
 
 Notice that just as before, we deleted all of the base templates so that we can
 start from scratch. In this guide, we are focused on how templates work, not on
-managing dependencies. But the [Charts Guide]({{< ref "../topics/charts.md" >}}) has more information
+managing dependencies. But the [Charts Guide]({{< ref path="../topics/charts.md" lang="en" >}}) has more information
 on how subcharts work.
 
 ## 서브차트에 값과 템플릿 추가하기
