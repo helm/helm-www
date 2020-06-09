@@ -92,33 +92,48 @@ takes two arguments: A release name that you pick, and the name of the chart you
 
 ```console
 $ helm install happy-panda stable/mariadb
-Fetched stable/mariadb-0.3.0 to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
-happy-panda
-Last Deployed: Wed Sep 28 12:32:28 2016
-Namespace: default
-Status: DEPLOYED
+WARNING: This chart is deprecated
+NAME: happy-panda
+LAST DEPLOYED: Fri May  8 17:46:49 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+This Helm chart is deprecated
 
-Resources:
-==> extensions/Deployment
-NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-happy-panda-mariadb   1         0         0            0           1s
+...
 
-==> v1/Secret
-NAME                     TYPE      DATA      AGE
-happy-panda-mariadb   Opaque    2         1s
+Services:
 
-==> v1/Service
-NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-happy-panda-mariadb   10.0.0.70    <none>        3306/TCP   1s
+  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
+  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
 
+Administrator credentials:
 
-Notes:
-MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
-happy-panda-mariadb.default.svc.cluster.local
+  Username: root
+  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
 
-To connect to your database run the following command:
+To connect to your database:
 
-   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+  1. Run a pod that you can use as a client:
+
+      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+
+  2. To connect to master service (read/write):
+
+      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
+
+  3. To connect to slave service (read-only):
+
+      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
+
+To upgrade this helm chart:
+
+  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
+
+      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
+
 ```
 
 Now the `mariadb` chart is installed. Note that installing a chart creates a new
@@ -137,32 +152,47 @@ To keep track of a release's state, or to re-read configuration information, you
 can use `helm status`:
 
 ```console
-$ helm status happy-panda
-Last Deployed: Wed Sep 28 12:32:28 2016
-Namespace: default
-Status: DEPLOYED
+$ helm status happy-panda                
+NAME: happy-panda
+LAST DEPLOYED: Fri May  8 17:46:49 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+This Helm chart is deprecated
 
-Resources:
-==> v1/Service
-NAME                     CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-happy-panda-mariadb   10.0.0.70    <none>        3306/TCP   4m
+...
 
-==> extensions/Deployment
-NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-happy-panda-mariadb   1         1         1            1           4m
+Services:
 
-==> v1/Secret
-NAME                     TYPE      DATA      AGE
-happy-panda-mariadb   Opaque    2         4m
+  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
+  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
 
+Administrator credentials:
 
-Notes:
-MariaDB can be accessed via port 3306 on the following DNS name from within your cluster:
-happy-panda-mariadb.default.svc.cluster.local
+  Username: root
+  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
 
-To connect to your database run the following command:
+To connect to your database:
 
-   kubectl run happy-panda-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- mysql -h happy-panda-mariadb
+  1. Run a pod that you can use as a client:
+
+      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+
+  2. To connect to master service (read/write):
+
+      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
+
+  3. To connect to slave service (read-only):
+
+      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
+
+To upgrade this helm chart:
+
+  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
+
+      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
 ```
 
 The above shows the current state of your release.
