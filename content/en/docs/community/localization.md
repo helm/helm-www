@@ -69,7 +69,7 @@ Note, translation tools can help with the process. This includes machine generat
 
 The site global [config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89) file is where language navigation is configured.
 
-To add a new language, add a new set of parameters using the [two-letter language code](./#two-letter-language-code) defined above. Example:
+To add a new language, add a new set of parameters using the [two-letter language code](./localization/#two-letter-language-code) defined above. Example:
 
 ```
 # Korean
