@@ -29,12 +29,12 @@ this works:
 
 <!-- toc -->
 
-- [Basic example](#basic-example)
-- [Path helpers](#path-helpers)
-- [Glob patterns](#glob-patterns)
-- [ConfigMap and Secrets utility functions](#configmap-and-secrets-utility-functions)
-- [Encoding](#encoding)
-- [Lines](#lines)
+- [기본-예제](#기본-예제)
+- [경로-헬퍼](#경로-헬퍼)
+- [글롭glob-패턴](#글롭glob-패턴)
+- [컨피그맵configmap과-시크릿secret-도구-함수](#컨피그맵configmap과-시크릿secret-도구-함수)
+- [인코딩](#인코딩)
+- [lines-메소드](#lines-메소드)
 
 <!-- tocstop -->
 
@@ -171,7 +171,7 @@ a couple utility methods on the `Files` type.
 For further organization, it is especially useful to use these methods in
 conjunction with the `Glob` method.
 
-Given the directory structure from the [Glob](#glob-patterns) example above:
+Given the directory structure from the [글롭glob-패턴](#글롭glob-패턴) example above:
 
 ```yaml
 apiVersion: v1

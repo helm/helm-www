@@ -14,7 +14,7 @@ To get going, let's take a brief look at a Helm chart.
 
 ## 차트
 
-As described in the [Charts Guide](../../topics/charts), Helm charts are
+As described in the [Charts Guide]({{< ref path="../topics/charts" lang="en" >}}), Helm charts are
 structured like this:
 
 ```
