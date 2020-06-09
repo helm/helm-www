@@ -108,6 +108,37 @@
     }
   }
 
+  blockquote {
+    margin: 2rem 0 2.5rem 4.5vw;
+    background-color: rgba(249, 158, 172, 0.125);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -4px;
+      height: 2em;
+      background-color: #fff;
+      width: 5px;
+      margin-top: -1em;
+    }
+
+    p,
+    p:first-child {
+      display: inline-block;
+      padding: 1.25rem 1.5rem;
+      margin: 0 2vw 0 0;
+      line-height: 1.85;
+      font-size: 1.1rem;
+      color: $navyd;
+      font-family: $mono;
+
+      a {
+        background-color: rgba(249, 158, 172, 0.25);
+      }
+    }
+  }
+
   .quick-links {
     padding-top: 5rem;
 
