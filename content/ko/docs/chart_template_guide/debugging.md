@@ -1,6 +1,6 @@
 ---
 title: "템플릿 디버깅"
-description: "배포에 실패하는 차트에 대한 트러블슈팅"
+description: "배포에 실패한 차트의 트러블슈팅"
 weight: 13
 ---
 

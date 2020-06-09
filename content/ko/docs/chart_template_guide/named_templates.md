@@ -146,7 +146,7 @@ templates, it is best to name your templates with _chart specific names_. A
 popular naming convention is to prefix each defined template with the name of
 the chart: `{{ define "mychart.labels" }}`.
 
-## 템플릿의 스코프 지정하기
+## 템플릿의 스코프(scope) 지정하기
 
 In the template we defined above, we did not use any objects. We just used
 functions. Let's modify our defined template to include the chart name and chart

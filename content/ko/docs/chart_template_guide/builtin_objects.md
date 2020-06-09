@@ -1,6 +1,6 @@
 ---
 title: "빌트인 객체"
-description: "템플릿으로 사용가능한 빌트인 객체"
+description: "템플릿에서 사용가능한 빌트인 객체"
 weight: 3
 ---
 

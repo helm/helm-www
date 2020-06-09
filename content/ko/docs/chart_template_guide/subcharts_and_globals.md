@@ -1,6 +1,6 @@
 ---
 title: "서브차트와 글로벌 값"
-description: "서브차트 및 글로벌 값과 상호작용하기"
+description: "서브차트 및 글로벌 값 사용하기"
 weight: 11
 ---
 
@@ -209,7 +209,7 @@ data:
 Globals are useful for passing information like this, though it does take some
 planning to make sure the right templates are configured to use globals.
 
-## 템플릿과 처브사트 공유하기
+## 템플릿과 서브차트 공유하기
 
 Parent charts and subcharts can share templates. Any defined block in any chart
 is available to other charts.

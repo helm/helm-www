@@ -1,14 +1,14 @@
 ---
 title: "다음 단계"
-description: "마무리 - 도움이 되는 다른 유용한 문서들 좌표"
+description: "마무리 - 도움이 되는 다른 유용한 문서들"
 weight: 14
 ---
 
 본 가이드는 차트 개발자에게 헬름의 템플릿 언어를 사용하는 방법을 깊이 이해시키기 위한 것이다.
 템플릿 개발의 기술적 관점이 중심이 된다.
 
-그러나 이 가이드로는 실제 차트 개발시에 나타는 많은 것들을 여전히 커버하지 못할 수 있다.
-새로운 차트를 작성할 때 도움이 되는 다른 유용한 문서 좌표들은 다음과 같다.
+그러나 이 가이드에서도 실제 차트 개발에 필요한 많은 것들을 모두 다루지는 못했다.
+새로운 차트를 작성할 때 도움이 되는 다른 유용한 문서들은 다음과 같다.
 
 - [Helm Charts project](https://github.com/helm/charts) is an indispensable source of charts. That project is also sets the standard for best practices in chart development.
 - The Kubernetes [Documentation](https://kubernetes.io/docs/home/) provides detailed examples of the various resource kinds that you can use, from ConfigMaps and Secrets to DaemonSets and Deployments.
