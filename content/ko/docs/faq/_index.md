@@ -17,7 +17,7 @@ aliases: [
 
 ## 헬름 2 이후 변화
 
-이 문서는 헬름 3에 도입된 모든 주요(major) 변경사항의 상세 목록입니다.
+이 문서는 헬름 3에 도입된 모든 주요 변경사항의 상세 목록입니다.
 
 ### 틸러(tiller) 제거
 
@@ -452,7 +452,7 @@ Helm.
 
 ### 로컬 헬름을 삭제하고 싶어요. 그 파일들은 모두 어디에 있나요?
 
-Along with the `helm` binary, Helm stores some files in the following locations:
+`helm` 바이너리에 따라, Helm는 일부 파일들을 다음 위치에 저장한다.
 
 - $XDG_CACHE_HOME
 - $XDG_CONFIG_HOME
