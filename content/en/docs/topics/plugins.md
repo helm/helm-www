@@ -91,7 +91,7 @@ platformCommand:
     command: "$HELM_BIN list --short --max 1 --date -r"
 ```
 
-The `name` is the name of the plugin. When Helm executes it plugin, this is the
+The `name` is the name of the plugin. When Helm executes this plugin, this is the
 name it will use (e.g. `helm NAME` will invoke this plugin).
 
 _`name` should match the directory name._ In our example above, that means the

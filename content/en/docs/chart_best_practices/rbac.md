@@ -20,7 +20,7 @@ RBAC resources are:
 
 RBAC and ServiceAccount configuration should happen under separate keys. They
 are separate things. Splitting these two concepts out in the YAML disambiguates
-them and make this clearer.
+them and makes this clearer.
 
 ```yaml
 rbac:
@@ -57,7 +57,7 @@ controls themselves can set this value to `false` (in which case see below).
 
 ## Using RBAC Resources
 
-`serviceAccount.name` should set to the name of the ServiceAccount to be used by
+`serviceAccount.name` should be set to the name of the ServiceAccount to be used by
 access-controlled resources created by the chart.  If `serviceAccount.create` is
 true, then a ServiceAccount with this name should be created.  If the name is
 not set, then a name is generated using the `fullname` template, If

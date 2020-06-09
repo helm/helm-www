@@ -29,7 +29,7 @@ the manifests before deployment.
 ### Usage
 A post-renderer can be any executable that accepts rendered Kubernetes manifests
 on STDIN and returns valid Kubernetes manifests on STDOUT. It should return an
-non-0 exit code in event of a failure. This is the only "API" between the two
+non-0 exit code in the event of a failure. This is the only "API" between the two
 components. It allows for great flexibility in what you can do with your
 post-render process.
 
@@ -46,7 +46,7 @@ it will resolve any relative paths to a fully qualified path
 
 If you wish to use multiple post-renderers, call all of them in a script or
 together in whatever binary tool you have built. In bash, this would be as
-simple as `renderer1 | renderer 2 | renderer3`.
+simple as `renderer1 | renderer2 | renderer3`.
 
 You can see an example of using `kustomize` as a post renderer
 [here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).

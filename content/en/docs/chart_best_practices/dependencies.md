@@ -63,9 +63,9 @@ Where `somechart` is the chart name of the dependency.
 When multiple subcharts (dependencies) together provide an optional or swappable
 feature, those charts should share the same tags.
 
-For example, if both `nginx` and `memcached` together provided performance
-optimizations for the main app in the chart, and were required to both be
-present when that feature is enabled, then they might both have a tags section
+For example, if both `nginx` and `memcached` together provide performance
+optimizations for the main app in the chart, and are required to both be
+present when that feature is enabled, then they should both have a tags section
 like this:
 
 ```yaml

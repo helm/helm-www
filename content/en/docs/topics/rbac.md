@@ -82,7 +82,7 @@ intended to be user-facing roles. They include super-user roles
 
 ## Restricting a user account's access using RBAC
 
-Now that we understand the basics or Role-based Access Control, let's discuss
+Now that we understand the basics of Role-based Access Control, let's discuss
 how an administrator can restrict a user's scope of access.
 
 ### Example: Grant a user read/write access to a particular namespace

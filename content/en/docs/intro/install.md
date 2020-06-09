@@ -71,7 +71,7 @@ $ ./get_helm.sh
 ```
 
 Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` that if
+https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
 you want to live on the edge.
 
 ### From Canary Builds

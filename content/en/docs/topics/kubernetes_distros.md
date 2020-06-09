@@ -50,7 +50,7 @@ Helm works in clusters that are set up by KubeOne without caveats.
 ## Kubermatic
 
 Helm works in user clusters that are created by Kubermatic without caveats.
-Since seed cluster can be setup up in different ways Helm support depends on
+Since seed cluster can be set up in different ways Helm support depends on
 their configuration.
 
 ## MicroK8s
