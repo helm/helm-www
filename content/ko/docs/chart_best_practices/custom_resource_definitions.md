@@ -15,14 +15,13 @@ aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
 
 ## 리소스를 사용하기 전에 CRD 선언을 설치하기
 
-Helm is optimized to load as many resources into Kubernetes as fast as possible.
-By design, Kubernetes can take an entire set of manifests and bring them all
-online (this is called the reconciliation loop).
+헬름은 되도록 많은 리소스들을 빨리 쿠버네티스 내에 로드(load)하도록 최적화되어 있다.
+설계에 따라, 쿠버네티스는 전체 매니페스트 세트를 가져와서 온라인 중에 적용한다 (이것을 조정(reconciliation) 루프라고 한다)..
 
-But there's a difference with CRDs.
+하지만 CRD의 경우는 약간 다르다.
 
-For a CRD, the declaration must be registered before any resources of that CRDs
-kind(s) can be used. And the registration process sometimes takes a few seconds.
+해당 CRD 종류(kind) 리소스가 사용되기 전에, CRD 선언이 먼저 등록되어 있어야 한다.
+그리고 등록 과정은 때에 따라 몇 초 정도 걸린다.
 
 ### 방법 1: `helm`이 처리하게 하기
 
@@ -61,8 +60,6 @@ the current state of the cluster.
 
 ### 방법 2: 차트 분리하기
 
-Another way to do this is to put the CRD definition in one chart, and then put
-any resources that use that CRD in _another_ chart.
+다른 방법으로는 한 차트에는 CRD 정의(definition)를 넣고 _다른_ 차트에는 CRD를 사용하는 리소스들을 넣는 방법이 있다.
 
-In this method, each chart must be installed separately. However, this workflow
-may be more useful for cluster operators who have admin access to a cluster
+이 방법으로 할 때는, 각 차트가 따로 설치되어야 한다. 하지만, 이러한 작업방식은 클러스터에 어드민으로 접근하는 클러스터 운영자들에게 더 유용할 것이다.
