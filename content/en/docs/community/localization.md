@@ -61,3 +61,46 @@ cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
 The content in the new file can then be translated into the other language.
 
 Note, translation tools can help with the process. This includes machine generated translations. Machine generated translations should be edited or otherwise reviewing for grammar and meaning by a native language speaker before publishing.
+
+
+## Navigating Between Languages
+
+![Screen Shot 2020-05-11 at 11 24 22 AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea-9834-cd9dcef4e914.png)
+
+The site global [config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89) file is where language navigation is configured.
+
+To add a new language, add a new set of parameters using the [two-letter language code](./#two-letter-language-code) defined above. Example:
+
+```
+# Korean
+[languages.ko]
+title = "Helm"
+description = "Helm - The Kubernetes Package Manager."
+contentDir = "content/ko"
+languageName = "한국어 Korean"
+weight = 1
+```
+
+## Resolving Internal Links
+
+Translated content will sometimes include links to pages that only exist in another language. This will result in site [build errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
+
+```
+12:45:31 PM: htmltest started at 12:45:30 on app
+12:45:31 PM: ========================================================================
+12:45:31 PM: ko/docs/chart_template_guide/accessing_files/index.html
+12:45:31 PM:   hash does not exist --- ko/docs/chart_template_guide/accessing_files/index.html --> #basic-example
+12:45:31 PM: ✘✘✘ failed in 197.566561ms
+12:45:31 PM: 1 error in 212 documents
+```
+
+To resolve this, you need to check your content for internal links.
+
+* anchor links need to reflect the translated `id` value
+* internal page links need to be fixed
+
+For internal pages that do not exist _(or have not been translated yet)_, the site will not build until a correction is made. As a fallback, the url can point to another language where that content _does_ exist as follows:
+
+`< relref path="/docs/topics/library_charts.md" lang="en" >`
+
+See the [Hugo Docs on cross references between languages](https://gohugo.io/content-management/cross-references/#link-to-another-language-version) for more info.
