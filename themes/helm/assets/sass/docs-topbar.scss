@@ -196,6 +196,11 @@
     .versioner {
       display: none;
     }
+
+    li.versioner.l18ner {
+      display: block;
+      right: 17vw;
+    }
   }
 
   body.ko {
