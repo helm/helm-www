@@ -1,10 +1,6 @@
 ---
 title: "자주 묻는 질문"
 weight: 8
-aliases: [
-  "/docs/topics/faq/",
-  "/docs/faq/"
-]
 ---
 
 # 자주 묻는 질문

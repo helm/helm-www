@@ -1,7 +1,6 @@
 ---
 title: "차트 템플릿 가이드"
 weight: 5
-aliases: ["/topics/chart_template_guide/"]
 ---
 
 # 차트 템플릿 개발자 가이드

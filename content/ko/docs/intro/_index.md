@@ -1,7 +1,6 @@
 ---
 title: "소개"
 weight: 1
-aliases: ["/docs/using_helm/"]
 ---
 
 # 헬름 소개
