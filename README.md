@@ -76,6 +76,13 @@ date: "yyyy-mm-dd"
 
 Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/master/OWNERS) before merge.
 
+
+### Internationalization & Translation
+
+**We welcome content translations** to our site and our docs, to help expand access to Helm around the world.
+
+Helm.sh supports multiple languages. Please refer to the [Localizing Helm Documentation](https://helm.sh/docs/community/localization/) for a guide on translating and configuring content for international users.
+
 ---
 
 ### Code of Conduct
