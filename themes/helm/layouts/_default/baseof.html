@@ -1,5 +1,6 @@
 {{ $langCode := site.LanguageCode | default "en-us" }}
 {{ $isHome   := .IsHome }}
+{{ $lang     := .Lang }}
 {{ $home     := site.BaseURL }}
 <!DOCTYPE html>
 <html lang="{{ $langCode }}">
@@ -13,7 +14,11 @@
     {{ partial "header.html" . }}
   </head>
 
-  <body id="landing"{{ if $isHome }} class="home"{{ end }}>
+  {{ if $isHome }}
+    <body id="landing" class="home {{ $lang }}">
+  {{ else }}
+    <body id="landing" class="{{ $lang }}"></body>
+  {{ end }}
     {{ block "main" . }}
     {{ end }}
 

@@ -73,11 +73,12 @@
   a.button {
     margin: 1rem 0;
     background-color: rgba(255,255,255,0.5);
-    font-size: 1.125rem;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
     position: absolute;
     height: 3rem !important;
     right: 1.75vw;
-    padding: 1rem 1.5vw;
+    padding: 1rem 1.25vw;
     border: 2px solid $navyl;
     color: $navyl;
     @include transition;
@@ -91,18 +92,28 @@
 
   li.versioner {
     padding: 1rem 0.5rem 0 !important;
-    margin: 0 0 -1px !important;
+    margin: 0 -3rem -1px !important;
     position: absolute;
-    right: 14.25vw;
+    right: 16.5vw;
+
+    &.l18ner {
+      right: 25vw;
+      
+      a.versioner-trigger {
+        min-width: auto;
+        padding-right: 2.25rem;
+      }
+    }
     
     a.versioner-trigger {
       background: rgba(255,255,255,0.5);
-      min-width: 8rem;
-      padding: 0.76rem 1.2rem;
+      min-width: 6.25rem;
+      padding: 0.82rem 0.8rem;
       display: inline-block;
       text-align: left;
       position: relative;
       color: $navyl;
+      font-size: .825rem;
       @include klinicBold;
       @include border-radius;
       letter-spacing: 0;
@@ -184,5 +195,17 @@
   .page-blog {
     .versioner {
       display: none;
+    }
+  }
+
+  body.ko {
+    .navbar-top {
+      li.versioner {
+        right: 12vw;
+      }
+
+      li.versioner.l18ner {
+        right: 20vw;
+      }
     }
   }

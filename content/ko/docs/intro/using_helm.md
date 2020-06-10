@@ -435,7 +435,7 @@ $ helm repo add dev https://example.com/dev-charts
 ## 내 차트 만들기
 
 
-[차트 개발 가이드]({{< ref "/docs/topics/charts.md" >}})는 내 차트를 개발하는 방법을 설명한다.
+[차트 개발 가이드](https://helm.sh/docs/topics/charts/)는 내 차트를 개발하는 방법을 설명한다.
 하지만 `helm create` 명령어를 사용하여 빠르게 시작해볼 수 있다:
 
 ```console
