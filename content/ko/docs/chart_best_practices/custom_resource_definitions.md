@@ -16,7 +16,7 @@ aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
 ## 리소스를 사용하기 전에 CRD 선언을 설치하기
 
 헬름은 되도록 많은 리소스들을 빨리 쿠버네티스 내에 로드(load)하도록 최적화되어 있다.
-설계에 따라, 쿠버네티스는 전체 매니페스트 세트를 가져와서 온라인 중에 적용한다 (이것을 조정(reconciliation) 루프라고 한다)..
+설계상, 쿠버네티스는 전체 매니페스트 세트를 받고 온라인으로 반영한다(이것을 조정(reconciliation) 루프라고 한다).
 
 하지만 CRD의 경우는 약간 다르다.
 
