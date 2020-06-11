@@ -155,7 +155,7 @@ Image pull secrets are essentially a combination of _registry_, _username_, and
 _password_.  You may need them in an application you are deploying, but to
 create them requires running `base64` a couple of times.  We can write a helper
 template to compose the Docker configuration file for use as the Secret's
-payload.  Here is an example:
+payload.  Here is an example: 
 
 First, assume that the credentials are defined in the `values.yaml` file like
 so:
@@ -164,12 +164,15 @@ imageCredentials:
   registry: quay.io
   username: someone
   password: sillyness
+  email: someone@host.com
 ```
 
 We then define our helper template as follows:
 ```
 {{- define "imagePullSecret" }}
-{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
+{{- with .Values.imageCredentials }}
+{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username .password .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
+{{- end }}
 {{- end }}
 ```
 
