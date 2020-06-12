@@ -172,7 +172,7 @@ other = "차트"
 other = "헬름 차트 사용자 및 기여자들과 의견 나누기."
 
 [community_slack_join]
-other = "쿠버네티스 슬랙 팀에 가입하려면 [이곳에서 요청하세요](http://slack.k8s.io/)."
+other = "쿠버네티스 슬랙 팀에 가입하려면 [이곳에서 요청하세요](https://slack.k8s.io/)."
 
 [community_contrib_title]
 other = "기여"
