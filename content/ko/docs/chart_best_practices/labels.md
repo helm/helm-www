@@ -9,19 +9,17 @@ aliases: ["/docs/topics/chart_best_practices/labels/"]
 
 ## 레이블인가, 어노테이션인가?
 
-An item of metadata should be a label under the following conditions:
+다음 조건에 해당하는 메타데이터 항목은 레이블이어야 한다.
 
-- It is used by Kubernetes to identify this resource
-- It is useful to expose to operators for the purpose of querying the system.
+- 쿠버네티스에서 해당 리소스를 식별하기 위해 사용된다.
+- 시스템 쿼리를 목적으로 운영자에게 유용하게 노출되어야 한다.
 
-For example, we suggest using `helm.sh/chart: NAME-VERSION` as a label so that
-operators can conveniently find all of the instances of a particular chart to
-use.
+예를 들어, `helm.sh/chart: NAME-VERSION`을 레이블로 사용할 것이 권장되는데,
+이렇게 하면 운영자는 레이블을 통해 특정 차트의 모든 인스턴스들을 편리하게 찾을 수 있다.
 
-If an item of metadata is not used for querying, it should be set as an
-annotation instead.
+메타데이터 항목이 쿼리에 사용되지 않는다면, 어노테이션으로 설정해야 한다.
 
-Helm hooks are always annotations.
+헬름 훅은 항상 어노테이션이다.
 
 ## 표준 레이블
 
