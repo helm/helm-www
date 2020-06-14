@@ -370,7 +370,7 @@ is a portable standard defining where configuration, data, and cached files
 should be stored on the filesystem.
 
 In Helm 2, Helm stored all this information in `~/.helm` (affectionately known
-as `helm home`), which could be changed by setting the `$HELM_HOME` environment
+as "helm home"), which could be changed by setting the `$HELM_HOME` environment
 variable, or by using the global flag `--home`.
 
 In Helm 3, Helm now respects the following environment variables as per the XDG

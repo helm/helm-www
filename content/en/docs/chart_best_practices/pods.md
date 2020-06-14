@@ -71,7 +71,7 @@ template:
 ```
 
 This is a good practice because it makes the relationship between the set and
-the pod.
+the pod apparent.
 
 But this is even more important for sets like Deployment. Without this, the
 _entire_ set of labels is used to select matching pods, and this will break if

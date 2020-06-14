@@ -231,7 +231,7 @@ app_version: "{{ .Chart.Version }}"
 {{- end -}}
 ```
 
-Now say I want to insert this both into the `labels:` section of my template,
+Now say we want to insert this both into the `labels:` section of my template,
 and also the `data:` section:
 
 ```yaml

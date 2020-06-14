@@ -75,5 +75,4 @@ Platforms, distributions, and services that include Helm support.
 Grab bag of useful things for Chart authors and Helm users.
 
 - [Await](https://github.com/saltside/await) - Docker image to "await" different
-  conditions--especially useful for init containers. [More
-  Info](https://blog.slashdeploy.com/2017/02/16/introducing-await/)
+  conditions--especially useful for init containers.

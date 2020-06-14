@@ -85,7 +85,7 @@ this provides chart users with the ability to:
 
 - Validate that a chart was signed by a trusted party
 - Validate that the chart file has not been tampered with
-- Validate the contents of a chart metadata (`Chart.yaml`)
+- Validate the contents of chart metadata (`Chart.yaml`)
 - Quickly match a chart to its provenance data
 
 Provenance files have the `.prov` extension, and can be served from a chart

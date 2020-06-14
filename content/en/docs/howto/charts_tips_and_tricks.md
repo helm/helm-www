@@ -298,7 +298,7 @@ differs from the last run, that will trigger an update of that resource.
 ## Install or Upgrade a Release with One Command
 
 Helm provides a way to perform an install-or-upgrade as a single command. Use
-`helm upgrade` with the `--install` command. This will cause Helm to see if the
+`helm upgrade` with the `--install` option. This will cause Helm to see if the
 release is already installed. If not, it will run an install. If it is, then the
 existing release will be upgraded.
 
