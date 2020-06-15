@@ -103,6 +103,14 @@
         min-width: auto;
         padding-right: 2.25rem;
       }
+
+      .l18n-prompt a {
+        background-color: $light1;
+        display: block;
+        text-align: center;
+        line-height: 1.75;
+        margin: 0.5rem auto;
+      }
     }
     
     a.versioner-trigger {
