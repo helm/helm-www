@@ -55,7 +55,7 @@
                   {{ else }}
                 {{ end }}
             {{ end }}
-            <li class="navbar-item l18n-prompt"><a href="https://github.com/helm/helm-www#internationalization--translation"><small>Translate this page</small></a></li>
+            <li class="navbar-item l18n-prompt"><a href="{{ T "action_translate_link" }}"><small>{{ T "action_translate" }}</small></a></li>
           </ul>
         </li>
         {{ else }}
@@ -79,7 +79,7 @@
           </ul>
         </li>
         <li>
-          <a class="button is-outlined" href="/docs/intro/quickstart/">{{ T "action_get_started" }}</a>
+          <a class="button not-fixed is-outlined" href="{{ T "action_get_started_link" }}">{{ T "action_get_started" }}</a>
         </li>
       </ul>
     </div>
