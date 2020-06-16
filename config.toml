@@ -48,7 +48,7 @@ url = "https://helm.sh/docs"
 primary = true
 
 [[params.versions]]
-version = "v2.16.8"
+version = "v2.16.9"
 url = "https://v2.helm.sh/docs"
 
 [[params.quicklinks]]
