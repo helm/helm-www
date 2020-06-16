@@ -1,7 +1,10 @@
 ---
 title: "Charts"
 description: "Explains the chart format, and provides basic guidance for building charts with Helm."
-aliases: ["docs/developing_charts/"]
+aliases: [
+  "docs/developing_charts/",
+  "developing_charts"
+]
 weight: 1
 ---
 
