@@ -108,6 +108,18 @@
     }
   }
 
+  .prev-next {
+    border-top: 2px solid lighten($navyl, 33.33%);
+    padding: 1.5rem 0 0;
+    margin-top: 5rem;
+
+    a {
+      display: inline-block;
+      min-width: 66.67%;
+      padding: 1rem 0.5rem;
+    }
+  }
+
   blockquote {
     margin: 2rem 0 2.5rem 4.5vw;
     background-color: rgba(249, 158, 172, 0.125);
