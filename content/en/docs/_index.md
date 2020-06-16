@@ -3,6 +3,12 @@ title: "Docs Home"
 description: "Everything you need to know about how the documentation is organized."
 ---
 
+# Welcome
+
+Welcome to the [Helm](https://helm.sh/) documentation. Helm is the package
+manager for Kubernetes, and you can read detailed background information in
+the [CNCF Helm Project Journey report](https://www.cncf.io/cncf-helm-project-journey/).
+
 # How the documentation is organized
 
 Helm has a lot of documentation. A high-level overview of how it’s organized
