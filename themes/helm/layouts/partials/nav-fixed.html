@@ -1,7 +1,5 @@
 {{ $versions  := site.Params.versions }}
 {{ $primary   := index (where $versions ".primary" true) 0 }}
-{{ $lang      := .Lang }}
-{{ $isEnglish := eq $lang "en" }}
 {{ $menu      := site.Menus.main }}
 
 <nav class="navbar navbar-top navbar-top-fixed" role="navigation" aria-label="main navigation">
@@ -33,19 +31,35 @@
       <ul class="is-pulled-right">
         
         <!-- l18n -->
+        {{ if .Site.IsMultiLingual }}
         <li class="versioner l18ner navbar-item has-dropdown is-hoverable">
           <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
             {{ .Language.LanguageName }} <i class="fa fa-caret-down"></i>
           </a>
 
           <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-            {{ range $.Site.Home.AllTranslations }}
-            <li>
-              <a href="{{ .Permalink }}" class="navbar-item">{{ .Language.LanguageName }}</a>
-            </li>
+            {{ $siteLanguages := .Site.Languages}}
+            {{ $pageLang := .Page.Lang}}
+            {{ range .Page.AllTranslations }}
+                {{ $translation := .}}
+                {{ range $siteLanguages }}
+                    {{ if eq $translation.Lang .Lang }}
+                      {{ $selected := false }}
+                      {{ if eq $pageLang .Lang}}
+                          <li class="navbar-item"><a href="{{ $translation.URL }}" class="active">{{ .LanguageName }}</a></li>
+                      {{ else }}
+                          <li class="navbar-item"><a href="{{ $translation.URL }}">{{ .LanguageName }}</a></li>
+                      {{ end }}
+                    {{ end }}
+
+                  {{ else }}
+                {{ end }}
             {{ end }}
+            <li class="navbar-item l18n-prompt"><a href="{{ T "action_translate_link" }}"><small>{{ T "action_translate" }}</small></a></li>
           </ul>
         </li>
+        {{ else }}
+        {{ end }}
         
         <li class="versioner navbar-item has-dropdown is-hoverable">
           {{ with $primary }}
@@ -65,7 +79,7 @@
           </ul>
         </li>
         <li>
-          <a class="button is-outlined" href="/docs/intro/quickstart/">{{ T "action_get_started" }}</a>
+          <a class="button not-fixed is-outlined" href="{{ T "action_get_started_link" }}">{{ T "action_get_started" }}</a>
         </li>
       </ul>
     </div>

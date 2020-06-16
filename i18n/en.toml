@@ -4,6 +4,15 @@
 [action_get_started]
 other = "Get Started"
 
+[action_get_started_link]
+other = "/docs/intro/quickstart"
+
+[action_translate]
+other = "Translate this page"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
 [action_copy]
 other = "Copy"
 
@@ -170,7 +179,7 @@ other = "Charts"
 other = "Discussion for users and contributors to Helm Charts."
 
 [community_slack_join]
-other = "[Request access here](http://slack.k8s.io/) to join the Kubernetes Slack team."
+other = "[Request access here](https://slack.k8s.io/) to join the Kubernetes Slack team."
 
 [community_contrib_title]
 other = "Contributing"

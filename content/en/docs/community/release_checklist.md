@@ -145,6 +145,16 @@ index 2109a0a..6f5a1a4 100644
         BuildMetadata = "unreleased"
 ```
 
+In addition to updating the version within the `version.go` file, you will also
+need to update corresponding tests that are using that version number.
+
+* `cmd/helm/testdata/output/version.txt`
+* `cmd/helm/testdata/output/version-client.txt`
+* `cmd/helm/testdata/output/version-client-shorthand.txt`
+* `cmd/helm/testdata/output/version-short.txt`
+* `cmd/helm/testdata/output/version-template.txt`
+* `pkg/chartutil/capabilities_test.go`
+
 ```shell
 git add .
 git commit -m "bump version to $RELEASE_CANDIDATE_NAME"

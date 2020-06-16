@@ -42,7 +42,7 @@ jsFiles = [
 ]
 
 [[params.versions]]
-version = "v3.2.3"
+version = "v3.2.4"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
@@ -136,6 +136,11 @@ name = "차트"
 url = "https://hub.helm.sh/"
 weight = 3
 external = "yes"
+
+[[languages.ko.menus.main]]
+name = "블로그"
+url = "https://helm.sh/blog"
+weight = 4
 
 [[languages.ko.menus.main]]
 name = "커뮤니티"
