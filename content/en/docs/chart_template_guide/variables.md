@@ -1,7 +1,7 @@
 ---
 title: "Variables"
 description: "Using variables in templates."
-weight: 7
+weight: 8
 ---
 
 With functions, pipelines, objects, and control structures under our belts, we

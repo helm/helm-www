@@ -1,7 +1,7 @@
 ---
 title: "Flow Control"
 description: "A quick overview on the flow structure within templates."
-weight: 6
+weight: 7
 ---
 
 Control structures (called "actions" in template parlance) provide you, the
