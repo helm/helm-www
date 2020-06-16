@@ -233,7 +233,7 @@ gulp.task('clone', function(cb) {
 
   gulp.task('redirect-underscores', function() {
     return gulp.src('source/docs/helm/*.md')
-    .pipe(replace('_', '-'))
+    .pipe(replace('](../../docs/helm/#helm_', '](../../docs/helm/#helm-'))
     .pipe(gulp.dest('source/docs/helm/'))
   });
 
