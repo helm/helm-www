@@ -1,6 +1,158 @@
+/*
+// tablet + sm desktop
+*/
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  #banner {
+    position: relative;
 
-// mobile style
-@media only screen and (max-width: 64.063em) {
+    p {
+      font-size: 1.25vw;
+    }
+  }
+
+  .page-docs .content-docs, .page-blog .content-docs {
+    padding-left: 0;
+  }
+
+  .footer-links {
+    margin-left: 0;
+    z-index: 1620;
+  }
+  
+  // hamburger for sidebar
+  .sidebar-wrapper {
+    z-index: 1330;
+    width: 6.5rem;
+    // background: url("/img/topography.png") left 100px repeat-x;
+    background: none;
+    
+    // left border
+    &:before {
+      content: " ";
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 8px;
+      background: $navy;
+      position: fixed;
+      z-index: 1445;
+    }
+
+    // bottom border
+    &:after {
+      content: " ";
+      display: block;
+      bottom: 0;
+      left: 0;
+      height: 8px;
+      width: ($sidebarWidth + 2rem);
+      background: $navy;
+      position: fixed;
+      z-index: 1445;
+    }
+
+    input.hamburger-trigger {
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      position: absolute;
+      top: 4.75rem;
+      left: 14rem;
+      z-index: 1450;
+      opacity: 0;
+    }
+
+    .hamburger {
+      position: fixed;
+      top: 6rem;
+      left: 15rem;
+      z-index: 1440;
+      @include transition;
+      
+      span {
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: $navyd;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.55s ease;
+
+        &:first-child {
+          transform-origin: 0% 0%;
+        }
+
+        &:nth-last-child(2) {
+          transform-origin: 0% 100%;
+        }
+      }
+    }
+
+    &.is-scrolled {
+      .hamburger-trigger {
+        top: 1.25rem;
+      }
+      .hamburger {
+        top: 2.5rem;
+      }
+    }
+
+
+    .sidebar {
+      transform-origin: 0% 0%;
+      transform: translate(-105%, 0);
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+      position: absolute;
+      width: $sidebarWidth;
+      background: none transparent;
+      // background: url("/img/topography.png") 0 0 no-repeat;
+
+      .search-container {
+        margin: 10rem 1.5rem 0;
+      }
+
+      .sidebar-nav {
+        background: white;
+        margin-top: -2rem;
+        padding-top: 4.5rem;
+      }
+    }
+
+    // hamburger is open
+    input.hamburger-trigger:checked {
+      ~ .hamburger span {
+        opacity: 1;
+        transform: rotate(45deg) translate(-10px, -14px);
+        background: $navyl;
+
+        &:nth-last-child(3) {
+          opacity: 0;
+          transform: rotate(0deg) scale(0.2, 0.2);
+        }
+
+        &:nth-last-child(2) {
+          transform: rotate(-45deg) translate(-5px, 10px);
+        }
+      }
+
+      ~ .sidebar {
+        transform: none;
+      }
+    }
+  }
+} // end tablet
+
+
+/*
+// mobile adjustments
+*/
+@media only screen and (max-width: 768px) {
   html,
   body,
   #helm {
