@@ -20,7 +20,7 @@
   from = "https://docs.helm.sh/"
   to = "https://helm.sh/docs/"
 
-# redirect docs subpages 
+# redirect docs subpages
 [[redirects]]
   from = "https://docs.helm.sh/*"
   to = "https://helm.sh/docs/:splat"
