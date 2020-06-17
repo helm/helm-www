@@ -9,67 +9,62 @@ aliases: ["/docs/topics/chart_best_practices/dependencies/"]
 
 ## 버전
 
-Where possible, use version ranges instead of pinning to an exact version. The
-suggested default is to use a patch-level version match:
+가능하면 특정 버전을 콕 집어서 사용하기 보다는 버전 범위를 사용하자.
+권장되는 기본값은 다음과 같이 패치-수준의 버전 매치(match)를 사용하는 것이다.
 
 ```yaml
 version: ~1.2.3
 ```
 
-This will match version `1.2.3` and any patches to that release.  In other
-words, `~1.2.3` is equivalent to `>= 1.2.3, < 1.3.0`
+이렇게 하면 `1.2.3`과 그 릴리스의 다른 패치들도 매치된다.
+다시 말하면 `~1.2.3`은 `>= 1.2.3, < 1.3.0`과 동등하다.
 
-For the complete version matching syntax, please see the [semver
-documentation](https://github.com/Masterminds/semver#checking-version-constraints).
+버전 매칭 구문에 대한 자세한 설명은 [semver
+문서](https://github.com/Masterminds/semver#checking-version-constraints)에서 볼 수 있다.
 
 ### 리포지터리 URL
 
-Where possible, use `https://` repository URLs, followed by `http://` URLs.
+가능하면 `https://` 리포지터리 URL 뒤에 `http://` URL을 사용하자.
 
-If the repository has been added to the repository index file, the repository
-name can be used as an alias of URL. Use `alias:` or `@` followed by repository
-names.
+리포지터리가 리포지터리 인덱스 파일에 추가되면, 리포지터리 이름은 URL의 별칭으로 사용될 수 있다.
+`alias:`나 `@` 뒤에 리포지터리 이름을 쓰자.
 
-File URLs (`file://...`) are considered a "special case" for charts that are
-assembled by a fixed deployment pipeline. Charts that use `file://` are not
-allowed in the official Helm repository.
+차트에서 파일 URL(`file://...`)은 고정된 배포 파이프라인에서 만들어지는 "특이한 경우"로 취급된다.
+공식 헬름 리포지터리에는 `file://`을 사용하는 차트가 허용되지 않는다.
 
 #### OCI 레지스트리에서 호스팅되는 차트에 대한 실험적 기능지원
 
-If you have [enabled experimental OCI support](/docs/registries/), you can specify
-an OCI reference (`oci://registry/group/image:tag`) for the repository URL.
+[실험적 OCI 지원을 활성화(enabled)](/docs/registries/)했다면, 
+리포지터리 URL의 OCI 참조(`oci://registry/group/image:tag`)를 지정할 수 있다.
 
-When specifying an OCI reference, you may omit the `version` argument if your
-repository URL contains an image tag (`oci://nginx:1.10`). If you do not specify
-a tag on the URL, the `version` will be used as the tag. This means that OCI URLs
-**do not support SemVer constraints**, only tagged versions are supported.
+OCI 참조를 지정한 경우, 리포지터리 URL이 이미지 태그(`oci://nginx:1.10`)를 가지고 있으면 `version` 인자를 생략해도 된다.
+URL에 태그를 지정하지 않으면, `version`이 태그로 사용될 것이다.
+이것은 OCI URL이 **SemVer 제약사항을 지원하지 않지만**, 태그된 버전은 지원한다는 것을 뜻한다.
 
-If you specify both a tag and a version, the tag takes precedence and the version
-is ignored.
+태그와 버전을 둘다 지정했다면, 태그가 우선 적용되며 버전은 무시된다.
 
 ## 조건과 태그
 
-Conditions or tags should be added to any dependencies that _are optional_.
+조건과 태그는 _선택적(optional)_인 모든 의존성에 추가되어야 한다.
 
-The preferred form of a condition is:
+조건의 권장되는 형식은 다음과 같다.
 
 ```yaml
 condition: somechart.enabled
 ```
 
-Where `somechart` is the chart name of the dependency.
+여기서 `somechart`는 의존성의 차트 이름이다.
 
-When multiple subcharts (dependencies) together provide an optional or swappable
-feature, those charts should share the same tags.
+여러 서브차트(의존성)들이 선택적 또는 교체가능한 기능을 공동으로 제공하는 경우,
+그 차트들은 동일한 태그를 사용해야 한다.
 
-For example, if both `nginx` and `memcached` together provided performance
-optimizations for the main app in the chart, and were required to both be
-present when that feature is enabled, then they might both have a tags section
-like this:
+예를 들어, `nginx`와 `memcached`가 차트 내 메인 앱에 대한 성능 최적화 기능을 
+공동으로 제공하는 경우, 그리고 그 기능의 활성화시에 둘다 있어야 한다면
+둘다 다음과 같은 태그 섹션이 있어야 한다.
 
 ```yaml
 tags:
   - webaccelerator
 ```
 
-This allows a user to turn that feature on and off with one tag.
+이렇게 하면 사용자는 하나의 태그로 기능을 켜거나 끌 수 있다.
