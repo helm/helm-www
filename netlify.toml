@@ -24,3 +24,7 @@
 [[redirects]]
   from = "https://docs.helm.sh/*"
   to = "https://helm.sh/docs/:splat"
+
+[[redirects]]
+  from = "/docs/developing_charts/"
+  to = "https://v2.helm.sh/docs/developing_charts/"
