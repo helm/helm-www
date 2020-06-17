@@ -21,6 +21,26 @@ Helm | {{ .Title }}
         <h1>{{ .Title }}</h1>
         
         {{ .Content }}
+
+        <nav class="level prev-next">
+          <div class="level-left level-item">
+            {{ if .NextInSection }}
+            <a class="" href="{{ .NextInSection.Permalink }}" title="{{ .Title }}">
+              <small class="heading">Prev</small>
+              <p class="title">← {{ .NextInSection.Title }}</p>
+            </a>
+            {{ end }}
+          </div>
+          
+          <div class="level-right level-item has-text-right">
+            {{ if .PrevInSection }}
+            <a class="" href="{{ .PrevInSection.Permalink }}" title="{{ .Title }}">
+              <small class="heading">Next</small>
+              <p class="title">{{ .PrevInSection.Title }} →</p>
+            </a>
+            {{ end }}
+          </div>
+        </nav>
       </article>
     </section>
   </div>
