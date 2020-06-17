@@ -22,20 +22,21 @@ Helm | {{ .Title }}
         
         {{ .Content }}
 
-        <nav class="level prev-next has-text-left">
+        <nav class="level prev-next">
           <div class="level-left level-item">
-            {{ with .Site.RegularPages.Prev . }}
-            <a class="" href="{{.RelPermalink}}" title="Container">
-              <small class="heading">Previous</small>
-              <p class="title">← {{ .Title }}</p>
+            {{ if .NextInSection }}
+            <a class="" href="{{ .NextInSection.Permalink }}" title="{{ .Title }}">
+              <small class="heading">Prev</small>
+              <p class="title">← {{ .NextInSection.Title }}</p>
             </a>
             {{ end }}
           </div>
+          
           <div class="level-right level-item has-text-right">
-            {{ with .Site.RegularPages.Next . }}
-            <a class="" href="{{.RelPermalink}}" title="Media Object">
+            {{ if .PrevInSection }}
+            <a class="" href="{{ .PrevInSection.Permalink }}" title="{{ .Title }}">
               <small class="heading">Next</small>
-              <p class="title">{{ .Title }} →</p>
+              <p class="title">{{ .PrevInSection.Title }} →</p>
             </a>
             {{ end }}
           </div>
