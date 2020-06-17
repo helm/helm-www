@@ -4,15 +4,6 @@
 [action_get_started]
 other = "시작"
 
-[action_get_started_link]
-other = "/ko/docs/intro/quickstart"
-
-[action_translate]
-other = "이 페이지 번역"
-
-[action_translate_link]
-other = "https://github.com/helm/helm-www#internationalization--translation"
-
 [action_copy]
 other = "복사"
 

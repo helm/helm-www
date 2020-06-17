@@ -4,15 +4,6 @@
 [action_get_started]
 other = "Get Started"
 
-[action_get_started_link]
-other = "/docs/intro/quickstart"
-
-[action_translate]
-other = "Translate this page"
-
-[action_translate_link]
-other = "https://github.com/helm/helm-www#internationalization--translation"
-
 [action_copy]
 other = "Copy"
 
