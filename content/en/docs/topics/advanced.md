@@ -189,7 +189,7 @@ could expose your application's sensitive data.
 
 ### SQL storage backend
 
-There is a beta SQL storage backend that stores release information in an SQL
+There is a ***beta*** SQL storage backend that stores release information in an SQL
 database.
 
 Using such a storage backend is particularly useful if your release information
@@ -207,12 +207,12 @@ export HELM_DRIVER=sql
 export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?user=helm&password=changeme
 ```
 
-> Note: Only Postgres is supported at this moment.
+> Note: Only PostgreSQL is supported at this moment.
 
 **PRODUCTION NOTES**: It is recommended to:
-- Make your database production ready [TODO: add link]
+- Make your database production ready. For PostgreSQL, refer to the [Server Administration](https://www.postgresql.org/docs/12/admin.html) docs for more details
 - Enable [permission management](/docs/permissions_sql_storage_backend/) to
-mirror Kubernetes RBAC for release informationse
+mirror Kubernetes RBAC for release information
 
 If you want to switch from the default backend to the SQL backend, you'll have
 to do the migration for this on your own. You can retrieve release information
