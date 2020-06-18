@@ -8,6 +8,13 @@ aliases: ["/docs/install/"]
 This guide shows how to install the Helm CLI. Helm can be installed either from
 source, or from pre-built binary releases.
 
+## From The Helm Project
+
+The Helm project provides two ways to fetch and install Helm. These are the
+official methods to get Helm releases. In addition to that, the Helm community
+provides methods to install Helm through different package managers. Installation
+through those methods can be found below the official methods.
+
 ### From the Binary Releases
 
 Every [release](https://github.com/helm/helm/releases) of Helm provides binary
@@ -25,50 +32,7 @@ From there, you should be able to run the client and [add the stable repo](https
 builds and releases. Testing of other OSes are the responsibility of the community
 requesting Helm for the OS in question. 
 
-### From Homebrew (macOS)
-
-Members of the Kubernetes community have contributed a Helm formula build to
-Homebrew. This formula is generally up to date.
-
-```console
-brew install helm
-```
-
-(Note: There is also a formula for emacs-helm, which is a different project.)
-
-### From Chocolatey (Windows)
-
-Members of the Kubernetes community have contributed a [Helm
-package](https://chocolatey.org/packages/kubernetes-helm) build to
-[Chocolatey](https://chocolatey.org/). This package is generally up to date.
-
-```console
-choco install kubernetes-helm
-```
-
-### From Apt (Debian/Ubuntu)
-
-Members of the Kubernetes community have contributed a [Helm
-package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is generally up to date.
-
-```console
-curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
-sudo apt-get install apt-transport-https --yes
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt-get update
-sudo apt-get install helm
-```
-
-### From Snap (Linux)                                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                     
-The [Snapcrafters](https://github.com/snapcrafters) community maintains the
-Snap version of the [Helm package](https://snapcraft.io/helm):
-
-```console
-sudo snap install helm --classic
-```
-
-## From Script
+### From Script
 
 Helm now has an installer script that will automatically grab the latest version
 of Helm and [install it
@@ -86,6 +50,59 @@ $ ./get_helm.sh
 Yes, you can `curl
 https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
 you want to live on the edge.
+
+## Through Package Managers
+
+The Helm community provides the ability to install Helm through operating system
+package managers. These are not supported by the Helm project and are not considered
+trusted 3rd parties.
+
+### From Homebrew (macOS)
+
+Members of the Helm community have contributed a Helm formula build to
+Homebrew. This formula is generally up to date.
+
+```console
+brew install helm
+```
+
+(Note: There is also a formula for emacs-helm, which is a different project.)
+
+### From Chocolatey (Windows)
+
+Members of the Helm community have contributed a [Helm
+package](https://chocolatey.org/packages/kubernetes-helm) build to
+[Chocolatey](https://chocolatey.org/). This package is generally up to date.
+
+```console
+choco install kubernetes-helm
+```
+
+### From Apt (Debian/Ubuntu)
+
+Members of the Helm community have contributed a [Helm
+package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is generally up to date.
+
+```console
+curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
+
+### From Snap
+
+The [Snapcrafters](https://github.com/snapcrafters) community maintains the
+Snap version of the [Helm package](https://snapcraft.io/helm):
+
+```console
+sudo snap install helm --classic
+```
+
+### Development Builds
+
+In addition to releases you can download or install development snapshots of Helm.
 
 ### From Canary Builds
 
