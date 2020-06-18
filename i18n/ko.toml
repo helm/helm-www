@@ -192,16 +192,19 @@ other = "헬름은 프로젝트에 대한 기여를 항상 환영합니다!"
 
 [community_contrib_desc]
 other = """
-### Where to begin?
+### 어디서 시작해야 할까요?
 
-Helm is a big project with a lot of users and contributors. It can be a lot to take in!
-We have a list of [good first issues](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) if you want to help but don't know where to start.
+헬름은 많은 사용자와 기여자가 있는 거대 프로젝트입니다. 참여할 거리는 많을 겁니다!
+도움을 주고 싶지만 어디서 시작해야 할지 모른다면, [적당한 첫번째 이슈](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) 목록이 있습니다.
 
-### What do I do?
+### 무엇을 할 수 있을까요?
 
-Before you contribute some code, please read our [Contribution Guide](https://github.com/helm/helm/blob/master/CONTRIBUTING.md). It goes over the processes around creating and reviewing pull requests.
+코드를 기여하기 전에, [기여 가이드](https://github.com/helm/helm/blob/master/CONTRIBUTING.md)를 읽어보세요.
+풀 요청의 작성 및 검토에 관한 프로세스를 다룹니다.
 
-Once you write some code, please [sign your commits](https://helm.sh/blog/helm-dco/index.html) to ensure Helm adheres to the [DCO](https://developercertificate.org/) agreement used by the [CNCF](https://www.cncf.io/).
+코드를 작성했다면,
+헬름에서 [CNCF](https://www.cncf.io/)의 [DCO](https://developercertificate.org/) 동의서를 준수한다는 것을 확인할 수 있도록
+[커밋에 서명](https://helm.sh/blog/helm-dco/index.html)해주세요.
 """
 
 # 404 page
