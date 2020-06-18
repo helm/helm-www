@@ -7,29 +7,26 @@ aliases: ["/docs/topics/chart_best_practices/pods/"]
 
 이 부분은 모범사례 가이드의 일부로서 차트 매니페스트에 있는 파드와 파드템플릿 부분의 형식을 논한다.
 
-The following (non-exhaustive) list of resources use PodTemplates:
+파드템플릿을 사용하는 리소스의 목록(전체는 아님)은 다음과 같다.
 
-- Deployment
-- ReplicationController
-- ReplicaSet
-- DaemonSet
-- StatefulSet
+- 디플로이먼트(Deployment)
+- 레플리케이션컨트롤러(ReplicationController)
+- 레플리카셋(ReplicaSet)
+- 데몬셋(DaemonSet)
+- 스테이트풀셋(StatefulSet)
 
 ## 이미지
 
-A container image should use a fixed tag or the SHA of the image. It should not
-use the tags `latest`, `head`, `canary`, or other tags that are designed to be
-"floating".
+컨테이너 이미지는 고정된 태그나 이미지의 SHA를 사용해야 한다.
+`latest`, `head`, `canary` 등 "유동적인" 목적으로 고안된 태그를 사용해서는 안된다.
 
-
-Images _may_ be defined in the `values.yaml` file to make it easy to swap out
-images.
+이미지를 쉽게 교체하기 위해 `values.yaml` 파일 내에 이미지를 정의할 수 있다.
 
 ```yaml
 image: {{ .Values.redisImage | quote }}
 ```
 
-An image and a tag _may_ be defined in `values.yaml` as two separate fields:
+`values.yaml` 내에서 이미지와 태그를 각각의 필드로 정의할 수도 있다.
 
 ```yaml
 image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
@@ -37,27 +34,26 @@ image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 
 ## ImagePullPolicy
 
-`helm create` sets the `imagePullPolicy` to `IfNotPresent` by default by doing
-the following in your `deployment.yaml`:
+`helm create`는 `imagePullPolicy` 기본값으로 `IfNotPresent`을 지정하는데
+이는 `deployment.yaml`에서도 그런 것과 같다.
 
 ```yaml
 imagePullPolicy: {{ .Values.image.pullPolicy }}
 ```
 
-And `values.yaml`:
+`values.yaml`에서는
 
 ```yaml
 pullPolicy: IfNotPresent
 ```
 
-Similarly, Kubernetes defaults the `imagePullPolicy` to `IfNotPresent` if it is
-not defined at all. If you want a value other than `IfNotPresent`, simply update
-the value in `values.yaml` to your desired value.
+비슷하게, 쿠버네티스에서도 따로 정의하지 않더라도 `imagePullPolicy`의 기본값은 `IfNotPresent`이 된다.
+`IfNotPresent` 외에 다른 값을 사용하려면, `values.yaml`에 있는 값을 원하는 값으로 바꾸면 된다.
 
 
 ## 파드템플릿에는 셀렉터가 선언되어야 한다
 
-All PodTemplate sections should specify a selector. For example:
+모든 파드템플릿 섹션에는 셀렉터를 지정해야 한다. 예를 들면,
 
 ```yaml
 selector:
@@ -69,9 +65,8 @@ template:
       app.kubernetes.io/name: MyName
 ```
 
-This is a good practice because it makes the relationship between the set and
-the pod.
+위의 것은 잘된 사례인데, 셋(set)과 파드 사이에 관계가 맺어졌기 때문이다.
 
-But this is even more important for sets like Deployment. Without this, the
-_entire_ set of labels is used to select matching pods, and this will break if
-you use labels that change, like version or release date.
+이것은 디플로이먼트와 같은 셋(set)의 경우에 더욱 중요하다.
+이것이 없다면, _모든_ 레이블들이 매칭되는 파드 선택에 사용되며,
+버전이나 릴리스 날짜와 같이 변경되는 레이블을 사용하는 경우 깨질 수 있다.
