@@ -7,7 +7,7 @@ aliases: ["/docs/topics/chart_best_practices/pods/"]
 
 이 부분은 모범사례 가이드의 일부로서 차트 매니페스트에 있는 파드와 파드템플릿 부분의 형식을 논한다.
 
-파드템플릿을 사용하는 리소스의 목록(전체는 아님)은 다음과 같다.
+파드템플릿을 사용하는 리소스들(일부)은 다음과 같다.
 
 - 디플로이먼트(Deployment)
 - 레플리케이션컨트롤러(ReplicationController)
