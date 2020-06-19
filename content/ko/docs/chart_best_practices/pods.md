@@ -34,8 +34,8 @@ image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 
 ## ImagePullPolicy
 
-`helm create`는 `imagePullPolicy` 기본값으로 `IfNotPresent`을 지정하는데
-이는 `deployment.yaml`에서도 그런 것과 같다.
+`deployment.yaml`에서 아래와 같이 지정하면 그에 따라
+`helm create`는 `imagePullPolicy` 기본값으로 `IfNotPresent`을 지정한다.
 
 ```yaml
 imagePullPolicy: {{ .Values.image.pullPolicy }}
