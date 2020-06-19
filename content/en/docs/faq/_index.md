@@ -424,9 +424,11 @@ you explicitly specify `--create-namespace` flag.
 
 ### Why aren't there native packages of Helm for Fedora and other Linux distros?
 
-We'd love to provide these or point you toward a trusted provider. If you're
-interested in helping, we'd love it. This is how the Homebrew formula was
-started.
+The Helm project does not maintain packages for operating systems and
+environments. The Helm community may provide native packages and if the Helm
+project is made aware of them they will be listed. This is how the Homebrew
+formula was started and listed. If you're interested in maintaining a package,
+we'd love it.
 
 ### Why do you provide a `curl ...|bash` script?
 
