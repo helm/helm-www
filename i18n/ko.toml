@@ -195,7 +195,7 @@ other = """
 ### 어디서 시작해야 할까요?
 
 헬름은 많은 사용자와 기여자가 있는 거대 프로젝트입니다. 참여할 거리는 많을 겁니다!
-도움을 주고 싶지만 어디서 시작해야 할지 모른다면, [적당한 첫번째 이슈](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) 목록이 있습니다.
+도움을 주고 싶지만 어디서 시작해야 할지 모르겠다면, [적당한 첫번째 이슈](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) 목록을 참고해보세요.
 
 ### 무엇을 할 수 있을까요?
 
