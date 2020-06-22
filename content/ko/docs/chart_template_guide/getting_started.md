@@ -50,8 +50,6 @@ $ helm create mychart
 Creating mychart
 ```
 
-From here on, we'll be working in the `mychart` directory.
-
 ### `mychart/templates/` 훑어보기
 
 If you take a look at the `mychart/templates/` directory, you'll notice a few
@@ -101,10 +99,10 @@ data:
 recommend using the suffix `.yaml` for YAML files and `.tpl` for helpers.
 
 The YAML file above is a bare-bones ConfigMap, having the minimal necessary
-fields. In virtue of the fact that this file is in the `templates/` directory,
+fields. In virtue of the fact that this file is in the `mychart/templates/` directory,
 it will be sent through the template engine.
 
-It is just fine to put a plain YAML file like this in the `templates/`
+It is just fine to put a plain YAML file like this in the `mychart/templates/`
 directory. When Helm reads this template, it will simply send it to Kubernetes
 as-is.
 
