@@ -50,6 +50,7 @@ Tools layered on top of Helm.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a helm-charts-as-code tool which
   enables installing/upgrading/protecting/moving/deleting releases from version controlled desired
   state files (described in a simple TOML format)
+- [Terraform Helm Provider](https://github.com/hashicorp/terraform-provider-helm) - The Helm provider for HashiCorp Terraform enables lifecycle management of Helm Charts with a declarative infrastuture-as-code syntax.  The Helm provider is often paired the other Terraform providers, like the Kubernetes provider, to create a common workflow across all infrastructure services.
 - [Monocular](https://github.com/helm/monocular) - Web UI for Helm Chart repositories
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - Manage prefixed releases
   throughout various Kubernetes namespaces, and removes completed jobs for complex deployments
