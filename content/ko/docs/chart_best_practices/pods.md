@@ -18,7 +18,8 @@ aliases: ["/docs/topics/chart_best_practices/pods/"]
 ## 이미지
 
 컨테이너 이미지는 고정된 태그나 이미지의 SHA를 사용해야 한다.
-`latest`, `head`, `canary` 등 "유동적인" 목적으로 고안된 태그를 사용해서는 안된다.
+`latest`, `head`, `canary` 등 "유동적인" 목적으로 고안된 태그를 
+사용해서는 안된다.
 
 이미지를 쉽게 교체하기 위해 `values.yaml` 파일 내에 이미지를 정의할 수 있다.
 
