@@ -23,14 +23,19 @@ Example tests:
 - Assert that your services are up and correctly load balancing
 - etc.
 
-You can run the pre-defined tests in Helm on a release using the command `helm test <RELEASE_NAME>`. For a chart consumer, this is a great way to sanity check that their release of a chart (or application) works as expected.
+You can run the pre-defined tests in Helm on a release using the command `helm test <RELEASE_NAME>`. For a chart consumer, this is a great way to check that their release of a chart (or application) works as expected.
 
 ## Example Test
 
-Here is an example of a helm test pod definition in an example mariadb chart:
+Here is an example of a helm test pod definition in the [bitnami wordpress chart](https://hub.helm.sh/charts/bitnami/wordpress). If you download a copy of the chart, you can look at the files locally:
+
+```console
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm pull bitnami/wordpress --untar
+```
 
 ```
-mariadb/
+wordpress/
   Chart.yaml
   README.md
   values.yaml
@@ -39,54 +44,80 @@ mariadb/
   templates/tests/test-mariadb-connection.yaml
 ```
 
-In `wordpress/templates/tests/test-mariadb-connection.yaml`:
+In `wordpress/templates/tests/test-mariadb-connection.yaml`, you'll see a test you can try:
 
 ```yaml
-apiVersion: batch/v1
-kind: Job
+{{- if .Values.mariadb.enabled }}
+apiVersion: v1
+kind: Pod
 metadata:
   name: "{{ .Release.Name }}-credentials-test"
   annotations:
-    "helm.sh/hook": test
+    "helm.sh/hook": test-success
 spec:
-  template:
-    spec:
-      containers:
-      - name: main
-        image: {{ .Values.image }}
-        env:
+  containers:
+    - name: {{ .Release.Name }}-credentials-test
+      image: {{ template "wordpress.image" . }}
+      imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+      {{- if .Values.securityContext.enabled }}
+      securityContext:
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+      {{- end }}
+      env:
         - name: MARIADB_HOST
           value: {{ template "mariadb.fullname" . }}
         - name: MARIADB_PORT
           value: "3306"
         - name: WORDPRESS_DATABASE_NAME
-          value: {{ default "" .Values.mariadb.mariadbDatabase | quote }}
+          value: {{ default "" .Values.mariadb.db.name | quote }}
         - name: WORDPRESS_DATABASE_USER
-          value: {{ default "" .Values.mariadb.mariadbUser | quote }}
+          value: {{ default "" .Values.mariadb.db.user | quote }}
         - name: WORDPRESS_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ template "mariadb.fullname" . }}
               key: mariadb-password
-        command: ["sh", "-c", "mysql --host=$MARIADB_HOST --port=$MARIADB_PORT --user=$WORDPRESS_DATABASE_USER --password=$WORDPRESS_DATABASE_PASSWORD"]
-      restartPolicy: Never
+      command:
+        - /bin/bash
+        - -ec
+        - |
+          mysql --host=$MARIADB_HOST --port=$MARIADB_PORT --user=$WORDPRESS_DATABASE_USER --password=$WORDPRESS_DATABASE_PASSWORD
+  restartPolicy: Never
+{{- end }}
 ```
 
 ## Steps to Run a Test Suite on a Release
 
-1. `$ helm install quirky-walrus mariadb --namespace default`
-2. `$ helm test quirky-walrus`
+First, install the chart on your cluster to create a release. You may have to
+wait for all pods to become active; if you test immediately after this install,
+it is likely to show a transitive failure, and you will want to re-test.
 
-```cli
+```console
+$ helm install quirky-walrus wordpress --namespace default
+$ helm test quirky-walrus
+Pod quirky-walrus-credentials-test pending
+Pod quirky-walrus-credentials-test pending
+Pod quirky-walrus-credentials-test pending
+Pod quirky-walrus-credentials-test succeeded
+Pod quirky-walrus-mariadb-test-dqas5 pending
+Pod quirky-walrus-mariadb-test-dqas5 pending
+Pod quirky-walrus-mariadb-test-dqas5 pending
+Pod quirky-walrus-mariadb-test-dqas5 pending
+Pod quirky-walrus-mariadb-test-dqas5 succeeded
 NAME: quirky-walrus
-LAST DEPLOYED: Mon Feb 13 13:50:43 2019
+LAST DEPLOYED: Mon Jun 22 17:24:31 2020
 NAMESPACE: default
 STATUS: deployed
-REVISION: 0
-TEST SUITE:     quirky-walrus-credentials-test
-Last Started:   Mon Feb 13 13:51:07 2019
-Last Completed: Mon Feb 13 13:51:18 2019
+REVISION: 1
+TEST SUITE:     quirky-walrus-mariadb-test-dqas5
+Last Started:   Mon Jun 22 17:27:19 2020
+Last Completed: Mon Jun 22 17:27:21 2020
 Phase:          Succeeded
+TEST SUITE:     quirky-walrus-credentials-test
+Last Started:   Mon Jun 22 17:27:17 2020
+Last Completed: Mon Jun 22 17:27:19 2020
+Phase:          Succeeded
+[...]
 ```
 
 ## Notes
