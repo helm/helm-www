@@ -150,6 +150,42 @@ weight = 5
 [languages.ko.params]
 language_alternatives = ["en"]
 
+# Japanese
+[languages.ja]
+title = "Helm"
+description = "Helm - Kubernetes パッケージマネージャー"
+contentDir = "content/ja"
+languageName = "日本語"
+weight = 1
+
+[[languages.ja.menus.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[languages.ja.menus.main]]
+name = "ドキュメント"
+url = "/docs"
+weight = 2
+
+[[languages.ja.menus.main]]
+name = "チャート"
+url = "https://hub.helm.sh/"
+weight = 3
+
+[[languages.ja.menus.main]]
+name = "ブログ"
+url = "/blog"
+weight = 4
+
+[[languages.ja.menus.main]]
+name = "コミュニティ"
+url = "https://github.com/helm/community"
+weight = 5
+
+[languages.ja.params]
+language_alternatives = ["en"]
+
 # Chinese
 # [languages.zh]
 # title = "Helm"
