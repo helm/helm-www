@@ -16,6 +16,9 @@ like a full web app stack with HTTP servers, databases, caches, and so on.
 Charts are created as files laid out in a particular directory tree. They
 can be packaged into versioned archives to be deployed.
 
+If you want to download and look at the files for a published chart, without installing
+it, you can do so with `helm pull chartrepo/chartname`.
+
 This document explains the chart format, and provides basic guidance for
 building charts with Helm.
 
