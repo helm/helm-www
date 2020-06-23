@@ -159,7 +159,7 @@ languageName = "日本語"
 weight = 1
 
 [[languages.ja.menus.main]]
-name = "Home"
+name = "ホーム"
 url = "/"
 weight = 1
 
