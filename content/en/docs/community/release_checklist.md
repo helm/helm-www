@@ -111,6 +111,13 @@ git log --oneline
 git cherry-pick -x <commit-id>
 ```
 
+After the commits have been cherry picked the release branch needs to be pushed
+which will cause the tests to run. Make sure they pass prior to creating the tag.
+
+```shell
+git push upstream $RELEASE_BRANCH_NAME
+```
+
 Finally, we create the tag for the patch on the branch and push upstream:
 
 ```shell
@@ -364,7 +371,7 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 A partially completed set of release notes including the changelog can be created by running the following command:
 
 ```shell
-PREVIOUS_RELEASE=vX.Y.Z
+export PREVIOUS_RELEASE=vX.Y.Z
 make release-notes
 ```
 
