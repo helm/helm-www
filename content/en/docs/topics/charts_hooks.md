@@ -59,8 +59,8 @@ lifecycle is altered like this:
 4. After some verification, the library renders the `foo` templates
 5. The library prepares to execute the `pre-install` hooks (loading hook
    resources into Kubernetes)
-6. The library sorts hooks by weight (assigning a weight of 0 by default) and by
-   name for those hooks with the same weight in ascending order.
+6. The library sorts hooks by weight (assigning a weight of 0 by default), 
+   by resource kind and finally by name in ascending order.
 7. The library then loads the hook with the lowest weight first (negative to
    positive)
 8. The library waits until the hook is "Ready" (except for CRDs)
@@ -81,7 +81,9 @@ the Job is run.
 For all other kinds, as soon as Kubernetes marks the resource as loaded (added
 or updated), the resource is considered "Ready". When many resources are
 declared in a hook, the resources are executed serially. If they have hook
-weights (see below), they are executed in weighted order. Otherwise, ordering is
+weights (see below), they are executed in weighted order. 
+Starting from Helm 3.2.0 hook resources with same weight are installed in the same 
+order as normal non-hook resources. Otherwise, ordering is
 not guaranteed. (In Helm 2.3.0 and after, they are sorted alphabetically. That
 behavior, though, is not considered binding and could change in the future.) It
 is considered good practice to add a hook weight, and set it to `0` if weight is
