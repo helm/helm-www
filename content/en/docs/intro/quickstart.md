@@ -9,8 +9,7 @@ This guide covers how you can quickly get started using Helm.
 
 ## Prerequisites
 
-The following prerequisites are required for a successful and properly secured
-use of Helm.
+The following prerequisites are required for a successful and properly secured use of Helm.
 
 1. A Kubernetes cluster
 2. Deciding what security configurations to apply to your installation, if any
@@ -18,26 +17,24 @@ use of Helm.
 
 ### Install Kubernetes or have access to a cluster
 
-- You must have Kubernetes installed. For the latest release of Helm, we
-  recommend the latest stable release of Kubernetes, which in most cases is the
-  second-latest minor release.
+- You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable
+  release of Kubernetes, which in most cases is the second-latest minor release.
 - You should also have a local configured copy of `kubectl`.
 
-NOTE: Kubernetes versions prior to 1.6 have limited or no support for role-based
-access controls (RBAC).
+NOTE: Kubernetes versions prior to 1.6 have limited or no support for role-based access controls
+(RBAC).
 
 ## Install Helm
 
-Download a binary release of the Helm client. You can use tools like `homebrew`,
-or look at [the official releases page](https://github.com/helm/helm/releases).
+Download a binary release of the Helm client. You can use tools like `homebrew`, or look at [the
+official releases page](https://github.com/helm/helm/releases).
 
-For more details, or for other options, see [the installation
-guide]({{< ref "install.md" >}}).
+For more details, or for other options, see [the installation guide]({{< ref "install.md" >}}).
 
 ## Initialize a Helm Chart Repository
 
-Once you have Helm ready, you can add a chart repository. One popular starting
-location is the official Helm stable charts:
+Once you have Helm ready, you can add a chart repository. One popular starting location is the
+official Helm stable charts:
 
 ```console
 $ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -57,9 +54,8 @@ stable/ambassador                       4.1.0           0.81.0                  
 
 ## Install an Example Chart
 
-To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use one of the official
-`stable` charts.
+To install a chart, you can run the `helm install` command. Helm has several ways to find and
+install a chart, but the easiest is to use one of the official `stable` charts.
 
 ```console
 $ helm repo update              # Make sure we get the latest list of charts
@@ -67,19 +63,17 @@ $ helm install stable/mysql --generate-name
 Released smiling-penguin
 ```
 
-In the example above, the `stable/mysql` chart was released, and the name of our
-new release is `smiling-penguin`.
+In the example above, the `stable/mysql` chart was released, and the name of our new release is
+`smiling-penguin`.
 
-You get a simple idea of the features of this MySQL chart by running 
-`helm show chart stable/mysql`. Or you could run `helm show all stable/mysql` 
-to get all information about the chart.
+You get a simple idea of the features of this MySQL chart by running `helm show chart stable/mysql`.
+Or you could run `helm show all stable/mysql` to get all information about the chart.
 
-Whenever you install a chart, a new release is created. So one chart can be
-installed multiple times into the same cluster. And each can be independently
-managed and upgraded.
+Whenever you install a chart, a new release is created. So one chart can be installed multiple times
+into the same cluster. And each can be independently managed and upgraded.
 
-The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide]({{< ref "using_helm.md" >}})
+The `helm install` command is a very powerful command with many capabilities. To learn more about
+it, check out the [Using Helm Guide]({{< ref "using_helm.md" >}})
 
 ## Learn About Releases
 
@@ -102,11 +96,11 @@ $ helm uninstall smiling-penguin
 Removed smiling-penguin
 ```
 
-This will uninstall `smiling-penguin` from Kubernetes, which will remove all
-resources associated with the release as well as the release history.
+This will uninstall `smiling-penguin` from Kubernetes, which will remove all resources associated
+with the release as well as the release history.
 
-If the flag `--keep-history` is provided, release history will be kept. You will 
-be able to request information about that release:
+If the flag `--keep-history` is provided, release history will be kept. You will be able to request
+information about that release:
 
 ```console
 $ helm status smiling-penguin
@@ -114,13 +108,13 @@ Status: UNINSTALLED
 ...
 ```
 
-Because Helm tracks your releases even after you've uninstalled them, you can
-audit a cluster's history, and even undelete a release (with `helm rollback`).
+Because Helm tracks your releases even after you've uninstalled them, you can audit a cluster's
+history, and even undelete a release (with `helm rollback`).
 
 ## Reading the Help Text
 
-To learn more about the available Helm commands, use `helm help` or type a
-command followed by the `-h` flag:
+To learn more about the available Helm commands, use `helm help` or type a command followed by the
+`-h` flag:
 
 ```console
 $ helm get -h

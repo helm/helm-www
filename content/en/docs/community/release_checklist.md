@@ -4,8 +4,8 @@ description: "Checklist for maintainers when releasing the next version of Helm.
 weight: 2
 ---
 
-**IMPORTANT**: If your experience deviates from this document, please document
-the changes to keep it up-to-date.
+**IMPORTANT**: If your experience deviates from this document, please document the changes to keep
+it up-to-date.
 
 ## A Maintainer's Guide to Releasing Helm
 
@@ -15,28 +15,24 @@ So you're in charge of a new release for helm? Cool. Here's what to do...
 
 Just kidding! :trollface:
 
-All releases will be of the form vX.Y.Z where X is the major version number, Y
-is the minor version number and Z is the patch release number. This project
-strictly follows [semantic versioning](https://semver.org/) so following this
-step is critical.
+All releases will be of the form vX.Y.Z where X is the major version number, Y is the minor version
+number and Z is the patch release number. This project strictly follows [semantic
+versioning](https://semver.org/) so following this step is critical.
 
-It is important to note that this document assumes that the git remote in your
-repository that corresponds to "https://github.com/helm/helm" is named
-"upstream". If yours is not (for example, if you've chosen to name it "origin"
-or something similar instead), be sure to adjust the listed snippets for your
-local environment accordingly. If you are not sure what your upstream remote is
+It is important to note that this document assumes that the git remote in your repository that
+corresponds to "https://github.com/helm/helm" is named "upstream". If yours is not (for example, if
+you've chosen to name it "origin" or something similar instead), be sure to adjust the listed
+snippets for your local environment accordingly. If you are not sure what your upstream remote is
 named, use a command like `git remote -v` to find out.
 
-If you don't have an upstream remote, you can add one easily using something
-like:
+If you don't have an upstream remote, you can add one easily using something like:
 
 ```shell
 git remote add upstream git@github.com:helm/helm.git
 ```
 
-In this doc, we are going to reference a few environment variables as well,
-which you may want to set for convenience. For major/minor releases, use the
-following:
+In this doc, we are going to reference a few environment variables as well, which you may want to
+set for convenience. For major/minor releases, use the following:
 
 ```shell
 export RELEASE_NAME=vX.Y.0
@@ -53,34 +49,31 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
 ```
 
-We are also going to be adding security and verification of the release process
-by hashing the binaries and providing signature files. We perform this using
-[GitHub and
-GPG](https://help.github.com/en/articles/about-commit-signature-verification).
-If you do not have GPG already setup you can follow these steps:
+We are also going to be adding security and verification of the release process by hashing the
+binaries and providing signature files. We perform this using [GitHub and
+GPG](https://help.github.com/en/articles/about-commit-signature-verification). If you do not have
+GPG already setup you can follow these steps:
 
 1. [Install GPG](https://gnupg.org/index.html)
-2. [Generate GPG
-   key](https://help.github.com/en/articles/generating-a-new-gpg-key)
+2. [Generate GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key)
 3. [Add key to GitHub
    account](https://help.github.com/en/articles/adding-a-new-gpg-key-to-your-github-account)
-4. [Set signing key in
-   Git](https://help.github.com/en/articles/telling-git-about-your-signing-key)
+4. [Set signing key in Git](https://help.github.com/en/articles/telling-git-about-your-signing-key)
 
-Once you have a signing key you need to add it to the KEYS file at the root of
-the repository. The instructions for adding it to the KEYS file are in the file.
-If you have not done so already, you need to add your public key to the
-keyserver network. If you use GnuPG you can follow the [instructions provided by
+Once you have a signing key you need to add it to the KEYS file at the root of the repository. The
+instructions for adding it to the KEYS file are in the file. If you have not done so already, you
+need to add your public key to the keyserver network. If you use GnuPG you can follow the
+[instructions provided by
 Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to_a_keyserver).
 
 ## 1. Create the Release Branch
 
 ### Major/Minor Releases
 
-Major releases are for new feature additions and behavioral changes *that break
-backwards compatibility*. Minor releases are for new feature additions that do
-not break backwards compatibility. To create a major or minor release, start by
-creating a `release-vX.Y.0` branch from master.
+Major releases are for new feature additions and behavioral changes *that break backwards
+compatibility*. Minor releases are for new feature additions that do not break backwards
+compatibility. To create a major or minor release, start by creating a `release-vX.Y.0` branch from
+master.
 
 ```shell
 git fetch upstream
@@ -88,21 +81,19 @@ git checkout upstream/master
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
-This new branch is going to be the base for the release, which we are going to
-iterate upon later.
+This new branch is going to be the base for the release, which we are going to iterate upon later.
 
 ### Patch releases
 
-Patch releases are a few critical cherry-picked fixes to existing releases.
-Start by creating a `release-vX.Y.Z` branch:
+Patch releases are a few critical cherry-picked fixes to existing releases. Start by creating a
+`release-vX.Y.Z` branch:
 
 ```shell
 git fetch upstream
 git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
 ```
 
-From here, we can cherry-pick the commits we want to bring into the patch
-release:
+From here, we can cherry-pick the commits we want to bring into the patch release:
 
 ```shell
 # get the commits ids we want to cherry-pick
@@ -111,8 +102,8 @@ git log --oneline
 git cherry-pick -x <commit-id>
 ```
 
-After the commits have been cherry picked the release branch needs to be pushed
-which will cause the tests to run. Make sure they pass prior to creating the tag.
+After the commits have been cherry picked the release branch needs to be pushed which will cause the
+tests to run. Make sure they pass prior to creating the tag.
 
 ```shell
 git push upstream $RELEASE_BRANCH_NAME
@@ -127,13 +118,12 @@ git push upstream "$RELEASE_NAME"
 
 This new tag is going to be the base for the patch release.
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
-see that the release passed CI before proceeding.
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see that the release
+passed CI before proceeding.
 
 ## 2. Change the Version Number in Git
 
-When doing a minor release, make sure to update pkg/version/version.go with the
-new release version.
+When doing a minor release, make sure to update pkg/version/version.go with the new release version.
 
 ```shell
 $ git diff pkg/version/version.go
@@ -152,8 +142,8 @@ index 2109a0a..6f5a1a4 100644
         BuildMetadata = "unreleased"
 ```
 
-In addition to updating the version within the `version.go` file, you will also
-need to update corresponding tests that are using that version number.
+In addition to updating the version within the `version.go` file, you will also need to update
+corresponding tests that are using that version number.
 
 * `cmd/helm/testdata/output/version.txt`
 * `cmd/helm/testdata/output/version-client.txt`
@@ -167,9 +157,8 @@ git add .
 git commit -m "bump version to $RELEASE_CANDIDATE_NAME"
 ```
 
-This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
-pull this change into the master branch for when the next release is being
-created.
+This will update it for the $RELEASE_BRANCH_NAME only. You will also need to pull this change into
+the master branch for when the next release is being created.
 
 ```shell
 # get the last commit id i.e. commit to bump the version
@@ -188,35 +177,33 @@ git push origin bump-version-<release-version>
 
 ## 3. Major/Minor releases: Commit and Push the Release Branch
 
-In order for others to start testing, we can now push the release branch
-upstream and start the test process.
+In order for others to start testing, we can now push the release branch upstream and start the test
+process.
 
 ```shell
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
-see that the release passed CI before proceeding.
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see that the release
+passed CI before proceeding.
 
-If anyone is available, let others peer-review the branch before continuing to
-ensure that all the proper changes have been made and all of the commits for the
-release are there.
+If anyone is available, let others peer-review the branch before continuing to ensure that all the
+proper changes have been made and all of the commits for the release are there.
 
 ## 4. Major/Minor releases: Create a Release Candidate
 
-Now that the release branch is out and ready, it is time to start creating and
-iterating on release candidates.
+Now that the release branch is out and ready, it is time to start creating and iterating on release
+candidates.
 
 ```shell
 git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI will automatically create a tagged release image and client binary to
-test with.
+CircleCI will automatically create a tagged release image and client binary to test with.
 
-For testers, the process to start testing after CircleCI finishes building the
-artifacts involves the following steps to grab the client:
+For testers, the process to start testing after CircleCI finishes building the artifacts involves
+the following steps to grab the client:
 
 linux/amd64, using /bin/bash:
 
@@ -236,35 +223,32 @@ windows/amd64, using PowerShell:
 PS C:\> Invoke-WebRequest -Uri "https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-windows-amd64.tar.gz" -OutFile "helm-$ReleaseCandidateName-windows-amd64.tar.gz"
 ```
 
-Then, unpack and move the binary to somewhere on your $PATH, or move it
-somewhere and add it to your $PATH (e.g. /usr/local/bin/helm for linux/macOS,
-C:\Program Files\helm\helm.exe for Windows).
+Then, unpack and move the binary to somewhere on your $PATH, or move it somewhere and add it to your
+$PATH (e.g. /usr/local/bin/helm for linux/macOS, C:\Program Files\helm\helm.exe for Windows).
 
 ## 5. Major/Minor releases: Iterate on Successive Release Candidates
 
-Spend several days explicitly investing time and resources to try and break helm
-in every possible way, documenting any findings pertinent to the release. This
-time should be spent testing and finding ways in which the release might have
-caused various features or upgrade environments to have issues, not coding.
-During this time, the release is in code freeze, and any additional code changes
+Spend several days explicitly investing time and resources to try and break helm in every possible
+way, documenting any findings pertinent to the release. This time should be spent testing and
+finding ways in which the release might have caused various features or upgrade environments to have
+issues, not coding. During this time, the release is in code freeze, and any additional code changes
 will be pushed out to the next release.
 
-During this phase, the $RELEASE_BRANCH_NAME branch will keep evolving as you
-will produce new release candidates. The frequency of new candidates is up to
-the release manager: use your best judgement taking into account the severity of
-reported issues, testers' availability, and the release deadline date. Generally
-speaking, it is better to let a release roll over the deadline than to ship a
-broken release.
+During this phase, the $RELEASE_BRANCH_NAME branch will keep evolving as you will produce new
+release candidates. The frequency of new candidates is up to the release manager: use your best
+judgement taking into account the severity of reported issues, testers' availability, and the
+release deadline date. Generally speaking, it is better to let a release roll over the deadline than
+to ship a broken release.
 
-Each time you'll want to produce a new release candidate, you will start by
-adding commits to the branch by cherry-picking from master:
+Each time you'll want to produce a new release candidate, you will start by adding commits to the
+branch by cherry-picking from master:
 
 ```shell
 git cherry-pick -x <commit_id>
 ```
 
-You will also want to update the release version number and the CHANGELOG as we
-did in steps 2 and 3 as separate commits.
+You will also want to update the release version number and the CHANGELOG as we did in steps 2 and 3
+as separate commits.
 
 After that, tag it and notify users of the new release candidate:
 
@@ -274,14 +258,14 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-From here on just repeat this process, continuously testing until you're happy
-with the release candidate.
+From here on just repeat this process, continuously testing until you're happy with the release
+candidate.
 
 ## 6. Major/Minor releases: Finalize the Release
 
-When you're finally happy with the quality of a release candidate, you can move
-on and create the real thing. Double-check one last time to make sure everything
-is in order, then finally push the release tag.
+When you're finally happy with the quality of a release candidate, you can move on and create the
+real thing. Double-check one last time to make sure everything is in order, then finally push the
+release tag.
 
 ```shell
 git checkout $RELEASE_BRANCH_NAME
@@ -289,14 +273,13 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-Verify that the release succeeded in CI. If not, you will need to fix the
-release and push the release again.
+Verify that the release succeeded in CI. If not, you will need to fix the release and push the
+release again.
 
 ## 7. PGP Sign the downloads
 
-While hashes provide a signature that the content of the downloads is what it
-was generated, signed packages provide traceability of where the package came
-from.
+While hashes provide a signature that the content of the downloads is what it was generated, signed
+packages provide traceability of where the package came from.
 
 To do this, run the following `make` commands:
 
@@ -307,20 +290,18 @@ make fetch-dist
 make sign
 ```
 
-This will generate ascii armored signature files for each of the files pushed by
-CI.
+This will generate ascii armored signature files for each of the files pushed by CI.
 
 All of the signature files (`*.asc`) need to be uploaded to the release on GitHub.
 
 ## 8. Write the Release Notes
 
-We will auto-generate a changelog based on the commits that occurred during a
-release cycle, but it is usually more beneficial to the end-user if the release
-notes are hand-written by a human being/marketing team/dog.
+We will auto-generate a changelog based on the commits that occurred during a release cycle, but it
+is usually more beneficial to the end-user if the release notes are hand-written by a human
+being/marketing team/dog.
 
-If you're releasing a major/minor release, listing notable user-facing features
-is usually sufficient. For patch releases, do the same, but make note of the
-symptoms and who is affected.
+If you're releasing a major/minor release, listing notable user-facing features is usually
+sufficient. For patch releases, do the same, but make note of the symptoms and who is affected.
 
 An example release note for a minor release would look like this:
 
@@ -368,40 +349,43 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 - fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
 ```
 
-A partially completed set of release notes including the changelog can be created by running the following command:
+A partially completed set of release notes including the changelog can be created by running the
+following command:
 
 ```shell
 export PREVIOUS_RELEASE=vX.Y.Z
 make release-notes
 ```
 
-This will create a good baseline set of release notes to which you should just need to fill out the **Notable Changes** and **What's next** sections.
+This will create a good baseline set of release notes to which you should just need to fill out the
+**Notable Changes** and **What's next** sections.
 
-Feel free to add your voice to the release notes; it's nice for people to think we're not all robots.
+Feel free to add your voice to the release notes; it's nice for people to think we're not all
+robots.
 
 You should also double check the URLs and checksums are correct in the auto-generated release notes.
 
-Once finished, go into GitHub and edit the release notes for the tagged release
-with the notes written here.
+Once finished, go into GitHub and edit the release notes for the tagged release with the notes
+written here.
 
-It is now worth getting other people to take a look at the release notes before
-the release is published. Send a request out to
-[#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for review. It is
-always beneficial as it can be easy to miss something.
+It is now worth getting other people to take a look at the release notes before the release is
+published. Send a request out to [#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for
+review. It is always beneficial as it can be easy to miss something.
 
 When you are ready to go, hit `publish`.
 
 ## 9. Update Docs Site
 
-The [Helm website docs section](https://helm.sh/docs) lists the Helm versions for the docs. The minor and patch information needs to be updated on the site. To do that create a pull request against the [helm-www repository](https://github.com/helm/helm-www). In the `config.toml` file find the proper `params.versions` section and updated the Helm version.
+The [Helm website docs section](https://helm.sh/docs) lists the Helm versions for the docs. The
+minor and patch information needs to be updated on the site. To do that create a pull request
+against the [helm-www repository](https://github.com/helm/helm-www). In the `config.toml` file find
+the proper `params.versions` section and updated the Helm version.
 
 ## 10. Evangelize
 
-Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
-it.
+Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned it.
 
-After enjoying a nice $DRINK_OF_CHOICE, go forth and announce the glad tidings
-of the new release in Slack and on Twitter.
+After enjoying a nice $DRINK_OF_CHOICE, go forth and announce the glad tidings of the new release in
+Slack and on Twitter.
 
-Optionally, write a blog post about the new release and showcase some of the new
-features on there!
+Optionally, write a blog post about the new release and showcase some of the new features on there!

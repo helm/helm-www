@@ -5,16 +5,14 @@ aliases: ["/docs/registries/"]
 weight: 7
 ---
 
-Helm 3 supports <a href="https://www.opencontainers.org/"
-target="_blank">OCI</a> for package distribution. Chart packages are able to be
-stored and shared across OCI-based registries.
+Helm 3 supports <a href="https://www.opencontainers.org/" target="_blank">OCI</a> for package
+distribution. Chart packages are able to be stored and shared across OCI-based registries.
 
 ## Enabling OCI Support
 
 Currently OCI support is considered *experimental*.
 
-In order to use the commands described below, please set `HELM_EXPERIMENTAL_OCI`
-in the environment:
+In order to use the commands described below, please set `HELM_EXPERIMENTAL_OCI` in the environment:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
@@ -22,36 +20,36 @@ export HELM_EXPERIMENTAL_OCI=1
 
 ## Running a registry
 
-Starting a registry for test purposes is trivial. As long as you have Docker
-installed, run the following command:
+Starting a registry for test purposes is trivial. As long as you have Docker installed, run the
+following command:
+
 ```console
-docker run -dp 5000:5000 --restart=always --name registry registry
+$ docker run -dp 5000:5000 --restart=always --name registry registry
 ```
 
 This will start a registry server at `localhost:5000`.
 
-Use `docker logs -f registry` to see the logs and `docker rm -f registry` to
-stop.
+Use `docker logs -f registry` to see the logs and `docker rm -f registry` to stop.
 
-If you wish to persist storage, you can add `-v
-$(pwd)/registry:/var/lib/registry` to the command above.
+If you wish to persist storage, you can add `-v $(pwd)/registry:/var/lib/registry` to the command
+above.
 
-For more configuration options, please see [the
-docs](https://docs.docker.com/registry/deploying/).
+For more configuration options, please see [the docs](https://docs.docker.com/registry/deploying/).
 
 ### Auth
 
 If you wish to enable auth on the registry, you can do the following-
 
 First, create file `auth.htpasswd` with username and password combo:
+
 ```console
-htpasswd -cB -b auth.htpasswd myuser mypass
+$ htpasswd -cB -b auth.htpasswd myuser mypass
 ```
 
-Then, start the server, mounting that file and setting the `REGISTRY_AUTH` env
-var:
+Then, start the server, mounting that file and setting the `REGISTRY_AUTH` env var:
+
 ```console
-docker run -dp 5000:5000 --restart=always --name registry \
+$ docker run -dp 5000:5000 --restart=always --name registry \
   -v $(pwd)/auth.htpasswd:/etc/docker/registry/auth.htpasswd \
   -e REGISTRY_AUTH="{htpasswd: {realm: localhost, path: /etc/docker/registry/auth.htpasswd}}" \
   registry
@@ -59,8 +57,8 @@ docker run -dp 5000:5000 --restart=always --name registry \
 
 ## Commands for working with registries
 
-Commands are available under both `helm registry` and `helm chart` that allow
-you to work with registries and local cache.
+Commands are available under both `helm registry` and `helm chart` that allow you to work with
+registries and local cache.
 
 ### The `registry` subcommand
 
@@ -167,13 +165,14 @@ version: 0.1.0
 Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 ```
 
-## Where are my charts?
+## Filesystem layout
 
 Charts stored using the commands above will be cached on the filesystem.
 
 The [OCI Image Layout
-Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
-is adhered to strictly for filesystem layout, for example:
+Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md) is adhered
+to strictly for filesystem layout, for example:
+
 ```console
 $ tree ~/Library/Caches/helm/
 /Users/myuser/Library/Caches/helm/
@@ -191,6 +190,7 @@ $ tree ~/Library/Caches/helm/
 ```
 
 Example index.json, which contains refs to all Helm chart manifests:
+
 ```console
 $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
 {
@@ -209,6 +209,7 @@ $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
 ```
 
 Example Helm chart manifest (note the `mediaType` fields):
+
 ```console
 $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
 {
@@ -230,14 +231,13 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 
 ## Migrating from chart repos
 
-Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}})
-(index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm
-chart save`, `helm chart push`.
+Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}}) (index.yaml-based
+repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm chart save`, `helm chart push`.
 
 ## Helm commands with OCI support
 
-The `dependencies` array of `Chart.yaml` supports OCI registry URLs. This means
-that the `helm dep` commands support declared OCI dependencies **if experimental
-support is enabled**.
+The `dependencies` array of `Chart.yaml` supports OCI registry URLs. This means that the `helm dep`
+commands support declared OCI dependencies **if experimental support is enabled**.
 
-For more details see [the documentation on dependencies](/docs/topics/chart_best_practices/dependencies/).
+For more details see [the documentation on
+dependencies](/docs/topics/chart_best_practices/dependencies/).

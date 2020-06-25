@@ -29,7 +29,8 @@ request](https://github.com/helm/helm-www/pulls).
   [private] chart repository
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - Helm Plugin that generates
   values yaml schema for your Helm 3 charts
-- [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage and store secrets safely (based on [sops](https://github.com/mozilla/sops)) 
+- [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage and store secrets
+  safely (based on [sops](https://github.com/mozilla/sops))
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) tag on their plugin
@@ -50,7 +51,10 @@ Tools layered on top of Helm.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a helm-charts-as-code tool which
   enables installing/upgrading/protecting/moving/deleting releases from version controlled desired
   state files (described in a simple TOML format)
-- [Terraform Helm Provider](https://github.com/hashicorp/terraform-provider-helm) - The Helm provider for HashiCorp Terraform enables lifecycle management of Helm Charts with a declarative infrastructure-as-code syntax.  The Helm provider is often paired the other Terraform providers, like the Kubernetes provider, to create a common workflow across all infrastructure services.
+- [Terraform Helm Provider](https://github.com/hashicorp/terraform-provider-helm) - The Helm
+  provider for HashiCorp Terraform enables lifecycle management of Helm Charts with a declarative
+  infrastructure-as-code syntax.  The Helm provider is often paired the other Terraform providers,
+  like the Kubernetes provider, to create a common workflow across all infrastructure services.
 - [Monocular](https://github.com/helm/monocular) - Web UI for Helm Chart repositories
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - Manage prefixed releases
   throughout various Kubernetes namespaces, and removes completed jobs for complex deployments

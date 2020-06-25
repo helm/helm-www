@@ -5,18 +5,17 @@ aliases: ["/docs/charts_hooks/"]
 weight: 2
 ---
 
-Helm provides a _hook_ mechanism to allow chart developers to intervene at
-certain points in a release's life cycle. For example, you can use hooks to:
+Helm provides a _hook_ mechanism to allow chart developers to intervene at certain points in a
+release's life cycle. For example, you can use hooks to:
 
 - Load a ConfigMap or Secret during install before any other charts are loaded.
-- Execute a Job to back up a database before installing a new chart, and then
-  execute a second job after the upgrade in order to restore data.
-- Run a Job before deleting a release to gracefully take a service out of
-  rotation before removing it.
+- Execute a Job to back up a database before installing a new chart, and then execute a second job
+  after the upgrade in order to restore data.
+- Run a Job before deleting a release to gracefully take a service out of rotation before removing
+  it.
 
-Hooks work like regular templates, but they have special annotations that cause
-Helm to utilize them differently. In this section, we cover the basic usage
-pattern for hooks.
+Hooks work like regular templates, but they have special annotations that cause Helm to utilize them
+differently. In this section, we cover the basic usage pattern for hooks.
 
 ## The Available Hooks
 
@@ -38,9 +37,9 @@ _Note that the `crd-install` hook has been removed in favor of the `crds/` direc
 
 ## Hooks and the Release Lifecycle
 
-Hooks allow you, the chart developer, an opportunity to perform operations at
-strategic points in a release lifecycle. For example, consider the lifecycle for
-a `helm install`. By default, the lifecycle looks like this:
+Hooks allow you, the chart developer, an opportunity to perform operations at strategic points in a
+release lifecycle. For example, consider the lifecycle for a `helm install`. By default, the
+lifecycle looks like this:
 
 1. User runs `helm install foo`
 2. The Helm library install API is called
@@ -49,68 +48,60 @@ a `helm install`. By default, the lifecycle looks like this:
 5. The library returns the release object (and other data) to the client
 6. The client exits
 
-Helm defines two hooks for the `install` lifecycle: `pre-install` and
-`post-install`. If the developer of the `foo` chart implements both hooks, the
-lifecycle is altered like this:
+Helm defines two hooks for the `install` lifecycle: `pre-install` and `post-install`. If the
+developer of the `foo` chart implements both hooks, the lifecycle is altered like this:
 
 1. User runs `helm install foo`
 2. The Helm library install API is called
 3. CRDs in the `crds/` directory are installed
 4. After some verification, the library renders the `foo` templates
-5. The library prepares to execute the `pre-install` hooks (loading hook
-   resources into Kubernetes)
-6. The library sorts hooks by weight (assigning a weight of 0 by default) and by
-   name for those hooks with the same weight in ascending order.
-7. The library then loads the hook with the lowest weight first (negative to
-   positive)
+5. The library prepares to execute the `pre-install` hooks (loading hook resources into Kubernetes)
+6. The library sorts hooks by weight (assigning a weight of 0 by default) and by name for those
+   hooks with the same weight in ascending order.
+7. The library then loads the hook with the lowest weight first (negative to positive)
 8. The library waits until the hook is "Ready" (except for CRDs)
-9. The library loads the resulting resources into Kubernetes. Note that if the
-   `--wait` flag is set, the library will wait until all resources are in a
-   ready state and will not run the `post-install` hook until they are ready.
+9. The library loads the resulting resources into Kubernetes. Note that if the `--wait` flag is set,
+   the library will wait until all resources are in a ready state and will not run the
+   `post-install` hook until they are ready.
 10. The library executes the `post-install` hook (loading hook resources)
 11. The library waits until the hook is "Ready"
 12. The library returns the release object (and other data) to the client
 13. The client exits
 
-What does it mean to wait until a hook is ready? This depends on the resource
-declared in the hook. If the resource is a `Job` or `Pod` kind, Helm will wait
-until it successfully runs to completion. And if the hook fails, the release
-will fail. This is a _blocking operation_, so the Helm client will pause while
-the Job is run.
+What does it mean to wait until a hook is ready? This depends on the resource declared in the hook.
+If the resource is a `Job` or `Pod` kind, Helm will wait until it successfully runs to completion.
+And if the hook fails, the release will fail. This is a _blocking operation_, so the Helm client
+will pause while the Job is run.
 
-For all other kinds, as soon as Kubernetes marks the resource as loaded (added
-or updated), the resource is considered "Ready". When many resources are
-declared in a hook, the resources are executed serially. If they have hook
-weights (see below), they are executed in weighted order. Otherwise, ordering is
-not guaranteed. (In Helm 2.3.0 and after, they are sorted alphabetically. That
-behavior, though, is not considered binding and could change in the future.) It
-is considered good practice to add a hook weight, and set it to `0` if weight is
-not important.
+For all other kinds, as soon as Kubernetes marks the resource as loaded (added or updated), the
+resource is considered "Ready". When many resources are declared in a hook, the resources are
+executed serially. If they have hook weights (see below), they are executed in weighted order.
+Otherwise, ordering is not guaranteed. (In Helm 2.3.0 and after, they are sorted alphabetically.
+That behavior, though, is not considered binding and could change in the future.) It is considered
+good practice to add a hook weight, and set it to `0` if weight is not important.
 
 ### Hook resources are not managed with corresponding releases
 
-The resources that a hook creates are currently not tracked or managed as part
-of the release. Once Helm verifies that the hook has reached its ready state,
-it will leave the hook resource alone. Garbage collection of hook resources when
-the corresponding release is deleted may be added to Helm 3 in the future, so any
-hook resources that must never be deleted should be annotated with
+The resources that a hook creates are currently not tracked or managed as part of the release. Once
+Helm verifies that the hook has reached its ready state, it will leave the hook resource alone.
+Garbage collection of hook resources when the corresponding release is deleted may be added to Helm
+3 in the future, so any hook resources that must never be deleted should be annotated with
 `helm.sh/resource-policy: keep`.
 
-Practically speaking, this means that if you create resources in a hook, you
-cannot rely upon `helm uninstall` to remove the resources. To destroy such
-resources, you need to either [add a custom `helm.sh/hook-delete-policy` annotation](#hook-deletion-policies)
-to the hook template file, or [set the time to live (TTL) field of a
-Job resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
+Practically speaking, this means that if you create resources in a hook, you cannot rely upon `helm
+uninstall` to remove the resources. To destroy such resources, you need to either [add a custom
+`helm.sh/hook-delete-policy` annotation](#hook-deletion-policies) to the hook template file, or [set
+the time to live (TTL) field of a Job
+resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
 ## Writing a Hook
 
-Hooks are just Kubernetes manifest files with special annotations in the
-`metadata` section. Because they are template files, you can use all of the
-normal template features, including reading `.Values`, `.Release`, and
-`.Template`.
+Hooks are just Kubernetes manifest files with special annotations in the `metadata` section. Because
+they are template files, you can use all of the normal template features, including reading
+`.Values`, `.Release`, and `.Template`.
 
-For example, this template, stored in `templates/post-install-job.yaml`,
-declares a job to be run on `post-install`:
+For example, this template, stored in `templates/post-install-job.yaml`, declares a job to be run on
+`post-install`:
 
 ```yaml
 apiVersion: batch/v1
@@ -159,30 +150,28 @@ annotations:
   "helm.sh/hook": post-install,post-upgrade
 ```
 
-Similarly, there is no limit to the number of different resources that may
-implement a given hook. For example, one could declare both a secret and a
-config map as a pre-install hook.
+Similarly, there is no limit to the number of different resources that may implement a given hook.
+For example, one could declare both a secret and a config map as a pre-install hook.
 
-When subcharts declare hooks, those are also evaluated. There is no way for a
-top-level chart to disable the hooks declared by subcharts.
+When subcharts declare hooks, those are also evaluated. There is no way for a top-level chart to
+disable the hooks declared by subcharts.
 
-It is possible to define a weight for a hook which will help build a
-deterministic executing order. Weights are defined using the following
-annotation:
+It is possible to define a weight for a hook which will help build a deterministic executing order.
+Weights are defined using the following annotation:
 
 ```yaml
 annotations:
   "helm.sh/hook-weight": "5"
 ```
 
-Hook weights can be positive or negative numbers but must be represented as
-strings. When Helm starts the execution cycle of hooks of a particular Kind it
-will sort those hooks in ascending order.
+Hook weights can be positive or negative numbers but must be represented as strings. When Helm
+starts the execution cycle of hooks of a particular Kind it will sort those hooks in ascending
+order.
 
 ### Hook deletion policies
 
-It is possible to define policies that determine when to delete corresponding hook
-resources. Hook deletion policies are defined using the following annotation:
+It is possible to define policies that determine when to delete corresponding hook resources. Hook
+deletion policies are defined using the following annotation:
 
 ```yaml
 annotations:
@@ -197,4 +186,5 @@ You can choose one or more defined annotation values:
 | `hook-succeeded`       | Delete the resource after the hook is successfully executed          |
 | `hook-failed`          | Delete the resource if the hook failed during execution              |
 
-If no hook deletion policy annotation is specified, the `before-hook-creation` behavior applies by default.
+If no hook deletion policy annotation is specified, the `before-hook-creation` behavior applies by
+default.
