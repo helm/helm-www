@@ -155,7 +155,7 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm - Kubernetes パッケージマネージャー"
 contentDir = "content/ja"
-languageName = "日本語"
+languageName = "日本語 Japanese"
 weight = 1
 
 [[languages.ja.menus.main]]
