@@ -1,16 +1,16 @@
 ---
-title: "Using Helm"
-description: "Explains the basics of Helm."
+title: "Helm の使い方"
+description: "Helm の基本について説明します。"
 weight: 3
 ---
 
-This guide explains the basics of using Helm to manage packages on your
-Kubernetes cluster. It assumes that you have already [installed]({{< ref "install.md" >}}) the
-Helm client.
+このガイドでは、Helm を使用して Kubernetes クラスタ上のパッケージを管理する基本について説明します。
+Helm クライアントが既に [インストール済み]({{< ref "install.md" >}}) であると
+想定しています。
 
-If you are simply interested in running a few quick commands, you may wish to
-begin with the [Quickstart Guide]({{< ref "quickstart.md" >}}). This chapter covers the
-particulars of Helm commands, and explains how to use Helm.
+いくつかのクイックコマンドを実行したいだけの場合は、
+[クイックスタートガイド]({{< ref "quickstart.md" >}}) から始めてください。
+この章では、Helm コマンドの詳細について説明し、Helm の使用方法を説明します。
 
 ## Three Big Concepts
 
