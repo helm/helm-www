@@ -1,17 +1,17 @@
 ---
-title: "Advanced Helm Techniques"
-description: "Explains various advanced features for Helm power users"
+title: "高度な Helm のテクニック"
+description: "Helm パワーユーザー向けのさまざまな高度な機能について説明します"
 aliases: ["/docs/advanced_helm_techniques"]
 weight: 9
 ---
 
-This section explains various advanced features and techniques for using Helm.
-The information in this section is intended for "power users" of Helm that wish
-to do advanced customization and manipulation of their charts and releases. Each
-of these advanced features comes with their own tradeoffs and caveats, so each
-one must be used carefully and with deep knowledge of Helm. Or in other words,
-remember the [Peter Parker
-principle](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
+このセクションでは、Helm を使用するためのさまざまな高度な機能とテクニックについて説明します。
+このセクションの情報は、チャートとリリースの高度なカスタマイズと操作を行いたい
+Helm の「パワーユーザー」を対象としています。
+これらの高度な機能にはそれぞれ独自のトレードオフと警告があり、
+Helm の深い知識を駆使して慎重に使用する必要があります。
+言い換えれば、[ピーター・パーカーの原則](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
+を覚えておいてください
 
 ## Post Rendering
 Post rendering gives chart installers the ability to manually manipulate,

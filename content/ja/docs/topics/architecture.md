@@ -11,14 +11,14 @@ weight: 8
 
 ## Helm の目的
 
-Helm is a tool for managing Kubernetes packages called _charts_. Helm can do the
-following:
+Helm は、_チャート_ と呼ばれる Kubernetes パッケージを管理するためのツールです。
+Helm は次のことができます。
 
-- Create new charts from scratch
-- Package charts into chart archive (tgz) files
-- Interact with chart repositories where charts are stored
-- Install and uninstall charts into an existing Kubernetes cluster
-- Manage the release cycle of charts that have been installed with Helm
+- 最初から新しいチャートを作成する
+- チャートをチャートアーカイブ (tgz) ファイルにパッケージ化する
+- チャートが保存されているチャートリポジトリを操作する
+- チャートを既存の Kubernetes クラスターにインストールおよびアンインストールする
+- Helm でインストールされたチャートのリリースサイクルを管理する
 
 For Helm, there are three important concepts:
 

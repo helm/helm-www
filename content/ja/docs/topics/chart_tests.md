@@ -1,19 +1,19 @@
 ---
-title: "Chart Tests"
-description: "Describes how to run and test your charts."
+title: "チャートのテスト"
+description: "チャートを実行およびテストする方法について説明します。"
 aliases: ["/docs/chart_tests/"]
 weight: 3
 ---
 
-A chart contains a number of Kubernetes resources and components that work
-together. As a chart author, you may want to write some tests that validate that
-your chart works as expected when it is installed. These tests also help the
-chart consumer understand what your chart is supposed to do.
+チャートには、連携して動作するいくつかの Kubernetes リソースとコンポーネントが含まれています。
+チャートの作成者は、チャートがインストールされたときにチャートが期待どおりに機能することを検証するテストを作成することができます。
+これらのテストは、
+チャートの利用者がチャートで何をするかを理解するのにも役立ちます。
 
-A **test** in a helm chart lives under the `templates/` directory and is a job
-definition that specifies a container with a given command to run. The container
-should exit successfully (exit 0) for a test to be considered a success. The job
-definition must contain the helm test hook annotation: `helm.sh/hook: test`.
+Helm チャートの **テスト** は、`templates/` ディレクトリの下にあり、
+実行する特定のコマンドを含むコンテナーを指定するジョブ定義です。
+テストが成功したと見なされるには、コンテナが正常に終了 (exit 0) する必要があります。
+ジョブ定義には、helm テストフックアノテーション `helm.sh/hook: test` が含まれている必要があります。
 
 Example tests:
 
