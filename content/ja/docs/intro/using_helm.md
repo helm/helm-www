@@ -483,7 +483,7 @@ Repositories can be removed with `helm repo remove`.
 
 ## Creating Your Own Charts
 
-The [Chart Development Guide]({{< ref "/docs/topics/charts.md" >}}) explains how to develop your own
+The [Chart Development Guide](https://helm.sh/docs/topics/charts/) explains how to develop your own
 charts. But you can get started quickly by using the `helm create` command:
 
 ```console
