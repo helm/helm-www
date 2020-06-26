@@ -21,25 +21,25 @@ Helm のすべての [リリース](https://github.com/helm/helm/releases) は�
 これらのバイナリバージョンは、手動でダウンロードして
 インストールできます。
 
-1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. Find the `helm` binary in the unpacked directory, and move it to its desired
-   destination (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. [任意のバージョン](https://github.com/helm/helm/releases)をダウンロードします
+2. ダウンロードしたパッケージを展開します (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
+3. 展開したディレクトリで `helm` バイナリを見つけ、
+   目的の場所に移動します (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-From there, you should be able to run the client and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
+そこから、クライアントを実行し、[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)できるはずです: `helm help` を参考
 
-**Note:** Helm automated tests are performed for Linux AMD64 only during CircleCi
-builds and releases. Testing of other OSes are the responsibility of the community
-requesting Helm for the OS in question. 
+**注**: Helm 自動テストは、CircleCi のビルドとリリース中にのみLinux AMD64 に対して実行されます。
+他の OS のテストは、
+対象の OS の Helm を要求するコミュニティの責任の元で行われています。
 
-### From Script
+### スクリプトから
 
-Helm now has an installer script that will automatically grab the latest version
-of Helm and [install it
-locally](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+Helm に、最新バージョンの Helm を自動的に取得して
+[ローカルにインストールする](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)
+インストーラースクリプトが追加されました。
 
-You can fetch that script, and then execute it locally. It's well documented so
-that you can read through it and understand what it is doing before you run it.
+そのスクリプトをフェッチして、ローカルで実行できます。
+十分に文書化されているため、実行する前にそれを読んで何が行われているかを理解できます。
 
 ```console
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -47,41 +47,42 @@ $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
-Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
-you want to live on the edge.
+もちろん、
+最新版で実施したい場合は、
+`curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` を使用できます。
 
-## Through Package Managers
 
-The Helm community provides the ability to install Helm through operating system
-package managers. These are not supported by the Helm project and are not considered
-trusted 3rd parties.
+## パッケージマネージャーを使用したインストール
 
-### From Homebrew (macOS)
+Helm コミュニティは、オペレーティングシステムのパッケージマネージャーを介して Helm をインストールする機能を提供します。
+これらは Helm プロジェクトではサポートされておらず、
+信頼できるサードパーティとは見なされません。
 
-Members of the Helm community have contributed a Helm formula build to
-Homebrew. This formula is generally up to date.
+### Homebrew から (macOS)
+
+Helm コミュニティのメンバーは、Homebrew に Helm フォーミュラビルドを提供しています。
+この式は一般に最新です。
 
 ```console
 brew install helm
 ```
 
-(Note: There is also a formula for emacs-helm, which is a different project.)
+(注: 別のプロジェクトである emacs-helm の式もあります。)
 
-### From Chocolatey (Windows)
+### Chocolatey から (Windows)
 
-Members of the Helm community have contributed a [Helm
-package](https://chocolatey.org/packages/kubernetes-helm) build to
-[Chocolatey](https://chocolatey.org/). This package is generally up to date.
+Helm コミュニティのメンバーが [Chocolatey](https://chocolatey.org/) に
+[Helm パッケージ](https://chocolatey.org/packages/kubernetes-helm) のビルドを提供しました。
+このパッケージは一般に最新です。
 
 ```console
 choco install kubernetes-helm
 ```
 
-### From Apt (Debian/Ubuntu)
+### Apt から (Debian/Ubuntu)
 
-Members of the Helm community have contributed a [Helm
-package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is generally up to date.
+Helm コミュニティのメンバーは、Apt の [Helm パッケージ](https://helm.baltorepo.com/stable/debian/) を提供しています。
+このパッケージは一般に最新です。
 
 ```console
 curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
@@ -91,39 +92,39 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### From Snap
+### Snap から
 
-The [Snapcrafters](https://github.com/snapcrafters) community maintains the
-Snap version of the [Helm package](https://snapcraft.io/helm):
+[Snapcrafters](https://github.com/snapcrafters) コミュニティは、
+[Helm パッケージ](https://snapcraft.io/helm)の Snap バージョンを維持しています。
 
 ```console
 sudo snap install helm --classic
 ```
 
-### Development Builds
+### Development ビルド
 
-In addition to releases you can download or install development snapshots of Helm.
+リリースに加えて、Helm の開発スナップショットをダウンロードまたはインストールできます。
 
-### From Canary Builds
+### Canary ビルドから
 
-"Canary" builds are versions of the Helm software that are built from the latest
-master branch. They are not official releases, and may not be stable. However,
-they offer the opportunity to test the cutting edge features.
+"Canary" ビルドは、最新のマスターブランチからビルドされた Helm ソフトウェアのバージョンです。
+これらは公式リリースではなく、安定しない可能性があります。
+ただし、これらは最先端の機能をテストする機会を提供します。
 
-Canary Helm binaries are stored at [get.helm.sh](https://get.helm.sh). Here are
-links to the common builds:
+Canary Helm バイナリは [get.helm.sh](https://get.helm.sh) に保存されます。
+一般的なビルドへのリンクは次のとおりです。
 
 - [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
 - [macOS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
 - [Experimental Windows
   AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### From Source (Linux, macOS)
+### Source から (Linux, macOS)
 
-Building Helm from source is slightly more work, but is the best way to go if
-you want to test the latest (pre-release) Helm version.
+ソースか Helm をビルドするのは少し手間がかかりますが、
+最新の (プレリリース) Helm バージョンをテストする場合に最適な方法です。
 
-You must have a working Go environment.
+Go 環境が動作している必要があります。
 
 ```console
 $ git clone https://github.com/helm/helm.git
@@ -131,14 +132,14 @@ $ cd helm
 $ make
 ```
 
-If required, it will fetch the dependencies and cache them, and
-validate configuration. It will then compile `helm` and place it in `bin/helm`.
+必要に応じて、依存関係をフェッチしてキャッシュし、構成を検証します。
+次に、`helm` をコンパイルして `bin/helm` に配置します。
 
-## Conclusion
+## まとめ
 
-In most cases, installation is as simple as getting a pre-built `helm` binary.
-This document covers additional cases for those who want to do more
-sophisticated things with Helm.
+ほとんどの場合、インストールは、事前に構築された `helm` バイナリを取得するのと同じくらい簡単です。
+このドキュメントでは、Helm でより高度なことを実行したい人のための
+追加のケースについて説明します。
 
-Once you have the Helm Client successfully installed, you can move on to using
-Helm to manage charts and [add the stable repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+Helm クライアントが正常にインストールされたら、Helm を使用してチャートを管理し、
+[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository) できます。
