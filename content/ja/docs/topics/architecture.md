@@ -20,45 +20,45 @@ Helm は次のことができます。
 - チャートを既存の Kubernetes クラスターにインストールおよびアンインストールする
 - Helm でインストールされたチャートのリリースサイクルを管理する
 
-For Helm, there are three important concepts:
+Helm には、3つの重要な概念があります。
 
-1. The _chart_ is a bundle of information necessary to create an instance of a
-   Kubernetes application.
-2. The _config_ contains configuration information that can be merged into a
-   packaged chart to create a releasable object.
-3. A _release_ is a running instance of a _chart_, combined with a specific
-   _config_.
+1. _チャート_ は、Kubernetes アプリケーションのインスタンスを作成するために必要な
+情報のバンドルです
+2. _コンフィグ_ には、リリース可能なオブジェクトを作成するためにパッケージ化された
+   チャートにマージできる構成情報が含まれています
+3. _リリース_ は、特定の _コンフィグ_ と組み合わせた _チャート_ の
+   実行中のインスタンスです
 
-## Components
+## コンポーネント
 
-Helm is an executable which is implemented into two distinct parts:
+Helm は、2つの異なる部分に実装される実行可能ファイルです。
 
-**The Helm Client** is a command-line client for end users. The client is
-responsible for the following:
+**Helm クライアント** は、エンドユーザー向けのコマンドラインクライアントです。
+クライアントは次のことを担当します。
 
-- Local chart development
-- Managing repositories
-- Managing releases
-- Interfacing with the Helm library
-  - Sending charts to be installed
-  - Requesting upgrading or uninstalling of existing releases
+- ローカルチャート開発
+- リポジトリの管理
+- リリースの管理
+- Helm ライブラリとのインターフェース
+  - インストールするチャートを送信する
+  - 既存のリリースのアップグレードまたはアンインストールの要求
 
-**The Helm Library** provides the logic for executing all Helm operations. It
-interfaces with the Kubernetes API server and provides the following capability:
+**Helm ライブラリ** は、すべての Helm 操作を実行するためのロジックを提供します。
+Kubernetes API サーバーとインターフェースし、次の機能を提供します。
 
-- Combining a chart and configuration to build a release
-- Installing charts into Kubernetes, and providing the subsequent release object
-- Upgrading and uninstalling charts by interacting with Kubernetes
+- チャートと構成を組み合わせてリリースを構築する
+- チャートを Kubernetes にインストールし、後続のリリースオブジェクトを提供する
+- Kubernetes との対話によるチャートのアップグレードとアンインストール
 
-The standalone Helm library encapsulates the Helm logic so that it can be
-leveraged by different clients.
+スタンドアロンの Helm ライブラリは Helm ロジックをカプセル化しているため、
+さまざまなクライアントが活用できます。
 
-## Implementation
+## 実装
 
-The Helm client and library is written in the Go programming language.
+Helm クライアントとライブラリは、Go プログラミング言語で記述されています。
 
-The library uses the Kubernetes client library to communicate with Kubernetes.
-Currently, that library uses REST+JSON. It stores information in Secrets located
-inside of Kubernetes. It does not need its own database.
+ライブラリは、Kubernetes クライアントライブラリを使用して Kubernetes と通信します。
+現在、そのライブラリは REST + JSON を使用しています。
+Kubernetes 内にあるシークレットに情報を保存します。独自のデータベースは必要ありません。
 
-Configuration files are, when possible, written in YAML.
+構成ファイルは、可能な場合は YAML で作成されます。
