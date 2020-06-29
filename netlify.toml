@@ -28,3 +28,14 @@
 [[redirects]]
   from = "/docs/developing_charts/"
   to = "https://v2.helm.sh/docs/developing_charts/"
+
+# redirect Go package lookups
+[[redirects]]
+  from = "/helm/v3/*"
+  to = "/helm/v3"
+  status = 200
+
+[[redirects]]
+  from = "/helm/v2/*"
+  to = "/helm/v2"
+  status = 200
