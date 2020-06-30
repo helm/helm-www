@@ -56,13 +56,13 @@ Blog posts are created via pull requests. The following steps are used to add th
 2. Add the header meta-data to the file using this format (note the permalink structure). Recommended but optional fields are `authorname` which should be name(s); these are displayed verbatim. `authorlink` is the link used by `authorname`.
 
     ```yaml
-        ---
-        title: "A Fancy Title"
-        slug: "fancy-title"
-        authorname: "Captain Awesome"
-        authorlink: "https://example.com"
-        date: "yyyy-mm-dd"
-        ---
+    ---
+    title: "A Fancy Title"
+    slug: "fancy-title"
+    authorname: "Captain Awesome"
+    authorlink: "https://example.com"
+    date: "yyyy-mm-dd"
+    ---
     ```
 
 3. Add the content below the `---` as Markdown. The title does not need to be included in this section
