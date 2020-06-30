@@ -7,6 +7,8 @@ aliases: [
 ]
 ---
 
+# Frequently Asked Questions
+
 > What are the key differences between Helm 2 and Helm 3? This page provides help with the most
 > common questions.
 

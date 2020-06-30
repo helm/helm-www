@@ -4,6 +4,8 @@ weight: 5
 aliases: ["/topics/chart_template_guide/"]
 ---
 
+# The Chart Template Developer's Guide
+
 This guide provides an introduction to Helm's chart templates, with emphasis on the template
 language.
 

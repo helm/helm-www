@@ -5,6 +5,8 @@ weight: 4
 aliases: ["/docs/topics/chart_best_practices/"]
 ---
 
+# The Chart Best Practices Guide
+
 This guide covers the Helm Team's considered best practices for creating charts. It focuses on how
 charts should be structured.
 
