@@ -2,7 +2,6 @@
 title: "일반적인 관례"
 description: "차트에 대한 일반적인 관례"
 weight: 1
-aliases: ["/docs/topics/chart_best_practices/conventions/"]
 ---
 
 이 부분은 모범사례 가이드의 일부로서 일반적인 관례를 설명한다.

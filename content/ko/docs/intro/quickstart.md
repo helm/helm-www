@@ -2,7 +2,6 @@
 title: "퀵스타트 가이드"
 description: "배포판, FAQ, 플러그인의 설명을 포함한 헬름 설치 및 시작 방법"
 weight: 1
-aliases: ["/docs/quickstart/"]
 ---
 
 이 가이드는 헬름을 빠르게 시작하는 방법에 대해 다룬다.

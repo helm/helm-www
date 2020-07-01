@@ -2,7 +2,6 @@
 title: "레이블과 어노테이션"
 description: "차트 내에서 레이블과 어노테이션을 사용하는 모범사례를 다룬다."
 weight: 5
-aliases: ["/docs/topics/chart_best_practices/labels/"]
 ---
 
 이 부분은 모범사례 가이드의 일부로서 차트 내에서 레이블과 어노테이션을 사용하는 모범사례에 대해 논한다.

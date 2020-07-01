@@ -2,7 +2,6 @@
 title: "헬름 설치하기"
 description: "헬름 설치하고 작동하는 방법 배우기."
 weight: 2
-aliases: ["/docs/install/"]
 ---
 
 이 가이드는 헬름 CLI를 설치하는 방법을 설명한다. 헬름은 소스 또는 미리-빌드된(pre-built) 바이너리 릴리스로 설치할 수 있다.
