@@ -2,7 +2,6 @@
 title: "역할 기반 접근 제어"
 description: "차트 매니페스트에 있는 RBAC 리소스의 생성과 형식을 논한다."
 weight: 8
-aliases: ["/docs/topics/chart_best_practices/rbac/"]
 ---
 
 이 부분은 모범사례 가이드의 일부로서 차트 매니페스트에 있는 RBAC 리소스의 생성과 형식을 논한다.

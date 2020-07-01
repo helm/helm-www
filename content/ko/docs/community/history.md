@@ -1,7 +1,6 @@
 ---
 title: "프로젝트 연혁"
 description: "프로젝트의 연혁에 대한 개요를 설명한다."
-aliases: ["/docs/history/"]
 weight: 4
 ---
 

@@ -2,7 +2,6 @@
 title: "시작하기"
 weight: 2
 description: "차트 템플릿에 관한 퀵가이드"
-aliases: ["/intro/getting_started/"]
 
 ---
 

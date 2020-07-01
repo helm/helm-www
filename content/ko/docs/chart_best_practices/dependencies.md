@@ -2,7 +2,6 @@
 title: "의존성"
 description: "차트 의존성에 관한 모범사례를 다룬다."
 weight: 4
-aliases: ["/docs/topics/chart_best_practices/dependencies/"]
 ---
 
 이 부분은 가이드의 일부로서 `Chart.yaml`에서 선언되는 `dependencies`에 과한 모범사례를 다룬다.
