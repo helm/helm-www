@@ -1,7 +1,6 @@
 ---
 title: "헬름 아키텍처"
 description: "헬름 아키텍처를 개괄적으로 설명한다."
-aliases: ["/docs/architecture/"]
 weight: 8
 ---
 

@@ -2,7 +2,6 @@
 title: "파드와 파드템플릿"
 description: "차트 매니페스트에 있는 파드와 파드템플릿 부분의 형식을 논한다."
 weight: 6
-aliases: ["/docs/topics/chart_best_practices/pods/"]
 ---
 
 이 부분은 모범사례 가이드의 일부로서 차트 매니페스트에 있는 파드와 파드템플릿 부분의 형식을 논한다.

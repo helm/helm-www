@@ -2,7 +2,6 @@
 title: "템플릿"
 description: "템플릿에 관한 모범사례 들여다보기"
 weight: 3
-aliases: ["/docs/topics/chart_best_practices/templates/"]
 ---
 
 이 부분은 모범사례 가이드의 일부로서 템플릿을 자세히 알아본다.
