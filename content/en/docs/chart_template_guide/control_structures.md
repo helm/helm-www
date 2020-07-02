@@ -292,8 +292,8 @@ That is because the `with` statement sets `.` to point to `.Values.favorite`.
 The `.` is reset to its previous scope after `{{ end }}`.
 
 But here's a note of caution! Inside of the restricted scope, you will not be
-able to access the other objects from the parent scope. This, for example, will
-fail:
+able to access the other objects from the parent scope using `.`. This, for
+example, will fail:
 
 ```yaml
   {{- with .Values.favorite }}
@@ -315,7 +315,9 @@ because the scope is reset after `{{ end }}`.
   release: {{ .Release.Name }}
 ```
 
-Or, we can use `$` for accessing the object `Release.Name` from the parent scope. This, for example, will work.
+Or, we can use `$` for accessing the object `Release.Name` from the parent scope.
+`$` is mapped to the root scope when template execution begins and it does not
+change during template execution. The following would work as well:
 
 ```yaml
   {{- with .Values.favorite }}
@@ -368,7 +370,9 @@ data:
 
 ```
 
-We can use `$` for accessing the list `Values.pizzaToppings` from the parent scope. This, for example, will work.
+We can use `$` for accessing the list `Values.pizzaToppings` from the parent
+scope. `$` is mapped to the root scope when template execution begins and it
+does not change during template execution. The following would work as well:
 
 ```yaml
 apiVersion: v1
