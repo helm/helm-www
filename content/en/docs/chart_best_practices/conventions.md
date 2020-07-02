@@ -9,7 +9,7 @@ This part of the Best Practices Guide explains general conventions.
 
 ## Chart Names
 
-Chart names should be lower case letters and numbers. Words _may_ be separated
+Chart names must be lower case letters and numbers. Words _may_ be separated
 with dashes (-):
 
 Examples:
@@ -20,7 +20,7 @@ nginx-lego
 aws-cluster-autoscaler
 ```
 
-Neither uppercase letters nor underscores should be used in chart names. Dots
+Neither uppercase letters nor underscores can be used in chart names. Dots
 should not be used in chart names.
 
 The directory that contains a chart MUST have the same name as the chart. Thus,
