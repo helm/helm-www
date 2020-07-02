@@ -315,6 +315,16 @@ because the scope is reset after `{{ end }}`.
   release: {{ .Release.Name }}
 ```
 
+Or, we can use `$` for accessing the object `Release.Name` from the parent scope. This, for example, will work.
+
+```yaml
+  {{- with .Values.favorite }}
+  drink: {{ .drink | default "tea" | quote }}
+  food: {{ .food | upper | quote }}
+  release: {{ $.Release.Name }}
+  {{- end }}
+```
+
 After looking at `range`, we will take a look at template variables, which offer
 one solution to the scoping issue above.
 
@@ -356,6 +366,25 @@ data:
     - {{ . | title | quote }}
     {{- end }}
 
+```
+
+We can use `$` for accessing the list `Values.pizzaToppings` from the parent scope. This, for example, will work.
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  myvalue: "Hello World"
+  {{- with .Values.favorite }}
+  drink: {{ .drink | default "tea" | quote }}
+  food: {{ .food | upper | quote }}
+  toppings: |-
+    {{- range $.Values.pizzaToppings }}
+    - {{ . | title | quote }}
+    {{- end }}
+  {{- end }}
 ```
 
 Let's take a closer look at the `toppings:` list. The `range` function will
