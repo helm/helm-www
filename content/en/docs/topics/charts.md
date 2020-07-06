@@ -90,7 +90,7 @@ Other fields will be silently ignored.
 ### Charts and Versioning
 
 Every chart must have a version number. A version must follow the [SemVer
-2](https://semver.org/spec/v2.0.0.html) standard. Unlike Helm Classic, Kubernetes Helm uses
+2](https://semver.org/spec/v2.0.0.html) standard. Unlike Helm Classic, Helm v2 and later uses
 version numbers as release markers. Packages in repositories are identified by
 name plus version.
 
@@ -106,7 +106,7 @@ More complex SemVer 2 names are also supported, such as `version:
 system.
 
 **NOTE:** Whereas Helm Classic and Deployment Manager were both very GitHub
-oriented when it came to charts, Kubernetes Helm does not rely upon or require
+oriented when it came to charts, Helm v2 and later does not rely upon or require
 GitHub or even Git. Consequently, it does not use Git SHAs for versioning at
 all.
 
