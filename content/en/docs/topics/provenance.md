@@ -49,7 +49,9 @@ corresponding private key:
 $ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychart
 ```
 
-**Note:** The value of the `--key` argument must be a substring of the desired key's `uid` (in the output of `gpg --list-keys`), for example the name or email. **The fingerprint _cannot_ be used.**
+**Note:** The value of the `--key` argument must be a substring of the desired
+key's `uid` (in the output of `gpg --list-keys`), for example the name or email.
+**The fingerprint _cannot_ be used.**
 
 **TIP:** for GnuPG users, your secret keyring is in `~/.gnupg/secring.gpg`. You
 can use `gpg --list-secret-keys` to list the keys you have.
@@ -85,9 +87,9 @@ To verify during an install, use the `--verify` flag.
 $ helm install --verify mychart-0.1.0.tgz
 ```
 
-If the keyring containing the public key associated with the signed chart is
-not in the default location, you may need to point to the keyring with
-`--keyring PATH` as in the `helm package` example.
+If the keyring containing the public key associated with the signed chart is not
+in the default location, you may need to point to the keyring with `--keyring
+PATH` as in the `helm package` example.
 
 If verification fails, the install will be aborted before the chart is even
 rendered.
@@ -191,10 +193,11 @@ generated.
 
 The following pieces of provenance data are added:
 
-* The chart file (`Chart.yaml`) is included to give both humans and tools an easy
-  view into the contents of the chart.
-* The signature (SHA256, just like Docker) of the chart package (the `.tgz` file)
-  is included, and may be used to verify the integrity of the chart package.
+* The chart file (`Chart.yaml`) is included to give both humans and tools an
+  easy view into the contents of the chart.
+* The signature (SHA256, just like Docker) of the chart package (the `.tgz`
+  file) is included, and may be used to verify the integrity of the chart
+  package.
 * The entire body is signed using the algorithm used by OpenPGP (see
   [https://keybase.io] for an emerging way of making crypto signing and
   verification easy).
@@ -232,8 +235,8 @@ qtgooNdohoyGSzR5oapd7fEvauRQswJxOA0m0V+u9/eyLR0+JcYB8Udi1prnWf8=
 ```
 
 Note that the YAML section contains two documents (separated by `...\n`). The
-first file is the content of `Chart.yaml`. The second is the checksums, a map
-of filenames to SHA-256 digests of that file's content at packaging time.
+first file is the content of `Chart.yaml`. The second is the checksums, a map of
+filenames to SHA-256 digests of that file's content at packaging time.
 
 The signature block is a standard PGP signature, which provides [tamper
 resistance](https://www.rossde.com/PGP/pgp_signatures.html).
@@ -262,13 +265,13 @@ establish the authority of a signer. Or, to put this plainly, the system above
 hinges on the fact that you trust the person who signed the chart. That, in
 turn, means you need to trust the public key of the signer.
 
-One of the design decisions with Helm has been that the Helm project
-would not insert itself into the chain of trust as a necessary party. We don't
-want to be "the certificate authority" for all chart signers. Instead, we
-strongly favor a decentralized model, which is part of the reason we chose
-OpenPGP as our foundational technology. So when it comes to establishing
-authority, we have left this step more-or-less undefined in Helm 2 (a decision
-carried forward in Helm 3).
+One of the design decisions with Helm has been that the Helm project would not
+insert itself into the chain of trust as a necessary party. We don't want to be
+"the certificate authority" for all chart signers. Instead, we strongly favor a
+decentralized model, which is part of the reason we chose OpenPGP as our
+foundational technology. So when it comes to establishing authority, we have
+left this step more-or-less undefined in Helm 2 (a decision carried forward in
+Helm 3).
 
 However, we have some pointers and recommendations for those interested in using
 the provenance system:
@@ -279,8 +282,8 @@ the provenance system:
   - Keybase also has fabulous documentation available
   - While we haven't tested it, Keybase's "secure website" feature could be used
     to serve Helm charts.
-- The [official Helm Charts project](https://github.com/helm/charts) is
-  trying to solve this problem for the official chart repository.
+- The [official Helm Charts project](https://github.com/helm/charts) is trying
+  to solve this problem for the official chart repository.
   - There is a long issue there [detailing the current
     thoughts](https://github.com/helm/charts/issues/23).
   - The basic idea is that an official "chart reviewer" signs charts with her or

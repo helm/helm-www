@@ -31,8 +31,8 @@ access controls (RBAC).
 Download a binary release of the Helm client. You can use tools like `homebrew`,
 or look at [the official releases page](https://github.com/helm/helm/releases).
 
-For more details, or for other options, see [the installation
-guide]({{< ref "install.md" >}}).
+For more details, or for other options, see [the installation guide]({{< ref
+"install.md" >}}).
 
 ## Initialize a Helm Chart Repository
 
@@ -70,16 +70,17 @@ Released smiling-penguin
 In the example above, the `stable/mysql` chart was released, and the name of our
 new release is `smiling-penguin`.
 
-You get a simple idea of the features of this MySQL chart by running 
-`helm show chart stable/mysql`. Or you could run `helm show all stable/mysql` 
-to get all information about the chart.
+You get a simple idea of the features of this MySQL chart by running `helm show
+chart stable/mysql`. Or you could run `helm show all stable/mysql` to get all
+information about the chart.
 
 Whenever you install a chart, a new release is created. So one chart can be
 installed multiple times into the same cluster. And each can be independently
 managed and upgraded.
 
 The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide]({{< ref "using_helm.md" >}})
+learn more about it, check out the [Using Helm Guide]({{< ref "using_helm.md"
+>}})
 
 ## Learn About Releases
 
@@ -105,7 +106,7 @@ Removed smiling-penguin
 This will uninstall `smiling-penguin` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
-If the flag `--keep-history` is provided, release history will be kept. You will 
+If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console

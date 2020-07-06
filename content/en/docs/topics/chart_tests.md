@@ -17,17 +17,22 @@ definition must contain the helm test hook annotation: `helm.sh/hook: test`.
 
 Example tests:
 
-- Validate that your configuration from the values.yaml file was properly injected.
+- Validate that your configuration from the values.yaml file was properly
+  injected.
   - Make sure your username and password work correctly
   - Make sure an incorrect username and password does not work
 - Assert that your services are up and correctly load balancing
 - etc.
 
-You can run the pre-defined tests in Helm on a release using the command `helm test <RELEASE_NAME>`. For a chart consumer, this is a great way to check that their release of a chart (or application) works as expected.
+You can run the pre-defined tests in Helm on a release using the command `helm
+test <RELEASE_NAME>`. For a chart consumer, this is a great way to check that
+their release of a chart (or application) works as expected.
 
 ## Example Test
 
-Here is an example of a helm test pod definition in the [bitnami wordpress chart](https://hub.helm.sh/charts/bitnami/wordpress). If you download a copy of the chart, you can look at the files locally:
+Here is an example of a helm test pod definition in the [bitnami wordpress
+chart](https://hub.helm.sh/charts/bitnami/wordpress). If you download a copy of
+the chart, you can look at the files locally:
 
 ```console
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -44,7 +49,8 @@ wordpress/
   templates/tests/test-mariadb-connection.yaml
 ```
 
-In `wordpress/templates/tests/test-mariadb-connection.yaml`, you'll see a test you can try:
+In `wordpress/templates/tests/test-mariadb-connection.yaml`, you'll see a test
+you can try:
 
 ```yaml
 {{- if .Values.mariadb.enabled }}
@@ -126,5 +132,6 @@ Phase:          Succeeded
   across several yaml files in the `templates/` directory.
 - You are welcome to nest your test suite under a `tests/` directory like
   `<chart-name>/templates/tests/` for more isolation.
-- A test is a [Helm hook](/docs/charts_hooks/), so annotations like `helm.sh/hook-weight`
-  and `helm.sh/hook-delete-policy` may be used with test resources.
+- A test is a [Helm hook](/docs/charts_hooks/), so annotations like
+  `helm.sh/hook-weight` and `helm.sh/hook-delete-policy` may be used with test
+  resources.

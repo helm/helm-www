@@ -57,16 +57,24 @@ The code for the Helm project is organized as follows:
 - The `scripts/` directory contains a number of utility scripts. Most of these
   are used by the CI/CD pipeline.
 
-Go dependency management is in flux, and it is likely to change during the course of Helm's lifecycle. We encourage developers to _not_ try to manually manage dependencies. Instead, we suggest relying upon the project's `Makefile` to do that for you. With Helm 3, it is recommended that you are on Go version 1.13 or later.
+Go dependency management is in flux, and it is likely to change during the
+course of Helm's lifecycle. We encourage developers to _not_ try to manually
+manage dependencies. Instead, we suggest relying upon the project's `Makefile`
+to do that for you. With Helm 3, it is recommended that you are on Go version
+1.13 or later.
 
 ### Writing Documentation
 
-Since Helm 3, documentation has been moved to its own repository. When writing new features, please write accompanying documentation and submit it to the [helm-www](https://github.com/helm/helm-www) repository.
+Since Helm 3, documentation has been moved to its own repository. When writing
+new features, please write accompanying documentation and submit it to the
+[helm-www](https://github.com/helm/helm-www) repository.
 
 ### Git Conventions
 
 We use Git for our version control system. The `master` branch is the home of
-the current development candidate. Releases are tagged. If you are working on patches for Helm v2, the branch `dev-v2` is the base branch from which Helm 2 releases are cut.
+the current development candidate. Releases are tagged. If you are working on
+patches for Helm v2, the branch `dev-v2` is the base branch from which Helm 2
+releases are cut.
 
 We accept changes to the code via GitHub Pull Requests (PRs). One workflow for
 doing this is as follows:
@@ -129,4 +137,6 @@ Read more:
 - The Go Wiki has a great article on
   [formatting](https://github.com/golang/go/wiki/CodeReviewComments).
 
-If you run the `make test` target, not only will unit tests be run, but so will style tests. If the `make test` target fails, even for stylistic reasons, your PR will not be considered ready for merging.
+If you run the `make test` target, not only will unit tests be run, but so will
+style tests. If the `make test` target fails, even for stylistic reasons, your
+PR will not be considered ready for merging.

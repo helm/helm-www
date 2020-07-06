@@ -4,7 +4,8 @@ description: "A list of template functions available in Helm"
 weight: 6
 ---
 
-Helm includes many template functions you can take advantage of in templates. They are listed here and broken down by the following categories:
+Helm includes many template functions you can take advantage of in templates.
+They are listed here and broken down by the following categories:
 
 * [Cryptographic and Security](#cryptographic-and-security-functions)
 * [Date](#date-functions)
@@ -26,7 +27,10 @@ Helm includes many template functions you can take advantage of in templates. Th
 
 ## Logic and Flow Control Functions
 
-Helm includes numerous logic and control flow functions including [and](#and), [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq), [fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne), [not](#not), and [or](#or).
+Helm includes numerous logic and control flow functions including [and](#and),
+[coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
+[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
+[not](#not), and [or](#or).
 
 ### and
 
@@ -38,7 +42,8 @@ and .Arg1 .Arg2
 
 ### or
 
-Returns the boolean or of the two arguments. It returns the first non-empty argument or the last argument.
+Returns the boolean or of the two arguments. It returns the first non-empty
+argument or the last argument.
 
 ```
 or .Arg1 .Arg2
@@ -70,7 +75,8 @@ ne .Arg1 .Arg2
 
 ### lt
 
-Returns a boolean true if the first argument is less than the second. False is returned otherwise (e.g., Arg1 < Arg2).
+Returns a boolean true if the first argument is less than the second. False is
+returned otherwise (e.g., Arg1 < Arg2).
 
 ```
 lt .Arg1 .Arg2
@@ -78,7 +84,8 @@ lt .Arg1 .Arg2
 
 ### le
 
-Returns a boolean true if the first argument is less than or equal to the second. False is returned otherwise (e.g., Arg1 <= Arg2).
+Returns a boolean true if the first argument is less than or equal to the
+second. False is returned otherwise (e.g., Arg1 <= Arg2).
 
 ```
 le .Arg1 .Arg2
@@ -86,7 +93,8 @@ le .Arg1 .Arg2
 
 ### gt
 
-Returns a boolean true if the first argument is greater than the second. False is returned otherwise (e.g., Arg1 > Arg2).
+Returns a boolean true if the first argument is greater than the second. False
+is returned otherwise (e.g., Arg1 > Arg2).
 
 ```
 gt .Arg1 .Arg2
@@ -94,7 +102,8 @@ gt .Arg1 .Arg2
 
 ### ge
 
-Returns a boolean true if the first argument is greater than or equal to the second. False is returned otherwise (e.g., Arg1 >= Arg2).
+Returns a boolean true if the first argument is greater than or equal to the
+second. False is returned otherwise (e.g., Arg1 >= Arg2).
 
 ```
 ge .Arg1 .Arg2
@@ -162,9 +171,10 @@ This function is useful for scanning through multiple variables or values:
 coalesce .name .parent.name "Matt"
 ```
 
-The above will first check to see if `.name` is empty. If it is not, it will return
-that value. If it _is_ empty, `coalesce` will evaluate `.parent.name` for emptiness.
-Finally, if both `.name` and `.parent.name` are empty, it will return `Matt`.
+The above will first check to see if `.name` is empty. If it is not, it will
+return that value. If it _is_ empty, `coalesce` will evaluate `.parent.name` for
+emptiness. Finally, if both `.name` and `.parent.name` are empty, it will return
+`Matt`.
 
 ### ternary
 
@@ -202,7 +212,22 @@ The above returns `"bar"`.
 
 ## String Functions
 
-Helm includes the following string functions: [abbrev](#abbrev), [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat), [contains](#contains), [hasPrefix](#hasprefix-and-hassuffix), [hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials), [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent), [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf), [println](#println), [quote](#quote-and-squote), [randAlpha](#randalphanum-randalpha-randnumeric-and-randascii), [randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii), [randAscii](#randalphanum-randalpha-randnumeric-and-randascii), [randNumeric](#randalphanum-randalpha-randnumeric-and-randascii), [repeat](#repeat), [replace](#replace), [shuffle](#shuffle), [snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr), [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall), [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc), [untitle](#untitle), [upper](#upper), [wrap](#wrap), and [wrapWith](#wrapwith).
+Helm includes the following string functions: [abbrev](#abbrev),
+[abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
+[contains](#contains), [hasPrefix](#hasprefix-and-hassuffix),
+[hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials),
+[kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent),
+[nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf),
+[println](#println), [quote](#quote-and-squote),
+[randAlpha](#randalphanum-randalpha-randnumeric-and-randascii),
+[randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii),
+[randAscii](#randalphanum-randalpha-randnumeric-and-randascii),
+[randNumeric](#randalphanum-randalpha-randnumeric-and-randascii),
+[repeat](#repeat), [replace](#replace), [shuffle](#shuffle),
+[snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr),
+[swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall),
+[trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc),
+[untitle](#untitle), [upper](#upper), [wrap](#wrap), and [wrapWith](#wrapwith).
 
 ### print
 
@@ -214,7 +239,8 @@ print "Matt has " .Dogs " dogs"
 
 Types that are not strings are converted to strings where possible.
 
-Note, when two arguments next to each other are not strings a space is added between them.
+Note, when two arguments next to each other are not strings a space is added
+between them.
 
 ### println
 
@@ -222,18 +248,20 @@ Works the same way as [print](#print) but adds a new line at the end.
 
 ### printf
 
-Returns a string based on a formatting string and the arguments to pass to it in order.
+Returns a string based on a formatting string and the arguments to pass to it in
+order.
 
 ```
 printf "%s has %d dogs." .Name .NumberDogs
 ```
 
-The placeholder to use depends on the type for the argument being passed in. This includes:
+The placeholder to use depends on the type for the argument being passed in.
+This includes:
 
 General purpose:
 
-* `%v` the value in a default format
-	when printing dicts, the plus flag (%+v) adds field names
+* `%v` the value in a default format when printing dicts, the plus flag (%+v)
+  adds field names
 * `%%` a literal percent sign; consumes no value
 
 Boolean:
@@ -254,14 +282,16 @@ Integer:
 
  Floating-point and complex constituents:
 
-* `%b` decimalless scientific notation with exponent a power of two, e.g. -123456p-78
+* `%b` decimalless scientific notation with exponent a power of two, e.g.
+  -123456p-78
 * `%e` scientific notation, e.g. -1.234456e+78
 * `%E` scientific notation, e.g. -1.234456E+78
 * `%f` decimal point but no exponent, e.g. 123.456
 * `%F` synonym for %f
 * `%g` %e for large exponents, %f otherwise.
 * `%G` %E for large exponents, %F otherwise
-* `%x` hexadecimal notation (with decimal power of two exponent), e.g. -0x1.23abcp+20
+* `%x` hexadecimal notation (with decimal power of two exponent), e.g.
+  -0x1.23abcp+20
 * `%X` upper-case hexadecimal notation, e.g. -0X1.23ABCP+20
 
 String and slice of bytes (treated equivalently with these verbs):
@@ -412,7 +442,8 @@ Parameters:
 abbrev 5 "hello world"
 ```
 
-The above returns `he...`, since it counts the width of the ellipses against the maximum length.
+The above returns `he...`, since it counts the width of the ellipses against the
+maximum length.
 
 ### abbrevboth
 
@@ -565,8 +596,8 @@ len $fish | plural "one anchovy" "many anchovies"
 ```
 
 In the above, if the length of the string is 1, the first argument will be
-printed (`one anchovy`). Otherwise, the second argument will be printed
-(`many anchovies`).
+printed (`one anchovy`). Otherwise, the second argument will be printed (`many
+anchovies`).
 
 The arguments are:
 
@@ -575,8 +606,8 @@ The arguments are:
 - length integer
 
 NOTE: Helm does not currently support languages with more complex pluralization
-rules. And `0` is considered a plural because the English language treats it
-as such (`zero anchovies`).
+rules. And `0` is considered a plural because the English language treats it as
+such (`zero anchovies`).
 
 ### snakecase
 
@@ -648,12 +679,14 @@ The following type conversion functions are provided by Helm:
 - `toString`: Convert to a string.
 - `toStrings`: Convert a list, slice, or array to a list of strings.
 - `toJson` (`mustToJson`): Convert list, slice, array, dict, or object to JSON.
-- `toPrettyJson` (`mustToPrettyJson`): Convert list, slice, array, dict, or object to indented JSON.
-- `toRawJson` (`mustToRawJson`): Convert list, slice, array, dict, or object to JSON with HTML characters unescaped.
+- `toPrettyJson` (`mustToPrettyJson`): Convert list, slice, array, dict, or
+  object to indented JSON.
+- `toRawJson` (`mustToRawJson`): Convert list, slice, array, dict, or object to
+  JSON with HTML characters unescaped.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
-to convert from any type to the destination type. For example, `int64` can convert
-floats to ints, and it can also convert strings to ints.
+to convert from any type to the destination type. For example, `int64` can
+convert floats to ints, and it can also convert strings to ints.
 
 ### toStrings
 
@@ -663,8 +696,8 @@ Given a list-like collection, produce a slice of strings.
 list 1 2 3 | toStrings
 ```
 
-The above converts `1` to `"1"`, `2` to `"2"`, and so on, and then returns
-them as a list.
+The above converts `1` to `"1"`, `2` to `"2"`, and so on, and then returns them
+as a list.
 
 ### toDecimal
 
@@ -678,8 +711,9 @@ The above converts `0777` to `511` and returns the value as an int64.
 
 ### toJson, mustToJson
 
-The `toJson` function encodes an item into a JSON string. If the item cannot be converted to JSON the function will return an empty string.
-`mustToJson` will return an error in case the item cannot be encoded in JSON.
+The `toJson` function encodes an item into a JSON string. If the item cannot be
+converted to JSON the function will return an empty string. `mustToJson` will
+return an error in case the item cannot be encoded in JSON.
 
 ```
 toJson .Item
@@ -689,7 +723,8 @@ The above returns JSON string representation of `.Item`.
 
 ### toPrettyJson, mustToPrettyJson
 
-The `toPrettyJson` function encodes an item into a pretty (indented) JSON string.
+The `toPrettyJson` function encodes an item into a pretty (indented) JSON
+string.
 
 ```
 toPrettyJson .Item
@@ -699,7 +734,8 @@ The above returns indented JSON string representation of `.Item`.
 
 ### toRawJson, mustToRawJson
 
-The `toRawJson` function encodes an item into JSON string with HTML characters unescaped.
+The `toRawJson` function encodes an item into JSON string with HTML characters
+unescaped.
 
 ```
 toRawJson .Item
@@ -709,7 +745,14 @@ The above returns unescaped JSON string representation of `.Item`.
 
 ## Regular Expressions
 
-Helm includes the following regular expression functions: [regexFind (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll (mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit).
+Helm includes the following regular expression functions: [regexFind
+(mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll
+(mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch
+(mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll
+(mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall),
+[regexReplaceAllLiteral
+(mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral),
+[regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit).
 
 ### regexMatch, mustRegexMatch
 
@@ -721,13 +764,14 @@ regexMatch "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" "test@acme.com"
 
 The above produces `true`
 
-`regexMatch` panics if there is a problem and `mustRegexMatch` returns an error to the
-template engine if there is a problem.
+`regexMatch` panics if there is a problem and `mustRegexMatch` returns an error
+to the template engine if there is a problem.
 
 ### regexFindAll, mustRegexFindAll
 
 Returns a slice of all matches of the regular expression in the input string.
-The last parameter n determines the number of substrings to return, where -1 means return all matches
+The last parameter n determines the number of substrings to return, where -1
+means return all matches
 
 ```
 regexFindAll "[2,4,6,8]" "123456789" -1
@@ -735,8 +779,8 @@ regexFindAll "[2,4,6,8]" "123456789" -1
 
 The above produces `[2 4 6 8]`
 
-`regexFindAll` panics if there is a problem and `mustRegexFindAll` returns an error to the
-template engine if there is a problem.
+`regexFindAll` panics if there is a problem and `mustRegexFindAll` returns an
+error to the template engine if there is a problem.
 
 ### regexFind, mustRegexFind
 
@@ -748,13 +792,15 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 
 The above produces `d1`
 
-`regexFind` panics if there is a problem and `mustRegexFind` returns an error to the
-template engine if there is a problem.
+`regexFind` panics if there is a problem and `mustRegexFind` returns an error to
+the template engine if there is a problem.
 
 ### regexReplaceAll, mustRegexReplaceAll
 
-Returns a copy of the input string, replacing matches of the Regexp with the replacement string replacement.
-Inside string replacement, $ signs are interpreted as in Expand, so for instance $1 represents the text of the first submatch
+Returns a copy of the input string, replacing matches of the Regexp with the
+replacement string replacement. Inside string replacement, $ signs are
+interpreted as in Expand, so for instance $1 represents the text of the first
+submatch
 
 ```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -762,13 +808,14 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 
 The above produces `-W-xxW-`
 
-`regexReplaceAll` panics if there is a problem and `mustRegexReplaceAll` returns an error to the
-template engine if there is a problem.
+`regexReplaceAll` panics if there is a problem and `mustRegexReplaceAll` returns
+an error to the template engine if there is a problem.
 
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
-Returns a copy of the input string, replacing matches of the Regexp with the replacement string replacement
-The replacement string is substituted directly, without using Expand
+Returns a copy of the input string, replacing matches of the Regexp with the
+replacement string replacement The replacement string is substituted directly,
+without using Expand
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -776,12 +823,16 @@ regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
 
 The above produces `-${1}-${1}-`
 
-`regexReplaceAllLiteral` panics if there is a problem and `mustRegexReplaceAllLiteral` returns an error to the
-template engine if there is a problem.
+`regexReplaceAllLiteral` panics if there is a problem and
+`mustRegexReplaceAllLiteral` returns an error to the template engine if there is
+a problem.
 
 ### regexSplit, mustRegexSplit
 
-Slices the input string into substrings separated by the expression and returns a slice of the substrings between those expression matches. The last parameter `n` determines the number of substrings to return, where `-1` means return all matches
+Slices the input string into substrings separated by the expression and returns
+a slice of the substrings between those expression matches. The last parameter
+`n` determines the number of substrings to return, where `-1` means return all
+matches
 
 ```
 regexSplit "z+" "pizza" -1
@@ -789,12 +840,17 @@ regexSplit "z+" "pizza" -1
 
 The above produces `[pi a]`
 
-`regexSplit` panics if there is a problem and `mustRegexSplit` returns an error to the
-template engine if there is a problem.
+`regexSplit` panics if there is a problem and `mustRegexSplit` returns an error
+to the template engine if there is a problem.
 
 ## Cryptographic and Security Functions
 
-Helm provides some advanced cryptographic functions. They include [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [sha1sum](#sha1sum), and [sha256sum](#sha256sum).
+Helm provides some advanced cryptographic functions. They include
+[adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
+[decryptAES](#decryptaes), [derivePassword](#derivepassword),
+[encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
+[genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
+[htpasswd](#htpasswd), [sha1sum](#sha1sum), and [sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -812,8 +868,8 @@ The `sha256sum` function receives a string, and computes it's SHA256 digest.
 sha256sum "Hello world!"
 ```
 
-The above will compute the SHA 256 sum in an "ASCII armored" format that is
-safe to print.
+The above will compute the SHA 256 sum in an "ASCII armored" format that is safe
+to print.
 
 ### adler32sum
 
@@ -825,7 +881,10 @@ adler32sum "Hello world!"
 
 ### htpasswd
 
-The `htpasswd` function takes a `username` and `password` and generates a `bcrypt` hash of the password. The result can be used for basic authentication on an [Apache HTTP Server](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html#basic).
+The `htpasswd` function takes a `username` and `password` and generates a
+`bcrypt` hash of the password. The result can be used for basic authentication
+on an [Apache HTTP
+Server](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html#basic).
 
 ```
 htpasswd "myUser" "myPassword"
@@ -836,8 +895,8 @@ Note that it is insecure to store the password directly in the template.
 ### derivePassword
 
 The `derivePassword` function can be used to derive a specific password based on
-some shared "master password" constraints. The algorithm for this is
-[well specified](https://masterpassword.app/masterpassword-algorithm.pdf).
+some shared "master password" constraints. The algorithm for this is [well
+specified](https://masterpassword.app/masterpassword-algorithm.pdf).
 
 ```
 derivePassword 1 "long" "password" "user" "example.com"
@@ -876,8 +935,8 @@ Example:
 $ca := buildCustomCert "base64-encoded-ca-crt" "base64-encoded-ca-key"
 ```
 
-Note that the returned object can be passed to the `genSignedCert` function
-to sign a certificate using this CA.
+Note that the returned object can be passed to the `genSignedCert` function to
+sign a certificate using this CA.
 
 ### genCA
 
@@ -899,8 +958,8 @@ Example:
 $ca := genCA "foo-ca" 365
 ```
 
-Note that the returned object can be passed to the `genSignedCert` function
-to sign a certificate using this CA.
+Note that the returned object can be passed to the `genSignedCert` function to
+sign a certificate using this CA.
 
 ### genSelfSignedCert
 
@@ -946,7 +1005,8 @@ $cert := genSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "b
 
 ### encryptAES
 
-The `encryptAES` function encrypts text with AES-256 CBC and returns a base64 encoded string.
+The `encryptAES` function encrypts text with AES-256 CBC and returns a base64
+encoded string.
 
 ```
 encryptAES "secretkey" "plaintext"
@@ -963,7 +1023,12 @@ algorithm and returns the decoded text.
 
 ## Date Functions
 
-Helm includes the following date functions you can use in templates: [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration), [durationRound](#durationround), [htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone), [now](#now), [toDate (mustToDate)](#todate-musttodate), and [unixEpoch](#unixepoch).
+Helm includes the following date functions you can use in templates:
+[ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
+(mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
+[durationRound](#durationround), [htmlDate](#htmldate),
+[htmlDateInZone](#htmldateinzone), [now](#now), [toDate
+(mustToDate)](#todate-musttodate), and [unixEpoch](#unixepoch).
 
 ### now
 
@@ -993,7 +1058,8 @@ Format the date to YEAR-MONTH-DAY:
 now | date "2006-01-02"
 ```
 
-Date formatting in Go is a [little bit different](https://pauladamsmith.com/blog/2011/05/go_time.html).
+Date formatting in Go is a [little bit
+different](https://pauladamsmith.com/blog/2011/05/go_time.html).
 
 In short, take this as the base date:
 
@@ -1001,8 +1067,8 @@ In short, take this as the base date:
 Mon Jan 2 15:04:05 MST 2006
 ```
 
-Write it in the format you want. Above, `2006-01-02` is the same date, but
-in the format we want.
+Write it in the format you want. Above, `2006-01-02` is the same date, but in
+the format we want.
 
 ### dateInZone
 
@@ -1024,8 +1090,9 @@ duration 95
 
 ### durationRound
 
-Rounds a given duration to the most significant unit. Strings and `time.Duration`
-gets parsed as a duration, while a `time.Time` is calculated as the duration since.
+Rounds a given duration to the most significant unit. Strings and
+`time.Duration` gets parsed as a duration, while a `time.Time` is calculated as
+the duration since.
 
 This return 2h
 
@@ -1057,7 +1124,8 @@ Subtract an hour and thirty minutes from the current time:
 now | date_modify "-1.5h"
 ```
 
-If the modification format is wrong `dateModify` will return the date unmodified. `mustDateModify` will return an error otherwise.
+If the modification format is wrong `dateModify` will return the date
+unmodified. `mustDateModify` will return an error otherwise.
 
 ### htmlDate
 
@@ -1080,11 +1148,10 @@ htmlDateInZone (now) "UTC"
 
 `toDate` converts a string to a date. The first argument is the date layout and
 the second the date string. If the string can't be convert it returns the zero
-value.
-`mustToDate` will return an error in case the string cannot be converted.
+value. `mustToDate` will return an error in case the string cannot be converted.
 
-This is useful when you want to convert a string date to another format
-(using pipe). The example below converts "2017-12-31" to "31/12/2017".
+This is useful when you want to convert a string date to another format (using
+pipe). The example below converts "2017-12-31" to "31/12/2017".
 
 ```
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
@@ -1101,7 +1168,12 @@ type, even another `dict` or `list`.
 Unlike `list`s, `dict`s are not immutable. The `set` and `unset` functions will
 modify the contents of a dictionary.
 
-Helm provides the following functions to support working with dicts: [deepCopy (mustDeepCopy)](#deepcopy-mustdeepcopy), [dict](#dict), [get](#get), [hasKey](#haskey), [keys](#keys), [merge (mustMerge)](#merge-mustmerge), [mergeOverwrite (mustMergeOverwrite)](#mergeoverwrite-mustmergeoverwrite), [omit](#omit), [pick](#pick), [pluck](#pluck), [set](#set), [unset](#unset), and [values](#values).
+Helm provides the following functions to support working with dicts: [deepCopy
+(mustDeepCopy)](#deepcopy-mustdeepcopy), [dict](#dict), [get](#get),
+[hasKey](#haskey), [keys](#keys), [merge (mustMerge)](#merge-mustmerge),
+[mergeOverwrite (mustMergeOverwrite)](#mergeoverwrite-mustmergeoverwrite),
+[omit](#omit), [pick](#pick), [pluck](#pluck), [set](#set), [unset](#unset), and
+[values](#values).
 
 ### dict
 
@@ -1124,8 +1196,8 @@ get $myDict "key1"
 
 The above returns `"value1"`
 
-Note that if the key is not found, this operation will simply return `""`. No error
-will be generated.
+Note that if the key is not found, this operation will simply return `""`. No
+error will be generated.
 
 ### set
 
@@ -1135,8 +1207,9 @@ Use `set` to add a new key/value pair to a dictionary.
 $_ := set $myDict "name4" "value4"
 ```
 
-Note that `set` _returns the dictionary_ (a requirement of Go template functions),
-so you may need to trap the value as done above with the `$_` assignment.
+Note that `set` _returns the dictionary_ (a requirement of Go template
+functions), so you may need to trap the value as done above with the `$_`
+assignment.
 
 ### unset
 
@@ -1170,7 +1243,8 @@ get a list of all of the matches:
 pluck "name1" $myDict $myOtherDict
 ```
 
-The above will return a `list` containing every found value (`[value1 otherValue1]`).
+The above will return a `list` containing every found value (`[value1
+otherValue1]`).
 
 If the give key is _not found_ in a map, that map will not have an item in the
 list (and the length of the returned list will be less than the number of dicts
@@ -1184,15 +1258,17 @@ matching key out of a collection of dictionaries.
 
 ### merge, mustMerge
 
-Merge two or more dictionaries into one, giving precedence to the dest dictionary:
+Merge two or more dictionaries into one, giving precedence to the dest
+dictionary:
 
 ```
 $newdict := merge $dest $source1 $source2
 ```
 
-This is a deep merge operation but not a deep copy operation. Nested objects that
-are merged are the same instance on both dicts. If you want a deep copy along
-with the merge than use the `deepCopy` function along with merging. For example,
+This is a deep merge operation but not a deep copy operation. Nested objects
+that are merged are the same instance on both dicts. If you want a deep copy
+along with the merge than use the `deepCopy` function along with merging. For
+example,
 
 ```
 deepCopy $source | merge $dest
@@ -1202,8 +1278,8 @@ deepCopy $source | merge $dest
 
 ### mergeOverwrite, mustMergeOverwrite
 
-Merge two or more dictionaries into one, giving precedence from **right to left**, effectively
-overwriting values in the dest dictionary:
+Merge two or more dictionaries into one, giving precedence from **right to
+left**, effectively overwriting values in the dest dictionary:
 
 Given:
 
@@ -1231,9 +1307,10 @@ newdict:
 $newdict := mergeOverwrite $dest $source1 $source2
 ```
 
-This is a deep merge operation but not a deep copy operation. Nested objects that
-are merged are the same instance on both dicts. If you want a deep copy along
-with the merge than use the `deepCopy` function along with merging. For example,
+This is a deep merge operation but not a deep copy operation. Nested objects
+that are merged are the same instance on both dicts. If you want a deep copy
+along with the merge than use the `deepCopy` function along with merging. For
+example,
 
 ```
 deepCopy $source | mergeOverwrite $dest
@@ -1243,16 +1320,16 @@ deepCopy $source | mergeOverwrite $dest
 
 ### keys
 
-The `keys` function will return a `list` of all of the keys in one or more `dict`
-types. Since a dictionary is _unordered_, the keys will not be in a predictable order.
-They can be sorted with `sortAlpha`.
+The `keys` function will return a `list` of all of the keys in one or more
+`dict` types. Since a dictionary is _unordered_, the keys will not be in a
+predictable order. They can be sorted with `sortAlpha`.
 
 ```
 keys $myDict | sortAlpha
 ```
 
-When supplying multiple dictionaries, the keys will be concatenated. Use the `uniq`
-function along with `sortAlpha` to get a unqiue, sorted list of keys.
+When supplying multiple dictionaries, the keys will be concatenated. Use the
+`uniq` function along with `sortAlpha` to get a unqiue, sorted list of keys.
 
 ```
 keys $myDict $myOtherDict | uniq | sortAlpha
@@ -1271,8 +1348,8 @@ The above returns `{name1: value1, name2: value2}`
 
 ### omit
 
-The `omit` function is similar to `pick`, except it returns a new `dict` with all
-the keys that _do not_ match the given keys.
+The `omit` function is similar to `pick`, except it returns a new `dict` with
+all the keys that _do not_ match the given keys.
 
 ```
 $new := omit $myDict "name1" "name3"
@@ -1296,9 +1373,9 @@ then use `sortAlpha`.
 ### deepCopy, mustDeepCopy
 
 The `deepCopy` and `mustDeepCopy` functions takes a value and makes a deep copy
-of the value. This includes dicts and other structures. `deepCopy` panics
-when there is a problem while `mustDeepCopy` returns an error to the template
-system when there is an error.
+of the value. This includes dicts and other structures. `deepCopy` panics when
+there is a problem while `mustDeepCopy` returns an error to the template system
+when there is an error.
 
 ```
 dict "a" 1 "b" 2 | deepCopy
@@ -1307,8 +1384,8 @@ dict "a" 1 "b" 2 | deepCopy
 ### A Note on Dict Internals
 
 A `dict` is implemented in Go as a `map[string]interface{}`. Go developers can
-pass `map[string]interface{}` values into the context to make them available
-to templates as `dict`s.
+pass `map[string]interface{}` values into the context to make them available to
+templates as `dict`s.
 
 ## Encoding Functions
 
@@ -1331,7 +1408,16 @@ $myList := list 1 2 3 4 5
 
 The above creates a list of `[1 2 3 4 5]`.
 
-Helm provides the following list functions: [append (mustAppend)](#append-mustappend), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep), and [without (mustWithout)](#without-mustwithout).
+Helm provides the following list functions: [append
+(mustAppend)](#append-mustappend), [compact
+(mustCompact)](#compact-mustcompact), [concat](#concat), [first
+(mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
+(mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
+[prepend (mustPrepend)](#prepend-mustprepend), [rest
+(mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse),
+[seq](#seq), [slice (mustSlice)](#slice-mustslice), [uniq
+(mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep), and
+[without (mustWithout)](#without-mustwithout).
 
 ### first, mustFirst
 
@@ -1360,11 +1446,11 @@ then calling `first`.
 
 ### initial, mustInitial
 
-This compliments `last` by returning all _but_ the last element.
-`initial $myList` returns `[1 2 3 4]`.
+This compliments `last` by returning all _but_ the last element. `initial
+$myList` returns `[1 2 3 4]`.
 
-`initial` panics if there is a problem while `mustInitial` returns an error to the
-template engine if there is a problem.
+`initial` panics if there is a problem while `mustInitial` returns an error to
+the template engine if there is a problem.
 
 ### append, mustAppend
 
@@ -1389,8 +1475,8 @@ prepend $myList 0
 
 The above would produce `[0 1 2 3 4 5]`. `$myList` would remain unaltered.
 
-`prepend` panics if there is a problem while `mustPrepend` returns an error to the
-template engine if there is a problem.
+`prepend` panics if there is a problem while `mustPrepend` returns an error to
+the template engine if there is a problem.
 
 ### concat
 
@@ -1412,8 +1498,8 @@ reverse $myList
 
 The above would generate the list `[5 4 3 2 1]`.
 
-`reverse` panics if there is a problem while `mustReverse` returns an error to the
-template engine if there is a problem.
+`reverse` panics if there is a problem while `mustReverse` returns an error to
+the template engine if there is a problem.
 
 ### uniq, mustUniq
 
@@ -1446,8 +1532,8 @@ without $myList 1 3 5
 
 That would produce `[2 4]`
 
-`without` panics if there is a problem while `mustWithout` returns an error to the
-template engine if there is a problem.
+`without` panics if there is a problem while `mustWithout` returns an error to
+the template engine if there is a problem.
 
 ### has, mustHas
 
@@ -1478,8 +1564,8 @@ template engine if there is a problem.
 
 ### slice, mustSlice
 
-To get partial elements of a list, use `slice list [n] [m]`. It is
-equivalent of `list[n:m]`.
+To get partial elements of a list, use `slice list [n] [m]`. It is equivalent of
+`list[n:m]`.
 
 - `slice $myList` returns `[1 2 3 4 5]`. It is same as `myList[:]`.
 - `slice $myList 3` returns `[4 5]`. It is same as `myList[3:]`.
@@ -1510,16 +1596,19 @@ you to define a start, stop, and step:
 untilStep 3 6 2
 ```
 
-The above will produce `[3 5]` by starting with 3, and adding 2 until it is equal
-or greater than 6. This is similar to Python's `range` function.
+The above will produce `[3 5]` by starting with 3, and adding 2 until it is
+equal or greater than 6. This is similar to Python's `range` function.
 
 ### seq
 
 Works like the bash `seq` command.
 
-* 1 parameter  (end) - will generate all counting integers between 1 and `end` inclusive.
-* 2 parameters (start, end) - will generate all counting integers between `start` and `end` inclusive incrementing or decrementing by 1.
-* 3 parameters (start, step, end) - will generate all counting integers between `start` and `end` inclusive incrementing or decrementing by `step`.
+* 1 parameter  (end) - will generate all counting integers between 1 and `end`
+  inclusive.
+* 2 parameters (start, end) - will generate all counting integers between
+  `start` and `end` inclusive incrementing or decrementing by 1.
+* 3 parameters (start, step, end) - will generate all counting integers between
+  `start` and `end` inclusive incrementing or decrementing by `step`.
 
 ```
 seq 5       => 1 2 3 4 5
@@ -1534,7 +1623,9 @@ seq 0 -2 -5 => 0 -2 -4
 
 All math functions operate on `int64` values unless specified otherwise.
 
-The following math functions are available: [add](#add), [add1](#add1), [ceil](#ceil), [div](#div), [floor](#floor), [len](#len), [max](#max), [min](#min), [mod](#mod), [mul](#mul), [round](#round), and [sub](#sub).
+The following math functions are available: [add](#add), [add1](#add1),
+[ceil](#ceil), [div](#div), [floor](#floor), [len](#len), [max](#max),
+[min](#min), [mod](#mod), [mul](#mul), [round](#round), and [sub](#sub).
 
 ### add
 
@@ -1598,7 +1689,8 @@ Returns the greatest float value greater than or equal to input value
 
 ### round
 
-Returns a float value with the remainder rounded to the given number to digits after the decimal point.
+Returns a float value with the remainder rounded to the given number to digits
+after the decimal point.
 
 `round 123.555555 3` will return `123.556`
 
@@ -1622,7 +1714,10 @@ getHostByName "www.google.com" would return the corresponding ip address of www.
 
 ## File Path Functions
 
-While Helm template functions do not grant access to the filesystem, they do provide functions for working with strings that follow file path conventions. Those include [base](#base), [clean](#clean), [dir](#dir), [ext](#ext), and [isAbs](#isabs).
+While Helm template functions do not grant access to the filesystem, they do
+provide functions for working with strings that follow file path conventions.
+Those include [base](#base), [clean](#clean), [dir](#dir), [ext](#ext), and
+[isAbs](#isabs).
 
 ### base
 
@@ -1636,8 +1731,8 @@ The above prints "baz"
 
 ### dir
 
-Return the directory, stripping the last part of the path. So `dir "foo/bar/baz"`
-returns `foo/bar`
+Return the directory, stripping the last part of the path. So `dir
+"foo/bar/baz"` returns `foo/bar`
 
 ### clean
 
@@ -1666,13 +1761,17 @@ To check whether a file path is absolute, use `isAbs`.
 ## Reflection Functions
 
 Helm provides rudimentary reflection tools. These help advanced template
-developers understand the underlying Go type information for a particular value. Helm is written in Go and is strongly typed. The type system applies within templates.
+developers understand the underlying Go type information for a particular value.
+Helm is written in Go and is strongly typed. The type system applies within
+templates.
 
 Go has several primitive _kinds_, like `string`, `slice`, `int64`, and `bool`.
 
 Go has an open _type_ system that allows developers to create their own types.
 
-Helm provides a set of functions for each via [kind functions](#kind-functions) and [type functions](#type-functions). A [deepEqual](#deepequal) function is also provided to compare to values.
+Helm provides a set of functions for each via [kind functions](#kind-functions)
+and [type functions](#type-functions). A [deepEqual](#deepequal) function is
+also provided to compare to values.
 
 ### Kind Functions
 
@@ -1700,11 +1799,13 @@ Types are slightly harder to work with, so there are three different functions:
 - `typeIsLike` works as `typeIs`, except that it also dereferences pointers.
 
 **Note:** None of these can test whether or not something implements a given
-interface, since doing so would require compiling the interface in ahead of time.
+interface, since doing so would require compiling the interface in ahead of
+time.
 
 ### deepEqual
 
-`deepEqual` returns true if two values are ["deeply equal"](https://golang.org/pkg/reflect/#DeepEqual)
+`deepEqual` returns true if two values are ["deeply
+equal"](https://golang.org/pkg/reflect/#DeepEqual)
 
 Works for non-primitive types as well (compared to the built-in `eq`).
 
@@ -1716,8 +1817,10 @@ The above will return `true`
 
 ## Semantic Version Functions
 
-Some version schemes are easily parseable and comparable. Helm provides functions
-for working with [SemVer 2](http://semver.org) versions. These include [semver](#semver) and [semverCompare](#semvercompare). Below you will also find details on using ranges for comparisons.
+Some version schemes are easily parseable and comparable. Helm provides
+functions for working with [SemVer 2](http://semver.org) versions. These include
+[semver](#semver) and [semverCompare](#semvercompare). Below you will also find
+details on using ranges for comparisons.
 
 ### semver
 
@@ -1739,8 +1842,8 @@ properties:
 - `$version.Metadata`: The build metadata (`123` above)
 - `$version.Original`: The original version as a string
 
-Additionally, you can compare a `Version` to another `version` using the `Compare`
-function:
+Additionally, you can compare a `Version` to another `version` using the
+`Compare` function:
 
 ```
 semver "1.4.3" | (semver "1.2.3").Compare
@@ -1750,7 +1853,8 @@ The above will return `-1`.
 
 The return values are:
 
-- `-1` if the given semver is greater than the semver whose `Compare` method was called
+- `-1` if the given semver is greater than the semver whose `Compare` method was
+  called
 - `1` if the version who's `Compare` function was called is greater.
 - `0` if they are the same version
 
@@ -1763,19 +1867,20 @@ A more robust comparison function is provided as `semverCompare`. This version
 supports version ranges:
 
 - `semverCompare "1.2.3" "1.2.3"` checks for an exact match
-- `semverCompare "^1.2.0" "1.2.3"` checks that the major and minor versions match, and that the patch 
-  number of the second version is _greater than or equal to_ the first parameter.
+- `semverCompare "^1.2.0" "1.2.3"` checks that the major and minor versions
+  match, and that the patch number of the second version is _greater than or
+  equal to_ the first parameter.
 
-The SemVer functions use the [Masterminds semver library](https://github.com/Masterminds/semver),
-from the creators of Sprig.
+The SemVer functions use the [Masterminds semver
+library](https://github.com/Masterminds/semver), from the creators of Sprig.
 
 ### Basic Comparisons
 
 There are two elements to the comparisons. First, a comparison string is a list
 of space or comma separated AND comparisons. These are then separated by || (OR)
 comparisons. For example, `">= 1.2 < 3.0.0 || >= 4.2.3"` is looking for a
-comparison that's greater than or equal to 1.2 and less than 3.0.0 or is
-greater than or equal to 4.2.3.
+comparison that's greater than or equal to 1.2 and less than 3.0.0 or is greater
+than or equal to 4.2.3.
 
 The basic comparisons are:
 
@@ -1793,30 +1898,32 @@ API compliant with their release counterpart. It says,_
 
 Pre-releases, for those not familiar with them, are used for software releases
 prior to stable or generally available releases. Examples of prereleases include
-development, alpha, beta, and release candidate releases. A prerelease may be
-a version such as `1.2.3-beta.1` while the stable release would be `1.2.3`. In the
+development, alpha, beta, and release candidate releases. A prerelease may be a
+version such as `1.2.3-beta.1` while the stable release would be `1.2.3`. In the
 order of precedence, prereleases come before their associated releases. In this
 example `1.2.3-beta.1 < 1.2.3`.
 
-According to the Semantic Version specification prereleases may not be
-API compliant with their release counterpart. It says,
+According to the Semantic Version specification prereleases may not be API
+compliant with their release counterpart. It says,
 
-> A pre-release version indicates that the version is unstable and might not satisfy the intended compatibility requirements as denoted by its associated normal version.
+> A pre-release version indicates that the version is unstable and might not
+> satisfy the intended compatibility requirements as denoted by its associated
+> normal version.
 
 SemVer comparisons using constraints without a prerelease comparator will skip
 prerelease versions. For example, `>=1.2.3` will skip prereleases when looking
 at a list of releases while `>=1.2.3-0` will evaluate and find prereleases.
 
 The reason for the `0` as a pre-release version in the example comparison is
-because pre-releases can only contain ASCII alphanumerics and hyphens (along with
-`.` separators), per the spec. Sorting happens in ASCII sort order, again per the
-spec. The lowest character is a `0` in ASCII sort order
-(see an [ASCII Table](http://www.asciitable.com/))
+because pre-releases can only contain ASCII alphanumerics and hyphens (along
+with `.` separators), per the spec. Sorting happens in ASCII sort order, again
+per the spec. The lowest character is a `0` in ASCII sort order (see an [ASCII
+Table](http://www.asciitable.com/))
 
-Understanding ASCII sort ordering is important because A-Z comes before a-z. That
-means `>=1.2.3-BETA` will return `1.2.3-alpha`. What you might expect from case
-sensitivity doesn't apply here. This is due to ASCII sort ordering which is what
-the spec specifies.
+Understanding ASCII sort ordering is important because A-Z comes before a-z.
+That means `>=1.2.3-BETA` will return `1.2.3-alpha`. What you might expect from
+case sensitivity doesn't apply here. This is due to ASCII sort ordering which is
+what the spec specifies.
 
 ### Hyphen Range Comparisons
 
@@ -1829,8 +1936,8 @@ These look like:
 ### Wildcards In Comparisons
 
 The `x`, `X`, and `*` characters can be used as a wildcard character. This works
-for all comparison operators. When used on the `=` operator it falls
-back to the patch level comparison (see tilde below). For example,
+for all comparison operators. When used on the `=` operator it falls back to the
+patch level comparison (see tilde below). For example,
 
 - `1.2.x` is equivalent to `>= 1.2.0, < 1.3.0`
 - `>= 1.2.x` is equivalent to `>= 1.2.0`
@@ -1868,7 +1975,8 @@ major change is API breaking. For example,
 
 ## URL Functions
 
-Helm includes the [urlParse](#urlparse), [urlJoin](#urljoin), and [urlquery](#urlquery) functions enabling you to work with URL parts.
+Helm includes the [urlParse](#urlparse), [urlJoin](#urljoin), and
+[urlquery](#urlquery) functions enabling you to work with URL parts.
 
 ### urlParse
 
@@ -1890,7 +1998,8 @@ fragment: 'anchor'
 userinfo: 'admin:secret'
 ```
 
-This is implemented used the URL packages from the Go standard library. For more info, check https://golang.org/pkg/net/url/#URL
+This is implemented used the URL packages from the Go standard library. For more
+info, check https://golang.org/pkg/net/url/#URL
 
 ### urlJoin
 
@@ -1907,7 +2016,8 @@ proto://host:80/path?query#fragment
 
 ### urlquery
 
-Returns the escaped version of the value passed in as an argument so that it is suitable for embedding in the query portion of a URL.
+Returns the escaped version of the value passed in as an argument so that it is
+suitable for embedding in the query portion of a URL.
 
 ```
 $var := urlquery "string for query"
@@ -1925,13 +2035,17 @@ The above returns a new UUID of the v4 (randomly generated) type.
 
 ## Kubernetes and Chart Functions
 
-Helm includes functions for working with Kubernetes including [.Capabilities.APIVersions.Has](#capabilitiesapiversionshas), [Files](#file-functions), and [lookup](#lookup).
+Helm includes functions for working with Kubernetes including
+[.Capabilities.APIVersions.Has](#capabilitiesapiversionshas),
+[Files](#file-functions), and [lookup](#lookup).
 
 ### lookup
 
-`lookup` is used to look up resource in a running cluster. When used with the `helm template` command it always returns an empty response.
+`lookup` is used to look up resource in a running cluster. When used with the
+`helm template` command it always returns an empty response.
 
-You can find more detail in the [documentation on the lookup function](functions_and_pipelines.md/#using-the-lookup-function).
+You can find more detail in the [documentation on the lookup
+function](functions_and_pipelines.md/#using-the-lookup-function).
 
 ### .Capabilities.APIVersions.Has
 
@@ -1942,10 +2056,15 @@ Returns if an API version or resource is available in a cluster.
 .Capabilities.APIVersions.Has "apps/v1/Deployment"
 ```
 
-More information is available on the [built-in object documentation](builtin_objects.md).
+More information is available on the [built-in object
+documentation](builtin_objects.md).
 
 ### File Functions
 
-There are several functions that enable you to get to non-special files within a chart. For example, to access application configuration files. These are documented in [Accessing Files Inside Templates](accessing_files.md).
+There are several functions that enable you to get to non-special files within a
+chart. For example, to access application configuration files. These are
+documented in [Accessing Files Inside Templates](accessing_files.md).
 
-_Note, the documentation for many of these functions come from [Sprig](https://github.com/Masterminds/sprig). Sprig is a template funciton library available to Go applications._
+_Note, the documentation for many of these functions come from
+[Sprig](https://github.com/Masterminds/sprig). Sprig is a template funciton
+library available to Go applications._

@@ -13,8 +13,8 @@ There are a few commands that can help you debug.
 - `helm lint` is your go-to tool for verifying that your chart follows best
   practices
 - `helm install --dry-run --debug` or `helm template --debug`: We've seen this
-  trick already. It's a great way to have the server render your templates,
-  then return the resulting manifest file.
+  trick already. It's a great way to have the server render your templates, then
+  return the resulting manifest file.
 - `helm get manifest`: This is a good way to see what templates are installed on
   the server.
 
