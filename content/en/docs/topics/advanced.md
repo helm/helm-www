@@ -37,7 +37,7 @@ A post renderer can be used with `install`, `upgrade`, and `template`. To use a
 post-renderer, use the `--post-renderer` flag with a path to the renderer
 executable you wish to use:
 
-```shell
+```console
 $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 ```
 
@@ -160,16 +160,16 @@ To enable the ConfigMap backend, you'll need to set the environmental variable
 
 You can set it in a shell as follows:
 
-```shell
-export HELM_DRIVER=configmap
+```console
+$ export HELM_DRIVER=configmap
 ```
 
 If you want to switch from the default backend to the ConfigMap
 backend, you'll have to do the migration for this on your own. You can retrieve
 release information with the following command:
 
-```shell
-kubectl get secret --all-namespaces -l "owner=helm"
+```console
+$ kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
 **PRODUCTION NOTES**: The release information might contain sensitive data

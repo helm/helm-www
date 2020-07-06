@@ -30,27 +30,27 @@ named, use a command like `git remote -v` to find out.
 If you don't have an upstream remote, you can add one easily using something
 like:
 
-```shell
-git remote add upstream git@github.com:helm/helm.git
+```console
+$ git remote add upstream git@github.com:helm/helm.git
 ```
 
 In this doc, we are going to reference a few environment variables as well,
 which you may want to set for convenience. For major/minor releases, use the
 following:
 
-```shell
-export RELEASE_NAME=vX.Y.0
-export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
+```console
+$ export RELEASE_NAME=vX.Y.0
+$ export RELEASE_BRANCH_NAME="release-X.Y"
+$ export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
 ```
 
 If you are creating a patch release, you may want to use the following instead:
 
-```shell
-export PREVIOUS_PATCH_RELEASE=vX.Y.Z
-export RELEASE_NAME=vX.Y.Z+1
-export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
+```console
+$ export PREVIOUS_PATCH_RELEASE=vX.Y.Z
+$ export RELEASE_NAME=vX.Y.Z+1
+$ export RELEASE_BRANCH_NAME="release-X.Y"
+$ export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
 ```
 
 We are also going to be adding security and verification of the release process
@@ -82,10 +82,10 @@ backwards compatibility*. Minor releases are for new feature additions that do
 not break backwards compatibility. To create a major or minor release, start by
 creating a `release-vX.Y.0` branch from master.
 
-```shell
-git fetch upstream
-git checkout upstream/master
-git checkout -b $RELEASE_BRANCH_NAME
+```console
+$ git fetch upstream
+$ git checkout upstream/master
+$ git checkout -b $RELEASE_BRANCH_NAME
 ```
 
 This new branch is going to be the base for the release, which we are going to
@@ -96,33 +96,33 @@ iterate upon later.
 Patch releases are a few critical cherry-picked fixes to existing releases.
 Start by creating a `release-vX.Y.Z` branch:
 
-```shell
-git fetch upstream
-git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
+```console
+$ git fetch upstream
+$ git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
 ```
 
 From here, we can cherry-pick the commits we want to bring into the patch
 release:
 
-```shell
+```console
 # get the commits ids we want to cherry-pick
-git log --oneline
+$ git log --oneline
 # cherry-pick the commits starting from the oldest one, without including merge commits
-git cherry-pick -x <commit-id>
+$ git cherry-pick -x <commit-id>
 ```
 
 After the commits have been cherry picked the release branch needs to be pushed
 which will cause the tests to run. Make sure they pass prior to creating the tag.
 
-```shell
-git push upstream $RELEASE_BRANCH_NAME
+```console
+$ git push upstream $RELEASE_BRANCH_NAME
 ```
 
 Finally, we create the tag for the patch on the branch and push upstream:
 
-```shell
-git tag --sign --annotate "$RELEASE_NAME" --message "Helm release $RELEASE_NAME"
-git push upstream "$RELEASE_NAME"
+```console
+$ git tag --sign --annotate "$RELEASE_NAME" --message "Helm release $RELEASE_NAME"
+$ git push upstream "$RELEASE_NAME"
 ```
 
 This new tag is going to be the base for the patch release.
@@ -135,7 +135,7 @@ see that the release passed CI before proceeding.
 When doing a minor release, make sure to update pkg/version/version.go with the
 new release version.
 
-```shell
+```console
 $ git diff pkg/version/version.go
 diff --git a/pkg/version/version.go b/pkg/version/version.go
 index 2109a0a..6f5a1a4 100644
@@ -162,28 +162,28 @@ need to update corresponding tests that are using that version number.
 * `cmd/helm/testdata/output/version-template.txt`
 * `pkg/chartutil/capabilities_test.go`
 
-```shell
-git add .
-git commit -m "bump version to $RELEASE_CANDIDATE_NAME"
+```console
+$ git add .
+$ git commit -m "bump version to $RELEASE_CANDIDATE_NAME"
 ```
 
 This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
 pull this change into the master branch for when the next release is being
 created.
 
-```shell
+```console
 # get the last commit id i.e. commit to bump the version
-git log --format="%H" -n 1
+$ git log --format="%H" -n 1
 
 # create new branch off master
-git checkout master
-git checkout -b bump-version-<release_version>
+$ git checkout master
+$ git checkout -b bump-version-<release_version>
 
 # cherry pick the commit using id from first command
-git cherry-pick -x <commit-id>
+$ git cherry-pick -x <commit-id>
 
 # commit the change
-git push origin bump-version-<release-version>
+$ git push origin bump-version-<release-version>
 ```
 
 ## 3. Major/Minor releases: Commit and Push the Release Branch
@@ -191,8 +191,8 @@ git push origin bump-version-<release-version>
 In order for others to start testing, we can now push the release branch
 upstream and start the test process.
 
-```shell
-git push upstream $RELEASE_BRANCH_NAME
+```console
+$ git push upstream $RELEASE_BRANCH_NAME
 ```
 
 Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
@@ -207,9 +207,9 @@ release are there.
 Now that the release branch is out and ready, it is time to start creating and
 iterating on release candidates.
 
-```shell
-git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
-git push upstream $RELEASE_CANDIDATE_NAME
+```console
+$ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
+$ git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
 CircleCI will automatically create a tagged release image and client binary to
@@ -220,19 +220,19 @@ artifacts involves the following steps to grab the client:
 
 linux/amd64, using /bin/bash:
 
-```shell
-wget https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-linux-amd64.tar.gz
+```console
+$ wget https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-linux-amd64.tar.gz
 ```
 
 darwin/amd64, using Terminal.app:
 
-```shell
-wget https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-darwin-amd64.tar.gz
+```console
+$ wget https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-darwin-amd64.tar.gz
 ```
 
 windows/amd64, using PowerShell:
 
-```shell
+```console
 PS C:\> Invoke-WebRequest -Uri "https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME-windows-amd64.tar.gz" -OutFile "helm-$ReleaseCandidateName-windows-amd64.tar.gz"
 ```
 
@@ -259,8 +259,8 @@ broken release.
 Each time you'll want to produce a new release candidate, you will start by
 adding commits to the branch by cherry-picking from master:
 
-```shell
-git cherry-pick -x <commit_id>
+```console
+$ git cherry-pick -x <commit_id>
 ```
 
 You will also want to update the release version number and the CHANGELOG as we
@@ -268,10 +268,10 @@ did in steps 2 and 3 as separate commits.
 
 After that, tag it and notify users of the new release candidate:
 
-```shell
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc2"
-git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
-git push upstream $RELEASE_CANDIDATE_NAME
+```console
+$ export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc2"
+$ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
+$ git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
 From here on just repeat this process, continuously testing until you're happy
@@ -283,10 +283,10 @@ When you're finally happy with the quality of a release candidate, you can move
 on and create the real thing. Double-check one last time to make sure everything
 is in order, then finally push the release tag.
 
-```shell
-git checkout $RELEASE_BRANCH_NAME
-git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NAME}"
-git push upstream $RELEASE_NAME
+```console
+$ git checkout $RELEASE_BRANCH_NAME
+$ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NAME}"
+$ git push upstream $RELEASE_NAME
 ```
 
 Verify that the release succeeded in CI. If not, you will need to fix the
@@ -300,11 +300,11 @@ from.
 
 To do this, run the following `make` commands:
 
-```shell
-export VERSION="$RELEASE_NAME"
-make clean
-make fetch-dist
-make sign
+```console
+$ export VERSION="$RELEASE_NAME"
+$ make clean
+$ make fetch-dist
+$ make sign
 ```
 
 This will generate ascii armored signature files for each of the files pushed by
@@ -370,9 +370,9 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 
 A partially completed set of release notes including the changelog can be created by running the following command:
 
-```shell
-export PREVIOUS_RELEASE=vX.Y.Z
-make release-notes
+```console
+$ export PREVIOUS_RELEASE=vX.Y.Z
+$ make release-notes
 ```
 
 This will create a good baseline set of release notes to which you should just need to fill out the **Notable Changes** and **What's next** sections.
