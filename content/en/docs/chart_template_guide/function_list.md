@@ -260,8 +260,8 @@ This includes:
 
 General purpose:
 
-* `%v` the value in a default format when printing dicts, the plus flag (%+v)
-  adds field names
+* `%v` the value in a default format
+  * when printing dicts, the plus flag (%+v) adds field names
 * `%%` a literal percent sign; consumes no value
 
 Boolean:
