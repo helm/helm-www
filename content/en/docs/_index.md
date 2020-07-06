@@ -6,8 +6,9 @@ description: "Everything you need to know about how the documentation is organiz
 # Welcome
 
 Welcome to the [Helm](https://helm.sh/) documentation. Helm is the package
-manager for Kubernetes, and you can read detailed background information in
-the [CNCF Helm Project Journey report](https://www.cncf.io/cncf-helm-project-journey/).
+manager for Kubernetes, and you can read detailed background information in the
+[CNCF Helm Project Journey
+report](https://www.cncf.io/cncf-helm-project-journey/).
 
 # How the documentation is organized
 

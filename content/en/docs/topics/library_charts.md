@@ -5,25 +5,38 @@ aliases: ["docs/library_charts/"]
 weight: 4
 ---
 
-A library chart is a type of [Helm chart]({{< ref "/docs/topics/charts.md" >}}) that defines chart primitives or definitions which can be shared by Helm templates in other charts. This allows users to share snippets of code that can be re-used across charts, avoiding repetition and keeping charts [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+A library chart is a type of [Helm chart]({{< ref "/docs/topics/charts.md" >}})
+that defines chart primitives or definitions which can be shared by Helm
+templates in other charts. This allows users to share snippets of code that can
+be re-used across charts, avoiding repetition and keeping charts
+[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-The library chart was introduced in Helm 3 to formally recognize common or helper charts that have been used by chart maintainers since Helm 2. By including it as a chart type, it provides:
+The library chart was introduced in Helm 3 to formally recognize common or
+helper charts that have been used by chart maintainers since Helm 2. By
+including it as a chart type, it provides:
 - A means to explicitly distinguish between common and application charts 
 - Logic to prevent installation of a common chart
-- No rendering of templates in a common chart which may contain release artifacts 
+- No rendering of templates in a common chart which may contain release
+  artifacts 
 
-A chart maintainer can define a common chart as a library chart and now be confident that Helm will handle the chart in a standard consistent fashion. It also means that definitions in an application chart can be shared by changing the chart type.
+A chart maintainer can define a common chart as a library chart and now be
+confident that Helm will handle the chart in a standard consistent fashion. It
+also means that definitions in an application chart can be shared by changing
+the chart type.
 
 ## Create a Simple Library Chart
 
-As mentioned previously, a library chart is a type of [Helm chart]({{< ref "/docs/topics/charts.md" >}}). This means that you can start off by creating a scaffold chart:
+As mentioned previously, a library chart is a type of [Helm chart]({{< ref
+"/docs/topics/charts.md" >}}). This means that you can start off by creating a
+scaffold chart:
 
 ```console
 $ helm create mylibchart
 Creating mylibchart
 ```
 
-You will first remove all the files in `templates` directory as we will create our own templates definitions in this example.
+You will first remove all the files in `templates` directory as we will create
+our own templates definitions in this example.
 
 ```console
 $ rm -rf mylibchart/templates/*
@@ -35,9 +48,17 @@ The values file will not be required either.
 $ rm -f mylibchart/values.yaml 
 ```
 
-Before we jump into creating common code, lets do a quick review of some relevant Helm concepts. A [named template]({{< ref "/docs/chart_template_guide/named_templates.md" >}}) (sometimes called a partial or a subtemplate) is simply a template defined inside of a file, and given a name.  In the `templates/` directory, any file that begins with an underscore(_) is not expected to output a Kubernetes manifest file. So by convention, helper templates and partials are placed in a `_*.tpl` or `_*.yaml` files. 
+Before we jump into creating common code, lets do a quick review of some
+relevant Helm concepts. A [named template]({{< ref
+"/docs/chart_template_guide/named_templates.md" >}}) (sometimes called a partial
+or a subtemplate) is simply a template defined inside of a file, and given a
+name.  In the `templates/` directory, any file that begins with an underscore(_)
+is not expected to output a Kubernetes manifest file. So by convention, helper
+templates and partials are placed in a `_*.tpl` or `_*.yaml` files. 
 
-In this example, we will code a common ConfigMap which creates an empty ConfigMap resource. We will define the common ConfigMap in file `mylibchart/templates/_configmap.yaml` as follows:
+In this example, we will code a common ConfigMap which creates an empty
+ConfigMap resource. We will define the common ConfigMap in file
+`mylibchart/templates/_configmap.yaml` as follows:
 
 ```yaml
 {{- define "mylibchart.configmap.tpl" -}}
@@ -52,9 +73,17 @@ data: {}
 {{- end -}}
 ```
 
-The ConfigMap construct is defined in named template `mylibchart.configmap.tpl`. It is a simple ConfigMap with an empty resource, `data`. Within this file there is another named template called `mylibchart.configmap`. This named template includes another named template `mylibchart.util.merge` which will take 2 named templates as arguments, the template calling `mylibchart.configmap` and `mylibchart.configmap.tpl`.
+The ConfigMap construct is defined in named template `mylibchart.configmap.tpl`.
+It is a simple ConfigMap with an empty resource, `data`. Within this file there
+is another named template called `mylibchart.configmap`. This named template
+includes another named template `mylibchart.util.merge` which will take 2 named
+templates as arguments, the template calling `mylibchart.configmap` and
+`mylibchart.configmap.tpl`.
 
-The helper function `mylibchart.util.merge` is a named template in `mylibchart/templates/_util.yaml`. It is a handy util from [The Common Helm Helper Chart](#the-common-helm-helper-chart) because it merges the 2 templates and overrides any common parts in both:
+The helper function `mylibchart.util.merge` is a named template in
+`mylibchart/templates/_util.yaml`. It is a handy util from [The Common Helm
+Helper Chart](#the-common-helm-helper-chart) because it merges the 2 templates
+and overrides any common parts in both:
 
 ```yaml
 {{- /*
@@ -72,9 +101,11 @@ This takes an array of three values:
 {{- end -}}
 ```
 
-This is important when a chart wants to use common code that it needs to customize with its configuration.
+This is important when a chart wants to use common code that it needs to
+customize with its configuration.
 
-Finally, lets change the chart type to `library`. This requires editing `mylibchart/Chart.yaml` as follows:
+Finally, lets change the chart type to `library`. This requires editing
+`mylibchart/Chart.yaml` as follows:
 
 ```yaml
 apiVersion: v2
@@ -101,9 +132,11 @@ version: 0.1.0
 appVersion: 1.16.0
 ```
 
-The library chart is now ready to be shared and its ConfigMap definition to be re-used.
+The library chart is now ready to be shared and its ConfigMap definition to be
+re-used.
 
-Before moving on, it is worth checking if Helm recognizes the chart as a library chart:
+Before moving on, it is worth checking if Helm recognizes the chart as a library
+chart:
 
 ```console
 $ helm install mylibchart mylibchart/
@@ -125,7 +158,8 @@ Lets clean out the template files again as we want to create a ConfigMap only:
 $ rm -rf mychart/templates/*
 ```
 
-When we want to create a simple ConfigMap in a Helm template, it could look similar to the following:
+When we want to create a simple ConfigMap in a Helm template, it could look
+similar to the following:
 
 ```yaml
 apiVersion: v1
@@ -136,7 +170,9 @@ data:
   myvalue: "Hello World"
 ```
 
-We are however going to re-use the common code already created in `mylibchart`. The ConfigMap can be created in the file `mychart/templates/configmap.yaml` as follows:
+We are however going to re-use the common code already created in `mylibchart`.
+The ConfigMap can be created in the file `mychart/templates/configmap.yaml` as
+follows:
 
 ```yaml
 {{- include "mylibchart.configmap" (list . "mychart.configmap") -}}
@@ -146,9 +182,15 @@ data:
 {{- end -}}
 ```
 
-You can see that it simplifies the work we have to do by inheriting the common ConfigMap definition which adds standard properties for ConfigMap. In our template we add the configuration, in this case the data key `myvalue` and its value. The configuration override the empty resource of the common ConfigMap. This is feasible because of the helper function `mylibchart.util.merge` we mentioned in the previous section.
+You can see that it simplifies the work we have to do by inheriting the common
+ConfigMap definition which adds standard properties for ConfigMap. In our
+template we add the configuration, in this case the data key `myvalue` and its
+value. The configuration override the empty resource of the common ConfigMap.
+This is feasible because of the helper function `mylibchart.util.merge` we
+mentioned in the previous section.
 
-To be able to use the common code, we need to add `mylibchart` as a dependency. Add the following to the end of the file `mychart/Chart.yaml`:
+To be able to use the common code, we need to add `mylibchart` as a dependency.
+Add the following to the end of the file `mychart/Chart.yaml`:
 
 ```yaml
 # My common code in my library chart
@@ -158,7 +200,10 @@ dependencies:
   repository: file://../mylibchart
 ```
 
-This includes the library chart as a dynamic dependency from the filesystem which is at the same parent path as our application chart. As we are including the library chart as a dynamic dependency, we need to run `helm dependency update`. It will copy the library chart into your `charts/` directory.
+This includes the library chart as a dynamic dependency from the filesystem
+which is at the same parent path as our application chart. As we are including
+the library chart as a dynamic dependency, we need to run `helm dependency
+update`. It will copy the library chart into your `charts/` directory.
 
 ```console
 $ helm dependency update mychart/
@@ -169,7 +214,8 @@ Saving 1 charts
 Deleting outdated charts
 ```
 
-We are now ready to deploy our chart. Before installing, it is worth checking the rendered template first.
+We are now ready to deploy our chart. Before installing, it is worth checking
+the rendered template first.
 
 ```console
 $ helm install mydemo mychart/ --debug --dry-run
@@ -232,7 +278,8 @@ metadata:
   name: mychart-mydemo
 ```
 
-This looks like the ConfigMap we want with data override of `myvalue: Hello World`. Lets install it:
+This looks like the ConfigMap we want with data override of `myvalue: Hello
+World`. Lets install it:
 
 ```console
 $ helm install mydemo mychart/
@@ -264,9 +311,14 @@ metadata:
 
 ## The Common Helm Helper Chart
 
-Bit of a mouth full of a title but this [chart](https://github.com/helm/charts/tree/master/incubator/common) is the original pattern for common charts. It provides utilities that reflect best practices of Kubernetes chart development. Best of all it can be used off the bat by you when developing your charts to give you handy shared code.
+Bit of a mouth full of a title but this
+[chart](https://github.com/helm/charts/tree/master/incubator/common) is the
+original pattern for common charts. It provides utilities that reflect best
+practices of Kubernetes chart development. Best of all it can be used off the
+bat by you when developing your charts to give you handy shared code.
 
-Here is a quick way to use it. For more details, have a look at the [README](https://github.com/helm/charts/blob/master/incubator/common/README.md).
+Here is a quick way to use it. For more details, have a look at the
+[README](https://github.com/helm/charts/blob/master/incubator/common/README.md).
 
 Create a scaffold chart again:
 
@@ -275,7 +327,8 @@ $ helm create demo
 Creating demo
 ```
 
-Lets use the common code from the helper chart. First, edit deployment `demo/templates/deployment.yaml` as follows:
+Lets use the common code from the helper chart. First, edit deployment
+`demo/templates/deployment.yaml` as follows:
 
 ```yaml
 {{- template "common.deployment" (list . "demo.deployment") -}}
@@ -301,9 +354,12 @@ And now the service file, `demo/templates/service.yaml` as follows:
 {{- end -}}
 ```
 
-These templates show how inheriting the common code from the helper chart simplifies your coding down to your configuration or customization of the resources.
+These templates show how inheriting the common code from the helper chart
+simplifies your coding down to your configuration or customization of the
+resources.
 
-To be able to use the common code, we need to add `common` as a dependency. Add the following to the end of the file `demo/Chart.yaml`:
+To be able to use the common code, we need to add `common` as a dependency. Add
+the following to the end of the file `demo/Chart.yaml`:
 
 ```yaml
 dependencies:
@@ -312,11 +368,15 @@ dependencies:
   repository: "https://kubernetes-charts-incubator.storage.googleapis.com/"
 ```
 
-Note: You will need to add the `incubator` repo to the Helm repository list (`helm repo add`).
+Note: You will need to add the `incubator` repo to the Helm repository list
+(`helm repo add`).
 
-As we are including the chart as a dynamic dependency, we need to run `helm dependency update`. It will copy the helper chart into your `charts/` directory.
+As we are including the chart as a dynamic dependency, we need to run `helm
+dependency update`. It will copy the helper chart into your `charts/` directory.
 
-As helper chart is using some Helm 2 constructs, you will need to add the following to `demo/values.yaml` to enable the `nginx` image to be loaded as this was updated in Helm 3 scaffold chart:
+As helper chart is using some Helm 2 constructs, you will need to add the
+following to `demo/values.yaml` to enable the `nginx` image to be loaded as this
+was updated in Helm 3 scaffold chart:
 
 ```yaml
 image:

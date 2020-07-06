@@ -29,8 +29,8 @@ the manifests before deployment.
 ### Usage
 A post-renderer can be any executable that accepts rendered Kubernetes manifests
 on STDIN and returns valid Kubernetes manifests on STDOUT. It should return an
-non-0 exit code in the event of a failure. This is the only "API" between the two
-components. It allows for great flexibility in what you can do with your
+non-0 exit code in the event of a failure. This is the only "API" between the
+two components. It allows for great flexibility in what you can do with your
 post-render process.
 
 A post renderer can be used with `install`, `upgrade`, and `template`. To use a
@@ -83,8 +83,9 @@ For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found
-at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), but a brief overview of some of the most
-common packages and a simple example follow below.
+at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), but
+a brief overview of some of the most common packages and a simple example follow
+below.
 
 ### Package overview
 This is a list of the most commonly used packages with a simple explanation
@@ -147,11 +148,12 @@ func main() {
 
 ## Storage backends
 
-Helm 3 changed the default release information storage to Secrets in the namespace
-of the release. Helm 2 by default stores release information as ConfigMaps in the
-namespace of the Tiller instance. The subsections which follow show how to
-configure different backends. This configuration is based on the `HELM_DRIVER` 
-environment variable. It can be set to one of the values: `[configmap, secret]`.
+Helm 3 changed the default release information storage to Secrets in the
+namespace of the release. Helm 2 by default stores release information as
+ConfigMaps in the namespace of the Tiller instance. The subsections which follow
+show how to configure different backends. This configuration is based on the
+`HELM_DRIVER` environment variable. It can be set to one of the values:
+`[configmap, secret]`.
 
 ### ConfigMap storage backend
 
@@ -164,22 +166,23 @@ You can set it in a shell as follows:
 export HELM_DRIVER=configmap
 ```
 
-If you want to switch from the default backend to the ConfigMap
-backend, you'll have to do the migration for this on your own. You can retrieve
-release information with the following command:
+If you want to switch from the default backend to the ConfigMap backend, you'll
+have to do the migration for this on your own. You can retrieve release
+information with the following command:
 
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**PRODUCTION NOTES**: The release information might contain sensitive data
-(like passwords, private keys, and other credentials) that needs to be protected
-from unauthorized access. When managing Kubernetes authorization, for instance with 
-[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), it
-is possible to grant broader access to ConfigMap resources, while restricting
-access to Secret resources. For instance, the default
-[user-facing role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
-"view" grants access to most resources, but not to Secrets. Furthermore, secrets data can be
-configured for [encrypted storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
+**PRODUCTION NOTES**: The release information might contain sensitive data (like
+passwords, private keys, and other credentials) that needs to be protected from
+unauthorized access. When managing Kubernetes authorization, for instance with
+[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), it is
+possible to grant broader access to ConfigMap resources, while restricting
+access to Secret resources. For instance, the default [user-facing
+role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
+"view" grants access to most resources, but not to Secrets. Furthermore, secrets
+data can be configured for [encrypted
+storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
 Please keep that in mind if you decide to switch to the ConfigMap backend, as it
 could expose your application's sensitive data.

@@ -202,7 +202,8 @@ Note that we pass `.` at the end of the `template` call. We could just as easily
 pass `.Values` or `.Values.favorite` or whatever scope we want. But what we want
 is the top-level scope.
 
-Now when we execute this template with `helm install --dry-run --debug plinking-anaco ./mychart`, we get this:
+Now when we execute this template with `helm install --dry-run --debug
+plinking-anaco ./mychart`, we get this:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml

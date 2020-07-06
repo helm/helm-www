@@ -34,7 +34,8 @@ The following hooks are defined:
 | `post-rollback`  | Executes on a rollback request after all resources have been modified                                 |
 | `test`           | Executes when the Helm test subcommand is invoked ([view test docs](/docs/chart_tests/))              |
 
-_Note that the `crd-install` hook has been removed in favor of the `crds/` directory in Helm 3._
+_Note that the `crd-install` hook has been removed in favor of the `crds/`
+directory in Helm 3._
 
 ## Hooks and the Release Lifecycle
 
@@ -92,17 +93,18 @@ not important.
 ### Hook resources are not managed with corresponding releases
 
 The resources that a hook creates are currently not tracked or managed as part
-of the release. Once Helm verifies that the hook has reached its ready state,
-it will leave the hook resource alone. Garbage collection of hook resources when
-the corresponding release is deleted may be added to Helm 3 in the future, so any
-hook resources that must never be deleted should be annotated with
+of the release. Once Helm verifies that the hook has reached its ready state, it
+will leave the hook resource alone. Garbage collection of hook resources when
+the corresponding release is deleted may be added to Helm 3 in the future, so
+any hook resources that must never be deleted should be annotated with
 `helm.sh/resource-policy: keep`.
 
 Practically speaking, this means that if you create resources in a hook, you
 cannot rely upon `helm uninstall` to remove the resources. To destroy such
-resources, you need to either [add a custom `helm.sh/hook-delete-policy` annotation](#hook-deletion-policies)
-to the hook template file, or [set the time to live (TTL) field of a
-Job resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
+resources, you need to either [add a custom `helm.sh/hook-delete-policy`
+annotation](#hook-deletion-policies) to the hook template file, or [set the time
+to live (TTL) field of a Job
+resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
 ## Writing a Hook
 
@@ -183,8 +185,9 @@ will sort those hooks in ascending order.
 
 ### Hook deletion policies
 
-It is possible to define policies that determine when to delete corresponding hook
-resources. Hook deletion policies are defined using the following annotation:
+It is possible to define policies that determine when to delete corresponding
+hook resources. Hook deletion policies are defined using the following
+annotation:
 
 ```yaml
 annotations:
@@ -199,4 +202,5 @@ You can choose one or more defined annotation values:
 | `hook-succeeded`       | Delete the resource after the hook is successfully executed          |
 | `hook-failed`          | Delete the resource if the hook failed during execution              |
 
-If no hook deletion policy annotation is specified, the `before-hook-creation` behavior applies by default.
+If no hook deletion policy annotation is specified, the `before-hook-creation`
+behavior applies by default.

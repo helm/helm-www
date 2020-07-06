@@ -3,7 +3,6 @@ title: "Getting Started"
 weight: 2
 description: "A quick guide on Chart templates."
 aliases: ["/intro/getting_started/"]
-
 ---
 
 In this section of the guide, we'll create a chart and then add a first
@@ -99,8 +98,8 @@ data:
 recommend using the suffix `.yaml` for YAML files and `.tpl` for helpers.
 
 The YAML file above is a bare-bones ConfigMap, having the minimal necessary
-fields. In virtue of the fact that this file is in the `mychart/templates/` directory,
-it will be sent through the template engine.
+fields. In virtue of the fact that this file is in the `mychart/templates/`
+directory, it will be sent through the template engine.
 
 It is just fine to put a plain YAML file like this in the `mychart/templates/`
 directory. When Helm reads this template, it will simply send it to Kubernetes
@@ -119,7 +118,8 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Using Helm, we can retrieve the release and see the actual template that was loaded.
+Using Helm, we can retrieve the release and see the actual template that was
+loaded.
 
 ```console
 $ helm get manifest full-coral
@@ -167,8 +167,8 @@ data:
   myvalue: "Hello World"
 ```
 
-The big change comes in the value of the `name:` field, which is now `{{
-.Release.Name }}-configmap`.
+The big change comes in the value of the `name:` field, which is now
+`{{.Release.Name }}-configmap`.
 
 > A template directive is enclosed in `{{` and `}}` blocks.
 
@@ -200,17 +200,17 @@ TEST SUITE: None
 
 You can run `helm get manifest clunky-serval` to see the entire generated YAML.
 
-Note that the config map inside kubernetes name is
-`clunky-serval-configmap` instead of `mychart-configmap` previously.
+Note that the config map inside kubernetes name is `clunky-serval-configmap`
+instead of `mychart-configmap` previously.
 
 At this point, we've seen templates at their most basic: YAML files that have
 template directives embedded in `{{` and `}}`. In the next part, we'll take a
 deeper look into templates. But before moving on, there's one quick trick that
 can make building templates faster: When you want to test the template
 rendering, but not actually install anything, you can use `helm install --debug
---dry-run goodly-guppy ./mychart`. This will render the templates. But instead of installing
-the chart, it will return the rendered template to you so you can see the
-output:
+--dry-run goodly-guppy ./mychart`. This will render the templates. But instead
+of installing the chart, it will return the rendered template to you so you can
+see the output:
 
 ```console
 $ helm install --debug --dry-run goodly-guppy ./mychart
@@ -271,6 +271,6 @@ Using `--dry-run` will make it easier to test your code, but it won't ensure
 that Kubernetes itself will accept the templates you generate. It's best not to
 assume that your chart will install just because `--dry-run` works.
 
-In the [Chart Template Guide](_index.md), we take the
-basic chart we defined here and explore the Helm template language in detail.
-And we'll get started with built-in objects.
+In the [Chart Template Guide](_index.md), we take the basic chart we defined
+here and explore the Helm template language in detail. And we'll get started
+with built-in objects.

@@ -35,8 +35,8 @@ $ rm -rf mysubchart/templates/*.*
 
 Notice that just as before, we deleted all of the base templates so that we can
 start from scratch. In this guide, we are focused on how templates work, not on
-managing dependencies. But the [Charts Guide]({{< ref "../topics/charts.md" >}}) has more information
-on how subcharts work.
+managing dependencies. But the [Charts Guide]({{< ref "../topics/charts.md" >}})
+has more information on how subcharts work.
 
 ## Adding Values and a Template to the Subchart
 
@@ -238,8 +238,7 @@ will only accept a string literal.
 
 The Go template language provides a `block` keyword that allows developers to
 provide a default implementation which is overridden later. In Helm charts,
-blocks are not the best tool for overriding because if multiple
-implementations of the same block are provided, the one selected is
-unpredictable.
+blocks are not the best tool for overriding because if multiple implementations
+of the same block are provided, the one selected is unpredictable.
 
 The suggestion is to instead use `include`.

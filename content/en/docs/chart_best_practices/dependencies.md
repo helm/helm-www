@@ -37,16 +37,17 @@ allowed in the official Helm repository.
 
 #### Experimental support for Charts hosted on OCI registries
 
-If you have [enabled experimental OCI support](/docs/registries/), you can specify
-an OCI reference (`oci://registry/group/image:tag`) for the repository URL.
+If you have [enabled experimental OCI support](/docs/registries/), you can
+specify an OCI reference (`oci://registry/group/image:tag`) for the repository
+URL.
 
 When specifying an OCI reference, you may omit the `version` argument if your
 repository URL contains an image tag (`oci://nginx:1.10`). If you do not specify
-a tag on the URL, the `version` will be used as the tag. This means that OCI URLs
-**do not support SemVer constraints**, only tagged versions are supported.
+a tag on the URL, the `version` will be used as the tag. This means that OCI
+URLs **do not support SemVer constraints**, only tagged versions are supported.
 
-If you specify both a tag and a version, the tag takes precedence and the version
-is ignored.
+If you specify both a tag and a version, the tag takes precedence and the
+version is ignored.
 
 ## Conditions and Tags
 
@@ -64,9 +65,9 @@ When multiple subcharts (dependencies) together provide an optional or swappable
 feature, those charts should share the same tags.
 
 For example, if both `nginx` and `memcached` together provide performance
-optimizations for the main app in the chart, and are required to both be
-present when that feature is enabled, then they should both have a tags section
-like this:
+optimizations for the main app in the chart, and are required to both be present
+when that feature is enabled, then they should both have a tags section like
+this:
 
 ```yaml
 tags:

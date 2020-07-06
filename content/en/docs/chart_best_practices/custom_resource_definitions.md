@@ -39,19 +39,19 @@ installation step, you can pass the `--skip-crds` flag.
 
 #### Some caveats (and explanations)
 
-There is no support at this time for upgrading or deleting CRDs using Helm.
-This was an explicit decision after much community discussion due to the danger
-for unintentional data loss. Furthermore, there is currently no community
-consensus around how to handle CRDs and their lifecycle. As this evolves, Helm
-will add support for those use cases.
+There is no support at this time for upgrading or deleting CRDs using Helm. This
+was an explicit decision after much community discussion due to the danger for
+unintentional data loss. Furthermore, there is currently no community consensus
+around how to handle CRDs and their lifecycle. As this evolves, Helm will add
+support for those use cases.
 
 The `--dry-run` flag of `helm install` and `helm upgrade` is not currently
 supported for CRDs. The purpose of "Dry Run" is to validate that the output of
 the chart will actually work if sent to the server. But CRDs are a modification
 of the server's behavior. Helm cannot install the CRD on a dry run, so the
 discovery client will not know about that Custom Resource (CR), and validation
-will fail. You can alternatively move the CRDs to their own chart or use
-`helm template` instead.
+will fail. You can alternatively move the CRDs to their own chart or use `helm
+template` instead.
 
 Another important point to consider in the discussion around CRD support is how
 the rendering of templates is handled. One of the distinct disadvantages of the

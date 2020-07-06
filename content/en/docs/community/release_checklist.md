@@ -112,7 +112,8 @@ git cherry-pick -x <commit-id>
 ```
 
 After the commits have been cherry picked the release branch needs to be pushed
-which will cause the tests to run. Make sure they pass prior to creating the tag.
+which will cause the tests to run. Make sure they pass prior to creating the
+tag.
 
 ```shell
 git push upstream $RELEASE_BRANCH_NAME
@@ -127,8 +128,8 @@ git push upstream "$RELEASE_NAME"
 
 This new tag is going to be the base for the patch release.
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
-see that the release passed CI before proceeding.
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
+that the release passed CI before proceeding.
 
 ## 2. Change the Version Number in Git
 
@@ -195,8 +196,8 @@ upstream and start the test process.
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to
-see that the release passed CI before proceeding.
+Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
+that the release passed CI before proceeding.
 
 If anyone is available, let others peer-review the branch before continuing to
 ensure that all the proper changes have been made and all of the commits for the
@@ -310,7 +311,8 @@ make sign
 This will generate ascii armored signature files for each of the files pushed by
 CI.
 
-All of the signature files (`*.asc`) need to be uploaded to the release on GitHub.
+All of the signature files (`*.asc`) need to be uploaded to the release on
+GitHub.
 
 ## 8. Write the Release Notes
 
@@ -368,18 +370,22 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 - fix circle not building tags f4f932fabd197f7e6d608c8672b33a483b4b76fa (Matthew Fisher)
 ```
 
-A partially completed set of release notes including the changelog can be created by running the following command:
+A partially completed set of release notes including the changelog can be
+created by running the following command:
 
 ```shell
 export PREVIOUS_RELEASE=vX.Y.Z
 make release-notes
 ```
 
-This will create a good baseline set of release notes to which you should just need to fill out the **Notable Changes** and **What's next** sections.
+This will create a good baseline set of release notes to which you should just
+need to fill out the **Notable Changes** and **What's next** sections.
 
-Feel free to add your voice to the release notes; it's nice for people to think we're not all robots.
+Feel free to add your voice to the release notes; it's nice for people to think
+we're not all robots.
 
-You should also double check the URLs and checksums are correct in the auto-generated release notes.
+You should also double check the URLs and checksums are correct in the
+auto-generated release notes.
 
 Once finished, go into GitHub and edit the release notes for the tagged release
 with the notes written here.
@@ -393,7 +399,11 @@ When you are ready to go, hit `publish`.
 
 ## 9. Update Docs Site
 
-The [Helm website docs section](https://helm.sh/docs) lists the Helm versions for the docs. The minor and patch information needs to be updated on the site. To do that create a pull request against the [helm-www repository](https://github.com/helm/helm-www). In the `config.toml` file find the proper `params.versions` section and updated the Helm version.
+The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
+for the docs. The minor and patch information needs to be updated on the site.
+To do that create a pull request against the [helm-www
+repository](https://github.com/helm/helm-www). In the `config.toml` file find
+the proper `params.versions` section and updated the Helm version.
 
 ## 10. Evangelize
 
