@@ -57,9 +57,9 @@ controls themselves can set this value to `false` (in which case see below).
 
 ## Using RBAC Resources
 
-`serviceAccount.name` should be set to the name of the ServiceAccount to be used by
-access-controlled resources created by the chart.  If `serviceAccount.create` is
-true, then a ServiceAccount with this name should be created.  If the name is
+`serviceAccount.name` should be set to the name of the ServiceAccount to be used
+by access-controlled resources created by the chart.  If `serviceAccount.create`
+is true, then a ServiceAccount with this name should be created.  If the name is
 not set, then a name is generated using the `fullname` template, If
 `serviceAccount.create` is false, then it should not be created, but it should
 still be associated with the same resources so that manually-created RBAC

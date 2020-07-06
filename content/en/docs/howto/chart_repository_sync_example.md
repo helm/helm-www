@@ -17,8 +17,9 @@ which serves a chart repository.*
   on your GCS bucket in case you accidentally delete something._
 
 ## Set up a local chart repository directory
-Create a local directory like we did in [the chart repository
-guide]({{< ref "/docs/topics/chart_repository.md" >}}), and place your packaged charts in that directory.
+Create a local directory like we did in [the chart repository guide]({{< ref
+"/docs/topics/chart_repository.md" >}}), and place your packaged charts in that
+directory.
 
 For example:
 ```console

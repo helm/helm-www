@@ -205,17 +205,17 @@ charts inside of that folder.
 
 ### ChartMuseum Repository Server
 
-ChartMuseum is an open-source Helm Chart Repository server written in Go (Golang),
-with support for cloud storage backends, including
-[Google Cloud Storage](https://cloud.google.com/storage/),
-[Amazon S3](https://aws.amazon.com/s3/),
-[Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/),
-[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss),
-[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/),
-[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage),
-[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html),
-[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+ChartMuseum is an open-source Helm Chart Repository server written in Go
+(Golang), with support for cloud storage backends, including [Google Cloud
+Storage](https://cloud.google.com/storage/), [Amazon
+S3](https://aws.amazon.com/s3/), [Microsoft Azure Blob
+Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), [Alibaba
+Cloud OSS Storage](https://www.alibabacloud.com/product/oss), [Openstack Object
+Storage](https://developer.openstack.org/api-ref/object-store/), [Oracle Cloud
+Infrastructure Object Storage](https://cloud.oracle.com/storage), [Baidu Cloud
+BOS Storage](https://cloud.baidu.com/product/bos.html), [Tencent Cloud Object
+Storage](https://intl.cloud.tencent.com/product/cos), [DigitalOcean
+Spaces](https://www.digitalocean.com/products/spaces/),
 [Minio](https://min.io/), and [etcd](https://etcd.io/).
 
 You can also use the
@@ -256,8 +256,9 @@ the given directory path.
 
 Now you can upload the chart and the index file to your chart repository using a
 sync tool or manually. If you're using Google Cloud Storage, check out this
-[example workflow]({{< ref "/docs/howto/chart_repository_sync_example.md" >}}) using the gsutil client.
-For GitHub, you can simply put the charts in the appropriate destination branch.
+[example workflow]({{< ref "/docs/howto/chart_repository_sync_example.md" >}})
+using the gsutil client. For GitHub, you can simply put the charts in the
+appropriate destination branch.
 
 ### Add new charts to an existing repository
 
@@ -297,8 +298,9 @@ fantastic-charts    https://fantastic-charts.storage.googleapis.com
 ```
 
 **Note:** A repository will not be added if it does not contain a valid
-`index.yaml`.
-**Note:** If your helm repository is e.g. using a self signed certificate, you can use `help repo add --insecure-skip-tls-verify ...` in order to skip the CA verification.
+`index.yaml`. **Note:** If your helm repository is e.g. using a self signed
+certificate, you can use `help repo add --insecure-skip-tls-verify ...` in order
+to skip the CA verification.
 
 After that, your users will be able to search through your charts. After you've
 updated the repository, they can use the `helm repo update` command to get the

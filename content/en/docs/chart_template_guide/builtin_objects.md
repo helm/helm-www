@@ -26,8 +26,8 @@ access in your templates.
     upgrade or rollback.
   - `Release.IsInstall`: This is set to `true` if the current operation is an
     install.
-  - `Release.Revision`: The revision number for this release. On install, this is
-    1, and it is incremented with each upgrade and rollback.
+  - `Release.Revision`: The revision number for this release. On install, this
+    is 1, and it is incremented with each upgrade and rollback.
   - `Release.Service`: The service that is rendering the present template. On
     Helm, this is always `Helm`.
 - `Values`: Values passed into the template from the `values.yaml` file and from
@@ -35,8 +35,8 @@ access in your templates.
 - `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will
   be accessible here. For example `{{ .Chart.Name }}-{{ .Chart.Version }}` will
   print out the `mychart-0.1.0`.
-  - The available fields are listed in the [Charts
-    Guide]({{< ref "/docs/topics/charts.md#the-chartyaml-file" >}})
+  - The available fields are listed in the [Charts Guide]({{< ref
+    "/docs/topics/charts.md#the-chartyaml-file" >}})
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
   chart. See the section _Accessing Files_ for more.
@@ -49,8 +49,8 @@ access in your templates.
     the given shell glob pattern.
   - `Files.Lines` is a function that reads a file line-by-line. This is useful
     for iterating over each line in a file.
-  - `Files.AsSecrets` is a function that returns the file bodies as Base 64 encoded
-    strings.
+  - `Files.AsSecrets` is a function that returns the file bodies as Base 64
+    encoded strings.
   - `Files.AsConfig` is a function that returns file bodies as a YAML map.
 - `Capabilities`: This provides information about what capabilities the
   Kubernetes cluster supports.
@@ -58,7 +58,8 @@ access in your templates.
   - `Capabilities.APIVersions.Has $version` indicates whether a version (e.g.,
     `batch/v1`) or resource (e.g., `apps/v1/Deployment`) is available on the
     cluster.
-  - `Capabilities.KubeVersion` and `Capabilities.KubeVersion.Version` is the Kubernetes version.
+  - `Capabilities.KubeVersion` and `Capabilities.KubeVersion.Version` is the
+    Kubernetes version.
   - `Capabilities.KubeVersion.Major` is the Kubernetes major version.
   - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
 - `Template`: Contains information about the current template that is being

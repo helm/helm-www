@@ -240,4 +240,5 @@ The `dependencies` array of `Chart.yaml` supports OCI registry URLs. This means
 that the `helm dep` commands support declared OCI dependencies **if experimental
 support is enabled**.
 
-For more details see [the documentation on dependencies](/docs/topics/chart_best_practices/dependencies/).
+For more details see [the documentation on
+dependencies](/docs/topics/chart_best_practices/dependencies/).

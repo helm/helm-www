@@ -315,9 +315,9 @@ because the scope is reset after `{{ end }}`.
   release: {{ .Release.Name }}
 ```
 
-Or, we can use `$` for accessing the object `Release.Name` from the parent scope.
-`$` is mapped to the root scope when template execution begins and it does not
-change during template execution. The following would work as well:
+Or, we can use `$` for accessing the object `Release.Name` from the parent
+scope. `$` is mapped to the root scope when template execution begins and it
+does not change during template execution. The following would work as well:
 
 ```yaml
   {{- with .Values.favorite }}

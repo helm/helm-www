@@ -29,9 +29,8 @@ single argument.
 
 Helm has over 60 available functions. Some of them are defined by the [Go
 template language](https://godoc.org/text/template) itself. Most of the others
-are part of the [Sprig template
-library](https://masterminds.github.io/sprig/). We'll see many of them
-as we progress through the examples.
+are part of the [Sprig template library](https://masterminds.github.io/sprig/).
+We'll see many of them as we progress through the examples.
 
 > While we talk about the "Helm template language" as if it is Helm-specific, it
 > is actually a combination of the Go template language, some extra functions,
@@ -157,8 +156,8 @@ favorite:
   food: pizza
 ```
 
-Now re-running `helm install --dry-run --debug fair-worm ./mychart` will produce this
-YAML:
+Now re-running `helm install --dry-run --debug fair-worm ./mychart` will produce
+this YAML:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -192,8 +191,9 @@ language.
 
 ## Using the `lookup` function
 
-The `lookup` function can be used to _look up_ resources in a running cluster. The synopsis of the
-lookup function is `lookup apiVersion, kind, namespace, name -> resource or resource list`.
+The `lookup` function can be used to _look up_ resources in a running cluster.
+The synopsis of the lookup function is `lookup apiVersion, kind, namespace, name
+-> resource or resource list`.
 
 | parameter  | type   |
 |------------|--------|
@@ -202,7 +202,8 @@ lookup function is `lookup apiVersion, kind, namespace, name -> resource or reso
 | namespace  | string |
 | name       | string |
 
-Both `name` and `namespace` are optional and can be passed as an empty string (`""`).
+Both `name` and `namespace` are optional and can be passed as an empty string
+(`""`).
 
 The following combination of parameters are possible:
 
@@ -214,17 +215,18 @@ The following combination of parameters are possible:
 | `kubectl get namespace mynamespace`    | `lookup "v1" "Namespace" "" "mynamespace"` |
 | `kubectl get namespaces`               | `lookup "v1" "Namespace" "" ""`            |
 
-When `lookup` returns an object, it will return a dictionary. This dictionary can be further
-navigated to extract specific values.
+When `lookup` returns an object, it will return a dictionary. This dictionary
+can be further navigated to extract specific values.
 
-The following example will return the annotations present for the `mynamespace` object:
+The following example will return the annotations present for the `mynamespace`
+object:
 
 ```go
 (lookup "v1" "Namespace" "" "mynamespace").metadata.annotations
 ```
 
-When `lookup` returns a list of objects, it is possible to access the object list via the `items`
-field:
+When `lookup` returns a list of objects, it is possible to access the object
+list via the `items` field:
 
 ```go
 {{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
@@ -232,16 +234,17 @@ field:
 {{ end }}
 ```
 
-When no object is found, an empty value is returned. This can be used to check for the existence of
-an object.
+When no object is found, an empty value is returned. This can be used to check
+for the existence of an object.
 
-The `lookup` function uses Helm's existing Kubernetes connection configuration to query Kubernetes.
-If any error is returned when interacting with calling the API server (for example due to lack of
-permission to access a resource), helm's template processing will fail.
+The `lookup` function uses Helm's existing Kubernetes connection configuration
+to query Kubernetes. If any error is returned when interacting with calling the
+API server (for example due to lack of permission to access a resource), helm's
+template processing will fail.
 
-Keep in mind that Helm is not supposed to contact the Kubernetes API Server during a `helm template`
-or a `helm install|update|delete|rollback --dry-run`, so the `lookup` function will return `nil` in 
-such a case.
+Keep in mind that Helm is not supposed to contact the Kubernetes API Server
+during a `helm template` or a `helm install|update|delete|rollback --dry-run`,
+so the `lookup` function will return `nil` in such a case.
 
 ## Operators are functions
 
