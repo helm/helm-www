@@ -233,12 +233,3 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}})
 (index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm
 chart save`, `helm chart push`.
-
-## Helm commands with OCI support
-
-The `dependencies` array of `Chart.yaml` supports OCI registry URLs. This means
-that the `helm dep` commands support declared OCI dependencies **if experimental
-support is enabled**.
-
-For more details see [the documentation on
-dependencies](/docs/topics/chart_best_practices/dependencies/).
