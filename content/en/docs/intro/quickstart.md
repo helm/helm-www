@@ -46,7 +46,7 @@ $ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Once this is installed, you will be able to list the charts you can install:
 
 ```console
-helm search repo stable
+$ helm search repo stable
 NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
 stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
 stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
