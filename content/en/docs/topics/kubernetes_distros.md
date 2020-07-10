@@ -16,13 +16,16 @@ alphabetically) if desired.
 
 ## AKS
 
-Helm works with [Azure Kubernetes
-Service](https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm).
+Helm works with [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm).
 
 ## DC/OS
 
 Helm has been tested and is working on Mesospheres DC/OS 1.11 Kubernetes
 platform, and requires no additional configuration.
+
+## EKS
+
+Helm works with Amazon Elastic Kubernetes Service (Amazon EKS): [Using Helm with Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/helm.html).
 
 ## GKE
 
