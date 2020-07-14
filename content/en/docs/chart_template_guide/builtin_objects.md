@@ -39,7 +39,8 @@ access in your templates.
     "/docs/topics/charts.md#the-chartyaml-file" >}})
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
-  chart. See the section _Accessing Files_ for more.
+  chart. See the section [Accessing Files]({{< ref
+    "/docs/chart_template_guide/accessing_files.md" >}}) for more.
   - `Files.Get` is a function for getting a file by name (`.Files.Get
     config.ini`)
   - `Files.GetBytes` is a function for getting the contents of a file as an
