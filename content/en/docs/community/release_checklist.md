@@ -4,35 +4,58 @@ description: "Checklist for maintainers when releasing the next version of Helm.
 weight: 2
 ---
 
-**IMPORTANT**: If your experience deviates from this document, please document
-the changes to keep it up-to-date.
+# A Maintainer's Guide to Releasing Helm
 
-## A Maintainer's Guide to Releasing Helm
-
-So you're in charge of a new release for helm? Cool. Here's what to do...
-
-![TODO: Nothing](../../images/nothing.png)
-
-Just kidding! :trollface:
+Time for a new Helm release! As a Helm maintainer cutting a release, you are
+the best person to [update this
+release checklist](https://github.com/helm/helm-www/blob/master/content/en/docs/community/release_checklist.md)
+should your experiences vary from what's documented here.
 
 All releases will be of the form vX.Y.Z where X is the major version number, Y
 is the minor version number and Z is the patch release number. This project
 strictly follows [semantic versioning](https://semver.org/) so following this
 step is critical.
 
+These directions will cover initial configuration followed by the release
+process for three different kinds of releases:
+
+* Major Releases - released less frequently - may have breaking changes
+* Minor Releases - released regularly - no breaking changes
+* Patch Releases - released as needed - do not require all steps in this guide
+
+[Initial Configuration](#initial-configuration)
+
+1. [Create the Release Branch](#1-create-the-release-branch)
+2. [Major/Minor releases: Change the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-git)
+3. [Major/Minor releases: Commit and Push the Release Branch](#3-majorminor-releases-commit-and-push-the-release-branch)
+4. [Major/Minor releases: Create a Release Candidate](#4-majorminor-releases-create-a-release-candidate)
+5. [Major/Minor releases: Iterate on Successive Release Candidates](#5-majorminor-releases-iterate-on-successive-release-candidates)
+6. [Major/Minor releases: Finalize the Release](#6-majorminor-releases-finalize-the-release)
+7. [PGP Sign the downloads](#7-pgp-sign-the-downloads)
+8. [Write the Release Notes](#8-write-the-release-notes)
+9. [Update Docs](#9-update-docs)
+10. [Tell the Community](#10-tell-the-community)
+
+## Initial Configuration
+
+### Set Up Git Remote
+
 It is important to note that this document assumes that the git remote in your
-repository that corresponds to "https://github.com/helm/helm" is named
+repository that corresponds to `https://github.com/helm/helm` is named
 "upstream". If yours is not (for example, if you've chosen to name it "origin"
 or something similar instead), be sure to adjust the listed snippets for your
 local environment accordingly. If you are not sure what your upstream remote is
 named, use a command like `git remote -v` to find out.
 
-If you don't have an upstream remote, you can add one easily using something
-like:
+If you don't have an [upstream
+remote](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
+, you can add one using something like:
 
 ```shell
 git remote add upstream git@github.com:helm/helm.git
 ```
+
+### Set Up Environment Variables
 
 In this doc, we are going to reference a few environment variables as well,
 which you may want to set for convenience. For major/minor releases, use the
@@ -41,7 +64,7 @@ following:
 ```shell
 export RELEASE_NAME=vX.Y.0
 export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
+export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 ```
 
 If you are creating a patch release, you may want to use the following instead:
@@ -50,8 +73,10 @@ If you are creating a patch release, you may want to use the following instead:
 export PREVIOUS_PATCH_RELEASE=vX.Y.Z
 export RELEASE_NAME=vX.Y.Z+1
 export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc1"
+export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 ```
+
+### Set Up Signing Key
 
 We are also going to be adding security and verification of the release process
 by hashing the binaries and providing signature files. We perform this using
@@ -91,6 +116,13 @@ git checkout -b $RELEASE_BRANCH_NAME
 This new branch is going to be the base for the release, which we are going to
 iterate upon later.
 
+Verify that a [helm/helm milestone](https://github.com/helm/helm/milestones)
+for the release exists on GitHub (creating it if necessary). Make sure PRs and
+issues for this release are in this milestone.
+
+For major & minor releases, move on to step 2: [Major/Minor releases: Change
+the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-git).
+
 ### Patch releases
 
 Patch releases are a few critical cherry-picked fixes to existing releases.
@@ -126,31 +158,34 @@ git tag --sign --annotate "$RELEASE_NAME" --message "Helm release $RELEASE_NAME"
 git push upstream "$RELEASE_NAME"
 ```
 
-This new tag is going to be the base for the patch release.
+This new tag is going to be the base for the patch release. Creating a
+[helm/helm milestone](https://github.com/helm/helm/milestones) is optional for
+patch releases.
 
 Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
-that the release passed CI before proceeding.
+that the release passed CI before proceeding. Patch releases can skip steps 2-6
+and proceed to step 7 for [PGP signature](#7-pgp-sign-the-downloads).
 
-## 2. Change the Version Number in Git
+## 2. Major/Minor releases: Change the Version Number in Git
 
-When doing a minor release, make sure to update pkg/version/version.go with the
-new release version.
+When doing a major or minor release, make sure to update
+`internal/version/version.go` with the new release version.
 
 ```shell
-$ git diff pkg/version/version.go
-diff --git a/pkg/version/version.go b/pkg/version/version.go
-index 2109a0a..6f5a1a4 100644
---- a/pkg/version/version.go
-+++ b/pkg/version/version.go
-@@ -26,7 +26,7 @@ var (
+$ git diff internal/version/version.go
+diff --git a/internal/version/version.go b/internal/version/version.go
+index 712aae64..c1ed191e 100644
+--- a/internal/version/version.go
++++ b/internal/version/version.go
+@@ -30,7 +30,7 @@ var (
         // Increment major number for new feature additions and behavioral changes.
         // Increment minor number for bug fixes and performance enhancements.
         // Increment patch number for critical fixes to existing releases.
--       Version = "v2.6"
-+       Version = "v2.7"
+-       version = "v3.3"
++       version = "v3.4"
 
-        // BuildMetadata is extra build time data
-        BuildMetadata = "unreleased"
+        // metadata is extra build time data
+        metadata = ""
 ```
 
 In addition to updating the version within the `version.go` file, you will also
@@ -165,12 +200,14 @@ need to update corresponding tests that are using that version number.
 
 ```shell
 git add .
-git commit -m "bump version to $RELEASE_CANDIDATE_NAME"
+git commit -m "bump version to $RELEASE_NAME"
 ```
 
 This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
 pull this change into the master branch for when the next release is being
-created.
+created, as in [this example of 3.2 to
+3.3](https://github.com/helm/helm/pull/8411/files), and add it to the milestone
+for the next release.
 
 ```shell
 # get the last commit id i.e. commit to bump the version
@@ -265,12 +302,12 @@ git cherry-pick -x <commit_id>
 ```
 
 You will also want to update the release version number and the CHANGELOG as we
-did in steps 2 and 3 as separate commits.
+did before, as separate commits.
 
 After that, tag it and notify users of the new release candidate:
 
 ```shell
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc2"
+export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.2"
 git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
@@ -387,8 +424,9 @@ we're not all robots.
 You should also double check the URLs and checksums are correct in the
 auto-generated release notes.
 
-Once finished, go into GitHub and edit the release notes for the tagged release
-with the notes written here.
+Once finished, go into GitHub to [helm/helm
+releases](https://github.com/helm/helm/releases) and edit the release notes for
+the tagged release with the notes written here.
 
 It is now worth getting other people to take a look at the release notes before
 the release is published. Send a request out to
@@ -397,21 +435,25 @@ always beneficial as it can be easy to miss something.
 
 When you are ready to go, hit `publish`.
 
-## 9. Update Docs Site
+## 9. Update Docs
 
 The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
-for the docs. The minor and patch information needs to be updated on the site.
+for the docs. Major, minor, and patch versions need to be updated on the site.
 To do that create a pull request against the [helm-www
 repository](https://github.com/helm/helm-www). In the `config.toml` file find
-the proper `params.versions` section and updated the Helm version.
+the proper `params.versions` section and update the Helm version.
 
-## 10. Evangelize
+Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
+the release, if applicable.
+
+## 10. Tell the Community
 
 Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
 it.
 
-After enjoying a nice $DRINK_OF_CHOICE, go forth and announce the glad tidings
-of the new release in Slack and on Twitter.
+After enjoying a nice $DRINK_OF_CHOICE, go forth and announce the new release
+in Slack and on Twitter with a link to the [release on
+GitHub](https://github.com/helm/helm/releases).
 
 Optionally, write a blog post about the new release and showcase some of the new
 features on there!
