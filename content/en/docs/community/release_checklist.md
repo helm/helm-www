@@ -19,7 +19,7 @@ step is critical.
 These directions will cover initial configuration followed by the release
 process for three different kinds of releases:
 
-* Major Releases - released less frequently - may have breaking changes
+* Major Releases - released less frequently - have breaking changes
 * Minor Releases - released regularly - no breaking changes
 * Patch Releases - released as needed - do not require all steps in this guide
 
@@ -30,18 +30,19 @@ process for three different kinds of releases:
 3. [Major/Minor releases: Commit and Push the Release Branch](#3-majorminor-releases-commit-and-push-the-release-branch)
 4. [Major/Minor releases: Create a Release Candidate](#4-majorminor-releases-create-a-release-candidate)
 5. [Major/Minor releases: Iterate on Successive Release Candidates](#5-majorminor-releases-iterate-on-successive-release-candidates)
-6. [Major/Minor releases: Finalize the Release](#6-majorminor-releases-finalize-the-release)
-7. [PGP Sign the downloads](#7-pgp-sign-the-downloads)
-8. [Write the Release Notes](#8-write-the-release-notes)
-9. [Update Docs](#9-update-docs)
-10. [Tell the Community](#10-tell-the-community)
+6. [Finalize the Release](#6-finalize-the-release)
+7. [Write the Release Notes](#7-write-the-release-notes)
+8. [PGP Sign the downloads](#8-pgp-sign-the-downloads)
+9. [Publish Release](#9-publish-release)
+10. [Update Docs](#10-update-docs)
+11. [Tell the Community](#11-tell-the-community)
 
 ## Initial Configuration
 
 ### Set Up Git Remote
 
 It is important to note that this document assumes that the git remote in your
-repository that corresponds to `https://github.com/helm/helm` is named
+repository that corresponds to <https://github.com/helm/helm> is named
 "upstream". If yours is not (for example, if you've chosen to name it "origin"
 or something similar instead), be sure to adjust the listed snippets for your
 local environment accordingly. If you are not sure what your upstream remote is
@@ -163,8 +164,8 @@ This new tag is going to be the base for the patch release. Creating a
 patch releases.
 
 Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
-that the release passed CI before proceeding. Patch releases can skip steps 2-6
-and proceed to step 7 for [PGP signature](#7-pgp-sign-the-downloads).
+that the release passed CI before proceeding. Patch releases can skip steps 2-5
+and proceed to step 6 to [Finalize the Release](#6-finalize-the-release).
 
 ## 2. Major/Minor releases: Change the Version Number in Git
 
@@ -315,7 +316,7 @@ git push upstream $RELEASE_CANDIDATE_NAME
 From here on just repeat this process, continuously testing until you're happy
 with the release candidate.
 
-## 6. Major/Minor releases: Finalize the Release
+## 6. Finalize the Release
 
 When you're finally happy with the quality of a release candidate, you can move
 on and create the real thing. Double-check one last time to make sure everything
@@ -327,31 +328,14 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-Verify that the release succeeded in CI. If not, you will need to fix the
+Verify that the release succeeded in
+[CircleCI](https://circleci.com/gh/helm/helm). If not, you will need to fix the
 release and push the release again.
 
-## 7. PGP Sign the downloads
+As the CI job will take some time to run, you can move on to writing release
+notes while you wait for it to complete.
 
-While hashes provide a signature that the content of the downloads is what it
-was generated, signed packages provide traceability of where the package came
-from.
-
-To do this, run the following `make` commands:
-
-```shell
-export VERSION="$RELEASE_NAME"
-make clean
-make fetch-dist
-make sign
-```
-
-This will generate ascii armored signature files for each of the files pushed by
-CI.
-
-All of the signature files (`*.asc`) need to be uploaded to the release on
-GitHub.
-
-## 8. Write the Release Notes
+## 7. Write the Release Notes
 
 We will auto-generate a changelog based on the commits that occurred during a
 release cycle, but it is usually more beneficial to the end-user if the release
@@ -433,9 +417,37 @@ the release is published. Send a request out to
 [#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for review. It is
 always beneficial as it can be easy to miss something.
 
-When you are ready to go, hit `publish`.
+## 8. PGP Sign the downloads
 
-## 9. Update Docs
+While hashes provide a signature that the content of the downloads is what it
+was generated, signed packages provide traceability of where the package came
+from.
+
+To do this, run the following `make` commands:
+
+```shell
+export VERSION="$RELEASE_NAME"
+make clean
+make fetch-dist
+make sign
+```
+
+This will generate ascii armored signature files for each of the files pushed by
+CI.
+
+All of the signature files (`*.asc`) need to be uploaded to the release on
+GitHub.
+
+## 9. Publish Release
+
+Time to make the release official!
+
+After the release notes are saved on GitHub, the CI build is completed, and
+you've added the signature files to the release, you can hit "Publish" on
+the release. This publishes the release, listing it as "latest", and shows this
+release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
+
+## 10. Update Docs
 
 The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
 for the docs. Major, minor, and patch versions need to be updated on the site.
@@ -448,9 +460,11 @@ version](https://github.com/helm/helm-www/pull/676/files).
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
 
-Update the [version skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md) for major and minor releases.
+Update the [version
+skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)
+for major and minor releases.
 
-## 10. Tell the Community
+## 11. Tell the Community
 
 Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
 it.
