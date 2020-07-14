@@ -441,10 +441,14 @@ The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
 for the docs. Major, minor, and patch versions need to be updated on the site.
 To do that create a pull request against the [helm-www
 repository](https://github.com/helm/helm-www). In the `config.toml` file find
-the proper `params.versions` section and update the Helm version.
+the proper `params.versions` section and update the Helm version, like in this
+example of [updating the current
+version](https://github.com/helm/helm-www/pull/676/files).
 
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
+
+Update the [version skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md) for major and minor releases.
 
 ## 10. Tell the Community
 
