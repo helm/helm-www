@@ -168,7 +168,7 @@ data:
 ```
 
 The big change comes in the value of the `name:` field, which is now
-`{{.Release.Name }}-configmap`.
+`{{ .Release.Name }}-configmap`.
 
 > A template directive is enclosed in `{{` and `}}` blocks.
 
