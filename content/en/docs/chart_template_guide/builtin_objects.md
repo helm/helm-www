@@ -65,9 +65,9 @@ access in your templates.
   - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
 - `Template`: Contains information about the current template that is being
   executed
-  - `Name`: A namespaced file path to the current template (e.g.
+  - `Template.Name`: A namespaced file path to the current template (e.g.
     `mychart/templates/mytemplate.yaml`)
-  - `BasePath`: The namespaced path to the templates directory of the current
+  - `Template.BasePath`: The namespaced path to the templates directory of the current
     chart (e.g. `mychart/templates`).
 
 The built-in values always begin with a capital letter. This is in keeping with
