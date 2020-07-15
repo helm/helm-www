@@ -166,7 +166,7 @@ following shorthand notations are supported
    1.3.0`.
  * tilde ranges (patch version changes allowed), where `~1.2.3` is equivalent to
    `>= 1.2.3 < 1.3.0`.
- * caret ranges (major version changes allowed), where `^1.2.3` is equivalent to
+ * caret ranges (minor version changes allowed), where `^1.2.3` is equivalent to
    `>= 1.2.3 < 2.0.0`.
 
 For a detailed explanation of supported semver constraints see
