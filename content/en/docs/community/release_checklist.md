@@ -68,13 +68,12 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 ```
 
-If you are creating a patch release, you may want to use the following instead:
+If you are creating a patch release, use the following instead:
 
 ```shell
 export PREVIOUS_PATCH_RELEASE=vX.Y.Z
 export RELEASE_NAME=vX.Y.Z+1
 export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 ```
 
 ### Set Up Signing Key
@@ -144,24 +143,18 @@ git log --oneline
 git cherry-pick -x <commit-id>
 ```
 
-After the commits have been cherry picked the release branch needs to be pushed
-which will cause the tests to run. Make sure they pass prior to creating the
-tag.
+After the commits have been cherry picked the release branch needs to be pushed.
 
 ```shell
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Finally, we create the tag for the patch on the branch and push upstream:
+Pushing the branch will cause the tests to run. Make sure they pass prior to
+creating the tag. This new tag is going to be the base for the patch release.
 
-```shell
-git tag --sign --annotate "$RELEASE_NAME" --message "Helm release $RELEASE_NAME"
-git push upstream "$RELEASE_NAME"
-```
-
-This new tag is going to be the base for the patch release. Creating a
-[helm/helm milestone](https://github.com/helm/helm/milestones) is optional for
-patch releases.
+Creating a [helm/helm
+milestone](https://github.com/helm/helm/milestones) is optional for patch
+releases.
 
 Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
 that the release passed CI before proceeding. Patch releases can skip steps 2-5
