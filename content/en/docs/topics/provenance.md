@@ -199,8 +199,8 @@ The following pieces of provenance data are added:
   file) is included, and may be used to verify the integrity of the chart
   package.
 * The entire body is signed using the algorithm used by OpenPGP (see
-  [https://keybase.io] for an emerging way of making crypto signing and
-  verification easy).
+  [Keybase.io](https://keybase.io) for an emerging way of making crypto
+  signing and verification easy).
 
 The combination of this gives users the following assurances:
 
