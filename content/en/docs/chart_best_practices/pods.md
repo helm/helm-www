@@ -48,7 +48,8 @@ imagePullPolicy: {{ .Values.image.pullPolicy }}
 And `values.yaml`:
 
 ```yaml
-pullPolicy: IfNotPresent
+image:
+  pullPolicy: IfNotPresent
 ```
 
 Similarly, Kubernetes defaults the `imagePullPolicy` to `IfNotPresent` if it is
