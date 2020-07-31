@@ -43,7 +43,8 @@ imagePullPolicy: {{ .Values.image.pullPolicy }}
 `values.yaml`는
 
 ```yaml
-pullPolicy: IfNotPresent
+image:
+  pullPolicy: IfNotPresent
 ```
 
 라고 하면 그에 따라 `helm create`는 `imagePullPolicy` 기본값으로 `IfNotPresent`을 설정하게 된다.
