@@ -59,7 +59,7 @@ kind: Pod
 metadata:
   name: "{{ .Release.Name }}-credentials-test"
   annotations:
-    "helm.sh/hook": test-success
+    "helm.sh/hook": test
 spec:
   containers:
     - name: {{ .Release.Name }}-credentials-test
