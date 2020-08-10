@@ -295,8 +295,7 @@ adding commits to the branch by cherry-picking from master:
 git cherry-pick -x <commit_id>
 ```
 
-You will also want to update the release version number and the CHANGELOG as we
-did before, as separate commits.
+You will also want to push the branch to GitHub and ensure it passes CI.
 
 After that, tag it and notify users of the new release candidate:
 
@@ -306,8 +305,11 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
+Once pushed to GitHub, check to ensure the branch with this tag builds in CI.
+
 From here on just repeat this process, continuously testing until you're happy
-with the release candidate.
+with the release candidate. For a release candidate, we don't write the full notes,
+but you can scaffold out some [release notes](#7-write-the-release-notes).
 
 ## 6. Finalize the Release
 
@@ -389,7 +391,9 @@ created by running the following command:
 
 ```shell
 export PREVIOUS_RELEASE=vX.Y.Z
+make fetch-dist
 make release-notes
+make sign
 ```
 
 This will create a good baseline set of release notes to which you should just
@@ -429,7 +433,7 @@ This will generate ascii armored signature files for each of the files pushed by
 CI.
 
 All of the signature files (`*.asc`) need to be uploaded to the release on
-GitHub.
+GitHub (attach binaries).
 
 ## 9. Publish Release
 
