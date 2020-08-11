@@ -391,9 +391,9 @@ created by running the following command:
 
 ```shell
 export PREVIOUS_RELEASE=vX.Y.Z
+make clean
 make fetch-dist
 make release-notes
-make sign
 ```
 
 This will create a good baseline set of release notes to which you should just
@@ -424,8 +424,8 @@ To do this, run the following `make` commands:
 
 ```shell
 export VERSION="$RELEASE_NAME"
-make clean
-make fetch-dist
+make clean		# if not already run
+make fetch-dist	# if not already run
 make sign
 ```
 
