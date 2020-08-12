@@ -90,7 +90,7 @@ The site global
 file is where language navigation is configured.
 
 To add a new language, add a new set of parameters using the [two-letter
-language code](./localization/#two-letter-language-code) defined above. Example:
+language code](./localization/#两字母语言代码) defined above. Example:
 
 ```
 # Korean
