@@ -18,52 +18,32 @@ weight: 5
 文档根据 [ISO 639-1 标准](https://www.loc.gov/standards/iso639-2/php/code_list.php) 中对语言代码的规定进行组织。
 例如，中文的两字母语言代码为`zh`。
 
-In content and configuration you will find the language code in use. Here are 3
-examples:
+在 `content` 和 `configuration` 中你会找到一些已经在使用的语言代码。这里有3个例子。
 
-- In the `content` directory the language codes are the subdirectories and the
-  localized content for the language is in each directory. Primarily in the
-  `docs` subdirectory of each language code directory.
-- The `i18n` directory contains a configuration file for each language with
-  phrases used on the website. The files are named with the patter `[LANG].toml`
-  where `[LANG]` is the two letter language code.
-- In the top level `config.toml` file there is configuration for navigation and
-  other details organized by language code.
+- 在 `content` 目录中，子目录名称是语言代码，该语言的翻译文本就位于这个子目录中。
+  主要内容存放在 `docs` 子目录。
+- `i18n` 目录包含每种语言的配置文件，这些配置文件配置了网站上的常用单词。
+  配置文件命名为`[LANG].toml`。其中，`[LANG]`是语言的2字母代码。
+- 在根目录的config.toml文件中，有用于导航和由语言代码组织的其他详细信息。
 
-English, with a language code of `en`, is the default language and source for
-translations.
+默认语言和翻译标准是英语，其语言代码为 `en` 。
 
-### Fork, Branch, Change, Pull Request
+### 复刻（Fork）, 分支（Branch）, 更改（Change）, 推送请求（Pull Request）
 
-To contribute translations start by [creating a
-fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
-of the [helm-www repository](https://github.com/helm/helm-www) on GitHub. You
-will start by committing the changes to your fork.
+要进行翻译，首先要在GitHub上[复刻](https://docs.github.com/cn/github/getting-started-with-github/fork-a-repo)[helm-www仓库](https://github.com/helm/helm-www），
+并将所做的更改提交到复刻的仓库中。
 
-By default your fork will be set to work on the default branch known as master.
-Please use branches to develop your changes and create pull requests. If you are
-unfamiliar with branches you can [read about them in the GitHub
-documentation](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches).
+默认情况下，您的复刻将被设置为在默认的master分支上工作。请使用分支功能进行开发并创建拉取请求。如果您不熟悉分支，可以[在GitHub文档中阅读有关分支的信息]（https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches）。
 
-Once you have a branch make changes to add translations and localize the content
-to a language.
+拥有分支后，请进行更改以添加翻译并将内容本地化为特定语言。
 
-Note, Helm uses a [Developers Certificate of
-Origin](https://developercertificate.org/). All commits need to have signoff.
-When making a commit you can use the `-s` or `--signoff` flag to use your Git
-configured name and email address to signoff on the commit. More details are
-available in the
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work)
-file
+请注意，Helm使用[开发者原创认证]（https://developercertificate.org/）。所有提交都需要签名。
+进行提交时，您可以使用 `-s` 或 `--signoff` 标志，使用Git配置的姓名和电子邮件地址对提交进行签名。
+更多详细信息，请参见[CONTRIBUTING.md]（https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work）文件。
 
-When you are ready, create a [pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
-with the translation back to the helm-www repository.
+准备就绪后，创建一个[拉取请求]（https://help.github.com/cn/github/collaborating-with-issues-and-pull-requests/about-pull-requests），将翻译送回到helm-www存储库。
 
-Once a pull request has been created one of the maintainers will review it.
-Details on that process are in the
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md)
-file.
+创建拉取请求后，一名维护者将对其进行审核。有关该过程的详细信息，请参见[CONTRIBUTING.md]（https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md）文件。
 
 ## Translating Content
 
@@ -122,11 +102,10 @@ languageName = "한국어 Korean"
 weight = 1
 ```
 
-## Resolving Internal Links
+## 解决内部链接错误
 
-Translated content will sometimes include links to pages that only exist in
-another language. This will result in site [build
-errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
+翻译的内容有时会包含指向仅以另一种语言存在的页面链接。
+这将导致网站[构建错误]（https://app.netlify.com/sites/helm-merge/deploys）。报错信息类似于：
 
 ```
 12:45:31 PM: htmltest started at 12:45:30 on app
@@ -137,17 +116,13 @@ errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
 12:45:31 PM: 1 error in 212 documents
 ```
 
-To resolve this, you need to check your content for internal links.
+要解决此问题，您需要检查内容中的内部链接。
 
-* anchor links need to reflect the translated `id` value
-* internal page links need to be fixed
+* 锚链接需要反映翻译后的 `id` 值
+* 内部页面链接需要修复
 
-For internal pages that do not exist _(or have not been translated yet)_, the
-site will not build until a correction is made. As a fallback, the url can point
-to another language where that content _does_ exist as follows:
+对于不存在_（或尚未翻译）_的内部页面，只有更正后才能构建网站。作为备用，链接可以指向内容_确实已经_存在的另一种语言，如：
 
 `< relref path="/docs/topics/library_charts.md" lang="en" >`
 
-See the [Hugo Docs on cross references between
-languages](https://gohugo.io/content-management/cross-references/#link-to-another-language-version)
-for more info.
+请参阅 [Hugo 关于语言之间的交叉引用文档](https://gohugo.io/content-management/cross-references/#link-to-another-language-version) 以了解更多。

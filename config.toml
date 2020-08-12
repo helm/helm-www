@@ -212,7 +212,7 @@ external = "yes"
 
 [[languages.zh.menus.main]]
 name = "博客"
-url = "/blog"
+url = "https://helm.sh/blog"
 weight = 4
 
 [[languages.zh.menus.main]]
