@@ -25,4 +25,4 @@ will help you know where to look for certain things:
   它们指导您完成解决关键问题和用例的步骤。
   它们比教程更高级，并且假定您对Helm的工作原理有所了解。
 
-请协助我将此文档翻译为中文，非常感谢！有关如何翻译文档的更多细节，请参见[本地化教程](https://helm.sh/docs/community/localization/)。
+请协助我将此文档翻译为中文，非常感谢！有关如何翻译文档的更多细节，请参见[本地化教程](community/localization)。
