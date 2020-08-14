@@ -334,7 +334,7 @@ nodeSelector:
 
 Deeply nested data structures can be difficult to express using `--set`. Chart
 designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file.
+of a `values.yaml` file  (read more about [Values Files](https://helm.sh/docs/chart_template_guide/values_files/)).
 
 ### More Installation Methods
 
@@ -533,4 +533,4 @@ covered useful utility commands like `helm status`, `helm get`, and `helm repo`.
 For more information on these commands, take a look at Helm's built-in help:
 `helm help`.
 
-In the next chapter, we look at the process of developing charts.
+In the next chapter, we look at the process of developing charts (coming soon for v3).
