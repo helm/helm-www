@@ -533,4 +533,4 @@ covered useful utility commands like `helm status`, `helm get`, and `helm repo`.
 For more information on these commands, take a look at Helm's built-in help:
 `helm help`.
 
-In the next chapter, we look at the process of developing charts (coming soon for v3).
+In the [next chapter](https://helm.sh/docs/howto/charts_tips_and_tricks/), we look at the process of developing charts.
