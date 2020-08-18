@@ -2,7 +2,6 @@
 title: "ベストプラクティス"
 sidebar: true
 weight: 4
-aliases: ["/docs/topics/chart_best_practices/"]
 ---
 
 # チャートのベストプラクティスガイド
