@@ -334,7 +334,7 @@ nodeSelector:
 
 Deeply nested data structures can be difficult to express using `--set`. Chart
 designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file  (read more about [Values Files](/docs/chart_template_guide/values_files/)).
+of a `values.yaml` file  (read more about [Values Files](../chart_template_guide/values_files/)).
 
 ### More Installation Methods
 
@@ -487,7 +487,7 @@ Repositories can be removed with `helm repo remove`.
 
 ## Creating Your Own Charts
 
-The [Chart Development Guide]({{< ref "/docs/topics/charts.md" >}}) explains how
+The [Chart Development Guide]({{< ref "../topics/charts.md" >}}) explains how
 to develop your own charts. But you can get started quickly by using the `helm
 create` command:
 
@@ -533,4 +533,4 @@ covered useful utility commands like `helm status`, `helm get`, and `helm repo`.
 For more information on these commands, take a look at Helm's built-in help:
 `helm help`.
 
-In the [next chapter](/docs/howto/charts_tips_and_tricks/), we look at the process of developing charts.
+In the [next chapter](../howto/charts_tips_and_tricks/), we look at the process of developing charts.
