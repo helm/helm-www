@@ -1,7 +1,6 @@
 ---
 title: "概要"
 weight: 1
-aliases: ["/docs/using_helm/"]
 ---
 
 # Helm の概要

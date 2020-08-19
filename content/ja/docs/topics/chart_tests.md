@@ -1,7 +1,6 @@
 ---
 title: "チャートのテスト"
 description: "チャートを実行およびテストする方法について説明します。"
-aliases: ["/docs/chart_tests/"]
 weight: 3
 ---
 

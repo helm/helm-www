@@ -2,7 +2,6 @@
 title: "Helm のインストール"
 description: "Helm をインストールして実行する方法を学びます。"
 weight: 2
-aliases: ["/docs/install/"]
 ---
 
 このガイドでは、Helm CLI のインストール方法を示します。Helm はソースから、またはビルド済みのバイナリリリースから

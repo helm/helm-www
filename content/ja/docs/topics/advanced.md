@@ -1,7 +1,6 @@
 ---
 title: "高度な Helm のテクニック"
 description: "Helm パワーユーザー向けのさまざまな高度な機能について説明します"
-aliases: ["/docs/advanced_helm_techniques"]
 weight: 9
 ---
 

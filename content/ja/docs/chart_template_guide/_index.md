@@ -1,7 +1,6 @@
 ---
 title: "チャートテンプレートガイド"
 weight: 5
-aliases: ["/topics/chart_template_guide/"]
 ---
 
 # チャートテンプレート開発者ガイド
