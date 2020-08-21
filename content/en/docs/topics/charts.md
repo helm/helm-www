@@ -726,7 +726,7 @@ file. The Helm install command allows a user to override values by supplying
 additional YAML values:
 
 ```console
-$ helm install --values=myvals.yaml wordpress
+$ helm install --generate-name --values=myvals.yaml wordpress
 ```
 
 When values are passed in this way, they will be merged into the default values
