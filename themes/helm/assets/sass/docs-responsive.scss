@@ -59,8 +59,9 @@
       position: absolute;
       top: 4.75rem;
       left: 14rem;
-      z-index: 1450;
+      z-index: 1650;
       opacity: 0;
+      cursor: context-menu;
     }
 
     .hamburger {
@@ -185,7 +186,6 @@
 
   // .navbar-top-fixed.is-active,
   .navbar-brand,
-  .navbar-menu,
   .navbar-top.navbar-top-fixed.is-active {
     display: none !important;
   }
