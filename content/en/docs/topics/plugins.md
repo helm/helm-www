@@ -27,7 +27,9 @@ Helm plugins have the following features:
 - They can be written in any programming language.
 - They integrate with Helm, and will show up in `helm help` and other places.
 
-Helm plugins live in `$XDG_DATA_HOME/helm/plugins`.
+Helm plugins live in `$HELM_PLUGINS`. You can find the current value of this,
+including the default value when not set in the environment, using the
+`helm env` command.
 
 The Helm plugin model is partially modeled on Git's plugin model. To that end,
 you may sometimes hear `helm` referred to as the _porcelain_ layer, with plugins
@@ -40,14 +42,14 @@ the user experience and top level processing logic, while the plugins do the
 Plugins are installed using the `$ helm plugin install <path|url>` command. You
 can pass in a path to a plugin on your local file system or a url of a remote
 VCS repo. The `helm plugin install` command clones or copies the plugin at the
-path/url given into `$XDG_DATA_HOME/helm/plugins`
+path/url given into `$HELM_PLUGINS`
 
 ```console
 $ helm plugin install https://github.com/adamreese/helm-env
 ```
 
 If you have a plugin tar distribution, simply untar the plugin into the
-`$XDG_DATA_HOME/helm/plugins` directory. You can also install tarball plugins
+`$HELM_PLUGINS` directory. You can also install tarball plugins
 directly from url by issuing `helm plugin install
 https://domain/path/to/plugin.tar.gz`
 
@@ -57,7 +59,7 @@ In many ways, a plugin is similar to a chart. Each plugin has a top-level
 directory, and then a `plugin.yaml` file.
 
 ```
-$XDG_DATA_HOME/helm/plugins/
+$HELM_PLUGINS/
   |- keybase/
       |
       |- plugin.yaml
@@ -168,7 +170,8 @@ discover and cache the list of available Charts.
 
 The defined command will be invoked with the following scheme: `command certFile
 keyFile caFile full-URL`. The SSL credentials are coming from the repo
-definition, stored in `$XDG_DATA_HOME/helm/repositories.yaml`. Downloader plugin
+definition, stored in `$HELM_REPOSITORY_CONFIG`
+(i.e., `$HELM_CONFIG_HOME/repositories.yaml`). A Downloader plugin
 is expected to dump the raw content to stdout and report errors on stderr.
 
 The downloader command also supports sub-commands or arguments, allowing you to
