@@ -12,43 +12,43 @@ Helm の深い知識を駆使して慎重に使用する必要があります。
 言い換えれば、[ピーター・パーカーの原則](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
 を覚えておいてください
 
-## Post Rendering
-Post rendering gives chart installers the ability to manually manipulate,
-configure, and/or validate rendered manifests before they are installed by Helm.
-This allows users with advanced configuration needs to be able to use tools like
-[`kustomize`](https://kustomize.io) to apply configuration changes without the
-need to fork a public chart or requiring chart maintainers to specify every last
-configuration option for a piece of software. There are also use cases for
-injecting common tools and side cars in enterprise environments or analysis of
-the manifests before deployment.
+## ポストレンダリング
+ポストレンダリングにより、チャートインストーラーは、Helm によってインストールされる前に、
+レンダリングされたマニフェストを手動で操作、構成、または検証することができます。
+これにより、高度な構成を持つユーザーは、[`kustomize`](https://kustomize.io) などのツールを使用して、
+パブリックチャートをフォークしたり、
+チャートのメンテナーがソフトウェアの最後の構成オプションをすべて指定したりする必要なく、
+構成の変更を適用できます。
+エンタープライズ環境での一般的なツールやサイドカーの注入、
+展開前のマニフェストの分析のユースケースもあります。
 
-### Prerequisites
+### 前提条件
 - Helm 3.1+
 
-### Usage
-A post-renderer can be any executable that accepts rendered Kubernetes manifests
-on STDIN and returns valid Kubernetes manifests on STDOUT. It should return an
-non-0 exit code in the event of a failure. This is the only "API" between the two
-components. It allows for great flexibility in what you can do with your
-post-render process.
+### 使い方
+ポストレンダラーは、STDIN でレンダリングされた Kubernetes マニフェストを受け入れ、
+STDOUT で有効な Kubernetes マニフェストを返す任意の実行可能ファイルです。
+失敗した場合は、0 以外の終了コードを返します。
+これは、2つのコンポーネント間の唯一の "API" です。
+これにより、ポストレンダリングプロセスで実行できる操作に大きな柔軟性がもたらされます。
 
-A post renderer can be used with `install`, `upgrade`, and `template`. To use a
-post-renderer, use the `--post-renderer` flag with a path to the renderer
-executable you wish to use:
+ポストレンダラーは、`install`、`upgrade`、および `template` で使用できます。
+ポストレンダラーを使用するには、
+使用するレンダラー実行可能ファイルへのパスで `--post-renderer` フラグを使用します。
 
 ```shell
 $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 ```
 
-If the path does not contain any separators, it will search in $PATH, otherwise
-it will resolve any relative paths to a fully qualified path
+パスにセパレータが含まれていない場合は、$PATH で検索されます。
+それ以外の場合は、相対パスが完全修飾パスに解決されます。
 
-If you wish to use multiple post-renderers, call all of them in a script or
-together in whatever binary tool you have built. In bash, this would be as
-simple as `renderer1 | renderer2 | renderer3`.
+複数のポストレンダラーを使用したい場合は、それらをすべてスクリプトで呼び出すか、
+ビルドしたバイナリツールで一緒に呼び出します。
+bash では、これは `renderer1 | renderer2 | renderer3` のように単純です。
 
-You can see an example of using `kustomize` as a post renderer
-[here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
+`kustomize` をポストレンダラーとして使用する例は
+[here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render)で見ることができます。
 
 ### Caveats
 When using post renderers, there are several important things to keep in mind.
