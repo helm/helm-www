@@ -13,7 +13,7 @@
   command = "make build-preview"
 
 [context.branch-deploy]
-  command = "make build-preview"
+  command = "make build"
 
 # redirect docs homepage
 [[redirects]]
