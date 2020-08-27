@@ -22,13 +22,12 @@ _chart archive_는 tar와 gzip으로 (필요시 서명을 추가한) 묶인 차�
 
 차트는 다른 차트에 의존(depend)할 수 있다. 의존성을 일으키는 2가지 방법은 다음과 같다.
 
-- 약한 의존성: A chart may simply not function without another chart being
-  installed in a cluster. Helm does not provide tooling for this case. In this
-  case, dependencies may be managed separately.
-- 강한 의존성: A chart may contain (inside of its `charts/` directory)
-  another chart upon which it depends. In this case, installing the chart will
-  install all of its dependencies. In this case, a chart and its dependencies
-  are managed as a collection.
+- 약한 의존성: 하나의 클러스터에 다른 차트가 설치되어 있지 않으면 차트가 올바르게 동작하지
+  않을 수도 있다. 헬름은 이런 경우를 지원하는 도구를 제공하지 않는다. 이런 경우,
+  의존성을 별개로 관리해야 할 수도 있다.
+- 강한 의존성: 하나의 차트 안에('charts/' 디렉토리 내부) 종속하는 다른 차트가 포함될 수 있다.
+  이런 경우 차트를 설치하면 해당 차트의 모든 종속 항목이 함께 설치된다. 이런 경우, 차트와
+  모든 종속 항목을 하나의 컬렉션으로 관리할 수 있다.
 
 When a chart is packaged (via `helm package`) all of its hard dependencies are
 bundled with it.
