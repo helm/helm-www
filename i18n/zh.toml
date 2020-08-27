@@ -53,8 +53,8 @@ Helm是 [CNCF](https://cncf.io) 的毕业项目，由 [Helm 社区](https://gith
 
 ### Learn more:
 
-* [Helm 架构](./docs/topics/architecture/)
-* [快速开始 指引](./docs/intro/quickstart/)
+* [Helm 架构](https://helm.sh/docs/topics/architecture/)
+* [快速开始 指引](https://helm.sh/docs/intro/quickstart/)
 * [Helm视频介绍（YouTube）](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
