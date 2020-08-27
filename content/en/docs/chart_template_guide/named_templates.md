@@ -108,6 +108,9 @@ data:
   food: "pizza"
 ```
 
+Note: a `define` does not produce output unless it is called with a template,
+as in this example.
+
 Conventionally, Helm charts put these templates inside of a partials file,
 usually `_helpers.tpl`. Let's move this function there:
 
