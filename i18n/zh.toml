@@ -93,7 +93,7 @@ other = "获取Helm！"
 other = "使用包管理器安装Helm或者 [下载二进制包](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](./docs/intro/install/)查看更多[安装步骤](./docs/intro/install/)和[使用说明](./docs/intro/using_helm/)."
+other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](https://helm.sh/docs/intro/install/)查看更多[安装步骤](https://helm.sh/docs/intro/install/)和[使用说明](https://helm.sh/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "获取图表Charts"
