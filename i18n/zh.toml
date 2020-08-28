@@ -53,8 +53,8 @@ Helm是 [CNCF](https://cncf.io) 的毕业项目，由 [Helm 社区](https://gith
 
 ### Learn more:
 
-* [Helm 架构](./docs/topics/architecture/)
-* [快速开始 指引](./docs/intro/quickstart/)
+* [Helm 架构](https://helm.sh/docs/topics/architecture/)
+* [快速开始 指引](https://helm.sh/docs/intro/quickstart/)
 * [Helm视频介绍（YouTube）](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "获取Helm！"
 other = "使用包管理器安装Helm或者 [下载二进制包](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](./docs/intro/install/)查看更多[安装步骤](./docs/intro/install/)和[使用说明](./docs/intro/using_helm/)."
+other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](https://helm.sh/docs/intro/install/)查看更多[安装步骤](https://helm.sh/docs/intro/install/)和[使用说明](https://helm.sh/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "获取图表Charts"
