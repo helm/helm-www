@@ -57,7 +57,7 @@ When making a commit you can use the `-s` or `--signoff` flag to use your Git
 configured name and email address to signoff on the commit. More details are
 available in the
 [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work)
-file
+file.
 
 When you are ready, create a [pull
 request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
@@ -96,6 +96,15 @@ cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
 ```
 
 The content in the new file can then be translated into the other language.
+
+Do not add an untranslated copy of an English file to `content/[LANG]/`.
+Once a language exists on the site, any untranslated pages will redirect to
+English automatically. Translation takes time, and you always want to be
+translating the most current version of the docs, not an outdated fork.
+
+Make sure you remove any `aliases` lines from the header section. A line like
+`aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
+are redirections for old links which don't exist for new pages.
 
 Note, translation tools can help with the process. This includes machine
 generated translations. Machine generated translations should be edited or
