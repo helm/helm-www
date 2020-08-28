@@ -2,7 +2,6 @@
 title: "最佳实践"
 sidebar: true
 weight: 4
-aliases: ["/docs/topics/chart_best_practices/"]
 ---
 
 # Chart最佳实践指南

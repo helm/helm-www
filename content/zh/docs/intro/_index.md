@@ -1,7 +1,6 @@
 ---
 title: "介绍"
 weight: 1
-aliases: ["/docs/using_helm/"]
 ---
 
 # Helm 介绍
