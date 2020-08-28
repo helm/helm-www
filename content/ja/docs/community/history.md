@@ -1,13 +1,10 @@
 ---
 title: "プロジェクトの歴史"
 description: "プロジェクトの歴史の概要を提供します。"
-aliases: ["/docs/history/"]
 weight: 4
 ---
 
-Helm 3 は、
-[インキュベーションの最終段階](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc) の
-[CNCF プロジェクト](https://www.cncf.io/projects/) です。
+Helm は [CNCF の Graduated プロジェクト](https://helm.sh/blog/celebrating-helms-cncf-graduation/)です。
 
 Helm は、現在 [Helm Classic](https://github.com/helm/helm-classic) として知られているものとして始まりました。
 これは、2015年に開始され、
@@ -28,6 +25,6 @@ Monocular、Helm Chart Repo、Chart Museum、そして後に Helm Hub など、
 Helm 3 の開発サイクルが始まると、Tiller が削除され、
 Helm はクライアントツールであるという当初のビジョンに近づきました。
 ただし、Helm 3 は引き続き Kubernetes クラスター内のリリースを追跡しているため、
-チームが共同で Helm リリースのセットで作業することができます。
+チームが共同で Helm リリースのセットで作業することができます。Helm 3 は 2019 年 11 月にリリースされました。
 
-Helm 3 は 2019 年 11 月にリリースされました。
+Helm は、[2020 年 4 月に CNCF の Graduated プロジェクトになりました](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/)。
