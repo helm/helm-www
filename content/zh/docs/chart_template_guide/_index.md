@@ -1,7 +1,6 @@
 ---
 title: "Chart 模板指南"
 weight: 5
-aliases: ["/topics/chart_template_guide/"]
 ---
 
 # Chart模板开发者指南
