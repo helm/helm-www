@@ -107,54 +107,54 @@ track releases as they change. After a first `helm install`, a release will have
 _release number_ 1. Each time a release is upgraded or rolled back, the release
 number will be incremented.
 
-## Rollback
+## ロールバック
 
-A release can be upgraded to a newer chart or configuration. But since release
-history is stored, a release can also be _rolled back_ to a previous release
-number. This is done with the `helm rollback` command.
+リリースは、新しいチャートまたは構成にアップグレードできます。
+ただし、リリース履歴が保存されているため、リリースを前のリリース番号に _ロールバックする_ こともできます。
+これは、`helm rollback` コマンドで行われます。
 
-Importantly, a rolled back release will receive a new release number.
+重要なのは、ロールバックされたリリースには新しいリリース番号が付与されます。
 
-| Operation  | Release Number                                       |
+| 操作  | リリース番号                                       |
 |------------|------------------------------------------------------|
-| install    | release 1                                            |
-| upgrade    | release 2                                            |
-| upgrade    | release 3                                            |
-| rollback 1 | release 4 (but running the same config as release 1) |
+| インストール    | リリース 1                                            |
+| アップグレード    | リリース 2                                            |
+| アップグレード    | リリース 3                                            |
+| ロールバック 1 | リリース 4 (ただし リリース 1 と同じ構成を実行している) |
 
-The above table illustrates how release numbers increment across install,
-upgrade, and rollback.
+上の表は、インストール、アップグレード、およびロールバックで
+リリース番号がどのように増加するかを示しています。
 
-## Helm Library (or SDK)
+## Helm ライブラリ (または SDK)
 
-The Helm Library (or SDK) refers to the Go code that interacts directly with the
-Kubernetes API server to install, upgrade, query, and remove Kubernetes
-resources. It can be imported into a project to use Helm as a client library
-instead of a CLI.
+Helm ライブラリ (または SDK) は、Kubernetes API サーバーと直接対話して、
+Kubernetes リソースをインストール、アップグレード、クエリ、および削除する Go コードを指します。
+プロジェクトにインポートして、
+CLI の代わりに Helm をクライアントライブラリとして使用できます。
 
-## Repository (Repo, Chart Repository)
+## リポジトリ (レポ, チャートリポジトリ)
 
-Helm charts may be stored on dedicated HTTP servers called _chart repositories_
-(_repositories_, or just _repos_).
+Helm チャートは、_チャートリポジトリ_ (_リポジトリ_、または単に_レポ_) と呼ばれる
+専用の HTTP サーバに保存できます。
 
-A chart repository server is a simple HTTP server that can serve an `index.yaml`
-file that describes a batch of charts, and provides information on where each
-chart can be downloaded from. (Many chart repositories serve the charts as well
-as the `index.yaml` file.)
+チャートリポジトリサーバは、
+チャートのバッチを記述する `index.yaml` ファイルを提供できるシンプルな HTTP サーバであり、
+各チャートのダウンロード元に関する情報を提供します。
+(多くのチャートリポジトリは、チャートと `index.yaml` ファイルを提供します。)
 
-A Helm client can point to zero or more chart repositories. By default, Helm
-clients are not configured with any chart repositories. Chart repositories can
-be added at any time using the `helm repo add` command.
+Helm クライアントは、0個以上のチャートリポジトリを指すことができます。
+デフォルトでは、Helm クライアントはチャートリポジトリで構成されていません。
+チャートリポジトリは、`helm repo add` コマンドを使用していつでも追加できます。
 
-## Values (Values Files, values.yaml)
+## Values (Values ファイル, values.yaml)
 
-Values provide a way to override template defaults with your own information.
+Values は、テンプレートのデフォルトを独自の情報で上書きする方法を提供します。
 
-Helm Charts are "parameterized", which means the chart developer may expose
-configuration that can be overridden at installation time. For example, a chart
-may expose a `username` field that allows setting a user name for a service.
+Helm チャートは「パラメータ化」されています。
+つまり、チャートの開発者は、インストール時にオーバーライドできる構成を公開することがあります。
+たとえば、チャートは、サービスのユーザー名を設定できる `username` フィールドを公開する場合があります。
 
-These exposed variables are called _values_ in Helm parlance.
+これらの公開された変数は、Helm の用語では _values_ と呼ばれます。
 
-Values can be set during `helm install` and `helm upgrade` operations, either by
-passing them in directly, or by using a `values.yaml` file.
+Values は、`helm install` および `helm upgrade` の操作中に直接渡すか、
+または `values.yaml` ファイルを使用して設定できます。
