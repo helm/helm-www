@@ -308,5 +308,5 @@ latest chart information.
 
 *Under the hood, the `helm repo add` and `helm repo update` commands are
 fetching the index.yaml file and storing them in the
-`$XDG_CACHE_HOME/helm/repository/cache/` directory. This is where the `helm
+`$(helm env HELM_CACHE_HOME)/repository` directory. This is where the `helm
 search` function finds information about charts.*
