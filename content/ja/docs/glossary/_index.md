@@ -102,10 +102,10 @@ Helm ライブラリはそのインストールを追跡するための _リリ�
 
 ## リリース番号 (リリースバージョン)
 
-A single release can be updated multiple times. A sequential counter is used to
-track releases as they change. After a first `helm install`, a release will have
-_release number_ 1. Each time a release is upgraded or rolled back, the release
-number will be incremented.
+1 つのリリースを複数回更新することができます。
+シーケンシャルカウンタは、リリースの変更を追跡するために使用されます。
+最初に `helm install` を実行すると、_リリース番号_ は 1 になります。
+リリースがアップグレードされたり、ロールバックされたりするたびに、リリース番号は増加します。
 
 ## ロールバック
 
