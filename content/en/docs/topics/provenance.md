@@ -84,7 +84,7 @@ Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2
 To verify during an install, use the `--verify` flag.
 
 ```console
-$ helm install --verify mychart-0.1.0.tgz
+$ helm install --generate-name --verify mychart-0.1.0.tgz
 ```
 
 If the keyring containing the public key associated with the signed chart is not

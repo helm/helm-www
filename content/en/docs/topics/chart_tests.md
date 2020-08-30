@@ -15,6 +15,11 @@ definition that specifies a container with a given command to run. The container
 should exit successfully (exit 0) for a test to be considered a success. The job
 definition must contain the helm test hook annotation: `helm.sh/hook: test`.
 
+Note that until Helm v3, the job definition needed to contain one of these helm
+test hook annotations: `helm.sh/hook: test-success` or `helm.sh/hook: test-failure`.
+`helm.sh/hook: test-success` is still accepted as a backwards-compatible
+alternative to `helm.sh/hook: test`.
+
 Example tests:
 
 - Validate that your configuration from the values.yaml file was properly
@@ -59,7 +64,7 @@ kind: Pod
 metadata:
   name: "{{ .Release.Name }}-credentials-test"
   annotations:
-    "helm.sh/hook": test-success
+    "helm.sh/hook": test
 spec:
   containers:
     - name: {{ .Release.Name }}-credentials-test

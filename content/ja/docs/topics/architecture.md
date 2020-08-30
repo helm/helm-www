@@ -1,7 +1,6 @@
 ---
 title: "Helm アーキテクチャ"
 description: "Helm アーキテクチャの概要を説明します。"
-aliases: ["/docs/architecture/"]
 weight: 8
 ---
 

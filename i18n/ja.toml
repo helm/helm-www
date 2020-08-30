@@ -47,9 +47,9 @@ other = "Helm とは何ですか？"
 other = """
 Helm は、Kubernetes アプリケーションの管理を支援します。Helm チャートは、最も複雑な Kubernetes アプリケーションの定義、インストール、およびアップグレードを支援します。
 
-チャートは簡単に作成、バージョン管理、共有、公開できます。そのため、Helm の使用を開始し、コピーアンドペーストを停止してください。
+チャートは簡単に作成、バージョン管理、共有、公開できるので、Helm の使用を開始し、コピー & ペーストはやめましょう。
 
-Helm は [CNCF](https://cncf.io) の卒業プロジェクトであり、[Helm コミュニティ](https://github.com/helm/community)によって管理されています。
+Helm は [CNCF](https://cncf.io) の Graduated プロジェクトであり、[Helm コミュニティ](https://github.com/helm/community)によって管理されています。
 
 ### Learn more:
 

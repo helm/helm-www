@@ -5,9 +5,8 @@ aliases: ["/docs/history/"]
 weight: 4
 ---
 
-Helm 3 is a [CNCF project](https://www.cncf.io/projects/) in the [final stages
-of
-incubation](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc).
+Helm is a [graduated](https://helm.sh/blog/celebrating-helms-cncf-graduation/)
+[CNCF project](https://www.cncf.io/projects/).
 
 Helm began as what is now known as [Helm
 Classic](https://github.com/helm/helm-classic), a Deis project begun in 2015 and
@@ -28,6 +27,6 @@ Museum, and later the Helm Hub.
 When the Helm 3 development cycle began, Tiller was removed, bringing Helm
 closer to its original vision of being a client tool. But Helm 3 continues to
 track releases inside of the Kubernetes cluster, making it possible for teams to
-work together on a common set of Helm releases.
+work together on a common set of Helm releases. Helm 3 was released in November 2019.
 
-Helm 3 was released in November 2019.
+Helm [graduated as a CNCF project in April 2020](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/).

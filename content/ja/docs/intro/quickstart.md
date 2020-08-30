@@ -2,7 +2,6 @@
 title: "クイックスタートガイド"
 description: "ディストリビューション、FAQ、プラグインの手順を含む、Helm のインストール方法と使用方法。"
 weight: 1
-aliases: ["/docs/quickstart/"]
 ---
 
 このガイドでは、Helm をすぐに使い始める方法について説明します。

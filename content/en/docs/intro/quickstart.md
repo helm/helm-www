@@ -23,8 +23,7 @@ use of Helm.
   second-latest minor release.
 - You should also have a local configured copy of `kubectl`.
 
-NOTE: Kubernetes versions prior to 1.6 have limited or no support for role-based
-access controls (RBAC).
+See the [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) for the maximum version skew supported between Helm and Kubernetes.
 
 ## Install Helm
 

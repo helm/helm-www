@@ -64,7 +64,7 @@ Because every subchart is a _stand-alone chart_, we can test `mysubchart` on its
 own:
 
 ```console
-$ helm install --dry-run --debug mychart/charts/mysubchart
+$ helm install --generate-name --dry-run --debug mychart/charts/mysubchart
 SERVER: "localhost:44134"
 CHART PATH: /Users/mattbutcher/Code/Go/src/helm.sh/helm/_scratch/mychart/charts/mysubchart
 NAME:   newbie-elk

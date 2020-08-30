@@ -31,7 +31,7 @@ request](https://github.com/helm/helm-www/pulls).
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - Helm
   Plugin that generates values yaml schema for your Helm 3 charts
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage
-  and store secrets safely (based on [sops](https://github.com/mozilla/sops)) 
+  and store secrets safely (based on [sops](https://github.com/mozilla/sops))
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
@@ -73,6 +73,8 @@ Tools layered on top of Helm.
   HelmRequest and Release CRD
 - [chart-registry](https://github.com/hangyan/chart-registry) - Helm Charts
   Hosts on OCI Registry
+- [avionix](https://github.com/zbrookle/avionix) - Python interface for generating Helm
+  charts and Kubernetes yaml, allowing for inheritance and less duplication of code
 
 ## Helm Included
 
