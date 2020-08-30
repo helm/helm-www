@@ -50,23 +50,23 @@ bash では、これは `renderer1 | renderer2 | renderer3` のように単純�
 `kustomize` をポストレンダラーとして使用する例は
 [here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render)で見ることができます。
 
-### Caveats
-When using post renderers, there are several important things to keep in mind.
-The most important of these is that when using a post-renderer, all people
-modifying that release **MUST** use the same renderer in order to have
-repeatable builds. This feature is purposefully built to allow any user to
-switch out which renderer they are using or to stop using a renderer, but this
-should be done deliberately to avoid accidental modification or data loss.
+### 警告事項
+ポストレンダラを使用する際には、いくつかの重要なことを覚えておいてください。
+その中でも最も重要なのは、ポストレンダラーを使用する場合、
+そのリリースを修正するすべての人が同じレンダラーを使用**しなければならない**ということです。
+この機能は、ユーザーが使用しているレンダラーを切り替えたり、
+レンダラーの使用を停止したりできるように意図的に構築されていますが、
+これは偶発的な変更やデータ損失を避けるために意図的に行う必要があります。
 
-One other important note is around security. If you are using a post-renderer,
-you should ensure it is coming from a reliable source (as is the case for any
-other arbitrary executable). Using non-trusted or non-verified renderers is NOT
-recommended as they have full access to rendered templates, which often contain
-secret data.
+もう一つ重要な注意点は、セキュリティ周りです。
+ポストレンダラーを使用する場合は、
+信頼できるソースからのものであることを確認する必要があります (他の任意の実行ファイルの場合と同様です)。
+信頼されていないレンダラーや
+検証されていないレンダラーを使用することは推奨されません。
 
-### Custom Post Renderers
-The post render step offers even more flexibility when used in the Go SDK. Any
-post renderer only needs to implement the following Go interface:
+### カスタムポストレンダラー
+ポストレンダラーステップは、Go SDK で使用するとさらに柔軟性が増します。
+ポストレンダラーは、以下の Go インターフェースを実装するだけで済みます。
 
 ```go
 type PostRenderer interface {
@@ -77,34 +77,32 @@ type PostRenderer interface {
 }
 ```
 
-For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
+Go SDK の使用方法については、[Go SDK セクション](#go-sdk)を参照してください。
 
 ## Go SDK
-Helm 3 debuted a completely restructured Go SDK for a better experience when
-building software and tools that leverage Helm. Full documentation can be found
-at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), but a brief overview of some of the most
-common packages and a simple example follow below.
+Helm 3 では、Helm を活用したソフトウェアやツールを構築する際の操作性を向上させるために、
+完全に再構築された Go SDK がデビューしました。
+完全なドキュメントは [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3) にありますが、
+最も一般的なパッケージの簡単な概要と簡単な例を以下に示します。
 
-### Package overview
-This is a list of the most commonly used packages with a simple explanation
-about each one:
+### パッケージ概要
+よく使われるパッケージを、それぞれについて簡単に解説します。
 
-- `pkg/action`: Contains the main “client” for performing Helm actions. This is
-  the same package that the CLI is using underneath the hood. If you just need
-  to perform basic Helm commands from another Go program, this package is for
-  you
-- `pkg/{chart,chartutil}`: Methods and helpers used for loading and manipulating
-  charts
-- `pkg/cli` and its subpackages: Contains all the handlers for the standard Helm
-  environment variables and its subpackages contain output and values file
-  handling
-- `pkg/release`: Defines the `Release` object and statuses
+- `pkg/action`: Helm のアクションを実行するためのメインの「クライアント」が含まれています。
+  これは、CLI がフードの下で使用しているのと同じパッケージです。
+  他の Go プログラムから基本的な Helm コマンドを実行する必要がある場合は、
+  このパッケージが適しています。
+- `pkg/{chart,chartutil}`: チャートの読み込みと操作に使用されるメソッドとヘルパー
+- `pkg/cli` とそのサブパッケージ: 標準 Helm 環境変数のすべてのハンドラを含み、
+  そのサブパッケージには
+  出力と値のファイル処理が含まれています。
+- `pkg/release`: `Release` オブジェクトとステータスを定義します
 
-Obviously there are many more packages besides these, so go check out the
-documentation for more information!
+これら以外にもたくさんのパッケージがあるのは明らかなので、
+詳しくはドキュメントをチェックしてみてください。
 
-### Simple example
-This is a simple example of doing a `helm list` using the Go SDK:
+### 簡単な例
+これは、Go SDK を使って `helm list` を実行する簡単な例です。
 
 ```go
 package main
@@ -144,41 +142,41 @@ func main() {
 
 ```
 
-## Storage backends
+## ストレージバックエンド
 
-Helm 3 changed the default release information storage to Secrets in the namespace
-of the release. Helm 2 by default stores release information as ConfigMaps in the
-namespace of the Tiller instance. The subsections which follow show how to
-configure different backends. This configuration is based on the `HELM_DRIVER` 
-environment variable. It can be set to one of the values: `[configmap, secret]`.
+Helm 3 はデフォルトでリリース情報をリリースのネームスペースに Secrets として保存するように変更しました。
+Helm 2 はデフォルトでリリース情報を ConfigMaps として Tiller インスタンスの名前空間に保存します。
+以下のサブセクションでは、異なるバックエンドを設定する方法を示します。
+この設定は、環境変数 `HELM_DRIVER` に基づいています。
+`[configmap, secret]` のいずれかの値を設定することができます。
 
-### ConfigMap storage backend
+### ConfigMap ストレージバックエンド
 
-To enable the ConfigMap backend, you'll need to set the environmental variable
-`HELM_DRIVER` to `configmap`.
+ConfigMap バックエンドを有効にするには、
+環境変数 `HELM_DRIVER` を `configmap` に設定する必要があります。
 
-You can set it in a shell as follows:
+次のようにシェルで設定します。
 
 ```shell
 export HELM_DRIVER=configmap
 ```
 
-If you want to switch from the default backend to the ConfigMap
-backend, you'll have to do the migration for this on your own. You can retrieve
-release information with the following command:
+デフォルトのバックエンドから ConfigMap バックエンドに切り替えたい場合は、
+自分でマイグレーションを行う必要があります。
+リリース情報は以下のコマンドで取得できます。
 
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**PRODUCTION NOTES**: The release information might contain sensitive data
-(like passwords, private keys, and other credentials) that needs to be protected
-from unauthorized access. When managing Kubernetes authorization, for instance with 
-[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), it
-is possible to grant broader access to ConfigMap resources, while restricting
-access to Secret resources. For instance, the default
-[user-facing role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
-"view" grants access to most resources, but not to Secrets. Furthermore, secrets data can be
-configured for [encrypted storage](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
-Please keep that in mind if you decide to switch to the ConfigMap backend, as it
-could expose your application's sensitive data.
+**プロダクションの注意**: リリース情報には、不正アクセスから保護する必要がある機密データ (パスワード、秘密鍵、その他の資格情報など) が含まれている可能性があります。
+Kubernetes の認証を管理する際に、
+例えば [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) を使用して、
+Secret リソースへのアクセスを制限しつつ、
+ConfigMap リソースへの幅広いアクセスを許可することができます。
+例えば、デフォルトの[ユーザー向けロール](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)「view」では、
+ほとんどのリソースへのアクセスを許可しますが、
+Secrets へのアクセスは許可しません。
+さらに、Secrets データは[encrypted ストレージ](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)に設定することができます。
+ConfigMap バックエンドに切り替える場合は、
+アプリケーションの機密データが漏洩する可能性があることを念頭に置いてください。
