@@ -390,6 +390,7 @@ A partially completed set of release notes including the changelog can be
 created by running the following command:
 
 ```shell
+export VERSION="$RELEASE_NAME"
 export PREVIOUS_RELEASE=vX.Y.Z
 make clean
 make fetch-dist
@@ -408,6 +409,7 @@ auto-generated release notes.
 Once finished, go into GitHub to [helm/helm
 releases](https://github.com/helm/helm/releases) and edit the release notes for
 the tagged release with the notes written here.
+For target branch, set to $RELEASE_BRANCH_NAME.
 
 It is now worth getting other people to take a look at the release notes before
 the release is published. Send a request out to
