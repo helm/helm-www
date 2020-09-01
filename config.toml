@@ -41,6 +41,9 @@ jsFiles = [
   "app"
 ]
 
+[[plugins]]
+package = "./plugins/lang-checker"
+
 [[params.versions]]
 version = "v3.3.1"
 patch = "stable"
