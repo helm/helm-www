@@ -42,7 +42,7 @@ jsFiles = [
 ]
 
 [[plugins]]
-package = "./plugins/lang-checker"
+package = "./plugins/netlify-lang-checker"
 
 [[params.versions]]
 version = "v3.3.1"
