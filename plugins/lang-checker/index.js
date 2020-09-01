@@ -1,5 +1,4 @@
 module.exports = {
-  name: "lang-checker",
   onPreBuild: async () => {
     try {
       badMethod()
