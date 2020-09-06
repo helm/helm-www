@@ -154,7 +154,7 @@ containers:
 
 ### 作为默认存储器的密钥
 
-In Helm 3, 密钥被作为[默认存储驱动](https://helm.sh/docs/topics/advanced/#storage-backends)使用。
+在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/docs/topics/advanced/#storage-backends)使用。
 Helm 2默认使用ConfigMaps记录版本信息。在Helm 2.7.0中，新的存储后台使用密钥来存储版本信息，
 现在是Helm 3的默认设置。
 
@@ -232,7 +232,7 @@ Helm 2中，如果没有提供名称， 会自动生成一个名称。在生产�
 
 这是一个Helm 3 中的实验性特性。使用时需要设置环境变量 `HELM_EXPERIMENTAL_OCI=1`。
 
-Chart仓库在较高层次上是一个存储和分发Chart的地址。Heml客户端打包并将Chart推送到Chart仓库中。
+Chart仓库在较高层次上是一个存储和分发Chart的地址。Helm客户端打包并将Chart推送到Chart仓库中。
 简单来说，Chart仓库就是一个基本的HTTP服务器用来存放index.yaml文件和打包的chart。
 
 Chart 仓库API满足最基本的需求有一些好处，但是有些缺点开始显现出来：
@@ -310,7 +310,7 @@ Helm 插件仍然使用 `$HELM_HOME` 作为 `$XDG_DATA_HOME` 的别名，以便�
 - `$HELM_PATH_CONFIG` 针对配置路径
 - `$HELM_PATH_DATA` 针对data路径
 
-Helm插件期望支持Heml 3 就建议使用新的环境变量。
+如果Helm插件期望支持Helm 3，建议使用新的环境变量。
 
 ### CLI 命令重新命名
 
@@ -329,15 +329,15 @@ Helm 2 中为了清除版本清单，必须提供`--purge`参数。这个功能�
 
 ### 自动创建namespace
 
-当创建了一个命名空间中不存在的版本时，Heml 2会创建一个命名空间。
-Heml 3中沿用了其他Kubernetes 工具的形式，如果命名空间不存在，就返回错误。
+当用命名空间创建版本时，命名空间不存在，Helm 2会创建一个命名空间。
+Helm 3中沿用了其他Kubernetes 工具的形式，如果命名空间不存在，就返回错误。
 如果您明确指定 `--create-namespace` 参数，Helm 3 会创建一个命名空间。
 
 ## 安装
 
 ### 为什么没有针对Fedora和其他Linux发行版的Helm原生包?
 
-Heml 项目不维护针对操作系统和环境的包。Helm 社区如果觉得需要提供原生包时，可以提供原生包。
+Helm 项目不维护针对操作系统和环境的包。Helm 社区如果觉得需要提供原生包时，可以提供原生包。
 这是Homebrew 开始列出的方案。如果您有兴趣维护一个包，我们会很高兴的。
 
 ### 为什么会提供 `curl ...|bash` 脚本?
@@ -346,7 +346,7 @@ Heml 项目不维护针对操作系统和环境的包。Helm 社区如果觉得�
 使用HTTPS传输，The transfers are all protected by HTTPS, 并且这个脚本对它获取到包做一些审核。
 然而这个脚本有任何shell脚本的所有常见危险。
 
-我们提供这个脚本因为它很好用，但是我们建议用户先仔细阅读这个脚本。不过我们真正想要的是更好的Heml打包版本。
+我们提供这个脚本因为它很好用，但是我们建议用户先仔细阅读这个脚本。不过我们真正想要的是更好的Helm打包版本。
 
 ### 我如何将Helm客户端文件放置在其他位置而不是默认位置?
 
@@ -363,7 +363,7 @@ Helm 使用XDG结构存储文件。这些环境变量可以用来覆盖默认位
 
 ### 我想删除我本地Helm. 全部文件在什么位置？
 
-连同 `helm` 二进制文件一起，Heml将文件存储在以下位置：
+连同 `helm` 二进制文件一起，Helm将文件存储在以下位置：
 
 - $XDG_CACHE_HOME
 - $XDG_CONFIG_HOME

@@ -105,7 +105,7 @@ chart安装之后，Helm库会创建一个 _release_ 来跟踪这个安装。
 ## Helm库 (或SDK)
 
 Helm库（或SDK）涉及到go代码，可以直接与Kubernetes API服务交互进行安装、升级、查询
-以及移除Kubernetes资源。可以被导入到项目中来替换CLI使用的Helm库。
+以及移除Kubernetes资源。可以被导入到项目中作为客户端库使用而不是用作CLI命令。
 
 ## 仓库 (Repo, Chart Repository)
 
@@ -114,7 +114,7 @@ Helm图标chart可以被存储在专用的HTTP服务器上，称之为 _chart �
 chart仓库服务器就是一个简单的HTTP服务器，提供一个`index.yaml` 文件来描述一批chart，
 并且提供每个chart的下载位置信息。(很多chart仓库同时提供chart和 `index.yaml`文件。)
 
-Heml客户端可以指向0个或多个chart仓库。默认没有配置仓库。Chart仓库可以随时使用`helm repo add`命令添加。
+Helm客户端可以指向0个或多个chart仓库。默认没有配置仓库。Chart仓库可以随时使用`helm repo add`命令添加。
 
 ## Values (Values文件, values.yaml)
 
