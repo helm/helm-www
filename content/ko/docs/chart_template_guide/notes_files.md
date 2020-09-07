@@ -4,16 +4,16 @@ description: "차트 사용자에게 설명서를 제공하는 방법"
 weight: 10
 ---
 
-In this section we are going to look at Helm's tool for providing instructions
-to your chart users. At the end of a `helm install` or `helm upgrade`, Helm
-can print out a block of helpful information for users. This information is
-highly customizable using templates.
+이 섹션에서는 차트 사용자에게 지침을 제공하는 헬름의 도구들을 살펴본다.
+`helm install` 이나 `helm upgrade` 가 끝나면, 
+헬름은 사용자에게 유용한 정보들을 출력할 수 있다. 
+이 정보는 템플릿을 사용하여 고도로 사용자 정의할 수 있다.
 
-To add installation notes to your chart, simply create a `templates/NOTES.txt`
-file. This file is plain text, but it is processed like as a template, and has
-all the normal template functions and objects available.
+차트에 설치 메모를 추가하기 위해, 간단하게 `templates/NOTES.txt` 
+파일을 생성한다. 이 파일은 평범한 텍스트이지만, 템플릿처럼 처리되며 
+모든 일반 템플릿 기능과 객체를 사용할 수 있다.
 
-Let's create a simple `NOTES.txt` file:
+간단히 `NOTES.txt` 파일을 생성한다.
 
 ```
 Thank you for installing {{ .Chart.Name }}.
@@ -27,7 +27,8 @@ To learn more about the release, try:
 
 ```
 
-Now if we run `helm install rude-cardinal ./mychart` we will see this message at the bottom:
+이제 `helm install rude-cardinal ./mychart` 를 실행하면 하단에 이런 메세지가 
+표시된다.
 
 ```
 RESOURCES:
@@ -51,6 +52,6 @@ To learn more about the release, try:
   $ helm get all rude-cardinal
 ```
 
-Using `NOTES.txt` this way is a great way to give your users detailed
-information about how to use their newly installed chart. Creating a `NOTES.txt`
-file is strongly recommended, though it is not required.
+이러한 방식으로 `NOTES.txt` 를 사용하면 새로 설치된 차트를 
+사용하는 방법에 대한 자세한 정보를 사용자에게 제공할 수 있다. 필수는 아니지만, 
+`NOTES.txt` 파일 생성을 강력히 추천한다.
