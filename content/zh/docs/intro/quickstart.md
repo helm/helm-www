@@ -2,7 +2,6 @@
 title: "快速入门指南"
 description: "如何安装和开始使用Helm，包括Helm的介绍、FAQs和Helm plugins"
 weight: 1
-aliases: ["/docs/quickstart/"]
 ---
 
 本指南介绍如何快速开始使用Helm。
@@ -102,7 +101,7 @@ Status: UNINSTALLED
 ...
 ```
 
-因为即使您卸载了它们，Helm也会记录您的release，您可以审计集群的历史记录或者取消 `helm uninstall` 操作（使用 `helm rollback` ）。
+因为 `--keep-history` 选项会让helm跟踪你的release（即使你卸载了他们）， 所以你可以审计集群历史甚至使用 `helm rollback` 回滚release。
 
 ## 查看帮助信息
 
