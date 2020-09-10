@@ -41,8 +41,8 @@ helm env [flags]
       --registry-config string           레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
       --repository-cache string          캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/snap/code/common/.cache/helm/repository")
       --repository-config string         저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
-      --skip-headers                     이 값이 참이면, 로그파일에서 헤더 접두사를 미사용
-      --skip-log-headers                 이 값이 참이면, 로그 파일을 열 때 헤더 제외
+      --skip-headers                     이 값이 true이면, 로그파일에서 헤더 접두어를 미사용
+      --skip-log-headers                 이 값이 true이면, 로그파일을 열 때 헤더 제외
       --stderrthreshold severity         stderr로 로그가 변경될 수 있는 최저 임계점 (기본값 2)
   -v, --v Level                          로그 수준 상세표시 레벨
       --vmodule moduleSpec               파일로 필터링 된 로깅을 위한 패턴=N 설정의 쉼표로 구분된 리스트
