@@ -44,7 +44,7 @@ title: "헬름"
 | Windows          | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm          |
 
 
-### 옵션
+### 옵션 
 
 ```
       --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
