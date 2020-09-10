@@ -6,8 +6,8 @@ weight: 10
 ---
 
 헬름은 ([인증 여부](https://www.cncf.io/certification/software-conformance/)와 
-관계 없이) 모든 [쿠버네티스 호환 버전](https://github.com/cncf/k8s-conformance)에서 
-작동 해야 한다.
+관계 없이) 모든 [쿠버네티스 적합 버전](https://github.com/cncf/k8s-conformance)에서 
+작동해야 한다.
 
 이 문서는 특정 쿠버네티스 환경에서 헬름을 사용하는 방법에 대한 정보를 정리한다.
 필요한 경우, 특정 배포판(알파벳 순으로 정렬)에 
