@@ -82,7 +82,7 @@ OpenShift Origin (버전 3.6 이상)에서 동작한다.
 Kubernetes](https://platform9.com/managed-kubernetes/?utm_source=helm_distro_notes)와 함께 사전 설치된다.
 Platform9 은 앱 카탈로그 UI 및 기본 쿠버네티스 CLI를 통해 
 모든 공식 헬름 차트에 대한 접근을 제공한다. 추가적인 레포지토리들도 수동으로 추가할 수 있다.
-더 상세한 내용은 [Platform9 App Catalog
+상세한 내용은 [Platform9 App Catalog
 article](https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes)에서 확인할 수 있다.
 
 ## Ubuntu with `kubeadm`
