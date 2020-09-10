@@ -26,9 +26,9 @@ weight: 10
 
 ## EKS
 
-헬름은 Amazon Elastic 쿠버네티스 서비스 (Amazon EKS)에서 
-동작한다:[Amazon EKS 와 
-함께 헬름 사용](https://docs.aws.amazon.com/eks/latest/userguide/helm.html).
+헬름은 Amazon Elastic 쿠버네티스 서비스 (Amazon EKS)에서 동작한다.
+[Amazon EKS에서 
+헬름 사용](https://docs.aws.amazon.com/eks/latest/userguide/helm.html).
 
 ## GKE
 
