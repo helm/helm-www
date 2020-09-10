@@ -71,7 +71,7 @@ title: "헬름"
       --vmodule moduleSpec               파일로 필터링 된 로깅을 위한 패턴=N 설정의 쉼표로 구분된 리스트
 ```
 
-### 함께 보기
+### 참조
 
 * [helm completion](/docs/helm/helm_completion)	 - 지정된 셸(bash or zsh)에 대한 자동 완성 스크립트 생성
 * [helm create](/docs/helm/helm_create)	 - 주어진 이름으로 새 차트 생성
