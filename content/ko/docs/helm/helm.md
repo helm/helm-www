@@ -37,7 +37,7 @@ title: "헬름"
 
 기본적으로 기본 디렉토리는 운영체제에 따라 다르며, 기본 값은 아래와 같다.
 
-| 운영체제             | 캐시 파일 경로                 | 설정 파일 경로                      | 데이터 저장 경로             |
+| 운영체제             | 캐시 파일 경로                 | 설정 파일 경로                      | 데이터 저장 경로              |
 |------------------|---------------------------|--------------------------------|-------------------------|
 | Linux            | $HOME/.cache/helm         | $HOME/.config/helm             | $HOME/.local/share/helm |
 | macOS            | $HOME/Library/Caches/helm | $HOME/Library/Preferences/helm | $HOME/Library/helm      |
