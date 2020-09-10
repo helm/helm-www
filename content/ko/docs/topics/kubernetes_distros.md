@@ -61,8 +61,7 @@ Hyperkube 의 경우 몇 가지 수동 구성을 해야 할 수도 있다.
 
 ## MicroK8s
 
-헬름은 `microk8s.enable helm` 명령을 사용하여 [MicroK8s](https://microk8s.io) 에서 
-사용가능하도록 활성화 할 수 있다.
+[MicroK8s](https://microk8s.io) 에서는 명령어 `microk8s.enable helm`를 사용하여 헬름을 활성화할 수 있다.
 
 ## Minikube
 
