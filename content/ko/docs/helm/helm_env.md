@@ -33,8 +33,8 @@ helm env [flags]
       --kube-token string                인증에 사용될 문자열 전달 토큰
       --kubeconfig string                kubeconfig 파일 경로
       --log-backtrace-at traceLocation   로깅 시 N 행에 걸친 스택 추적 내용을 표시 (기본값 :0)
-      --log-dir string                   이 값이 비어있지 않을 경우, 이 값에 지정된 디렉토리에 로그 파일 쓰기 수행
-      --log-file string                  이 값이 비어있지 않을 경우, 이 값에 지정된 파일명으로 로그 파일 쓰기 수행
+      --log-dir string                   값을 지정하면, 지정한 디렉토리에 로그 파일 기록
+      --log-file string                  값을 지정하면, 지정한 로그 파일 사용
       --log-file-max-size uint           로그파일이 증가할 수 있는 최대 크기 지정. 단위는 메가 바이트이며 값이 0일 경우 최대 파일크기 제한 없음(기본 값 1800)
       --logtostderr                      로그를 파일이 아닌 표준 출력으로 표시 (기본값 true)
   -n, --namespace string                 요청에 대한 네임스페이스 지정
