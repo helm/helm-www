@@ -15,7 +15,7 @@ title: "헬름"
 - helm search:    차트를 검색
 - helm pull:      확인하려는 로컬 디렉토리에 차트를 다운로드
 - helm install:   쿠버네티스에 차트 업로드
-- helm list:      차트 릴리즈 리스트 표시
+- helm list:      차트 릴리스 리스트 표시
 
 환경 변수:
 
