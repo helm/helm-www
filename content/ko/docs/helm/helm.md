@@ -52,7 +52,7 @@ title: "헬름"
       --debug                            상세 내용 표시 활성화
   -h, --help                             헬름에 대한 도움말
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
-      --kube-context string              kubeconfig 컨텍스트의 문자열 이름
+      --kube-context string              사용할 kubeconfig 컨텍스트 이름
       --kube-token string                인증에 사용될 문자열 전달 토큰
       --kubeconfig string                kubeconfig 파일 경로
       --log-backtrace-at traceLocation   로깅 시 N 행에 걸친 스택 추적 내용을 표시 (기본값 :0)
