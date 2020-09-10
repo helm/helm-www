@@ -85,13 +85,13 @@ Platform9 은 앱 카탈로그 UI 및 기본 쿠버네티스 CLI를 통해
 상세한 내용은 [Platform9 App Catalog
 article](https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes)에서 확인할 수 있다.
 
-## Ubuntu with `kubeadm`
+## 우분투와 `kubeadm`
 
-`kubeadm` 으로 부트스트랩 된 쿠버네티스는 Linux 배포버전에서 
+`kubeadm` 으로 구성된(bootstrapped) 쿠버네티스는 다음 리눅스 배포판에서 
 동작하는 것으로 알려져 있다.
 
-- Ubuntu 16.04
-- Fedora release 25
+- 우분투 16.04
+- 페도라 릴리스 25
 
-헬름의 일부 버전(v2.0.0-beta2)은 `export KUBECONFIG=/etc/kubernetes/admin.conf` 를 수행하거나
+헬름 일부 버전(v2.0.0-beta2)은 `export KUBECONFIG=/etc/kubernetes/admin.conf` 를 수행하거나
 `~/.kube/config` 를 생성해야 한다.
