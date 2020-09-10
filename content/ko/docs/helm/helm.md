@@ -1,16 +1,16 @@
 ---
-title: "Helm"
+title: "헬름"
 ---
 
-## helm
+## 헬름
 
-쿠버네티스를 위한 Helm 패키지 매니저.
+쿠버네티스를 위한 헬름 패키지 매니저.
 
 ### 개요
 
 쿠버네티스 패키지 매니저
 
-Helm 에 대한 공통된 동작:
+헬름에 대한 공통된 동작:
 
 - helm search:    차트를 검색
 - helm pull:      확인하려는 로컬 디렉토리에 차트를 다운로드
@@ -22,14 +22,14 @@ Helm 에 대한 공통된 동작:
 | Name                               | Description                                                                       |
 |------------------------------------|-----------------------------------------------------------------------------------|
 | $XDG_CACHE_HOME                    | 캐시된 파일을 저장할 대체 위치를 지정.                                                          |
-| $XDG_CONFIG_HOME                   | Helm 설정을 저장할 대체 위치 지정.                                                          |
-| $XDG_DATA_HOME                     | Helm 데이터를 저장할 대체 위치를 지정.                                                        |
+| $XDG_CONFIG_HOME                   | 헬름 설정을 저장할 대체 위치 지정.                                                          |
+| $XDG_DATA_HOME                     | 헬름 데이터를 저장할 대체 위치를 지정.                                                        |
 | $HELM_DRIVER                       | 백엔드 스토리지 드라이버 설정. 값 : configmap, secret, memory, postgres                       |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | SQL 스토리지 드라이버가 사용해야 하는 연결 문자열 지정.                                              |
 | $HELM_NO_PLUGINS                   | 플러그인 비활성화. 비활성화 하기 위해 HELM_NO_PLUGINS=1 로 지정.                                  |
 | $KUBECONFIG                        | 대체 설정 파일 지정 (기본값 "~/.kube/config")                                              |
 
-Helm 은 기본 디렉토리 사양을 기반으로 설정을 저장하므로,
+헬름 은 기본 디렉토리 사양을 기반으로 설정을 저장하므로,
 
 - 캐시된 파일은 $XDG_CACHE_HOME/helm 에 저장
 - 설정은 $XDG_CONFIG_HOME/helm 에 저장
@@ -50,7 +50,7 @@ Helm 은 기본 디렉토리 사양을 기반으로 설정을 저장하므로,
       --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
       --alsologtostderr                  표준 오류를 로그 및 파일로 표시
       --debug                            상세 내용 표시 활성화
-  -h, --help                             helm 에 대한 도움말
+  -h, --help                             헬름에 대한 도움말
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
       --kube-context string              kubeconfig 컨텍스트의 문자열 이름
       --kube-token string                인증에 사용될 문자열 전달 토큰
