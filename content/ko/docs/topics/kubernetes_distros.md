@@ -51,7 +51,7 @@ weight: 10
 
 ## KubeOne
 
-헬름은 주의요소 없이 KubeOne 으로 구성된 클러스터에서 동작한다.
+헬름은 별다른 특이사항 없이 KubeOne 으로 구성된 클러스터에서 동작한다.
 
 ## Kubermatic
 
