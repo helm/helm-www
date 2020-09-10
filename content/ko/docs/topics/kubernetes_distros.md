@@ -47,7 +47,7 @@ weight: 10
 
 ## KIND (Kubernetes IN Docker)
 
-헬름은 [KIND](https://github.com/kubernetes-sigs/kind)에서 정기적으로 테스트 된다.
+헬름은 [KIND](https://github.com/kubernetes-sigs/kind)에서 정기적으로 테스트된다.
 
 ## KubeOne
 
