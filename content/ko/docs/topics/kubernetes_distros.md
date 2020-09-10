@@ -65,8 +65,8 @@ Hyperkube 의 경우 몇 가지 수동 구성을 해야 할 수도 있다.
 
 ## Minikube
 
-헬름은 테스트를 거쳐, [Minikube](https://github.com/kubernetes/minikube) 에서 
-동작하는 것으로 알려져있다. 
+헬름은 [Minikube](https://github.com/kubernetes/minikube) 에서 테스트를 거쳤고
+동작하는 것으로 알려져 있다. 
 추가적인 구성이 필요하지 않다.
 
 ## Openshift
