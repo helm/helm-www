@@ -37,8 +37,8 @@ weight: 10
 
 ## `scripts/local-cluster` 와 Hyperkube
 
-`scripts/local-cluster.sh` 를 통해 구성된 Hyperkube 에서 동작하는 것으로 알려져 있으며, 원시
-Hyperkube 의 경우 몇 가지 수동 구성을 해야 할 수도 있다.
+`scripts/local-cluster.sh` 를 통해 구성된 Hyperkube 에서 동작하는 것으로 알려져 있다.
+원시(raw) Hyperkube 는 몇 가지 수동 구성이 필요할 수도 있다.
 
 ## IKS
 
