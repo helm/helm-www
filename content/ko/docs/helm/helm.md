@@ -27,7 +27,7 @@ title: "헬름"
 | $HELM_DRIVER                       | 백엔드 스토리지 드라이버 설정. 값 : configmap, secret, memory, postgres                       |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | SQL 스토리지 드라이버가 사용해야 하는 연결 문자열 지정.                                              |
 | $HELM_NO_PLUGINS                   | 플러그인 비활성화. 비활성화 하기 위해 HELM_NO_PLUGINS=1 로 지정.                                  |
-| $KUBECONFIG                        | 대체 설정 파일 지정 (기본값 "~/.kube/config")                                              |
+| $KUBECONFIG                        | 대체 쿠버네티스 설정 파일 지정 (기본값 "~/.kube/config")                                              |
 
 헬름 은 기본 디렉토리 사양을 기반으로 설정을 저장하므로,
 
