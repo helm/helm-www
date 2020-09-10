@@ -76,7 +76,7 @@ title: "헬름"
 * [helm completion](/docs/helm/helm_completion)	 - 지정된 셸(bash 또는 zsh)에 대한 자동 완성 스크립트 생성
 * [helm create](/docs/helm/helm_create)	 - 주어진 이름으로 새 차트 생성
 * [helm dependency](/docs/helm/helm_dependency)	 - 차트의 종속성 관리
-* [helm env](/docs/helm/helm_env)	 - 클라이언트 환경 정보
+* [helm env](/docs/helm/helm_env)	 - 헬름 클라이언트 환경 정보
 * [helm get](/docs/helm/helm_get)	 - 명명된 릴리즈의 확장 정보 다운로드
 * [helm history](/docs/helm/helm_history)	 - 릴리즈 기록 가져오기
 * [helm install](/docs/helm/helm_install)	 - 차트 설치
