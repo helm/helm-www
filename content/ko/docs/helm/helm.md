@@ -15,7 +15,7 @@ title: "헬름"
 - helm search:    차트를 검색
 - helm pull:      확인하려는 로컬 디렉토리에 차트를 다운로드
 - helm install:   쿠버네티스에 차트 업로드
-- helm list:      차트 release 리스트 표시
+- helm list:      차트 릴리즈 리스트 표시
 
 환경 변수:
 
@@ -77,23 +77,23 @@ title: "헬름"
 * [helm create](/docs/helm/helm_create)	 - 주어진 이름으로 새 차트 생성
 * [helm dependency](/docs/helm/helm_dependency)	 - 차트의 종속성 관리
 * [helm env](/docs/helm/helm_env)	 - 클라이언트 환경 정보
-* [helm get](/docs/helm/helm_get)	 - 명명된 release 의 확장 정보 다운로드
-* [helm history](/docs/helm/helm_history)	 - release 기록 가져오기
+* [helm get](/docs/helm/helm_get)	 - 명명된 릴리즈의 확장 정보 다운로드
+* [helm history](/docs/helm/helm_history)	 - 릴리즈 기록 가져오기
 * [helm install](/docs/helm/helm_install)	 - 차트 설치
 * [helm lint](/docs/helm/helm_lint)	 - 차트에서 발생 가능한 이슈 검사
-* [helm list](/docs/helm/helm_list)	 - releases 목록
+* [helm list](/docs/helm/helm_list)	 - 릴리즈 목록
 * [helm package](/docs/helm/helm_package)	 - 차트 디렉토리를 차트 아카이브로 패키징
 * [helm plugin](/docs/helm/helm_plugin)	 - Helm 플러그인 설치, 조회, 제거
 * [helm pull](/docs/helm/helm_pull)	 - 저장소에서 차트를 다운로드하고 (선택적으로) 로컬디렉터리에 압축 해제
 * [helm repo](/docs/helm/helm_repo)	 - 차트 저장소의 추가, 조회, 제거, 업데이트 및 색인 생성
-* [helm rollback](/docs/helm/helm_rollback)	 - release를 이전 버전으로 롤백
+* [helm rollback](/docs/helm/helm_rollback)	 - 릴리즈를 이전 버전으로 롤백
 * [helm search](/docs/helm/helm_search)	 - 차트에서 키워드 검색
 * [helm show](/docs/helm/helm_show)	 - 차트 정보 표시
-* [helm status](/docs/helm/helm_status)	 - 명명된 release 의 상태 표시
+* [helm status](/docs/helm/helm_status)	 - 명명된 릴리즈의 상태 표시
 * [helm template](/docs/helm/helm_template)	 - 로컬에서 템플릿 렌더링
-* [helm test](/docs/helm/helm_test)	 - release 테스트 수행
-* [helm uninstall](/docs/helm/helm_uninstall)	 - release 제거
-* [helm upgrade](/docs/helm/helm_upgrade)	 - release 업그레이드
+* [helm test](/docs/helm/helm_test)	 - 릴리즈 테스트 수행
+* [helm uninstall](/docs/helm/helm_uninstall)	 - 릴리즈 제거
+* [helm upgrade](/docs/helm/helm_upgrade)	 - 릴리즈 업그레이드
 * [helm verify](/docs/helm/helm_verify)	 - 지정된 경로의 차트의 서명 여부 및 유효성 여부 검증
 * [helm version](/docs/helm/helm_version)	 - 클라이언트 
 
