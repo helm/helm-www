@@ -74,7 +74,7 @@ Hyperkube 의 경우 몇 가지 수동 구성을 해야 할 수도 있다.
 헬름은 OpenShift Online, OpenShift Dedicated, OpenShift Container Platform (버전 3.6 이상) 또는 
 OpenShift Origin (버전 3.6 이상)에서 동작한다.
 자세한 내용은 
-[이 블로그](https://blog.openshift.com/getting-started-helm-openshift/) 의 게시물을 참조한다.
+[이 블로그](https://blog.openshift.com/getting-started-helm-openshift/) 의 게시물을 참조하자.
 
 ## Platform9
 
