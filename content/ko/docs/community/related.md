@@ -70,7 +70,7 @@ GitHub 작성자가 플러그인 저장소에
   UI 대시보드가 있는 쿠버네티스 네이티브 CI/CD 및 관리 플랫폼 
 - [Captain](https://github.com/alauda/captain) - HelmRequest 및 
   릴리스 CRD를 사용하는 Helm3 컨트롤러
-- [chart-registry](https://github.com/hangyan/chart-registry) - OCI 저장소의 
+- [chart-registry](https://github.com/hangyan/chart-registry) - OCI 저장소 상의
   헬름 차트 호스트
 - [avionix](https://github.com/zbrookle/avionix) - 상속과 코드중복 저감을 할 수 있는
   헬름 차트와 쿠버네티스 yaml 을 생성하는 파이썬 인터페이스. 
