@@ -30,8 +30,8 @@ aliases: ["/docs/related/"]
   사용할 수 있게 해주는 헬름 플러그인
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - 헬름 3 차트에 대한 
   값(values) yaml 스키마를 생성하는 헬름 플러그인
-- [helm-secrets](https://github.com/jkroepke/helm-secrets) - 중요 정보를 안전하게 관리하고
-  저장하는 플러그인 ([sops](https://github.com/mozilla/sops) 기반)
+- [helm-secrets](https://github.com/jkroepke/helm-secrets) - 비밀정보를 안전하게 관리하고
+  보관하기 위한 플러그인 ([sops](https://github.com/mozilla/sops) 기반)
 
 또한 깃헙 작성자가 플러그인 저장소에서 
 [헬름-플러그인](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) 태그를 
