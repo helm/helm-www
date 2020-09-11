@@ -76,7 +76,7 @@ aliases: ["/docs/related/"]
 - [avionix](https://github.com/zbrookle/avionix) - 상속과 코드중복 저감을 할 수 있는
   헬름 차트와 쿠버네티스 yaml 을 생성하는 파이썬 인터페이스. 
 
-## 헬름 포함 요소
+## 헬름 지원
 
 헬름 지원을 포함하는 플랫폼, 배포판 및 서비스.
 
