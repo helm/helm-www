@@ -66,8 +66,8 @@ GitHub 작성자가 플러그인 저장소에
   복잡한 배포에서의 완료된 작업들을 제거한다
 - [ChartMuseum](https://github.com/helm/chartmuseum) - Amazon S3와
   Google Cloud Storage를 지원하는 헬름 차트 저장소
-- [Codefresh](https://codefresh.io) - 헬름 차트 및 릴리즈를 관리하기 위한 
-  UI 대쉬보드가 있는 쿠버네티스 기본 CI/CD 와 관리 플랫폼 
+- [Codefresh](https://codefresh.io) - 헬름 차트 및 릴리스를 관리하기 위한
+  UI 대시보드가 있는 쿠버네티스 네이티브 CI/CD 및 관리 플랫폼 
 - [Captain](https://github.com/alauda/captain) - HelmRequest 및 
   릴리즈 CRD를 사용하는 Helm3 컨트롤러
 - [chart-registry](https://github.com/hangyan/chart-registry) - OCI 저장소의 
