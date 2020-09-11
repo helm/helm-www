@@ -33,9 +33,9 @@ aliases: ["/docs/related/"]
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - 비밀정보를 안전하게 관리하고
   보관하기 위한 플러그인 ([sops](https://github.com/mozilla/sops) 기반)
 
-또한 깃헙 작성자가 플러그인 저장소에서 
-[헬름-플러그인](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) 태그를 
-사용하도록 권장한다.
+GitHub 작성자가 플러그인 저장소에 
+[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) 태그를 
+사용할 것을 권장한다.
 
 ## 추가적인 도구들
 
