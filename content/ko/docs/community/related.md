@@ -89,6 +89,6 @@ aliases: ["/docs/related/"]
 
 차트 작성자와 헬름 사용자를 위한 유용한 정보는 다음과 같다.
 
-- [대기](https://github.com/saltside/await) - 다른 조건들에 대해 "대기" 하는 
-  도커 이미지--초기화 컨테이너에 특히 유용 [더 
+- [Await](https://github.com/saltside/await) - 다른 조건들에 대해 "대기(await)"하는 
+  도커 이미지--특히 초기화 컨테이너에 유용하다. [더 
   보기](https://blog.slashdeploy.com/2017/02/16/introducing-await/)
