@@ -2,7 +2,6 @@
 title: "차트 개발 팁과 비법"
 description: "Covers some of the tips and tricks Helm chart developers have learned while building production-quality charts."
 weight: 1
-aliases: ["/ko/docs/charts_tips_and_tricks/"]
 ---
 
 This guide covers some of the tips and tricks Helm chart developers have learned
