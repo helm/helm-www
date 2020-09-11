@@ -45,9 +45,9 @@ GitHub 작성자가 플러그인 저장소에
   헬름 차트를 생성
 - [VIM-Kubernetes](https://github.com/andrewstuart/vim-kubernetes) - 쿠버네티스 및 헬름용(用)
   VIM 플러그인
-- [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper 는 값(원하는 상태)이 있는 
-  헬름 차트 참조 세트를 가져와서 쿠버네티스 
-  클러스터에서 이를 구현"
+- [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper 는 값(원하는 상태)을 가진 
+  헬름 차트 참조 집합을 가져와서
+  쿠버네티스 클러스터에서 실현한다."
 - [Helmfile](https://github.com/roboll/helmfile) - 헬름파일은 헬름 차트 배포를 
   위한 선언적 사양
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman은 버전 제어가 필요한 
