@@ -10,7 +10,7 @@ aliases: ["/docs/related/"]
 
 이 목록에 추가하고 싶은 것이 있으면 
 [이슈](https://github.com/helm/helm-www/issues)나 [풀 
-리퀘스트](https://github.com/helm/helm-www/pulls) 할 수 있습니다.
+리퀘스트(PR)](https://github.com/helm/helm-www/pulls) 할 수 있습니다.
 
 ## 헬름 플러그인
 
