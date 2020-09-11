@@ -39,7 +39,7 @@ GitHub 작성자가 플러그인 저장소에
 
 ## 추가적인 도구들
 
-헬름 위에서 계층화된 도구들.
+헬름의 상위 계층 도구들.
 
 - [Chartify](https://github.com/appscode/chartify) - 기존 쿠버네티스 리소스에서 
   헬름 차트를 생성
