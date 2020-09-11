@@ -54,12 +54,11 @@ GitHub 작성자가 플러그인 저장소에
   버전 관리되는 원하는 상태 파일들(간단한 TOML 형식으로 기술됨)로부터
   릴리스를 설치/업그레이드/보호/이동/삭제할 수 있는 
   코드로서의-헬름-차트(helm-charts-as-code) 도구이다
-- [테라폼 헬름 
-  공급자](https://github.com/hashicorp/terraform-provider-helm) - HashiCorp 
-  테라폼 용 헬름 공급자를 사용하면, 선언적 코드형 인프라 구문을 사용하여 
-  헬름 차트의 수명 주기를 관리 가능. 헬름 공급자는 모든 인프라 서비스에서 
-  공통의 워크플로를 만들기 위해 쿠버네티스 공급자처럼, 다른 테라폼 공급자와 
-  쌍을 이루는 경우가 많음.
+- [Terraform Helm Provider](https://github.com/hashicorp/terraform-provider-helm) - HashiCorp 
+  Terraform용 헬름 공급자(provider)는 선언적 코드형 인프라(infrastructure-as-code) 구문으로
+  헬름 차트의 수명주기를 관리할 수 있게 해준다. 헬름 공급자는 쿠버네티스 공급자처럼,
+  모든 인프라 서비스에서 통용되는 워크플로를 만들기 위해, 다른 테라폼 공급자와 
+  쌍을 이루는 경우가 많다.
 - [Monocular](https://github.com/helm/monocular) - 헬름 차트 저장소를 
   위한 웹 UI
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - 다양한 
