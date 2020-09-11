@@ -1,7 +1,6 @@
 ---
 title: "라이브러리 차트"
 description: "Explains library charts and examples of usage"
-aliases: ["docs/library_charts/"]
 weight: 4
 ---
 
