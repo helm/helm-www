@@ -81,10 +81,9 @@ aliases: ["/docs/related/"]
 헬름 지원을 포함하는 플랫폼, 배포판 및 서비스.
 
 - [Kubernetic](https://kubernetic.com/) - 쿠버네티스 데스크탑 클라이언트
-- [Jenkins X](https://jenkins-x.io/) - GitOps 를 경유하는 환경을 
-  통해 어플리케이션을 
-  [구동](https://jenkins-x.io/docs/getting-started/promotion/) 하기 위해, 
-  헬름을 사용하는 쿠버네티스용 오픈소스로 자동화 된 CI/CD 
+- [Jenkins X](https://jenkins-x.io/) - GitOps 환경을 통해 애플리케이션을 
+  [프로모션(promotion)](https://jenkins-x.io/docs/getting-started/promotion/)하기 위해
+  헬름을 사용하는 쿠버네티스용 오픈소스 자동화 CI/CD
 
 ## 기타
 
