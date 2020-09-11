@@ -87,7 +87,7 @@ aliases: ["/docs/related/"]
 
 ## 기타
 
-차트 작성자와 헬름 사용자를 위한 유용한 정보는 다음과 같다.
+차트 작성자와 헬름 사용자에게 유용한 것 모음.
 
 - [Await](https://github.com/saltside/await) - 다른 조건들에 대해 "대기(await)"하는 
   도커 이미지--특히 초기화 컨테이너에 유용하다. [더 
