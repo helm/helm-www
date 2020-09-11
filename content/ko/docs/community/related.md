@@ -22,8 +22,8 @@ aliases: ["/docs/related/"]
   릴리즈 및 롤백을 모니터링하는 플러그인
 - [helm-k8comp](https://github.com/cststack/k8comp) - k8comp 를 사용하여 hiera 에서 
   헬름 차트를 생성하는 플러그인
-- [helm-unittest](https://github.com/lrills/helm-unittest) - YAML 을 사용한, 로컬 단위 테스트 
-  차트를 위한 플러그인
+- [helm-unittest](https://github.com/lrills/helm-unittest) - YAML로 
+  로컬에서 차트를 단위 테스트하기 위한 플러그인
 - [hc-unit](https://github.com/xchapter7x/hcunit) - OPA(Open Policy Agent) 및 Rego 를 
   사용한, 로컬 단위 테스트 차트를 위한 플러그인
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - [비공개] 차트 레포지토리로 AWS S3를 
