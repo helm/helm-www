@@ -26,8 +26,8 @@ aliases: ["/docs/related/"]
   로컬에서 차트를 단위 테스트하기 위한 플러그인
 - [hc-unit](https://github.com/xchapter7x/hcunit) - OPA (Open Policy Agent) 및 Rego로
   로컬에서 차트를 단위 테스트하기 위한 플러그인
-- [helm-s3](https://github.com/hypnoglow/helm-s3) - [비공개] 차트 레포지토리로 AWS S3를 
-  사용할수 있도록 해주는 헬름 플러그인
+- [helm-s3](https://github.com/hypnoglow/helm-s3) - [프라이빗] 차트 저장소로 AWS S3를 
+  사용할 수 있게 해주는 헬름 플러그인
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - 헬름 
   3 차트에 대한 값 yaml 스키마를 생성하는 헬름 플러그인
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - 중요 정보를 안전하게 관리하고
