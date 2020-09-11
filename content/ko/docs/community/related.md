@@ -64,8 +64,8 @@ GitHub 작성자가 플러그인 저장소에
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - 여러 
   쿠버네티스 네임스페이스에 걸쳐 접두어가 붙은 릴리스들을 관리하며,
   복잡한 배포에서의 완료된 작업들을 제거한다
-- [ChartMuseum](https://github.com/helm/chartmuseum) - Amazon S3 및 
-  구글 클라우드 스토리지를 지원하는 헬름 차트 저장소
+- [ChartMuseum](https://github.com/helm/chartmuseum) - Amazon S3와
+  Google Cloud Storage를 지원하는 헬름 차트 저장소
 - [Codefresh](https://codefresh.io) - 헬름 차트 및 릴리즈를 관리하기 위한 
   UI 대쉬보드가 있는 쿠버네티스 기본 CI/CD 와 관리 플랫폼 
 - [Captain](https://github.com/alauda/captain) - HelmRequest 및 
