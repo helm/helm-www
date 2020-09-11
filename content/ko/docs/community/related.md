@@ -14,7 +14,7 @@ aliases: ["/docs/related/"]
 
 ## 헬름 플러그인
 
-- [Helm Diff](https://github.com/databus23/helm-diff) - 색의 변화로 `helm upgrade` 
+- [Helm Diff](https://github.com/databus23/helm-diff) - 컬러 diff로 `helm upgrade` 
   미리보기
 - [helm-gcs](https://github.com/nouney/helm-gcs) - 구글 클라우트 스토리지에서 
   저장소를 관리하는 플러그인
