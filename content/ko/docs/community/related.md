@@ -73,8 +73,8 @@ aliases: ["/docs/related/"]
   릴리즈 CRD를 사용하는 Helm3 컨트롤러
 - [chart-registry](https://github.com/hangyan/chart-registry) - OCI 저장소의 
   헬름 차트 호스트
-- [avionix](https://github.com/zbrookle/avionix) - 헬름 차트 및 쿠버네티스 yaml 을 
-  생성하기 위해 상속 및 코드 중복의 감소를 허용하는 파이썬 인터페이스.
+- [avionix](https://github.com/zbrookle/avionix) - 상속과 코드중복 저감을 할 수 있는
+  헬름 차트와 쿠버네티스 yaml 을 생성하는 파이썬 인터페이스. 
 
 ## 헬름 포함 요소
 
