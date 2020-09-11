@@ -50,10 +50,10 @@ GitHub 작성자가 플러그인 저장소에
   쿠버네티스 클러스터에서 실현한다."
 - [Helmfile](https://github.com/roboll/helmfile) - Helmfile은 헬름 차트 배포를 
   위한 선언적 사양이다
-- [Helmsman](https://github.com/Praqma/helmsman) - Helmsman은 버전 제어가 필요한 
-  (단순 TOML 형식으로 설명된)상태파일로부터 
-  릴리즈를 설치/업그레이드/보호/이동/삭제 할수 있는 
-  코드로써의-헬름-차트 도구
+- [Helmsman](https://github.com/Praqma/helmsman) - Helmsman은
+  버전 관리되는 원하는 상태 파일들(간단한 TOML 형식으로 기술됨)로부터
+  릴리스를 설치/업그레이드/보호/이동/삭제할 수 있는 
+  코드로서의-헬름-차트(helm-charts-as-code) 도구이다
 - [테라폼 헬름 
   공급자](https://github.com/hashicorp/terraform-provider-helm) - HashiCorp 
   테라폼 용 헬름 공급자를 사용하면, 선언적 코드형 인프라 구문을 사용하여 
