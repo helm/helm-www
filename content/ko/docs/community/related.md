@@ -43,7 +43,7 @@ GitHub 작성자가 플러그인 저장소에
 
 - [Chartify](https://github.com/appscode/chartify) - 기존 쿠버네티스 리소스에서 
   헬름 차트를 생성
-- [VIM-Kubernetes](https://github.com/andrewstuart/vim-kubernetes) - 쿠버네티스 및 헬름 용 
+- [VIM-Kubernetes](https://github.com/andrewstuart/vim-kubernetes) - 쿠버네티스 및 헬름용(用)
   VIM 플러그인
 - [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper 는 값(원하는 상태)이 있는 
   헬름 차트 참조 세트를 가져와서 쿠버네티스 
