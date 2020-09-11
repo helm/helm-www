@@ -61,9 +61,9 @@ GitHub 작성자가 플러그인 저장소에
   쌍을 이루는 경우가 많다.
 - [Monocular](https://github.com/helm/monocular) - 헬름 차트 저장소를 
   위한 웹 UI
-- [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - 다양한 
-  쿠버네티스 네임스페이스에서 접두사가 붙은 릴리즈를 관리하고 
-  복잡한 배포를 위해 완료된 작업을 제거
+- [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - 여러 
+  쿠버네티스 네임스페이스에 걸쳐 접두어가 붙은 릴리스들을 관리하며,
+  복잡한 배포에서의 완료된 작업들을 제거한다
 - [ChartMuseum](https://github.com/helm/chartmuseum) - Amazon S3 및 
   구글 클라우드 스토리지를 지원하는 헬름 차트 저장소
 - [Codefresh](https://codefresh.io) - 헬름 차트 및 릴리즈를 관리하기 위한 
