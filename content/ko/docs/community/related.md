@@ -1,6 +1,6 @@
 ---
-title: "연관된 프로젝트와 문서"
-description: "커뮤니티에서 제공하는 타사 도구, 플러그인 및 문서!"
+title: "관련 프로젝트와 문서"
+description: "커뮤니티에서 제공하는 서드파티 도구, 플러그인 및 문서"
 weight: 3
 aliases: ["/docs/related/"]
 ---
