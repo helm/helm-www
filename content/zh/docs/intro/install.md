@@ -1,5 +1,5 @@
 ---
-title: "Installing Helm"
-description: "Learn how to install and get running with Helm."
+title: "安装 Helm"
+description: "学习如何安装和运行 helm 。"
 weight: 2
 ---

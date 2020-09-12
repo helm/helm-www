@@ -61,7 +61,7 @@ Released smiling-penguin
 
 在上面的例子中，`stable/mysql`这个chart被release，名字是 `smiling-penguin`
 
-您可以通过执行 `helm show  chart stable/mysql` 命令简单的了解到这个chart的基本信息。
+您可以通过执行 `helm show chart stable/mysql` 命令简单的了解到这个chart的基本信息。
 或者您可以执行 `helm show all stable/mysql` 获取关于该chart的所有信息。
 
 每当您执行 `helm install` 的时候，都会创建一个新的release。 
@@ -110,4 +110,3 @@ Status: UNINSTALLED
 ```console
 $ helm get -h
 ```
-
