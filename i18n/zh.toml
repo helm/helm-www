@@ -53,8 +53,8 @@ Helm 是一个 [云原生计算基金会（CNCF）](https://cncf.io) 毕业项�
 
 ### 了解更多:
 
-* [Helm 架构](./docs/topics/architecture/)
-* [快速开始](./docs/intro/quickstart/)
+* [Helm 架构](https://helm.sh/docs/topics/architecture/)
+* [快速开始](https://helm.sh/docs/intro/quickstart/)
 * [视频: Helm 介绍](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "获取 Helm！"
 other = "使用包管理器安装 Helm，或者 [下载二进制文件](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "安装完成后，解压 helm 二进制文件并将它添加到您的 PATH 目录就可以轻松开始！查看 [文档](./docs/intro/install/) 以了解更多 [安装](./docs/intro/install/) 和 [使用指引](./docs/intro/using_helm/)。"
+other = "安装完成后，解压 helm 二进制文件并将它添加到您的 PATH 目录就可以轻松开始！查看 [文档](./docs/intro/install/) 以了解更多 [安装步骤](https://helm.sh/docs/intro/install/) 和 [使用说明](https://helm.sh/docs/intro/using_helm/)。"
 
 [get_charts_title]
 other = "获取 Charts"
