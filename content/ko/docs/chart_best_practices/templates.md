@@ -180,7 +180,7 @@ mychart.shortname 은 릴리스 이름에서 6자만 자른 것을 제공한다.
 memory: {{ .Values.maxMem | quote }}
 ```
 
-위의 주석은 사용자가 `helm install --debug`를 실행할 때 표시되는데,
+위의 주석은 사용자가 `helm install --debug` 를 실행할 때 표시되는데,
 `{{-/ * * /-}}` 섹션에 지정된 주석은 표시되지 않는다.
 
 ## 템플릿과 템플릿 출력에서 JSON 사용하기
