@@ -35,7 +35,7 @@ weight: 3
 {{ end -}}
 ```
 
-틀림:
+잘못된 경:
 
 ```yaml
 {{- define "fullname" -}}
