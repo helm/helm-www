@@ -32,7 +32,7 @@ title: "Helm Get"
       --debug                            장황한(verbose) 출력 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
       --kube-context string              사용할 kubeconfig 컨텍스트 이름
-      --kube-token string                인증에 사용될 베어러(bearer) 토큰
+      --kube-token string                인증에 사용할 베어러(bearer) 토큰
       --kubeconfig string                kubeconfig 파일 경로
       --log-backtrace-at traceLocation   로깅 시 N 행에 걸친 스택 추적 내용을 표시 (기본값 :0)
       --log-dir string                   값을 지정하면, 지정한 디렉토리에 로그 파일 기록
