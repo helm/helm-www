@@ -20,7 +20,7 @@ helm get notes RELEASE_NAME [flags]
 
 ```
   -h, --help           helm get notes 에 대한 도움말
-      --revision int   개정판으로 명명된 릴리스 가져오기
+      --revision int   리비전으로 명명된 릴리스 가져오기
 ```
 
 ### 부모 명령어에서 상속된 옵션들
