@@ -59,7 +59,7 @@ weight: 3
 {{- print "bar" -}}
 ```
 
-틀림:
+잘못된 경우:
 ```
 {{.foo}}
 {{print "foo"}}
