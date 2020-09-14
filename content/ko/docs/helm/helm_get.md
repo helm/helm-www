@@ -21,7 +21,7 @@ title: "Helm Get"
 ### 옵션
 
 ```
-  -h, --help   helm get 에 대한 도움말
+  -h, --help   get 에 대한 도움말
 ```
 
 ### 부모 명령어에서 상속된 옵션들
