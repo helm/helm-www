@@ -21,7 +21,7 @@ helm get hooks RELEASE_NAME [flags]
 ### 옵션
 
 ```
-  -h, --help           helm get hooks 에 대한 도움말
+  -h, --help           hooks 에 대한 도움말
       --revision int   리비전으로 명명된 릴리스 가져오기
 ```
 
