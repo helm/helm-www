@@ -47,7 +47,7 @@ helm get all RELEASE_NAME [flags]
       --skip-headers                     이 값이 true이면, 로그파일에서 헤더 접두어를 미사용
       --skip-log-headers                 이 값이 true이면, 로그파일을 열 때 헤더 제외
       --stderrthreshold severity         이 기준점 이상일 때 표준오류(stderr)로 로그가 출력된다 (기본값 2)
-  -v, --v Level                          로그 수준 상세표시 레벨
+  -v, --v Level                          로그 상세표시 레벨
       --vmodule moduleSpec               파일로 필터링된 로깅을 위한 패턴=N 설정의 쉼표로 구분된 리스트
 ```
 
