@@ -106,7 +106,7 @@ metadata:
     second: second
 ```
 
-괜찮은 것:
+괜찮은 경우:
 
 ```yaml
 apiVersion: batch/v1
