@@ -1,7 +1,6 @@
 ---
 title: "쿠버네티스 배포판 가이드"
 description: "특정 쿠버네티스 환경에서 헬름 사용에 대한 정보 정리."
-aliases: ["/docs/kubernetes_distros/"]
 weight: 10
 ---
 
