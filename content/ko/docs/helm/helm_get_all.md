@@ -28,7 +28,7 @@ helm get all RELEASE_NAME [flags]
 ### 부모 명령어에서 상속된 옵션들
 
 ```
-      --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
+      --add-dir-header                   이 값이 true이면, 헤더에 파일 디렉토리를 추가한다
       --alsologtostderr                  표준 오류를 로그 및 파일로 표시
       --debug                            장황한(verbose) 출력 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
