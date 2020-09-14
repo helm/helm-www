@@ -21,7 +21,7 @@ helm get values RELEASE_NAME [flags]
 ```
   -a, --all             모든 (계산 된) 값 덤프
   -h, --help            helm get values 에 대한 도움말
-  -o, --output format   지정된 형식으로 출력을 표시. 허용되는 값: table, json, yaml (기본값 table)
+  -o, --output format   지정한 형식으로 출력을 표시. 허용되는 값: table, json, yaml (기본값 table)
       --revision int    개정판으로 명명된 릴리스 가져오기
 ```
 
