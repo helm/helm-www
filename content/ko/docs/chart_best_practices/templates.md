@@ -121,7 +121,7 @@ metadata:
 
 ```
 
-피해야 할 것:
+지양해야 할 경우:
 
 ```yaml
 apiVersion: batch/v1
