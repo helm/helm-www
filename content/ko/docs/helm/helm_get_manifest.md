@@ -23,7 +23,7 @@ helm get manifest RELEASE_NAME [flags]
 ### 옵션
 
 ```
-  -h, --help           helm get manifest 에 대한 도움말
+  -h, --help           manifest 에 대한 도움말
       --revision int   리비전으로 명명된 릴리스 가져오기
 ```
 
