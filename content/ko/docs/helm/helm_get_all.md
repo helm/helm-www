@@ -20,7 +20,7 @@ helm get all RELEASE_NAME [flags]
 ### 옵션
 
 ```
-  -h, --help              helm get all 에 대한 도움말
+  -h, --help              all 에 대한 도움말
       --revision int      개정판으로 명명된 릴리스 가져오기
       --template string   출력 형식 지정을 위한 go 템플릿. 예: {{.Release.Name}}
 ```
