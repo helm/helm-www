@@ -1,10 +1,6 @@
 ---
 title: "차트"
 description: "차트 형식을 설명하고, 헬름으로 차트를 빌드하기 위한 기본지침을 제공한다."
-aliases: [
-  "docs/developing_charts/",
-  "developing_charts"
-]
 weight: 1
 ---
 
