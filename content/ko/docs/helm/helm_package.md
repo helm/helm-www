@@ -33,7 +33,7 @@ helm package [CHART_PATH] [...] [flags]
 ```
       --app-version string   차트의 appVersion 을 이 버전으로 설정
   -u, --dependency-update    패키징 전에 "Chart.yaml" 에서 "charts/" 디렉토리로 의존성 업데이트
-  -d, --destination string   차트를 작성할 위치 지정 (기본값 ".")
+  -d, --destination string   차트를 기록할 위치 지정 (기본값 ".")
   -h, --help                 helm package 에 대한 도움말
       --key string           서명할 때 사용하는 키의 이름. --sign이 참일 경우 사용
       --keyring string       공개 키링의 위치 (기본값 "~/.gnupg/pubring.gpg")
