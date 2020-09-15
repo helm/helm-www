@@ -101,8 +101,8 @@ nginx-1.2.3.tgz
 `v1` 到 `v2`的改变：
 
 - `dependencies`字段定义了chart的依赖，针对于`v1` 版本的chart被放置在分隔开的`requirements.yaml` 文件中
-（查看 [Chart 依赖](#Chart-dependency)).
-- `type`字段, 用于识别应用和库类型的chart（查看 [Chart 类型](#chart-Types)).
+（查看 [Chart 依赖](#chart-dependency)).
+- `type`字段, 用于识别应用和库类型的chart（查看 [Chart 类型](#chart-types)).
 
 ### `appVersion` 字段
 
@@ -168,7 +168,7 @@ chart的自述文件README文件应该使用Markdown格式(README.md)，一般�
 
 `README.md` 文件会包含hub和用户接口显示的chart的详细信息。
 
-chart也会包含一个简短的纯文本 `templates/NOTES.txt` 文件，这会在安装后及查看版本状态时打印出来。 这个文件会作为一个 [模板](#Templates-and-Values)来评估，并用来显示使用说明，后续步骤，或者其他chart版本的相关信息。 比如，可以提供连接数据库的说明，web UI的访问。由于此文件是在运行`helm install`或`helm status`时打印到STDOUT的，因此建议保持内容简短，并指向自述文件以获取更多详细信息。 
+chart也会包含一个简短的纯文本 `templates/NOTES.txt` 文件，这会在安装后及查看版本状态时打印出来。 这个文件会作为一个 [模板](#templates-and-values)来评估，并用来显示使用说明，后续步骤，或者其他chart版本的相关信息。 比如，可以提供连接数据库的说明，web UI的访问。由于此文件是在运行`helm install`或`helm status`时打印到STDOUT的，因此建议保持内容简短，并指向自述文件以获取更多详细信息。 
 
 ## Chart dependency
 
