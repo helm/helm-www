@@ -35,7 +35,7 @@ helm package [CHART_PATH] [...] [flags]
   -u, --dependency-update    패키징 전에 "Chart.yaml" 에서 "charts/" 디렉토리로 의존성 업데이트
   -d, --destination string   차트를 기록할 위치 지정 (기본값 ".")
   -h, --help                 package 에 대한 도움말
-      --key string           서명할 때 사용하는 키의 이름. --sign이 참일 경우 사용
+      --key string           서명할 때 사용하는 키의 이름. --sign이 true일 경우 사용
       --keyring string       공개 키링의 위치 (기본값 "~/.gnupg/pubring.gpg")
       --sign                 PGP 개인 키를 사용하여 패키지에 서명
       --version string       차트의 버전을 이 유의적(semver) 버전으로 설정
