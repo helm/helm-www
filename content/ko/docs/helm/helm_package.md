@@ -20,8 +20,8 @@ title: "Helm Package"
 
   $ helm package --sign ./mychart --key mykey --keyring ~/.gnupg/secring.gpg
 
-만약 '--keyring' 이 지정되지 않은 경우, 환경이 별도로 구성되지 않는 한 헬름은 일반적으로
-공개 키링을 기본값으로 사용한다.
+'--keyring' 을 지정하지 않았고 별다른 설정을 하지 않은 환경이라면
+헬름은 보통 공개 키링을 기본값으로 사용한다.
 
 
 ```
