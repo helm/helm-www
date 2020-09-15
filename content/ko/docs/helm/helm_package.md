@@ -15,7 +15,8 @@ title: "Helm Package"
 
 버전이 지정된 차트 아카이브는 헬름 패키지 저장소에서 사용된다.
 
-차트에 서명하기 위해, `--sign` 플래그를 사용하라. 대부분의 경우 '--keyring path/to/secret/keys' 와 '--key keyname' 도 제공되야한다.
+차트에 서명하려면 `--sign` 플래그를 사용하자. 대부분의 경우, 
+'--keyring path/to/secret/keys' 와 '--key keyname' 도 지정해야 할 것이다.
 
   $ helm package --sign ./mychart --key mykey --keyring ~/.gnupg/secring.gpg
 
