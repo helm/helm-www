@@ -1,20 +1,19 @@
 ---
 title: "시작하기"
 weight: 2
-description: "차트 템플릿에 관한 퀵가이드"
+description: "차트 템플릿에 관한 빠른 가이드"
 
 ---
 
-In this section of the guide, we'll create a chart and then add a first
-template. The chart we created here will be used throughout the rest of the
-guide.
+이 가이드 섹션에서는 차트를 만든 다음 첫 번째 템플릿을 추가할 것이다.
+우리가 여기서 만든 차트는 가이드의 나머지 부분에서 쭉 사용될 것이다.
 
-To get going, let's take a brief look at a Helm chart.
+시작하기 위해 헬름 차트를 간단히 살펴보자.
 
 ## 차트
 
-As described in the [Charts Guide]({{< ref path="../topics/charts" lang="en" >}}), Helm charts are
-structured like this:
+[차트 가이드]({{< ref path="../topics/charts" lang="en" >}})에 설명된 대로
+헬름 차트는 다음과 같이 구성된다:
 
 ```
 mychart/
@@ -25,65 +24,63 @@ mychart/
   ...
 ```
 
-The `templates/` directory is for template files. When Helm evaluates a chart,
-it will send all of the files in the `templates/` directory through the template
-rendering engine. It then collects the results of those templates and sends them
-on to Kubernetes.
+`templates/` 디렉토리는 템플릿 파일을 위한 것이다.
+헬름이 차트를 평가할 때,
+`templates/` 디렉토리의 모든 파일을 템플릿 렌더링 엔진으로 전달한다.
+그리고 나서 처리 결과를 모아 쿠버네티스로 보낸다.
 
-The `values.yaml` file is also important to templates. This file contains the
-_default values_ for a chart. These values may be overridden by users during
-`helm install` or `helm upgrade`.
+`values.yaml` 파일도 템플릿에 중요하다.
+이 파일은 차트의 _기본값_ 을 포함한다.
+이 값들은 `helm install` 또는 `helm upgrade` 하는 중에 사용자가 재정의할 수 있다.
 
-The `Chart.yaml` file contains a description of the chart. You can access it
-from within a template. The `charts/` directory _may_ contain other charts
-(which we call _subcharts_). Later in this guide we will see how those work when
-it comes to template rendering.
+`Chart.yaml` 파일은 차트에 대한 설명을 포함한다.
+템플릿 안에서 접근할 수 있다.
+`charts/` 디렉토리는 다른 차트(_하위차트_ 라고 함)를 포함 _할 수도_ 있다.
+본 가이드의 뒷부분에서 템플릿 렌더링과 관련하여 이러한 기능이 어떻게 작동하는지 알아볼 것이다.
 
 ## 스타터 차트
 
-For this guide, we'll create a simple chart called `mychart`, and then we'll
-create some templates inside of the chart.
+본 가이드를 위해 `mychart`라는 간단한 차트를 만든 다음,
+차트 안에 템플릿을 만들 것이다.
 
 ```console
 $ helm create mychart
-Creating mychart
+mychart 생성
 ```
 
 ### `mychart/templates/` 훑어보기
 
-If you take a look at the `mychart/templates/` directory, you'll notice a few
-files already there.
+`mychart/templates/`를 보면 이미 몇 개의 파일이 있는 것을 알 수 있다.
 
-- `NOTES.txt`: The "help text" for your chart. This will be displayed to your
-  users when they run `helm install`.
-- `deployment.yaml`: A basic manifest for creating a Kubernetes
-  [deployment](https://kubernetes.io/docs/user-guide/deployments/)
-- `service.yaml`: A basic manifest for creating a [service
-  endpoint](https://kubernetes.io/docs/user-guide/services/) for your deployment
-- `_helpers.tpl`: A place to put template helpers that you can re-use throughout
-  the chart
+- `NOTES.txt`: 차트의 "도움말". 이것은 `helm install`을 실행할 때 사용자에게 표시될 것이다.
+- `deployment.yaml`: 쿠버네티스
+  [디플로이먼트](https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/)를
+  생성하기 위한 기본 매니페스트
+- `service.yaml`: 디플로이먼트의 [서비스
+  엔드포인트](https://kubernetes.io/ko/docs/concepts/services-networking/service/)를
+  생성하기 위한 기본 매니페스트
+- `_helpers.tpl`: 차트 전체에서 다시 사용할 수 있는 템플릿 헬퍼를 지정하는 공간
 
-And what we're going to do is... _remove them all!_ That way we can work through
-our tutorial from scratch. We'll actually create our own `NOTES.txt` and
-`_helpers.tpl` as we go.
+그리고 우리가 할 일은... _전부 제거하자!_
+그렇게 하면 우리는 튜토리얼의 맨 처음부터 끝까지 실행할 수 있다.
+실제로 우리만의 `NOTES.txt`와 `_helpers.tpl`을 만들 것이다.
 
 ```console
 $ rm -rf mychart/templates/*
 ```
 
-When you're writing production grade charts, having basic versions of these
-charts can be really useful. So in your day-to-day chart authoring, you probably
-won't want to remove them.
+프로덕션용 차트를 작성할 때는 차트의 기본 버전을 사용하는 것이 매우 유용할 수 있다.
+따라서 매일 차트를 작성할 때는 차트를 삭제하는 것을 원하지 않을 수도 있다.
 
-## 첫번째 템플릿
+## 첫 번째 템플릿
 
-The first template we are going to create will be a `ConfigMap`. In Kubernetes,
-a ConfigMap is simply a container for storing configuration data. Other things,
-like pods, can access the data in a ConfigMap.
+우리가 만들 첫 번째 템플릿은 `ConfigMap`이 될 것이다.
+쿠버네티스에서 ConfigMap은 단순히 환경 설정 데이터를 저장하는 컨테이너일 뿐이다.
+파드 같은 다른 것들은 ConfigMap의 데이터에 접근할 수 있다.
 
-Because ConfigMaps are basic resources, they make a great starting point for us.
+ConfigMap은 기본 리소스이기 때문에 우리에게 좋은 출발점이 된다.
 
-Let's begin by creating a file called `mychart/templates/configmap.yaml`:
+먼저 `mychart/templates/configmap.yaml`이라는 파일을 만들어 보자.
 
 ```yaml
 apiVersion: v1
@@ -94,19 +91,17 @@ data:
   myvalue: "Hello World"
 ```
 
-**TIP:** Template names do not follow a rigid naming pattern. However, we
-recommend using the suffix `.yaml` for YAML files and `.tpl` for helpers.
+템플릿 이름은 엄격한 명명 패턴을 따르지 않는다.
+단, YAML 파일에는 접미사 `.yaml`을, 헬퍼에는 `.tpl`을 사용하는 것이 좋다.
 
-The YAML file above is a bare-bones ConfigMap, having the minimal necessary
-fields. In virtue of the fact that this file is in the `mychart/templates/` directory,
-it will be sent through the template engine.
+위의 YAML 파일은 최소한의 필수 필드를 가진 가장 기본적인 ConfigMap이다.
+이 파일은 `mychart/template/` 디렉토리에 있기 때문에 템플릿 엔진으로 전달된다.
 
-It is just fine to put a plain YAML file like this in the `mychart/templates/`
-directory. When Helm reads this template, it will simply send it to Kubernetes
-as-is.
+`mychart/template/` 디렉토리에 이와 같이 평범한 YAML 파일을 넣는 것은 괜찮다.
+헬름이 이 템플릿을 읽으면 쿠버네티스에게 그대로 보낼 뿐이다.
 
-With this simple template, we now have an installable chart. And we can install
-it like this:
+이 간단한 템플릿으로 우리는 이제 설치 가능한 차트를 가지고 있다.
+이렇게 설치하면 된다:
 
 ```console
 $ helm install full-coral ./mychart
@@ -118,7 +113,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Using Helm, we can retrieve the release and see the actual template that was loaded.
+헬름을 사용하면 릴리즈를 검색해 실제 전송된 템플릿을 볼 수 있다.
 
 ```console
 $ helm get manifest full-coral
@@ -133,29 +128,26 @@ data:
   myvalue: "Hello World"
 ```
 
-The `helm get manifest` command takes a release name (`full-coral`) and prints
-out all of the Kubernetes resources that were uploaded to the server. Each file
-begins with `---` to indicate the start of a YAML document, and then is followed
-by an automatically generated comment line that tells us what template file
-generated this YAML document.
+`helt get manifest` 명령은 릴리즈 이름(`full-coral`)을 가지고
+서버에 업로드된 쿠버네티스 리소스를 모두 출력한다.
+각 파일은 `---`로 시작하여 YAML 문서의 시작을 표시한 다음
+자동으로 생성된 주석이 나타나 이 YAML 문서를 생성한 템플릿 파일을 알려준다.
 
-From there on, we can see that the YAML data is exactly what we put in our
-`configmap.yaml` file.
+여기서 이 YAML 데이터가 정확히 `configmap.yaml` 파일에 입력한 것임을 알 수 있다.
 
-Now we can uninstall our release: `helm uninstall full-coral`.
+이제 릴리즈를 제거해도 된다: `helm uninstall full-coral`.
 
 ### 단순한 템플릿 호출 추가하기
 
-Hard-coding the `name:` into a resource is usually considered to be bad
-practice. Names should be unique to a release. So we might want to generate a
-name field by inserting the release name.
+`name:`을 리소스 안에 하드 코딩하는 것은 보통 나쁜 관행으로 간주된다.
+이름은 릴리즈에 고유해야 한다.
+그래서 릴리즈 이름을 삽입하여 이름 필드를 생성하기를 원할 수 있다.
 
-**TIP:** The `name:` field is limited to 63 characters because of limitations to
-the DNS system. For that reason, release names are limited to 53 characters.
-Kubernetes 1.3 and earlier limited to only 24 characters (thus 14 character
-names).
+**TIP:** DNS 시스템에 대한 제한 때문에 `name:` 필드가 63자로 제한된다.
+이 때문에 릴리즈 이름은 53자로 제한한다.
+쿠버네티스 1.3 이하에서는 단 24자(즉, 14자 이름)로 제한하였다.
 
-Let's alter `configmap.yaml` accordingly.
+이에 따라 `configmap.yaml`을 바꾸자.
 
 ```yaml
 apiVersion: v1
@@ -166,26 +158,25 @@ data:
   myvalue: "Hello World"
 ```
 
-The big change comes in the value of the `name:` field, which is now `{{
-.Release.Name }}-configmap`.
+`name:` 필드의 값에서 `{{ .Release.Name }}-configmap`이라고 큰 변화가 일어났다.
 
-> A template directive is enclosed in `{{` and `}}` blocks.
+> 템플릿 지시문은 `{{` 와 `}}`으로 감싼다.
 
-The template directive `{{ .Release.Name }}` injects the release name into the
-template. The values that are passed into a template can be thought of as
-_namespaced objects_, where a dot (`.`) separates each namespaced element.
+템플릿 지시문 `{{ .Release.Name }}`은 템플릿에 릴리즈 이름을 주입한다.
+템플릿으로 전달되는 값은 _네임스페이스 객체_ 로 생각할 수 있으며,
+여기서 점(`.`)이 각 네임스페이스 요소를 구분한다.
 
-The leading dot before `Release` indicates that we start with the top-most
-namespace for this scope (we'll talk about scope in a bit). So we could read
-`.Release.Name` as "start at the top namespace, find the `Release` object, then
-look inside of it for an object called `Name`".
+`Release` 앞의 점은 해당 스코프(조금 있으면 스코프에 대해 설명하겠다)의
+최상위 네임스페이스부터 시작한다는 것을 나타낸다.
+그래서 우리는 `.Release.Name`을
+"최상위 네임스페이스에서부터 시작하여 `Release` 객체를 찾은 다음
+`Name`이라는 객체를 찾아보라"로 읽을 수 있다.
 
-The `Release` object is one of the built-in objects for Helm, and we'll cover it
-in more depth later. But for now, it is sufficient to say that this will display
-the release name that the library assigns to our release.
+`Release` 객체는 헬름의 내장 객체 중 하나이며, 이후에 좀 더 심층적으로 다룰 것이다.
+현재로서는 도서관이 우리의 출간물(release)에 부여한 출간명(release name)을 나타내는
+것이라고 말해도 충분하다.
 
-Now when we install our resource, we'll immediately see the result of using this
-template directive:
+이제 리소스를 설치할 때 이 템플릿 지시어를 사용한 결과를 바로 볼 수 있다.
 
 ```console
 $ helm install clunky-serval ./mychart
@@ -197,19 +188,18 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Note that the config map inside kubernetes name is
-`clunky-serval-configmap` instead of `mychart-configmap` previously.
+쿠버네티스 안에 ConfigMap은 이전의 `mychart-configmap`이 아닌
+`clunky-serval-configmap`이라는 점에 주목하자.
 
-You can run `helm get manifest clunky-serval` to see the entire generated YAML.
+`helm get manifest clunky-serval`을 실행하여 생성된 전체 YAML을 볼 수 있다.
 
-At this point, we've seen templates at their most basic: YAML files that have
-template directives embedded in `{{` and `}}`. In the next part, we'll take a
-deeper look into templates. But before moving on, there's one quick trick that
-can make building templates faster: When you want to test the template
-rendering, but not actually install anything, you can use `helm install --debug
---dry-run goodly-guppy ./mychart`. This will render the templates. But instead of installing
-the chart, it will return the rendered template to you so you can see the
-output:
+이때 템플릿은 가장 기본적인 것으로, `{{` 와 `}}`에 내장된 템플릿 지시문을 가진 YAML 파일이다.
+다음 단계에서는 템플릿에 대해 더 자세히 살펴보도록 하겠다.
+그러나 다음 단계로 넘어가기 전에 템플릿을 더 빨리 만들 수 있는 한 가지 요령을 보자:
+실제로 아무것도 설치하지 않지만 템플릿 렌더링을 테스트하고 싶다면
+`helm install --debug --dry-run goodly-guppy ./mychart`를 사용할 수 있다.
+이렇게 하면 템플릿이 렌더링된다.
+그러나 차트를 설치하는 대신 렌더링된 템플릿을 반환하여 이러한 출력을 볼 수 있다:
 
 ```console
 $ helm install --debug --dry-run goodly-guppy ./mychart
@@ -266,10 +256,9 @@ data:
 
 ```
 
-Using `--dry-run` will make it easier to test your code, but it won't ensure
-that Kubernetes itself will accept the templates you generate. It's best not to
-assume that your chart will install just because `--dry-run` works.
+`--dry-run`을 사용하면 코드를 쉽게 테스트할 수 있지만,
+쿠버네티스가 당신이 만든 템플릿을 받아들일지는 확신할 수 없을 것이다.
+`--dry-run`이 작동됐다는 이유로 차트가 설치될 것이라고 생각하지 않는 것이 가장 좋다.
 
-In the [Chart Template Guide](_index.md), we take the
-basic chart we defined here and explore the Helm template language in detail.
-And we'll get started with built-in objects.
+[차트 템플릿 가이드](_index.md)에서는 여기서 정의한 기본 차트를 가지고 헬름 템플릿 언어를 자세히 살펴본다.
+그럼 내장 객체부터 시작하자.
