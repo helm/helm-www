@@ -37,7 +37,7 @@ helm package [CHART_PATH] [...] [flags]
   -h, --help                 helm package 에 대한 도움말
       --key string           서명할 때 사용하는 키의 이름. --sign이 참일 경우 사용
       --keyring string       공개 키링의 위치 (기본값 "~/.gnupg/pubring.gpg")
-      --sign                 PGP 개인 키를 사용하여 패키지를 서명
+      --sign                 PGP 개인 키를 사용하여 패키지에 서명
       --version string       차트의 버전을 이 서버 버전으로 설정
 ```
 
