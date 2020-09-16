@@ -4,7 +4,7 @@ title: "Helm Show Chart"
 
 ## helm show chart
 
-차트의 정의를 표시
+차트의 정의를 보여준다
 
 ### 개요
 
