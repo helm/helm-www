@@ -42,7 +42,8 @@ GET 요청에 응답할 수 있는 모든 HTTP 서버가 될 수 있기 때문�
 [출처 파일]({{< ref path="provenance.md" lang="en" >}})처럼 동일한 서버에서
 호스팅된다.
 
-예를 들어, 저장소 `https://example.com/charts`의 레이아웃은 다음과 같을 수 있다:
+예를 들어, 저장소 `https://example.com/charts` 의 레이아웃은 
+다음과 같을 수 있다:
 
 ```
 charts/
