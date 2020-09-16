@@ -56,7 +56,8 @@ charts/
 ```
 
 이 경우에는 인덱스 파일에 하나의 차트, 즉 알파인 차트에 대한 정보가 포함되며,
-해당 차트에 대한 다운로드 URL `https://example.com/charts/alpine-0.1.2.tgz`을 제공한다.
+해당 차트에 대한 다운로드 URL 
+`https://example.com/charts/alpine-0.1.2.tgz` 을 제공한다.
 
 차트 패키지가 `index.yaml` 파일과 동일한 서버에 위치할 필요는 없다.
 하지만 그렇게 하는 것이 종종 가장 쉽다.
