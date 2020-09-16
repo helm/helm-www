@@ -27,7 +27,7 @@ helm status RELEASE_NAME [flags]
 
 ```
   -h, --help            helm status 에 대한 도움말
-  -o, --output format   지정된 형식으로 결과를 표시. 허용되는 값: table, json, yaml (default table)
+  -o, --output format   지정된 형식으로 결과를 표시한다. 허용되는 값: table, json, yaml (기본값 table)
       --revision int    지정하면, 해당 리비전의 명명된 릴리스 상태를 표시한다
 ```
 
