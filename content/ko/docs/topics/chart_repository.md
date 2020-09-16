@@ -235,8 +235,9 @@ $ mv alpine-0.1.0.tgz fantastic-charts/
 $ helm repo index fantastic-charts --url https://fantastic-charts.storage.googleapis.com
 ```
 
-마지막 명령은 방금 생성한 로컬 디렉토리의 경로와 원격 차트 저장소의 URL을 사용하여
-지정된 디렉토리 경로 내에 `index.yaml` 파일을 구성한다.
+마지막 명령은 방금 생성한 로컬 디렉토리의 경로와 
+원격 차트 저장소의 URL을 사용하여 지정된 디렉토리 
+경로 내에 `index.yaml` 파일을 구성한다.
 
 
 이제 동기화 도구를 사용하거나 수동으로 차트 저장소에 차트 및 인덱스 파일을 업로드할
