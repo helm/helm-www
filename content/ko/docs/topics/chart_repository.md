@@ -258,8 +258,9 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 차트를 공유할 준비가 되면 다른 사람에게 
 저장소의 URL을 알려주자.
 
-그들은 저장소를 조회하기 위해 사용하고자 하는 이름과 `helm repo add [이름] [URL]`
-명령을 통해 저장소를 헬름 클라이언트에 추가할 것이다.
+그들은 저장소를 조회하기 위해 사용하고자 하는 
+이름과 `helm repo add [이름] [URL]` 명령을 통해 
+저장소를 헬름 클라이언트에 추가할 것이다.
 
 ```console
 $ helm repo add fantastic-charts https://fantastic-charts.storage.googleapis.com
