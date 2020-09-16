@@ -279,7 +279,8 @@ fantastic-charts    https://fantastic-charts.storage.googleapis.com
 **참고:** 저장소에 유효한 `index.yaml`이 포함되어 있지 않으면 저장소가 추가되지 않는다.
 
 **참고:** 헬름 저장소가 자체 서명된 인증서를 사용하는 경우
-CA 검증을 건너뛰기 위해서 `helm repo add --insecure-skip-tls-verify ...`을 사용할
+CA 검증을 건너뛰기 위해서 
+`helm repo add --insecure-skip-tls-verify ...` 을 사용할
 수 있다.
 
 그 후에 사용자들은 당신의 차트를 검색할 수 있을 것이다. 당신이 저장소를 업데이트한
