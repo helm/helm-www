@@ -10,7 +10,7 @@ title: "Helm Show All"
 
 
 이 명령어는 차트(디렉터리, 파일 또는 URL)를 검사하고 모든 내용을 
-표시한다. (values.yaml, Charts.yaml, README)
+보여준다. (values.yaml, Charts.yaml, README)
 
 
 ```
