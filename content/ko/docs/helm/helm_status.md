@@ -4,7 +4,7 @@ title: "Helm Status"
 
 ## helm status
 
-명명된 릴리스의 상태를 표시
+명명된 릴리스의 상태를 표시한다
 
 ### 개요
 
