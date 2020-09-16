@@ -283,8 +283,9 @@ CA 검증을 건너뛰기 위해서
 `helm repo add --insecure-skip-tls-verify ...` 을 사용할
 수 있다.
 
-그 후에 사용자들은 당신의 차트를 검색할 수 있을 것이다. 당신이 저장소를 업데이트한
-후에는 사용자들이 `helm repo update` 명령을 사용하여 최신 차트 정보를 가져올 수 있다.
+그 후에 사용자들은 당신의 차트를 검색할 수 있을 것이다. 
+당신이 저장소를 업데이트한 후에는 사용자들이 `helm repo update` 명령을 
+사용하여 최신 차트 정보를 가져올 수 있다.
 
 *내부에서 `helm repo add` 및 `helm repo update` 명령은 index.yaml 파일을 가져와
 `$XDG_CACHEM/helm/repository/cache/` 디렉토리에 저장하고 있다. 여기는 `helm search`
