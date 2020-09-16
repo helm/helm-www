@@ -443,7 +443,7 @@ In previous versions of Helm, when a release was deleted, a record of its
 deletion would remain. In Helm 3, deletion removes the release record as well.
 If you wish to keep a deletion release record, use `helm uninstall
 --keep-history`. Using `helm list --uninstalled` will only show releases that
-where uninstalled with the `--keep-history` flag.
+were uninstalled with the `--keep-history` flag.
 
 The `helm list --all` flag will show you all release records that Helm has
 retained, including records for failed or deleted items (if `--keep-history` was
