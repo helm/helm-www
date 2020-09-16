@@ -22,7 +22,7 @@ helm show readme [CHART] [flags]
 ```
       --ca-file string     CA 번들을 사용하여 HTTPS 사용 서버의 인증서를 확인
       --cert-file string   SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
-      --devel              개발 버전도 사용. 버전 '>0.0.0-0'에 해당하며 --version 이 설정되면 무시
+      --devel              개발 버전도 사용. 버전 '>0.0.0-0'과 동등하다. --version 이 지정되면, 이것은 무시된다
   -h, --help               readme 에 대한 도움말
       --key-file string    SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
       --keyring string     확인에 사용되는 공개 키의 위치 (기본값 "~/.gnupg/pubring.gpg")
