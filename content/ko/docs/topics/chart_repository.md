@@ -26,7 +26,8 @@ _차트 저장소_ 는 `index.yaml` 파일과 패키지화된 차트를
 차트 저장소에 업로드하는 것이 가장 선호되는 방법이다.
 
 **참고:** Helm 2.0.0의 경우 차트 저장소는 고유한 인증 방법이 없다.
-GitHub에 [이슈 트래킹 프로세스](https://github.com/helm/helm/issues/1038)가 있다.
+GitHub에 [이슈 트래킹 
+프로세스](https://github.com/helm/helm/issues/1038)가 있다.
 
 차트 저장소는 YAML과 tar 파일을 서비스할 수 있고 GET 요청에 응답할 수 있는 모든 HTTP
 서버가 될 수 있기 때문에, 자신만의 차트 저장소를 호스팅하는 것에 관한 한 수많은 옵션이
