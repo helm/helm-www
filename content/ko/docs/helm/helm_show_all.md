@@ -4,7 +4,7 @@ title: "Helm Show All"
 
 ## helm show all
 
-차트의 모든 정보를 표시
+차트의 모든 정보를 표시한다
 
 ### 개요
 
