@@ -13,7 +13,7 @@ title: "Helm Status"
 상태는 다음으로 구성된다:
 - 마지막 배포 시간
 - 릴리스가 있는 k8s 네임스페이스
-- 릴리스 상태(unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade or pending-rollback 의 값이 가능)
+- 릴리스의 상태 (가능한 값: unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade or pending-rollback)
 이 릴리스를 구성하는, 종류(kind)로 정렬된 리소스 목록
 - 해당되는 경우, 마지막 테스트 스위트(test suite) 수행에 관한 세부 정보
 - 차트에서 제공하는 추가적인 참고 사항
