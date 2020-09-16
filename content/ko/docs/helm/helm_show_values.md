@@ -9,7 +9,7 @@ title: "Helm Show Values"
 ### 개요
 
 
-이 명령은 차트(디렉터리, 파일 또는 URL)를 검사하고, values.yaml 파일의 내용을 표시한다.
+이 명령어는 차트(디렉터리, 파일 또는 URL)를 검사하고, values.yaml 파일의 내용을 보여준다.
 
 
 ```
