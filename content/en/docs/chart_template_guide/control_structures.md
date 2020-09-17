@@ -268,9 +268,9 @@ The syntax for `with` is similar to a simple `if` statement:
 ```
 
 Scopes can be changed. `with` can allow you to set the current scope (`.`) to a
-particular object. For example, we've been working with `.Values.favorites`.
+particular object. For example, we've been working with `.Values.favorite`.
 Let's rewrite our ConfigMap to alter the `.` scope to point to
-`.Values.favorites`:
+`.Values.favorite`:
 
 ```yaml
 apiVersion: v1
