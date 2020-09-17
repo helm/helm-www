@@ -221,7 +221,7 @@ Validation occurs when any of the following commands are invoked:
 * `helm template`
 * `helm lint`
 
-See the documentation on [Schema files](/docs/topics/charts#schema-files) for
+See the documentation on [Schema files](/docs/topics/charts#스키마-파일) for
 more information.
 
 ### `requirements.yaml`이 `Chart.yaml` 안으로 통합
