@@ -31,7 +31,7 @@ helm uninstall RELEASE_NAME [...] [flags]
   -h, --help                 uninstall 에 대한 도움말
       --keep-history         모든 관련 리소스를 제거하고 릴리스를 삭제로 표시하지만 릴리스 내역은 유지
       --no-hooks             언인스톨 중 훅(hook) 실행 방지
-      --timeout duration     개별 쿠버네티스 작업(예: 휴크와 같은 작업)을 기다리는 시간 (기본값 5m0s)
+      --timeout duration     개별 쿠버네티스 작업(예: 훅(hook)을 위한 작업)을 기다리는 시간 (기본값 5m0s)
 ```
 
 ### 상위 명령에서 상속된 옵션들
