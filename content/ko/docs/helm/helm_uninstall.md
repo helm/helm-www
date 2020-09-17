@@ -38,7 +38,7 @@ helm uninstall RELEASE_NAME [...] [flags]
 
 ```
       --add-dir-header                   이 값이 true이면, 헤더에 파일 디렉토리를 추가
-      --alsologtostderr                  표준 오류를 로그 및 파일로 표시
+      --alsologtostderr                  파일처럼 표준 오류로도 로그 출력
       --debug                            상세 내용 표시 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
       --kube-context string              사용할 kubeconfig 컨텍스트 이름
