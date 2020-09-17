@@ -432,6 +432,13 @@ namespace.  Helm 3 follows the behavior of other Kubernetes tooling and returns
 an error if the namespace does not exist.  Helm 3 will create the namespace if
 you explicitly specify `--create-namespace` flag.
 
+### What happened to .Chart.ApiVersion?
+
+Helm follows the typical convention for CamelCasing which is to capitalize an
+acronym. We have done this elsewhere in the code, such as with
+`.Capabilities.APIVersions.Has`. In Helm v3, we corrected `.Chart.ApiVersion`
+to follow this pattern, renaming it to `.Chart.APIVersion`.
+
 ## Installing
 
 ### Why aren't there native packages of Helm for Fedora and other Linux distros?
