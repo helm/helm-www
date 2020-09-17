@@ -13,7 +13,7 @@ target="_blank">OCI</a>를 지원한다. 차트 패키지는 OCI 기반 레지�
 
 현재 OCI 지원은 *실험적(experimental)* 으로 간주되고 있다.
 
-아래에서 서술할 명령들을 사용하려면 환경에서 `HOME_VERSION_OCI` 변수를 설정하자:
+아래에서 기술된 명령들을 사용하려면 환경에서 `HOME_VERSION_OCI` 변수를 설정하자:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
@@ -21,19 +21,19 @@ export HELM_EXPERIMENTAL_OCI=1
 
 ## 레지스트리 실행
 
-테스트 목적으로 레지스트리를 시작하는 것은 쉽다. 도커를 설치한 경우 다음 명령을
-실행하십시오.
+테스트 목적으로 레지스트리를 시작하는 것은 간단하다. 도커를 설치한 경우, 다음 명령어를
+실행하자.
 
 ```console
 docker run -dp 5000:5000 --restart=always --name registry registry
 ```
 
-이렇게 하면 `localhost:5000`에서 레지스트리 서버가 시작된다.
+이렇게 하면 `localhost:5000`에서 레지스트리 서버가 시작될 것이다.
 
 `docker logs -f registry`를 사용하여 로그를 확인하고 `docker rm -f registry`를
 사용하여 중지하자.
 
-스토리지를 유지하려면 위의 명령에 `-v $(pwd)/registry:/var/lib/registry`를
+스토리지를 보존하려면 위의 명령에 `-v $(pwd)/registry:/var/lib/registry`를
 추가하자.
 
 자세한 설정 옵션은 [해당 문서](https://docs.docker.com/registry/deploying/)를
@@ -41,7 +41,7 @@ docker run -dp 5000:5000 --restart=always --name registry registry
 
 ### 인증
 
-레지스트리에서 인증을 실행하려면 다음을 수행한다-
+레지스트리에 인증을 활성화하려면, 다음과 같이 해보자.
 
 먼저 사용자 이름과 비밀번호로 `auth.htpasswd` 파일을 만들자.
 
@@ -49,8 +49,8 @@ docker run -dp 5000:5000 --restart=always --name registry registry
 htpasswd -cB -b auth.htpasswd myuser mypass
 ```
 
-그런 다음 서버를 시작하여 해당 파일을 마운트하고 `REGISTRY_AUTH` 환경 변수를
-지정하자:
+그런 다음, 서버를 시작하여 해당 파일을 마운트하고 `REGISTRY_AUTH` 환경 변수를
+지정하자.
 
 ```console
 docker run -dp 5000:5000 --restart=always --name registry \
@@ -59,11 +59,11 @@ docker run -dp 5000:5000 --restart=always --name registry \
   registry
 ```
 
-## 레지스트리 작업 명령
+## 레지스트리 작업 명령어
 
-`helm registry`와 `helm chart` 명령에서 레지스트리와 로컬 캐시에 대한 작업을 할 수 있게 한다.
+`helm registry`와 `helm chart` 명령어로 레지스트리와 로컬 캐시에 대한 작업을 할 수 있다.
 
-### `registry` 하위 명령
+### `registry` 하위 명령어
 
 #### `login`
 
@@ -84,11 +84,11 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### `chart` 하위 명령
+### `chart` 하위 명령어
 
 #### `save`
 
-차트 디렉토리를 로컬 캐시에 저장
+로컬 캐시에 차트 디렉토리를 저장
 
 ```console
 $ helm chart save mychart/ localhost:5000/myrepo/mychart:2.7.0
@@ -117,7 +117,7 @@ localhost:5000/stable/anchore-engine:0.10.0             anchore-engine          
 
 #### `export`
 
-차트를 디렉토리로 내보내기
+디렉토리로 차트 내보내기
 
 ```console
 $ helm chart export localhost:5000/myrepo/mychart:2.7.0
@@ -131,7 +131,7 @@ Exported chart to mychart/
 
 #### `push`
 
-원격으로 차트 밀어내기
+원격지로 차트 밀어주기(push)
 
 ```console
 $ helm chart push localhost:5000/myrepo/mychart:2.7.0
@@ -146,7 +146,7 @@ version: 0.1.0
 
 #### `remove`
 
-캐시에서 차트 제거
+캐시에서 차트 제거하기
 
 ```console
 $ helm chart remove localhost:5000/myrepo/mychart:2.7.0
@@ -155,7 +155,7 @@ $ helm chart remove localhost:5000/myrepo/mychart:2.7.0
 
 #### `pull`
 
-원격에서 차트 당기기
+원격지에서 차트 가져오기(pull)
 
 ```console
 $ helm chart pull localhost:5000/myrepo/mychart:2.7.0
@@ -168,13 +168,13 @@ version: 0.1.0
 Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 ```
 
-## 나의 차트는 어디 있는가?
+## 내 차트는 어디 있나?
 
-위의 명령들을 사용하여 저장된 차트는 파일 시스템에 캐시된다.
+위의 명령어들을 사용하여 저장된 차트는 파일 시스템에 캐시될 것이다.
 
 [OCI 이미지 레이아웃
-사양](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)은 파일 시스템 레이아웃을 엄격하게 따른다. 예를 들어,
-
+사양](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)은
+파일시스템 레이아웃에 엄격하게 적용되는데, 예를 들면 다음과 같다.
 ```console
 $ tree ~/Library/Caches/helm/
 /Users/myuser/Library/Caches/helm/
@@ -191,7 +191,7 @@ $ tree ~/Library/Caches/helm/
     └── config.json
 ```
 
-모든 헬름 차트 매니페스트에 대한 참조(ref)를 포함하는 index.json의 예시:
+모든 헬름 차트 매니페스트에 대한 참조(ref)를 포함하는 예시 index.json:
 
 ```console
 $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
@@ -234,4 +234,4 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 ## 차트 저장소에서 마이그레이션
 
 클래식 [차트 저장소]({{< ref path="chart_repository.md" lang="ko" >}}) (index.yaml 기반 저장소)에서 마이그레이션하는 작업은 `helm fetch` (헬름 2 CLI), `helm
-chart save`, `helm chart push`만큼 간단하다.
+chart save`, `helm chart push` 정도로 간단하다.
