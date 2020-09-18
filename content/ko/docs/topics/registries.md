@@ -1,7 +1,6 @@
 ---
 title: "레지스트리"
 description: "차트 배포를 위한 OCI 사용법을 설명한다."
-aliases: ["/docs/registries/"]
 weight: 7
 ---
 
@@ -13,7 +12,7 @@ target="_blank">OCI</a>를 지원한다. 차트 패키지는 OCI 기반 레지�
 
 현재 OCI 지원은 *실험적(experimental)* 으로 간주되고 있다.
 
-아래에서 기술된 명령들을 사용하려면 환경에서 `HOME_VERSION_OCI` 변수를 설정하자:
+아래에서 기술된 명령들을 사용하려면 환경에서 `HELM_EXPERIMENTAL_OCI` 변수를 설정하자:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
