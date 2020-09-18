@@ -1,9 +1,3 @@
----
-title: "快速入门指南"
-description: "如何安装和开始使用Helm，包括Helm的介绍、FAQs和Helm plugins"
-weight: 1
----
-
 本指南介绍如何快速开始使用Helm。
 
 ## Prerequisites

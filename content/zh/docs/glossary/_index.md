@@ -1,9 +1,3 @@
----
-title: "术语表" 
-description: "用于描述Helm体系结构的组件。"
-weight: 9
----
-
 # 术语表
 
 ## Chart

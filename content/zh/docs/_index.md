@@ -1,8 +1,3 @@
----
-title: "文档首页"
-description: "您需要了解的有关文档组织方式的所有信息。"
----
-
 # 欢迎
 
 欢迎使用 [Helm](https://helm.sh/) 文档。Helm 是一个 Kubernetes 的包管理工具，您可以通过

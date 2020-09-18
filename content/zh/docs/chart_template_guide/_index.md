@@ -1,8 +1,3 @@
----
-title: "Chart 模板指南"
-weight: 5
----
-
 # Chart模板开发者指南
 
 该指南提供 Helm Chart 模板的介绍，重点强调模板语言。

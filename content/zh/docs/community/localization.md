@@ -1,10 +1,3 @@
----
-title: "本地化 Helm 文档"
-description: "本指南说明了如何本地化 Helm 文档。"
-aliases: ["/docs/localization/"]
-weight: 5
----
-
 本指南说明了如何本地化 Helm 文档。
 
 ## 开始

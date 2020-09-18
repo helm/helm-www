@@ -1,9 +1,3 @@
----
-title: "最佳实践"
-sidebar: true
-weight: 4
----
-
 # Chart 最佳实践指南
 
 &emsp;&emsp;该指南覆盖了 Helm 团队能考虑到的创建 Chart 的最佳实践。
