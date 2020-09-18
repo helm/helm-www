@@ -149,7 +149,7 @@ containers:
 
 ### 作为默认存储器的密钥
 
-在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/docs/topics/advanced/#storage-backends)使用。
+在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/zh/docs/topics/advanced/#后端存储)使用。
 Helm 2默认使用ConfigMaps记录版本信息。在Helm 2.7.0中，新的存储后台使用密钥来存储版本信息，
 现在是Helm 3的默认设置。
 
@@ -168,7 +168,7 @@ Helm 3默认允许更改密钥作为额外的安全措施在Kubernetes中和密�
 
 `.Capabilities`内置对象会在已经简化的渲染阶段生效。
 
-[内置对象](https://helm.sh/docs/chart_template_guide/builtin_objects/)
+[内置对象](https://helm.sh/zh/docs/chart_template_guide/builtin_objects/)
 
 ### 使用Json格式验证Chart Values
 
@@ -182,7 +182,7 @@ chart values现在可以使用JSON结构了。这保证用户提供value可以�
 * `helm template`
 * `helm lint`
 
-查看 [格式文档](https://helm.sh/docs/topics/charts#schema-files) 了解更多信息。
+查看 [格式文档](https://helm.sh/zh/docs/topics/charts#架构文件) 了解更多信息。
 
 ### 将 `requirements.yaml` 合并到了 `Chart.yaml`
 
@@ -243,7 +243,7 @@ Docker的分发项目（也称作Docker注册中心 v2）是Docker 注册项目�
 
 请查看 `helm help chart` 和 `helm help registry` 了解如何打包chart并推送到Docker注册中心的更多信息。
 
-更多信息请查看 [注册中心](https://helm.sh/docs/topics/registries/)页面。
+更多信息请查看 [注册中心](https://helm.sh/zh/docs/topics/registries/)页面。
 
 ### 移除了`helm serve`
 
@@ -401,3 +401,16 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 * 对于 `helm list` 命令，指定 `--all-namespaces`/`-A` 参数
 
 这适用于 `helm ls`、 `helm uninstall` 以及其他所有涉及版本的 `helm` 命令。
+
+### 为什么在macOS上`/etc/.mdns_debug`文件可以访问？
+
+我们了解到macOS上的一个案例是Helm会视图访问`/etc/.mdns_debug`文件。
+如果文件存在，Helm会在文件句柄执行的时候保持打开状态。
+
+这是因为macOS的 MDNS 库。它尝试去加载这个文件读取debug设置（如果已经启用）。
+这个文件句柄可能不会保持打开，且这个问题已经报告给了苹果。 然而这种行为是macOS导致的，并不是Helm。
+
+如果你不想让Helm加载这个文件，你可以将Helm编译成一个静态库而不使用主机网络堆栈。
+这样做会导致Helm的二进制文件大小膨胀，但是会阻止这个文件打开。
+
+这个问题最初被标记为潜在的安全问题。但后来已经确定，这种行为不存在任何缺陷或漏洞。
