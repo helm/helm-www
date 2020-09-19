@@ -5,113 +5,114 @@ weight: 8
 
 # 자주 묻는 질문
 
-> 헬름 2와 헬름 3의 주요 차이점이 무엇인가요?
-> 이 페이지는 자주 나오는 질문들로 도움을 드립니다.
+> 헬름 2와 헬름 3의 중요한 차이점은 무엇일까요?
+> 이 페이지는 가장 자주 나오는 질문들에 대한 도움말을 제공합니다.
 
-이 문서를 개선하는 **당신의 도움을 기대**합니다.
-정보를 추가, 수정, 삭제하려면, [이슈를 등록](https://github.com/helm/helm-www/issues)하거나 풀 리퀘스트(pull request)를 보내주세요.
+이 문서를 개선시킬 수 있도록 **도와주시면 감사하겠습니다**.
+정보를 추가, 수정, 삭제하려면 [이슈를 등록](https://github.com/helm/helm-www/issues)하거나
+풀 리퀘스트를 보내주세요.
 
 ## 헬름 2 이후 변화
 
-이 문서는 헬름 3에 도입된 모든 주요 변경사항의 상세 목록입니다.
+다음은 헬름 3에 도입된 주요 변경사항의 상세 목록입니다.
 
 ### 틸러(tiller) 제거
 
-During the Helm 2 development cycle, we introduced Tiller. Tiller played an
-important role for teams working on a shared cluster - it made it possible for
-multiple different operators to interact with the same set of releases.
+헬름 2 개발 주기에 틸러를 도입했었습니다.
+틸러는 공유 클러스터에서 작업하는 팀에게 중요한 역할을 했습니다.
+서로 다른 운영자가 동일한 릴리스 집합과 상호 작용할 수 있도록 만들어 주었습니다.
 
-With role-based access controls (RBAC) enabled by default in Kubernetes 1.6,
-locking down Tiller for use in a production scenario became more difficult to
-manage. Due to the vast number of possible security policies, our stance was to
-provide a permissive default configuration. This allowed first-time users to
-start experimenting with Helm and Kubernetes without having to dive headfirst
-into the security controls. Unfortunately, this permissive configuration could
-grant a user a broad range of permissions they weren’t intended to have. DevOps
-and SREs had to learn additional operational steps when installing Tiller into a
-multi-tenant cluster.
+쿠버네티스 1.6에서 역할 기반 접근 제어(RBAC)가 기본적으로 활성화되면서,
+운영 시나리오에서 틸러 접근제어를 관리하는 것이 더욱 어려워졌습니다.
+수많은 보안 정책 때문에
+우리의 입장은 허용 가능한 기본 설정을 제공하는 것이었습니다.
+이를 통해 헬름을 처음 접한 사용자는 처음부터 보안 제어를 깊이 알지 못해도
+헬름과 쿠버네티스를 시작해볼 수 있었습니다. 아쉽지만,
+이러한 허용적(permissive) 설정은 의도치 않게 사용자에게 광범위한 권한을 부여할 수 있습니다.
+데브옵스(DevOps)와 사이트 신뢰성 엔지니어(SRE)는 멀티 테넌트 클러스터에 틸러를
+설치할 때 추가적인 작업 단계를 알아야 했습니다.
 
-After hearing how community members were using Helm in certain scenarios, we
-found that Tiller’s release management system did not need to rely upon an
-in-cluster operator to maintain state or act as a central hub for Helm release
-information. Instead, we could simply fetch information from the Kubernetes API
-server, render the Charts client-side, and store a record of the installation in
-Kubernetes.
+커뮤니티 구성원들이 특정 시나리오에서 헬름을 어떻게 사용하는지 들은 후,
+틸러의 릴리스 관리 시스템은
+상태를 유지하거나 헬름 릴리스 정보의 중심 허브 역할을 하기 위해
+클러스터 내 운영자에게 의존할 필요가 없다는 것을 알게 되었습니다.
+그 대신 쿠버네티스 API 서버에서 정보를 간단히 가져오고,
+차트 클라이언트 측을 렌더링하며 쿠버네티스에 설치 기록을 보관할 수 있습니다.
 
-Tiller’s primary goal could be accomplished without Tiller, so one of the first
-decisions we made regarding Helm 3 was to completely remove Tiller.
+틸러의 주요 목표는 틸러 없이도 달성될 수 있습니다.
+그래서 헬름 3와 관련하여 우리가 내린 첫 번째 결정 중 하나는 틸러를 완전히 제거하는 것입니다.
 
-With Tiller gone, the security model for Helm is radically simplified. Helm 3
-now supports all the modern security, identity, and authorization features of
-modern Kubernetes. Helm’s permissions are evaluated using your [kubeconfig
-file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/).
-Cluster administrators can restrict user permissions at whatever granularity
-they see fit. Releases are still recorded in-cluster, and the rest of Helm’s
-functionality remains.
+틸러가 사라지면 헬름의 보안 모델이 획기적으로 간소화됩니다.
+헬름 3는 이제 현대 쿠버네티스의 모든 현대적인 보안, 신원 확인 및 인가 기능을 지원합니다. 헬름의 권한은
+[kubeconfig 파일](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을
+사용하여 평가됩니다.
+클러스터 관리자는 세세하게 사용자 권한을 제한할 수 있습니다.
+릴리스는 여전히 클러스터 내에 기록되며,
+헬름의 나머지 기능은 그대로 유지됩니다.
 
-### 업그레이드 전략 개선: 3-방향 전략적 병합 패치
+### 업그레이드 전략 개선: 3 방향 전략적 병합 패치
 
-Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the
-most recent chart's manifest against the proposed chart's manifest (the one
-supplied during `helm upgrade`). It compared the differences between these two
-charts to determine what changes needed to be applied to the resources in
-Kubernetes. If changes were applied to the cluster out-of-band (such as during a
-`kubectl edit`), those changes were not considered. This resulted in resources
-being unable to roll back to its previous state: because Helm only considered
-the last applied chart's manifest as its current state, if there were no changes
-in the chart's state, the live state was left unchanged.
+헬름 2는 양방향 전략적 병합 패치를 사용했었습니다. 업그레이드할 때
+최근 차트의 매니페스트와 새로 제시된 차트의 매니페스트(`helm upgrade` 중에 제공된 것 중
+하나)를 비교했습니다. 쿠버네티스 리소스에 적용해야 할 변경 사항을 알아내기 위해
+두 차트 간의 차이를 비교했습니다.
+클러스터 외부의 활동(예: `kubectl edit` 하는) 중에 변경 사항이 적용되었다면,
+그러한 변경은 고려되지 않았습니다. 이로 인해 리소스가 이전 상태로 롤백할 수 없게 되었습니다.
+헬름은 마지막으로 적용된 차트의 매니페스트만 현재 상태로 간주했기 때문에
+차트의 상태가 변경되지 않은 경우
+활성 상태는 변경되지 않은 상태로 그대로 유지됩니다.
 
-In Helm 3, we now use a three-way strategic merge patch. Helm considers the old
-manifest, its live state, and the new manifest when generating a patch.
+헬름 3는 현재 3 방향 전략적 병합 패치를 사용하고 있습니다.
+헬름은 패치를 생성할 때 이전 매니페스트, 라이브 상태, 새 매니페스트를 고려합니다.
 
 #### 예시
 
-Let's go through a few common examples what this change impacts.
+이러한 변화가 어떤 영향을 미치는지 몇 가지 일반적인 예를 살펴보겠습니다.
 
-##### 라이브(live) 상태 변경시 롤백
+##### 라이브 상태 변경 시 롤백
 
-Your team just deployed their application to production on Kubernetes using
-Helm. The chart contains a Deployment object where the number of replicas is set
-to three:
+당신의 팀은 방금 헬름을 사용하여 쿠버네티스 프로덕션 서버에 애플리케이션을 배포했습니다.
+차트에는 레플리카 수가 3개로 설정된 디플로이먼트(Deployment) 오브젝트를
+포함합니다.
 
 ```console
 $ helm install myapp ./myapp
 ```
 
-A new developer joins the team. On their first day while observing the
-production cluster, a horrible coffee-spilling-on-the-keyboard accident happens
-and they `kubectl scale` the production deployment from three replicas down to
-zero.
+새로운 개발자가 팀에 합류합니다.
+첫날에 프로덕션 클러스터를 살펴보다가, 키보드에 커피를 쏟는 끔찍한 사고가 발생하여
+`kubectl scale` 명령어로 프로덕션 디플로이먼트
+레플리카 수를 3개에서 0개로 축소시킵니다.
 
 ```console
 $ kubectl scale --replicas=0 deployment/myapp
 ```
 
-Another developer on your team notices that the production site is down and
-decides to rollback the release to its previous state:
+팀의 다른 개발자는 프로덕션 사이트가 다운된 것을 확인하고
+릴리스를 이전 상태로 롤백하기로 합니다.
 
 ```console
 $ helm rollback myapp
 ```
 
-What happens?
+어떻게 될까요?
 
-In Helm 2, it would generate a patch, comparing the old manifest against the new
-manifest. Because this is a rollback, it's the same manifest. Helm would
-determine that there is nothing to change because there is no difference between
-the old manifest and the new manifest. The replica count continues to stay at
-zero. Panic ensues.
+헬름 2에서는 이전 매니페스트를 새 매니페스트와 비교하여 패치를 생성합니다.
+이것은 롤백이기 때문에 동일한 매니페스트입니다.
+헬름에서는 이전 매니페스트와 새 매니페스트 간에
+차이가 없기 때문에 변경할 사항이 없다고 판단합니다.
+레플리카 수는 계속 0입니다. 패닉은 계속됩니다.
 
-In Helm 3, the patch is generated using the old manifest, the live state, and
-the new manifest. Helm recognizes that the old state was at three, the live
-state is at zero and the new manifest wishes to change it back to three, so it
-generates a patch to change the state back to three.
+헬름 3에서 패치는 이전 매니페스트, 라이브 상태, 새 매니페스트를 사용하여 생성됩니다.
+헬름은 기존 상태가 3이고 라이브 상태가 0에 있으며,
+새 매니페스트는 그것을 다시 3으로 바꾸기를 원하기 때문에,
+패치를 생성하여 상태를 다시 3으로 바꾸게 됩니다.
 
-##### 라이브 상태 변경시 업그레이드
+##### 라이브 상태 변경 시 업그레이드
 
-Many service meshes and other controller-based applications inject data into
-Kubernetes objects. This can be something like a sidecar, labels, or other
-information. Previously if you had the given manifest rendered from a Chart:
+많은 서비스 메쉬 및 기타 컨트롤러 기반 애플리케이션은 데이터를 쿠버네티스 오브젝트에 주입합니다.
+이것은 사이드카, 레이블 또는 다른 정보일 수 있습니다.
+이전에 차트에서 렌더링된 매니페스트가 있다면 다음과 같습니다.
 
 ```yaml
 containers:
@@ -119,7 +120,7 @@ containers:
   image: nginx:2.0.0
 ```
 
-And the live state was modified by another application to
+그리고 다른 애플리케이션이 라이브 상태를 다음과 같이 수정했습니다.
 
 ```yaml
 containers:
@@ -129,8 +130,8 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-Now, you want to upgrade the `nginx` image tag to `2.1.0`. So, you upgrade to a
-chart with the given manifest:
+이제 `nginx` 이미지 태그를 `2.1.0`으로 업그레이드하려고 합니다.
+따라서 다음과 같은 매니페스트가 있는 차트로 업그레이드합니다.
 
 ```yaml
 containers:
@@ -138,13 +139,13 @@ containers:
   image: nginx:2.1.0
 ```
 
-What happens?
+어떻게 될까요?
 
-In Helm 2, Helm generates a patch of the `containers` object between the old
-manifest and the new manifest. The cluster's live state is not considered during
-the patch generation.
+헬름 2에서 헬름은 기존 매니페스트와 새로운 매니페스트 사이에
+`containers` 오브젝트의 패치를 생성합니다.
+패치 생성 중에는 클러스터의 라이브 상태가 고려되지 않습니다.
 
-The cluster's live state is modified to look like the following:
+클러스터의 라이브 상태가 다음과 같이 수정됩니다.
 
 ```yaml
 containers:
@@ -152,13 +153,13 @@ containers:
   image: nginx:2.1.0
 ```
 
-The sidecar pod is removed from live state. More panic ensues.
+사이드카 파드가 라이브 상태에서 제거됩니다. 더 많은 공포가 뒤따릅니다.
 
-In Helm 3, Helm generates a patch of the `containers` object between the old
-manifest, the live state, and the new manifest. It notices that the new manifest
-changes the image tag to `2.1.0`, but live state contains a sidecar container.
+헬름 3에서 헬름은 기존 매니페스트, 라이브 상태, 새 매니페스트 사이에
+`container` 오브젝트의 패치를 생성합니다. 새로운 매니페스트가 이미지 태그를
+`2.1.0` 으로 바꾸지만 라이브 상태는 사이드카 컨테이너를 포함합니다.
 
-The cluster's live state is modified to look like the following:
+클러스터의 라이브 상태가 다음과 같이 수정됩니다.
 
 ```yaml
 containers:
@@ -168,83 +169,83 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-### 이제 릴리스 이름이 네임스페이스로 구획됨(scope)
+### 이제 릴리스 이름이 네임스페이스에 할당됩니다
 
-With the removal of Tiller, the information about each release had to go
-somewhere. In Helm 2, this was stored in the same namespace as Tiller. In
-practice, this meant that once a name was used by a release, no other release
-could use that same name, even if it was deployed in a different namespace.
+틸러가 제거되면서 각 릴리스에 대한 정보는 어디론가 이동해야 했습니다.
+헬름 2에서는 틸러와 동일한 네임스페이스에 저장되었습니다.
+이는 실제로 릴리스에 이름이 사용되면 다른 네임스페이스에 배포되었더라도
+다른 릴리스에서는 동일한 이름을 사용할 수 없음을 의미합니다.
 
-In Helm 3, information about a particular release is now stored in the
-same namespace as the release itself. This means that users can now `helm
-install wordpress stable/wordpress` in two separate namespaces, and each can be
-referred with `helm list` by changing the current namespace context (e.g. `helm
-list --namespace foo`).
+헬름 3에서는 특정 릴리스에 대한 정보가 릴리스 자체와 동일한 네임스페이스에
+저장됩니다. 즉, 이제 사용자는 별도의 두 네임스페이스에서
+`helm install wordpress stable/wordpress`를 수행할 수 있으며,
+현재 네임스페이스 컨텍스트를 변경하여 `helm list` 를 조회할 수 있습니다.
+(예: `helm list --namespace foo`)
 
-With this greater alignment to native cluster namespaces, the `helm list` command
-no longer lists all releases by default. Instead, it will list only the releases
-in the namespace of your current kubernetes context (i.e. the namespace shown
-when you run `kubectl config view --minify`). It also means you must supply the
-`--all-namespaces` flag to `helm list` to get behaviour similar to Helm 2.
+이렇게 네이티브 클러스터 네임스페이스가 보다 개선되면서
+`helm list` 명령은 기본적으로 모든 릴리스를 나열하지 않습니다.
+대신 현재 쿠버네티스 컨텍스트의 네임스페이스에 있는 릴리스만
+나열됩니다(즉, `kubectel config view --minify`를 실행할 때 표시되는 네임스페이스).
+또한 헬름 2와 유사한 동작을 수행하려면 `helm list`에
+`--all-namespaces` 플래그를 주어야 합니다.
 
-### 시크릿(secret)이 기본 스토리지 드라이버로
+### 기본 스토리지 드라이버로서의 시크릿(Secret)
 
-In Helm 3, Secrets are now used as the [default storage driver](/docs/topics/advanced/#storage-backends). Helm 2 used ConfigMaps by default to store release information. In Helm 2.7.0, a new storage backend that uses Secrets for storing release information was implemented, and it is now the default starting in Helm 3.
+헬름 3에서 시크릿은 이제 [기본 스토리지
+드라이버](/docs/topics/advanced/#storage-backends)로 사용됩니다. 헬름 2는
+기본적으로 컨피그맵(ConfigMap)을 사용하여 릴리스 정보를 저장합니다. 헬름 2.7.0에서
+릴리스 정보를 저장하기 위해 시크릿을 사용하는 새로운 스토리지 백엔드가 구현되었으며
+헬름 3부터는 기본값이 되었습니다.
 
-Changing to Secrets as the Helm 3 default allows for additional security in protecting charts in conjunction with the release of Secret encryption in Kubernetes.
+헬름 3 기본값을 시크릿으로 변경하면 쿠버네티스의
+시크릿 암호화(Secret Encryption) 릴리스와 함께
+차트를 보호할 수 있습니다.
 
-[Encrypting secrets at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) became available as an alpha feature in Kubernetes 1.7 and became stable as of Kubernetes 1.13. This allows users to encrypt Helm release metadata at rest, and so it is a good starting point that can be expanded later into using something like Vault.
+[미사용 시크릿을 암호화하는
+것](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)은
+쿠버네티스 1.7에서 알파 기능으로 사용 가능하게 되었고
+쿠버네티스 1.13을 기점으로 안정화되었습니다. 이를 통해 사용자는
+미사용 헬름 릴리스 메타데이터를 암호화할 수 있으므로
+나중에 볼트(Vault)와 같은 용도로 확장할 수 있습니다.
 
-### Go 임포트 경로 변경
+### Go import 경로 변경
 
-In Helm 3, Helm switched the Go import path over from `k8s.io/helm` to
-`helm.sh/helm/v3`. If you intend to upgrade to the Helm 3 Go client libraries,
-make sure to change your import paths.
+헬름 3에서 헬름은 Go import 경로를 `k8s.io/helm`에서
+`helm.sh/helm/v3`으로 전환했습니다. 헬름 3 Go 클라이언트 라이브러리로
+업그레이드하려면 import 경로를 변경해야 합니다.
 
-### 수용능력
+### Capabilities
 
-스테이지 렌더링시에 사용가능한 `.Capabilities` 빌트인 객체가 간소화되었다.
+렌더링 단계에서 사용 가능한 `.Capabilities` 빌트인 객체가
+간소화되었습니다.
 
 [빌트인 객체](/docs/chart_template_guide/builtin_objects/)
 
-### JSON스키마로 차트 값 유효성 검사
+### JSON 스키마로 차트 값 유효성 검사
 
-A JSON Schema can now be imposed upon chart values. This ensures that values
-provided by the user follow the schema laid out by the chart maintainer,
-providing better error reporting when the user provides an incorrect set of
-values for a chart.
+이제 차트 값(values)에 JSON 스키마를 적용할 수 있습니다.
+이렇게 하면 사용자가 입력한 값이 차트 관리자가 제공한
+스키마를 따르므로 사용자가 차트에 잘못된 값들을 입력할 때
+오류 보고 기능이 향상됩니다.
 
-Validation occurs when any of the following commands are invoked:
+다음 명령어 중 하나가 호출될 때 유효성 검사가 수행됩니다.
 
 * `helm install`
 * `helm upgrade`
 * `helm template`
 * `helm lint`
 
-See the documentation on [Schema files](/docs/topics/charts#스키마-파일) for
-more information.
+자세한 내용은 [스키마 파일](/docs/topics/charts#스키마-파일) 문서를
+참조하십시오.
 
-### `requirements.yaml`이 `Chart.yaml` 안으로 통합
+### `requirements.yaml`이 `Chart.yaml` 로 통합
 
-The Chart dependency management system moved from requirements.yaml and
-requirements.lock to Chart.yaml and Chart.lock. We recommend that new charts
-meant for Helm 3 use the new format. However, Helm 3 still understands Chart API
-version 1 (`v1`) and will load existing `requirements.yaml` files
+차트 의존성 관리 시스템이 requirements.yaml 와 requirements.lock에서
+Chart.yaml 와 Chart.lock으로 이동했습니다. 헬름 3에서 새로운 차트는
+새로운 형식을 사용하는 것이 권장됩니다. 그러나 헬름 3는 여전히 차트 API
+버전 1(`v1`)을 이해하고 있으며 기존 `requirements.yaml` 파일을 로드합니다.
 
-In Helm 2, this is how a `requirements.yaml` looked:
-
-```yaml
-dependencies:
-- name: mariadb
-  version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  condition: mariadb.enabled
-  tags:
-    - database
-```
-
-In Helm 3, the dependency is expressed the same way, but now from your
-`Chart.yaml`:
+헬름 2에서는 `requirements.yaml`이 이렇게 생겼습니다.
 
 ```yaml
 dependencies:
@@ -256,81 +257,94 @@ dependencies:
     - database
 ```
 
-Charts are still downloaded and placed in the `charts/` directory, so subcharts
-vendored into the `charts/` directory will continue to work without
-modification.
+헬름 3에서는 의존성이 동일한 방식으로 표현되지만
+이제 `Chart.yaml`에서 표현됩니다.
 
-### 이제 설치시 이름(또는 --generate-name)은 필수사항
+```yaml
+dependencies:
+- name: mariadb
+  version: 5.x.x
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  condition: mariadb.enabled
+  tags:
+    - database
+```
 
-In Helm 2, if no name was provided, an auto-generated name would be given. In
-production, this proved to be more of a nuisance than a helpful feature. In Helm
-3, Helm will throw an error if no name is provided with `helm install`.
+차트는 여전히 `charts/` 디렉토리에 다운로드되므로
+`charts/` 디렉토리에 제공된 하위 차트는
+수정 없이 계속 동작합니다.
 
-For those who still wish to have a name auto-generated for you, you can use the
-`--generate-name` flag to create one for you.
+### 설치 시 이름(또는 --generate-name)이 필요합니다
 
-### OCI 레지스트리로 차트 푸시
+헬름 2에서 이름이 주어지지 않은 경우 자동으로 생성된 이름이 지정됩니다. 프로덕션에서
+이것은 유용한 기능이라기보다는 오히려 골칫거리로 판명되었습니다. 헬름 3에서
+`helm install`과 함께 이름이 주어지지 않으면 헬름이 오류를 던집니다.
 
-This is an experimental feature introduced in Helm 3. To use, set the
-environment variable `HELM_EXPERIMENTAL_OCI=1`.
+이름이 자동으로 생성되기를 원하는 사용자는 `--generate-name` 플래그를
+사용하여 자동으로 생성할 수 있습니다.
 
-At a high level, a Chart Repository is a location where Charts can be stored and
-shared. The Helm client packs and ships Helm Charts to a Chart Repository.
-Simply put, a Chart Repository is a basic HTTP server that houses an index.yaml
-file and some packaged charts.
+### OCI 레지스트리로 차트 밀어내기
 
-While there are several benefits to the Chart Repository API meeting the most
-basic storage requirements, a few drawbacks have started to show:
+이것은 헬름 3에 도입된 실험적인(experimental) 기능입니다.
+사용하려면 환경 변수 `HELM_EXPERIMENTAL_OCI=1`을 설정합니다.
 
-- Chart Repositories have a very hard time abstracting most of the security
-  implementations required in a production environment. Having a standard API
-  for authentication and authorization is very important in production
-  scenarios.
-- Helm’s Chart provenance tools used for signing and verifying the integrity and
-  origin of a chart are an optional piece of the Chart publishing process.
-- In multi-tenant scenarios, the same Chart can be uploaded by another tenant,
-  costing twice the storage cost to store the same content. Smarter chart
-  repositories have been designed to handle this, but it’s not a part of the
-  formal specification.
-- Using a single index file for search, metadata information, and fetching
-  Charts has made it difficult or clunky to design around in secure multi-tenant
-  implementations.
+높은 수준에서 차트 저장소는 차트를 저장하고 공유할 수 있는 곳입니다.
+헬름 클라이언트는 헬름 차트를 패키징하여 차트 저장소로 보냅니다.
+간단히 말해 차트 저장소는 index.yaml 파일과 일부 패키지형 차트를 저장하는
+기본 HTTP 서버입니다.
 
-Docker’s Distribution project (also known as Docker Registry v2) is the
-successor to the Docker Registry project. Many major cloud vendors have a
-product offering of the Distribution project, and with so many vendors offering
-the same product, the Distribution project has benefited from many years of
-hardening, security best practices, and battle-testing.
+차트 저장소 API가 가장 기본적인 스토리지 요구 사항을 충족하면 몇 가지 이점이 있지만
+다음과 같은 몇 가지 문제점이 나타나기 시작했습니다.
 
-Please have a look at `helm help chart` and `helm help registry` for more
-information on how to package a chart and push it to a Docker registry.
+- 차트 저장소는 프로덕션 환경에 필요한 대부분의 보안 구현을
+  추상화하는 데 매우 어려움을 겪고 있습니다. 인증 및 인가를
+  위한 표준 API를 갖는 것은 프로덕션 시나리오에서
+  매우 중요합니다.
+- 차트의 무결성과 원본을 표시 및 검증하는 데 사용되는 헬름의 차트 출처(provenance)
+  도구는 차트 발행 프로세스의 선택 사항입니다.
+- 멀티 테넌트 시나리오에서는 다른 테넌트에서 동일한 차트를 업로드할 수 있으므로
+  동일한 컨텐츠를 저장하는 데 드는 스토리지 비용이 두 배가 됩니다.
+  보다 스마트한 차트 저장소는 이 문제를 처리하도록 설계되었지만 정식 사양에는
+  포함되지 않습니다.
+- 검색, 메타데이터 정보, 차트 가져오기에 단일 인덱스 파일을
+  사용하면 안전한 멀티 테넌트 구현으로 설계하기가 어렵거나
+  복잡해졌습니다.
 
-For more info, please see [this page](/docs/topics/registries/).
+도커의 분산 프로젝트(Distribution prject, 도커 레지스트리 v2라고도 함)는
+도커 레지스트리 프로젝트의 후속 작업입니다. 많은 주요 클라우드 벤더가
+분산 프로젝트를 제공하는 상품을 보유하고 있으며, 수많은 벤더가 동일한 제품을
+제공함에 따라 분산 프로젝트는 수년간의 개선, 보안 모범 사례, 실전 테스트의
+혜택을 받아 왔습니다.
+
+차트를 패키징하고 도커 레지스트리에 밀어내는 방법에 대한 자세한 내용은
+`helm help chart` 및 `helm help registry`를 참조하시기 바랍니다.
+
+자세한 내용은 [이 페이지](/docs/topics/registries/)를 참조하시기 바랍니다.
 
 ### `helm serve` 제거
 
-`helm serve` ran a local Chart Repository on your machine for development
-purposes. However, it didn't receive much uptake as a development tool and had
-numerous issues with its design. In the end, we decided to remove it and split
-it out as a plugin.
+`helm serve`는 개발 목적으로 머신에서 로컬 차트 저장소를
+실행했습니다. 하지만 개발 도구로서 그다지 많은 관심을 받지 못했고
+설계에도 많은 문제가 있었습니다. 결국 우리는 이것을 제거하고
+플러그인으로 분리하기로 했습니다.
 
-For a similar experience to `helm serve`, have a look at the local filesystem
-storage option in
-[ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)
-and the [servecm plugin](https://github.com/jdolitsky/helm-servecm).
+`helm serve`와 유사한 경험을 위해서는 [차트뮤지엄
+(ChartMuseum)](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)의
+로컬 파일 시스템 스토리지 옵션과
+[servecm 플러그인](https://github.com/jdolitsky/helm-servecm)에 대해 살펴보세요.
 
 
 ### 라이브러리 차트 지원
 
-Helm 3 supports a class of chart called a “library chart”. This is a chart that
-is shared by other charts, but does not create any release artifacts of its own.
-A library chart’s templates can only declare `define` elements. Globally scoped
-non-`define` content is simply ignored. This allows users to re-use and share
-snippets of code that can be re-used across many charts, avoiding redundancy and
-keeping charts [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+헬름 3는 "라이브러리 차트"라고 하는 차트의 클래스를 지원합니다. 다른 차트에서
+공유하지만 자체 릴리스 아티팩트는 생성하지 않는 차트입니다. 라이브러리 차트의
+템플릿은 `define` 요소만 선언할 수 있습니다. 전역 범위 `define`이 아닌 콘텐츠는
+무시됩니다. 이를 통해 사용자는 여러 차트에서 재사용할 수 있는 코드 조작(snippet)을
+재사용하고 공유할 수 있으므로 중복성을 방지하고
+차트 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)를 유지할 수 있습니다.
 
-Library charts are declared in the dependencies directive in Chart.yaml, and are
-installed and managed like any other chart.
+라이브러리 차트는 Chart.yaml의 dependencies 지시어에 선언되며
+다른 차트처럼 설치 및 관리됩니다.
 
 ```yaml
 dependencies:
@@ -339,122 +353,124 @@ dependencies:
     repository: quay.io
 ```
 
-We’re very excited to see the use cases this feature opens up for chart
-developers, as well as any best practices that arise from consuming library
-charts.
+이 기능이 차트 개발자에게 제공되는 유즈 케이스와
+라이브러리 차트를 사용하면서 생긴 모범 사례을 보게 되어
+매우 기쁩니다.
 
 ### Chart.yaml apiVersion 격상
 
-With the introduction of library chart support and the consolidation of
-requirements.yaml into Chart.yaml, clients that understood Helm 2's package
-format won't understand these new features. So, we bumped the apiVersion in
-Chart.yaml from `v1` to `v2`.
+라이브러리 차트 지원이 도입되고 requirements.yaml이 Chart.yaml로
+통합됨에 따라 헬름 2의 패키지 형식을 이해하고 있는 클라이언트는
+이러한 새로운 기능을 이해할 수 없게 되었습니다. 따라서 Chart.yaml의
+apiVersion을 v1에서 v2로 격상했습니다.
 
-`helm create` now creates charts using this new format, so the default
-apiVersion was bumped there as well.
+`helm create`는 이제 이 새로운 형식을 사용하여 차트를 생성하므로
+기본 apiVersion도 격상했습니다.
 
-Clients wishing to support both versions of Helm charts should inspect the
-`apiVersion` field in Chart.yaml to understand how to parse the package format.
+헬름 차트의 두 버전을 모두 지원하려는 클라이언트는 패키지 형식을 해석하는
+방법을 이해하기 위해 Chart.yaml의 `apiVersion` 필드를 검사하는 것이 좋습니다.
 
 ### XDG 베이스 디렉토리 지원
 
-[The XDG Base Directory
-Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
-is a portable standard defining where configuration, data, and cached files
-should be stored on the filesystem.
+[XDG 베이스 디렉토리
+사양](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)은
+파일 시스템에 설정, 데이터, 캐시된 파일을 저장할 위치를 정의하는
+이식 가능한 표준입니다.
 
-In Helm 2, Helm stored all this information in `~/.helm` (affectionately known
-as `helm home`), which could be changed by setting the `$HELM_HOME` environment
-variable, or by using the global flag `--home`.
+헬름 2에서 헬름은 이 모든 정보를 `~/.helm`(정확히 `helm home`이라고 함)에
+저장했으며, `$HELM_HOME` 환경 변수를 설정하여 변경하거나,
+전역 플래그 `--home` 을 사용하여 변경할 수 있습니다.
 
-In Helm 3, Helm now respects the following environment variables as per the XDG
-Base Directory Specification:
+헬름 3에서 헬름은 XDG 기본 디렉토리 사양에 따라 다음 환경 변수를
+고려합니다.
 
 - `$XDG_CACHE_HOME`
 - `$XDG_CONFIG_HOME`
 - `$XDG_DATA_HOME`
 
-Helm plugins are still passed `$HELM_HOME` as an alias to `$XDG_DATA_HOME` for
-backwards compatibility with plugins looking to use `$HELM_HOME` as a scratchpad
-environment.
+헬름 플러그인은 `$HELM_HOME`을 스크래치패드 환경으로
+사용하려는 플러그인과의 하위 호환성을 위해
+`$XDG_DATA_HOME`의 별칭으로 `$HELM_HOME`을 여전히 전달됩니다.
 
-Several new environment variables are also passed in to the plugin's environment
-to accommodate this change:
+이러한 변화에 맞추기 위해 몇 가지 새로운 환경 변수도
+플러그인 환경에 전달됩니다.
 
-- `$HELM_PATH_CACHE` for the cache path
-- `$HELM_PATH_CONFIG` for the config path
-- `$HELM_PATH_DATA` for the data path
+- `$HELM_PATH_CACHE` 로 캐시 경로 지정
+- `$HELM_PATH_CONFIG` 로 설정 경로 지정
+- `$HELM_PATH_DATA` 로 데이터 경로 지정
 
-Helm plugins looking to support Helm 3 should consider using these new
-environment variables instead.
+헬름 3를 지원하려는 헬름 플러그인은 이 새로운 환경 변수들을
+고려해야 합니다.
 
-### CLI 명령어 이름변경
+### CLI 명령어 이름을 변경했습니다
 
-In order to better align the verbiage from other package managers, `helm delete`
-was re-named to `helm uninstall`. `helm delete` is still retained as an alias to
-`helm uninstall`, so either form can be used.
+다른 패키지 매니저의 용어와 잘 조화시키기 위해 `helm delete`를 `helm uninstall`로
+개명했습니다. `helm delete`은 여전히 `helm uninstall`의 별칭으로 유지되므로
+두 형식 중 하나를 사용할 수 있습니다.
 
-In Helm 2, in order to purge the release ledger, the `--purge` flag had to be
-provided. This functionality is now enabled by default. To retain the previous
-behavior, use `helm uninstall --keep-history`.
+헬름 2에서는 릴리스 기록을 제거하기 위해 `--purge` 플래그를 써야
+했습니다. 이제 이 기능은 기본적으로 활성화됩니다. 예전 동작을 유지하려면
+`helm uninstall --keep-history`를 사용합시다.
 
-Additionally, several other commands were re-named to accommodate the same
-conventions:
+또한 동일한 규칙을 수용하기 위해 일부 다른 명령어들이
+개명되었습니다.
 
 - `helm inspect` -> `helm show`
 - `helm fetch` -> `helm pull`
 
-These commands have also retained their older verbs as aliases, so you can
-continue to use them in either form.
+이러한 명령어는 예전 동사도 별칭으로 유지하므로
+두 가지 형식에서 계속 사용할 수 있습니다.
 
 ### 네임스페이스 자동 생성
 
-When creating a release in a namespace that does not exist, Helm 2 created the
-namespace.  Helm 3 follows the behavior of other Kubernetes tooling and returns
-an error if the namespace does not exist.  Helm 3 will create the namespace if
-you explicitly specify `--create-namespace` flag.
+존재하지 않는 네임스페이스에 릴리스를 생성할 때 헬름 2가 네임스페이스를 만들었습니다.
+헬름 3는 다른 쿠버네티스 도구의 동작을 따르며 네임스페이스가 없는 경우
+오류를 반환합니다. `--create-namespace` 플래그를 명시적으로 지정하면 헬름 3가
+네임스페이스를 만듭니다.
 
 ## 설치
 
-### 헬름의 데비안/페도라/... 네이티브 패키지는 왜 없나요?
+### 페도라(Fedora) 등의 다른 리눅스 배포판을 위한 네이티브 헬름 패키지는 왜 없나요?
 
-We'd love to provide these or point you toward a trusted provider. If you're
-interested in helping, we'd love it. This is how the Homebrew formula was
-started.
+헬름 프로젝트는 운영 체제 및 환경에 대한 패키지를 관리하지 않습니다.
+헬름 커뮤니티는 네이티브 패키지를 제공할 수 있으며 헬름 프로젝트에서
+알게 되면 목록에 포함될 것입니다. 이렇게 해서
+홈브루 포뮬러(HomeBrew formula)가 시작되고 포함되었습니다.
+패키지 관리에 관심이 있으시다면 감사하겠습니다.
 
 ### 왜 `curl ...|bash` 스크립트를 제공하나요?
 
-There is a script in our repository (`scripts/get-helm-3`) that can be executed as a
-`curl ..|bash` script. The transfers are all protected by HTTPS, and the script
-does some auditing of the packages it fetches. However, the script has all the
-usual dangers of any shell script.
+저장소에 `curl ..|bash` 스크립트로 실행할 수 있는 스크립트(`scripts/get-helm-3`)가
+있습니다. 전송은 모두 HTTPS에 의해 보호되며 스크립트는 가져오는 패키지에 대해 일부
+감사를 수행합니다. 그러나 이 스크립트는 쉘 스크립트의 모든 일반적인 위험을
+가지고 있습니다.
 
-We provide it because it is useful, but we suggest that users carefully read the
-script first. What we'd really like, though, are better packaged releases of
-Helm.
+유용하기 때문에 제공하지만 사용자들이 먼저 대본을 주의 깊게
+읽어보는 것이 좋습니다. 우리가 정말 원하는 것은 더 나은
+패키지형 헬름 릴리스입니다.
 
 ### 헬름 클라이언트 파일들을 기본값 말고 다른 곳에 두려면 어떻게 하나요?
 
-헬름은 파일을 보관할 때 XDG 구조를 사용한다. 그 위치를 오버라이드(override)할 수 있는 환경변수가 있다.
+헬름은 파일을 보관할 때 XDG 구조를 사용합니다.
+그 위치를 재정의(override)할 수 있는 환경변수를 사용할 수 있습니다.
 
-- `$XDG_CACHE_HOME`: 캐시 파일 보관장소를 다른 곳으로 설정
-- `$XDG_CONFIG_HOME`: 헬름 설정 파일 보관장소를 다른 곳으로 설정
-- `$XDG_DATA_HOME`: 헬름 데이터 보관장소를 다른 곳으로 설정
+- `$XDG_CACHE_HOME`: 캐시 파일 보관 장소를 다른 곳으로 설정
+- `$XDG_CONFIG_HOME`: 헬름 설정 파일 보관 장소를 다른 곳으로 설정
+- `$XDG_DATA_HOME`: 헬름 데이터 보관 장소를 다른 곳으로 설정
 
-기존 리포지터리들이 있다면, `helm repo add...`으로 다시 추가할 필요가 있음을 알아두자.
+기존 저장소가 있는 경우, `helm repo add...`를 사용하여 저장소를 다시 추가해야 합니다.
 
-
-## 언인스톨
+## 삭제
 
 ### 로컬 헬름을 삭제하고 싶어요. 그 파일들은 모두 어디에 있나요?
 
-`helm` 바이너리에 따라, Helm는 일부 파일들을 다음 위치에 저장한다.
+헬름은 `helm` 바이너리 파일과 함께 일부 파일을 다음 위치에 저장합니다.
 
 - $XDG_CACHE_HOME
 - $XDG_CONFIG_HOME
 - $XDG_DATA_HOME
 
-The following table gives the default folder for each of these, by OS:
+다음 표에서는 OS 별로 각 항목에 대한 기본 폴더를 제공합니다.
 
 | 운영 체제        | 캐시 경로                   | 설정 경로                        | 데이터 경로               |
 |------------------|-----------------------------|----------------------------------|---------------------------|
@@ -464,35 +480,65 @@ The following table gives the default folder for each of these, by OS:
 
 ## 트러블슈팅
 
-### GKE (Google Container Engine)에서 "No SSH tunnels currently open"라고 나와요
+### GKE (구글 컨테이너 엔진)에서 "현재 열려 있는 SSH 터널이 없습니다"라고 나와요
 
 ```
 Error: Error forwarding ports: error upgrading connection: No SSH tunnels currently open. Were the targets able to accept an ssh-key for user "gke-[redacted]"?
 ```
 
-Another variation of the error message is:
-
+오류 메시지의 또 다른 변형판은 다음과 같습니다.
 
 ```
 Unable to connect to the server: x509: certificate signed by unknown authority
 ```
 
-The issue is that your local Kubernetes config file must have the correct
-credentials.
+해당 이슈는 로컬 쿠버네티스 설정 파일에 올바른 인증서가 있어야 한다는
+것입니다.
 
-When you create a cluster on GKE, it will give you credentials, including SSL
-certificates and certificate authorities. These need to be stored in a
-Kubernetes config file (Default: `~/.kube/config` so that `kubectl` and `helm`
-can access them.
+GKE에 클러스터를 생성하면 SSL 인증서 및 인증 기관을 포함한
+인증서가 제공됩니다. 이러한 파일은 `kubectl`과 `helm`이
+접근할 수 있도록 쿠버네티스 설정 파일에 저장되어야
+합니다(기본값: `~/.kube/config`).
 
-### 헬름 2에서 전환 후, `helm list`에는 릴리스들이 일부만 보여요(또는 안 보여요).
+### 헬름 2에서 마이그레이션한 후, `helm list`에는 릴리스들이 일부만 보여요(또는 안 보여요).
 
-헬름 3는 이제 클러스터 네임스페이스를 사용하여 릴리스들을 구획한다는 사실을 깜빡했을지 모르겠다.
-따라서, 릴리스를 참조하는 모든 명령어에 대해:
+헬름 3는 이제 클러스터 네임스페이스를 사용하여 릴리스들을 구획한다는 사실을 깜빡하신 것 같습니다.
+릴리스를 참조하는 모든 명령어는 다음 중 하나로 수행해야 합니다.
 
-* 활성 쿠버네티스 컨텍스트(`kubectl config view --minify` 명령어로 확인)에서의 현재 네임스페이스를 그대로 따르거나
-* `--namespace`/`-n` 플래그를 사용하여 올바른 네임스페이스를 지정해야 한다.
-* 한편 `helm list` 명령어에 대해서는 `--all-namespaces`/`-A` 플래그를 지정할 수 한다.
+* 활성 쿠버네티스 컨텍스트의 현재 네임스페이스에 의존합니다(`kubectl config view --minify` 명령어로 확인).
+* `--namespace`/`-n` 플래그를 사용하여 올바른 네임스페이스를 지정합니다.
+* `helm list` 명령어에 대해서는 `--all-namespaces`/`-A` 플래그를 지정합니다.
 
-이는 `helm ls`, `helm uninstall`, 그리고 릴리스를 참조하는 나머지 모든 `helm` 명령어에 적용된다.
+이는 릴리스를 참조하는 `helm list`, `helm uninstall` 및 기타 모든 `helm` 명령어에 적용됩니다.
 
+### 맥OS에서는 `/etc/.mdns_debug` 파일에 접근합니다. 왜 그런가요?
+
+맥OS에서는 헬름이 `/etc/.mdns_debug`라는 파일에 접근하려고
+하는 것으로 알려져 있습니다. 파일이 있는 경우, 헬름은 파일이 실행되는 동안
+파일 핸들을 열어 둡니다.
+
+이 문제는 맥OS의 MDNS 라이브러리로 인해 발생합니다.
+디버깅 설정을 읽기 위해 MDNS 라이브러리를 로드하려고 시도합니다(활성화된 경우).
+파일 핸들을 열지 말아야 하며, 이 문제는 애플(Apple)에도 보고되었습니다.
+다만, 이러한 동작을 일으키는 것은 헬름이 아닌 맥OS입니다.
+
+헬름이 이 파일을 로드하지 않도록 하려면 호스트 네트워크 스택을 사용하지 않는
+정적 라이브러리로서 헬름을 컴파일하면 됩니다. 이렇게 하면 헬름의 바이너리 크기가
+커지기는 하지만, 그 파일이 열리는 것은 막을 수 있습니다.
+
+이 문제는 원래 잠재적인 보안 문제로 분류되기도 했습니다.
+그러나 이후 이 동작으로 인한 결함이나 취약점은 없는 것으로 판명되었습니다.
+
+### helm repo add가 동작한 후 실패합니다.
+
+헬름 3.3.1 및 이전 버전에서 이미 존재하는 저장소(repo)를 추가하려고 하면
+`helm repo add <reponame> <url>` 명령어를 실행해도 출력되는 내용은 없습니다.
+`--no-update` 플래그를 사용하면 저장소가 이미 등록되어 있는 경우 오류를 발생시킵니다.
+
+헬름 3.3.2 이상에서 기존 저장소를 추가하려고 하면 다음 오류가 발생합니다.
+
+이제 기본 동작은 반대가 됩니다. `--no-update`는 이제 무시되며,
+기존 저장소를 교체(덮어쓰기)하려면 `--force-update`를 사용할 수 있습니다.
+
+이는 [헬름 3.3.2 릴리스 노트](https://github.com/helm/helm/releases/tag/v3.3.2)에서
+설명된대로 보안 픽스에 따라 단절적 변경(breaking change)이 있었기 때문입니다.
