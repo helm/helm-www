@@ -547,3 +547,19 @@ binary size of Helm, but will prevent the file from being open.
 
 This issue was originally flagged as a potential security problem. But it has since
 been determined that there is no flaw or vulnerability caused by this behavior.
+
+### helm repo add fails when it used to work
+
+In helm 3.3.1 and before, the command `helm repo add <reponame> <url>` will give
+no output if you attempt to add a repo which already exists. The flag
+`--no-update` would raise an error if the repo was already registered.
+
+In helm 3.3.2 and beyond, an attempt to add an existing repo will error:
+
+`Error: repository name (reponame) already exists, please specify a different name`
+
+The default behavior is now reversed. `--no-update` is now ignored, while if you
+want to replace (overwrite) an existing repo, you can use `--force-update`.
+
+This is due to a breaking change for a security fix as explained in the [Helm
+3.3.2 release notes](https://github.com/helm/helm/releases/tag/v3.3.2).
