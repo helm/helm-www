@@ -26,16 +26,14 @@ description: "SQL 스토리지 백엔드를 사용할 때 권한을 설정하는
 
 사용자 데이터베이스에 대한 마이그레이션이 실행 된 후, 다른 모든 역할은 
 클라이언트를 사용할 수 있다.
-After the migration was run against your database, all the other roles can use
-the client.
 
 ## PostgreSQL 에서 관리자가 아닌 사용자에게 권한 부여
 
 권한을 관리하기 위해 SQL 백엔드 드라이버는 PostgreSQL의 
 [RLS](https://www.postgresql.org/docs/9.5/ddl-rowsecurity.html) (행 보안 
-수준) 기능을 활용한다. RLS를 사용하면 모든 사용자가 명시적으로 
-허용되지 않은 경우 동일한 행을 조작할 수 없고, 
-동일한 테이블에서 읽고 쓸 수 있다. 기본적으로 올바른 
+수준) 기능을 활용한다. RLS는 모든 사용자가 명시적으로 
+허용되지 않는 경우 동일한 행을 조작하지 않고도 동일한 
+테이블에서 읽거나 쓸 수 있도록 허용한다. 기본적으로 올바른 
 권한이 명시적으로 부여되지 않은 모든 역할은 `helm list` 를 
 실행할 때 항상 빈 목록을 반환하며 클러스터의 리소스를 
 검색하거나 수정할 수 없다.
