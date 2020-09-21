@@ -1,5 +1,5 @@
 ---
-title: "Frequently Asked Questions"
+title: "よくある質問"
 weight: 8
 aliases: [
   "/docs/topics/faq/",
@@ -7,20 +7,18 @@ aliases: [
 ]
 ---
 
-# Frequently Asked Questions
+# よくある質問
 
-> What are the key differences between Helm 2 and Helm 3?  
-> This page provides help with the most common questions.
+> Helm 2 と Helm 3 の主な違いはなんですか？
+> このページでは、最もよくある質問に答えることで、理解の助けとなる事柄を説明します。
 
-**We'd love your help** making this document better. To add, correct, or remove
-information, [file an issue](https://github.com/helm/helm-www/issues) or send us
-a pull request.
+このドキュメントを改善する**あなたの助けを歓迎します**。情報の追加、訂正、削除などを行うには、[issue を作る](https://github.com/helm/helm-www/issues)か、pull request を送ってください。
 
-## Changes since Helm 2
+## Helm 2 からの変更点
 
-Here's an exhaustive list of all the major changes introduced in Helm 3.
+以下に、Helm 3 で導入されたすべての主要な変更の包括的なリストを示します。
 
-### Removal of Tiller
+### Tiller の削除
 
 During the Helm 2 development cycle, we introduced Tiller. Tiller played an
 important role for teams working on a shared cluster - it made it possible for
@@ -54,7 +52,7 @@ Cluster administrators can restrict user permissions at whatever granularity
 they see fit. Releases are still recorded in-cluster, and the rest of Helm’s
 functionality remains.
 
-### Improved Upgrade Strategy: 3-way Strategic Merge Patches
+### アップグレード戦略の改善: 3方向戦略的マージパッチ (3-way Strategic Merge Patches)
 
 Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the
 most recent chart's manifest against the proposed chart's manifest (the one
@@ -69,11 +67,11 @@ in the chart's state, the live state was left unchanged.
 In Helm 3, we now use a three-way strategic merge patch. Helm considers the old
 manifest, its live state, and the new manifest when generating a patch.
 
-#### Examples
+#### 例
 
 Let's go through a few common examples what this change impacts.
 
-##### Rolling back where live state has changed
+##### 実際の状態が変更した時点へのロールバック
 
 Your team just deployed their application to production on Kubernetes using
 Helm. The chart contains a Deployment object where the number of replicas is set
@@ -112,7 +110,7 @@ the new manifest. Helm recognizes that the old state was at three, the live
 state is at zero and the new manifest wishes to change it back to three, so it
 generates a patch to change the state back to three.
 
-##### Upgrades where live state has changed
+##### 実際の状態が変更した時点へのアップグレード
 
 Many service meshes and other controller-based applications inject data into
 Kubernetes objects. This can be something like a sidecar, labels, or other
@@ -173,7 +171,7 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-### Release Names are now scoped to the Namespace
+### リリース名が名前空間でスコープされるようになった
 
 With the removal of Tiller, the information about each release had to go
 somewhere. In Helm 2, this was stored in the same namespace as Tiller. In
@@ -193,7 +191,7 @@ shown when you run `kubectl config view --minify`). It also means you must
 supply the `--all-namespaces` flag to `helm list` to get behaviour similar to
 Helm 2.
 
-### Secrets as the default storage driver
+### Secret がデフォルトのストレージドライバーになった
 
 In Helm 3, Secrets are now used as the [default storage
 driver](/docs/topics/advanced/#storage-backends). Helm 2 used ConfigMaps by
@@ -212,7 +210,7 @@ Kubernetes 1.13. This allows users to encrypt Helm release metadata at rest, and
 so it is a good starting point that can be expanded later into using something
 like Vault.
 
-### Go import path changes
+### Go の import path の変更
 
 In Helm 3, Helm switched the Go import path over from `k8s.io/helm` to
 `helm.sh/helm/v3`. If you intend to upgrade to the Helm 3 Go client libraries,
@@ -220,12 +218,11 @@ make sure to change your import paths.
 
 ### Capabilities
 
-The `.Capabilities` built-in object available during the rendering stage has
-been simplified.
+レンダリングステージで利用可能な `.Capabilities` 組み込みオブジェクトが簡略された。
 
-[Built-in Objects](/docs/chart_template_guide/builtin_objects/)
+[ビルトインオブジェクト](/docs/chart_template_guide/builtin_objects/)
 
-### Validating Chart Values with JSONSchema
+### チャートの Values の JSONSchema による検証
 
 A JSON Schema can now be imposed upon chart values. This ensures that values
 provided by the user follow the schema laid out by the chart maintainer,
@@ -239,10 +236,9 @@ Validation occurs when any of the following commands are invoked:
 * `helm template`
 * `helm lint`
 
-See the documentation on [Schema files](/docs/topics/charts#schema-files) for
-more information.
+詳しい情報は、ドキュメントの [Schema files](/docs/topics/charts#schema-files) をご覧ください。
 
-### Consolidation of `requirements.yaml` into `Chart.yaml`
+### `requirements.yaml` の `Chart.yaml` への統合
 
 The Chart dependency management system moved from requirements.yaml and
 requirements.lock to Chart.yaml and Chart.lock. We recommend that new charts
@@ -278,19 +274,15 @@ Charts are still downloaded and placed in the `charts/` directory, so subcharts
 vendored into the `charts/` directory will continue to work without
 modification.
 
-### Name (or --generate-name) is now required on install
+### Name (または --generate-name) がインストール時に必須となった
 
-In Helm 2, if no name was provided, an auto-generated name would be given. In
-production, this proved to be more of a nuisance than a helpful feature. In Helm
-3, Helm will throw an error if no name is provided with `helm install`.
+Helm 2 では、名前が与えられなかった場合に、自動生成された名前が設定されるようになっていました。本番環境では、この機能は役に立つ場合よりも迷惑になる場合のほうが多いことがわかりました。そのため、Helm 3 では、`helm install` に名前が与えられなかった場合には Helm がエラーを返します。
 
-For those who still wish to have a name auto-generated for you, you can use the
-`--generate-name` flag to create one for you.
+まだ名前の自動生成が必要なユーザーは、`--generate-name` フラグを使用すると名前を自動生成できます。
 
-### Pushing Charts to OCI Registries
+### チャートを OCI レジストリに push する
 
-This is an experimental feature introduced in Helm 3. To use, set the
-environment variable `HELM_EXPERIMENTAL_OCI=1`.
+これは Helm 3 で導入された実験的な機能です。使用するには、環境変数 `HELM_EXPERIMENTAL_OCI=1` を設定してください。
 
 At a high level, a Chart Repository is a location where Charts can be stored and
 shared. The Helm client packs and ships Helm Charts to a Chart Repository.
@@ -325,7 +317,7 @@ information on how to package a chart and push it to a Docker registry.
 
 For more info, please see [this page](/docs/topics/registries/).
 
-### Removal of `helm serve`
+### `helm serve` の廃止
 
 `helm serve` ran a local Chart Repository on your machine for development
 purposes. However, it didn't receive much uptake as a development tool and had
@@ -338,7 +330,7 @@ storage option in
 and the [servecm plugin](https://github.com/jdolitsky/helm-servecm).
 
 
-### Library chart support
+### ライブラリチャートのサポート
 
 Helm 3 supports a class of chart called a “library chart”. This is a chart that
 is shared by other charts, but does not create any release artifacts of its own.
@@ -361,7 +353,7 @@ We’re very excited to see the use cases this feature opens up for chart
 developers, as well as any best practices that arise from consuming library
 charts.
 
-### Chart.yaml apiVersion bump
+### Chart.yaml apiVersion のバージョンアップ
 
 With the introduction of library chart support and the consolidation of
 requirements.yaml into Chart.yaml, clients that understood Helm 2's package
@@ -374,12 +366,9 @@ apiVersion was bumped there as well.
 Clients wishing to support both versions of Helm charts should inspect the
 `apiVersion` field in Chart.yaml to understand how to parse the package format.
 
-### XDG Base Directory Support
+### XDG のベースディレクトリのサポート
 
-[The XDG Base Directory
-Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
-is a portable standard defining where configuration, data, and cached files
-should be stored on the filesystem.
+[XDG ベースディレクトリの仕様](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)は、ファイルシステム上の設定、データ、キャッシュの各ファイルの格納場所を定めたポータブルな標準です。
 
 In Helm 2, Helm stored all this information in `~/.helm` (affectionately known
 as `helm home`), which could be changed by setting the `$HELM_HOME` environment
@@ -406,7 +395,7 @@ to accommodate this change:
 Helm plugins looking to support Helm 3 should consider using these new
 environment variables instead.
 
-### CLI Command Renames
+### CLI コマンドの名前変更
 
 In order to better align the verbiage from other package managers, `helm delete`
 was re-named to `helm uninstall`. `helm delete` is still retained as an alias to
@@ -425,23 +414,23 @@ conventions:
 These commands have also retained their older verbs as aliases, so you can
 continue to use them in either form.
 
-### Automatically creating namespaces
+### 名前空間の自動生成
 
 When creating a release in a namespace that does not exist, Helm 2 created the
 namespace.  Helm 3 follows the behavior of other Kubernetes tooling and returns
 an error if the namespace does not exist.  Helm 3 will create the namespace if
 you explicitly specify `--create-namespace` flag.
 
-### What happened to .Chart.ApiVersion?
+### .Chart.ApiVersion に何が起こりましたか？
 
 Helm follows the typical convention for CamelCasing which is to capitalize an
 acronym. We have done this elsewhere in the code, such as with
 `.Capabilities.APIVersions.Has`. In Helm v3, we corrected `.Chart.ApiVersion`
 to follow this pattern, renaming it to `.Chart.APIVersion`.
 
-## Installing
+## インストール
 
-### Why aren't there native packages of Helm for Fedora and other Linux distros?
+### Fedora などの Linux ディストリビューション向けの Helm のネイティブパッケージが存在しないのはなぜですか？
 
 The Helm project does not maintain packages for operating systems and
 environments. The Helm community may provide native packages and if the Helm
@@ -449,7 +438,7 @@ project is made aware of them they will be listed. This is how the Homebrew
 formula was started and listed. If you're interested in maintaining a package,
 we'd love it.
 
-### Why do you provide a `curl ...|bash` script?
+### なぜ `curl ...|bash` で実行するスクリプトを提供しているのですか？
 
 There is a script in our repository (`scripts/get-helm-3`) that can be executed
 as a `curl ..|bash` script. The transfers are all protected by HTTPS, and the
@@ -460,7 +449,7 @@ We provide it because it is useful, but we suggest that users carefully read the
 script first. What we'd really like, though, are better packaged releases of
 Helm.
 
-### How do I put the Helm client files somewhere other than their defaults?
+### Helm クライアントのファイルをデフォルト以外の場所に配置するにはどうすればいいですか？
 
 Helm uses the XDG structure for storing files. There are environment variables
 you can use to override these locations:
@@ -473,10 +462,9 @@ you can use to override these locations:
 Note that if you have existing repositories, you will need to re-add them with
 `helm repo add...`.
 
+## アンインストール
 
-## Uninstalling
-
-### I want to delete my local Helm. Where are all its files?
+### ローカルの Helm を削除したいです。Helm の全ファイルはどこにありますか？ 
 
 Along with the `helm` binary, Helm stores some files in the following locations:
 
@@ -492,16 +480,15 @@ The following table gives the default folder for each of these, by OS:
 | macOS            | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm `     |
 | Windows          | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
 
-## Troubleshooting
+## トラブルシューティング
 
-### On GKE (Google Container Engine) I get "No SSH tunnels currently open"
+### GKE (Google Container Engine) 上で "No SSH tunnels currently open" というメッセージが表示されました
 
 ```
 Error: Error forwarding ports: error upgrading connection: No SSH tunnels currently open. Were the targets able to accept an ssh-key for user "gke-[redacted]"?
 ```
 
-Another variation of the error message is:
-
+エラーメッセージの変種には次のようなものもあります。
 
 ```
 Unable to connect to the server: x509: certificate signed by unknown authority
@@ -515,7 +502,7 @@ certificates and certificate authorities. These need to be stored in a
 Kubernetes config file (Default: `~/.kube/config` so that `kubectl` and `helm`
 can access them.
 
-### After migration from Helm 2, `helm list` shows only some (or none) of my releases
+### Helm 2 からのマイグレーション後、`helm list` リリースの一部 (または全部) が表示されません
 
 It is likely that you have missed the fact that Helm 3 now uses cluster
 namespaces throughout to scope releases. This means that for all commands
@@ -529,8 +516,7 @@ referencing a release you must either:
 This applies to `helm ls`, `helm uninstall`, and all other `helm` commands
 referencing a release.
 
-
-### On macOS, the file `/etc/.mdns_debug` is accessed. Why?
+### macOS 上で `/etc/.mdns_debug` というファイルへのアクセスがあります。なぜですか？
 
 We are aware of a case on macOS where Helm will try to access a file named
 `/etc/.mdns_debug`. If the file exists, Helm holds the file handle open while it
@@ -548,7 +534,7 @@ binary size of Helm, but will prevent the file from being open.
 This issue was originally flagged as a potential security problem. But it has since
 been determined that there is no flaw or vulnerability caused by this behavior.
 
-### helm repo add fails when it used to work
+### 以前は動作していた helm repo add が失敗する
 
 In helm 3.3.1 and before, the command `helm repo add <reponame> <url>` will give
 no output if you attempt to add a repo which already exists. The flag
