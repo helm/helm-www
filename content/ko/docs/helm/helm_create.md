@@ -16,7 +16,7 @@ title: "Helm Create"
 구조를 생성한다:
 
     foo/
-    ├── .helmignore   # 차트를 패키징 할 때 무시할 패턴을 포함
+    ├── .helmignore   # 헬름 차트를 패키징할 때 무시할 패턴 포함
     ├── Chart.yaml    # 차트에 대한 정보
     ├── values.yaml   # 템플릿의 기본값
     ├── charts/       # 이 차트가 의존하는 차트
