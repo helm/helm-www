@@ -1,10 +1,6 @@
 ---
 title: "よくある質問"
 weight: 8
-aliases: [
-  "/docs/topics/faq/",
-  "/docs/faq/"
-]
 ---
 
 # よくある質問
