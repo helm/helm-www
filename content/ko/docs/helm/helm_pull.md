@@ -32,7 +32,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 ```
       --ca-file string       이 CA 번들을 사용하여 HTTPS 사용 서버의 인증서를 확인
       --cert-file string     이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
-  -d, --destination string   차트를 작성할 위치. 이 옵션과 'tardir' 가 지정되면 'tardir' 이 여기에 추가된다.
+  -d, --destination string   차트를 작성할 위치. 이 옵션과 'tardir' 가 지정되면 'tardir' 이 여기에 추가된다. (기본값 ".")
       --devel                개발용 버전으로도 사용가능. 버전 '>0.0.0-0' 과 동일하다. 만약 --version 플래그가 설정되면, 이 옵션은 무시된다.
   -h, --help                 pull 에 대한 도움말
       --key-file string      이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
