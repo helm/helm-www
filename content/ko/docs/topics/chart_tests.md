@@ -1,7 +1,7 @@
 ---
 title: "차트 테스트"
 description: "차트를 실행하고 테스트 하는 방법을 설명한다."
-
+aliases: ["/docs/chart_tests/"]
 weight: 3
 ---
 
