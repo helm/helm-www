@@ -1,8 +1,8 @@
 ---
-title: "헬름 완성"
+title: "Helm Completion"
 ---
 
-## 헬름 완성
+## Helm Completion
 
 지정된 쉘에 대한 자동 완성 스크립트 생성
 
