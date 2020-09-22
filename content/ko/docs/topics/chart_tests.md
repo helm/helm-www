@@ -15,6 +15,11 @@ weight: 3
 판정되려면 컨테이너가 성공적으로 종료되어야 한다(exit 0). 작업 정의에는
 헬름 테스트 훅 어노테이션(`helm.sh/hook: test`)이 반드시 포함되어야 한다.
 
+Note that until Helm v3, the job definition needed to contain one of these helm
+test hook annotations: `helm.sh/hook: test-success` or `helm.sh/hook: test-failure`.
+`helm.sh/hook: test-success` is still accepted as a backwards-compatible
+alternative to `helm.sh/hook: test`.
+
 예제 테스트:
 
 - values.yaml 파일의 구성이 제대로 삽입되었는지
