@@ -45,7 +45,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --untardir string      'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉토리의 이름을 지정 (기본값 ".")
       --username string      요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
       --verify               사용하기 전에 패키지 확인
-      --version string       설치할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 설치
+      --version string       사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 사용
 ```
 
 ### 부모 명령어에서 상속된 옵션들
