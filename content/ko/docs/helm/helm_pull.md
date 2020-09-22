@@ -52,7 +52,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 
 ```
       --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
-      --alsologtostderr                  표준 오류를 로그 및 파일로 표시
+      --alsologtostderr                  로그를 표준 오류 및 파일로 표시
       --debug                            장황한(verbose) 출력 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
       --kube-context string              사용할 kubeconfig 컨텍스트 이름
