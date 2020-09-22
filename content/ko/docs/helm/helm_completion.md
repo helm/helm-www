@@ -11,7 +11,7 @@ title: "Helm Completion"
 
 지정된 쉘에 대한 자동 완성 스크립트를 생성한다.
 
-### 
+### 옵션
 
 ```
   -h, --help   completion 에 대한 도움말
