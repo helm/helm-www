@@ -2,7 +2,7 @@
 title: "Helm Completion"
 ---
 
-## helm completion
+## Helm Completion
 
 지정된 쉘에 대한 자동 완성 스크립트 생성
 
@@ -11,7 +11,7 @@ title: "Helm Completion"
 
 지정된 쉘에 대한 자동 완성 스크립트를 생성한다.
 
-### Options
+### 옵션
 
 ```
   -h, --help   completion 에 대한 도움말
@@ -34,7 +34,7 @@ title: "Helm Completion"
       --logtostderr                      로그를 파일이 아닌 표준 출력으로 표시 (기본값 : true)
   -n, --namespace string                 요청에 대한 네임스페이스 지정
       --registry-config string           레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
-      --repository-cache string          캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/snap/code/common/.cache/helm/repository")
+      --repository-cache string          캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/.cache/helm/repository")
       --repository-config string         저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
       --skip-headers                     이 값이 true이면, 로그파일에서 헤더 접두사를 미사용
       --skip-log-headers                 이 값이 true이면, 로그 파일을 열 때 헤더 제외
