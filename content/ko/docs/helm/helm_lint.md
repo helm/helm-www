@@ -30,7 +30,7 @@ helm lint PATH [flags]
       --set-string stringArray   명령 줄에서 STRING 값 설정 (쉼표로 여러 값 또는 개별 값을 지정 가능: 키1=값1,키2=값2)
       --strict                   검사에서 경고(warn) 레벨이 발생할 경우에도 실패로 지정
   -f, --values strings           YAML 파일 또는 URL 에 값 지정 (복수 지정 가능)
-      --with-subcharts           하위 차트의 종속성을 고려하여 검사
+      --with-subcharts           하위 차트 의존성 검토
 ```
 
 ### 부모 명령어에서 상속된 옵션들
