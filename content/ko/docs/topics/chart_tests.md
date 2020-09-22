@@ -1,7 +1,7 @@
 ---
 title: "차트 테스트"
 description: "차트를 실행하고 테스트 하는 방법을 설명한다."
-aliases: ["/docs/chart_tests/"]
+
 weight: 3
 ---
 
@@ -15,10 +15,10 @@ weight: 3
 판정되려면 컨테이너가 성공적으로 종료되어야 한다(exit 0). 작업 정의에는
 헬름 테스트 훅 어노테이션(`helm.sh/hook: test`)이 반드시 포함되어야 한다.
 
-Note that until Helm v3, the job definition needed to contain one of these helm
-test hook annotations: `helm.sh/hook: test-success` or `helm.sh/hook: test-failure`.
-`helm.sh/hook: test-success` is still accepted as a backwards-compatible
-alternative to `helm.sh/hook: test`.
+헬름 v3 까지는, 작업 정의에 `helm.sh/hook: test-success` 또는 `helm.sh/hook: test-failure` 와
+같은 헬름 테스트 훅 주석 중 하나가 포함되어야 했다.
+`helm.sh/hook: test-success` 는 여전히 `helm.sh/hook: test` 의 이전 버전과
+호환되는 대안으로 허용된다.
 
 예제 테스트:
 
