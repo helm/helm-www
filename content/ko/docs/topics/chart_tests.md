@@ -55,7 +55,7 @@ wordpress/
 ```
 
 `wordpress/templates/tests/test-mariadb-connection.yaml` 에서,
-사용자가 시도할 수 있는 테스트를 확인한다.
+해 볼 수 있는 테스트를 확인할 수 있다.
 
 ```yaml
 {{- if .Values.mariadb.enabled }}
