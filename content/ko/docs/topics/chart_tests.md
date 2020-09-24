@@ -133,8 +133,8 @@ Phase:          Succeeded
 
 ## 참고
 
-- 단일 yaml 파일에 원하는 만큼 테스트를 정의하거나 `template/` 디렉토리의 여러 
-  yaml 파일에 분산할 수도 있다.
+- 테스트를 정의할 때는 단일 yaml 파일에 하거나 또는 `template/` 디렉토리의 여러 
+  yaml 파일에 분산하여 할 수도 있다.
 - 더 많은 격리조건을 위해 `<chart-name>/templates/tests/` 와 같은 `tests/` 디렉토리 아래에
   테스트 스위트를 중첩할 수도 있다.
 - 테스트는 [Helm hook](/docs/charts_hooks/) 명령이므로, 
