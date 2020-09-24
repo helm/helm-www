@@ -36,7 +36,7 @@ helm lint PATH [flags]
 ### 부모 명령어에서 상속된 옵션들
 
 ```
-      --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
+      --add-dir-header                   true이면, 헤더에 파일 디렉토리를 추가
       --alsologtostderr                  로그를 표준 오류 및 파일로 표시
       --debug                            장황한(verbose) 출력 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
