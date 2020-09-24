@@ -97,7 +97,7 @@ There are three potential sources of values:
 - 차트의 `values.yaml` 파일
 - `helm install -f` 또는 `helm upgrade -f` 에서 제공하는 값 파일
 - `helm install` 또는 `helm upgrade` 의 `--set` 또는 `--set-string` 플래그에 
-  전닫된 값
+  전달된 값
 
 값의 구조를 디자인 할 때 차트 사용자는 `-f` 플래그 또는 `--set` 
 옵션을 통해 값을 재정의 
