@@ -22,7 +22,7 @@ chickenNoodleSoup: true
 올바르지 못한 경우:
 
 ```yaml
-Chicken: true  # 첫 글자가 대문자인 경우는 기본제공 변수가 충돌 가능
+Chicken: true  # 첫 글자가 대문자인 경우는 빌트인 변수가 충돌 가능
 chicken-noodle-soup: true # 변수명에는 하이픈(-) 미사용
 ```
 
