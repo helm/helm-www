@@ -35,8 +35,8 @@ $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googl
 
 ## 로컬 및 원격 차트 리포지토리 동기화
 `scripts/sync-repo.sh` 명령어에 로컬 디렉토리명과 
-
-GCS 버킷명을 전달하여 디렉토리 컨텐츠를 GCS 버킷에 업로드한다.
+GCS 버킷명을 전달하여 디렉토리 컨텐츠를 GCS 버킷에
+업로드한다.
 
 예제:
 ```console
