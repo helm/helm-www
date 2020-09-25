@@ -18,7 +18,7 @@ version.BuildInfo{Version:"v2.0.0", GitCommit:"ff52399e51bb880526e9cd0ed8386f643
 
 - 버전은 릴리스의 유의적(semantic) 버전이다.
 - GitCommit 은 이 버전이 빌드된 커밋의 SHA 값이다.
-- 이 바이너리가 있을 때 로컬 코드 변경이 없으면 GitTreeState 는 "깨끗한(clean)" 상태이며, 
+- 이 바이너리가 빌드될 때 로컬 코드 변경이 없었으면 GitTreeState 는 "깨끗한(clean)" 상태이며,
   바이너리가 로컬 수정된 코드로 빌드 된 경우, "오염된(dirty)" 상태이다.
 
 --template 플래그를 사용하면 템플릿에서 다음 속성을 
