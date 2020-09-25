@@ -51,6 +51,10 @@ primary = true
 version = "v2.16.12"
 url = "https://v2.helm.sh/docs"
 
+[params.nextversion]
+version = "v3.5.0"
+date = "January 13th, 2021"
+
 [[params.quicklinks]]
 title = "Quickstart Guide"
 description = "How to install and get started with Helm including instructions for distros, FAQs, and plugins."

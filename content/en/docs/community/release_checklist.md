@@ -16,12 +16,17 @@ is the minor version number and Z is the patch release number. This project
 strictly follows [semantic versioning](https://semver.org/) so following this
 step is critical.
 
+Helm announces in advance the date of its next minor release. Every effort
+should be made to respect the announced date.  Furthermore, when starting
+the release process, the date for the next release should have been selected
+as it will be used in the release process.
+
 These directions will cover initial configuration followed by the release
 process for three different kinds of releases:
 
 * Major Releases - released less frequently - have breaking changes
-* Minor Releases - released regularly - no breaking changes
-* Patch Releases - released as needed - do not require all steps in this guide
+* Minor Releases - released every 3 to 4 months - no breaking changes
+* Patch Releases - released monthly - do not require all steps in this guide
 
 [Initial Configuration](#initial-configuration)
 
@@ -340,6 +345,8 @@ If you're releasing a major/minor release, listing notable user-facing features
 is usually sufficient. For patch releases, do the same, but make note of the
 symptoms and who is affected.
 
+The release notes should include the version and planned date of the next release.
+
 An example release note for a minor release would look like this:
 
 ```markdown
@@ -377,8 +384,8 @@ The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will g
 
 ## What's Next
 
-- vX.Y.Z+1 will contain only bug fixes.
-- vX.Y+1.Z is the next feature release. This release will focus on ...
+- vX.Y.Z+1 will contain only bug fixes and is planned for <insert DATE>.
+- vX.Y+1.0 is the next feature release and is planned for <insert DATE>. This release will focus on ...
 
 ## Changelog
 
@@ -450,11 +457,14 @@ release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 
 The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
 for the docs. Major, minor, and patch versions need to be updated on the site.
+The date for the next minor release is also published on the site and must be
+updated.
 To do that create a pull request against the [helm-www
 repository](https://github.com/helm/helm-www). In the `config.toml` file find
 the proper `params.versions` section and update the Helm version, like in this
 example of [updating the current
-version](https://github.com/helm/helm-www/pull/676/files).
+version](https://github.com/helm/helm-www/pull/676/files).  In the same
+`config.toml` file, update the `params.nextversion` section.
 
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
