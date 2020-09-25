@@ -14,7 +14,7 @@ title: "Helm Version"
 이 명령어는 헬름 버전의 표현을 출력한다.
 결과는 다음과 같다.
 
-version.BuildInfo{Version:"v2.0.0", GitCommit:"ff52399e51bb880526e9cd0ed8386f6433b74da1", GitTreeState:"clean"}
+version.BuildInfo{Version:"v3.2.1", GitCommit:"fe51cd1e31e6a202cba7dead9552a6d418ded79a", GitTreeState:"clean", GoVersion:"go1.13.10"}
 
 - 버전은 릴리스의 유의적(semantic) 버전이다.
 - GitCommit 은 이 버전이 빌드된 커밋의 SHA 값이다.
