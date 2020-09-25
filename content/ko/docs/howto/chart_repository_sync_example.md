@@ -4,9 +4,8 @@ description: "로컬 및 원격 차트 리포지토리를 동기화하는 방법
 weight: 2
 ---
 
-*참고: 이곳의 예제들은 차트 리포지토리를 제공하는*
-
-*Google Cloud Storage (GCS) 버킷에 맞게 작성되었다.*
+*참고: 이곳의 예제들은 차트 리포지토리를 제공하는
+Google Cloud Storage (GCS) 버킷에 맞게 작성되었다.*
 
 ## 전제 조건
 * [gsutil](https://cloud.google.com/storage/docs/gsutil) 툴을 설치해야 한다. *gsutill rsync 기능이 필요하다.*
