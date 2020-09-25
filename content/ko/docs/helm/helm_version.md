@@ -11,7 +11,7 @@ title: "Helm Version"
 
 헬름의 버전을 표시한다.
 
-이 명령어는 헬름 버전의 표현을 출력한다.
+이 명령어는 헬름 버전을 특정 형식으로 출력한다.
 결과는 다음과 같다.
 
 version.BuildInfo{Version:"v3.2.1", GitCommit:"fe51cd1e31e6a202cba7dead9552a6d418ded79a", GitTreeState:"clean", GoVersion:"go1.13.10"}
