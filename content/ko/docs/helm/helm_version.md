@@ -20,7 +20,7 @@ version.BuildInfo{Version:"v3.2.1", GitCommit:"fe51cd1e31e6a202cba7dead9552a6d41
 - GitCommit 은 이 버전이 빌드된 커밋의 SHA 값이다.
 - 이 바이너리가 빌드될 때 로컬 코드 변경이 없었으면 GitTreeState 는 "깨끗한(clean)" 상태이며,
   바이너리가 로컬 수정된 코드로 빌드 된 경우, "오염된(dirty)" 상태이다.
-
+- GoVersion 은 헬름을 컴파일할 때 사용된 Go 버전이다.
 --template 플래그를 사용하면 템플릿에서 다음 속성을 
 사용할 수 있다:
 
