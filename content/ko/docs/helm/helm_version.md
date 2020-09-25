@@ -16,7 +16,7 @@ title: "Helm Version"
 
 version.BuildInfo{Version:"v3.2.1", GitCommit:"fe51cd1e31e6a202cba7dead9552a6d418ded79a", GitTreeState:"clean", GoVersion:"go1.13.10"}
 
-- 버전은 릴리스의 유의적(semantic) 버전이다.
+- Version 은 릴리스의 유의적(semantic) 버전이다.
 - GitCommit 은 이 버전이 빌드된 커밋의 SHA 값이다.
 - 이 바이너리가 빌드될 때 로컬 코드 변경이 없었으면 GitTreeState 는 "깨끗한(clean)" 상태이며,
   바이너리가 로컬 수정된 코드로 빌드 된 경우, "오염된(dirty)" 상태이다.
