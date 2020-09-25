@@ -4,7 +4,7 @@ title: "Helm Version"
 
 ## helm version
 
-클라이언트 버전의 정보를 표시한다.
+클라이언트 버전 정보를 출력한다.
 
 ### 개요
 
