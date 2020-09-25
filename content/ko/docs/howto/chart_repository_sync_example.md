@@ -61,7 +61,6 @@ Congratulations your remote chart repository now matches the contents of fantast
 ```
 ## 차트 리포지토리 업데이트
 차트 리포지토리 컨텐츠의 로컬 복사본을 보관하거나 `gsutil rsync` 를 사용하여
-
 원격 차트 리파지토리 컨텐츠를 로컬 디렉토리에 복사할 수 있다.
 
 예제:
