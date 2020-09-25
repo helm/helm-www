@@ -16,7 +16,7 @@ weight: 3
 헬름 테스트 훅 어노테이션(`helm.sh/hook: test`)이 반드시 포함되어야 한다.
 
 헬름 v3 까지는, 작업 정의에 `helm.sh/hook: test-success` 또는 `helm.sh/hook: test-failure` 와
-같은 헬름 테스트 훅 주석 중 하나가 포함되어야 했다.
+같은 헬름 테스트 훅 어노테이션 중 하나가 포함되어야 했다.
 `helm.sh/hook: test-success` 는 여전히 `helm.sh/hook: test` 과
 하위 호환되는 대안으로 허용된다.
 
