@@ -4,6 +4,7 @@ Helm
 
 {{ define "main" }}
 {{ $home := site.BaseURL }}
+{{ $nextversion := site.Params.nextversion }}
 
 <div id="helm" class="page-wrapper page-home">
   <header>
@@ -152,6 +153,12 @@ Helm
     <div class="columns is-desktop community-boxes">
 
       <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_next_release" }}</h1>
+          <dt>{{ T "community_next_release_version" | markdownify }} {{ $nextversion.version }}</dt>
+          <dt>{{ T "community_next_release_date" | markdownify }} {{ $nextversion.date }}</dt>
+        </section>
+
         <section class="box">
           <h1 class="title">{{ T "community_events_title" }}</h1>
           <dl>

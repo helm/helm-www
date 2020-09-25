@@ -114,6 +114,15 @@ other = "Join the Community"
 [community_desc]
 other = "More information about the Helm project, and how to contribute."
 
+[community_next_release]
+other = "Next Feature Release"
+
+[community_next_release_version]
+other = "__Version:__ "
+
+[community_next_release_date]
+other = "__Date:__ "
+
 [community_events_title]
 other = "Events"
 
