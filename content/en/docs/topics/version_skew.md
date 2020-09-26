@@ -46,6 +46,7 @@ with your cluster.
 
 | Helm Version | Supported Kubernetes Versions |
 |--------------|-------------------------------|
+| 3.4.x        | 1.19.x - 1.16.x               |
 | 3.3.x        | 1.18.x - 1.15.x               |
 | 3.2.x        | 1.18.x - 1.15.x               |
 | 3.1.x        | 1.17.x - 1.14.x               |
