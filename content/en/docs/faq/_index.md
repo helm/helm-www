@@ -512,7 +512,7 @@ credentials.
 
 When you create a cluster on GKE, it will give you credentials, including SSL
 certificates and certificate authorities. These need to be stored in a
-Kubernetes config file (Default: `~/.kube/config` so that `kubectl` and `helm`
+Kubernetes config file (Default: `~/.kube/config`) so that `kubectl` and `helm`
 can access them.
 
 ### After migration from Helm 2, `helm list` shows only some (or none) of my releases
