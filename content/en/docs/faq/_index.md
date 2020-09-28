@@ -563,3 +563,15 @@ want to replace (overwrite) an existing repo, you can use `--force-update`.
 
 This is due to a breaking change for a security fix as explained in the [Helm
 3.3.2 release notes](https://github.com/helm/helm/releases/tag/v3.3.2).
+
+### Enabling Kubernetes client logging
+
+Printing log messages for debugging the Kubernetes client can be enabled using
+the [klog](https://pkg.go.dev/k8s.io/klog) flags. Using the `-v` flag to set
+verbosity level will be enough for most cases.
+
+For example:
+
+```
+helm list -v 6
+```
