@@ -29,8 +29,7 @@ $ mv alpine-0.1.0.tgz fantastic-charts/
 ```console
 $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googleapis.com
 ```
-그러면 업데이트 된 index.yaml 파일이 생성되고 
-
+그러면 업데이트된 index.yaml 파일이 생성되고 
 `fantastic-charts/` 디렉토리에 위치하게 된다.
 
 ## 로컬 및 원격 차트 리포지토리 동기화
