@@ -4,8 +4,9 @@ description: "로컬 및 원격 차트 리포지토리를 동기화하는 방법
 weight: 2
 ---
 
-*참고: 이곳의 예제들은 차트 리포지토리를 제공하는
-Google Cloud Storage (GCS) 버킷에 맞게 작성되었다.*
+*참고: 이곳의 예제들은 차트 리포지토리를 제공하는*
+
+*Google Cloud Storage (GCS) 버킷에 맞게 작성되었다.*
 
 ## 전제 조건
 * [gsutil](https://cloud.google.com/storage/docs/gsutil) 툴을 설치해야 한다. *gsutill rsync 기능이 필요하다.*
@@ -22,20 +23,22 @@ $ mkdir fantastic-charts
 $ mv alpine-0.1.0.tgz fantastic-charts/
 ```
 
-## 업데이트된 index.yaml 생성
-`helm repo index` 명령어에 원격 리포지토리의 디렉토리 경로와 URL을 전달하여 
-업데이트된 index.yaml 파일을 생성한다.
+## 업데이트 된 index.yaml 생성
+`helm repo index` 헬름 명령어에 원격 리포지토리의 디렉토리 경로와 URL을 전달하여 
+
+업데이트 된 index.yaml 파일을 생성한다.
 
 ```console
 $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googleapis.com
 ```
-그러면 업데이트된 index.yaml 파일이 생성되고 
+그러면 업데이트 된 index.yaml 파일이 생성되고 
+
 `fantastic-charts/` 디렉토리에 위치하게 된다.
 
 ## 로컬 및 원격 차트 리포지토리 동기화
 `scripts/sync-repo.sh` 명령어에 로컬 디렉토리명과 
-GCS 버킷명을 전달하여 디렉토리 컨텐츠를 GCS 버킷에
-업로드한다.
+
+GCS 버킷명을 전달하여 디렉토리 컨텐츠를 GCS 버킷에 업로드한다.
 
 예제:
 ```console
@@ -60,6 +63,7 @@ Congratulations your remote chart repository now matches the contents of fantast
 ```
 ## 차트 리포지토리 업데이트
 차트 리포지토리 컨텐츠의 로컬 복사본을 보관하거나 `gsutil rsync` 를 사용하여
+
 원격 차트 리파지토리 컨텐츠를 로컬 디렉토리에 복사할 수 있다.
 
 예제:
