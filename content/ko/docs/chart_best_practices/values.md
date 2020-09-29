@@ -19,7 +19,7 @@ chicken: true
 chickenNoodleSoup: true
 ```
 
-올바르지 못한 경우:
+잘못된 경우:
 
 ```yaml
 Chicken: true  # 첫 글자가 대문자인 경우는 빌트인 변수가 충돌 가능
