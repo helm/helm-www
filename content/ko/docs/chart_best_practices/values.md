@@ -141,7 +141,7 @@ foo 의 포트에 접근하는 것이 훨씬 명확하다: `--set servers.foo.po
 문자열은 설명하는 속성의 이름으로 시작하고 최소한 한 문장으로 된
 설명을 제공해야 한다.
 
-올바르지 못한 경우:
+잘못된 경우:
 
 ```yaml
 # the host name for the webserver
