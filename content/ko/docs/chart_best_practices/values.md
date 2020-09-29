@@ -30,7 +30,7 @@ chicken-noodle-soup: true # 변수명에 하이픈(-)을 사용하지 말자
 대문자로 시작한다: `.Release.Name`,
 `.Capabilities.KubeVersion`.
 
-## 평평한(flat) 값, 중첩된(nested) 값
+## 평면화(flat) 값, 중첩된(nested) 값
 
 YAML 은 유연한 형식으로, 값은 깊게 중첩되거나 평면화 될 수 있다.
 
