@@ -22,8 +22,8 @@ chickenNoodleSoup: true
 잘못된 경우:
 
 ```yaml
-Chicken: true  # 첫 글자가 대문자인 경우는 빌트인 변수가 충돌 가능
-chicken-noodle-soup: true # 변수명에는 하이픈(-) 미사용
+Chicken: true  # 첫 글자가 대문자이면 빌트인 변수와 충돌이 발생할 수 있다
+chicken-noodle-soup: true # 변수명에 하이픈(-)을 사용하지 말자
 ```
 
 헬름의 모든 빌트인 변수는 사용자 정의 값과 쉽게 구분할 수 있도록
