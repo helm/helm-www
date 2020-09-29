@@ -155,8 +155,13 @@ Helm
       <div class="column is-one-third-desktop">
         <section class="box">
           <h1 class="title">{{ T "community_next_release" }}</h1>
-          <dt>{{ T "community_next_release_version" | markdownify }} {{ $nextversion.version }}</dt>
-          <dt>{{ T "community_next_release_date" | markdownify }} {{ $nextversion.date }}</dt>
+          <dl>
+            <dt>
+              {{ T "community_next_release_version" | markdownify }} {{ $nextversion.version }}
+              <br>
+              {{ T "community_next_release_date" | markdownify }} {{ $nextversion.date }}
+            </dt>
+          <dl>
         </section>
 
         <section class="box">
