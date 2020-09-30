@@ -4,27 +4,21 @@ description: "템플릿 안에 있는 파일에 접근하는 방법"
 weight: 9
 ---
 
-In the previous section we looked at several ways to create and access named
-templates. This makes it easy to import one template from within another
-template. But sometimes it is desirable to import a _file that is not a
-template_ and inject its contents without sending the contents through the
-template renderer.
+이전 항목에서 지명 템플릿을 작성하고 액세스하는 몇 가지 방법을 살펴보았는데 이런
+방법으로 다른 템플릿에서 필요한 템플릿을 쉽게 가져올 수 있다. 하지만 어떤 경우에는
+_템플릿이 아닌 파일_ 을 가져와서 템플릿 렌더러(renderer)를 통해 파일 컨텐츠를 보내지
+않고 직접 삽입해야 할 경우도 있다.
 
-Helm provides access to files through the `.Files` object. Before we get going
-with the template examples, though, there are a few things to note about how
-this works:
+헬름은 `.Files` 객체를 통해 파일에 액세스할 수 있게 해준다. 템플릿 예제를 확인하기 전에
+어떻게 작동하는지 살펴보자.
 
-- It is okay to add extra files to your Helm chart. These files will be bundled.
-  Be careful, though. Charts must be smaller than 1M because of the storage
-  limitations of Kubernetes objects.
-- Some files cannot be accessed through the `.Files` object, usually for
-  security reasons.
-  - Files in `templates/` cannot be accessed.
-  - Files excluded using `.helmignore` cannot be accessed.
-- Charts do not preserve UNIX mode information, so file-level permissions will
-  have no impact on the availability of a file when it comes to the `.Files`
-  object.
-
+- 헬름 차트에 파일을 추가할 수 있고, 추가된 파일은 하나로 묶여진다.
+  쿠버네티스 객체 저장소 제한으로 인해 차트는 1M 보다 작아한다. 
+- 보안 상의 이유로 어떤 파일은 `.Files` 객체를 통해 액세스할 수 없다.  
+  - `templates/`에 있는 파일은 액세스할 수 없다.
+  - `.helmignore`를 사용하여 제외된 파일은 액세스할 수 없다.
+- 차트는 UNIX 모드 정보를 저장하지 않으므로 `.Files` 객체의 경우
+  파일 수준의 권한은 파일의 사용 여부에 영향을 미치지 않는다.
 <!-- (see https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
