@@ -34,7 +34,7 @@ helm verify PATH [flags]
 
 ```
       --add-dir-header                   이 값이 true이면, 헤더에 파일 디렉토리를 추가
-      --alsologtostderr                  파일처럼 로그를 표준 오류로도 출력
+      --alsologtostderr                  파일 및 표준오류로 로그 출력
       --debug                            장황한(verbose) 출력 활성화
       --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
       --kube-context string              사용할 kubeconfig 컨텍스트 이름
