@@ -48,8 +48,8 @@ weight: 13
    - `crd-install` 훅은 제거되고,
      차트 내 모든 CRD가 정의되어 있고 차트 렌더링 전에 설치되는
      `crds` 디렉토리로 대체됨
-   - `test-failure` 훅 어노테이션 값 제거 및 `test-success`
-     사용 중단.  `test` 를 대체 사용
+   - `test-failure` 훅 어노테이션 값은 제거되고, `test-success`는
+     사용 중단(deprecated).  대신 `test` 를 사용하자
    - 제거/교체/추가 된 명령어:
        - delete --> uninstall : 기본적으로 모든 릴리스 기록을 제거
          (이전의 경우 `--purge` 옵션이 필요)
