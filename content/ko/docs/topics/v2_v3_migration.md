@@ -56,7 +56,7 @@ weight: 13
        - fetch --> pull
        - home (제거됨)
        - init (제거됨)
-       - install: 릴리스 이름이나 `--generate-name` 인수 필요
+       - install: 릴리스 이름 또는 `--generate-name` 인수 필요
        - inspect --> show
        - reset (제거됨)
        - serve (제거됨)
