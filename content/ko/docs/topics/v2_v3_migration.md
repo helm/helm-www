@@ -123,6 +123,6 @@ weight: 13
 ## 참조
 
    - 헬름 v3 [2to3](https://github.com/helm/helm-2to3) 플러그인
-   - 블로그 [게시글](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
-     `2to3` 플러그인 사용법을 예제로 설명
+   - `2to3` 플러그인 사용법을 예제와 함께 설명하는
+     블로그 [게시글](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
 	 
