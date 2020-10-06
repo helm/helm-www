@@ -27,7 +27,7 @@ weight: 13
    - `helm search` 는 이제 로컬 저장소 검색과 헬름 허브에 대한 검색 쿼리를 
      모두 지원함
 3. 다음의 사양 변경에 대하여 차트 apiVersion 이 "v2"로 증가:
-   - 동적으로 연결된 차트 종속성이 `Chart.yaml` 로 이동
+   - 동적으로 연결된 차트 의존성이 `Chart.yaml` 로 이동됨
      (`requirements.yaml` 제거되고, 요구사항(requirements) --> 의존성(dependencies)으로 변경)
    - 라이브러리 차트(도우미/공통 차트)를 동적으로 연결된 차트 
      종속성으로 추가 가능
