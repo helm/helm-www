@@ -28,7 +28,7 @@ weight: 13
      모두 지원함
 3. 다음의 사양 변경에 대하여 차트 apiVersion 이 "v2"로 증가:
    - 동적으로 연결된 차트 종속성이 `Chart.yaml` 로 이동
-     (`requirements.yaml` 제거 및 요구사항(requirements) -> 종속성(dependencies)으로 변경)
+     (`requirements.yaml` 제거되고, 요구사항(requirements) --> 의존성(dependencies)으로 변경)
    - 라이브러리 차트(도우미/공통 차트)를 동적으로 연결된 차트 
      종속성으로 추가 가능
    - 차트에서, 차트를 `application` 또는 `library` 차트로 
