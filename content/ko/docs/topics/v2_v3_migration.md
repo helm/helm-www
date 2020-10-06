@@ -61,8 +61,8 @@ weight: 13
        - reset (제거됨)
        - serve (제거됨)
        - template: `-x`/`--execute` 인수의 이름이 `-s`/`--show-only` 로 변경
-       - upgrade: 릴리스당 저장되는 최대 리비젼 수를 제한하는 인수 `--history-max` 추가 
-         (제한이 없는 경우 0)
+       - upgrade: 릴리스당 저장되는 최대 리비젼 수를 제한하는 인수 `--history-max` 추가됨
+         (0은 무제한)
    - 헬름 3 Go 라이브러리는 많은 변경을 거쳤으며, 헬름 2 라이브러리와
      호환되지 않음
    - 릴리스 바이너리가 `get.helm.sh` 에서 호스팅
