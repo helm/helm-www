@@ -9,9 +9,9 @@ weight: 13
 
 ## 헬름 3 변경사항 개요
 
-헬름 2 에서 3 으로 변경된 전체 목록은 [FAQ](https://v3.helm.sh/docs/faq/#changes-since-helm-2)
-에 설명되어 있다. 다음은 
-마이그레이션 전후에 사용자가 알아야 할 몇 가지 변경 사항에 
+헬름 2 에서 3로의 변경사항 전체 목록은 [FAQ](https://v3.helm.sh/docs/faq/#changes-since-helm-2)
+에 작성되어 있다. 다음은 
+마이그레이션 준비 및 작업간에 사용자가 알아야 할 몇 가지 변경 사항에 
 대한 요약이다:
 
 1. Tiller 제거:
