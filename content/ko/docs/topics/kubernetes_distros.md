@@ -60,7 +60,7 @@ weight: 10
 
 ## MicroK8s
 
-[MicroK8s](https://microk8s.io) 에서는 명령어 `microk8s.enable helm`를 사용하여 헬름을 활성화할 수 있다.
+[MicroK8s](https://microk8s.io) 에서는 명령어 `microk8s.enable helm3`를 사용하여 헬름을 활성화할 수 있다.
 
 ## Minikube
 
