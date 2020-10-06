@@ -57,7 +57,7 @@ weight: 13
        - home (제거됨)
        - init (제거됨)
        - install: 릴리스 이름이나 `--generate-name` 인수 필요
-       - inspect --> 표시
+       - inspect --> show
        - reset (제거됨)
        - serve (제거됨)
        - template: `-x`/`--execute` 인수의 이름이 `-s`/`--show-only` 로 변경
