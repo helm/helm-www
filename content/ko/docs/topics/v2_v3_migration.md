@@ -24,8 +24,8 @@ weight: 13
    - 릴리스는 더 이상 Tiller 네임스페이스가 아니라 릴리스 네임스페이스 
      기반으로 유지됨
 2. 차트 저장소 업데이트:
-   - `helm search` 가 로컬 저장소 검색과 헬름허브에 대한 검색 쿼리를 
-     모두 지원
+   - `helm search` 는 이제 로컬 저장소 검색과 헬름 허브에 대한 검색 쿼리를 
+     모두 지원함
 3. 다음의 사양 변경에 대하여 차트 apiVersion 이 "v2"로 증가:
    - 동적으로 연결된 차트 종속성이 `Chart.yaml` 로 이동
      (`requirements.yaml` 제거 및 요구사항(requirements) -> 종속성(dependencies)으로 변경)
