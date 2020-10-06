@@ -34,7 +34,7 @@ weight: 13
    - 차트를 `application` 또는 `library` 차트로 
      정의하는 `type` 메타 데이터 필드를 가짐.
      기본값은 application이며 렌더링 및 설치 가능하다는 의미
-   - 헬름 2 차트 (apiVersion=v1) 은 그대로 설치 가능
+   - 헬름 2 차트 (apiVersion=v1) 도 여전히 설치 가능함
 4. XDG 디렉토리 사양 추가:
    - 헬름 홈이 제거되고 구성 파일 저장을 위한 XDG 디렉토리 
      사양으로 대체
