@@ -45,9 +45,9 @@ weight: 13
      - 헬름 클라이언트 (헬름 바이너리) 만 있으면 됨 (Tiller 불필요)
      - Run-as-is 패러다임
    - `local` 또는 `stable` 저장소는 기본적으로 미설정 
-   - `crd-install` 훅이 제거되었으며, 차트에서 정의된 
-     모든 CRD가 차트 렌더링 전에 설치되는 `crds` 
-	 디렉토리로 대체
+   - `crd-install` 훅은 제거되고,
+     차트 내 모든 CRD가 정의되어 있고 차트 렌더링 전에 설치되는
+     `crds` 디렉토리로 대체됨
    - `test-failure` 훅 어노테이션 값 제거 및 `test-success`
      사용 중단.  `test` 를 대체 사용
    - 제거/교체/추가 된 명령어:
