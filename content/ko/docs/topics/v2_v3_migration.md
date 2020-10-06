@@ -51,8 +51,8 @@ weight: 13
    - `test-failure` 훅 어노테이션 값은 제거되고, `test-success`는
      사용 중단(deprecated).  대신 `test` 를 사용하자
    - 제거/교체/추가 된 명령어:
-       - delete --> uninstall : 기본적으로 모든 릴리스 기록을 제거
-         (이전의 경우 `--purge` 옵션이 필요)
+       - delete --> uninstall : 기본적으로 모든 릴리스 기록 제거
+         (예전에는 `--purge` 옵션이 필요했음)
        - fetch --> pull
        - home (제거됨)
        - init (제거됨)
