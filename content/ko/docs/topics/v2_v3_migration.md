@@ -41,9 +41,9 @@ weight: 13
    - 헬름 초기화 불필요
    - `helm init` 와 `helm home` 명령어 제거
 5. 추가 변경 사항:
-   - Helm 설치/설정의 단순화:
-     - Tiller 가 불필요하며, 헬름 클라이언트 (헬름 바이너리) 만 설치
-	 - Run-as-is 패러다임
+   - Helm 설치/설정 단순화:
+     - 헬름 클라이언트 (헬름 바이너리) 만 있으면 됨 (Tiller 불필요)
+     - Run-as-is 패러다임
    - `local` 또는 `stable` 저장소는 기본적으로 미설정 
    - `crd-install` 훅이 제거되었으며, 차트에서 정의된 
      모든 CRD가 차트 렌더링 전에 설치되는 `crds` 
