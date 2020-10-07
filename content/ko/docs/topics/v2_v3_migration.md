@@ -1,6 +1,6 @@
 ---
 title: "헬름 v2를 v3로 마이그레이션"
-description: "헬름 v2를 v3로 마이그레이션 하는 방법을 배운다."
+description: "헬름 v2를 v3로 마이그레이션하는 방법을 배운다."
 weight: 13
 ---
 
