@@ -2,7 +2,6 @@
 title: "チャート開発のヒントとコツ"
 description: "Helm チャート開発者がプロダクション品質のチャートを構築する際に学んだヒントやコツを紹介しています。"
 weight: 1
-aliases: ["/docs/charts_tips_and_tricks/"]
 ---
 
 このガイドでは、
