@@ -25,7 +25,7 @@ during migration:
      namespace anymore
 2. Chart repository updated:
    - `helm search` now supports both local repository searches and making search
-     queries against Helm Hub
+     queries against Artifact Hub
 3. Chart apiVersion bumped to "v2" for following specification changes:
    - Dynamically linked chart dependencies moved to `Chart.yaml`
      (`requirements.yaml` removed and  requirements --> dependencies)
