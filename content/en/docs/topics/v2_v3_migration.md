@@ -5,7 +5,7 @@ weight: 13
 ---
 
 This guide shows how to migrate  Helm v2 to v3. Helm v2 needs to be installed
-and managing releases in one to many clusters.
+and managing releases in one or more clusters.
 
 ## Overview of Helm 3 Changes
 
@@ -106,7 +106,7 @@ The migration use cases are as follows:
    - It should be noted that a Helm v2 client:
      - can manage 1 to many Kubernetes clusters
      - can connect to 1 to many Tiller instances for  a cluster
-   - This means that you have to be cognisant of this when migrating as releases
+   - This means that you have to be aware of this when migrating as releases
      are deployed into clusters by Tiller and its namespace. You have to
      therefore be aware of migrating for each cluster and each Tiller instance
      that is managed by the Helm v2 client instance
@@ -114,9 +114,9 @@ The migration use cases are as follows:
      1. Backup v2 data
      2. Migrate Helm v2 configuration
      3. Migrate Helm v2 releases
-     4. When happy that Helm v3 is managing all Helm v2 data (for all clusters
-        and Tiller instances of the Helm v2 client instance) as expected, then
-        clean up Helm v2 data
+     4. When confident that Helm v3 is managing all Helm v2 data (for all
+        clusters and Tiller instances of the Helm v2 client instance) as
+        expected, then clean up Helm v2 data
    - The migration process is automated by the Helm v3
      [2to3](https://github.com/helm/helm-2to3) plugin
 
