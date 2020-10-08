@@ -22,11 +22,38 @@ Here is an example `.helmignore` file:
 
 ```
 # comment
+
+# Match any file or path named .git
 .git
+
+# Match any text file
+*.txt
+
+# Match only directories named mydir
+mydir/
+
+# Match only text files in the top-level directory
+/*.txt
+
+# Match only the file foo.txt in the top-level directory
+/foo.txt
+
+# Match any file named ab.txt, ac.txt, or ad.txt
+a[b-d].txt
+
+# Match any file under subdir matching temp*
 */temp*
+
 */*/temp*
 temp?
 ```
+
+Some notable differences from .gitignore:
+- The '**' syntax is not supported.
+- The globbing library is Go's 'filepath.Match', not fnmatch(3)
+- Trailing spaces are always ignored (there is no supported escape sequence)
+- There is no support for '\!' as a special leading sequence.
+
 
 **We'd love your help** making this document better. To add, correct, or remove
 information, [file an issue](https://github.com/helm/helm/issues) or send us a
