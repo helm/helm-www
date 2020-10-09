@@ -18,7 +18,7 @@ weight: 3
 - [helm-gcs](https://github.com/nouney/helm-gcs) - Google Cloud Storage에서 
   저장소를 관리하는 플러그인
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - 프로메테우스/엘라스틱서치 쿼리를 기반으로 
-  릴리즈 및 롤백을 모니터링하는 플러그인
+  릴리스 및 롤백을 모니터링하는 플러그인
 - [helm-k8comp](https://github.com/cststack/k8comp) - k8comp 를 사용하여 hiera 에서 
   헬름 차트를 생성하는 플러그인
 - [helm-unittest](https://github.com/lrills/helm-unittest) - YAML로 
