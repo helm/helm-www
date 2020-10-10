@@ -1,27 +1,3 @@
-@keyframes boat-bob {
-  0% {
-    bottom: 2vw;
-  }
-  50% {
-    bottom: 3.5vw;
-  }
-  100% {
-    bottom: 2vw;
-  }
-}
-
-@keyframes boat-badge-bob {
-  0% {
-    top: 0.425vw;
-  }
-  50% {
-    top: 0.75vw;
-  }
-  100% {
-    top: 0.425vw;
-  }
-}
-
 // boat full width default
 .boat {
   width: 100vw;
@@ -40,7 +16,6 @@
     bottom: 2vw;
     max-width: 15vw;
     z-index: 1060;
-    animation: boat-bob 7s ease-in-out infinite;
     @include transition;
   }
 
@@ -101,34 +76,6 @@
       @include transition;
     }
   }
-
-  .parallax > use {
-    animation: move-forever 25s ease-in-out infinite;
-  }
-  .parallax > use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
-  }
-  .parallax > use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
-  }
-  .parallax > use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
-  }
-  .parallax > use:nth-child(4) {
-    animation-delay: -5s;
-    animation-duration: 20s;
-  }
-  @keyframes move-forever {
-    0% {
-      transform: translate3d(-90px,0,0);
-    }
-    100% { 
-      transform: translate3d(85px,0,0);
-    }
-  }
 }
 
 // boat fixed nav 'badge' mode
@@ -154,7 +101,6 @@
     top: 0.2vw;
     z-index: 1025;
     max-width: 7vw;
-    animation: boat-badge-bob 7s ease-in-out infinite;
   }
 
   .wave-wrapper {
