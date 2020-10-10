@@ -24,7 +24,6 @@
 .home-intro {
   min-height: 100vh;
   background: url('/img/topography.png') left top repeat;
-  background-attachment: fixed;
   position: relative;
   margin-bottom: -16px;
 
@@ -89,7 +88,6 @@
     url('/img/topography.png') repeat top left,
     linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
   background-blend-mode: color-burn;
-  background-attachment: fixed;
   padding-top: 7.5rem;
   // padding-bottom: 5rem;
   min-height: 100vh;
@@ -189,7 +187,6 @@
       background: url('/img/topography.png') left top repeat;
       background-color: rgba(35,35,35,0.02);
       background-blend-mode: color-burn;
-      background-attachment: fixed;
 
       &:first-of-type {
         border-right: none;
