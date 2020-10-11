@@ -9,13 +9,13 @@ Kubernetes.
 ## Supported Versions
 
 Helm versions are expressed as `x.y.z`, where `x` is the major version, `y` is
-the minor version, and z is the patch version, following [Semantic
+the minor version, and `z` is the patch version, following [Semantic
 Versioning](https://semver.org/spec/v2.0.0.html) terminology.
 
 The Helm project maintains a release branch for the most recent minor release.
 Applicable fixes, including security fixes, are cherry-picked into the release
-branch, depending on severity and feasibility. Patch releases are cut from that
-branch as needed. This decision is owned by the release maintainer.
+branch, depending on severity and feasibility. More details can be found in 
+[Helm's release policy](release_policy.md).
 
 ## Supported Version Skew
 
