@@ -42,7 +42,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --prov                       출처 파일을 가져 오기만 하고, 확인은 수행하지 않음
       --repo string                요청된 차트를 찾을 수 있는 차트 저장소 URL
       --untar                      이 옵션을 'true'로 설정하면, 차트를 다운로드 한 후 압축을 해제
-      --untardir string            'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉토리의 이름을 지정 (기본값 ".")
+      --untardir string            'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉터리의 이름을 지정 (기본값 ".")
       --username string            요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
       --verify                     사용하기 전에 패키지 확인
       --version string             사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 사용
