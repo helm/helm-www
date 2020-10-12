@@ -35,17 +35,17 @@ helm pull [chart URL | repo/chartname] [...] [flags]
   -d, --destination string   차트를 작성할 위치. 이 옵션과 'tardir' 가 지정되면 'tardir' 이 여기에 추가된다. (기본값 ".")
       --devel                개발용 버전으로도 사용가능. 버전 '>0.0.0-0' 과 동일하다. 만약 --version 플래그가 설정되면, 이 옵션은 무시된다.
   -h, --help                 pull 에 대한 도움말
-      --insecure-skip-tls-verify	차트 다운로드에 tls 인증서 확인 생략  
-      --key-file string      이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
-      --keyring string       확인에 사용되는 공개 키의 위치 (기본값 "~/.gnupg/pubring.gpg")
-      --password string      요청된 차트를 찾을 수 있는 차트 저장소 비밀번호
-      --prov                 출처 파일을 가져 오기만 하고, 확인은 수행하지 않음
-      --repo string          요청된 차트를 찾을 수 있는 차트 저장소 URL
-      --untar                이 옵션을 'true'로 설정하면, 차트를 다운로드 한 후 압축을 해제
-      --untardir string      'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉토리의 이름을 지정 (기본값 ".")
-      --username string      요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
-      --verify               사용하기 전에 패키지 확인
-      --version string       사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 사용
+      --insecure-skip-tls-verify   차트 다운로드에 tls 인증서 확인 생략  
+      --key-file string            이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
+      --keyring string             확인에 사용되는 공개 키의 위치 (기본값 "~/.gnupg/pubring.gpg")
+      --password string            요청된 차트를 찾을 수 있는 차트 저장소 비밀번호
+      --prov                       출처 파일을 가져 오기만 하고, 확인은 수행하지 않음
+      --repo string                요청된 차트를 찾을 수 있는 차트 저장소 URL
+      --untar                      이 옵션을 'true'로 설정하면, 차트를 다운로드 한 후 압축을 해제
+      --untardir string            'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉토리의 이름을 지정 (기본값 ".")
+      --username string            요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
+      --verify                     사용하기 전에 패키지 확인
+      --version string             사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 사용
 ```
 
 ### 부모 명령어에서 상속된 옵션들
