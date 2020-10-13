@@ -31,18 +31,19 @@ For that reason, _all defined template names should be namespaced._
 Correct:
 
 ```yaml
-{{- define "nginx.fullname" }}
-{{/* ... */}}
-{{ end -}}
+{{- define "nginx.fullname" -}}
+# ...
+{{- end }}
 ```
 
 Incorrect:
 
 ```yaml
 {{- define "fullname" -}}
-{{/* ... */}}
-{{ end -}}
+# ...
+{{- end }}
 ```
+
 It is highly recommended that new charts are created via `helm create` command
 as the template names are automatically defined as per this best practice.
 
@@ -50,39 +51,61 @@ as the template names are automatically defined as per this best practice.
 
 Templates should be indented using _two spaces_ (never tabs).
 
-Template directives should have whitespace after the opening  braces and before
+Template directives should have whitespace after the opening braces and before
 the closing braces:
 
 Correct:
-```
-{{ .foo }}
-{{ print "foo" }}
-{{- print "bar" -}}
+
+```yaml
+{{- /* Conditionally create service account */}}
+{{- if .Values.serviceAccount.create }}
+apiVersion: v1
+# ...
+{{- end }}
 ```
 
 Incorrect:
-```
-{{.foo}}
-{{print "foo"}}
-{{-print "bar"-}}
-```
-
-Templates should chomp whitespace where possible:
 
 ```yaml
-foo:
-  {{- range .Values.items }}
-  {{ . }}
-  {{ end -}}
+{{-/* This comment is even a syntax error */}}
+{{-if .Values.serviceAccount.create}}
+apiVersion: v1
+# ...
+{{-end}}
+```
+
+Templates should chomp unnecessary whitespace. A good practice is to
+systematically _chomp left_, but also _chomp right_ for initial content in a
+template file or defined template.
+
+```yaml
+myList:
+  {{- range .Values.elements }}
+  - {{ . }
+  {{- end }}
+```
+
+```yaml
+{{- define "nginx.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "nginx.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+```
+
+```yaml
+{{- if .Values.serviceAccount.create -}}
+apiVersion: v1
+# ...
+{{- end }}
 ```
 
 Blocks (such as control structures) may be indented to indicate flow of the
 template code.
 
-```
-{{ if $foo -}}
-  {{- with .Bar }}Hello{{ end -}}
-{{- end -}}
+```yaml
+{{- range .Values.elements }}
+  {{- print "my element is" . }}
+{{- end }}
 ```
 
 However, since YAML is a whitespace-oriented language, it is often not possible
@@ -147,17 +170,23 @@ metadata:
 Both YAML and Helm Templates have comment markers.
 
 YAML comments:
+
 ```yaml
 # This is a comment
 type: sprocket
+foo: bar # This is a comment, bar isn't
 ```
 
-Template Comments:
+Helm template comments:
+
 ```yaml
-{{- /*
-This is a comment.
-*/}}
+{{- /* This is a comment (with chomping to the right). */ -}}
 type: frobnitz
+
+{{- /*
+This is a multiline comment (with no chomping to the right).
+*/}}
+foo: bar
 ```
 
 Template comments should be used when documenting features of a template, such
@@ -167,9 +196,9 @@ as explaining a defined template:
 {{- /*
 mychart.shortname provides a 6 char truncated version of the release name.
 */}}
-{{ define "mychart.shortname" -}}
+{{- define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
-{{- end -}}
+{{- end }}
 
 ```
 
