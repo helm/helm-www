@@ -18,10 +18,7 @@ other = "복사"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "헬름 3 정보입니다. - 이전 버전에 대한 정보는 **[버전 FAQs](https://helm.sh/docs/faq/)**를 참고하거나 **[헬름 2 참조](https://v2.helm.sh)**를 확인하십시오."
-
-[banner_2]
-other = "**헬름 3** 릴리스 정보입니다. **헬름 2**에 대한 정보는 [여기](https://v2.helm.sh/)에서 확인하십시오."
+other = "[인종 차별은 용납할 수 없고, 헬름 프로젝트의 목표에 맞지 않으며, 우리 오픈 소스 커뮤니티에 있을 수 없습니다. #BlackLivesMatter](https://docs.google.com/document/d/1a-lzdtxOlWuzYNGqwlYwxMWADtZ6vJGCpKhtJHHrS54/preview?pru=AAABcqVvUdo*ducxvc88kzBetsUXsohi7A)"
 
 ## footer
 [footer_support_title]
