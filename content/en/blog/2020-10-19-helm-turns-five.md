@@ -7,9 +7,10 @@ authorlink: "https://helm.sh"
 date: "2020-10-16"
 ---
 
-{{< figure src="../images/happy-5th.png" alt="Happy 5th Birthday Helm" >}}
+{{< figure src="https://helm.sh/blog/images/happy-5th.png" alt="Happy 5th Birthday Helm" >}}
 
 Five years ago, in a hackathon at Deis (who has since been acquired by Microsoft) Helm was born.
+<!--more-->
 
 ```
 commit ecad6e2ef9523a0218864ec552bbfc724f0b9d3d
