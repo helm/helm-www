@@ -25,7 +25,7 @@ Since day one, the Helm project has relied upon GitHub for source control, pull 
 
 But when it came to hosting the packaged charts, we stored them in an object storage bucket hosted on Google Cloud. This historical decision reflects that at that time Google was one of the principal contributors to Helm.
 
-Recently, Google’s time of supporting the official Helm chart repository has come to a close. We are greateful for Google’s hosting the Helm chart repository these last few years. But this event has given us an opportunity to further integrate our chart development pipeline with GitHub.
+Recently, Google’s time of supporting the official Helm chart repository has come to a close. We are grateful for Google’s hosting the Helm chart repository these last few years. But this event has given us an opportunity to further integrate our chart development pipeline with GitHub.
 
 {{< figure src="../images/octocat.png" alt="Hello Github Octocat!" width="350px" >}}
 
