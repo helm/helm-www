@@ -39,7 +39,7 @@ Once you have Helm ready, you can add a chart repository. One popular starting
 location is the official Helm stable charts:
 
 ```console
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+$ helm repo add stable https://charts.helm.sh/stable
 ```
 
 Once this is installed, you will be able to list the charts you can install:

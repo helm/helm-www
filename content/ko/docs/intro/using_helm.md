@@ -417,7 +417,7 @@ kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0
 ```console
 $ helm repo list
 NAME            URL
-stable          https://kubernetes-charts.storage.googleapis.com
+stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 

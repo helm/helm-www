@@ -39,7 +39,7 @@ Helm の準備ができたら、チャートリポジトリを追加できます
 ポピュラーな開始場所の1つは、公式の Helm Stable チャートです。
 
 ```console
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+$ helm repo add stable https://charts.helm.sh/stable
 ```
 
 これがインストールされると、インストールできるチャートを一覧表示できるようになります。

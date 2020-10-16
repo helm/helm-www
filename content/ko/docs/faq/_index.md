@@ -237,7 +237,7 @@ In Helm 2, this is how a `requirements.yaml` looked:
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
@@ -250,7 +250,7 @@ In Helm 3, the dependency is expressed the same way, but now from your
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
