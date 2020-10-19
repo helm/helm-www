@@ -4,7 +4,7 @@ slug: "helm-turns-five"
 authorname: "Matt Butcher & Matt Farina"
 author: "@technosophos & @mattfarina"
 authorlink: "https://helm.sh"
-date: "2020-10-16"
+date: "2020-10-19"
 ---
 
 {{< figure src="https://helm.sh/blog/images/happy-5th.png" alt="Happy 5th Birthday Helm" >}}
