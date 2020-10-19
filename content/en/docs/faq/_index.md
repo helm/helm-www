@@ -496,10 +496,11 @@ The following table gives the default folder for each of these, by OS:
 
 ### I am getting a warning about "Unable to get an update from the "stable" chart repository"
 
-Run `helm repo list`. If it shows your `stable` repository pointing to a Google link, you
-will need to update that repository. On November 13, 2020, Google terminated their copy
-of the Helm stable chart repository. The current version is available at
-`https://charts.helm.sh/stable`. You can run the following command to fix your repository:
+Run `helm repo list`. If it shows your `stable` repository pointing to a `storage.googleapis.com` URL, you
+will need to update that repository. On November 13, 2020, the Helm Charts repo [became unsupported](https://github.com/helm/charts#deprecation-timeline) after a year-long deprecation. An archive has been made available at
+`https://charts.helm.sh/stable` but will no longer receive updates. 
+
+You can run the following command to fix your repository:
 
 ```console
 $ helm repo add stable https://charts.helm.sh/stable --force-update  
