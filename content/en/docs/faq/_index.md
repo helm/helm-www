@@ -531,9 +531,8 @@ $ helm repo add incubator https://charts.helm.sh/incubator --force-update
 
 ### When I add a Helm repo, I get the error 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'
 
-The old Helm chart repositories that were once considered official have been removed by
-Google when their support period expired. The new URL for these repositories has changed
-to `https://charts.helm.sh/stable` and `https://charts.helm.sh/incubator`. The command
+The Helm Chart repositories are no longer supported after [a year-long deprecation period](https://github.com/helm/charts#deprecation-timeline). 
+Archives for these repositories are available at `https://charts.helm.sh/stable` and `https://charts.helm.sh/incubator`, however they will no longer receive updates. The command
 `helm repo add` will not let you add the old URLs unless you specify `--use-deprecated-repos`.
 
 ### On GKE (Google Container Engine) I get "No SSH tunnels currently open"
