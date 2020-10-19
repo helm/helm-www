@@ -33,7 +33,7 @@ weight: 1
 当您已经安装好了Helm之后，您可以添加一个chart 仓库。 一个常见的选择是添加Helm的官方仓库：
 
 ```console
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+$ helm repo add stable https://charts.helm.sh/stable
 ```
 
 当添加完成，您将可以看到可以被您安装的charts列表：

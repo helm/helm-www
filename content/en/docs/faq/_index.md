@@ -255,7 +255,7 @@ In Helm 2, this is how a `requirements.yaml` looked:
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
@@ -268,7 +268,7 @@ In Helm 3, the dependency is expressed the same way, but now from your
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
@@ -493,6 +493,47 @@ The following table gives the default folder for each of these, by OS:
 | Windows          | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
 
 ## Troubleshooting
+
+### I am getting a warning about "Unable to get an update from the "stable" chart repository"
+
+Run `helm repo list`. If it shows your `stable` repository pointing to a `storage.googleapis.com` URL, you
+will need to update that repository. On November 13, 2020, the Helm Charts repo [became unsupported](https://github.com/helm/charts#deprecation-timeline) after a year-long deprecation. An archive has been made available at
+`https://charts.helm.sh/stable` but will no longer receive updates. 
+
+You can run the following command to fix your repository:
+
+```console
+$ helm repo add stable https://charts.helm.sh/stable --force-update  
+```
+
+The same goes for the `incubator` repository, which has an archive available at https://charts.helm.sh/incubator.
+You can run the following command to repair it:
+
+```console
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+```
+
+### I am getting the warning 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'
+
+The old Google helm chart repository has been replaced by a new Helm chart repository.
+
+Run the following command to permanently fix this:
+
+```console
+$ helm repo add stable https://charts.helm.sh/stable --force-update  
+```
+
+If you get a similar error for `incubator`, run this command:
+
+```console
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+```
+
+### When I add a Helm repo, I get the error 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'
+
+The Helm Chart repositories are no longer supported after [a year-long deprecation period](https://github.com/helm/charts#deprecation-timeline). 
+Archives for these repositories are available at `https://charts.helm.sh/stable` and `https://charts.helm.sh/incubator`, however they will no longer receive updates. The command
+`helm repo add` will not let you add the old URLs unless you specify `--use-deprecated-repos`.
 
 ### On GKE (Google Container Engine) I get "No SSH tunnels currently open"
 

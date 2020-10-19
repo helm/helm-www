@@ -470,7 +470,7 @@ You can see which repositories are configured using `helm repo list`:
 ```console
 $ helm repo list
 NAME            URL
-stable          https://kubernetes-charts.storage.googleapis.com
+stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 

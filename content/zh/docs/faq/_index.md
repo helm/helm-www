@@ -201,7 +201,7 @@ Helm 2中，`requirements.yaml` 看起来是这样的:
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
@@ -213,7 +213,7 @@ Helm 3中， 依赖使用了同样的表达方式，现在`Chart.yaml`是这样�
 dependencies:
 - name: mariadb
   version: 5.x.x
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.helm.sh/stable
   condition: mariadb.enabled
   tags:
     - database
