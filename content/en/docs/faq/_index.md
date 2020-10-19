@@ -506,7 +506,7 @@ You can run the following command to fix your repository:
 $ helm repo add stable https://charts.helm.sh/stable --force-update  
 ```
 
-The same goes for the `incubator` repository, which Google also discontinued support for.
+The same goes for the `incubator` repository, which has an archive available at https://charts.helm.sh/incubator.
 You can run the following command to repair it:
 
 ```console
