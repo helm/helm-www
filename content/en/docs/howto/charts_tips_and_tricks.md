@@ -224,6 +224,10 @@ spec:
 [...]
 ```
 
+Each invocation of the template function will generate a unique random string.
+This means that if it's necessary to sync the random strings used by multiple
+resources, all relevant resources will need to be in the same template file.
+
 Both of these methods allow your Deployment to leverage the built in update
 strategy logic to avoid taking downtime.
 
