@@ -73,7 +73,7 @@ $ helm install my-ingress-controller nginx/nginx-ingress
 $ kubectl get deployments
 ```
 
-인그리스 컨트롤러(ingress controller)가 실행 중이다! `helm uninstall my-ingress-controller` 를 사용하여 쉽게 제거할 수 있다.
+구동 중인 인그레스 컨트롤러(ingress controller)가 있다! `helm uninstall my-ingress-controller` 로 간단히 제거할 수 있다.
 
 자, 이제 몇 가지 차트를 적용해보았다. 또한 일부를 커스터마이즈해보았다. 이제 직접 만들 준비가 되었다. 헬름은 이 부분도 쉽게 해준다.
 
