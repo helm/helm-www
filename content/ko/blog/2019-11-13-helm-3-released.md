@@ -84,7 +84,7 @@ Creating diy
 
 이제 `diy` 라는 새 차트가 생겼다. 해당 디렉터리로 이동하여 편집하거나 `helm template` 을 실행하여 렌더링된 출력 결과를 보거나 `helm install` 을 사용하여 설치할 수 있다.
 
-[헬름 허브](https://hub.helm.sh/)에 업스트림을 제출할 것인가? 주의하자! 헬름 허브에 [나만의 저장소를 추가](https://github.com/helm/hub/blob/master/Repositories.md)하기 위한 문서를 따라야 한다.
+[헬름 허브](https://hub.helm.sh/)에 업스트림으로 제출할 것인가? 주의하자! 헬름 허브에 [나만의 저장소를 추가](https://github.com/helm/hub/blob/master/Repositories.md)하기 위한 문서를 따라야 한다.
 
 ## 헬름 3에서 변경되는 사항은?
 
