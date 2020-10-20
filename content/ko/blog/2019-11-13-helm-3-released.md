@@ -61,7 +61,7 @@ NAME                    CHART VERSION   APP VERSION     DESCRIPTION
 nginx/nginx-ingress     0.3.7           1.5.7           NGINX Ingress Controller
 ```
 
-헬름은 `helm install` 을 사용하여 차트를 빠르게 설치할 수 있는 방법을 제공한다.:
+헬름은 `helm install` 을 사용하여 차트를 빠르게 설치할 수 있는 방법을 제공한다.
 
 ```bash
 $ helm install my-ingress-controller nginx/nginx-ingress
