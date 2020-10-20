@@ -67,7 +67,7 @@ nginx/nginx-ingress     0.3.7           1.5.7           NGINX Ingress Controller
 $ helm install my-ingress-controller nginx/nginx-ingress
 ```
 
-`kubectl` 로 클러스터를 검사하면:
+`kubectl` 로 클러스터를 확인해 보면:
 
 ```bash
 $ kubectl get deployments
