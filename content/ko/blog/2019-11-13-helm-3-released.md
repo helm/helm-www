@@ -116,7 +116,7 @@ Creating diy
 
 몇 달 후(2016년 1월) Deis 의 핵심 헬름 팀은 구글, Skippbox 및 bitnami 와 협력하여 개인에서 팀으로 강조점을 전환한 새로운 버전의 헬름을 제작하였다. 그 과정에서 매운 많은 교훈들이 적용되었다. 그 결과 팀워크를 핵심 가치로 만들 뿐만 아니라 정교한 애플리케이션을 설치하는 쿠버네티스 사용자 커뮤니티의 급증하는 커뮤니티의 요구를 충족하도록 설계된 도구가 탄생하였다.
 
-2018년 6월 헬름은 [Cloud Native Computing Foundation에 가입](https://helm.sh/blog/helm-enters-the-cncf/)했다. 헬름 3는 Microsoft, 삼성 SDS, IBM 및 Blood Orange의 구성원을 포함하는 핵심 유지 관리자들의 공통된 노력이다. 첫 번째 알파 릴리스 이후 헬름 3은 여러 시간대에 걸쳐 37명의 커뮤니티 구성원의 기여를 확인하였다. 최종 결과는 시간이 지남에 따라 변화하고 진화함에 따라 커뮤니티의 요구를 반영하는 도구이다. 
+2018년 6월 헬름은 [Cloud Native Computing Foundation에 가입](https://helm.sh/blog/helm-enters-the-cncf/)했다. 헬름 3는 Microsoft, 삼성 SDS, IBM 및 Blood Orange의 구성원을 포함하는 주요 유지관리자들의 공통된 노력이다. 첫 번째 알파 릴리스 이래로, 헬름 3는 여러 시간대에 걸쳐 커뮤니티 구성원 37명의 기여가 있었다. 그 결과물은 시시각각 변화하고 진화하며 커뮤니티의 요구를 담아낸 도구이다.
 
 ## 결론
 
