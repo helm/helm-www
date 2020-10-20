@@ -53,7 +53,7 @@ OCI 지원을 포함하는 일부 실험적 기능도 도입되었다.
 $ helm repo add nginx https://helm.nginx.com/stable
 ```
 
-일단 몇 개의 레포지토리를 추가한 후에는 차트를 검색할 수 있다:
+저장소를 추가했다면 차트를 검색할 수 있다:
 
 ```bash
 $ helm search repo nginx-ingress
