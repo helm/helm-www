@@ -44,9 +44,9 @@ helm completion zsh
       --log-file-max-size uint           Defines the maximum size a log file can grow to. Unit is megabytes. If the value is 0, the maximum file size is unlimited. (default 1800)
       --logtostderr                      log to standard error instead of files (default true)
   -n, --namespace string                 namespace scope for this request
-      --registry-config string           path to the registry config file (default "/Users/bridget/Library/Preferences/helm/registry.json")
-      --repository-cache string          path to the file containing cached repository indexes (default "/Users/bridget/Library/Caches/helm/repository")
-      --repository-config string         path to the file containing repository names and URLs (default "/Users/bridget/Library/Preferences/helm/repositories.yaml")
+      --registry-config string           path to the registry config file (default "~/.config/helm/registry.json")
+      --repository-cache string          path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string         path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
       --skip-headers                     If true, avoid header prefixes in the log messages
       --skip-log-headers                 If true, avoid headers when opening log files
       --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
