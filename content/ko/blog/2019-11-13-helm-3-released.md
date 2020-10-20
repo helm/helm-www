@@ -22,7 +22,7 @@ OCI 지원을 포함하는 일부 실험적 기능도 도입되었다.
 다음은 헬름 3의 몇 가지 리소스이다:
 
 - [문서](https://helm.sh/docs/)
-- [FAQ: 헬름 2로부터의 변경사항](https://helm.sh/docs/faq/#changes-since-helm-2)
+- [FAQ: 헬름 2에서 바뀐 점](https://helm.sh/docs/faq/#changes-since-helm-2)
 - [헬름 설치](https://helm.sh/docs/intro/install/)
 - [헬름 2에서 헬름 3로의 마이그레이션에 대한 문서](https://helm.sh/docs/topics/v2_v3_migration/)
 - [헬름 2에서 헬름 3로 마이그레이션하는데 도움이 되는 플러그인](https://github.com/helm/helm-2to3)
