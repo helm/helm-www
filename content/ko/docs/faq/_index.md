@@ -44,7 +44,7 @@ weight: 8
 
 틸러가 사라지면 헬름의 보안 모델이 획기적으로 간소화됩니다.
 헬름 3는 이제 현대 쿠버네티스의 모든 현대적인 보안, 신원 확인 및 인가 기능을 지원합니다. 헬름의 권한은
-[kubeconfig 파일](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을
+[kubeconfig 파일](https://kubernetes.io/ko/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을
 사용하여 평가됩니다.
 클러스터 관리자는 세세하게 사용자 권한을 제한할 수 있습니다.
 릴리스는 여전히 클러스터 내에 기록되며,
@@ -185,7 +185,7 @@ containers:
 이렇게 네이티브 클러스터 네임스페이스가 보다 개선되면서
 `helm list` 명령은 기본적으로 모든 릴리스를 나열하지 않습니다.
 대신 현재 쿠버네티스 컨텍스트의 네임스페이스에 있는 릴리스만
-나열됩니다(즉, `kubectel config view --minify`를 실행할 때 표시되는 네임스페이스).
+나열됩니다(즉, `kubectl config view --minify`를 실행할 때 표시되는 네임스페이스).
 또한 헬름 2와 유사한 동작을 수행하려면 `helm list`에
 `--all-namespaces` 플래그를 주어야 합니다.
 
@@ -235,7 +235,7 @@ containers:
 * `helm template`
 * `helm lint`
 
-자세한 내용은 [스키마 파일](/docs/topics/charts#스키마-파일) 문서를
+자세한 내용은 [스키마 파일](/ko/docs/topics/charts#스키마-파일) 문서를
 참조하십시오.
 
 ### `requirements.yaml`이 `Chart.yaml` 로 통합
@@ -428,6 +428,13 @@ apiVersion을 v1에서 v2로 격상했습니다.
 오류를 반환합니다. `--create-namespace` 플래그를 명시적으로 지정하면 헬름 3가
 네임스페이스를 만듭니다.
 
+### .Chart.ApiVersion 은 없어졌나요?
+
+헬름은 머리글자를 대문자로 나타내는 일반적인 낙타 표기법(CamelCasing)을
+따릅니다. `.Capabilities.APIVersions.Has` 와 같은 모든 코드에서 해당
+표기법을 사용했습니다. 헬름 3에서는 이 패턴을 지키기 위해 `.Chart.ApiVersion`
+을 `.Chart.APIVersion` 으로 변경했습니다.
+
 ## 설치
 
 ### 페도라(Fedora) 등의 다른 리눅스 배포판을 위한 네이티브 헬름 패키지는 왜 없나요?
@@ -455,10 +462,13 @@ apiVersion을 v1에서 v2로 격상했습니다.
 그 위치를 재정의(override)할 수 있는 환경변수를 사용할 수 있습니다.
 
 - `$XDG_CACHE_HOME`: 캐시 파일 보관 장소를 다른 곳으로 설정
-- `$XDG_CONFIG_HOME`: 헬름 설정 파일 보관 장소를 다른 곳으로 설정
+- `$XDG_CONFIG_HOME`: 헬름 설정 파일 보관 장소를 다른 곳으로
+  설정
 - `$XDG_DATA_HOME`: 헬름 데이터 보관 장소를 다른 곳으로 설정
 
-기존 저장소가 있는 경우, `helm repo add...`를 사용하여 저장소를 다시 추가해야 합니다.
+기존 저장소가 있는 경우, `helm repo add...`를 사용하여 저장소를 다시 추가해야
+합니다.
+
 
 ## 삭제
 
@@ -480,6 +490,47 @@ apiVersion을 v1에서 v2로 격상했습니다.
 
 ## 트러블슈팅
 
+### "Unable to get an update from the "stable" chart repository"라는 경고가 표시됩니다.
+
+`helm repo list` 를 실행합니다. `storage.googleapis.com` URL을 가리키고 있는 `stable` 저장소가 표시되면 해당 저장소를 업데이트해야 합니다.
+2020년 11월 13일에 헬름 차트 저장소는 일년 간의 유예기간을 거친 후 [더 이상 지원되지 않습니다](https://github.com/helm/charts#deprecation-timeline).
+아카이브를 `https://charts.helm.sh/stable` 에서 사용할 수 있지만 더 이상 업데이트를 받을 수 없습니다.
+
+다음 명령을 실행하여 저장소를 수정할 수 있습니다.
+
+```console
+$ helm repo add stable https://charts.helm.sh/stable --force-update  
+```
+
+https://charts.helm.sh/incubator 에서 사용할 수 있는 아카이브가 있는 `incubator` 저장소도 마찬가지입니다.
+다음 명령을 실행하여 고칠 수 있습니다.
+
+```console
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+```
+
+### 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'라는 경고가 표시됩니다.
+
+기존의 구글 헬름 차트 저장소가 새로운 헬름 차트 저장소로 대체되었습니다.
+
+다음 명령을 실행하여 이 문제를 해결합니다.
+
+```console
+$ helm repo add stable https://charts.helm.sh/stable --force-update  
+```
+
+`incubator` 에 비슷한 오류가 발생한다면 다음 명령을 실행합니다.
+
+```console
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+```
+
+### 헬름 저장소를 추가하면 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'라는 오류가 표시됩니다.
+
+헬름 차트 저장소는 [1년 동안의 유예기간](https://github.com/helm/charts#deprecation-timeline)이 지나면 더 이상 지원되지 않습니다.
+해당 저장소의 아카이브는 `https://charts.helm.sh/stable` 및 `https://charts.helm.sh/incubator` 에서 사용할 수 있지만, 더 이상 업데이트되지 않습니다.
+`--use-deprecated-repos` 를 지정하지 않으면 `helm repo add` 명령어로 기존 저장소의 URL을 추가할 수 없습니다.
+
 ### GKE (구글 컨테이너 엔진)에서 "현재 열려 있는 SSH 터널이 없습니다"라고 나와요
 
 ```
@@ -487,6 +538,7 @@ Error: Error forwarding ports: error upgrading connection: No SSH tunnels curren
 ```
 
 오류 메시지의 또 다른 변형판은 다음과 같습니다.
+
 
 ```
 Unable to connect to the server: x509: certificate signed by unknown authority
@@ -502,14 +554,18 @@ GKE에 클러스터를 생성하면 SSL 인증서 및 인증 기관을 포함한
 
 ### 헬름 2에서 마이그레이션한 후, `helm list`에는 릴리스들이 일부만 보여요(또는 안 보여요).
 
-헬름 3는 이제 클러스터 네임스페이스를 사용하여 릴리스들을 구획한다는 사실을 깜빡하신 것 같습니다.
+헬름 3는 이제 클러스터 네임스페이스를 사용하여 릴리스들을
+구획한다는 사실을 깜빡하신 것 같습니다.
 릴리스를 참조하는 모든 명령어는 다음 중 하나로 수행해야 합니다.
 
-* 활성 쿠버네티스 컨텍스트의 현재 네임스페이스에 의존합니다(`kubectl config view --minify` 명령어로 확인).
+* 활성 쿠버네티스 컨텍스트의 현재 네임스페이스에 의존합니다
+  (`kubectl config view --minify` 명령어로 확인).
 * `--namespace`/`-n` 플래그를 사용하여 올바른 네임스페이스를 지정합니다.
 * `helm list` 명령어에 대해서는 `--all-namespaces`/`-A` 플래그를 지정합니다.
 
-이는 릴리스를 참조하는 `helm list`, `helm uninstall` 및 기타 모든 `helm` 명령어에 적용됩니다.
+이는 릴리스를 참조하는 `helm list`, `helm uninstall` 및
+기타 모든 `helm` 명령어에 적용됩니다.
+
 
 ### 맥OS에서는 `/etc/.mdns_debug` 파일에 접근합니다. 왜 그런가요?
 
@@ -537,8 +593,22 @@ GKE에 클러스터를 생성하면 SSL 인증서 및 인증 기관을 포함한
 
 헬름 3.3.2 이상에서 기존 저장소를 추가하려고 하면 다음 오류가 발생합니다.
 
+`Error: repository name (reponame) already exists, please specify a different name`
+
 이제 기본 동작은 반대가 됩니다. `--no-update`는 이제 무시되며,
 기존 저장소를 교체(덮어쓰기)하려면 `--force-update`를 사용할 수 있습니다.
 
 이는 [헬름 3.3.2 릴리스 노트](https://github.com/helm/helm/releases/tag/v3.3.2)에서
 설명된대로 보안 픽스에 따라 단절적 변경(breaking change)이 있었기 때문입니다.
+
+### 쿠버네티스 클라이언트 로깅 활성화
+
+[klog](https://pkg.go.dev/k8s.io/klog) 플래그를 사용하여 쿠버네티스 클라이언트를
+디버깅하기 위한 로그 메시지를 출력할 수 있습니다. 대부분의 경우에는 `-v` 플래그를
+사용하여 자세한 수준(verbosity level)으로 설정하는 것만으로도 충분합니다.
+
+예시:
+
+```
+helm list -v 6
+```
