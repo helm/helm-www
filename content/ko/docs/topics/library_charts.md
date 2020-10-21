@@ -364,7 +364,7 @@ the following to the end of the file `demo/Chart.yaml`:
 dependencies:
 - name: common
   version: "^0.0.5"
-  repository: "https://kubernetes-charts-incubator.storage.googleapis.com/"
+  repository: "https://charts.helm.sh/incubator"
 ```
 
 Note: You will need to add the `incubator` repo to the Helm repository list

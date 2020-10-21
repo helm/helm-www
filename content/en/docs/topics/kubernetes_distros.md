@@ -62,7 +62,7 @@ configuration.
 ## MicroK8s
 
 Helm can be enabled in [MicroK8s](https://microk8s.io) using the command:
-`microk8s.enable helm`
+`microk8s.enable helm3`
 
 ## Minikube
 

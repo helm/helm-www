@@ -244,7 +244,7 @@ template processing will fail.
 
 Keep in mind that Helm is not supposed to contact the Kubernetes API Server
 during a `helm template` or a `helm install|update|delete|rollback --dry-run`,
-so the `lookup` function will return `nil` in such a case.
+so the `lookup` function will return an empty list (i.e. dict) in such a case.
 
 ## Operators are functions
 

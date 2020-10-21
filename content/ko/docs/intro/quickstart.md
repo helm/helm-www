@@ -38,7 +38,7 @@ weight: 1
 헬름이 준비되면, 차트 리포지토리를 추가할 수 있다. 처음에 주로 사용하는 곳은 공식 헬름 stable 차트들이다:
 
 ```console
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+$ helm repo add stable https://charts.helm.sh/stable
 ```
 
 차트 리포지토리 추가가 완료되면 설치할 수 있는 차트들의 목록을 볼 수 있다.

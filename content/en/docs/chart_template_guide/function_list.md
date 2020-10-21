@@ -2066,5 +2066,5 @@ chart. For example, to access application configuration files. These are
 documented in [Accessing Files Inside Templates](accessing_files.md).
 
 _Note, the documentation for many of these functions come from
-[Sprig](https://github.com/Masterminds/sprig). Sprig is a template funciton
+[Sprig](https://github.com/Masterminds/sprig). Sprig is a template function
 library available to Go applications._
