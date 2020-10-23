@@ -18,7 +18,7 @@ date: "2019-11-15"
 헬름 주요 관리자와 이야기하고 싶거나 프로젝트에 대해 다른 질문이 있는 경우,
 부스는 정기적으로 프로젝트를 진행하는 사람들을 만날 수 있는 훌륭한 공간이다.
 
-올 해 커뮤니티에는 몇가지 흥미로운 헬름 중심의 세션이 있다.
+올해는 커뮤니티에서 준비한 몇가지 흥미로운 헬름 관련 세션들도 있다.
 예를 들어 CERN 의 Ricarto Rocha는 [_CERN 에서 Gitops와 함께 헬름 배포 관리하기_](https://sched.co/UabD)에 대한 내용을 발표한다.
 [공식 일정](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/schedule/)에서
 다른 세션에 대한 일정을 확인할 수 있다.
