@@ -12,7 +12,7 @@ twitterimage: "blog/images/helmgraduation-twitter.png"
 ![../images/helmgraduation.png](../images/helmgraduation.png)
 
 오늘 헬름이 [CNCF 사다리의 마지막 단계에 도달한 것](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/)을 보게 되어 기쁘다.
-헬름은 쿠버네티스 및 기타 선별 프로젝트와 함께 [CNCF 프로젝트](https://www.cncf.io/projects/)로 인큐베이팅 수준에서 졸업 수준으로 이동하였다.
+헬름은 [CNCF 프로젝트](https://www.cncf.io/projects/)의 인큐베이팅 단계에서 졸업 단계로 이동하여, 쿠버네티스 등 다른 선택된 프로젝트들과 나란히 서게 되었다.
 
 헬름이 소규모 스타트업인 Deis 에서 해커톤 프로젝트로 시작된 것을 감안할 때, 우리는 우리의 작은 아기가 완전히 성장하는 것을 보게 되어 기쁘다.
 그리고 우리는 지난 5년 동안 코딩, 커뮤니티 및 조직의 방침에 대해 많은 것을 확실하게 배웠다.
@@ -68,4 +68,3 @@ CNCF 내에서, CNCF 커뮤니티와 계속 협력하게 되어 기쁘다.
 
 우리는 헬름의 성공에 기여한 수만 명의 커뮤니티 회원들에게 큰 감사로 헬름 기사를 끝내는 이러한 우리의 전통을 이어가려 한다.
 모든 쿠버네티스 사용자에게 "5분만에 도파민까지" 라는 경험을 제공하기 위한 많은 시간들이었다!
-
