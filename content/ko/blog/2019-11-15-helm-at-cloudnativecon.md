@@ -24,5 +24,5 @@ date: "2019-11-15"
 다른 세션에 대한 일정도 확인할 수 있다.
 
 세션 시작 전 주에도 참석이 가능할까?
-[Cloud_Native Rejekts](https://cloud-native.rejekts.io/)이 계속 진행될 예정이며,
-헬름 프로젝트 관리자 중 한 명인 Taylor Thomas는 [_(헬름에서 가르치는대로) 쿠버네티스와의 고급 상호작용_](https://cfp.cloud-native.rejekts.io/cloud-native-rejekts-na-2019/talk/SQ9DWX/)을 발표할 예정이다.
+[Cloud_Native Rejekts](https://cloud-native.rejekts.io/)가 계속 진행될 것이며,
+헬름 프로젝트 유지관리자 중 한 명인 Taylor Thomas는 [_(헬름으로 배우는) 쿠버네티스와의 고급 상호작용_](https://cfp.cloud-native.rejekts.io/cloud-native-rejekts-na-2019/talk/SQ9DWX/)을 발표할 예정이다.
