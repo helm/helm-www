@@ -23,7 +23,7 @@ twitterimage: "blog/images/helmgraduation-twitter.png"
 쿠버네티스는 복잡성을 감추지 않고 SRE 및 DevOps 스토리에 집중했지만, 헬름은 다른 접근 방식을 취했다.
 2016년 2월 회의에서 [Michelle Noorali](https://twitter.com/michellenoorali)는 화이트 보드에 다음과 같은 문구를 썼다.
 "5분만에 0에서 도파민까지"
-이것이 우리 헬름의 만트라였다. 우리는 새로운 유입 사용자들에게 쿠버네티스에 더 쉽게 접근할 수 있는 기회를 보았다.
+이것이 우리 헬름의 만트라였다. 새로운 사용자를 쿠버네티스에 더 쉽게 접근하게 할 수 있다고 보았다.
 우리가 제대로 행동했다면, 사용자는 헬름을 설치한 다음 몇 분 안에 운영 등급의 기존 구성요소를 설치할 수 있다.
 
 요즘 헬름은 학부생에서부터 주요 클라우드 제공 업체에 이르기까지 [쿠버네티스 사용자의 70% 이상이 사용](https://www.cncf.io/wp-content/uploads/2020/03/CNCF_Survey_Report.pdf)하고 있다.
