@@ -20,8 +20,8 @@ date: "2019-11-15"
 
 올해는 커뮤니티에서 준비한 몇가지 흥미로운 헬름 관련 세션들도 있다.
 예를 들어, CERN 의 Ricarto Rocha 는 [_CERN 에서 Gitops와 함께 헬름 배포 관리하기_](https://sched.co/UabD)에 대한 내용을 발표한다.
-[공식 일정](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/schedule/)에서
-다른 세션에 대한 일정을 확인할 수 있다.
+[공식 일정표](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/schedule/)에서
+다른 세션에 대한 일정도 확인할 수 있다.
 
 세션 시작 전 주에도 참석이 가능할까?
 [Cloud_Native Rejekts](https://cloud-native.rejekts.io/)이 계속 진행될 예정이며,
