@@ -53,7 +53,7 @@ CNCF는 [프로젝트](https://www.cncf.io/projects/)가 대다수의 사용자�
 헬름은 보안 검토를 그냥 통과한 수준이 아니라 아주 우수한 성적으로 통과했다.
 우리는 [CII 뱃지](https://bestpractices.coreinfrastructure.org/en)를 획득했을 뿐 아니라, [인증테스트에서 198%](https://bestpractices.coreinfrastructure.org/en/projects?q=helm%20package%20manager)를 기록했다.
 서로 다른 회사의 커미터 2명만 있었지만, 이제는 전세계적으로 수많은 기여자들이 있다.
-그리고 수년에 걸쳐 우리는 개방적이고 공정한 거버넌스에 대한 우리의 약속을 반복해서 보여왔다.
+그리고 수년에 걸쳐 개방적이고 공정한 거버넌스에 대한 우리의 약속을 반복해서 보여왔다.
 
 그래서 우리는 지금 이 이정표에 서 있다.
 우리는 졸업을 위한 마지막 요구사항을 완수했다. CNCF 기술 감독위원회(TOC)에서는 대다수가 헬름이 현재 최상위 프로젝트라는데 동의하여 투표했다.
