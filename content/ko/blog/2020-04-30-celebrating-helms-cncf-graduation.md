@@ -48,7 +48,7 @@ twitterimage: "blog/images/helmgraduation-twitter.png"
 안정성, 보안, 강건한 거버넌스, 강력한 커뮤니티 -- 대규모 오픈 소스 프로젝트가 성공하려면 이러한 것들이 절대적으로 필요하다.
 
 CNCF는 [프로젝트](https://www.cncf.io/projects/)가 대다수의 사용자들이 사용할 수 있도록 준비되었다는 것을 입증할 때만 졸업시킨다.
-인큐베이션에서 졸업으로 이동하기 위한 기준 목록들은, 안정적인 오픈 소스 프로젝트라는 의미이다.
+인큐베이션에서 졸업으로 이동하기 위한 기준 목록은 안정적인 오픈 소스 프로젝트가 무엇인지를 정의하고 있다.
 헬름은 졸업 기준들을 모두 새겨두었다.
 헬름은 보안 검토만 통과한 것이 아니라 아주 우수한 성적으로 통과했다.
 우리는 [CII 뱃지](https://bestpractices.coreinfrastructure.org/en)를 획득했을 뿐 아니라, [인증테스트에서 198%](https://bestpractices.coreinfrastructure.org/en/projects?q=helm%20package%20manager)를 받았다.
