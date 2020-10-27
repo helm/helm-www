@@ -98,10 +98,10 @@ _`crd-install` 훅이 제거되어 헬름 3의 `crds/` 디렉터리가
 삭제해서는 안되는 모든 훅 리소스에 `helm.sh/resoure-policy: keep` 어노테이션을 
 추가해야한다.
 
-실제로 이것은 훅 리소스를 만드는 경우 `helm uninstall` 에 
-의존하여 리소스를 제거 할 수 없음을 의미한다. 이러한 리소스를 
+실질적으로, 이는 훅 리소스를 만드는 경우 `helm uninstall` 으로 
+리소스를 제거할 수 없음을 의미한다. 이러한 리소스를 
 삭제하려면 훅 템플릿 파일에 [사용자 지정 `helm.sh/hook-delete-policy` 어노테이션을 추가](#훅-삭제-정책)하거나 
-작업 리소스의 
+작업(Job) 리소스의 
 [time to live(TTL) 필드를 설정](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)해야 
 한다.
 
