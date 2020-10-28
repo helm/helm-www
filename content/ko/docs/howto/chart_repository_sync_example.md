@@ -23,7 +23,7 @@ $ mv alpine-0.1.0.tgz fantastic-charts/
 ```
 
 ## 업데이트 된 index.yaml 생성
-`helm repo index` 헬름 명령어에 원격 리포지토리의 디렉토리 경로와 URL을 전달하여 
+`helm repo index` 헬름 명령어에 원격 리포지토리의 디렉터리 경로와 URL을 전달하여 
 
 업데이트 된 index.yaml 파일을 생성한다.
 
