@@ -29,7 +29,7 @@ The following hooks are defined:
 | `pre-delete`     | Executes on a deletion request before any resources are deleted from Kubernetes                       |
 | `post-delete`    | Executes on a deletion request after all of the release's resources have been deleted                 |
 | `pre-upgrade`    | Executes on an upgrade request after templates are rendered, but before any resources are updated     |
-| `post-upgrade`   | Executes on an upgrade after all resources have been upgraded                                         |
+| `post-upgrade`   | Executes on an upgrade request after all resources have been upgraded                                 |
 | `pre-rollback`   | Executes on a rollback request after templates are rendered, but before any resources are rolled back |
 | `post-rollback`  | Executes on a rollback request after all resources have been modified                                 |
 | `test`           | Executes when the Helm test subcommand is invoked ([view test docs](/docs/chart_tests/))              |
