@@ -12,9 +12,9 @@ weight: 2
 * 헬름 바이너리에 대한 접근 권한이 있어야 한다.
 * _선택 사항: 실수로 파일을 삭제할 경우를 대비하여 GCS 버킷에 [오브젝트 버전 관리](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page)를 설정하는 것을 추천한다._
 
-## 로컬 차트 리포지토리 디렉토리 설정
+## 로컬 차트 리포지토리 디렉터리 설정
 [차트 리포지토리 가이드]({{< ref
-"/docs/topics/chart_repository.md" >}})에서 실행했던 것처럼 로컬 디렉토리를 만들고, 패키지된 차트를 그 위치로 옮긴다.
+"/docs/topics/chart_repository.md" >}})에서 실행했던 것처럼 로컬 디렉터리를 만들고, 패키지된 차트를 그 위치로 옮긴다.
 
 예제:
 ```console
