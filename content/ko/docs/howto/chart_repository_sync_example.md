@@ -83,7 +83,10 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 ```
 
 유용한 링크:
-* [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description) 에 대한 문서
+* [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description) 에 
+  대한 문서
 * [차트 리포지토리 가이드]({{< ref "/docs/topics/chart_repository.md" >}})
-* Google Cloud Storage의 [오브젝트 버전 관리 및 동시성 제어](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)에 대한 문서
+* Google Cloud Storage의 
+  [오브젝트 버전 관리 및 동시성 제어](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)에 
+  대한 문서
   
