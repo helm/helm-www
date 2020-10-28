@@ -98,10 +98,10 @@ objects for performing the diff. error from kubernetes: unable to recognize "":
 no matches for kind "Deployment" in version "apps/v1beta1"
 ```
 
-헬름은 업데이트/지원 되는 API 버전과 함께 
-전달하는 차트에 대해 현재 배포된 
-릴리스(이 쿠버네티스 버전에서 제거된 쿠버네티스 API를 포함하는)간의 
-diff 패치를 만들려고 시도하기 때문에 이 시나리오는 실패하게 된다.
+헬름은 업데이트/지원되는 API 버전과 함께 
+전달받은 차트를 가지고, 현재 배포된 릴리스간의
+diff 패치(이 쿠버네티스 버전에서 제거된 쿠버네티스 API를 포함)를
+만드려고 하기 때문에 이 시나리오는 실패하게 된다.
 실패의 근본적인 이유는, 쿠버네티스가 API 버전을 제거하면 
 쿠버네티스 Go 클라이언트 라이브러리가 더 이상 지원 중단된 
 객체를 파싱할 수 없기 때문에 헬름이 라이브러리를 
