@@ -87,9 +87,9 @@ kind: Deployment
 더 이상 사용되지 않는 API 버전을 사용하는 릴리스를 
 지원되는 API 버전으로 업그레이드 하는것이 모범사례이다.
 
-이전에 제안한대로 릴리스를 업데이트하지 않으려면 API 버전이 
-제거된 쿠버네티스 버전에서 릴리스를 업그레이드 하려고 할 때 
-다음과 유사한 오류가 발생한다.
+위와 같이 릴리스를 업데이트하지 않으면, API 버전이 
+제거된 쿠버네티스 버전에서 릴리스를 업그레이드하려고 할 때 
+다음과 유사한 오류가 발생할 수 있다.
 
 ```
 Error: UPGRADE FAILED: current release manifest contains removed kubernetes api(s)
