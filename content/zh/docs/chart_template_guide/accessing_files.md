@@ -138,7 +138,7 @@ Or
 {{ end }}
 ```
 
-## 配置映射和密钥实用功能
+## ConfigMap and Secrets utility functions
 
 （在Helm 2.0.2及后续版本可用）
 
