@@ -8,7 +8,7 @@ weight: 5
 
 ## はじめに
 
-翻訳への貢献にはドキュメントへの貢献と同様のプロセスを用います。翻訳は [helm-www](https://github.com/helm/helm-www) git リポジトリへの[プルリクエスト](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)によって供給され、プルリクエストはウェブサイトの管理チームによってレビューされます。
+翻訳への貢献にはドキュメントへの貢献と同様のプロセスを用います。翻訳は [helm-www](https://github.com/helm/helm-www) git リポジトリへの[プルリクエスト](https://help.github.com/ja/github/collaborating-with-issues-and-pull-requests/about-pull-requests)によって供給され、プルリクエストはウェブサイトの管理チームによってレビューされます。
 
 ### 2文字言語コード
 
@@ -25,16 +25,16 @@ weight: 5
 
 ### フォーク、ブランチ、変更、プルリクエスト
 
-翻訳に貢献するために、まずは Github の [helm-www リポジトリ](https://github.com/helm/helm-www)の[フォークを作る](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)ことから始めましょう。あなたはまずあなたのフォークに変更をコミットすることから始めるでしょう。
+翻訳に貢献するために、まずは Github の [helm-www リポジトリ](https://github.com/helm/helm-www)の[フォークを作る](https://help.github.com/ja/github/getting-started-with-github/fork-a-repo)ことから始めましょう。あなたはまずあなたのフォークに変更をコミットすることから始めるでしょう。
 
-初期状態であなたのフォークは master として知られるデフォルトブランチに設定されているでしょう。あなたの変更を開発するあるいはプルリクエストを作成するためにブランチを使用してください。もしブランチについて不慣れなら[それらについて Github ドキュメントで読む](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches)ことができます。
+初期状態であなたのフォークは master として知られるデフォルトブランチに設定されているでしょう。あなたの変更を開発するあるいはプルリクエストを作成するためにブランチを使用してください。もしブランチについて不慣れなら[それらについて Github ドキュメントで読む](https://help.github.com/ja/github/collaborating-with-issues-and-pull-requests/about-branches)ことができます。
 
 ブランチを作成出来たら、翻訳を追加したり、コンテンツを国際化したりしましょう。
 
 注：helm は [Developers Certificate of
 Origin](https://developercertificate.org/) を利用しています。すべてのコミットは署名されている必要があります。コミットを作成する際に `-s` か `--signoff` フラグを用いることで、あなたの Git に設定されている名前とメールアドレスを用いてコミットに署名することができます。詳細については [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work) をご覧ください。
 
-準備ができたら、[プルリクエスト](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) を作成し、helm-www リポジトリに反映しましょう。
+準備ができたら、[プルリクエスト](https://help.github.com/ja/github/collaborating-with-issues-and-pull-requests/about-pull-requests) を作成し、helm-www リポジトリに反映しましょう。
 
 作成されたプルリクエストは管理者によってレビューされます。その過程についての詳細は [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md) を参照してください。
 
@@ -74,7 +74,7 @@ AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea
 
 サイトグローバルな　[config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89) ファイルで言語ナビゲーションが設定されています。
 
-新たな言語を追加するには、上で定義した新たな[2文字言語コード](./localization/#two-letter-language-code)を追加する必要があります。例：
+新たな言語を追加するには、上で定義した新たな[2文字言語コード](./localization/#2文字言語コード)を追加する必要があります。例：
 
 ```
 # Korean
