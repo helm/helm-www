@@ -48,7 +48,7 @@ $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 `renderer1 | renderer2 | renderer3` 와 같이 간단하게 표현될수 있다.
 
 `kustomize` 를 포스트 렌더러로 사용하는 예는
-[여기](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render)에서 확인할 수 있다.
+[이곳](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render)에서 확인할 수 있다.
 
 ### 주의사항
 포스트 렌더러를 사용할 때 유의해야 하는 몇 가지 중요한 사항들이 있다.
