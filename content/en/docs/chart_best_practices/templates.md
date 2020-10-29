@@ -99,18 +99,6 @@ apiVersion: v1
 {{- end }}
 ```
 
-Blocks (such as control structures) may be indented to indicate flow of the
-template code.
-
-```yaml
-{{- range .Values.elements }}
-  {{- print "my element is" . }}
-{{- end }}
-```
-
-However, since YAML is a whitespace-oriented language, it is often not possible
-for code indentation to follow that convention.
-
 ## Whitespace in Generated Templates
 
 It is preferable to keep the amount of whitespace in generated templates to a
