@@ -63,9 +63,6 @@ cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
 
 翻訳されていない英語ファイルのコピーを `content/[LANG]/` に追加しないでください。言語がその場所に存在する場合、未翻訳のページは自動的に英語にリダイレクトされます。翻訳には時間がかかるので、常に古いフォークではなく最新のドキュメントを翻訳するようにしてください。
 
-Make sure you remove any `aliases` lines from the header section. A line like
-`aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
-are redirections for old links which don't exist for new pages.
 全ての `aliases` 行をヘッダーセクションから削除するよう気をつけてください。`aliases: ["/docs/using_helm/"]` のような行は翻訳では持ちません。それらは新たなページには存在しない古いリンクへのリダイレクトです。
 
 注：翻訳ツールが助けになるかもしれません。それには機械翻訳が含まれています。機械翻訳は公開前に編集される、またはネイティブ話者によって文法や意味をレビューされる必要があります。
@@ -91,9 +88,6 @@ weight = 1
 
 ## 内部リンクの解決
 
-Translated content will sometimes include links to pages that only exist in
-another language. This will result in site [build
-errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
 翻訳されたコンテンツは時々別言語にしか存在しないページへのリンクを含んでいるでしょう。これによって[ビルドエラー](https://app.netlify.com/sites/helm-merge/deploys)が発生します。例：
 
 ```
@@ -110,9 +104,6 @@ errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
 * アンカーリンクは翻訳された `id` の値を反映する必要があります。
 * 内部リンクを修正する必要があります。
 
-For internal pages that do not exist _(or have not been translated yet)_, the
-site will not build until a correction is made. As a fallback, the url can point
-to another language where that content _does_ exist as follows:
 存在しない _（もしくはまだ翻訳されていない）_ 内部ページについては、修正がされるまでサイトがビルドされません。代わりに、下記のようにコンテンツが存在　_する_ 別の言語にURLを向けることができます。
 
 
