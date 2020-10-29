@@ -9,7 +9,7 @@ weight: 9
 수행하려는 헬름의 "숙련 사용자"를 위한 것이다. 이러한 각 
 고급 기능에는 고유한 장단점 및 주의사항이 있으므로, 각 기능은 
 헬름에 대한 깊은 지식과 함께 신중하게 사용해야한다. 
-달리 말하면, [Peter Parker 
+다르게 말하면, [Peter Parker 
 원칙](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)을 기억하자.
 
 ## 포스트 렌더링
