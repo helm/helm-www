@@ -20,7 +20,7 @@ weight: 1
   在大多数情况下，它是倒数第二个minor release。
 - 您也应该有一个本地的 `kubectl`.
 
-查看Helm和对应支持的Kubernetes版本，您可以参考 [Helm 版本支持策略](https://helm.sh/docs/topics/version_skew/) 
+查看Helm和对应支持的Kubernetes版本，您可以参考 [Helm 版本支持策略](https://helm.sh/zh/docs/topics/version_skew/) 
 
 ## 安装
 
