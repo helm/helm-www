@@ -187,7 +187,7 @@ chart values现在可以使用JSON结构了。这保证用户提供value可以�
 * `helm template`
 * `helm lint`
 
-查看 [格式文档](https://docs.zh/docs/topics/charts#架构文件) 了解更多信息。
+查看 [格式文档](https://docs.helm.zh/docs/topics/charts#架构文件) 了解更多信息。
 
 ### 将 `requirements.yaml` 合并到了 `Chart.yaml`
 
@@ -248,7 +248,7 @@ Docker的分发项目（也称作Docker注册中心 v2）是Docker 注册项目�
 
 请查看 `helm help chart` 和 `helm help registry` 了解如何打包chart并推送到Docker注册中心的更多信息。
 
-更多信息请查看 [注册中心](https://docs.zh/docs/topics/registries/)页面。
+更多信息请查看 [注册中心](https://docs.helm.zh/docs/topics/registries/)页面。
 
 ### 移除了`helm serve`
 
