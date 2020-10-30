@@ -24,10 +24,22 @@ Environment variables:
 | $HELM_CACHE_HOME                   | set an alternative location for storing cached files.                             |
 | $HELM_CONFIG_HOME                  | set an alternative location for storing Helm configuration.                       |
 | $HELM_DATA_HOME                    | set an alternative location for storing Helm data.                                |
+| $HELM_DEBUG                        | indicate whether or not Helm is running in Debug mode                             |
 | $HELM_DRIVER                       | set the backend storage driver. Values are: configmap, secret, memory, postgres   |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | set the connection string the SQL storage driver should use.                      |
+| $HELM_MAX_HISTORY                  | set the maximum number of helm release history.                                   |
+| $HELM_NAMESPACE                    | set the namespace used for the helm operations.                                   |
 | $HELM_NO_PLUGINS                   | disable plugins. Set HELM_NO_PLUGINS=1 to disable plugins.                        |
+| $HELM_PLUGINS                      | set the path to the plugins directory                                             |
+| $HELM_REGISTRY_CONFIG              | set the path to the registry config file.                                         |
+| $HELM_REPOSITORY_CACHE             | set the path to the repository cache directory                                    |
+| $HELM_REPOSITORY_CONFIG            | set the path to the repositories file.                                            |
 | $KUBECONFIG                        | set an alternative Kubernetes configuration file (default "~/.kube/config")       |
+| $HELM_KUBEAPISERVER                | set the Kubernetes API Server Endpoint for authentication                         |
+| $HELM_KUBEASGROUPS                 | set the Username to impersonate for the operation.                                |
+| $HELM_KUBEASUSER                   | set the Groups to use for impoersonation using a comma-separated list.            |
+| $HELM_KUBECONTEXT                  | set the name of the kubeconfig context.                                           |
+| $HELM_KUBETOKEN                    | set the Bearer KubeToken used for authentication.                                 |
 
 Helm stores cache, configuration, and data based on the following configuration order:
 
@@ -47,28 +59,18 @@ By default, the default directories depend on the Operating System. The defaults
 ### Options
 
 ```
-      --add-dir-header                   If true, adds the file directory to the header
-      --alsologtostderr                  log to standard error as well as files
-      --debug                            enable verbose output
-  -h, --help                             help for helm
-      --kube-apiserver string            the address and the port for the Kubernetes API server
-      --kube-context string              name of the kubeconfig context to use
-      --kube-token string                bearer token used for authentication
-      --kubeconfig string                path to the kubeconfig file
-      --log-backtrace-at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
-      --log-dir string                   If non-empty, write log files in this directory
-      --log-file string                  If non-empty, use this log file
-      --log-file-max-size uint           Defines the maximum size a log file can grow to. Unit is megabytes. If the value is 0, the maximum file size is unlimited. (default 1800)
-      --logtostderr                      log to standard error instead of files (default true)
-  -n, --namespace string                 namespace scope for this request
-      --registry-config string           path to the registry config file (default "~/.config/helm/registry.json")
-      --repository-cache string          path to the file containing cached repository indexes (default "~/snap/code/common/.cache/helm/repository")
-      --repository-config string         path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
-      --skip-headers                     If true, avoid header prefixes in the log messages
-      --skip-log-headers                 If true, avoid headers when opening log files
-      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
-  -v, --v Level                          number for the log level verbosity
-      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+      --debug                       enable verbose output
+  -h, --help                        help for helm
+      --kube-apiserver string       the address and the port for the Kubernetes API server
+      --kube-as-group stringArray   Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string         Username to impersonate for the operation
+      --kube-context string         name of the kubeconfig context to use
+      --kube-token string           bearer token used for authentication
+      --kubeconfig string           path to the kubeconfig file
+  -n, --namespace string            namespace scope for this request
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### SEE ALSO
@@ -97,4 +99,4 @@ By default, the default directories depend on the Operating System. The defaults
 * [helm verify](helm_verify.md)	 - verify that a chart at the given path has been signed and is valid
 * [helm version](helm_version.md)	 - print the client version information
 
-###### Auto generated by spf13/cobra on 14-Sep-2020
+###### Auto generated by spf13/cobra on 29-Oct-2020
