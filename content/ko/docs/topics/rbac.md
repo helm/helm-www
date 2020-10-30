@@ -10,7 +10,7 @@ weight: 11
 문서에서](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions) 서비스 계정 권한에 대해 
 자세히 알아보도록 하자.
 
-쿠버네티스 1.6 부터는 역할 기반 접근 제어가 기본적으로 활성화 된다.
+쿠버네티스 1.6 부터는 역할 기반 접근 제어가 기본적으로 활성화된다.
 RBAC을 사용하면 조직에서 사용자와 역할에 따라 허용되는
 작업유형을 지정할 수 있다.
 
