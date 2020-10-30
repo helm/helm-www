@@ -157,7 +157,7 @@ rules:​
   verbs: ["get", "watch", "list"]
 ```
 
-그리고나서, 다음을 사용하여 클러스터롤을 만든다.
+그러고 나서, 다음을 사용하여 클러스터롤을 만든다.
 
 ```console
 $ kubectl create -f clusterrole-secret-reader.yaml​
