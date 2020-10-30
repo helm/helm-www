@@ -4,11 +4,11 @@ description: "헬름이 쿠버네티스의 역할 기반 접근 제어와 상호
 weight: 11
 ---
 
-쿠버네티스에서 사용자 또는 어플리케이션 별 서비스 계정에 
-역할을 부여하는 것은 어플리케이션이 지정한 범위에서 작동하는지 
-확인할 수 있는 모범 사례이다. [공식 쿠버네티스 
-문서에서](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions) 서비스 계정 권한에 대하여 
-자세히 알아보도록 하자
+쿠버네티스에서 사용자 또는 어플리케이션별 서비스 계정에 
+역할을 부여하는 것은 애플리케이션이 지정한 권한범위 내에서 작동하도록 
+하는 모범 사례이다. [공식 쿠버네티스 
+문서에서](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions) 서비스 계정 권한에 대해 
+자세히 알아보도록 하자.
 
 쿠버네티스 1.6 부터는 역할 기반 접근 제어가 기본적으로 활성화 된다.
 RBAC를 사용하면 조직에서 사용자와 역할에 따라 허용되는
