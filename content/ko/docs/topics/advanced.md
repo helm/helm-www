@@ -45,7 +45,7 @@ $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 
 여러 개의 포스트 렌더러를 사용하려면 스크립트에서 모두 호출하거나 빌드한 
 바이너리 도구에서 함께 호출해야 한다. bash의 경우, 
-`renderer1 | renderer2 | renderer3` 와 같이 간단하게 표현될수 있다.
+`renderer1 | renderer2 | renderer3` 와 같이 간단하게 표현할 수 있다.
 
 `kustomize` 를 포스트 렌더러로 사용하는 예는
 [이곳](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render)에서 확인할 수 있다.
