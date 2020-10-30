@@ -183,7 +183,7 @@ kubectl get secret --all-namespaces -l "owner=helm"
 권한은 대부분의 리소스에 대한 접근 권한을 부여하지만 보안 시크릿에는 부여하지 않는다. 
 또한 [암호화 된 저장소](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)에 
 대해 시크릿 데이터를 구성할 수 있다.
-컨피그맵 백엔드로 전환하기로 결정한 경우 어플리케이션의 민감한 데이터가 노출될 수 있으므로 유의해야 한다.
+컨피그맵 백엔드로 전환하기로 결정한 경우 애플리케이션의 민감한 데이터가 노출될 수 있으므로 유의해야 한다.
 
 ### SQL 스토리지 백엔드
 
