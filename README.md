@@ -48,7 +48,7 @@ To update these docs, you'll need to:
 
 1. Delete all plugins currently installed with `helm plugin uninstall`
 2. Navigate to `content/en/docs/helm/`
-3. Run `helm docs --type markdown` to generate the markdown docs files, replacing any prior markdown files
+3. Run `helm docs --type markdown` to generate the markdown docs files, replacing any prior markdown files.  **Note:** Make sure you run the version of helm you want to build the docs for (for example, by checking out the correct tag and building it)
 4. Add back the YAML front-matter to each file that was changed
 5. Commit the changes and create a PR to update the website.
 
