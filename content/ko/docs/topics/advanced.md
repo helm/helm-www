@@ -213,8 +213,8 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 활성화하라.
 
 기본 백엔드에서 SQL 백엔드로 전환하려면 
-직접 마이그레이션을 수행해야한다. 다음 
-명령을 통하여 릴리스 정보를 검색할 수 있다.
+직접 마이그레이션을 수행해야 한다. 다음 
+명령어를 통해 릴리스 정보를 검색할 수 있다.
 
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
