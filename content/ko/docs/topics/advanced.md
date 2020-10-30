@@ -178,7 +178,7 @@ kubectl get secret --all-namespaces -l "owner=helm"
 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)을 
 사용하여 쿠버네티스 인증을 관리할 때 컨피그맵 
 리소스에 대한 광범위한 접근 권한을 부여하는 
-동시에 시크릿 리소스에 대한 접근을 제할 할 수 있다.
+동시에 시크릿 리소스에 대한 접근을 제한할 수 있다.
 예를들어 기본 [사용자 대면 역할](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) 보기 
 권한은 대부분의 리소스에 대한 접근 권한을 부여하지만 보안 시크릿에는 부여하지 않는다. 
 또한 [암호화 된 저장소](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)에 
