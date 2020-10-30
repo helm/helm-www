@@ -40,8 +40,8 @@ STDOUT 으로 유효한 쿠버네티스 매니페스트를 반환하는 실행�
 $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 ```
 
-경로에 구분 기호가 없으면 $PATH 에서 검색하고, 그렇지 않으면 상대경로를 
-정규화된 경로(fully qualified)로 확인한다.
+경로에 구분자가 없으면 $PATH 에서 검색하고, 그렇지 않으면 상대경로를 
+완전한 전체 경로로 풀어낸다.
 
 여러 개의 포스트 렌더러를 사용하려면 스크립트에서 모두 호출하거나 빌드한 
 바이너리 도구에서 함께 호출해야 한다. bash의 경우, 
