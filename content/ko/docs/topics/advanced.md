@@ -208,7 +208,7 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 > 참고: 현재 PostgreSQL 만 지원된다.
 
 **운영 참고사항**: 다음을 권장한다.
-- 운영 데이터베이스를 준비하라. PostgreSQL에 대한 자세한 내용은 [서버 관리](https://www.postgresql.org/docs/12/admin.html) 문서를 참조하라.
+- 운영 데이터베이스를 준비하자. PostgreSQL에 대한 자세한 내용은 [서버 관리](https://www.postgresql.org/docs/12/admin.html) 문서를 참조하자.
 - 릴리스 정보를 위해 쿠버네티스 RBAC를 미러링 하도록 [권한 관리](/docs/permissions_sql_storage_backend/)를 
 활성화하라.
 
