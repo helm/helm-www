@@ -78,7 +78,7 @@ YAML for a plugin that adds support for Keybase operations:
 name: "last"
 version: "0.1.0"
 usage: "get the last release name"
-description: "get the last release name""
+description: "get the last release name"
 ignoreFlags: false
 command: "$HELM_BIN --host $TILLER_HOST list --short --max 1 --date -r"
 platformCommand:
