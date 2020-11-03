@@ -5,7 +5,7 @@ description: "您需要知道的关于文档如何组织的所有内容。"
 
 # 欢迎
 
-欢迎使用 [Helm](https://docs.helm.sh/zh/) 文档。 Helm 是 Kubernetes 的包管理器，您也可以在 [CNCF Helm 项目过程报告](https://www.cncf.io/cncf-helm-project-journey/)阅读详细的背景信息。
+欢迎使用 [Helm](https://helm.sh/zh/) 文档。 Helm 是 Kubernetes 的包管理器，您也可以在 [CNCF Helm 项目过程报告](https://www.cncf.io/cncf-helm-project-journey/)阅读详细的背景信息。
 
 # 文档构成
 

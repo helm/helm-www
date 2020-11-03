@@ -146,7 +146,7 @@ nginx-1.2.3.tgz
 ### Chart Types
 
 `type`字段定义了chart的类型。有两种类型： `application` 和 `library`。 应用是默认类型，是可以完全操作的标准chart。
- [库类型 chart](http://docs.helm.sh/zh/docs/topics/library_charts.md) 提供针对chart构建的实用程序和功能。
+ [库类型 chart](http://helm.sh/zh/docs/topics/library_charts) 提供针对chart构建的实用程序和功能。
  库类型chart与应用类型chart不同，因为它不能安装，通常不包含任何资源对象。
 
 **注意：** 应用类型chart 可以作为库类型chart使用。可以通过将类型设置为 `library`来实现。
@@ -485,7 +485,7 @@ Kubernetes类型的安装顺序会按照kind_sorter.go(查看 [Helm源文件](ht
 
 Helm Chart 模板是按照[Go模板语言](https://golang.org/pkg/text/template/)书写，
 增加了50个左右的附加模板函数[来自 Sprig库](https://github.com/Masterminds/sprig) 
-和一些其他[指定的函数](http://docs.helm.sh/zh/docs/howto/charts_tips_and_tricks.md)。
+和一些其他[指定的函数](http://helm.sh/zh/docs/howto/charts_tips_and_tricks)。
 
 所有模板文件存储在chart的 `templates/` 文件夹。
 当Helm渲染chart时，它会通过模板引擎遍历目录中的每个文件。
@@ -607,7 +607,7 @@ storage: "gcs"
 **注意：** 如果`helm install`或`helm upgrade`使用了`--set`参数，这些值在客户端会被简单地转换为YAML。
 
 **注意：** 如果values 文件存在任何必需的条目，它们会在chart模板中使用['required'
-函数](http://docs.helm.sh/zh/docs/howto/charts_tips_and_tricks.md) 声明为必需的。
+函数](http://helm.sh/zh/docs/howto/charts_tips_and_tricks) 声明为必需的。
 
 然后使用模板中的`.Values`对象就可以任意访问这些值了：
 

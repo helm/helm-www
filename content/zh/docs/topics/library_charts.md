@@ -19,7 +19,7 @@ chart维护者可以定义一个通用的chart作为库并且现在可以确信H
 
 ## 创建一个简单的库chart
 
-像之前提到的，库chart是一种[Helm chart](https://docs.helm.sh/zh/docs/topics/charts)类型。意味着你可以从创建脚手架chart开始：
+像之前提到的，库chart是一种[Helm chart](https://helm.sh/zh/docs/topics/charts)类型。意味着你可以从创建脚手架chart开始：
 
 ```console
 $ helm create mylibchart
@@ -320,7 +320,7 @@ spec:
 dependencies:
 - name: common
   version: "^0.0.5"
-  repository: "https://kubernetes-charts-incubator.storage.googleapis.com/"
+  repository: "https://charts.helm.sh/incubator/"
 ```
 
 注意：需要添加`incubator`仓库到Helm仓库列表中(`helm repo add`)。

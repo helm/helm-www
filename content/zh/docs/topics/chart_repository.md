@@ -11,12 +11,12 @@ weight: 6
 
 ## 先决条件
 
-* 先阅读[快速开始](https://docs.helm.sh/zh/docs/topics/quickstart/)
-* 阅读[Charts](https://docs.helm.sh/zh/docs/topics/charts.md/)文档
+* 先阅读[快速开始](https://helm.sh/zh/docs/topics/quickstart/)
+* 阅读[Charts](https://helm.sh/zh/docs/topics/chart/)文档
 
 ## 创建一个chart仓库
 
-_chart仓库_ 是一个配置了`index.yaml`文件和一些已经打包chart的HTPP服务器。当你准备好分享chart时，最好的方法是将chart上传到chart仓库。
+_chart仓库_ 是一个配置了`index.yaml`文件和一些已经打包chart的HTTP服务器。当你准备好分享chart时，最好的方法是将chart上传到chart仓库。
 
 **注意：** 针对Helm 2.0.0，chart仓库没有内部身份验证。GitHub上一个[问题跟踪进度](https://github.com/helm/helm/issues/1038)。
 
@@ -26,7 +26,7 @@ Cloud Storage(GCS)， Amazon S3，GitHub页面，甚至创建自己的web服务�
 ### chart仓库结构
 
 chart仓库由chart包和包含了仓库中所有chart索引的特殊文件`index.yaml`。
-通常描述chart的`index.yaml`也托管在同一个服务器上作为[来源文件](https://docs.helm.sh/docs/topics/provenance/)。
+通常描述chart的`index.yaml`也托管在同一个服务器上作为[来源文件](https://helm.sh/docs/topics/provenance/)。
 
 比如，`https://example.com/charts`仓库布局可能看起来像这样：
 
@@ -199,7 +199,7 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 最后一条命令会用刚才创建的本地路径和远程仓库url构建一个`index.yaml`文件放在给定的目录路径中。
 
 现在你可以使用同步工具或手动上传chart和index文件到chart仓库中。如果使用的是Google Cloud Storage，使用gsutil客户端检查
-[示范工作流](https://docs.helm.sh/docs/howto/chart_repository_sync_example/)。针对于GitHub，你可以简单地将chart放在合适的目标分支中。
+[示范工作流](https://helm.sh/docs/howto/chart_repository_sync_example/)。针对于GitHub，你可以简单地将chart放在合适的目标分支中。
 
 ### 添加一个新的chart到已有仓库中
 
