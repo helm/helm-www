@@ -11,7 +11,7 @@ date: "2020-10-26"
 
 _**Important Note:** This does not affect the obsolescence timeline for the stable and incubator repositories that was announced in 2019. On November 13, 2020 the stable and incubator charts repository will reach the end of development and become archives. You can find that many of the charts have moved to other, community managed, repositories. You can discover these on the [Artifact Hub](https://artifacthub.io/). More information on the obsolescence will follow in future blog posts and communications._
 
-The new location for the stable repository is https://charts.helm.sh/stable and the new location for the incubator repository is https://charts.helm.sh/incubator. If you use charts in either of these locations you MUST update the repositories you use before November 13, 2020. The new locations are hosted using GitHub pages.
+The new location for the stable repository is https://charts.helm.sh/stable and the new location for the incubator repository is https://charts.helm.sh/incubator. If you use charts in either of these old locations below you MUST update the repositories you use before November 13, 2020. The new locations are hosted using GitHub pages.
 
 | Name      | Old Location | New Location |
 | --------- | ------------ | ------------ |
