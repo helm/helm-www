@@ -39,8 +39,8 @@ installation. And to find new charts, you can search Helm chart _repositories_.
 Helm comes with a powerful search command. It can be used to search two
 different types of source:
 
-- `helm search hub` searches [the Helm Hub](https://hub.helm.sh), which
-  comprises helm charts from dozens of different repositories.
+- `helm search hub` searches [the Artifact Hub](https://artifacthub.io), which
+  lists helm charts from dozens of different repositories.
 - `helm search repo` searches the repositories that you have added to your local
   helm client (with `helm repo add`). This search is done over local data, and
   no public network connection is needed.
@@ -55,7 +55,7 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.6.3        v0.6.3      Pr
 https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A Helm chart for deploying a WordPress site on ...
 ```
 
-The above searches for all `wordpress` charts on Helm Hub.
+The above searches for all `wordpress` charts on Artifact Hub.
 
 With no filter, `helm search hub` shows you all of the available charts.
 

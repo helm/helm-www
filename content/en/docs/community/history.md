@@ -30,3 +30,6 @@ track releases inside of the Kubernetes cluster, making it possible for teams to
 work together on a common set of Helm releases. Helm 3 was released in November 2019.
 
 Helm [graduated as a CNCF project in April 2020](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/).
+
+The CNCF [Artifact Hub](https://artifacthub.io) replaced the [Helm Hub](https://hub.helm.sh)
+in October 2020.

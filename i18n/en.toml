@@ -99,7 +99,7 @@ other = "Once installed, unpack the helm binary and add it to your PATH and you 
 other = "Get Charts"
 
 [get_charts_desc]
-other = "Visit the [Helm Hub](https://hub.helm.sh) to explore charts from numerous public Helm repositories."
+other = "Visit [Artifact Hub](https://artifacthub.io) to explore [Helm charts](https://artifacthub.io/packages/search?kind=0) from numerous public repositories."
 
 [get_upgrade_title]
 other = "[Upgrading from v2 to v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
