@@ -121,7 +121,7 @@ $ kubectl create rolebinding sam-edit
 사용자에게 `cluster-admin` 접근 권한을 부여하면 
 `kubectl drain` 을 사용한 노드 접근 및 기타 관리 작업을 
 포함하여 쿠버네티스에서 사용할 수 있는 모든 리소스에 대한 접근 권한이 
-부여된다. 그 대신 사용자에 `admin` 접근을 제공하거나 필요에 
+부여된다. 이 방식보다는 사용자에 `admin` 접근을 제공하거나 필요에 
 맞는 사용자 지정 클러스터롤을 생성하는 것을 권장한다.
 
 ```console
