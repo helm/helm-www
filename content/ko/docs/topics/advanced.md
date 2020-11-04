@@ -9,8 +9,8 @@ weight: 9
 수행하려는 헬름의 "숙련 사용자"를 위한 것이다. 이러한 각 
 고급 기능에는 고유한 장단점 및 주의사항이 있으므로, 각 기능은 
 헬름에 대해 충분한 지식을 가지고 신중하게 사용해야한다. 
-다르게 말하면, [Peter Parker 
-원칙](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)을 기억하자.
+바꿔 말해서, [Peter Parker 
+원칙](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)을 유념하자.
 
 ## 포스트 렌더링
 포스트 렌더링은 차트 설치 프로그램이 헬름으로 설치하기 
