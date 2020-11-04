@@ -202,7 +202,7 @@ $ kubectl create clusterrolebinding sam-secret-reader
 ## 추가적인 고려사항
 
 위에 표시된 예는 쿠버네티스와 함께 제공되는 기본 클러스터롤을 
-활용한다. 사용자에게 접근 권한이 부여된 리소스를 보다 세밀하게 
+활용한다. 사용자에게 접근 권한이 부여된 리소스를 더 세밀하게 
 제어하려면 고유한 사용자 지정 역할 및 클러스터롤 생성에 대한 
 [쿠버네티스 문서](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)를 
 참조하자.
