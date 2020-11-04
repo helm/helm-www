@@ -80,8 +80,8 @@ type PostRenderer interface {
 Go SDK 사용에 대한 자세한 내용은 [Go SDK 섹션](#go-sdk)를 참조하자.
 
 ## Go SDK
-헬름 3은 헬름을 활용하는 소프트웨어 및 도구를 
-빌드할 때 더 나은 경험을 제공하기 위해 완전히 
+헬름 3는 헬름을 활용하는 소프트웨어 및 도구를 
+빌드할 때 더 나은 경험을 제공하기 위해 완전 
 재구성된 Go SDK를 선보였다. 
 전체 문서는 [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3)에서 
 찾을 수 있지만 가장 일반적인 패키지 중 일부와 간단한 예제는 다음과 같다.
