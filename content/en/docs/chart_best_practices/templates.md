@@ -156,7 +156,7 @@ Template Comments:
 ```yaml
 {{- /*
 This is a comment.
-*/ -}}
+*/}}
 type: frobnitz
 ```
 
@@ -166,7 +166,7 @@ as explaining a defined template:
 ```yaml
 {{- /*
 mychart.shortname provides a 6 char truncated version of the release name.
-*/ -}}
+*/}}
 {{ define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end -}}
@@ -182,7 +182,7 @@ memory: {{ .Values.maxMem | quote }}
 ```
 
 The comment above is visible when the user runs `helm install --debug`, while
-comments specified in `{{- /* */ -}}` sections are not.
+comments specified in `{{- /* */}}` sections are not.
 
 ## Use of JSON in Templates and Template Output
 

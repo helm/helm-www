@@ -155,7 +155,7 @@ type: sprocket
 ```yaml
 {{- /*
 This is a comment.
-*/ -}}
+*/}}
 type: frobnitz
 ```
 
@@ -165,7 +165,7 @@ type: frobnitz
 ```yaml
 {{- /*
 mychart.shortname 은 릴리스 이름에서 6자만 자른 것을 제공한다.
-*/ -}}
+*/}}
 {{ define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end -}}
