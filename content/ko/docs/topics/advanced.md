@@ -179,8 +179,8 @@ kubectl get secret --all-namespaces -l "owner=helm"
 사용하여 쿠버네티스 인증을 관리할 때 컨피그맵 
 리소스에 대한 광범위한 접근 권한을 부여하는 
 동시에 시크릿 리소스에 대한 접근을 제한할 수 있다.
-예를들어 기본 [사용자 대면 역할](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) 보기 
-권한은 대부분의 리소스에 대한 접근 권한을 부여하지만 보안 시크릿에는 부여하지 않는다. 
+예를 들어 기본 [사용자 대면 역할](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) 보기 
+권한은 대부분의 리소스에 접근 권한을 부여하지만, 보안 시크릿에는 부여하지 않는다. 
 또한 [암호화 된 저장소](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)에 
 대해 시크릿 데이터를 구성할 수 있다.
 컨피그맵 백엔드로 전환하기로 결정한 경우 애플리케이션의 민감한 데이터가 노출될 수 있으므로 유의해야 한다.
