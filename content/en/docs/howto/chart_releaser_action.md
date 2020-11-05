@@ -2,7 +2,6 @@
 title: "Chart Releaser Action to Automate GitHub Page Charts"
 description: "Describe how to use Chart Releaser Action to automate releasing charts through GitHub pages."
 weight: 1
-aliases: ["/docs/chart_releaser_action/"]
 ---
 
 This guide describes how to use [Chart Releaser
