@@ -51,7 +51,7 @@ To uninstall the chart:
 
 The charts will be published to a website with URL like this:
 
-    http://<orgname>.github.io/helm-charts
+    https://<orgname>.github.io/helm-charts
 
 ## GitHub Actions Workflow
 
