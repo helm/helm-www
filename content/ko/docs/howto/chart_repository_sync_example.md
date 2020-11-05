@@ -14,7 +14,7 @@ weight: 2
 
 ## 로컬 차트 리포지토리 디렉터리 설정
 [차트 리포지토리 가이드]({{< ref
-"/docs/topics/chart_repository.md" >}})에서 실행했던 것처럼 로컬 디렉터리를 만들고, 패키지된 차트를 그 위치로 옮긴다.
+"/docs/topics/chart_repository.md" >}})에서 한 것처럼 로컬 디렉터리를 만들고, 패키지된 차트를 그 디렉터리로 옮긴다.
 
 예제:
 ```console
