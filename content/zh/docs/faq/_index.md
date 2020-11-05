@@ -154,7 +154,7 @@ containers:
 
 ### 作为默认存储器的密钥
 
-在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/zh/docs/topics/advanced/#后端存储)使用。
+在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/zh/docs/topics/advanced#后端存储)使用。
 Helm 2默认使用ConfigMaps记录版本信息。在Helm 2.7.0中，新的存储后台使用密钥来存储版本信息，
 现在是Helm 3的默认设置。
 
@@ -187,7 +187,7 @@ chart values现在可以使用JSON结构了。这保证用户提供value可以�
 * `helm template`
 * `helm lint`
 
-查看 [格式文档](https://helm.sh/zh/docs/topics/charts#架构文件) 了解更多信息。
+查看 [格式文档](https://docs.helm.zh/docs/topics/charts#架构文件) 了解更多信息。
 
 ### 将 `requirements.yaml` 合并到了 `Chart.yaml`
 
@@ -248,7 +248,7 @@ Docker的分发项目（也称作Docker注册中心 v2）是Docker 注册项目�
 
 请查看 `helm help chart` 和 `helm help registry` 了解如何打包chart并推送到Docker注册中心的更多信息。
 
-更多信息请查看 [注册中心](https://helm.sh/zh/docs/topics/registries/)页面。
+更多信息请查看 [注册中心](https://docs.helm.zh/docs/topics/registries/)页面。
 
 ### 移除了`helm serve`
 
@@ -332,6 +332,12 @@ Helm 2 中为了清除版本清单，必须提供`--purge`参数。这个功能�
 当用命名空间创建版本时，命名空间不存在，Helm 2会创建一个命名空间。
 Helm 3中沿用了其他Kubernetes 工具的形式，如果命名空间不存在，就返回错误。
 如果您明确指定 `--create-namespace` 参数，Helm 3 会创建一个命名空间。
+
+### .Chart.ApiVersion是怎么回事?
+
+Helm针对缩略语遵循驼峰命名的典型惯例。我们已经在代码的其他位置做了处理，比如
+`.Capabilities.APIVersions.Has`。Helm v3中，我们将 `.Chart.ApiVersion`
+更正成了`.Chart.APIVersion`。
 
 ## 安装
 
@@ -419,3 +425,26 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 这样做会导致Helm的二进制文件大小膨胀，但是会阻止这个文件打开。
 
 这个问题最初被标记为潜在的安全问题。但后来已经确定，这种行为不存在任何缺陷或漏洞。
+
+### helm 仓库使用时添加仓库失败
+
+在Helm 3.3.1及之前版本，`helm repo add <reponame> <url>`在你添加已经存在的仓库时不会输入内容。
+如果仓库已经存在，`--no-update` 参数会报错。
+
+在Helm3.3.2及之后版本，试图添加一个已存在的仓库时会报一下错误：
+
+`Error: repository name (reponame) already exists, please specify a different name`
+
+现在这个默认行为是相反的。`--no-update` 现在被忽略。当您想替换（覆盖）已有仓库时，您可以使用 `--force-update`。
+
+这是由于一个安全修复做出的重大更改，详情见[Helm 3.3.2 release notes](https://github.com/helm/helm/releases/tag/v3.3.2)。
+
+### 开启 Kubernetes 客户端日志
+
+调试Kubernetes客户端打印日志时，可以使用[klog](https://pkg.go.dev/k8s.io/klog) 参数。使用`-v`可以设置日志级别应用于大多数场景。
+
+例如：
+
+```
+helm list -v 6
+```
