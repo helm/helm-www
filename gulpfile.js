@@ -45,6 +45,7 @@ gulp.task('clone', function(cb) {
     return gulp.src([
         'source/docs/quickstart.md',
         'source/docs/install.md',
+        'source/docs/kubernetes_apis.md',
         'source/docs/kubernetes_distros.md',
         'source/docs/install_faq.md',
         'source/docs/using_helm.md',
