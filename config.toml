@@ -63,46 +63,52 @@ url = "https://v2-14-0.helm.sh/docs"
     weight = 12
     parent = "using_helm"
   [[menu.main]]
+    name = "Deprecated Kubernetes APIs"
+    url = "deprecated-kubernetes-apis"
+    identifier = "deprecated-kubernetes-apis"
+    weight = 13
+    parent = "using_helm"
+  [[menu.main]]
     name = "Kubernetes Distro Notes"
     url = "kubernetes-distribution-guide"
     identifier = "kubernetes-distribution-guide"
-    weight = 13
+    weight = 14
     parent = "using_helm"
   [[menu.main]]
     name = "Install FAQ"
     url = "installation-frequently-asked-questions"
     identifier = "installation-frequently-asked-questions"
-    weight = 14
+    weight = 15
     parent = "using_helm"
   [[menu.main]]
     name = "Using Helm"
     url = "using-helm"
     identifier = "using-helm"
-    weight = 15
+    weight = 16
     parent = "using_helm"
   [[menu.main]]
     name = "Plugins"
     url = "the-helm-plugins-guide"
     identifier = "the-helm-plugins-guide"
-    weight = 16
+    weight = 17
     parent = "using_helm"
   [[menu.main]]
     name = "Role-Based Access Control"
     url = "role-based-access-control"
     identifier = "role-based-access-control"
-    weight = 17
+    weight = 18
     parent = "using_helm"
   [[menu.main]]
     name = "TLS/SSL for Helm and Tiller"
     url = "using-ssl-between-helm-and-tiller"
     identifier = "using-ssl-between-helm-and-tiller"
-    weight = 18
+    weight = 19
     parent = "using_helm"
   [[menu.main]]
     name = "Securing Helm"
     url = "securing-your-helm-installation"
     identifier = "securing-your-helm-installation"
-    weight = 19
+    weight = 20
     parent = "using_helm"
 
 [[menu.main]]
