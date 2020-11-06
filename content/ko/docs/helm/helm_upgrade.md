@@ -41,7 +41,7 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### 옵션
 
 ```
-      --atomic                       설정된 경우 업그레이드 프로세스는, 업그레이드 실패 시 변경 사항을 롤백. --atomic 을 사용하면 --wait 플래그가 자동으로 설정
+      --atomic                       설정된 경우, 업그레이드 실패 시 변경 사항을 롤백. --atomic 을 사용하면 --wait 플래그가 자동으로 설정
       --ca-file string               이 CA 번들을 사용하여 HTTPS 사용 서버의 인증서를 확인
       --cert-file string             이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트를 식별
       --cleanup-on-fail              업그레이드 실패 시, 이 업그레이드에서 생성된 새 리소스 삭제를 허용
