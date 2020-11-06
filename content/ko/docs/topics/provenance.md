@@ -73,7 +73,7 @@ $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 $ helm verify mychart-0.1.0.tgz
 ```
 
-실패한 확인의 경우 다음과 같다.
+확인에 실패한 경우 다음과 같다.
 
 ```console
 $ helm verify topchart-0.1.0.tgz
