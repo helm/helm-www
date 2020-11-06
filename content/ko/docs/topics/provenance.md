@@ -15,7 +15,7 @@ weight: 5
 차트와 함께 저장된다. 예를 들어 차트 이름이 `myapp-1.2.3.tgz` 인 경우 
 출처 파일은 `myapp-1.2.3.tgz.prov` 이 된다.
 
-출처 파일은 패키징시 생성되며 (`helm package --sign ...`) 등의 
+출처 파일은 패키징 시 생성되며 (`helm package --sign ...`) 등의 
 여러 명령, 특히 `helm install --verify` 으로 확인할 수 있다.
 
 ## 작업흐름
