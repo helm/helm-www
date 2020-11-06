@@ -29,7 +29,7 @@ override.yaml에 설정된 값을 우선한다.
 
 '--set' 플래그를 여러번 지정할 수도 있다. 지정된 마지막(가장 오른쪽) 파일에 
 우선 순위가 부여된다. 예를 들어 'foo' 라는 키에 대해 'bar' 와 'newbar' 에서 
-값이 모두 설정된 경우 'newbar'rk dntjsgksek. 
+값이 모두 설정된 경우 'newbar'가 우선한다.
 
     $ helm upgrade --set foo=bar --set foo=newbar redis ./redis
 
