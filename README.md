@@ -86,6 +86,8 @@ Gulp clones the files to the `/source` directory, makes some edits (to hugo-ify 
 
 Hugo then targets the `/content/docs` directory to generate the website, applying the theme (html layouts and css/js assets) in `/themes/hugo`.
 
+Note that if adding new pages that need to appear in the sidebar, you'll need to list them in `config.toml`.
+
 ---
 
 ## Deployment
