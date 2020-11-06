@@ -69,7 +69,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --set-file stringArray         명령줄을 통해 지정된 각 파일에서 값 설정(쉼표로 여러 값 또는 개별 값을 지정 가능. key1=val1,key2=val2)
       --set-string stringArray       명령줄에서 STRING 값 설정(쉼표로 여러 값 또는 개별 값을 지정 가능. key1=val1,key2=val2)
       --skip-crds                    설정된 경우, 설치 플래그가 활성화 된 상태에서 업그레이드를 수행할 때 CRD 미설치. 기본적으로 설치 플래그가 활성화된 상태에서 업그레이드가 수행될때, 아직 없는 경우에는 CRD 설치
-      --timeout duration             개별 쿠버네티스 (훜에 대한 작업과 같이)작업을 기다리는 시간 (기본값 5m0s)
+      --timeout duration             개별 쿠버네티스 (훅에 대한 작업과 같이)작업을 기다리는 시간 (기본값 5m0s)
       --username string              요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
   -f, --values strings               YAML 파일 또는 URL에 값 지정 (여러 개 지정 가능)
       --verify                       사용하기 전에 패키지 확인
