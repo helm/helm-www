@@ -103,7 +103,7 @@ $ helm install --generate-name --verify mychart-0.1.0.tgz
 
 - 구성된 Keybase.io 계정
 - 로컬에 설치된 GnuPG
-- 로컬에 설칯된 `keybase` CLI
+- 로컬에 설치된 `keybase` CLI
 
 #### 패키지 서명하기
 
