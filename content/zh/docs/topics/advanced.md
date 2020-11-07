@@ -154,6 +154,7 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 > 注意：目前只支持PostgreSQL。
 
 **产品说明**: 建议如下：
+
 - 确保你的数据库产品可以使用。对于PostgreSQL，请参考 [Server Administration](https://www.postgresql.org/docs/12/admin.html) 文档了解更多细节内容
 - 为版本信息启用 [权限管理](http://helm.sh/zh/docs/topics/permissions_sql_storage_backend/) 镜像到 Kubernetes RBAC 
 

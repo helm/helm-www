@@ -6,7 +6,7 @@ weight: 1
 
 本指南介绍如何快速开始使用Helm。
 
-## Prerequisites
+## 先决条件
 
 想成功和正确地使用Helm，需要以下前置条件。
 
@@ -20,15 +20,16 @@ weight: 1
   在大多数情况下，它是倒数第二个minor release。
 - 您也应该有一个本地的 `kubectl`.
 
-查看Helm和对应支持的Kubernetes版本，您可以参考 [Helm 版本支持策略](https://helm.sh/zh/docs/topics/version_skew/) 
+查看Helm和对应支持的Kubernetes版本，您可以参考 [Helm
+版本支持策略](https://helm.sh/zh/docs/topics/version_skew/)。
 
 ## 安装
 
 您可以通过 `homebrew` 下载二进制Helm client安装包，也可以通过github下载 [github 官方发布页面](https://github.com/helm/helm/releases)
 
-除此之外的更多安装方式详见 [安装指南]({{< ref "install.md" >}}).
+除此之外的更多安装方式详见 [安装指南](http://helm.sh/zh/docs/intro/install)。
 
-## 初始化 Helm Chart 仓库
+## 初始化
 
 当您已经安装好了Helm之后，您可以添加一个chart 仓库。 一个常见的选择是添加Helm的官方仓库：
 
@@ -64,10 +65,10 @@ Released smiling-penguin
 您可以通过执行 `helm show  chart stable/mysql` 命令简单的了解到这个chart的基本信息。
 或者您可以执行 `helm show all stable/mysql` 获取关于该chart的所有信息。
 
-每当您执行 `helm install` 的时候，都会创建一个新的release。 
+每当您执行 `helm install` 的时候，都会创建一个新的release。
 所以一个chart在同一个集群里面可以被安装多次，每一个都可以被独立的管理和升级。
 
-`helm install` 是一个拥有很多能力的强大的命令，更多信息详见 [使用 Helm]({{< ref "using_helm.md">}})
+`helm install` 是一个拥有很多能力的强大的命令，更多信息详见 [使用 Helm](http://helm.sh/zh/docs/intro/using_helm)
 
 ## 关于Releases
 
@@ -90,7 +91,8 @@ $ helm uninstall smiling-penguin
 Removed smiling-penguin
 ```
 
-该命令会从Kubernetes卸载 `smiling-penguin`， 它将删除和该release相关的所有相关资源（service、deployment、pod等等）甚至release history。
+该命令会从Kubernetes卸载 `smiling-penguin`， 它将删除和该release相关的所有相关资源（service、deployment、
+pod等等）甚至release history。
 
 如果您在执行 `helm uninstall` 的时候提供 `--keep-history` 选项， Helm将会保存release history。
 您可以通过命令查看该release的信息
@@ -101,7 +103,8 @@ Status: UNINSTALLED
 ...
 ```
 
-因为 `--keep-history` 选项会让helm跟踪你的release（即使你卸载了他们）， 所以你可以审计集群历史甚至使用 `helm rollback` 回滚release。
+因为 `--keep-history` 选项会让helm跟踪你的release（即使你卸载了他们）， 所以你可以审计集群历史甚至使用
+`helm rollback` 回滚release。
 
 ## 查看帮助信息
 
@@ -110,4 +113,3 @@ Status: UNINSTALLED
 ```console
 $ helm get -h
 ```
-

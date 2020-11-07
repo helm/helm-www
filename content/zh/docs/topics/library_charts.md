@@ -10,6 +10,7 @@ weight: 4
 
 在Helm 3中引用了库chart，从形式上区别于Helm 2中chart维护的通用或辅助chart。
 作为一个chart类型引入，可以提供：
+
 - 一种明确区分通用和应用chart的方法
 - 逻辑上阻止安装通用chart
 - 通用chart中的未渲染模板可以包含版本组件
@@ -38,9 +39,9 @@ $ rm -rf mylibchart/templates/*
 $ rm -f mylibchart/values.yaml
 ```
 
-在创建通用代码之前，先快速回顾一下相关Helm概念。[已命名的模板](https://helm.sh/docs/chart_template_guide/named_templates/)
+在创建通用代码之前，先快速回顾一下相关Helm概念。[已命名的模板](https://helm.sh/zh/docs/chart_template_guide/named_templates/)
 (有时称为局部模板或子模板)是定义在一个文件中的简单模板，并分配了一个名称。在`templates/`目录中，
-所有以下划线开始的文件(_)不会输出到Kubernetes清单文件中。因此依照惯例，辅助模板和局部模板被放置在`_*.tpl`或`_*.yaml`文件中。 
+所有以下划线开始的文件(_)不会输出到Kubernetes清单文件中。因此依照惯例，辅助模板和局部模板被放置在`_*.tpl`或`_*.yaml`文件中。
 
 这个示例中，我们要写一个通用的配置映射来创建一个空的配置映射源。在`mylibchart/templates/_configmap.yaml`文件中定义如下：
 
@@ -71,7 +72,7 @@ This takes an array of three values:
 - the top context
 - the template name of the overrides (destination)
 - the template name of the base (source)
-*/ -}}
+*/}}
 {{- define "mylibchart.util.merge" -}}
 {{- $top := first . -}}
 {{- $overrides := fromYaml (include (index . 1) $top) | default (dict ) -}}
@@ -314,7 +315,7 @@ spec:
 
 这些模板显示了如何从辅助模板中继承公共代码来将你的代码简化到资源的配置或自定义。
 
-为了能使用公共代码，我们需要添加一个`common`依赖。在`demo/Chart.yaml`文件最后啊添加以下内容： 
+为了能使用公共代码，我们需要添加一个`common`依赖。在`demo/Chart.yaml`文件最后啊添加以下内容：
 
 ```yaml
 dependencies:
