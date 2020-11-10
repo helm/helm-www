@@ -40,8 +40,8 @@ $ helm create mychart
 Creating mychart
 ```
 
-패키징 할 준비가 되면 `--sign` 플래그를 `helm package` 에 
-추가해야한다. 또한 서명 키가 알려진 이름과 해당 개인 키를 포함하는 
+패키징할 준비가 되면 `--sign` 플래그를 `helm package` 에 
+추가해야 한다. 또한 서명 키가 알려진 이름과 해당 개인 키를 포함하는 
 키링을 지정해야 한다.
 
 ```console
