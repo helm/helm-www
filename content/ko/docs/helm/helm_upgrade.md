@@ -4,7 +4,7 @@ title: "Helm Upgrade"
 
 ## helm upgrade
 
-릴리스를 업그레이드 한다.
+릴리스를 업그레이드한다.
 
 ### 개요
 
