@@ -17,7 +17,7 @@ date: "2020-10-07"
 
 아티팩트 허브에서는 헬름 허브에서 조회된 것과 동일한 차트 목록이 모두 조회된다. 
 
-더 빠른 검색을 제공하며 [면적 검색](https://en.wikipedia.org/wiki/Faceted_search)을 포함한다. 
+더 빠른 검색을 제공하며 [국면 검색](https://en.wikipedia.org/wiki/Faceted_search)을 포함한다. 
 
 이전과 비슷한 방식으로 차트를 검색할 수 있어야 한다. 검색은 헬름 CLI에서도 계속 동작한다.
 
