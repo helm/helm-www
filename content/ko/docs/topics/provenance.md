@@ -136,7 +136,7 @@ technosophos (keybase.io/technosophos) <technosophos@keybase.io>
 이것이 키의 전체 이름이다.
 
 다음으로 `helm package` 로 차트를 패키징하고 서명할 수 있다.
-최소한 `--key` 에서 해당 이름 문자열의 일부는 사용해야한다.
+최소한 `--key` 에서 해당 이름 문자열의 일부는 사용해야 한다.
 
 ```console
 $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
