@@ -21,7 +21,7 @@ helm test [RELEASE] [flags]
 ### 옵션
 
 ```
-  -h, --help               helm tesst 에 대한 도움말
+  -h, --help               helm test 에 대한 도움말
       --logs               테스트 파드에서 로그를 덤프 (모든 테스트가 완료된 후 정리 전에 실행)
       --timeout duration   개별 쿠버네티스 작업(예: 훅에 대한 작업)을 기다리는 시간 제한(기본값 5m0s)
 ```
