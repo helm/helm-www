@@ -98,7 +98,7 @@ _`name` 은 디렉토리 이름과 일치해야 한다._
 - `name` ASCII 문자인 a-z, A-Z, 0-9, `_` 및 `-` 으로 제한.
 
 `version` 은 플러그인의 SemVer 2 버전이다.
-`usage` 및 `description` 은 모두 명령의 도움말 텍스틀르 생성하는데 사용된다.
+`usage` 및 `description` 은 모두 명령의 도움말 텍스트를 생성하는데 사용된다.
 
 `ignoreFlags` 스위치는 헬름에게 플래그를 플러그인에게 전달하지 _않도록_ 한다.
 따라서 플러그인이 `helm myplugin --foo` 및 `ignoreFlag: true` 로 호출되면 `--foo` 는 자동으로 삭제된다.
