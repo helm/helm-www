@@ -1,6 +1,5 @@
 ---
 title: "헬름 허브의 아티팩트 허브로의 이동"
-slug: "헬름-허브의-아티팩트-허브로의-이동"
 authorname: "Matt Farina"
 author: "@mattfarina"
 authorlink: "https://mattfarina.com"
