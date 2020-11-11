@@ -42,7 +42,7 @@ jsFiles = [
 ]
 
 [[params.versions]]
-version = "v3.4.0"
+version = "v3.4.1"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
