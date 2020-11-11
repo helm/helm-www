@@ -39,3 +39,8 @@
   from = "/helm/v2/*"
   to = "/helm/v2"
   status = 200
+
+[[redirects]]
+  from = "/calendar/release"
+  to = "https://calendar.google.com/calendar/u/0/embed?src=8tji8e0obp5skr2pval9g55ftk@group.calendar.google.com"
+  status = 302
