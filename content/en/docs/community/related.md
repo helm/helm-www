@@ -32,6 +32,8 @@ request](https://github.com/helm/helm-www/pulls).
   Plugin that generates values yaml schema for your Helm 3 charts
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage
   and store secrets safely (based on [sops](https://github.com/mozilla/sops))
+- [helm-git](https://github.com/aslafy-z/helm-git) - Install charts and retrieve
+  values files from your Git repositories
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
