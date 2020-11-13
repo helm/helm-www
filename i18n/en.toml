@@ -123,6 +123,9 @@ other = "__Version:__ "
 [community_next_release_date]
 other = "__Date:__ "
 
+[community_release_calendar]
+other = "[Release Calendar](https://helm.sh/calendar/release)"
+
 [community_events_title]
 other = "Events"
 
