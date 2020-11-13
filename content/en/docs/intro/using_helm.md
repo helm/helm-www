@@ -403,8 +403,8 @@ behavior of Helm during an install/upgrade/rollback. Please note that this is
 not a full list of cli flags. To see a description of all flags, just run `helm
 <command> --help`.
 
-- `--timeout`: A value in seconds to wait for Kubernetes commands to complete
-  This defaults to `5m0s`
+- `--timeout`: A [Go duration](https://golang.org/pkg/time/#ParseDuration) value
+  to wait for Kubernetes commands to complete. This defaults to `5m0s`.
 - `--wait`: Waits until all Pods are in a ready state, PVCs are bound,
   Deployments have minimum (`Desired` minus `maxUnavailable`) Pods in ready
   state and Services have an IP address (and Ingress if a `LoadBalancer`) before
