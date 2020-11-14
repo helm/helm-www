@@ -6,6 +6,9 @@ description: "Describes Helm's release schedule policy."
 For the benefit of its users, Helm defines and announces release dates in
 advance.  This document describes the policy governing Helm's release schedule.
 
+## Release calendar
+
+A public calendar showing the upcoming Helm releases can be found [here](https://helm.sh/calendar/release).
 ## Semantic versioning
 
 Helm versions are expressed as `x.y.z`, where `x` is the major version, `y` is

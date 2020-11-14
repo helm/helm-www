@@ -473,6 +473,10 @@ Update the [version
 skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)
 for major and minor releases.
 
+Update the release calendar [here](https://helm.sh/calendar/release):
+* create an entry for the next minor release with a reminder for that day at 5pm GMT
+* create an entry for the RC1 of the next minor release on the Monday of the week before the planned release, with a reminder for that day at 5pm GMT
+
 ## 11. Tell the Community
 
 Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
