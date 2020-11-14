@@ -1,29 +1,28 @@
 ---
 title: "템플릿 내부 파일 접근하기"
 description: "템플릿 안에 있는 파일에 접근하는 방법"
-weight: 9
+weight: 10
 ---
 
-In the previous section we looked at several ways to create and access named
-templates. This makes it easy to import one template from within another
-template. But sometimes it is desirable to import a _file that is not a
-template_ and inject its contents without sending the contents through the
-template renderer.
+이전 항목에서 지명 템플릿을 만들고 액세스하는 몇 가지 방법을 살펴보았다.
+이런 방법으로 다른 템플릿에서 필요한 템플릿을 쉽게 가져올 수 있다.
+하지만 때로는 _템플릿이 아닌 파일_ 을 가져와서
+그 내용을 템플릿 렌더러(renderer)로 보내지 않고 직접 주입(inject)하려고 하는 경우가
+있을 수 있다.
 
-Helm provides access to files through the `.Files` object. Before we get going
-with the template examples, though, there are a few things to note about how
-this works:
+헬름은 `.Files` 객체를 통해 파일에 액세스할 수 있게 해준다. 템플릿 예제를 확인하기 전에
+어떻게 작동하는지 살펴보자.
 
-- It is okay to add extra files to your Helm chart. These files will be bundled.
-  Be careful, though. Charts must be smaller than 1M because of the storage
-  limitations of Kubernetes objects.
-- Some files cannot be accessed through the `.Files` object, usually for
-  security reasons.
-  - Files in `templates/` cannot be accessed.
-  - Files excluded using `.helmignore` cannot be accessed.
-- Charts do not preserve UNIX mode information, so file-level permissions will
-  have no impact on the availability of a file when it comes to the `.Files`
-  object.
+- 헬름 차트에 파일을 추가해도 된다. 추가된 파일들은 하나로 묶인다.
+  다만, 쿠버네티스 객체 저장소에는 제한이 있어
+  차트는 1M 보다 작아야 한다. 
+- 어떤 파일은 `.Files` 객체를 통해 액세스할 수 없는데,
+  주로 보안 상의 이유 때문이다.
+  - `templates/`에 있는 파일은 액세스할 수 없다.
+  - `.helmignore`를 사용하여 제외된 파일은 액세스할 수 없다.
+- 차트는 UNIX 모드 정보를 보존해주지 않으므로
+  `.Files` 객체에서 온 파일의 경우, 파일 수준의 권한(permission)은
+  파일의 가용성에 영향을 미치지 않는다.
 
 <!-- (see https://github.com/jonschlinkert/markdown-toc) -->
 
@@ -241,4 +240,3 @@ This discussion wraps up our dive into the tools and techniques for writing Helm
 templates. In the next section we will see how you can use one special file,
 `templates/NOTES.txt`, to send post-installation instructions to the users of
 your chart.
-
