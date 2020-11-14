@@ -20,6 +20,7 @@ export HELM_EXPERIMENTAL_OCI=1
 ## 运行一个注册中心
 
 为测试目的启动注册中心是比较简单的。只要你安装了Docker，运行以下命令即可：
+
 ```console
 docker run -dp 5000:5000 --restart=always --name registry registry
 ```
@@ -35,11 +36,13 @@ docker run -dp 5000:5000 --restart=always --name registry registry
 ### 认证
 
 如果您想启用注册中心认证，需要使用用户名和密码先创建 `auth.htpasswd` 文件：
+
 ```console
 htpasswd -cB -b auth.htpasswd myuser mypass
 ```
 
 然后启动服务，启动时挂载文件并设置 `REGISTRY_AUTH`环境变量：
+
 ```console
 docker run -dp 5000:5000 --restart=always --name registry \
   -v $(pwd)/auth.htpasswd:/etc/docker/registry/auth.htpasswd \
@@ -51,7 +54,7 @@ docker run -dp 5000:5000 --restart=always --name registry \
 
  `helm registry` 和 `helm chart` 下的命令都可以用来操作注册中心和本地缓存。
 
-###  `registry` 子命令
+### `registry` 子命令
 
 #### `login`
 
@@ -160,7 +163,9 @@ Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 
 使用上述命令存储的chart会被缓存到文件系统中。
 
-[OCI 镜像设计规范](https://github.com/opencontainers/image-spec/blob/master/image-layout.md) 严格遵守文件系统布局的。例如：
+[OCI 镜像设计规范](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
+严格遵守文件系统布局的。例如：
+
 ```console
 $ tree ~/Library/Caches/helm/
 /Users/myuser/Library/Caches/helm/
@@ -178,6 +183,7 @@ $ tree ~/Library/Caches/helm/
 ```
 
 index.json示例， 包含了所有的Helm chart manifests的参考：
+
 ```console
 $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
 {
@@ -196,6 +202,7 @@ $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
 ```
 
 Helm chart manifest示例 (注意 `mediaType` 字段):
+
 ```console
 $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
 {
