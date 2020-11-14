@@ -16,52 +16,23 @@ weight: 8
 
 ### Tiller の削除
 
-During the Helm 2 development cycle, we introduced Tiller. Tiller played an
-important role for teams working on a shared cluster - it made it possible for
-multiple different operators to interact with the same set of releases.
 
-With role-based access controls (RBAC) enabled by default in Kubernetes 1.6,
-locking down Tiller for use in a production scenario became more difficult to
-manage. Due to the vast number of possible security policies, our stance was to
-provide a permissive default configuration. This allowed first-time users to
-start experimenting with Helm and Kubernetes without having to dive headfirst
-into the security controls. Unfortunately, this permissive configuration could
-grant a user a broad range of permissions they weren’t intended to have. DevOps
-and SREs had to learn additional operational steps when installing Tiller into a
-multi-tenant cluster.
+Helm 2 の開発サイクルの中で、私たちは Tiller を導入しました。Tiller は共有クラスターで作業をするチームに対して重要な役割を果たしました。Tillerのおかげで複数の異なるオペレータが同じリリースセットとやり取りできるようになったのです。
 
-After hearing how community members were using Helm in certain scenarios, we
-found that Tiller’s release management system did not need to rely upon an
-in-cluster operator to maintain state or act as a central hub for Helm release
-information. Instead, we could simply fetch information from the Kubernetes API
-server, render the Charts client-side, and store a record of the installation in
-Kubernetes.
+ロールベースアクセス制御 (RBAC) が Kubernetes 1.6 でデフォルトで有効になると、Tiller を本番環境で使用し続けるのはしだいに管理が難しくなっていきました。セキュリティポリシーには非常に多くの可能性があるため、私たちはデフォルトでパーミッシブな設定にする立場を取りました。このおかげで、初めてのユーザーはセキュリティ制御に頭を悩ませずに Helm と Kubernetes を試せるようになりました。残念ながらこのパーミッシブな設定は、本来は持つべきではないユーザーに広範な権限を与えてしまう可能性があります。DevOps や SRE がマルチテナントのクラスターに Tiller をインストールするときには、追加のオペレーションのステップを学ばなければなりませんでした。
 
-Tiller’s primary goal could be accomplished without Tiller, so one of the first
-decisions we made regarding Helm 3 was to completely remove Tiller.
+コミュニティメンバーの特定のシナリオ下での Helm の使い方について調査をした結果、Tiller のリリース管理システムがステートを保持して Helm のリリース情報のセントラルハブとして動作するためには、クラスタ内のオペレータに依存する必要はなかったことがわかりました。
 
-With Tiller gone, the security model for Helm is radically simplified. Helm 3
-now supports all the modern security, identity, and authorization features of
-modern Kubernetes. Helm’s permissions are evaluated using your [kubeconfig
-file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/).
-Cluster administrators can restrict user permissions at whatever granularity
-they see fit. Releases are still recorded in-cluster, and the rest of Helm’s
-functionality remains.
+Tiller の主目的は Tiller がなくても実現できたことがわかったため、Helm 3 に関して私たちが下した最初の決定は Tiller を完全に取り除くことでした。
+
+Tiller を取り除くと、Helm セキュリティモデルは著しく単純化されました。このおかげで Helm 3 は、最近の Kubernetes が持つモダンなセキュリティ、ID、認証の機能のすべてをサポートできるようになりました。Helm の権限は [kubeconfig
+file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) を使用して評価されます。クラスタ管理者は要求に合った任意の粒度でユーザー権限を制限できます。リリースは今でもクラスター内に保存され、Helm の他の機能もそのまま変わりません。
 
 ### アップグレード戦略の改善: 3方向戦略的マージパッチ (3-way Strategic Merge Patches)
 
-Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the
-most recent chart's manifest against the proposed chart's manifest (the one
-supplied during `helm upgrade`). It compared the differences between these two
-charts to determine what changes needed to be applied to the resources in
-Kubernetes. If changes were applied to the cluster out-of-band (such as during a
-`kubectl edit`), those changes were not considered. This resulted in resources
-being unable to roll back to its previous state: because Helm only considered
-the last applied chart's manifest as its current state, if there were no changes
-in the chart's state, the live state was left unchanged.
+Helm 2 では、2方向戦略的マージパッチが使用されていました。アップグレード時には、最新のチャートのマニフェストと (`helm upgrade` 中に) 与えられたチャートのマニフェストを比較します。Helm 2 はこの2つのチャート間で変更を比較して、Kubernetes 内のリソースに適用する必要がある変更を決定します。もしクラスターへの変更がチャート外で (たとえば `kubectl edit` などで) 適用されていた場合、この変更は考慮されません。その結果、リソースは過去の状態にロールバックできなくなります。Helm は最後に適用されたチャートのマニフェストだけを最新状態とみなすため、チャートの状態に変更がなければ、現在の状態は変更されていないと判断されるためです。
 
-In Helm 3, we now use a three-way strategic merge patch. Helm considers the old
-manifest, its live state, and the new manifest when generating a patch.
+Helm 3 では、新しく3方向戦略的マージパッチが使われるようになります。パッチの生成をするときに、Helm は古いマニフェスト、その現在の状態、新しいマニフェストを考慮します。
 
 #### 例
 
@@ -169,63 +140,37 @@ containers:
 
 ### リリース名が名前空間でスコープされるようになった
 
-With the removal of Tiller, the information about each release had to go
-somewhere. In Helm 2, this was stored in the same namespace as Tiller. In
-practice, this meant that once a name was used by a release, no other release
-could use that same name, even if it was deployed in a different namespace.
+Tiller の削除に伴い、各リリースの情報はどこか別の場所に移動する必要が出てきました。Helm 2 では、リリースの情報は Tiller と同じ名前空間に保存されていました。実際には、一度でもリリースで名前が使われてしまうと、たとえ他の名前空間にデプロイしたとしても、他のリリースが同じ名前を使えないということです。
 
-In Helm 3, information about a particular release is now stored in the same
-namespace as the release itself. This means that users can now `helm install
-wordpress stable/wordpress` in two separate namespaces, and each can be referred
-with `helm list` by changing the current namespace context (e.g. `helm list
---namespace foo`).
+Helm 3 では、特定のリリースの情報は新しくリリース自体と同じ名前空間に保存されるようになりました。つまり、これからはユーザーが `helm install wrodpress stable/wordpress` というコマンドを2つの別の名前空間で実行できるようになったということです。それぞれのリリースは、現在の名前空間のコンテキストを切り替えることで (例: `helm list --namespace foo`)、`helm list` を使用して参照できます。
 
-With this greater alignment to native cluster namespaces, the `helm list`
-command no longer lists all releases by default. Instead, it will list only the
-releases in the namespace of your current kubernetes context (i.e. the namespace
-shown when you run `kubectl config view --minify`). It also means you must
-supply the `--all-namespaces` flag to `helm list` to get behaviour similar to
-Helm 2.
+ネイティブのクラスターの名前空間に大きく近づけたことにより、`helm list` コマンドはデフォルトではすべてのリリースを一覧しなくなりました。代わりに、現在の Kubernetes のコンテキストの名前空間 (たとえば、`kubectl config view --minify` などを実行すると表示される名前空間) の中にあるリリースだけが表示されるようになります。Helm 2 に近い動作にするには、`helm list` に `--all-namespaces` フラッグを与える必要があります。
 
 ### Secret がデフォルトのストレージドライバーになった
 
-In Helm 3, Secrets are now used as the [default storage
-driver](/docs/topics/advanced/#storage-backends). Helm 2 used ConfigMaps by
-default to store release information. In Helm 2.7.0, a new storage backend that
-uses Secrets for storing release information was implemented, and it is now the
-default starting in Helm 3.
+Helm 3 からは、Secret が[デフォルトのストレージドライバー](/ja/docs/topics/advanced/#ストレージバックエンド)として使われるようになりました。Helm 2 では、ConfigMap がデフォルトでリリース情報を保存するために使用されていました。Helm 2.7.0 でリリース情報を保存するために Secret を使用する新しいストレージバックエンドが実装され、Helm 3 からはデフォルトで使用されるようになりました。
 
-Changing to Secrets as the Helm 3 default allows for additional security in
-protecting charts in conjunction with the release of Secret encryption in
-Kubernetes.
+Helm 3 で Secret がデフォルトに変更されたことで、Kubernetes のリリースの Secret の暗号化と組み合わせて、チャートを保護する際のセキュリティが強化できます。
 
-[Encrypting secrets at
-rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) became
-available as an alpha feature in Kubernetes 1.7 and became stable as of
-Kubernetes 1.13. This allows users to encrypt Helm release metadata at rest, and
-so it is a good starting point that can be expanded later into using something
-like Vault.
+Kubernetesでのシークレット暗号化のリリースに関連してチャートを保護する際のセキュリティが強化されます。
+
+[Secret の保存時の暗号化](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)は Kubernetes 1.7 でアルファ版の機能として利用可能になり、Kubernetes 1.13 で安定版になりました。これを利用することで、ユーザーは Helm のリリースのメタデータを保存時に暗号化できるようになるため、あとで Vault などを利用する場合によい出発地点となります。
 
 ### Go の import path の変更
 
-In Helm 3, Helm switched the Go import path over from `k8s.io/helm` to
-`helm.sh/helm/v3`. If you intend to upgrade to the Helm 3 Go client libraries,
-make sure to change your import paths.
+Helm 3 では、Helm は Go のインポートパスを `k8s.io/helm` から `helm.sh/helm/v3` に変更しました。Helm 3 の Go クライアントライブラリをアップグレードする場合には、手元のインポートパスも変更するようにしてください。
 
 ### Capabilities
 
-レンダリングステージで利用可能な `.Capabilities` 組み込みオブジェクトが簡略された。
+レンダリングステージで利用可能な `.Capabilities` 組み込みオブジェクトが簡略されました。
 
 [ビルトインオブジェクト](/docs/chart_template_guide/builtin_objects/)
 
 ### チャートの Values の JSONSchema による検証
 
-A JSON Schema can now be imposed upon chart values. This ensures that values
-provided by the user follow the schema laid out by the chart maintainer,
-providing better error reporting when the user provides an incorrect set of
-values for a chart.
+チャートの値に JSON Schema で制約を与えられるようになりました。これにより、ユーザーから与えられた値がチャートのメンテナが作ったスキーマに従っていることが保証されるため、ユーザーが間違った値をチャートに与えた場合によりよいエラー報告を行えるようになります。
 
-Validation occurs when any of the following commands are invoked:
+検証は次のいずれかのコマンドが呼ばれたときに行われます。
 
 * `helm install`
 * `helm upgrade`
@@ -236,12 +181,10 @@ Validation occurs when any of the following commands are invoked:
 
 ### `requirements.yaml` の `Chart.yaml` への統合
 
-The Chart dependency management system moved from requirements.yaml and
-requirements.lock to Chart.yaml and Chart.lock. We recommend that new charts
-meant for Helm 3 use the new format. However, Helm 3 still understands Chart API
-version 1 (`v1`) and will load existing `requirements.yaml` files
+チャートの依存関係の管理システムは、requirements.yaml と
+requirements.lock から、Chart.yaml と Chart.lock に変更されました。私たちは、Helm 3 向けの新しいチャートは新しいフォーマットを使用することを推奨します。しかし、Helm 3 は現在でも Chart API バージョン 1 (`v1`) も理解できるため、既存の `requirements.yaml` ファイルを読み込みます。
 
-In Helm 2, this is how a `requirements.yaml` looked:
+Helm 2 の `requirements.yaml` は以下のような形式でした。
 
 ```yaml
 dependencies:
@@ -253,8 +196,7 @@ dependencies:
     - database
 ```
 
-In Helm 3, the dependency is expressed the same way, but now from your
-`Chart.yaml`:
+Helm 3 でも依存関係は同じように表現されますが、`Chart.yaml` 以下に移動されます。
 
 ```yaml
 dependencies:
@@ -266,9 +208,7 @@ dependencies:
     - database
 ```
 
-Charts are still downloaded and placed in the `charts/` directory, so subcharts
-vendored into the `charts/` directory will continue to work without
-modification.
+現在でもチャートは `charts/` ディレクトリに配置されるため、`charts/` ディレクトリに追加されたサブチャートは修正なしで動作し続けます。
 
 ### Name (または --generate-name) がインストール時に必須となった
 
