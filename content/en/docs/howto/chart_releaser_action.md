@@ -81,7 +81,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.0.0
+        uses: helm/chart-releaser-action@v1.1.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
@@ -94,3 +94,7 @@ there's a new chart version, creates a corresponding GitHub release named for
 the chart version, adds Helm chart artifacts to the release, and creates or
 updates an `index.yaml` file with metadata about those releases, which is then
 hosted on GitHub pages.
+
+The Chart Releaser Action version number used in the above example is `v1.1.0`.
+You can change it to the [latest available
+version](https://github.com/helm/chart-releaser-action/releases).
