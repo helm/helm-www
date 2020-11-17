@@ -98,3 +98,7 @@ hosted on GitHub pages.
 The Chart Releaser Action version number used in the above example is `v1.1.0`.
 You can change it to the [latest available
 version](https://github.com/helm/chart-releaser-action/releases).
+
+Note: The Chart Releaser Action is almost always used in tandem with the [Helm Testing
+Action](https://github.com/marketplace/actions/helm-chart-testing) and [Kind
+Action](https://github.com/marketplace/actions/kind-cluster).
