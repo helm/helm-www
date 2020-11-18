@@ -59,7 +59,7 @@ Go提供了一种使用内置模板将一个模板包含在另一个模板中的
 
 为使包含模板成为可能，然后对该模板的输出执行操作，Helm有一个特殊的`include`方法：
 
-```
+```yaml
 {{ include "toYaml" $value | indent 2 }}
 ```
 
@@ -77,7 +77,7 @@ Go提供了一种设置模板选项的方法去控制不在映射中的key来索
 
 例如：
 
-```
+```yaml
 {{ required "A valid foo is required!" .Values.foo }}
 ```
 
@@ -122,9 +122,9 @@ lastName=Parker
 ```
 
 ## 创建图片拉取密钥
+
 图片拉取密钥本质上是 _注册表_， _用户名_ 和 _密码_ 的组合。在正在部署的应用程序中你可能需要它，
 但创建时需要用`base64`跑一会儿。我们可以写一个辅助模板来编写Docker的配置文件，用来承载密钥。示例如下：
- 
 
 首先，假定`values.yaml`文件中定义了证书如下：
 
@@ -137,7 +137,8 @@ imageCredentials:
 ```
 
 然后定义下面的辅助模板：
-```
+
+```yaml
 {{- define "imagePullSecret" }}
 {{- with .Values.imageCredentials }}
 {{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username .password .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
@@ -146,6 +147,7 @@ imageCredentials:
 ```
 
 最终，我们使用辅助模板在更大的模板中创建了密钥清单：
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -184,6 +186,7 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
 [...]
 ```
+
 每次调用模板方法会生成一个唯一的随机字符串。这意味着如果需要同步多种资源使用的随机字符串，所有的相对资源都要在同一个模板文件中。
 
 这两种方法都允许你的部署利用内置的更新策略逻辑来避免停机。
@@ -204,10 +207,11 @@ metadata:
 
 （需要引号）
 
-这个说明`"helm.sh/resource-policy": keep`指示Helm操作(比如`helm uninstall`，`helm upgrade`或`helm rollback`)要删除时跳过删除这个资源，
-_然而_，这个资源会变成孤立的。Helm不再以任何方式管理它。如果在已经卸载的但保留资源的版本上使用`helm install --replace`会出问题。
+这个说明`"helm.sh/resource-policy": keep`指示Helm操作(比如`helm uninstall`，`helm upgrade`
+或`helm rollback`)要删除时跳过删除这个资源，_然而_，这个资源会变成孤立的。Helm不再以任何方式管理它。
+如果在已经卸载的但保留资源的版本上使用`helm install --replace`会出问题。
 
-## 使用"Partials"和模板引用 
+## 使用"Partials"和模板引用
 
 有时你想在chart中创建可以重复利用的部分，不管是块还是局部模板。通常将这些文件保存在自己的文件中会更干净。
 

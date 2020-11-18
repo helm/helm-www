@@ -5,6 +5,10 @@ description: "描述Helm的版本发布的策略"
 
 为了用户的利益，Helm提前定义和宣布发布日期。本文档描述了控制Helm发布计划的策略。
 
+## Release calendar
+
+A public calendar showing the upcoming Helm releases can be found [here](https://helm.sh/calendar/release).
+
 ## 语义化版本
 
 Helm的版本描述为`x.y.z`，其中`x`是主版本，`y`是次版本，`z`是补丁版本，遵循[语义化版本](https://semver.org/spec/v2.0.0.html)术语。

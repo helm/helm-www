@@ -18,9 +18,11 @@ weight: 3
   - `Release.Revision`： 此次修订的版本号。安装时是1，每次升级或回滚都会自增
   - `Release.Service`： 该service用来渲染当前模板。Helm里一般是`Helm`
 - `Values`： Values是从`values.yaml`文件和用户提供的文件传进模板的。`Values`默认为空
-- `Chart`： `Chart.yaml`文件内容。 `Chart.yaml`里的任意数据在这里都可以可访问的。比如 `{{ .Chart.Name }}-{{ .Chart.Version }}` 会打印出 `mychart-0.1.0`
-  - [Chart 指南](http://helm.sh/zh/docs/topics/charts#Chart-yaml-文件) 中列出了可用字段
-- `Files`： 在chart中提供访问所有的非特殊文件。当你不能使用它访问模板时，你可以访问其他文件。请查看这个部分 [文件访问](http://helm.sh/zh/docs/chart_template_guide/accessing_files) 了解跟多信息
+- `Chart`： `Chart.yaml`文件内容。 `Chart.yaml`里的任意数据在这里都可以可访问的。比如
+`{{ .Chart.Name }}-{{ .Chart.Version }}` 会打印出 `mychart-0.1.0`
+  - [Chart 指南](https://helm.sh/zh/docs/topics/charts#Chart-yaml-文件) 中列出了可用字段
+- `Files`： 在chart中提供访问所有的非特殊文件。当你不能使用它访问模板时，你可以访问其他文件。
+请查看这个[文件访问](https://helm.sh/zh/docs/chart_template_guide/accessing_files)部分了解更多信息
   - `Files.Get` 通过文件名获取文件的方法。 （`.Files.Getconfig.ini`）
   - `Files.GetBytes` 用字节数组代替字符串获取文件内容的方法。 对图片之类的文件很有用
   - `Files.Glob` 用给定的shell glob模式匹配文件名返回文件列表的方法

@@ -8,7 +8,7 @@ weight: 9
 _命名模板_，并在其他地方使用。_命名模板_ (有时称作一个 _部分_ 或一个
 _子模板_)仅仅是在文件内部定义的模板，并使用了一个名字。有两种创建方式和几种不同的使用方法。
 
-在[流控制](http://helm.sh/docs/chart_template_guide/control_structures)部分，
+在[流控制](https://helm.sh/zh/docs/chart_template_guide/control_structures)部分，
 我们介绍了三种声明和管理模板的方法：`define`，`template`，和`block`。在这部分，我们将使用者三种操作并介绍一种特殊用途的
 `include`方法，类似于`template`操作。
 
