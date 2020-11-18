@@ -3,6 +3,7 @@ title: "Topics"
 weight: 3
 ---
 
-# 主题指南
+# Topic Guides
 
-在这里你会找到Helm所有的你需要知道的关键部分。
+Here you’ll find introductions to all the key parts of Helm you’ll need or want
+to know.
