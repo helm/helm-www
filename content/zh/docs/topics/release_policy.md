@@ -5,9 +5,9 @@ description: "描述Helm的版本发布的策略"
 
 为了用户的利益，Helm提前定义和宣布发布日期。本文档描述了控制Helm发布计划的策略。
 
-## Release calendar
+## 发布日历
 
-A public calendar showing the upcoming Helm releases can be found [here](https://helm.sh/calendar/release).
+可以在[这里](https://helm.sh/calendar/release)找到显示即将发布的Helm公共日历
 
 ## 语义化版本
 

@@ -4,13 +4,13 @@ title: "Helm Repo"
 
 ## helm repo
 
-add, list, remove, update, and index chart repositories
+添加、列出、删除、更新和索引chart仓库
 
 ### 简介
 
-This command consists of multiple subcommands to interact with chart repositories.
+改命令由于chart仓库交互的多条子命令组成
 
-It can be used to add, remove, list, and index chart repositories.
+可以用来添加、删除、列举和索引chart仓库
 
 ### 可选项
 
