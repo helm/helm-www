@@ -8,7 +8,7 @@ title: "Helm插件列表"
 
 ### 简介
 
-列举所有的Helm插件
+列举已安装的Helm插件
 
 ```shell
 helm plugin list [flags]

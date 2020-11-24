@@ -2,7 +2,7 @@
 title: "Helm依赖升级"
 ---
 
-## helm依赖升级
+## helm dependency update
 
 基于Chart.yaml内容升级charts/
 

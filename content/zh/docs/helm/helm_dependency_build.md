@@ -2,7 +2,7 @@
 title: "Helm依赖构建"
 ---
 
-## helm依赖构建
+## helm dependency build
 
 基于Chart.lock文件重新构建charts/目录
 

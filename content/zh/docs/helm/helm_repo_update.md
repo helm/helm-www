@@ -4,7 +4,7 @@ title: "Helm Repo Update"
 
 ## helm repo update
 
-从chart仓库中更新本地本地可用chart的信息
+从chart仓库中更新本地可用chart的信息
 
 ### 简介
 

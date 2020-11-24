@@ -2,7 +2,7 @@
 title: "Helm 依赖列表"
 ---
 
-## helm 依赖列表
+## helm dependency list
 
 列举指定chart的依赖
 

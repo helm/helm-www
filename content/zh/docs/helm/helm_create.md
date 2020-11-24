@@ -2,7 +2,7 @@
 title: "Helm创建"
 ---
 
-## helm创建
+## helm create
 
 使用给定名称创建新的chart
 

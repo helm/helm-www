@@ -2,7 +2,7 @@
 title: "Helm补全 - bash"
 ---
 
-## helm补全bash
+## helm completion bash
 
 为bash生成自动补全脚本
 

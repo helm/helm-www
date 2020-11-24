@@ -214,7 +214,7 @@ dependencies:
     repository: "@fantastic-charts"
 ```
 
-&emsp;&emsp;一旦你定义好了依赖，运行 `helm dependency update` 就会使用你的依赖文件下载所有你指定的chart到你的`charts/`目录。
+一旦你定义好了依赖，运行 `helm dependency update` 就会使用你的依赖文件下载所有你指定的chart到你的`charts/`目录。
 
 ```console
 $ helm dep up foochart
@@ -509,7 +509,7 @@ Helm Chart 模板是按照[Go模板语言](https://golang.org/pkg/text/template/
 
 ### 模板文件
 
-&emsp;&emsp;模板文件遵守书写Go模板的标准惯例（查看[文本/模板 Go 包文档](https://golang.org/pkg/text/template/)了解更多）。
+模板文件遵守书写Go模板的标准惯例（查看[文本/模板 Go 包文档](https://golang.org/pkg/text/template/)了解更多）。
 模板文件的例子看起来像这样：
 
 ```yaml

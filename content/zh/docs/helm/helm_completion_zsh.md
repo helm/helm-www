@@ -2,7 +2,7 @@
 title: "Helm补全 - zsh"
 ---
 
-## helm补全zsh
+## helm completion zsh
 
 为zsh生成自动补全脚本
 

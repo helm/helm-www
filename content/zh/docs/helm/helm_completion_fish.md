@@ -2,7 +2,7 @@
 title: "Helm补全 - fish"
 ---
 
-## helm补全fish
+## helm completion fish
 
 为fish生成自动补全脚本
 

@@ -4,11 +4,11 @@ title: "Helm Repo Index"
 
 ## helm repo index
 
-生成包含已打包chart目录的索引文件
+基于包含打包chart的目录，生成索引文件
 
 ### 简介
 
-读取当前目录生成基于发现的chart的索引文件
+读取当前目录，并根据找到的 chart 生成索引文件。
 
 这个工具用来为chart仓库创建一个'index.yaml'文件，使用'--url'参数创建一个chart的绝对URL。
 

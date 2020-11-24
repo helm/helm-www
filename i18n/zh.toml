@@ -5,7 +5,7 @@
 other = "从这里开始"
 
 [action_get_started_link]
-other = "/docs/intro/quickstart"
+other = "/zh/docs/intro/quickstart"
 
 [action_translate]
 other = "翻译这个页面"

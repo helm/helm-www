@@ -8,7 +8,7 @@ title: "Helm Repo"
 
 ### 简介
 
-改命令由于chart仓库交互的多条子命令组成
+该命令由于chart仓库交互的多条子命令组成
 
 可以用来添加、删除、列举和索引chart仓库
 
@@ -38,7 +38,7 @@ title: "Helm Repo"
 
 * [helm](helm.md) - 针对Kubernetes的Helm包管理器
 * [helm repo add](helm_repo_add.md) - 添加chart仓库
-* [helm repo index](helm_repo_index.md) - 生成包含已打包chart目录的索引文件
+* [helm repo index](helm_repo_index.md) - 基于包含打包chart的目录，生成索引文件
 * [helm repo list](helm_repo_list.md) - 列举chart仓库
 * [helm repo remove](helm_repo_remove.md) - 删除一个或多个仓库
-* [helm repo update](helm_repo_update.md) - 从chart仓库中更新本地本地可用chart的信息
+* [helm repo update](helm_repo_update.md) - 从chart仓库中更新本地可用chart的信息

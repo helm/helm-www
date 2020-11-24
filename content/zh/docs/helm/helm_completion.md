@@ -2,7 +2,7 @@
 title: "Helm 补全"
 ---
 
-## helm补全
+## helm completion
 
 为指定的shell生成自动补全脚本
 
