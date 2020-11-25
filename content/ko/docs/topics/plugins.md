@@ -35,7 +35,7 @@ weight: 12
 
 ## 플러그인 설치하기
 
-플러그인은 `$ helm plugin install <path|url>` 명령을 사용하여 설치된다.
+플러그인은 `$ helm plugin install <path|url>` 명령어를 사용하여 설치된다.
 로컬 파일 시스템의 플러그인 경로 또는 원격 VCS 레포지터리의 URL을 전달할 수 있다.
 `helm plugin install` 명령은 `$HELM_PLUGINS` 에 지정된 경로/URL 에서 플러그인을 복제하거나 복사한다.
 
