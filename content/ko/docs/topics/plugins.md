@@ -8,7 +8,7 @@ weight: 12
 기본 제공 헬름 코드 베이스에 포함되지는 않는다.
 
 기존 플러그인은 
-[연관]({{< ref "related.md#helm-plugins">}}) 섹션 또는 
+[관련]({{< ref "related.md#helm-plugins">}}) 섹션 또는 
 [깃헙](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)을 검색하여 찾을 수 있다.
 
 이 가이드에서는 플러그인을 사용하고 만드는 방법을 설명한다.
