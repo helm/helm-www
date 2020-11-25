@@ -50,7 +50,7 @@ https://github.com/helm/helm/blob/master/CONTRIBUTING.md
 
 Helm 프로젝트의 코드는 다음과 같이 구성된다.
 
-- 개별 프로그램은 `cmd /`에 위치 
+- 개별 프로그램은 `cmd/`에 위치 
   `cmd/` 내부의 코드는 라이브러리 재사용을 위해 미설계
 - 공유 라이브러리는 `pkg/` 에 저장
 - `scripts/` 디렉토리에는 여러 유틸리티 스크립트가 포함. 
