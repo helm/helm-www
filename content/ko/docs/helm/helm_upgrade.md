@@ -27,9 +27,9 @@ override.yaml에 설정된 값이 우선한다.
 
     $ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis
 
-'--set' 플래그를 여러번 지정할 수도 있다. 지정된 마지막(가장 오른쪽) 파일에 
+'--set' 플래그도 여러 번 지정할 수 있다. 지정된 마지막(가장 오른쪽) 파일에 
 우선 순위가 부여된다. 예를 들어 'foo' 라는 키에 대해 'bar' 와 'newbar' 에서 
-값이 모두 설정된 경우 'newbar'가 우선한다.
+값이 모두 설정된 경우 'newbar' 가 우선한다.
 
     $ helm upgrade --set foo=bar --set foo=newbar redis ./redis
 
