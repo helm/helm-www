@@ -1,6 +1,6 @@
 ---
 title: "헬름 5주년과 깃헙으로부터의 차트 선물"
-slug: "헬름-5주년과-깃헙으로부터의-차트-선물"
+slug: "helm-turns-five"
 authorname: "Matt Butcher & Matt Farina"
 author: "@technosophos & @mattfarina"
 authorlink: "https://helm.sh"
