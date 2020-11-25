@@ -44,8 +44,7 @@ Date:   Mon Oct 19 17:43:26 2015 -0600
 또한 깃헙 액션은 차트 게시를 위한 파이프라인을 강화한다. 깃헙의 놀랍도록 빠른 네트워크 덕분에 차트 다운로드가 그 어느 때보다 더욱 빨라졌다!
 
 깃헙 마켓 플레이스에 공식 헬름 깃헙 액션을 게시하였다. 
-
-깃헙에서 헬름 차트를 호스팅 하는 방법은 [헬름 차트 릴리서(Helm Chart Releaser)](https://github.com/marketplace/actions/helm-chart-releaser)를 확인하자.
+깃헙에서 헬름 차트를 호스팅하는 방법에 대해서는 [헬름 차트 릴리서(Helm Chart Releaser)](https://github.com/marketplace/actions/helm-chart-releaser)를 참고하자.
 
 헬름 2 는 지원이 종료되었지만, [공식 틸러 도커 이미지](https://github.com/orgs/helm/packages)도 깃헙의 컨테이너 저장소로 이동했다.
 
