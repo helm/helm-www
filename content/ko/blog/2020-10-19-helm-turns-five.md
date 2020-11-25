@@ -38,8 +38,7 @@ Date:   Mon Oct 19 17:43:26 2015 -0600
 {{< figure src="../images/octocat.png" alt="Hello Github Octocat!" width="350px" >}}
 
 그래서 오늘의 생일 축하 행사에서,  헬름 `stable` 및 `incubator` 차트 저장소가 깃헙에서 직접 호스팅된다는 것을 알리고자 한다.
-
-또한 깃헙 액션은 차트 게시를 위한 파이프라인을 강화한다. 깃헙의 놀랍도록 빠른 네트워크 덕분에 차트 다운로드가 그 어느 때보다 더욱 빨라졌다!
+또한, 깃헙 액션으로 차트 게시를 위한 파이프라인이 강화되었다. 깃헙의 엄청 빠른 네트워크 덕분에 차트 다운로드가 그 어느 때보다 더욱 빨라졌다!
 
 깃헙 마켓 플레이스에 공식 헬름 깃헙 액션을 게시하였다. 
 깃헙에서 헬름 차트를 호스팅하는 방법에 대해서는 [헬름 차트 릴리서(Helm Chart Releaser)](https://github.com/marketplace/actions/helm-chart-releaser)를 참고하자.
