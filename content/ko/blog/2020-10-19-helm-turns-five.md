@@ -46,7 +46,7 @@ Date:   Mon Oct 19 17:43:26 2015 -0600
 깃헙 마켓 플레이스에 공식 헬름 깃헙 액션을 게시하였다. 
 깃헙에서 헬름 차트를 호스팅하는 방법에 대해서는 [헬름 차트 릴리서(Helm Chart Releaser)](https://github.com/marketplace/actions/helm-chart-releaser)를 참고하자.
 
-헬름 2 는 지원이 종료되었지만, [공식 틸러 도커 이미지](https://github.com/orgs/helm/packages)도 깃헙의 컨테이너 저장소로 이동했다.
+헬름 2는 지원이 종료되었지만, [공식 틸러 도커 이미지](https://github.com/orgs/helm/packages)는 깃헙의 컨테이너 저장소에도 옮겨 놓았다.
 
 깃헙의 도구와 모든 규모의 오픈 소스 프로젝트에 대한 지원에 깊이 감사드린다.
 
