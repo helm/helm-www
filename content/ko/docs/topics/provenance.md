@@ -65,7 +65,7 @@ $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 
 이 시점에서, `mychart-0.1.0.tgz` 와 
 `mychart-0.1.0.tgz.prov` 가 모두 표시되어야 한다. 결국 두 파일 모두
-원하는 차트 저장소에 업로드 되어야 한다.
+원하는 차트 저장소에 업로드되어야 한다.
 
 `helm verify` 를 사용하여 차트를 확인할 수 있다.
 
