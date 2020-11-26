@@ -88,7 +88,7 @@ $ helm install --generate-name --verify mychart-0.1.0.tgz
 
 서명된 차트와 연결된 공개키와 포함된 키링이 기본 위치에 없으면 
 `helm pakcage` 예제에서와 같이 사용자가 `--keyring PATH`로
-키링을 가리켜야 할 수 있다.
+키링의 위치를 지정해야 할 수 있다.
 
 확인에 실패하면 차트가 렌더링되기 전에 설치가 
 중단된다.
