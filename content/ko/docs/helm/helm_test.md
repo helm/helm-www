@@ -36,7 +36,7 @@ helm test [RELEASE] [flags]
       --kube-context string         사용할 kubeconfig 컨텍스트 이름
       --kube-token string           인증에 사용될 베어러(bearer) 토큰
       --kubeconfig string           kubeconfig 파일 경로
-  -n, --namespace string            요청에 대한 네임스페이스 지정
+  -n, --namespace string            이 요청에 대한 네임스페이스 스코프
       --registry-config string      레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
       --repository-cache string     캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/.cache/helm/repository")
       --repository-config string    저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
