@@ -31,7 +31,7 @@ helm test [RELEASE] [flags]
 ```
       --debug                       장황한(verbose) 출력 활성화
       --kube-apiserver string       쿠버네티스 API 서버의 주소 및 포트
-      --kube-as-group stringArray   작업에 대한 가상 그룹. 플래그를 반복하여 여러 그룹을 지정 가능
+      --kube-as-group stringArray   작업에 관해 제시할 그룹. 플래그를 여러 번 사용하여 여러 그룹 지정 가능
       --kube-as-user string         작업의 가상화를 위한 사용자 이름
       --kube-context string         사용할 kubeconfig 컨텍스트 이름
       --kube-token string           인증에 사용될 베어러(bearer) 토큰
