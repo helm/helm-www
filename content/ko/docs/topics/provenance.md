@@ -25,7 +25,7 @@ weight: 5
 
 전제 조건:
 
-- (ASCII-armored가 아닌) 바이너리 형식의 유효한 PGP
+- (ASCII-armored가 아닌) 바이너리 형식의 유효한 PGP 키페어
 - `헬름` 명령줄 도구
 - GnuPG 명령줄 도구 (선택사항)
 - 키베이스(Keybase) 명령줄 도구 (선택사항)
