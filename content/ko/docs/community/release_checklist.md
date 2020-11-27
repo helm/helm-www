@@ -64,7 +64,7 @@ git remote add upstream git@github.com:helm/helm.git
 ### 환경 변수 설정하기
 
 이 문서에서는 편의를 위해 설정할 수 있는 몇 가지 환경 변수도 
-참조 한다. 주/부 릴리스의 경우 
+참조한다. 주/부 릴리스의 경우 
 다음을 사용하자.
 
 ```shell
