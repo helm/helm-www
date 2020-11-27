@@ -381,7 +381,7 @@ Helm vX.Y.Z는 기능 릴리스입니다. 이번 릴리스에서는 <insert foca
 - [리눅스 s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [윈도우 amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-[빠른 시작 가이드](https://docs.helm.sh/using_helm/#quickstart-guide)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](https://docs.helm.sh/using_helm/#installing-helm)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)를 사용할 수도 있습니다.
+[빠른 시작 가이드](https://docs.helm.sh/using_helm/#quickstart-guide)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](https://docs.helm.sh/using_helm/#installing-helm)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)를 사용할 수도 있다.
 
 ## 향후 계획
 
