@@ -365,8 +365,8 @@ Helm vX.Y.Z는 기능 릴리스입니다. 이번 릴리스에서는 <insert foca
 
 ## 주목할 만한 변화
 
-- Kubernetes 1.16은 이제 새로운 매니페스트 apiVersion을 포함하여 지원됩니다.
-- Spring이 2.22로 업그레이드되었습니다.
+- Kubernetes 1.16은 이제 새로운 매니페스트 apiVersion을 포함하여 지원된다.
+- Spring이 2.22로 업그레이드됐다.
 
 ## 설치 및 업그레이드
 
