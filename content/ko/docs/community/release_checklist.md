@@ -315,7 +315,7 @@ git push upstream $RELEASE_CANDIDATE_NAME
 
 여기서부터는 이 프로세스를 반복하고 릴리스 후보에 만족할 때까지 지속적으로 테스트한다. 
 릴리스 후보의 경우 전체 노트를 작성하지는 않지만 일부 
-[릴리스 노트](#7-write-the-release-notes)를 미리 작성(scaffold) 할 수 있다.
+[릴리스 노트](#7-릴리스-노트-작성)를 미리 작성(scaffold) 할 수 있다.
 
 ## 6. 릴리스 확정
 
