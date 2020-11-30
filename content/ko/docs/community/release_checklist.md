@@ -84,9 +84,9 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 ### 서명 키 설정하기
 
 또한 바이너리를 해싱하고 서명 파일을 제공하여 릴리스 
-프로세스의 보안 및 검증을 추가 하기로 한다. 이 작업은 
+프로세스의 보안 및 검증을 추가한다. 이 작업은 
 [GitHub 및 GPG] (https://help.github.com/en/articles/about-commit-signature-verification)를 
-사용하여 수행한다. 
+이용하여 수행한다. 
 GPG가 아직 설정되지 않은 경우 다음 단계를 수행 할 수 있다.
 
 1. [GPG 설치] (https://gnupg.org/index.html)
