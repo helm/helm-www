@@ -203,7 +203,7 @@ git add .
 git commit -m "bump version to $RELEASE_NAME"
 ```
 
-이는 $RELEASE_BRANCH_NAME에 대해서만 업데이트 된다. 
+이는 $RELEASE_BRANCH_NAME에 대해서만 업데이트된다. 
 [3.2에서 3.3으로의 
 이 예제](https://github.com/helm/helm/pull/8411/files)에서와 
 같이 다음 릴리스가 생성 될 때 이 변경 사항을 마스터 브랜치로 
