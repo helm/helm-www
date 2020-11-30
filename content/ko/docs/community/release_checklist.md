@@ -98,8 +98,8 @@ GPG가 아직 설정되지 않은 경우, 다음 단계를 수행할 수 있다.
    키 설정] (https://help.github.com/en/articles/telling-git-about-your-signing-key)
 
 서명 키가 있으면 저장소 루트에 있는 KEYS 파일에 추가해야 
-한다. KEYS 파일에 추가하는 방법은 파일에 존재한다. 아직 
-수행하지 않은 경우 공개 키를 키 서버 네트워크에 추가해야한다. 
+한다. KEYS 파일에 추가하는 지시어는 그 파일 안에 있다. 아직
+공개 키를 키 서버 네트워크에 추가하지 않았다면 추가해야 한다. 
 GnuPG를 사용하는 경우 
 [Debian에서 제공하는 지침] (https://debian-administration.org/article/451/Submitting_your_GPG_key_to_a_keyserver)을 따를 수 있다.
 
