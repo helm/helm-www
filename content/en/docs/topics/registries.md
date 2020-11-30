@@ -20,6 +20,8 @@ in the environment:
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
+For more information about this feature and plans for general availability, please see the [OCI Support Helm Improvement Proposal](https://github.com/helm/community/blob/master/hips/hip-0006.md).
+
 ## Running a registry
 
 Starting a registry for test purposes is trivial. As long as you have Docker
