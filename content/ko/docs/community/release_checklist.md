@@ -184,7 +184,7 @@ index 712aae64..c1ed191e 100644
 -       version = "v3.3"
 +       version = "v3.4"
 
-        // 메타 데이터는 추가 빌드 시간의 데이터
+        // metadata is extra build time data
         metadata = ""
 ```
 
