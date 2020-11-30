@@ -87,7 +87,7 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 프로세스의 보안 및 검증을 추가한다. 이 작업은 
 [GitHub 및 GPG] (https://help.github.com/en/articles/about-commit-signature-verification)를 
 이용하여 수행한다. 
-GPG가 아직 설정되지 않은 경우 다음 단계를 수행 할 수 있다.
+GPG가 아직 설정되지 않은 경우, 다음 단계를 수행할 수 있다.
 
 1. [GPG 설치] (https://gnupg.org/index.html)
 2. [GPG 키 
