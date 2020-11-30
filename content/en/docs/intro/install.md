@@ -103,6 +103,17 @@ version of the [Helm package](https://snapcraft.io/helm):
 sudo snap install helm --classic
 ```
 
+### From pkg (FreeBSD)
+
+Members of the FreeBSD community have contributed a [Helm
+package](https://www.freshports.org/sysutils/helm) build to the
+[FreeBSD Ports Collection](https://man.freebsd.org/ports).
+This package is generally up to date.
+
+```console
+pkg install helm
+```
+
 ### Development Builds
 
 In addition to releases you can download or install development snapshots of
