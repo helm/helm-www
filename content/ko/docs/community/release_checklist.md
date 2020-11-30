@@ -243,7 +243,7 @@ git push upstream $RELEASE_BRANCH_NAME
 ## 4. 주/부 릴리스: 릴리스 후보 생성
 
 이제 릴리스 브랜치가 나왔고 준비되었으므로 
-릴리스 후보를 만들고 반복 할 차례이다.
+릴리스 후보를 만들고 반복할 차례이다.
 
 ```shell
 git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${RELEASE_CANDIDATE_NAME}"
