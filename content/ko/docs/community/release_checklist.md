@@ -160,7 +160,7 @@ git push upstream $RELEASE_BRANCH_NAME
 
 패치 릴리스의 경우 
 [헬름/헬름 마일스톤] (https://github.com/helm/helm/milestones) 
-생성은 선택사항입니다.
+생성은 선택사항이다.
 
 계속 진행하기 전에 릴리스가 CI를 통과했는지 [CircleCI 에서의 헬름](https://circleci.com/gh/helm/helm)를 
 확인하자. 패치 릴리스는 2-5 단계를 건너 뛰고 6 단계로 진행하여 
