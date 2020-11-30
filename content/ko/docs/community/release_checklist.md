@@ -118,8 +118,8 @@ git checkout upstream/master
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
-이 새 브랜치는 릴리스의 기반이 될 것이며 
-이후에 반복 수행될 것이다.
+이 새 브랜치는 릴리스의 기반이 되며,
+나중에도 이런 식으로 할 것이다.
 
 릴리스에 대한 
 [헬름/헬름 마일스톤] (https://github.com/helm/helm/milestones)이 GitHub에 있는지 확인한다(필요한 경우 생성). 
