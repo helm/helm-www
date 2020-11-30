@@ -6,10 +6,10 @@ weight: 2
 
 # 헬름 릴리스에 대한 유지관리자 가이드
 
-새로운 헬름 출시 시간이다! Helm 주요 관리자로서 릴리스를 자르는 사용자는 
-여기에 설명 된 내용과 본인의 경험이 다를 경우 
-[이 릴리스 체크리스트 업데이트](https://github.com/helm/helm-www/blob/master/content/ko/docs/community/release_checklist.md)를 
-수행하는 것이 가장 좋은 방법이다.
+새로운 헬름을 출시할 시간이다! 릴리스를 끊는 Helm 유지관리자로서,
+자신의 경험이 여기에 문서화된 내용과 다른 점이 있다면
+[이 릴리스 체크리스트를 업데이트](https://github.com/helm/helm-www/blob/master/content/ko/docs/community/release_checklist.md)하기에 
+딱 맞는 사람이다.
 
 모든 릴리스는 vX.Y.Z 형식이다. 
 여기서 X는 주 버전 번호, Y는 부 버전 번호, Z는 패치 릴리스 번호이다. 
