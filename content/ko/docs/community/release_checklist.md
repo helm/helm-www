@@ -250,7 +250,7 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI는 테스트 할 태그 된 릴리스 이미지와 클라이언트 바이너리를 
+CircleCI는 테스트할 태그된 릴리스 이미지와 클라이언트 바이너리를 
 자동으로 생성한다.
 
 테스터의 경우 CircleCI가 아티팩트 빌드를 완료 한 후 
