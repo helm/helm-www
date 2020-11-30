@@ -164,7 +164,7 @@ git push upstream $RELEASE_BRANCH_NAME
 
 계속 진행하기 전에 릴리스가 CI를 통과했는지 [CircleCI 에서의 헬름](https://circleci.com/gh/helm/helm)를 
 확인하자. 패치 릴리스는 2-5 단계를 건너 뛰고 6 단계로 진행하여 
-[릴리스 확정](#6-릴리스-확정)를 수행 할 수 있다.
+[릴리스 확정](#6-릴리스-확정)를 수행할 수 있다.
 
 ## 2. 주/부 릴리스: 깃에서 버전 번호 변경
 
