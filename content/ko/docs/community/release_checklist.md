@@ -178,9 +178,9 @@ index 712aae64..c1ed191e 100644
 --- a/internal/version/version.go
 +++ b/internal/version/version.go
 @@ -30,7 +30,7 @@ var (
-        // 새로운 기능 추가 및 동작 변경을 위해 주요 번호를 증가
-        // 버그 수정 및 성능 향상을 위해 부 번호를 증가
-        // 기존 릴리스에 대한 중요한 수정사항에 대한 패치 번호 증가
+        // Increment major number for new feature additions and behavioral changes.
+        // Increment minor number for bug fixes and performance enhancements.
+        // Increment patch number for critical fixes to existing releases.
 -       version = "v3.3"
 +       version = "v3.4"
 
