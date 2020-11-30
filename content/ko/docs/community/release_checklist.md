@@ -168,8 +168,8 @@ git push upstream $RELEASE_BRANCH_NAME
 
 ## 2. 주/부 릴리스: 깃에서 버전 번호 변경
 
-주 또는 부 릴리스를 수행 할 때 `internal/version/version.go` 를 
-새 릴리스 버전으로 업데이트 해야한다.
+주 또는 부 릴리스를 수행할 때 `internal/version/version.go` 를 
+새 릴리스 버전으로 업데이트해야 한다.
 
 ```shell
 $ git diff internal/version/version.go
