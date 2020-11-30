@@ -188,8 +188,8 @@ index 712aae64..c1ed191e 100644
         metadata = ""
 ```
 
-`version.go` 파일에서 버전을 업데이트 하는 것 외에도 
-해당 버전 번호를 사용하는 해당 테스트도 업데이트 해야 한다.
+`version.go` 파일에서 버전을 업데이트하는 것 외에도 
+해당 버전 번호를 사용하는 해당 테스트도 업데이트해야 한다.
 
 * `cmd/helm/testdata/output/version.txt`
 * `cmd/helm/testdata/output/version-client.txt`
