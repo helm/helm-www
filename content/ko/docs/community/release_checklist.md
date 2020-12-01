@@ -464,8 +464,8 @@ make sign
 대한 pull 요청을 생성한다. 
 `config.toml` 파일에서 
 적절한 `params.versions` 섹션을 찾고 [현재 버전 업데이트](https://github.com/helm/helm-www/pull/676/files)의 
-예와 같이 헬름 버전을 업데이트 한다. 동일한`config.toml` 파일에서
-`params.nextversion` 섹션을 업데이트 한다. 
+예와 같이 헬름 버전을 업데이트한다. 동일한`config.toml` 파일에서
+`params.nextversion` 섹션을 업데이트한다. 
 
 해당되는 경우 릴리스의 [helm/helm 마일스톤](https://github.com/helm/helm/milestones)을 
 닫는다.
