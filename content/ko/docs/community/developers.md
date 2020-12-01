@@ -42,7 +42,7 @@ $ make
 부담을 주는 것이 아니라 사용자가 혜택을 받을 수 있도록 우아하고 
 고품질의 오픈 소스 코드를 만드는 것이다.
 
-주요 기여 가이드를 읽고 숙지했는지 확인하도록 한다.
+가장 중심이라 할 수 있는 기여(CONTRIBUTING) 가이드를 읽고 숙지하자.
 
 https://github.com/helm/helm/blob/master/CONTRIBUTING.md
 
