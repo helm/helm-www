@@ -472,7 +472,7 @@ make sign
 
 주/부 릴리스의 
 [버전 불균형] (https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)을 
-업데이트 한다.
+업데이트한다.
 
 [여기](https://helm.sh/calendar/release)에서 릴리스 달력을 업데이트한다.
 * 당일 오후 5시 GMT에 대한 알림과 함께 다음 마이너 릴리스에 대한 항목을 생성한다.
