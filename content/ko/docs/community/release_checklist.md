@@ -483,7 +483,7 @@ make sign
 축하한다! 모두 끝났다. $DRINK_OF_CHOICE 를 가져가자. 
 당신은 그것을 얻게 됐다.
 
-멋진 $DRINK_OF_CHOICE를 즐기신 후 Slack과 Twitter에서 
+멋진 $DRINK_OF_CHOICE를 즐긴 후 Slack과 Twitter에서 
 [깃헙 릴리스] (https://github.com/helm/helm/releases) 링크를 통해 
 새 릴리스를 발표하자.
 
