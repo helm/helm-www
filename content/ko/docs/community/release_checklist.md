@@ -439,7 +439,7 @@ make fetch-dist	# if not already run
 make sign
 ```
 
-이렇게하면 CI가 푸시한 개별 파일에 대하여, ASCII 아머드 서명 파일을
+이렇게 하면 CI가 푸시한 개별 파일에 대하여, ASCII 아머드 서명 파일을
 생성한다.
 
 모든 서명 파일(`*.asc`)을 깃헙의 릴리스에 업로드해야
