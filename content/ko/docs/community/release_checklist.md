@@ -461,7 +461,7 @@ make sign
 업데이트해야 한다. 다음 부 릴리스 날짜도 사이트에 
 게시되며 업데이트해야 한다.
 이를 위해 [helm-www 저장소] (https://github.com/helm/helm-www)에 
-대한 pull 요청을 생성합니다. 
+대한 pull 요청을 생성한다. 
 `config.toml` 파일에서 
 적절한 `params.versions` 섹션을 찾고 [현재 버전 업데이트](https://github.com/helm/helm-www/pull/676/files)의 
 예와 같이 헬름 버전을 업데이트 한다. 동일한`config.toml` 파일에서
