@@ -17,21 +17,21 @@ weight: 8
 
 ### 移除了Tiller
 
-&emsp;&emsp;在Helm 2的开发周期中，我们引入了Tiller。Tiller在团队协作中共享集群时扮演了重要角色。
+在Helm 2的开发周期中，我们引入了Tiller。Tiller在团队协作中共享集群时扮演了重要角色。
 它使得不同的操作员与相同的版本进行交互称为了可能。
 
-&emsp;&emsp;Kubernetes 1.6默认使用了基于角色的访问控制（RBAC），在生产环境对Tiller的锁定使用变得难于管理。
+Kubernetes 1.6默认使用了基于角色的访问控制（RBAC），在生产环境对Tiller的锁定使用变得难于管理。
 由于大量可能的安全策略，我们的立场是提供一个自由的默认配置。这样可以允许新手用户可以乐于尝试Helm
 和Kubernetes而不需要深挖安全控制。 不幸的是这种自由的配置会授予用户他们不该有的权限。DevOps和SRE
 在安装多用户集群时不得不去学习额外的操作步骤。
 
-&emsp;&emsp;在听取了社区成员在特定场景使用Helm之后，我们发现Tiller的版本管理系统不需要依赖于集群内部用户去维护
+在听取了社区成员在特定场景使用Helm之后，我们发现Tiller的版本管理系统不需要依赖于集群内部用户去维护
 状态或者作为一个Helm版本信息的中心hub。取而代之的是，我们可以简单地从Kubernetes API server获取信息，
 在Chart客户端处理并在Kubernetes中存储安装记录。
 
 Tiller的首要目标可以在没有Tiller的情况下实现，因此针对于 Helm 3 我们做的首要决定之一就是完全移除Tiller。
 
-&emsp;&emsp;随着Tiller的消失，Helm的安全模块从根本上被简化。Helm 3 现在支持所有Kubernetes流行的安全、
+随着Tiller的消失，Helm的安全模块从根本上被简化。Helm 3 现在支持所有Kubernetes流行的安全、
 身份和授权特性。Helm的权限通过你的
 [kubeconfig文件](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)进行评估。
 集群管理员可以限制用户权限，只要他们觉得合适，
@@ -58,14 +58,14 @@ chart manifest(通过`helm upgrade`提供)。升级会对比两个chart的不同
 $ helm install myapp ./myapp
 ```
 
-&emsp;&emsp;一个开发新人加入了团队。当他们第一点观察生产环境集群时，发生了一个像是咖啡洒在了键盘上一样的严重事故，
+一个开发新人加入了团队。当他们第一点观察生产环境集群时，发生了一个像是咖啡洒在了键盘上一样的严重事故，
 他们使用 `kubectl scale` 对生产环境部署进行缩容，将副本数从3降到了0 。
 
 ```console
 $ kubectl scale --replicas=0 deployment/myapp
 ```
 
-&emsp;&emsp;团队里面的另一个人看到线上环境已经挂了就决定回滚这个版本到之前的状态：
+团队里面的另一个人看到线上环境已经挂了就决定回滚这个版本到之前的状态：
 
 ```console
 $ helm rollback myapp
@@ -138,16 +138,16 @@ containers:
 
 ### 发布名称现在限制在namespace范围内
 
-&emsp;&emsp;随着Tiller的移除， 每个版本的信息需要保存在某个地方。
+随着Tiller的移除， 每个版本的信息需要保存在某个地方。
 在Helm 2中，是存储在Tiller相同的命名空间中。 
 实际上这意味着一个发布版本使用一个名称，其他发布不能使用相同的名称，
 即使在不同的命名空间中也不行。
 
-&emsp;&emsp;在Helm 3中，特定的版本信息作为发布本身存储在相同的命名空间中。
+在Helm 3中，特定的版本信息作为发布本身存储在相同的命名空间中。
 意味着用户现在可以在两个分开的命名空间中使用`helm install wordpress stable/wordpress`，
 并且每个都能使用 `helm list` 改变当前命名空间。 (例如 `helm list --namespace foo`)。
 
-&emsp;&emsp;与本地集群命名空间更好的一致性，使得 `helm list` 命令不再需要默认列出所有发布版本的列表。
+与本地集群命名空间更好的一致性，使得 `helm list` 命令不再需要默认列出所有发布版本的列表。
 取而代之的是，仅仅会在命名空间中列出当前kubernetes上下文的版本。
 (也就是说运行`kubectl config view --minify`时会显示命名空间). 也就意味着您在执行`helm list`时必须提供
  `--all-namespaces` 标识才能获得和Helm 2同样的结果。
