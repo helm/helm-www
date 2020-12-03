@@ -1023,7 +1023,7 @@ encryptAES "secretkey" "plaintext"
 
 ## 날짜 함수
 
-헬름에는 템플리에서 사용할 수 있는 다음의 날짜 함수들이 포함되어 있다.
+헬름에는 템플릿에서 사용할 수 있는 다음의 날짜 함수들이 포함되어 있다.
 [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
 (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
 [durationRound](#durationround), [htmlDate](#htmldate),
