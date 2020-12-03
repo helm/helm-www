@@ -156,7 +156,7 @@ $ keybase follow technosophos
 $ keybase pgp pull
 ```
 
-위의 첫 번째 명령은 `technosophos` 사용자를 추적한다. 다음으로 
+위의 첫 번째 명령어는 `technosophos` 사용자를 추적한다. 다음으로 
 `keybase pgp pull` 은 팔로우하는 모든 계정의 OpenPGP 키를 다운로드하여
 GnuPG 키링(`~/.gnupg/pubring.gpg`)에 배치한다.
 
