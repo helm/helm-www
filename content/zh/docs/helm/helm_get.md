@@ -1,10 +1,10 @@
 ---
-title: "Helm Get"
+title: "Helm 获取扩展"
 ---
 
 ## helm get
 
-下载命名发布的扩展信息
+下载发布的扩展信息
 
 ### 简介
 

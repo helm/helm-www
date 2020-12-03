@@ -1,5 +1,5 @@
 ---
-title: "Helm Show"
+title: "Helm 展示"
 ---
 
 ## helm show

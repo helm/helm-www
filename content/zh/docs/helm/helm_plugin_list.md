@@ -1,5 +1,5 @@
 ---
-title: "Helm插件列表"
+title: "Helm 插件列表"
 ---
 
 ## helm plugin list

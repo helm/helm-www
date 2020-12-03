@@ -1,5 +1,5 @@
 ---
-section: 启用
+section: 弃用
 ---
 
 ## helm delete

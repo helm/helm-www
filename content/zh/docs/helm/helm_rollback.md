@@ -1,5 +1,5 @@
 ---
-title: "Helm Rollback"
+title: "Helm 回滚"
 ---
 
 ## helm rollback

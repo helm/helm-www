@@ -1,5 +1,5 @@
 ---
-title: "Helm Show Values"
+title: "Helm 展示value"
 ---
 
 ## helm show values

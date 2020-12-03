@@ -1,5 +1,5 @@
 ---
-title: "Helm Plugin Uninstall"
+title: "Helm 插件卸载"
 ---
 
 ## helm plugin uninstall

@@ -1,5 +1,5 @@
 ---
-title: "Helm Install"
+title: "Helm 安装"
 ---
 
 ## helm install

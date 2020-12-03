@@ -1,5 +1,5 @@
 ---
-title: "Helm Repo Add"
+title: "Helm 添加仓库"
 ---
 
 ## helm repo add

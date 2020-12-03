@@ -1,5 +1,5 @@
 ---
-title: "Helm Plugin Update"
+title: "Helm 插件升级"
 ---
 
 ## helm plugin update

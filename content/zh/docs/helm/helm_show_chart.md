@@ -1,5 +1,5 @@
 ---
-title: "Helm Show Chart"
+title: "Helm 展示chart"
 ---
 
 ## helm show chart

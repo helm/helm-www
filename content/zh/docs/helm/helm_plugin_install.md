@@ -1,5 +1,5 @@
 ---
-title: "Helm Plugin Install"
+title: "Helm 插件安装"
 ---
 
 ## helm plugin install

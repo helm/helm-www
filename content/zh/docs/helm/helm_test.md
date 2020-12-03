@@ -1,5 +1,5 @@
 ---
-title: "Helm Test"
+title: "Helm 测试"
 ---
 
 ## helm test
