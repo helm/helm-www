@@ -145,7 +145,7 @@ $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
 결과적으로, `package` 명령은 `.tgz` 파일과 `.tgz.prov` 파일 모두를
 생성해야 한다.
 
-#### 패키지 확인하기
+#### 패키지 검증하기
 
 유사한 기술을 사용하여 다른 사람의 keybase 키로 서명된 차트를 확인할 수 있다. 
 `keybase.io/technosophos` 로 서명된 패키지를 확인하고 싶다고 가정해보자. 
