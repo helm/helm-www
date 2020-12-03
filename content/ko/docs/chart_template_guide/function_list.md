@@ -2019,7 +2019,7 @@ proto://host:80/path?query#fragment
 ### urlquery
 
 URL의 쿼리 부분에 포함하기에 적합하도록 인수로 전달 된 값의 
-이스케이프 된 버전을 반환한더.
+이스케이프 된 버전을 반환한다.
 
 ```
 $var := urlquery "string for query"
