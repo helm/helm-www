@@ -50,7 +50,7 @@ helm list [flags]
   -f, --filter string        정규 표현식(Perl 호환). 표현식과 일치하는 모든 릴리스가 결과에 포함된다.
   -h, --help                 list 명령어에 대한 도움말
   -m, --max int              가져올 최대 릴리스의 수 (기본값 256)
-      --offset int           시작 값에서 오프셋하는데 사용되는 목록의 다음 릴리스이름 
+      --offset int           시작 값에서 오프셋 시 사용되는 목록의 다음 릴리스명
   -o, --output format        지정된 형식으로 출력. 허용되는 값: table, json, yaml (기본값 table)
       --pending              펜딩된 릴리스를 표시
   -r, --reverse              정렬 순서 반전
