@@ -840,8 +840,8 @@ regexSplit "z+" "pizza" -1
 
 위 결과는 `[pi a]` 이다.
 
-`regexSplit` 은 문제가 있으면 패닉이 발생하며 
-`mustRegexSplit` 는 문제가 있으면 템플릿 엔진에 오류를 반환한다.
+`regexSplit` 은 문제가 있는 경우 패닉이 발생하며 
+`mustRegexSplit` 는 문제가 있는 경우 템플릿 엔진에 오류를 반환한다.
 
 ## 암호화 및 보안 함수
 
