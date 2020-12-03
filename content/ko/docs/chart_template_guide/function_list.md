@@ -2051,7 +2051,7 @@ uuidv4
 
 ### .Capabilities.APIVersions.Has
 
-클러스터에서 API 버전 또는 리소스를 사용할 수 있는지 여부를 반환한다.
+클러스터에서 API 버전 또는 리소스를 사용할 수 있는지에 대한 여부를 반환한다.
 
 ```
 .Capabilities.APIVersions.Has "apps/v1"
