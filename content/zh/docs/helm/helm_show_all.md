@@ -1,5 +1,5 @@
 ---
-title: "Helm Show All"
+title: "Helm 展示所有"
 ---
 
 ## helm show all

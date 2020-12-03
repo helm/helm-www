@@ -1,5 +1,5 @@
 ---
-title: "Helm Repo Index"
+title: "Helm 仓库索引"
 ---
 
 ## helm repo index

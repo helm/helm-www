@@ -1,5 +1,5 @@
 ---
-title: "Helm Hub"
+title: "Helm 搜索hub"
 ---
 
 ## helm search hub

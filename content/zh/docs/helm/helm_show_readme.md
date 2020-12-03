@@ -1,5 +1,5 @@
 ---
-title: "Helm Show Readme"
+title: "Helm 展示readme"
 ---
 
 ## helm show readme

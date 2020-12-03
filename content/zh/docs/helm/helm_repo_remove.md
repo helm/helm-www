@@ -1,5 +1,5 @@
 ---
-title: "Helm Repo Remove"
+title: "Helm 删除仓库"
 ---
 
 ## helm repo remove

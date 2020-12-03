@@ -1,5 +1,5 @@
 ---
-title: "Helm Plugin"
+title: "Helm 插件"
 ---
 
 ## helm plugin

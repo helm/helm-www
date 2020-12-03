@@ -1,5 +1,5 @@
 ---
-title: "Helm Pull"
+title: "Helm 拉取"
 ---
 
 ## helm pull

@@ -1,5 +1,5 @@
 ---
-title: "Helm Lint"
+title: "Helm 验证"
 ---
 
 ## helm lint

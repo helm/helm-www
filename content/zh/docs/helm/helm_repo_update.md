@@ -1,5 +1,5 @@
 ---
-title: "Helm Repo Update"
+title: "Helm 仓库更新"
 ---
 
 ## helm repo update
