@@ -199,7 +199,7 @@ $ helm verify somechart-1.2.3.tgz
   사용할 수 있다.
 * 전체 본문은 OpenPGP 에서 사용하는 
   알고리즘을 사용하여 서명된다(암호화 서명 및 
-  확인을 쉽게 만드는 새로운 방법은 [Keybase.io](https://keybase.io) 참고하자).
+  검증을 쉽게 만드는 새로운 방법은 [Keybase.io](https://keybase.io) 참고하자).
 
 이 조합은 사용자에게 다음과 같은 보증을 제공한다.
 
