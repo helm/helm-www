@@ -30,7 +30,7 @@ weight: 6
 헬름은 
 [and](#and), [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq), [fail](#fail), 
 [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne), [not](#not), [or](#or) 를
-포함한 수많은논리 및 제어 흐름 기능이 포함되어 있다.
+포함한 수많은 논리 및 제어 흐름 기능이 포함되어 있다.
 
 ### and
 
