@@ -149,7 +149,7 @@ $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
 
 유사한 기술을 사용하여 다른 사람의 keybase 키로 서명된 차트를 검증할 수 있다. 
 `keybase.io/technosophos` 로 서명된 패키지를 검증하려는 경우를 생각해보자. 
-이렇게 하려면 `keybase` 도구를 사용해야 한다.
+그런 경우 `keybase` 도구를 사용해야 한다.
 
 ```console
 $ keybase follow technosophos
