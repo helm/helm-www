@@ -917,7 +917,7 @@ derivePassword 1 "long" "password" "user" "example.com"
 
 ### buildCustomCert
 
-`buildCustomCert` 함수를 사용하면 인증서를 사용자 지정할 수 있다.
+`buildCustomCert` 함수를 사용하면 커스텀 인증서 설정이 가능하다.
 
 다음의 문자열 매개변수를 사용한다.
 
