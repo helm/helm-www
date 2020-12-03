@@ -902,7 +902,7 @@ htpasswd "myUser" "myPassword"
 derivePassword 1 "long" "password" "user" "example.com"
 ```
 
-일부를 템플릿에 직접 저장하는 것은 안전하지 않은 것으로 고려될수 있음을 유의하자.
+일부를 템플릿에 직접 저장하는 것은 안전하지 않을 수 있음을 유의하자.
 
 ### genPrivateKey
 
