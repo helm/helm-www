@@ -23,7 +23,7 @@ weight: 6
 * [문자열](#문자열-함수)
 * [형 변환](#형-변환-함수)
 * [URL](#url-함수)
-* [UUID](#uuid-함수)
+* [UUID](#UUID-함수)
 
 ## 논리 및 흐름 제어 함수
 
@@ -214,17 +214,17 @@ false | ternary "foo" "bar"
 
 헬름은 다음과 같은 문자열 함수들을 포함한다. 
 [abbrev](#abbrev),[abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
-[contains](#contains), [hasPrefix](#hasprefix-and-hassuffix),
-[hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials),
+[contains](#contains), [hasPrefix](#hasprefix-및-hassuffix),
+[hasSuffix](#hasprefix-및-hassuffix), [indent](#indent), [initials](#initials),
 [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent),
 [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf),
-[println](#println), [quote](#quote-and-squote),
-[randAlpha](#randalphanum-randalpha-randnumeric-and-randascii),
-[randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii),
-[randAscii](#randalphanum-randalpha-randnumeric-and-randascii),
-[randNumeric](#randalphanum-randalpha-randnumeric-and-randascii),
+[println](#println), [quote](#quote-및-squote),
+[randAlpha](#randalphanum-randalpha-randnumeric-randascii),
+[randAlphaNum](#randalphanum-randalpha-randnumeric-randascii),
+[randAscii](#randalphanum-randalpha-randnumeric-randascii),
+[randNumeric](#randalphanum-randalpha-randnumeric-randascii),
 [repeat](#repeat), [replace](#replace), [shuffle](#shuffle),
-[snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr),
+[snakecase](#snakecase), [squote](#quote-및-squote), [substr](#substr),
 [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall),
 [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc),
 [untitle](#untitle), [upper](#upper), [wrap](#wrap), [wrapWith](#wrapwith).
@@ -2025,7 +2025,7 @@ URL의 쿼리 부분에 포함하기에 적합하도록 인수로 전달 된 값
 $var := urlquery "string for query"
 ```
 
-## UUID Functions
+## UUID 함수
 
 헬름은 UUID v4 범용 고유 ID를 생성 할 수 있다.
 
@@ -2046,7 +2046,7 @@ uuidv4
 `lookup` 은 실행중인 클러스터에서 리소스를 조회하는 데 사용된다. 
 `helm template` 명령과 함께 사용하면 항상 빈 응답을 반환한다.
 
-[조회 함수에 대한 문서](functions_and_pipelines.md/#using-the-lookup-function)에서 
+[조회 함수에 대한 문서](functions_and_pipelines.md/#lookup-함수-사용하기)에서 
 자세한 내용을 확인할 수 있다.
 
 ### .Capabilities.APIVersions.Has
