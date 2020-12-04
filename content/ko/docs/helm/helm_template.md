@@ -59,7 +59,7 @@ helm template [NAME] [CHART] [flags]
       --validate                     현재 가리키는 쿠버네티스 클러스터에 대해 매니페스트의 유효성을 검사. 이는 설치시 수행되는 것과 동일
   -f, --values strings               YAML 파일 또는 URL 에 값 지정 (여러 개를 지정 가능)
       --verify                       사용하기 전에 패키지 확인
-      --version string               사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최시 버전이 사용
+      --version string               사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신 버전 사용
       --wait                         설정된 경우, 릴리스를 성공으로 표시하기 전에 모든 파드, PVC, 서비스, 디플로이먼트, 스테이트풀셋, 레플리카셋의 최소 파드가 Ready 상태가 될때까지 대기. --timeout 만큼 대기
 ```
 
