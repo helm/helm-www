@@ -174,7 +174,7 @@ Helm은 플러그인을 실행할 때, 외부 환경을 플러그인에 전달�
 - `HELM_PLUGINS`: 플러그인 디렉토리 경로
 - `HELM_PLUGIN_NAME`: `helm`에 의해 호출되는 플러그인의 이름
   즉, `helm myplug`는 `myplug` 라는 짧은 이름을 갖게 된다. 
-- `HELM_PLUGIN_DIR`: 플러그인이 포함 된 디렉토리.
+- `HELM_PLUGIN_DIR`: 플러그인이 포함 된 디렉토리
 - `HELM_BIN`: (사용자에 의해 실행되는) `helm` 명령의 경로.
 - `HELM_DEBUG`: helm에 의해 디버그 플래그가 설정되었는지 여부를 표시
 - `HELM_REGISTRY_CONFIG`: (사용하는 경우) 레지스트리 구성 위치. 
