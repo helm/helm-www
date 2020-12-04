@@ -39,7 +39,7 @@ helm template [NAME] [CHART] [flags]
       --insecure-skip-tls-verify     차트 다운로드를 위한 TLS 인증서 검사 건너뛰기
       --is-upgrade                   Release.IsInstall 대신 .Release.IsUpgrade 를 지정
       --key-file string              이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
-      --keyring string               검증에 사용되는 공개키듸 위치 지정(기본값 "~/.gnupg/pubring.gpg")
+      --keyring string               검증에 사용되는 공개키의 위치 지정(기본값 "~/.gnupg/pubring.gpg")
       --name-template string         릴리스 이름을 지정하는데 사용되는 템플릿 지정
       --no-hooks                     설치 중 훅 실행 방지
       --output-dir string            실행된 템플릿을 표준 출력 대신 지정된 아웃풋 디렉터리의 파일에 작성
