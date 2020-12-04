@@ -211,7 +211,7 @@ Helm은 플러그인을 실행할 때, 외부 환경을 플러그인에 전달�
 ### 정적 자동-완성
 
 플러그인이 자체 플래그 및/또는 하위 명령어를 제공하는 경우, 플러그인의 루트 디렉토리에 `completion.yaml` 파일을 두어 헬름에 알릴 수 있다. 
-`completion.yaml` 파일의 형식은 다음과 같습니다.
+`completion.yaml` 파일의 형식은 다음과 같다.
 
 ```yaml
 name: <pluginName>
