@@ -112,7 +112,7 @@ _`name` 은 디렉토리 이름과 일치해야 한다._
   검색을 중지하고 명령어를 사용한다.
 - `os` 가 일치하고 `arch` 가 일치하지 않으면 
   명령어를 사용한다.
-- 일치하는 `platformCommand` 가 없으면 기본 `command` 가 사용
+- 일치하는 `platformCommand` 가 없으면 기본 `command` 를 사용한다.
 - `platformCommand` 에 일치하는 항목이 없고 `command` 가 없는 경우
   헬름은 오류와 함께 종료
 
