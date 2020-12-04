@@ -80,7 +80,7 @@ $ helm verify topchart-0.1.0.tgz
 Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
 ```
 
-설치 중에 확인하려면 `--verify` 플래그를 사용한다.
+설치 중에 검증하려면 `--verify` 플래그를 사용한다.
 
 ```console
 $ helm install --generate-name --verify mychart-0.1.0.tgz
