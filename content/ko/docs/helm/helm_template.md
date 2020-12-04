@@ -40,7 +40,7 @@ helm template [NAME] [CHART] [flags]
       --is-upgrade                   Release.IsInstall 대신 .Release.IsUpgrade 를 지정
       --key-file string              이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
       --keyring string               검증에 사용되는 공개키의 위치 지정(기본값 "~/.gnupg/pubring.gpg")
-      --name-template string         릴리스 이름을 지정하는데 사용되는 템플릿 지정
+      --name-template string         릴리스 이름을 지정 시 사용되는 템플릿 지정
       --no-hooks                     설치 중 훅 실행 방지
       --output-dir string            실행된 템플릿을 표준 출력 대신 지정된 아웃풋 디렉터리의 파일에 작성
       --password string              요청된 차트를 찾을 수 있는 차트 저장소의 비밀번호
