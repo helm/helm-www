@@ -317,7 +317,7 @@ rel2
 rel3
 ```
 
-`plugin.complete` 가 호출되면 플러그인의 메인 스크립트가 호출 될 때와 마찬가지로 플러그인 환경이 설정된다.
+`plugin.complete` 가 호출되면 플러그인의 메인 스크립트가 호출될 때와 마찬가지로 플러그인 환경이 설정된다.
 따라서 변수 `$ HELM_NAMESPACE`, `$ HELM_KUBECONTEXT` 및 기타 모든 플러그인 변수가 이미 설정되어 있으며 해당 전역 플래그가 제거 된다.
 
 `plugin.complete` 파일은 모든 실행 가능 형식 일 수 있다. 
