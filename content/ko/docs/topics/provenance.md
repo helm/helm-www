@@ -167,7 +167,7 @@ GnuPG 키링(`~/.gnupg/pubring.gpg`)에 배치한다.
 $ helm verify somechart-1.2.3.tgz
 ```
 
-### 차트를 검증되지 않는 이유
+### 차트가 검증되지 않는 이유
 
 실패하는 이유는 주로 다음과 같다.
 
