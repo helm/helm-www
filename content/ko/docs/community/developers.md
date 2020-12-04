@@ -134,7 +134,7 @@ Closes #1234
 - Effective Go [포맷
   소개](https://golang.org/doc/effective_go.html#formatting).
 - Go 위키에서 볼 수 있는 훌륭한 
-  [포맷](https://github.com/golang/go/wiki/CodeReviewComments) 기사
+  [포맷](https://github.com/golang/go/wiki/CodeReviewComments) 글
 
 `make test` 타겟을 실행하면 단위 테스트가 실행될 뿐만아니라 스타일 테스트도 실행된다.
 `make test` 대상이 문체 상의 이유로 실패하면 PR 은 병합할 준비가
