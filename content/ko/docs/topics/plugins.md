@@ -197,7 +197,7 @@ Helm은 플러그인을 실행할 때, 외부 환경을 플러그인에 전달�
 - `--registry-config`: 이 플래그는 `$ HELM_REGISTRY_CONFIG` 로 변환된다.
 - `--repository-cache`: 이 플래그는 `$ HELM_REPOSITORY_CACHE` 로 변환된다.
 - `--repository-config`: 이 플래그는 `$ HELM_REPOSITORY_CONFIG` 로 변환된다.
-- `--namespace` and `-n`: 이 플래그는 `$ HELM_NAMESPACE` 로 변환
+- `--namespace` and `-n`: 이 플래그는 `$ HELM_NAMESPACE` 로 변환된다.
 - `--kube-context`: 이 플래그는 `$ HELM_KUBECONTEXT` 로 변환
 - `--kubeconfig`: 이 플래그는 `$KUBECONFIG` 로 변환
 
