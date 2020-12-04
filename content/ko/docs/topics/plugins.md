@@ -156,7 +156,7 @@ downloaders:
 특별한 레포지터리에 대한 규칙은 일반 레포지터리와 동일하다. 사용가능한 차트 목록을 검색하고 캐시하려면
 헬름이 `index.yaml` 파일을 다운로드 할 수 있어야 한다.
 
-정의된 명령은 `command certFile keyFile caFile full-URL` 체계로 호출된다.
+정의된 명령어는 `command certFile keyFile caFile full-URL` 체계로 호출된다.
 SSL 자격 증명은 `$HELM_REPOSITORY_CONFIG`(예를 들어, `$HELM_CONFIG_HOME/repositories.yaml`)에 저장된 레포지터리 정의에서 가져온다.
 다운로더 플러그인은 원시 콘텐츠를 stdout 에 덤프하고 stderr에 오류를 보고해야 한다.
 
