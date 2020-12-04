@@ -90,7 +90,7 @@ platformCommand:
 헬름은 이 플러그인을 실행할때 이 이름을 사용한다.(예: `helm NAME` 이 이 플러그인을 호출)
 
 _`name` 은 디렉토리 이름과 일치해야 한다._ 
-위의 예에서는 `name: keybase` 가 있는 플러그인이 `keybase` 라는 디렉터리에 포함되어야 한다.
+위의 예시에서는 `name: keybase` 가 있는 플러그인이 `keybase` 라는 디렉터리에 포함되어야 한다.
 
 `name`에 대한 제한:
 
