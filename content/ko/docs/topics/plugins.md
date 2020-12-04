@@ -258,7 +258,7 @@ flags:
 - revision
 ```
 
-[`헬름 버전 2에서 버전3으로의 플러그인`] (https://github.com/helm/helm-2to3)과 같은 더 복잡한 예의 경우, 다음과 같은`completion.yaml` 파일이 있다.
+[`헬름 버전 2에서 버전3으로의 플러그인`] (https://github.com/helm/helm-2to3)과 같은 더 복잡한 예시로, 다음과 같은`completion.yaml` 파일이 있다.
 
 ```yaml
 name: 2to3
