@@ -90,7 +90,7 @@ $ helm install --generate-name --verify mychart-0.1.0.tgz
 `helm pakcage` 예제에서와 같이 사용자가 `--keyring PATH`로
 키링의 위치를 지정해야 할 수 있다.
 
-확인에 실패하면 차트가 렌더링되기 전에 설치가 
+검증에 실패하면 차트가 렌더링되기 전에 설치가 
 중단된다.
 
 ### Keybase.io 자격증명 사용하기
