@@ -104,7 +104,7 @@ _`name` 은 디렉토리 이름과 일치해야 한다._
 따라서 플러그인이 `helm myplugin --foo` 및 `ignoreFlag: true` 로 호출되면 `--foo` 는 자동으로 삭제된다.
 
 마지막으로 가장 중요한 것은 `platformCommand` 또는 `command` 가 플러그인이 호출될 때 실행할 명령어이다.
-`platformCommand` 섹션은 명령의 OS/아키텍처의 특정 변형을 정의한다.
+`platformCommand` 섹션은 명령어의 OS/아키텍처에 따른 변형을 정의한다.
 사용할 명령을 결정할 때 다음의 규칙이 적용된다.
 
 - `platformCommand` 가 있으면 먼저 검색
