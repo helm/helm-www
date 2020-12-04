@@ -160,7 +160,7 @@ $ keybase pgp pull
 `keybase pgp pull` 은 팔로우하는 모든 계정의 OpenPGP 키를 다운로드하여
 GnuPG 키링(`~/.gnupg/pubring.gpg`)에 배치한다.
 
-이 시점에서 이제 `helm verify` 또는 `--verify` 플래그가 있는 명령을 사용할
+이 시점에서 이제 `helm verify` 또는 `--verify` 플래그가 있는 명령어를 사용할
 수 있다.
 
 ```console
