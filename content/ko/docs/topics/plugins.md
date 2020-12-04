@@ -341,7 +341,7 @@ rel3
 $HELM_PLUGIN_DIR/status.sh --complete "$@"
 ```
 
-`fullstatus` 플러그인의 실제 스크립트 (`status.sh`)는 `--complete` 플래그를 찾아야하며, 발견될 경우 적절한 완성을 출력해야 한다.
+`fullstatus` 플러그인의 실제 스크립트 (`status.sh`)는 `--complete` 플래그를 찾아야 하며, 발견될 경우 적절한 완성을 출력해야 한다.
 
 ### 팁과 요령
 
