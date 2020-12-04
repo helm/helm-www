@@ -180,7 +180,7 @@ Helm은 플러그인을 실행할 때, 외부 환경을 플러그인에 전달�
 - `HELM_REGISTRY_CONFIG`: (사용하는 경우) 레지스트리 설정 위치
   레지스트리와 함께 헬름을 사용하는 것은 실험적인 기능임을 유의하자.
 - `HELM_REPOSITORY_CACHE`: 저장소 캐시 파일의 경로
-- `HELM_REPOSITORY_CONFIG`: 저장소 구성 파일의 경로.
+- `HELM_REPOSITORY_CONFIG`: 저장소 설정 파일의 경로
 - `HELM_NAMESPACE`: `helm` 명령에 지정된 네임 스페이스 
   (일반적으로`-n` 플래그 사용)
 - `HELM_KUBECONTEXT`: `helm` 명령에 제공된 Kubernetes 
