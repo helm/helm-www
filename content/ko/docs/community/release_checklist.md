@@ -6,7 +6,7 @@ weight: 2
 
 # 헬름 릴리스에 대한 유지관리자 가이드
 
-새로운 헬름을 출시할 시간이다! 릴리스를 끊는 Helm 유지관리자로서,
+새로운 헬름을 출시할 시간이다! 릴리스를 끊는 헬름 유지관리자로서,
 자신의 경험이 여기에 문서화된 내용과 다른 점이 있다면
 [이 릴리스 체크리스트를 업데이트](https://github.com/helm/helm-www/blob/master/content/ko/docs/community/release_checklist.md)하기에 
 딱 맞는 사람이다.
