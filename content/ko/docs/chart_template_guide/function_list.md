@@ -266,7 +266,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 
 불리언:
 
-* `%t` 참 또는 거짓의 문자포현
+* `%t` 단어 true 또는 false
 
 정수:
 
