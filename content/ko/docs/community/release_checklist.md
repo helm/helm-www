@@ -414,7 +414,7 @@ make release-notes
 또한 자동 생성된 릴리스 노트에서 URL과 
 체크섬이 올바른지 다시 확인해야 한다.
 
-완료되면 깃헙에서 [헬름/헬름 릴리스](https://github.com/helm/helm/releases)로 
+완료되면 GitHub에서 [헬름/헬름 릴리스](https://github.com/helm/helm/releases)로 
 이동하고 여기에 작성된 메모로 태그가 지정된 
 릴리스의 릴리스 노트를 편집한다. 대상 분기의 경우 
 $RELEASE_BRANCH_NAME로 설정한다.
