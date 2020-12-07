@@ -11,7 +11,7 @@ fish에 대한 자동 완성 스크립트를 생성
 
 fish 셸의 헬름에 대한 자동 완성 스크립트를 생성한다.
 
-현재 셸 세션에서 완성 기능을 로드하려면: $ helm completion fish | source
+현재 셸 세션에서 completion 기능을 로드하려면: $ helm completion fish | source
 
 모든 새 세션에서 완성 기능을 로드하려면 다음 작업을 한 번 실행한다: $ helm completion fish > ~/.config/fish/completions/helm.fish
 
