@@ -45,7 +45,7 @@ helm completion fish
       --repository-config string    저장소 이름 및 URL을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
 ```
 
-### 참조
+### 함께 보기
 
 * [helm completion](helm_completion.md)	 - 지정된 셸에 대한 자동 완성 스크립트 생성
 
