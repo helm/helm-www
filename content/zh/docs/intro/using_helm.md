@@ -293,7 +293,7 @@ nodeSelector:
 ```
 
 深度嵌套是数据结构很难使用`--set`表达。建议chart设计者设计`values.yaml`文件格式时考虑`--set`用法(查看[Values
-文件](https://helm.sh/docs/chart_template_guide/values_files/)了解更多)。
+文件](https://helm.sh/zh/docs/chart_template_guide/values_files/)了解更多)。
 
 ### 更多安装方法
 
