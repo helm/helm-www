@@ -358,7 +358,7 @@ Helm vX.Y.Z는 기능 릴리스이다. 이번 릴리스에서는 <insert focal p
 커뮤니티는 계속 성장하고 있으며, 함께하면 좋겠다!
 
 - [Kubernetes Slack] (https://kubernetes.slack.com)에서 토론에 참여해보자.
-  - 질문하기위한 `#helm-users`
+  - 질문을 하려면 `#helm-users`
   - PR, 코드, 버그를 논의하기 위한 `#helm-dev`
 - 공개 개발자 전화 : 목요일 오전 9시 30 분 [Zoom]을 통해 행 아웃 (https://zoom.us/j/696660622)
 - 차트 테스트, 디버그, 기여 : [GitHub/헬름/차트] (https://github.com/helm/charts)
