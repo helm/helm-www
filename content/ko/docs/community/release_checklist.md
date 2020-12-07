@@ -301,7 +301,7 @@ PS C:\> Invoke-WebRequest -Uri "https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME
 git cherry-pick -x <commit_id>
 ```
 
-또한 분기를 깃헙으로 푸시하고 CI 를 통과하는지도 확인해야 한다.
+또한 분기를 GitHub으로 푸시하고 CI를 통과하는지도 확인해야 한다.
 
 그럼 다음 태그를 지정하고 사용자들에게 새 릴리스 후보에 대해 알린다.
 
