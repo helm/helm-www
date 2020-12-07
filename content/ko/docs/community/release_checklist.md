@@ -370,7 +370,7 @@ Helm vX.Y.Z는 기능 릴리스이다. 이번 릴리스에서는 <insert focal p
 
 ## 설치 및 업그레이드
 
-헬름 X.Y 를 다운로드 합니다. 일반적인 플랫폼 바이너리는 다음과 같다.
+헬름 X.Y 를 다운로드한다. 일반적인 플랫폼 바이너리는 다음과 같다.
 
 - [MacOS amd64](https://get.helm.sh/helm-vX.Y.Z-darwin-amd64.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-darwin-amd64.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [리눅스 amd64](https://get.helm.sh/helm-vX.Y.Z-linux-amd64.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-amd64.tar.gz.sha256sum) / CHECKSUM_VAL)
