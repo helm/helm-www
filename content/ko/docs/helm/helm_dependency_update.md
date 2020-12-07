@@ -31,7 +31,7 @@ helm dependency update CHART [flags]
 
 ```
   -h, --help             helm dependency update 명령어에 대한 도움말
-      --keyring string   공개키를 퐇마하는 키링 (기본값 "~/.gnupg/pubring.gpg")
+      --keyring string   공개키를 포함하는 키링 (기본값 "~/.gnupg/pubring.gpg")
       --skip-refresh     로컬 저장소 캐시를 새로 고치지 않음
       --verify           서명과 비교하여 패키지를 확인
 ```
