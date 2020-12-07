@@ -1,10 +1,10 @@
 ---
 title: "基于角色的访问控制"
-description: "讨论在chart清单中创建和格式化RABC资源。"
+description: "讨论在chart清单中创建和格式化RBAC资源。"
 weight: 8
 ---
 
-最佳实践的这部分讨论在chart清单中创建和格式化RABC资源。
+最佳实践的这部分讨论在chart清单中创建和格式化RBAC资源。
 
 RBAC 资源有：
 
