@@ -311,7 +311,7 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-깃헙에 푸시되면 이 태그가 있는 브랜치가 CI에 빌드 되는지 확인한다.
+GitHub에 푸시되면 이 태그가 있는 브랜치가 CI에 빌드 되는지 확인한다.
 
 여기서부터는 이 프로세스를 반복하고 릴리스 후보에 만족할 때까지 지속적으로 테스트한다. 
 릴리스 후보의 경우 전체 노트를 작성하지는 않지만 일부 
