@@ -160,7 +160,7 @@ downloaders:
 SSL 자격 증명은 `$HELM_REPOSITORY_CONFIG`(예를 들어, `$HELM_CONFIG_HOME/repositories.yaml`)에 저장된 레포지터리 정의에서 가져온다.
 다운로더 플러그인은 원시 콘텐츠를 stdout 에 덤프하고 stderr에 오류를 보고해야 한다.
 
-다운로더 명령어는 하위 명령 또는 인수도 지원하며, 예를 들어`plugin.yaml` 에 `bin / mydownloader 하위 명령어 -d` 를 지정할 수 있다.
+다운로더 명령어는 하위 명령어 또는 인수도 지원하며, 예를 들어`plugin.yaml` 에 `bin / mydownloader 하위 명령어 -d` 를 지정할 수 있다.
 이는 기본 플러그인 명령어와 다운로더 명령어에 대해 동일한 실행 파일을 사용하지만 각각에 대해 다른 하위 명령어를 사용하려는 경우에 유용하다.
 
 ## 환경 변수
