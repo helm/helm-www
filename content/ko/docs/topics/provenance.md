@@ -57,7 +57,7 @@ $ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychar
 
 **경고:** GnuPG v2는 기본 위치 `~/.gnupg/pubring.kbx` 에 
 새로운 형식 `kbx` 를 사용하여 비밀 키링을 저장한다.
-다음 명령을 사용하여 키링을 레거시 gpg 형식으로 변환한다.
+다음 명령어를 사용하여 키링을 레거시 gpg 형식으로 변환한다.
 
 ```console
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
