@@ -361,7 +361,7 @@ Helm vX.Y.Z는 기능 릴리스이다. 이번 릴리스에서는 <insert focal p
   - 질문하기위한 `#helm-users`
   - PR, 코드, 버그를 논의하기 위한 `#helm-dev`
 - 공개 개발자 전화 : 목요일 오전 9시 30 분 [Zoom]을 통해 행 아웃 (https://zoom.us/j/696660622)
-- 차트 테스트, 디버그, 기여 : [깃헙/헬름/차트] (https://github.com/helm/charts)
+- 차트 테스트, 디버그, 기여 : [GitHub/헬름/차트] (https://github.com/helm/charts)
 
 ## 주목할 만한 변화
 
