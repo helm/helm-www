@@ -142,7 +142,7 @@ technosophos (keybase.io/technosophos) <technosophos@keybase.io>
 $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
 ```
 
-결과적으로, `package` 명령은 `.tgz` 파일과 `.tgz.prov` 파일 모두를
+결과적으로, `package` 명령어는 `.tgz` 파일과 `.tgz.prov` 파일 모두를
 생성해야 한다.
 
 #### 패키지 검증하기
