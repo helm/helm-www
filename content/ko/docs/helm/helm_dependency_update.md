@@ -6,7 +6,7 @@ title: "Helm Dependency Update"
 
 Chart.yaml 의 내용에 따라 charts/ 업데이트
 
-### Synopsis
+### 개요
 
 
 Chart.yaml 을 미러링하도록 온-디스크 종속성을 업데이트한다.
