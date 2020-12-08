@@ -22,7 +22,7 @@ helm repo add [NAME] [URL] [flags]
       --cert-file string           이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
       --force-update               레포지터리가 이미 있는 경우 교체(덮어쓰기)
   -h, --help                       helm repo add 명령어에 대한 도움말
-      --insecure-skip-tls-verify   저장소에 대한 TLS 인증서 검사 건너 뛰기
+      --insecure-skip-tls-verify   저장소에 대한 TLS 인증서 검사 건너뛰기
       --key-file string            이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
       --no-update                  무시. 이전에는, 강제 업데이트를 비활성화하기 위해 사용. force-update 에 의해 향후 미사용
       --password string            차트 저장소 비밀번호
