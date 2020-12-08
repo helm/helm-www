@@ -21,7 +21,7 @@ title: "Helm Dependency List"
 helm dependency list CHART [flags]
 ```
 
-### Options
+### 옵션
 
 ```
   -h, --help   helm dependency list 명령어에 대한 도움말
