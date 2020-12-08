@@ -26,7 +26,7 @@ helm repo index [DIR] [flags]
 ### 옵션
 
 ```
-  -h, --help           helm reop index 명령어의 도움말
+  -h, --help           helm repo index 명령어의 도움말
       --merge string   생성된 색인을 주어진 색인에 병합
       --url string     차트 저장소의 url
 ```
