@@ -24,7 +24,7 @@ Chart.lock 파일에서 charts/ 디렉토리를 빌드한다.
 helm dependency build CHART [flags]
 ```
 
-### Options
+### 옵션
 
 ```
   -h, --help             helm dependency build 명령어에 대한 도움말
