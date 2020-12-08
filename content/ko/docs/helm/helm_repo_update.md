@@ -17,7 +17,7 @@ title: "Helm Repo Update"
 helm repo update [flags]
 ```
 
-### Options
+### 옵션
 
 ```
   -h, --help   helm repo update 명령어에 대한 도움말
