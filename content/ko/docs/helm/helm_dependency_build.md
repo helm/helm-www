@@ -6,7 +6,7 @@ title: "Helm Dependency Build"
 
 Chart.lock 파일을 기반으로 charts/ 디렉토리를 다시 빌드
 
-### Synopsis
+### 개요
 
 
 Chart.lock 파일에서 charts/ 디렉토리를 빌드한다.
