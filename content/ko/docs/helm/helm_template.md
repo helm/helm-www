@@ -79,7 +79,7 @@ helm template [NAME] [CHART] [flags]
       --repository-config string    저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
 ```
 
-### SEE ALSO
+### 함께 보기
 
 * [helm](../helm)	 - 쿠버네티스에 대한 헬름 패키지 매니저.
 
