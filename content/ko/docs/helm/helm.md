@@ -24,7 +24,7 @@ title: "helm"
 | $HELM_CACHE_HOME                   | 캐시된 파일을 저장할 대체 위치를 지정                                                          |
 | $HELM_CONFIG_HOME                  | 헬름 설정을 저장할 대체 위치를 지정                                                           |
 | $HELM_DATA_HOME                    | 헬름 데이터를 저장할 대체 위치를 지정                                                          |
-| $HELM_DEBUG                        | 헬름이 디버그 모드에서 실행 중인이의 여부 표시                                                    |
+| $HELM_DEBUG                        | 헬름이 디버그 모드에서 실행 중인지 여부 표시                                                    |
 | $HELM_DRIVER                       | 백엔드 스토리지 드라이버 설정. 값 : configmap, secret, memory, postgres                      |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | SQL 스토리지 드라이버가 사용해야 하는 연결 문자열 지정                                             |
 | $HELM_MAX_HISTORY                  | 헬름 릴리스 내역의 최대 수 설정                                                             |
