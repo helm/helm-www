@@ -59,7 +59,7 @@ title: "Helm Dependency"
 ### 옵션
 
 ```
-  -h, --help   helm dependency 명령어의 동움말
+  -h, --help   helm dependency 명령어의 도움말
 ```
 
 ### 부모 명령어에서 상속된 옵션들
