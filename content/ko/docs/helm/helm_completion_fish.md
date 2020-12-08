@@ -4,7 +4,7 @@ title: "Helm Completion - fish"
 
 ## helm completion fish
 
-fish에 대한 자동 완성 스크립트를 생성
+fish에 대한 자동 완성 스크립트 생성
 
 ### 개요
 
