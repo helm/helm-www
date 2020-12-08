@@ -79,7 +79,7 @@ repo 접두사가 있는 차트 참조 ('example/mariadb')를 사용하면
 helm install [NAME] [CHART] [flags]
 ```
 
-### Options
+### 옵션
 
 ```
       --atomic                       설정된 경우 설치 프로세스는 실패시 설치를 삭제. --atomic 을 사용할 경우 --wait 플래그도 자동으로 설정.
