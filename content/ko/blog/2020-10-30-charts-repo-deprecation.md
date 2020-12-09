@@ -16,7 +16,7 @@ date: "2020-10-30"
 자체 리포지토리를 호스팅하고 유지하려는 사람들을 위해 이제 다음 도구를 사용하여 프로세스를 간소화 할 수 있다.
 
 - [차트 테스트](https://github.com/helm/chart-testing)는 차트에 대한 PR 린팅(Linting) 및 테스트를 제공한다.
-- [차트 Releaser](https://github.com/helm/chart-releaser) 는 아티팩트를 호스팅하ㅣ는 데 사용되는 깃헙 릴리스 및 페이지를 사용하여 자체 차트 저장소를 호스팅 하는데 도움이 되는 도구를 제공한다.
+- [차트 Releaser](https://github.com/helm/chart-releaser) 는 아티팩트를 호스팅하는 데 사용되는 깃헙 릴리스 및 페이지를 사용하여 자체 차트 저장소를 호스팅 하는데 도움이 되는 도구를 제공한다.
 - [깃헙 동작 테스트 및 릴리징](https://github.com/helm?q=chart+action) 는 위에서 설명한 깃헙 동작을 사용하여 도구를 자동화 한다.
 
 이러한 도구를 사용하여 활성 유지 관리를 위해 많은 차트를 [자체 저장소로 마이그레이션] (https://github.com/helm/charts/issues/21103) 할 수 있다.
