@@ -54,7 +54,7 @@ helm repo add stable https://charts.helm.sh/stable --force-update
 
 stable 저장소 또는 로컬 저장소가 필요하지 않은 경우 `helm init` 를 실행할 때 `--skip-repos` 플래그를 사용할 수 있다. 
 이것은 v2.17.0의 새로운 플래그이다. 
-안정적인 저장소를 사용하지 않는 CI 시스템과 같은 일부 사용 사례에서 성능상의 이점이있을 수 있다.
+안정적인 저장소를 사용하지 않는 CI 시스템과 같은 일부 사용 사례에서 성능상의 이점이 있을 수 있다.
 
 v2.17.0 에서 `helm init` 가 실행되면 이전 위치 대신 새 위치가 사용된다. 
 이것은 정기적으로 `helm init` 를 실행하는 CI 시스템에서 발생한다. 
