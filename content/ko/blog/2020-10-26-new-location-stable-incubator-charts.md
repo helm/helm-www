@@ -44,7 +44,7 @@ helm repo add stable https://charts.helm.sh/stable --force-update
 
 또한 `helm repo add` 를 사용하여 이전 위치에있는 저장소 중 하나를 추가하려고하면 Helm v3.4.0 이상 버전은 저장소를 추가하지 못하고 새 위치를 사용하도록 경고한다. 
 자동으로 새 위치를 추가하는 대신 사람들에게 위치 변경을 알리고 싶은 의도이다. 
-이전 위치 중 하나를 사용해야하는 이유가있는 경우 새 `--allow-deprecated-repos` 플래그를 사용할 수 있다. 
+이전 위치 중 하나를 사용해야하는 이유가 있는 경우 새로운 `--allow-deprecated-repos` 플래그를 사용할 수 있다. 
 플래그는 이전 위치가 계속 작동하는 동안에 만 유용하다.
 
 ## 헬름 v2.17.0
