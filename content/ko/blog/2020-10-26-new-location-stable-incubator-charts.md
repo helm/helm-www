@@ -50,7 +50,7 @@ helm repo add stable https://charts.helm.sh/stable --force-update
 ## 헬름 v2.17.0
 
 헬름 v2 에서는 `helm init` 가 실행될 때 기본적으로 stable 저장소를 추가했다. 
-이로 인해 v2.17.0 부터 헬름 v2 에 대한 다른 솔루션이 도입되었다.
+이로 인해 v2.17.0 부터는 헬름 v2 에 대한 다른 솔루션이 도입되었다.
 
 stable 저장소 또는 로컬 저장소가 필요하지 않은 경우 `helm init` 를 실행할 때 `--skip-repos` 플래그를 사용할 수 있다. 
 이것은 v2.17.0의 새로운 플래그이다. 
