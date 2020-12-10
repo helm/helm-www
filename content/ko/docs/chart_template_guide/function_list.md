@@ -523,8 +523,8 @@ contains "cat" "catch"
 
 ### hasPrefix 및 hasSuffix
 
-`hasPrefix` 및 `hasSuffix` 함수는 문자열에 주어진 접두사 또는 접미사가 있는지의
-여부를 테스트 한다.
+`hasPrefix` 및 `hasSuffix` 함수는 문자열에 주어진 접두어 또는 접미어가 있는지
+여부를 테스트한다.
 
 ```
 hasPrefix "cat" "catch"
