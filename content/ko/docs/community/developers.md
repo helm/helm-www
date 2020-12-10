@@ -114,9 +114,8 @@ Closes #1234
 - `*`: 두 개 이상의 범위
 
 더 보기:
-- [Deis 
-  가이드라인](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md)은 
-  이 섹션에 영감을 줬다.
+- 이 섹션은 [Deis 
+  가이드라인](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md)에서 영감을 받아 작성되었다.
 - Karma Runner는 유의적 커밋 메세지에 대한 아이디어를 
   [정의](https://karma-runner.github.io/0.13/dev/git-commit-msg.html)
   한다.
