@@ -103,7 +103,7 @@ gt .Arg1 .Arg2
 ### ge
 
 첫 번째 인수가 두 번째 인수보다 크거나 같은 경우 불리언 true를 반환한다. 
-그렇지 않으면 False가 반환된다 (예 : Arg1> = Arg2).
+그렇지 않으면 False가 반환된다 (예 : Arg1 >= Arg2).
 
 ```
 ge .Arg1 .Arg2
