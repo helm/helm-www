@@ -95,7 +95,7 @@ _`name` 은 디렉토리 이름과 일치해야 한다._
 `name`에 대한 제한:
 
 - `name` 은 기존의 `helm` 최상위 명령어와 중복될 수 없다.
-- `name` ASCII 문자인 a-z, A-Z, 0-9, `_` 및 `-` 으로 제한.
+- `name` 은 ASCII 문자 a-z, A-Z, 0-9, `_`, `-` 로 제한된다.
 
 `version` 은 플러그인의 SemVer 2 버전이다.
 `usage` 및 `description` 은 모두 명령의 도움말 텍스트를 생성하는데 사용된다.
