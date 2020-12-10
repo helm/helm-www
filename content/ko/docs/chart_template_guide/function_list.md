@@ -513,7 +513,7 @@ wrapWith 5 "\t" "Hello World"
 
 ### contains
 
-한 문자열이 다른문자열 안에 포함되어있는지 테스트한다.
+한 문자열이 다른 문자열 안에 포함되어 있는지 테스트한다.
 
 ```
 contains "cat" "catch"
