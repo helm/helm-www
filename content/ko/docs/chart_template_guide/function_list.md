@@ -551,7 +551,7 @@ cat "hello" "beautiful" "world"
 ### indent
 
 `indent` 함수는 주어진 문자열의 모든 줄을 지정된 들여쓰기 너비로 들여쓴다.
-이것은 여러 줄 문자열을 정렬할때 유용하다.
+이것은 여러 줄 문자열을 정렬할 때 유용하다.
 
 ```
 indent 4 $lots_of_text
