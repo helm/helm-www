@@ -478,7 +478,7 @@ initials "First Try"
 
 - `randAlphaNum` 는 `0-9a-zA-Z` 를 사용한다
 - `randAlpha` 는 `a-zA-Z` 를 사용한다
-- `randNumeric` 는 `0-9` 를 사용
+- `randNumeric` 는 `0-9` 를 사용한다
 - `randAscii` 는 출력가능한 모든 ASCII 문자를 사용
 
 각각은 하나의 매개 변수, 즉 문자열의 정수 길이를 취한다.
