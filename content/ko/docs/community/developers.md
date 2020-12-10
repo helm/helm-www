@@ -81,7 +81,7 @@ GitHub PR (Pull Requests)을 통한 코드 변경을 허용한다.
 1. `$GOPATH/src` 디렉토리로 이동한 후에, `mkdir helm.sh; cd helm.sh` 을 수행하고,
    `git clone` 으로 `github.com/helm/helm` 레포지터리를 복제한다.
 2. 해당 레포지터리를 GitHub 계정으로 포크한다.
-3. 레포지터리를 `$GOPATH/src/helm.sh/helm` 에 대한 원격 레포지터리로 추가
+3. 레포지터리를 `$GOPATH/src/helm.sh/helm` 에 대한 원격 레포지터리로 추가한다.
 4. 새로운 작업 브랜치를 만들고(`git checkout -b feat/my-feature`) 해당 브랜치에서
    작업을 수행한다.
 5. 리뷰를 위한 준비가 되면 브랜치를 GitHub으로 푸시한 다음 
