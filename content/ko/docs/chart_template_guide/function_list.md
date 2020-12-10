@@ -76,7 +76,7 @@ ne .Arg1 .Arg2
 ### lt
 
 첫 번째 인수가 두 번째 인수보다 작으면 불리언 true를 반환한다. 
-그렇지 않으면 False가 반환된다 (예 : Arg1 <Arg2).
+그렇지 않으면 False가 반환된다 (예 : Arg1 < Arg2).
 
 ```
 lt .Arg1 .Arg2
