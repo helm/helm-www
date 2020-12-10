@@ -29,7 +29,7 @@ date: "2020-10-30"
 	* **권장 조치** - 차트 저장소의 차트에 의존하는 경우 새 공식 위치를 찾아야 한다. 존재하지 않을 경우 차트의 적용을 고려하라.
 * 2020년 11월 6일 - [아티팩트 허브](https://artifacthub.io/)에서 stable 및 incubator 차트 저장소가 삭제된다.
 	* **권장 조치** - 없음
-* 2020년 11월 13일 - [helm/charts 리포지토리](https://github.com/helm/chart)의 CI가 비활성화되고 더 이상 Pull Request 가 허용되지 않는다.
+* 2020년 11월 13일 - [helm/charts 저장소](https://github.com/helm/chart)의 CI가 비활성화되고 더 이상 Pull Request 가 허용되지 않는다.
 	* **권장 조치** - 차트를 새 저장소로 재배치하기 위한 진행중인 발의(initiative) 대한 자세한 내용은 [이 문제](https://github.com/helm/charts/issues/21103)를 참조하자.
 * 2020년 11월 13일 *이후* - 이전 위치에서 차트를 다운로드하면 GitHub 페이지에서 사용할 수있는 읽기 전용 아카이브로 리디렉션된다. 이 날짜 이후에는 이전 위치를 더 이상 사용할 수 없다.
 	* **권장 조치** - [보관된 stable 및 incubator 차트로의 전환](https://helm.sh/docs/faq/#i-am-getting-a-warning-about-unable-to-get-an-update-from-the-stable-chart-repository)에 대한 정보를 참조하라. 이 차트는 더 이상 버그 수정이나 보안 패치로 업데이트되지 않는다.
