@@ -665,7 +665,7 @@ swapcase "This Is A.Test"
 shuffle "hello"
 ```
 
-위 결과는 `hello` 의 문자를 무작위로 변경하여, `oelh1` 일 수도 있다.
+위 결과는 `hello` 의 문자를 무작위로 변경하여, `oelhl` 일 수도 있다.
 
 ## 형 변환 함수
 
