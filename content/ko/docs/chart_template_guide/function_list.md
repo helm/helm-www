@@ -473,7 +473,7 @@ initials "First Try"
 
 ### randAlphaNum, randAlpha, randNumeric, randAscii
 
-이 네 가지 함수는 암호화적으로 안전한 (```crypto/rand``` 를 사용) 임의의 문자열을 생성하지만 
+이 네 가지 함수는 암호화적으로 안전한 (```crypto/rand``` 사용) 임의의 문자열을 생성하지만 
 기본 문자 집합은 상이하다.
 
 - `randAlphaNum` 는 `0-9a-zA-Z` 를 사용
