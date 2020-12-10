@@ -84,8 +84,8 @@ GitHub PR (Pull Requests)을 통한 코드 변경을 허용한다.
 3. 레포지터리를 `$GOPATH/src/helm.sh/helm` 에 대한 원격 레포지터리로 추가
 4. 새로운 작업 브랜치를 만들고(`git checkout -b feat/my-feature`) 해당 브랜치에서
    작업을 수행한다.
-5. 리뷰를 위한 준비가 되면 브랜치를 깃헙으로 푸시한 다음 
-   새로운 풀 리퀘스트를 생성
+5. 리뷰를 위한 준비가 되면 브랜치를 GitHub으로 푸시한 다음 
+   새로운 풀 리퀘스트를 생성한다.
 
 Git 커밋 메세지의 경우, 우리는 [유의적 커밋 메세지](https://karma-runner.github.io/0.13/dev/git-commit-msg.html)를 
 따른다.
