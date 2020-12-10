@@ -76,7 +76,7 @@ Helm 3 이후의 문서는 자체 저장소로 이동되었다.
 헬름 2 릴리스가 잘려나간 기본 브랜치이다.
 
 GitHub PR (Pull Requests)을 통한 코드 변경을 허용한다. 
-이를 위한 작업 흐름은 다음과 같습니다.
+이를 위한 작업 흐름은 다음과 같다.
 
 1. `$GOPATH/src` 디렉토리로 이동한 후에, `mkdir helm.sh; cd helm.sh` 을 수행하고,
    `git clone` 으로 `github.com/helm/helm` 레포지터리를 복제
