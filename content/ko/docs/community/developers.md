@@ -87,7 +87,7 @@ GitHub PR (Pull Requests)을 통한 코드 변경을 허용한다.
 5. 리뷰를 위한 준비가 되면 브랜치를 깃헙으로 푸시한 다음 
    새로운 풀 리퀘스트를 생성
 
-깃 커밋 메세지의 경우, 우리는 [유의적 커밋 메세지](https://karma-runner.github.io/0.13/dev/git-commit-msg.html)를 
+Git 커밋 메세지의 경우, 우리는 [유의적 커밋 메세지](https://karma-runner.github.io/0.13/dev/git-commit-msg.html)를 
 따른다.
 
 ```
