@@ -337,7 +337,7 @@ trimPrefix "-" "-hello"
 
 ### trimSuffix
 
-문자열에서 접미사만 잘라낸다.
+문자열에서 접미어만 제거한다.
 
 ```
 trimSuffix "-" "hello-"
