@@ -477,7 +477,7 @@ initials "First Try"
 기본 문자 집합은 상이하다.
 
 - `randAlphaNum` 는 `0-9a-zA-Z` 를 사용한다
-- `randAlpha` 는 `a-zA-Z` 를 사용
+- `randAlpha` 는 `a-zA-Z` 를 사용한다
 - `randNumeric` 는 `0-9` 를 사용
 - `randAscii` 는 출력가능한 모든 ASCII 문자를 사용
 
