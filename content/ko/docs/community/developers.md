@@ -136,5 +136,5 @@ Closes #1234
   [포맷](https://github.com/golang/go/wiki/CodeReviewComments) 글
 
 `make test` 타겟을 실행하면 단위 테스트가 실행될 뿐만아니라 스타일 테스트도 실행된다.
-`make test` 대상이 문체 상의 이유로 실패하면 PR 은 병합할 준비가
+`make test` 대상이 스타일 상의 이유로 실패하면 PR 은 병합할 준비가
 되지 않은 것으로 간주한다.
