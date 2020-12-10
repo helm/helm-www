@@ -9,8 +9,7 @@ date: "2020-10-30"
 
 2019 년에 헬름 v2 지원 타임 라인 및 수명 종료 계획이 발표되었을 때 [helm/charts GitHub 저장소](https://github.com/helm/charts)의 [지원 중단](https://github.com/helm/charts#deprecation-timeline)도 발표되었다. 지원 중단의 주된 이유는 [저장소 관리자](https://github.com/helm/charts/blob/master/OWNERS)의 유지 관리가 크게 증가했기 때문이다. 지난 몇 년 동안 유지 관리중인 차트 수가 100 개 이하에서 300 개 이상으로 증가하여 저장소에 대한 풀 요청 및 업데이트가 이에 상응하게 증가했다. 안타깝게도 검토 및 유지 관리 작업을 자동화하려는 많은 노력에도 불구하고 관리자의 유지 관리 시간은 단축되지 않았다.
 
-지원 중단을 발표했을 때 우리는 helm/charts repo를 유지하는 데 사용했던 도구와 지침도 공유하기 시작했다. 
-자체 저장소를 호스팅하고 유지하려는 사람들을 위해 이제 다음 도구를 사용하여 프로세스를 간소화 할 수 있다.
+지원 중단을 발표했을 때 우리는 helm/charts repo를 유지하는 데 사용했던 도구와 지침도 공유하기 시작했다. 자체 저장소를 호스팅하고 유지하려는 사람들을 위해 이제 다음 도구를 사용하여 프로세스를 간소화 할 수 있다.
 
 - [차트 테스트](https://github.com/helm/chart-testing)는 차트에 대한 PR 린팅(Linting) 및 테스트를 제공한다.
 - [차트 Releaser](https://github.com/helm/chart-releaser) 는 아티팩트를 호스팅하는 데 사용되는 깃헙 릴리스 및 페이지를 사용하여 자체 차트 저장소를 호스팅 하는데 도움이 되는 도구를 제공한다.
