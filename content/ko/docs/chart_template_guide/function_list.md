@@ -649,7 +649,7 @@ kebabcase "FirstName"
 - 제목 형식의 문자는 소문자로 변환한다
 - 공백 뒤 또는 시작시의 소문자는 제목 형식의 대소문자로 변환한다
 - 기타 소문자는 대문자로 변환한다
-- 공백은 unicode.IsSpace(char)로 정의
+- 화이트스페이스는 unicode.IsSpace(char)로 정의된다
 
 ```
 swapcase "This Is A.Test"
