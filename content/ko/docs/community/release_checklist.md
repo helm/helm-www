@@ -34,7 +34,7 @@ weight: 2
 2. [주/부 릴리스: 깃에서 버전 번호 변경](#2-주부-릴리스-깃에서-버전-번호-변경)
 3. [주/부 릴리스: 릴리스 브랜치 커밋 및 푸시](#3-주부-릴리스-릴리스-브랜치-커밋-및-푸시)
 4. [주/부 릴리스: 릴리스 후보 생성](#4-주부-릴리스-릴리스-후보-생성)
-5. [주/부 릴리스: 연속 릴리스 후보 반복](#5-주부-릴리스-연속-릴리스-후보-반복)
+5. [주/부 릴리스: 연속 릴리스 후보 개선](#5-주부-릴리스-연속-릴리스-후보-개선)
 6. [릴리스 확정](#6-릴리스-확정)
 7. [릴리스 노트 작성](#7-릴리스-노트-작성)
 8. [다운로드에 PGP 서명](#8-다운로드에-pgp-서명)
@@ -119,7 +119,7 @@ git checkout -b $RELEASE_BRANCH_NAME
 ```
 
 이 새 브랜치는 릴리스의 기반이 되며,
-나중에도 이런 식으로 할 것이다.
+이를 기반으로 하여 변경해 나갈 것이다.
 
 릴리스에 대한 
 [헬름/헬름 마일스톤] (https://github.com/helm/helm/milestones)이 GitHub에 있는지 확인한다(필요한 경우 생성). 
@@ -145,7 +145,7 @@ git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
 ```shell
 # 체리-픽 하려는 커밋 ID를 획득
 git log --oneline
-# 병합 커밋을 포함하지 않고 가장 오래된 커밋부터 시작하여 체리-픽
+# 병합 커밋을 포함하지 않고 가장 오래된 커밋부터 골라서 선택
 git cherry-pick -x <commit-id>
 ```
 
@@ -278,7 +278,7 @@ PS C:\> Invoke-WebRequest -Uri "https://get.helm.sh/helm-$RELEASE_CANDIDATE_NAME
 특정 장소로 이동하여 $PATH에 추가한다 
 (예 : linux/macOS의 경우 /usr/local/bin/helm,  Windows의 경우 C:\Program Files\helm\helm.exe).
 
-## 5. 주/부 릴리스: 연속 릴리스 후보 반복
+## 5. 주/부 릴리스: 연속 릴리스 후보 개선
 
 릴리스와 관련된 모든 결과를 문서화하여 가능한 
 모든 방법으로 헬름 테스트를 시도하고 중단하기 위해 
