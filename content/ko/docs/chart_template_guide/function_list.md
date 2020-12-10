@@ -327,7 +327,7 @@ trimAll "$" "$5.00"
 
 ### trimPrefix
 
-문자열에서 접두사만 잘라낸다.
+문자열에서 접두어만 제거한다.
 
 ```
 trimPrefix "-" "-hello"
