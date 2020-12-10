@@ -447,7 +447,7 @@ abbrev 5 "hello world"
 
 ### abbrevboth
 
-양 쪽을 축약한다.
+양쪽을 축약한다.
 
 ```
 abbrevboth 5 10 "1234 5678 9123"
