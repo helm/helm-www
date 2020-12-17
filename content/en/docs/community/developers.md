@@ -29,11 +29,21 @@ If required, this will first install dependencies, rebuild the `vendor/` tree,
 and validate configuration. It will then compile `helm` and place it in
 `bin/helm`.
 
-To run all the tests (without running the tests for `vendor/`), run `make test`.
 
 To run Helm locally, you can run `bin/helm`.
 
 - Helm is known to run on macOS and most Linux distributions, including Alpine.
+
+## Running tests
+
+To run all the tests (without running the tests for `vendor/`), run `make test`.
+As a pre-requisite, you would need to have 
+[golangci-lint](https://golangci-lint.run) 
+installed.
+
+To run only the unit tests, run `make test-unit`.
+
+
 
 ## Contribution Guidelines
 
