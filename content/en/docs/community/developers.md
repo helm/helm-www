@@ -41,9 +41,6 @@ As a pre-requisite, you would need to have
 [golangci-lint](https://golangci-lint.run) 
 installed.
 
-To run only the unit tests, run `make test-unit`.
-
-
 
 ## Contribution Guidelines
 
