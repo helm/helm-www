@@ -484,7 +484,7 @@ make sign
 당신은 그럴만한 일을 했다.
 
 좋은 $DRINK_OF_CHOICE 를 즐긴 후, Slack과 Twitter에
-[깃헙 릴리스] (https://github.com/helm/helm/releases) 링크를 통해 
+[GitHub 릴리스] (https://github.com/helm/helm/releases) 링크를 통해 
 새 릴리스를 발표하자.
 
 선택적으로, 새 릴리스에 대한 블로그 게시물을 작성하고 그 곳에 몇가지 새로운 기능을
