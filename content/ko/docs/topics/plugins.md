@@ -134,7 +134,7 @@ _`name` 은 디렉토리 이름과 일치해야 한다._
   원하는 것을 선택하여 작성하면 된다.
 - 각 명령어에는`-h` 및`--help` 에 대한 도움말 텍스트가 구현되어야 한다.
   Helm은 `helm help` 및 `helm help myplugin` 에 `usage` 및 `description`을 사용하지만
-  `helm myplugin --help`는 처리하지 않음.
+  `helm myplugin --help`는 처리하지 않는다.
 
 ## 다운로더 플러그인
 기본적으로 헬름은 HTTP/S 를 사용하여 차트를 가져올 수 있다.
