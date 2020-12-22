@@ -65,7 +65,7 @@ $HELM_PLUGINS/
 여기에는 `plugin.yaml`(필수) 파일과 실행 가능한 스크립트 `keybase.sh`(선택사항)이 있다.
 
 플러그인의 핵심은 `plugin.yaml` 이라는 간단한 YAML 파일이다.
-다음은 keybase 작업에 대한 지원을 추가하는 플러그인용 YAML 이다.
+다음은 keybase 작업에 대한 지원을 추가하는 플러그인용 YAML이다.
 
 ```yaml
 name: "last"
