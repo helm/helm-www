@@ -34,6 +34,8 @@ request](https://github.com/helm/helm-www/pulls).
   and store secrets safely (based on [sops](https://github.com/mozilla/sops))
 - [helm-git](https://github.com/aslafy-z/helm-git) - Install charts and retrieve
   values files from your Git repositories
+- [helm-tanka](https://github.com/Duologic/helm-tanka) - A Helm plugin for
+  rendering Tanka/Jsonnet inside Helm charts.
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
@@ -77,6 +79,8 @@ Tools layered on top of Helm.
   Hosts on OCI Registry
 - [avionix](https://github.com/zbrookle/avionix) - Python interface for generating Helm
   charts and Kubernetes yaml, allowing for inheritance and less duplication of code
+- [Tanka](https://tanka.dev/helm) - Grafana Tanka configures Kubernetes
+  resources through Jsonnet with the ability to consume Helm Charts
 
 ## Helm Included
 
