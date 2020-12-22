@@ -353,7 +353,7 @@ $HELM_PLUGIN_DIR/status.sh --complete "$@"
 1. 특별히 복잡한 플러그인이 있는 경우 동적 완성 지원을 단순화하기 위해 `plugin.complete` 스크립트가 기본 플러그인 스크립트를 호출하고 완성 선택을 요청하도록 할 수 있다. 
    예제는 위의 [동적 완성](#동적-완성) 섹션을 참조하자.
 1. 동적 완성 및 `plugin.complete` 파일을 디버깅하기 위해, 
-   다음을 실행하여 완료 결과를 확인할 수 있다.
+   다음을 실행하여 완성되는 결과를 확인할 수 있다.
     - `helm __complete <pluginName> <arguments to complete>`.  예를 들면,
     - `helm __complete fullstatus --output js<ENTER>`,
     - `helm __complete fullstatus -o json ""<ENTER>`
