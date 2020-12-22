@@ -480,8 +480,8 @@ make sign
 
 ## 11. 커뮤니티에 알리기
 
-축하한다! 모두 끝났다. $DRINK_OF_CHOICE 를 가져가자. 
-당신은 그것을 얻게 됐다.
+축하한다! 모두 완료했다. $DRINK_OF_CHOICE 를 한모금 하자.
+당신은 그럴만한 일을 했다.
 
 멋진 $DRINK_OF_CHOICE를 즐긴 후 Slack과 Twitter에서 
 [깃헙 릴리스] (https://github.com/helm/helm/releases) 링크를 통해 
