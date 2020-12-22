@@ -471,7 +471,7 @@ make sign
 닫는다.
 
 주/부 릴리스의 
-[버전 불균형] (https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)을 
+[버전 차이] (https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)을 
 업데이트한다.
 
 [여기](https://helm.sh/calendar/release)에서 릴리스 달력을 업데이트한다.
