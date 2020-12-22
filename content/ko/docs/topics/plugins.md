@@ -154,7 +154,7 @@ downloaders:
 이러한 플러그인이 설치된 경우 Helm은 `command` 를 호출하여, 지정된 프로토콜 체계를 사용하여 레포지터리와 상호 작용할 수 있다.
 `helm repo add favorite myprotocol://example.com/` 와 같은 특별한 레포지터리도 일반 레포지터리와 유사하게 추가된다.
 특별한 레포지터리에 대한 규칙은 일반 레포지터리와 동일하다. 사용가능한 차트 목록을 검색하고 캐시하려면
-헬름이 `index.yaml` 파일을 다운로드 할 수 있어야 한다.
+헬름이 `index.yaml` 파일을 다운로드할 수 있어야 한다.
 
 정의된 명령어는 `command certFile keyFile caFile full-URL` 체계로 호출된다.
 SSL 자격 증명은 `$HELM_REPOSITORY_CONFIG`(예를 들어, `$HELM_CONFIG_HOME/repositories.yaml`)에 저장된 레포지터리 정의에서 가져온다.
