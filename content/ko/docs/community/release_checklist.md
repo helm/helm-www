@@ -143,7 +143,7 @@ git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
 선택할 수 있다.
 
 ```shell
-# 체리-픽 하려는 커밋 ID를 획득
+# 체리-픽(cherry-pick)하려는 커밋 ID 목록 조회
 git log --oneline
 # 병합 커밋을 포함하지 않고 가장 오래된 커밋부터 골라서 선택
 git cherry-pick -x <commit-id>
