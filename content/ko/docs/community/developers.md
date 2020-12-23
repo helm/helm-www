@@ -113,7 +113,7 @@ Closes #1234
 - pkg/lint: 린트(lint) 패키지. 어떤 패키지든 유사한 관례에 따르자.
 - `*`: 두 개 이상의 스코프
 
-더 보기:
+더 읽어보기:
 - 이 섹션은 [Deis 
   가이드라인](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md)에서 영감을 받아 작성되었다.
 - Karma Runner는 유의적 커밋 메세지에 대한 아이디어를 
