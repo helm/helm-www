@@ -128,7 +128,7 @@ Closes #1234
 또한 일반적으로 `go lint` 및 `gometalinter` 에서 권장하는 규칙을 따른다.
 스타일 적합성을 테스트하려는 경우 `make test-style` 을 실행하자.
 
-더 보기:
+더 읽어보기:
 
 - Effective Go [포맷
   소개](https://golang.org/doc/effective_go.html#formatting).
