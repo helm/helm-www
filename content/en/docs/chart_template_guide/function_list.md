@@ -1867,7 +1867,7 @@ A more robust comparison function is provided as `semverCompare`. This version
 supports version ranges:
 
 - `semverCompare "1.2.3" "1.2.3"` checks for an exact match
-- `semverCompare "^1.2.0" "1.2.3"` checks that the major and minor versions
+- `semverCompare "~1.2.0" "1.2.3"` checks that the major and minor versions
   match, and that the patch number of the second version is _greater than or
   equal to_ the first parameter.
 
