@@ -45,6 +45,8 @@ tag on their plugin repositories.
 
 Tools layered on top of Helm.
 
+- [Konveyor Move2Kube](https://konveyor.io/move2kube/) - Generate Helm charts for your 
+  existing projects.
 - [Chartify](https://github.com/appscode/chartify) - Generate Helm charts from
   existing Kubernetes resources.
 - [VIM-Kubernetes](https://github.com/andrewstuart/vim-kubernetes) - VIM plugin
