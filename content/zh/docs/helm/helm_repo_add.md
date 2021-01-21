@@ -6,10 +6,6 @@ title: "Helm 添加仓库"
 
 添加chart仓库
 
-### 简介
-
-添加chart仓库
-
 ```shell
 helm repo add [NAME] [URL] [flags]
 ```
@@ -34,8 +30,9 @@ helm repo add [NAME] [URL] [flags]
 ```shell
       --debug                       enable verbose output
       --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         Username to impersonate for the operation
+      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string         username to impersonate for the operation
+      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
       --kube-context string         name of the kubeconfig context to use
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file

@@ -50,6 +50,7 @@ helm template [NAME] [CHART] [flags]
       --set-string stringArray       set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
   -s, --show-only stringArray        only show manifests rendered from the given templates
       --skip-crds                    if set, no CRDs will be installed. By default, CRDs are installed if not already present
+      --skip-tests                   skip tests from templated output
       --timeout duration             time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
       --username string              chart repository username where to locate the requested chart
       --validate                     validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install
@@ -57,6 +58,7 @@ helm template [NAME] [CHART] [flags]
       --verify                       verify the package before using it
       --version string               specify the exact chart version to use. If this is not specified, the latest version is used
       --wait                         if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
+      --wait-for-jobs                if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
 ```
 
 ### 从父命令继承的命令
@@ -64,8 +66,9 @@ helm template [NAME] [CHART] [flags]
 ```shell
       --debug                       enable verbose output
       --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         Username to impersonate for the operation
+      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string         username to impersonate for the operation
+      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
       --kube-context string         name of the kubeconfig context to use
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file

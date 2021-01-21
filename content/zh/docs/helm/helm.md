@@ -35,8 +35,9 @@ Helm的一般操作：
 | $HELM_REPOSITORY_CONFIG            | 设置仓库文件的路径                                                                 |
 | $KUBECONFIG                        | 设置Kubernetes的可选配置文件(默认是"~/.kube/config")                               |
 | $HELM_KUBEAPISERVER                | 设置用于身份认证的Kubernetes API服务端                                             |
-| $HELM_KUBEASGROUPS                 | 设置模拟操作的用户名                                                               |
-| $HELM_KUBEASUSER                   | 设置使用逗号分隔的列表，用于模拟使用组                                               |
+| $HELM_KUBECAFILE                   | 设置Kubernetes证书机构文件                                                         |
+| $HELM_KUBEASGROUPS                 | 使用逗号分隔的列表设置用于模拟的组                                                   |
+| $HELM_KUBEASUSER                   | 为操作设置要模拟的用户名                                                            |
 | $HELM_KUBECONTEXT                  | 设置kubeconfig上下文的名称                                                         |
 | $HELM_KUBETOKEN                    | 设置用于身份验证的不记名KubeToken                                                   |
 
@@ -60,8 +61,9 @@ Helm 基于以下配置顺序存储缓存，配置和添加数据：
       --debug                       enable verbose output
   -h, --help                        help for helm
       --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         Username to impersonate for the operation
+      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string         username to impersonate for the operation
+      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
       --kube-context string         name of the kubeconfig context to use
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
