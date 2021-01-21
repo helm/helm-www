@@ -24,7 +24,7 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 * [URL](#url-functions)
 * [UUID](#uuid-functions)
 
-## 逻辑和流控制函数
+## Logic and Flow Control Functions
 
 Helm 包括了需要逻辑和流控制函数，包括[and](#and),[coalesce](#coalesce), [default](#default),
 [empty](#empty), [eq](#eq),[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt),
@@ -193,7 +193,7 @@ false | ternary "foo" "bar"
 
 上述返回 `"bar"`.
 
-## 字符串函数
+## String Functions
 
 Helm 包含了一下字符串函数： [abbrev](#abbrev),
 [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
@@ -944,7 +944,7 @@ encryptAES "secretkey" "plaintext"
 "30tEfhuJSVRhpG97XCuWgz2okj7L8vQ1s6V9zVUPeDQ=" | decryptAES "secretkey"
 ```
 
-## 日期 Functions
+## Date Functions
 
 Helm 包含以下可以在模板中使用的函数：[ago](#ago), [date](#date), [dateInZone](#dateinzone),
 [dateModify(mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
@@ -1270,14 +1270,14 @@ dict "a" 1 "b" 2 | deepCopy
 `dict` 在Go里是作为`map[string]interface{}`执行的。Go开发者可以传`map[string]interface{}`值给上下文，
 将其作为 `dict` 提供给模板。
 
-## 编码函数
+## Encoding functions
 
 Helm有以下编码和解码函数：
 
 * `b64enc`/`b64dec`: 编码或解码 Base64
 * `b32enc`/`b32dec`: 编码或解码 Base32
 
-## 列表和列表函数
+## Lists and List Functions
 
 Helm 提供了一个简单的`list`类型，包含任意顺序的列表。类似于数组或切片，但列表是被设计用于不可变数据类型。
 
@@ -1480,7 +1480,7 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
-## Math 函数
+## Math Functions
 
 除非另外指定，否则所有的math函数都是操作 `int64` 的值。
 
@@ -1562,7 +1562,7 @@ max 1 2 3
 len .Arg
 ```
 
-## 网络函数
+## Network Functions
 
 Helm提供了一个网络函数： `getHostByName`.
 
@@ -1572,7 +1572,7 @@ Helm提供了一个网络函数： `getHostByName`.
 getHostByName "www.google.com" would return the corresponding ip address of www.google.com
 ```
 
-## 文件路径函数
+## File Path Functions
 
 Helm模板函数没有访问文件系统的权限，提供了遵循文件路径规范的函数。包括[base](#base), [clean](#clean),
 [dir](#dir), [ext](#ext), 和 [isAbs](#isabs) 。
@@ -1615,7 +1615,7 @@ ext "foo.bar"
 
 检查文件路径是否为绝对路径，使用 `isAbs`。
 
-## 反射函数
+## Reflection Functions
 
 Helm 提供了基本的反射工具。这有助于高级模板开发者理解特定值的基本Go类型信息。Helm是由Go编写的且是强类型的。
 类型系统应用于模板中。
@@ -1627,7 +1627,7 @@ Go 有一个开放的 _类型_ 系统，允许开发者创建自己的类型。
 Helm 通过[kind functions](#kind-functions) 和 [type
 functions](#type-functions) 提供了一组函数。[deepEqual](#deepequal) 也可以用来比较值。
 
-### 类型 Functions
+### Kind Functions
 
 有两个类型函数： `kindOf` 返回对象类型。
 
@@ -1643,7 +1643,7 @@ kindIs "int" 123
 
 上述返回 `true`
 
-### Type 函数
+### Type Functions
 
 类型处理起来稍微有点复杂，所以有三个不同的函数：
 
@@ -1665,7 +1665,7 @@ deepEqual (list 1 2 3) (list 1 2 3)
 
 上述会返回 `true`。
 
-## 语义版本函数
+## Semantic Version Functions
 
 有些版本结构易于分析和比较。Helm提供了适用于[SemVer 2](http://semver.org) 版本的函数。包括[semver](#semver)和
 [semverCompare](#semvercompare)。下面你也能看到使用范围和比较的细节。
@@ -1789,7 +1789,7 @@ with `.` separators)，另外排序按照ASCII排序顺序。在ASCII排序中�
 * `^0.0` 相当于 `>=0.0.0 <0.1.0`
 * `^0` 相当于 `>=0.0.0 <1.0.0`
 
-## URL 函数
+## URL Functions
 
 Helm 包含 [urlParse](#urlparse), [urlJoin](#urljoin), 和[urlquery](#urlquery) 函数可以用做处理URL。
 
@@ -1837,7 +1837,7 @@ proto://host:80/path?query#fragment
 $var := urlquery "string for query"
 ```
 
-## UUID 函数
+## UUID Functions
 
 Helm 可以生成UUID v4 通用唯一ID。
 
@@ -1847,7 +1847,7 @@ uuidv4
 
 上述结果为： 一个新的v4类型的UUID（随机生成）。
 
-## Kubernetes 和 Chart 函数
+## Kubernetes and Chart Functions
 
 Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has](#capabilitiesapiversionshas),
 [Files](#file-functions), 和 [lookup](#lookup)。
@@ -1869,7 +1869,7 @@ Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has]
 
 更多信息可查看 [内置对象文档](https://helm.sh/zh/docs/chart_template_guide/builtin_objects.md)。
 
-### 文件函数
+### File Functions
 
 有几个函数能使您能够访问图表中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files.md)。
 
