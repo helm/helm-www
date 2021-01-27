@@ -1014,7 +1014,7 @@ encryptAES "secretkey" "plaintext"
 
 ### decryptAES
 
-`decryptAES` 함수는 AES-256 CBC 알고리즘으로 인코딩 된 base64 문자열을 수신하고 디코딩 된 
+`decryptAES` 함수는 AES-256 CBC 알고리즘으로 인코딩된 base64 문자열을 수신하고 디코딩된 
 텍스트를 반환한다.
 
 ```
