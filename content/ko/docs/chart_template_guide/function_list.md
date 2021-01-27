@@ -927,7 +927,7 @@ derivePassword 1 "long" "password" "user" "example.com"
 다음 속성을 가진 인증서 객체를 반환한다.
 
 - `Cert`: PEM 인코딩 인증서
-- `Key`: PEM으로 인코딩 된 개인 키
+- `Key`: PEM 인코딩된 개인 키
 
 예:
 
