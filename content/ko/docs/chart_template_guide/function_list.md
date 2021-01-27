@@ -2027,7 +2027,7 @@ $var := urlquery "string for query"
 
 ## UUID 함수
 
-헬름은 UUID v4 범용 고유 ID를 생성 할 수 있다.
+헬름은 UUID v4 범용 고유 ID를 생성할 수 있다.
 
 ```
 uuidv4
