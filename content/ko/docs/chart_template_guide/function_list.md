@@ -1108,7 +1108,7 @@ durationRound "2400h10m5s"
 
 ### unixEpoch
 
-`time.Time` 에 대한 유닉스 시간(Epoch Time)를 반환한다.
+`time.Time` 에 대한 유닉스 시간(unix epoch)를 반환한다.
 
 ```
 now | unixEpoch
