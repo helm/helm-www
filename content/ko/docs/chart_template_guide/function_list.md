@@ -894,8 +894,8 @@ htpasswd "myUser" "myPassword"
 
 ### derivePassword
 
-`derivePassword` 함수는 일부 공유되는 "마스터 비밀번호" 
-제약 조건을 기반으로 특정 비밀번호를 파생하는 데 사용할 수 있다. 
+`derivePassword` 함수는 일부 공유되는 "마스터 패스워드" 
+제약 조건을 기반으로 특정 패스워드를 도출하는 데 사용할 수 있다. 
 이에 대한 알고리즘이 [잘 명세되어] (https://masterpassword.app/masterpassword-algorithm.pdf) 있다.
 
 ```
