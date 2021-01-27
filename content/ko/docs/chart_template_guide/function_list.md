@@ -713,7 +713,7 @@ list 1 2 3 | toStrings
 
 `toJson` 함수는 항목을 JSON 문자열로 인코딩한다. 
 항목을 JSON으로 변환 할 수 없는 경우 함수는 빈 문자열을 반환한다. 
-`mustToJson` 은 항목을 JSON으로 인코딩 할 수 없는 경우 오류를 반환한다.
+`mustToJson` 은 항목을 JSON으로 인코딩할 수 없는 경우 오류를 반환한다.
 
 ```
 toJson .Item
