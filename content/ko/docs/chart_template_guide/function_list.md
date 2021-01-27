@@ -1309,7 +1309,7 @@ $newdict := mergeOverwrite $dest $source1 $source2
 
 이것은 전체 병합 작업이지만 전체 복사 작업은 아니다. 
 병합되어 중첩된(nested) 객체는 두 딕셔너리에서 동일한 인스턴스이다. 
-병합과 함께 깊이복사(deep copy)를 원하면 병합할 때 `deepCopy` 기능을 사용하자. 
+병합과 함께 깊은 복사(deep copy)를 원하면 병합할 때 `deepCopy` 기능을 사용하자. 
 예를 들면,
 
 ```
@@ -1320,8 +1320,8 @@ deepCopy $source | mergeOverwrite $dest
 
 ### keys
 
-`keys` 함수는 하나 이상의 `dict` 유형에 있는 모든 키의 `list` 를 반환합니다. 
-사전은 _정렬되어 있지 않으므로_ 키는 예측 가능한 순서는 아니다. 
+`keys` 함수는 하나 이상의 `dict` 유형에 있는 모든 키의 `list` 를 반환한다. 
+딕셔너리는 _정렬되어 있지 않으므로_ 키는 예측 가능한 순서가 아니다. 
 `sortAlpha` 로 정렬할 수 있다.
 
 ```
@@ -1329,7 +1329,7 @@ keys $myDict | sortAlpha
 ```
 
 여러 딕셔너리를 제공할 때 키들은 결합된다(concatenated). `sortAlpha` 와 
-함께 `uniq` 함수를 사용하여 정렬 된 키 목록을 얻을 수 있다.
+함께 `uniq` 함수를 사용하여 정렬된 키 목록을 얻을 수 있다.
 
 ```
 keys $myDict $myOtherDict | uniq | sortAlpha
@@ -1348,7 +1348,7 @@ $new := pick $myDict "name1" "name2"
 
 ### omit
 
-`omit` 함수는 주어진 키와 일치하지 _않는_ 모든 키가 포함 된 
+`omit` 함수는 주어진 키와 일치하지 _않는_ 모든 키가 포함된 
 새로운 `dict` 를 반환한다는 점을 제외하면 `pick` 과 유사하다.
 
 ```
