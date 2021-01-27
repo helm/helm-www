@@ -2067,6 +2067,6 @@ uuidv4
 예를 들어 애플리케이션 구성 파일에 액세스 한다. 
 이는 [템플릿 내 파일 액세스](accessing_files.md)에 설명되어 있다.
 
-_ 참고로, 이러한 많은 기능에 대한 문서는 
-[Sprig](https://github.com/Masterminds/sprig)에서 가져왔다.
+_ 참고로, 이렇게 많은 함수들에 대한 문서화는 
+[Sprig](https://github.com/Masterminds/sprig)로 이루어졌다.
 Sprig은 Go 애플리케이션에서 사용할 수 있는 템플릿 함수 라이브러리이다._
