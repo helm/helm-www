@@ -1350,8 +1350,6 @@ $new := pick $myDict "name1" "name2"
 
 `omit` 함수는 주어진 키와 일치하지 _않는_ 모든 키가 포함 된 
 새로운 `dict` 를 반환한다는 점을 제외하면 `pick` 과 유사하다.
-The `omit` function is similar to `pick`, except it returns a new `dict` with
-all the keys that _do not_ match the given keys.
 
 ```
 $new := omit $myDict "name1" "name3"
