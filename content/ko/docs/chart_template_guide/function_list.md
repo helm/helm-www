@@ -845,7 +845,7 @@ regexSplit "z+" "pizza" -1
 
 ## 암호화 및 보안 함수
 
-헬름은 몇가지 고급 암호화 함수를 제공한다.
+헬름은 몇 가지 고급 암호화 함수를 제공한다.
 [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
