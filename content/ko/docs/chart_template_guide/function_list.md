@@ -1005,7 +1005,7 @@ $cert := genSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "b
 
 ### encryptAES
 
-`encryptAES` 함수는 AES-256 CBC로 텍스트를 암호화하고 base64로 인코딩 된 문자열을 
+`encryptAES` 함수는 AES-256 CBC로 텍스트를 암호화하고 base64 인코딩된 문자열을 
 반환한다.
 
 ```
