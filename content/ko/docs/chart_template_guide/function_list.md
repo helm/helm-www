@@ -724,7 +724,7 @@ toJson .Item
 ### toPrettyJson, mustToPrettyJson
 
 `toPrettyJson` 함수는 항목을 잘 정제된(들여쓰기) JSON 문자열로 
-인코딩 한다.
+인코딩한다.
 
 ```
 toPrettyJson .Item
