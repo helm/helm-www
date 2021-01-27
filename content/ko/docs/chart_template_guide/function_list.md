@@ -906,7 +906,7 @@ derivePassword 1 "long" "password" "user" "example.com"
 
 ### genPrivateKey
 
-`genPrivateKey` 함수는 PEM 블록으로 일코딩 된 새 개인 키를 
+`genPrivateKey` 함수는 PEM 블록으로 인코딩된 새 개인키를 
 생성한다.
 
 첫 번째 매개변수의 값 중 하나를 사용한다.
