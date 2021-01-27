@@ -1368,12 +1368,12 @@ $vals := values $myDict
 
 위 결과는 `list [ "value1", "value2", "value 3"]` 를 반환합니다. 
 `values` 함수는 결과에 대한 순서를 보장해주지는 않는다.
-이 부분에 관심이 있는 경우, `sortAlpha` 를 사용하자.
+필요시에는 `sortAlpha` 를 사용하자.
 
 ### deepCopy, mustDeepCopy
 
 `deepCopy` 및 `mustDeepCopy` 함수는 값을 가져와 
-값의 전체 사본을 만든다. 여기에는 dicts 및 기타 구조가 포함됩니다. 
+값의 깊은 복사본(deep copy)을 만든다. 여기에는 딕셔너리 등 다른 구조가 포함된다. 
 문제가 있으면 `deepCopy` 의 경우 패닉이 발생하며,
 `mustDeepCopy` 는 오류가 있을 때 템플릿 시스템에 오류를 반환한다.
 
@@ -1383,9 +1383,9 @@ dict "a" 1 "b" 2 | deepCopy
 
 ### Dict 내부에 대한 참고 사항
 
-`dict` 는 Go에서 `map [string] interface {}` 으로 구현된다. 
-Go 개발자는 `map [string] interface {}` 값을 컨텍스트에 전달하여 
-템플릿에서 `dict` 로 사용할 수 있게 한다.
+`dict` 는 Go에서 `map[string] interface{}` 으로 구현된다. 
+Go 개발자는 `map[string] interface{}` 값을 컨텍스트에 전달하여 
+템플릿에서 `dict` 로 사용하도록 할 수 있다.
 
 ## 인코딩 함수
 
@@ -1396,7 +1396,7 @@ Go 개발자는 `map [string] interface {}` 값을 컨텍스트에 전달하여
 
 ## 목록 및 목록 함수
 
-헬름은 임의의 순차적 데이터 목록을 포함 할 수 있는 간단한 `목록` 유형을 
+헬름은 임의의 순차적 데이터 목록을 포함할 수 있는 간단한 `리스트` 형을 
 제공한다. 이것은 배열 또는 슬라이스와 유사하지만 목록은 변경 불가능한 
 데이터 유형으로 사용되도록 설계되었다.
 
@@ -1421,7 +1421,7 @@ $myList := list 1 2 3 4 5
 
 ### first, mustFirst
 
-목록에서 헤드 항목을 가져 오려면 `first` 를 사용하자.
+목록에서 머리부분 항목을 얻어 오려면 `first` 를 사용하자.
 
 `first $myList` 는 `1` 를 반환한다.
 
@@ -1430,7 +1430,7 @@ $myList := list 1 2 3 4 5
 
 ### rest, mustRest
 
-목록의 끝 (첫 번째 항목을 제외한 모든 항목)을 얻으려면 `rest` 를 사용하자.
+목록의 꼬리부분(첫 번째 항목을 제외한 모든 항목)을 얻으려면 `rest` 를 사용하자.
 
 `rest $myList` 는 `[2 3 4 5]` 반환한다.
 
