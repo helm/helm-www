@@ -1165,8 +1165,8 @@ toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
 사전 형의 키는 **문자열이어야 한다.** 그러나 값은 모든 유형, 심지어
 다른 `dict` 또는 `list` 일수도 있다.
 
-`list` 와 달리, `dict` 는 변경 불가능하다. `set` 및 `unset` 함수는 사전 형의
-내용을 수정한다.
+`list` 와 달리, `dict` 는 변경 불가능(immutable)하다. `set`과 `unset` 함수는 딕셔너리의
+내용을 변경한다.
 
 헬름은 사전형에 대한 작업을 지원하기 위해 다음의 함수를 제공한다: [deepCopy
 (mustDeepCopy)](#deepcopy-mustdeepcopy), [dict](#dict), [get](#get),
