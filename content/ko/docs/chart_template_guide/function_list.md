@@ -1129,7 +1129,7 @@ now | date_modify "-1.5h"
 
 ### htmlDate
 
-`htmlDate` 함수는 HTML 날짜 선택기 입력 필드에 삽입 할 날짜 형식을 
+`htmlDate` 함수는 HTML 날짜 선택기 입력 필드에 삽입할 날짜 형식을 
 지정한다.
 
 ```
