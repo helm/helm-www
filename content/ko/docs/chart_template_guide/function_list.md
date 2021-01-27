@@ -2039,7 +2039,7 @@ uuidv4
 
 헬름에는 
 [.Capabilities.APIVersions.Has](#capabilitiesapiversionshas), [Files](#파일-함수), [lookup](#lookup) 등 
-쿠버네티스 작업을위한 함수가 포함되어 있습니다.
+쿠버네티스 작업을 위한 함수가 포함되어 있다.
 
 ### lookup
 
