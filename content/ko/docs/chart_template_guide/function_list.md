@@ -1359,15 +1359,15 @@ $new := omit $myDict "name1" "name3"
 
 ### values
 
-`values` 함수는 소스 `dict` 의 모든 값이 포함 된 새로운 
-`list` 를 반환한다는 점을 제외하면 `keys` 와 유사하다(오직 사전 하나만을 지원).
+`values` 함수는 원본 `dict` 의 모든 값이 포함된 새로운 
+`list` 를 반환한다는 점을 제외하면 `keys` 와 유사하다(오직 하나의 딕셔너리만 지원).
 
 ```
 $vals := values $myDict
 ```
 
-위 결과는 `list [ "value1", "value2", "value 3"]` 를 반환합니다. 
-`values` 함수는 결과에 대한 순서를 보장해주지는 않는다.
+위 결과는 `list [ "value1", "value2", "value 3"]` 를 반환한다. 
+`values` 함수는 결과에 대한 순서를 보장하지 않는다.
 필요시에는 `sortAlpha` 를 사용하자.
 
 ### deepCopy, mustDeepCopy
@@ -1480,7 +1480,7 @@ prepend $myList 0
 
 ### concat
 
-임의의 수의 목록을 하나로 연결한다.
+임의의 수의 목록을 하나로 결합한다.
 
 ```
 concat $myList ( list 6 7 ) ( list 8 )
