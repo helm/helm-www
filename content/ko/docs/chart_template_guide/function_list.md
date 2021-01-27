@@ -1322,13 +1322,13 @@ deepCopy $source | mergeOverwrite $dest
 
 `keys` 함수는 하나 이상의 `dict` 유형에 있는 모든 키의 `list` 를 반환합니다. 
 사전은 _정렬되어 있지 않으므로_ 키는 예측 가능한 순서는 아니다. 
-`sortAlpha` 로 정렬할 수도 있다.
+`sortAlpha` 로 정렬할 수 있다.
 
 ```
 keys $myDict | sortAlpha
 ```
 
-여러 사전을 제공할 때 키들이 서로 연결된다. `sortAlpha` 와 
+여러 딕셔너리를 제공할 때 키들은 결합된다(concatenated). `sortAlpha` 와 
 함께 `uniq` 함수를 사용하여 정렬 된 키 목록을 얻을 수 있다.
 
 ```
