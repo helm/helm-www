@@ -1061,7 +1061,7 @@ now | date "2006-01-02"
 Go 에서의 날짜 형식은 
 [조금 상이하다](https://pauladamsmith.com/blog/2011/05/go_time.html).
 
-요컨데, 이것을 기준으로 날짜를 잡도록 한다.
+간단히 말해서, 이것을 기준 날짜로 한다.
 
 ```
 Mon Jan 2 15:04:05 MST 2006
