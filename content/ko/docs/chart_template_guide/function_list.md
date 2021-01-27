@@ -1486,7 +1486,7 @@ prepend $myList 0
 concat $myList ( list 6 7 ) ( list 8 )
 ```
 
-위의 경우 `[1 2 3 4 5 6 7 8]` 이 생성된다. `$myList` 는 변경되지 않습니다.
+위의 경우 `[1 2 3 4 5 6 7 8]` 이 생성된다. `$myList` 는 변경되지 않는다.
 
 ### reverse, mustReverse
 
@@ -1796,16 +1796,16 @@ kindIs "int" 123
 
 - `typeOf` 는 값의 기본 타입을 반환한다. 예) `typeOf $foo`
 - `typeIs` 는 `kindIs` 와 비슷하지만, 타입에 대한 것이다. 예) `typeIs "*io.Buffer" $myVal`
-- `typeIsLike` 는 포인터를 역 참조한다는 점을 제외하면 `typeIs` 와 동일하게 동작한다.
+- `typeIsLike` 는 포인터를 역참조한다는 점을 제외하면 `typeIs` 처럼 동작한다.
 
-**참고:** 이 중 어느것도 주어진 인터페이스를 구현하는지 
-여부를 테스트 할수는 없다. 그렇게 하려면 인터페이스를 미리 컴파일 
-해야 하기 때문이다.
+**참고:** 이 중 어느 것도 주어진 인터페이스를 구현하는지 
+여부를 테스트할 수는 없다. 그렇게 하려면 인터페이스를 미리 컴파일해야
+하기 때문이다.
 
 ### deepEqual
 
 `deepEqual` 은 두 값이 
-["매우 같음"](https://golang.org/pkg/reflect/#DeepEqual)이면 true를 반환합니다.
+["깊은 같음"](https://golang.org/pkg/reflect/#DeepEqual)이면 true를 반환한다.
 
 기본-유형이 아닌 유형에서도 동작한다.(내장된 `eq`와 비교하여)
 
