@@ -922,7 +922,7 @@ derivePassword 1 "long" "password" "user" "example.com"
 다음의 문자열 매개변수를 사용한다.
 
 - base64 인코딩된 PEM 형식의 인증서
-- base64로 인코딩 된 PEM 형식의 개인키
+- base64 인코딩된 PEM 형식의 개인키
 
 다음 속성을 가진 인증서 객체를 반환한다.
 
