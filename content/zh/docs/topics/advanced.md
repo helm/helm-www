@@ -134,7 +134,7 @@ export HELM_DRIVER=configmap
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**产品说明**: 版本信息可能包含敏感数据（比如密码，私钥，和其他认证）需要防止未经授权访问。 管理Kubernetes授权时使用 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)， 当限制访问私密资源是，它可能会授予ConfigMap 资源广泛的访问权限。对于实例，默认的 [面向用户角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) “视图” 授予大多数资源的访问权限，但是不允许访问私密数据。此外，私密数据会针对于 [加密存储](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 进行配置。切换到ConfigMap后端时要记得这一点，因为它可能会暴露你应用程序的敏感数据。
+**产品说明**: 发布信息包含chart和values文件的内容，因此可能包含敏感数据（比如密码，私钥，和其他认证）需要防止未经授权访问。 管理Kubernetes授权时使用 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)， 当限制访问私密资源是，它可能会授予ConfigMap 资源广泛的访问权限。对于实例，默认的 [面向用户角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) “视图” 授予大多数资源的访问权限，但是不允许访问私密数据。此外，私密数据会针对于 [加密存储](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 进行配置。切换到ConfigMap后端时要记得这一点，因为它可能会暴露你应用程序的敏感数据。
 
 ### SQL 后台存储
 

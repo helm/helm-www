@@ -4,25 +4,28 @@ title: "Helm 搜索hub"
 
 ## helm search hub
 
-在Helm Hub或Monocular实例中搜索chart
+在Artifact Hub或自己的hub实例中搜索chart
 
 ### 简介
 
-在Helm Hub或Monocular实例中搜索Helm charts。
+在Artifact Hub或自己的hub实例中搜索Helm charts。
 
-Helm Hub为公共可用的可分发的chart提供一种中心化搜索。由Helm项目组维护，可以访问：https://hub.helm.sh
+Artifact Hub  是基于web页面的应用，支持CNCF项目的查找、安装和发布包及配置项，包括了公开发布的Helm chart。它是CNCF的沙盒项目。可以访问https://artifacthub.io/
 
-Monocular是基于web的应用，支持从多个Helm Chart仓库中搜索和发现chart。是驱动Helm
-Hub的代码库。可以访问：https://github.com/helm/monocular
+[KEYWORD] 参数接受关键字字符串或者带引号的查询字符串。查询字符串的文档，请查看 https://artifacthub.github.io/hub/api/?urls.primaryName=Monocular%20compatible%20search%20API#/Monocular/get_api_chartsvc_v1_charts_search
+
+之前的Helm版本使用Monocular实例作为默认的endpoint，因此为了向后兼容，Artifact
+Hub兼容Monocular的搜索API。类似地，要设置endpoint参数时，指定的endpoint也必须兼容Monocular的搜索API。
+注意，指定Monocular实例作为endpoint时，不支持字符串查询。更多API细节，请参考 https://github.com/helm/monocular
 
 ```shell
-helm search hub [keyword] [flags]
+helm search hub [KEYWORD] [flags]
 ```
 
 ### 可选项
 
 ```shell
-      --endpoint string      monocular instance to query for charts (default "https://hub.helm.sh")
+      --endpoint string      Hub instance to query for charts (default "https://hub.helm.sh")
   -h, --help                 help for hub
       --max-col-width uint   maximum column width for output table (default 50)
   -o, --output format        prints the output in the specified format. Allowed values: table, json, yaml (default table)
@@ -33,8 +36,9 @@ helm search hub [keyword] [flags]
 ```shell
       --debug                       enable verbose output
       --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         Username to impersonate for the operation
+      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string         username to impersonate for the operation
+      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
       --kube-context string         name of the kubeconfig context to use
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
