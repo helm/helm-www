@@ -882,7 +882,7 @@ adler32sum "Hello world!"
 ### htpasswd
 
 `htpasswd` 함수는 `username` 과 `password` 를 
-가져 와서 비밀번호의 `bcrypt` 해시를 생성한다. 
+가져 와서 패스워드의 `bcrypt` 해시를 생성한다. 
 결과는 [아파치 HTTP 서버] (https://httpd.apache.org/docs/2.4/misc/password_encryptions.html#basic)에서 
 기본 인증에 사용될 수 있다.
 
