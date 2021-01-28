@@ -128,8 +128,8 @@ type: library
 version: 0.1.0
 
 # This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application.
-appVersion: 1.16.0
+# incremented each time you make changes to the application and it is recommended to use it with quotes.
+appVersion: "1.16.0"
 ```
 
 The library chart is now ready to be shared and its ConfigMap definition to be
