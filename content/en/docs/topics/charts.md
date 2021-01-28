@@ -136,7 +136,9 @@ Note that the `appVersion` field is not related to the `version` field. It is a
 way of specifying the version of the application. For example, the `drupal`
 chart may have an `appVersion: "8.2.1"`, indicating that the version of Drupal
 included in the chart (by default) is `8.2.1`. This field is informational, and
-has no impact on chart version calculations. Wrapping the version in quotes is recommended; not wrapping it in quotes can lead to issues in some cases. As of Helm v3.5.0, `helm create` generates the sample chart with `appVersion: "1.16.0"`.
+has no impact on chart version calculations. Wrapping the version in quotes is highly recommended. It forces the YAML parser to treat the version number as a string. Leaving it unquoted can lead to parsing issues in some cases. For example, YAML interprets `1.0` as a floating point value, and a git commit SHA like `1234e10` as scientific notation.
+
+As of Helm v3.5.0, `helm create` wraps the default `appVersion` field in quotes.
 
 ### The `kubeVersion` Field
 
