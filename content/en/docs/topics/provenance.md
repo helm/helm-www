@@ -213,7 +213,7 @@ The format of the file looks something like this:
 Hash: SHA512
 
 apiVersion: v2
-appVersion: 1.16.0
+appVersion: "1.16.0"
 description: Sample chart
 name: mychart
 type: application
