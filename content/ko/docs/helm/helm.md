@@ -1,8 +1,8 @@
 ---
-title: "헬름"
+title: "helm"
 ---
 
-## 헬름
+## helm
 
 쿠버네티스를 위한 헬름 패키지 매니저
 
@@ -19,15 +19,27 @@ title: "헬름"
 
 환경 변수:
 
-| 이름                               | 설명                                                                       |
+| Name                               | Description                                                                       |
 |------------------------------------|-----------------------------------------------------------------------------------|
-| $HELM_CACHE_HOME                    | 캐시된 파일을 저장할 대체 위치를 지정.                                                          |
-| $HELM_CONFIG_HOME                   | 헬름 설정을 저장할 대체 위치 지정.                                                          |
-| $HELM_DATA_HOME                     | 헬름 데이터를 저장할 대체 위치를 지정.                                                        |
-| $HELM_DRIVER                       | 백엔드 스토리지 드라이버 설정. 값 : configmap, secret, memory, postgres                       |
-| $HELM_DRIVER_SQL_CONNECTION_STRING | SQL 스토리지 드라이버가 사용해야 하는 연결 문자열 지정.                                              |
-| $HELM_NO_PLUGINS                   | 플러그인 비활성화. 비활성화 하기 위해 HELM_NO_PLUGINS=1 로 지정.                                  |
-| $KUBECONFIG                        | 대체 쿠버네티스 설정 파일 지정 (기본값 "~/.kube/config")                                              |
+| $HELM_CACHE_HOME                   | 캐시된 파일을 저장할 대체 위치를 지정                                                          |
+| $HELM_CONFIG_HOME                  | 헬름 설정을 저장할 대체 위치를 지정                                                           |
+| $HELM_DATA_HOME                    | 헬름 데이터를 저장할 대체 위치를 지정                                                          |
+| $HELM_DEBUG                        | 헬름이 디버그 모드에서 실행 중인지 여부 표시                                                    |
+| $HELM_DRIVER                       | 백엔드 스토리지 드라이버 설정. 값 : configmap, secret, memory, postgres                      |
+| $HELM_DRIVER_SQL_CONNECTION_STRING | SQL 스토리지 드라이버가 사용해야 하는 연결 문자열 지정                                             |
+| $HELM_MAX_HISTORY                  | 헬름 릴리스 내역의 최대 수 설정                                                             |
+| $HELM_NAMESPACE                    | 헬름 작업에 사용되는 네임스페이스 지정                                                         |
+| $HELM_NO_PLUGINS                   | 플러그인 비활성화. 비활성화 하기 위해 HELM_NO_PLUGINS=1 로 지정.                                 |
+| $HELM_PLUGINS                      | 플러그인 디렉토리에 대한 경로 설정                                                            |
+| $HELM_REGISTRY_CONFIG              | 레지스트리 구성 파일의 경로를 설정                                                            |
+| $HELM_REPOSITORY_CACHE             | 저장소 캐시 디렉토리에 대한 경로 설정                                                          |
+| $HELM_REPOSITORY_CONFIG            | 레포지토리 파일의 경로 설정                                                                 |
+| $KUBECONFIG                        | 대체 쿠버네티스 설정 파일 지정 (기본값 "~/.kube/config")                                       |
+| $HELM_KUBEAPISERVER                | 인증을 위한 쿠버네티스 API 서버의 엔트포인트 설정                                                 |
+| $HELM_KUBEASGROUPS                 | 작업을 가장(impersonation)할 사용자 이름 설정                                               |
+| $HELM_KUBEASUSER                   | 쉼표로 구분된 목록을 사용하여, 작업을 가장할 그룹 지정                                              |
+| $HELM_KUBECONTEXT                  | kubeconfig 컨텍스트의 이름 설정                                                          |
+| $HELM_KUBETOKEN                    | 인증에 사용되는 베어러(Bearer) KubeToken 설정                                              |
 
 헬름은 다음 설정 순서를 기반으로 캐시, 설정 정보, 데이터를 저장한다:
 
@@ -47,28 +59,18 @@ title: "헬름"
 ### 옵션 
 
 ```
-      --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉토리를 추가
-      --alsologtostderr                  표준 오류를 로그 및 파일로 표시
-      --debug                            상세 내용 표시 활성화
-  -h, --help                             헬름에 대한 도움말
-      --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
-      --kube-context string              사용할 kubeconfig 컨텍스트 이름
-      --kube-token string                인증에 사용될 문자열 전달 토큰
-      --kubeconfig string                kubeconfig 파일 경로
-      --log-backtrace-at traceLocation   로깅 시 N 행에 걸친 스택 추적 내용을 표시 (기본값 :0)
-      --log-dir string                   이 값이 비어있지 않을 경우, 이 값에 지정된 디렉토리에 로그 파일 쓰기 수행
-      --log-file string                  이 값이 비어있지 않을 경우, 이 값에 지정된 파일명으로 로그 파일 쓰기 수행
-      --log-file-max-size uint           로그파일이 증가할 수 있는 최대 크기 지정. 단위는 메가 바이트이며 값이 0일 경우 최대 파일크기 제한 없음(기본 값 1800)
-      --logtostderr                      로그를 파일이 아닌 표준 출력으로 표시 (기본값 : true)
-  -n, --namespace string                 요청에 대한 네임스페이스 지정
-      --registry-config string           레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
-      --repository-cache string          캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/snap/code/common/.cache/helm/repository")
-      --repository-config string         저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
-      --skip-headers                     이 값이 참이면, 로그파일에서 헤더 접두사를 미사용
-      --skip-log-headers                 이 값이 참이면, 로그 파일을 열 때 헤더 제외
-      --stderrthreshold severity         stderr로 로그가 변경될 수 있는 최저 임계점 (기본값 2)
-  -v, --v Level                          로그 수준 상세표시 레벨
-      --vmodule moduleSpec               파일로 필터링 된 로깅을 위한 패턴=N 설정의 쉼표로 구분된 리스트
+      --debug                       장황한(verbose) 출력 활성화
+  -h, --help                        helm 명령어에 대한 도움말
+      --kube-apiserver string       쿠버네티스 API 서버의 주소 및 포트
+      --kube-as-group stringArray   작업에 관해 제시할 그룹. 플래그를 여러 번 사용하여 여러 그룹 지정 가능
+      --kube-as-user string         작업에 관해 제시할 사용자명
+      --kube-context string         사용할 kubeconfig 컨텍스트 이름
+      --kube-token string           인증에 사용될 베어러(bearer) 토큰
+      --kubeconfig string           kubeconfig 파일 경로
+  -n, --namespace string            이 요청에 대한 네임스페이스 스코프
+      --registry-config string      레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
+      --repository-cache string     캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/.cache/helm/repository")
+      --repository-config string    저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
 ```
 
 ### 참조

@@ -174,7 +174,8 @@ information with the following command:
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**PRODUCTION NOTES**: The release information might contain sensitive data (like
+**PRODUCTION NOTES**: The release information includes the contents of charts and
+values files, and therefore might contain sensitive data (like
 passwords, private keys, and other credentials) that needs to be protected from
 unauthorized access. When managing Kubernetes authorization, for instance with
 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), it is

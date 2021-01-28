@@ -14,7 +14,7 @@ weight: 2
 
 ## 设置本地chart仓库目录
 
-就像我们再[chart仓库指南](http://helm.sh/zh/docs/topics/chart_repository)做的，创建一个本地目录，并将打包好的chart放在该目录中。
+就像我们再[chart仓库指南](https://helm.sh/zh/docs/topics/chart_repository)做的，创建一个本地目录，并将打包好的chart放在该目录中。
 
 例如：
 
@@ -85,5 +85,5 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 帮助链接：
 
 * [gsutil rsync文档](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [Chart仓库指南](http://helm.sh/zh/docs/topics/chart_repository)
+* [Chart仓库指南](https://helm.sh/zh/docs/topics/chart_repository)
 * Google Cloud Storage的[对象版本控制和并发控制](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)

@@ -20,6 +20,8 @@ in the environment:
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
+For more information about this feature and plans for general availability, please see the [OCI Support Helm Improvement Proposal](https://github.com/helm/community/blob/master/hips/hip-0006.md).
+
 ## Running a registry
 
 Starting a registry for test purposes is trivial. As long as you have Docker
@@ -166,6 +168,20 @@ name:    mychart
 version: 0.1.0
 Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 ```
+
+## Specifying dependencies
+
+Dependencies of a chart can be pulled from a registry using the `dependency update` subcommand.
+
+To successfully pull dependencies, the image name in the registry must match the chart name and the tag must match the chart version. The repository entry in `Chart.yaml` is specified as the repository name on the registry without the image name.
+
+```
+dependencies:
+  - name: mychart
+    version: "2.7.0"
+    repository: "oci://localhost:5000/myrepo"
+```
+This will fetch `localhost:5000/myrepo/mychart:2.7.0` when `dependency update` is executed.
 
 ## Where are my charts?
 

@@ -70,7 +70,6 @@ dependencies: # A list of the chart requirements (optional)
     condition: (optional) A yaml path that resolves to a boolean, used for enabling/disabling charts (e.g. subchart1.enabled )
     tags: # (optional)
       - Tags can be used to group charts for enabling/disabling together
-    enabled: (optional) Enabled bool determines if chart should be loaded
     import-values: # (optional)
       - ImportValues holds the mapping of source values to parent key to be imported. Each item can be a string or pair of child/parent sublist items.
     alias: (optional) Alias to be used for the chart. Useful when you have to add the same chart multiple times

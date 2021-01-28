@@ -38,7 +38,7 @@ $ helm install mychart stable/wordpress --post-renderer ./path/to/executable
 查看作为一个后置渲染器使用 `kustomize` 的示例。
 
 ### 警告
-&emsp;&emsp;在使用后置渲染器时，以下这些事需要注意：使用后置渲染器时最重要的是，
+在使用后置渲染器时，以下这些事需要注意：使用后置渲染器时最重要的是，
 所有人在修改版本时**必须** 使用同样的渲染器来保证可重复的构建。
 这个功能是专门为允许任何用户切换他们正在使用或停止使用的渲染器而构建的， 但是这个应该谨慎操作，以避免意外修改或数据丢失。
 
@@ -134,7 +134,7 @@ export HELM_DRIVER=configmap
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
 
-**产品说明**: 版本信息可能包含敏感数据（比如密码，私钥，和其他认证）需要防止未经授权访问。 管理Kubernetes授权时使用 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)， 当限制访问私密资源是，它可能会授予ConfigMap 资源广泛的访问权限。对于实例，默认的 [面向用户角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) “视图” 授予大多数资源的访问权限，但是不允许访问私密数据。此外，私密数据会针对于 [加密存储](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 进行配置。切换到ConfigMap后端时要记得这一点，因为它可能会暴露你应用程序的敏感数据。
+**产品说明**: 发布信息包含chart和values文件的内容，因此可能包含敏感数据（比如密码，私钥，和其他认证）需要防止未经授权访问。 管理Kubernetes授权时使用 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)， 当限制访问私密资源是，它可能会授予ConfigMap 资源广泛的访问权限。对于实例，默认的 [面向用户角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) “视图” 授予大多数资源的访问权限，但是不允许访问私密数据。此外，私密数据会针对于 [加密存储](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) 进行配置。切换到ConfigMap后端时要记得这一点，因为它可能会暴露你应用程序的敏感数据。
 
 ### SQL 后台存储
 
@@ -155,8 +155,10 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 
 **产品说明**: 建议如下：
 
-- 确保你的数据库产品可以使用。对于PostgreSQL，请参考 [Server Administration](https://www.postgresql.org/docs/12/admin.html) 文档了解更多细节内容
-- 为版本信息启用 [权限管理](http://helm.sh/zh/docs/topics/permissions_sql_storage_backend/) 镜像到 Kubernetes RBAC 
+- 确保你的数据库产品可以使用。对于PostgreSQL，请参考
+[Server Administration](https://www.postgresql.org/docs/12/admin.html) 文档了解更多细节内容
+- 为版本信息启用 [权限管理](https://helm.sh/zh/docs/topics/permissions_sql_storage_backend/)镜像到
+Kubernetes RBAC
 
 如果你想从默认后端切到SQL后端，你必须自己完成迁移，你可以使用以下命令找回版本信息：
 

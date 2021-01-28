@@ -1,5 +1,5 @@
 ---
-title: "Charts"
+title: "Chart"
 description: "阐述chart格式，并提供使用Helm构建chart的基本指导。"
 weight: 1
 ---
@@ -57,7 +57,6 @@ dependencies: # chart 必要条件列表 （可选）
     condition: （可选） 解析为布尔值的yaml路径，用于启用/禁用chart (e.g. subchart1.enabled )
     tags: # （可选）
       - 用于一次启用/禁用 一组chart的tag
-    enabled: （可选） 决定是否加载chart的布尔值
     import-values: # （可选）
       - ImportValue 保存源值到导入父键的映射。每项可以是字符串或者一对子/父列表项
     alias: （可选） chart中使用的别名。当你要多次添加相同的chart时会很有用
@@ -181,7 +180,7 @@ chart也会包含一个简短的纯文本 `templates/NOTES.txt` 文件，这会�
 
 ## Chart dependency
 
-Helm 中，chart可能会依赖其他任意个cahrt。 这些依赖可以使用`Chart.yaml`文件中的`dependencies`
+Helm 中，chart可能会依赖其他任意个chart。 这些依赖可以使用`Chart.yaml`文件中的`dependencies`
 字段动态链接，或者被带入到`charts/` 目录并手动配置。
 
 ### 使用 `dependencies` 字段管理依赖
@@ -214,7 +213,7 @@ dependencies:
     repository: "@fantastic-charts"
 ```
 
-&emsp;&emsp;一旦你定义好了依赖，运行 `helm dependency update` 就会使用你的依赖文件下载所有你指定的chart到你的`charts/`目录。
+一旦你定义好了依赖，运行 `helm dependency update` 就会使用你的依赖文件下载所有你指定的chart到你的`charts/`目录。
 
 ```console
 $ helm dep up foochart
@@ -495,7 +494,7 @@ Kubernetes类型的安装顺序会按照kind_sorter.go(查看 [Helm源文件](ht
 
 Helm Chart 模板是按照[Go模板语言](https://golang.org/pkg/text/template/)书写，
 增加了50个左右的附加模板函数[来自 Sprig库](https://github.com/Masterminds/sprig)
-和一些其他[指定的函数](http://helm.sh/zh/docs/howto/charts_tips_and_tricks)。
+和一些其他[指定的函数](https://helm.sh/zh/docs/howto/charts_tips_and_tricks)。
 
 所有模板文件存储在chart的 `templates/` 文件夹。
 当Helm渲染chart时，它会通过模板引擎遍历目录中的每个文件。
@@ -509,7 +508,7 @@ Helm Chart 模板是按照[Go模板语言](https://golang.org/pkg/text/template/
 
 ### 模板文件
 
-&emsp;&emsp;模板文件遵守书写Go模板的标准惯例（查看[文本/模板 Go 包文档](https://golang.org/pkg/text/template/)了解跟多）。
+模板文件遵守书写Go模板的标准惯例（查看[文本/模板 Go 包文档](https://golang.org/pkg/text/template/)了解更多）。
 模板文件的例子看起来像这样：
 
 ```yaml
@@ -617,7 +616,7 @@ storage: "gcs"
 **注意：** 如果`helm install`或`helm upgrade`使用了`--set`参数，这些值在客户端会被简单地转换为YAML。
 
 **注意：** 如果values 文件存在任何必需的条目，它们会在chart模板中使用['required'
-函数](http://helm.sh/zh/docs/howto/charts_tips_and_tricks) 声明为必需的。
+函数](https://helm.sh/zh/docs/howto/charts_tips_and_tricks) 声明为必需的。
 
 然后使用模板中的`.Values`对象就可以任意访问这些值了：
 

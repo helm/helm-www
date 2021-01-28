@@ -81,6 +81,15 @@ sudo apt-get install helm
 sudo snap install helm --classic
 ```
 
+### 使用 pkg (FreeBSD)
+
+FreeBSD社区成员贡献了一个[Helm页面](https://www.freshports.org/sysutils/helm)来构建[FreeBSD
+端口集](https://man.freebsd.org/ports)。通常都是最新的包。
+
+```console
+pkg install helm
+```
+
 ### 开发版本构建
 
 另外您可以下载和安装Helm的开发版本。

@@ -4,11 +4,11 @@ description: "模板可用的内置对象"
 weight: 3
 ---
 
-&emsp;&emsp;对象从模板引擎传递到模板中。 你的代码也可以传递对象。（我们在使用`with`和`range`语句时，会看到示例）。甚至于有几种方式可以在你的模板中创建新对象，比如说我们后面会看到的`tuple`功能。
+对象从模板引擎传递到模板中。 你的代码也可以传递对象。（我们在使用`with`和`range`语句时，会看到示例）。甚至于有几种方式可以在你的模板中创建新对象，比如说我们后面会看到的`tuple`功能。
 
-&emsp;&emsp;对象可以是简单的且仅有一个值。或者可以包含其他对象或方法。比如，`Release`对象包含一些对象（比如：`Release.Name`）和`Files`对象有一组方法。
+对象可以是简单的且仅有一个值。或者可以包含其他对象或方法。比如，`Release`对象包含一些对象（比如：`Release.Name`）和`Files`对象有一组方法。
 
-&emsp;&emsp;在上一部分中，我们用`{{ .Release.Name }}`在模板中插入版本名称。`Release`是你可以在模板中访问的高级对象之一。 
+在上一部分中，我们用`{{ .Release.Name }}`在模板中插入版本名称。`Release`是你可以在模板中访问的高级对象之一。 
 
 - `Release`： 该对象描述了版本发布本身。包含了以下对象：
   - `Release.Name`： release名称
@@ -18,9 +18,11 @@ weight: 3
   - `Release.Revision`： 此次修订的版本号。安装时是1，每次升级或回滚都会自增
   - `Release.Service`： 该service用来渲染当前模板。Helm里一般是`Helm`
 - `Values`： Values是从`values.yaml`文件和用户提供的文件传进模板的。`Values`默认为空
-- `Chart`： `Chart.yaml`文件内容。 `Chart.yaml`里的任意数据在这里都可以可访问的。比如 `{{ .Chart.Name }}-{{ .Chart.Version }}` 会打印出 `mychart-0.1.0`
-  - [Chart 指南](http://helm.sh/zh/docs/topics/charts#Chart-yaml-文件) 中列出了可用字段
-- `Files`： 在chart中提供访问所有的非特殊文件。当你不能使用它访问模板时，你可以访问其他文件。请查看这个部分 [文件访问](http://helm.sh/zh/docs/chart_template_guide/accessing_files) 了解跟多信息
+- `Chart`： `Chart.yaml`文件内容。 `Chart.yaml`里的任意数据在这里都可以可访问的。比如
+`{{ .Chart.Name }}-{{ .Chart.Version }}` 会打印出 `mychart-0.1.0`
+  - [Chart 指南](https://helm.sh/zh/docs/topics/charts#Chart-yaml-文件) 中列出了可用字段
+- `Files`： 在chart中提供访问所有的非特殊文件。当你不能使用它访问模板时，你可以访问其他文件。
+请查看这个[文件访问](https://helm.sh/zh/docs/chart_template_guide/accessing_files)部分了解更多信息
   - `Files.Get` 通过文件名获取文件的方法。 （`.Files.Getconfig.ini`）
   - `Files.GetBytes` 用字节数组代替字符串获取文件内容的方法。 对图片之类的文件很有用
   - `Files.Glob` 用给定的shell glob模式匹配文件名返回文件列表的方法
@@ -38,5 +40,5 @@ weight: 3
   - `Template.Name`: 当前模板的命名空间文件路径 (e.g. `mychart/templates/mytemplate.yaml`)
   - `Template.BasePath`: 当前chart模板目录的路径 (e.g. `mychart/templates`)
 
-&emsp;&emsp;内置的值都是以大写字母开始。 这是符合Go的命名惯例。当你创建自己的名称时，可以按照团队约定自由设置。
+内置的值都是以大写字母开始。 这是符合Go的命名惯例。当你创建自己的名称时，可以按照团队约定自由设置。
 就像 [Kubernetes Charts](https://github.com/helm/charts) 团队，选择使用首字母小写与内置对象区分开，本指南中我们遵循该惯例。

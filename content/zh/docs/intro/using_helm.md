@@ -29,6 +29,7 @@ Helm 自带一个强大的搜索命令，可以用来从两种来源中进行搜
 
 你可以通过运行 `helm search hub` 命令找到公开可用的charts：
 
+
 ```console
 $ helm search hub wordpress
 URL                                                 CHART VERSION APP VERSION DESCRIPTION
@@ -42,6 +43,7 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A 
 如果不进行过滤，`helm search hub` 命令会展示所有可用的 charts。
 
 使用 `helm search repo` 命令，你可以从你所添加的仓库中查找chart的名字。
+
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -69,6 +71,7 @@ brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ## 'helm install'：安装一个 helm 包
 
 使用 `helm install` 命令来安装一个新的 helm 包。最简单的使用方法只需要传入两个参数：你命名的release名字和你想安装的chart的名称。
+
 
 ```console
 $ helm install happy-panda stable/mariadb
@@ -168,6 +171,7 @@ To upgrade this helm chart:
       helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
 ```
 
+
 上述信息展示了 release 的当前状态。
 
 ### 安装前自定义 chart
@@ -175,6 +179,7 @@ To upgrade this helm chart:
 上述安装方式只会使用 chart 的默认配置选项。很多时候，我们需要自定义 chart 来指定我们想要的配置。
 
 使用 `helm show values` 可以查看 chart 中的可配置选项：
+
 
 ```console
 $ helm show values stable/mariadb
@@ -211,6 +216,7 @@ imageTag: 10.1.14-r3
 
 然后，你可以使用 YAML 格式的文件覆盖上述任意配置项，并在安装过程中使用该文件。
 
+
 ```console
 $ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
 $ helm install -f config.yaml stable/mariadb --generate-name
@@ -235,6 +241,7 @@ name: value
 
 多个值使用逗号分割，因此 `--set a=b,c=d` 的 YAML 表示是：
 
+
 ```yaml
 a: b
 c: d
@@ -242,12 +249,14 @@ c: d
 
 支持更复杂的表达式。例如，`--set outer.inner=value` 被转换成了：
 
+
 ```yaml
 outer:
   inner: value
 ```
 
 列表使用花括号（`{}`）来表示。例如，`--set name={a, b, c}` 被转换成了：
+
 
 ```yaml
 name:
@@ -412,6 +421,7 @@ Creating deis-workflow
 在编辑 chart 时，可以通过 `helm lint` 验证格式是否正确。
 
 当准备将 chart 打包分发时，你可以运行 `helm package` 命令：
+
 
 ```console
 $ helm package deis-workflow

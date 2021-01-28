@@ -5,7 +5,7 @@
 other = "从这里开始"
 
 [action_get_started_link]
-other = "/docs/intro/quickstart"
+other = "/zh/docs/intro/quickstart"
 
 [action_translate]
 other = "翻译这个页面"
@@ -113,6 +113,18 @@ other = "加入社区"
 
 [community_desc]
 other = "关于 Helm 项目的更多信息，以及如何参与。"
+
+[community_next_release]
+other = "下一个功能版本"
+
+[community_next_release_version]
+other = "__Version:__ "
+
+[community_next_release_date]
+other = "__Date:__ "
+
+[community_release_calendar]
+other = "[发布日志](https://helm.sh/calendar/release)"
 
 [community_events_title]
 other = "大事记"
