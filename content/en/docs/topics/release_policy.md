@@ -26,8 +26,10 @@ done once a month on the second Wednesday of each month.
 A patch release to fix a high priority regression or security issue can be done
 whenever needed.
 
-If there is no new content since the previous release, no new release will be
-done that month.
+A patch release will be cancelled for any of the following reasons:
+- if there is no new content since the previous release
+- if the patch release date falls within one week before the first release candidate (RC1) of an upcoming minor release
+- if the patch release date falls within four weeks following a minor release
 
 ## Minor releases
 
