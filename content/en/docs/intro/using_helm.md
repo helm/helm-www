@@ -480,8 +480,8 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Charts that are packaged can be loaded into chart repositories. See the
-documentation for [Helm chart repositories](../docs/topics/chart_repository/)
-for more details.
+documentation for [Helm chart
+repositories]({{< ref "/docs/topics/chart_repository.md" >}}) for more details.
 
 ## Conclusion
 
