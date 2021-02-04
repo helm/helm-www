@@ -161,6 +161,22 @@ version: 0.1.0
 Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 ```
 
+## 指定依赖项
+
+chart的依赖项可用从使用了`dependency update`命令的注册中心拉取。
+
+成功拉取依赖后，注册中心的镜像名字必须和chart名字匹配，tag必须匹配chart的版本。`Chart.yaml`中的仓库条目指向注册中心的仓库名称，
+而不是镜像名称。
+
+```yaml
+dependencies:
+  - name: mychart
+    version: "2.7.0"
+    repository: "oci://localhost:5000/myrepo"
+```
+
+执行`dependency update`之后就可以获取到`localhost:5000/myrepo/mychart:2.7.0`。
+
 ## 我的chart在哪里?
 
 使用上述命令存储的chart会被缓存到文件系统中。
