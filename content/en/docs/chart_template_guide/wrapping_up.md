@@ -12,9 +12,8 @@ But there are many things this guide has not covered when it comes to the
 practical day-to-day development of charts. Here are some useful pointers to
 other documentation that will help you as you create new charts:
 
-- The [Helm Charts project](https://github.com/helm/charts) is an indispensable
-  source of charts. That project also sets the standard for best practices in
-  chart development.
+- The CNCF [Artifact Hub](https://artifacthub.io/packages/search?kind=0) is an
+  indispensable source of charts.
 - The Kubernetes [Documentation](https://kubernetes.io/docs/home/) provides
   detailed examples of the various resource kinds that you can use, from
   ConfigMaps and Secrets to DaemonSets and Deployments.

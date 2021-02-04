@@ -480,11 +480,8 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Charts that are packaged can be loaded into chart repositories. See the
-documentation for your chart repository server to learn how to upload.
-
-Note: The `stable` repository is managed on the [Kubernetes Charts GitHub
-repository](https://github.com/helm/charts). That project accepts chart source
-code, and (after audit) packages those for you.
+documentation for [Helm chart repositories](../docs/topics/chart_repository/)
+for more details.
 
 ## Conclusion
 

@@ -180,8 +180,7 @@ deprecate a chart. The optional `deprecated` field in `Chart.yaml` can be used
 to mark a chart as deprecated. If the **latest** version of a chart in the
 repository is marked as deprecated, then the chart as a whole is considered to
 be deprecated. The chart name can be later reused by publishing a newer version
-that is not marked as deprecated. The workflow for deprecating charts, as
-followed by the [kubernetes/charts](https://github.com/helm/charts) project is:
+that is not marked as deprecated. The workflow for deprecating charts is:
 
 1. Update chart's `Chart.yaml` to mark the chart as deprecated, bumping the
    version
@@ -674,8 +673,8 @@ values (usually defined in a `values.yaml` file):
 All of these values are defined by the template author. Helm does not require or
 dictate parameters.
 
-To see many working charts, check out the [Kubernetes Charts
-project](https://github.com/helm/charts)
+To see many working charts, check out the CNCF [Artifact
+Hub](https://artifacthub.io/packages/search?kind=0).
 
 ### Predefined Values
 

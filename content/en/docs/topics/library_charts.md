@@ -311,9 +311,8 @@ metadata:
 
 ## The Common Helm Helper Chart
 
-Bit of a mouth full of a title but this
-[chart](https://github.com/helm/charts/tree/master/incubator/common) is the
-original pattern for common charts. It provides utilities that reflect best
+This [chart](https://github.com/helm/charts/tree/master/incubator/common) was
+the original pattern for common charts. It provides utilities that reflect best
 practices of Kubernetes chart development. Best of all it can be used off the
 bat by you when developing your charts to give you handy shared code.
 
