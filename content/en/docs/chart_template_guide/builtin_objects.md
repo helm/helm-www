@@ -72,7 +72,7 @@ access in your templates.
 
 The built-in values always begin with a capital letter. This is in keeping with
 Go's naming convention. When you create your own names, you are free to use a
-convention that suits your team. Some teams, like the [Kubernetes
-Charts](https://github.com/helm/charts) team, choose to use only initial lower
-case letters in order to distinguish local names from those built-in. In this
-guide, we follow that convention.
+convention that suits your team. Some teams, like many whose charts you may see
+on [Artifact Hub](https://artifacthub.io/packages/search?kind=0), choose to use
+only initial lower case letters in order to distinguish local names from those
+built-in. In this guide, we follow that convention.

@@ -270,10 +270,10 @@ templates and partials are placed in a `_helpers.tpl` file.
 
 ## Complex Charts with Many Dependencies
 
-Many of the charts in the [official charts
-repository](https://github.com/helm/charts) are "building blocks" for creating
-more advanced applications. But charts may be used to create instances of
-large-scale applications. In such cases, a single umbrella chart may have
+Many of the charts in the CNCF [Artifact
+Hub](https://artifacthub.io/packages/search?kind=0) are "building blocks" for
+creating more advanced applications. But charts may be used to create instances
+of large-scale applications. In such cases, a single umbrella chart may have
 multiple subcharts, each of which functions as a piece of the whole.
 
 The current best practice for composing a complex application from discrete

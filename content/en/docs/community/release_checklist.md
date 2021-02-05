@@ -360,7 +360,7 @@ The community keeps growing, and we'd love to see you there!
   - `#helm-users` for questions and just to hang out
   - `#helm-dev` for discussing PRs, code, and bugs
 - Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom.us/j/696660622)
-- Test, debug, and contribute charts: [GitHub/helm/charts](https://github.com/helm/charts)
+- Test, debug, and contribute charts: [Artifact Hub helm charts](https://artifacthub.io/packages/search?kind=0)
 
 ## Notable Changes
 

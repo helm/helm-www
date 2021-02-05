@@ -35,8 +35,9 @@ For more details, or for other options, see [the installation guide]({{< ref
 
 ## Initialize a Helm Chart Repository
 
-Once you have Helm ready, you can add a chart repository. One popular starting
-location is the official Helm stable charts:
+Once you have Helm ready, you can add a chart repository. Check [Artifact
+Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart
+repositories.
 
 ```console
 $ helm repo add stable https://charts.helm.sh/stable
