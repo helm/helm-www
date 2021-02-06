@@ -65,7 +65,7 @@ maintainers: # （可选）
     email: 维护者邮箱 （每个维护者可选）
     url: 维护者URL （每个维护者可选）
 icon: 用做icon的SVG或PNG图片URL （可选）
-appVersion: 包含的应用版本（可选）。不需要是语义化的
+appVersion: 包含的应用版本（可选）。不需要是语义化，建议使用引号
 deprecated: 不被推荐的chart （可选，布尔值）
 annotations:
   example: 按名称输入的批注列表 （可选）.
@@ -106,9 +106,12 @@ nginx-1.2.3.tgz
 
 ### `appVersion` 字段
 
-注意这个 `appVersion` 字段与 `version` 字段无关。它是指定应用程序版本的一种方式。
-比如`drupal` chart 可以是 `appVersion: 8.2.1`， 表示包含在chart中（默认）的Drupal 版本是 `8.2.1`。
-这个字段是信息字段，对chart版本的计算没有影响。
+注意这个`appVersion`字段与`version`字段并不相关。这是指定应用版本的一种方式。比如，这个`drupal` chart可能有一个
+`appVersion: "8.2.1"`，表示包含在chart（默认）的Drupal的版本是`8.2.1`。此字段仅供参考，对图表版本计算没有影响。
+强烈建议使用引号将版本括起来。它强制YAML解析器将版本号视为字符串。不加引号在某些场景会出现解析问题。
+比如，YAML将`1.0`解释为浮点值，且git提交的SHA类似`1234e10`是科学计数法。
+
+从Helm v3.5.0开始，`helm create`会将默认的`appVersion`用引号括起来。
 
 ### `kubeVersion` 字段
 

@@ -172,7 +172,7 @@ $ helm verify somechart-1.2.3.tgz
 Hash: SHA512
 
 apiVersion: v2
-appVersion: 1.16.0
+appVersion: "1.16.0"
 description: Sample chart
 name: mychart
 type: application
