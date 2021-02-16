@@ -282,7 +282,7 @@ Integer:
 
  Floating-point and complex constituents:
 
-* `%b` decimalless scientific notation with exponent a power of two, e.g.
+* `%b` decimal less scientific notation with exponent a power of two, e.g.
   -123456p-78
 * `%e` scientific notation, e.g. -1.234456e+78
 * `%E` scientific notation, e.g. -1.234456E+78
