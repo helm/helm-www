@@ -82,7 +82,7 @@ Released smiling-penguin
 
 ## リリースについて学ぶ
 
-IHelm を使用してリリースされた内容を簡単に確認できます。
+Helm を使用してリリースされた内容を簡単に確認できます。
 
 ```console
 $ helm ls
