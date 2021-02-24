@@ -25,10 +25,10 @@ other = "[Расизм неприемлем, несовместим с целя�
 other = "Helm поддерживается и создается сообществом из более чем 400 разработчиков.."
 
 [footer_support_subtitle]
-other = "...and many other wonderful [helm](https://github.com/helm/helm/blob/master/OWNERS) and [charts](https://github.com/helm/charts/blob/master/OWNERS) core maintainers."
+other = "...и много других замечательных [helm](https://github.com/helm/helm/blob/master/OWNERS) и [charts](https://github.com/helm/charts/blob/master/OWNERS) core maintainers."
 
 [footer_cncf_status]
-other = "We are a Cloud Native Computing Foundation graduated project."
+other = "Мы являемся выпускным проектом Cloud Native Computing Foundation."
 
 # homepage copy
 
