@@ -96,7 +96,7 @@ other = "Установите Helm менеджером пакетов, или [
 other = "После установки, распакуйте двоичный файл Helm и добавьте его в свой PATH! Проверьте [документацию](./docs/intro/install/) для получения информацию об [уставновке](./docs/intro/install/) и [использовании](./docs/intro/using_helm/)."
 
 [get_charts_title]
-other = "Скачайте Charts"
+other = "Скачайте Chart-ы"
 
 [get_charts_desc]
 other = "Посетите [Artifact Hub](https://artifacthub.io) чтобы познакомиться [Helm charts](https://artifacthub.io/packages/search?kind=0) из многочисленных публичных репозиториев."

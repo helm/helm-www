@@ -439,7 +439,7 @@ $ helm repo add dev https://example.com/dev-charts
 
 ## Создание Собственных Chart-ов
 
-[Руководство по разработке Chart-ов]({{< ref "../topics/charts.md" >}}) объясняет, как
+[Руководство по разработке Chart-ов](https://helm.sh/docs/topics/charts/) объясняет, как
 создавать свои собственные chart-ы. Но вы можете быстро начать работу с помощью команды `helm
 create`:
 
@@ -471,7 +471,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Упакованные chart-ы могут быть загружены в репозиторий chart-ов. Смотрите документацию по
-[Helm chart репозитории]({{< ref "/docs/topics/chart_repository.md" >}}) для того, что бы узнать новые детали.
+[Helm chart репозитории](https://helm.sh/docs/topics/charts/) для того, что бы узнать новые детали.
 
 ## Заключение
 
@@ -480,5 +480,3 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 охватывает полезные служебные команды, такие как `helm status`, `helm get`, и `helm repo`.
 
 Для получения дополнительной информации об этих командах обратитесь к встроенной справке Helm: `helm help`.
-
-В [следующей главе](../how to/charts_tips_and_tricks/) мы рассмотрим процесс разработки chart-ов.
