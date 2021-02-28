@@ -8,8 +8,7 @@ weight: 14
 
 但涉及到chart的实际日常开发时，很多内容本指南并没有覆盖到。这里有一些有用的文档链接帮助你创建新的chart:
 
-- [Helm的Chart项目](https://github.com/helm/charts) 是不可或缺的chart资源。这个项目也定义了
-  chart开发最佳实践的标准。
+- CNCF的 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) 是chart不可或缺的资源。
 - Kubernetes [文档](https://kubernetes.io/docs/home/) 提供各种能用到的资源种类的详细案例，从配置映射和密钥到
   DaemonSet和工作负载。
 - Helm的[Chart指南](https://helm.sh/zh/docs/topics/charts) 阐述了使用chart的工作流。

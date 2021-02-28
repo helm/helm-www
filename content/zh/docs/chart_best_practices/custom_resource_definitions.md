@@ -1,12 +1,12 @@
 ---
-title: "自定义资源定义"
+title: "自定义资源"
 description: "如何创建和使用CRD"
 weight: 7
 ---
 
-最佳实践的这部分处理创建和使用自定义资源定义。
+最佳实践的这部分处理创建和使用自定义资源。
 
-当使用自定义资源定义时(CRD)，区分两个不同的部分很重要：
+当使用自定义资源时(CRD)，区分两个不同的部分很重要：
 
 - CRD的声明。是一个具有`CustomResourceDefinition`类型的yaml文件。
 - 有些资源 _使用_ CRD. 假设CRD定义了`foo.example.com/v1`。任何有`apiVersion: example.com/v1`和

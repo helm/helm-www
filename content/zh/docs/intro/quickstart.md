@@ -31,7 +31,8 @@ weight: 1
 
 ## 初始化
 
-当您已经安装好了Helm之后，您可以添加一个chart 仓库。 一个常见的选择是添加Helm的官方仓库：
+当您已经安装好了Helm之后，您可以添加一个chart 仓库。从[Artifact
+Hub](https://artifacthub.io/packages/search?kind=0)中查找有效的Helm chart仓库。
 
 ```console
 $ helm repo add stable https://charts.helm.sh/stable

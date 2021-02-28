@@ -4,7 +4,7 @@ description: "阐述chart格式，并提供使用Helm构建chart的基本指导�
 weight: 1
 ---
 
-Helm使用的包格式称为 _charts_。 chart就是一个描述Kubernetes相关资源的文件集合。单个chart可以用来部署一些简单的，
+Helm使用的包格式称为 _chart_。 chart就是一个描述Kubernetes相关资源的文件集合。单个chart可以用来部署一些简单的，
 类似于memcache pod，或者某些复杂的HTTP服务器以及web全栈应用、数据库、缓存等等。
 
 Chart是作为特定目录布局的文件被创建的。它们可以打包到要部署的版本存档中。
@@ -107,7 +107,7 @@ nginx-1.2.3.tgz
 ### `appVersion` 字段
 
 注意这个`appVersion`字段与`version`字段并不相关。这是指定应用版本的一种方式。比如，这个`drupal` chart可能有一个
-`appVersion: "8.2.1"`，表示包含在chart（默认）的Drupal的版本是`8.2.1`。此字段仅供参考，对图表版本计算没有影响。
+`appVersion: "8.2.1"`，表示包含在chart（默认）的Drupal的版本是`8.2.1`。此字段仅供参考，对chart版本计算没有影响。
 强烈建议使用引号将版本括起来。它强制YAML解析器将版本号视为字符串。不加引号在某些场景会出现解析问题。
 比如，YAML将`1.0`解释为浮点值，且git提交的SHA类似`1234e10`是科学计数法。
 
@@ -145,7 +145,7 @@ nginx-1.2.3.tgz
 
 在Chart仓库管理chart时，有时需要废弃一个chart。 `Chart.yaml` 中可选的`deprecated`字段可以用来标记已弃用的chart。
 如果**latest**版本被标记为已弃用，则所有的chart都会被认为是已弃用的。以后可以通过发布未标记为已弃用的新版本来重新使用chart名称。
-[kubernetes/charts](https://github.com/helm/charts) 项目遵循的弃用图标的工作流是：
+弃用chart的工作流是：
 
 1. 升级chart的 `Chart.yaml`  文件，将这个chart标记为已弃用， 并更改版本
 2. 在chart仓库中发布新版的chart
@@ -553,7 +553,7 @@ spec:
 
 所有的值都是模板作者定义的。Helm不需要或指定参数。
 
-要了解更多chart的工作，请查阅[Kubernetes Charts 项目](https://github.com/helm/charts)
+要了解更多chart的工作，请查阅CNCF的 [Artifact Hub](https://artifacthub.io/packages/search?kind=0)。
 
 ### 预定义的Values
 

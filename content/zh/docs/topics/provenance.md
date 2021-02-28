@@ -221,8 +221,6 @@ Helm的一个设计决策是Helm项目不会将自己作为必须的一方插入
   - 你可以使用Keybase存储你的key或者获取其他人的公钥。
   - Keybase还有非常好的文档
   - 我们还没有测试的时候，Keybase的“安全站点”特性可以提供Helm chart。
-- [官方Helm Chart项目](https://github.com/helm/charts)会试图解决官方chart仓库的问题。
-  - 一个很久之前的问题是[处理当前的想法](https://github.com/helm/charts/issues/23)。
   - 基础想法是一个官方的“chart审核人”使用他（她）的私钥签名，然后上传源文件到chart仓库。
   - 该想法的一些做法是在仓库的`index.yaml`文件中列出一些合法的秘钥。
 
