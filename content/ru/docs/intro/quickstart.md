@@ -2,7 +2,6 @@
 title: "Краткое Руководство"
 description: "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
 weight: 1
-aliases: ["/docs/quickstart/"]
 ---
 
 Это руководство описывает, как вы можете быстро начать использовать Helm.

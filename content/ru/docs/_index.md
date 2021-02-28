@@ -1,6 +1,6 @@
 ---
-title: "Docs Home"
-description: "Everything you need to know about how the documentation is organized."
+title: "Документация Главная"
+description: "Все то, что вам необходимо знать о том, как организована документация."
 ---
 
 # Добро пожаловать
