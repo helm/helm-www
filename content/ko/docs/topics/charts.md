@@ -490,9 +490,13 @@ The manual way of achieving this is by copy/pasting the same chart in the
 In addition to the other fields above, each requirements entry may contain the
 optional fields `tags` and `condition`.
 
+위에서 본 필드 외에도, 각각의 필요 엔트리는 선택필드인 `alias`와 `condition`을 가질 수 있다.
+
 All charts are loaded by default. If `tags` or `condition` fields are present,
 they will be evaluated and used to control loading for the chart(s) they are
 applied to.
+
+모든 차트는 기본으로 로드된다. `tags`나 `condition` 필드가 존재하면, 차트가 적용될지에 대한 로딩 제어를 위해 사용되고 평가된다.
 
 Condition - The condition field holds one or more YAML paths (delimited by
 commas). If this path exists in the top parent's values and resolves to a
@@ -500,9 +504,13 @@ boolean value, the chart will be enabled or disabled based on that boolean
 value.  Only the first valid path found in the list is evaluated and if no paths
 exist then the condition has no effect.
 
+Condition - condition 필드는 1개 이상의 YAML 경로이다.(콤마로 구분된다) 최상단 부모의 values에 이 경로가 존재하고 boolean 값으로 판단할수 있다면, 차트는 boolean 값에 의해 활성화 혹은 비활성화 된다. 리스트에서 발견된 유효한 첫번째 경로만이 평가되고, 이 경로가 존재하지 않으면 해당 condition은 무효하다.
+
 Tags - The tags field is a YAML list of labels to associate with this chart. In
 the top parent's values, all charts with tags can be enabled or disabled by
 specifying the tag and a boolean value.
+
+Tags - tags 필드는 이 차트와 관련된 레이블의 YAML 리스트이다. 최상단 부모의 values에서, 태그를 가진 모든 차트는 특정한 태그와 boolean 값에 의해 활성화 또는 비활성화 된다.
 
 ```yaml
 # parentchart/Chart.yaml
@@ -538,14 +546,20 @@ In the above example all charts with the tag `front-end` would be disabled but
 since the `subchart1.enabled` path evaluates to 'true' in the parent's values,
 the condition will override the `front-end` tag and `subchart1` will be enabled.
 
+위 예에서 `front-end` 태그를 가진 모든 차트는 비활성화 되지만, 부모의 values에서 `subchart1.enabled`가 true로 평가되었기 때문에, condition은 `front-end`태그를 덮어쓰고 `subchart1`은 활성화된다.
+
 Since `subchart2` is tagged with `back-end` and that tag evaluates to `true`,
 `subchart2` will be enabled. Also note that although `subchart2` has a condition
 specified, there is no corresponding path and value in the parent's values so
 that condition has no effect.
 
+`subchart2`는 `back-end`와 태그되었고 이 태그는 `true`로 평가되어서, `subchart2`는 활성화된다. 또한 `subchart2`가 특정한 condition을 가지지만, 부모의 values에 대응되는 경로가 없어서 이 condition은 아무 영향이 없다.
+
 ##### 태그 및 조건과 함께 CLI 사용
 
 The `--set` parameter can be used as usual to alter tag and condition values.
+
+`--set` 파라미터는 보통 tag와 condition 값을 수정할때 사용할 수 있다.
 
 ```console
 helm install --set tags.front-end=true --set subchart2.enabled=false
@@ -555,11 +569,15 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
 
 - **Conditions (when set in values) always override tags.** The first condition
   path that exists wins and subsequent ones for that chart are ignored.
+- **(values에 셋팅된) Condition은 항상 tag를 덮어쓴다.** 존재하는 첫번째 condition 경로가 사용되고 그 차트의 다른 것들은 무시된다.
 - Tags are evaluated as 'if any of the chart's tags are true then enable the
   chart'.
+- tag는 '어떤 차트의 tag라도 true면 차트를 활성화 시킬것' 으로 평가한다.
 - Tags and conditions values must be set in the top parent's values.
+- tag와 condition 값은 최상단 부모의 values에 셋팅되어야 한다.
 - The `tags:` key in values must be a top level key. Globals and nested `tags:`
   tables are not currently supported.
+- values의 `tags:` 키는 최상단 레벨의 키여야 한다. 전역과 중첩된 `tags:` 테이블은 현재 지원되지 않는다.
 
 #### 의존성을 통해 자식 값 가져오기
 
@@ -568,19 +586,27 @@ the parent chart and be shared as common defaults. An additional benefit of
 using the `exports` format is that it will enable future tooling to introspect
 user-settable values.
 
+몇몇 케이스에서 자식 차트의 values가 부모의 차트에 영향을 미치고 공통 기본값으로 공유되도록 하고싶을 수 있다. `exports` 포맷을 사용하는 것의 추가 이점은 향후 도구를 통해 사용자가 설정할수 있는 값을 가능하게 하는 것이다.
+
 The keys containing the values to be imported can be specified in the parent
 chart's `dependencies` in the field `import-values` using a YAML list. Each item
 in the list is a key which is imported from the child chart's `exports` field.
 
+import 될 값을 포함하는 키는 YAML 리스트를 사용해서 부모 차트의 `dependencies` 안에 `import-values` 필드로 명시할 수 있다. 리스트의 각 아이템은 자식 차트의 `exports` 필드로부터 import 되는 키이다.
+
 To import values not contained in the `exports` key, use the
 [child-parent](#자식-부모-형식-사용하기) format. Examples of both formats
 are described below.
+
+`exports` 키 안에 포함되지 않은 import value를 사용하려면, [child-parent](#자식-부모-형식-사용하기) 포맷을 사용하라. 두 포맷 모두 아래에서 설명한다.
 
 ##### 내보내기 형식 사용하기
 
 If a child chart's `values.yaml` file contains an `exports` field at the root,
 its contents may be imported directly into the parent's values by specifying the
 keys to import as in the example below:
+
+자식의 `values.yaml`파일이 루트에 `exports` 필드를 가진다면, 이 필드의 내용은 다음 예제처럼 import 하기 위한 키를 명시함으로써 부모의 values에 직접 import 될수 있다.
 
 ```yaml
 # parent's Chart.yaml file
@@ -604,7 +630,11 @@ exports:
 Since we are specifying the key `data` in our import list, Helm looks in the
 `exports` field of the child chart for `data` key and imports its contents.
 
+import 리스트에 `data` 키를 명시했기 때문에, 헬름은 `data` 키에 대한 자식 차트의 `exports` 필드를 찾고 그것의 내용을 import 한다.
+
 The final parent values would contain our exported field:
+
+최종 부모의 values는 export된 필드를 포함한다.
 
 ```yaml
 # parent's values
@@ -614,6 +644,8 @@ myint: 99
 
 Please note the parent key `data` is not contained in the parent's final values.
 If you need to specify the parent key, use the 'child-parent' format.
+
+부모의 `data`키가 부모의 최종 values에 포함되지 않음을 주의하라. 부모의 키에 명시할 필요가 있다면, 'child-parent' 포맷을 사용하라.
 
 ##### 자식-부모 형식 사용하기
 
