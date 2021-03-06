@@ -291,7 +291,7 @@ app_version: "0.1.0"
 ```
 
 Note that the indentation on `app_version` is wrong in both places. Why? Because
-the template that is substituted in has the text aligned to the right. Because
+the template that is substituted in has the text aligned to the left. Because
 `template` is an action, and not a function, there is no way to pass the output
 of a `template` call to other functions; the data is simply inserted inline.
 
@@ -299,7 +299,7 @@ To work around this case, Helm provides an alternative to `template` that will
 import the contents of a template into the present pipeline where it can be
 passed along to other functions in the pipeline.
 
-Here's the example above, corrected to use `indent` to indent the `mychart_app`
+Here's the example above, corrected to use `indent` to indent the `mychart.app`
 template correctly:
 
 ```yaml
