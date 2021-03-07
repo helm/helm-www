@@ -53,7 +53,7 @@ Helm – дипломный проект в [CNCF](https://cncf.io) и обсл�
 
 ### Узнать больше:
 
-* [Helm Архитектура](./docs/topics/architecture/)
+* [Helm Архитектура](https://helm.sh/docs/topics/architecture/)
 * [Краткое руководство по эксплуатации](./docs/intro/quickstart/)
 * [Видео: Введение в Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
