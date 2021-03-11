@@ -410,7 +410,7 @@
       // or make it an empty string:
       //    Foundation.global.namespace = '';
       //
-      //
+      Foundation.global.namespace = 'helm-www';
 
       // If the namespace has not been set (is undefined), try to read it out of the meta element.
       // Otherwise use the globally defined namespace, even if it's empty ('')
