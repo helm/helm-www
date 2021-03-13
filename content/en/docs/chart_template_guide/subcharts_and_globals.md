@@ -30,7 +30,7 @@ beginning of this guide, and we'll add a new chart inside of it.
 $ cd mychart/charts
 $ helm create mysubchart
 Creating mysubchart
-$ rm -rf mysubchart/templates/*.*
+$ rm -rf mysubchart/templates/*
 ```
 
 Notice that just as before, we deleted all of the base templates so that we can
