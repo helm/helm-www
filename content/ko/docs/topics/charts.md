@@ -693,7 +693,7 @@ cannot be overridden. As with all values, the names are _case sensitive_.
 - `Files`: A map-like object containing all non-special files in the chart. This
   will not give you access to templates, but will give you access to additional
   files that are present (unless they are excluded using `.helmignore`). Files
-  can be accessed using `{{ index .Files "file.name" }}` or using the
+  can be accessed using `{{ index .Files "file.name" }}` or the
   `{{.Files.Get name }}` function. You can also access the contents of the file
   as `[]byte` using `{{ .Files.GetBytes }}`
 - `Capabilities`: A map-like object that contains information about the versions
