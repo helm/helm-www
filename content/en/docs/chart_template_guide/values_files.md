@@ -70,7 +70,7 @@ MANIFEST:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: good-puppy-configmap
+  name: geared-marsupi-configmap
 data:
   myvalue: "Hello World"
   drink: coffee
@@ -104,7 +104,7 @@ MANIFEST:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: good-puppy-configmap
+  name: solid-vulture-configmap
 data:
   myvalue: "Hello World"
   drink: slurm

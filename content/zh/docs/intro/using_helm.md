@@ -4,31 +4,38 @@ description: "解释 Helm 的基础知识。"
 weight: 3
 ---
 
-本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。在这之前，假定您已经[安装](https://helm.sh/zh/docs/intro/install)了 Helm 客户端。
+本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。在这之前，假定您已经
+[安装](https://helm.sh/zh/docs/intro/install)了 Helm 客户端。
 
-如果您仅对运行一些快速命令感兴趣，则不妨从[快速入门指南](https://helm.sh/zh/docs/intro/quickstart)开始。本章包含了 Helm 命令的详细说明，并解释如何使用 Helm。
+如果您仅对运行一些快速命令感兴趣，则不妨从[快速入门指南](https://helm.sh/zh/docs/intro/quickstart)开始。本章包含了
+Helm 命令的详细说明，并解释如何使用 Helm。
 
 ## 三大概念
 
-*Chart* 代表着 Helm 包。它包含在 Kubernetes 集群内部运行应用程序，工具或服务所需的所有资源定义。你可以把它看作是 Homebrew formula，Apt dpkg，或 Yum RPM 在Kubernetes 中的等价物。
+*Chart* 代表着 Helm 包。它包含在 Kubernetes 集群内部运行应用程序，工具或服务所需的所有资源定义。你可以把它看作是
+Homebrew formula，Apt dpkg，或 Yum RPM 在Kubernetes 中的等价物。
 
-*Repository（仓库）* 是用来存放和共享 charts 的地方。它就像 Perl 的 [CPAN 档案库网络](https://www.cpan.org) 或是 Fedora 的[软件包仓库](https://fedorahosted.org/pkgdb2/)，只不过它是供 Kubernetes 包所使用的。
+*Repository（仓库）* 是用来存放和共享 charts 的地方。它就像 Perl 的 [CPAN 档案库网络](https://www.cpan.org)
+或是 Fedora 的[软件包仓库](https://fedorahosted.org/pkgdb2/)，只不过它是供 Kubernetes 包所使用的。
 
-*Release* 是运行在 Kubernetes 集群中的 chart 的实例。一个 chart 通常可以在同一个集群中安装多次。每一次安装都会创建一个新的 _release_。以 MySQL chart为例，如果你想在你的集群中运行两个数据库，你可以安装该chart两次。每一个数据库都会拥有它自己的 _release_ 和 _release name_。
+*Release* 是运行在 Kubernetes 集群中的 chart 的实例。一个 chart 通常可以在同一个集群中安装多次。每一次安装都会创建一个新的
+_release_。以 MySQL chart为例，如果你想在你的集群中运行两个数据库，你可以安装该chart两次。每一个数据库都会拥有它自己的
+_release_ 和 _release name_。
 
 在了解了上述这些概念以后，我们就可以这样来解释 Helm：
 
-Helm 安装 _charts_ 到 Kubernetes 集群中，每次安装都会创建一个新的 _release_。你可以在 Helm 的 chart _repositories_ 中寻找新的 chart。
+Helm 安装 _charts_ 到 Kubernetes 集群中，每次安装都会创建一个新的 _release_。你可以在 Helm 的
+chart _repositories_ 中寻找新的 chart。
 
 ## 'helm search'：查找 Charts
 
 Helm 自带一个强大的搜索命令，可以用来从两种来源中进行搜索：
 
-- `helm search hub` 从 [Artifact Hub](https://artifacthub.io) 中查找并列出 helm charts。Artifact Hub中存放了大量不同的仓库。
+- `helm search hub` 从 [Artifact Hub](https://artifacthub.io) 中查找并列出 helm charts。
+  Artifact Hub中存放了大量不同的仓库。
 - `helm search repo` 从你添加（使用 `helm repo add`）到本地 helm 客户端中的仓库中进行查找。该命令基于本地数据进行搜索，无需连接互联网。
 
 你可以通过运行 `helm search hub` 命令找到公开可用的charts：
-
 
 ```console
 $ helm search hub wordpress
@@ -43,7 +50,6 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A 
 如果不进行过滤，`helm search hub` 命令会展示所有可用的 charts。
 
 使用 `helm search repo` 命令，你可以从你所添加的仓库中查找chart的名字。
-
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -194,7 +200,9 @@ $ helm install -f values.yaml bitnami/wordpress --generate-name
 - `--values` (或 `-f`)：使用 YAML 文件覆盖配置。可以指定多次，优先使用最右边的文件。
 - `--set`：通过命令行的方式对指定项进行覆盖。
 
-如果同时使用两种方式，则 `--set` 中的值会被合并到 `--values` 中，但是 `--set` 中的值优先级更高。在`--set` 中覆盖的内容会被被保存在 ConfigMap 中。可以通过 `helm get values <release-name>` 来查看指定 release 中 `--set` 设置的值。也可以通过运行 `helm upgrade` 并指定 `--reset-values` 字段来清除 `--set` 中设置的值。
+如果同时使用两种方式，则 `--set` 中的值会被合并到 `--values` 中，但是 `--set` 中的值优先级更高。在`--set`
+中覆盖的内容会被被保存在 ConfigMap 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
+`--set` 设置的值。也可以通过运行 `helm upgrade` 并指定 `--reset-values` 字段来清除 `--set` 中设置的值。
 
 #### `--set` 的格式和限制
 
@@ -206,7 +214,6 @@ name: value
 
 多个值使用逗号分割，因此 `--set a=b,c=d` 的 YAML 表示是：
 
-
 ```yaml
 a: b
 c: d
@@ -214,14 +221,12 @@ c: d
 
 支持更复杂的表达式。例如，`--set outer.inner=value` 被转换成了：
 
-
 ```yaml
 outer:
   inner: value
 ```
 
 列表使用花括号（`{}`）来表示。例如，`--set name={a, b, c}` 被转换成了：
-
 
 ```yaml
 name:
@@ -251,21 +256,23 @@ servers:
 name: "value1,value2"
 ```
 
-类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和 node selectors 时派上用场。`--set nodeSelector."kubernetes\.io/role"=master` 语法就变成了：
+类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
+node selectors 时派上用场。`--set nodeSelector."kubernetes\.io/role"=master` 语法就变成了：
 
 ```yaml
 nodeSelector:
   kubernetes.io/role: master
 ```
 
-深层嵌套的数据结构可能会很难用 `--set` 表达。我们希望 Chart 的设计者们在设计 `values.yaml` 文件的格式时，考虑到 `--set` 的使用。（更多内容请查看 [Values 文件](https://helm.sh/docs/chart_template_guide/values_files/)）
+深层嵌套的数据结构可能会很难用 `--set` 表达。我们希望 Chart 的设计者们在设计 `values.yaml` 文件的格式时，考虑到 `--set`
+的使用。（更多内容请查看 [Values 文件](https://helm.sh/docs/chart_template_guide/values_files/)）
 
 ### 更多安装方法
 
 `helm install` 命令可以从多个来源进行安装：
 
 - chart 的仓库（如上所述）
-- 本地 chart 压缩包（`helm install foo foo-0.1.1.tgz`） 
+- 本地 chart 压缩包（`helm install foo foo-0.1.1.tgz`）
 - 解压后的 chart 目录（`helm install foo path/to/foo`）
 - 完整的 URL（`helm install foo https://example.com/charts/foo-1.2.3.tgz`）
 
@@ -273,7 +280,8 @@ nodeSelector:
 
 当你想升级到 chart 的新版本，或是修改 release 的配置，你可以使用 `helm upgrade` 命令。
 
-一次升级操作会使用已有的 release 并根据你提供的信息对其进行升级。由于 Kubernetes 的 chart 可能会很大而且很复杂，Helm 会尝试执行最小侵入式升级。即它只会更新自上次发布以来发生了更改的内容。
+一次升级操作会使用已有的 release 并根据你提供的信息对其进行升级。由于 Kubernetes 的 chart
+可能会很大而且很复杂，Helm 会尝试执行最小侵入式升级。即它只会更新自上次发布以来发生了更改的内容。
 
 ```console
 $ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
@@ -302,16 +310,25 @@ mariadb:
 $ helm rollback happy-panda 1
 ```
 
-上面这条命令将我们的 `happy-panda` 回滚到了它最初的版本。release 版本其实是一个增量修订（revision）。每当发生了一次安装、升级或回滚操作，revision 的值就会加1。第一次 revision 的值永远是1。我们可以使用 `helm history [RELEASE]` 命令来查看一个特定 release 的修订版本号。
+上面这条命令将我们的 `happy-panda` 回滚到了它最初的版本。release 版本其实是一个增量修订（revision）。
+每当发生了一次安装、升级或回滚操作，revision 的值就会加1。第一次 revision 的值永远是1。我们可以使用
+`helm history [RELEASE]` 命令来查看一个特定 release 的修订版本号。
 
 ## 安装、升级、回滚时的有用选项
 
-你还可以指定一些其他有用的选项来自定义 Helm 在安装、升级、回滚期间的行为。请注意这并不是 cli 参数的完整列表。要查看所有参数的说明，请执行 `helm <command> --help` 命令。
+你还可以指定一些其他有用的选项来自定义 Helm 在安装、升级、回滚期间的行为。请注意这并不是 cli 参数的完整列表。
+要查看所有参数的说明，请执行 `helm <command> --help` 命令。
 
-- `--timeout`：一个 [Go duration](https://golang.org/pkg/time/#ParseDuration) 类型的值，用来表示等待 Kubernetes 命令完成的超时时间，默认值为 `5m0s`。
-- `--wait`：表示必须要等到所有的 Pods 都处于 ready 状态，PVC 都被绑定，Deployments 都至少拥有最小 ready 状态 Pods 个数（`Desired`减去 `maxUnavailable`），并且 Services 都具有 IP 地址（如果是`LoadBalancer`，则为 Ingress），才会标记该 release 为成功。最长等待时间由 `--timeout` 值指定。如果达到超时时间，release 将被标记为 `FAILED`。注意：当 Deployment 的 `replicas` 被设置为1，但其滚动升级策略中的 `maxUnavailable` 没有被设置为0时，`--wait` 将返回就绪，因为已经满足了最小 ready Pod 数。
+- `--timeout`：一个 [Go duration](https://golang.org/pkg/time/#ParseDuration) 类型的值，
+  用来表示等待 Kubernetes 命令完成的超时时间，默认值为 `5m0s`。
+- `--wait`：表示必须要等到所有的 Pods 都处于 ready 状态，PVC 都被绑定，Deployments 都至少拥有最小 ready 状态
+  Pods 个数（`Desired`减去 `maxUnavailable`），并且 Services 都具有 IP 地址（如果是`LoadBalancer`，
+  则为 Ingress），才会标记该 release 为成功。最长等待时间由 `--timeout` 值指定。如果达到超时时间，release 将被标记为
+  `FAILED`。注意：当 Deployment 的 `replicas` 被设置为1，但其滚动升级策略中的 `maxUnavailable`
+  没有被设置为0时，`--wait` 将返回就绪，因为已经满足了最小 ready Pod 数。
 - `--no-hooks`：不运行当前命令的钩子。
-- `--recreate-pods`（仅适用于 `upgrade` 和 `rollback`）：这个参数会导致重建所有的 Pod（deployment 中的 Pod 除外）。（在 Helm 3 中已被废弃）
+- `--recreate-pods`（仅适用于 `upgrade` 和 `rollback`）：这个参数会导致重建所有的
+  Pod（deployment中的Pod 除外）。（在 Helm 3 中已被废弃）
 
 ## 'helm uninstall'：卸载 release
 
@@ -331,7 +348,9 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 
 从上面的输出中，我们可以看到，`happy-panda` 这个 release 已经被卸载。
 
-在上一个 Helm 版本中，当一个 release 被删除，会保留一条删除记录。而在 Helm 3 中，删除也会移除 release 的记录。如果你想保留删除记录，使用 `helm uninstall --keep-history`。使用 `helm list --uninstalled` 只会展示使用了 `--keep-history` 删除的 release。
+在上一个 Helm 版本中，当一个 release 被删除，会保留一条删除记录。而在 Helm 3 中，删除也会移除 release 的记录。
+如果你想保留删除记录，使用 `helm uninstall --keep-history`。使用 `helm list --uninstalled`
+只会展示使用了 `--keep-history` 删除的 release。
 
 `helm list --all` 会展示 Helm 保留的所有 release 记录，包括失败或删除的条目（指定了 `--keep-history`）：
 
@@ -370,7 +389,8 @@ $ helm repo add dev https://example.com/dev-charts
 
 ## 创建你自己的 charts
 
-[chart 开发指南](https://helm.sh/zh/docs/topics/charts) 介绍了如何开发你自己的chart。 但是你也可以通过使用 `helm create` 命令来快速开始：
+[chart 开发指南](https://helm.sh/zh/docs/topics/charts) 介绍了如何开发你自己的chart。 但是你也可以通过使用
+`helm create` 命令来快速开始：
 
 ```console
 $ helm create deis-workflow
@@ -382,7 +402,6 @@ Creating deis-workflow
 在编辑 chart 时，可以通过 `helm lint` 验证格式是否正确。
 
 当准备将 chart 打包分发时，你可以运行 `helm package` 命令：
-
 
 ```console
 $ helm package deis-workflow
@@ -396,16 +415,13 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-打包好的 chart 可以上传到 chart 仓库中。查看 chart 仓库服务器中的文档来了解如何上传。 
-
-注意：`stable` 的仓库在 [Kubernetes Charts GitHub
-repository](https://github.com/helm/charts) 上进行管理。这个项目接受 chart 源码并在审计后为你打包。
+打包好的 chart 可以上传到 chart 仓库中。查看[Helm chart 仓库](https://helm.sh/zh/docs/topics/chart_repository)获取更多信息。
 
 ## 总结
 
-这一章介绍了 `helm` 客户端的基本使用方式，包括搜索，安装，升级，和卸载。也涵盖了一些有用的工具类命令，如`helm status`，`helm get`，和 `helm repo`。
+这一章介绍了 `helm` 客户端的基本使用方式，包括搜索，安装，升级，和卸载。也涵盖了一些有用的工具类命令，如`helm status`，
+`helm get`，和 `helm repo`。
 
 有关这些命令的更多信息，请查看 Helm 的内置帮助命令：`helm help`。
 
 在下一章中，我们来看一下如何开发 charts。
- 

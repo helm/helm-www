@@ -78,7 +78,7 @@ won't want to remove them.
 ## A First Template
 
 The first template we are going to create will be a `ConfigMap`. In Kubernetes,
-a ConfigMap is simply a container for storing configuration data. Other things,
+a ConfigMap is simply an object for storing configuration data. Other things,
 like pods, can access the data in a ConfigMap.
 
 Because ConfigMaps are basic resources, they make a great starting point for us.

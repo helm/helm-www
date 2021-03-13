@@ -275,7 +275,7 @@ metadata:
 
 ## The Common Helm Helper Chart
 
-满目都是标题但是这个[chart](https://github.com/helm/charts/tree/master/incubator/common)是公共chart的初始模式。
+这个[chart](https://github.com/helm/charts/tree/master/incubator/common)是公共chart的初始模式。
 它提供的应用程序反映了Kubernetes chart开发的最佳实践。最棒的是你开发chart时可以立即使用易用的共享代码。
 
 这里有一种快速使用它的方法。更多细节请查看[README](https://github.com/helm/charts/blob/master/incubator/common/README.md)。

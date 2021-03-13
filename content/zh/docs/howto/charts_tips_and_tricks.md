@@ -219,7 +219,7 @@ metadata:
 
 ## 使用很多依赖的复杂Chart
 
-在[官方chart仓库](https://github.com/helm/charts)中的很多chart是创建更先进应用的“组成部分”。但是chart可能被用于创建大规模应用实例。
+在CNCF的[Artifact Hub](https://artifacthub.io/packages/search?kind=0)中的很多chart是创建更先进应用的“组成部分”。但是chart可能被用于创建大规模应用实例。
 在这种场景中，一个总的chart会有很多子chart，每一个是整体功能的一部分。
 
 当前从离散组件组成一个复杂应用的最佳实践是创建一个顶层总体chart构建全局配置，然后使用`charts/`子目录嵌入每个组件。

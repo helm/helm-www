@@ -6,8 +6,8 @@ weight: 6
 
 本节介绍如何创建和使用chart仓库。在高层级中，chart仓库是打包的chart存储和分享的位置。
 
-官方chart仓库由[Kubernetes Charts](https://github.com/helm/charts)维护，我们欢迎加入。不过Helm也很容易创建并运行你自己的chart仓库。
-该指南将介绍如何操作。
+社区的Helm chart仓库位于[Artifact Hub](https://artifacthub.io/packages/search?kind=0)，欢迎加入。
+不过Helm也可以创建并运行你自己的chart仓库。该指南将介绍如何操作。
 
 ## 先决条件
 
@@ -18,7 +18,7 @@ weight: 6
 
 _chart仓库_ 是一个配置了`index.yaml`文件和一些已经打包chart的HTTP服务器。当你准备好分享chart时，最好的方法是将chart上传到chart仓库。
 
-**注意：** 针对Helm 2.0.0，chart仓库没有内部身份验证。GitHub上一个[问题跟踪进度](https://github.com/helm/helm/issues/1038)。
+**注意：** 从Helm 2.2.0开始，客户端支持对仓库进行SSL身份认证。其他身份验证协议可以通过插件提供。
 
 由于chart仓库可以是任何服务于YAML和tar文件并响应GET请求的HTTP服务器，托管你自己的chart仓库时就有很多选择。比如可以使用Google
 Cloud Storage(GCS)， Amazon S3，GitHub页面，甚至创建自己的web服务器。
@@ -30,7 +30,7 @@ chart仓库由chart包和包含了仓库中所有chart索引的特殊文件`inde
 
 比如，`https://example.com/charts`仓库布局可能看起来像这样：
 
-```
+```console
 charts/
   |
   |- index.yaml
@@ -111,9 +111,7 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 恭喜，您现在准备好了一个提供chart的空GCS bucket！
 
 你可以使用Google Cloud Storage命令行工具上传你的chart仓库，或者使用GCS的web页面。
-这是Kubernetes官方托管chart仓库技术，如果你卡住了[看看这个项目](https://github.com/helm/charts)。
-
-**主意：** 公共的GCS bucket可以通过简单的HTTPS访问`https://bucket-name.storage.googleapis.com/`。
+一个公共的GCS bucket可以通过简单的HTTPS地址访问：`https://bucket-name.storage.googleapis.com/`。
 
 ### JFrog Artifactory
 
@@ -126,8 +124,8 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 
 GitHub允许你使用两种方式提供静态web页面：
 
-- 通过`docs/`目录配置项目
-- 通过特定的分支配置项目
+* 通过`docs/`目录配置项目
+* 通过特定的分支配置项目
 
 我们将使用第二种方式，不过第一种方式也很简单。
 
@@ -159,9 +157,9 @@ $ git checkout -b gh-pages
 
 配置一个一般的服务器来提供Helm chart，您只需执行以下操作：
 
-- 将index和chart放置在可提供服务的服务器目录中
-- 确保`index.yaml`文件无需验证即可访问
-- 确保`yaml`文件是正确的内容类型(`text/yaml`或`text/x-yaml`)
+* 将index和chart放置在可提供服务的服务器目录中
+* 确保`index.yaml`文件无需验证即可访问
+* 确保`yaml`文件是正确的内容类型(`text/yaml`或`text/x-yaml`)
 
 比如，如果你想在`$WEBROOT/charts`提供你的chart，要保证在web的root目录有一个`charts/`目录，并将index文件和chart放在这个目录中。
 
@@ -169,9 +167,12 @@ $ git checkout -b gh-pages
 
 ChartMuseum 是一个用Go写的开源的Helm Chart仓库服务器，支持云存储后端，包括[Google Cloud Storage](https://cloud.google.com/storage/)，
 [Amazon S3](https://aws.amazon.com/s3/)，[Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)，
-[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss)，[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/)，
-[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage)，[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html)，
-[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos)，[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)，
+[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss)，
+[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/)，
+[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage)，
+[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html)，
+[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos)，
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)，
 [Minio](https://min.io/)，以及[etcd](https://etcd.io/)。
 
 你也可以使用[ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)服务从本地文件系统托管一个chart仓库。
@@ -205,7 +206,8 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 
 每次你想在仓库中添加一个新的chart时，你必须重新生成index。`helm repo index`命令会完全无痕重建`index.yaml`文件。只包括在本地找到的chart。
 
-不过你可以使用`--merge`参数增量添加新的chart到现有`index.yaml`文件中（使用类似GCS的远程仓库时很有用）。执行`helm repo index --help`了解更多。
+不过你可以使用`--merge`参数增量添加新的chart到现有`index.yaml`文件中（使用类似GCS的远程仓库时很有用）。执行
+`helm repo index --help`了解更多。
 
 确保修订过的`index.yaml`文件和chart都上传了，如果生成了源文件，也要上传。
 
@@ -231,7 +233,8 @@ fantastic-charts    https://fantastic-charts.storage.googleapis.com
 
 **注意：** 如果不存在有效的`index.yaml`就无法添加仓库。
 
-**注意：** 如果你的helm仓库使用了类似于自签名的证书，为了跳过CA认证，可以使用`helm repo add --insecure-skip-tls-verify ...`。
+**注意：** 如果你的helm仓库使用了类似于自签名的证书，为了跳过CA认证，可以使用
+`helm repo add --insecure-skip-tls-verify ...`。
 
 然后，你的用户就可以通过你的chart进行搜索。更新了仓库之后，他们可以使用`helm repo update`命令获取最新的chart信息。
 
