@@ -1871,6 +1871,6 @@ Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has]
 
 ### File Functions
 
-有几个函数能使您能够访问图表中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files.md)。
+有几个函数能使您能够访问chart中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files.md)。
 
 _注意，这里很多函数的文档是来自[Sprig](https://github.com/Masterminds/sprig)。Sprig是一个适用于Go应用的函数模板库。_

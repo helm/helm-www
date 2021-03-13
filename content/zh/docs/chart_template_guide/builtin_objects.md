@@ -41,4 +41,4 @@ weight: 3
   - `Template.BasePath`: 当前chart模板目录的路径 (e.g. `mychart/templates`)
 
 内置的值都是以大写字母开始。 这是符合Go的命名惯例。当你创建自己的名称时，可以按照团队约定自由设置。
-就像 [Kubernetes Charts](https://github.com/helm/charts) 团队，选择使用首字母小写与内置对象区分开，本指南中我们遵循该惯例。
+就像很多你在 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) 中看到的chart，其团队选择使用首字母小写将本地名称与内置对象区分开，本指南中我们遵循该惯例。

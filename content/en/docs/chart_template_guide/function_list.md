@@ -282,7 +282,7 @@ Integer:
 
  Floating-point and complex constituents:
 
-* `%b` decimalless scientific notation with exponent a power of two, e.g.
+* `%b` decimal less scientific notation with exponent a power of two, e.g.
   -123456p-78
 * `%e` scientific notation, e.g. -1.234456e+78
 * `%E` scientific notation, e.g. -1.234456E+78
@@ -814,7 +814,7 @@ an error to the template engine if there is a problem.
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
 Returns a copy of the input string, replacing matches of the Regexp with the
-replacement string replacement The replacement string is substituted directly,
+replacement string replacement. The replacement string is substituted directly,
 without using Expand
 
 ```
@@ -1782,7 +1782,7 @@ kindOf "hello"
 ```
 
 The above would return `string`. For simple tests (like in `if` blocks), the
-`isKind` function will let you verify that a value is a particular kind:
+`kindIs` function will let you verify that a value is a particular kind:
 
 ```
 kindIs "int" 123
