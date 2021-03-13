@@ -654,9 +654,13 @@ chart's values, you will need to specify the source key of the values to be
 imported (`child`) and the destination path in the parent chart's values
 (`parent`).
 
+자식 차트의 values의 `exports`키 에 포함되지 않은 values에 접근하려면, import될 (자식) values의 키와 부모 차트의 values (부모)안의 목적지 경로를 명시해야
+
 The `import-values` in the example below instructs Helm to take any values found
 at `child:` path and copy them to the parent's values at the path specified in
 `parent:`
+
+아래의 예제에 있는 `import-values` 는 `child` 경로에서 발견된 어떤 값이든 취하고, 값들을 `parent:`에 명시된 경로에 부모의 값들로 복사하라고 헬름에게 지시한다. 
 
 ```yaml
 # parent's Chart.yaml file
@@ -674,6 +678,8 @@ dependencies:
 In the above example, values found at `default.data` in the subchart1's values
 will be imported to the `myimports` key in the parent chart's values as detailed
 below:
+
+위의 예제에서, subchart1의 값들 안에 `default.data`에서 발견된 values는 다음과 같이 부모 차트의 values 안의 `myimports` 키로 import 된다.
 
 ```yaml
 # parent's values.yaml file
@@ -695,6 +701,8 @@ default:
 
 The parent chart's resulting values would be:
 
+부모 차트의 values 결과는 다음과 같다.
+
 ```yaml
 # parent's final values
 
@@ -707,19 +715,27 @@ myimports:
 The parent's final values now contains the `myint` and `mybool` fields imported
 from subchart1.
 
+부모의 최종 values는 이제 subchart1에서 import된 `myint`와 `mybool` 필드를 가진다.
+
 ### `charts/` 디렉토리를 통해 수동으로 의존성 관리
 
 If more control over dependencies is desired, these dependencies can be
 expressed explicitly by copying the dependency charts into the `charts/`
 directory.
 
+더 많은 종속성 제어가 필요하다면, 이 종속성들은 dependency 차트를 `charts/` 폴더로 복사함으로써 정확하게 표현될 수 있다.
+
 A dependency can be either a chart archive (`foo-1.2.3.tgz`) or an unpacked
 chart directory. But its name cannot start with `_` or `.`. Such files are
 ignored by the chart loader.
 
+종속성은 차트 아카이브(`foo-1.2.3.tgz`)나 비압축 차트 폴더가 될수 있다. 이름은 `_`나 `.`로 시작될 수 없다. 이런 파일은 차트 로더가 무시한다.
+
 For example, if the WordPress chart depends on the Apache chart, the Apache
 chart (of the correct version) is supplied in the WordPress chart's `charts/`
 directory:
+
+예를 들어서, WordPress 차트가 Apache 차트에 의존한다면, (올바른 버전의) Apache 차트는 WordPress 차트의 `charts/`폴더 안에 저장된다.
 
 ```yaml
 wordpress:
@@ -737,21 +753,31 @@ wordpress:
 The example above shows how the WordPress chart expresses its dependency on
 Apache and MySQL by including those charts inside of its `charts/` directory.
 
+위의 예제는 어떻게 WordPress 차트가 Apache와 MySLQ에 대한 의존성을 표현하는지 `charts/` 폴더에 이 차트들을 포함시킴으로써 보여준다.
+
 **TIP:** _To drop a dependency into your `charts/` directory, use the `helm
 pull` command_
+
+**TIP:** `charts/`폴더 안에 종속성을 버리려면, `helm pull` 명령을 사용하라.
 
 ### 의존성 사용의 운영적 관점
 
 The above sections explain how to specify chart dependencies, but how does this
 affect chart installation using `helm install` and `helm upgrade`?
 
+위 섹션은 차트 종속성을 어떻게 명시하는지 설명하지만, `helm install`과 `helm upgrade`를 사용하는 차트 설치에 어떻게 영향을 미치는가?
+
 Suppose that a chart named "A" creates the following Kubernetes objects
+
+"A"라는 차트가 다음과 같은 쿠버네티스 오브젝트를 생성한다고 가정하자.
 
 - namespace "A-Namespace"
 - statefulset "A-StatefulSet"
 - service "A-Service"
 
 Furthermore, A is dependent on chart B that creates objects
+
+A가 오브젝트를 생성하는 B 차트에 의존성을 가진다고 하자.
 
 - namespace "B-Namespace"
 - replicaset "B-ReplicaSet"
@@ -760,6 +786,8 @@ Furthermore, A is dependent on chart B that creates objects
 After installation/upgrade of chart A a single Helm release is created/modified.
 The release will create/update all of the above Kubernetes objects in the
 following order:
+
+차트 A의 installation/upgrade후에, 단일 헬름 릴리즈가 생성/수정 된다. 릴리즈는 다음 순서로 위의 쿠버네티스 오브젝트를 전부를 생성/업데이트한다.
 
 - A-Namespace
 - B-Namespace
@@ -771,16 +799,24 @@ following order:
 This is because when Helm installs/upgrades charts, the Kubernetes objects from
 the charts and all its dependencies are
 
-- aggregrated into a single set; then
+왜냐하면 헬름이 차트를 설치/업그레이드 할때, 차트와 모든 종속성으로부터 쿠버네티스 오브젝트가
+
+- aggregated into a single set; then
+- 단일 집합으로 통합된다.
 - sorted by type followed by name; and then
+- 이름에 따른 타입으로 정렬된다.
 - created/updated in that order.
 
 Hence a single release is created with all the objects for the chart and its
 dependencies.
 
+이런 이유로 단일 릴리즈는 차트와 종속성에 대한 모든 모브젝트와 함께 생성된다.
+
 The install order of Kubernetes types is given by the enumeration InstallOrder
 in kind_sorter.go (see [the Helm source
 file](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go)).
+
+쿠버네티스 타입의 설치 순서는 kind_sorter.go([the Helm source file](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go))의 열거형 타입 설치 순서에 의해 제공된다.
 
 ## 템플릿과 값
 
@@ -790,19 +826,29 @@ add-on template functions [from the Sprig
 library](https://github.com/Masterminds/sprig) and a few other [specialized
 functions]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}}).
 
+헬름 차트 템플릿은 [spring 라이브러리](https://github.com/Masterminds/sprig)에서 50개 정도의 애드온 템플릿 함수와 몇가지 기타 [특수 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})가 추가된 [Go template language](https://golang.org/pkg/text/template/)로 작성되었다.
+
 All template files are stored in a chart's `templates/` folder. When Helm
 renders the charts, it will pass every file in that directory through the
 template engine.
 
+모든 템플릿 파일은 차트의 `templates` 폴더 안에 저장된다. 헬름이 차트를 렌더링할때, 템플릿 엔진을 통해 이 폴더 안에 모든 파일을 전달한다.
+
 Values for the templates are supplied two ways:
+
+템플릿에 대한 values는 2가지 방법으로 제공된다.
 
 - Chart developers may supply a file called `values.yaml` inside of a chart.
   This file can contain default values.
+- 차트 개발자는 차트의 안에 `values.yaml`이라 부르는 파일을 제공할 수 있다. 이 파일은 기본 값을 포함할 수 있다.
 - Chart users may supply a YAML file that contains values. This can be provided
   on the command line with `helm install`.
+- 차트 사용자는 값을 포함한 YAML파일을 제공할 수 있다. `helm install` 커맨드 라인으로 제공받을 수 있다.
 
 When a user supplies custom values, these values will override the values in the
 chart's `values.yaml` file.
+
+사용자가 커스텀 값을 제공할 때, 차트의 `values.yaml` 파일에 있는 값을 덮어쓴다.
 
 ### 템플릿 파일
 
@@ -810,6 +856,8 @@ Template files follow the standard conventions for writing Go templates (see
 [the text/template Go package
 documentation](https://golang.org/pkg/text/template/) for details). An example
 template file might look something like this:
+
+템플릿 파일은 Go 템플릿 작성에 대한 표준 규약을 따른다([텍스트/템플릿 Go 패키지 문서](https://golang.org/pkg/text/template/)). 예제 템플릿 파일은 다음과 같을 수 있다.
 
 ```yaml
 apiVersion: v1
@@ -845,16 +893,26 @@ The above example, based loosely on
 for a Kubernetes replication controller. It can use the following four template
 values (usually defined in a `values.yaml` file):
 
+([https://github.com/deis/charts](https://github.com/deis/charts)에 느슨하게 결합된) 위의 예는  쿠버네티스 리플리케이션 컨트롤러에 대한 템플릿이다. 다음 4가지 템플릿 값을 사용할 수 있다.  (보통  `values.yaml` 에 정의된다. )
+
 - `imageRegistry`: The source registry for the Docker image.
+- `imageRegistry`: 도커 이미지의 소스 레지스트리
 - `dockerTag`: The tag for the docker image.
+- `dockerTag`: 도커 이미지의 태그
 - `pullPolicy`: The Kubernetes pull policy.
+- `pullPolicy`: 쿠버네티스의 pull 정책
 - `storage`: The storage backend, whose default is set to `"minio"`
+- `storage`: 기본값이 `"minio"`로 설정되는 저장소 백엔드
 
 All of these values are defined by the template author. Helm does not require or
 dictate parameters.
 
+이 모든 값은 템플릿 작성자에 의해 정의된다. 헬름은 파라미터를 요구하거나 지시하지 않는다.
+
 To see many working charts, check out the [Kubernetes Charts
 project](https://github.com/helm/charts)
+
+많은 작동중인 차트를 보려면, [쿠버네티스 차트 프로젝트](https://github.com/helm/charts)를 참고하라.
 
 ### 미리 정의된 값
 
@@ -862,37 +920,53 @@ Values that are supplied via a `values.yaml` file (or via the `--set` flag) are
 accessible from the `.Values` object in a template. But there are other
 pre-defined pieces of data you can access in your templates.
 
+`values.yaml`파일 (혹은 `--set`플래그)로 제공되는 값은 템플릿 안에서 `.Values` 객체로 접근 가능하다. 그러나 템플릿 안에서 접근 가능한 다른 미리 정의된 데이터의 조각이 있다.
+
 The following values are pre-defined, are available to every template, and
 cannot be overridden. As with all values, the names are _case sensitive_.
 
+다음 값은 미리 정의되었고, 모든 템플릿에서 접근 가능하며, 덮어쓸수 없다. 모든 값과 마찬가지로, 이름은 대소문자를 구별한다.
+
 - `Release.Name`: The name of the release (not the chart)
+- `Release.Name`: 릴리즈의 이름(차트의 이름 아님)
 - `Release.Namespace`: The namespace the chart was released to.
+- `Release.Namespace`: 차트가 릴리즈된 네임스페이스
 - `Release.Service`: The service that conducted the release.
+- `Release.Service`: 릴리즈를 수행하는 서비스
 - `Release.IsUpgrade`: This is set to true if the current operation is an
   upgrade or rollback.
+- `Release.IsUpgrade`: 현재 업그레이드나 롤백중이면 true로 설정된다.
 - `Release.IsInstall`: This is set to true if the current operation is an
   install.
+- `Release.IsInstall`: 현재 설치중이면 true로 설정된다.
 - `Chart`: The contents of the `Chart.yaml`. Thus, the chart version is
   obtainable as `Chart.Version` and the maintainers are in `Chart.Maintainers`.
+- `Chart`: `Chart.yaml`의 내용. 차트의 버전은 `Chart.Version`으로, 메인테이너는 `Chart.Maintainers`로 얻을 수 있다.
 - `Files`: A map-like object containing all non-special files in the chart. This
   will not give you access to templates, but will give you access to additional
   files that are present (unless they are excluded using `.helmignore`). Files
   can be accessed using `{{ index .Files "file.name" }}` or using the
   `{{.Files.Get name }}` function. You can also access the contents of the file
   as `[]byte` using `{{ .Files.GetBytes }}`
+- `Files`: 차트에 모든 특별하지 않은 파일을 포함하는 맵과 같은 오브젝트이다. 템플릿에 접근을 제공하지는 않지만, (`.helmignore`로 배제되지 않았다면) 존재하는 추가 파일에 대한 엑세스를 제공한다. 파일은 `{{ index .Files "file.name" }}`나 `{{.Files.Get name }}`함수를 사용해서 접근할 수 있다.
 - `Capabilities`: A map-like object that contains information about the versions
   of Kubernetes (`{{ .Capabilities.KubeVersion }}` and the supported Kubernetes
   API versions (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
+- `Capabilities`: 쿠버네티스의 버전(`{{ .Capabilities.KubeVersion }}`)과 지원되는 쿠버네티스 API 버전 (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)에 대한 정보를 포함하는 맵과 같은 오브젝트
 
 **NOTE:** Any unknown `Chart.yaml` fields will be dropped. They will not be
 accessible inside of the `Chart` object. Thus, `Chart.yaml` cannot be used to
 pass arbitrarily structured data into the template. The values file can be used
 for that, though.
 
+**주의:** 익명의 `Chart.yaml` 필드는 무시된다. 이 필드는 `Chart` 오브젝트의 안에서 접근이 불가능하다. 따라서 `Chart.yaml`은 템플릿으로 구조화된 데이터를 제멋대로 전달하기 위해 사용될 수 없다.
+
 ### 값 파일
 
 Considering the template in the previous section, a `values.yaml` file that
 supplies the necessary values would look like this:
+
+이전 섹션에서의 템플릿을 고려할때, 필수적인 값을 제공하는 `values.yaml`은 다음과 같다.
 
 ```yaml
 imageRegistry: "quay.io/deis"
@@ -905,6 +979,8 @@ A values file is formatted in YAML. A chart may include a default `values.yaml`
 file. The Helm install command allows a user to override values by supplying
 additional YAML values:
 
+values 파일은 YAML 포맷이다. 차트는 기본 `values.yaml` 파일을 포함한다. 헬름 설치 명령은 추가 YAML 값을 제공함으로써 사용자가 값을 덮어쓸 수 있게한다.
+
 ```console
 $ helm install --generate-name --values=myvals.yaml wordpress
 ```
@@ -912,12 +988,16 @@ $ helm install --generate-name --values=myvals.yaml wordpress
 When values are passed in this way, they will be merged into the default values
 file. For example, consider a `myvals.yaml` file that looks like this:
 
+이 방법으로 값이 전달될때, 디폴트 values 파일로 이 값들은 병합된다. 예를 들어, `myvals.yaml` 파일은 다음과 같다고 하자.
+
 ```yaml
 storage: "gcs"
 ```
 
 When this is merged with the `values.yaml` in the chart, the resulting generated
 content will be:
+
+차트의 `values.yaml`로 병합될때, 생성된 결과는 다음과 같다.
 
 ```yaml
 imageRegistry: "quay.io/deis"
@@ -928,18 +1008,29 @@ storage: "gcs"
 
 Note that only the last field was overridden.
 
+오직 마지막 필드가 덮여쓰여짐을 주의하라.
+
 **NOTE:** The default values file included inside of a chart _must_ be named
 `values.yaml`. But files specified on the command line can be named anything.
 
+**참고:** 차트의 안에 포함된 디폴트 값 파일은 `values.yaml`의 이름을 가져야한다. 반면에, 커맨드 라인에 명시하는 파일은 아무 이름이나 가질 수 있다.
+
 **NOTE:** If the `--set` flag is used on `helm install` or `helm upgrade`, those
 values are simply converted to YAML on the client side.
+
+**참고:** `--set`플래그가  `helm install`이나 `helm upgrade`에 사용된다면, 이 값들은 클라이언트에서 YAML로 간단하게 변환된다.
 
 **NOTE:** If any required entries in the values file exist, they can be declared
 as required in the chart template by using the ['required' function]({{< ref
 "/docs/howto/charts_tips_and_tricks.md" >}})
 
+**참고:** values 파일에 필수적인 엔트리가 있다면, 차트 템플릿에서 ['required' 함수]({{< ref
+"/docs/howto/charts_tips_and_tricks.md" >}})를 사용함으로써 필수로 정의될 수 있다.
+
 Any of these values are then accessible inside of templates using the `.Values`
 object:
+
+값중 어떤 것이라도 템플릿의 안에서 `.Values`오브젝트를 사용하여 접근이 가능하다.
 
 ```yaml
 apiVersion: v1
@@ -979,6 +1070,8 @@ of its dependencies. For example, the demonstration WordPress chart above has
 both `mysql` and `apache` as dependencies. The values file could supply values
 to all of these components:
 
+values 파일은 최상위 차트에 대한 값과 차트의 `charts/`폴더에 포함된 차트중 어떤 것이라도 정의할 수 있다. 또는, 다르게 표현하면, values 파일은 차트와 그것의 종속성 모두에게 값을 제공할 수 있다. 예를 들어 위의 데모 WordPress 차트는 `mysql`과 `apaches` 모두를 종속성으로 가진다. values 파일은 이 요소들의 모두를 값으로 제공할 수 있다.
+
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
 
@@ -996,15 +1089,23 @@ But lower level charts cannot access things in parent charts, so MySQL will not
 be able to access the `title` property. Nor, for that matter, can it access
 `apache.port`.
 
+더 높은 레벨의 차트는 더 아래 레벨에서 정의된 변수에 대해 엑세스할 수 있다. 그러므로 WordPress 차트는 `.Values.mysql.password`로 MySQL 패스워드에 접근할 수 있다. 더 낮은 레벨의 차트는 부모차트에 엑세스가 불가능하므로, MySQL은 `title` 속성에 접근할 수 없다. 이 문제로 `apache.port`에도 접근할 수 없다.
+
 Values are namespaced, but namespaces are pruned. So for the WordPress chart, it
 can access the MySQL password field as `.Values.mysql.password`. But for the
 MySQL chart, the scope of the values has been reduced and the namespace prefix
 removed, so it will see the password field simply as `.Values.password`.
 
+값은 네임스페이스가 지정되지만, 네임스페이스는 정리된다. WordPress 차트에서는 MySQL 패스워드 필드를 `.Values.mysql.password`로 접근 가능하다. 그러나 MySQL 차트에서는 값의 범위가 축소되고 네임스페이스 접두사가 삭제되므로, `.Values.password`로 간단히 패스워드 필드를 볼수 있다.
+
+
+
 #### 전역 값
 
 As of 2.0.0-Alpha.2, Helm supports special "global" value. Consider this
 modified version of the previous example:
+
+2.0.0-Alpha.2 현재로, 헬름은 특별한 "전역" 값을 제공한다. 이전 예제의 수정된 버전을 보자.
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -1023,9 +1124,13 @@ apache:
 The above adds a `global` section with the value `app: MyWordPress`. This value
 is available to _all_ charts as `.Values.global.app`.
 
+위에서 값 `app: MyWordPress`도 함께 `global` 섹션에 추가했다. 이 값은 `.Values.global.app`으로 모든 차트에서 이용 가능하다.
+
 For example, the `mysql` templates may access `app` as `{{
 .Values.global.app}}`, and so can the `apache` chart. Effectively, the values
 file above is regenerated like this:
+
+예를 들어, `mysql` 템플릿은 `app`을 `{{.Values.global.app}}`로 접근할 수 있고, `apache` 에서도 마찬가지 이다. 사실상, 위의 values 파일은 다음과 같이 다시 만들어진다.
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -1048,12 +1153,18 @@ apache:
 This provides a way of sharing one top-level variable with all subcharts, which
 is useful for things like setting `metadata` properties like labels.
 
+전역값은 하나의 최상위 레벨 변수를 모든 서브 차트와 공유하는 방법을 제공하고, label 같은 `metadata` 속성을 셋팅하는 것 같은 일에서 유용하다.
+
 If a subchart declares a global variable, that global will be passed _downward_
 (to the subchart's subcharts), but not _upward_ to the parent chart. There is no
 way for a subchart to influence the values of the parent chart.
 
+서브 차트가 전역 변수를 선언하면, (서브차트의 서브차트에게) _하향_으로 전달되지만, 부모의 차트로 _상향_되지는 않는다. 서브차트가 부모 차트의 값에 영향을 주는 방법은 없다.
+
 Also, global variables of parent charts take precedence over the global
 variables from subcharts.
+
+또한 부모 차트의 전역 변수는 서브 차트의 전역 변수보다 우선한다.
 
 ### 스키마 파일
 
@@ -1061,6 +1172,8 @@ Sometimes, a chart maintainer might want to define a structure on their values.
 This can be done by defining a schema in the `values.schema.json` file. A schema
 is represented as a [JSON Schema](https://json-schema.org/). It might look
 something like this:
+
+가끔, 차트 메인테이너는 값에 구조를 정의하고 싶을 수 있다. `values.schema.json` 파일에 스키마를 정의함으로써 가능하다. 스키마는 [JSON 스키마](https://json-schema.org/)로 표현된다. 이 스키마는 다음과 같이 보인다.
 
 ```json
 {
@@ -1103,6 +1216,8 @@ something like this:
 This schema will be applied to the values to validate it. Validation occurs when
 any of the following commands are invoked:
 
+이 스키마는 유효성 검사를 위해 값에 적용된다. 유효성 검사는 다음 명령중 하나가 일어날때 발생한다.
+
 - `helm install`
 - `helm upgrade`
 - `helm lint`
@@ -1110,6 +1225,8 @@ any of the following commands are invoked:
 
 An example of a `values.yaml` file that meets the requirements of this schema
 might look something like this:
+
+이 스키마의 필요조건을 만족한 `values.yaml`파일의 예는 다름과 같다.
 
 ```yaml
 name: frontend
@@ -1121,6 +1238,8 @@ Note that the schema is applied to the final `.Values` object, and not just to
 the `values.yaml` file. This means that the following `yaml` file is valid,
 given that the chart is installed with the appropriate `--set` option shown
 below.
+
+스키마가 최종 `.Values` 오브젝트에 적용되고, `values.yaml` 파일에만 적용되지 않는 다는 것을 주의하라. 즉, 다음과 같이 적절한 `--set` 옵션과 함께 차트가 설치되면, 다음 `yaml` 파일은 유효하다.
 
 ```yaml
 name: frontend
@@ -1137,31 +1256,43 @@ parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
 
+게다가, 최종 `.Values` 오브젝트는 _모든_ 서브차트 스키마에서 체크된다. 즉, 부모차트에 의해 서브차트의 제한은 우회될수 없다. 이 또한 반대 방향으로 작동한다. 서브차트가 서브차트의 `values.yaml` 파일에서 만족하지 못한 필요조건을 가진다면, 부모 차트는 이 조건을 만족 시켜야만한다.
+
 ### 참고 자료
 
 When it comes to writing templates, values, and schema files, there are several
 standard references that will help you out.
+
+템플릿, values, 스키마 파일등을 작성하려면 다음 표준 참고자료가 도움이 될 것이다.
 
 - [Go templates](https://godoc.org/text/template)
 - [Extra template functions](https://godoc.org/github.com/Masterminds/sprig)
 - [The YAML format](https://yaml.org/spec/)
 - [JSON Schema](https://json-schema.org/)
 
-## 사용ㅈ아 지정 리소스정의 (CRDs)
+## 사용자 지정 리소스정의 (CRDs)
 
 Kubernetes provides a mechanism for declaring new types of Kubernetes objects.
 Using CustomResourceDefinitions (CRDs), Kubernetes developers can declare custom
 resource types.
 
+쿠버네티스는 쿠버네티스 오브젝트의 새로운 타입을 정의하는 것에 대한 메커니즘을 제공한다. 사용자 지정 리소스 정의(CRDs, Custom Resource Definitions)를 사용해서, 쿠버네티스 개발자는 커스텀 리소스 타입을 정의할 수 있다.
+
 In Helm 3, CRDs are treated as a special kind of object. They are installed
 before the rest of the chart, and are subject to some limitations.
+
+헬름 3에서, CRDs는 특별한 객체 종류로 다뤄진다. CRDs는 차트의 나머지보다 먼저 설치되고, 몇몇 제한이 적용된다.
 
 CRD YAML files should be placed in the `crds/` directory inside of a chart.
 Multiple CRDs (separated by YAML start and end markers) may be placed in the
 same file. Helm will attempt to load _all_ of the files in the CRD directory
 into Kubernetes.
 
+CRD YAML 파일은 차트안의 `crds/`폴더에 위치해야한다. (YAML 시작과 끝 마커로 분리된) 다수의 CRDs는 같은 파일에 위치할수 있다. 헬름은 CRD 폴더의 _모든_ 파일을 쿠버네티스로 로드하려고 시도한다.
+
 CRD files _cannot be templated_. They must be plain YAML documents.
+
+CRD 파일은 템플릿화 될수 없다. 순수 YAML 문서여야 한다.
 
 When Helm installs a new chart, it will upload the CRDs, pause until the CRDs
 are made available by the API server, and then start the template engine, render
@@ -1170,8 +1301,12 @@ CRD information is available in the `.Capabilities` object in Helm templates,
 and Helm templates may create new instances of objects that were declared in
 CRDs.
 
+헬름이 새로운 차트를 설치할때, CRDs를 업로드 하고, API 서버에 의해 이용가능해지도록 CRD가 만들때까지 정지되며, 템플릿 엔진이 시작하고, 나머지 차트를 렌더링 하고, 쿠버네티스로 업로드한다. 순서때문에, CRD 정보는 헬름 템플릿의 `Capabilities` 오브젝트에서 이용 가능하고, 헬름 템플릿은 CRDs에서 정의된 오브젝트의 새로운 인스턴스를 만들 수 있다.
+
 For example, if your chart had a CRD for `CronTab` in the `crds/` directory, you
 may create instances of the `CronTab` kind in the `templates/` directory:
+
+예를 들어, 차트가 `crds/`폴더에 `CronTab`에 대한 CRD를 가진다면, `templates/` 폴덩 안에 `CronTab` 종류의 인스턴스를 생성할 수 있다.
 
 ```text
 crontabs/
@@ -1183,6 +1318,8 @@ crontabs/
 ```
 
 The `crontab.yaml` file must contain the CRD with no template directives:
+
+`crontab.yaml` 파일은 반드시 템플릿 명령 없이 CRD를 포함해야한다.
 
 ```yaml
 kind: CustomResourceDefinition
@@ -1204,6 +1341,8 @@ spec:
 Then the template `mycrontab.yaml` may create a new `CronTab` (using templates
 as usual):
 
+그러면 템플릿 `mycrontab.yaml`은 (보통 템플릿을 사용하여) 새로운 `CronTab` 을 생성할 수 있다.
+
 ```yaml
 apiVersion: stable.example.com
 kind: CronTab
@@ -1217,29 +1356,42 @@ Helm will make sure that the `CronTab` kind has been installed and is available
 from the Kubernetes API server before it proceeds installing the things in
 `templates/`.
 
+헬름은 `templates/` 안에 것들을 설치하기 전에 `CronTab` kind가 설치되어 있고 쿠버네티스 API 서버에서 이용 가능한지 확인한다.
+
 ### CRD 에서의 제약사항
 
 Unlike most objects in Kubernetes, CRDs are installed globally. For that reason,
 Helm takes a very cautious approach in managing CRDs. CRDs are subject to the
 following limitations:
 
+대부분의 쿠버네티스에서의 오브젝트와 다르게, CRDs는 전역으로 설치된다. 이 이유로, 헬름은 CRDs를 관리하는 것에 매우 조심스럽게 접근한다. CRDs는 다음 제약이 적용된다.
+
 - CRDs are never reinstalled. If Helm determines that the CRDs in the `crds/`
   directory are already present (regardless of version), Helm will not attempt
   to install or upgrade.
+- CRDs는 절대 재설치 불가능하다. 헬름이 (버전에 상관 없이) `crds/`폴더에 CRDs가 존재한다는 것을 알아낸다면, 헬름은 설치나 업그레이드 시도를 하지 않는다.
 - CRDs are never installed on upgrade or rollback. Helm will only create CRDs on
   installation operations.
+- CRDs는 절대 업그레이드나 롤백이 불가능하다. 헬름은 오직 설치 작업시에만 CRDs를 생성한다.
 - CRDs are never deleted. Deleting a CRD automatically deletes all of the CRD's
   contents across all namespaces in the cluster. Consequently, Helm will not
   delete CRDs.
+- CRDs는 절대 삭제될수 없다. CRD를 자동으로 지우는 것은 모든 클러스터 안의 네임스페이스에 영향을 주는 CRD's 내용의 모든것을 삭제한다. 따라서, 헬름은 CRDs를 삭제하지 않는다.
 
 Operators who want to upgrade or delete CRDs are encouraged to do this manually
 and with great care.
+
+CRDs를 업그레이드나 삭제하고 싶으면 몹시 조심하여 수동으로 수행하라.
 
 ## 헬름을 사용하여 차트 관리하기
 
 The `helm` tool has several commands for working with charts.
 
+`helm` 도구에는 차트 작업을 위한 몇몇 명령이 있다.
+
 It can create a new chart for you:
+
+다음은 새로운 차트를 생성한다.
 
 ```console
 $ helm create mychart
@@ -1249,6 +1401,8 @@ Created mychart/
 Once you have edited a chart, `helm` can package it into a chart archive for
 you:
 
+일단 차트를 수정하면, `helm`은 차트아카이브로 패키징할 수 있다.
+
 ```console
 $ helm package mychart
 Archived mychart-0.1.-.tgz
@@ -1257,47 +1411,66 @@ Archived mychart-0.1.-.tgz
 You can also use `helm` to help you find issues with your chart's formatting or
 information:
 
+차트의 포맷이나 정보 이슈를 찾는 것에 `helm`을 사용할 수 있다.
+
 ```console
 $ helm lint mychart
 No issues found
 ```
 
-## 차트 레포지토리
+## 차트 저장소
 
 A _chart repository_ is an HTTP server that houses one or more packaged charts.
 While `helm` can be used to manage local chart directories, when it comes to
 sharing charts, the preferred mechanism is a chart repository.
+
+차트 저장소는 한 개 이상의 패키징된 차트를 저장할 공간을 제공하는 HTTP 서버이다. `helm`은 로컬 차트 폴더를 관리하는데 사용되는 반면, 차트를 공유하려면 우선되는 메카니즘은 차트 저장소이다.
 
 Any HTTP server that can serve YAML files and tar files and can answer GET
 requests can be used as a repository server. The Helm team has tested some
 servers, including Google Cloud Storage with website mode enabled, and S3 with
 website mode enabled.
 
+YAML 파일과 tar 파일을 제공하고 GET 요청에 응답할 수 있는 어떤 HTTP서버든 저장소 서버로 사용될 수 있다. 헬름 팀은 웹 사이트 모드 활성화로 구글 클라우드 스토리지(Google Cloud Storage) 및 S3를 포함해서 몇몇 서버를 테스트했다. 
+
 A repository is characterized primarily by the presence of a special file called
 `index.yaml` that has a list of all of the packages supplied by the repository,
 together with metadata that allows retrieving and verifying those packages.
+
+주로 저장소에 의해 제공되는 패키지의 모든 리스트를 가진 특별한 `index.yaml` 파일의 존재와 검색 및 패키지 검증을 허용하는 메타데이터로 저장소를 특정한다.
 
 On the client side, repositories are managed with the `helm repo` commands.
 However, Helm does not provide tools for uploading charts to remote repository
 servers. This is because doing so would add substantial requirements to an
 implementing server, and thus raise the barrier for setting up a repository.
 
+클라이언트 측면에서, 저장소는 `helm repo` 명령으로 관리된다. 그러나, 헬름은 원격 저장소 서버에 차트를 업로드하는 것에 대한 도구를 제공하지 않는다. 그렇게 하는 것이 서버를 구현하기 위해 상당한 요구사항을 추가하고, 저장소를 셋팅하는 것에 대한 장벽을 만들어내기 때문이다.
+
 ## 차트 사용 팩
 
 The `helm create` command takes an optional `--starter` option that lets you
 specify a "starter chart".
+
+`helm create` 명령은 "starter chart" 임을 명시할수 있게 하는 선택적 `--starter`옵션을 취한다.
 
 Starters are just regular charts, but are located in
 `$XDG_DATA_HOME/helm/starters`. As a chart developer, you may author charts that
 are specifically designed to be used as starters. Such charts should be designed
 with the following considerations in mind:
 
+스타터는 그냥 일반적인 차트지만, `$XDG_DATA_HOME/helm/starters`에 위치한다. 차트 개발자는 스타터로 사용하도록 특별히 디자인된 차트를 작성할 수 있다. 이런 차트는 다음 고려사항을 생각하고 디자인 되어야 한다.
+
 - The `Chart.yaml` will be overwritten by the generator.
+- `Chart.yaml`은 제너레이터에 의해 덮어쓰여진다.
 - Users will expect to modify such a chart's contents, so documentation should
   indicate how users can do so.
+- 사용자는 이 차트의 내용을 수정하기 원하므로, 문서는 어떻게 사용자가 그럴 수 있는지 알려줘야한다.
 - All occurrences of `<CHARTNAME>` will be replaced with the specified chart
   name so that starter charts can be used as templates.
+- 모든 `<CHARTNAME>`의 존재는 스타터 차트가 템플릿으로 사용되기 위해 특정 차트 이름으로 수정된다.
 
 Currently the only way to add a chart to `$XDG_DATA_HOME/helm/starters` is to
 manually copy it there. In your chart's documentation, you may want to explain
 that process.
+
+현재 `$XDG_DATA_HOME/helm/starters`에 차트를 추가하기 위한 유일한 방법은 수동으로 복사해서 넣는 것이다. 차트의 문서에서, 그 과정을 설명할 수 있다.
