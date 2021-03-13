@@ -697,7 +697,7 @@ cannot be overridden. As with all values, the names are _case sensitive_.
   `{{.Files.Get name }}` function. You can also access the contents of the file
   as `[]byte` using `{{ .Files.GetBytes }}`
 - `Capabilities`: A map-like object that contains information about the versions
-  of Kubernetes (`{{ .Capabilities.KubeVersion }}` and the supported Kubernetes
+  of Kubernetes (`{{ .Capabilities.KubeVersion }}`) and the supported Kubernetes
   API versions (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
 
 **NOTE:** Any unknown `Chart.yaml` fields will be dropped. They will not be
