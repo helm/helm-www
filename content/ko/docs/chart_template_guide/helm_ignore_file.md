@@ -26,4 +26,4 @@ temp?
 ```
 
 이 문서를 개선하기 위해 **당신의 도움을 필요합니다.**
-정보를 추가, 수정, 삭제하려면, [이슈를 제기](https://github.com/helm/helm/issues)하거나 풀 리퀘스트를 보내주세요.
+정보를 추가, 수정, 삭제하려면, [이슈를 제기](https://github.com/helm/helm-www/issues)하거나 풀 리퀘스트를 보내주세요.

@@ -56,5 +56,5 @@ Some notable differences from .gitignore:
 
 
 **We'd love your help** making this document better. To add, correct, or remove
-information, [file an issue](https://github.com/helm/helm/issues) or send us a
+information, [file an issue](https://github.com/helm/helm-www/issues) or send us a
 pull request.
