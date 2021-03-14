@@ -40,4 +40,4 @@ Slack](https://kubernetes.slack.com) Helm channels:
 
 Finally, if you find errors or omissions in this document, want to suggest some
 new content, or would like to contribute, visit [The Helm
-Project](https://github.com/helm/helm).
+Project](https://github.com/helm/helm-www).

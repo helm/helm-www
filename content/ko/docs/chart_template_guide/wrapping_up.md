@@ -26,4 +26,4 @@ Sometimes it's easier to ask a few questions and get answers from experienced de
 - [#charts](https://kubernetes.slack.com/messages/charts)
 
 마지막으로, 이 문서에서 오류나 누락을 찾았거나,
-새로운 컨텐츠를 제안하거나 기여하고자 한다면, [헬름 프로젝트](https://github.com/helm/helm)를 방문하자.
+새로운 컨텐츠를 제안하거나 기여하고자 한다면, [헬름 프로젝트](https://github.com/helm/helm-www)를 방문하자.

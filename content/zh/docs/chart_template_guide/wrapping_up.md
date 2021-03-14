@@ -26,4 +26,4 @@ Slack](https://kubernetes.slack.com)的Helm频道：
 - [#helm-dev](https://kubernetes.slack.com/messages/helm-dev)
 - [#charts](https://kubernetes.slack.com/messages/charts)
 
-最后，如果你找到了文档中的错误或疏漏，想推荐一些新内容，或者想做一些贡献，请访问[Helm 项目](https://github.com/helm/helm)。
+最后，如果你找到了文档中的错误或疏漏，想推荐一些新内容，或者想做一些贡献，请访问[Helm 项目](https://github.com/helm/helm-www)。
