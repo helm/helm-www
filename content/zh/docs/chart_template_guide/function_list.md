@@ -1635,7 +1635,7 @@ functions](#type-functions) 提供了一组函数。[deepEqual](#deepequal) 也�
 kindOf "hello"
 ```
 
-上述语句返回 `string`。对于简单测试(比如在`if`块中)，`isKind`函数可以验证值是否为特定类型：
+上述语句返回 `string`。对于简单测试(比如在`if`块中)，`Kindis`函数可以验证值是否为特定类型：
 
 ```yaml
 kindIs "int" 123

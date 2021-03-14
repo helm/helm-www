@@ -53,7 +53,7 @@ sources:
 dependencies: # chart 必要条件列表 （可选）
   - name: chart名称 (nginx)
     version: chart版本 ("1.2.3")
-    repository: 仓库URL ("https://example.com/charts") 或别名 ("@repo-name")
+    repository: （可选）仓库URL ("https://example.com/charts") 或别名 ("@repo-name")
     condition: （可选） 解析为布尔值的yaml路径，用于启用/禁用chart (e.g. subchart1.enabled )
     tags: # （可选）
       - 用于一次启用/禁用 一组chart的tag
