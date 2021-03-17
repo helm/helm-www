@@ -79,9 +79,7 @@ new features, please write accompanying documentation and submit it to the
 ### Git Conventions
 
 We use Git for our version control system. The `master` branch is the home of
-the current development candidate. Releases are tagged. If you are working on
-patches for Helm v2, the branch `dev-v2` is the base branch from which Helm 2
-releases are cut.
+the current development candidate. Releases are tagged.
 
 We accept changes to the code via GitHub Pull Requests (PRs). One workflow for
 doing this is as follows:
