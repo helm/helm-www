@@ -24,7 +24,7 @@ weight: 11
 $ cd mychart/charts
 $ helm create mysubchart
 Creating mysubchart
-$ rm -rf mysubchart/templates/*.*
+$ rm -rf mysubchart/templates/*
 ```
 
 注意，和以前一样，我们删除了所有的基本模板，然后从头开始，在这个指南中，我们聚焦于模板如何工作，而不是管理依赖。

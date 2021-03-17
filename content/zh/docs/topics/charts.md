@@ -573,7 +573,7 @@ Values通过模板中`.Values`对象可访问的`values.yaml`文件（或者通�
   但是可以访问现有的其他文件（除非被`.helmignore`排除在外）。
   使用`{{ index .Files "file.name" }}`可以访问文件或者使用`{{.Files.Get name }}`功能。
   您也可以使用`{{ .Files.GetBytes }}`作为`[]byte`方位文件内容。
-- `Capabilities`: 包含了Kubernetes版本信息的类图对象。(`{{ .Capabilities.KubeVersion }}`
+- `Capabilities`: 包含了Kubernetes版本信息的类图对象。(`{{ .Capabilities.KubeVersion }}`)
   和支持的Kubernetes API 版本(`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
 
 **注意：** 任何未知的`Chart.yaml`字段会被抛弃。在`Chart`对象中无法访问。因此，
