@@ -155,34 +155,54 @@ nginx-1.2.3.tgz
 
 ### `kubeVersion` 필드
 
-선택 필드인 `kubeVersion`은 지원되는 쿠버네티스 버전에 대한 semver 제약 조건을 정의할 수 있다.
+선택 필드인 `kubeVersion`은 지원되는 쿠버네티스 버전에 대한
 
-헬름은 차트를 설치할 때 버전 제약을 판단하고, 클러스터가 지원되지 않는 쿠버네티스 버전을 구동하면 실패한다.
+semver 제약 조건을 정의할 수 있다. 헬름은 차트를 설치할 때 버전 제약을 판단하고,
+
+클러스터가 지원되지 않는 쿠버네티스 버전을 구동하면 실패한다.
 
 버전 제약은 공백으로 분리된 AND 비교로  다음과 같이 구성된다.
 
 ```
 >= 1.13.0 < 1.15.0
 ```
-다음 예제와 같이 표현 각각은 OR `||`연산과 결합될 수 있다.
+다음 예제와 같이 표현 각각은 OR `||`연산과
+
+결합될 수 있다.
 
 ```
 >= 1.13.0 < 1.14.0 || >= 1.14.1 < 1.15.0
 ```
-이 예제에서 버전 `1.14.0`은 제외되어, 특정 버전에 버그가 차트를 제대로 실행하지 못하게 하는 것으로 이해할 수 있다. 
+이 예제에서 버전 `1.14.0`은 제외되어, 특정 버전에 버그가
 
-버전 제약에 사용하는 `=` `!=` `>` `<` `>=` `<=` 연산 외에도, 다음 약칭 표기법이 지원된다.
+차트를 제대로 실행하지 못하게 하는 것으로 이해할 수 있다. 
+
+버전 제약에 사용하는 `=` `!=` `>` `<` `>=` `<=` 연산 외에도,
+
+다음 약칭 표기법이 지원된다.
 
  * 닫힌 간격에 대한 하이픈 범위,  `1.1 - 2.3.4` 는 `>=1.1 <= 2.3.4` 와 동일하다.
  * 와일드카드  `x`, `X` , `*`, 예를 들어 `1.2.x` 는 `>= 1.2.0 <1.3.0`와 동일하다. 
  * 물결 범위 (패치 버전 변화는 허용),  `~1.2.3`는  `>= 1.2.3 < 1.3.0`와 동일하다.
  * 탈자 범위 (마이너 버전 변화는 허용),  `^1.2.3` 는`>= 1.2.3 < 2.0.0`와 동일하다.
 
-지원되는 자세한 server 제약의 표현을 보려면 [Masterminds/semver](https://github.com/Masterminds/semver)을 보라.
+지원되는 자세한 server 제약의 표현을 보려면
+
+[Masterminds/semver](https://github.com/Masterminds/semver)을 보라.
 
 ### 미사용 예정 차트
 
-차트 저장소에서 차트를 관리할때, 가끔 차트를 deprecate하는 것이 필요하다. `Chart.yaml`에 있는 선택 필드인 `deprecated`는 차트가 미사용 예정임을 표시하는데 사용될 수 있다. 저장소에 있는 차트의 **최신** 버전이 미사용 예정으로 표시된다면, 차트는 전체가 미사용 예정이라고 판단한다. 미사용예정을 체크하지 않은 새로운 버전을 발행함으로써 차트명을 이후에 재사용할수 있다. 차트를 미사용 하는 것에 대한 [kubernetes/charts](https://github.com/helm/charts) 프로젝트를 따르는 작업흐름은 다음과 같다.
+차트 저장소에서 차트를 관리할때, 가끔 차트를 deprecate하는 것이 필요하다.
+
+`Chart.yaml` 에 있는 선택 필드인 `deprecated` 는 차트가
+
+미사용 예정임을 표시하는데 사용될 수 있다. 저장소에 있는 차트의 **최신** 버전이
+
+미사용 예정으로 표시된다면, 차트는 전체가 미사용 예정이라고 판단한다.
+
+미사용예정을 체크하지 않은 새로운 버전을 발행함으로써 차트명을 이후에 재사용할수 있다.
+
+차트를 미사용 하는 것에 대한 [kubernetes/charts](https://github.com/helm/charts) 프로젝트를 따르는 작업흐름은 다음과 같다.
 
 1. 차트의  `Chart.yaml`를 업데이트 하여 차트를 미사용 예정으로 표시하여 버전을 올린다.
 2. 차트 저장소에 새로운 차트 버전을 Release 한다
@@ -190,35 +210,83 @@ nginx-1.2.3.tgz
 
 ### 차트 타입
 
-`type` 필드는 차트의 타입을 정의한다. `application`, `library` 의 두가지 타입이 있다. application은 기본 타입이며 완전히 작동할 수 있는 표준 차트이다. [library chart]({{< ref
-"/docs/topics/library_charts.md" >}}) 는 차트 빌더에 유틸리티나 함수를 제공한다. library chart는 설치 불가능하고, 보통 어떤 리소스 오브젝트도 가지지 않는다는 것이 application chart와 다르다.
+`type` 필드는 차트의 타입을 정의한다. `application`, `library` 의
 
-**참고:** application chart는 library chart로 사용될수 있다. 타입을 `library`로 셋팅함으로써 가능하다. 차트는 모든 유틸리티와 함수 기능을 활용할수 있는 상태의 library chart로 렌더링된다. 모든 차트의 리소스 오브젝트는 렌더링되지 않는다.
+두가지 타입이 있다. application은 기본 타입이며
+
+완전히 작동할 수 있는 표준 차트이다. [library chart]({{< ref
+"/docs/topics/library_charts.md" >}}) 는 차트 빌더에
+
+유틸리티나 함수를 제공한다. library chart는 설치 불가능하고, 보통
+
+어떤 리소스 오브젝트도 가지지 않는다는 것이 application chart와 다르다.
+
+**참고:** application chart는 library chart로 사용될수 있다. 타입을
+
+`library`로 셋팅함으로써 가능하다. 차트는 모든 유틸리티와
+
+함수 기능을 활용할수 있는 상태의 library chart로 렌더링된다. 모든 차트의
+
+리소스 오브젝트는 렌더링되지 않는다.
 
 ## 차트 라이센스, README 와 NOTES
 
-차트는 설치, 환경설정, 사용법, 차트의 라이센스를 설명하는 파일을 가질 수 있다.
+차트는 설치, 환경설정, 사용법, 차트의 라이센스를
 
-LICENSE는 차트에 대한 [license](https://en.wikipedia.org/wiki/Software_license) 를 포함하는  일반 텍스트 파일이다. 차트는 템플릿 안의 프로그래밍 로직을 가지는 것으로써의 라이센스를 포함할 수 있으므로 환경 설정 전용이 아니다. 또한, 필요하다면 차트에 의해 설치된 어플리키이션에 대한 라이센스는 나눠질 수 있다.
+설명하는 파일을 가질 수 있다.
 
-차트에 대한 README는 마크 다운(README.md)의 포맷이어야 하며, 일반적으로 다음을 포함한다.
+LICENSE는 차트에 대한 [license](https://en.wikipedia.org/wiki/Software_license) 를 포함하는
+
+일반 텍스트 파일이다. 차트는 템플릿 안의 프로그래밍
+
+로직을 가지는 것으로써의 라이센스를 포함할 수 있으므로 환경 설정
+
+전용이 아니다. 또한, 필요하다면 차트에 의해
+
+설치된 어플리키이션에 대한 라이센스는 나눠질 수 있다.
+
+차트에 대한 README는 마크 다운(README.md)의 포맷이어야 하며,
+
+일반적으로 다음을 포함한다.
 
 - 차트가 제공하는 어플리케이션이나 서비스에 관한 설명
 - 차트를 실행하기 위한 전제조건이나 필요조건
 - `values.yaml`에 있는 옵션과 기본값에 대한 설명
 - 차트의 설치나 환경설정에 관련이 있을 수 있는 다른 정보
 
-허브 및 기타 사용자 인터페이스가 `README.md` 파일의 콘텐츠에서 가져온 차트에 대한 세부 정보를 표시하는 경우
+허브 및 기타 사용자 인터페이스가 `README.md` 파일의 콘텐츠에서
 
-차트는 릴리즈의 상태를 보여줄때와 설치 후에 출력될 짧은 일반 텍스트를 `template/NOTES.txt` 파일에 적을 수 있다. 이 파일은 [template](#템플릿과-값)으로 평가되고 사용법 메모, 다음 스텝, 차트의 릴리즈와 관련된 다른 정보를 표시하기 위해 사용될 수 있다. 예를 들어, 지시 사항(instructions)은 데이터베이스에 연결하기, 웹 UI에 액세스하기 등에 대해 제공될 수 있다. 이 파일이 `helm install` 이나 `helm status`가 실행될 때 STDOUT으로 출력되기 때문에, 내용을 간단하게 유지하고, 상세 내용은 README를 참조하도록 하는 것을 권장한다.
+가져온 차트에 대한 세부 정보를 표시하는 경우
+
+차트는 릴리즈의 상태를 보여줄때와 설치 후에 출력될 짧은 일반 텍스트를
+
+`template/NOTES.txt` 파일에 적을 수 있다. 이 파일은
+
+[template](#템플릿과-값)으로 평가되고 사용법 메모, 다음 스텝, 차트의
+
+릴리즈와 관련된 다른 정보를 표시하기 위해 사용될 수 있다. 예를 들어,
+
+지시 사항(instructions)은 데이터베이스에 연결하기, 웹 UI에 액세스하기
+
+등에 대해 제공될 수 있다. 이 파일이 `helm install` 이나 `helm status` 가
+
+실행될 때 STDOUT으로 출력되기 때문에, 내용을 간단하게 유지하고,
+
+상세 내용은 README를 참조하도록 하는 것을 권장한다.
 
 ## 차트 의존성
 
-헬름에서 하나의 차트는 0개 이상의 다른 차트에 의존한다. 이 의존성은 `Chart.yaml` 에 `dependencies` 필드를 사용하여 직접 연결되거나 `charts/` 폴더로 가져와서 수동으로 관리할 수 있다.
+헬름에서 하나의 차트는 0개 이상의 다른 차트에 의존한다.
+
+이 의존성은 `Chart.yaml` 에 `dependencies` 필드를 사용하여 직접 연결되거나
+
+`charts/` 폴더로 가져와서 수동으로 관리할 수 있다.
 
 ### `dependencies` 필드를 통해 의존성 관리하기
 
-현재 차트가 필요로 하는 차트들은 `dependencies` 필드에 리스트로 정의된다.
+현재 차트가 필요로 하는 차트들은 `dependencies` 필드에
+
+리스트로 정의된다.
 
 ```yaml
 dependencies:
@@ -230,8 +298,8 @@ dependencies:
     repository: https://another.example.com/charts
 ```
 
-- `name` 필드는 당신이 사용할 차트의 이름이다.
-- `version` 필드는 당신이 사용할 차트의 버전이다.
+- `name` 필드는 사용할 차트명이다.
+- `version` 필드는 사용할 차트의 버전이다.
 - `repository` 필드는 차트 저장소의 완전한 URL 이다. 반드시 로컬 환경에서 `helm repo add`를 사용해야 함을 주의하라.
 - URL 대신 저장소의 이름을 사용할 수 있다.
 
@@ -246,7 +314,11 @@ dependencies:
     repository: "@fantastic-charts"
 ```
 
-일단 종속성을 정의하면, `helm dependency update`를 실행할 수 있고, 실행하면 종속성 파일을 사용해서 모든 명시된 차트를 `charts/` 폴더 안에 다운로드 받는다.
+일단 종속성을 정의하면, `helm dependency update`를 실행할 수 있고,
+
+실행하면 종속성 파일을 사용해서 모든 명시된
+
+차트를 `charts/` 디렉터리 안에 다운로드 받는다.
 
 ```console
 $ helm dep up foochart
@@ -261,7 +333,11 @@ Downloading apache from repo https://example.com/charts
 Downloading mysql from repo https://another.example.com/charts
 ```
 
-`helm dependency update`가 차트를 가져올 때, 차트 아카이브의 형태로 `charts/` 폴더에 저장한다. 위의 예제 같은 경우, 다음 파일들을 차트 폴더에서 볼수 있다.
+`helm dependency update`가 차트를 가져올 때,
+
+차트 아카이브의 형태로 `charts/` 디렉터리에 저장한다.
+
+위의 예제 같은 경우, 다음 파일들을 차트 디렉터리에서 볼수 있다.
 
 ```text
 charts/
@@ -271,11 +347,17 @@ charts/
 
 #### 의존성 안에서의 대체 필드
 
-위에서 본 필드 외에도, 각각의 필요 엔트리는 선택필드인 `alias`를 가질 수 있다.
+위에서 본 필드 외에도, 각각의 필요 엔트리는
 
-종속성 차트에 대한 별명을 추가하는 것은 dependencies 안에 새로운 종속성의 이름을 별명으로 사용하여 넣는것이다.
+선택필드인 `alias`를 가질 수 있다.
 
-`alias`를 다른 이름으로 같은 차트에 엑세스가 필요할 때 사용할 수 있다.
+종속성 차트에 대한 별명을 추가하는 것은 dependencies 안에
+
+새로운 종속성명을 별명으로 사용하여 넣는것이다.
+
+`alias`를 다른 이름으로 같은 차트에 엑세스가
+
+필요할 때 사용할 수 있다.
 
 ```yaml
 # parentchart/Chart.yaml
@@ -302,17 +384,37 @@ new-subchart-1
 new-subchart-2
 ```
 
-같은 동작을 수동으로 하는 방법은 `charts/` 폴더에 여러번 다른 이름으로 같은 차트를 복사/붙여넣기 하면된다.
+같은 동작을 수동으로 하는 방법은 `charts/` 디렉터리에 여러번 다른 이름으로
+
+같은 차트를 복사/붙여넣기 하면된다.
 
 #### 의존성 안에서의 태그와 조건 필드
 
-위에서 본 필드 외에도, 각각의 필요 엔트리는 선택필드인 `alias`와 `condition`을 가질 수 있다.
+위에서 본 필드 외에도, 각각의 필요 엔트리는 선택필드인
 
-모든 차트는 기본으로 로드된다. `tags`나 `condition` 필드가 존재하면, 차트가 적용될지에 대한 로딩 제어를 위해 사용되고 평가된다.
+`alias` 와 `condition` 을 가질 수 있다.
 
-Condition - condition 필드는 1개 이상의 YAML 경로이다.(콤마로 구분된다) 최상단 부모의 values에 이 경로가 존재하고 boolean 값으로 판단할수 있다면, 차트는 boolean 값에 의해 활성화 혹은 비활성화 된다. 리스트에서 발견된 유효한 첫번째 경로만이 평가되고, 이 경로가 존재하지 않으면 해당 condition은 무효하다.
+모든 차트는 기본으로 로드된다. `tags` 나 `condition` 필드가
 
-Tags - tags 필드는 이 차트와 관련된 레이블의 YAML 리스트이다. 최상단 부모의 values에서, 태그를 가진 모든 차트는 특정한 태그와 boolean 값에 의해 활성화 또는 비활성화 된다.
+존재하면, 차트가 적용될지에 대한 로딩 제어를 위해
+
+사용되고 평가된다.
+
+Condition - condition 필드는 1개 이상의 (콤마로 구분되는)
+
+YAML 경로이다. 최상단 부모의 values에 이 경로가 존재하고
+
+boolean 값으로 판단할수 있다면, 차트는 boolean 값에 의해
+
+활성화 혹은 비활성화 된다. 리스트에서 발견된 유효한 첫번째 경로만이 평가되고,
+
+이 경로가 존재하지 않으면 해당 condition은 무효하다.
+
+Tags - tags 필드는 이 차트와 관련된 레이블의 YAML 리스트이다.
+
+최상단 부모의 values에서, 태그를 가진 모든 차트는
+
+특정한 태그와 boolean 값에 의해 활성화 또는 비활성화 된다.
 
 ```yaml
 # parentchart/Chart.yaml
@@ -344,9 +446,19 @@ tags:
   back-end: true
 ```
 
-위 예에서 `front-end` 태그를 가진 모든 차트는 비활성화 되지만, 부모의 values에서 `subchart1.enabled`가 true로 평가되었기 때문에, condition은 `front-end`태그를 덮어쓰고 `subchart1`은 활성화된다.
+위 예에서 `front-end` 태그를 가진 모든 차트는 비활성화 되지만, 부모의 values에서
 
-`subchart2`는 `back-end`와 태그되었고 이 태그는 `true`로 평가되어서, `subchart2`는 활성화된다. 또한 `subchart2`가 특정한 condition을 가지지만, 부모의 values에 대응되는 경로가 없어서 이 condition은 아무 영향이 없다.
+`subchart1.enabled` 가 true로 평가되었기 때문에, condition은 `front-end` 태그를
+
+덮어쓰고 `subchart1`은 활성화된다.
+
+`subchart2` 는 `back-end` 와 태그되었고 이 태그는 `true` 로 평가되어서,
+
+`subchart2` 는 활성화된다. 또한 `subchart2`가 특정한
+
+condition을 가지지만, 부모의 values에 대응되는 경로가 없어서,
+
+이 condition은 아무 영향이 없다.
 
 ##### 태그 및 조건과 함께 CLI 사용
 
@@ -365,15 +477,33 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
 
 #### 의존성을 통해 자식 값 가져오기
 
-몇몇 케이스에서 자식 차트의 values가 부모의 차트에 영향을 미치고 공통 기본값으로 공유되도록 하고싶을 수 있다. `exports` 포맷을 사용하는 것의 추가 이점은 향후 도구를 통해 사용자가 설정할수 있는 값을 가능하게 하는 것이다.
+몇몇 케이스에서 자식 차트의 values가 부모의 차트에 영향을 미치고
 
-import 될 값을 포함하는 키는 YAML 리스트를 사용해서 부모 차트의 `dependencies` 안에 `import-values` 필드로 명시할 수 있다. 리스트의 각 아이템은 자식 차트의 `exports` 필드로부터 import 되는 키이다.
+공통 기본값으로 공유되도록 하고싶을 수 있다. `exports` 포맷을
 
-`exports` 키 안에 포함되지 않은 import value를 사용하려면, [child-parent](#자식-부모-형식-사용하기) 포맷을 사용하라. 두 포맷 모두 아래에서 설명한다.
+사용하는 것의 추가 이점은 향후 도구를 통해 사용자가 설정할수 있는 값을
+
+가능하게 하는 것이다.
+
+import 될 값을 포함하는 키는 YAML 리스트를 사용해서 부모 차트의 `dependencies` 안에
+
+`import-values` 필드로 명시할 수 있다. 리스트의 각 아이템은
+
+자식 차트의 `exports` 필드로부터 import 되는 키이다.
+
+`exports` 키 안에 포함되지 않은 import value를
+
+사용하려면, [child-parent](#자식-부모-형식-사용하기) 포맷을 사용하라. 두 포맷 모두
+
+아래에서 설명한다.
 
 ##### 내보내기 형식 사용하기
 
-자식의 `values.yaml`파일이 루트에 `exports` 필드를 가진다면, 이 필드의 내용은 다음 예제처럼 import 하기 위한 키를 명시함으로써 부모의 values에 직접 import 될수 있다.
+자식의 `values.yaml` 파일이 루트에 `exports` 필드를 가진다면,
+
+이 필드의 내용은 다음 예제처럼 import 하기 위한 키를 명시함으로써
+
+부모의 values에 직접 import 될수 있다.
 
 ```yaml
 # parent's Chart.yaml file
@@ -394,7 +524,9 @@ exports:
     myint: 99
 ```
 
-import 리스트에 `data` 키를 명시했기 때문에, 헬름은 `data` 키에 대한 자식 차트의 `exports` 필드를 찾고 그것의 내용을 import 한다.
+import 리스트에 `data` 키를 명시했기 때문에, 헬름은 `data` 키에 대한
+
+자식 차트의 `exports` 필드를 찾고 그것의 내용을 import 한다.
 
 최종 부모의 values는 export된 필드를 포함한다.
 
@@ -404,13 +536,25 @@ import 리스트에 `data` 키를 명시했기 때문에, 헬름은 `data` 키�
 myint: 99
 ```
 
-부모의 `data`키가 부모의 최종 values에 포함되지 않음을 주의하라. 부모의 키에 명시할 필요가 있다면, 'child-parent' 포맷을 사용하라.
+부모의 `data`키가 부모의 최종 values에 포함되지 않음을 주의하라.
+
+부모의 키에 명시할 필요가 있다면, 'child-parent' 포맷을 사용하라.
 
 ##### 자식-부모 형식 사용하기
 
-자식 차트의 values의 `exports`키 에 포함되지 않은 values에 접근하려면, import될 (자식) values의 키와 부모 차트의 values (부모)안의 목적지 경로를 명시해야
+자식 차트의 values의 `exports`키 에 포함되지 않은
 
-아래의 예제에 있는 `import-values` 는 `child` 경로에서 발견된 어떤 값이든 취하고, 값들을 `parent:`에 명시된 경로에 부모의 값들로 복사하라고 헬름에게 지시한다. 
+values에 접근하려면, import될 (자식) values의
+
+키와 부모 차트의 values (부모)안의 목적지 경로를
+
+명시해야 한다.
+
+아래의 예제에 있는 `import-values` 는 `child` 경로에서 발견된어떤 값이든 취하고,
+
+값들을 `parent:` 에 명시된 경로에 부모의 값들로 복사하라고
+
+헬름에게 지시한다. 
 
 ```yaml
 # parent's Chart.yaml file
@@ -425,7 +569,11 @@ dependencies:
         parent: myimports
 ```
 
-위의 예제에서, subchart1의 값들 안에 `default.data`에서 발견된 values는 다음과 같이 부모 차트의 values 안의 `myimports` 키로 import 된다.
+위의 예제에서, subchart1의 값들 안에 `default.data` 에서 발견된
+
+values는 다음과 같이 부모 차트의 values 안의
+
+`myimports` 키로 import 된다.
 
 ```yaml
 # parent's values.yaml file
@@ -456,15 +604,29 @@ myimports:
   mystring: "helm rocks!"
 ```
 
-부모의 최종 values는 이제 subchart1에서 import된 `myint`와 `mybool` 필드를 가진다.
+부모의 최종 values는 이제 subchart1에서 import된
 
-### `charts/` 디렉토리를 통해 수동으로 의존성 관리
+`myint` 와 `mybool` 필드를 가진다.
 
-더 많은 종속성 제어가 필요하다면, 이 종속성들은 dependency 차트를 `charts/` 폴더로 복사함으로써 정확하게 표현될 수 있다.
+### `charts/` 디렉터리를 통해 수동으로 의존성 관리
 
-종속성은 차트 아카이브(`foo-1.2.3.tgz`)나 비압축 차트 폴더가 될수 있다. 이름은 `_`나 `.`로 시작될 수 없다. 이런 파일은 차트 로더가 무시한다.
+더 많은 종속성 제어가 필요하다면,
 
-예를 들어서, WordPress 차트가 Apache 차트에 의존한다면, (올바른 버전의) Apache 차트는 WordPress 차트의 `charts/`폴더 안에 저장된다.
+이 종속성들은 dependency 차트를 `charts/` 폴더로
+
+복사함으로써 정확하게 표현될 수 있다.
+
+종속성은 차트 아카이브(`foo-1.2.3.tgz`)나 비압축 차트 디렉터리가
+
+될수 있다. 이름은 `_`나 `.`로 시작될 수 없다. 이런 파일은
+
+차트 로더가 무시한다.
+
+예를 들어서, WordPress 차트가 Apache 차트에 의존한다면,
+
+(올바른 버전의) Apache 차트는 WordPress 차트의
+
+`charts/` 디렉터리 안에 저장된다.
 
 ```yaml
 wordpress:
@@ -479,13 +641,19 @@ wordpress:
       # ...
 ```
 
-위의 예제는 어떻게 WordPress 차트가 Apache와 MySLQ에 대한 의존성을 표현하는지 `charts/` 폴더에 이 차트들을 포함시킴으로써 보여준다.
+위의 예제는 어떻게 WordPress 차트가 Apache와 MySLQ에 대한 의존성을
 
-**팁:** `charts/`폴더 안에 종속성을 버리려면, `helm pull` 명령을 사용하라.
+표현하는지 `charts/` 디렉터리에 이 차트들을 포함시킴으로써 보여준다.
+
+**팁:** `charts/` 디렉터리 안에 종속성을 버리려면,
+
+`helm pull` 명령을 사용하라.
 
 ### 의존성 사용의 운영적 관점
 
-위 섹션은 차트 종속성을 어떻게 명시하는지 설명하지만, `helm install`과 `helm upgrade`를 사용하는 차트 설치에 어떻게 영향을 미치는가?
+위 섹션은 차트 종속성을 어떻게 명시하는지 설명하지만, `helm install` 과 
+
+`helm upgrade`를 사용하는 차트 설치에 어떻게 영향을 미치는가?
 
 "A"라는 차트가 다음과 같은 쿠버네티스 오브젝트를 생성한다고 가정하자.
 
@@ -499,7 +667,11 @@ A가 오브젝트를 생성하는 B 차트에 의존성을 가진다고 하자.
 - replicaset "B-ReplicaSet"
 - service "B-Service"
 
-차트 A의 installation/upgrade후에, 단일 헬름 릴리즈가 생성/수정 된다. 릴리즈는 다음 순서로 위의 쿠버네티스 오브젝트를 전부를 생성/업데이트한다.
+차트 A의 installation / upgrade 후에, 단일 헬름 릴리즈가 생성 / 수정 된다.
+
+릴리즈는 다음 순서로 위의 쿠버네티스 오브젝트를 전부를
+
+생성 / 업데이트한다.
 
 - A-Namespace
 - B-Namespace
@@ -508,32 +680,60 @@ A가 오브젝트를 생성하는 B 차트에 의존성을 가진다고 하자.
 - B-ReplicaSet
 - A-StatefulSet
 
-왜냐하면 헬름이 차트를 설치/업그레이드 할때, 차트와 모든 종속성으로부터 쿠버네티스 오브젝트가
+왜냐하면 헬름이 차트를 설치/업그레이드 할때,
+
+차트와 모든 종속성으로부터 쿠버네티스 오브젝트가
 
 - 단일 집합으로 통합된다.
 - 이름에 따른 타입으로 정렬된다.
 - 그 순서에 의해 생성/업데이트 된다.
 
-이런 이유로 단일 릴리즈는 차트와 종속성에 대한 모든 오브젝트와 함께 생성된다.
+이런 이유로 단일 릴리즈는 차트와 종속성에 대한 모든
 
-쿠버네티스 타입의 설치 순서는 kind_sorter.go([the Helm source file](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go))의 열거형 타입 설치 순서에 의해 제공된다.
+오브젝트와 함께 생성된다.
+
+쿠버네티스 타입의 설치 순서는
+
+kind_sorter.go([the Helm source file](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go))의 열거형 타입 설치 순서에 의해
+
+제공된다.
 
 ## 템플릿과 값
 
-헬름 차트 템플릿은 [spring 라이브러리](https://github.com/Masterminds/sprig)에서 50개 정도의 애드온 템플릿 함수와 몇가지 기타 [특수 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})가 추가된 [Go template language](https://golang.org/pkg/text/template/)로 작성되었다.
+헬름 차트 템플릿은 [spring 라이브러리](https://github.com/Masterminds/sprig)에서
 
-모든 템플릿 파일은 차트의 `templates` 폴더 안에 저장된다. 헬름이 차트를 렌더링할때, 템플릿 엔진을 통해 이 폴더 안에 모든 파일을 전달한다.
+50개 정도의 애드온 템플릿 함수와
+
+몇가지 기타 [특수 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})가
+
+추가된 [Go template language](https://golang.org/pkg/text/template/)로
+
+작성되었다.
+
+모든 템플릿 파일은 차트의 `templates` 디렉터리 안에 저장된다.
+
+헬름이 차트를 렌더링할때, 템플릿 엔진을 통해 이 디렉터리 안에
+
+모든 파일을 전달한다.
 
 템플릿에 대한 values는 2가지 방법으로 제공된다.
 
-- 차트 개발자는 차트의 안에 `values.yaml`이라 부르는 파일을 제공할 수 있다. 이 파일은 기본 값을 포함할 수 있다.
+- 차트 개발자는 차트의 안에 `values.yaml` 이라 부르는 파일을 제공할 수 있다. 이 파일은 기본 값을 포함할 수 있다.
 - 차트 사용자는 값을 포함한 YAML파일을 제공할 수 있다. `helm install` 커맨드 라인으로 제공받을 수 있다.
 
-사용자가 커스텀 값을 제공할 때, 차트의 `values.yaml` 파일에 있는 값을 덮어쓴다.
+사용자가 커스텀 값을 제공할 때, 차트의 `values.yaml` 파일에
+
+있는 값을 덮어쓴다.
 
 ### 템플릿 파일
 
-템플릿 파일은 Go 템플릿 작성에 대한 표준 규약을 따른다([텍스트/템플릿 Go 패키지 문서](https://golang.org/pkg/text/template/)). 예제 템플릿 파일은 다음과 같을 수 있다.
+템플릿 파일은 Go 템플릿 작성에 대한 표준 규약을 따른다
+
+([텍스트/템플릿 Go 패키지 문서](https://golang.org/pkg/text/template/)).
+
+예제 템플릿 파일은
+
+다음과 같을 수 있다.
 
 ```yaml
 apiVersion: v1
@@ -564,22 +764,38 @@ spec:
               value: {{ default "minio" .Values.storage }}
 ```
 
-([https://github.com/deis/charts](https://github.com/deis/charts)에 느슨하게 결합된) 위의 예는  쿠버네티스 리플리케이션 컨트롤러에 대한 템플릿이다. 다음 4가지 템플릿 값을 사용할 수 있다.  (보통  `values.yaml` 에 정의된다. )
+([https://github.com/deis/charts](https://github.com/deis/charts)에 느슨하게 결합된) 위의 예는
+
+쿠버네티스 리플리케이션 컨트롤러에 대한 템플릿이다.
+
+다음 4가지 템플릿 값을 사용할 수 있다.
+
+(보통  `values.yaml` 에 정의된다.)
 
 - `imageRegistry`: 도커 이미지의 소스 레지스트리
 - `dockerTag`: 도커 이미지의 태그
 - `pullPolicy`: 쿠버네티스의 pull 정책
 - `storage`: 기본값이 `"minio"`로 설정되는 저장소 백엔드
 
-이 모든 값은 템플릿 작성자에 의해 정의된다. 헬름은 파라미터를 요구하거나 지시하지 않는다.
+이 모든 값은 템플릿 작성자에 의해 정의된다. 헬름은
 
-많은 작동중인 차트를 보려면, [쿠버네티스 차트 프로젝트](https://github.com/helm/charts)를 참고하라.
+파라미터를 요구하거나 지시하지 않는다.
+
+많은 작동중인 차트를 보려면, [쿠버네티스 차트 프로젝트](https://github.com/helm/charts)를
+
+참고하라.
 
 ### 미리 정의된 값
 
-`values.yaml`파일 (혹은 `--set`플래그)로 제공되는 값은 템플릿 안에서 `.Values` 객체로 접근 가능하다. 그러나 템플릿 안에서 접근 가능한 다른 미리 정의된 데이터의 조각이 있다.
+`values.yaml` 파일 (혹은 `--set` 플래그)로 제공되는 값은 템플릿 안에서
 
-다음 값은 미리 정의되었고, 모든 템플릿에서 접근 가능하며, 덮어쓸수 없다. 모든 값과 마찬가지로, 이름은 대소문자를 구별한다.
+`.Values` 객체로 접근 가능하다. 그러나 템플릿 안에서 접근 가능한
+
+다른 미리 정의된 데이터의 조각이 있다.
+
+다음 값은 미리 정의되었고, 모든 템플릿에서 접근 가능하며, 덮어쓸수 없다. 모든 값과
+
+마찬가지로, 이름은 대소문자를 구별한다.
 
 - `Release.Name`: 릴리즈의 이름(차트의 이름 아님)
 - `Release.Namespace`: 차트가 릴리즈된 네임스페이스
@@ -590,11 +806,19 @@ spec:
 - `Files`: 차트에 모든 특별하지 않은 파일을 포함하는 맵과 같은 오브젝트이다. 템플릿에 접근을 제공하지는 않지만, (`.helmignore`로 배제되지 않았다면) 존재하는 추가 파일에 대한 엑세스를 제공한다. 파일은 `{{ index .Files "file.name" }}`나 `{{.Files.Get name }}`함수를 사용해서 접근할 수 있다.
 - `Capabilities`: 쿠버네티스의 버전(`{{ .Capabilities.KubeVersion }}`)과 지원되는 쿠버네티스 API 버전 (`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)에 대한 정보를 포함하는 맵과 같은 오브젝트
 
-**주의:** 익명의 `Chart.yaml` 필드는 무시된다. 이 필드는 `Chart` 오브젝트의 안에서 접근이 불가능하다. 따라서 `Chart.yaml`은 템플릿으로 구조화된 데이터를 제멋대로 전달하기 위해 사용될 수 없다.
+**주의:** 익명의 `Chart.yaml` 필드는 무시된다. 이 필드는
+
+`Chart` 오브젝트의 안에서 접근이 불가능하다. 따라서
+
+`Chart.yaml`은 템플릿으로 구조화된 데이터를 제멋대로
+
+전달하기 위해 사용될 수 없다.
 
 ### 값 파일
 
-이전 섹션에서의 템플릿을 고려할때, 필수적인 값을 제공하는 `values.yaml`은 다음과 같다.
+이전 섹션에서의 템플릿을 고려할때, 필수적인 값을 제공하는
+
+`values.yaml` 은 다음과 같다.
 
 ```yaml
 imageRegistry: "quay.io/deis"
@@ -603,19 +827,27 @@ pullPolicy: "Always"
 storage: "s3"
 ```
 
-values 파일은 YAML 포맷이다. 차트는 기본 `values.yaml` 파일을 포함한다. 헬름 설치 명령은 추가 YAML 값을 제공함으로써 사용자가 값을 덮어쓸 수 있게한다.
+values 파일은 YAML 포맷이다. 차트는 기본 `values.yaml`
+
+파일을 포함한다. 헬름 설치 명령은 추가 YAML 값을 제공함으로써
+
+사용자가 값을 덮어쓸 수 있게한다.
 
 ```console
 $ helm install --generate-name --values=myvals.yaml wordpress
 ```
 
-이 방법으로 값이 전달될때, 디폴트 values 파일로 이 값들은 병합된다. 예를 들어, `myvals.yaml` 파일은 다음과 같다고 하자.
+이 방법으로 값이 전달될때, 디폴트 values 파일로 이 값들은 병합된다.
+
+예를 들어, `myvals.yaml` 파일은 다음과 같다고 하자.
 
 ```yaml
 storage: "gcs"
 ```
 
-차트의 `values.yaml`로 병합될때, 생성된 결과는 다음과 같다.
+차트의 `values.yaml` 로 병합될때, 생성된 결과는
+
+다음과 같다.
 
 ```yaml
 imageRegistry: "quay.io/deis"
@@ -626,14 +858,21 @@ storage: "gcs"
 
 오직 마지막 필드가 덮여쓰여짐을 주의하라.
 
-**참고:** 차트의 안에 포함된 디폴트 값 파일은 `values.yaml`의 이름을 가져야한다. 반면에, 커맨드 라인에 명시하는 파일은 아무 이름이나 가질 수 있다.
+**참고:** 차트의 안에 포함된 디폴트 값 파일은 `values.yaml`의 이름을 가져야한다. 반면에,
 
-**참고:** `--set`플래그가  `helm install`이나 `helm upgrade`에 사용된다면, 이 값들은 클라이언트에서 YAML로 간단하게 변환된다.
+커맨드 라인에 명시하는 파일은 아무 이름이나 가질 수 있다.
 
-**참고:** values 파일에 필수적인 엔트리가 있다면, 차트 템플릿에서 ['required' 함수]({{< ref
-"/docs/howto/charts_tips_and_tricks.md" >}})를 사용함으로써 필수로 정의될 수 있다.
+**참고:** `--set` 플래그가  `helm install` 이나 `helm upgrade` 에 사용된다면,
 
-값중 어떤 것이라도 템플릿의 안에서 `.Values`오브젝트를 사용하여 접근이 가능하다.
+이 값들은 클라이언트에서 YAML로 간단하게 변환된다.
+
+**참고:** values 파일에 필수적인 엔트리가 있다면, 차트 템플릿에서
+
+['required' 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})를 사용함으로써 필수로 정의될 수 있다.
+
+값중 어떤 것이라도 템플릿의 안에서 `.Values` 오브젝트를 사용하여
+
+접근이 가능하다.
 
 ```yaml
 apiVersion: v1
@@ -666,7 +905,17 @@ spec:
 
 ### 범위, 의존성, 값
 
-values 파일은 최상위 차트에 대한 값과 차트의 `charts/`폴더에 포함된 차트중 어떤 것이라도 정의할 수 있다. 또는, 다르게 표현하면, values 파일은 차트와 그것의 종속성 모두에게 값을 제공할 수 있다. 예를 들어 위의 데모 WordPress 차트는 `mysql`과 `apaches` 모두를 종속성으로 가진다. values 파일은 이 요소들의 모두를 값으로 제공할 수 있다.
+values 파일은 최상위 차트에 대한 값과 차트의 `charts/` 디렉터리에
+
+포함된 차트중 어떤 것이라도 정의할 수 있다. 또는, 다르게 표현하면,
+
+values 파일은 차트와 그것의 종속성 모두에게 값을 제공할 수 있다.
+
+예를 들어 위의 데모 WordPress 차트는 `mysql` 과 `apaches`
+
+모두를 종속성으로 가진다. values 파일은 이 요소들의 모두를
+
+값으로 제공할 수 있다.
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -679,15 +928,29 @@ apache:
   port: 8080 # Passed to Apache
 ```
 
-더 높은 레벨의 차트는 더 아래 레벨에서 정의된 변수에 대해 엑세스할 수 있다. 그러므로 WordPress 차트는 `.Values.mysql.password`로 MySQL 패스워드에 접근할 수 있다. 더 낮은 레벨의 차트는 부모차트에 엑세스가 불가능하므로, MySQL은 `title` 속성에 접근할 수 없다. 이 문제로 `apache.port`에도 접근할 수 없다.
+더 높은 레벨의 차트는 더 아래 레벨에서 정의된 변수에 대해 엑세스할 수 있다.
 
-값은 네임스페이스가 지정되지만, 네임스페이스는 정리된다. WordPress 차트에서는 MySQL 패스워드 필드를 `.Values.mysql.password`로 접근 가능하다. 그러나 MySQL 차트에서는 값의 범위가 축소되고 네임스페이스 접두사가 삭제되므로, `.Values.password`로 간단히 패스워드 필드를 볼수 있다.
+그러므로 WordPress 차트는 `.Values.mysql.password`로 MySQL
 
+패스워드에 접근할 수 있다. 더 낮은 레벨의 차트는 부모차트에 엑세스가 불가능하므로,
 
+MySQL은 `title` 속성에 접근할 수 없다. 이 문제로 `apache.port`에도
+
+접근할 수 없다.
+
+값은 네임스페이스가 지정되지만, 네임스페이스는 정리된다. WordPress 차트에서는
+
+MySQL 패스워드 필드를 `.Values.mysql.password` 로 접근 가능하다. 그러나
+
+MySQL 차트에서는 값의 범위가 축소되고 네임스페이스 접두사가 삭제되므로,
+
+`.Values.password` 로 간단히 패스워드 필드를 볼수 있다.
 
 #### 전역 값
 
-2.0.0-Alpha.2 현재로, 헬름은 특별한 "전역" 값을 제공한다. 이전 예제의 수정된 버전을 보자.
+2.0.0-Alpha.2 현재로, 헬름은 특별한 "전역" 값을 제공한다.
+
+이전 예제의 수정된 버전을 보자.
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -703,9 +966,15 @@ apache:
   port: 8080 # Passed to Apache
 ```
 
-위에서 값 `app: MyWordPress`도 함께 `global` 섹션에 추가했다. 이 값은 `.Values.global.app`으로 모든 차트에서 이용 가능하다.
+위에서 값 `app: MyWordPress` 도 함께 `global` 섹션에 추가했다.
 
-예를 들어, `mysql` 템플릿은 `app`을 `{{.Values.global.app}}`로 접근할 수 있고, `apache` 에서도 마찬가지 이다. 사실상, 위의 values 파일은 다음과 같이 다시 만들어진다.
+이 값은 `.Values.global.app` 으로 모든 차트에서 이용 가능하다.
+
+예를 들어, `mysql` 템플릿은 `app` 을 `{{.Values.global.app}}` 로
+
+접근할 수 있고, `apache` 에서도 마찬가지 이다. 사실상, 위의 values 파일은
+
+다음과 같이 다시 만들어진다.
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -725,15 +994,29 @@ apache:
   port: 8080 # Passed to Apache
 ```
 
-전역값은 하나의 최상위 레벨 변수를 모든 서브 차트와 공유하는 방법을 제공하고, label 같은 `metadata` 속성을 셋팅하는 것 같은 일에서 유용하다.
+전역값은 하나의 최상위 레벨 변수를 모든 서브 차트와 공유하는 방법을 제공하고,
 
-서브 차트가 전역 변수를 선언하면, (서브차트의 서브차트에게) _하향_으로 전달되지만, 부모의 차트로 _상향_되지는 않는다. 서브차트가 부모 차트의 값에 영향을 주는 방법은 없다.
+label 같은 `metadata` 속성을 셋팅하는 것 같은 일에서 유용하다.
 
-또한 부모 차트의 전역 변수는 서브 차트의 전역 변수보다 우선한다.
+서브 차트가 전역 변수를 선언하면, (서브차트의 서브차트에게) _하향_으로 전달되지만,
+
+부모의 차트로 _상향_되지는 않는다. 서브차트가 부모 차트의 값에
+
+영향을 주는 방법은 없다.
+
+또한 부모 차트의 전역 변수는 서브 차트의
+
+전역 변수보다 우선한다.
 
 ### 스키마 파일
 
-가끔, 차트 메인테이너는 값에 구조를 정의하고 싶을 수 있다. `values.schema.json` 파일에 스키마를 정의함으로써 가능하다. 스키마는 [JSON 스키마](https://json-schema.org/)로 표현된다. 이 스키마는 다음과 같이 보인다.
+가끔, 차트 메인테이너는 값에 구조를 정의하고 싶을 수 있다.
+
+`values.schema.json` 파일에 스키마를 정의함으로써 가능하다.
+
+스키마는 [JSON 스키마](https://json-schema.org/)로 표현된다.
+
+이 스키마는 다음과 같이 보인다.
 
 ```json
 {
@@ -773,14 +1056,18 @@ apache:
 }
 ```
 
-이 스키마는 유효성 검사를 위해 값에 적용된다. 유효성 검사는 다음 명령중 하나가 일어날때 발생한다.
+이 스키마는 유효성 검사를 위해 값에 적용된다.
+
+유효성 검사는 다음 명령중 하나가 일어날때 발생한다.
 
 - `helm install`
 - `helm upgrade`
 - `helm lint`
 - `helm template`
 
-이 스키마의 필요조건을 만족한 `values.yaml`파일의 예는 다름과 같다.
+이 스키마의 필요조건을 만족한 `values.yaml`파일의 예는
+
+다음과 같다.
 
 ```yaml
 name: frontend
@@ -788,7 +1075,13 @@ protocol: https
 port: 443
 ```
 
-스키마가 최종 `.Values` 오브젝트에 적용되고, `values.yaml` 파일에만 적용되지 않는 다는 것을 주의하라. 즉, 다음과 같이 적절한 `--set` 옵션과 함께 차트가 설치되면, 다음 `yaml` 파일은 유효하다.
+스키마가 최종 `.Values` 오브젝트에 적용되고, `values.yaml` 파일에만
+
+적용되지 않는 다는 것을 주의하라. 즉, 다음과 같이 적절한
+
+`--set` 옵션과 함께 차트가 설치되면,
+
+다음 `yaml` 파일은 유효하다.
 
 ```yaml
 name: frontend
@@ -799,11 +1092,21 @@ protocol: https
 helm install --set port=443
 ```
 
-게다가, 최종 `.Values` 오브젝트는 _모든_ 서브차트 스키마에서 체크된다. 즉, 부모차트에 의해 서브차트의 제한은 우회될수 없다. 이 또한 반대 방향으로 작동한다. 서브차트가 서브차트의 `values.yaml` 파일에서 만족하지 못한 필요조건을 가진다면, 부모 차트는 이 조건을 만족 시켜야만한다.
+게다가, 최종 `.Values` 오브젝트는 _모든_ 서브차트 스키마에서 체크된다.
+
+즉, 부모차트에 의해 서브차트의 제한은 우회될수 없다.
+
+이 또한 반대 방향으로 작동한다. 서브차트가 서브차트의
+
+`values.yaml` 파일에서 만족하지 못한 필요조건을 가진다면,
+
+부모 차트는 이 조건을 만족 시켜야만한다.
 
 ### 참고 자료
 
-템플릿, values, 스키마 파일등을 작성하려면 다음 표준 참고자료가 도움이 될 것이다.
+템플릿, values, 스키마 파일등을 작성하려면 다음 표준 참고자료가
+
+도움이 될 것이다.
 
 - [Go templates](https://godoc.org/text/template)
 - [Extra template functions](https://godoc.org/github.com/Masterminds/sprig)
@@ -812,17 +1115,41 @@ helm install --set port=443
 
 ## 사용자 지정 리소스정의 (CRDs)
 
-쿠버네티스는 쿠버네티스 오브젝트의 새로운 타입을 정의하는 것에 대한 메커니즘을 제공한다. 사용자 지정 리소스 정의(CRDs, Custom Resource Definitions)를 사용해서, 쿠버네티스 개발자는 커스텀 리소스 타입을 정의할 수 있다.
+쿠버네티스는 쿠버네티스 오브젝트의 새로운 타입을 정의하는 것에 대한 메커니즘을 제공한다.
 
-헬름 3에서, CRDs는 특별한 객체 종류로 다뤄진다. CRDs는 차트의 나머지보다 먼저 설치되고, 몇몇 제한이 적용된다.
+사용자 지정 리소스 정의(CRDs, Custom Resource Definitions)를 사용해서,
 
-CRD YAML 파일은 차트안의 `crds/`폴더에 위치해야한다. (YAML 시작과 끝 마커로 분리된) 다수의 CRDs는 같은 파일에 위치할수 있다. 헬름은 CRD 폴더의 _모든_ 파일을 쿠버네티스로 로드하려고 시도한다.
+쿠버네티스 개발자는 커스텀 리소스 타입을 정의할 수 있다.
 
-CRD 파일은 템플릿화 될수 없다. 순수 YAML 문서여야 한다.
+헬름 3에서, CRDs는 특별한 객체 종류로 다뤄진다. CRDs는 차트의 나머지보다
 
-헬름이 새로운 차트를 설치할때, CRDs를 업로드 하고, API 서버에 의해 이용가능해지도록 CRD가 만들때까지 정지되며, 템플릿 엔진이 시작하고, 나머지 차트를 렌더링 하고, 쿠버네티스로 업로드한다. 순서때문에, CRD 정보는 헬름 템플릿의 `Capabilities` 오브젝트에서 이용 가능하고, 헬름 템플릿은 CRDs에서 정의된 오브젝트의 새로운 인스턴스를 만들 수 있다.
+먼저 설치되고, 몇몇 제한이 적용된다.
 
-예를 들어, 차트가 `crds/`폴더에 `CronTab`에 대한 CRD를 가진다면, `templates/` 폴덩 안에 `CronTab` 종류의 인스턴스를 생성할 수 있다.
+CRD YAML 파일은 차트안의 `crds/` 디렉터리에 위치해야한다.
+
+(YAML 시작과 끝 마커로 분리된) 다수의 CRDs는 같은 파일에
+
+위치할수 있다. 헬름은 CRD 폴더의 _모든_ 파일을 쿠버네티스로
+
+로드하려고 시도한다.
+
+CRD 파일은 _템플릿화 될수 없다_. 순수 YAML 문서여야 한다.
+
+헬름이 새로운 차트를 설치할때, CRDs를 업로드 하고, API 서버에
+
+의해 이용가능해지도록 CRD가 만들때까지 정지되며, 템플릿 엔진이
+
+시작하고, 나머지 차트를 렌더링 하고, 쿠버네티스로 업로드한다.
+
+순서때문에, CRD 정보는 헬름 템플릿의 `Capabilities` 오브젝트에서
+
+이용 가능하고, 헬름 템플릿은 CRDs에서 정의된 오브젝트의 새로운
+
+인스턴스를 만들 수 있다.
+
+예를 들어, 차트가 `crds/` 디렉터리에 `CronTab` 에 대한 CRD를 가진다면, `templates/`
+
+디렉터리 안에 `CronTab` 종류의 인스턴스를 생성할 수 있다.
 
 ```text
 crontabs/
@@ -863,17 +1190,25 @@ spec:
    # ...
 ```
 
-헬름은 `templates/` 안에 것들을 설치하기 전에 `CronTab` kind가 설치되어 있고 쿠버네티스 API 서버에서 이용 가능한지 확인한다.
+헬름은 `templates/` 안에 것들을 설치하기 전에 `CronTab` kind가 설치되어 있고,
+
+쿠버네티스 API 서버에서 이용 가능한지 확인한다.
 
 ### CRD 에서의 제약사항
 
-대부분의 쿠버네티스에서의 오브젝트와 다르게, CRDs는 전역으로 설치된다. 이 이유로, 헬름은 CRDs를 관리하는 것에 매우 조심스럽게 접근한다. CRDs는 다음 제약이 적용된다.
+대부분의 쿠버네티스에서의 오브젝트와 다르게, CRDs는 전역으로 설치된다.
+
+이 이유로, 헬름은 CRDs를 관리하는 것에 매우 조심스럽게 접근한다.
+
+CRDs는 다음 제약이 적용된다.
 
 - CRDs는 절대 재설치 불가능하다. 헬름이 (버전에 상관 없이) `crds/`폴더에 CRDs가 존재한다는 것을 알아낸다면, 헬름은 설치나 업그레이드 시도를 하지 않는다.
 - CRDs는 절대 업그레이드나 롤백이 불가능하다. 헬름은 오직 설치 작업시에만 CRDs를 생성한다.
 - CRDs는 절대 삭제될수 없다. CRD를 자동으로 지우는 것은 모든 클러스터 안의 네임스페이스에 영향을 주는 CRD's 내용의 모든것을 삭제한다. 따라서, 헬름은 CRDs를 삭제하지 않는다.
 
-CRDs를 업그레이드나 삭제하고 싶으면 몹시 조심하여 수동으로 수행하라.
+CRDs를 업그레이드나 삭제하고 싶으면 몹시 조심하여 수동으로
+
+수행하라.
 
 ## 헬름을 사용하여 차트 관리하기
 
@@ -886,14 +1221,18 @@ $ helm create mychart
 Created mychart/
 ```
 
-일단 차트를 수정하면, `helm`은 차트아카이브로 패키징할 수 있다.
+일단 차트를 수정하면, `helm`은 차트아카이브로
+
+패키징할 수 있다.
 
 ```console
 $ helm package mychart
 Archived mychart-0.1.-.tgz
 ```
 
-차트의 포맷이나 정보 이슈를 찾는 것에 `helm`을 사용할 수 있다.
+차트의 포맷이나 정보 이슈를 찾는 것에 `helm`을
+
+사용할 수 있다.
 
 ```console
 $ helm lint mychart
@@ -902,11 +1241,25 @@ No issues found
 
 ## 차트 저장소
 
-차트 저장소는 한 개 이상의 패키징된 차트를 저장할 공간을 제공하는 HTTP 서버이다. `helm`은 로컬 차트 폴더를 관리하는데 사용되는 반면, 차트를 공유하려면 우선되는 메카니즘은 차트 저장소이다.
+차트 저장소는 한 개 이상의 패키징된 차트를 저장할 공간을 제공하는 HTTP 서버이다.
 
-YAML 파일과 tar 파일을 제공하고 GET 요청에 응답할 수 있는 어떤 HTTP서버든 저장소 서버로 사용될 수 있다. 헬름 팀은 웹 사이트 모드 활성화로 구글 클라우드 스토리지(Google Cloud Storage) 및 S3를 포함해서 몇몇 서버를 테스트했다. 
+`helm` 은 로컬 차트 디렉터리를 관리하는데 사용되는 반면, 차트를 공유하려면 우선되는
 
-주로 저장소에 의해 제공되는 패키지의 모든 리스트를 가진 특별한 `index.yaml` 파일의 존재와 검색 및 패키지 검증을 허용하는 메타데이터로 저장소를 특정한다.
+메커니즘은 차트 저장소이다.
+
+YAML 파일과 tar 파일을 제공하고 GET 요청에 응답할 수 있는 어떤 HTTP서버든
+
+저장소 서버로 사용될 수 있다. 헬름 팀은 웹 사이트 모드 활성화로
+
+구글 클라우드 스토리지(Google Cloud Storage) 및 S3를 포함해서
+
+몇몇 서버를 테스트했다. 
+
+주로 저장소에 의해 제공되는 패키지의 모든 리스트를 가진 특별한
+
+`index.yaml` 파일의존재와 검색 및 패키지 검증을 허용하는
+
+메타데이터로 저장소를 특정한다.
 
 클라이언트 측면에서, 저장소는 `helm repo` 명령으로 관리된다.
 
@@ -918,12 +1271,24 @@ YAML 파일과 tar 파일을 제공하고 GET 요청에 응답할 수 있는 어
 
 ## 차트 사용 팩
 
-`helm create` 명령은 "starter chart" 임을 명시할수 있게 하는 선택적 `--starter`옵션을 취한다.
+`helm create` 명령은 "starter chart" 임을 명시할수 있게 하는
 
-스타터는 그냥 일반적인 차트지만, `$XDG_DATA_HOME/helm/starters`에 위치한다. 차트 개발자는 스타터로 사용하도록 특별히 디자인된 차트를 작성할 수 있다. 이런 차트는 다음 고려사항을 생각하고 디자인 되어야 한다.
+선택적 `--starter` 옵션을 취한다.
+
+스타터는 그냥 일반적인 차트지만,
+
+`$XDG_DATA_HOME/helm/starters` 에 위치한다. 차트 개발자는
+
+스타터로 사용하도록 특별히 디자인된 차트를 작성할 수 있다. 이런 차트는
+
+다음 고려사항을 생각하고 디자인 되어야 한다.
 
 - `Chart.yaml`은 제너레이터에 의해 덮어쓰여진다.
 - 사용자는 이 차트의 내용을 수정하기 원하므로, 문서는 어떻게 사용자가 그럴 수 있는지 알려줘야한다.
 - 모든 `<CHARTNAME>`의 존재는 스타터 차트가 템플릿으로 사용되기 위해 특정 차트 이름으로 수정된다.
 
-현재 `$XDG_DATA_HOME/helm/starters`에 차트를 추가하기 위한 유일한 방법은 수동으로 복사해서 넣는 것이다. 차트의 문서에서, 그 과정을 설명할 수 있다.
+현재 `$XDG_DATA_HOME/helm/starters`에 차트를 추가하기 위한
+
+유일한 방법은 수동으로 복사해서 넣는 것이다.
+
+차트의 문서에서, 그 과정을 설명할 수 있다.
