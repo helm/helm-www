@@ -41,7 +41,7 @@ other = "Helm est le meilleur outils pour trouver, partager et utiliser des logi
 
 ## homepage about helm
 [main_what_is_helm_title]
-other = "Qu'est ce que Helm?"
+other = "Qu'est ce que Helm ?"
 
 [main_what_is_helm_description]
 other = """
@@ -51,7 +51,7 @@ Les Charts de Helm sont faciles à créer, versionner et partager — Alors comm
 
 Helm est un projet diplômé de la [CNCF](https://cncf.io) et est maintenu par la [communauté de Helm](https://github.com/helm/community).
 
-### Learn more:
+### Pour aller plus loin:
 
 * [Architecture de Helm](./docs/topics/architecture/)
 * [Guide pour débutant](./docs/intro/quickstart/)
@@ -93,7 +93,7 @@ other = "Télécharger Helm !"
 other = "Installez Helm avec un manageur de paquets, ou [téléchargez un binaire](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Une fois installé, décompressez le binaire de Helm et ajoutez le dans votre variable PATH et vous serez prêt ! Jetez un oeil aux [docs](./docs/intro/install/) pour pluys d'information sur [l'installation](./docs/intro/install/) et [les instructions d'usage](./docs/intro/using_helm/)."
+other = "Une fois installé, décompressez le binaire de Helm et ajoutez le dans votre variable PATH et vous serez prêt ! Jetez un oeil aux [docs](./docs/intro/install/) pour plus d'information sur [l'installation](./docs/intro/install/) et [les instructions d'usage](./docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Télécharger des Charts"
@@ -102,7 +102,7 @@ other = "Télécharger des Charts"
 other = "Visitez le [Artifact Hub](https://artifacthub.io) afin de trouver vos [charts Helm](https://artifacthub.io/packages/search?kind=0) à partir de nombreux répertoires publique."
 
 [get_upgrade_title]
-other = "[Passage de la v2 à la v3 de Kubernetes ?](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[Passage de v2 à v3 de Kubernetes](https://helm.sh/docs/topics/v2_v3_migration/)"
 
 [get_upgrade_desc]
 other = "[Lisez la documentation de migration pour plus de détails.](https://helm.sh/docs/topics/v2_v3_migration/)"
