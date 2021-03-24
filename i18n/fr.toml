@@ -53,7 +53,7 @@ Helm est un projet diplômé de la [CNCF](https://cncf.io) et est maintenu par l
 
 ### Pour aller plus loin:
 
-* [Architecture de Helm](./docs/topics/architecture/)
+* [Architecture de Helm](/docs/topics/architecture/)
 * [Guide pour débutant](./docs/intro/quickstart/)
 * [Video: Une introduction à Helm (Anglais)](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
