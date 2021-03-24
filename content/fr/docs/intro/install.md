@@ -9,7 +9,7 @@ Ce guide vous explique comment installer la CLI (Interface de Ligne de Commande)
 ## Depuis le projet Helm
 
 Nous vous proposons deux méthodes pour récupérer et installer Helm. Voici les méthodes officielles pour obtenir les releases de l'application. En plus de cela, la communauté Helm
-fournit des méthodes pour installer Helm via différents gestionnaires de paquets. L'installation via ces méthodes peut être trouvée ci-dessous.
+fournit des méthodes pour installer Helm via différents gestionnaires de packages. L'installation via ces méthodes peut être trouvée ci-dessous.
 
 ### À partir des releases binaires
 
@@ -38,13 +38,13 @@ $ ./get_helm.sh
 
 Oui, vous pouvez également `curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
 
-## Via les gestionnaires de paquets
+## Via les gestionnaires de packages
 
-La communauté Helm offre la possibilité d'installer Helm via le gestionnaires de paquets de votre système d'exploitation. Ceux-ci ne sont pas pris en charge par le projet Helm et ne sont pas considérés comme des tiers de confiance.
+La communauté Helm offre la possibilité d'installer Helm via le gestionnaires de packages de votre système d'exploitation. Ceux-ci ne sont pas pris en charge par le projet Helm et ne sont pas considérés comme des tiers de confiance.
 
 ### Depuis Homebrew (macOS)
 
-Les membres de la communauté Helm ont contribué à la création d'une formule Helm pour Homebrew. Ce paquet est généralement à jour.
+Les membres de la communauté Helm ont contribué à la création d'une formule Helm pour Homebrew. Ce package est généralement à jour.
 
 ```console
 brew install helm
@@ -54,7 +54,7 @@ brew install helm
 
 ### Depuis Chocolatey (Windows)
 
-Les membres de la communauté Helm ont contribué à la création d'un [paquet Helm](https://chocolatey.org/packages/kubernetes-helm) build pour [Chocolatey](https://chocolatey.org/). Ce paquet est généralement à jour.
+Les membres de la communauté Helm ont contribué à la création d'un [package Helm](https://chocolatey.org/packages/kubernetes-helm) build pour [Chocolatey](https://chocolatey.org/). Ce package est généralement à jour.
 
 ```console
 choco install kubernetes-helm
@@ -62,7 +62,7 @@ choco install kubernetes-helm
 
 ### Depuis Apt (Debian/Ubuntu)
 
-Les membres de la communauté Helm ont contribué à la création d'un [paquet Helm](https://helm.baltorepo.com/stable/debian/) for Apt. Ce paquet est généralement à jour.
+Les membres de la communauté Helm ont contribué à la création d'un [package Helm](https://helm.baltorepo.com/stable/debian/) for Apt. Ce package est généralement à jour.
 
 ```console
 curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
@@ -74,7 +74,7 @@ sudo apt-get install helm
 
 ### Depuis Snap
 
-La communauté des [Snapcrafters](https://github.com/snapcrafters) maintiennent la version Snap du [paquet Helm](https://snapcraft.io/helm) à jour :
+La communauté des [Snapcrafters](https://github.com/snapcrafters) maintiennent la version Snap du [package Helm](https://snapcraft.io/helm) à jour :
 
 ```console
 sudo snap install helm --classic
@@ -82,7 +82,7 @@ sudo snap install helm --classic
 
 ### Depuis pkg (FreeBSD)
 
-Les membres de la communauté FreeBSD ont contribué à la création d'un [paquet Helm](https://www.freshports.org/sysutils/helm) build pour la [Collection de Ports FreeBSD](https://man.freebsd.org/ports). Ce paquet est généralement à jour.
+Les membres de la communauté FreeBSD ont contribué à la création d'un [package Helm](https://www.freshports.org/sysutils/helm) build pour la [Collection de Ports FreeBSD](https://man.freebsd.org/ports). Ce package est généralement à jour.
 
 ```console
 pkg install helm

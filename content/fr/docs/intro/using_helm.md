@@ -1,51 +1,33 @@
 ---
-title: "Using Helm"
-description: "Explains the basics of Helm."
+title: "Utilisation de Helm"
+description: "Explique la base de Helm."
 weight: 3
----
+--- 
 
-This guide explains the basics of using Helm to manage packages on your
-Kubernetes cluster. It assumes that you have already [installed]({{< ref
-"install.md" >}}) the Helm client.
+Ce guide explique les bases de l'utilisation de Helm pour gérer les packages sur votre cluster Kubernetes. Nous partons du principe que vous avez déjà [installé]({{< ref "install.md" >}}) le client Helm.
 
-If you are simply interested in running a few quick commands, you may wish to
-begin with the [Quickstart Guide]({{< ref "quickstart.md" >}}). This chapter
-covers the particulars of Helm commands, and explains how to use Helm.
+Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez commencer par le [Guide de démarrage rapide]({{< ref "quickstart.md" >}}). Ce chapitre couvre les différentes commandes Helm et explique comment les utiliser.
 
-## Three Big Concepts
+## Trois grands concepts
 
-A *Chart* is a Helm package. It contains all of the resource definitions
-necessary to run an application, tool, or service inside of a Kubernetes
-cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, an
-Apt dpkg, or a Yum RPM file.
+Une *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
 
-A *Repository* is the place where charts can be collected and shared. It's like
-Perl's [CPAN archive](https://www.cpan.org) or the [Fedora Package
-Database](https://fedorahosted.org/pkgdb2/), but for Kubernetes packages.
+Un *Dépot* est le lieu où les charts peuvent être collectées et partagées. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de donnée de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
 
-A *Release* is an instance of a chart running in a Kubernetes cluster. One chart
-can often be installed many times into the same cluster. And each time it is
-installed, a new _release_ is created. Consider a MySQL chart. If you want two
-databases running in your cluster, you can install that chart twice. Each one
-will have its own _release_, which will in turn have its own _release name_.
+Une *Release* est une instance d'une chart s'exécutant dans un cluster Kubernetes. Une chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'elle est à nouveau installée, une nouvelle _release_ est créé. Prenons une chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer cette chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
 
-With these concepts in mind, we can now explain Helm like this:
+Maintenant que vous maîtrisez ces concepts, nous pouvons aborder Helm de la manière suivante :
 
-Helm installs _charts_ into Kubernetes, creating a new _release_ for each
-installation. And to find new charts, you can search Helm chart _repositories_.
+Helm installe des _charts_ dans Kubernetes, créant une nouvelle _release_ pour chaque installation. Et pour trouver de nouvelles charts, vous pouvez rechercher des _repositories_ (dépots) de charts Helm.
 
-## 'helm search': Finding Charts
+## 'helm search': La recherche de charts
 
-Helm comes with a powerful search command. It can be used to search two
-different types of source:
+Helm est livré avec une puissante commande de recherche. Elle peut être utilisée pour rechercher deux différents types de ressources :
 
-- `helm search hub` searches [the Artifact Hub](https://artifacthub.io), which
-  lists helm charts from dozens of different repositories.
-- `helm search repo` searches the repositories that you have added to your local
-  helm client (with `helm repo add`). This search is done over local data, and
-  no public network connection is needed.
+- `helm search hub` recherche sur le [Artifact Hub](https://artifacthub.io), qui liste les charts Helm depuis une douzaines de dépôts.
+- `helm search repo` recherche sur les dépots que vous avez ajouté a votre config (via `helm repo add`). Cette recherche est faite sur le réseau privé et ne nécessite pas de connexion à internet.
 
-You can find publicly available charts by running `helm search hub`:
+Vous pouvez trouver une chart sur les dépôts publique avec la commande `helm search hub`:
 
 ```console
 $ helm search hub wordpress
@@ -55,12 +37,9 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.6.3        v0.6.3      Pr
 https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A Helm chart for deploying a WordPress site on ...
 ```
 
-The above searches for all `wordpress` charts on Artifact Hub.
+La commande ci-dessus recherche toutes les charts `wordpress` sur Artifact Hub.
 
-With no filter, `helm search hub` shows you all of the available charts.
-
-Using `helm search repo`, you can find the names of the charts in repositories
-you have already added:
+En utilisant `helm search repo`, vous pouvez trouver les noms des charts dans les dépots que vous avez ajouté manuellement :
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -75,8 +54,7 @@ brigade/brigade-project       1.0.0         v1.0.0      Create a Brigade project
 brigade/kashti                0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-Helm search uses a fuzzy string matching algorithm, so you can type parts of
-words or phrases:
+La commande de recherche de Helm utilise un algorithme de correspondance de chaîne de charactères, vous pouvez donc saisir des mots ou une partie de phrase :
 
 ```console
 $ helm search repo kash
@@ -84,14 +62,12 @@ NAME            CHART VERSION APP VERSION DESCRIPTION
 brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-Search is a good way to find available packages. Once you have found a package
-you want to install, you can use `helm install` to install it.
+La recherche est un bon moyen de trouver les packages disponibles. Une fois que vous avez trouvé une application que vous souhaitez installer, vous pouvez utiliser `helm install` pour l'installer.
 
-## 'helm install': Installing a Package
+## 'helm install': Installation d'un package
 
-To install a new package, use the `helm install` command. At its simplest, it
-takes two arguments: A release name that you pick, and the name of the chart you
-want to install.
+Pour installer un nouveau package, utilisez la commande `helm install`. Dans sa forme la plus simple, elle prend deux arguments: le nom de la version voulu et le nom de la chart que vous
+voulez installer. 
 
 ```console
 $ helm install happy-panda bitnami/wordpress
@@ -126,21 +102,13 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-Now the `wordpress` chart is installed. Note that installing a chart creates a
-new _release_ object. The release above is named `happy-panda`. (If you want
-Helm to generate a name for you, leave off the release name and use
-`--generate-name`.)
+La chart `wordpress` est maintenant installée. Notez que l'installation d'une chart crée un nouvel objet _release_. La version ci-dessus est nommée «happy-panda». (Si vous voulez que Helm génère un nom pour vous, oubliez le nom de la version et utilisez `--generate-name`.)
 
-During installation, the `helm` client will print useful information about which
-resources were created, what the state of the release is, and also whether there
-are additional configuration steps you can or should take.
+Lors de l'installation, le client `helm` affichera des informations utiles sur les ressources qui ont été créées, l'état de la version et si il y a des étapes de configuration supplémentaires que vous pouvez ou devez suivre.
 
-Helm does not wait until all of the resources are running before it exits. Many
-charts require Docker images that are over 600M in size, and may take a long
-time to install into the cluster.
+Helm n'attend pas que toutes les ressources soient en cours d'exécution avant de quitter. De nombreuses charts nécessitent des images Docker de plus de 600 Mo et peuvent prendre du temps à s'installer dans le cluster.
 
-To keep track of a release's state, or to re-read configuration information, you
-can use `helm status`:
+Pour suivre l'état d'une release ou pour relire les informations de configuration, vous pouvez utiliser `helm status`:
 
 ```console
 $ helm status happy-panda
@@ -175,16 +143,14 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-The above shows the current state of your release.
+La commande ci-dessus montre l'état actuel de votre release.
 
-### Customizing the Chart Before Installing
+### Personnalisation d'une chart avant son installation
 
-Installing the way we have here will only use the default configuration options
-for this chart. Many times, you will want to customize the chart to use your
-preferred configuration.
+L'installation comme nous l'avons fait ici n'utilisera que les options de configuration par défaut. Il peut arriver que vous souhaitiez personnaliser la chart pour utiliser une
+configuration personalisée.
 
-To see what options are configurable on a chart, use `helm show values`:
-
+Pour voir quelles options sont configurables sur une chart, utilisez `helm show values`:
 ```console
 $ helm show values bitnami/wordpress
 ## Global Docker image parameters
@@ -207,55 +173,48 @@ image:
   [..]
 ```
 
-You can then override any of these settings in a YAML formatted file, and then
-pass that file during installation.
+Vous pouvez ensuite ecraser la configuration par défaut grâce à un fichier YAML que vous passerez en paramètre lors de l'installation.
 
 ```console
 $ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values.yaml
 $ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-The above will create a default MariaDB user with the name `user0`, and grant
-this user access to a newly created `user0db` database, but will accept all the
-rest of the defaults for that chart.
+La commande ci dessus créera un utilisateur MariaDB par défaut avec le nom `user0`, et accordera à cet utilisateur l'accès à la base de données `user0db` nouvellement créée, mais prendra le reste des valeurs par défaut pour l'installationde la chart.
 
-There are two ways to pass configuration data during install:
+Il existe deux façons de transmettre les données de configuration lors de l'installation:
 
-- `--values` (or `-f`): Specify a YAML file with overrides. This can be
-  specified multiple times and the rightmost file will take precedence
-- `--set`: Specify overrides on the command line.
+- `--values` (or `-f`): Spécifie un fichier YAML personnalisé. Vous pouvez spécifier plusieurs fichiers, celui le plus à droite prévaudra.
+- `--set`: Spécifie une valeur personnalisée en ligne de commande.
 
-If both are used, `--set` values are merged into `--values` with higher
-precedence. Overrides specified with `--set` are persisted in a ConfigMap.
-Values that have been `--set` can be viewed for a given release with `helm get
-values <release-name>`. Values that have been `--set` can be cleared by running
-`helm upgrade` with `--reset-values` specified.
+Si les deux paramètes sont utilisés, les valeurs de `--set` sont fusionnés dans ` --values` avec une priorité plus élevé. Les remplacements spécifiés avec `--set` sont conservés dans un fichier ConfigMap.
+Les valeurs qui ont été `--set` peuvent être visualisées pour une release donnée avec ` helm get values <nom-de-release> `. 
+Les valeurs qui ont été `--set` peuvent être effacées en exécutant `helm upgrade` avec ` --reset-values` spécifié.
 
-#### The Format and Limitations of `--set`
+#### Le format et les limites de `--set`
 
-The `--set` option takes zero or more name/value pairs. At its simplest, it is
-used like this: `--set name=value`. The YAML equivalent of that is:
+L'option `--set` prend zéro ou plusieurs paires de nom/valeur. La manière la plus simple d'utilisation est :  
+`--set name = value`. L'équivalent YAML serait :
 
 ```yaml
 name: value
 ```
 
-Multiple values are separated by `,` characters. So `--set a=b,c=d` becomes:
+Vous pouvez entrer plusieurs valeurs en les séparant par une virgule `,` . Ainsi `--set a=b,c=d` devient l'équivalent YAML de :
 
 ```yaml
 a: b
 c: d
 ```
 
-More complex expressions are supported. For example, `--set outer.inner=value`
-is translated into this:
+Des expressions plus complexes sont acceptés. Par exemple l'équivalent de `--set outer.inner=value` en YAML est :
+
 ```yaml
 outer:
   inner: value
 ```
 
-Lists can be expressed by enclosing values in `{` and `}`. For example, `--set
-name={a, b, c}` translates to:
+Vous pouvez définir des listes grâce à des accolades `{` et `}`. Exemple: `--set name={a, b, c}` devient :
 
 ```yaml
 name:
@@ -264,16 +223,16 @@ name:
   - c
 ```
 
-As of Helm 2.5.0, it is possible to access list items using an array index
-syntax. For example, `--set servers[0].port=80` becomes:
+Depuis Helm 2.5.0, il est possible d'accéder aux éléments d'une liste en utilisant l'index du tableau.  
+Exemple : `--set servers[0].port=80` correspond à :
 
 ```yaml
 servers:
   - port: 80
 ```
 
-Multiple values can be set this way. The line `--set
-servers[0].port=80,servers[0].host=example` becomes:
+Plusieurs valeurs peuvent être définit de cette manière.  
+La ligne suivante `--set servers[0].port=80,servers[0].host=example` devient:
 
 ```yaml
 servers:
@@ -281,58 +240,49 @@ servers:
     host: example
 ```
 
-Sometimes you need to use special characters in your `--set` lines. You can use
-a backslash to escape the characters; `--set name=value1\,value2` will become:
+Il peut arriver que vous ayez besoin d'utiliser un charactère spécial avec `--set`. Pour ce faire vous pouvez utiliser un backslash `\`.  
+Exemple : `--set name=value1\,value2` devient :
 
 ```yaml
 name: "value1,value2"
 ```
 
-Similarly, you can escape dot sequences as well, which may come in handy when
-charts use the `toYaml` function to parse annotations, labels and node
-selectors. The syntax for `--set nodeSelector."kubernetes\.io/role"=master`
-becomes:
+De la même manière, vous pouvez l'utiliser pour une séquence commençant par un point, ce qui peut être utile lorsque les charts utilisent la fonction `toYaml` pour analyser les annotations, les étiquettes et les nœuds sélecteurs.  
+La syntaxe de `--set nodeSelector." Kubernetes \ .io / role "= master` devient:
 
 ```yaml
 nodeSelector:
   kubernetes.io/role: master
 ```
 
-Deeply nested data structures can be difficult to express using `--set`. Chart
-designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file  (read more about [Values Files](../chart_template_guide/values_files/)).
+Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs a configurer (en savoir plus sur [les fichiers de valeurs]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
 
-### More Installation Methods
+### Autres methodes d'installations
 
-The `helm install` command can install from several sources:
+La commande `helm install` peut installer un package depuis différentes sources:
 
-- A chart repository (as we've seen above)
-- A local chart archive (`helm install foo foo-0.1.1.tgz`)
-- An unpacked chart directory (`helm install foo path/to/foo`)
-- A full URL (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
+- Un dépot de charts (Comme vu précédemment)
+- Une archive local d'une chart (`helm install foo foo-0.1.1.tgz`)
+- Un dossier contenant une chart décompressé (`helm install foo path/to/foo`)
+- Une URL pointant vers une chart (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
-## 'helm upgrade' and 'helm rollback': Upgrading a Release, and Recovering on Failure
+## 'helm upgrade' et 'helm rollback': Mettre à jour une Release, et récupération d'un Echec
 
-When a new version of a chart is released, or when you want to change the
-configuration of your release, you can use the `helm upgrade` command.
+Lorsqu'une nouvelle release d'une chart est publiée, ou lorsque vous souhaitez modifier le configuration de votre release, vous pouvez utiliser la commande `helm upgrade`.
 
-An upgrade takes an existing release and upgrades it according to the
-information you provide. Because Kubernetes charts can be large and complex,
-Helm tries to perform the least invasive upgrade. It will only update things
-that have changed since the last release.
+Une mise à niveau prend une release existante et la met à niveau en fonction des informations que vous fournissez. Étant donné que les charts Kubernetes peuvent être volumineuses et complexes, Helm essaie d'effectuer la mise à niveau la moins invasive. Ainsi il essaiera de mettre à jour uniquement les éléments qui ont changé depuis la dernière version.
 
 ```console
 $ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
 ```
 
-In the above case, the `happy-panda` release is upgraded with the same chart,
-but with a new YAML file:
+Dans le cas ci-dessus la release `happy-panda`  est mis à jour depuis la même chart mais avec un fichier de config YAML différent :
 
 ```yaml
 mariadb.auth.username: user1
 ```
 
-We can use `helm get values` to see whether that new setting took effect.
+Vous pouvez utiliser `helm get values` si votre nouvelle configuration à pris effet ou non :
 
 ```console
 $ helm get values happy-panda
@@ -341,56 +291,34 @@ mariadb:
     username: user1
 ```
 
-The `helm get` command is a useful tool for looking at a release in the cluster.
-And as we can see above, it shows that our new values from `panda.yaml` were
-deployed to the cluster.
+La commande `helm get` est un outil utile pour voir les informations d'une release dans le cluster. Et comme nous venons de le voir ci-dessus, la commande peut également être utilisé pour voir si les nouvelles valeurs de `panda.yaml` sont bien déployés sur le cluster.
 
-Now, if something does not go as planned during a release, it is easy to roll
-back to a previous release using `helm rollback [RELEASE] [REVISION]`.
+Maintenant admettons que quelque chose ne se passe pas comme prévu lors d'une release, il est facile de revenir à une version précédente en utilisant `helm rollback [RELEASE_NAME] [VERSION]`.
 
 ```console
 $ helm rollback happy-panda 1
 ```
 
-The above rolls back our happy-panda to its very first release version. A
-release version is an incremental revision. Every time an install, upgrade, or
-rollback happens, the revision number is incremented by 1. The first revision
-number is always 1. And we can use `helm history [RELEASE]` to see revision
-numbers for a certain release.
+la commande précédente ramène notre happy-panda à sa toute première version. Une version de release est une révision incrémentielle. Chaque fois qu'une installation, qu'une mise à jour ou qu'une restauration est faite, le numéro de révision est incrémenté de 1. La première release est toujours la version numéro 1. Et vous pouvez utiliser `helm history [RELEASE]` voir les versions d'une release.
 
-## Helpful Options for Install/Upgrade/Rollback
+## Options utiles pour l'installation / la mise à jour / la restauration
 
-There are several other helpful options you can specify for customizing the
-behavior of Helm during an install/upgrade/rollback. Please note that this is
-not a full list of cli flags. To see a description of all flags, just run `helm
-<command> --help`.
+Il existe plusieurs autres options utiles que vous pouvez spécifier pour personnaliser le comportement de Helm lors d'une installation / d'une mise à jour / d'une restauration. Veuillez noter que la liste qui suit n'est pas exhaustive. Pour voir une description de tous les flags, exécutez simplement `helm <commande> --help`.
 
-- `--timeout`: A [Go duration](https://golang.org/pkg/time/#ParseDuration) value
-  to wait for Kubernetes commands to complete. This defaults to `5m0s`.
-- `--wait`: Waits until all Pods are in a ready state, PVCs are bound,
-  Deployments have minimum (`Desired` minus `maxUnavailable`) Pods in ready
-  state and Services have an IP address (and Ingress if a `LoadBalancer`) before
-  marking the release as successful. It will wait for as long as the `--timeout`
-  value. If timeout is reached, the release will be marked as `FAILED`. Note: In
-  scenarios where Deployment has `replicas` set to 1 and `maxUnavailable` is not
-  set to 0 as part of rolling update strategy, `--wait` will return as ready as
-  it has satisfied the minimum Pod in ready condition.
-- `--no-hooks`: This skips running hooks for the command
-- `--recreate-pods` (only available for `upgrade` and `rollback`): This flag
-  will cause all pods to be recreated (with the exception of pods belonging to
-  deployments). (DEPRECATED in Helm 3)
+- `--timeout`: Une [durée Go](https://golang.org/pkg/time/#ParseDuration) maximale avant de terminé la commande Kubernetes. La valeur par défaut est `5m0s`.
+- `--wait`: Attend que tous les pods soient dans un état prêt, les PVCs sont liés, les déploiements ont un minimum (`Desired` moins ` maxUnavailable`) de pods prêts et les services ont une adresse IP (et une entrée si il y a un `LoadBalancer`) avant de marquer la release comme réussie. Il attendra au maximum la valeur de `--timeout`. Si le délai d'expiration est atteint, la release sera marquée comme «FAILED». Remarque: dans les scénarios où le déploiement a `réplicas` défini sur 1 et ` maxUnavailable` n'est pas défini à 0 dans le cadre de la stratégie de mise à jour progressive, `--wait` sera marqué comme prêt dès qu'il au satisfait sont nombre minimum de Pods en état prêt.
+- `--no-hooks`: Permet d'ignorer l'exécution des hooks pour la commande
+- `--recreate-pods` (seulement disponible pour les `upgrade` et les `rollback`): Ce flag permet de recréer tous les pods (à l'exception des pods de deploiements). (DEPRECIE depuis Helm 3)
 
-## 'helm uninstall': Uninstalling a Release
+## 'helm uninstall': Désinstallation d'une Release
 
-When it is time to uninstall a release from the cluster, use the `helm
-uninstall` command:
+Quand sera venu le jour ou vous devrez désinstaller une release de votre cluster, utilisez la commande `helm uninstall` :
 
 ```console
 $ helm uninstall happy-panda
 ```
 
-This will remove the release from the cluster. You can see all of your currently
-deployed releases with the `helm list` command:
+Cela supprimera la release du cluster. Vous pouvez voir toutes vos releases actuellement déployées avec la commande `helm list`:
 
 ```console
 $ helm list
@@ -398,18 +326,13 @@ NAME            VERSION UPDATED                         STATUS          CHART
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 ```
 
-From the output above, we can see that the `happy-panda` release was
-uninstalled.
+À partir du résultat ci-dessus, nous pouvons voir que la version `happy-panda` à bien été désinstallé.
 
-In previous versions of Helm, when a release was deleted, a record of its
-deletion would remain. In Helm 3, deletion removes the release record as well.
-If you wish to keep a deletion release record, use `helm uninstall
---keep-history`. Using `helm list --uninstalled` will only show releases that
-were uninstalled with the `--keep-history` flag.
+Dans les versions précédentes de Helm, lorsqu'une release était supprimée, l'historique entier restait disponible. Depuis Helm 3, la désinstallation supprime également l'historique de la release.
+Si vous souhaitez tout de même conserver un enregistrement de l'historique, utilisez `helm uninstall --keep-history`.  
+L'utilisation de `helm list --uninstalled` affichera uniquement les release qui ont été désinstallés avec l'indicateur `--keep-history`.
 
-The `helm list --all` flag will show you all release records that Helm has
-retained, including records for failed or deleted items (if `--keep-history` was
-specified):
+L'indicateur `helm list --all` vous montrera tous les historique de release que Helm a conservés, y compris les historiques des éléments ayant échoué ou ayant été supprimé (si `--keep-history` était spécifié):
 
 ```console
 $  helm list --all
@@ -419,15 +342,13 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
 ```
 
-Note that because releases are now deleted by default, it is no longer possible
-to rollback an uninstalled resource.
+Notez que les historiques de release étant désormais supprimées par défaut, il n'est plus possible de restaurer une ressource désinstallée.
 
-## 'helm repo': Working with Repositories
+## 'helm repo': Travailler avec des Dépôts
 
-Helm 3 no longer ships with a default chart repository. The `helm repo` command
-group provides commands to add, list, and remove repositories.
+Helm 3 n'est plus livré avec un dépôt de charts par défaut. La commande `helm repo` vous permet entre autre d'ajouter, de répertorier et de supprimer des dépôts.
 
-You can see which repositories are configured using `helm repo list`:
+Vous pouvez voir quels dépôts sont configurés en utilisant `helm repo list`:
 
 ```console
 $ helm repo list
@@ -436,59 +357,50 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-And new repositories can be added with `helm repo add`:
+Vous pouvez bien entendu ajouter de nouveaux dépôts avec `helm repo add`:
 
 ```console
 $ helm repo add dev https://example.com/dev-charts
 ```
 
-Because chart repositories change frequently, at any point you can make sure
-your Helm client is up to date by running `helm repo update`.
+Étant donné que les dépôts de charts changent fréquemment, vous pouvez à tout moment vous assurer que dépot Helm est à jour en exécutant `helm repo update`.
 
-Repositories can be removed with `helm repo remove`.
+Les dépôts peuvent être supprimés avec `helm repo remove`.
 
-## Creating Your Own Charts
+## Création de vos propres charts
 
-The Chart Developpement guide explains how
-to develop your own charts. But you can get started quickly by using the `helm
-create` command:
+Le [Guide de développement de charts]({{< relref path="/docs/topics/charts.md" lang="en" >}}) explique comment développer vos propres charts. Mais vous pouvez vous lancer rapidement dans la création de charts avec la commande `helm create`:
 
 ```console
 $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-Now there is a chart in `./deis-workflow`. You can edit it and create your own
-templates.
+Il y a maintenant une chart dans `./Deis-workflow`. Vous pouvez la modifier et créer vôtre modèles personalisé.
 
-As you edit your chart, you can validate that it is well-formed by running `helm
-lint`.
+Lorsque vous modifiez votre chart, vous pouvez vérifier la syntaxe en exécutant `helm lint`.
 
-When it's time to package the chart up for distribution, you can run the `helm
-package` command:
+Quand vous aurez besoin de packager la chart pour la distribution, vous pourrez exécuter `helm package`:
 
 ```console
 $ helm package deis-workflow
 deis-workflow-0.1.0.tgz
 ```
 
-And that chart can now easily be installed by `helm install`:
+La chart est maintenant prête à l'installation `helm install`:
 
 ```console
 $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-Charts that are packaged can be loaded into chart repositories. See the
-documentation for Helm chart repository for more details.
+Les charts packagés peuvent être uploadés dans des dépôts. Jetez un oeil à la
+[documentation des dépôts]({{< ref path="/docs/topics/chart_repository.md"  lang="en" >}}) de charts Helm pour plus de détails.
 
 ## Conclusion
 
-This chapter has covered the basic usage patterns of the `helm` client,
-including searching, installation, upgrading, and uninstalling. It has also
-covered useful utility commands like `helm status`, `helm get`, and `helm repo`.
+Ce chapitre a couvert les utilisations de base du client `helm`, y compris la recherche, l'installation, la mise à jour et la désinstallation. Nous avons également vu les commandes utilitaires telles que `helm status`,` helm get` ou encore `helm repo`.
 
-For more information on these commands, take a look at Helm's built-in help:
-`helm help`.
+Pour plus d'informations sur ces commandes, consultez l'aide intégrée de Helm: `helm help`.
 
-In the next chapter, we look at the process of developing charts.
+Dans le [chapitre suivant]({{< relref path="/docs/howto/charts_tips_and_tricks/_index.md" lang="en" >}}), nous verrons le processus de développement des charts.

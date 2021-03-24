@@ -1,5 +1,5 @@
 ---
-title: "Guide de démarage rapide"
+title: "Guide de démarrage rapide"
 description: "Comment installer et débuter sur Helm, comprends les instructions pour les distros, FAQs, et plugins."
 weight: 1
 ---
@@ -23,7 +23,7 @@ Lisez la [Politique de prise en charge de la version Helm](https://helm.sh/docs/
 
 ## Installer Helm
 
-Télécharger le binaire de la dernière release de Helm. Vous pouvez également utiliser un gestionnaire de paquet tel que `homebrew`, ou regarder sur [la page des releases officielles](https://github.com/helm/helm/releases).
+Télécharger le binaire de la dernière release de Helm. Vous pouvez également utiliser un gestionnaire de package tel que `homebrew`, ou regarder sur [la page des releases officielles](https://github.com/helm/helm/releases).
 
 Pour plus de détails, ou d'autre options d'installation rendez vous sur [le guide d'installation]({{< ref "install.md" >}}).
 
