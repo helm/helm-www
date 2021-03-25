@@ -57,11 +57,11 @@ $ helm install stable/mysql --generate-name
 Released smiling-penguin
 ```
 
-Dans l'exemple ci-dessus, la chart `stable / mysql` a été déployé, et le nom de notre nouvelle release est «smiling-penguin».
+Dans l'exemple ci-dessus, le chart `stable / mysql` a été déployé, et le nom de notre nouvelle release est «smiling-penguin».
 
-Vous pouvez obtenir les informations simples des fonctionnalités de cette chart MySQL en exécutant `helm show chart stable/mysql`. Ou vous pouvez lancer `helm show all stable/mysql` pour obtenir toute les informations disponibles.
+Vous pouvez obtenir les informations simples des fonctionnalités de ce chart MySQL en exécutant `helm show chart stable/mysql`. Ou vous pouvez lancer `helm show all stable/mysql` pour obtenir toute les informations disponibles.
 
-Chaque fois que vous installez une chart, une nouvelle release est créée. Une chart peut donc être installé plusieurs fois sur le même cluster. Et chaque release peut être indépendamment gérée et mise à jour.
+Chaque fois que vous installez un chart, une nouvelle release est créée. Un chart peut donc être installé plusieurs fois sur le même cluster. Et chaque release peut être indépendamment gérée et mise à jour.
 
 La commande `helm install` est très puissante et possède beaucoup de fonctionnalités. Pour en apprendre plus sur cette commande lisez le [Guide d'utilisation de Helm]({{< ref "using_helm.md">}})
 

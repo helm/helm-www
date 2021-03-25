@@ -10,15 +10,15 @@ Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez c
 
 ## Trois grands concepts
 
-Une *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
+Un *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
 
-Un *Dépot* est le lieu où les charts peuvent être collectées et partagées. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de donnée de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
+Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de donnée de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
 
-Une *Release* est une instance d'une chart s'exécutant dans un cluster Kubernetes. Une chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'elle est à nouveau installée, une nouvelle _release_ est créé. Prenons une chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer cette chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
+Une *Release* est une instance d'un chart s'exécutant dans un cluster Kubernetes. Un chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'elle est à nouveau installée, une nouvelle _release_ est créé. Prenons un chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer ce chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
 
 Maintenant que vous maîtrisez ces concepts, nous pouvons aborder Helm de la manière suivante :
 
-Helm installe des _charts_ dans Kubernetes, créant une nouvelle _release_ pour chaque installation. Et pour trouver de nouvelles charts, vous pouvez rechercher des _repositories_ (dépots) de charts Helm.
+Helm installe des _charts_ dans Kubernetes, créant une nouvelle _release_ pour chaque installation. Et pour trouver de nouveaux charts, vous pouvez rechercher des _repositories_ (dépots) de charts Helm.
 
 ## 'helm search': La recherche de charts
 
@@ -27,7 +27,7 @@ Helm est livré avec une puissante commande de recherche. Elle peut être utilis
 - `helm search hub` recherche sur le [Artifact Hub](https://artifacthub.io), qui liste les charts Helm depuis une douzaines de dépôts.
 - `helm search repo` recherche sur les dépots que vous avez ajouté a votre config (via `helm repo add`). Cette recherche est faite sur le réseau privé et ne nécessite pas de connexion à internet.
 
-Vous pouvez trouver une chart sur les dépôts publique avec la commande `helm search hub`:
+Vous pouvez trouver un chart sur les dépôts publique avec la commande `helm search hub`:
 
 ```console
 $ helm search hub wordpress
@@ -66,7 +66,7 @@ La recherche est un bon moyen de trouver les packages disponibles. Une fois que 
 
 ## 'helm install': Installation d'un package
 
-Pour installer un nouveau package, utilisez la commande `helm install`. Dans sa forme la plus simple, elle prend deux arguments: le nom de la version voulu et le nom de la chart que vous
+Pour installer un nouveau package, utilisez la commande `helm install`. Dans sa forme la plus simple, elle prend deux arguments: le nom de la version voulu et le nom du chart que vous
 voulez installer. 
 
 ```console
@@ -102,7 +102,7 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-La chart `wordpress` est maintenant installée. Notez que l'installation d'une chart crée un nouvel objet _release_. La version ci-dessus est nommée «happy-panda». (Si vous voulez que Helm génère un nom pour vous, oubliez le nom de la version et utilisez `--generate-name`.)
+Le chart `wordpress` est maintenant installé. Notez que l'installation d'un chart crée un nouvel objet _release_. La version ci-dessus est nommée «happy-panda». (Si vous voulez que Helm génère un nom pour vous, oubliez le nom de la version et utilisez `--generate-name`.)
 
 Lors de l'installation, le client `helm` affichera des informations utiles sur les ressources qui ont été créées, l'état de la version et si il y a des étapes de configuration supplémentaires que vous pouvez ou devez suivre.
 
@@ -145,12 +145,12 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 La commande ci-dessus montre l'état actuel de votre release.
 
-### Personnalisation d'une chart avant son installation
+### Personnalisation d'un chart avant son installation
 
-L'installation comme nous l'avons fait ici n'utilisera que les options de configuration par défaut. Il peut arriver que vous souhaitiez personnaliser la chart pour utiliser une
+L'installation comme nous l'avons fait ici n'utilisera que les options de configuration par défaut. Il peut arriver que vous souhaitiez personnaliser le chart pour utiliser une
 configuration personalisée.
 
-Pour voir quelles options sont configurables sur une chart, utilisez `helm show values`:
+Pour voir quelles options sont configurables sur un chart, utilisez `helm show values`:
 ```console
 $ helm show values bitnami/wordpress
 ## Global Docker image parameters
@@ -180,7 +180,7 @@ $ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values
 $ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-La commande ci dessus créera un utilisateur MariaDB par défaut avec le nom `user0`, et accordera à cet utilisateur l'accès à la base de données `user0db` nouvellement créée, mais prendra le reste des valeurs par défaut pour l'installationde la chart.
+La commande ci dessus créera un utilisateur MariaDB par défaut avec le nom `user0`, et accordera à cet utilisateur l'accès à la base de données `user0db` nouvellement créée, mais prendra le reste des valeurs par défaut pour l'installation du chart.
 
 Il existe deux façons de transmettre les données de configuration lors de l'installation:
 
@@ -262,13 +262,13 @@ Les structures de données profondément imbriquées peuvent être difficiles à
 La commande `helm install` peut installer un package depuis différentes sources:
 
 - Un dépot de charts (Comme vu précédemment)
-- Une archive local d'une chart (`helm install foo foo-0.1.1.tgz`)
-- Un dossier contenant une chart décompressé (`helm install foo path/to/foo`)
-- Une URL pointant vers une chart (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
+- Une archive local d'un chart (`helm install foo foo-0.1.1.tgz`)
+- Un dossier contenant un chart décompressé (`helm install foo path/to/foo`)
+- Une URL pointant vers un chart (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
 ## 'helm upgrade' et 'helm rollback': Mettre à jour une Release, et récupération d'un Echec
 
-Lorsqu'une nouvelle release d'une chart est publiée, ou lorsque vous souhaitez modifier le configuration de votre release, vous pouvez utiliser la commande `helm upgrade`.
+Lorsqu'une nouvelle release d'un chart est publiée, ou lorsque vous souhaitez modifier le configuration de votre release, vous pouvez utiliser la commande `helm upgrade`.
 
 Une mise à niveau prend une release existante et la met à niveau en fonction des informations que vous fournissez. Étant donné que les charts Kubernetes peuvent être volumineuses et complexes, Helm essaie d'effectuer la mise à niveau la moins invasive. Ainsi il essaiera de mettre à jour uniquement les éléments qui ont changé depuis la dernière version.
 
@@ -376,18 +376,18 @@ $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-Il y a maintenant une chart dans `./Deis-workflow`. Vous pouvez la modifier et créer vôtre modèles personalisé.
+Il y a maintenant un chart dans `./Deis-workflow`. Vous pouvez le modifier et créer vôtre modèles personalisé.
 
 Lorsque vous modifiez votre chart, vous pouvez vérifier la syntaxe en exécutant `helm lint`.
 
-Quand vous aurez besoin de packager la chart pour la distribution, vous pourrez exécuter `helm package`:
+Quand vous aurez besoin de packager le chart pour la distribution, vous pourrez exécuter `helm package`:
 
 ```console
 $ helm package deis-workflow
 deis-workflow-0.1.0.tgz
 ```
 
-La chart est maintenant prête à l'installation `helm install`:
+Le chart est maintenant prêt à l'installation `helm install`:
 
 ```console
 $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
