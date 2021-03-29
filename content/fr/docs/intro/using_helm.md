@@ -12,9 +12,9 @@ Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez c
 
 Un *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
 
-Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de donnée de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
+Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de données de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
 
-Une *Release* est une instance d'un chart s'exécutant dans un cluster Kubernetes. Un chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'elle est à nouveau installée, une nouvelle _release_ est créé. Prenons un chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer ce chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
+Une *Release* est une instance d'un chart s'exécutant dans un cluster Kubernetes. Un chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'il est à nouveau installé, une nouvelle _release_ est créé. Prenons un chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer ce chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
 
 Maintenant que vous maîtrisez ces concepts, nous pouvons aborder Helm de la manière suivante :
 
@@ -66,7 +66,7 @@ La recherche est un bon moyen de trouver les packages disponibles. Une fois que 
 
 ## 'helm install': Installation d'un package
 
-Pour installer un nouveau package, utilisez la commande `helm install`. Dans sa forme la plus simple, elle prend deux arguments: le nom de la version voulu et le nom du chart que vous
+Pour installer un nouveau package, utilisez la commande `helm install`. Dans sa forme la plus simple, elle prend deux arguments: le nom de la version voulue et le nom du chart que vous
 voulez installer. 
 
 ```console
@@ -104,7 +104,7 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 Le chart `wordpress` est maintenant installé. Notez que l'installation d'un chart crée un nouvel objet _release_. La version ci-dessus est nommée «happy-panda». (Si vous voulez que Helm génère un nom pour vous, oubliez le nom de la version et utilisez `--generate-name`.)
 
-Lors de l'installation, le client `helm` affichera des informations utiles sur les ressources qui ont été créées, l'état de la version et si il y a des étapes de configuration supplémentaires que vous pouvez ou devez suivre.
+Lors de l'installation, le client `helm` affichera des informations utiles sur les ressources qui ont été créées, l'état de la version et si il y a des étapes de configurations supplémentaires que vous pouvez ou devez suivre.
 
 Helm n'attend pas que toutes les ressources soient en cours d'exécution avant de quitter. De nombreuses charts nécessitent des images Docker de plus de 600 Mo et peuvent prendre du temps à s'installer dans le cluster.
 
@@ -180,14 +180,14 @@ $ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values
 $ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-La commande ci dessus créera un utilisateur MariaDB par défaut avec le nom `user0`, et accordera à cet utilisateur l'accès à la base de données `user0db` nouvellement créée, mais prendra le reste des valeurs par défaut pour l'installation du chart.
+La commande ci-dessus créera un utilisateur MariaDB par défaut avec le nom `user0`, et accordera à cet utilisateur l'accès à la base de données `user0db` nouvellement créée, mais prendra le reste des valeurs par défaut pour l'installation du chart.
 
 Il existe deux façons de transmettre les données de configuration lors de l'installation:
 
-- `--values` (or `-f`): Spécifie un fichier YAML personnalisé. Vous pouvez spécifier plusieurs fichiers, celui le plus à droite prévaudra.
+- `--values` (ou `-f`): Spécifie un fichier YAML personnalisé. Vous pouvez spécifier plusieurs fichiers, celui le plus à droite prévaudra.
 - `--set`: Spécifie une valeur personnalisée en ligne de commande.
 
-Si les deux paramètes sont utilisés, les valeurs de `--set` sont fusionnés dans ` --values` avec une priorité plus élevé. Les remplacements spécifiés avec `--set` sont conservés dans un fichier ConfigMap.
+Si les deux paramètes sont utilisés, les valeurs de `--set` sont fusionnés dans ` --values` avec une priorité plus élevée. Les remplacements spécifiés avec `--set` sont conservés dans un fichier ConfigMap.
 Les valeurs qui ont été `--set` peuvent être visualisées pour une release donnée avec ` helm get values <nom-de-release> `. 
 Les valeurs qui ont été `--set` peuvent être effacées en exécutant `helm upgrade` avec ` --reset-values` spécifié.
 
@@ -255,7 +255,7 @@ nodeSelector:
   kubernetes.io/role: master
 ```
 
-Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs a configurer (en savoir plus sur [les fichiers de valeurs]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
+Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs à configurer (en savoir plus sur [les fichiers de valeurs]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
 
 ### Autres methodes d'installations
 
@@ -268,7 +268,7 @@ La commande `helm install` peut installer un package depuis différentes sources
 
 ## 'helm upgrade' et 'helm rollback': Mettre à jour une Release, et récupération d'un Echec
 
-Lorsqu'une nouvelle release d'un chart est publiée, ou lorsque vous souhaitez modifier le configuration de votre release, vous pouvez utiliser la commande `helm upgrade`.
+Lorsqu'une nouvelle release d'un chart est publiée, ou lorsque vous souhaitez modifier la configuration de votre release, vous pouvez utiliser la commande `helm upgrade`.
 
 Une mise à niveau prend une release existante et la met à niveau en fonction des informations que vous fournissez. Étant donné que les charts Kubernetes peuvent être volumineuses et complexes, Helm essaie d'effectuer la mise à niveau la moins invasive. Ainsi il essaiera de mettre à jour uniquement les éléments qui ont changé depuis la dernière version.
 
@@ -303,10 +303,10 @@ la commande précédente ramène notre happy-panda à sa toute première version
 
 ## Options utiles pour l'installation / la mise à jour / la restauration
 
-Il existe plusieurs autres options utiles que vous pouvez spécifier pour personnaliser le comportement de Helm lors d'une installation / d'une mise à jour / d'une restauration. Veuillez noter que la liste qui suit n'est pas exhaustive. Pour voir une description de tous les flags, exécutez simplement `helm <commande> --help`.
+Il existe d'autres options utiles que vous pouvez spécifier pour personnaliser le comportement de Helm lors d'une installation / d'une mise à jour / d'une restauration. Veuillez noter que la liste qui suit n'est pas exhaustive. Pour voir une description de tous les flags, exécutez simplement `helm <commande> --help`.
 
-- `--timeout`: Une [durée Go](https://golang.org/pkg/time/#ParseDuration) maximale avant de terminé la commande Kubernetes. La valeur par défaut est `5m0s`.
-- `--wait`: Attend que tous les pods soient dans un état prêt, les PVCs sont liés, les déploiements ont un minimum (`Desired` moins ` maxUnavailable`) de pods prêts et les services ont une adresse IP (et une entrée si il y a un `LoadBalancer`) avant de marquer la release comme réussie. Il attendra au maximum la valeur de `--timeout`. Si le délai d'expiration est atteint, la release sera marquée comme «FAILED». Remarque: dans les scénarios où le déploiement a `réplicas` défini sur 1 et ` maxUnavailable` n'est pas défini à 0 dans le cadre de la stratégie de mise à jour progressive, `--wait` sera marqué comme prêt dès qu'il au satisfait sont nombre minimum de Pods en état prêt.
+- `--timeout`: Une [durée Go](https://golang.org/pkg/time/#ParseDuration) maximale avant de terminer la commande Kubernetes. La valeur par défaut est `5m0s`.
+- `--wait`: Attend que tous les pods soient dans un état prêt, les PVCs sont liés, les déploiements ont un minimum (`Desired` moins ` maxUnavailable`) de pods prêts et les services ont une adresse IP (et une entrée si il y a un `LoadBalancer`) avant de marquer la release comme réussie. Il attendra au maximum la valeur de `--timeout`. Si le délai d'expiration est atteint, la release sera marquée comme «FAILED». Remarque: dans les scénarios où le déploiement a `réplicas` défini sur 1 et ` maxUnavailable` n'est pas défini à 0 dans le cadre de la stratégie de mise à jour progressive, `--wait` sera marqué comme prêt dès qu'il aura satisfait son nombre minimum de Pods en état prêt.
 - `--no-hooks`: Permet d'ignorer l'exécution des hooks pour la commande
 - `--recreate-pods` (seulement disponible pour les `upgrade` et les `rollback`): Ce flag permet de recréer tous les pods (à l'exception des pods de deploiements). (DEPRECIE depuis Helm 3)
 
@@ -326,7 +326,7 @@ NAME            VERSION UPDATED                         STATUS          CHART
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 ```
 
-À partir du résultat ci-dessus, nous pouvons voir que la version `happy-panda` à bien été désinstallé.
+À partir du résultat ci-dessus, nous pouvons voir que la version `happy-panda` a bien été désinstallé.
 
 Dans les versions précédentes de Helm, lorsqu'une release était supprimée, l'historique entier restait disponible. Depuis Helm 3, la désinstallation supprime également l'historique de la release.
 Si vous souhaitez tout de même conserver un enregistrement de l'historique, utilisez `helm uninstall --keep-history`.  
@@ -376,7 +376,7 @@ $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-Il y a maintenant un chart dans `./Deis-workflow`. Vous pouvez le modifier et créer vôtre modèles personalisé.
+Il y a maintenant un chart dans `./deis-workflow`. Vous pouvez le modifier et créer vôtre modèles personalisé.
 
 Lorsque vous modifiez votre chart, vous pouvez vérifier la syntaxe en exécutant `helm lint`.
 

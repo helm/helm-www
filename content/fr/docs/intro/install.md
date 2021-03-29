@@ -40,7 +40,7 @@ Oui, vous pouvez également `curl https://raw.githubusercontent.com/helm/helm/ma
 
 ## Via les gestionnaires de packages
 
-La communauté Helm offre la possibilité d'installer Helm via le gestionnaires de packages de votre système d'exploitation. Ceux-ci ne sont pas pris en charge par le projet Helm et ne sont pas considérés comme des tiers de confiance.
+La communauté Helm offre la possibilité d'installer Helm via le gestionnaire de packages de votre système d'exploitation. Ceux-ci ne sont pas pris en charge par le projet Helm et ne sont pas considérés comme des tiers de confiance.
 
 ### Depuis Homebrew (macOS)
 
@@ -50,7 +50,7 @@ Les membres de la communauté Helm ont contribué à la création d'une formule 
 brew install helm
 ```
 
-(Note: There is also a formula for emacs-helm, which is a different project.)
+(Note: il existe un projet différent possédant une formule pour emacs-helm.)
 
 ### Depuis Chocolatey (Windows)
 

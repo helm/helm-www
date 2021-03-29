@@ -269,7 +269,7 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm - Le manageur de paquets de Kubernetes."
 contentDir = "content/fr"
-languageName = "French"
+languageName = "Français French"
 weight = 1
 
 [[languages.fr.menus.main]]
