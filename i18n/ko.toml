@@ -18,7 +18,7 @@ other = "복사"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "[인종 차별은 용납할 수 없고, 헬름 프로젝트의 목표에 맞지 않으며, 우리 오픈 소스 커뮤니티에 있을 수 없습니다. #BlackLivesMatter](https://docs.google.com/document/d/1a-lzdtxOlWuzYNGqwlYwxMWADtZ6vJGCpKhtJHHrS54/preview?pru=AAABcqVvUdo*ducxvc88kzBetsUXsohi7A)"
+other = ""
 
 ## footer
 [footer_support_title]
