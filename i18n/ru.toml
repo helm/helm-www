@@ -18,7 +18,7 @@ other = "Скопировать"
 
 ## site-wide banner about versioning
 [banner_1]
-other = "[Расизм неприемлем, несовместим с целями проекта Helm и не имеет места в нашем сообществе с открытым исходным кодом. #BlackLivesMatter](https://docs.google.com/document/d/1a-lzdtxOlWuzYNGqwlYwxMWADtZ6vJGCpKhtJHHrS54/preview?pru=AAABcqVvUdo*ducxvc88kzBetsUXsohi7A)"
+other = ""
 
 ## footer
 [footer_support_title]
