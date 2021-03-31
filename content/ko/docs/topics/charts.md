@@ -130,11 +130,11 @@ nginx-1.2.3.tgz
 
 `appVersion` 필드는 `version` 필드와 관련이 없음을 주의하라. 이 필드는
 어플리케이션의 버전을 명시하는 방법이다. 예를 들어, `drupal` 차트가
-`appVersion: 8.2.1`을 가진다면, 차트에 (기본값으로) 포함되는 Drupal의
+`appVersion: 8.2.1` 을 가진다면, 차트에 (기본값으로) 포함되는 Drupal의
 버전은 `8.2.1`임을 나타낸다. 이 필드는 정보만 제공하고,
 차트 버전 계산에 영향이 없다. 버전을 따옴표로 감싸는 것을 매우
 권장한다. 이것은 YAML 파서가 버전 번호를 string으로 다루게 한다. 따옴표 없이
-남기면 몇몇의 경우에 파싱 문제가 생길 수 있다. 예를 들어, YAML은 `1.0`을
+남기면 몇몇의 경우에 파싱 문제가 생길 수 있다. 예를 들어, YAML은 `1.0` 을
 소숫점으로, `1234e10` 같은 깃 커밋 SHA를 과학적 기수법으로 해석한다.
 
 현재 헬름 v3.5.0에서, `helm create`는 기본값으로 `appVersion` 필드를 따옴표로 감싼다.
@@ -193,7 +193,7 @@ semver 제약 조건을 정의할 수 있다. 헬름은 차트를 설치할 때 
 두가지 타입이 있다. Application은 기본 타입이며
 온전하게 작동할 수 있는 표준 차트이다.
 [library chart]({{< ref "/docs/topics/library_charts.md" >}}) 는 차트 빌더에
-유틸리티나 함수를 제공한다. library chart는 설치가 불가능하고, 항상
+유틸리티나 함수를 제공한다. library chart는 설치가 불가능하고, 보통
 어떤 리소스 오브젝트도 갖지 않는다는 점에서 application chart와는 다르다.
 
 **참고:** application chart는 library chart로 사용될 수 있다. 타입을
@@ -212,13 +212,14 @@ LICENSE는 차트에 대한 [license](https://en.wikipedia.org/wiki/Software_lic
 전용이 아니다. 필요한 경우, 차트에 의해 설치된 어플리케이션을 위해
 별도의 라이센스로 나눠질 수 있다.
 
-차트에 대한 README는 마크 다운(README.md)의 포맷이어야 하며,
+차트에 대한 README는 마크다운(README.md)의 포맷이어야 하며,
 일반적으로 다음을 포함한다.
 
 - 차트가 제공하는 어플리케이션이나 서비스에 관한 설명
 - 차트를 실행하기 위한 전제조건이나 필요조건
-- `values.yaml`에 있는 옵션과 기본값에 대한 설명
-- 차트의 설치나 환경설정에 관련이 있을 수 있는 다른 정보
+- `values.yaml` 에 있는 옵션과 기본값에 대한 설명
+- 차트의 설치나 환경설정에 관련이 있을 수
+  있는 다른 정보
 
 허브 및 기타 사용자 인터페이스가 `README.md` 파일의 콘텐츠에서
 가져온 차트에 대한 세부 정보를 표시하는 경우
@@ -255,7 +256,8 @@ dependencies:
 
 - `name` 필드는 사용할 차트명이다.
 - `version` 필드는 사용할 차트의 버전이다.
-- `repository` 필드는 차트 저장소의 완전한 URL 이다. 반드시 로컬 환경에서 `helm repo add`를 사용해야 함을 주의하라.
+- `repository` 필드는 차트 저장소의 완전한 URL 이다. 반드시 로컬 환경에서
+  `helm repo add` 를 사용해야 함을 주의하라.
 - URL 대신 저장소의 이름을 사용할 수 있다.
 
 ```console
@@ -269,7 +271,7 @@ dependencies:
     repository: "@fantastic-charts"
 ```
 
-일단 종속성을 정의하면, `helm dependency update`를 실행할 수 있고,
+일단 종속성을 정의하면, `helm dependency update` 를 실행할 수 있고,
 실행하면 종속성 파일을 사용해서 모든 명시된
 차트를 `charts/` 디렉터리 안에 다운로드 받는다.
 
@@ -286,7 +288,7 @@ Downloading apache from repo https://example.com/charts
 Downloading mysql from repo https://another.example.com/charts
 ```
 
-`helm dependency update`가 차트를 가져올 때,
+`helm dependency update` 가 차트를 가져올 때,
 차트 아카이브의 형태로 `charts/` 디렉터리에 저장한다.
 위의 예제 같은 경우, 다음 파일들을 차트 디렉터리에서 볼수 있다.
 
@@ -299,13 +301,13 @@ charts/
 #### 의존성 안에서의 대체 필드
 
 위에서 본 필드 외에도, 각각의 필요 엔트리는
-선택필드인 `alias`를 가질 수 있다.
+선택적 필드인 `alias` 를 가질 수 있다.
 
-종속성 차트에 대한 별명을 추가하는 것은 dependencies 안에
-새로운 종속성명을 별명으로 사용하여 넣는것이다.
+종속성 차트에 대한 별명(alias)을  추가하여, dependencies 안에
+새로운 종속성 이름을 별명으로 사용하여 넣게 된다.
 
-`alias`를 다른 이름으로 같은 차트에 엑세스가
-필요할 때 사용할 수 있다.
+다른 이름으로 차트에 엑세스 해야 하는 경우
+`alias` 를 사용할 수 있다.
 
 ```yaml
 # parentchart/Chart.yaml
@@ -324,7 +326,7 @@ dependencies:
     version: 0.1.0
 ```
 
-위의 예에서 `parentchart`에 대한 모두 3개의 종속성을 얻는다.
+위의 예에서 `parentchart` 에 대해 모두 3개의 종속성을 얻게 된다.
 
 ```text
 subchart
@@ -332,13 +334,13 @@ new-subchart-1
 new-subchart-2
 ```
 
-같은 동작을 수동으로 하는 방법은 `charts/` 디렉터리에 여러번 다른 이름으로
-같은 차트를 복사/붙여넣기 하면된다.
+같은 동작을 수동으로 하는 방법은 `charts/` 디렉터리에 같은 차트를 여러번 다른 이름으로
+복사/붙여넣기 하면된다.
 
 #### 의존성 안에서의 태그와 조건 필드
 
 위에서 본 필드 외에도, 각각의 필요 엔트리는 선택필드인
-`alias` 와 `condition` 을 가질 수 있다.
+`tags` 와 `condition` 을 가질 수 있다.
 
 모든 차트는 기본으로 로드된다. `tags` 나 `condition` 필드가
 존재하면, 차트가 적용될지에 대한 로딩 제어를 위해
@@ -386,10 +388,10 @@ tags:
 
 위 예에서 `front-end` 태그를 가진 모든 차트는 비활성화 되지만, 부모의 values에서
 `subchart1.enabled` 가 true로 평가되었기 때문에, condition은 `front-end` 태그를
-덮어쓰고 `subchart1`은 활성화된다.
+덮어쓰고 `subchart1` 은 활성화된다.
 
 `subchart2` 는 `back-end` 와 태그되었고 이 태그는 `true` 로 평가되어서,
-`subchart2` 는 활성화된다. 또한 `subchart2`가 특정한
+`subchart2` 는 활성화된다. 또한 `subchart2` 가 특정한
 condition을 가지지만, 부모의 values에 대응되는 경로가 없어서,
 이 condition은 아무 영향이 없다.
 
@@ -459,12 +461,12 @@ import 리스트에 `data` 키를 명시했기 때문에, 헬름은 `data` 키�
 myint: 99
 ```
 
-부모의 `data`키가 부모의 최종 values에 포함되지 않음을 주의하라.
+부모의 `data` 키가 부모의 최종 values에 포함되지 않음을 주의하라.
 부모의 키에 명시할 필요가 있다면, 'child-parent' 포맷을 사용하라.
 
 ##### 자식-부모 형식 사용하기
 
-자식 차트의 values의 `exports`키 에 포함되지 않은
+자식 차트의 values의 `exports` 키에 포함되지 않은
 values에 접근하려면, import될 (자식) values의
 키와 부모 차트의 values (부모)안의 목적지 경로를
 명시해야 한다.
@@ -558,7 +560,7 @@ wordpress:
 ### 의존성 사용의 운영적 관점
 
 위 섹션은 차트 종속성을 어떻게 명시하는지 설명하지만, `helm install` 과 
-`helm upgrade`를 사용하는 차트 설치에 어떻게 영향을 미치는가?
+`helm upgrade` 를 사용하는 차트 설치에 어떻게 영향을 미치는가?
 
 "A"라는 차트가 다음과 같은 쿠버네티스 오브젝트를 생성한다고 가정하자.
 
@@ -689,7 +691,7 @@ spec:
 
 **주의:** 익명의 `Chart.yaml` 필드는 무시된다. 이 필드는
 `Chart` 오브젝트의 안에서 접근이 불가능하다. 따라서
-`Chart.yaml`은 템플릿으로 구조화된 데이터를 제멋대로
+`Chart.yaml` 은 템플릿으로 구조화된 데이터를 제멋대로
 전달하기 위해 사용될 수 없다.
 
 ### 값 파일
@@ -731,7 +733,7 @@ storage: "gcs"
 
 오직 마지막 필드가 덮여쓰여짐을 주의하라.
 
-**참고:** 차트의 안에 포함된 디폴트 값 파일은 `values.yaml`의 이름을 가져야한다. 반면에,
+**참고:** 차트의 안에 포함된 디폴트 값 파일은 `values.yaml` 의 이름을 가져야한다. 반면에,
 커맨드 라인에 명시하는 파일은 아무 이름이나 가질 수 있다.
 
 **참고:** `--set` 플래그가  `helm install` 이나 `helm upgrade` 에 사용된다면,
@@ -793,9 +795,9 @@ apache:
 ```
 
 더 높은 레벨의 차트는 더 아래 레벨에서 정의된 변수에 대해 엑세스할 수 있다.
-그러므로 WordPress 차트는 `.Values.mysql.password`로 MySQL
+그러므로 WordPress 차트는 `.Values.mysql.password` 로 MySQL
 패스워드에 접근할 수 있다. 더 낮은 레벨의 차트는 부모차트에 엑세스가 불가능하므로,
-MySQL은 `title` 속성에 접근할 수 없다. 이 문제로 `apache.port`에도
+MySQL은 `title` 속성에 접근할 수 없다. 이 문제로 `apache.port` 에도
 접근할 수 없다.
 
 값은 네임스페이스가 지정되지만, 네임스페이스는 정리된다. WordPress 차트에서는
@@ -910,7 +912,7 @@ label 같은 `metadata` 속성을 셋팅하는 것 같은 일에서 유용하다
 - `helm lint`
 - `helm template`
 
-이 스키마의 필요조건을 만족한 `values.yaml`파일의 예는
+이 스키마의 필요조건을 만족한 `values.yaml` 파일의 예는
 다음과 같다.
 
 ```yaml
@@ -1024,7 +1026,7 @@ spec:
 이 이유로, 헬름은 CRDs를 관리하는 것에 매우 조심스럽게 접근한다.
 CRDs는 다음 제약이 적용된다.
 
-- CRDs는 절대 재설치 불가능하다. 헬름이 (버전에 상관 없이) `crds/`디렉터리에 CRDs가 존재한다는 것을 알아낸다면, 헬름은 설치나 업그레이드 시도를 하지 않는다.
+- CRDs는 절대 재설치 불가능하다. 헬름이 (버전에 상관 없이) `crds/` 디렉터리에 CRDs가 존재한다는 것을 알아낸다면, 헬름은 설치나 업그레이드 시도를 하지 않는다.
 - CRDs는 절대 업그레이드나 롤백이 불가능하다. 헬름은 오직 설치 작업시에만 CRDs를 생성한다.
 - CRDs는 절대 삭제될수 없다. CRD를 자동으로 지우는 것은 모든 클러스터 안의 네임스페이스에 영향을 주는 CRD's 내용의 모든것을 삭제한다. 따라서, 헬름은 CRDs를 삭제하지 않는다.
 
@@ -1042,7 +1044,7 @@ $ helm create mychart
 Created mychart/
 ```
 
-일단 차트를 수정하면, `helm`은 차트아카이브로
+일단 차트를 수정하면, `helm` 은 차트아카이브로
 패키징할 수 있다.
 
 ```console
@@ -1050,7 +1052,7 @@ $ helm package mychart
 Archived mychart-0.1.-.tgz
 ```
 
-차트의 포맷이나 정보 이슈를 찾는 것에 `helm`을
+차트의 포맷이나 정보 이슈를 찾는 것에 `helm` 을
 사용할 수 있다.
 
 ```console
@@ -1092,6 +1094,6 @@ YAML 파일과 tar 파일을 제공하고 GET 요청에 응답할 수 있는 어
 - 사용자는 이 차트의 내용을 수정하기 원하므로, 문서는 어떻게 사용자가 그럴 수 있는지 알려줘야한다.
 - 모든 `<CHARTNAME>`의 존재는 스타터 차트가 템플릿으로 사용되기 위해 특정 차트 이름으로 수정된다.
 
-현재 `$XDG_DATA_HOME/helm/starters`에 차트를 추가하기 위한
+현재 `$XDG_DATA_HOME/helm/starters` 에 차트를 추가하기 위한
 유일한 방법은 수동으로 복사해서 넣는 것이다.
 차트의 문서에서, 그 과정을 설명할 수 있다.
