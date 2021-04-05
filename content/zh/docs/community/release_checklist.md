@@ -86,7 +86,7 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 
 ### 主、次版本
 
-主版本是为新特性及操作且*不具有向后兼容性*。次版本是为了不破坏向后兼容性的新特性。创建一个主版本或次版本，从主干分支创建`release-vX.Y.0`分支。
+主版本是为新特性及操作且*不具有向后兼容性*。次版本是为了不破坏向后兼容性的新特性。创建一个主版本或次版本，从主干分支创建`release-X.Y`分支。
 
 ```shell
 git fetch upstream
@@ -103,7 +103,7 @@ git checkout -b $RELEASE_BRANCH_NAME
 
 ### 补丁版本
 
-补丁版本是一些已有版本中严格的cherry-picked修复。以创建`release-vX.Y.Z`分支开始：
+补丁版本是一些已有版本中严格的cherry-picked修复。以创建`release-X.Y`分支开始：
 
 ```shell
 git fetch upstream

@@ -110,7 +110,7 @@ Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to
 Major releases are for new feature additions and behavioral changes *that break
 backwards compatibility*. Minor releases are for new feature additions that do
 not break backwards compatibility. To create a major or minor release, start by
-creating a `release-vX.Y.0` branch from master.
+creating a `release-X.Y` branch from master.
 
 ```shell
 git fetch upstream
@@ -131,7 +131,7 @@ the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-g
 ### Patch releases
 
 Patch releases are a few critical cherry-picked fixes to existing releases.
-Start by creating a `release-vX.Y.Z` branch:
+Start by creating a `release-X.Y` branch:
 
 ```shell
 git fetch upstream
