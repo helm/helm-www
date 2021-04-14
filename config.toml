@@ -302,7 +302,7 @@ weight = 5
 title = "Helm"
 description = "Helm - El Administrador de Paquetes de Kubernetes."
 contentDir = "content/es"
-languageName = "Español"
+languageName = "Español Spanish"
 weight = 1
 
 [[languages.es.menus.main]]
