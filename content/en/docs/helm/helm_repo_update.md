@@ -20,7 +20,8 @@ helm repo update [flags]
 ### Options
 
 ```
-  -h, --help   help for update
+  -h, --help                       help for update
+      --hide-validation-warnings   hide validation warnings while indexing repository
 ```
 
 ### Options inherited from parent commands

@@ -38,13 +38,14 @@ helm search repo [keyword] [flags]
 ### Options
 
 ```
-      --devel                use development versions (alpha, beta, and release candidate releases), too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
-  -h, --help                 help for repo
-      --max-col-width uint   maximum column width for output table (default 50)
-  -o, --output format        prints the output in the specified format. Allowed values: table, json, yaml (default table)
-  -r, --regexp               use regular expressions for searching repositories you have added
-      --version string       search using semantic versioning constraints on repositories you have added
-  -l, --versions             show the long listing, with each version of each chart on its own line, for repositories you have added
+      --devel                      use development versions (alpha, beta, and release candidate releases), too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
+  -h, --help                       help for repo
+      --hide-validation-warnings   hide validation warnings while indexing repository
+      --max-col-width uint         maximum column width for output table (default 50)
+  -o, --output format              prints the output in the specified format. Allowed values: table, json, yaml (default table)
+  -r, --regexp                     use regular expressions for searching repositories you have added
+      --version string             search using semantic versioning constraints on repositories you have added
+  -l, --versions                   show the long listing, with each version of each chart on its own line, for repositories you have added
 ```
 
 ### Options inherited from parent commands

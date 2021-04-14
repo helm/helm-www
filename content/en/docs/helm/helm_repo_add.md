@@ -18,6 +18,7 @@ helm repo add [NAME] [URL] [flags]
       --cert-file string           identify HTTPS client using this SSL certificate file
       --force-update               replace (overwrite) the repo if it already exists
   -h, --help                       help for add
+      --hide-validation-warnings   hide validation warnings while indexing repository
       --insecure-skip-tls-verify   skip tls certificate checks for the repository
       --key-file string            identify HTTPS client using this SSL key file
       --no-update                  Ignored. Formerly, it would disabled forced updates. It is deprecated by force-update.
