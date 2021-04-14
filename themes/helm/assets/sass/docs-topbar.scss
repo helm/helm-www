@@ -28,8 +28,7 @@
   top: 0;
   left: 0;
   right: 0;
-  padding-top: 4.5rem;
-  min-height: 8.75rem;
+  min-height: 5.125rem;
   background: transparent;
   display: flex;
   justify-content: center;
@@ -110,6 +109,17 @@
         text-align: center;
         line-height: 1.75;
         margin: 0.5rem auto;
+      }
+
+      ul.dropdown-menu {
+        li.navbar-item {
+          a {
+            &.active {
+              font-weight: bold;
+              border-bottom: 2px solid $green;
+            }
+          }
+        }
       }
     }
     
