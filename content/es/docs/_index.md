@@ -22,7 +22,7 @@ organizado lo ayudará a saber dónde buscar ciertas cosas:
 - [Guías de la comunidad]({{< relref path="/docs/community" lang="en" >}})) discute
   temas centrados en la comunidad de Helm. Comience aquí si desea obtener más información
   sobre el proceso de desarrollo de Helm y cómo puede contribuir.
-- [Guías prácticas]({{< relref path="/docs/howto" lang="en" >}})) son recetas. Le
+- [Guías prácticas](howto) son recetas. Le
   guían a través de los pasos necesarios para abordar problemas clave y casos de uso.
   Son más avanzados que los tutoriales y asumen cierto conocimiento de cómo funciona
   Helm.
