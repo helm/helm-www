@@ -412,7 +412,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 
 ### 为什么在macOS上`/etc/.mdns_debug`文件可以访问？
 
-我们了解到macOS上的一个案例是Helm会视图访问`/etc/.mdns_debug`文件。
+我们了解到macOS上的一个案例是Helm会试图访问`/etc/.mdns_debug`文件。
 如果文件存在，Helm会在文件句柄执行的时候保持打开状态。
 
 这是因为macOS的 MDNS 库。它尝试去加载这个文件读取debug设置（如果已经启用）。
