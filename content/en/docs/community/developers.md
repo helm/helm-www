@@ -76,6 +76,11 @@ Since Helm 3, documentation has been moved to its own repository. When writing
 new features, please write accompanying documentation and submit it to the
 [helm-www](https://github.com/helm/helm-www) repository.
 
+One exception: [Helm CLI output (in English)](https://helm.sh/docs/helm/) is
+generated from the `helm` binary itself. See [Updating the Helm CLI Reference Docs](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs)
+for instructions on how to generate this output. When translated, the CLI
+output is not generated and can be found in `/content/<lang>/docs/helm`.
+
 ### Git Conventions
 
 We use Git for our version control system. The `master` branch is the home of
