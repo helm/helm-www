@@ -112,11 +112,27 @@
       }
 
       ul.dropdown-menu {
+        padding-top: 1rem;
         li.navbar-item {
           a {
+
+            code {
+              color: $navy;
+              background-color: lighten($yellow, 25%);
+              border-radius: 50%;
+              display: inline-block;
+              line-height: 2;
+              margin-right: 0.667rem;
+            }
+            
             &.active {
               font-weight: bold;
-              border-bottom: 2px solid $green;
+              color: $dark;
+
+              code {
+                color: $dark;
+                background-color: lighten($salmon, 7.5%);
+              }
             }
           }
         }
