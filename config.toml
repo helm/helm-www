@@ -122,8 +122,8 @@ weight = 5
 title = "헬름"
 description = "헬름 - 쿠버네티스 패키지 매니저"
 contentDir = "content/ko"
-languageName = "한국어 Korean"
-weight = 1
+languageName = "한국어"
+weight = 5
 
 [[languages.ko.menus.main]]
 name = "홈"
@@ -159,8 +159,8 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm - Kubernetes パッケージマネージャー"
 contentDir = "content/ja"
-languageName = "日本語 Japanese"
-weight = 1
+languageName = "日本語"
+weight = 4
 
 [[languages.ja.menus.main]]
 name = "ホーム"
@@ -195,8 +195,8 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm - Kubernetes 包管理器"
 contentDir = "content/zh"
-languageName = "中文 Chinese"
-weight = 1
+languageName = "中文"
+weight = 7
 
 [[languages.zh.menus.main]]
 name = "首页"
@@ -232,8 +232,8 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm – Менеджер Пакетов Kubernetes."
 contentDir = "content/ru"
-languageName = "Русский Russian"
-weight = 1
+languageName = "Русский"
+weight = 6
 
 [[languages.ru.menus.main]]
 name = "Главная"
@@ -269,8 +269,8 @@ language_alternatives = ["en"]
 title = "Helm"
 description = "Helm - Le manageur de paquets de Kubernetes."
 contentDir = "content/fr"
-languageName = "Français French"
-weight = 1
+languageName = "Français"
+weight = 3
 
 [[languages.fr.menus.main]]
 name = "Accueil"
@@ -302,8 +302,8 @@ weight = 5
 title = "Helm"
 description = "Helm - El Administrador de Paquetes de Kubernetes."
 contentDir = "content/es"
-languageName = "Español Spanish"
-weight = 1
+languageName = "Español"
+weight = 2
 
 [[languages.es.menus.main]]
 name = "Inicio"
