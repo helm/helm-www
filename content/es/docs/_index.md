@@ -16,10 +16,10 @@ organizado lo ayudará a saber dónde buscar ciertas cosas:
 
 - [Tutoriales](intro) te llevan de la mano a través de una serie de pasos para crear
   tu primer Helm chart. Empieza aquí si eres nuevo en Helm.
-- [Guías de temas]({{< relref path="/docs/topics" lang="en" >}})) discute temas y
+- [Guías de temas]({{< relref path="/docs/topics" lang="en" >}}) discute temas y
   conceptos clave a un nivel bastante alto y proporcionar información de antecedentes
   y explicaciones útiles.
-- [Guías de la comunidad]({{< relref path="/docs/community" lang="en" >}})) discute
+- [Guías de la comunidad]({{< relref path="/docs/community" lang="en" >}}) discute
   temas centrados en la comunidad de Helm. Comience aquí si desea obtener más información
   sobre el proceso de desarrollo de Helm y cómo puede contribuir.
 - [Guías prácticas](howto) son recetas. Le
