@@ -114,7 +114,7 @@ default "foo" .Bar
 
 "空"定义取决于以下类型：
 
-* 整形: 0
+* 整型: 0
 * 字符串: ""
 * 列表: `[]`
 * 字典: `{}`
@@ -248,7 +248,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 
 * `%t` true或false
 
-整形：
+整型：
 
 * `%b` 二进制
 * `%c` the character represented by the corresponding Unicode code point
@@ -457,7 +457,7 @@ initials "First Try"
 * `randNumeric` 使用 `0-9`
 * `randAscii` 使用所有的可打印ASCII字符
 
-每个函数都需要一个参数：字符串的整形长度
+每个函数都需要一个参数：字符串的整型长度
 
 ```yaml
 randNumeric 3
@@ -569,7 +569,7 @@ len $fish | plural "one anchovy" "many anchovies"
 
 * 单数字符串
 * 复数字符串
-* 整形长度
+* 整型长度
 
 注意： Helm 现在不支持多语言复杂的复数规则。`0`被认为是复数的因为英文中作为(`zero anchovies`) 对待。
 
@@ -635,9 +635,9 @@ shuffle "hello"
 
 Helm提供了以下类型转换函数：
 
-* `atoi`: 字符串转换成整形。
+* `atoi`: 字符串转换成整型。
 * `float64`: 转换成 `float64`。
-* `int`: 按系统整形宽度转换成`int`。
+* `int`: 按系统整型宽度转换成`int`。
 * `int64`: 转换成 `int64`。
 * `toDecimal`: 将unix八进制转换成`int64`。
 * `toString`: 转换成字符串。
@@ -646,7 +646,7 @@ Helm提供了以下类型转换函数：
 * `toPrettyJson` (`mustToPrettyJson`): 将列表、切片、数组、字典或对象转换成格式化JSON。
 * `toRawJson` (`mustToRawJson`): 将列表、切片、数组、字典或对象转换成HTML字符未转义的JSON。
 
-只有`atoi`需要输入一个特定的类型。其他的会尝试将任何类型转换成目标类型。比如，`int64`可以把浮点数转换成整形，也可以把字符串转换成整形。
+只有`atoi`需要输入一个特定的类型。其他的会尝试将任何类型转换成目标类型。比如，`int64`可以把浮点数转换成整型，也可以把字符串转换成整型。
 
 ### toStrings
 
@@ -1281,7 +1281,7 @@ Helm有以下编码和解码函数：
 
 Helm 提供了一个简单的`list`类型，包含任意顺序的列表。类似于数组或切片，但列表是被设计用于不可变数据类型。
 
-创建一个整形列表：
+创建一个整型列表：
 
 ```yaml
 $myList := list 1 2 3 4 5
@@ -1455,7 +1455,7 @@ until 5
 
 ### untilStep
 
-类似`until`， `untilStep` 生成一个可计数的整形列表。但允许你定义开始，结束和步长：
+类似`until`， `untilStep` 生成一个可计数的整型列表。但允许你定义开始，结束和步长：
 
 ```yaml
 untilStep 3 6 2
