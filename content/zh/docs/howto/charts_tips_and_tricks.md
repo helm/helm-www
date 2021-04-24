@@ -29,7 +29,7 @@ value: {{ include "mytpl" . | lower | quote }}
 value: {{ required "A valid .Values.who entry required!" .Values.who }}
 ```
 
-## 字符串引号括起来，但整形不用
+## 字符串引号括起来，但整型不用
 
 使用字符串数据时，你总是更安全地将字符串括起来而不是露在外面：
 
@@ -37,13 +37,13 @@ value: {{ required "A valid .Values.who entry required!" .Values.who }}
 name: {{ .Values.MyName | quote }}
 ```
 
-但是使用整形时 _不要把值括起来_。在很多场景中那样会导致Kubernetes内解析失败。
+但是使用整型时 _不要把值括起来_。在很多场景中那样会导致Kubernetes内解析失败。
 
 ```yaml
 port: {{ .Values.Port }}
 ```
 
-这个说明不适用于环境变量是字符串的情况，即使表现为整形：
+这个说明不适用于环境变量是字符串的情况，即使表现为整型：
 
 ```yaml
 env:
