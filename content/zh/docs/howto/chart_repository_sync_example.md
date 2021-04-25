@@ -14,7 +14,7 @@ weight: 2
 
 ## 设置本地chart仓库目录
 
-就像我们再[chart仓库指南](https://helm.sh/zh/docs/topics/chart_repository)做的，创建一个本地目录，并将打包好的chart放在该目录中。
+就像我们在[chart仓库指南](https://helm.sh/zh/docs/topics/chart_repository)做的，创建一个本地目录，并将打包好的chart放在该目录中。
 
 例如：
 
@@ -37,7 +37,7 @@ $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googl
 
 使用`scripts/sync-repo.sh`命令上传GCS目录中的内容并传入本地目录名和GCS名。
 
-For example:
+例如:
 
 ```console
 $ pwd
