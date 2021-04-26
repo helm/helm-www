@@ -70,7 +70,7 @@ data:
   dessert: cake
 ```
 
-## 覆盖父chart中的值
+## 用父chart的值来覆盖
 
 原始chart，`mychart`现在是`mysubchart`的 _父_。这种关系是基于`mysubchart`在`mychart/charts`中这一事实。
 
@@ -103,7 +103,7 @@ data:
   dessert: ice cream
 ```
 
-现在，顶层的值已经被子chart的值覆盖了。
+现在，子chart的值已经被顶层的值覆盖了。
 
 这里需要注意个重要细节。我们不会改变`mychart/charts/mysubchart/templates/configmap.yaml`模板到
 `.Values.mysubchart.dessert`的指向。从模板的角度来看，值依然是在`.Values.dessert`。当模板引擎传递值时，会设置范围。
