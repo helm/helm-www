@@ -198,7 +198,8 @@ para charts obsoletos es:
 
 El campo `type` define el tipo de chart. Hay dos tipos: `application` (aplicación)
 y `library` (biblioteca). Aplicación es el tipo predeterminado y es el chart estándar
-con el que se puede operar completamente. El [chart de biblioteca]({{< relref path="/docs/topics/library_charts.md" lang="en" >}})
+con el que se puede operar completamente. El [chart de biblioteca]({{< ref
+"/docs/topics/library_charts.md" >}})
 proporciona utilidades o funciones para el generador de charts. Un chart de biblioteca
 se diferencia de un chart de aplicación porque no se puede instalar y, por lo
 general, no contiene ningún objeto de recurso.
