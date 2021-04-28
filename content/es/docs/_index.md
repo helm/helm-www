@@ -16,7 +16,7 @@ organizado lo ayudará a saber dónde buscar ciertas cosas:
 
 - [Tutoriales](intro) te llevan de la mano a través de una serie de pasos para crear
   tu primer Helm chart. Empieza aquí si eres nuevo en Helm.
-- [Guías de temas]({{< relref path="/docs/topics" lang="en" >}}) discute temas y
+- [Guías de temas](topics) discute temas y
   conceptos clave a un nivel bastante alto y proporcionar información de antecedentes
   y explicaciones útiles.
 - [Guías de la comunidad]({{< relref path="/docs/community" lang="en" >}}) discute
