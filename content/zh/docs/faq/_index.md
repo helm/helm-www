@@ -428,7 +428,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 在Helm 3.3.1及之前版本，`helm repo add <reponame> <url>`在你添加已经存在的仓库时不会输入内容。
 如果仓库已经存在，`--no-update` 参数会报错。
 
-在Helm3.3.2及之后版本，试图添加一个已存在的仓库时会报一下错误：
+在Helm3.3.2及之后版本，试图添加一个已存在的仓库时会报以下错误：
 
 `Error: repository name (reponame) already exists, please specify a different name`
 
