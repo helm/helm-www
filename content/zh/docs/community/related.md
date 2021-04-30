@@ -25,8 +25,8 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - 安全存储密钥的插件
   （基于[sops](https://github.com/mozilla/sops)）
 - [helm-git](https://github.com/aslafy-z/helm-git) - 安装chart并从Git仓库中检索values文件
-- [helm-tanka](https://github.com/Duologic/helm-tanka) - 在Helm chart中渲染
-  Tanka/Jsonnet的插件
+- [helm-tanka](https://github.com/Duologic/helm-tanka) - 在Helm chart中渲染Tanka/Jsonnet的插件
+- [helm-val](https://github.com/HamzaZo/helm-val) - 从之前的版本中获取值的插件
 
 我们同样鼓励使用GitHub的各位使用[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
 给插件仓库打tag。
