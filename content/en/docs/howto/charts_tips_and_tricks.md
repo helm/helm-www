@@ -33,7 +33,7 @@ required for template rendering.  If the value is empty, the template rendering
 will fail with a user submitted error message.
 
 The following example of the `required` function declares an entry for
-.Values.who is required, and will print an error message when that entry is
+`.Values.who` is required, and will print an error message when that entry is
 missing:
 
 ```yaml
