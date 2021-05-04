@@ -23,7 +23,7 @@ value: {{ include "mytpl" . | lower | quote }}
 
 `required`方法可以让你声明模板渲染所需的特定值。如果这个值是空的，模板渲染会出错并打印用户提交的错误信息。
 
-下面这个`required`方法的例子声明了一个.Values.who需要的条目，并且当这个条目不存在时会打印错误信息：
+下面这个`required`方法的例子声明了一个`.Values.who`需要的条目，并且当这个条目不存在时会打印错误信息：
 
 ```yaml
 value: {{ required "A valid .Values.who entry required!" .Values.who }}
