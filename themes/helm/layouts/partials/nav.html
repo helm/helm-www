@@ -6,7 +6,7 @@
   <div class="container is-fluid is-vcentered">
     <div class="navbar-brand">
       <a href="/">
-        {{ partial "logo.html" . }}
+        {{ partial "nav-logo.html" . }}
       </a>
     </div>
 
@@ -27,56 +27,8 @@
 
     <div class="navbar-end is-hidden-mobile">
       <ul class="is-pulled-right">
-        
-        <!-- l18n -->
-        {{ if .Site.IsMultiLingual }}
-        <li class="versioner l18ner navbar-item has-dropdown is-hoverable">
-          <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
-            {{ .Language.LanguageName }} <i class="fa fa-caret-down"></i>
-          </a>
-
-          <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-            {{ $siteLanguages := .Site.Languages}}
-            {{ $pageLang := .Page.Lang}}
-            {{ range .Page.AllTranslations }}
-                {{ $translation := .}}
-                {{ range sort $siteLanguages "Weight" }}
-                    {{ if eq $translation.Lang .Lang }}
-                      {{ $selected := false }}
-                      {{ if eq $pageLang .Lang}}
-                          <li class="navbar-item"><a href="{{ $translation.URL }}" class="active"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
-                      {{ else }}
-                          <li class="navbar-item"><a href="{{ $translation.URL }}"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
-                      {{ end }}
-                    {{ end }}
-
-                  {{ else }}
-                {{ end }}
-            {{ end }}
-            <li class="navbar-item l18n-prompt"><a href="{{ T "action_translate_link" }}"><small>{{ T "action_translate" }}</small></a></li>
-          </ul>
-        </li>
-        {{ else }}
-        {{ end }}
-        
-        <!-- versioning-->
-        <li class="versioner navbar-item has-dropdown is-hoverable">
-          {{ with $primary }}
-          <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
-            {{ .version }}{{ with .patch }}{{ end }} <i class="fa fa-caret-down"></i>
-          </a>
-          {{ end }}
-    
-          <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-            {{ range $versions }}
-            <li>
-              <a href="{{ .url }}" class="navbar-item">
-                {{ .version }}{{ with .patch }} <em>{{ . }}</em>{{ end }}
-              </a>
-            </li>
-            {{ end }}
-          </ul>
-        </li>
+        {{ partial "nav-i18n.html" . }}
+        {{ partial "nav-versioning.html" . }}
         <li>
           <a class="button not-fixed is-outlined" href="{{ T "action_get_started_link" }}">{{ T "action_get_started" }}</a>
         </li>
