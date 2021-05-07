@@ -166,7 +166,16 @@ version:
 {{- end }}
 ```
 
-If we render this, the result will not be what we expect:
+If we render this, we will get an error like this:
+
+```console
+$ helm install --dry-run moldy-jaguar ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [unknown object type "nil" in ConfigMap.metadata.labels.chart, unknown object type "nil" in ConfigMap.metadata.labels.version]
+```
+
+To see what rendered, re-run with `--disable-openapi-validation`:
+`helm install --dry-run --disable-openapi-validation moldy-jaguar ./mychart`.
+The result will not be what we expect:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -176,7 +185,7 @@ metadata:
   name: moldy-jaguar-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart:
     version:
 ```
@@ -216,7 +225,7 @@ metadata:
   name: plinking-anaco-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart: mychart
     version: 0.1.0
 ```
@@ -253,6 +262,15 @@ data:
 {{ template "mychart.app" . }}
 ```
 
+If we render this, we will get an error like this:
+
+```console
+$ helm install --dry-run measly-whippet ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [ValidationError(ConfigMap): unknown field "app_name" in io.k8s.api.core.v1.ConfigMap, ValidationError(ConfigMap): unknown field "app_version" in io.k8s.api.core.v1.ConfigMap]
+```
+
+To see what rendered, re-run with `--disable-openapi-validation`:
+`helm install --dry-run --disable-openapi-validation measly-whippet ./mychart`.
 The output will not be what we expect:
 
 ```yaml
@@ -263,17 +281,17 @@ metadata:
   name: measly-whippet-configmap
   labels:
     app_name: mychart
-app_version: "0.1.0+1478129847"
+app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
-  app_name: mychart
-app_version: "0.1.0+1478129847"
+app_name: mychart
+app_version: "0.1.0"
 ```
 
 Note that the indentation on `app_version` is wrong in both places. Why? Because
-the template that is substituted in has the text aligned to the right. Because
+the template that is substituted in has the text aligned to the left. Because
 `template` is an action, and not a function, there is no way to pass the output
 of a `template` call to other functions; the data is simply inserted inline.
 
@@ -281,7 +299,7 @@ To work around this case, Helm provides an alternative to `template` that will
 import the contents of a template into the present pipeline where it can be
 passed along to other functions in the pipeline.
 
-Here's the example above, corrected to use `indent` to indent the `mychart_app`
+Here's the example above, corrected to use `indent` to indent the `mychart.app`
 template correctly:
 
 ```yaml
@@ -309,13 +327,13 @@ metadata:
   name: edgy-mole-configmap
   labels:
     app_name: mychart
-    app_version: "0.1.0+1478129987"
+    app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
   app_name: mychart
-  app_version: "0.1.0+1478129987"
+  app_version: "0.1.0"
 ```
 
 > It is considered preferable to use `include` over `template` in Helm templates
