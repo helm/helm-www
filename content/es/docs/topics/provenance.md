@@ -277,14 +277,14 @@ en utilizar el sistema de procedencia:
   centralizado para información de confianza.
   - Puede utilizar Keybase para almacenar sus claves o para obtener las claves
     públicas de otros.
-  - Keybase also has fabulous documentation available
-  - While we haven't tested it, Keybase's "secure website" feature could be used
-    to serve Helm charts.
-  - The basic idea is that an official "chart reviewer" signs charts with her or
-    his key, and the resulting provenance file is then uploaded to the chart
-    repository.
-  - There has been some work on the idea that a list of valid signing keys may
-    be included in the `index.yaml` file of a repository.
+  - Keybase también tiene documentación fabulosa disponible
+  - Si bien no lo hemos probado, la función de "sitio web seguro" de Keybase
+    podría usarse para servir charts de Helm.
+  - La idea básica es que un "revisor de charts" oficial firme los charts con
+    su clave, y el archivo de procedencia resultante se carga en el repositorio
+    de charts.
+  - Se ha trabajado en la idea de que se pueda incluir una lista de claves de
+    firmas válidas en el archivo `index.yaml` de un repositorio.
 
 Finalmente, la cadena de confianza es una característica en evolución de Helm,
 y algunos miembros de la comunidad han propuesto adaptar parte del modelo OSI
