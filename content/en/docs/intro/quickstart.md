@@ -40,38 +40,44 @@ Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart
 repositories.
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 Once this is installed, you will be able to list the charts you can install:
 
 ```console
-$ helm search repo stable
-NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
-stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
-stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
-stable/airflow                          4.1.0           1.10.4                          Airflow is a platform to programmatically autho...
-stable/ambassador                       4.1.0           0.81.0                          A Helm chart for Datawire Ambassador
+$ helm search repo bitnami
+NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
+bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
+bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
+bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
+bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
 # ... and many more
 ```
 
 ## Install an Example Chart
 
 To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use one of the official
-`stable` charts.
+ways to find and install a chart, but the easiest is to use the `bitnami`
+charts.
 
 ```console
 $ helm repo update              # Make sure we get the latest list of charts
-$ helm install stable/mysql --generate-name
-Released smiling-penguin
+$ helm install bitnami/mysql --generate-name
+NAME: mysql-1612624192
+LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES: ...
 ```
 
-In the example above, the `stable/mysql` chart was released, and the name of our
-new release is `smiling-penguin`.
+In the example above, the `bitnami/mysql` chart was released, and the name of
+our new release is `mysql-1612624192`.
 
 You get a simple idea of the features of this MySQL chart by running `helm show
-chart stable/mysql`. Or you could run `helm show all stable/mysql` to get all
+chart bitnami/mysql`. Or you could run `helm show all bitnami/mysql` to get all
 information about the chart.
 
 Whenever you install a chart, a new release is created. So one chart can be
@@ -88,8 +94,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm ls
-NAME             VERSION   UPDATED                   STATUS    CHART
-smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
+mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
 The `helm list` function will show you a list of all deployed releases.
@@ -99,18 +105,18 @@ The `helm list` function will show you a list of all deployed releases.
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall smiling-penguin
-Removed smiling-penguin
+$ helm uninstall mysql-1612624192
+release "mysql-1612624192" uninstalled
 ```
 
-This will uninstall `smiling-penguin` from Kubernetes, which will remove all
+This will uninstall `mysql-1612624192` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
 If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status smiling-penguin
+$ helm status mysql-1612624192
 Status: UNINSTALLED
 ...
 ```
