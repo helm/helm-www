@@ -5,7 +5,7 @@
 other = "Εκκίνηση"
 
 [action_get_started_link]
-other = "/gr/docs/intro/quickstart"
+other = "/docs/intro/quickstart"
 
 [action_translate]
 other = "Μετάφρασε αυτή την σελίδα"
@@ -53,8 +53,8 @@ other = """
 
 ### Μάθε περισσότερα:
 
-* [Αρχιτεκτονική του Helm](./docs/topics/architecture/)
-* [Οδηγός για να Ξεκινήσεις Γρήγορα](./docs/intro/quickstart/)
+* [Αρχιτεκτονική του Helm](/docs/topics/architecture/)
+* [Οδηγός για να Ξεκινήσεις Γρήγορα](/docs/intro/quickstart/)
 * [Video: Μια εισαγωγή στο Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "Κατέβασε το Helm!"
 other = "Εγκατέστησε το Helm μέσω ενός package manager, ή [κατέβασε το binary](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Μόλις εγκατασταθεί, κάνε unpack το helm binary και προσθεσέ το στο PATH και είσαι έτοιμος/η! Έλεγξε τα [docs](./docs/intro/install/) για περισσότερες πληροφορίες για την [εγκατάσταση](./docs/intro/install/) και τις [οδηγίες χρήσης](./docs/intro/using_helm/)."
+other = "Μόλις εγκατασταθεί, κάνε unpack το helm binary και προσθεσέ το στο PATH και είσαι έτοιμος/η! Έλεγξε τα [docs](/docs/intro/install/) για περισσότερες πληροφορίες για την [εγκατάσταση](/docs/intro/install/) και τις [οδηγίες χρήσης](/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Κατέβασε Charts"
