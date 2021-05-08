@@ -344,7 +344,7 @@ url = "/"
 weight = 1
 
 [[languages.gr.menus.main]]
-name = "Docs"
+name = "Έγγραφα"
 url = "/docs"
 weight = 2
 
@@ -354,7 +354,7 @@ url = "https://hub.helm.sh/"
 weight = 3
 
 [[languages.gr.menus.main]]
-name = "Blog"
+name = "Άρθρα"
 url = "https://helm.sh/blog"
 weight = 4
 
