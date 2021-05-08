@@ -123,7 +123,7 @@ title = "헬름"
 description = "헬름 - 쿠버네티스 패키지 매니저"
 contentDir = "content/ko"
 languageName = "한국어"
-weight = 5
+weight = 6
 
 [[languages.ko.menus.main]]
 name = "홈"
@@ -160,7 +160,7 @@ title = "Helm"
 description = "Helm - Kubernetes パッケージマネージャー"
 contentDir = "content/ja"
 languageName = "日本語"
-weight = 4
+weight = 5
 
 [[languages.ja.menus.main]]
 name = "ホーム"
@@ -196,7 +196,7 @@ title = "Helm"
 description = "Helm - Kubernetes 包管理器"
 contentDir = "content/zh"
 languageName = "中文"
-weight = 7
+weight = 8
 
 [[languages.zh.menus.main]]
 name = "首页"
@@ -233,7 +233,7 @@ title = "Helm"
 description = "Helm – Менеджер Пакетов Kubernetes."
 contentDir = "content/ru"
 languageName = "Русский"
-weight = 6
+weight = 7
 
 [[languages.ru.menus.main]]
 name = "Главная"
@@ -336,7 +336,7 @@ title = "Helm"
 description = "Helm - Ο package manager του Kubernetes."
 contentDir = "content/gr"
 languageName = "Ελληνικά"
-weight = 2
+weight = 4
 
 [[languages.gr.menus.main]]
 name = "Αρχική"
