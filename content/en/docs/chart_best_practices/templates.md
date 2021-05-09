@@ -201,6 +201,22 @@ memory: {{ .Values.maxMem | quote }}
 The comment above is visible when the user runs `helm install --debug`, while
 comments specified in `{{- /* */}}` sections are not.
 
+When using template comments, watch out for a common syntax error.
+
+Correct:
+
+```yaml
+{{- /* Correct spacing with whitespace chomping*/ -}}
+{{/* Correct spacing without whitespace chomping */}}
+```
+
+Incorrect:
+
+```yaml
+{{-/* Incorrect spacing with whitespace chomping */-}}
+{{ /* Incorrect spacing without whitespace chomping */ }}
+```
+
 ## Use of JSON in Templates and Template Output
 
 YAML is a superset of JSON. In some cases, using a JSON syntax can be more
