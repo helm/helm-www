@@ -49,8 +49,6 @@ as the template names are automatically defined as per this best practice.
 
 ## Formatting Templates
 
-Templates should be indented using _two spaces_ (never tabs).
-
 Template directives should have whitespace after the opening braces and before
 the closing braces:
 
@@ -91,7 +89,90 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 apiVersion: v1
 ```
 
+Template logic should align indentation with associated content.
+
+Correct:
+
+```yaml
+metadata:
+  annotations:
+    {{- if .Values.foo }}
+    foo: true
+    {{- end }}
+    bar: true
+    {{- with .Values.extraAnnotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
+```
+
+Incorrect:
+
+```yaml
+metadata:
+  annotations:
+{{- if .Values.foo }}
+    foo: true
+{{- end }}
+    bar: true
+{{- with .Values.extraAnnotations }}
+{{- . | toYaml | indent 4 }}
+{{- end }}
+```
+
+To align templates logic with associated content, the `nindent` function
+together with left whitespace chomping is often required. `nindent` works
+exactly like `indent` but prefixes a new line that can compensate for our left
+whitespace chomping.
+
+Correct:
+
+```yaml
+metadata:
+  annotations:
+    foo: true
+    {{- with .Values.extraAnnotations }}
+    {{- . | toYaml | nindent 4 }}
+    {{- end }}
+```
+
+Incorrect:
+
+```yaml
+metadata:
+  annotations:
+    foo: true
+{{- with .Values.extraAnnotations }}
+{{- . | toYaml | indent 4 }}
+{{- end }}
+```
+
 ## Whitespace in Generated Templates
+
+Generated content should be indented with increments of _two spaces_.
+
+Correct:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example
+  labels:
+    first: first
+    second: second
+```
+
+Incorrect:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: example
+    labels:
+        first: first
+        second: second
+```
 
 It is preferable to keep the amount of whitespace in generated templates to a
 minimum. In particular, numerous blank lines should not appear adjacent to each
