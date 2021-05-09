@@ -81,7 +81,7 @@ template file or defined template.
 ```yaml
 myList:
   {{- range .Values.elements }}
-  - {{ . }
+  - {{ . }}
   {{- end }}
 ```
 
