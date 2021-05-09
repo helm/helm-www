@@ -35,36 +35,42 @@ weight: 1
 Hub](https://artifacthub.io/packages/search?kind=0)中查找有效的Helm chart仓库。
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 当添加完成，您将可以看到可以被您安装的charts列表：
 
 ```console
-$ helm search repo stable
-NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
-stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
-stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
-stable/airflow                          4.1.0           1.10.4                          Airflow is a platform to programmatically autho...
-stable/ambassador                       4.1.0           0.81.0                          A Helm chart for Datawire Ambassador
+$ helm search repo bitnami
+NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
+bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
+bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
+bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
+bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
 # ... and many more
 ```
 
 ## 安装Chart示例
 
 您可以通过`helm install` 命令安装chart。 Helm可以通过多种途径查找和安装chart，
-但最简单的是安装官方的`stable` charts。
+但最简单的是安装官方的`bitnami` charts。
 
 ```console
 $ helm repo update              # 确定我们可以拿到最新的charts列表
-$ helm install stable/mysql --generate-name
-Released smiling-penguin
+$ helm install bitnami/mysql --generate-name
+NAME: mysql-1612624192
+LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES: ...
 ```
 
-在上面的例子中，`stable/mysql`这个chart被发布，名字是 `smiling-penguin`
+在上面的例子中，`bitnami/mysql`这个chart被发布，名字是 `mysql-1612624192`
 
-您可以通过执行 `helm show  chart stable/mysql` 命令简单的了解到这个chart的基本信息。
-或者您可以执行 `helm show all stable/mysql` 获取关于该chart的所有信息。
+您可以通过执行 `helm show  chart bitnami/mysql` 命令简单的了解到这个chart的基本信息。
+或者您可以执行 `helm show all bitnami/mysql` 获取关于该chart的所有信息。
 
 每当您执行 `helm install` 的时候，都会创建一个新的发布版本。
 所以一个chart在同一个集群里面可以被安装多次，每一个都可以被独立的管理和升级。
@@ -77,8 +83,8 @@ Released smiling-penguin
 
 ```console
 $ helm ls
-NAME             VERSION   UPDATED                   STATUS    CHART
-smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
+mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
 `helm list` 命令会列出所有可被部署的版本。
@@ -88,18 +94,18 @@ smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
 您可以使用`helm uninstall` 命令卸载你的版本
 
 ```console
-$ helm uninstall smiling-penguin
-Removed smiling-penguin
+$ helm uninstall mysql-1612624192
+release "mysql-1612624192" uninstalled
 ```
 
-该命令会从Kubernetes卸载 `smiling-penguin`， 它将删除和该版本相关的所有相关资源（service、deployment、
+该命令会从Kubernetes卸载 `mysql-1612624192`， 它将删除和该版本相关的所有相关资源（service、deployment、
 pod等等）甚至版本历史。
 
 如果您在执行 `helm uninstall` 的时候提供 `--keep-history` 选项， Helm将会保存版本历史。
 您可以通过命令查看该版本的信息
 
 ```console
-$ helm status smiling-penguin
+$ helm status mysql-1612624192
 Status: UNINSTALLED
 ...
 ```

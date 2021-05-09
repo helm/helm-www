@@ -137,7 +137,16 @@ data:
 {{- end }}
 ```
 
-如果渲染这个，结果不是我们想要的：
+如果渲染这个，会得到以下错误：
+
+```console
+$ helm install --dry-run moldy-jaguar ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [unknown object type "nil" in ConfigMap.metadata.labels.chart, unknown object type "nil" in ConfigMap.metadata.labels.version]
+```
+
+要查看渲染了什么，可以用`--disable-openapi-validation`参数重新执行：
+`helm install --dry-run --disable-openapi-validation moldy-jaguar ./mychart`。
+结果并不是我们想要的：
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -147,7 +156,7 @@ metadata:
   name: moldy-jaguar-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart:
     version:
 ```
@@ -181,7 +190,7 @@ metadata:
   name: plinking-anaco-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart: mychart
     version: 0.1.0
 ```
@@ -216,6 +225,15 @@ data:
 {{ template "mychart.app" . }}
 ```
 
+如果渲染这个，会得到以下错误：
+
+```console
+$ helm install --dry-run measly-whippet ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [ValidationError(ConfigMap): unknown field "app_name" in io.k8s.api.core.v1.ConfigMap, ValidationError(ConfigMap): unknown field "app_version" in io.k8s.api.core.v1.ConfigMap]
+```
+
+要查看渲染了什么，可以用`--disable-openapi-validation`参数重新执行：
+`helm install --dry-run --disable-openapi-validation measly-whippet ./mychart`。
 输入不是我们想要的：
 
 ```yaml
@@ -226,21 +244,21 @@ metadata:
   name: measly-whippet-configmap
   labels:
     app_name: mychart
-app_version: "0.1.0+1478129847"
+app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
-  app_name: mychart
-app_version: "0.1.0+1478129847"
+app_name: mychart
+app_version: "0.1.0"
 ```
 
-注意两处的`app_version`缩进都不对，为啥？因为被替换的模板中文本是右对齐的。由于`template`是一个行为，不是方法，无法将
+注意两处的`app_version`缩进都不对，为啥？因为被替换的模板中文本是左对齐的。由于`template`是一个行为，不是方法，无法将
 `template`调用的输出传给其他方法，数据只是简单地按行插入。
 
 为了处理这个问题，Helm提供了一个`template`的可选项，可以将模板内容导入当前管道，然后传递给管道中的其他方法。
 
-下面这个示例，使用`indent`正确地缩进了`mychart_app`模板：
+下面这个示例，使用`indent`正确地缩进了`mychart.app`模板：
 
 ```yaml
 apiVersion: v1
@@ -267,13 +285,13 @@ metadata:
   name: edgy-mole-configmap
   labels:
     app_name: mychart
-    app_version: "0.1.0+1478129987"
+    app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
   app_name: mychart
-  app_version: "0.1.0+1478129987"
+  app_version: "0.1.0"
 ```
 
 > Helm模板中使用`include`而不是`template`被认为是更好的方式
