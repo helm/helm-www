@@ -32,7 +32,7 @@ Correct:
 
 ```yaml
 {{- define "nginx.fullname" -}}
-# ...
+{{/* ... */}}
 {{- end }}
 ```
 
@@ -40,7 +40,7 @@ Incorrect:
 
 ```yaml
 {{- define "fullname" -}}
-# ...
+{{/* ... */}}
 {{- end }}
 ```
 
@@ -57,26 +57,20 @@ the closing braces:
 Correct:
 
 ```yaml
-{{- /* Conditionally create service account */}}
-{{- if .Values.serviceAccount.create }}
-apiVersion: v1
-# ...
-{{- end }}
+{{ print "foo" }}
+{{- print "bar" }}
 ```
 
 Incorrect:
 
 ```yaml
-{{-/* This comment is even a syntax error */}}
-{{-if .Values.serviceAccount.create}}
-apiVersion: v1
-# ...
-{{-end}}
+{{print "foo"}}
+{{-print "bar"}}
 ```
 
 Templates should chomp unnecessary whitespace. A good practice is to
 systematically _chomp left_, but also _chomp right_ for initial content in a
-template file or defined template.
+defined template or a template file.
 
 ```yaml
 myList:
@@ -93,10 +87,8 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 ```
 
 ```yaml
-{{- if .Values.serviceAccount.create -}}
+{{- /* Initial content of a template file */ -}}
 apiVersion: v1
-# ...
-{{- end }}
 ```
 
 ## Whitespace in Generated Templates
@@ -187,7 +179,6 @@ mychart.shortname provides a 6 char truncated version of the release name.
 {{- define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end }}
-
 ```
 
 Inside of templates, YAML comments may be used when it is useful for Helm users
