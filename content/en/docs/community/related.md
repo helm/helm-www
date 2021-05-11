@@ -22,7 +22,7 @@ request](https://github.com/helm/helm-www/pulls).
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-k8comp](https://github.com/cststack/k8comp) - Plugin to create Helm
   Charts from hiera using k8comp
-- [helm-unittest](https://github.com/lrills/helm-unittest) - Plugin for unit
+- [helm-unittest](https://github.com/quintush/helm-unittest/) - Plugin for unit
   testing chart locally with YAML
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit testing
   charts locally using OPA (Open Policy Agent) & Rego
