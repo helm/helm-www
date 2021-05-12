@@ -12,10 +12,12 @@ generate autocompletion script for fish
 Generate the autocompletion script for Helm for the fish shell.
 
 To load completions in your current shell session:
-$ helm completion fish | source
+
+    helm completion fish | source
 
 To load completions for every new session, execute once:
-$ helm completion fish > ~/.config/fish/completions/helm.fish
+
+    helm completion fish > ~/.config/fish/completions/helm.fish
 
 You will need to start a new shell for this setup to take effect.
 

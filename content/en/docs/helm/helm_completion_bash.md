@@ -12,13 +12,17 @@ generate autocompletion script for bash
 Generate the autocompletion script for Helm for the bash shell.
 
 To load completions in your current shell session:
-$ source <(helm completion bash)
+
+    source <(helm completion bash)
 
 To load completions for every new session, execute once:
-Linux:
-  $ helm completion bash > /etc/bash_completion.d/helm
-MacOS:
-  $ helm completion bash > /usr/local/etc/bash_completion.d/helm
+- Linux:
+
+      helm completion bash > /etc/bash_completion.d/helm
+
+- MacOS:
+
+      helm completion bash > /usr/local/etc/bash_completion.d/helm
 
 
 ```

@@ -8,19 +8,22 @@ title: "Helm补全 - fish"
 
 ### 简介
 
+
 为Helm生成针对于fish shell的自动补全脚本。
 
 在当前shell会话中加载自动补全：
-$ helm completion fish | source
+
+    helm completion fish | source
 
 为每个新的会话加载自动补全，执行一次：
 
-$ helm completion fish > ~/.config/fish/completions/helm.fish
+    helm completion fish > ~/.config/fish/completions/helm.fish
 
 您需要启动一个新的shell使其生效
 
+
 ```shell
-helm completion fish
+helm completion fish [flags]
 ```
 
 ### 可选项

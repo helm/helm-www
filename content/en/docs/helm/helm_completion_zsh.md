@@ -12,10 +12,12 @@ generate autocompletion script for zsh
 Generate the autocompletion script for Helm for the zsh shell.
 
 To load completions in your current shell session:
-$ source <(helm completion zsh)
+
+    source <(helm completion zsh)
 
 To load completions for every new session, execute once:
-$ helm completion zsh > "${fpath[1]}/_helm"
+
+    helm completion zsh > "${fpath[1]}/_helm"
 
 
 ```

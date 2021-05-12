@@ -8,17 +8,20 @@ title: "Helm补全 - zsh"
 
 ### 简介
 
+
 为Helm生成针对于zsh shell的自动补全脚本。
 
 在当前shell会话中加载自动补全：
-$ source <(helm completion zsh)
+
+    source <(helm completion zsh)
 
 为每个新的会话加载自动补全，执行一次：
 
-$ helm completion zsh > "${fpath[1]}/_helm"
+    helm completion zsh > "${fpath[1]}/_helm"
+
 
 ```shell
-helm completion zsh
+helm completion zsh [flags]
 ```
 
 ### 可选项
