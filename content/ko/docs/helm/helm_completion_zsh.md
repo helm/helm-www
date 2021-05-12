@@ -12,14 +12,16 @@ zsh에 대한 자동 완성 스크립트 생성
 zsh 셸의 헬름에 대한 자동 완성 스크립트를 생성한다.
 
 현재 셸 세션에서 완성 기능을 로드하려면:
-$ source <(helm completion zsh)
+
+    source <(helm completion zsh)
 
 새로운 세션마다 완성 기능을 로드하려면 다음 작업을 한 번 실행한다:
-$ helm completion zsh > "${fpath[1]}/_helm"
+
+    helm completion zsh > "${fpath[1]}/_helm"
 
 
 ```
-helm completion zsh
+helm completion zsh [flags]
 ```
 
 ### 옵션

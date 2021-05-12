@@ -8,18 +8,22 @@ title: "Helm补全 - bash"
 
 ### 简介
 
+
 为Helm生成针对于bash shell的自动补全脚本。
 
 在当前shell会话中加载自动补全：
-$ source <(helm completion bash)
+
+    source <(helm completion bash)
 
 为每个新的会话加载自动补全，执行一次：
+- Linux:
 
-Linux:
-  $ helm completion bash > /etc/bash_completion.d/helm
+      helm completion bash > /etc/bash_completion.d/helm
 
-MacOS:
-  $ helm completion bash > /usr/local/etc/bash_completion.d/helm
+- MacOS:
+
+      helm completion bash > /usr/local/etc/bash_completion.d/helm
+
 
 ```shell
 helm completion bash
