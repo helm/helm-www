@@ -16,10 +16,10 @@ bestimmten Dingen zu suchen:
 
 - [Lernprogramme](intro) sind eine gute Handhabe, um das erste Helm Chart zu
   erstellen. Starten Sie hier, wenn Sie neu bei Helm sind.
-- [Themenhandbücher](topics) diskutieren Hauptthemen und Konzepte auf einem
+- [Themenhandbücher]({{< relref path="/docs/topics" lang="en" >}}) diskutieren Hauptthemen und Konzepte auf einem
   hohen Niveau und stellen nützliche Hintergrundinformationen und Erklärungen
   zur Verfügung.
-- [Gemeinschaftshandbücher](community) diskutieren Themen rund um die Helm Gemeinschaft.
+- [Gemeinschaftshandbücher]({{< relref path="/docs/community" lang="en" >}}) diskutieren Themen rund um die Helm Gemeinschaft.
   Starten Sie hier, wenn Sie mehr über den Entwicklungsprozess von Helm lernen
   möchten und wie Sie dazu beitragen können.
 - [Anleitungen](howto) sind wie Rezepte. Sie werden durch die einzelnen Schritte

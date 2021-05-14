@@ -304,7 +304,7 @@ nodeSelector:
 Tief verzweigte Datenstrukturen können schwierig darzustellen sein mit `--set`. Chart Designer
 sind angewiesen, die Benutzung von `--set` durch die Benutzung des Formats
 der `values.yaml` Datei zu minimieren.
-(Lesen Sie mehr dazu in [Values Files](../chart_template_guide/values_files/)).
+(Lesen Sie mehr dazu in [Values Files]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
 
 ### Mehr Installationsmethoden
 
