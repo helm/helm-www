@@ -93,7 +93,7 @@ other = "Helm bekommen!"
 other = "Helm mit einem Paket Manager installieren oder [ein Binary herunterladen](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Einmal installiert, packen Sie das Helm Binary aus, fügen es Ihrem PATH zu und fertig ist es zur Benutzung! Überprüfen Sie [die Dokumentationen](./docs/intro/install/) für weitere [Installationen](./docs/intro/install/) und [Gebrauchsanweisungen](./ocs/intro/using_helm/)."
+other = "Einmal installiert, packen Sie das Helm Binary aus, fügen es Ihrem PATH zu und fertig ist es zur Benutzung! Überprüfen Sie [die Dokumentationen](./docs/intro/install/) für weitere [Installationen](./docs/intro/install/) und [Gebrauchsanweisungen](./docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Charts bekommen"
