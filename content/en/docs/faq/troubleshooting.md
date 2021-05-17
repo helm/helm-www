@@ -1,10 +1,6 @@
 ---
 title: "Troubleshooting"
 weight: 4
-aliases: [
-  "/docs/topics/faq/troubleshooting",
-  "/docs/faq/troubleshooting"
-]
 ---
 
 ## Troubleshooting

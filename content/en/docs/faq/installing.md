@@ -1,10 +1,6 @@
 ---
 title: "Installing"
 weight: 2
-aliases: [
-  "/docs/topics/faq/installing",
-  "/docs/faq/installing"
-]
 ---
 
 ## Installing

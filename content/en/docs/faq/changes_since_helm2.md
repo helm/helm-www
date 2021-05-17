@@ -1,10 +1,6 @@
 ---
 title: "Changes Since Helm 2"
 weight: 1
-aliases: [
-  "/docs/topics/faq/changes_since_helm2",
-  "/docs/faq/changes_since_helm2"
-]
 ---
 
 ## Changes since Helm 2

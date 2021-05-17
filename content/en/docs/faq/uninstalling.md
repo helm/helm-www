@@ -1,10 +1,6 @@
 ---
 title: "Uninstalling"
 weight: 3
-aliases: [
-  "/docs/topics/faq/uninstalling",
-  "/docs/faq/uninstalling"
-]
 ---
 
 ## Uninstalling
