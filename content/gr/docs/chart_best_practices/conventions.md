@@ -1,6 +1,6 @@
 ---
 title: "Γενικές Συμβάσεις"
-description: "Γενικές ΣΥμβάσεις για τα charts."
+description: "Γενικές Συμβάσεις για τα charts."
 weight: 1
 ---
 
