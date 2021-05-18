@@ -2,7 +2,6 @@
 title: "Γενικές Συμβάσεις"
 description: "Γενικές ΣΥμβάσεις για τα charts."
 weight: 1
-aliases: ["/docs/topics/chart_best_practices/conventions/"]
 ---
 
 Αυτό το μέρος του Οδηγού Βέλτιστων Πρακτικών εξηγεί τις γενικές συμβάσεις.

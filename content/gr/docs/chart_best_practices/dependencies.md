@@ -2,7 +2,6 @@
 title: "Αλυσίδες Charts"
 description: "Καλύπτει τις βέλτιστες πρακτικές για τις αλυσίδες chart εντός ενός Chart."
 weight: 4
-aliases: ["/docs/topics/chart_best_practices/dependencies/"]
 ---
 
 Αυτός ο τομέας του οδηγού καλύπτει τις βέλτιστες πρακτικές για τις `αλυσίδες charts` οι οποίες δηλώνονται στο `Chart.yaml`.
