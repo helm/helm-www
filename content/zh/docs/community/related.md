@@ -16,7 +16,7 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - 基于
   Prometheus/ElasticSearch的用于监控版本发布和回滚的插件
 - [helm-k8comp](https://github.com/cststack/k8comp) - 从hiera中使用k8comp创建Helm Chart的插件
-- [helm-unittest](https://github.com/lrills/helm-unittest) - 使用YAML对本地chart做单元测试的插件
+- [helm-unittest](https://github.com/quintush/helm-unittest) - 使用YAML对本地chart做单元测试的插件
 - [hc-unit](https://github.com/xchapter7x/hcunit) - 使用OPA (Open Policy Agent) &
   Rego对本地chart做单元测试的插件
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - 允许使用AWS S3作为[私有]chart仓库的插件

@@ -22,7 +22,7 @@ request](https://github.com/helm/helm-www/pulls).
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-k8comp](https://github.com/cststack/k8comp) - Plugin to create Helm
   Charts from hiera using k8comp
-- [helm-unittest](https://github.com/lrills/helm-unittest) - Plugin for unit
+- [helm-unittest](https://github.com/quintush/helm-unittest) - Plugin for unit
   testing chart locally with YAML
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit testing
   charts locally using OPA (Open Policy Agent) & Rego
@@ -38,6 +38,8 @@ request](https://github.com/helm/helm-www/pulls).
   rendering Tanka/Jsonnet inside Helm charts.
 - [helm-val](https://github.com/HamzaZo/helm-val) - A plugin to get 
   values from a previous release.
+- [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt 
+  existing k8s resources into a new generated helm chart.  
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
