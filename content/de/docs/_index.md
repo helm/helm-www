@@ -1,5 +1,5 @@
 ---
-title: "Docs Home"
+title: "Dokumentation"
 description: "Alles Wissenswerte zur Organisation der Dokumentation."
 ---
 

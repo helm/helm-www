@@ -120,18 +120,18 @@ weight = 5
 # German
 [languages.de]
 title = "Helm"
-description = "Helm - Der Kubernetes Paket-Manager."
+description = "Helm - Der Kubernetes Paket Manager."
 contentDir = "content/de"
 languageName = "Deutsch"
 weight = 2
 
 [[languages.de.menus.main]]
-name = "Home"
+name = "Start"
 url = "/"
 weight = 1
 
 [[languages.de.menus.main]]
-name = "Dokumente"
+name = "Dokumentation"
 url = "/docs"
 weight = 2
 
