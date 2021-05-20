@@ -183,6 +183,12 @@ In such setup you can use **master branch** to store your charts code, and
 Charts](https://github.com/technosophos/tscharts) repository is accessible at
 `https://technosophos.github.io/tscharts/`.
 
+If you have decided to use GitHub pages to host the chart repository, check out
+[Chart Releaser Action]({{< ref "/docs/howto/chart_releaser_action.md" >}}).
+Chart Releaser Action is a GitHub Action workflow to turn a GitHub project into
+a self-hosted Helm chart repo, using
+[helm/chart-releaser](https://github.com/helm/chart-releaser) CLI tool.
+
 ### Ordinary web servers
 
 To configure an ordinary web server to serve Helm charts, you merely need to do
