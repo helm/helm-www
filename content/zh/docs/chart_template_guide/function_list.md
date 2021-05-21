@@ -163,7 +163,7 @@ coalesce .name .parent.name "Matt"
 ### ternary
 
 `ternary`函数获取两个值和一个test值。如果test值是true，则返回第一个值。如果test值是空，则返回第二个值。
-这和c的ternary运算符类似。
+这和C或其他编程语言中的的ternary运算符类似。
 
 #### true test value
 
