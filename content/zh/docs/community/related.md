@@ -27,6 +27,8 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 - [helm-git](https://github.com/aslafy-z/helm-git) - 安装chart并从Git仓库中检索values文件
 - [helm-tanka](https://github.com/Duologic/helm-tanka) - 在Helm chart中渲染Tanka/Jsonnet的插件
 - [helm-val](https://github.com/HamzaZo/helm-val) - 从之前的版本中获取值的插件
+- [helm-adopt](https://github.com/HamzaZo/helm-adopt) - 一个helm v3插件，将现有的k8s资源引入到新生成的helm
+  chart中。
 
 我们同样鼓励使用GitHub的各位使用[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
 给插件仓库打tag。

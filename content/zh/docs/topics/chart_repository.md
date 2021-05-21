@@ -153,6 +153,10 @@ $ git checkout -b gh-pages
 `https://USERNAME.github.io/REPONAME`。[TS Charts](https://github.com/technosophos/tscharts)示范仓库可以访问
 `https://technosophos.github.io/tscharts/`。
 
+如果你想使用GitHub页面托管chart仓库，请查看[Chart发布操作](https://helm.sh/zh/docs/howto/chart_releaser_action)。
+Chart 发布操作是GitHub的操作流，可以将GitHub项目转换成自托管的Helm chart仓库，可以使用使用
+[helm/chart-releaser](https://github.com/helm/chart-releaser) CLI工具。
+
 ### 普通web服务器
 
 配置一个一般的服务器来提供Helm chart，您只需执行以下操作：
