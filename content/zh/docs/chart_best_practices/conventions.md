@@ -20,9 +20,6 @@ aws-cluster-autoscaler
 
 chart名称中不能用大写字母也不能用下划线。点 . 符号也不行。
 
-包chart的目录命**必须**和chart一致。因此，名为`nginx-lego`的chart**必须**在`nginx-lego/`目录中创建。
-这不仅仅是文字上的细节，而且是Helm Chart要求的格式。
-
 ## 版本号
 
 Helm尽可能使用[SemVer 2](https://semver.org)来表示版本号。（注意Docker镜像的tag不需要遵循SemVer，
