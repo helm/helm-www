@@ -23,10 +23,6 @@ aws-cluster-autoscaler
 Neither uppercase letters nor underscores can be used in chart names. Dots
 should not be used in chart names.
 
-The directory that contains a chart MUST have the same name as the chart. Thus,
-the chart `nginx-lego` MUST be created in a directory called `nginx-lego/`. This
-is not merely a stylistic detail, but a requirement of the Helm Chart format.
-
 ## Version Numbers
 
 Wherever possible, Helm uses [SemVer 2](https://semver.org) to represent version
