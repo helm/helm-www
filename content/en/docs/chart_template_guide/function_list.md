@@ -180,7 +180,7 @@ emptiness. Finally, if both `.name` and `.parent.name` are empty, it will return
 
 The `ternary` function takes two values, and a test value. If the test value is
 true, the first value will be returned. If the test value is empty, the second
-value will be returned. This is similar to the c ternary operator.
+value will be returned. This is similar to the ternary operator in C and other programming languages.
 
 #### true test value
 
