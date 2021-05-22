@@ -1191,7 +1191,7 @@ $myDict := dict "name1" "value1" "name2" "value2" "name3" "value 3"
 Given a map and a key, get the value from the map.
 
 ```
-get $myDict "key1"
+get $myDict "name1"
 ```
 
 The above returns `"value1"`
@@ -1246,14 +1246,14 @@ pluck "name1" $myDict $myOtherDict
 The above will return a `list` containing every found value (`[value1
 otherValue1]`).
 
-If the give key is _not found_ in a map, that map will not have an item in the
+If the given key is _not found_ in a map, that map will not have an item in the
 list (and the length of the returned list will be less than the number of dicts
-in the call to `pluck`.
+in the call to `pluck`).
 
 If the key is _found_ but the value is an empty value, that value will be
 inserted.
 
-A common idiom in Helm templates is to uses `pluck... | first` to get the first
+A common idiom in Helm templates is to use `pluck... | first` to get the first
 matching key out of a collection of dictionaries.
 
 ### merge, mustMerge
@@ -1329,7 +1329,7 @@ keys $myDict | sortAlpha
 ```
 
 When supplying multiple dictionaries, the keys will be concatenated. Use the
-`uniq` function along with `sortAlpha` to get a unqiue, sorted list of keys.
+`uniq` function along with `sortAlpha` to get a unique, sorted list of keys.
 
 ```
 keys $myDict $myOtherDict | uniq | sortAlpha
@@ -1372,7 +1372,7 @@ then use `sortAlpha`.
 
 ### deepCopy, mustDeepCopy
 
-The `deepCopy` and `mustDeepCopy` functions takes a value and makes a deep copy
+The `deepCopy` and `mustDeepCopy` functions take a value and make a deep copy
 of the value. This includes dicts and other structures. `deepCopy` panics when
 there is a problem, while `mustDeepCopy` returns an error to the template system
 when there is an error.
