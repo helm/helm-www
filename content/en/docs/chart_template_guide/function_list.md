@@ -1267,7 +1267,7 @@ $newdict := merge $dest $source1 $source2
 
 This is a deep merge operation but not a deep copy operation. Nested objects
 that are merged are the same instance on both dicts. If you want a deep copy
-along with the merge then use the `deepCopy` function along with merging. For
+along with the merge, then use the `deepCopy` function along with merging. For
 example,
 
 ```
@@ -1367,14 +1367,14 @@ $vals := values $myDict
 ```
 
 The above returns `list["value1", "value2", "value 3"]`. Note that the `values`
-function gives no guarantees about the result ordering - if you care about this,
+function gives no guarantees about the result ordering; if you care about this,
 then use `sortAlpha`.
 
 ### deepCopy, mustDeepCopy
 
 The `deepCopy` and `mustDeepCopy` functions take a value and make a deep copy
 of the value. This includes dicts and other structures. `deepCopy` panics when
-there is a problem while `mustDeepCopy` returns an error to the template system
+there is a problem, while `mustDeepCopy` returns an error to the template system
 when there is an error.
 
 ```
@@ -1425,7 +1425,7 @@ To get the head item on a list, use `first`.
 
 `first $myList` returns `1`
 
-`first` panics if there is a problem while `mustFirst` returns an error to the
+`first` panics if there is a problem, while `mustFirst` returns an error to the
 template engine if there is a problem.
 
 ### rest, mustRest
@@ -1434,7 +1434,7 @@ To get the tail of the list (everything but the first item), use `rest`.
 
 `rest $myList` returns `[2 3 4 5]`
 
-`rest` panics if there is a problem while `mustRest` returns an error to the
+`rest` panics if there is a problem, while `mustRest` returns an error to the
 template engine if there is a problem.
 
 ### last, mustLast
@@ -1449,7 +1449,7 @@ then calling `first`.
 This compliments `last` by returning all _but_ the last element. `initial
 $myList` returns `[1 2 3 4]`.
 
-`initial` panics if there is a problem while `mustInitial` returns an error to
+`initial` panics if there is a problem, while `mustInitial` returns an error to
 the template engine if there is a problem.
 
 ### append, mustAppend
@@ -1462,7 +1462,7 @@ $new = append $myList 6
 
 The above would set `$new` to `[1 2 3 4 5 6]`. `$myList` would remain unaltered.
 
-`append` panics if there is a problem while `mustAppend` returns an error to the
+`append` panics if there is a problem, while `mustAppend` returns an error to the
 template engine if there is a problem.
 
 ### prepend, mustPrepend
@@ -1475,7 +1475,7 @@ prepend $myList 0
 
 The above would produce `[0 1 2 3 4 5]`. `$myList` would remain unaltered.
 
-`prepend` panics if there is a problem while `mustPrepend` returns an error to
+`prepend` panics if there is a problem, while `mustPrepend` returns an error to
 the template engine if there is a problem.
 
 ### concat
@@ -1498,7 +1498,7 @@ reverse $myList
 
 The above would generate the list `[5 4 3 2 1]`.
 
-`reverse` panics if there is a problem while `mustReverse` returns an error to
+`reverse` panics if there is a problem, while `mustReverse` returns an error to
 the template engine if there is a problem.
 
 ### uniq, mustUniq
@@ -1511,7 +1511,7 @@ list 1 1 1 2 | uniq
 
 The above would produce `[1 2]`
 
-`uniq` panics if there is a problem while `mustUniq` returns an error to the
+`uniq` panics if there is a problem, while `mustUniq` returns an error to the
 template engine if there is a problem.
 
 ### without, mustWithout
@@ -1524,7 +1524,7 @@ without $myList 3
 
 The above would produce `[1 2 4 5]`
 
-Without can take more than one filter:
+`without` can take more than one filter:
 
 ```
 without $myList 1 3 5
@@ -1532,7 +1532,7 @@ without $myList 1 3 5
 
 That would produce `[2 4]`
 
-`without` panics if there is a problem while `mustWithout` returns an error to
+`without` panics if there is a problem, while `mustWithout` returns an error to
 the template engine if there is a problem.
 
 ### has, mustHas
@@ -1545,7 +1545,7 @@ has 4 $myList
 
 The above would return `true`, while `has "hello" $myList` would return false.
 
-`has` panics if there is a problem while `mustHas` returns an error to the
+`has` panics if there is a problem, while `mustHas` returns an error to the
 template engine if there is a problem.
 
 ### compact, mustCompact
@@ -1572,7 +1572,7 @@ To get partial elements of a list, use `slice list [n] [m]`. It is equivalent of
 - `slice $myList 1 3` returns `[2 3]`. It is same as `myList[1:3]`.
 - `slice $myList 0 3` returns `[1 2 3]`. It is same as `myList[:3]`.
 
-`slice` panics if there is a problem while `mustSlice` returns an error to the
+`slice` panics if there is a problem, while `mustSlice` returns an error to the
 template engine if there is a problem.
 
 ### until
@@ -1637,19 +1637,19 @@ add 1 2 3
 
 ### add1
 
-To increment by 1, use `add1`
+To increment by 1, use `add1`.
 
 ### sub
 
-To subtract, use `sub`
+To subtract, use `sub`.
 
 ### div
 
-Perform integer division with `div`
+Perform integer division with `div`.
 
 ### mod
 
-Modulo with `mod`
+Modulo with `mod`.
 
 ### mul
 
@@ -1661,7 +1661,7 @@ mul 1 2 3
 
 ### max
 
-Return the largest of a series of integers:
+Return the largest of a series of integers.
 
 This will return `3`:
 
@@ -1673,26 +1673,26 @@ max 1 2 3
 
 Return the smallest of a series of integers.
 
-`min 1 2 3` will return `1`
+`min 1 2 3` will return `1`.
 
 ### floor
 
-Returns the greatest float value less than or equal to input value
+Returns the greatest float value less than or equal to input value.
 
-`floor 123.9999` will return `123.0`
+`floor 123.9999` will return `123.0`.
 
 ### ceil
 
-Returns the greatest float value greater than or equal to input value
+Returns the greatest float value greater than or equal to input value.
 
-`ceil 123.001` will return `124.0`
+`ceil 123.001` will return `124.0`.
 
 ### round
 
 Returns a float value with the remainder rounded to the given number to digits
 after the decimal point.
 
-`round 123.555555 3` will return `123.556`
+`round 123.555555 3` will return `123.556`.
 
 ### len
 
@@ -1708,9 +1708,7 @@ Helm has a single network function, `getHostByName`.
 
 The `getHostByName` receives a domain name and returns the ip address.
 
-```
-getHostByName "www.google.com" would return the corresponding ip address of www.google.com
-```
+`getHostByName "www.google.com"` would return the corresponding ip address of `www.google.com`.
 
 ## File Path Functions
 
@@ -1727,12 +1725,12 @@ Return the last element of a path.
 base "foo/bar/baz"
 ```
 
-The above prints "baz"
+The above prints "baz".
 
 ### dir
 
 Return the directory, stripping the last part of the path. So `dir
-"foo/bar/baz"` returns `foo/bar`
+"foo/bar/baz"` returns `foo/bar`.
 
 ### clean
 
@@ -1742,7 +1740,7 @@ Clean up a path.
 clean "foo/bar/../baz"
 ```
 
-The above resolves the `..` and returns `foo/baz`
+The above resolves the `..` and returns `foo/baz`.
 
 ### ext
 
@@ -1788,7 +1786,7 @@ The above would return `string`. For simple tests (like in `if` blocks), the
 kindIs "int" 123
 ```
 
-The above will return `true`
+The above will return `true`.
 
 ### Type Functions
 
@@ -1796,7 +1794,7 @@ Types are slightly harder to work with, so there are three different functions:
 
 - `typeOf` returns the underlying type of a value: `typeOf $foo`
 - `typeIs` is like `kindIs`, but for types: `typeIs "*io.Buffer" $myVal`
-- `typeIsLike` works as `typeIs`, except that it also dereferences pointers.
+- `typeIsLike` works as `typeIs`, except that it also dereferences pointers
 
 **Note:** None of these can test whether or not something implements a given
 interface, since doing so would require compiling the interface in ahead of
@@ -1813,7 +1811,7 @@ Works for non-primitive types as well (compared to the built-in `eq`).
 deepEqual (list 1 2 3) (list 1 2 3)
 ```
 
-The above will return `true`
+The above will return `true`.
 
 ## Semantic Version Functions
 
@@ -1891,15 +1889,12 @@ The basic comparisons are:
 - `>=`: greater than or equal to
 - `<=`: less than or equal to
 
-_Note, according to the Semantic Version specification pre-releases may not be
-API compliant with their release counterpart. It says,_
-
 ### Working With Prerelease Versions
 
 Pre-releases, for those not familiar with them, are used for software releases
 prior to stable or generally available releases. Examples of prereleases include
 development, alpha, beta, and release candidate releases. A prerelease may be a
-version such as `1.2.3-beta.1` while the stable release would be `1.2.3`. In the
+version such as `1.2.3-beta.1`, while the stable release would be `1.2.3`. In the
 order of precedence, prereleases come before their associated releases. In this
 example `1.2.3-beta.1 < 1.2.3`.
 
@@ -1912,7 +1907,7 @@ compliant with their release counterpart. It says,
 
 SemVer comparisons using constraints without a prerelease comparator will skip
 prerelease versions. For example, `>=1.2.3` will skip prereleases when looking
-at a list of releases while `>=1.2.3-0` will evaluate and find prereleases.
+at a list of releases, while `>=1.2.3-0` will evaluate and find prereleases.
 
 The reason for the `0` as a pre-release version in the example comparison is
 because pre-releases can only contain ASCII alphanumerics and hyphens (along
