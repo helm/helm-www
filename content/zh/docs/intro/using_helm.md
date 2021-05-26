@@ -119,7 +119,7 @@ Helm to generate a name for you, leave off the release name and use
 
 在安装过程中，`helm` 客户端会打印一些有用的信息，其中包括：哪些资源已经被创建，release当前的状态，以及你是否还需要执行额外的配置步骤。
 
-Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到群集中。
+Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到集群中。
 
 你可以使用 `helm status` 来追踪 release 的状态，或是重新读取配置信息：
 
