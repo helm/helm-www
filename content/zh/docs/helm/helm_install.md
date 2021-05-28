@@ -109,7 +109,7 @@ helm install [NAME] [CHART] [flags]
       --username string              chart repository username where to locate the requested chart
   -f, --values strings               specify values in a YAML file or a URL (can specify multiple)
       --verify                       verify the package before using it
-      --version string               specify the exact chart version to use. If this is not specified, the latest version is used
+      --version string               specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
       --wait                         if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
 ```
 

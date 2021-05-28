@@ -18,7 +18,7 @@ $ source <(helm completion zsh)
 $ helm completion zsh > "${fpath[1]}/_helm"
 
 ```shell
-helm completion zsh
+helm completion zsh [flags]
 ```
 
 ### 可选项

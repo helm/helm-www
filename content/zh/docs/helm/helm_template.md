@@ -36,6 +36,7 @@ helm template [NAME] [CHART] [flags]
       --is-upgrade                   set .Release.IsUpgrade instead of .Release.IsInstall
       --key-file string              identify HTTPS client using this SSL key file
       --keyring string               location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+      --kube-version string          Kubernetes version used for Capabilities.KubeVersion
       --name-template string         specify template used to name the release
       --no-hooks                     prevent hooks from running during install
       --output-dir string            writes the executed templates to files in output-dir instead of stdout
@@ -56,7 +57,7 @@ helm template [NAME] [CHART] [flags]
       --validate                     validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install
   -f, --values strings               specify values in a YAML file or a URL (can specify multiple)
       --verify                       verify the package before using it
-      --version string               specify the exact chart version to use. If this is not specified, the latest version is used
+      --version string               specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
       --wait                         if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
       --wait-for-jobs                if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
 ```
