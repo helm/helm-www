@@ -43,14 +43,14 @@ helm list [flags]
   -f, --filter string        a regular expression (Perl compatible). Any releases that match the expression will be included in the results
   -h, --help                 help for list
   -m, --max int              maximum number of releases to fetch (default 256)
-      --offset int           next release name in the list, used to offset from start value
+      --offset int           next release index in the list, used to offset from start value
   -o, --output format        prints the output in the specified format. Allowed values: table, json, yaml (default table)
       --pending              show pending releases
   -r, --reverse              reverse the sort order
   -l, --selector string      Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Works only for secret(default) and configmap storage backends.
   -q, --short                output short (quiet) listing format
       --superseded           show superseded releases
-      --time-format string   format time. Example: --time-format 2009-11-17 20:34:10 +0000 UTC
+      --time-format string   format time using golang time formatter. Example: --time-format "2006-01-02 15:04:05Z0700"
       --uninstalled          show uninstalled releases (if 'helm uninstall --keep-history' was used)
       --uninstalling         show releases that are currently being uninstalled
 ```

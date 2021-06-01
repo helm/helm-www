@@ -28,7 +28,7 @@ helm show all [CHART] [flags]
       --repo string                chart repository url where to locate the requested chart
       --username string            chart repository username where to locate the requested chart
       --verify                     verify the package before using it
-      --version string             specify the exact chart version to use. If this is not specified, the latest version is used
+      --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
 ```
 
 ### 从父命令继承的命令

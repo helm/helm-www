@@ -20,7 +20,7 @@ $ helm completion fish > ~/.config/fish/completions/helm.fish
 您需要启动一个新的shell使其生效
 
 ```shell
-helm completion fish
+helm completion fish [flags]
 ```
 
 ### 可选项
