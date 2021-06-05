@@ -65,11 +65,11 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{ if eq .Values.favorite.drink "coffee" }}mug: true{{ end }}
+  {{ if eq .Values.favorite.drink "coffee" }}mug: "true"{{ end }}
 ```
 
 Since we commented out `drink: coffee` in our last example, the output should
-not include a `mug: true` flag. But if we add that line back into our
+not include a `mug: "true"` flag. But if we add that line back into our
 `values.yaml` file, the output should look like this:
 
 ```yaml
@@ -82,7 +82,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-  mug: true
+  mug: "true"
 ```
 
 ## Controlling Whitespace
@@ -101,7 +101,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{ if eq .Values.favorite.drink "coffee" }}
-    mug: true
+    mug: "true"
   {{ end }}
 ```
 
@@ -127,7 +127,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-    mug: true
+    mug: "true"
 ```
 
 `mug` is incorrectly indented. Let's simply out-dent that one line, and re-run:
@@ -142,7 +142,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{ if eq .Values.favorite.drink "coffee" }}
-  mug: true
+  mug: "true"
   {{ end }}
 ```
 
@@ -159,7 +159,7 @@ data:
   drink: "coffee"
   food: "PIZZA"
 
-  mug: true
+  mug: "true"
 
 ```
 
@@ -192,7 +192,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" }}
-  mug: true
+  mug: "true"
   {{- end }}
 ```
 
@@ -211,7 +211,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}*
 **{{- if eq .Values.favorite.drink "coffee" }}
-  mug: true*
+  mug: "true"*
 **{{- end }}
 
 ```
@@ -228,7 +228,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-  mug: true
+  mug: "true"
 ```
 
 Be careful with the chomping modifiers. It is easy to accidentally do things
@@ -237,12 +237,12 @@ like this:
 ```yaml
   food: {{ .Values.favorite.food | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" -}}
-  mug: true
+  mug: "true"
   {{- end -}}
 
 ```
 
-That will produce `food: "PIZZA"mug:true` because it consumed newlines on both
+That will produce `food: "PIZZA"mug: "true"` because it consumed newlines on both
 sides.
 
 > For the details on whitespace control in templates, see the [Official Go
