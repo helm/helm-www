@@ -135,6 +135,43 @@ During installation, the `helm` client will print useful information about which
 resources were created, what the state of the release is, and also whether there
 are additional configuration steps you can or should take.
 
+Helm installs resources in the following order:
+
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
+
 Helm does not wait until all of the resources are running before it exits. Many
 charts require Docker images that are over 600M in size, and may take a long
 time to install into the cluster.
