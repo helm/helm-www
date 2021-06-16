@@ -210,6 +210,10 @@ spec:
 [...]
 ```
 
+NOTE: If you're adding this to a library chart you won't be able to access your
+file in `$.Template.BasePath`. Instead you can reference your definition with
+`{{ include ("mylibchart.configmap") . | sha256sum }}`.
+
 In the event you always want to roll your deployment, you can use a similar
 annotation step as above, instead replacing with a random string so it always
 changes and causes the deployment to roll:
