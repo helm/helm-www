@@ -58,10 +58,10 @@ data:
   myvalue: "Hello World"
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
-  {{ if eq .Values.favorite.drink "coffee" }}mug: true{{ end }}
+  {{ if eq .Values.favorite.drink "coffee" }}mug: "true"{{ end }}
 ```
 
-由于我们在最后一个例子中注释了`drink: coffee`，输出中就不会包含`mug: true`标识。但如果将这行添加到`values.yaml`
+由于我们在最后一个例子中注释了`drink: coffee`，输出中就不会包含`mug: "true"`标识。但如果将这行添加到`values.yaml`
 文件中，输入就会是这样：
 
 ```yaml
@@ -74,7 +74,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-  mug: true
+  mug: "true"
 ```
 
 ## 控制空格
@@ -91,7 +91,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{ if eq .Values.favorite.drink "coffee" }}
-    mug: true
+    mug: "true"
   {{ end }}
 ```
 
@@ -116,7 +116,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-    mug: true
+    mug: "true"
 ```
 
 `mug`的缩进是不对的。取消缩进重新执行一下：
@@ -131,7 +131,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{ if eq .Values.favorite.drink "coffee" }}
-  mug: true
+  mug: "true"
   {{ end }}
 ```
 
@@ -148,7 +148,7 @@ data:
   drink: "coffee"
   food: "PIZZA"
 
-  mug: true
+  mug: "true"
 
 ```
 
@@ -174,7 +174,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" }}
-  mug: true
+  mug: "true"
   {{- end }}
 ```
 
@@ -191,7 +191,7 @@ data:
   drink: {{ .Values.favorite.drink | default "tea" | quote }}
   food: {{ .Values.favorite.food | upper | quote }}*
 **{{- if eq .Values.favorite.drink "coffee" }}
-  mug: true*
+  mug: "true"*
 **{{- end }}
 
 ```
@@ -208,7 +208,7 @@ data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "PIZZA"
-  mug: true
+  mug: "true"
 ```
 
 要注意这个删除字符的更改，很容易意外地出现情况：
@@ -216,12 +216,12 @@ data:
 ```yaml
   food: {{ .Values.favorite.food | upper | quote }}
   {{- if eq .Values.favorite.drink "coffee" -}}
-  mug: true
+  mug: "true"
   {{- end -}}
 
 ```
 
-这样会变成`food: "PIZZA"mug:true`，因为这把两边的新行都删除了。
+这样会变成`food: "PIZZA"mug:"true"`，因为这把两边的新行都删除了。
 
 > 关于模板中的空白控制，请查看[官方Go模板文档](https://godoc.org/text/template)
 

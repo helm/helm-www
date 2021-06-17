@@ -40,6 +40,7 @@ helm template [NAME] [CHART] [flags]
       --name-template string         specify template used to name the release
       --no-hooks                     prevent hooks from running during install
       --output-dir string            writes the executed templates to files in output-dir instead of stdout
+      --pass-credentials             pass credentials to all domains
       --password string              chart repository password where to locate the requested chart
       --post-renderer postrenderer   the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path (default exec)
       --release-name                 use release name in the output-dir path.
