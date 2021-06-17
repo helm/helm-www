@@ -25,6 +25,7 @@ helm show values [CHART] [flags]
       --jsonpath string            supply a JSONPath expression to filter the output
       --key-file string            identify HTTPS client using this SSL key file
       --keyring string             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+      --pass-credentials           pass credentials to all domains
       --password string            chart repository password where to locate the requested chart
       --repo string                chart repository url where to locate the requested chart
       --username string            chart repository username where to locate the requested chart

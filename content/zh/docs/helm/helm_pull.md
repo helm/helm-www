@@ -31,6 +31,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --insecure-skip-tls-verify   skip tls certificate checks for the chart download
       --key-file string            identify HTTPS client using this SSL key file
       --keyring string             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+      --pass-credentials           pass credentials to all domains
       --password string            chart repository password where to locate the requested chart
       --prov                       fetch the provenance file, but don't perform verification
       --repo string                chart repository url where to locate the requested chart

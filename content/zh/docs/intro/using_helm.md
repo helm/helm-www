@@ -112,12 +112,47 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 ```
 
-Now the `wordpress` chart is installed. Note that installing a chart creates a
-new _release_ object. The release above is named `happy-panda`. (If you want
-Helm to generate a name for you, leave off the release name and use
-`--generate-name`.)
+现在`wordpress` chart 已经安装。注意安装chart时创建了一个新的 _release_ 对象。上述发布被命名为 `happy-panda`。
+（如果想让Helm生成一个名称，删除发布名称并使用`--generate-name`。）
 
 在安装过程中，`helm` 客户端会打印一些有用的信息，其中包括：哪些资源已经被创建，release当前的状态，以及你是否还需要执行额外的配置步骤。
+
+Helm按照以下顺序安装资源：
+
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
 
 Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到集群中。
 

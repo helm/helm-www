@@ -55,6 +55,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --keyring string               location of public keys used for verification (default "~/.gnupg/pubring.gpg")
       --no-hooks                     disable pre/post upgrade hooks
   -o, --output format                prints the output in the specified format. Allowed values: table, json, yaml (default table)
+      --pass-credentials             pass credentials to all domains
       --password string              chart repository password where to locate the requested chart
       --post-renderer postrenderer   the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path (default exec)
       --render-subchart-notes        if set, render subchart notes along with the parent

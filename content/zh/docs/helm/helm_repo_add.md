@@ -21,6 +21,7 @@ helm repo add [NAME] [URL] [flags]
       --insecure-skip-tls-verify   skip tls certificate checks for the repository
       --key-file string            identify HTTPS client using this SSL key file
       --no-update                  Ignored. Formerly, it would disabled forced updates. It is deprecated by force-update.
+      --pass-credentials           pass credentials to all domains
       --password string            chart repository password
       --username string            chart repository username
 ```
