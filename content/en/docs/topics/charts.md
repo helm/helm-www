@@ -84,7 +84,9 @@ annotations:
   example: A list of annotations keyed by name (optional).
 ```
 
-Other fields will be silently ignored.
+As of [v3.3.2](https://github.com/helm/helm/releases/tag/v3.3.2), additional
+fields are not allowed.
+The recommended approach is to add custom metadata in `annotations`.
 
 ### Charts and Versioning
 
