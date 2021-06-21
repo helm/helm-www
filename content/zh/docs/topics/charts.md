@@ -483,7 +483,7 @@ wordpress:
 - B-ReplicaSet
 - A-StatefulSet
 
-这是因为当Helm安卓/升级chart时，chart中所有的Kubernetes对象以及依赖会
+这是因为当Helm安装/升级chart时，chart中所有的Kubernetes对象以及依赖会
 
 - 聚合成一个单一的集合；然后
 - 按照类型和名称排序；然后
