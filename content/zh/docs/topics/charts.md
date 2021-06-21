@@ -71,7 +71,8 @@ annotations:
   example: 按名称输入的批注列表 （可选）.
 ```
 
-其他字段将被忽略。
+从[v3.3.2](https://github.com/helm/helm/releases/tag/v3.3.2)，不再允许额外的字段。推荐的方法是在
+`annotations` 中添加自定义元数据。
 
 ### Chart和版本控制
 
