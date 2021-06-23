@@ -327,7 +327,7 @@ name: "value1,value2"
 
 Similarly, you can escape dot sequences as well, which may come in handy when
 charts use the `toYaml` function to parse annotations, labels and node
-selectors. The syntax for `--set nodeSelector."kubernetes\.io/role"=master`
+selectors. The syntax for `--set nodeSelector."kubernetes\\.io/role"=master`
 becomes:
 
 ```yaml
