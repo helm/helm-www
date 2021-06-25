@@ -601,7 +601,7 @@ kind_sorter.go([the Helm source file](https://github.com/helm/helm/blob/484d4391
 
 ## 템플릿과 값
 
-헬름 차트 템플릿은 [spring 라이브러리](https://github.com/Masterminds/sprig)에서
+헬름 차트 템플릿은 [sprig 라이브러리](https://github.com/Masterminds/sprig)에서
 50개 정도의 애드온 템플릿 함수와
 몇가지 기타 [특수 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})가
 추가된 [Go template language](https://golang.org/pkg/text/template/)로
