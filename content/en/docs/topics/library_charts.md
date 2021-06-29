@@ -311,6 +311,10 @@ metadata:
 
 ## The Common Helm Helper Chart
 
+```markdown
+Note: The Common Helm Helper Chart repo on Github is no longer actively maintained, and the repo has been deprecated and archived. 
+```
+
 This [chart](https://github.com/helm/charts/tree/master/incubator/common) was
 the original pattern for common charts. It provides utilities that reflect best
 practices of Kubernetes chart development. Best of all it can be used off the
