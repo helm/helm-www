@@ -135,9 +135,15 @@ You may upload your chart repository using the Google Cloud Storage command
 line tool, or using the GCS web UI. A public GCS bucket can be accessed via
 simple HTTPS at this address: `https://bucket-name.storage.googleapis.com/`.
 
+### Cloudsmith
+
+You can also set up chart repositories using Cloudsmith. Read more about
+chart repositories with Cloudsmith
+[here](https://help.cloudsmith.io/docs/helm-chart-repository)
+
 ### JFrog Artifactory
 
-You can also set up chart repositories using JFrog Artifactory. Read more about
+Similarly, you can also set up chart repositories using JFrog Artifactory. Read more about
 chart repositories with JFrog Artifactory
 [here](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories)
 
