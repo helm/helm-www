@@ -96,6 +96,8 @@ Am einfachsten hat das Kommando zwei Argumente: Einen Versionsnamen, den Sie gew
 haben und den Namen des Charts, dass Sie installieren möchten.
 
 ```console
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm repo update
 $ helm install happy-panda bitnami/wordpress
 NAME: happy-panda
 LAST DEPLOYED: Tue Jan 26 10:27:17 2021
