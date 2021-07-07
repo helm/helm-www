@@ -113,9 +113,14 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 你可以使用Google Cloud Storage命令行工具上传你的chart仓库，或者使用GCS的web页面。
 一个公共的GCS bucket可以通过简单的HTTPS地址访问：`https://bucket-name.storage.googleapis.com/`。
 
+### Cloudsmith
+
+也可以使用Cloudsmith设置chart仓库。在 [这里](https://help.cloudsmith.io/docs/helm-chart-repository)
+阅读更多关于Cloudsmith配置chart仓库的内容。
+
 ### JFrog Artifactory
 
-你也可以使用JFrog Artifactory设置你的仓库。在 [这里](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories)
+同样，也可以使用JFrog Artifactory配置chart仓库。 在 [这里](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories)
 阅读更多关于JFrog Artifactory配置chart仓库的内容。
 
 ### GitHub页面示例
