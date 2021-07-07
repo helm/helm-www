@@ -61,6 +61,7 @@ the default location  `~/.gnupg/pubring.kbx`. Please use the following command
 to convert your keyring to the legacy gpg format:
 
 ```console
+$ gpg --export >~/.gnupg/pubring.gpg
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
