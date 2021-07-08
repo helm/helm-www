@@ -32,8 +32,7 @@ name can be used as an alias of URL. Use `alias:` or `@` followed by repository
 names.
 
 File URLs (`file://...`) are considered a "special case" for charts that are
-assembled by a fixed deployment pipeline. Charts that use `file://` are not
-allowed in the official Helm repository.
+assembled by a fixed deployment pipeline.
 
 ## Conditions and Tags
 
