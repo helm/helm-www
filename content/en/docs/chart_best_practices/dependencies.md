@@ -34,10 +34,15 @@ names.
 File URLs (`file://...`) are considered a "special case" for charts that are
 assembled by a fixed deployment pipeline.
 
-When using [download plugins]({{< ref "../topics/plugins#downloader-plugins" >}})
+When using [downloader plugins]({{< ref "../topics/plugins#downloader-plugins" >}})
 the URL scheme will be specific to the plugin. Note, a user of the chart will
 need to have a plugin supporting the scheme installed to update or build the
 dependency.
+
+Helm cannot perform dependency management operations on the dependency when the
+`repository` field is left blank. In that case Helm will assume the dependency
+is in a sub-directory of the `charts` folder with the name being the same as the
+`name` property for the dependency.
 
 ## Conditions and Tags
 
