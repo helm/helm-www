@@ -275,6 +275,10 @@ metadata:
 
 ## The Common Helm Helper Chart
 
+```markdown
+注意：GitHub上的公共Helm辅助Chart不再被积极维护了，且该仓库已弃用并归档。
+```
+
 这个[chart](https://github.com/helm/charts/tree/master/incubator/common)是公共chart的初始模式。
 它提供的应用程序反映了Kubernetes chart开发的最佳实践。最棒的是你开发chart时可以立即使用易用的共享代码。
 
