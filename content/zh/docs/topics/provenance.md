@@ -47,6 +47,7 @@ $ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychar
 **警告：** GnuPG v2版在默认位置`~/.gnupg/pubring.kbx`使用了新格式`kbx`存储私钥的keyring。使用以下命令将你的keyring转换到传统的gpg格式：
 
 ```console
+$ gpg --export >~/.gnupg/pubring.gpg
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
