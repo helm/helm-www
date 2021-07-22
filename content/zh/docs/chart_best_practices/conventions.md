@@ -22,10 +22,10 @@ chart名称中不能用大写字母也不能用下划线。点 . 符号也不行
 
 ## 版本号
 
-Helm尽可能使用[SemVer 2](https://semver.org)来表示版本号。（注意Docker镜像的tag不需要遵循SemVer，
-因此被认为是一个不幸的例外规则。
+Helm尽可能使用[SemVer 2](https://semver.org)来表示版本号。（注意Docker镜像的tag不一定遵循SemVer，
+因此被认为是一个不幸的例外规则。）
 
-当SemVer版本存储在Kubernetes标签中是，我们通常把`+`字符改成`_`，因为标签不允许使用`+`作为值进行签名。
+当SemVer版本存储在Kubernetes标签中时，我们通常把`+`字符改成`_`，因为标签不允许使用`+`作为值进行签名。
 
 ## 格式化YAML
 
