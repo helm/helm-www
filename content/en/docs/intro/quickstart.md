@@ -93,12 +93,12 @@ learn more about it, check out the [Using Helm Guide]({{< ref "using_helm.md"
 It's easy to see what has been released using Helm:
 
 ```console
-$ helm ls
+$ helm list
 NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
 mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-The `helm list` function will show you a list of all deployed releases.
+The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
 
 ## Uninstall a Release
 
