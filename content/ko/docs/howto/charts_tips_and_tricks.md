@@ -41,22 +41,21 @@ value: {{ required "A valid .Values.who entry required!" .Values.who }}
 
 ## 문자열에는 따옴표를 쓰고, 정수형에는 쓰지 말자
 
-When you are working with string data, you are always safer quoting the strings
-than leaving them as bare words:
+문자열 데이터를 사용할 때에는 문자열로 그대로 두기보다 
+쌍따옴표로 값을 묶는 것이 안전합니다.:
 
 ```yaml
 name: {{ .Values.MyName | quote }}
 ```
 
-But when working with integers _do not quote the values._ That can, in many
-cases, cause parsing errors inside of Kubernetes.
+하지만 integer는 많은 경우에 쿠버네티스에서 파싱에러가 발생할 수 있으니 
+_쌍따옴표를 사용하지 마세요._
 
 ```yaml
 port: {{ .Values.Port }}
 ```
 
-This remark does not apply to env variables values which are expected to be
-string, even if they represent integers:
+env 변수들의 경우에는 앞서 말한 내용과는 다르게 모든 값들을 쌍따옴표로 묶는 것이 좋습니다.:
 
 ```yaml
 env:
@@ -66,7 +65,7 @@ env:
     value: "1234"
 ```
 
-##'include' 함수 사용하기
+## 'include' 함수 사용하기
 
 Go provides a way of including one template in another using a built-in
 `template` directive. However, the built-in function cannot be used in Go
