@@ -50,8 +50,6 @@ name: {{ .Values.MyName | quote }}
 
 하지만 integer는 많은 경우에 쿠버네티스에서 파싱에러가 발생할 수 있으니 
 _쌍따옴표를 사용하지 마세요._
-when working with integers _do not quote the values._ That can, in many
-cases, cause parsing errors inside of Kubernetes.
 
 ```yaml
 port: {{ .Values.Port }}
