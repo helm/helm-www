@@ -45,7 +45,7 @@ other = "O que é o Helm?"
 
 [main_what_is_helm_description]
 other = """
-O Helm te auxilia no gerenciamento de aplicações para Kubernetes — Charts do Helm ajudam a definir, instalar, e atualizar até a mais complexa aplicação para o Kubernetes. 
+O Helm lhe auxilia no gerenciamento de aplicações para Kubernetes — Charts do Helm ajudam a definir, instalar, e atualizar até a mais complexa aplicação para o Kubernetes. 
 
 Os Charts são fáceis de criar, versionar, compartilhar e publicar — comece agora a utilizar o Helm e pare de copiar e colar manifestos.
 
