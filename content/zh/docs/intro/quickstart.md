@@ -82,12 +82,12 @@ NOTES: ...
 通过Helm您可以很容易看到哪些chart被发布了：
 
 ```console
-$ helm ls
+$ helm list
 NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
 mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-`helm list` 命令会列出所有可被部署的版本。
+`helm list` (或 `helm ls`) 命令会列出所有可被部署的版本。
 
 ## 卸载一个版本
 
