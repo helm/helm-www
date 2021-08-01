@@ -25,7 +25,7 @@ other = ""
 other = "Helm é construído e mantido por uma comunidade de mais de 400 desenvolvedores"
 
 [footer_support_subtitle]
-other = "...e muitos outros maravilhosos [helm](https://github.com/helm/helm/blob/master/OWNERS) [charts](https://github.com/helm/charts/blob/master/OWNERS) mantenedores."
+other = "...e muitos outros maravilhosos mantenedores dos [helm](https://github.com/helm/helm/blob/master/OWNERS) [charts](https://github.com/helm/charts/blob/master/OWNERS)."
 
 [footer_cncf_status]
 other = "Nós somos um projeto graduado da Cloud Native Computing Foundation."
@@ -65,7 +65,7 @@ other = 'O Porquê dos times <i class="fa fa-heart"></i> o Helm'
 other = "Gerencie Complexidade"
 
 [feature_01_desc]
-other = "Os Charts descrevem até mesmo a mais complexa applicação, estabelece repetibilidade na instalação de apps, e servem como um único ponto de autoridade."
+other = "Os Charts do Helm descrevem até mesmo a mais complexa applicação, estabelecem repetibilidade na instalação de apps, e servem como um único ponto de autoridade."
 
 [feature_02_title]
 other = "Atualizações Tranquilas"
