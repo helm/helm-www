@@ -53,8 +53,8 @@ Helm é um projeto graduado da [CNCF](https://cncf.io) e é mantido pela [Comuni
 
 ### Saiba mais:
 
-* [Architetura do Helm](./docs/topics/architecture/)
-* [Guia de Início Rápido](./docs/intro/quickstart/)
+* [Architetura do Helm](/docs/topics/architecture/)
+* [Guia de Início Rápido](/docs/intro/quickstart/)
 * [Vídeo: Uma introdução ao Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "Baixe o Helm!"
 other = "Instale o Helm via gerenciador de pacotes, ou [baixe o binário](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Depois de instalado, descompacte o binário do Helm, adicione-o ao seu PATH e seja feliz! Confira a [documentação](./docs/intro/install/) para outras formas de [instalação](./docs/intro/install/) e [instruções de uso](./docs/intro/using_helm/)."
+other = "Depois de instalado, descompacte o binário do Helm, adicione-o ao seu PATH e seja feliz! Confira a [documentação](/docs/intro/install/) para outras formas de [instalação](/docs/intro/install/) e [instruções de uso](/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Baixe os Charts do Helm"
