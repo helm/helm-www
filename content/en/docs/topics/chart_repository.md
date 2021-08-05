@@ -229,6 +229,10 @@ You can also use the
 [ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)
 server to host a chart repository from a local file system.
 
+### GitLab Package Registry
+
+With GitLab you can publish Helm charts in your project’s Package Registry.
+Read more about setting up a helm package repository with GitLab [here](https://docs.gitlab.com/ee/user/packages/helm_repository/).
 
 ## Managing Chart Repositories
 
