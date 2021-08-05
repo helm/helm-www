@@ -67,7 +67,7 @@ A fórmula geralmente está atualizada.
 brew install helm
 ```
 
-(Note: Atenção, existe uma fórmula do emacs-helm, que é um projeto distinto!)
+(Nota: Atenção, existe uma fórmula do emacs-helm, que é um projeto distinto!)
 
 ### Chocolatey (Windows)
 
