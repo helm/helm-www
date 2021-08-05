@@ -40,6 +40,7 @@ request](https://github.com/helm/helm-www/pulls).
   values from a previous release.
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt 
   existing k8s resources into a new generated helm chart.  
+ - [helm-sigstore](https://github.com/sigstore/helm-sigstore) - Plugin for Helm to integrate the [sigstore](https://sigstore.dev/) ecosystem. Search, upload and verify signed Helm charts.
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
