@@ -289,6 +289,3 @@ the provenance system:
   - There has been some work on the idea that a list of valid signing keys may
     be included in the `index.yaml` file of a repository.
 
-Finally, chain-of-trust is an evolving feature of Helm, and some community
-members have proposed adapting part of the OSI model for signatures. This is an
-open line of inquiry in the Helm team. If you're interested, jump on in.

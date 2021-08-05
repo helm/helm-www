@@ -286,7 +286,3 @@ en utilizar el sistema de procedencia:
   - Se ha trabajado en la idea de que se pueda incluir una lista de claves de
     firmas válidas en el archivo `index.yaml` de un repositorio.
 
-Finalmente, la cadena de confianza es una característica en evolución de Helm,
-y algunos miembros de la comunidad han propuesto adaptar parte del modelo OSI
-para firmas. Esta es una línea de investigación abierta en el equipo de Helm.
-Si estás interesado, participa.
