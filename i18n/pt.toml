@@ -102,7 +102,7 @@ other = "Baixe os Charts do Helm"
 other = "Visite o [Artifact Hub](https://artifacthub.io) para encontrar mais [Charts do Helm](https://artifacthub.io/packages/search?kind=0) de inúmeros repositórios públicos."
 
 [get_upgrade_title]
-other = "[Atualizações a partir da v2 para a v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[Saindo da v2 para a v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
 
 [get_upgrade_desc]
 other = "[Leia a documentação de migração para mais detalhes.](https://helm.sh/docs/topics/v2_v3_migration/)"
