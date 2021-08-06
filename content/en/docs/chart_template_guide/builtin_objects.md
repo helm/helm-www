@@ -63,6 +63,11 @@ access in your templates.
     Kubernetes version.
   - `Capabilities.KubeVersion.Major` is the Kubernetes major version.
   - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
+  - `Capabilities.HelmVersion` is the object containing the Helm Version details, it is the same output of `helm version`  
+  - `Capabilities.HelmVersion.Version` is the current Helm version in semver format.
+  - `Capabilities.HelmVersion.GitCommit` is the Helm git sha1. 
+  - `Capabilities.HelmVersion.GitTreeState` is the state of the Helm git tree.
+  - `Capabilities.HelmVersion.GoVersion` is the version of the Go compiler used.
 - `Template`: Contains information about the current template that is being
   executed
   - `Template.Name`: A namespaced file path to the current template (e.g.
