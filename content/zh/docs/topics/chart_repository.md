@@ -186,6 +186,10 @@ ChartMuseum 是一个用Go写的开源的Helm Chart仓库服务器，支持云�
 
 你也可以使用[ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)服务从本地文件系统托管一个chart仓库。
 
+### GitLab 包注册表
+
+使用GitLab你可以在你的项目包注册表中发布Helm chart。在[这里](https://docs.gitlab.com/ee/user/packages/helm_repository/)查看更多使用GitLab设置helm包仓库的信息。
+
 ## 管理chart仓库
 
 现在你拥有了一个chart仓库，最后一部分知道介绍如何下仓库中维护chart。

@@ -36,6 +36,11 @@ weight: 3
   - `Capabilities.KubeVersion` 和 `Capabilities.KubeVersion.Version` 是Kubernetes的版本号
   - `Capabilities.KubeVersion.Major` Kubernetes的主版本
   - `Capabilities.KubeVersion.Minor` Kubernetes的次版本
+  - `Capabilities.HelmVersion` 包含Helm版本详细信息的对象，和 `helm version` 的输出一致
+  - `Capabilities.HelmVersion.Version` 是当前Helm版本的语义格式
+  - `Capabilities.HelmVersion.GitCommit` Helm的git sha1值
+  - `Capabilities.HelmVersion.GitTreeState` 是Helm git树的状态
+  - `Capabilities.HelmVersion.GoVersion` 是使用的Go编译器版本
 - `Template`： 包含了已经被执行的当前模板信息
   - `Template.Name`: 当前模板的命名空间文件路径 (e.g. `mychart/templates/mytemplate.yaml`)
   - `Template.BasePath`: 当前chart模板目录的路径 (e.g. `mychart/templates`)
