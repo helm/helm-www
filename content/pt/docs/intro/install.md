@@ -11,15 +11,15 @@ a partir do código-fonte, ou mesmo de um binário pré-buildado.
 
 O projeto Helm disponibiliza duas maneiras de baixar e instalar o Helm. Essas são
 as formas oficiais de se obter as versões do Helm. Além disso, a comunidade do Helm
-disponilizina alternativas de download através de diversos gerenciadores de pacotes.
+disponibiliza alternativas de download através de diversos gerenciadores de pacotes.
 A seção de instalação pelos gerenciadores de pacotes se encontra abaixo dos métodos
 oficiais.
 
-### A partir das Releases dos Binários
+### A partir das _Releases_ dos Binários
 
-Cada [release](https://github.com/helm/helm/releases) do Helm gera distribuições do
-binário para uma gama de sistemas operacionais. Essas versões de binários podem ser
-baixadas manualmente e instaladas.
+Cada [_release_](https://github.com/helm/helm/releases) do Helm gera distribuições
+do binário para uma gama de sistemas operacionais. Essas versões de binários podem
+ser baixadas manualmente e instaladas.
 
 1. Baixe uma [versão desejada](https://github.com/helm/helm/releases)
 2. Descompacte-a (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
@@ -30,16 +30,17 @@ A partir daí, você já deve conseguir rodar o cliente e [adicionar
 um repositório dos Charts do Helm](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
 `helm help`.
 
-**Nota:** Os testes automatizados do Helm são realizados para a plataforma Linux AMD64
-somente durante os builds e releases do CircleCi. Testes para outros sistemas operacionais
-não estão cobertos e são de responsabilidade da comunidade em solicitá-los.
+**Nota:** Os testes automatizados do Helm são realizados para a plataforma Linux
+AMD64 somente durante os _builds_ e _releases_ do CircleCI. Testes para outros
+sistemas operacionais não estão cobertos e são de responsabilidade da comunidade
+em solicitá-los.
 
-### A partir do Script
+### A partir do _Script_
 
-O Helm agora conta com um script que automaticamente baixará a última versão disponível
+O Helm agora conta com um _script_ que automaticamente baixará a última versão disponível
 do Helm e [instalará localmente](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
 
-Baixe o script e execute-o localmente. O script está bem escrito e documentado,
+Baixe o _script_ e execute-o localmente. O _script_ está bem escrito e documentado,
 podendo ser verificado e revisado antes de proceder com a instalação local.
 
 ```console
@@ -93,7 +94,7 @@ sudo apt-get install helm
 
 ### Snap
 
-A comunidade dos [Snapcrafters](https://github.com/snapcrafters) mantém a versão
+A comunidade dos [_Snapcrafters_](https://github.com/snapcrafters) mantém a versão
 do [pacote Helm](https://snapcraft.io/helm) para o Snap:
 
 ```console
@@ -103,26 +104,26 @@ sudo snap install helm --classic
 ### pkg (FreeBSD)
 
 Membros da comunidade do FreeBSD contribuíram com um [pacote Helm](https://www.freshports.org/sysutils/helm)
-buildado para o [FreeBSD Ports Collection](https://man.freebsd.org/ports).
+buildado para o [_FreeBSD Ports Collection_](https://man.freebsd.org/ports).
 Esse pacote geralmente está atualizado.
 
 ```console
 pkg install helm
 ```
 
-### Builds de Desenvolvimento
+### _Builds_ de Desenvolvimento
 
 Além das releases estáveis é possíbel baixar e instalar versões de desenvolvimento
 do Helm.
 
-### Canary Builds
+### _Canary Builds_
 
-Builds "Canary" são versões do Helm construídas a partir das últimas atualizações
-da brach master. Eles não são releases oficiais e podem não ser estáveis!
+_Builds "Canary"_ são versões do Helm construídas a partir das últimas atualizações
+da _brach master_. Eles não são releases oficiais e podem não ser estáveis!
 Contudo, oferecem a oportunidade de testar as funcionalidades mais recentes do Helm.
 
-Os binários Canary do Helm são armazenados em [get.helm.sh](https://get.helm.sh).
-Estes são alguns links de builds comuns:
+Os binários _Canary_ do Helm são armazenados em [get.helm.sh](https://get.helm.sh).
+Estes são alguns links de _builds_ comuns:
 
 - [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
 - [macOS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
@@ -131,8 +132,8 @@ Estes são alguns links de builds comuns:
 
 ### A partir do Código-Fonte (Linux, macOS)
 
-Buildar o Helm a partir do código-fonte é mais trabalhoso, mas é a melhor forma de
-testar as últimas versões (pré-release) do Helm.
+_Buildar_ o Helm a partir do código-fonte é mais trabalhoso, mas é a melhor forma
+de testar as últimas versões (pré-release) do Helm.
 
 Você deve ter um ambiente de execução Go instalado em seu host.
 
