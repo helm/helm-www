@@ -122,9 +122,9 @@ Status: UNINSTALLED
 ...
 ```
 
-Pelo fato do Helm monitorar as releases até mesmo depois de desinstalá-las, é
-possível autidar o histórico do cluster, sendo até mesmo capaz de recuperar a
-release (com o comando `helm rollback`).
+Pelo fato do Helm monitorar as releases até mesmo depois de desinstalá-las com
+o argumento `--keep-history`, é possível auditar o histórico do cluster,
+sendo até mesmo capaz de recuperar a release (com o comando `helm rollback`).
 
 ## Ajuda no Cliente Helm
 
