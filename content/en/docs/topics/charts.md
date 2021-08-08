@@ -535,9 +535,8 @@ If more control over dependencies is desired, these dependencies can be
 expressed explicitly by copying the dependency charts into the `charts/`
 directory.
 
-A dependency can be either a chart archive (`foo-1.2.3.tgz`) or an unpacked
-chart directory. But its name cannot start with `_` or `.`. Such files are
-ignored by the chart loader.
+A dependency should be an unpacked chart directory but its name cannot start 
+with `_` or `.`. Such files are ignored by the chart loader.
 
 For example, if the WordPress chart depends on the Apache chart, the Apache
 chart (of the correct version) is supplied in the WordPress chart's `charts/`
