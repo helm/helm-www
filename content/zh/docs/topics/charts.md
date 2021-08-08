@@ -438,7 +438,7 @@ myimports:
 
 如果对依赖进行更多控制，通过将有依赖关系的chart复制到`charts/`目录中来显式表达这些依赖关系。
 
-依赖可以是chart包(`foo-1.2.3.tgz`) 或者一个解压的chart目录。但是名字不能以`_`或`.`开头，否则会被chart加载器忽略。
+依赖应该是一个解压的chart目录。但是名字不能以`_`或`.`开头，否则会被chart加载器忽略。
 
 比如，如果WordPress chart依赖于Apache chart，那么（正确版本的）Apache chart需要放在WordPress chart 的`charts/`目录中：
 
