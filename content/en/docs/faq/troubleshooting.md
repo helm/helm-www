@@ -128,3 +128,45 @@ For example:
 helm list -v 6
 ```
 
+### Tiller installations stopped working and access is denied
+
+Helm releases used to be available from [https://storage.googleapis.com/kubernetes-helm/](https://storage.googleapis.com/kubernetes-helm/). As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019.
+
+The Tiller image [legacy location](https://gcr.io/kubernetes-helm/tiller) remained available until August 2021, and images began being removed at that time. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
+
+You may see an error with a command-line install:
+```
+$ helm tiller install
+Installed Helm version v2.17.0
+Installing Tiller v2.17.0 ...
+tar: This does not look like a tar archive
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+Error: plugin "tiller" exited with error
+```
+
+Or a message displayed may look like this:
+```
+<Error>
+    <Code>AccessDenied</Code>
+    <Message>Access denied.</Message>
+    <Details>Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object.</Details>
+</Error>
+```
+
+So if you are trying to download older versions of helm from the storage bucket you used in the past, you may find that they are missing. We have made these images available on GitHub. For example, to download version v2.17.0, replace:
+
+`https://storage.googleapis.com/kubernetes-helm/helm-v2.17.0-linux-amd64.tar.gz`
+
+with:
+
+`https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.gz`
+
+
+Or use the --tiller-image flag to override the default location and install the last Helm v2 version:
+
+`helm init --tiller-image ghcr.io/helm/tiller:v2.17.0`
+
+Note: The Helm maintainers recommend migration to a currently-supported version of Helm. Helm v2.17.0, the final release of Helm v2, was released in November 2020. Many CVEs have been flagged against Helm since then, and those exploits are patched in Helm v3 but will never be patched in Helm v2. See the [current list of published Helm advisories](https://github.com/helm/helm/security/advisories?state=published) and make a plan to [migrate to Helm v3](https://helm.sh/docs/topics/v2_v3_migration/#helm) today.
