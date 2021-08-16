@@ -130,10 +130,10 @@ helm list -v 6
 
 ### Tiller installations stopped working and access is denied
 
-Helm releases used to be available from [https://storage.googleapis.com/kubernetes-helm/](https://storage.googleapis.com/kubernetes-helm/). As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
+Helm releases used to be available from <https://storage.googleapis.com/kubernetes-helm/>. As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
 
 
-If you are trying to download older versions of helm from the storage bucket you used in the past, you may find that they are missing:
+If you are trying to download older versions of Helm from the storage bucket you used in the past, you may find that they are missing:
 
 ```
 <Error>
