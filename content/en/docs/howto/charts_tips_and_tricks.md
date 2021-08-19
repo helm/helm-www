@@ -15,7 +15,7 @@ resource files. While Go ships several built-in functions, we have added many
 others.
 
 First, we added all of the functions in the [Sprig
-library](https://masterminds.github.io/sprig/).
+library](https://masterminds.github.io/sprig/), except `env` and `expandenv`, for security reasons.
 
 We also added two special template functions: `include` and `required`. The
 `include` function allows you to bring in another template, and then pass the
@@ -155,7 +155,7 @@ Image pull secrets are essentially a combination of _registry_, _username_, and
 _password_.  You may need them in an application you are deploying, but to
 create them requires running `base64` a couple of times.  We can write a helper
 template to compose the Docker configuration file for use as the Secret's
-payload.  Here is an example: 
+payload.  Here is an example:
 
 First, assume that the credentials are defined in the `values.yaml` file like
 so:
