@@ -27,13 +27,13 @@ assinado).
 Charts podem depender de outros Charts. Há duas maneiras que dependência de Charts
 podem ocorrer:
 
-- _Soft dependency_: A chart may simply not function without another chart being
-  installed in a cluster. Helm does not provide tooling for this case. In this
-  case, dependencies may be managed separately.
-- _Hard dependency_: A chart may contain (inside of its `charts/` directory)
-  another chart upon which it depends. In this case, installing the chart will
-  install all of its dependencies. In this case, a chart and its dependencies
-  are managed as a collection.
+- _Soft dependency_: Um Chart pode não funcionar se um outro Chart não estiver instalado
+  no cluster. O Helm não fornece ferramental para resolver esse caso. Nesse
+  cenário as dependências são gerenciadas separadamente.
+- _Hard dependency_: Um Chart pode conter (dentro do diretório `charts/`)
+  outro Chart no qual seja dependente. Nesse caso, ao instalar o Chart também
+  será instalado todas as suas dependências. Os Charts e suas dependências são gerenciadas
+  como uma coleção.
 
 Quando um Chart é empacotado (via `helm package`) todas as suas
 _hard dependencies_ são agrupadas com ele.
@@ -65,8 +65,8 @@ são criados quando o `helm` é executado pela primeira vez.
 
 ## Kube Config (KUBECONFIG)
 
-O cliente Helm tenta encontrar as configurações do cluster Kubernetes utilizando
-como base o arquivo no formato _Kube config_. Por padrão o Helm tenta localizá-lo
+O cliente helm tenta encontrar as configurações do cluster Kubernetes utilizando
+como base o arquivo no formato _Kube config_. Por padrão o helm tentará localizá-lo
 no mesmo local que o `kubectl` o cria (`$HOME/.kube/config`).
 
 ## Lint (Formatação de Charts)
@@ -90,7 +90,7 @@ com uma chave habilita o usuário a:
 - Validar o conteúdo dos metadados do Chart (`Chart.yaml`)
 - Correlacionar rapidamente o Chart com os seus dados de linhagem
 
-Arquivos de linhagem tem a extensão `.prov`, e podem ser servidos de um
+Arquivos de linhagem tem a extensão `.prov`, e podem ser servidos a partir de um
 _repositório de Charts_ ou qualquer outro servidor HTTP.
 
 ## Release
@@ -113,19 +113,19 @@ for atualizada ou regredida, a versão da release será **incrementada**.
 ## Regressão (Rollback)
 
 Uma _release_ pode ser atualizada para uma nova configuração do chart. Contudo é
-possível regredir a uma versão anterior da release, uma vez que o histórico é armazenado.
-Essa operação é realizada com o comando `helm rollback`.
+possível regredir a uma versão anterior da release, uma vez que o histórico de
+_releases_ é armazenado. Essa operação é realizada com o comando `helm rollback`.
 
 Importante: uma _release_ regredida recebe um novo número de _release_.
 
-| Operation  | Release Number                                       |
+| Operação   | Número da Release                                    |
 |------------|------------------------------------------------------|
 | install    | release 1                                            |
 | upgrade    | release 2                                            |
 | upgrade    | release 3                                            |
 | rollback 1 | release 4 (mantendo a configuração da release 1)     |
 
-A tabela acima ilusta como as versões de release são incrementadas entre as
+A tabela acima ilustra como as versões de release são incrementadas entre as
 operações de instalação, atualização e regressão.
 
 ## Biblioteca do Helm (SDK)
