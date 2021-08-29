@@ -39,6 +39,7 @@ helm create NOME [argumentos]
 
 ```
       --debug                       exibe uma saída verbosa
+  -h, --help                        exibe ajuda para um comando do helm
       --kube-apiserver string       o endereço e porta do Kubernetes API server
       --kube-as-group stringArray   o grupo que representará essa operação, esse argumento pode ser repetido para indicar múltiplos grupos.
       --kube-as-user string         o usuário que representará essa operação
