@@ -36,6 +36,7 @@ this works:
   functions](#configmap-and-secrets-utility-functions)
 - [Encoding](#encoding)
 - [Lines](#lines)
+- [External files](#external-files)
 
 <!-- tocstop -->
 
@@ -242,3 +243,51 @@ This discussion wraps up our dive into the tools and techniques for writing Helm
 templates. In the next section we will see how you can use one special file,
 `templates/NOTES.txt`, to send post-installation instructions to the users of
 your chart.
+
+## External files
+
+It's also possible to include external files in your Helm chart, by using the `--include-path` flag for the helm install/upgrade/template commands.
+This flag allows you to include files, directories and globs.
+Then you can use the file functions on them in your chart.
+
+### Example
+Given the configmap:
+```yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{ .Release.Name }}-test
+data: {{ (.Files.Glob "/tmp/externals/*").AsConfig | nindent 2 }}
+```
+
+And the directory structure:
+```
+├── /tmp/externals
+│   ├── external1.txt
+│   └── external2.txt
+```
+
+Running `helm template test_chart --include-path /tmp/externals` will generate the manifest:
+```yaml
+---
+# Source: test_chart/templates/test.configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: RELEASE-NAME-test
+data:
+  external1.txt: |
+    External file 1
+  external2.txt: |
+    External file 2
+```
+
+If the `--include-path` is not passed, the output will be:
+```
+Error: template: test_chart/templates/test.configmap.yaml:6:41: executing "test_chart/templates/test.configmap.yaml" at <(.Files.Glob "/tmp/externals/*").AsConfig>: error calling AsConfig: must pass files
+
+Use --debug flag to render out invalid YAML
+```
+
+By design, Helm knows the external file by the string you include. So for example: `helm template test_chart --include-path ../tmp/externals` (given that `../tmp/externals` is the relative path to the "externals" directory) won't successfully include the paths.
