@@ -76,7 +76,7 @@ Por padrão, os diretórios padrões dependem do Sistema Operacional. Abaixo seg
 ```
 
 ### Veja Também
-* [helm completion]({{< relref path="/docs/helm/helm_completion.md" lang="en" >}}) - gera os scripts de preenchimento automático (autocompletion) para o shell especificado.
+* [helm completion]({{< relref path="/docs/helm/helm_completion.md" lang="en" >}}) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
 * [helm create](helm_create.md) - cria um novo chart com um nome.
 * [helm dependency]({{< relref path="/docs/helm/helm_dependency.md" lang="en" >}}) - gerencia as dependências dos Charts.
 * [helm env]({{< relref path="/docs/helm/helm_env.md" lang="en" >}}) - exibe as informações de variáveis de ambiente do cliente helm.
