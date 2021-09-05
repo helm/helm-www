@@ -55,4 +55,4 @@ helm create NOME [argumentos]
 
 ### Veja Também
 
-* [helm](helm.md) - Helm o gerenciador de pacotes para o Kubernetes.
+* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
