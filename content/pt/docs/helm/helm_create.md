@@ -11,7 +11,7 @@ Cria um novo Chart com um dado nome
 Esse comando cria um diretório para o Chart, bem como os arquivos comuns
 necessários para o Chart.
 
-Por exemplo, 'helm create foo' criará uma estrutura de diretório como:
+Por exemplo, `helm create foo` criará uma estrutura de diretório como:
 
     foo/
     ├── .helmignore   # Descreve os arquivos a serem ignorados durante o empacotamento do Chart.
@@ -21,7 +21,7 @@ Por exemplo, 'helm create foo' criará uma estrutura de diretório como:
     └── templates/    # Arquivos de template: deployment, service e outros manifestos
         └── tests/    # Arquivos de teste
 
-'helm create' cria um diretório a partir do argumento passado. Se o diretório não
+`helm create` cria um diretório a partir do argumento passado. Se o diretório não
 existir o helm tentará criá-lo. Se o destino já existir e tiver arquivos dentro
 do diretório, os arquivos conflitantes serão sobrescritos e os demais serão mantidos.
 ```
@@ -55,4 +55,4 @@ helm create NOME [argumentos]
 
 ### Veja Também
 
-* [helm](helm.md) - Helm o gerenciador de pacotes para o Kubernetes.
+* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
