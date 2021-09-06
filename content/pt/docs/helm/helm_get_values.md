@@ -1,0 +1,46 @@
+---
+title: "Helm Get Values"
+---
+
+## helm get values
+
+Baixa o arquivo com os valores de uma dada _release_
+
+### Sinopse
+
+Esse comando recupera o arquivo com os valores utilizados em uma dada _release_.
+
+```
+helm get values NOME_DA_RELEASE [argumentos]
+```
+
+### Opções
+
+```
+  -a, --all             exibe todos os valores (computados)
+  -h, --help            ajuda para recuperar os valores
+  -o, --output format   exibe a saída em um formato específico. Formatos: table, json, yaml (padrão table)
+      --revision int    recupera uma revisão específica de uma release
+```
+
+### Opções gerais
+
+```
+      --debug                       exibe uma saída verbosa
+  -h, --help                        exibe ajuda para um comando do helm
+      --kube-apiserver string       o endereço e porta do Kubernetes API server
+      --kube-as-group stringArray   o grupo que representará essa operação, esse argumento pode ser repetido para indicar múltiplos grupos
+      --kube-as-user string         o usuário que representará essa operação
+      --kube-ca-file string         caminho para o certificado para conexão com o Kubernetes API server
+      --kube-context string         nome do contexto do kubeconfig a ser usado
+      --kube-token string           bearer token usado para autenticação
+      --kubeconfig string           caminho para o arquivo kubeconfig
+  -n, --namespace string            namespace para essa requisição
+      --registry-config string      caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry.json")
+      --repository-cache string     caminho para os índices cacheados no repositório (padrão "~/.cache/helm/repository")
+      --repository-config string    caminho para o arquivo path to the file containing repository names and URLs (padrão "~/.config/helm/repositories.yaml")
+```
+
+### Veja Também
+
+* [helm get](helm_get.md) - baixa informações adicionais de uma dada _release_
