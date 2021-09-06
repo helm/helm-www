@@ -1,39 +1,27 @@
 ---
-title: "Helm Completion Fish"
+title: "Helm Get Hooks"
 ---
 
-## helm completion fish
+## helm get hooks
 
-Gera scripts de preenchimento automático para o fish
+Baixa todos os _hooks_ para uma dada _release_
 
 ### Sinopse
 
-Gera scripts de preenchimento automático do Helm para o fish shell.
+Esse comando recupera os _hooks_ para uma dada _release_.
 
-Para carregar o script de preenchimento automático na sessão ativa do fish:
+_Hooks_ são formatados em YAML e separados pelo separador YAML '---\n'.
 
-```
-helm completion fish | source
-```
-
-Para carregar o script para cada nova sessão, execute uma vez:
 
 ```
-helm completion fish > ~/.config/fish/completions/helm.fish
-```
-
-Será necessário iniciar um novo shell para que as modificações tenham efeito.
-
-Comando
-```
-helm completion fish [argumentos]
+helm get hooks NOME_DA_RELEASE [argumentos]
 ```
 
 ### Opções
 
 ```
-  -h, --help              ajuda para o preenchimento automático do fish
-      --no-descriptions   desabilita descrições do preenchimento automático
+  -h, --help           ajuda para recuperar um manifesto
+      --revision int   recupera uma revisão específica de uma release
 ```
 
 ### Opções gerais
@@ -50,10 +38,10 @@ helm completion fish [argumentos]
       --kubeconfig string           caminho para o arquivo kubeconfig
   -n, --namespace string            namespace para essa requisição
       --registry-config string      caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry.json")
-      --repository-cache string     caminho para os índices "cacheados" no repositório (padrão "~/.cache/helm/repository")
+      --repository-cache string     caminho para os índices cacheados no repositório (padrão "~/.cache/helm/repository")
       --repository-config string    caminho para o arquivo path to the file containing repository names and URLs (padrão "~/.config/helm/repositories.yaml")
 ```
 
 ### Veja Também
 
-* [helm completion](helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
+* [helm get](helm_get.md) - baixa informações adicionais de uma dada release

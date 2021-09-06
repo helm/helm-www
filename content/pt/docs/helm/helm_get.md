@@ -1,39 +1,26 @@
 ---
-title: "Helm Completion Fish"
+title: "Helm Get"
 ---
 
-## helm completion fish
+## helm get
 
-Gera scripts de preenchimento automático para o fish
+Baixa informações adicionais de uma dada _release_
 
 ### Sinopse
 
-Gera scripts de preenchimento automático do Helm para o fish shell.
+Esse comando consiste em múltiplos subcomandos utilizados para recuperar informações
+adicionais sobre uma dada _release_, incluindo:
 
-Para carregar o script de preenchimento automático na sessão ativa do fish:
+- Os valores utilizados para gerar a _release_
+- O arquivo de manifesto gerado
+- As notas advindas do Chart da _release_
+- Os _hooks_ associados a uma _release_
 
-```
-helm completion fish | source
-```
-
-Para carregar o script para cada nova sessão, execute uma vez:
-
-```
-helm completion fish > ~/.config/fish/completions/helm.fish
-```
-
-Será necessário iniciar um novo shell para que as modificações tenham efeito.
-
-Comando
-```
-helm completion fish [argumentos]
-```
 
 ### Opções
 
 ```
-  -h, --help              ajuda para o preenchimento automático do fish
-      --no-descriptions   desabilita descrições do preenchimento automático
+  -h, --help   ajuda para o comando get
 ```
 
 ### Opções gerais
@@ -56,4 +43,9 @@ helm completion fish [argumentos]
 
 ### Veja Também
 
-* [helm completion](helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
+* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm get all](helm_get_all.md)	 - baixa todas as informações de uma dada _release_
+* [helm get hooks](helm_get_hooks.md)	 - baixa todos os _hooks_ de uma dada _release_
+* [helm get manifest](helm_get_manifest.md)	 - baixa o manifesto de uma dada _release_
+* [helm get notes](helm_get_notes.md)	 - baixa as notas de uma dada _release_
+* [helm get values](helm_get_values.md)	 - baixa o arquivo de valores de uma dada _release_
