@@ -76,13 +76,13 @@ Por padrão, os diretórios padrões dependem do Sistema Operacional. Abaixo seg
 ```
 
 ### Veja Também
-* [helm completion]({{< relref path="/docs/helm/helm_completion.md" lang="en" >}}) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
+* [helm completion](helm_completion.md) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
 * [helm create](helm_create.md) - cria um novo chart com um nome.
 * [helm dependency]({{< relref path="/docs/helm/helm_dependency.md" lang="en" >}}) - gerencia as dependências dos Charts.
 * [helm env]({{< relref path="/docs/helm/helm_env.md" lang="en" >}}) - exibe as informações de variáveis de ambiente do cliente helm.
-* [helm get]({{< relref path="/docs/helm/helm_get.md" lang="en" >}}) - recupera mais informações de uma dada _release_.
+* [helm get](helm_get.md) - recupera mais informações de uma dada _release_.
 * [helm history]({{< relref path="/docs/helm/helm_history.md" lang="en" >}}) - recupera o histórico de uma _release_.
-* [helm install]({{< relref path="/docs/helm/helm_install.md" lang="en" >}}) - instala um Chart.
+* [helm install](helm_install.md) - instala um Chart.
 * [helm lint]({{< relref path="/docs/helm/helm_lint.md" lang="en" >}}) - verifica o Chart por potenciais problemas.
 * [helm list]({{< relref path="/docs/helm/helm_list.md" lang="en" >}}) - lista as _releases_.
 * [helm package]({{< relref path="/docs/helm/helm_package.md" lang="en" >}}) - empacota um diretório de um Chart em um Chart Archive.
