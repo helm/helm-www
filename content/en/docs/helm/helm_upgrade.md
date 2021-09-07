@@ -39,6 +39,11 @@ set for a key called 'foo', the 'newbar' value would take precedence:
 helm upgrade [RELEASE] [CHART] [flags]
 ```
 
+To check the generated manifests of a release without upgrading the chart,
+the '--debug' and '--dry-run' flags can be combined.
+
+**Note**: CRD manifests in the `crds/` directory can't be validated by `--dry-run` flag. See [Helm's CRDs caveats](docs/chart_best_practices/custom_resource_definitions.md#some-caveats-and-explanations) for more details.
+
 ### Options
 
 ```
