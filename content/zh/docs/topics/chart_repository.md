@@ -11,7 +11,7 @@ weight: 6
 
 ## 先决条件
 
-* 先阅读[快速开始](https://helm.sh/zh/docs/topics/quickstart/)
+* 先阅读[快速开始](https://helm.sh/zh/docs/intro/quickstart/)
 * 阅读[Charts](https://helm.sh/zh/docs/topics/chart/)文档
 
 ## 创建一个chart仓库
