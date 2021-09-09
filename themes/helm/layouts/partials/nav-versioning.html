@@ -3,7 +3,7 @@
 {{ $menu      := site.Menus.main }}
 
 <!-- versioning-->
-  <li class="versioner navbar-item has-dropdown is-hoverable">
+  <li class="versioner navbar-item has-dropdown is-right is-hoverable">
     {{ with $primary }}
     <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
       {{ .version }}{{ with .patch }}{{ end }} <i class="fa fa-caret-down"></i>

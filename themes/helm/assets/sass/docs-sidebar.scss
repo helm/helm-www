@@ -12,6 +12,10 @@
   padding:0;
   background: url('/img/topography.png') left top repeat;
   background-attachment: fixed;
+
+  &.is-scrolled .sidebar-nav {
+    top: 8.5rem;
+  }
 }
 
 .sidebar {
@@ -28,9 +32,6 @@
     overflow-y: scroll;
     overflow-x: hidden;
     width: $sidebarWidth;
-  }
-  &.is-scrolled .sidebar-nav {
-    top: 8.5rem;
   }
 
   a {
@@ -152,7 +153,7 @@
     z-index: 1020;
     position: relative;
     padding-top: 1rem;
-    margin: 8.5rem 1.5vw 0;
+    margin: 5rem 1.5vw 0;
     position: relative;
     @include transition;
 
@@ -188,13 +189,13 @@
   }
 }
 
-.sidebar.is-scrolled {
+.sidebar-wrapper.is-scrolled {
   ul.sidebar-main {
     padding-top: 2rem;
   }
 
   .search-container {
-    margin-top: 4.75rem;
+    margin-top: 4.125rem;
   }
 }
 
