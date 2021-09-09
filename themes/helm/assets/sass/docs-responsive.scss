@@ -18,12 +18,17 @@
     margin-left: 0;
     z-index: 1620;
   }
+
+  .sidebar,
+  .sidebar-nav,
+  .sidebar .sidebar-buttons {
+    border-right: 2px solid $navy;
+  }
   
   // hamburger for sidebar
   .sidebar-wrapper {
     z-index: 1330;
     width: 6.5rem;
-    // background: url("/img/topography.png") left 100px repeat-x;
     background: none;
     
     // left border
@@ -57,8 +62,8 @@
       width: 3rem;
       height: 3rem;
       position: absolute;
-      top: 4.75rem;
-      left: 14rem;
+      top: 1.25rem;
+      left: 12.5rem;
       z-index: 1650;
       opacity: 0;
       cursor: context-menu;
@@ -66,9 +71,9 @@
 
     .hamburger {
       position: fixed;
-      top: 6rem;
-      left: 15rem;
-      z-index: 1440;
+      top: 2.5rem;
+      left: 13.5rem;
+      z-index: 1640;
       @include transition;
       
       span {
@@ -112,7 +117,6 @@
       position: absolute;
       width: $sidebarWidth;
       background: none transparent;
-      // background: url("/img/topography.png") 0 0 no-repeat;
 
       .search-container {
         margin: 10rem 1.5rem 0;
@@ -149,6 +153,49 @@
   }
 } // end tablet
 
+// mobile and tablet combined
+@media only screen and (max-width: 1023px) {
+  section.footer-links {
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+    img {
+      float: left;
+      margin: 0 0 3rem;
+    }
+
+    hr {
+      clear: both;
+    }
+    
+    dl {
+      dt {
+        margin: 0;
+      }
+      dd {
+        display: none;
+      }
+    }
+  }
+
+  section.home-intro {
+    min-height: 70vh;
+
+    img.logo {
+      top: 30vw;
+    }
+
+    h1 {
+      top: 30vw;
+    }
+    h2 {
+      top: 37.5vw;
+      bottom: auto;
+      width: 58vw;
+    }
+  }
+}
+
 
 /*
 // mobile adjustments
@@ -159,7 +206,7 @@
   #helm {
     width: 100vw !important;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   // mobile menu
@@ -215,11 +262,11 @@
 
     img.logo {
       position: absolute;
-      top: 8rem;
+      top: 11.25rem !important;
       left: 10vw;
       right: auto;
       margin: 0;
-      width: 22.5vw;
+      width: 18.5vw;
     }
 
     .boat.boat-badge{
@@ -229,8 +276,8 @@
     h1 {
       font-size: 5vw;
       position: absolute;
-      left: 40%;
-      top: 10rem;
+      left: 38%;
+      top: 12rem !important;
       margin: 0;
       max-width: 50%;
       line-height: 1.2;
@@ -238,13 +285,13 @@
     }
 
     h2 {
-      top: 50vh;
-      left: 8vw;
-      right: 8vw;
-      font-size: 4.75vw;
+      top: 37.5vh !important;
+      left: 14vw;
+      right: 14vw;
+      font-size: 3vw;
       position: absolute;
       bottom: auto;
-      width: auto;
+      width: 70vw !important;
       padding: 1.5rem 2.5vw;
       border: none;
     }
@@ -408,11 +455,12 @@
 
     .sidebar {
       position: relative;
-      margin-top: 4rem;
+      margin-top: 2.5rem;
       width: 100vw;
       min-height: 2rem;
       padding: 0;
       border: none;
+      background: url("/img/topography.png") left 100px repeat-x;
     }
 
     &.is-active {
@@ -443,7 +491,15 @@
       display: none;
       padding: 1rem 7.5vw;
       border: 12px solid $light2;
-      margin-left: 8px;;
+      margin-left: 8px;
+      z-index: 940;
+
+      .sidebar-nav {
+        width: 80vw;
+        position: relative;
+        top: auto;
+        bottom: auto;
+      }
 
       .search-container {
         margin-top: 0;
@@ -451,11 +507,16 @@
 
       &.active {
         display: block;
+        left: 0;
+        right: 0;
+        width: 96.8%;
+        min-height: 100vh;
+        z-index: 1850;
+        background: url("/img/topography.png") left 100px repeat-x;
       }
 
       ul.sidebar-main {
         padding-bottom: 0;
-
       }
     }
   }
@@ -482,7 +543,7 @@
     padding: 2rem 5vw 3rem;
 
     h1 {
-      font-size: 7.5vw;
+      font-size: 5vw;
       padding-top: 1rem;
     }
 
@@ -497,7 +558,7 @@
     }
 
     p {
-      font-size: 4vw;
+      font-size: 3vw;
     }
 
     p, ol, ul, dl, blockquote {

@@ -76,7 +76,7 @@
     letter-spacing: -0.02em;
     position: absolute;
     height: 3rem !important;
-    right: 1.75vw;
+    right: 1rem;
     padding: 1rem 1.25vw;
     border: 2px solid $navyl;
     color: $navyl;
@@ -93,10 +93,10 @@
     padding: 1rem 0.5rem 0 !important;
     margin: 0 -3rem -1px !important;
     position: absolute;
-    right: 16.5vw;
+    right: 3.5rem;
 
     &.l18ner {
-      right: 25vw;
+      right: 10rem;
       
       a.versioner-trigger {
         min-width: auto;
@@ -157,9 +157,6 @@
   
     // versioning dropdown
     ul.dropdown-menu {
-      position: absolute;
-      top: 4rem;
-      right: 0;
       padding: 0;
       margin: 0 0 0 1rem;
       text-align: left;
@@ -198,6 +195,8 @@
 }
 
 .navbar-brand {
+  min-height: 0 !important;
+
   a {
     position: absolute;
     top: 5rem;
@@ -225,6 +224,15 @@
     }
   }
 
+  .docs,
+  .page-docs {
+    .navbar-top {
+      a.button {
+        display: none;
+      }
+    }
+  }
+
   .home,
   .page-blog {
     .versioner {
@@ -233,7 +241,7 @@
 
     li.versioner.l18ner {
       display: block;
-      right: 17vw;
+      right: 13.75rem;
     }
   }
 
