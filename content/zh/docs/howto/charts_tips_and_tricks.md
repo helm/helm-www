@@ -11,7 +11,7 @@ weight: 1
 Helm使用了[Go模板](https://godoc.org/text/template)将你的自由文件构建成模板。
 Go塑造了一些内置方法，我们增加了一些其他的。
 
-首先，我们添加了[Sprig库](https://masterminds.github.io/sprig/)中所有的方法。
+首先，我们添加了[Sprig库](https://masterminds.github.io/sprig/)中所有的方法，出于安全原因，“env”和“expandenv”除外。
 
 我们也添加了两个特殊的模板方法：`include`和`required`。`include`方法允许你引入另一个模板，并将结果传递给其他模板方法。
 

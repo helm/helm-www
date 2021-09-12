@@ -445,3 +445,42 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 ```consol
 helm list -v 6
 ```
+
+### Tiller停止安装且无法访问
+
+Helm 发布之前可以从 <https://storage.googleapis.com/kubernetes-helm/> 获取。如["Announcing
+get.helm.sh"](https://helm.sh/blog/get-helm-sh/)中所述，官方地址2019年6月已变更。
+[GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller)
+可以获取所有旧的Tiller镜像。
+
+如果你想从原来的存储位置下载Helm旧版本，你会发现找不到了：
+
+```console
+<Error>
+    <Code>AccessDenied</Code>
+    <Message>Access denied.</Message>
+    <Details>Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object.</Details>
+</Error>
+```
+
+[原有Tiller镜像地址](https://gcr.io/kubernetes-helm/tiller) 会在2021年8月开始删除镜像。我们已经增加了可用地址在
+[GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller)。
+比如下载v2.17.0，用
+
+`https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.gz` 替换
+
+`https://storage.googleapis.com/kubernetes-helm/helm-v2.17.0-linux-amd64.tar.gz`
+
+使用Helm v2.17.0初始化：
+
+`helm init —upgrade`
+
+或者如果需要另一个版本，使用 --tiller-image 替换默认位置安装特定的Helm v2 版本：
+
+`helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
+
+**注意** Helm维护人员建议迁移到当前支持的Helm版本。Helm v2.17.0 是Helm 2的最终版本；Helm
+v2自2020年11月起便不再支持，具体细节请查看[Helm 2 和 Charts Project 已不再支持](https://helm.sh/blog/helm-2-becomes-unsupported/)。
+自那以后，Helm已经被发现很多的CVE，这些漏洞已经在Helm v3修复，但不会再给Helm v2打补丁。现在查看
+[Helm当前已发布的建议列表](https://github.com/helm/helm/security/advisories?state=published)并计划
+[迁移到 Helm v3](https://helm.sh/docs/topics/v2_v3_migration/#helm)吧。
