@@ -34,6 +34,12 @@ title: "Helm 升级"
 helm upgrade [RELEASE] [CHART] [flags]
 ```
 
+组合使用 '--debug' 和 '--dry-run' 可以在不升级chart的情况下检查生成的清单。
+
+**注意**: 在`crds/`目录中的CRD清单不能用 `--dry-run` 验证。查看 [Helm's
+CRDs caveats](https://helm.sh/zh/docs/chart_best_practices/custom_resource_definitions#some-caveats-and-explanations)
+获取更多信息。
+
 ### 可选项
 
 ```shell

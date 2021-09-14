@@ -52,6 +52,10 @@ $ helm install -f myvalues.yaml -f override.yaml  myredis ./redis
 
 为了检测生成的清单，但并不安装到chart，可以将'--debug'和'--dry-run'组合使用。
 
+**注意**: 在`crds/`目录中的CRD清单不能用 `--dry-run` 验证。查看 [Helm's
+CRDs caveats](https://helm.sh/zh/docs/chart_best_practices/custom_resource_definitions#some-caveats-and-explanations)
+获取更多信息。
+
 如果设置了--verify，chart**必须**有出处文件，且出处文件**必须**传递所有的验证步骤。
 
 有五种不同的方式来标识需要安装的chart：

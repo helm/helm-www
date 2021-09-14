@@ -26,7 +26,7 @@ version: ~1.2.3
 
 文件URL(`file://...`) 被认为是一种有固定部署管道组装的chart的“特例”。
 
-当使用[下载器插件](https://helm.sh/zh/docs//topics/plugins#下载插件)时，URL会使用特定于插件的方案。
+当使用[下载器插件](https://helm.sh/zh/docs/topics/plugins#下载插件)时，URL会使用特定于插件的方案。
 注意，chart的用户需要安装一个支持该方案的插件来更新或构建依赖关系。
 
 当`repository`字段为空时，Helm无法对依赖项执行依赖管理操作。在这种场景下，Helm假定依赖关系位于`charts`
