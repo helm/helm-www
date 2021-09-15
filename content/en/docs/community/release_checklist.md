@@ -8,7 +8,7 @@ weight: 2
 
 Time for a new Helm release! As a Helm maintainer cutting a release, you are
 the best person to [update this
-release checklist](https://github.com/helm/helm-www/blob/master/content/en/docs/community/release_checklist.md)
+release checklist](https://github.com/helm/helm-www/blob/main/content/en/docs/community/release_checklist.md)
 should your experiences vary from what's documented here.
 
 All releases will be of the form vX.Y.Z where X is the major version number, Y
@@ -110,11 +110,11 @@ Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to
 Major releases are for new feature additions and behavioral changes *that break
 backwards compatibility*. Minor releases are for new feature additions that do
 not break backwards compatibility. To create a major or minor release, start by
-creating a `release-X.Y` branch from master.
+creating a `release-X.Y` branch from main.
 
 ```shell
 git fetch upstream
-git checkout upstream/master
+git checkout upstream/main
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
@@ -203,7 +203,7 @@ git commit -m "bump version to $RELEASE_NAME"
 ```
 
 This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
-pull this change into the master branch for when the next release is being
+pull this change into the main branch for when the next release is being
 created, as in [this example of 3.2 to
 3.3](https://github.com/helm/helm/pull/8411/files), and add it to the milestone
 for the next release.
@@ -212,8 +212,8 @@ for the next release.
 # get the last commit id i.e. commit to bump the version
 git log --format="%H" -n 1
 
-# create new branch off master
-git checkout master
+# create new branch off main
+git checkout main
 git checkout -b bump-version-<release_version>
 
 # cherry pick the commit using id from first command
@@ -294,7 +294,7 @@ speaking, it is better to let a release roll over the deadline than to ship a
 broken release.
 
 Each time you'll want to produce a new release candidate, you will start by
-adding commits to the branch by cherry-picking from master:
+adding commits to the branch by cherry-picking from main:
 
 ```shell
 git cherry-pick -x <commit_id>
@@ -380,7 +380,7 @@ Download Helm X.Y. The common platform binaries are here:
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3) on any system with `bash`.
+The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
 
 ## What's Next
 
@@ -470,7 +470,7 @@ Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
 
 Update the [version
-skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)
+skew](https://github.com/helm/helm-www/blob/main/content/en/docs/topics/version_skew.md)
 for major and minor releases.
 
 Update the release calendar [here](https://helm.sh/calendar/release):
