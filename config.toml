@@ -53,7 +53,7 @@ url = "https://v2.helm.sh/docs"
 
 [params.nextversion]
 version = "v3.8.0"
-date = "January 12, 2022"
+date = "January 19, 2022"
 
 [[params.quicklinks]]
 title = "Quickstart Guide"
