@@ -7,7 +7,7 @@ weight: 2
 # 维护人员发布Helm指南
 
 是时候发布新的Helm了！作为Helm维护者发布版本，如果你的经验与这里的文档不同，那你就是
-[更新版本checklist](https://github.com/helm/helm-www/blob/master/content/en/docs/community/release_checklist.md)
+[更新版本checklist](https://github.com/helm/helm-www/blob/main/content/en/docs/community/release_checklist.md)
 的最佳人选。
 
 所有版本都将采用vX.Y.Z的形式，X是主版本号，Y是次版本号，Z是补丁发布号。该项目严格遵守 [语义化版本](https://semver.org/)，
@@ -90,7 +90,7 @@ export RELEASE_BRANCH_NAME="release-X.Y"
 
 ```shell
 git fetch upstream
-git checkout upstream/master
+git checkout upstream/main
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
@@ -175,8 +175,8 @@ git commit -m "bump version to $RELEASE_NAME"
 # get the last commit id i.e. commit to bump the version
 git log --format="%H" -n 1
 
-# create new branch off master
-git checkout master
+# create new branch off main
+git checkout main
 git checkout -b bump-version-<release_version>
 
 # cherry pick the commit using id from first command
@@ -316,7 +316,7 @@ Download Helm X.Y. The common platform binaries are here:
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3) on any system with `bash`.
+The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
 
 ## What's Next
 
@@ -385,7 +385,7 @@ make sign
 
 如果需要，关闭这个版本的[helm/helm 里程碑](https://github.com/helm/helm/milestones)。
 
-为主版本和次版本更新[version skew](https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)。
+为主版本和次版本更新[version skew](https://github.com/helm/helm-www/blob/main/content/en/docs/topics/version_skew.md)。
 
 在[这里](https://helm.sh/calendar/release)更新版本日历：
 
