@@ -1564,7 +1564,8 @@ template engine if there is a problem.
 
 ### index
 
-To get the nth element of a list, use `index list [n]`. To index into multi-dimensional lists, use `index list [n] [m] ...`
+To get the nth element of a list, use `index list [n]`. To index into 
+multi-dimensional lists, use `index list [n] [m] ...`
 - `index $myList 0` returns `1`. It is the same as `myList[0]`
 - `index $myList 0 1` would be the same as `myList[0][1]`
 
