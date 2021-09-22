@@ -37,13 +37,13 @@ requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-r
 
 注意，Helm使用一个[Developers Certificate of Origin](https://developercertificate.org/)。
 所有的提交需要signoff。提交时可以使用 `-s` 或 `--signoff` 参数使用你Git配置的用户和邮箱签署这个提交。
-更多细节请查看 [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work)
+更多细节请查看 [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md#sign-your-work)
 文件。
 
 准备好之后，创建一个 [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
 将翻译提交到helm-www仓库。
 
-一旦创建了pull request，维护者会进行审查。过程细节查看 [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md)。
+一旦创建了pull request，维护者会进行审查。过程细节查看 [CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md)。
 
 ## 翻译内容
 
@@ -83,7 +83,7 @@ cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
 AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea-9834-cd9dcef4e914.png)
 
 站点全局
-[config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89)
+[config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89)
 文件可以配置语言导航。
 
 添加新语言，可以使用上面定义的双字母语言码添加一组参数。比如：

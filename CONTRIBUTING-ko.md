@@ -1,6 +1,6 @@
 # 기여 가이드라인
 
-helm.sh 웹사이트 및 문서에 대한 기여 가이드입니다. 헬름의 기본 프로젝트는 [helm/helm](https://github.com/helm/helm/blob/master/CONTRIBUTING.md)으로 이동하세요.
+helm.sh 웹사이트 및 문서에 대한 기여 가이드입니다. 헬름의 기본 프로젝트는 [helm/helm](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)으로 이동하세요.
 
 ---
 

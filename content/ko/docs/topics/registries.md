@@ -172,7 +172,7 @@ Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 위의 명령어들을 사용하여 저장된 차트는 파일 시스템에 캐시될 것이다.
 
 [OCI 이미지 레이아웃
-사양](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)은
+사양](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)은
 파일시스템 레이아웃에 엄격하게 적용되는데, 예를 들면 다음과 같다.
 ```console
 $ tree ~/Library/Caches/helm/

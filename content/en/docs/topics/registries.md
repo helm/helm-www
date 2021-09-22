@@ -20,7 +20,7 @@ in the environment:
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-For more information about this feature and plans for general availability, please see the [OCI Support Helm Improvement Proposal](https://github.com/helm/community/blob/master/hips/hip-0006.md).
+For more information about this feature and plans for general availability, please see the [OCI Support Helm Improvement Proposal](https://github.com/helm/community/blob/main/hips/hip-0006.md).
 
 ## Running a registry
 
@@ -188,7 +188,7 @@ This will fetch `localhost:5000/myrepo/mychart:2.7.0` when `dependency update` i
 Charts stored using the commands above will be cached on the filesystem.
 
 The [OCI Image Layout
-Specification](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
+Specification](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)
 is adhered to strictly for filesystem layout, for example:
 ```console
 $ tree ~/Library/Caches/helm/

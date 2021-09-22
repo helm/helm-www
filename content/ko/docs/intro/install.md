@@ -50,20 +50,20 @@ sudo snap install helm --classic
 ## 스크립트로
 
 이제 헬름은 헬름 최신 버전을 자동으로 가져와서
-[로컬에 설치](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)하는
+[로컬에 설치](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)하는
 인스톨러 스크립트를 제공한다.
 
 이 스크립트를 받아서 로컬에서 실행할 수 있다.
 문서화가 잘 되어 있으므로 실행 전에 문서를 읽어보면 무엇을 하는 것인지 이해할 수 있을 것이다.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 최신이 필요하다면 `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` 을 해보자.
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` 을 해보자.
 
 
 ### 카나리(canary) 빌드에서

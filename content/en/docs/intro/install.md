@@ -38,19 +38,19 @@ the community requesting Helm for the OS in question.
 
 Helm now has an installer script that will automatically grab the latest version
 of Helm and [install it
-locally](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+locally](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 You can fetch that script, and then execute it locally. It's well documented so
 that you can read through it and understand what it is doing before you run it.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` if
 you want to live on the edge.
 
 ## Through Package Managers
@@ -122,7 +122,7 @@ Helm.
 ### From Canary Builds
 
 "Canary" builds are versions of the Helm software that are built from the latest
-master branch. They are not official releases, and may not be stable. However,
+`main` branch. They are not official releases, and may not be stable. However,
 they offer the opportunity to test the cutting edge features.
 
 Canary Helm binaries are stored at [get.helm.sh](https://get.helm.sh). Here are

@@ -25,7 +25,7 @@ other = ""
 other = "Helm は、400人を超える開発者のコミュニティによってサポートされ、構築されています。"
 
 [footer_support_subtitle]
-other = "...そして他の多くの素晴らしい [helm](https://github.com/helm/helm/blob/master/OWNERS) と [charts](https://github.com/helm/charts/blob/master/OWNERS) コアメンテナー。"
+other = "...そして他の多くの素晴らしい [helm](https://github.com/helm/helm/blob/main/OWNERS) と [charts](https://github.com/helm/charts/blob/master/OWNERS) コアメンテナー。"
 
 [footer_cncf_status]
 other = "私たちは Cloud Native Computing Foundation の Graduated プロジェクトです。"
@@ -155,7 +155,7 @@ other = "開発者スタンドアップ"
 other = "Thursdays 9:30-10am (PT)"
 
 [community_standup_desc]
-other = "これらの会議は誰でも参加できます。メモと詳細については、[コミュニティリポジトリ](https://github.com/helm/community/blob/master/communication.md#meetings) を確認してください。"
+other = "これらの会議は誰でも参加できます。メモと詳細については、[コミュニティリポジトリ](https://github.com/helm/community/blob/main/communication.md#meetings) を確認してください。"
 
 [community_slack_title]
 other = "Slack"
@@ -198,7 +198,7 @@ Helm は、多くのユーザーと貢献者がいる大きなプロジェクト
 
 ### 何をしますか？
 
-コードを投稿する前に、[貢献ガイド](https://github.com/helm/helm/blob/master/CONTRIBUTING.md)をお読みください。プルリクエストの作成と確認に関するプロセスについて説明します。
+コードを投稿する前に、[貢献ガイド](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)をお読みください。プルリクエストの作成と確認に関するプロセスについて説明します。
 
 コードを書いたら、[コミットに署名](https://helm.sh/blog/helm-dco/index.html)して、[CNCF](https://www.cncf.io/) が使用する [DCO](https://developercertificate.org/) 契約に Helm が確実に準拠するようにしてください。
 """

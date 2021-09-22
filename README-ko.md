@@ -21,16 +21,16 @@ hugo serve
 
 ## 배포 [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
 
-변경 사항을 master 브랜치에 병합하면 [넷틀리파이(Netlify)](https://app.netlify.com/sites/helm-merge/deploys)에 자동으로 배포됩니다. 빌드 로그는 [여기](https://app.netlify.com/sites/helm-merge/deploys)에서 확인할 수 있습니다.
+변경 사항을 `main` 브랜치에 병합하면 [넷틀리파이(Netlify)](https://app.netlify.com/sites/helm-merge/deploys)에 자동으로 배포됩니다. 빌드 로그는 [여기](https://app.netlify.com/sites/helm-merge/deploys)에서 확인할 수 있습니다.
 
 
 ---
 
 ## 기여
 
-누구나 풀 리퀘스트(PR)를 제출하여 Helm.sh을 편집할 수 있습니다. 커밋을 위해서는 서명이 필요합니다. [기여 가이드](https://github.com/helm/helm/blob/master/CONTRIBUTING.md#sign-your-work)를 참조하세요.
+누구나 풀 리퀘스트(PR)를 제출하여 Helm.sh을 편집할 수 있습니다. 커밋을 위해서는 서명이 필요합니다. [기여 가이드](https://github.com/helm/helm/blob/main/CONTRIBUTING.md#sign-your-work)를 참조하세요.
 
-풀 리퀘스트는 병합되기 전에 [관리자](https://github.com/helm/helm-www/blob/master/OWNERS)의 승인이 필요합니다.
+풀 리퀘스트는 병합되기 전에 [관리자](https://github.com/helm/helm-www/blob/main/OWNERS)의 승인이 필요합니다.
 
 
 ### 헬름 문서를 편집하는 방법
@@ -74,7 +74,7 @@ date: "yyyy-mm-dd"
 4) 모든 이미지는 `/content/en/blog/images/` 디렉토리에 두어야 합니다. 이미지 크기를 줄이려면 무손실 압축되어야 합니다. [ImageOptim](https://imageoptim.com/)와 같은 도구를 사용할 수 있습니다.
 5) 블로그 인덱스 페이지의 내용을 요약하려면 마크다운 파일에 `<!--more-->` 구분자를 넣습니다. 이렇게 하면 더 읽기(Read More) 링크로 내용 끝을 자릅니다.
 
-블로그 PR은 병합되기 전에 주요 헬름 [관리자](https://github.com/helm/helm/blob/master/OWNERS)들의 승인이 필요합니다.
+블로그 PR은 병합되기 전에 주요 헬름 [관리자](https://github.com/helm/helm/blob/main/OWNERS)들의 승인이 필요합니다.
 
 
 ### 국제화 & 번역
@@ -87,7 +87,7 @@ Helm.sh은 여러 언어를 지원합니다. 해외 사용자를 위한 컨텐�
 
 ### 행동 강령
 
-헬름 커뮤니티 참여는 헬름 [행동 강령](https://github.com/helm/helm/blob/master/code-of-conduct.md)을 따릅니다.
+헬름 커뮤니티 참여는 헬름 [행동 강령](https://github.com/helm/helm/blob/main/code-of-conduct.md)을 따릅니다.
 
 ### 감사합니다!
 

@@ -52,7 +52,7 @@ code so that our users will benefit.
 
 Make sure you have read and understood the main CONTRIBUTING guide:
 
-https://github.com/helm/helm/blob/master/CONTRIBUTING.md
+https://github.com/helm/helm/blob/main/CONTRIBUTING.md
 
 ### Structure of the Code
 
@@ -83,7 +83,7 @@ output is not generated and can be found in `/content/<lang>/docs/helm`.
 
 ### Git Conventions
 
-We use Git for our version control system. The `master` branch is the home of
+We use Git for our version control system. The `main` branch is the home of
 the current development candidate. Releases are tagged.
 
 We accept changes to the code via GitHub Pull Requests (PRs). One workflow for

@@ -7,7 +7,7 @@ authorlink: "https://mattfarina.com"
 date: "2020-11-11"
 ---
 
-Helm recently adopted [a release schedule for minor and patch releases](https://github.com/helm/community/blob/master/hips/hip-0002.md). Today, the second Wednesday in November 2020, marks the first release under the new schedule. This release schedule provides predictability to those who use Helm, contribute to Helm, and maintain Helm.<!--more-->
+Helm recently adopted [a release schedule for minor and patch releases](https://github.com/helm/community/blob/main/hips/hip-0002.md). Today, the second Wednesday in November 2020, marks the first release under the new schedule. This release schedule provides predictability to those who use Helm, contribute to Helm, and maintain Helm.<!--more-->
 
 The release schedule generally follows these rules:
 
@@ -18,4 +18,4 @@ The release schedule generally follows these rules:
 
 A calendar of upcoming dates for releases can be found on the calendar at https://helm.sh/calendar/release. This is a redirect to the calendar.
 
-More details can be found in [Helm Improvement Proposal 2](https://github.com/helm/community/blob/master/hips/hip-0002.md).
+More details can be found in [Helm Improvement Proposal 2](https://github.com/helm/community/blob/main/hips/hip-0002.md).

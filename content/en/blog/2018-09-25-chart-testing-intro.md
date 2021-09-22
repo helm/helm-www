@@ -15,7 +15,7 @@ This new image is now available as the [Chart Testing project](https://github.co
 
 ## Example: Locally on Mac
 
-One of the easiest ways to take a look at it is to try it out locally. To aid with that, one of the [examples provided by the project shows you how to use it with Docker for Mac](https://github.com/helm/chart-testing/tree/master/examples/docker-for-mac) with the [charts repository](https://github.com/helm/charts). An easy way to try it out is to make a change to a chart and run the following command from the root of the charts directory:
+One of the easiest ways to take a look at it is to try it out locally. To aid with that, one of the [examples provided by the project shows you how to use it with Docker for Mac](https://github.com/helm/chart-testing/tree/main/examples/docker-for-mac) with the [charts repository](https://github.com/helm/charts). An easy way to try it out is to make a change to a chart and run the following command from the root of the charts directory:
 
     $ /path/to/chart-testing/examples/docker-for-mac/my_test.sh
 
@@ -90,7 +90,7 @@ You'll notice the chart failed to pass testing because the version was not incre
 
 ## Configurable
 
-While the testing image contains defaults, it is configurable so it can be used without any association to the community charts setup. The [configuration is handled via environment variables which are documented in the README.md file](https://github.com/helm/chart-testing/blob/master/README.md#configuration).
+While the testing image contains defaults, it is configurable so it can be used without any association to the community charts setup. The [configuration is handled via environment variables which are documented in the README.md file](https://github.com/helm/chart-testing/blob/main/README.md#configuration).
 
 For example, if you wanted to skip checking for a version increment on the chart for every change you can set `CHECK_VERSION_INCREMENT` to `false`. This will skip that check and is useful for cases where every change to a chart is not released.
 

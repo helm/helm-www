@@ -8,7 +8,7 @@ weight: 2
 
 새로운 헬름을 출시할 시간이다! 릴리스를 끊는 헬름 유지관리자로서,
 자신의 경험이 여기에 문서화된 내용과 다른 점이 있다면
-[이 릴리스 체크리스트를 업데이트](https://github.com/helm/helm-www/blob/master/content/ko/docs/community/release_checklist.md)하기에 
+[이 릴리스 체크리스트를 업데이트](https://github.com/helm/helm-www/blob/main/content/ko/docs/community/release_checklist.md)하기에 
 딱 맞는 사람이다.
 
 모든 릴리스는 vX.Y.Z 형식이다. 
@@ -110,11 +110,11 @@ GnuPG를 사용하는 경우
 주요 릴리스는 *이전 호환성을 깨는* 새로운 기능의 추가 및 동작 
 변경을 위한 것이다. 부 릴리스는 이전 버전과의 호환성을 깨지 않는 선에서 
 새로운 기능 추가를 위한 것이다. 주 또는 부 릴리스를 생성하려면 
-먼저 master에서 `release-X.Y` 브랜치를 생성한다.
+먼저 main에서 `release-X.Y` 브랜치를 생성한다.
 
 ```shell
 git fetch upstream
-git checkout upstream/master
+git checkout upstream/main
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
@@ -214,7 +214,7 @@ git commit -m "bump version to $RELEASE_NAME"
 git log --format="%H" -n 1
 
 # 마스터에서 새 브랜치를 생성
-git checkout master
+git checkout main
 git checkout -b bump-version-<release_version>
 
 # 첫 번째 명령으로부터 ID를 사용하여 커밋을 체리픽
@@ -381,7 +381,7 @@ Helm vX.Y.Z는 기능 릴리스이다. 이번 릴리스에서는 <insert focal p
 - [리눅스 s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [윈도우 amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-[빠른 시작 가이드](https://docs.helm.sh/using_helm/#quickstart-guide)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](https://docs.helm.sh/using_helm/#installing-helm)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)를 사용할 수도 있다.
+[빠른 시작 가이드](https://docs.helm.sh/using_helm/#quickstart-guide)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](https://docs.helm.sh/using_helm/#installing-helm)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)를 사용할 수도 있다.
 
 ## 향후 계획
 
@@ -471,7 +471,7 @@ make sign
 닫는다.
 
 주/부 릴리스의 
-[버전 차이] (https://github.com/helm/helm-www/blob/master/content/en/docs/topics/version_skew.md)를 
+[버전 차이] (https://github.com/helm/helm-www/blob/main/content/en/docs/topics/version_skew.md)를 
 업데이트한다.
 
 [여기](https://helm.sh/calendar/release)에서 릴리스 달력을 업데이트한다.

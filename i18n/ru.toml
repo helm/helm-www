@@ -25,7 +25,7 @@ other = ""
 other = "Helm поддерживается и создается сообществом из более чем 400 разработчиков.."
 
 [footer_support_subtitle]
-other = "...и много других замечательных [helm](https://github.com/helm/helm/blob/master/OWNERS) и [charts](https://github.com/helm/charts/blob/master/OWNERS) core maintainers."
+other = "...и много других замечательных [helm](https://github.com/helm/helm/blob/main/OWNERS) и [charts](https://github.com/helm/charts/blob/master/OWNERS) core maintainers."
 
 [footer_cncf_status]
 other = "Мы являемся выпускным проектом Cloud Native Computing Foundation."
@@ -167,7 +167,7 @@ other = "Стендапы разработчиков"
 other = "Thursdays 9:30-10am (PT)"
 
 [community_standup_desc]
-other = "Эти встречи открыты для всех. Проверьте [репозиторий сообщества](https://github.com/helm/community/blob/master/communication.md#meetings) для получения заметок и подробностей."
+other = "Эти встречи открыты для всех. Проверьте [репозиторий сообщества](https://github.com/helm/community/blob/main/communication.md#meetings) для получения заметок и подробностей."
 
 [community_slack_title]
 other = "Slack"
@@ -210,7 +210,7 @@ Helm -–большой проект с большим количеством п
 
 ### Что мне делать?
 
-Прежде чем вы внесете свой вклад в какой-то код, пожалуйста, прочтите наш [Руководство по вкладам](https://github.com/helm/helm/blob/master/CONTRIBUTING.md). Он описывает процессы, связанные с созданием и анализом pull requests.
+Прежде чем вы внесете свой вклад в какой-то код, пожалуйста, прочтите наш [Руководство по вкладам](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Он описывает процессы, связанные с созданием и анализом pull requests.
 
 Как только вы напишете какой-нибудь код, пожалуйста [подпишите свои коммиты](https://helm.sh/blog/helm-dco/index.html) что бы гарантировать, что Helm придерживается [DCO](https://developercertificate.org/) используемого [CNCF](https://www.cncf.io/).
 """

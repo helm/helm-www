@@ -38,18 +38,18 @@ en cuestión.
 ### Desde Script
 
 Helm ahora tiene un script de instalación que automáticamente tomará la última versión
-de Helm y [la instalará localmente](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+de Helm y [la instalará localmente](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 Puede recuperar ese script y luego ejecutarlo localmente. Está bien documentado para
 que puedas leerlo y comprender lo que está haciendo antes de ejecutarlo.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
-Sí, puedes `curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash`si
+Sí, puedes `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`si
 quieres vivir al límite.
 
 ## A Través de Administradores de Paquetes

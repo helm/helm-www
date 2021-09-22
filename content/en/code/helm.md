@@ -1,5 +1,5 @@
 ---
 name: "helm"
 repoURL: "https://github.com/helm/helm"
-branch: "master"
+branch: "main"
 ---

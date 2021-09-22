@@ -34,21 +34,21 @@ Helm のすべての [リリース](https://github.com/helm/helm/releases) は�
 ### スクリプトから
 
 Helm に、最新バージョンの Helm を自動的に取得して
-[ローカルにインストールする](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)
+[ローカルにインストールする](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)
 インストーラースクリプトが追加されました。
 
 そのスクリプトをフェッチして、ローカルで実行できます。
 十分に文書化されているため、実行する前にそれを読んで何が行われているかを理解できます。
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 もちろん、
 最新版で実施したい場合は、
-`curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` を使用できます。
+`curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` を使用できます。
 
 
 ## パッケージマネージャーを使用したインストール

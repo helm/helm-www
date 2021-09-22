@@ -44,7 +44,7 @@ $ make
 
 가장 중심이라 할 수 있는 기여(CONTRIBUTING) 가이드를 읽고 숙지하자.
 
-https://github.com/helm/helm/blob/master/CONTRIBUTING.md
+https://github.com/helm/helm/blob/main/CONTRIBUTING.md
 
 ### 코드의 구조
 
@@ -70,7 +70,7 @@ Helm 3 이후의 문서는 자체 저장소로 이동되었다.
 
 ### Git 관례
 
-버전 제어 시스템으로는 Git을 사용한다. `master` 브랜치는 현재 개발 
+버전 제어 시스템으로는 Git을 사용한다. `main` 브랜치는 현재 개발 
 예정 브랜치의 홈 브랜치이다. 릴리스는 태그가 지정되며.
 
 GitHub PR (Pull Requests)을 통한 코드 변경을 허용한다. 

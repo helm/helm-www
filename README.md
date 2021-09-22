@@ -21,16 +21,16 @@ hugo serve
 
 ## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
 
-Changes are automatically deployed to [Netlify](https://app.netlify.com/sites/helm-merge/deploys) when merged to master. Build logs can be found [here](https://app.netlify.com/sites/helm-merge/deploys).
+Changes are automatically deployed to [Netlify](https://app.netlify.com/sites/helm-merge/deploys) when merged to `main`. Build logs can be found [here](https://app.netlify.com/sites/helm-merge/deploys).
 
 
 ---
 
 ## Contributing
 
-Anyone can submit a PR to edit Helm.sh. We require commits be signed - please refer to the [contributing guide](https://github.com/helm/helm/blob/master/CONTRIBUTING.md#sign-your-work).
+Anyone can submit a PR to edit Helm.sh. We require commits be signed - please refer to the [contributing guide](https://github.com/helm/helm/blob/main/CONTRIBUTING.md#sign-your-work).
 
-Pull requests require [maintainer](https://github.com/helm/helm-www/blob/master/OWNERS) approval before merge.
+Pull requests require [maintainer](https://github.com/helm/helm-www/blob/main/OWNERS) approval before merge.
 
 
 ### How to Edit The Helm Docs
@@ -73,7 +73,7 @@ date: "yyyy-mm-dd"
 4) Any images should be placed in the `/content/en/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 5) To summarize the content on the blog index page, insert a `<!--more-->` break in your markdown. This will truncate the content with a _Read More_ link.
 
-Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/master/OWNERS) before merge.
+Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/main/OWNERS) before merge.
 
 
 ### Internationalization & Translation
@@ -86,7 +86,7 @@ Helm.sh supports multiple languages. Please refer to the [Localizing Helm Docume
 
 ### Code of Conduct
 
-Participation in the Helm community is governed by the Helm [Code of Conduct](https://github.com/helm/helm/blob/master/code-of-conduct.md).
+Participation in the Helm community is governed by the Helm [Code of Conduct](https://github.com/helm/helm/blob/main/code-of-conduct.md).
 
 ### Thank You!
 

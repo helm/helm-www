@@ -25,7 +25,7 @@ other = ""
 other = "헬름은 개발자 400명 이상의 커뮤니티가 개발 및 지원에 참여하고 있습니다."
 
 [footer_support_subtitle]
-other = "[헬름](https://github.com/helm/helm/blob/master/OWNERS) 및 [차트](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
+other = "[헬름](https://github.com/helm/helm/blob/main/OWNERS) 및 [차트](https://github.com/helm/charts/blob/master/OWNERS) 유지 관리자들 역시 도움을 주고 있습니다."
 
 [footer_cncf_status]
 other = "헬름은 Cloud Native Computing Foundation의 졸업 프로젝트 중 하나입니다."
@@ -154,7 +154,7 @@ other = "개발자 스탠드업 회의"
 other = "목요일 9:30-10am (PT)"
 
 [community_standup_desc]
-other = "이 회의는 모두에게 열려 있습니다. 자세한 내용은 [커뮤니티 저장소](https://github.com/helm/community/blob/master/communication.md#meetings)을 참고하세요."
+other = "이 회의는 모두에게 열려 있습니다. 자세한 내용은 [커뮤니티 저장소](https://github.com/helm/community/blob/main/communication.md#meetings)을 참고하세요."
 
 [community_slack_title]
 other = "슬랙"
@@ -196,7 +196,7 @@ other = """
 
 ### 무엇을 할 수 있을까요?
 
-코드를 기여하기 전에, [기여 가이드](https://github.com/helm/helm/blob/master/CONTRIBUTING.md)를 읽어보세요.
+코드를 기여하기 전에, [기여 가이드](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)를 읽어보세요.
 풀 요청의 작성 및 검토에 관한 프로세스를 다룹니다.
 
 코드를 작성했다면,
