@@ -183,7 +183,7 @@ You can use a **custom domain** there if you wish so.
 And check that **Enforce HTTPS** is ticked, so the **HTTPS** will be used when
 charts are served.
 
-In such setup you can use **master branch** to store your charts code, and
+In such setup you can use your default branch to store your charts code, and
 **gh-pages branch** as charts repository, e.g.:
 `https://USERNAME.github.io/REPONAME`. The demonstration [TS
 Charts](https://github.com/technosophos/tscharts) repository is accessible at

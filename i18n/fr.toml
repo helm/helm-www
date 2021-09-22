@@ -25,7 +25,7 @@ other = ""
 other = "Helm est supporté et construit grâce à une communauté de plus de 400 développeurs."
 
 [footer_support_subtitle]
-other = "...et bien d'autre responsables géniaux de la mise à jour de [helm](https://github.com/helm/helm/blob/master/OWNERS) et des [charts](https://github.com/helm/charts/blob/master/OWNERS)."
+other = "...et bien d'autre responsables géniaux de la mise à jour de [helm](https://github.com/helm/helm/blob/main/OWNERS) et des [charts](https://github.com/helm/charts/blob/master/OWNERS)."
 
 [footer_cncf_status]
 other = "Nous sommes un projet diplômé de la Cloud Native Computing Foundation."
@@ -167,7 +167,7 @@ other = "Rencontres Développeur"
 other = "Le Jeudi de 9h30 à 10h (PT)"
 
 [community_standup_desc]
-other = "Ces rencontres sont ouvertes à tous. Visitez le [répo communautaire](https://github.com/helm/community/blob/master/communication.md#meetings) pour plus de détails."
+other = "Ces rencontres sont ouvertes à tous. Visitez le [répo communautaire](https://github.com/helm/community/blob/main/communication.md#meetings) pour plus de détails."
 
 [community_slack_title]
 other = "Slack"
@@ -210,7 +210,7 @@ Nous avons une liste de [problème non résolus](https://github.com/helm/helm/is
 
 ### Comment faire ?
 
-Avant de contribuer au code, merci de lire le [Guide de Contribution](https://github.com/helm/helm/blob/master/CONTRIBUTING.md). Il vous guidera à travers le processus de création et de revue des pulls requests.
+Avant de contribuer au code, merci de lire le [Guide de Contribution](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Il vous guidera à travers le processus de création et de revue des pulls requests.
 
 Une fois que vous aurez écrit du code, merci de [signer vos commits](https://helm.sh/blog/helm-dco/index.html) afin de s'assurer que Helm adhère à l'accord [DCO](https://developercertificate.org/) utilisé par la [CNCF](https://www.cncf.io/).
 """

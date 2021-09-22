@@ -25,7 +25,7 @@ other = ""
 other = "Helm wird entwickelt und unterstützt von einer Gemeinschaft von über 400 Entwickler."
 
 [footer_support_subtitle]
-other = "...und viele andere wundervolle [helm](https://github.com/helm/helm/blob/master/OWNERS) and [charts](https://github.com/helm/charts/blob/master/OWNERS) Hauptentwickler."
+other = "...und viele andere wundervolle [helm](https://github.com/helm/helm/blob/main/OWNERS) and [charts](https://github.com/helm/charts/blob/master/OWNERS) Hauptentwickler."
 
 [footer_cncf_status]
 other = "Wir sind ein promoviertes Projekt der Cloud Native Computing Foundation."
@@ -167,7 +167,7 @@ other = "Developer Standups"
 other = "Donnerstags 16:30-17:00 UTC"
 
 [community_standup_desc]
-other = "Diese [Meetings](https://www.timeanddate.com/worldclock/fixedtime.html?hour=16&min=30&sec=0) sind offen für alle. Überprüfen Sie das [Gemeinschaftsverzeichnis](https://github.com/helm/community/blob/master/communication.md#meetings) für Notizen und Details."
+other = "Diese [Meetings](https://www.timeanddate.com/worldclock/fixedtime.html?hour=16&min=30&sec=0) sind offen für alle. Überprüfen Sie das [Gemeinschaftsverzeichnis](https://github.com/helm/community/blob/main/communication.md#meetings) für Notizen und Details."
 
 [community_slack_title]
 other = "Slack"
@@ -210,7 +210,7 @@ Wir haben eine Liste mit [guten ersten Problemen](https://github.com/helm/helm/i
 
 ### Was hab ich zu tun?
 
-Bevor Sie Code beisteuern, lesen Sie bitte den [Beitragungsleitfaden](https://github.com/helm/helm/blob/master/CONTRIBUTING.md). Er geht über den Prozess um erstellen und überprüfen von Pull Requests.
+Bevor Sie Code beisteuern, lesen Sie bitte den [Beitragungsleitfaden](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Er geht über den Prozess um erstellen und überprüfen von Pull Requests.
 
 Immer wenn Sie Code beisteuern, [signieren Sie bitte Ihre Commits](https://helm.sh/blog/helm-dco/index.html), um sicherzustellen, dass Helm für die [DCO](https://developercertificate.org/) Vereinbarung benutzt von der [CNCF](https://www.cncf.io/) haftet.
 """

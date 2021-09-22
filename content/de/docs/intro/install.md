@@ -38,19 +38,19 @@ Betriebssystemen liegt in der Zuständigkeit der Gemeinschaft.
 ### Von einem Script
 
 Helm hat ein Installations-Script, mit der automatisch die neueste Version
-bezogen und [lokal installiert wird](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+bezogen und [lokal installiert wird](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 Sie können dieses Script aufrufen und lokal ausführen. Es ist gut dokumentiert,
 so dass Sie es lesen und gut verstehen können, bevor Sie es ausführen.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 Ja, Sie können auch `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` if
 aufrufen, wenn Sie am Rande des Abgrunds leben.
 
 ## Durch einen Paket Manager

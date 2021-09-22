@@ -4,7 +4,7 @@ description: "프로젝트의 연혁에 대한 개요를 설명한다."
 weight: 4
 ---
 
-헬름 3는 [인큐베이션(incubation) 최종단계](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc)에 있는 [CNCF 프로젝트](https://www.cncf.io/projects/)이다.
+헬름 3는 [인큐베이션(incubation) 최종단계](https://github.com/cncf/toc/blob/main/process/graduation_criteria.adoc)에 있는 [CNCF 프로젝트](https://www.cncf.io/projects/)이다.
 
 헬름은, 2015년에 시작되어 KubeCon에서 소개된 바 있는 [헬름 클래식](https://github.com/helm/helm-classic)이라 하는 멋진 프로젝트에서 시작되었다.
 

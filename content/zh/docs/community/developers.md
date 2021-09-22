@@ -42,7 +42,7 @@ $ make
 
 确保你已经阅读并理解主要贡献指南：
 
-https://github.com/helm/helm/blob/master/CONTRIBUTING.md
+https://github.com/helm/helm/blob/main/CONTRIBUTING.md
 
 ### 代码结构
 
@@ -66,7 +66,7 @@ Go依赖管理在不断变化，而且在Helm生命周期中很可能发生变�
 
 ### Git 约定
 
-我们使用Git作为版本控制系统。 `master` 分支是当前开发候选分支。发布版本会打tag。
+我们使用Git作为版本控制系统。 `main` 分支是当前开发候选分支。发布版本会打tag。
 
 我们通过GitHub的Pull Requests(PRs)接受更改。操作工作流如下：
 

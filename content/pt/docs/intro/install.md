@@ -38,19 +38,19 @@ em solicitá-los.
 ### A partir do _Script_
 
 O Helm agora conta com um _script_ que automaticamente baixará a última versão disponível
-do Helm e [instalará localmente](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+do Helm e [instalará localmente](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 Baixe o _script_ e execute-o localmente. O _script_ está bem escrito e documentado,
 podendo ser verificado e revisado antes de proceder com a instalação local.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 Sim, você pode executar `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` se
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` se
 você gosta de viver perigosamente.
 
 ## Através de Gerenciadores de Pacote

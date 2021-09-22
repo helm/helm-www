@@ -25,17 +25,17 @@ Helm社区提供了通过不同包管理器安装Helm的方法。这些方法可
 
 ### 使用脚本安装
 
-Helm现在有个安装脚本可以自动拉取最新的Helm版本并在[本地安装](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)。
+Helm现在有个安装脚本可以自动拉取最新的Helm版本并在[本地安装](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)。
 
 您可以获取这个脚本并在本地执行。它良好的文档会让您在执行之前知道脚本都做了什么。
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
-如果想直接执行安装，运行`curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+如果想直接执行安装，运行`curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 | bash`。
 
 ## 通过包管理器安装

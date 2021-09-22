@@ -17,7 +17,7 @@ target="_blank">OCI</a> 用于包分发。 Chart包可以通过基于OCI的注�
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-有关此功能的详细信息及一般可用性计划，请参阅[OCI支持Helm改进的建议](https://github.com/helm/community/blob/master/hips/hip-0006.md).
+有关此功能的详细信息及一般可用性计划，请参阅[OCI支持Helm改进的建议](https://github.com/helm/community/blob/main/hips/hip-0006.md).
 
 ## 运行一个注册中心
 
@@ -181,7 +181,7 @@ dependencies:
 
 使用上述命令存储的chart会被缓存到文件系统中。
 
-[OCI 镜像设计规范](https://github.com/opencontainers/image-spec/blob/master/image-layout.md)
+[OCI 镜像设计规范](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)
 严格遵守文件系统布局的。例如：
 
 ```console

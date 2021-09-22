@@ -43,7 +43,7 @@ fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
 of the [helm-www repository](https://github.com/helm/helm-www) on GitHub. You
 will start by committing the changes to your fork.
 
-By default your fork will be set to work on the default branch known as master.
+By default your fork will be set to work on the default branch known as `main`.
 Please use branches to develop your changes and create pull requests. If you are
 unfamiliar with branches you can [read about them in the GitHub
 documentation](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches).
@@ -56,7 +56,7 @@ Origin](https://developercertificate.org/). All commits need to have signoff.
 When making a commit you can use the `-s` or `--signoff` flag to use your Git
 configured name and email address to signoff on the commit. More details are
 available in the
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work)
+[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md#sign-your-work)
 file.
 
 When you are ready, create a [pull
@@ -65,7 +65,7 @@ with the translation back to the helm-www repository.
 
 Once a pull request has been created one of the maintainers will review it.
 Details on that process are in the
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md)
 file.
 
 ## Translating Content
@@ -118,7 +118,7 @@ publishing.
 AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea-9834-cd9dcef4e914.png)
 
 The site global
-[config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89)
+[config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89)
 file is where language navigation is configured.
 
 To add a new language, add a new set of parameters using the [two-letter

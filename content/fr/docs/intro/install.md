@@ -26,17 +26,17 @@ A ce stade, vous devriez être cappable de lancer le client et [d'ajouter le dé
 
 ### À partir du script
 
-Helm a maintenant un script d'installation qui récupérera automatiquement la dernière version de Helm et [l'installera localement](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+Helm a maintenant un script d'installation qui récupérera automatiquement la dernière version de Helm et [l'installera localement](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 Vous pouvez récupérer ce script, puis l'exécuter localement. Il est bien documenté donc que vous pouvez le lire et comprendre ce qu'il fait avant de l'exécuter.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
-Oui, vous pouvez également `curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
+Oui, vous pouvez également `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
 
 ## Via les gestionnaires de packages
 
@@ -94,7 +94,7 @@ En plus des releases vous pouvez également télécharger et installer les snpas
 
 ### Depuis les builds Canary
 
-Les builds "Canary" sont des versions de logiciel Helm qui ont été construits à partir de la dernière version de la branche master. Ce ne sont pas des releases offcielles et peuvent ne pas être stable. Ceci étant, elles vous proposent l'opportunité de tester les features les plus récentes.
+Les builds "Canary" sont des versions de logiciel Helm qui ont été construits à partir de la dernière version de la branche `main`. Ce ne sont pas des releases offcielles et peuvent ne pas être stable. Ceci étant, elles vous proposent l'opportunité de tester les features les plus récentes.
 
 Les binaires des builds Canary sont disponibles ici : [get.helm.sh](https://get.helm.sh). Voici les liens vers les builds les plus communs :
 

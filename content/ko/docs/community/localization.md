@@ -55,7 +55,7 @@ weight: 5
 커밋을 생성할 때, 깃에 설정된 이름과 이메일 주소로 서명하기 위해
 `-s` 또는 `--signoff` 플래그를 쓸 수 있다.
 자세한 내용은
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md#sign-your-work)에서
+[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md#sign-your-work)에서
 확인할 수 있다.
 
 준비되면 번역본과 함께 다시 helm-www 저장소로 [풀
@@ -64,7 +64,7 @@ weight: 5
 
 풀 리퀘스트를 생성하면 관리자 중 한 명이 검토할 것이다.
 그 과정에 대한 세부사항은
-[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/master/CONTRIBUTING.md)에
+[CONTRIBUTING.md](https://github.com/helm/helm-www/blob/main/CONTRIBUTING.md)에
 있다.
 
 ## 콘텐츠 번역하기
@@ -116,7 +116,7 @@ cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
 ![Screen Shot 2020-05-11 at 11 24 22
 AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea-9834-cd9dcef4e914.png)
 
-사이트 전역 [config.toml](https://github.com/helm/helm-www/blob/master/config.toml#L83L89)
+사이트 전역 [config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89)
 파일에서 언어 변경을 구성한다.
 
 새로운 언어를 추가하려면 위에서 정의한 [두 글자

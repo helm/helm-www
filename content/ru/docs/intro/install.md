@@ -32,19 +32,19 @@ weight: 2
 ### Из Скрипта
 
 У Helm теперь есть скрипт установки, которая будет автоматически загружать последнюю версию Helm и 
-[устанавливать его локально](https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3).
+[устанавливать его локально](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
 
 Вы можете получить этот сценарий, а затем выполнить его локально.
 Он хорошо документирован, так что вы можете прочитать его и понять, что он делает, прежде чем запускать.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
 ```
 
 Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` if
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` if
 you want to live on the edge.
 
 ## Через Менеджеров Пакетов

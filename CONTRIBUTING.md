@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-This is the contribution guide for the helm.sh website and documentation. Go to [helm/helm](https://github.com/helm/helm/blob/master/CONTRIBUTING.md) for the core project.
+This is the contribution guide for the helm.sh website and documentation. Go to [helm/helm](https://github.com/helm/helm/blob/main/CONTRIBUTING.md) for the core project.
 
 ---
 

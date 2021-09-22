@@ -24,7 +24,7 @@ other = ""
 other = "Το Helm υποστηρίζεται και είναι κατασκευασμένο από μια κοινότητα από παραπάνω από 400 developers."
 
 [footer_support_subtitle]
-other = "...and πολλούς/ες υπέροχους/ες core maintainers του [helm](https://github.com/helm/helm/blob/master/OWNERS) και των [charts](https://github.com/helm/charts/blob/master/OWNERS)."
+other = "...and πολλούς/ες υπέροχους/ες core maintainers του [helm](https://github.com/helm/helm/blob/main/OWNERS) και των [charts](https://github.com/helm/charts/blob/master/OWNERS)."
 
 [footer_cncf_status]
 other = "Είμαστε ένα graduated project του Cloud Native Computing Foundation."
@@ -166,7 +166,7 @@ other = "Developer Standups"
 other = "Πέμπτες 9:30-10am (PT)"
 
 [community_standup_desc]
-other = "Αυτές οι συναντήσεις είναι ανοιχτές σε όλους/όλες. Ελέγξτε το [community repo](https://github.com/helm/community/blob/master/communication.md#meetings) για σημειώσεις και λεπτομέρειες."
+other = "Αυτές οι συναντήσεις είναι ανοιχτές σε όλους/όλες. Ελέγξτε το [community repo](https://github.com/helm/community/blob/main/communication.md#meetings) για σημειώσεις και λεπτομέρειες."
 
 [community_slack_title]
 other = "Slack"
@@ -209,7 +209,7 @@ other = """
 
 ### Τι κάνω;
 
-Πριν συνεισφέρεις τον κώδικά σου, παρακαλούμε διάβασε τον [Οδηγό Συνεισφοράς](https://github.com/helm/helm/blob/master/CONTRIBUTING.md). Αναλύει τις διαδικασίες γύρω από την δημιουργία και το reviewing των pull requests.
+Πριν συνεισφέρεις τον κώδικά σου, παρακαλούμε διάβασε τον [Οδηγό Συνεισφοράς](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Αναλύει τις διαδικασίες γύρω από την δημιουργία και το reviewing των pull requests.
 
 Μόλις γράψεις λίγο κώδικα, παρακαλούμε [υπόγραψε τα commits σου](https://helm.sh/blog/helm-dco/index.html) για να διασφαλιστεί ότι το Helm συμβαδίζει με την συμφωνία [DCO](https://developercertificate.org/) η οποία χρησιμοποιείται από το [CNCF](https://www.cncf.io/).
 """
