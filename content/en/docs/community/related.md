@@ -18,7 +18,7 @@ request](https://github.com/helm/helm-www/pulls).
   existing k8s resources into a new generated helm chart.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
-- [helm-gcs](https://github.com/nouney/helm-gcs) - Plugin to manage repositories
+- [helm-gcs](https://github.com/hayorov/helm-gcs) - Plugin to manage repositories
   on Google Cloud Storage
 - [helm-git](https://github.com/aslafy-z/helm-git) - Install charts and retrieve
   values files from your Git repositories
