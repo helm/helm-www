@@ -25,7 +25,7 @@ versions in Kubernetes
 1.16](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/) and was
 advertised a few months prior to the release. These API versions would have been
 announced for deprecation prior to this again. This shows that there is a good
-policy in place which informs consumers of API version support. 
+policy in place which informs consumers of API version support.
 
 Helm templates specify a [Kubernetes API
 group](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups)
@@ -88,7 +88,7 @@ supported APIs.
 
 > Recommendation: The best practice is to upgrade releases using deprecated API
 versions to supported API versions, prior to upgrading to a kubernetes cluster
-that removes those API versions. 
+that removes those API versions.
 
 If you don't update a release as suggested previously, you will have an error
 similar to the following when trying to upgrade a release in a Kubernetes
@@ -120,7 +120,7 @@ contains a gzipped object which is base 64 encoded (there is an additional base
 64 encoding for a Secret). There is a Secret/ConfigMap per release
 version/revision in the namespace of the release.
 
-You can use the Helm [mapkubeapis](https://github.com/hickeyma/helm-mapkubeapis)
+You can use the Helm [mapkubeapis](https://github.com/helm/helm-mapkubeapis)
 plugin to perform the update of a release to supported APIs. Check out the
 readme for more details.
 
@@ -145,7 +145,7 @@ the steps for the Secret or ConfigMap backend.
   - `cp release.yaml release.bak`
   - In case of emergency, restore: `kubectl apply -f release.bak -n
     <release_namespace>`
-- Decode the release object: 
+- Decode the release object:
   - Secrets backend:`cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d
     | base64 -d | gzip -d > release.data.decoded`
   - ConfigMap backend: `cat release.yaml | grep -oP '(?<=release: ).*' | base64
