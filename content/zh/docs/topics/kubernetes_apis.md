@@ -73,7 +73,7 @@ Helm在这个情况中会失败，因为试图它在当前部署的和你传了�
 清单manifest是Helm发布对象的一个特性，存储在集群中的密钥（默认）或配置映射的数据字段中。数据字段包含了一个base64编码的gzip压缩的对象
 （对于密钥是一个额外的base 64 编码）。在版本的命名空间中每个版本或修订都对应一个密钥或配置映射。
 
-可以使用Helm [mapkubeapis](https://github.com/hickeyma/helm-mapkubeapis) 插件对支持API执行版本升级。查看readme获取更多信息。
+可以使用Helm [mapkubeapis](https://github.com/helm/helm-mapkubeapis) 插件对支持API执行版本升级。查看readme获取更多信息。
 
 或者，可以按照这些步骤手动执行发布清单的API版本升级。根据你的配置，应该遵循密钥或配置映射的后台步骤。
 
