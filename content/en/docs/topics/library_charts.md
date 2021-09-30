@@ -354,11 +354,10 @@ spec:
 The following line is needed because as Kubernetes evolves, older `apiVersion`
 entries found in the Library are no longer supported.
 
-The `.spec.selector.matchLabels` is required.
-
 ```
 apiVersion: apps/v1
 ```
+The `.spec.selector.matchLabels` is required.
 
 And now the service file, `demo/templates/service.yaml` as follows:
 
