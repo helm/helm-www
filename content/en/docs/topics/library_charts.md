@@ -348,7 +348,8 @@ spec:
       labels:
         {{- include "demo.selectorLabels" . | nindent 8 }}
 
-{{- end -}}```
+{{- end -}}
+```
 
 The following line is needed because as Kubernetes evolves, older `apiVersion`
 entries found in the Library are no longer supported.
