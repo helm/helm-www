@@ -337,9 +337,26 @@ Lets use the common code from the helper chart. First, edit deployment
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
 ## Define overrides for your Deployment resource here, e.g.
+apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
-{{- end -}}
+  selector:
+    matchLabels:
+      {{- include "demo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo.selectorLabels" . | nindent 8 }}
+
+{{- end -}}```
+
+The following line is needed because as Kubernetes evolves, older `apiVersion`
+entries found in the Library are no longer supported.
+
+The `.spec.selector.matchLabels` is required.
+
+```
+apiVersion: apps/v1
 ```
 
 And now the service file, `demo/templates/service.yaml` as follows:
@@ -386,4 +403,11 @@ image:
   tag: 1.16.0
 ```
 
-It is good to go now, so deploy away!
+At this point you could execute a `helm lint demo` - this is assuming that you
+have `cd`'ed into the chart parent directory.
+
+If it's good to go now, you can deploy away with:
+
+```
+helm install demo demo
+```
