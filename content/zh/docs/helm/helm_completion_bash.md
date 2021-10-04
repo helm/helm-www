@@ -26,13 +26,14 @@ title: "Helm补全 - bash"
 
 
 ```shell
-helm completion bash
+helm completion bash [flags]
 ```
 
 ### 可选项
 
 ```shell
-  -h, --help   help for bash
+  -h, --help              help for bash
+      --no-descriptions   disable completion descriptions
 ```
 
 ### 从父命令继承的命令

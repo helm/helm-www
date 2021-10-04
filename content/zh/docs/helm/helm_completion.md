@@ -38,4 +38,5 @@ title: "Helm 补全"
 - [helm](helm.md) - 针对Kubernetes的Helm包管理器
 - [helm completion bash](helm_completion_bash.md) - 为bash生成自动补全脚本
 - [helm completion fish](helm_completion_fish.md) - 为fish生成自动补全脚本
+- [helm completion powershell](helm_completion_powershell.md) - 为powershell生成自动补全脚本
 - [helm completion zsh](helm_completion_zsh.md) - 为zsh生成自动补全脚本

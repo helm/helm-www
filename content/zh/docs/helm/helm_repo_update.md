@@ -10,13 +10,18 @@ title: "Helm 仓库更新"
 
 更新从各自chart仓库中获取的有关chart的最新信息。信息会缓存在本地，被诸如'helm search'等命令使用。
 
+你可以指定需要更新的仓库列表。
+    $ helm repo update <repo_name> ...
+使用 'helm repo update' 更新所有仓库。
+
 ```shell
-helm repo update [flags]
+helm repo update [REPO1 [REPO2 ...]] [flags]
 ```
 
 ### 可选项
 
 ```shell
+      --fail-on-repo-update-fail   update fails if any of the repository updates fail
   -h, --help   help for update
 ```
 

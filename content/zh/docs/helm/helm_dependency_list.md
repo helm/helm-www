@@ -21,7 +21,8 @@ helm dependency list CHART [flags]
 ### 可选项
 
 ```shell
-  -h, --help   help for list
+  -h, --help                 help for list
+      --max-col-width uint   输出结果的最大宽度（默认80）
 ```
 
 ### 从父命令继承的命令

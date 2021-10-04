@@ -8,7 +8,6 @@ title: "Helm补全 - fish"
 
 ### 简介
 
-
 为Helm生成针对于fish shell的自动补全脚本。
 
 在当前shell会话中加载自动补全：
@@ -20,7 +19,6 @@ title: "Helm补全 - fish"
     helm completion fish > ~/.config/fish/completions/helm.fish
 
 您需要启动一个新的shell使其生效
-
 
 ```shell
 helm completion fish [flags]

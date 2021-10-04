@@ -96,7 +96,7 @@ pkg install helm
 
 ### 使用Canary构建
 
-"Canary"版本是从Helm最新的master分支构建。这些不是官方版本，可能不稳定。但是这提供测试边缘特性的条件。
+"Canary"版本是从Helm最新的`main`分支构建。这些不是官方版本，可能不稳定。但是这提供测试边缘特性的条件。
 
 Canary Helm二进制包存储在[get.helm.sh](https://get.helm.sh)。以下是一般构建的链接：
 
