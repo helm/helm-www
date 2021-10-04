@@ -24,7 +24,7 @@ helm template [NAME] [CHART] [flags]
       --ca-file string               verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string             identify HTTPS client using this SSL certificate file
       --create-namespace             create the release namespace if not present
-      --dependency-update            run helm dependency update before installing the chart
+      --dependency-update            update dependencies if they are missing before installing the chart
       --description string           add a custom description
       --devel                        use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation   if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema

@@ -52,10 +52,6 @@ $ helm install -f myvalues.yaml -f override.yaml  myredis ./redis
 
 为了检测生成的清单，但并不安装到chart，可以将'--debug'和'--dry-run'组合使用。
 
-**注意**: 在`crds/`目录中的CRD清单不能用 `--dry-run` 验证。查看 [Helm's
-CRDs caveats](https://helm.sh/zh/docs/chart_best_practices/custom_resource_definitions#some-caveats-and-explanations)
-获取更多信息。
-
 如果设置了--verify，chart**必须**有出处文件，且出处文件**必须**传递所有的验证步骤。
 
 有五种不同的方式来标识需要安装的chart：
@@ -87,7 +83,7 @@ helm install [NAME] [CHART] [flags]
       --ca-file string               verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string             identify HTTPS client using this SSL certificate file
       --create-namespace             create the release namespace if not present
-      --dependency-update            run helm dependency update before installing the chart
+      --dependency-update            update dependencies if they are missing before installing the chart
       --description string           add a custom description
       --devel                        use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation   if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema

@@ -38,5 +38,6 @@ title: "Helm 展示"
 - [helm](helm.md) - 针对Kubernetes的Helm包管理器
 - [helm show all](helm_show_all.md) - 显示chart的所有信息
 - [helm show chart](helm_show_chart.md) - 显示chart定义
+- [helm show crds](helm_show_crds.md) - 显示chart的CRD
 - [helm show readme](helm_show_readme.md) - 显示chart的README
 - [helm show values](helm_show_values.md) - 显示chart的values
