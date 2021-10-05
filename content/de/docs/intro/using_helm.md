@@ -22,7 +22,7 @@ Kubernetes, ein Apt dpkg oder eine Yum RPM Datei.
 
 Ein *Repository* ist ein Platz, wo Charts gesammelt und gespeichert werden können.
 Es ist wie Perl's [CPAN Archiv](https://www.cpan.org) oder die [Fedora Package
-Database](https://fedorahosted.org/pkgdb2/), aber für Kubernetes Pakete.
+Database](https://src.fedoraproject.org/), aber für Kubernetes Pakete.
 
 Ein(e) *Release/Version* ist eine Instanz von einem Chart, welches in einem
 Kubernetes Cluster läuft. Ein Chart kann beliebig oft im selben Cluster

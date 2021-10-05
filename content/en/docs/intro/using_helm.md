@@ -21,7 +21,7 @@ Apt dpkg, or a Yum RPM file.
 
 A *Repository* is the place where charts can be collected and shared. It's like
 Perl's [CPAN archive](https://www.cpan.org) or the [Fedora Package
-Database](https://fedorahosted.org/pkgdb2/), but for Kubernetes packages.
+Database](https://src.fedoraproject.org/), but for Kubernetes packages.
 
 A *Release* is an instance of a chart running in a Kubernetes cluster. One chart
 can often be installed many times into the same cluster. And each time it is

@@ -16,7 +16,7 @@ Helm 命令的详细说明，并解释如何使用 Helm。
 Homebrew formula，Apt dpkg，或 Yum RPM 在Kubernetes 中的等价物。
 
 *Repository（仓库）* 是用来存放和共享 charts 的地方。它就像 Perl 的 [CPAN 档案库网络](https://www.cpan.org)
-或是 Fedora 的[软件包仓库](https://fedorahosted.org/pkgdb2/)，只不过它是供 Kubernetes 包所使用的。
+或是 Fedora 的[软件包仓库](https://src.fedoraproject.org/)，只不过它是供 Kubernetes 包所使用的。
 
 *Release* 是运行在 Kubernetes 集群中的 chart 的实例。一个 chart 通常可以在同一个集群中安装多次。每一次安装都会创建一个新的
 _release_。以 MySQL chart为例，如果你想在你的集群中运行两个数据库，你可以安装该chart两次。每一个数据库都会拥有它自己的
