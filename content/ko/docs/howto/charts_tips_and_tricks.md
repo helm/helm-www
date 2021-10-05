@@ -4,8 +4,8 @@ description: "Covers some of the tips and tricks Helm chart developers have lear
 weight: 1
 ---
 
-This guide covers some of the tips and tricks Helm chart developers have learned
-while building production-quality charts.
+이 가이드는 핼름 차트 개발자들이 production-quality 차트들을 만들면서 배운 팁과 비법을 
+담고 있습니다.  
 
 ## 템플릿 함수 이해하기
 
@@ -67,55 +67,46 @@ env:
 
 ## 'include' 함수 사용하기
 
-Go provides a way of including one template in another using a built-in
-`template` directive. However, the built-in function cannot be used in Go
-template pipelines.
+Go 언어의 내장 지시어인 `template`를 사용해 다른 템플릿으로 부터  템플릿을 가져올 수 있는 방법을 
+제공합니다. 하지만 이 지시어는 파이프 라인과는 함께 사용 될 수 없습니다. 
 
-To make it possible to include a template, and then perform an operation on that
-template's output, Helm has a special `include` function:
+헬름에는 특별한 함수 `include`가 있습니다. 이 함수는 다른 템플릿으로 부터 템플릿을 가져오고 
+그 템플릿의 출력 값에 연산을 수행 할 수 있도록 합니다. 
 
 ```
 {{ include "toYaml" $value | indent 2 }}
 ```
 
-The above includes a template called `toYaml`, passes it `$value`, and then
-passes the output of that template to the `indent` function.
+위의 예제에는 `toYaml`이라고 불리는 템플릿이 포함되어 있습니다. 이 템플릿은 `$value`에 값을 전달하고 
+그 출력 값을 `indent` 함수에 전달합니다. 
 
-Because YAML ascribes significance to indentation levels and whitespace, this is
-one great way to include snippets of code, but handle indentation in a relevant
-context.
+YAML이 들여쓰기와 공백을 중요하게 생각하기 때문에 이 방법은 문맥에 맞는 적절한 들여쓰기를 하면서 코드 스니펫을 
+가져올 수 있는 좋은 방법입니다. 
 
 ## 'required' 함수 사용하기
 
-Go provides a way for setting template options to control behavior when a map is
-indexed with a key that's not present in the map. This is typically set with
-`template.Options("missingkey=option")`, where `option` can be `default`,
-`zero`, or `error`. While setting this option to error will stop execution with
-an error, this would apply to every missing key in the map. There may be
-situations where a chart developer wants to enforce this behavior for select
-values in the `values.yaml` file.
+Go 언어는 map에 존재하지 않은 키에 접근하는 상황을 제어하기 위한 템플릿 옵션이 있습니다. 
+주로 `template.Options("missingkey=option")`로 설정되며 `option`값은 `default`, `zero` 혹은 `error`가 될 수 있습니다. 
+옵션(option) 설정을 error로 하면 map에 존재하지 않는 키에 접근하려는 모든 상황에 에러를 발생하며 실행을 멈출 것입니다. 
+차트 개발자가 `values.yaml`에서 값을 가져올 때 이러한 규칙을 적용시키고 싶은 상황이 있을 수 있습니다. 
 
-The `required` function gives developers the ability to declare a value entry as
-required for template rendering. If the entry is empty in `values.yaml`, the
-template will not render and will return an error message supplied by the
-developer.
+`required` 함수는 개발자가 템플릿이 랜더링될 때 필수로 입력되어야 하는 값(항목)을 선언할 수 있도록 합니다. 
+이 값(항목)이 `values.yaml`에 비어있다면, template은 랜더링을 하지 않고 개발자가 작성한 에러 메세지를 반환할 것입니다. 
 
-For example:
+예를 들어서:
 
 ```
 {{ required "A valid foo is required!" .Values.foo }}
 ```
 
-The above will render the template when `.Values.foo` is defined, but will fail
-to render and exit when `.Values.foo` is undefined.
+위의 예제는 `.Values.foo`가 정의 되어있다면 값을 랜더링 하고, 
+`.Values.foo`가 정의되어 있지 않다면 랜더링에 실패하고 종료할 것 입니다. 
 
 ## 'tpl' 함수 사용하기
 
-The `tpl` function allows developers to evaluate strings as templates inside a
-template. This is useful to pass a template string as a value to a chart or
-render external configuration files. Syntax: `{{ tpl TEMPLATE_STRING VALUES }}`
+`tpl` 함수를 이용하여 템플릿내에 정의 된 템플릿 형식의 문자열의 렌더링 값을 구할 수 있습니다. 이 함수는 차트에 템플릿 문자열을 변수로 전달하거나 외부 설정 파일들을 랜더링 할때 유용합니다. 문법: `{{ tpl TEMPLATE_STRING VALUES }}`
 
-Examples:
+예를 들어:
 
 ```yaml
 # values
@@ -129,7 +120,7 @@ name: "Tom"
 Tom
 ```
 
-Rendering an external configuration file:
+외부 설정 값을 랜더링 하는 예제:
 
 ```yaml
 # external configuration file conf/app.conf
@@ -149,14 +140,10 @@ lastName=Parker
 ```
 
 ## 이미지 풀 시크릿 생성하기
-Image pull secrets are essentially a combination of _registry_, _username_, and
-_password_.  You may need them in an application you are deploying, but to
-create them requires running `base64` a couple of times.  We can write a helper
-template to compose the Docker configuration file for use as the Secret's
-payload.  Here is an example: 
+Image pull secrets은 _registry_, _username_, 그리고
+_password_의 조합이 기본입니다. 앱을 띄우는데 이 값들이 필요할 수 있지만, 이 값을 만들기 위해서는 `base64`를 몇번 수행해야 합니다. 우리는 helper 템플릿을 작성하여 시크릿 페이로드로써 사용될 도커 설정 파일을 구성할 수 있습니다. 여기 예제가 있습니다.: 
 
-First, assume that the credentials are defined in the `values.yaml` file like
-so:
+먼저 `values.yaml`에 다음과 같은 신원정보가 정의 되어 있다고 가정해 봅시다.:
 ```yaml
 imageCredentials:
   registry: quay.io
@@ -165,7 +152,7 @@ imageCredentials:
   email: someone@host.com
 ```
 
-We then define our helper template as follows:
+그 다음, helper 템플릿을 다음과 같이 정의합니다.:
 ```
 {{- define "imagePullSecret" }}
 {{- with .Values.imageCredentials }}
@@ -174,8 +161,7 @@ We then define our helper template as follows:
 {{- end }}
 ```
 
-Finally, we use the helper template in a larger template to create the Secret
-manifest:
+마지막으로 큰 템플릿에서 helper 템플릿을 사용해 시크릿을 생성합니다.:
 ```yaml
 apiVersion: v1
 kind: Secret
