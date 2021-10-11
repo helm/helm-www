@@ -21,7 +21,7 @@ fórmula Homebrew, un Apt de dpkg o un archivo Yum de RPM.
 
 Un *Repositorio* es el lugar donde se pueden recopilar y compartir Charts.
 Es como el [archivo CPAN](https://www.cpan.org) de Perl o la [Base de Datos de
-Paquetes de Fedora](https://fedorahosted.org/pkgdb2/), pero para los paquetes
+Paquetes de Fedora](https://src.fedoraproject.org/), pero para los paquetes
 de Kubernetes.
 
 Un *Release* es una instancia de un Chart que se ejecuta en un clúster de

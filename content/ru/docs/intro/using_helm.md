@@ -18,7 +18,7 @@ weight: 3
 
 *Репозиторий* это место, где можно собирать charts-ы и делиться ими. Очень похоже на
 Perl's [CPAN archive](https://www.cpan.org) или [Fedora Package
-Database](https://fedorahosted.org/pkgdb2/), но для пакетов Kubernetes.
+Database](https://src.fedoraproject.org/), но для пакетов Kubernetes.
 
 *Релиз* это пример charts-а, работающего в кластере Kubernetes. 
 Один chart часто может быть установлен много раз в одном и том же кластере.

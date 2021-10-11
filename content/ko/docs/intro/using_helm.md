@@ -17,7 +17,7 @@ weight: 3
 쿠버네티스에서의 Homebrew 포뮬러, Apt dpkg, YUM RPM 파일과 같은 것으로 생각할 수 있다.
 
 *저장소*는 차트를 모아두고 공유하는 장소이다.
-이것은 마치 Perl의 [CPAN 아카이브](https://www.cpan.org)나 [페도라 패키지 데이터베이스](https://admin.fedoraproject.org/pkgdb/)와 같은데, 쿠버네티스 패키지용이라고 보면 된다.
+이것은 마치 Perl의 [CPAN 아카이브](https://www.cpan.org)나 [페도라 패키지 데이터베이스](https://src.fedoraproject.org/)와 같은데, 쿠버네티스 패키지용이라고 보면 된다.
 
 *릴리스*는 쿠버네티스 클러스터에서 구동되는 차트의 인스턴스이다.
 일반적으로 하나의 차트는 동일한 클러스터내에 여러 번 설치될 수 있다.
