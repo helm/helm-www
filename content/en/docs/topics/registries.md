@@ -35,8 +35,7 @@ This will start a registry server at `localhost:5000`.
 Use `docker logs -f registry` to see the logs and `docker rm -f registry` to
 stop.
 
-If you wish to persist storage, you can add `-v
-$(pwd)/registry:/var/lib/registry` to the command above.
+If you wish to persist storage, you can add `-v$(pwd)/registry:/var/lib/registry` to the command above.
 
 For more configuration options, please see [the
 docs](https://docs.docker.com/registry/deploying/).
@@ -85,88 +84,35 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### The `chart` subcommand
+### The `push` subcommand
 
-#### `save`
-
-save a chart directory to local cache
+Push a chart to registry
 
 ```console
-$ helm chart save mychart/ localhost:5000/myrepo/mychart:2.7.0
-ref:     localhost:5000/myrepo/mychart:2.7.0
+$ helm create mychart
+Creating mychart
+
+$ helm package mychart/
+Successfully packaged chart and saved it to: /home/user/mychart-0.1.0.tgz
+
+$ helm push mychart-0.1.0.tgz oci://example.com/some/root/namespace
+The push refers to repository [oci://example.com/some/root/namespace/mychart]
+ref:     oci://example.com/some/root/namespace/mychart:0.1.0
 digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
 size:    2.4 KiB
 name:    mychart
 version: 0.1.0
-2.7.0: saved
+0.1.0: pushed to remote (1 layer, 2.4 KiB total)
 ```
 
-#### `list`
+### The `pull` subcommand
 
-list all saved charts
-
-```console
-$ helm chart list
-REF                                                     NAME                    VERSION DIGEST  SIZE            CREATED
-localhost:5000/myrepo/mychart:2.7.0                     mychart                 2.7.0   84059d7 454 B           27 seconds
-localhost:5000/stable/acs-engine-autoscaler:2.2.2       acs-engine-autoscaler   2.2.2   d8d6762 4.3 KiB         2 hours
-localhost:5000/stable/aerospike:0.2.1                   aerospike               0.2.1   4aff638 3.7 KiB         2 hours
-localhost:5000/stable/airflow:0.13.0                    airflow                 0.13.0  c46cc43 28.1 KiB        2 hours
-localhost:5000/stable/anchore-engine:0.10.0             anchore-engine          0.10.0  3f3dcd7 34.3 KiB        2 hours
-...
-```
-
-#### `export`
-
-export a chart to directory
+save a chart locally
 
 ```console
-$ helm chart export localhost:5000/myrepo/mychart:2.7.0
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-Exported chart to mychart/
-```
-
-#### `push`
-
-push a chart to remote
-
-```console
-$ helm chart push localhost:5000/myrepo/mychart:2.7.0
-The push refers to repository [localhost:5000/myrepo/mychart]
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-2.7.0: pushed to remote (1 layer, 2.4 KiB total)
-```
-
-#### `remove`
-
-remove a chart from cache
-
-```console
-$ helm chart remove localhost:5000/myrepo/mychart:2.7.0
-2.7.0: removed
-```
-
-#### `pull`
-
-pull a chart from remote
-
-```console
-$ helm chart pull localhost:5000/myrepo/mychart:2.7.0
-2.7.0: Pulling from localhost:5000/myrepo/mychart
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
+$ helm pull oci://localhost:5000/some/root/namespace/mychart --version 0.1.0
+Pulled: localhost:5000/some/root/namespace/mychart:0.1.0
+Digest: 1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
 ```
 
 ## Specifying dependencies
