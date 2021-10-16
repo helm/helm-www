@@ -351,14 +351,6 @@ spec:
 {{- end -}}
 ```
 
-The following line is needed because as Kubernetes evolves, older `apiVersion`
-entries found in the Library are no longer supported.
-
-```
-apiVersion: apps/v1
-```
-The `.spec.selector.matchLabels` is required.
-
 And now the service file, `demo/templates/service.yaml` as follows:
 
 ```yaml
@@ -403,11 +395,7 @@ image:
   tag: 1.16.0
 ```
 
-At this point you could execute a `helm lint demo` - this is assuming that you
-have `cd`'ed into the chart parent directory.
+You can test that the chart templates are correct prior to deploying using the `helm lint` and `helm template` commands.
 
-If it's good to go now, you can deploy away with:
+If it's good to go, deploy away using `helm install`!
 
-```
-helm install demo demo
-```
