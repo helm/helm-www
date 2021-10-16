@@ -154,7 +154,7 @@ $ git checkout -b gh-pages
 
 然后确保勾选了**Enforce HTTPS**， 这样提供chart时会使用**HTTPS**。
 
-在这个配置中，你可以使用 **master branch** 存储你的chart代码，并使用**gh-pages branch**作为chart仓库，比如：
+在这个配置中，你可以使用你的默认分支存储你的chart代码，并使用**gh-pages branch**作为chart仓库，比如：
 `https://USERNAME.github.io/REPONAME`。[TS Charts](https://github.com/technosophos/tscharts)示范仓库可以访问
 `https://technosophos.github.io/tscharts/`。
 

@@ -1,33 +1,38 @@
 ---
-title: "Helm 添加仓库"
+title: "Helm 展示Crd"
 ---
 
-## helm repo add
+## helm show crds
 
-添加chart仓库
+显示chart的CRD
+
+### 简介
+
+该命令检查chart(目录、文件或URL)并显示自定义资源（CustomResourceDefintion）文件的内容。
 
 ```shell
-helm repo add [NAME] [URL] [flags]
+helm show crds [CHART] [flags]
 ```
 
 ### 可选项
 
 ```shell
-      --allow-deprecated-repos     by default, this command will not allow adding official repos that have been permanently deleted. This disables that behavior
       --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string           identify HTTPS client using this SSL certificate file
-      --force-update               replace (overwrite) the repo if it already exists
-  -h, --help                       help for add
-      --insecure-skip-tls-verify   skip tls certificate checks for the repository
+      --devel                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
+  -h, --help                       help for crds
+      --insecure-skip-tls-verify   skip tls certificate checks for the chart download
       --key-file string            identify HTTPS client using this SSL key file
-      --no-update                  Ignored. Formerly, it would disabled forced updates. It is deprecated by force-update.
+      --keyring string             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
       --pass-credentials           pass credentials to all domains
-      --password string            chart repository password
-      --password-stdin             read chart repository password from stdin
-      --username string            chart repository username
+      --password string            chart repository password where to locate the requested chart
+      --repo string                chart repository url where to locate the requested chart
+      --username string            chart repository username where to locate the requested chart
+      --verify                     verify the package before using it
+      --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的可选项
 
 ```shell
       --debug                       enable verbose output
@@ -44,6 +49,6 @@ helm repo add [NAME] [URL] [flags]
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### 请参阅
+### SEE ALSO
 
-* [helm repo](helm_repo.md) - 添加、列出、删除、更新和索引chart仓库
+* [helm show](helm_show.md) - 显示chart信息

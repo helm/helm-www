@@ -34,12 +34,6 @@ title: "Helm 升级"
 helm upgrade [RELEASE] [CHART] [flags]
 ```
 
-组合使用 '--debug' 和 '--dry-run' 可以在不升级chart的情况下检查生成的清单。
-
-**注意**: 在`crds/`目录中的CRD清单不能用 `--dry-run` 验证。查看 [Helm's
-CRDs caveats](https://helm.sh/zh/docs/chart_best_practices/custom_resource_definitions#some-caveats-and-explanations)
-获取更多信息。
-
 ### 可选项
 
 ```shell
@@ -48,6 +42,7 @@ CRDs caveats](https://helm.sh/zh/docs/chart_best_practices/custom_resource_defin
       --cert-file string             identify HTTPS client using this SSL certificate file
       --cleanup-on-fail              allow deletion of new resources created in this upgrade when upgrade fails
       --create-namespace             if --install is set, create the release namespace if not present
+      --dependency-update            update dependencies if they are missing before installing the chart
       --description string           add a custom description
       --devel                        use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation   if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema

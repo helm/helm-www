@@ -20,7 +20,7 @@ Kubernetes に置ける Homebrew の式、Apt dpkg、
 または Yum RPM ファイルに相当するようなものと考えてください。
 
 *リポジトリ* は、チャートを収集して共有できる場所です。
-Perl の [CPAN アーカイブ](https://www.cpan.org) や [Fedora パッケージデータベース](https://admin.fedoraproject.org/pkgdb/)に似ていますが、
+Perl の [CPAN アーカイブ](https://www.cpan.org) や [Fedora パッケージデータベース](https://src.fedoraproject.org/)に似ていますが、
 Kubernetes パッケージが対象です。
 
 *リリース* は、Kubernetes クラスタで実行されているチャートのインスタンスです。

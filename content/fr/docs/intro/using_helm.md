@@ -12,7 +12,7 @@ Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez c
 
 Un *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
 
-Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de données de packages Fedora](https://fedorahosted.org/pkgdb2/), mais pour les packages de Kubernetes.
+Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de données de packages Fedora](https://src.fedoraproject.org/), mais pour les packages de Kubernetes.
 
 Une *Release* est une instance d'un chart s'exécutant dans un cluster Kubernetes. Un chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'il est à nouveau installé, une nouvelle _release_ est créé. Prenons un chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer ce chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
 
