@@ -337,8 +337,17 @@ Lets use the common code from the helper chart. First, edit deployment
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
 ## Define overrides for your Deployment resource here, e.g.
+apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "demo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo.selectorLabels" . | nindent 8 }}
+
 {{- end -}}
 ```
 
@@ -386,4 +395,7 @@ image:
   tag: 1.16.0
 ```
 
-It is good to go now, so deploy away!
+You can test that the chart templates are correct prior to deploying using the `helm lint` and `helm template` commands.
+
+If it's good to go, deploy away using `helm install`!
+
