@@ -297,8 +297,17 @@ Creating demo
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
 ## Define overrides for your Deployment resource here, e.g.
+apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "demo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo.selectorLabels" . | nindent 8 }}
+
 {{- end -}}
 ```
 
@@ -340,4 +349,6 @@ image:
   tag: 1.16.0
 ```
 
-现在可以出发了，立刻行动吧！
+在部署之前可以使用 `helm lint` 和 `helm template` 命令测试chart模板是否正确。
+
+如果可以正常运行，使用 `helm install` 部署。
