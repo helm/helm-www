@@ -153,7 +153,7 @@ another: value
 
 现在`coffee`的值是 `Latte\nCappuccino\nEspresso\n\n\n`。
 
-文本块中的缩进会被保留，也会保留行跳出的结果：
+文本块中的缩进会被保留，也会保留换行符：
 
 ```yaml
 coffee: |-
