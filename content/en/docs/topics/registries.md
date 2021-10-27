@@ -41,6 +41,10 @@ $(pwd)/registry:/var/lib/registry` to the command above.
 For more configuration options, please see [the
 docs](https://docs.docker.com/registry/deploying/).
 
+Note: on macOS, port `5000` may be occupied by "AirPlay Receiver".
+You can either choose a different local port (e.g. `-p 5001:5000`), or disable this under 
+Syetem Preferences > Sharing.
+
 ### Auth
 
 If you wish to enable auth on the registry, you can do the following-
@@ -60,9 +64,6 @@ docker run -dp 5000:5000 --restart=always --name registry \
 ```
 
 ## Commands for working with registries
-
-Commands are available under both `helm registry` and `helm chart` that allow
-you to work with registries and local cache.
 
 ### The `registry` subcommand
 
@@ -85,95 +86,104 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### The `chart` subcommand
+### The `push` subcommand
 
-#### `save`
-
-save a chart directory to local cache
+upload a chart to a registry
 
 ```console
-$ helm chart save mychart/ localhost:5000/myrepo/mychart:2.7.0
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-2.7.0: saved
+$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts
+Pushed: localhost:5000/helm-charts/mychart:0.1.0
+Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 ```
 
-#### `list`
+#### Extra notes on the `push` subcommand
 
-list all saved charts
+The `push` subcommand can only be used against `.tgz` files
+created ahead of time using `helm package`.
 
-```console
-$ helm chart list
-REF                                                     NAME                    VERSION DIGEST  SIZE            CREATED
-localhost:5000/myrepo/mychart:2.7.0                     mychart                 2.7.0   84059d7 454 B           27 seconds
-localhost:5000/stable/acs-engine-autoscaler:2.2.2       acs-engine-autoscaler   2.2.2   d8d6762 4.3 KiB         2 hours
-localhost:5000/stable/aerospike:0.2.1                   aerospike               0.2.1   4aff638 3.7 KiB         2 hours
-localhost:5000/stable/airflow:0.13.0                    airflow                 0.13.0  c46cc43 28.1 KiB        2 hours
-localhost:5000/stable/anchore-engine:0.10.0             anchore-engine          0.10.0  3f3dcd7 34.3 KiB        2 hours
+When using `helm push` to upload a chart an OCI registry, the reference
+must be prefixed with `oci://` and must not contain the basename or tag.
+
+The registry reference basename is inferred from from the chart's name,
+and the tag is inferred from the chart's semantic version. This is
+currently a strict requirement ([more info here](#deprecated-features-and-strict-naming-policies)).
+
+If you have created a [provenance file]({{< ref "provenance.md" >}}) (`.prov`), and it is present next to the chart `.tgz` file, it will
+automatically be uploaded to the registry upon `push`. This results in
+an extra layer on [the Helm chart manifest](#helm-chart-manifest).
+
+Users of the [helm-push plugin](https://github.com/chartmuseum/helm-push) (for uploading charts to [ChartMuseum]({{< ref "chart_repository.md" >}}#chartmuseum-repository-server))
+may experience issues, since the plugin conflicts with the new, built-in `push`.
+As of version v0.10.0, the plugin has been renamed to `cm-push`.
+
+### Other subcommands
+
+Support for the `oci://` protocol is also available in various other subcommands.
+Here is a complete list:
+
+- `helm pull`
+- `helm show `
+- `helm template`
+- `helm install`
+- `helm upgrade`
+
+In all cases, the `--version` flag is strictly required, since we are
+not yet able to reliably determine the latest semantic version
+for a given chart from a registry. See
+[this issue](https://github.com/helm/helm/issues/9694)
+for more information.
+
+In addition, the basename (chart name) of the registry reference *is*
+included for any type of action involving chart download
+(vs. `helm push` where it is omitted).
+
+Here are a few examples of using the subcommands listed above against
+OCI-based charts:
+
+```
+$ helm pull oci://localhost:5000/helm-charts/mychart --version 0.1.0
+Pulled: localhost:5000/helm-charts/mychart:0.1.0
+Digest: sha256:0be7ec9fb7b962b46d81e4bb74fdcdb7089d965d3baca9f85d64948b05b402ff
+
+$ helm show all oci://localhost:5000/helm-charts/mychart --version 0.1.0
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for Kubernetes
+name: mychart
 ...
-```
 
-#### `export`
+$ helm template myrelease oci://localhost:5000/helm-charts/mychart --version 0.1.0
+---
+# Source: mychart/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+...
 
-export a chart to directory
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart --version 0.1.0
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+...
 
-```console
-$ helm chart export localhost:5000/myrepo/mychart:2.7.0
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-Exported chart to mychart/
-```
-
-#### `push`
-
-push a chart to remote
-
-```console
-$ helm chart push localhost:5000/myrepo/mychart:2.7.0
-The push refers to repository [localhost:5000/myrepo/mychart]
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-2.7.0: pushed to remote (1 layer, 2.4 KiB total)
-```
-
-#### `remove`
-
-remove a chart from cache
-
-```console
-$ helm chart remove localhost:5000/myrepo/mychart:2.7.0
-2.7.0: removed
-```
-
-#### `pull`
-
-pull a chart from remote
-
-```console
-$ helm chart pull localhost:5000/myrepo/mychart:2.7.0
-2.7.0: Pulling from localhost:5000/myrepo/mychart
-ref:     localhost:5000/myrepo/mychart:2.7.0
-digest:  1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-size:    2.4 KiB
-name:    mychart
-version: 0.1.0
-Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
+$ helm upgrade myrelease oci://localhost:5000/helm-charts/mychart --version 0.2.0
+Release "myrelease" has been upgraded. Happy Helming!
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:12:05 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+NOTES:
+...
 ```
 
 ## Specifying dependencies
 
 Dependencies of a chart can be pulled from a registry using the `dependency update` subcommand.
 
-To successfully pull dependencies, the image name in the registry must match the chart name and the tag must match the chart version. The repository entry in `Chart.yaml` is specified as the repository name on the registry without the image name.
+The `repository` for a given entry in `Chart.yaml` is specified as the registry reference without the basename:
 
 ```
 dependencies:
@@ -181,52 +191,13 @@ dependencies:
     version: "2.7.0"
     repository: "oci://localhost:5000/myrepo"
 ```
-This will fetch `localhost:5000/myrepo/mychart:2.7.0` when `dependency update` is executed.
+This will fetch `oci://localhost:5000/myrepo/mychart:2.7.0` when `dependency update` is executed.
 
-## Where are my charts?
+## Helm chart manifest
 
-Charts stored using the commands above will be cached on the filesystem.
-
-The [OCI Image Layout
-Specification](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)
-is adhered to strictly for filesystem layout, for example:
-```console
-$ tree ~/Library/Caches/helm/
-/Users/myuser/Library/Caches/helm/
-└── registry
-    ├── cache
-    │   ├── blobs
-    │   │   └── sha256
-    │   │       ├── 1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617
-    │   │       ├── 31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef
-    │   │       └── 8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111
-    │   ├── index.json
-    │   ├── ingest
-    │   └── oci-layout
-    └── config.json
-```
-
-Example index.json, which contains refs to all Helm chart manifests:
-```console
-$ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
-{
-  "schemaVersion": 2,
-  "manifests": [
-    {
-      "mediaType": "application/vnd.oci.image.manifest.v1+json",
-      "digest": "sha256:31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef",
-      "size": 354,
-      "annotations": {
-        "org.opencontainers.image.ref.name": "localhost:5000/myrepo/mychart:2.7.0"
-      }
-    }
-  ]
-}
-```
-
-Example Helm chart manifest (note the `mediaType` fields):
-```console
-$ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
+Example Helm chart manifest as represented in a registry
+(note the `mediaType` fields):
+```json
 {
   "schemaVersion": 2,
   "config": {
@@ -236,9 +207,36 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
   },
   "layers": [
     {
-      "mediaType": "application/tar+gzip",
+      "mediaType": "application/vnd.cncf.helm.chart.content.v1.tar+gzip",
       "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
       "size": 2487
+    }
+  ]
+}
+```
+
+The following example contains a
+[provenance file]({{< ref "provenance.md" >}})
+(note the extra layer):
+
+```json
+{
+  "schemaVersion": 2,
+  "config": {
+    "mediaType": "application/vnd.cncf.helm.config.v1+json",
+    "digest": "sha256:8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111",
+    "size": 117
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.content.v1.tar+gzip",
+      "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
+      "size": 2487
+    },
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.provenance.v1.prov",
+      "digest": "sha256:3e207b409db364b595ba862cdc12be96dcdad8e36c59a03b7b3b61c946a5741a",
+      "size": 643
     }
   ]
 }
@@ -247,5 +245,21 @@ $ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe536725
 ## Migrating from chart repos
 
 Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}})
-(index.yaml-based repos) is as simple as a `helm fetch` (Helm 2 CLI), `helm
-chart save`, `helm chart push`.
+(index.yaml-based repos) is as simple using `helm pull`, then using `helm push` to upload the resulting `.tgz` files to a registry.
+
+## Deprecated features and strict naming policies
+
+Prior to Helm [3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0),
+Helm's OCI support was slightly different.
+As a result of [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md), in an effort to simplify and stabilize this feature set,
+several changes have been implemented:
+
+- The `helm chart` subcommand has been removed
+- The chart cache has been removed (no `helm chart list` etc.)
+- OCI registry references are now always prefixed with `oci://`
+- The basename of the registry reference must *always* match the chart's name
+- The tag of the registry reference must *always* match the chart's semantic version (i.e. no `latest` tags)
+- The chart layer media type was switched from `application/tar+gzip` to `application/vnd.cncf.helm.chart.content.v1.tar+gzip`
+
+Thank you for your patience as the Helm team continues to work on
+stabilizing native support for OCI registries.
