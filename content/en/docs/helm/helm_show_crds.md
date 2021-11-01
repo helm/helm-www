@@ -10,7 +10,7 @@ show the chart's CRDs
 
 
 This command inspects a chart (directory, file, or URL) and displays the contents
-of the CustomResourceDefintion files
+of the CustomResourceDefinition files
 
 
 ```
