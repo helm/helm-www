@@ -34,7 +34,8 @@ Helm includes numerous logic and control flow functions including [and](#and),
 
 ### and
 
-Returns a boolean and of the two arguments.
+Returns the boolean AND of two or more arguments
+(the first empty argument, or the last argument).
 
 ```
 and .Arg1 .Arg2
@@ -42,8 +43,8 @@ and .Arg1 .Arg2
 
 ### or
 
-Returns the boolean or of the two arguments. It returns the first non-empty
-argument or the last argument.
+Returns the boolean OR of two or more arguments
+(the first non-empty argument, or the last argument).
 
 ```
 or .Arg1 .Arg2
