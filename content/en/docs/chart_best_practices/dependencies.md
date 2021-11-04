@@ -23,6 +23,16 @@ words, `~1.2.3` is equivalent to `>= 1.2.3, < 1.3.0`
 For the complete version matching syntax, please see the [semver
 documentation](https://github.com/Masterminds/semver#checking-version-constraints).
 
+### Prerelease versions
+
+The above versioning constraints will not match on pre-release versions.
+For example `version: ~1.2.3` will match `version: ~1.2.4` but not `version: ~1.2.3-1`.
+The following provides a pre-release as well as patch-level matching:
+
+```yaml
+version: ~1.2.3-0
+```
+
 ### Repository URLs
 
 Where possible, use `https://` repository URLs, followed by `http://` URLs.
