@@ -666,7 +666,7 @@ list 1 2 3 | toStrings
 "0777" | toDecimal
 ```
 
-上述回将 `0777` 转换成 `511` 并返回int64的值。
+上述会将 `0777` 转换成 `511` 并返回int64的值。
 
 ### toJson, mustToJson
 
