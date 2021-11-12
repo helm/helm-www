@@ -224,7 +224,7 @@ dependencies:
 从经典 [chart 仓库](https://helm.sh/zh/docs/topics/chart_repository)（基于index.yaml）和使用
 `helm pull`一样简单，然后使用`helm push`上传生成的`.tgz`文件到注册表。
 
-## 不推荐使用功能和严格的命名策略
+## Deprecated features and strict naming policies
 
 在Helm [3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) 之前，Helm的OCI支持略有不同。
 
