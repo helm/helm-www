@@ -251,7 +251,7 @@ sides.
 Finally, sometimes it's easier to tell the template system how to indent for you
 instead of trying to master the spacing of template directives. For that reason,
 you may sometimes find it useful to use the `indent` function (`{{ indent 2
-"mug:true" }}`).
+"mug: true" }}`).
 
 ## Modifying scope using `with`
 
