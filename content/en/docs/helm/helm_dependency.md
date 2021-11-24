@@ -28,7 +28,7 @@ For example, this Chart.yaml declares two dependencies:
       repository: "https://example.com/charts"
     - name: memcached
       version: "3.2.1"
-      repository: "https://another.example.com/charts"
+      repository: "@my-remote-repo"
 
 
 The 'name' should be the name of a chart, where that name must match the name
@@ -36,10 +36,13 @@ in that chart's 'Chart.yaml' file.
 
 The 'version' field should contain a semantic version or version range.
 
-The 'repository' URL should point to a Chart Repository. Helm expects that by
-appending '/index.yaml' to the URL, it should be able to retrieve the chart
-repository's index. Note: 'repository' can be an alias. The alias must start
-with 'alias:' or '@'.
+The 'repository' value may be a URL pointing to a Chart Repository. Helm
+expects that by appending '/index.yaml' to the URL, it should be able to
+retrieve the chart repository's index.
+
+The 'repository' value can instead refer by name to a repo added by
+'[helm repo add](helm_repo_add.md)'. Prefix the repo name with 'alias:' or
+'@' in the 'repository' value.
 
 Starting from 2.2.0, repository can be defined as the path to the directory of
 the dependency charts stored locally. The path should start with a prefix of
@@ -51,9 +54,7 @@ the dependency charts stored locally. The path should start with a prefix of
       version: "1.2.3"
       repository: "file://../dependency_chart/nginx"
 
-If the dependency chart is retrieved locally, it is not required to have the
-repository added to helm by "helm add repo". Version matching is also supported
-for this case.
+Version matching is supported even if the Chart is local.
 
 
 ### Options

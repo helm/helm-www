@@ -4,7 +4,12 @@ title: "Helm Repo Add"
 
 ## helm repo add
 
-add a chart repository
+Add a chart repository.
+
+### Synopsis
+
+Add a chart repository. Helm expects that by appending '/index.yaml' to the URL, it should be able to retrieve the 
+chart repository's index.
 
 ```
 helm repo add [NAME] [URL] [flags]
