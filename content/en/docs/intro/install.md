@@ -80,6 +80,16 @@ package](https://chocolatey.org/packages/kubernetes-helm) build to
 choco install kubernetes-helm
 ```
 
+### From Scoop (Windows)
+
+Members of the Helm community have contributed a [Helm
+package](https://scoop.sh/packages/helm) build to
+[Scoop](https://scoop.sh/). This package is generally up to date.
+
+```console
+choco install helm
+```
+
 ### From Apt (Debian/Ubuntu)
 
 Members of the Helm community have contributed a [Helm
