@@ -1415,7 +1415,7 @@ Helm provides the following list functions: [append
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
 [prepend (mustPrepend)](#prepend-mustprepend), [rest
 (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse),
-[seq](#seq), [slice (mustSlice)](#slice-mustslice), [uniq
+[seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq
 (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep), and
 [without (mustWithout)](#without-mustwithout).
 
@@ -1561,6 +1561,13 @@ $copy := compact $list
 
 `compact` panics if there is a problem and `mustCompact` returns an error to the
 template engine if there is a problem.
+
+### index
+
+To get the nth element of a list, use `index list [n]`. To index into 
+multi-dimensional lists, use `index list [n] [m] ...`
+- `index $myList 0` returns `1`. It is the same as `myList[0]`
+- `index $myList 0 1` would be the same as `myList[0][1]`
 
 ### slice, mustSlice
 
