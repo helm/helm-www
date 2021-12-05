@@ -1430,6 +1430,13 @@ $copy := compact $list
 
 `compact` 有问题时会出错，但 `mustCompact` 有问题时会向模板引擎返回错误。
 
+### index
+
+使用`index list [n]`获取列表的第n个元素。使用`index list [n] [m] ...`获取多位列表元素。
+
+* `index $myList 0` 返回 `1`，同 `myList[0]`
+* `index $myList 0 1` 同 `myList[0][1]`
+
 ### slice, mustSlice
 
 从列表中获取部分元素，使用 `slice list [n] [m]`。等同于 `list[n:m]`.
