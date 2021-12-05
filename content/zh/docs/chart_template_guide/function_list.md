@@ -1295,7 +1295,7 @@ Helm 提供了以下列表函数： [append(mustAppend)](#append-mustappend), [c
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
 [prepend (mustPrepend)](#prepend-mustprepend), [rest
 (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse),
-[seq](#seq), [slice (mustSlice)](#slice-mustslice), [uniq
+[seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq
 (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep), 和
 [without (mustWithout)](#without-mustwithout)。
 

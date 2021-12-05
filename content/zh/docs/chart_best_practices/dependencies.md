@@ -18,6 +18,15 @@ version: ~1.2.3
 
 关于完整的版本匹配语法，请参照[语义版本文档](https://github.com/Masterminds/semver#checking-version-constraints)。
 
+### 预发布版本
+
+上述版本约束不适用于预发布版本。比如 `version: ~1.2.3` 可以匹配 `version: ~1.2.4` 但不能匹配 `version: ~1.2.3-1`。
+预发布及补丁级别匹配如下：
+
+```yaml
+version: ~1.2.3-0
+```
+
 ### 仓库URL
 
 如果可能的话，使用 `https://` 仓库URL，而不是`http://` URL。
