@@ -45,9 +45,9 @@ other = "Helm 是什么？"
 
 [main_what_is_helm_description]
 other = """
-Helm 帮助您管理 Kubernetes 应用——Helm 图表，即使是最复杂的 Kubernetes 应用程序，都可以帮助您定义，安装和升级。
+Helm 帮助您管理 Kubernetes 应用—— Helm Chart，即使是最复杂的 Kubernetes 应用程序，都可以帮助您定义，安装和升级。
 
-图表 Chart 易于创建、发版、分享和发布，所以停止复制粘贴，开始使用 Helm 吧。
+Helm Chart 易于创建、发版、分享和发布，所以停止复制粘贴，开始使用 Helm 吧。
 
 Helm 是 [CNCF](https://cncf.io) 的毕业项目，由 [Helm 社区](https://github.com/helm/community)维护。
 
@@ -65,7 +65,7 @@ other = '为什么团队 <i class="fa fa-heart"></i> Helm'
 other = "复杂性管理"
 
 [feature_01_desc]
-other = "即使是最复杂的应用，图表 Charts 依然可以描述， 提供使用单点授权的可重复安装应用程序。"
+other = "即使是最复杂的应用，Helm Chart 依然可以描述， 提供使用单点授权的可重复安装应用程序。"
 
 [feature_02_title]
 other = "易于升级"
@@ -77,7 +77,7 @@ other = "随时随地升级和自定义的钩子消除您升级的痛苦。"
 other = "分发简单"
 
 [feature_03_desc]
-other = "图表 Charts 很容易在公共或私有化服务器上发版，分发和部署站点。"
+other = "Helm Chart 很容易在公共或私有化服务器上发版，分发和部署站点。"
 
 [feature_04_title]
 other = "回滚"
@@ -96,10 +96,10 @@ other = "使用包管理器安装 Helm 或者 [下载二进制包](https://githu
 other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](https://helm.sh/docs/intro/install/)查看更多[安装步骤](https://helm.sh/docs/intro/install/)和[使用说明](https://helm.sh/docs/intro/using_helm/)."
 
 [get_charts_title]
-other = "获取图表 Charts"
+other = "获取 Chart"
 
 [get_charts_desc]
-other = "访问 [Helm 应用中心](https://hub.helm.sh) 浏览公共库大量的图表。"
+other = "访问 [Helm 应用中心](https://hub.helm.sh) 浏览公共库大量的 Charts。"
 
 [get_upgrade_title]
 other = "[从 v2 升级到 v3](https://helm.sh/docs/topics/v2_v3_migration/)"
@@ -185,7 +185,7 @@ other = "Helm 开发"
 other = "议题涉及 Helm 开发，正在进行的 PR，发版等等。"
 
 [community_slack_group_03_title]
-other = "图表 Charts"
+other = "Helm Chart"
 
 [community_slack_group_03_desc]
 other = "关于 Helm Chart 的用户和贡献者的讨论。"
