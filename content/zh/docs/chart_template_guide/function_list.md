@@ -1295,7 +1295,7 @@ Helm 提供了以下列表函数： [append(mustAppend)](#append-mustappend), [c
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
 [prepend (mustPrepend)](#prepend-mustprepend), [rest
 (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse),
-[seq](#seq), [slice (mustSlice)](#slice-mustslice), [uniq
+[seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq
 (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep), 和
 [without (mustWithout)](#without-mustwithout)。
 
@@ -1429,6 +1429,13 @@ $copy := compact $list
 `compact` 会返回一个移除了空值(比如， "")的新列表。
 
 `compact` 有问题时会出错，但 `mustCompact` 有问题时会向模板引擎返回错误。
+
+### index
+
+使用`index list [n]`获取列表的第n个元素。使用`index list [n] [m] ...`获取多位列表元素。
+
+* `index $myList 0` 返回 `1`，同 `myList[0]`
+* `index $myList 0 1` 同 `myList[0][1]`
 
 ### slice, mustSlice
 
