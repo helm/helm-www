@@ -1,0 +1,22 @@
+{{ $versions  := site.Params.versions }}
+{{ $primary   := index (where $versions ".primary" true) 0 }}
+{{ $menu      := site.Menus.main }}
+
+<!-- versioning-->
+  <li class="versioner navbar-item has-dropdown is-right is-hoverable">
+    {{ with $primary }}
+    <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
+      {{ .version }}{{ with .patch }}{{ end }} <i class="fa fa-caret-down"></i>
+    </a>
+    {{ end }}
+
+    <ul id="drop1" class="navbar-dropdown dropdown-menu f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+      {{ range $versions }}
+      <li>
+        <a href="{{ .url }}" class="navbar-item">
+          {{ .version }}{{ with .patch }} <em>{{ . }}</em>{{ end }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </li>
