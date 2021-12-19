@@ -108,6 +108,10 @@ The registry reference basename is inferred from from the chart's name,
 and the tag is inferred from the chart's semantic version. This is
 currently a strict requirement ([more info here](#deprecated-features-and-strict-naming-policies)).
 
+Certain registries require the repository and/or namespace (if specified)
+to be created beforehand. Otherwise, an error will be produced during the
+ `helm push` operation.
+
 If you have created a [provenance file]({{< ref "provenance.md" >}}) (`.prov`), and it is present next to the chart `.tgz` file, it will
 automatically be uploaded to the registry upon `push`. This results in
 an extra layer on [the Helm chart manifest](#helm-chart-manifest).
