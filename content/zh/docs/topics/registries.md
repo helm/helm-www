@@ -95,6 +95,8 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 
 注册表引用基础名称是由chart名称推断而来，tag是由chart语义版本推断而来。这是目前的严格要求。([更多信息](#deprecated-features-and-strict-naming-policies))。
 
+某些注册表（如果指定）要求事先创建仓库或者命名空间，或者两者都需要创建。否则，`helm push` 会出现错误。
+
 如果您已经创建了一个[源文件](https://helm.sh/zh/docs/topics/provenance) (`.prov`),
 且和`.tgz`文件在同一文件下，会通过`push`自动上传到注册表。会在 [Helm chart manifest](#helm-chart-manifest)生成一个额外的层。
 
