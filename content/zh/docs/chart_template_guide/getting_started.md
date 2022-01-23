@@ -2,6 +2,8 @@
 title: "从这里开始吧"
 weight: 2
 description: "Chart模板的快速指南。"
+
+
 ---
 
 指南的该部分，我们会创建一个chart并添加第一个模板。创建的chart会在后续指南中用到。
@@ -159,9 +161,8 @@ TEST SUITE: None
 注意在kubernetes内的配置映射名称是 `clunky-serval-configmap`，而不是之前的 `mychart-configmap`。
 
 由此我们已经看到了最基本的模板：YAML文件有嵌入在`{{` 和 `}}`之间的模板命令。下一部分，会深入了解模板，
-但在这之前，有个快捷的技巧可以加快模板的构建速度：当你想测试模板渲染但又不想安装任何内容时，可以使用`helm
-install --debug --dry-run goodly-guppy ./mychart`。这样会渲染模板，但是安装到chart，
-会返回一个渲染后的模板如下：
+但在这之前，有个快捷的技巧可以加快模板的构建速度：当你想测试模板渲染的内容但又不想安装任何实际应用时，可以使用`helm
+install --debug --dry-run goodly-guppy ./mychart`。这样不会安装应用(chart)到你的kubenetes集群中，只会渲染模板内容到控制台（用于测试）。渲染后的模板如下：
 
 ```console
 $ helm install --debug --dry-run goodly-guppy ./mychart
@@ -218,8 +219,8 @@ data:
 
 ```
 
-使用`--dry-run`会使测试代码变得很简单，但不能保证Kubernetes本身会接受生成模板。
-最好不要仅仅因为`--dry-run`可以工作就觉得chart可以安装。
+使用`--dry-run`会让你变得更容易测试，但不能保证Kubernetes会接受你生成的模板。
+最好不要仅仅因为`--dry-run`可以正常运行就觉得chart可以安装。
 
 在[Chart模板指南](_index.md)中，我们以这里定义的chart基本模板为例详细讨论Helm模板语言。
 然后开始讨论内置对象。
