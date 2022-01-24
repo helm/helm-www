@@ -12,9 +12,9 @@ stored and shared across OCI-based registries.
 ## Enabling OCI Support
 
 Prior to Helm v3.8.0, OCI support was considered *experimental* and needed to be
-enabled. As of v3.8.0 it is enable by default.
+enabled. As of v3.8.0 it is enabled by default.
 
-To enable the OCI experiment for Helm versions prior to v3.8.0, please set
+To enable OCI experimental support for Helm versions prior to v3.8.0, please set
 `HELM_EXPERIMENTAL_OCI` in the environment:
 
 ```console
