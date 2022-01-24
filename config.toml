@@ -42,7 +42,7 @@ jsFiles = [
 ]
 
 [[params.versions]]
-version = "v3.7.2"
+version = "v3.8.0"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
@@ -52,8 +52,8 @@ version = "v2.17.0"
 url = "https://v2.helm.sh/docs"
 
 [params.nextversion]
-version = "v3.8.0"
-date = "January 19, 2022"
+version = "v3.9.0"
+date = "May 11, 2022"
 
 [[params.quicklinks]]
 title = "Quickstart Guide"
