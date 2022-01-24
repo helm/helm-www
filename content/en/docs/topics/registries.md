@@ -11,16 +11,15 @@ stored and shared across OCI-based registries.
 
 ## Enabling OCI Support
 
-Currently OCI support is considered *experimental*.
+Prior to Helm v3.8.0, OCI support was considered *experimental* and needed to be
+enabled. As of v3.8.0 it is enable by default.
 
-In order to use the commands described below, please set `HELM_EXPERIMENTAL_OCI`
-in the environment:
+To enable the OCI experiment for Helm versions prior to v3.8.0, please set
+`HELM_EXPERIMENTAL_OCI` in the environment:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
-
-For more information about this feature and plans for general availability, please see the [OCI Support Helm Improvement Proposal](https://github.com/helm/community/blob/main/hips/hip-0006.md).
 
 ## Running a registry
 
@@ -131,13 +130,7 @@ Here is a complete list:
 - `helm install`
 - `helm upgrade`
 
-In all cases, the `--version` flag is strictly required, since we are
-not yet able to reliably determine the latest semantic version
-for a given chart from a registry. See
-[this issue](https://github.com/helm/helm/issues/9694)
-for more information.
-
-In addition, the basename (chart name) of the registry reference *is*
+The basename (chart name) of the registry reference *is*
 included for any type of action involving chart download
 (vs. `helm push` where it is omitted).
 
