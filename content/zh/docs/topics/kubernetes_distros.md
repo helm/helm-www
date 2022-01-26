@@ -4,8 +4,8 @@ description: "捕获在特定Kubernetes环境中使用Helm的有关信息"
 weight: 10
 ---
 
-Helm 应该与任何[Kubernetes的一致性版本](https://github.com/cncf/k8s-conformance)一起工作 （不管
-[认证](https://www.cncf.io/certification/software-conformance/)与否）。
+
+Helm 应该适用于任何[符合标准的Kubernetes版本](https://github.com/cncf/k8s-conformance)（无论是否经过[认证](https://www.cncf.io/certification/software-conformance/)）。
 
 该文档捕获在特定Kubernetes环境中使用Helm的有关信息。如果需要，请提供更多有关发行版的详细信息（按字母排序）。
 
