@@ -43,6 +43,7 @@ request](https://github.com/helm/helm-www/pulls).
   testing chart locally with YAML
 - [helm-val](https://github.com/HamzaZo/helm-val) - A plugin to get
   values from a previous release.
+- [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc)
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
