@@ -68,7 +68,7 @@ Helm 基于以下配置顺序存储缓存，配置和添加数据：
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
   -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
@@ -87,6 +87,8 @@ Helm 基于以下配置顺序存储缓存，配置和添加数据：
 - [helm package](helm_package.md) - 将chart目录打包
 - [helm plugin](helm_plugin.md) - 安装、列举或卸载Helm插件
 - [helm pull](helm_pull.md) - 从仓库下载chart并（可选）在本地目录中打开
+- [helm push](helm_push.md) - 推送chart到远程
+- [helm registry](helm_registry.md) - 从注册表登录或登出
 - [helm repo](helm_repo.md) - 添加、列出、删除、更新和索引chart仓库
 - [helm rollback](helm_rollback.md) - 回滚发布到上一个版本
 - [helm search](helm_search.md) - helm中搜索关键字

@@ -1,22 +1,26 @@
 ---
-title: "Helm 插件升级"
+title: "Helm 注册表登出"
 ---
 
-## helm plugin update
+## helm registry logout
 
-升级一个或多个Helm插件
+从注册表登出
+
+### 简介
+
+从远程注册表移除认证信息。
 
 ```shell
-helm plugin update <plugin>... [flags]
+helm registry logout [host] [flags]
 ```
 
 ### 可选项
 
 ```shell
-  -h, --help   help for update
+  -h, --help   help for logout
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的可选项
 
 ```shell
       --debug                       enable verbose output
@@ -35,4 +39,4 @@ helm plugin update <plugin>... [flags]
 
 ### 请参阅
 
-* [helm plugin](helm_plugin.md) - 安装、列举或卸载Helm插件
+* [helm registry](helm_registry.md) - 登录或登出注册表

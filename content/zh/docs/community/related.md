@@ -46,7 +46,7 @@ Helm的顶层工具。
 Chart仓库
 - [chart-registry](https://github.com/hangyan/chart-registry) - 在OCI注册表上的Helm chart主机
 - [Codefresh](https://codefresh.io) - 带有UI界面的管理Helm chart和版本的Kubernetes原生CI/CD及管理平台
-- [Flux](https://fluxcd.io/) -  从Git到Kubernetes的连续和渐进交付
+- [Flux](https://fluxcd.io/docs/components/helm/) -  从Git到Kubernetes的连续和渐进交付
 - [Helmfile](https://github.com/roboll/helmfile) - Helmfile是用于部署helm chart的声明性规范
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman是helm-charts-as-code工具，
   可以从版本控制所需的状态文件（以简单的TOML格式描述）安装、升级、保护、移动及删除发布版本。

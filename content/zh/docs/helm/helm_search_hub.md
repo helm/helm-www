@@ -27,6 +27,7 @@ helm search hub [KEYWORD] [flags]
 ```shell
       --endpoint string      Hub instance to query for charts (default "https://hub.helm.sh")
   -h, --help                 help for hub
+      --list-repo-url        print charts repository URL
       --max-col-width uint   maximum column width for output table (default 50)
   -o, --output format        prints the output in the specified format. Allowed values: table, json, yaml (default table)
 ```
@@ -43,7 +44,7 @@ helm search hub [KEYWORD] [flags]
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
   -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```

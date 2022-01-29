@@ -9,15 +9,13 @@ target="_blank">OCI</a> 用于包分发。 Chart包可以通过基于OCI的注�
 
 ## 激活对 OCI 的支持
 
-当前的对 OCI 的支持被认为具有*实验性*。
+在Helm v3.8.0之前，OCI支持被认为是*实验性的*，需要手动启用。从v3.8.0开始，默认启用。
 
-为了能使用下面描述的命令，需要在环境变量中设置 `HELM_EXPERIMENTAL_OCI`：
+为了在v3.8.0之前的版本中使用OCI实验性支持，请在环境变量中设置`HELM_EXPERIMENTAL_OCI`：
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
-
-有关此功能的详细信息及一般可用性计划，请参阅[OCI支持Helm改进的建议](https://github.com/helm/community/blob/main/hips/hip-0006.md).
 
 ## 运行一个注册中心
 
@@ -109,14 +107,12 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 对`oci://`协议的支持同样适用于很多其他子命令。以下是完整列表：
 
 - `helm pull`
-- `helm show `
+- `helm show`
 - `helm template`
 - `helm install`
 - `helm upgrade`
 
-在所有情况下，`--version`是必需的，因为我们还不能从注册表中准确地确定给定chart的最新语义版本。查看[这里](https://github.com/helm/helm/issues/9694)获取更多信息。
-
-另外，注册表的基础名称(chart name)*包含*了涉及chart下载的任意类型的操作。（相对于`helm push`被省略的位置）。
+注册表的基础名称(chart name)*包含*了涉及chart下载的任意类型的操作。（相对于`helm push`被省略的位置）。
 
 下面是一些基于OCI的chart使用上述子命令的示例：
 
