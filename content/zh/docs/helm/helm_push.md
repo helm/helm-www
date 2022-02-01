@@ -1,22 +1,28 @@
 ---
-title: "Helm 插件升级"
+title: "Helm 推送"
 ---
 
-## helm plugin update
+## helm push
 
-升级一个或多个Helm插件
+将chart推送到远程
+
+### 简介
+
+上传chart到注册表。
+
+如果chart有其他相关文件，也会一起上传。
 
 ```shell
-helm plugin update <plugin>... [flags]
+helm push [chart] [remote] [flags]
 ```
 
 ### 可选项
 
 ```shell
-  -h, --help   help for update
+  -h, --help   help for push
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的可选项
 
 ```shell
       --debug                       enable verbose output
@@ -35,4 +41,4 @@ helm plugin update <plugin>... [flags]
 
 ### 请参阅
 
-* [helm plugin](helm_plugin.md) - 安装、列举或卸载Helm插件
+* [helm](helm.md) - 针对Kubernetes的Helm包管理器。

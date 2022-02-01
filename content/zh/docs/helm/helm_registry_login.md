@@ -1,22 +1,30 @@
 ---
-title: "Helm 插件升级"
+title: "Helm 注册表登录"
 ---
 
-## helm plugin update
+## helm registry login
 
-升级一个或多个Helm插件
+登录注册表
+
+### 简介
+
+用远程注册表进行身份验证。
 
 ```shell
-helm plugin update <plugin>... [flags]
+helm registry login [host] [flags]
 ```
 
 ### 可选项
 
 ```shell
-  -h, --help   help for update
+  -h, --help              help for login
+      --insecure          allow connections to TLS registry without certs
+  -p, --password string   registry password or identity token
+      --password-stdin    read password or identity token from stdin
+  -u, --username string   registry username
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的可选项
 
 ```shell
       --debug                       enable verbose output
@@ -35,4 +43,4 @@ helm plugin update <plugin>... [flags]
 
 ### 请参阅
 
-* [helm plugin](helm_plugin.md) - 安装、列举或卸载Helm插件
+* [helm registry](helm_registry.md) - 登录或登出注册表

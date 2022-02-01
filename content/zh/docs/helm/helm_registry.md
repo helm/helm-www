@@ -1,19 +1,19 @@
 ---
-title: "Helm 插件升级"
+title: "Helm 注册表"
 ---
 
-## helm plugin update
+## helm registry
 
-升级一个或多个Helm插件
+登录或登出注册表
 
-```shell
-helm plugin update <plugin>... [flags]
-```
+### 简介
+
+该命令由多个子命令组成，用于与注册表交互。
 
 ### 可选项
 
 ```shell
-  -h, --help   help for update
+  -h, --help   help for registry
 ```
 
 ### 从父命令继承的命令
@@ -35,4 +35,6 @@ helm plugin update <plugin>... [flags]
 
 ### 请参阅
 
-* [helm plugin](helm_plugin.md) - 安装、列举或卸载Helm插件
+* [helm](helm.md) - 针对Kubernetes的Helm包管理器。
+* [helm registry login](helm_registry_login.md) - 登录注册表
+* [helm registry logout](helm_registry_logout.md) - 从注册表登出

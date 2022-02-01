@@ -14,7 +14,7 @@ title: "Helm 升级"
 对于chart引用，除非使用'--version'参数指定，否则会使用最新版本。
 
 要在chart中重写value，需要使用'--values'参数并传一个文件或者从命令行使用'--set'参数传个配置，
-要强制字符串值，使用'--set-string'。在值很大而不想使用'--values'和'--set'的场景中，使用'--set-file'从文件中读取单个的大值。
+要强制字符串值，使用'--set-string'。当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。
 
 可以多次指定'--values'/'-f'参数，最后（最右边）指定的文件优先级最高。比如如果myvalues.yaml和override.yaml同时包含了名为
 'Test'的key，override.yaml中的设置会优先使用：
@@ -88,7 +88,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
   -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
