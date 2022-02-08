@@ -24,6 +24,8 @@ request](https://github.com/helm/helm-www/pulls).
   values files from your Git repositories
 - [helm-k8comp](https://github.com/cststack/k8comp) - Plugin to create Helm
   Charts from hiera using k8comp
+- [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - Update helm release
+  metadata to replace deprecated or removed Kubernetes APIs
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin to
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - Helm plugin that allows to
