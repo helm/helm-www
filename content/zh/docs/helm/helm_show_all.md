@@ -8,7 +8,7 @@ title: "Helm 展示所有"
 
 ### 简介
 
-该命令检查chart(目录、文件或URL)并显示所有的内容（values.yaml, Charts.yaml, README）
+该命令检查chart(目录、文件或URL)并显示所有的内容（values.yaml, Chart.yaml, README）
 
 ```shell
 helm show all [CHART] [flags]
@@ -44,7 +44,7 @@ helm show all [CHART] [flags]
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
   -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```

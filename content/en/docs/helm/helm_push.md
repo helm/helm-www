@@ -1,31 +1,28 @@
 ---
-title: "Helm Test"
+title: "Helm Push"
 ---
 
-## helm test
+## helm push
 
-run tests for a release
+push a chart to remote
 
 ### Synopsis
 
 
-The test command runs the tests for a release.
+Upload a chart to a registry.
 
-The argument this command takes is the name of a deployed release.
-The tests to be run are defined in the chart that was installed.
+If the chart has an associated provenance file,
+it will also be uploaded.
 
 
 ```
-helm test [RELEASE] [flags]
+helm push [chart] [remote] [flags]
 ```
 
 ### Options
 
 ```
-      --filter strings     specify tests by attribute (currently "name") using attribute=value syntax or '!attribute=value' to exclude a test (can specify multiple or separate values with commas: name=test1,name=test2)
-  -h, --help               help for test
-      --logs               dump the logs from test pods (this runs after all tests are complete, but before any cleanup)
-      --timeout duration   time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
+  -h, --help   help for push
 ```
 
 ### Options inherited from parent commands

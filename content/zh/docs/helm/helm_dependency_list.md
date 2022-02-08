@@ -37,7 +37,7 @@ helm dependency list CHART [flags]
       --kube-token string           bearer token used for authentication
       --kubeconfig string           path to the kubeconfig file
   -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry.json")
+      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```

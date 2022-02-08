@@ -119,7 +119,7 @@ servers:
     port: 81
 ```
 
-The above cannot be expressed with `--set` in Helm `<=2.4`. In Helm 2.5, the
+The above cannot be expressed with `--set` in Helm `<=2.4`. In Helm 2.5,
 accessing the port on foo is `--set servers[0].port=80`. Not only is it harder
 for the user to figure out, but it is prone to errors if at some later time the
 order of the `servers` is changed.
