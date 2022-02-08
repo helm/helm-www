@@ -4,8 +4,9 @@ description: "--values参数操作说明"
 weight: 4
 ---
 
-在上一部分我们了解了Helm模板提供的内置对象。其中一个是`Values`。该对象提供了对传递到chart的值的访问方法，
-其内容源包括了多个位置：
+在上一部分我们了解了Helm模板提供的内置对象。其中一个是`Values`对象。该对象提供了传递值到chart的方法，
+
+其内容来自于多个位置：
 
 - chart中的`values.yaml`文件
 - 如果是子chart，就是父chart中的`values.yaml`文件
@@ -14,7 +15,7 @@ weight: 4
 - 使用`--set` (比如`helm install --set foo=bar ./mychart`)传递的单个参数
 
 以上列表有明确顺序：默认使用`values.yaml`，可以被父chart的`values.yaml`覆盖，继而被用户提供values文件覆盖，
-最后会被`--set`参数覆盖。
+最后会被`--set`参数覆盖，优先级为`values.yaml`最低，`--set`参数最高。
 
 values文件是普通的YAML文件。现在编辑`mychart/values.yaml`然后编辑配置映射ConfigMap模板。
 
@@ -126,13 +127,13 @@ data:
   food: {{ .Values.favorite.food }}
 ```
 
-虽然可以这样构造数据，但还是建议构建更加平坦的浅层树。当我们想要给子chart赋值时，会看到如何使用树结构给value命名。
+虽然可以这样构造数据，但还是建议构建更加平坦的浅层树。以后想要给子chart赋值时，会看到如何使用树结构给value命名。
 
 ## 删除默认的key
 
 如果需要从默认的value中删除key，可以将key设置为`null`，Helm将在覆盖的value合并时删除这个key。
 
-比如，稳定的Drupal chart 允许在配置自定义镜像时配置活动探针。以下是默认值：
+比如，稳定的Drupal允许在配置自定义镜像时配置活动探针。默认值为`httpget`：
 
 ```yaml
 livenessProbe:
@@ -142,7 +143,7 @@ livenessProbe:
   initialDelaySeconds: 120
 ```
 
-如果你想用`exec`重写活动探针句柄而不是`httpGet`，使用`--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`，
+如果你想替换掉`httpGet`用`exec`重写活动探针，使用`--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`，
 Helm会把默认的key和重写的key合并在一起，从而生成以下YAML：
 
 ```yaml
@@ -157,10 +158,10 @@ livenessProbe:
   initialDelaySeconds: 120
 ```
 
-然而Kubernetes会失败，因为不能声明多个活动探针句柄。为了解决这个问题，可以指定Helm通过设定null来删除`livenessProbe.httpGet`：
+因为Kubernetes中不能声明多个活动探针句柄，从而会应用发布会失败。为了解决这个问题，Helm可以指定通过设定null来删除`livenessProbe.httpGet`：
 
 ```sh
 helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
 ```
 
-这里我们已经看到了几个内置对象，并用它们将信息植入到模板中。现在来模板引擎的另一部分：方法和管道。
+在这之前我们已经看到了几个内置对象，并用它们将信息传递到模板中。现在来模板引擎的另一部分：方法和管道。
