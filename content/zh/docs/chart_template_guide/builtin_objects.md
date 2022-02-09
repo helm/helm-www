@@ -13,7 +13,7 @@ weight: 3
 - `Release`： `Release`对象描述了版本发布本身。包含了以下对象：
   - `Release.Name`： release名称
   - `Release.Namespace`： 版本中包含的命名空间(如果manifest没有覆盖的话)
-  - `Release.IsUpgrade`： 如果当前操作是升级或回滚的话，该值j将被设置为`true`
+  - `Release.IsUpgrade`： 如果当前操作是升级或回滚的话，该值将被设置为`true`
   - `Release.IsInstall`： 如果当前操作是安装的话，该值将被设置为`true`
   - `Release.Revision`： 此次修订的版本号。安装时是1，每次升级或回滚都会自增
   - `Release.Service`： 该service用来渲染当前模板。Helm里始终`Helm`
