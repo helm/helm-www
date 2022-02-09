@@ -1829,7 +1829,7 @@ urlJoin (dict "fragment" "fragment" "host" "host:80" "path" "/path" "query" "que
 上述结果会生成以下字符串：
 
 ```yaml
-proto://host:80/path?query#fragment
+http://host:80/path?query#fragment
 ```
 
 ### urlquery

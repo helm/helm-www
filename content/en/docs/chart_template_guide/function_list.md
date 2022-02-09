@@ -2014,7 +2014,7 @@ urlJoin (dict "fragment" "fragment" "host" "host:80" "path" "/path" "query" "que
 
 The above returns the following string:
 ```
-proto://host:80/path?query#fragment
+http://host:80/path?query#fragment
 ```
 
 ### urlquery

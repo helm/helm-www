@@ -2011,7 +2011,7 @@ urlJoin (dict "fragment" "fragment" "host" "host:80" "path" "/path" "query" "que
 
 위는 다음 문자열을 반환한다.
 ```
-proto://host:80/path?query#fragment
+http://host:80/path?query#fragment
 ```
 
 ### urlquery
