@@ -17,6 +17,7 @@ chart的helm v3插件。
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - 管理Google Cloud Storage中仓库的插件
 - [helm-git](https://github.com/aslafy-z/helm-git) - 从Git仓库中安装chart并检索values文件。
 - [helm-k8comp](https://github.com/cststack/k8comp) - 使用k8comp从hiera创建Helm Charts的插件
+- [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - 更新helm发布版本元数据用于替换过期或已移除的k8s API
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - 基于
   Prometheus/ElasticSearch的用于监控版本发布和回滚的插件
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - 允许使用AWS S3作为[私有]chart仓库的插件
