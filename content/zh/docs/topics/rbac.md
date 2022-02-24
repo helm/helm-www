@@ -17,7 +17,7 @@ weight: 11
 
 该指南适用于希望限制用户与Kubernetes API交互范围的管理员。
 
-## 管理用于账户
+## 管理用户账户
 
 所有的Kubernetes集群有两类用户：Kubernetes管理的服务账户和普通用户。
 
