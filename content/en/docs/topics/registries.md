@@ -1,66 +1,65 @@
 ---
-title: "Registries"
+title: "Use OCI-based registries"
 description: "Describes how to use OCI for Chart distribution."
 aliases: ["/docs/registries/"]
 weight: 7
 ---
 
-Helm 3 supports <a href="https://www.opencontainers.org/"
-target="_blank">OCI</a> for package distribution. Chart packages are able to be
-stored and shared across OCI-based registries.
+Beginning in Helm 3, you can use container registries with [OCI](https://www.opencontainers.org/) support to store and share chart packages. Beginning in Helm v3.8.0, OCI support is enabled by default. 
 
-## Enabling OCI Support
 
-Prior to Helm v3.8.0, OCI support was considered *experimental* and needed to be
-enabled. As of v3.8.0 it is enabled by default.
+## OCI support prior to v3.8.0
 
-To enable OCI experimental support for Helm versions prior to v3.8.0, please set
-`HELM_EXPERIMENTAL_OCI` in the environment:
+OCI support graduated from experimental to general availability with Helm v3.8.0. In prior versions of Helm, OCI support behaved differently. If you were using OCI support prior to Helm v3.8.0, its important to understand what has changed with different versions of Helm.
+
+### Enabling OCI support prior to v3.8.0
+
+Prior to Helm v3.8.0, OCI support is *experimental* and must be enabled.
+
+To enable OCI experimental support for Helm versions prior to v3.8.0, set `HELM_EXPERIMENTAL_OCI` in your environment. For example:
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-## Running a registry
+### OCI feature deprecation and behavior changes with v3.8.0
 
-Starting a registry for test purposes is trivial. As long as you have Docker
-installed, run the following command:
-```console
-docker run -dp 5000:5000 --restart=always --name registry registry
-```
+The release of [Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0), the following features and behaviors are different from previous versions of Helm:
 
-This will start a registry server at `localhost:5000`.
+- When setting a chart in the dependencies as OCI, the version can be set to a range like other dependencies.
+- SemVer tags that include build information can be pushed and used. OCI registries don't support `+` as a tag character. Helm translates the `+` to `_` when stored as a tag.
+- The `helm registry login` command now follows the same structure as the Docker CLI for storing credentials. The same location for registry configuration can be passed to both Helm and the Docker CLI.
 
-Use `docker logs -f registry` to see the logs and `docker rm -f registry` to
-stop.
+### OCI feature deprecation and behavior changes with v3.7.0
 
-If you wish to persist storage, you can add `-v
-$(pwd)/registry:/var/lib/registry` to the command above.
+The release of [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) included the implementation of [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md) for OCI support. As a result, the following features and behaviors are different from previous versions of Helm:
 
-For more configuration options, please see [the
-docs](https://docs.docker.com/registry/deploying/).
+- The `helm chart` subcommand has been removed.
+- The chart cache has been removed (no `helm chart list` etc.).
+- OCI registry references are now always prefixed with `oci://`.
+- The basename of the registry reference must *always* match the chart's name.
+- The tag of the registry reference must *always* match the chart's semantic version (i.e. no `latest` tags).
+- The chart layer media type was switched from `application/tar+gzip` to `application/vnd.cncf.helm.chart.content.v1.tar+gzip`.
 
-Note: on macOS, port `5000` may be occupied by "AirPlay Receiver".
-You can either choose a different local port (e.g. `-p 5001:5000`), or disable this under 
-System Preferences > Sharing.
 
-### Auth
+## Using an OCI-based registry
 
-If you wish to enable auth on the registry, you can do the following-
+### Helm repositories in OCI-based registries
 
-First, create file `auth.htpasswd` with username and password combo:
-```console
-htpasswd -cB -b auth.htpasswd myuser mypass
-```
+A [Helm repository]({{< ref "chart_repository.md" >}}) is a way to house and distribute packaged Helm charts. An OCI-based registry can contain zero or more Helm repositories and each of those repositories can contain zero or more packaged Helm charts.
 
-Then, start the server, mounting that file and setting the `REGISTRY_AUTH` env
-var:
-```console
-docker run -dp 5000:5000 --restart=always --name registry \
-  -v $(pwd)/auth.htpasswd:/etc/docker/registry/auth.htpasswd \
-  -e REGISTRY_AUTH="{htpasswd: {realm: localhost, path: /etc/docker/registry/auth.htpasswd}}" \
-  registry
-```
+### Use hosted registries
+
+There are several hosted container registries with OCI support that you can use for your Helm charts. For example:
+
+- [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
+- [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
+
+Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
+
+**Note:**  You can run a [Docker Registry](https://docs.docker.com/registry/deploying/), which is an OCI-based registry, on your development computer. Running an OCI-based registry on your development computer should only be used for testing purposes.
 
 ## Commands for working with registries
 
@@ -87,15 +86,13 @@ Logout succeeded
 
 ### The `push` subcommand
 
-upload a chart to a registry
+Upload a chart to an OCI-based registry:
 
 ```console
 $ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts
 Pushed: localhost:5000/helm-charts/mychart:0.1.0
 Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 ```
-
-#### Extra notes on the `push` subcommand
 
 The `push` subcommand can only be used against `.tgz` files
 created ahead of time using `helm package`.
@@ -105,7 +102,7 @@ must be prefixed with `oci://` and must not contain the basename or tag.
 
 The registry reference basename is inferred from the chart's name,
 and the tag is inferred from the chart's semantic version. This is
-currently a strict requirement ([more info here](#deprecated-features-and-strict-naming-policies)).
+currently a strict requirement.
 
 Certain registries require the repository and/or namespace (if specified)
 to be created beforehand. Otherwise, an error will be produced during the
@@ -244,19 +241,4 @@ The following example contains a
 Migrating from classic [chart repositories]({{< ref "chart_repository.md" >}})
 (index.yaml-based repos) is as simple using `helm pull`, then using `helm push` to upload the resulting `.tgz` files to a registry.
 
-## Deprecated features and strict naming policies
 
-Prior to Helm [3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0),
-Helm's OCI support was slightly different.
-As a result of [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md), in an effort to simplify and stabilize this feature set,
-several changes have been implemented:
-
-- The `helm chart` subcommand has been removed
-- The chart cache has been removed (no `helm chart list` etc.)
-- OCI registry references are now always prefixed with `oci://`
-- The basename of the registry reference must *always* match the chart's name
-- The tag of the registry reference must *always* match the chart's semantic version (i.e. no `latest` tags)
-- The chart layer media type was switched from `application/tar+gzip` to `application/vnd.cncf.helm.chart.content.v1.tar+gzip`
-
-Thank you for your patience as the Helm team continues to work on
-stabilizing native support for OCI registries.
