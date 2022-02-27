@@ -21,7 +21,7 @@ Since OCI artifacts now makes it possible to store more than container images, y
 
 ## Working With Charts In Registries
 
-Working with registries allows you to push and pull charts to and from a registry. You can also specify charts stored in OCI as a dependency in any `Chart.yaml` file. The following example illustrates logging into a registry and pushing a chart:
+The combination of OCI artifact support in a registry and new functionality within Helm provides the capability to pull and push charts to and from a registry. You can also specify charts stored in OCI as a dependency in any `Chart.yaml` file. The following example illustrates logging into a registry and pushing a chart:
 
 ```console
 $ helm create demo
@@ -42,7 +42,7 @@ More detail on [working with registries can be found in the Helm documentation](
 
 ## The Helm SDK
 
-The Helm SDK, which is useful for those building tools on top of Helm functionality, also includes that ability to work with registries programatically. The following example illustrates pushing a chart to a registry:
+The Helm SDK, which is useful for those building tools to integrate with Helm, also includes support to work with registries programatically. The following example illustrates pushing a chart to a registry:
 
 ```go
 package main
@@ -71,15 +71,15 @@ There are some limitations when using registries to store charts compared to Hel
 
 Helm repositores can be added and searched from the local Helm client. This is similar to how repositories work with other package managers such as zypper or apt. When working with OCI registries, this is not an option. OCI based registries don't provide standard APIs to facilitate searching.
 
-While the OCI specification provides for artifacts, not all registries support storing Helm charts or other artifacts that are not container images. Before choosing a registry you need to make sure it supports storing Helm charts.
+While the OCI specification provides support for artifacts, not all registries support storing Helm charts or other artifacts that are not container images. Before choosing a registry, you should confirm whether it supports storing Helm charts.
 
 ## Artifact Hub Support
 
-[Artifact Hub](https://artifacthub.io/), another CNCF project, provides a means to search and discover cloud native assets including charts. Helm charts stored in OCI based registries can be listed on Artifact Hub, which already knows how to work with them. More details on working with Artifact Hub and Helm charts in container registries can be found in their [documentation](https://artifacthub.io/docs/topics/repositories/#helm-charts-repositories).
+[Artifact Hub](https://artifacthub.io/), another CNCF project, provides a means to search and discover cloud native assets, including charts. Helm charts stored in OCI based registries can be listed on Artifact Hub, which already knows how to work with them. More details on working with Artifact Hub and Helm charts in container registries can be found in their [documentation](https://artifacthub.io/docs/topics/repositories/#helm-charts-repositories).
 
 ## ORAS
 
-The [OCI Registry as Storage (ORAS) project](https://oras.land/), another CNCF project, provides the library Helm uses to work with registries. The ORAS project bills itself as:
+The [OCI Registry as Storage (ORAS) project](https://oras.land/), another CNCF project, is used by Helm as the underlying library for working with registries. The ORAS project bills itself as:
 
 > Registries are evolving as generic artifact stores. To enable this goal, the ORAS project provides a way to push and pull OCI Artifacts to and from OCI Registries.
 
@@ -87,6 +87,6 @@ If you want to work with other artifacts in registries the ORAS project may prov
 
 ## Thanks and Help Us Keep Improving
 
-Thanks to everyone who worked on OCI storage for Helm charts, from the initial experiment to bringing this to a full feature. Thanks especially for end user testing, bug reports and feature requests, and coordination between community members and maintainers across several CNCF projects.
+Thanks to everyone who worked on adding support for Helm charts and OCI registries, from the initial experiment to bringing this to a full feature. Thanks especially for end user testing, bug reports and feature requests, and coordination between community members and maintainers across several CNCF projects.
 
 We hope this post helps give a good intro, and some things to consider when evaluating storing your Helm charts in OCI. See if it fits your needs, take it for a spin, and let us know what you think!
