@@ -48,18 +48,30 @@ The Helm SDK, which is useful for those building tools to integrate with Helm, a
 package main
 
 import (
-    "helm.sh/helm/v3/pkg/registry"
+	"fmt"
+	"io/ioutil"
+
+	"helm.sh/helm/v3/pkg/registry"
 )
 
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
-    client := ...
+	client, err := registry.NewClient()
+	check(err)
 
-    ref := "r.example.com/myuser/demo:0.1.0"
+	b, err := ioutil.ReadFile("demo-0.1.0.tgz")
+	check(err)
 
-    info, err := client.Push(b, ref)
-    if err != nil {
-        panic(err)
-    }
+	info, err := client.Push(b, "r.example.com/myuser/demo:0.1.0")
+	check(err)
+
+	fmt.Printf("Pushed: %s\n", info.Ref)
+	fmt.Printf("Digest: %s\n", info.Manifest.Digest)
 }
 ```
 
