@@ -23,7 +23,7 @@ Since OCI artifacts now makes it possible to store more than container images, y
 
 The combination of OCI artifact support in a registry and new functionality within Helm provides the capability to pull and push charts to and from a registry. You can also specify charts stored in OCI as a dependency in any `Chart.yaml` file. The following example illustrates logging into a registry and pushing a chart:
 
-```console
+```
 $ helm create demo
 Creating demo
 
