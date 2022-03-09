@@ -210,7 +210,7 @@ Wir haben eine Liste mit [guten ersten Problemen](https://github.com/helm/helm/i
 
 ### Was hab ich zu tun?
 
-Bevor Sie Code beisteuern, lesen Sie bitte den [Beitragungsleitfaden](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Er geht über den Prozess um erstellen und überprüfen von Pull Requests.
+Bevor Sie Code beisteuern, lesen Sie bitte den [Beitragungsleitfaden](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Er geht über den Prozess zum Erstellen und Überprüfen von Pull Requests.
 
 Immer wenn Sie Code beisteuern, [signieren Sie bitte Ihre Commits](https://helm.sh/blog/helm-dco/index.html), um sicherzustellen, dass Helm für die [DCO](https://developercertificate.org/) Vereinbarung benutzt von der [CNCF](https://www.cncf.io/) haftet.
 """
@@ -220,4 +220,4 @@ Immer wenn Sie Code beisteuern, [signieren Sie bitte Ihre Commits](https://helm.
 other = "**404** **Seite nicht gefunden.**"
 
 [404_subtitle]
-other = "Entschuldigung für die Unanehmlichkeiten. Wenn ein Link falsch ist, [melden Sie es bitte hier](https://github.com/helm/helm-www/issues/new)."
+other = "Entschuldigung für die Unannehmlichkeiten. Wenn ein Link falsch ist, [melden Sie es bitte hier](https://github.com/helm/helm-www/issues/new)."
