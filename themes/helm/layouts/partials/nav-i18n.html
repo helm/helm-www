@@ -18,9 +18,9 @@
               {{ if eq $translation.Lang .Lang }}
                 {{ $selected := false }}
                 {{ if eq $pageLang .Lang}}
-                    <li class="navbar-item"><a href="{{ $translation.URL }}" class="active"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
+                    <li class="navbar-item"><a href="{{ $translation.Permalink }}" class="active"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
                 {{ else }}
-                    <li class="navbar-item"><a href="{{ $translation.URL }}"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
+                    <li class="navbar-item"><a href="{{ $translation.Permalink }}"><code>{{ .Lang }}</code> &nbsp; {{ .LanguageName }}</a></li>
                 {{ end }}
               {{ end }}
 
