@@ -25,7 +25,7 @@ and installed.
 2. Download the binary for your platform from the **Installation and Upgrading** section — note that the **Assets** attached to a release contain [archives of the source code](#from-source-linux-macos) and [`*.asc` signature files](#validating-binaries), not the platform binaries
 3. Optionally [validate the integrity and attestation of the binary](#validating-binaries)
 4. Unpack the binary (e.g. `tar -zxvf helm-v3.8.1-darwin-amd64.tar.gz`)
-5. Find the `helm` binary in the unpacked directory, and move it to its desired destinarion (e.g. `mv darwin-amd64/helm /usr/local/bin/helm`)
+5. Find the `helm` binary in the unpacked directory, and move it to its desired destination (e.g. `mv darwin-amd64/helm /usr/local/bin/helm`)
 
 From there, you should be able to run the client (`helm help`) and [add the stable
 repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
