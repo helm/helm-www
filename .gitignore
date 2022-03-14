@@ -5,6 +5,7 @@ rootfs/svc
 .yarnclean
 _site/*
 _site/
+.hugo_build.lock
 .ncurc.yml
 .publish/*
 .publish/
