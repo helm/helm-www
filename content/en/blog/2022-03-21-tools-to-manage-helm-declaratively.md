@@ -49,6 +49,7 @@ There are many projects beyond the CNCF projects you can use to help you manage 
 * [Helmfile](https://github.com/roboll/helmfile)
 * [Captain](https://github.com/alauda/captain)
 * [Helm Provider for Terraform](https://github.com/hashicorp/terraform-provider-helm)
+* [Orkestra](https://azure.github.io/orkestra/)
 
 ### High-Level Tool Comparison
 
@@ -61,6 +62,7 @@ There are some differences between the tools we've looked at so far. The followi
 | Captain Helm controller | ✅ | ❓[^4] | 🚫[^5] |
 | Flux Helm controller | ✅ | ✅  | 🚫[^6] |
 | ArgoCD | 🚫 | 🚫[^7] | ✅[^8] |
+| Orkestra | ❓ | ❓ | ❓ |
 
 [^1]: Has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/roboll/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
 [^2]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
