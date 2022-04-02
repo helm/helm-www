@@ -35,8 +35,7 @@ request](https://github.com/helm/helm-www/pulls).
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage
   and store secrets safely (based on [sops](https://github.com/mozilla/sops))
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) -
-  Plugin for Helm to integrate the [sigstore]
-  (https://sigstore.dev/) ecosystem. Search, upload and verify signed Helm charts.
+  Plugin for Helm to integrate the [sigstore](https://sigstore.dev/) ecosystem. Search, upload and verify signed Helm charts.
 - [helm-tanka](https://github.com/Duologic/helm-tanka) - A Helm plugin for
   rendering Tanka/Jsonnet inside Helm charts.
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit testing
