@@ -32,7 +32,7 @@ repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during
 CircleCi builds and releases. Testing of other OSes are the responsibility of
-the community requesting Helm for the OS in question. 
+the community requesting Helm for the OS in question.
 
 ### From Script
 
@@ -96,9 +96,9 @@ package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is
 generally up to date.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```
