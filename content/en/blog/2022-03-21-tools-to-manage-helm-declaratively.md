@@ -46,10 +46,11 @@ The scope of this section is limited to [graduated and incubating](https://www.c
 
 There are many projects beyond the CNCF projects you can use to help you manage your Helm releases. The following set is an example and not exhaustive.
 
-* [Helmfile](https://github.com/roboll/helmfile)
-* [Captain](https://github.com/alauda/captain)
-* [Helm Provider for Terraform](https://github.com/hashicorp/terraform-provider-helm)
-* [Orkestra](https://azure.github.io/orkestra/)
+* [Helmfile](https://github.com/roboll/helmfile) - A declarative spec for deploying Helm charts.
+* [Captain](https://github.com/alauda/captain) - A Helm controller
+* [Helm Provider for Terraform](https://github.com/hashicorp/terraform-provider-helm) - Enables you to manage Helm charts through Terraform
+* [Orkestra](https://azure.github.io/orkestra/) - Release Orchestration and Lifecycle Management (LCM) platform for a related group of Helm releases and their subcharts.
+* [Fleet](https://github.com/rancher/fleet) - A GitOps tool chain that works with Kubernetes manifests, Helm charts, and Kustomize.
 
 ### High-Level Tool Comparison
 
@@ -63,6 +64,13 @@ There are some differences between the tools we've looked at so far. The followi
 | Flux Helm controller | ✅ | ✅  | 🚫[^6] |
 | ArgoCD | 🚫 | 🚫[^7] | ✅[^8] |
 | Orkestra | ❓ | ❓ | ❓ |
+| Fleet | ✅ | ✅ | 🚫[^9] |
+
+_Note, this comparison is from when the blog post was published. Projects change over time and the feature set may change over time. You should evaluate the projects in their current state before choosing one._
+
+## Conclusion
+
+If you want to use a configuration manager with your Helm and Kubernetes configuration there are many choices. While the Helm project doesn't endorse one project over another, we do suggest using a configuration manager when it's appropriate.
 
 [^1]: Has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/roboll/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
 [^2]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
@@ -72,4 +80,4 @@ There are some differences between the tools we've looked at so far. The followi
 [^6]: Because Flux makes full use of the Helm SDK, as of Helm v3.8.0 Flux is now unblocked to add OCI artifact integration (Flux team members helped finish bringing OCI support out of experimental into a full feature in Helm). Work on this is in progress for Flux. You can follow this [canonical issue](https://github.com/fluxcd/source-controller/issues/124) for progress. See the current [design doc](https://hackmd.io/HS9ZqSCWQNqSefdaWFylJQ?view) for details.
 [^7]: Because Argo does not retain Helm release information, there is an [attempt to map](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-hooks) Helm hooks to ArgoCD hooks, however, there are far fewer Argo hooks and unmappable concepts such as no differentiation between install and upgrade. You can work around this by writing your charts specifically for ArgoCD, however hooks in commonly used community charts will not work.
 [^8]: ArgoCD shells out to the Helm CLI, only to render templates. This has allowed Argo to turn on Helm CLI's OCI feature before it was finished, for the same reason that it can not support Helm features beyond templating. Because of this, OCI is not part of the ArgoCD source architecture.
-
+[^9]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
