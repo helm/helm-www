@@ -61,6 +61,14 @@ Helm社区成员贡献了一个[Helm包](https://chocolatey.org/packages/kuberne
 choco install kubernetes-helm
 ```
 
+### 使用Scoop (Windows)
+
+Helm社区成员贡献了一个针对 [Scoop](https://scoop.sh) 的[Helm包](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json)，该包通常是最新的。
+
+```console
+scoop install helm
+```
+
 ### 使用Apt (Debian/Ubuntu)
 
 Helm社区成员贡献了针对Apt的一个[Helm包](https://helm.baltorepo.com/stable/debian/)，包通常是最新的。
