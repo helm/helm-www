@@ -35,66 +35,42 @@ their release of a chart (or application) works as expected.
 
 ## Example Test
 
-Here is an example of a helm test pod definition in the [bitnami wordpress
-chart](https://hub.helm.sh/charts/bitnami/wordpress). If you download a copy of
-the chart, you can look at the files locally:
+The [helm create](/docs/helm/helm_create) command will automatically create a number of folders and files. To try the helm test functionality, first create a demo helm chart. 
 
 ```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-$ helm pull bitnami/wordpress --untar
+$ helm create demo
 ```
 
+You will now be able to see the following structure in your demo helm chart.
+
 ```
-wordpress/
+demo/
   Chart.yaml
-  README.md
   values.yaml
   charts/
   templates/
-  templates/tests/test-mariadb-connection.yaml
+  templates/tests/test-connection.yaml
 ```
 
-In `wordpress/templates/tests/test-mariadb-connection.yaml`, you'll see a test
-you can try:
+In `demo/templates/tests/test-connection.yaml` you'll see a test you can try. You can see the helm test pod definition here:
 
 ```yaml
-{{- if .Values.mariadb.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ .Release.Name }}-credentials-test"
+  name: "{{ include "demo.fullname" . }}-test-connection"
+  labels:
+    {{- include "demo.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: {{ .Release.Name }}-credentials-test
-      image: {{ template "wordpress.image" . }}
-      imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-      {{- if .Values.securityContext.enabled }}
-      securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-      {{- end }}
-      env:
-        - name: MARIADB_HOST
-          value: {{ template "mariadb.fullname" . }}
-        - name: MARIADB_PORT
-          value: "3306"
-        - name: WORDPRESS_DATABASE_NAME
-          value: {{ default "" .Values.mariadb.db.name | quote }}
-        - name: WORDPRESS_DATABASE_USER
-          value: {{ default "" .Values.mariadb.db.user | quote }}
-        - name: WORDPRESS_DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "mariadb.fullname" . }}
-              key: mariadb-password
-      command:
-        - /bin/bash
-        - -ec
-        - |
-          mysql --host=$MARIADB_HOST --port=$MARIADB_PORT --user=$WORDPRESS_DATABASE_USER --password=$WORDPRESS_DATABASE_PASSWORD
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "demo.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
-{{- end }}
+
 ```
 
 ## Steps to Run a Test Suite on a Release
@@ -104,29 +80,16 @@ wait for all pods to become active; if you test immediately after this install,
 it is likely to show a transitive failure, and you will want to re-test.
 
 ```console
-$ helm install quirky-walrus wordpress --namespace default
-$ helm test quirky-walrus
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test succeeded
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 succeeded
-NAME: quirky-walrus
-LAST DEPLOYED: Mon Jun 22 17:24:31 2020
+$ helm install demo demo --namespace default
+$ helm test demo
+NAME: demo
+LAST DEPLOYED: Mon Feb 14 20:03:16 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE:     quirky-walrus-mariadb-test-dqas5
-Last Started:   Mon Jun 22 17:27:19 2020
-Last Completed: Mon Jun 22 17:27:21 2020
-Phase:          Succeeded
-TEST SUITE:     quirky-walrus-credentials-test
-Last Started:   Mon Jun 22 17:27:17 2020
-Last Completed: Mon Jun 22 17:27:19 2020
+TEST SUITE:     demo-test-connection
+Last Started:   Mon Feb 14 20:35:19 2022
+Last Completed: Mon Feb 14 20:35:23 2022
 Phase:          Succeeded
 [...]
 ```
