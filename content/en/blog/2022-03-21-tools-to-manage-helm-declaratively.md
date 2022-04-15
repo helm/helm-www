@@ -62,9 +62,9 @@ There are some differences between the tools we've looked at so far. The followi
 | Argo CD | 🚫 | 🚫[^2] | ✅[^3] | 🚫 |
 | Helmfile | ✅ | ❓[^4] | :warning:[^5] | 🚫[^6] |
 | Captain | ✅ | ❓[^7] | 🚫[^8] | ✅ |
-| Terraform Helm provider | ✅ | ✅[^9] | 🚫[^10] | ✅ |
-| Orkestra | ✅ | ✅ | 🚫[^11] | ✅ |
-| Fleet | ✅ | ✅ | 🚫[^12] | ✅ |
+| Terraform Helm provider | ✅ | ✅[^9] | ✅ | ✅ |
+| Orkestra | ✅ | ✅ | 🚫[^10] | ✅ |
+| Fleet | ✅ | ✅ | 🚫[^11] | ✅ |
 
 _Note, this comparison is from when the blog post was published. Projects change over time and the feature set may change over time. You should evaluate the projects in their current state before choosing one._
 
@@ -81,6 +81,5 @@ If you want to use a configuration manager with your Helm and Kubernetes configu
 [^7]: This is not a very widely used project, so unclear which or how well Helm hooks are supported. Scott may want to have another chat with the maintainer (TO-DO: fold in this [reminder code](https://github.com/alauda/captain/blob/master/pkg/helm/printer.go#L23) in a simple way)
 [^8]: Relies on a related project [alauda/oci-chartrepo](https://github.com/alauda/oci-chartrepo) to mix concepts of using oci registry as helm chart repo
 [^9]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
-[^10]: See hashicorp/terraform-provider-helm issues [#633](https://github.com/hashicorp/terraform-provider-helm/issues/633), [#666](https://github.com/hashicorp/terraform-provider-helm/issues/666), [#827](https://github.com/hashicorp/terraform-provider-helm/issues/827), [#765](https://github.com/hashicorp/terraform-provider-helm/issues/765), and [#655](https://github.com/hashicorp/terraform-provider-helm/issues/655).
-[^11]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
-[^12]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
+[^10]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
+[^11]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
