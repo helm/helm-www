@@ -39,7 +39,7 @@ The Kubernetes ecosystem has produced numerous projects of various styles to hel
 
 The scope of this section is limited to [graduated and incubating](https://www.cncf.io/projects/) CNCF projects. There are over 100 CNCF projects and many of them are [sandbox projects](https://www.cncf.io/sandbox-projects/). You can learn more about the differences between types of projects in the [maturity level explanation](https://www.cncf.io/projects/#maturity-levels). The following projects are worth looking at:
 
-* [Flux Helm Controller](https://fluxcd.io/docs/components/helm/) - [Flux](https://fluxcd.io/) is a collection of projects that enable GitOps. One of the components provides a GitOps method to manage Helm releases.
+* [Flux Helm Controller](https://fluxcd.io/docs/components/helm/) - [Flux](https://fluxcd.io/) is a collection of projects that enable GitOps. One of the components provides a GitOps method to manage Helm releases. Flux natively supports Helm.
 * [Argo CD](https://github.com/argoproj/argo-cd) - The [Argo](https://argoproj.github.io/) project defines itself as providing "Open source tools for Kubernetes to run workflows, manage clusters, and do GitOps right." Argo CD is focused on declarative continuous delivery and has the ability to work with Helm charts.
 
 ### Other Projects
