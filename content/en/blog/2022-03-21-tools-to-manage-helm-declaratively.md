@@ -47,8 +47,8 @@ The scope of this section is limited to [graduated and incubating](https://www.c
 There are many projects beyond the CNCF projects you can use to help you manage your Helm releases. The following set is an example and not exhaustive.
 
 * [Helmfile](https://github.com/roboll/helmfile) - A declarative spec for deploying Helm charts.
-* [Captain](https://github.com/alauda/captain) - A Helm controller
-* [Helm Provider for Terraform](https://github.com/hashicorp/terraform-provider-helm) - Enables you to manage Helm charts through Terraform
+* [Captain](https://github.com/alauda/captain) - A Helm controller.
+* [Terraform Helm provider](https://github.com/hashicorp/terraform-provider-helm) - Enables you to manage Helm charts through Terraform.
 * [Orkestra](https://azure.github.io/orkestra/) - Built on other tools in this list, Orkestra adds a robust dependency graph for a related group of Helm releases and their subcharts, as well as a reverse DAG for specifying dependency requirements for rollbacks.
 * [Fleet](https://github.com/rancher/fleet) - A GitOps tool chain that works with Kubernetes manifests, Helm charts, and Kustomize.
 
@@ -56,15 +56,15 @@ There are many projects beyond the CNCF projects you can use to help you manage 
 
 There are some differences between the tools we've looked at so far. The following table provides some insight into their differences. This is not exhaustive and you should evaluate any tools you use yourself.
 
-| | Retains Helm release info | Supports Helm hooks | OCI support |
-| -- | -- | -- | -- |
-| Helmfile | ✅ | ❓[^1] | 🚫 |
-| Terraform Helm provider | ✅ | ✅[^2] | 🚫[^3] |
-| Captain Helm controller | ✅ | ❓[^4] | 🚫[^5] |
-| Flux Helm controller | ✅ | ✅  | 🚫[^6] |
-| ArgoCD | 🚫 | 🚫[^7] | ✅[^8] |
-| Orkestra | ✅ | ✅ | 🚫[^9] |
-| Fleet | ✅ | ✅ | 🚫[^10] |
+| | Retains Helm release info | Supports Helm hooks | OCI support | Does not require Helm binary |
+| -- | -- | -- | -- | -- |
+| Flux Helm controller | ✅ | ✅ | ✅[^1] | ✅ |
+| Argo CD | 🚫 | 🚫[^2] | ✅[^3] | 🚫 |
+| Helmfile | ✅ | ❓[^4] | :warning:[^5] | 🚫[^6] |
+| Captain | ✅ | ❓[^7] | 🚫[^8] | ✅ |
+| Terraform Helm provider | ✅ | ✅[^9] | 🚫[^10] | ✅ |
+| Orkestra | ✅ | ✅ | 🚫[^11] | ✅ |
+| Fleet | ✅ | ✅ | 🚫[^12] | ✅ |
 
 _Note, this comparison is from when the blog post was published. Projects change over time and the feature set may change over time. You should evaluate the projects in their current state before choosing one._
 
@@ -72,13 +72,15 @@ _Note, this comparison is from when the blog post was published. Projects change
 
 If you want to use a configuration manager with your Helm and Kubernetes configuration there are many choices. While the Helm project doesn't endorse one project over another, we do suggest using a configuration manager when it's appropriate.
 
-[^1]: Has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/roboll/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
-[^2]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
-[^3]: See hashicorp/terraform-provider-helm issues [#633](https://github.com/hashicorp/terraform-provider-helm/issues/633), [#666](https://github.com/hashicorp/terraform-provider-helm/issues/666), [#827](https://github.com/hashicorp/terraform-provider-helm/issues/827), [#765](https://github.com/hashicorp/terraform-provider-helm/issues/765), and [#655](https://github.com/hashicorp/terraform-provider-helm/issues/655).
-[^4]: This is not a very widely used project, so unclear which or how well Helm hooks are supported. Scott may want to have another chat with the maintainer (TO-DO: fold in this [reminder code](https://github.com/alauda/captain/blob/master/pkg/helm/printer.go#L23) in a simple way)
-[^5]: Relies on a related project [alauda/oci-chartrepo](https://github.com/alauda/oci-chartrepo) to mix concepts of using oci registry as helm chart repo
-[^6]: Because Flux makes full use of the Helm SDK, as of Helm v3.8.0 Flux is now unblocked to add OCI artifact integration (Flux team members helped finish bringing OCI support out of experimental into a full feature in Helm). [RFC-0002](https://github.com/fluxcd/flux2/tree/main/rfcs/0002-helm-oci) is now marked as implementable, and work on this is now in progress for Flux. You can follow this fluxcd/source-controller issue [#669](https://github.com/fluxcd/source-controller/issues/669) for progress.
-[^7]: Because Argo does not retain Helm release information, there is an [attempt to map](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-hooks) Helm hooks to ArgoCD hooks, however, there are far fewer Argo hooks and unmappable concepts such as no differentiation between install and upgrade. You can work around this by writing your charts specifically for ArgoCD, however hooks in commonly used community charts will not work.
-[^8]: ArgoCD shells out to the Helm CLI, only to render templates. This has allowed Argo to turn on Helm CLI's OCI feature before it was finished, for the same reason that it can not support Helm features beyond templating. Because of this, OCI is not part of the ArgoCD source architecture.
-[^9]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
-[^10]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
+[^1]: Because Flux makes full use of the Helm SDK, as of Helm v3.8.0 Flux is now unblocked to add OCI artifact integration (Flux team members helped finish bringing OCI support out of experimental into a full feature in Helm). [RFC-0002](https://github.com/fluxcd/flux2/tree/main/rfcs/0002-helm-oci) is now marked as implementable, and work on this is now in progress for Flux. You can follow this fluxcd/source-controller issue [#669](https://github.com/fluxcd/source-controller/issues/669) for progress.
+[^2]: Because Argo does not retain Helm release information, there is an [attempt to map](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-hooks) Helm hooks to ArgoCD hooks, however, there are far fewer Argo hooks and unmappable concepts such as no differentiation between install and upgrade. You can work around this by writing your charts specifically for ArgoCD, however hooks in commonly used community charts will not work.
+[^3]: ArgoCD shells out to the Helm CLI, only to render templates. This has allowed Argo to turn on Helm CLI's OCI feature before it was finished, for the same reason that it can not support Helm features beyond templating. Because of this, OCI is not part of the ArgoCD source architecture.
+[^4]: Has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/roboll/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
+[^5]: Helmfile has experimental OCI support, without explicitly explaining to users that it sets `HELM_EXPERIMENTAL_OCI=1` before shelling out to the Helm CLI. See [#2112](https://github.com/roboll/helmfile/issues/2112) and [#2111](https://github.com/roboll/helmfile/issues/2111).
+[^6]: Helmfile parameterizes the Helm binary (default: `helm`).
+[^7]: This is not a very widely used project, so unclear which or how well Helm hooks are supported. Scott may want to have another chat with the maintainer (TO-DO: fold in this [reminder code](https://github.com/alauda/captain/blob/master/pkg/helm/printer.go#L23) in a simple way)
+[^8]: Relies on a related project [alauda/oci-chartrepo](https://github.com/alauda/oci-chartrepo) to mix concepts of using oci registry as helm chart repo
+[^9]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
+[^10]: See hashicorp/terraform-provider-helm issues [#633](https://github.com/hashicorp/terraform-provider-helm/issues/633), [#666](https://github.com/hashicorp/terraform-provider-helm/issues/666), [#827](https://github.com/hashicorp/terraform-provider-helm/issues/827), [#765](https://github.com/hashicorp/terraform-provider-helm/issues/765), and [#655](https://github.com/hashicorp/terraform-provider-helm/issues/655).
+[^11]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
+[^12]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
