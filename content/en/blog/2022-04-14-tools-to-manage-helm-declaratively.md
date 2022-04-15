@@ -60,7 +60,7 @@ There are some differences between the tools we've looked at so far. The followi
 | -- | -- | -- | -- | -- |
 | Flux Helm controller | ✅ | ✅ | 🚫[^1] | ✅ |
 | Argo CD | 🚫 | 🚫[^2] | ✅[^3] | 🚫 |
-| Helmfile | ✅ | ❓[^4] | :warning:[^5] | 🚫[^6] |
+| Helmfile | ✅ | :warning[^4] | :warning:[^5] | 🚫[^6] |
 | Captain | ✅ | ❓[^7] | 🚫[^8] | ✅ |
 | Terraform Helm provider | ✅ | ✅[^9] | ✅ | ✅ |
 | Orkestra | ✅ | ✅ | 🚫[^10] | ✅ |
