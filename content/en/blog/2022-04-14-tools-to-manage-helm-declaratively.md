@@ -4,7 +4,7 @@ slug: "tools-to-manage-helm-declaratively"
 authorname: "Scott Rigby, Matt Farina"
 author: "@scottrigby, @mattfarina"
 authorlink: "https://helm.sh"
-date: "2022-03-21"
+date: "2022-04-14"
 ---
 
 We regularly get questions from people who want tools or methods to manage their Helm releases in an environment. This post provides some insight and direction to help people get started.
