@@ -59,10 +59,10 @@ There are some differences between the tools we've looked at so far. The followi
 | | Retains Helm release info | Supports Helm hooks | OCI support | Does not require Helm binary |
 | -- | -- | -- | -- | -- |
 | Flux Helm controller | ✅ | ✅ | 🚫[^1] | ✅ |
-| Argo CD | 🚫 | :warning[^2] | ✅[^3] | 🚫 |
-| Helmfile | ✅ | :warning[^4] | :warning:[^5] | 🚫[^6] |
-| Captain | ✅ | ❓[^7] | 🚫[^8] | ✅ |
-| Terraform Helm provider | ✅ | ✅[^9] | ✅ | ✅ |
+| Argo CD | 🚫 | :warning:[^2] | ✅[^3] | 🚫 |
+| Helmfile | ✅ | :warning:[^4] | :warning:[^5] | 🚫[^6] |
+| Captain | ✅ | ❓[^7] | :warning:[^8] | ✅ |
+| Terraform Helm provider | ✅ | :warning:[^9] | ✅ | ✅ |
 | Orkestra | ✅ | ✅ | 🚫[^10] | ✅ |
 | Fleet | ✅ | ✅ | 🚫[^11] | ✅ |
 
@@ -78,8 +78,8 @@ If you want to use a configuration manager with your Helm and Kubernetes configu
 [^4]: Has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/roboll/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
 [^5]: Helmfile has experimental OCI support, without explicitly explaining to users that it sets `HELM_EXPERIMENTAL_OCI=1` before shelling out to the Helm CLI. See [#2112](https://github.com/roboll/helmfile/issues/2112) and [#2111](https://github.com/roboll/helmfile/issues/2111).
 [^6]: Helmfile parameterizes the Helm binary (default: `helm`).
-[^7]: This is not a very widely used project, so unclear which or how well Helm hooks are supported. Scott may want to have another chat with the maintainer (TO-DO: fold in this [reminder code](https://github.com/alauda/captain/blob/master/pkg/helm/printer.go#L23) in a simple way)
-[^8]: Relies on a related project [alauda/oci-chartrepo](https://github.com/alauda/oci-chartrepo) to mix concepts of using oci registry as helm chart repo
-[^9]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations
+[^7]: WAITING ON MAINTAINER FEEDBACK OR OUR OWN VERIFICATION OF THE CODEBASE
+[^8]: Relies on a related project [alauda/oci-chartrepo](https://github.com/alauda/oci-chartrepo) to mix concepts of using oci registry as helm chart repo.
+[^9]: Note there are [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations.
 [^10]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
 [^11]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
