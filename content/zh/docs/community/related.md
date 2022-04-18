@@ -31,6 +31,8 @@ chart的helm v3插件。
 - [hc-unit](https://github.com/xchapter7x/hcunit) - 使用OPA (Open Policy Agent) 和 Rego本地进行chart单元测试的插件
 - [helm-unittest](https://github.com/quintush/helm-unittest) - 使用YAML本地进行chart单元测试的插件
 - [helm-val](https://github.com/HamzaZo/helm-val) - 从之前的版本中获取值的插件
+- [helm-external-val](https://github.com/kuuji/helm-external-val) - 从外部资源（configMaps，
+Secrets等）获取Helm values的插件
 
 我们同样鼓励使用GitHub的各位使用[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
 给插件仓库打tag。
