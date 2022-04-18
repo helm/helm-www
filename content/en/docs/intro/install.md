@@ -89,9 +89,8 @@ If you have verified that this public key does in fact belong to its stated owne
 This will remove the warning when verifying the attestation of the binaries, e.g.
 
 ```
-
-```
 > $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+```
 ```
 gpg: Signature made Wed Mar  9 16:33:00 2022 EST
 gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
