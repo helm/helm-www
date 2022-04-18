@@ -105,6 +105,8 @@ gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
 gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [full]
 ```
 
+For information on generating your own `gpg` key, please see the examples in the [GitHub documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
+
 **Note:** The example commands above demonstrate the validation process on macOS. The process is similar for other platforms, but the exact tools and commands may vary slightly.
 
 ### From Script
