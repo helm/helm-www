@@ -59,12 +59,9 @@ helm-v3.8.1-darwin-amd64.tar.gz: OK
 4. Validate the attestation of the downloaded binary by cloning the source code repository, importing Helm's `KEYS` file into your keyring, and verifying the signatures, e.g.
 
 ```
-git clone https://github.com/helm/helm.git
-gpg --import helm/KEYS
-gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc \
-  helm-v3.8.1-darwin-amd64.tar.gz
-gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc \
-  helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+> $ curl --show-error --silent https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import -
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
 ```
 
 **Note:** The example commands above demonstrate the validation process on macOS. The process is similar for other platforms, but the exact tools and commands may vary slightly.
