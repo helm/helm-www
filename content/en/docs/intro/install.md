@@ -45,13 +45,15 @@ For more information, please see the [**Release Checklist**](https://helm.sh/doc
 
 To validate the integrity and attestation of a downloaded binary:
 
-1. Download the `*.tar.gz.sha256sum` file listed next to the binary you downloaded from the **Installation and Upgrading** section
-2. Download the `*.tar.gz.asc` and `*.tar.gz.sha256sum.asc` signature files that match the platform of your downloaded binary — these can be found in the **Assets** attached to a given [release](https://github.com/helm/helm/releases)
+1. Download the `*.tar.gz.sha256sum` file listed next to the binary you downloaded from the **Installation and Upgrading** section, saving it to the same directory where the binary is located
+2. Download the `*.tar.gz.asc` and `*.tar.gz.sha256sum.asc` signature files that match the platform of your downloaded binary, saving them to the same directory where the binary is located — these `asc` files can be found in the **Assets** attached to a given [release](https://github.com/helm/helm/releases)
 3. Validate the integrity of the downloaded binary by verifying the sha256 checksum, e.g.
 
 ```
-shasum -a 256 helm-v3.8.1-darwin-amd64.tar.gz
-cat helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+> $ sha256sum -c helm-v3.8.1-darwin-amd64.tar.gz
+```
+```
+helm-v3.8.1-darwin-amd64.tar.gz: OK
 ```
 
 4. Validate the attestation of the downloaded binary by cloning the source code repository, importing Helm's `KEYS` file into your keyring, and verifying the signatures, e.g.
