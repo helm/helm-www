@@ -50,7 +50,7 @@ To validate the integrity and attestation of a downloaded binary:
 3. Validate the integrity of the downloaded binary by verifying the sha256 checksum, e.g.
 
 ```
-> $ sha256sum -c helm-v3.8.1-darwin-amd64.tar.gz
+> $ sha256sum --check helm-v3.8.1-darwin-amd64.tar.gz
 ```
 ```
 helm-v3.8.1-darwin-amd64.tar.gz: OK
