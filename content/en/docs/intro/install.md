@@ -60,8 +60,50 @@ helm-v3.8.1-darwin-amd64.tar.gz: OK
 
 ```
 > $ curl --show-error --silent https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import -
+```
+```
 > $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+```
+```
 > $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+```
+
+If you have not verified the public key for this attestation, you may receive the following warning:
+
+```
+gpg: Signature made Wed Mar  9 16:33:00 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 672C 657B E06B 4B30 969C  4A57 4614 49C2 5E36 B98E
+     Subkey fingerprint: 711F 28D5 10E1 E0BC BD5F  6BFE 9436 E80B FBA4 6909
+```
+
+If you have verified that this public key does in fact belong to its stated owner, you may sign their public key, e.g.
+
+```
+> $ gpg --sign-key 672C657BE06B4B30969C4A57461449C25E36B98E
+```
+
+This will remove the warning when verifying the attestation of the binaries, e.g.
+
+```
+
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+```
+gpg: Signature made Wed Mar  9 16:33:00 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [full]
+```
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+```
+```
+gpg: Signature made Wed Mar  9 16:33:08 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [full]
 ```
 
 **Note:** The example commands above demonstrate the validation process on macOS. The process is similar for other platforms, but the exact tools and commands may vary slightly.
