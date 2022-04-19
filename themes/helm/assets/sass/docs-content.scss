@@ -376,6 +376,23 @@
   .youtube-player {
     min-height: 320px;
   }
+
+  .footnotes {
+    font-size: $scalex2;
+
+    ol {
+      font-size: $scalex2;
+  
+      li {
+        font-size: $scalex2;
+
+        p,
+        p:first-child {
+          font-size: $scalex2;
+        }
+      }
+    }
+  }
 }
 
 a {
