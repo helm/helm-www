@@ -26,64 +26,42 @@ weight: 3
 
 ## Example Test
 
-这是一个helm对[bitnami wordpress chart](https://hub.helm.sh/charts/bitnami/wordpress)的pod定义的测试。
-如果你下载了一个chart的拷贝，可以在本地看到以下文件：
+[helm create](https://helm.sh/zh/docs/helm/helm_create)命令会自动创建一些目录和文件。
+要尝试helm的测试功能，需要先创建一个helm chart示例。
 
 ```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-$ helm pull bitnami/wordpress --untar
+$ helm create demo
 ```
 
+然后就可以看到示例demo的目录结构如下：
+
 ```console
-wordpress/
+demo/
   Chart.yaml
-  README.md
   values.yaml
   charts/
   templates/
-  templates/tests/test-mariadb-connection.yaml
+  templates/tests/test-connection.yaml
 ```
 
-在`wordpress/templates/tests/test-mariadb-connection.yaml`中，会看到一个test，可以试试：
+在`demo/templates/tests/test-connection.yaml`中，可以试试看到的测试功能，测试pod定义如下：
 
 ```yaml
-{{- if .Values.mariadb.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ .Release.Name }}-credentials-test"
+  name: "{{ include "demo.fullname" . }}-test-connection"
+  labels:
+    {{- include "demo.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: {{ .Release.Name }}-credentials-test
-      image: {{ template "wordpress.image" . }}
-      imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-      {{- if .Values.securityContext.enabled }}
-      securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-      {{- end }}
-      env:
-        - name: MARIADB_HOST
-          value: {{ template "mariadb.fullname" . }}
-        - name: MARIADB_PORT
-          value: "3306"
-        - name: WORDPRESS_DATABASE_NAME
-          value: {{ default "" .Values.mariadb.db.name | quote }}
-        - name: WORDPRESS_DATABASE_USER
-          value: {{ default "" .Values.mariadb.db.user | quote }}
-        - name: WORDPRESS_DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "mariadb.fullname" . }}
-              key: mariadb-password
-      command:
-        - /bin/bash
-        - -ec
-        - |
-          mysql --host=$MARIADB_HOST --port=$MARIADB_PORT --user=$WORDPRESS_DATABASE_USER --password=$WORDPRESS_DATABASE_PASSWORD
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "demo.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
-{{- end }}
 ```
 
 ## 运行一个发布版本测试套件的步骤
@@ -92,29 +70,16 @@ spec:
 可能会出现相应的失败，你不得不再执行一次test。
 
 ```console
-$ helm install quirky-walrus wordpress --namespace default
-$ helm test quirky-walrus
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test pending
-Pod quirky-walrus-credentials-test succeeded
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 pending
-Pod quirky-walrus-mariadb-test-dqas5 succeeded
-NAME: quirky-walrus
-LAST DEPLOYED: Mon Jun 22 17:24:31 2020
+$ helm install demo demo --namespace default
+$ helm test demo
+NAME: demo
+LAST DEPLOYED: Mon Feb 14 20:03:16 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE:     quirky-walrus-mariadb-test-dqas5
-Last Started:   Mon Jun 22 17:27:19 2020
-Last Completed: Mon Jun 22 17:27:21 2020
-Phase:          Succeeded
-TEST SUITE:     quirky-walrus-credentials-test
-Last Started:   Mon Jun 22 17:27:17 2020
-Last Completed: Mon Jun 22 17:27:19 2020
+TEST SUITE:     demo-test-connection
+Last Started:   Mon Feb 14 20:35:19 2022
+Last Completed: Mon Feb 14 20:35:23 2022
 Phase:          Succeeded
 [...]
 ```
