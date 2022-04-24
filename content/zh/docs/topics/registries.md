@@ -33,7 +33,7 @@ docker run -dp 5000:5000 --restart=always --name registry registry
 
 关于更多配置选项，请查看 [文档](https://docs.docker.com/registry/deploying/).
 
-注意：macOS上，`5000`端口可能被"AirPlay Receiver"占用。您可以选择其他本地接口（比如：`-p 5001:5000`），或者在系统偏好设置中关闭AirPlay。
+注意：macOS上，`5000`端口可能被"AirPlay Receiver"占用。您可以选择其他本地端口（比如：`-p 5001:5000`），或者在系统偏好设置中关闭AirPlay。
 
 ### 认证
 
