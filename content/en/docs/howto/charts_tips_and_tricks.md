@@ -80,7 +80,7 @@ template's output, Helm has a special `include` function:
 {{ include "toYaml" $value | indent 2 }}
 ```
 
-The above includes a template called `toYaml`, passes it `$value`, and then
+The above includes a template called `toYaml`, passes its `$value`, and then
 passes the output of that template to the `indent` function.
 
 Because YAML ascribes significance to indentation levels and whitespace, this is
