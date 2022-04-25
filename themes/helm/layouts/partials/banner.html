@@ -1,0 +1,14 @@
+{{- $banner := T "banner_1" }}
+{{- if $banner -}}
+<div id="banner">
+  <!-- viewing helm 3 version of site (desktop) -->
+  <p class="center text-center is-hidden-mobile">
+    {{ markdownify $banner }}
+  </p>
+  
+  <!-- viewing helm 3 version of site (mobile) -->
+  <p class="center text-center is-hidden-tablet">
+    {{ markdownify $banner }}
+  </p>
+</div>
+{{- end -}}

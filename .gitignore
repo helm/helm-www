@@ -1,0 +1,26 @@
+.DS_Store
+.jekyll-metadata
+rootfs/svc
+.sass-cache/
+.yarnclean
+_site/*
+_site/
+.hugo_build.lock
+.ncurc.yml
+.publish/*
+.publish/
+node_modules/
+bower_components/
+vendor/
+rootfs/
+app/*
+resources/
+helm.sh/
+docs.helm.sh/
+
+# JetBrains IDEs (GoLand, IntelliJ, ...) config folder
+.idea
+
+# Link checker artifacts
+bin/
+tmp/

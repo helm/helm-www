@@ -1,0 +1,20 @@
+{{ $serverMode  := site.IsServer }}
+{{ $isDoc       := eq .Section "docs" }}
+{{ $sass        := "sass/styles.scss" }}
+{{ $includes    := (slice "node_modules") }}
+{{ $cssOut      := "css/style.css" }}
+{{ $cssDevOpts  := (dict "includePaths" $includes "targetPath" $cssOut "enableSourceMap" true) }}
+{{ $cssProdOpts := (dict "includePaths" $includes "targetPath" $cssOut "outputStyle" "compressed") }}
+{{ $cssOpts     := cond $serverMode $cssDevOpts $cssProdOpts }}
+{{ $css         := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
+<!-- <link rel="stylesheet" href="/css/bulma.min.css" /> -->
+{{ if $serverMode }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ else }}
+{{ $prodCss := $css | postCSS | fingerprint }}
+<link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
+{{ end }}
+
+{{ if $isDoc }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+{{ end }}
