@@ -52,9 +52,9 @@ The `define` action allows us to create a named template inside of a template
 file. Its syntax goes like this:
 
 ```yaml
-{{ define "MY.NAME" }}
+{{- define "MY.NAME" }}
   # body of template here
-{{ end }}
+{{- end }}
 ```
 
 For example, we can define a template to encapsulate a Kubernetes block of
