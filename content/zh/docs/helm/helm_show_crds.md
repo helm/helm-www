@@ -8,7 +8,7 @@ title: "Helm 展示Crd"
 
 ### 简介
 
-该命令检查chart(目录、文件或URL)并显示自定义资源（CustomResourceDefintion）文件的内容。
+该命令检查chart(目录、文件或URL)并显示自定义资源（CustomResourceDefinition）文件的内容。
 
 ```shell
 helm show crds [CHART] [flags]
