@@ -21,18 +21,93 @@ Every [release](https://github.com/helm/helm/releases) of Helm provides binary
 releases for a variety of OSes. These binary versions can be manually downloaded
 and installed.
 
-1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. Find the `helm` binary in the unpacked directory, and move it to its desired
-   destination (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. Search for and select your desired Helm release from the GitHub [releases](https://github.com/helm/helm/releases)
+2. Download the binary for your platform from the **Installation and Upgrading** section — note that the **Assets** attached to a release contain [archives of the source code](#from-source-linux-macos) and [`*.asc` signature files](#validating-binaries), not the platform binaries
+3. Optionally [validate the integrity and attestation of the binary](#validating-binaries)
+4. Unpack the binary (e.g. `tar -zxvf helm-v3.8.1-darwin-amd64.tar.gz`)
+5. Find the `helm` binary in the unpacked directory, and move it to its desired destination (e.g. `mv darwin-amd64/helm /usr/local/bin/helm`)
 
-From there, you should be able to run the client and [add the stable
-repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
-`helm help`.
+From there, you should be able to run the client (`helm help`) and [add the stable
+repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during
 CircleCi builds and releases. Testing of other OSes are the responsibility of
-the community requesting Helm for the OS in question. 
+the community requesting Helm for the OS in question.
+
+#### Validating Binaries
+
+Helm releases include:
+
+- A sha256 checksum (`*.tar.gz.sha256sum`) to validate that the content of the download is what was generated for the release
+- ASCII-armored public keys (`*.asc`) to provide traceability of where the download came from
+
+For more information, please see the [**Release Checklist**](https://helm.sh/docs/community/release_checklist/#8-pgp-sign-the-downloads) documentation.
+
+To validate the integrity and attestation of a downloaded binary:
+
+1. Download the `*.tar.gz.sha256sum` file listed next to the binary you downloaded from the **Installation and Upgrading** section, saving it to the same directory where the binary is located
+2. Download the `*.tar.gz.asc` and `*.tar.gz.sha256sum.asc` signature files that match the platform of your downloaded binary, saving them to the same directory where the binary is located — these `asc` files can be found in the **Assets** attached to a given [release](https://github.com/helm/helm/releases)
+3. Validate the integrity of the downloaded binary by verifying the sha256 checksum, e.g.
+
+```
+> $ sha256sum --check helm-v3.8.1-darwin-amd64.tar.gz
+```
+```
+helm-v3.8.1-darwin-amd64.tar.gz: OK
+```
+
+4. Validate the attestation of the downloaded binary by cloning the source code repository, importing Helm's `KEYS` file into your keyring, and verifying the signatures, e.g.
+
+```
+> $ curl --show-error --silent https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import -
+```
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+```
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+```
+
+If you have not verified the public key for this attestation, you may receive the following warning:
+
+```
+gpg: Signature made Wed Mar  9 16:33:00 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 672C 657B E06B 4B30 969C  4A57 4614 49C2 5E36 B98E
+     Subkey fingerprint: 711F 28D5 10E1 E0BC BD5F  6BFE 9436 E80B FBA4 6909
+```
+
+If you have verified that this public key does in fact belong to its stated owner, you may sign their public key, e.g.
+
+```
+> $ gpg --sign-key 672C657BE06B4B30969C4A57461449C25E36B98E
+```
+
+This will remove the warning when verifying the attestation of the binaries, e.g.
+
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.asc helm-v3.8.1-darwin-amd64.tar.gz
+```
+```
+gpg: Signature made Wed Mar  9 16:33:00 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [full]
+```
+```
+> $ gpg --verify helm-v3.8.1-darwin-amd64.tar.gz.sha256sum.asc helm-v3.8.1-darwin-amd64.tar.gz.sha256sum
+```
+```
+gpg: Signature made Wed Mar  9 16:33:08 2022 EST
+gpg:                using RSA key 711F28D510E1E0BCBD5F6BFE9436E80BFBA46909
+gpg: Good signature from "Matthew Farina <matt@mattfarina.com>" [full]
+```
+
+For information on generating your own `gpg` key, please see the examples in the [GitHub documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
+
+**Note:** The example commands above demonstrate the validation process on macOS. The process is similar for other platforms, but the exact tools and commands may vary slightly.
 
 ### From Script
 
