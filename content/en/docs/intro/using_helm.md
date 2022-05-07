@@ -301,6 +301,23 @@ name:
   - c
 ```
 
+Certain name/key can be set to be `null` or to be an empty array `[]`. For example, `--set name=[],a=null` translates
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+to
+
+```yaml
+name: []
+a: null
+```
+
 As of Helm 2.5.0, it is possible to access list items using an array index
 syntax. For example, `--set servers[0].port=80` becomes:
 
