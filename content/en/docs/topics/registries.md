@@ -42,7 +42,7 @@ docs](https://docs.docker.com/registry/deploying/).
 
 Note: on macOS, port `5000` may be occupied by "AirPlay Receiver".
 You can either choose a different local port (e.g. `-p 5001:5000`), or disable this under 
-Syetem Preferences > Sharing.
+System Preferences > Sharing.
 
 ### Auth
 
