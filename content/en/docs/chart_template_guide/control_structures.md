@@ -285,7 +285,9 @@ data:
   {{- end }}
 ```
 
-(Note that we removed the `if` conditional from the previous exercise)
+Note that we removed the `if` conditional from the previous exercise
+because it is now unnecessary - the block after `with` only executes
+if the value of `PIPELINE` is not empty.
 
 Notice that now we can reference `.drink` and `.food` without qualifying them.
 That is because the `with` statement sets `.` to point to `.Values.favorite`.
