@@ -72,7 +72,7 @@ Tools layered on top of Helm.
   platform with UI dashboards for managing Helm charts and releases
 - [Flux](https://fluxcd.io/docs/components/helm/) -
   Continuous and progressive delivery from Git to Kubernetes.
-- [Helmfile](https://github.com/roboll/helmfile) - Helmfile is a declarative
+- [Helmfile](https://github.com/helmfile/helmfile) - Helmfile is a declarative
   spec for deploying helm charts
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a
   helm-charts-as-code tool which enables
