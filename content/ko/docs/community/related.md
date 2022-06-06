@@ -47,7 +47,7 @@ GitHub 작성자가 플러그인 저장소에
 - [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper 는 값(원하는 상태)을 가진 
   헬름 차트 참조 집합을 가져와서
   쿠버네티스 클러스터에서 실현한다."
-- [Helmfile](https://github.com/roboll/helmfile) - Helmfile은 헬름 차트 배포를 
+- [Helmfile](https://github.com/helmfile/helmfile) - Helmfile은 헬름 차트 배포를 
   위한 선언적 사양이다
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman은
   버전 관리되는 원하는 상태 파일들(간단한 TOML 형식으로 기술됨)로부터
