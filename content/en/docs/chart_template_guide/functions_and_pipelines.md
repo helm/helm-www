@@ -243,7 +243,7 @@ API server (for example due to lack of permission to access a resource), helm's
 template processing will fail.
 
 Keep in mind that Helm is not supposed to contact the Kubernetes API Server
-during a `helm template` or a `helm install|update|delete|rollback --dry-run`,
+during a `helm template` or a `helm install|upgrade|delete|rollback --dry-run`,
 so the `lookup` function will return an empty list (i.e. dict) in such a case.
 
 ## Operators are functions
