@@ -33,10 +33,10 @@ Helm | Blog
 
         <div class="pagination">
           {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="left arrow">&#8592;</a>
+            <a href="{{ .Paginator.Prev.URL }}" class="left arrow">Next</a>
           {{ end }}
           {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="right arrow">&#8594;</a>
+            <a href="{{ .Paginator.Next.URL }}" class="right arrow">Previous</a>
           {{ end }}
         
           <span>{{ .Paginator.PageNumber }}</span>
