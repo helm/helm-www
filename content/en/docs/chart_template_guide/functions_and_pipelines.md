@@ -174,7 +174,7 @@ data:
 In an actual chart, all static default values should live in the `values.yaml`,
 and should not be repeated using the `default` command (otherwise they would be
 redundant). However, the `default` command is perfect for computed values, which
-can not be declared inside `values.yaml`. For example:
+cannot be declared inside `values.yaml`. For example:
 
 ```yaml
 drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" .)) }}
