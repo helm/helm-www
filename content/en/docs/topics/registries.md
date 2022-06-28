@@ -103,7 +103,7 @@ created ahead of time using `helm package`.
 When using `helm push` to upload a chart an OCI registry, the reference
 must be prefixed with `oci://` and must not contain the basename or tag.
 
-The registry reference basename is inferred from from the chart's name,
+The registry reference basename is inferred from the chart's name,
 and the tag is inferred from the chart's semantic version. This is
 currently a strict requirement ([more info here](#deprecated-features-and-strict-naming-policies)).
 
