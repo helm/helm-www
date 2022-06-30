@@ -1,7 +1,7 @@
 ---
 title: ".helmignore 文件"
 description: "`.helmignore` 文件用来指定你不想包含在你的helm chart中的文件。"
-weight: 12
+weight: 13
 ---
 
 `.helmignore` 文件用来指定你不想包含在你的helm chart中的文件。
