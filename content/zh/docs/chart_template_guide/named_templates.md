@@ -36,9 +36,9 @@ _子模板_)仅仅是在文件内部定义的模板，并使用了一个名字�
 `define`操作允许我们在模板文件中创建一个命名模板，语法如下：
 
 ```yaml
-{{ define "MY.NAME" }}
+{{- define "MY.NAME" }}
   # body of template here
-{{ end }}
+{{- end }}
 ```
 
 比如我们可以定义一个模板封装Kubernetes的标签：
