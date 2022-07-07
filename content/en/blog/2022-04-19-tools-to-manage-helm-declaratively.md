@@ -58,7 +58,7 @@ There are some differences between the tools we've looked at so far. The followi
 
 | | Retains Helm release info | Supports Helm hooks | OCI support | Does not require Helm binary |
 | -- | -- | -- | -- | -- |
-| Flux Helm controller | ✅ | ✅ | 🚫[^1] | ✅ |
+| Flux Helm controller | ✅ | ✅ | ✅ | ✅[^1] |
 | Argo CD | 🚫 | :warning:[^2] | ✅[^3] | 🚫 |
 | Helmfile | ✅ | :warning:[^4] | :warning:[^5] | 🚫[^6] |
 | Captain | ✅ | ✅ | ✅ | ✅ |
@@ -72,12 +72,12 @@ _Note, this comparison is from when the blog post was last updated. Projects cha
 
 If you want to use a configuration manager with your Helm and Kubernetes configuration there are many choices. While the Helm project doesn't endorse one project over another, we do suggest using a configuration manager when it's appropriate.
 
-[^1]: Because Flux makes full use of the Helm SDK, as of Helm v3.8.0 Flux is now unblocked to add OCI artifact integration (Flux team members helped finish bringing OCI support out of experimental into a full feature in Helm). [RFC-0002](https://github.com/fluxcd/flux2/tree/main/rfcs/0002-helm-oci) is now marked as implementable, and work on this is now in progress for Flux. You can follow this fluxcd/source-controller issue [#669](https://github.com/fluxcd/source-controller/issues/669) for progress.
+[^1]: Flux makes full use of the Helm SDK, and Flux team members helped finish bringing OCI support out of experimental into a full feature in Helm. As of `v0.31.0` allows users to define [Helm OCI repository](https://fluxcd.io/docs/guides/helmreleases/#helm-oci-repository) as a chart source.
 [^2]: Because Argo does not retain Helm release information, there is an [attempt to map](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-hooks) Helm hooks to ArgoCD hooks, however, there are far fewer Argo hooks and unmappable concepts such as no differentiation between install and upgrade. You can work around this by writing your charts specifically for ArgoCD, however hooks in commonly used community charts will not work.
 [^3]: ArgoCD shells out to the Helm CLI, only to render templates. This has allowed Argo to turn on Helm CLI's OCI feature before it was finished, for the same reason that it can not support Helm features beyond templating. Because of this, OCI is not part of the ArgoCD source architecture.
 [^4]: Helmfile has a custom concept of hooks, not necessarily mapped to Helm hooks. See readme [hooks section](https://github.com/helmfile/helmfile#hooks) and [this issue](https://github.com/roboll/helmfile/issues/1291) for clarification and work in progress.
 [^5]: Helmfile has experimental OCI support, without explicitly explaining to users that it sets `HELM_EXPERIMENTAL_OCI=1` before shelling out to the Helm CLI. See [#2112](https://github.com/roboll/helmfile/issues/2112) and [#2111](https://github.com/roboll/helmfile/issues/2111).
 [^6]: Helmfile parameterizes the Helm binary (default: `helm`).
 [^7]: Terraform Helm provider has [some issues](https://github.com/hashicorp/terraform-provider-helm/issues/683) with Helm hooks and wait configurations.
-[^8]: Orkestra leverages Flux Helm Controller to reconcile the releases. See the note above about Flux Helm controller OCI status. Once a full implementation is released in Flux, Orkestra will also support OCI.
+[^8]: Orkestra leverages Flux Helm Controller to reconcile the releases. Now that a full implementation is released in Flux, Orkestra is unblocked from supporting OCI. See [#411 (comment)](https://github.com/Azure/orkestra/issues/411#issuecomment-972571866) and [#411 (comment)](https://github.com/Azure/orkestra/issues/411#issuecomment-1178259373).
 [^9]: Fleet uses the Helm SDK. Once it uses a version of the Helm SDK that supports OCI registries, Fleet will inherit support.
