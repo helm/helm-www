@@ -270,6 +270,23 @@ name:
   - c
 ```
 
+某些name/key可以设置为`null`或者空数组，例如 `--set name=[],a=null` 由
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+变成了
+
+```yaml
+name: []
+a: null
+```
+
 从 2.5.0 版本开始，可以使用数组下标的语法来访问列表中的元素。例如 `--set servers[0].port=80` 就变成了：
 
 ```yaml

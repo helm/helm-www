@@ -25,7 +25,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 ```shell
       --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string           identify HTTPS client using this SSL certificate file
-  -d, --destination string         location to write the chart. If this and tardir are specified, tardir is appended to this (default ".")
+  -d, --destination string         location to write the chart. If this and untardir are specified, untardir is appended to this (default ".")
       --devel                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored.
   -h, --help                       help for pull
       --insecure-skip-tls-verify   skip tls certificate checks for the chart download
