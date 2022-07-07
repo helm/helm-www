@@ -66,7 +66,7 @@ There are some differences between the tools we've looked at so far. The followi
 | Orkestra | ✅ | ✅ | 🚫[^8] | ✅ |
 | Fleet | ✅ | ✅ | 🚫[^9] | ✅ |
 
-_Note, this comparison is from when the blog post was published. Projects change over time and the feature set may change over time. You should evaluate the projects in their current state before choosing one._
+_Note, this comparison is from when the blog post was last updated. Projects change over time and the feature set may change over time. You should evaluate the projects in their current state before choosing one._
 
 ## Conclusion
 

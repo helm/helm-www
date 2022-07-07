@@ -19,7 +19,16 @@ Helm | Blog
         <article>
           <header>
             <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-            <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+            {{ $date := .Date.Format "Mon, Jan 2, 2006" }}
+            {{ $lastmod := .Lastmod.Format "Mon, Jan 2, 2006" }}
+            <p class="date">
+              {{ if and (ne $lastmod $date) (gt .Lastmod .Date) }}
+                {{ $date }}
+                <small>[updated:  {{ .Lastmod.Format "Jan 2, 2006" }}]</small>
+              {{ else }}
+                {{ $date }}
+              {{ end }}
+            </p>
           </header>
           
           <p>
