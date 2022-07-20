@@ -684,6 +684,8 @@ The following type conversion functions are provided by Helm:
   object to indented JSON.
 - `toRawJson` (`mustToRawJson`): Convert list, slice, array, dict, or object to
   JSON with HTML characters unescaped.
+- `fromYaml`: Convert a YAML string to an object.
+- `fromJson`: Convert a JSON string to an object.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
 to convert from any type to the destination type. For example, `int64` can
@@ -743,6 +745,49 @@ toRawJson .Item
 ```
 
 The above returns unescaped JSON string representation of `.Item`.
+
+### fromYaml
+
+The `fromYaml` function takes a YAML string and returns an object that can be used in templates.
+
+`File at: yamls/person.yaml`
+```yaml
+name: Bob
+age: 25
+hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+```yaml
+{{- $person := .Files.Get "yamls/person.yaml" | fromYaml }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
+
+### fromJson
+
+The `fromJson` function takes a YAML string and returns an object that can be used in templates.
+
+`File at: jsons/person.json`
+```json
+{
+  "name": "Bob",
+  "age": 25,
+  "hobbies": [
+    "hiking",
+    "fishing",
+    "cooking"
+  ]
+}
+```
+```yaml
+{{- $person := .Files.Get "jsons/person.json" | fromJson }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
 
 ## Regular Expressions
 
