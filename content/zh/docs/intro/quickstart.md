@@ -1,44 +1,42 @@
 ---
-title: "快速入门指南"
-description: "如何安装和开始使用Helm，包括Helm的介绍、FAQs和Helm插件"
+title: "快速入門指南"
+description: "如何安裝和開始使用 Helm，包括 Helm 的介绍、FAQs 和 Helm 插件"
 weight: 1
 ---
 
-本指南介绍如何快速开始使用Helm。
+本指南介绍如何快速開始使用 Helm。
 
-## 先决条件
+## 先決條件
 
-想成功和正确地使用Helm，需要以下前置条件。
+想成功和正確地使用 Helm，需要達成以下前置條件。
 
-1. 一个 Kubernetes 集群
-2. 确定你安装版本的安全配置
-3. 安装和配置Helm。
+1. 一個 Kubernetes 叢集
+2. 確定你安裝版本的安全配置
+3. 安裝和配置 Helm。
 
-### 安装或者使用现有的Kubernetes集群
+### 安裝或者使用現有的 Kubernetes 叢集
 
-- 使用Helm，需要一个Kubernetes集群。对于Helm的最新版本，我们建议使用Kubernetes的最新稳定版，
-  在大多数情况下，它是倒数第二个次版本。
-- 您也应该有一个本地的 `kubectl`.
+- 使用 Helm，需要一個 Kubernetes 叢集。對於 Helm 的最新版本，我们建議使用 Kubernetes 的最新穩定版，在大多數情况下，它是倒數第二個次版本。
+- 您也應該有一個本地的 `kubectl`.
 
-查看Helm和对应支持的Kubernetes版本，您可以参考 [Helm
-版本支持策略](https://helm.sh/zh/docs/topics/version_skew/)。
+查看 Helm 和對應支持的 Kubernetes 版本，您可以参考 [Helm 版本支持策略](https://helm.sh/zh/docs/topics/version_skew/)。
 
-## 安装
+## 安裝
 
-您可以通过 `homebrew` 下载二进制Helm client安装包，也可以通过github下载 [github 官方发布页面](https://github.com/helm/helm/releases)
+您可以通過 `homebrew` 下载二進制 Helm client 版本，也可以通過 github 下载 [github 官方發佈頁面](https://github.com/helm/helm/releases)
 
-除此之外的更多安装方式详见 [安装指南](https://helm.sh/zh/docs/intro/install)。
+除此之外的更多安裝方式詳見 [安裝指南](https://helm.sh/zh/docs/intro/install)。
 
 ## 初始化
 
-当您已经安装好了Helm之后，您可以添加一个chart 仓库。从[Artifact
-Hub](https://artifacthub.io/packages/search?kind=0)中查找有效的Helm chart仓库。
+當您已經安裝好了 Helm 之後，您可以添加一個 chart 倉庫。從[Artifact
+Hub](https://artifacthub.io/packages/search?kind=0)中查找有效的 Helm chart 倉庫。
 
 ```console
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-当添加完成，您将可以看到可以被您安装的charts列表：
+當添加完成，您將可以看到可以被您安裝的 charts 列表：
 
 ```console
 $ helm search repo bitnami
@@ -50,13 +48,12 @@ bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an
 # ... and many more
 ```
 
-## 安装Chart示例
+## 安裝 Chart 範例
 
-您可以通过`helm install` 命令安装chart。 Helm可以通过多种途径查找和安装chart，
-但最简单的是安装官方的`bitnami` charts。
+您可以通過`helm install` 命令安裝 chart。 Helm 可以通過多種途徑搜尋和安裝 chart，但最簡單的是安裝官方的`bitnami` charts。
 
 ```console
-$ helm repo update              # 确定我们可以拿到最新的charts列表
+$ helm repo update              # 確定我們可以拿到最新的charts列表
 $ helm install bitnami/mysql --generate-name
 NAME: mysql-1612624192
 LAST DEPLOYED: Sat Feb  6 16:09:56 2021
@@ -67,19 +64,19 @@ TEST SUITE: None
 NOTES: ...
 ```
 
-在上面的例子中，`bitnami/mysql`这个chart被发布，名字是 `mysql-1612624192`
+在上面的範例中，`bitnami/mysql`这個 chart 被發佈，名字是 `mysql-1612624192`
 
-您可以通过执行 `helm show  chart bitnami/mysql` 命令简单的了解到这个chart的基本信息。
-或者您可以执行 `helm show all bitnami/mysql` 获取关于该chart的所有信息。
+您可以通過執行 `helm show chart bitnami/mysql` 命令簡單的了解到這個 chart 的基本訊息。
+或者您可以執行 `helm show all bitnami/mysql` 獲取關於該 chart 的所有訊息。
 
-每当您执行 `helm install` 的时候，都会创建一个新的发布版本。
-所以一个chart在同一个集群里面可以被安装多次，每一个都可以被独立的管理和升级。
+每當您執行 `helm install` 的时候，都會創建一個新的發佈版本。
+所以一個 chart 在同一個叢集裡面可以被安裝多次，每一個都可以被獨立的管理和升級。
 
-`helm install` 是一个拥有很多能力的强大的命令，更多信息详见 [使用 Helm](https://helm.sh/zh/docs/intro/using_helm)
+`helm install` 是一個擁有很多能力的強大命令，更多資訊詳見 [使用 Helm](https://helm.sh/zh/docs/intro/using_helm)
 
-## 关于版本发布
+## 關於版本發佈
 
-通过Helm您可以很容易看到哪些chart被发布了：
+通過 Helm 您可以很容易看到哪些 chart 被發佈了：
 
 ```console
 $ helm list
@@ -87,22 +84,22 @@ NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS 
 mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-`helm list` (或 `helm ls`) 命令会列出所有可被部署的版本。
+`helm list` (或 `helm ls`) 命令會列出所有可被部署的版本。
 
-## 卸载一个版本
+## 刪除一個版本
 
-您可以使用`helm uninstall` 命令卸载你的版本
+您可以使用`helm uninstall` 命令刪除你的版本
 
 ```console
 $ helm uninstall mysql-1612624192
 release "mysql-1612624192" uninstalled
 ```
 
-该命令会从Kubernetes卸载 `mysql-1612624192`， 它将删除和该版本相关的所有相关资源（service、deployment、
-pod等等）甚至版本历史。
+該命令會從 Kubernetes 刪除 `mysql-1612624192`， 它將刪除和該版本相關的所有相關资源（service、deployment、
+pod 等等）甚至版本歷史。
 
-如果您在执行 `helm uninstall` 的时候提供 `--keep-history` 选项， Helm将会保存版本历史。
-您可以通过命令查看该版本的信息
+如果您在執行 `helm uninstall` 的時候提供 `--keep-history` 選項， Helm 將會保存版本歷史。
+您可以通過命令查看該版本的訊息
 
 ```console
 $ helm status mysql-1612624192
@@ -110,12 +107,12 @@ Status: UNINSTALLED
 ...
 ```
 
-因为 `--keep-history` 选项会让helm跟踪你的版本（即使你卸载了他们）， 所以你可以审计集群历史甚至使用
-`helm rollback` 回滚版本。
+因為 `--keep-history` 選項會讓 helm 跟蹤你的版本（即使你刪除了他們）， 所以你可以審計叢集歷史甚至使用
+`helm rollback` 回滾版本。
 
-## 查看帮助信息
+## 查看幫助訊息
 
-如果您想通过Helm命令查看更多的有用的信息，请使用 `helm help` 命令，或者在任意命令后添加 `-h` 选项：
+如果您想通過 Helm 命令查看更多的有用的訊息，請使用 `helm help` 命令，或者在任意命令後添加 `-h` 選項：
 
 ```console
 $ helm get -h
