@@ -1,8 +1,8 @@
 ---
-title: "介绍"
+title: "介紹"
 weight: 1
 ---
 
-# Helm 介绍
+# Helm 介紹
 
-Helm 新手从这里开始。
+Helm 新手從這裡開始。
