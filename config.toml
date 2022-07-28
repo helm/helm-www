@@ -403,7 +403,7 @@ language_alternatives = ["en"]
 # Chinese
 [languages.zh]
 title = "Helm"
-description = "Helm - Kubernetes 套件管理器"
+description = "Helm - Kubernetes 的套件管理器"
 contentDir = "content/zh"
 languageName = "中文"
 weight = 10
@@ -419,7 +419,7 @@ url = "/docs"
 weight = 2
 
 [[languages.zh.menus.main]]
-name = "應用中心"
+name = "Charts"
 url = "https://hub.helm.sh/"
 weight = 3
 external = "yes"

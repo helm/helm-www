@@ -1,41 +1,41 @@
 ---
-title: "使用Helm"
-description: "解释 Helm 的基础知识。"
+title: "使用 Helm"
+description: "解釋 Helm 的基礎知識。"
 weight: 3
 ---
 
-本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。在这之前，假定您已经
-[安装](https://helm.sh/zh/docs/intro/install)了 Helm 客户端。
+本指南介紹了使用 Helm 來管理 Kubernetes 叢集上的軟體包的基礎知識。在這之前，假設您已經
+[安裝](https://helm.sh/zh/docs/intro/install)了 Helm 客戶端。
 
-如果您仅对运行一些快速命令感兴趣，则不妨从[快速入门指南](https://helm.sh/zh/docs/intro/quickstart)开始。本章包含了
-Helm 命令的详细说明，并解释如何使用 Helm。
+如果您僅對運行一些快速命令感興趣，不妨從[快速入門指南](https://helm.sh/zh/docs/intro/quickstart)開始。本章包含了
+Helm 命令的詳細說明，並解釋如何使用 Helm。
 
 ## 三大概念
 
-*Chart* 代表着 Helm 包。它包含在 Kubernetes 集群内部运行应用程序，工具或服务所需的所有资源定义。你可以把它看作是
-Homebrew formula，Apt dpkg，或 Yum RPM 在Kubernetes 中的等价物。
+*Chart* 代表著 Helm 包。它包含在 Kubernetes 叢集內部運行應用程序，工具或服務所需的所有資源定義。你可以把它看作是
+Homebrew formula，Apt dpkg，或 Yum RPM 在 Kubernetes 中的等價物。
 
-*Repository（仓库）* 是用来存放和共享 charts 的地方。它就像 Perl 的 [CPAN 档案库网络](https://www.cpan.org)
-或是 Fedora 的[软件包仓库](https://src.fedoraproject.org/)，只不过它是供 Kubernetes 包所使用的。
+*Repository（倉庫）* 是用來存放和共享 charts 的地方。它就像 Perl 的 [CPAN 檔案庫網路](https://www.cpan.org)
+或是 Fedora 的[軟體包倉庫](https://src.fedoraproject.org/)，只不過它是供 Kubernetes 包所使用的。
 
-*Release* 是运行在 Kubernetes 集群中的 chart 的实例。一个 chart 通常可以在同一个集群中安装多次。每一次安装都会创建一个新的
-_release_。以 MySQL chart为例，如果你想在你的集群中运行两个数据库，你可以安装该chart两次。每一个数据库都会拥有它自己的
+*Release* 是運行在 Kubernetes 叢集中的 chart 的實例。一個 chart 通常可以在同一個叢集中安裝多次。每一次安裝都會創建一個新的
+_release_。以 MySQL chart 為例，如果你想在你的叢集中運行兩個資料庫，你可以安裝該 chart 兩次。每一個資料庫都會擁有它自己的
 _release_ 和 _release name_。
 
-在了解了上述这些概念以后，我们就可以这样来解释 Helm：
+在了解了上述這些概念以後，我們就可以這樣來解釋 Helm：
 
-Helm 安装 _charts_ 到 Kubernetes 集群中，每次安装都会创建一个新的 _release_。你可以在 Helm 的
-chart _repositories_ 中寻找新的 chart。
+Helm 安裝 _charts_ 到 Kubernetes 叢集中，每次安裝都會創建一個新的 _release_。你可以在 Helm 的
+chart _repositories_ 中尋找新的 chart。
 
-## 'helm search'：查找 Charts
+## 'helm search'：搜尋 Charts
 
-Helm 自带一个强大的搜索命令，可以用来从两种来源中进行搜索：
+Helm 自帶一個强大的搜尋命令，可以用來從兩種來源中進行搜尋：
 
-- `helm search hub` 从 [Artifact Hub](https://artifacthub.io) 中查找并列出 helm charts。
-  Artifact Hub中存放了大量不同的仓库。
-- `helm search repo` 从你添加（使用 `helm repo add`）到本地 helm 客户端中的仓库中进行查找。该命令基于本地数据进行搜索，无需连接互联网。
+- `helm search hub` 從 [Artifact Hub](https://artifacthub.io) 中搜尋並列出 helm charts。
+  Artifact Hub 中存放了大量不同的倉庫。
+- `helm search repo` 從你添加（使用 `helm repo add`）到本地 helm 客戶端中的倉庫中進行搜尋。該命令基於本地資料進行搜尋，無需連接網路。
 
-你可以通过运行 `helm search hub` 命令找到公开可用的charts：
+你可以通過運行 `helm search hub` 命令找到公開可用的 charts：
 
 ```console
 $ helm search hub wordpress
@@ -45,11 +45,11 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.6.3        v0.6.3      Pr
 https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A Helm chart for deploying a WordPress site on ...
 ```
 
-上述命令从 Artifact Hub 中搜索所有的 `wordpress` charts。
+上述命令從 Artifact Hub 中搜索所有的 `wordpress` charts。
 
-如果不进行过滤，`helm search hub` 命令会展示所有可用的 charts。
+如果不進行過濾，`helm search hub` 命令會展示所有可用的 charts。
 
-使用 `helm search repo` 命令，你可以从你所添加的仓库中查找chart的名字。
+使用 `helm search repo` 命令，你可以從你所添加的倉庫中搜尋 chart 的名字。
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -64,7 +64,7 @@ brigade/brigade-project       1.0.0         v1.0.0      Create a Brigade project
 brigade/kashti                0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-Helm 搜索使用模糊字符串匹配算法，所以你可以只输入名字的一部分：
+Helm 搜索使用模糊字符串匹配算法，所以你可以只輸入名字的一部分：
 
 ```console
 $ helm search repo kash
@@ -72,11 +72,11 @@ NAME            CHART VERSION APP VERSION DESCRIPTION
 brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-搜索是用来发现可用包的一个好办法。一旦你找到你想安装的 helm 包，你便可以通过使用 `helm install` 命令来安装它。
+搜索是用來發現可用包的一個好辦法。一旦你找到你想安裝的 helm 包，你便可以通過使用 `helm install` 命令來安裝它。
 
-## 'helm install'：安装一个 helm 包
+## 'helm install'：安裝一個 helm 包
 
-使用 `helm install` 命令来安装一个新的 helm 包。最简单的使用方法只需要传入两个参数：你命名的release名字和你想安装的chart的名称。
+使用 `helm install` 命令來安裝一個新的 helm 包。最簡單的使用方法只需要傳入兩個參數：你命名的 release 名字和你想安裝的 chart 的名稱。
 
 ```console
 $ helm install happy-panda bitnami/wordpress
@@ -112,12 +112,12 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 ```
 
-现在`wordpress` chart 已经安装。注意安装chart时创建了一个新的 _release_ 对象。上述发布被命名为 `happy-panda`。
-（如果想让Helm生成一个名称，删除发布名称并使用`--generate-name`。）
+現在`wordpress` chart 已經安裝。注意安裝 chart 時創建了一個新的 _release_ 對象。上述發佈被命名為 `happy-panda`。
+（如果想讓 Helm 生成一個名稱，刪除發佈名稱並使用`--generate-name`。）
 
-在安装过程中，`helm` 客户端会打印一些有用的信息，其中包括：哪些资源已经被创建，release当前的状态，以及你是否还需要执行额外的配置步骤。
+在安裝過程中，`helm` 客戶端會顯示一些有用的訊息，其中包括：哪些資源已經被創建，release 當前的狀態，以及你是否還需要執行額外的配置步驟。
 
-Helm按照以下顺序安装资源：
+Helm 按照以下順序安裝資源：
 
 - Namespace
 - NetworkPolicy
@@ -154,9 +154,9 @@ Helm按照以下顺序安装资源：
 - Ingress
 - APIService
 
-Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到集群中。
+Helm 客戶端不會等到所有資源都運行才退出。許多 charts 需要大小超過 600M 的 Docker 鏡像，可能需要很長時間才能安裝到叢集中。
 
-你可以使用 `helm status` 来追踪 release 的状态，或是重新读取配置信息：
+你可以使用 `helm status` 來追蹤 release 的狀態，或是重新讀取配置訊息：
 
 ```console
 $ helm status happy-panda
@@ -191,13 +191,13 @@ To access your WordPress site from outside the cluster follow the steps below:
   echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-上述信息展示了 release 的当前状态。
+上述訊息展示了 release 的當前狀態。
 
-### 安装前自定义 chart
+### 安裝前自定義 chart
 
-上述安装方式只会使用 chart 的默认配置选项。很多时候，我们需要自定义 chart 来指定我们想要的配置。
+上述安裝方式只會使用 chart 的默認配置選項。很多時候，我們需要自定義 chart 來指定我們想要的配置。
 
-使用 `helm show values` 可以查看 chart 中的可配置选项：
+使用 `helm show values` 可以查看 chart 中的可配置選項：
 
 ```console
 $ helm show values bitnami/wordpress
@@ -221,47 +221,47 @@ image:
   [..]
 ```
 
-然后，你可以使用 YAML 格式的文件覆盖上述任意配置项，并在安装过程中使用该文件。
+然後，你可以使用 YAML 格式的文件覆蓋上述任意配置項，並在安裝過程中使用該文件。
 
 ```console
 $ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values.yaml
 $ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-上述命令将为 MariaDB 创建一个名称为 `user0` 的默认用户，并且授予该用户访问新建的 `user0db` 数据库的权限。chart 中的其他默认配置保持不变。
+上述命令將為 MariaDB 創建一個名稱為 `user0` 的默認用戶，並且授予該用戶訪問新建的 `user0db` 資料庫的權限。chart 中的其他默認配置保持不變。
 
-安装过程中有两种方式传递配置数据：
+安裝過程中有兩種方式傳遞配置資料：
 
-- `--values` (或 `-f`)：使用 YAML 文件覆盖配置。可以指定多次，优先使用最右边的文件。
-- `--set`：通过命令行的方式对指定项进行覆盖。
+- `--values` (或 `-f`)：使用 YAML 文件覆蓋配置。可以指定多次，優先使用最右邊的文件。
+- `--set`：通過命令行的方式對指定項進行覆蓋。
 
-如果同时使用两种方式，则 `--set` 中的值会被合并到 `--values` 中，但是 `--set` 中的值优先级更高。在`--set`
-中覆盖的内容会被被保存在 ConfigMap 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
-`--set` 设置的值。也可以通过运行 `helm upgrade` 并指定 `--reset-values` 字段来清除 `--set` 中设置的值。
+如果同時使用兩種方式，則 `--set` 中的值會被合併到 `--values` 中，但是 `--set` 中的值優先級更高。在`--set`
+中覆蓋的内容會被保存在 ConfigMap 中。可以通過 `helm get values <release-name>` 來查看指定 release 中
+`--set` 設置的值。也可以通過運行 `helm upgrade` 並指定 `--reset-values` 字段來清除 `--set` 中設置的值。
 
 #### `--set` 的格式和限制
 
-`--set` 选项使用0或多个 name/value 对。最简单的用法类似于：`--set name=value`，等价于如下 YAML 格式：
+`--set` 選項使用 0 或多個 name/value 對。最簡單的用法類似於：`--set name=value`，等價於如下 YAML 格式：
 
 ```yaml
 name: value
 ```
 
-多个值使用逗号分割，因此 `--set a=b,c=d` 的 YAML 表示是：
+多個值使用逗號分割，因此 `--set a=b,c=d` 的 YAML 表示是：
 
 ```yaml
 a: b
 c: d
 ```
 
-支持更复杂的表达式。例如，`--set outer.inner=value` 被转换成了：
+支持更複雜的表達式。例如，`--set outer.inner=value` 被轉換成了：
 
 ```yaml
 outer:
   inner: value
 ```
 
-列表使用花括号（`{}`）来表示。例如，`--set name={a, b, c}` 被转换成了：
+列表使用大括號（`{}`）來表示。例如，`--set name={a, b, c}` 被轉換成了：
 
 ```yaml
 name:
@@ -270,14 +270,14 @@ name:
   - c
 ```
 
-从 2.5.0 版本开始，可以使用数组下标的语法来访问列表中的元素。例如 `--set servers[0].port=80` 就变成了：
+從 2.5.0 版本開始，可以使用數組下標的語法來訪問列表中的元素。例如 `--set servers[0].port=80` 就變成了：
 
 ```yaml
 servers:
   - port: 80
 ```
 
-多个值也可以通过这种方式来设置。`--set servers[0].port=80,servers[0].host=example` 变成了：
+多個值也可以通過這種方式來設置。`--set servers[0].port=80,servers[0].host=example` 變成了：
 
 ```yaml
 servers:
@@ -285,50 +285,50 @@ servers:
     host: example
 ```
 
-如果需要在 `--set` 中使用特殊字符，你可以使用反斜线来进行转义；`--set name=value1\,value2` 就变成了：
+如果需要在 `--set` 中使用特殊字符，你可以使用反斜線來進行跳脫；`--set name=value1\,value2` 就變成了：
 
 ```yaml
 name: "value1,value2"
 ```
 
-类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
-node selectors 时派上用场。`--set nodeSelector."kubernetes\.io/role"=master` 语法就变成了：
+類似的，你也可以跳脫點序列（英文句號）。這可能會在 chart 使用 `toYaml` 函數來解析 annotations，labels，和
+node selectors 時派上用場。`--set nodeSelector."kubernetes\.io/role"=master` 語法就變成了：
 
 ```yaml
 nodeSelector:
   kubernetes.io/role: master
 ```
 
-深层嵌套的数据结构可能会很难用 `--set` 表达。我们希望 Chart 的设计者们在设计 `values.yaml` 文件的格式时，考虑到 `--set`
-的使用。（更多内容请查看 [Values 文件](https://helm.sh/docs/chart_template_guide/values_files/)）
+深層嵌套的數據結構可能會很難用 `--set` 表達。我們希望 Chart 的設計者們在設計 `values.yaml` 文件的格式時，考慮到 `--set`
+的使用。（更多内容請查看 [Values 文件](https://helm.sh/docs/chart_template_guide/values_files/)）
 
-### 更多安装方法
+### 更多安裝方法
 
-`helm install` 命令可以从多个来源进行安装：
+`helm install` 命令可以從多個來源進行安裝：
 
-- chart 的仓库（如上所述）
-- 本地 chart 压缩包（`helm install foo foo-0.1.1.tgz`）
-- 解压后的 chart 目录（`helm install foo path/to/foo`）
+- chart 的倉庫（如上所述）
+- 本地 chart 壓縮包（`helm install foo foo-0.1.1.tgz`）
+- 解壓縮後的 chart 目錄（`helm install foo path/to/foo`）
 - 完整的 URL（`helm install foo https://example.com/charts/foo-1.2.3.tgz`）
 
-## 'helm upgrade' 和 'helm rollback'：升级 release 和失败时恢复
+## 'helm upgrade' 和 'helm rollback'：升級 release 和失败時恢复
 
-当你想升级到 chart 的新版本，或是修改 release 的配置，你可以使用 `helm upgrade` 命令。
+當你想升級到 chart 的新版本，或是修改 release 的配置，你可以使用 `helm upgrade` 命令。
 
-一次升级操作会使用已有的 release 并根据你提供的信息对其进行升级。由于 Kubernetes 的 chart
-可能会很大而且很复杂，Helm 会尝试执行最小侵入式升级。即它只会更新自上次发布以来发生了更改的内容。
+一次升級操作會使用已有的 release 並根據你提供的訊息對其進行升級。由於 Kubernetes 的 chart
+可能會很大而且很複雜，Helm 會嘗試執行最小侵入式升級。即它只會更新自上次發佈以來发生了更改的内容。
 
 ```console
 $ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
 ```
 
-在上面的例子中，`happy-panda` 这个 release 使用相同的 chart 进行升级，但是使用了一个新的 YAML 文件：
+在上面的例子中，`happy-panda` 这個 release 使用相同的 chart 進行升級，但是使用了一個新的 YAML 文件：
 
 ```yaml
 mariadb.auth.username: user1
 ```
 
-我们可以使用 `helm get values` 命令来看看配置值是否真的生效了：
+我們可以使用 `helm get values` 命令來看看配置值是否真的生效了：
 
 ```console
 $ helm get values happy-panda
@@ -337,43 +337,43 @@ mariadb:
     username: user1
 ```
 
-`helm get` 是一个查看集群中 release 的有用工具。正如我们上面所看到的，`panda.yaml` 中的新值已经被部署到集群中了。
+`helm get` 是一個查看叢集中 release 的有用工具。正如我們上面所看到的，`panda.yaml` 中的新值已經被部署到叢集中了。
 
-现在，假如在一次发布过程中，发生了不符合预期的事情，也很容易通过 `helm rollback [RELEASE] [REVISION]` 命令回滚到之前的发布版本。
+現在，假如在一次發佈過程中，發生了不符合預期的事情，也很容易通過 `helm rollback [RELEASE] [REVISION]` 命令回滾到之前的發佈版本。
 
 ```console
 $ helm rollback happy-panda 1
 ```
 
-上面这条命令将我们的 `happy-panda` 回滚到了它最初的版本。release 版本其实是一个增量修订（revision）。
-每当发生了一次安装、升级或回滚操作，revision 的值就会加1。第一次 revision 的值永远是1。我们可以使用
-`helm history [RELEASE]` 命令来查看一个特定 release 的修订版本号。
+上面这條命令將我們的 `happy-panda` 回滾到了它最初的版本。release 版本其实是一個增量修訂（revision）。
+每當發生了一次安裝、升級或回滾操作，revision 的值就會加 1。第一次 revision 的值永遠是 1。我們可以使用
+`helm history [RELEASE]` 命令來查看一個特定 release 的修訂版本號。
 
-## 安装、升级、回滚时的有用选项
+## 安裝、升級、回滾時的有用選項
 
-你还可以指定一些其他有用的选项来自定义 Helm 在安装、升级、回滚期间的行为。请注意这并不是 cli 参数的完整列表。
-要查看所有参数的说明，请执行 `helm <command> --help` 命令。
+你還可以指定一些其他有用的選項來自定義 Helm 在安裝、升級、回滾期間的行為。請注意這並不是 cli 參數的完整列表。
+要查看所有參數的说明，請執行 `helm <command> --help` 命令。
 
-- `--timeout`：一个 [Go duration](https://golang.org/pkg/time/#ParseDuration) 类型的值，
-  用来表示等待 Kubernetes 命令完成的超时时间，默认值为 `5m0s`。
-- `--wait`：表示必须要等到所有的 Pods 都处于 ready 状态，PVC 都被绑定，Deployments 都至少拥有最小 ready 状态
-  Pods 个数（`Desired`减去 `maxUnavailable`），并且 Services 都具有 IP 地址（如果是`LoadBalancer`，
-  则为 Ingress），才会标记该 release 为成功。最长等待时间由 `--timeout` 值指定。如果达到超时时间，release 将被标记为
-  `FAILED`。注意：当 Deployment 的 `replicas` 被设置为1，但其滚动升级策略中的 `maxUnavailable`
-  没有被设置为0时，`--wait` 将返回就绪，因为已经满足了最小 ready Pod 数。
-- `--no-hooks`：不运行当前命令的钩子。
-- `--recreate-pods`（仅适用于 `upgrade` 和 `rollback`）：这个参数会导致重建所有的
-  Pod（deployment中的Pod 除外）。（在 Helm 3 中已被废弃）
+- `--timeout`：一個 [Go duration](https://golang.org/pkg/time/#ParseDuration) 類型的值，
+  用來表示等待 Kubernetes 命令完成的超時時間，默認值為 `5m0s`。
+- `--wait`：表示必須要等到所有的 Pods 都處於 ready 狀態，PVC 都被綁定，Deployments 都至少擁有最小 ready 狀態
+  Pods 個數（`Desired` 減去 `maxUnavailable`），並且 Services 都具有 IP 地址（如果是`LoadBalancer`，
+  則為 Ingress），才會標記該 release 為成功。最長等待時間由 `--timeout` 值指定。如果達到超時時間，release 將被標記為
+  `FAILED`。注意：当 Deployment 的 `replicas` 被设置为1，但其滚动升級策略中的 `maxUnavailable`
+  沒有被設置為 0 時，`--wait` 將返回就緒，因爲已經滿足了最小 ready Pod 數。
+- `--no-hooks`：不運行當前命令的鉤子。
+- `--recreate-pods`（僅適用於 `upgrade` 和 `rollback`）：這個參數會導致重建所有的
+  Pod（deployment中的Pod 除外）。（在 Helm 3 中已被廢棄）
 
-## 'helm uninstall'：卸载 release
+## 'helm uninstall'：刪除 release
 
-使用 `helm uninstall` 命令从集群中卸载一个 release：
+使用 `helm uninstall` 命令從叢集中刪除一個 release：
 
 ```console
 $ helm uninstall happy-panda
 ```
 
-该命令将从集群中移除指定 release。你可以通过 `helm list` 命令看到当前部署的所有 release：
+該命令將從叢集中移除指定 release。你可以通過 `helm list` 命令看到當前部署的所有 release：
 
 ```console
 $ helm list
@@ -381,13 +381,13 @@ NAME            VERSION UPDATED                         STATUS          CHART
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 ```
 
-从上面的输出中，我们可以看到，`happy-panda` 这个 release 已经被卸载。
+從上面的輸出中，我們可以看到，`happy-panda` 这個 release 已經被刪除。
 
-在上一个 Helm 版本中，当一个 release 被删除，会保留一条删除记录。而在 Helm 3 中，删除也会移除 release 的记录。
-如果你想保留删除记录，使用 `helm uninstall --keep-history`。使用 `helm list --uninstalled`
-只会展示使用了 `--keep-history` 删除的 release。
+在上一個 Helm 版本中，當一個 release 被删除，會保留一條删除紀錄。而在 Helm 3 中，删除也會移除 release 的紀錄。
+如果你想保留删除紀錄，使用 `helm uninstall --keep-history`。使用 `helm list --uninstalled`
+只會展示使用了 `--keep-history` 删除的 release。
 
-`helm list --all` 会展示 Helm 保留的所有 release 记录，包括失败或删除的条目（指定了 `--keep-history`）：
+`helm list --all` 會展示 Helm 保留的所有 release 紀錄，包括失敗或删除的條目（指定了 `--keep-history`）：
 
 ```console
 $  helm list --all
@@ -397,13 +397,13 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
 ```
 
-注意，因为现在默认会删除 release，所以你不再能够回滚一个已经被卸载的资源了。
+注意，因為現在默認會删除 release，所以你不再能夠回滾一個已經被刪除的資源了。
 
-## 'helm repo'：使用仓库
+## 'helm repo'：使用倉庫
 
-Helm 3 不再附带一个默认的 chart 仓库。`helm repo` 提供了一组命令用于添加、列出和移除仓库。
+Helm 3 不再附帶一個默認的 chart 倉庫。`helm repo` 提供了一组命令用於添加、列出和移除倉庫。
 
-使用 `helm repo list` 来查看配置的仓库：
+使用 `helm repo list` 來查看配置的倉庫：
 
 ```console
 $ helm repo list
@@ -412,51 +412,51 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-使用 `helm repo add` 来添加新的仓库：
+使用 `helm repo add` 來添加新的倉庫：
 
 ```console
 $ helm repo add dev https://example.com/dev-charts
 ```
 
-因为 chart 仓库经常在变化，在任何时候你都可以通过执行 `helm repo update` 命令来确保你的 Helm 客户端是最新的。
+因爲 chart 倉庫經常在變化，在任何時候你都可以通過執行 `helm repo update` 命令來確保你的 Helm 客戶端是最新的。
 
-使用 `helm repo remove` 命令来移除仓库。
+使用 `helm repo remove` 命令來移除倉庫。
 
-## 创建你自己的 charts
+## 創建你自己的 charts
 
-[chart 开发指南](https://helm.sh/zh/docs/topics/charts) 介绍了如何开发你自己的chart。 但是你也可以通过使用
-`helm create` 命令来快速开始：
+[chart 開發指南](https://helm.sh/zh/docs/topics/charts) 介紹了如何開發你自己的 chart。 但是你也可以通過使用
+`helm create` 命令來快速開始：
 
 ```console
 $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-现在，`./deis-workflow` 目录下已经有一个 chart 了。你可以编辑它并创建你自己的模版。
+現在，`./deis-workflow` 目錄下已經有一個 chart 了。你可以編輯並創建你自己的模板。
 
-在编辑 chart 时，可以通过 `helm lint` 验证格式是否正确。
+在編輯 chart 時，可以通過 `helm lint` 驗證格式是否正確。
 
-当准备将 chart 打包分发时，你可以运行 `helm package` 命令：
+當準備將 chart 打包分發時，你可以運行 `helm package` 命令：
 
 ```console
 $ helm package deis-workflow
 deis-workflow-0.1.0.tgz
 ```
 
-然后这个 chart 就可以很轻松的通过 `helm install` 命令安装：
+然後這個 chart 就可以很輕鬆的通過 `helm install` 命令安裝：
 
 ```console
 $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-打包好的 chart 可以上传到 chart 仓库中。查看[Helm chart 仓库](https://helm.sh/zh/docs/topics/chart_repository)获取更多信息。
+打包好的 chart 可以上傳到 chart 倉庫中。查看[Helm chart 倉庫](https://helm.sh/zh/docs/topics/chart_repository)獲得更多訊息。
 
-## 总结
+## 總結
 
-这一章介绍了 `helm` 客户端的基本使用方式，包括搜索，安装，升级，和卸载。也涵盖了一些有用的工具类命令，如`helm status`，
+這一章介紹了 `helm` 客戶端的基本使用方式，包含搜尋，安裝，升級，和刪除。也涵蓋了一些有用的工具類命令，如 `helm status`，
 `helm get`，和 `helm repo`。
 
-有关这些命令的更多信息，请查看 Helm 的内置帮助命令：`helm help`。
+有關這些命令的更多訊息，請查看 Helm 的內置幫助命令：`helm help`。
 
-在下一章中，我们来看一下如何开发 charts。
+在下一章中，我們來看一下如何開發 charts。

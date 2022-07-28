@@ -1,6 +1,6 @@
 ---
 title: "安裝 Helm"
-description: "了解如何安裝并运行Helm"
+description: "了解如何安裝並運行 Helm"
 weight: 2
 ---
 
@@ -9,11 +9,11 @@ weight: 2
 ## 用 Helm 項目安裝
 
 Helm 項目提供了兩種取得和安裝 Helm 的方式。這是官方提供的取得 Helm 發佈版本的方法。另外，
-Helm 社區提供了通過不同套件管理工具安裝 Helm 的方法。这些方法可以在下面的官方方法看到。
+Helm 社區提供了通過不同套件管理工具安裝 Helm 的方法。這些方法可以在下面的官方方法看到。
 
 ### 用二進制版本安裝
 
-每个 Helm[版本](https://github.com/helm/helm/releases)都提供了各種操作系统的二進制版本，这些版本可以手動下载和安裝。
+每個 Helm[版本](https://github.com/helm/helm/releases)都提供了各種操作系统的二進制版本，这些版本可以手動下载和安裝。
 
 1. 下载[需要的版本](https://github.com/helm/helm/releases)
 2. 解壓(`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
@@ -89,7 +89,7 @@ sudo snap install helm --classic
 
 ### 使用 pkg (FreeBSD)
 
-FreeBSD 社區成員貢獻了一个[Helm 頁面](https://www.freshports.org/sysutils/helm)来建構[FreeBSD
+FreeBSD 社區成員貢獻了一個[Helm 頁面](https://www.freshports.org/sysutils/helm)来建構[FreeBSD
 端口集](https://man.freebsd.org/ports)。這個方案通常是最新的。
 
 ```console

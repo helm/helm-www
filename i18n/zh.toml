@@ -34,7 +34,7 @@ other = "我们是 CNCF 的畢業項目。"
 
 ## homepage intro
 [main_title]
-other = "**Kubernetes** **套件管理器**"
+other = "**Kubernetes** **的套件管理器**"
 
 [main_subtitle]
 other = "Helm 是搜尋、分享和使用程式構建 [Kubernetes](https://kubernetes.io) 的最優方式。"
@@ -77,7 +77,7 @@ other = "隨時隨地升級和自定義的鉤子消除您升級的痛苦。"
 other = "部署簡單"
 
 [feature_03_desc]
-other = "Helm Chart 很容易在公共或私有化服务器上发版，分发和部署站点。"
+other = "Helm Chart 很容易在公共或私有化服務器上版控，分發和部署站點。"
 
 [feature_04_title]
 other = "回滾"
@@ -99,7 +99,7 @@ other = "安裝完成後，解壓縮並添加到 PATH，就可以使用了！ �
 other = "取得 Chart"
 
 [get_charts_desc]
-other = "訪問 [Helm 應用中心](https://hub.helm.sh) 瀏覽大量的 Charts。"
+other = "訪問 [Helm Charts](https://hub.helm.sh) 瀏覽公開的大量 Charts。"
 
 [get_upgrade_title]
 other = "[從 v2 升级到 v3](https://helm.sh/docs/topics/v2_v3_migration/)"

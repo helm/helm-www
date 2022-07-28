@@ -95,11 +95,11 @@ $ helm uninstall mysql-1612624192
 release "mysql-1612624192" uninstalled
 ```
 
-該命令會從 Kubernetes 卸载 `mysql-1612624192`， 它将删除和该版本相关的所有相关资源（service、deployment、
-pod 等等）甚至版本历史。
+該命令會從 Kubernetes 刪除 `mysql-1612624192`， 它將刪除和該版本相關的所有相關资源（service、deployment、
+pod 等等）甚至版本歷史。
 
-如果您在执行 `helm uninstall` 的时候提供 `--keep-history` 选项， Helm 将会保存版本历史。
-您可以通过命令查看该版本的信息
+如果您在執行 `helm uninstall` 的時候提供 `--keep-history` 選項， Helm 將會保存版本歷史。
+您可以通過命令查看該版本的訊息
 
 ```console
 $ helm status mysql-1612624192
@@ -107,12 +107,12 @@ Status: UNINSTALLED
 ...
 ```
 
-因为 `--keep-history` 选项会让 helm 跟踪你的版本（即使你卸载了他们）， 所以你可以审计叢集历史甚至使用
-`helm rollback` 回滚版本。
+因為 `--keep-history` 選項會讓 helm 跟蹤你的版本（即使你刪除了他們）， 所以你可以審計叢集歷史甚至使用
+`helm rollback` 回滾版本。
 
-## 查看帮助信息
+## 查看幫助訊息
 
-如果您想通过 Helm 命令查看更多的有用的信息，请使用 `helm help` 命令，或者在任意命令后添加 `-h` 选项：
+如果您想通過 Helm 命令查看更多的有用的訊息，請使用 `helm help` 命令，或者在任意命令後添加 `-h` 選項：
 
 ```console
 $ helm get -h
