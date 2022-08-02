@@ -25,7 +25,7 @@ other = ""
 other = "Helm is supported by and built with a community of over 400 developers."
 
 [footer_support_subtitle]
-other = "...and many other wonderful [helm](https://github.com/helm/helm/blob/main/OWNERS) and [charts](https://github.com/helm/charts/blob/master/OWNERS) core maintainers."
+other = "...and many other wonderful [helm](https://github.com/helm/helm/blob/main/OWNERS) core maintainers."
 
 [footer_cncf_status]
 other = "We are a Cloud Native Computing Foundation graduated project."
