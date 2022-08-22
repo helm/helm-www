@@ -103,6 +103,14 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
+### From dnf/yum (fedora)
+Since Fedora 35, helm is available on the official repository.
+You can install helm with invoking:
+
+```console
+sudo dnf install helm
+```
+
 ### From Snap
 
 The [Snapcrafters](https://github.com/snapcrafters) community maintains the Snap
