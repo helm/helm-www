@@ -44,7 +44,7 @@ version: ~1.2.3-0
 ファイルのURL（`file://...`）は固定されたデプロイパイプラインによって組み立てられた
 チャートのための"特殊なケース"と考えられます。
 
-[downloader plugins]({{< ref "../topics/plugins#downloader-plugins" >}})を使用する場合、
+[downloader plugins]({{< ref "../../en/docs/topics/plugins#downloader-plugins" >}})を使用する場合、
 URLのスキームはプラグインに固有になります。注意としては、チャートの利用者はその依存関係を
 ビルドもしくは更新するために、スキームをサポートするプラグインをインストールする必要があります。
 
