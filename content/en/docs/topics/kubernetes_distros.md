@@ -96,3 +96,9 @@ distributions:
 
 Some versions of Helm (v2.0.0-beta2) require you to `export
 KUBECONFIG=/etc/kubernetes/admin.conf` or create a `~/.kube/config`.
+
+## VMware Tanzu
+
+Helm works with Tanzu Community Edition, Tanzu Kubernetes Grid and Tanzu Kubernetes Grid Integrated. Read more in
+[Getting Started with Helm](https://tanzu.vmware.com/developer/guides/helm-gs/) guide.
+
