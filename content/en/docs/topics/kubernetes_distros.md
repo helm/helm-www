@@ -96,3 +96,9 @@ distributions:
 
 Some versions of Helm (v2.0.0-beta2) require you to `export
 KUBECONFIG=/etc/kubernetes/admin.conf` or create a `~/.kube/config`.
+
+## VMware Tanzu Kubernetes Grid
+
+Helm runs on VMware Tanzu Kubernetes Grid, TKG, without needing configuration changes. 
+The Tanzu CLI can manage installing packages for [helm-controller](https://fluxcd.io/flux/components/helm/) allowing for declaratively managing Helm chart releases. 
+Further details available in the TKG documentation for [CLI-Managed Packages](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5).
