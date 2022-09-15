@@ -201,7 +201,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 `lookup`函数使用Helm已有的Kubernetes连接配置查询Kubernetes。当与调用API服务交互时返回了错误
 （比如缺少资源访问的权限），helm 的模板操作会失败。
 
-请记住，Helm在`helm template`或者`helm install|update|delete|rollback --dry-run`时，
+请记住，Helm在`helm template`或者`helm install|upgrade|delete|rollback --dry-run`时，
 不应该请求Kubernetes API服务。由此，`lookup`函数在该案例中会返回空列表（即字典）。
 
 ## 运算符也是函数
