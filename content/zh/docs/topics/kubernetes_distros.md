@@ -70,7 +70,17 @@ Catalog](https://platform9.com/support/deploying-kubernetes-apps-platform9-manag
 
 ## Ubuntu 和 `kubeadm`
 
-Kubernetes 已知在一下Linux分发版本中由`kubeadm`引导启动：
+Kubernetes 已知在以下Linux分发版本中由`kubeadm`引导启动：
+
+- Ubuntu 16.04
+- Fedora release 25
 
 有些Helm版本 (v2.0.0-beta2) 需要 `export KUBECONFIG=/etc/kubernetes/admin.conf`
 或创建一个`~/.kube/config`。
+
+## VMware Tanzu Kubernetes Grid
+
+Helm在VMware Tanzu Kubernetes Grid即TKG上运行时不需要改变配置。
+Tanzu CLI可以管理 [helm-controller](https://fluxcd.io/flux/components/helm/) 的安装包，
+允许以声明的方式管理Helm chart 版本。
+TKG文档提供了关于[CLI-Managed Packages](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5) 的更多详细内容。
