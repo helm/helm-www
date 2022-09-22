@@ -20,7 +20,8 @@ To override values in a chart, use either the '--values' flag and pass in a file
 or use the '--set' flag and pass configuration from the command line, to force string
 values, use '--set-string'. You can use '--set-file' to set individual
 values from a file when the value itself is too long for the command line
-or is dynamically generated.
+or is dynamically generated. You can also use '--set-json' to set json values
+(scalars/objects/arrays) from the command line.
 
 You can specify the '--values'/'-f' flag multiple times. The priority will be given to the
 last (right-most) file specified. For example, if both myvalues.yaml and override.yaml
@@ -71,6 +72,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --reuse-values                               when upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
+      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --skip-crds                                  if set, no CRDs will be installed when an upgrade is performed with install flag enabled. By default, CRDs are installed if not already present, when an upgrade is performed with install flag enabled
       --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
@@ -85,22 +87,25 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options inherited from parent commands
 
 ```
-      --debug                       enable verbose output
-      --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         username to impersonate for the operation
-      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
-      --kube-context string         name of the kubeconfig context to use
-      --kube-token string           bearer token used for authentication
-      --kubeconfig string           path to the kubeconfig file
-  -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
+      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### SEE ALSO
 
 * [helm](helm.md)	 - The Helm package manager for Kubernetes.
 
-###### Auto generated by spf13/cobra on 18-May-2022
+###### Auto generated by spf13/cobra on 21-Sep-2022
