@@ -59,7 +59,7 @@ There are several hosted container registries with OCI support that you can use 
 
 Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
 
-**Note:**  You can run a [Docker Registry](https://docs.docker.com/registry/deploying/), which is an OCI-based registry, on your development computer. Running an OCI-based registry on your development computer should only be used for testing purposes.
+**Note:**  You can run [Docker Registry](https://docs.docker.com/registry/deploying/) or [`zot`](https://github.com/project-zot/zot), which are OCI-based registries, on your development computer. Running an OCI-based registry on your development computer should only be used for testing purposes.
 
 ## Commands for working with registries
 
