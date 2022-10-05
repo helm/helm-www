@@ -28,7 +28,7 @@ examples:
   localized content for the language is in each directory. Primarily in the
   `docs` subdirectory of each language code directory.
 - The `i18n` directory contains a configuration file for each language with
-  phrases used on the website. The files are named with the patter `[LANG].toml`
+  phrases used on the website. The files are named with the pattern `[LANG].toml`
   where `[LANG]` is the two letter language code.
 - In the top level `config.toml` file there is configuration for navigation and
   other details organized by language code.
