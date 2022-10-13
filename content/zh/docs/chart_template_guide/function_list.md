@@ -645,6 +645,8 @@ Helm提供了以下类型转换函数：
 * `toJson` (`mustToJson`): 将列表、切片、数组、字典或对象转换成JSON。
 * `toPrettyJson` (`mustToPrettyJson`): 将列表、切片、数组、字典或对象转换成格式化JSON。
 * `toRawJson` (`mustToRawJson`): 将列表、切片、数组、字典或对象转换成HTML字符未转义的JSON。
+* `fromYaml`：将YAML字符串转化成对象。
+* `fromJson`: 将JSON字符串转化成对象。
 
 只有`atoi`需要输入一个特定的类型。其他的会尝试将任何类型转换成目标类型。比如，`int64`可以把浮点数转换成整型，也可以把字符串转换成整型。
 
@@ -697,6 +699,53 @@ toRawJson .Item
 ```
 
 上述结果为： `.Item`的非转义的JSON字符串表示。
+
+### fromYaml
+
+`fromYaml` 函数将YAML字符串转换成模板可用的对象。
+
+`文件位置: yamls/person.yaml`
+
+```yaml
+name: Bob
+age: 25
+hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+{{- $person := .Files.Get "yamls/person.yaml" | fromYaml }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
+
+### fromJson
+
+`fromJson` 函数将JSON字符串转换成模板可用的对象。
+
+`文件位置: jsons/person.json`
+
+```json
+{
+  "name": "Bob",
+  "age": 25,
+  "hobbies": [
+    "hiking",
+    "fishing",
+    "cooking"
+  ]
+}
+```
+
+```yaml
+{{- $person := .Files.Get "jsons/person.json" | fromJson }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
 
 ## Regular Expressions
 

@@ -81,6 +81,14 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
+### 使用 dnf/yum (fedora)
+
+从Fedora 35开始， 官方仓库可以使用helm了，可以调用以下命令安装helm：
+
+```console
+sudo dnf install helm
+```
+
 ### 使用Snap
 
 [Snapcrafters](https://github.com/snapcrafters)社区维护了[Helm 包](https://snapcraft.io/helm)的Snap版本：
