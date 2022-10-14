@@ -21,7 +21,7 @@ LOCATION: Room 410 A
 
 Maintainers [Matt Farina](https://twitter.com/mattfarina), [Karena Angell](https://twitter.com/karenaangell), [Scott Rigby](https://twitter.com/r6by), & [Andrew Block](https://twitter.com/sabre1041) will be doing a [Maintainer Track talk](https://sched.co/182Ns) introducing Helm itself and then doing a deep dive into the ecosystem around building packages, along with using Helm packages in clusters. 
 
-## Project Pavilion Hours:
+## Helm Project Pavilion
 
 WED OCT 26: 15:30 – 20:00 ET
 
