@@ -75,7 +75,7 @@ The core of a plugin is a simple YAML file named `plugin.yaml`. Here is a plugin
 YAML for a plugin that adds support for Keybase operations:
 
 ```yaml
-name: "last"
+name: "keybase"
 version: "0.1.0"
 usage: "get the last release name"
 description: "get the last release name"
