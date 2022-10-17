@@ -13,7 +13,7 @@ title: "Helm 安装"
 安装参数必须是chart的引用，一个打包后的chart路径，未打包的chart目录或者是一个URL。
 
 要重写chart中的值，使用'--values'参数传递一个文件或者使用'--set'参数在命令行传递配置，强制使用字符串要用'--set-string'。
-当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。
+当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。也可以从命令行使用'--set-json'设置json值(scalars/objects/arrays)。
 
 ```shell
 $ helm install -f myvalues.yaml myredis ./redis
@@ -37,6 +37,12 @@ $ helm install --set-string long_int=1234567890 myredis ./redis
 $ helm install --set-file my_script=dothings.sh myredis ./redis
 ```
 
+或者
+
+```shell
+$ helm install --set-json 'master.sidecars=[{"name":"sidecar","image":"myImage","imagePullPolicy":"Always",ports":[{"name":"portname","containerPort":1234}]}]' myredis ./redis
+```
+
 你可以多次指定'--values'/'-f'参数。最右侧指定的文件优先级最高。比如，如果两个文件myvalues.yaml和override.yaml
 都包含名为'Test'的可以，override.yaml中的值优先：
 
@@ -50,17 +56,30 @@ $ helm install -f myvalues.yaml -f override.yaml  myredis ./redis
     $ helm install --set foo=bar --set foo=newbar  myredis ./redis
 ```
 
+类似地,下面的示例中'foo'被设置成了'["four"]':
+
+```shell
+    $ helm install --set-json='foo=["one", "two", "three"]' --set-json='foo=["four"]' myredis ./redis
+```
+
+下面的示例中，'foo'被设置成了'{"key1":"value1","key2":"bar"}'：
+
+```shell
+    $ helm install --set-json='foo={"key1":"value1","key2":"value2"}' --set-json='foo.key2="bar"' myredis ./redis
+```
+
 为了检测生成的清单，但并不安装到chart，可以将'--debug'和'--dry-run'组合使用。
 
 如果设置了--verify，chart**必须**有出处文件，且出处文件**必须**传递所有的验证步骤。
 
-有五种不同的方式来标识需要安装的chart：
+有六种不同的方式来标识需要安装的chart：
 
 1. 通过chart引用： helm install mymaria example/mariadb
 2. 通过chart包： helm install mynginx ./nginx-1.2.3.tgz
 3. 通过未打包chart目录的路径： helm install mynginx ./nginx
 4. 通过URL绝对路径： helm install mynginx https://example.com/charts/nginx-1.2.3.tgz
 5. 通过chart引用和仓库url： helm install --repo https://example.com/charts/ mynginx nginx
+6. 通过OCI注册中心： helm install mynginx --version 1.2.3 oci://example.com/charts/nginx
 
 CHART引用
 
@@ -104,6 +123,7 @@ helm install [NAME] [CHART] [flags]
       --repo string                  chart repository url where to locate the requested chart
       --set stringArray              set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray         set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
+      --set-json stringArray         set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
       --set-string stringArray       set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --skip-crds                    if set, no CRDs will be installed. By default, CRDs are installed if not already present
       --timeout duration             time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
@@ -117,17 +137,21 @@ helm install [NAME] [CHART] [flags]
 ### 从父命令继承的命令
 
 ```shell
-      --debug                       enable verbose output
-      --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         username to impersonate for the operation
-      --kube-context string         name of the kubeconfig context to use
-      --kube-token string           bearer token used for authentication
-      --kubeconfig string           path to the kubeconfig file
-  -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
+      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### 请参阅

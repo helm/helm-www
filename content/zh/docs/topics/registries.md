@@ -1,56 +1,64 @@
 ---
-title: "注册中心"
+title: "使用基于OCI的注册中心"
 description: "描述如何使用 OCI 进行Chart的分发。"
 weight: 7
 ---
 
-Helm 3 支持 <a href="https://www.opencontainers.org/"
-target="_blank">OCI</a> 用于包分发。 Chart包可以通过基于OCI的注册中心存储和分发。
+从Helm 3开始，你可以将容器注册中心与[OCI](https://www.opencontainers.org/)一起使用，支持Chart包的存储与共享。从Helm v3.8.0开始，默认启用OCI支持。
 
-## 激活对 OCI 的支持
+## v3.8.0版本之前对 OCI 的支持
 
-在Helm v3.8.0之前，OCI支持被认为是*实验性的*，需要手动启用。从v3.8.0开始，默认启用。
+OCI 支持在Helm v3.8.0版本从试验阶段过渡成为普遍可用的了。在Helm的之前版本中，对OCI支持会有不同的地方。如果你在v3.8.0之前的版本使用OCI，需要着重了解不同Helm版本之间OCI的变化。
 
-为了在v3.8.0之前的版本中使用OCI实验性支持，请在环境变量中设置`HELM_EXPERIMENTAL_OCI`：
+### 在v3.8.0之前的版本启用OCI支持
+
+Helm v3.8.0版本之前, OCI支持是*试验性*的且必须启用。
+
+为了在之前版本中启用OCI试验性支持，需要在环境变量中设置`HELM_EXPERIMENTAL_OCI`，例如：
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-## 运行一个注册中心
+### OCI在v3.8.0中的弃用功能和改变
 
-为测试目的启动注册中心是比较简单的。只要您安装了Docker，运行以下命令即可：
+[Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0)版本中，以下行为和特性与之前版本不同：
 
-```console
-docker run -dp 5000:5000 --restart=always --name registry registry
-```
+- 在依赖中将chart设置为OCI时，版本号可以像其他依赖一样设置成范围。
+- 包含了构建信息的SemVer tag可以推送和使用。OCI注册中心的tag字符不支持`+`。如果有，Helm会将`+` 转成 `_`。
+- `helm registry login` 命令现在采用与Docker CLI相同的结构存储凭证。Helm和Docker CLI的注册表配置使用一样的路径。
 
-这样就会启动一个注册服务在 `localhost:5000`。
+### OCI在v3.7.0中的弃用功能和改变
 
-使用 `docker logs -f registry` 可以查看日志， `docker rm -f registry` 可以停止服务。
+[Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0)版本包含了针对支持OCI的[HIP 
+6](https://github.com/helm/community/blob/main/hips/hip-0006.md)执行策略。因此以下行为和特性与之前版本不同：
 
-如果您希望持久化存储，可以在上面的命令中添加 `-v $(pwd)/registry:/var/lib/registry` 。
+- 移除了 `helm chart` 子命令。
+- 移除了chart缓存(没有了 `helm chart list` 等等)。
+- OCI注册引用现在需要以 `oci://` 开头。
+- 注册引用的基础名称*必须*和chart名称匹配。
+- 注册引用的tag*必须*和chart的语义版本匹配（比如没有`latest`这种tag）。
+- chart层的媒体类型从`application/tar+gzip`转换成了`application/vnd.cncf.helm.chart.content.v1.tar+gzip`。
 
-关于更多配置选项，请查看 [文档](https://docs.docker.com/registry/deploying/).
+## 使用基于OCI的注册中心
 
-注意：macOS上，`5000`端口可能被"AirPlay Receiver"占用。您可以选择其他本地端口（比如：`-p 5001:5000`），或者在系统偏好设置中关闭AirPlay。
+### 基于OCI注册中心的Helm仓库
 
-### 认证
+[Helm 仓库](https://helm.sh/zh/docs/topics/chart_repository)是一种制作和分发打包好的Helm 
+chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且每个都会有0个或多个Helm chart。
 
-如果您想启用注册中心认证，需要使用用户名和密码先创建 `auth.htpasswd` 文件：
+### 使用托管的注册中心
 
-```console
-htpasswd -cB -b auth.htpasswd myuser mypass
-```
+以下是几种你的chart可以使用的托管容器注册中心，都支持OCI，例如：
 
-然后启动服务，启动时挂载文件并设置 `REGISTRY_AUTH`环境变量：
+- [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
+- [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
 
-```console
-docker run -dp 5000:5000 --restart=always --name registry \
-  -v $(pwd)/auth.htpasswd:/etc/docker/registry/auth.htpasswd \
-  -e REGISTRY_AUTH="{htpasswd: {realm: localhost, path: /etc/docker/registry/auth.htpasswd}}" \
-  registry
-```
+参照托管平台提供的文档创建和配置支持OCI的注册中心。
+
+**注：** 你可以在开发电脑上运行基于OCI的注册中心 [Docker Registry](https://docs.docker.com/registry/deploying/)。在开发电脑上运行只能用于测试目的。
 
 ## 用于处理注册中心的命令
 
@@ -77,7 +85,7 @@ Logout succeeded
 
 ### The `push` 子命令
 
-上传chart到注册中心
+上传chart到基于OCI的注册中心
 
 ```console
 $ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts
@@ -85,13 +93,11 @@ Pushed: localhost:5000/helm-charts/mychart:0.1.0
 Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 ```
 
-#### `push`子命令的额外说明
-
 `push`子命令只能用于`helm package`提前创建的`.tgz`文件。
 
 使用`helm push`上传chart到OCI注册表时，引用必须以`oci://`开头，且不能包含基础名称或tag。
 
-注册表引用基础名称是由chart名称推断而来，tag是由chart语义版本推断而来。这是目前的严格要求。([更多信息](#deprecated-features-and-strict-naming-policies))。
+注册表引用基础名称是由chart名称推断而来，tag是由chart语义版本推断而来。现在严格要求。
 
 某些注册表（如果指定）要求事先创建仓库或者命名空间，或者两者都需要创建。否则，`helm push` 会出现错误。
 
@@ -221,19 +227,3 @@ dependencies:
 
 从经典 [chart 仓库](https://helm.sh/zh/docs/topics/chart_repository)（基于index.yaml）和使用
 `helm pull`一样简单，然后使用`helm push`上传生成的`.tgz`文件到注册表。
-
-## Deprecated features and strict naming policies
-
-在Helm [3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) 之前，Helm的OCI支持略有不同。
-
-为了简化和稳定这个功能集，形成[HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md)，
-做了一些更改：
-
-- 移除了`helm chart`子命令
-- 删除了chart缓存（无`helm chart list`等）
-- OCI 注册表引用现在要以`oci://`作为前缀
-- 注册表引用的基础名称必须*始终*匹配chart名称
-- 注册表引用的tag必须*始终*匹配chart的语义版本（即去掉了`latest`版本）
-- chart层媒体类型从 `application/tar+gzip` 切换到了 `application/vnd.cncf.helm.chart.content.v1.tar+gzip`
-
-感谢您的耐心，Helm团队将继续致力于稳定对OCI注册表的本地支持。
