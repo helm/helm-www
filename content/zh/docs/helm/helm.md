@@ -41,7 +41,7 @@ Helm的一般操作：
 | $HELM_KUBECONTEXT                  | 设置kubeconfig上下文的名称                                                         |
 | $HELM_KUBETOKEN                    | 设置用于身份验证的不记名KubeToken                                                   |
 | $HELM_KUBEINSECURE_SKIP_TLS_VERIFY | 设置 Kubernetes API 服务的证书验证是否跳过（不安全）                             |
-| $HELM_KUBETLS_SERVER_NAME          | 设置用于验证Kubernetes API服务器证书的服务器名称                                      |
+| $HELM_KUBETLS_SERVER_NAME          | 设置用于验证 Kubernetes API 服务器证书的服务器名称                                      |
 | $HELM_BURST_LIMIT                  | 设置当 kubernetes 服务包含很大量CRD时的默认上限值（默认100, -1是不可用）                           |
 
 Helm 基于以下配置顺序存储缓存，配置和添加数据：
