@@ -24,7 +24,7 @@ Helm的一般操作：
 | $HELM_CONFIG_HOME                  | 设置一个存储Helm配置的可选位置                                                     |
 | $HELM_DATA_HOME                    | 设置一个存储Helm数据的可选位置                                                     |
 | $HELM_DEBUG                        | 表示Helm是否在Debug模式系运行                                                     |
-| $HELM_DRIVER                       | 设置后台存储驱动，值包括：configmap, secret, memory, sql                           |
+| $HELM_DRIVER                       | 设置后台存储驱动，可选值包括：configmap, secret, memory, sql                           |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | 设置SQL存储驱动使用连接字符串                                                      |
 | $HELM_MAX_HISTORY                  | 设置发布历史记录的最大值                                                           |
 | $HELM_NAMESPACE                    | 设置用于helm操作的命名空间                                                         |
