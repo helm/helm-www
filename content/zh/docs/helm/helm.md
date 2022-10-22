@@ -42,7 +42,7 @@ Helm的一般操作：
 | $HELM_KUBETOKEN                    | 设置用于身份验证的不记名KubeToken                                                   |
 | $HELM_KUBEINSECURE_SKIP_TLS_VERIFY | 表示如果Kubernetes API服务器的证书验证应该被跳过（不安全）                             |
 | $HELM_KUBETLS_SERVER_NAME          | 设置用于验证Kubernetes API服务器证书的服务器名称                                      |
-| $HELM_BURST_LIMIT                  | 设置在服务器包含很多CRD时的默认上限值（ 默认100, -1是不可用）                           |
+| $HELM_BURST_LIMIT                  | 设置当 kubernetes 服务包含很大量CRD时的默认上限值（默认100, -1是不可用）                           |
 
 Helm 基于以下配置顺序存储缓存，配置和添加数据：
 
