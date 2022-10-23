@@ -15,6 +15,7 @@ title: "Helm 升级"
 
 要在chart中重写value，需要使用'--values'参数并传一个文件或者从命令行使用'--set'参数传个配置，
 要强制字符串值，使用'--set-string'。当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。
+也可以在命令行使用'--set-json'参数设置json值(scalars/objects/arrays)。
 
 可以多次指定'--values'/'-f'参数，最后（最右边）指定的文件优先级最高。比如如果myvalues.yaml和override.yaml同时包含了名为
 'Test'的key，override.yaml中的设置会优先使用：
@@ -66,6 +67,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --reuse-values                               when upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
+      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --skip-crds                                  if set, no CRDs will be installed when an upgrade is performed with install flag enabled. By default, CRDs are installed if not already present, when an upgrade is performed with install flag enabled
       --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
@@ -80,18 +82,21 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### 从父命令继承的命令
 
 ```shell
-      --debug                       enable verbose output
-      --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         username to impersonate for the operation
-      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
-      --kube-context string         name of the kubeconfig context to use
-      --kube-token string           bearer token used for authentication
-      --kubeconfig string           path to the kubeconfig file
-  -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
+      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### 请参阅
