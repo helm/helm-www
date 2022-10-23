@@ -20,7 +20,7 @@ Helm v3.8.0版本之前, OCI支持是*试验性*的且必须显式启用。
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-### OCI在v3.8.0中的弃用功能和改变
+### OCI在v3.8.0中的弃用和行为变化
 
 [Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0)版本中，以下行为和特性与之前版本不同：
 
