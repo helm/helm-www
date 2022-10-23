@@ -28,7 +28,7 @@ export HELM_EXPERIMENTAL_OCI=1
 - 包含构建信息的SemVer tag可以被推送和使用。OCI注册中心的tag字符不支持`+`。如果有，Helm会将`+` 转成 `_`。
 - `helm registry login` 命令现在采用与Docker CLI相同的结构存储凭证。Helm和Docker CLI的注册表配置使用一样的路径。
 
-### OCI在v3.7.0中的弃用功能和改变
+### OCI在v3.7.0中的弃用和行为变化
 
 [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0)版本包含了针对支持OCI的[HIP 
 6](https://github.com/helm/community/blob/main/hips/hip-0006.md)执行策略。因此以下行为和特性与之前版本不同：
