@@ -13,7 +13,7 @@ title: "Helm 安装"
 安装参数必须是chart的引用，一个打包后的chart路径，未打包的chart目录或者是一个URL。
 
 要重写chart中的值，使用'--values'参数传递一个文件或者使用'--set'参数在命令行传递配置，强制使用字符串要用'--set-string'。
-当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。也可以从命令行使用'--set-json'设置json值(scalars/objects/arrays)。
+当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。也可以在命令行使用'--set-json'参数设置json值(scalars/objects/arrays)。
 
 ```shell
 $ helm install -f myvalues.yaml myredis ./redis
