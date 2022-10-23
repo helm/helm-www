@@ -15,7 +15,7 @@ title: "Helm 升级"
 
 要在chart中重写value，需要使用'--values'参数并传一个文件或者从命令行使用'--set'参数传个配置，
 要强制字符串值，使用'--set-string'。当值本身对于命令行太长或者是动态生成的时候，可以使用 '--set-file' 设置独立的值。
-也可以在命令行使用'--set-json'设置json值(scalars/objects/arrays)。
+也可以在命令行使用'--set-json'参数设置json值(scalars/objects/arrays)。
 
 可以多次指定'--values'/'-f'参数，最后（最右边）指定的文件优先级最高。比如如果myvalues.yaml和override.yaml同时包含了名为
 'Test'的key，override.yaml中的设置会优先使用：
