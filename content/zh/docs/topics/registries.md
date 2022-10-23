@@ -4,7 +4,7 @@ description: "描述如何使用 OCI 进行Chart的分发。"
 weight: 7
 ---
 
-从Helm 3开始，你可以将容器注册中心与[OCI](https://www.opencontainers.org/)一起使用，支持Chart包的存储与共享。从Helm v3.8.0开始，默认启用OCI支持。
+从Helm 3开始，可以使用具有[OCI](https://www.opencontainers.org/)支持的容器注册中心来存储和共享chart包。从Helm v3.8.0开始，默认启用OCI支持。
 
 ## v3.8.0版本之前对 OCI 的支持
 
