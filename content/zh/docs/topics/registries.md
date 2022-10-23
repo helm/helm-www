@@ -97,7 +97,7 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 
 使用`helm push`上传chart到OCI注册表时，引用必须以`oci://`开头，且不能包含基础名称或tag。
 
-注册表引用基础名称是由chart名称推断而来，tag是由chart语义版本推断而来。现在严格要求。
+注册表引用的基础名称是由chart名称推断而来，tag是由chart语义版本推断而来。现在是强制要求。
 
 某些注册表（如果指定）要求事先创建仓库或者命名空间，或者两者都需要创建。否则，`helm push` 会出现错误。
 
