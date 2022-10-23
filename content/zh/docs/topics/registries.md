@@ -49,7 +49,7 @@ chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且�
 
 ### 使用托管的注册中心
 
-以下是几种你的chart可以使用的托管容器注册中心，都支持OCI，例如：
+以下是几种chart可以使用的托管容器注册中心，都支持OCI，例如：
 
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
