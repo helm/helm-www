@@ -131,7 +131,7 @@ default "foo" .Bar
 empty .Foo
 ```
 
-注意在Go模板条件中，空值是为你计算出来的。这样你很少需要 `if empty .Foo` ，仅使用 `if .Foo` 即可。
+注意在Go模板条件中，空值是为你计算出来的。这样你很少需要 `if not empty .Foo` ，仅使用 `if .Foo` 即可。
 
 ### fail
 
