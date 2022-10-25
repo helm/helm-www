@@ -142,7 +142,7 @@ empty .Foo
 ```
 
 Go 템플릿 조건부에서는 비어 있음이 자동으로 계산된다. 
-따라서 `if empty .Foo` 는 거의 필요하지 않다. 대신 `if .Foo` 를 사용하도록 하자.
+따라서 `if not empty .Foo` 는 거의 필요하지 않다. 대신 `if .Foo` 를 사용하도록 하자.
 
 ### fail
 
