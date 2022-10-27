@@ -308,7 +308,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+{{ include "mychart.app" . | indent 2 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
