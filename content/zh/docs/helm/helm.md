@@ -24,7 +24,7 @@ Helm的一般操作：
 | $HELM_CONFIG_HOME                  | 设置一个存储Helm配置的可选位置                                                     |
 | $HELM_DATA_HOME                    | 设置一个存储Helm数据的可选位置                                                     |
 | $HELM_DEBUG                        | 表示Helm是否在Debug模式系运行                                                     |
-| $HELM_DRIVER                       | 设置后台存储驱动，值包括：configmap, secret, memory, sql                      |
+| $HELM_DRIVER                       | 设置后台存储驱动，可选值包括：configmap, secret, memory, sql                           |
 | $HELM_DRIVER_SQL_CONNECTION_STRING | 设置SQL存储驱动使用连接字符串                                                      |
 | $HELM_MAX_HISTORY                  | 设置发布历史记录的最大值                                                           |
 | $HELM_NAMESPACE                    | 设置用于helm操作的命名空间                                                         |
@@ -40,6 +40,9 @@ Helm的一般操作：
 | $HELM_KUBEASUSER                   | 为操作设置要模拟的用户名                                                            |
 | $HELM_KUBECONTEXT                  | 设置kubeconfig上下文的名称                                                         |
 | $HELM_KUBETOKEN                    | 设置用于身份验证的不记名KubeToken                                                   |
+| $HELM_KUBEINSECURE_SKIP_TLS_VERIFY | 设置 Kubernetes API 服务的证书验证是否跳过（不安全）                             |
+| $HELM_KUBETLS_SERVER_NAME          | 设置用于验证 Kubernetes API 服务器证书的服务器名称                                      |
+| $HELM_BURST_LIMIT                  | 设置当 kubernetes 服务包含很大量CRD时的默认上限值（默认100, -1是不可用）                           |
 
 Helm 基于以下配置顺序存储缓存，配置和添加数据：
 
@@ -58,19 +61,22 @@ Helm 基于以下配置顺序存储缓存，配置和添加数据：
 ### 可选项
 
 ```shell
-      --debug                       enable verbose output
-  -h, --help                        help for helm
-      --kube-apiserver string       the address and the port for the Kubernetes API server
-      --kube-as-group stringArray   group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string         username to impersonate for the operation
-      --kube-ca-file string         the certificate authority file for the Kubernetes API server connection
-      --kube-context string         name of the kubeconfig context to use
-      --kube-token string           bearer token used for authentication
-      --kubeconfig string           path to the kubeconfig file
-  -n, --namespace string            namespace scope for this request
-      --registry-config string      path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string     path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string    path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+  -h, --help                            help for helm
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
+      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### 另请参阅
