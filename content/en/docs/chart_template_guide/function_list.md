@@ -143,7 +143,7 @@ empty .Foo
 ```
 
 Note that in Go template conditionals, emptiness is calculated for you. Thus,
-you rarely need `if empty .Foo`. Instead, just use `if .Foo`.
+you rarely need `if not empty .Foo`. Instead, just use `if .Foo`.
 
 ### fail
 
