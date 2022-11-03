@@ -60,22 +60,22 @@ directory, and then a `plugin.yaml` file.
 
 ```
 $HELM_PLUGINS/
-  |- keybase/
+  |- last/
       |
       |- plugin.yaml
-      |- keybase.sh
+      |- last.sh
 
 ```
 
-In the example above, the `keybase` plugin is contained inside of a directory
-named `keybase`. It has two files: `plugin.yaml` (required) and an executable
-script, `keybase.sh` (optional).
+In the example above, the `last` plugin is contained inside of a directory
+named `last`. It has two files: `plugin.yaml` (required) and an executable
+script, `last.sh` (optional).
 
 The core of a plugin is a simple YAML file named `plugin.yaml`. Here is a plugin
-YAML for a plugin that adds support for Keybase operations:
+YAML for a plugin that helps get the last release name:
 
 ```yaml
-name: "keybase"
+name: "last"
 version: "0.1.0"
 usage: "get the last release name"
 description: "get the last release name"
@@ -97,7 +97,7 @@ The `name` is the name of the plugin. When Helm executes this plugin, this is
 the name it will use (e.g. `helm NAME` will invoke this plugin).
 
 _`name` should match the directory name._ In our example above, that means the
-plugin with `name: keybase` should be contained in a directory named `keybase`.
+plugin with `name: last` should be contained in a directory named `last`.
 
 Restrictions on `name`:
 
