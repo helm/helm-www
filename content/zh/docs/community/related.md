@@ -14,7 +14,7 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - 将现有k8s资源转换成新生成的helm
 chart的helm v3插件。
 - [Helm Diff](https://github.com/databus23/helm-diff) - `helm upgrade`的彩色diff预览
-- [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - Helm的GUI界面， 使版本，仓库及manifest可视化
+- [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - Helm的GUI界面，可视化release、repository及manifest的差异
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - 管理Google Cloud Storage中仓库的插件
 - [helm-git](https://github.com/aslafy-z/helm-git) - 从Git仓库中安装chart并检索values文件。
 - [helm-k8comp](https://github.com/cststack/k8comp) - 使用k8comp从hiera创建Helm Charts的插件
