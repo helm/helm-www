@@ -43,16 +43,16 @@ $ helm plugin install https://github.com/adamreese/helm-env
 
 ```console
 $HELM_PLUGINS/
-  |- keybase/
+  |- last/
       |
       |- plugin.yaml
-      |- keybase.sh
+      |- last.sh
 
 ```
 
-上述示例中，`keybase`插件包含在`keybase`目录中。有两个文件：`plugin.yaml`（必需）和一个可执行脚本，`keybase.sh`（可选）。
+上述示例中，`last`插件包含在`last`目录中。有两个文件：`plugin.yaml`（必需）和一个可执行脚本，`last.sh`（可选）。
 
-插件的核心是一个简单的YAML文件`plugin.yaml`。下面是一个插件YAML，用于添加对Keybase操作的支持：
+插件的核心是一个简单的YAML文件`plugin.yaml`。下面是一个插件YAML，用于获取最新的release名称：
 
 ```yaml
 name: "last"
@@ -75,7 +75,7 @@ platformCommand:
 
 `name`是插件名称。当Helm执行此插件时使用此名称。（比如，`helm NAME`会调用此插件）。
 
-上述示例中，_`name`应该匹配目录名称_，意味着`keybase`目录中应该包含 `name: keybase` 插件。
+上述示例中，_`name`应该匹配目录名称_，意味着`last`目录中应该包含 `name: last` 插件。
 
 `name`的限制：
 
