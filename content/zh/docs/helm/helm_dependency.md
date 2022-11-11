@@ -20,11 +20,11 @@ Helm chart将依赖存储在'charts/'。对于chart开发者，管理依赖比�
 # Chart.yaml
 dependencies:
 - name: nginx
-    version: "1.2.3"
-    repository: "https://example.com/charts"
+  version: "1.2.3"
+  repository: "https://example.com/charts"
 - name: memcached
-    version: "3.2.1"
-    repository: "https://another.example.com/charts"
+  version: "3.2.1"
+  repository: "https://another.example.com/charts"
 ```
 
 'name'是chart名称，必须匹配'Chart.yaml'文件中名称。
@@ -40,8 +40,8 @@ dependencies:
 # Chart.yaml
 dependencies:
 - name: nginx
-    version: "1.2.3"
-    repository: "file://../dependency_chart/nginx"
+  version: "1.2.3"
+  repository: "file://../dependency_chart/nginx"
 ```
 
 如果在本地检索依赖chart，不需要使用"helm add repo"将仓库加入到helm。该示例中也支持版本匹配》。
