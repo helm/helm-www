@@ -10,7 +10,7 @@ $(document).ready(function() {
   var parentName = docpath.replace(/\/[^\/]+$/, '')
   var pageName = docpath.substring(docpath.lastIndexOf("/")+1);
   $(".toctree-l1 > a[href*='" + parentName + "']").addClass("active");
-  $(".toctree-12 > a[href$='" + pageName + "/']").addClass("active");
+  $(".toctree-12 > a[href$='/" + pageName + "/']").addClass("active");
 
   if (allClosed === true) { }
 
