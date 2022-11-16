@@ -23,6 +23,9 @@ Here is an example `.helmignore` file:
 ```
 # comment
 
+# Match any file or path named .helmignore
+.helmignore
+
 # Match any file or path named .git
 .git
 
@@ -53,6 +56,7 @@ Some notable differences from .gitignore:
 - The globbing library is Go's 'filepath.Match', not fnmatch(3)
 - Trailing spaces are always ignored (there is no supported escape sequence)
 - There is no support for '\!' as a special leading sequence.
+- It does not exclude itself by default, you have to add an explicit entry for `.helmignore`
 
 
 **We'd love your help** making this document better. To add, correct, or remove
