@@ -647,6 +647,7 @@ Helm提供了以下类型转换函数：
 * `toRawJson` (`mustToRawJson`): 将列表、切片、数组、字典或对象转换成HTML字符未转义的JSON。
 * `fromYaml`：将YAML字符串转化成对象。
 * `fromJson`: 将JSON字符串转化成对象。
+* `toYaml`: 将列表，切片，数组，字典或对象转换成已缩进的yaml，可以从任意源拷贝yaml块。该功能和Go的yaml.Marshal函数一样，文档详见：https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 
 只有`atoi`需要输入一个特定的类型。其他的会尝试将任何类型转换成目标类型。比如，`int64`可以把浮点数转换成整型，也可以把字符串转换成整型。
 
