@@ -29,6 +29,7 @@ request](https://github.com/helm/helm-www/pulls).
   metadata to replace deprecated or removed Kubernetes APIs
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin to
   monitor a release and rollback based on Prometheus/ElasticSearch query
+- [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - Plugin for Release management, Update release values, pulls(re-creates) helm Charts from deployed releases, set helm release TTL.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - Helm plugin that allows to
   use AWS S3 as a [private] chart repository
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - Helm
