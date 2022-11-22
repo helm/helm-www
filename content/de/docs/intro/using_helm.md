@@ -15,7 +15,7 @@ Helm zu benutzen ist.
 
 ## Drei grosse Konzepte
 
-A *Chart* ist ein Helm Paket. Es beinhaltet alle Resourcedefinitionen, die zur
+Ein *Chart* ist ein Helm Paket. Es beinhaltet alle Resourcedefinitionen, die zur
 Ausführung einer Applikation, eines Werkzeugs oder Dienstes im Kubernetes
 Cluster erforderlich sind. Denken Sie an etwas wie ein Homebrew Formular für
 Kubernetes, ein Apt dpkg oder eine Yum RPM Datei.
