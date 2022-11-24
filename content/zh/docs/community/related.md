@@ -21,6 +21,7 @@ chart的helm v3插件。
 - [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - 更新helm发布版本元数据用于替换过期或已移除的k8s API
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - 基于
   Prometheus/ElasticSearch的用于监控版本发布和回滚的插件
+- [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - 该插件用于管理已部署的release，更新release值，拉取（重建）helm chart，以及设置helm release TTL。
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - 允许使用AWS S3作为[私有]chart仓库的插件
 - [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - 为Helm
   3生成values的yaml框架的插件
@@ -62,6 +63,7 @@ Chart仓库
 - [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper获取一组具有值（所需状态）的Helm
 hart引用，并在Kubernetes集群中实现。"
 - [Monocular](https://github.com/helm/monocular) - Helm仓库的WEB UI界面。
+- [Monokle](https://monokle.io) - 桌面工具，用于创建、调试和部署Kubernetes资源和Helm Chart。
 - [Orkestra](https://azure.github.io/orkestra/) - 针对一组相关的Helm版本及子chart的云原生编排和生命周期管理平台（LCM）。
 - [Tanka](https://tanka.dev/helm) - Grafana Tanka通过具有使用Helm Chart能力的Jsonnet配置Kubernetes资源
 - [Terraform Helm  Provider](https://github.com/hashicorp/terraform-provider-helm)
