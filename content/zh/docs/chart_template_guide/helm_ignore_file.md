@@ -17,6 +17,9 @@ weight: 13
 ```shell
 # comment
 
+# Match any file or path named .helmignore
+.helmignore
+
 # Match any file or path named .git
 .git
 
@@ -48,5 +51,6 @@ temp?
 - globbing库是Go的 'filepath.Match'，不是fnmatch(3)
 - 末尾空格总会被忽略(不支持转义序列)
 - 不支持'\!'作为特殊的引导序列
+- 默认不会排除自身，需要显式添加 `.helmignore`
 
 **我们需要你的帮助** 使该文档更好。添加、修正或移除信息， [提交问题](https://github.com/helm/helm-www/issues) 或者发起PR。

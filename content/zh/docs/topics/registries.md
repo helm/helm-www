@@ -58,7 +58,8 @@ chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且�
 
 参照托管平台提供的文档来创建和配置支持OCI的注册中心。
 
-**注：** 你可以在开发电脑上运行基于OCI的注册中心 [Docker Registry](https://docs.docker.com/registry/deploying/)。在开发电脑上运行只能用于测试目的。
+**注：** 你可以在开发电脑上运行基于OCI的注册中心 [Docker Registry](https://docs.docker.com/registry/deploying/)
+或者 [`zot`](https://github.com/project-zot/zot)。在开发电脑上运行只能用于测试目的。
 
 ## 用于处理注册中心的命令
 
