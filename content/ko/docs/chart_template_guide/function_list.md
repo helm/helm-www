@@ -1039,7 +1039,7 @@ encryptAES "secretkey" "plaintext"
 `ago` 함수는 time.Now에서 초 단위로 기간을 반환한다.
 
 ```
-ago .CreatedAt"
+ago .CreatedAt
 ```
 
 `time.Duration` String() 형식을 반환한다.
