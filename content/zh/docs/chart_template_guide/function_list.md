@@ -1011,7 +1011,7 @@ Helm 包含以下可以在模板中使用的函数：[ago](#ago), [date](#date),
 `ago` 函数返回距time.Now的以秒为单位的间隔时间。
 
 ```yaml
-ago .CreatedAt"
+ago .CreatedAt
 ```
 
 返回`time.Duration`的字符串格式
