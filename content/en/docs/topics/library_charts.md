@@ -14,10 +14,11 @@ be re-used across charts, avoiding repetition and keeping charts
 The library chart was introduced in Helm 3 to formally recognize common or
 helper charts that have been used by chart maintainers since Helm 2. By
 including it as a chart type, it provides:
-- A means to explicitly distinguish between common and application charts 
+- A means to explicitly distinguish between common and application charts
 - Logic to prevent installation of a common chart
 - No rendering of templates in a common chart which may contain release
-  artifacts 
+  artifacts
+- Allow for dependent charts to use the importer's context
 
 A chart maintainer can define a common chart as a library chart and now be
 confident that Helm will handle the chart in a standard consistent fashion. It
@@ -45,7 +46,7 @@ $ rm -rf mylibchart/templates/*
 The values file will not be required either.
 
 ```console
-$ rm -f mylibchart/values.yaml 
+$ rm -f mylibchart/values.yaml
 ```
 
 Before we jump into creating common code, lets do a quick review of some
@@ -54,7 +55,7 @@ relevant Helm concepts. A [named template]({{< ref
 or a subtemplate) is simply a template defined inside of a file, and given a
 name.  In the `templates/` directory, any file that begins with an underscore(_)
 is not expected to output a Kubernetes manifest file. So by convention, helper
-templates and partials are placed in a `_*.tpl` or `_*.yaml` files. 
+templates and partials are placed in a `_*.tpl` or `_*.yaml` files.
 
 In this example, we will code a common ConfigMap which creates an empty
 ConfigMap resource. We will define the common ConfigMap in file
@@ -309,10 +310,17 @@ metadata:
   name: mychart-mydemo
   ```
 
+## Library Chart Benefits
+Because of their inability to act as standalone charts, library charts can leverage the following functionality:
+- The `.Files` object references the file paths on the parent chart, rather than the path local to the library chart
+- The `.Values` object is the same as the parent chart, in contrast to application [subcharts]({{< ref
+"/docs/chart_template_guide/subcharts_and_globals.md" >}}) which receive the section of values configured under their header in the parent.
+
+
 ## The Common Helm Helper Chart
 
 ```markdown
-Note: The Common Helm Helper Chart repo on Github is no longer actively maintained, and the repo has been deprecated and archived. 
+Note: The Common Helm Helper Chart repo on Github is no longer actively maintained, and the repo has been deprecated and archived.
 ```
 
 This [chart](https://github.com/helm/charts/tree/master/incubator/common) was

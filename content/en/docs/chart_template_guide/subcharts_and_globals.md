@@ -9,14 +9,16 @@ dependencies, called _subcharts_, that also have their own values and templates.
 In this section we will create a subchart and see the different ways we can
 access values from within templates.
 
-Before we dive into the code, there are a few important details to learn about
-subcharts.
+Before we dive into the code, there are a few important details to learn about application subcharts.
 
 1. A subchart is considered "stand-alone", which means a subchart can never
    explicitly depend on its parent chart.
 2. For that reason, a subchart cannot access the values of its parent.
 3. A parent chart can override values for subcharts.
 4. Helm has a concept of _global values_ that can be accessed by all charts.
+
+> These limitations do not all necessarily apply to [library charts]({{< ref
+"/docs/topics/library_charts.md" >}}), which are designed to provide standardized helper functionality.
 
 As we walk through the examples in this section, many of these concepts will
 become clearer.
