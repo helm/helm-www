@@ -14,6 +14,7 @@ weight: 4
 - 一种明确区分通用和应用chart的方法
 - 逻辑上阻止安装通用chart
 - 通用chart中的未渲染模板可以包含版本组件
+- 允许依赖的chart使用导入的上下文
 
 chart维护者可以定义一个通用的chart作为库并且现在可以确信Helm将以标准一致的方式处理chart。
 也意味着通过改变chart类型来分享应用chart中的定义。
@@ -272,6 +273,13 @@ metadata:
     release: mydemo
   name: mychart-mydemo
   ```
+
+## Library Chart Benefits
+
+由于它们不能作为独立的chart，库chart可以利用一下功能：
+
+- `.Files` 对象引用父chart的文件路径，而不是库chart的本地路径
+- `.Values` 对象与父chart相同，但与[subcharts](https://helm.sh/zh/docs/chart_template_guide/subcharts_and_globals)（接收在父级的header中配置的值）相反。
 
 ## The Common Helm Helper Chart
 
