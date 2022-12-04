@@ -7,12 +7,14 @@ weight: 12
 到目前为止，我们只使用了一个chart。但chart可以使用依赖，称为 _子chart_，且有自己的值和模板。
 该章节我们会创建一个子chart并能看到访问模板中的值的不同方式。
 
-在深入研究代码之前，需要了解一些子chart的重要细节：
+在深入研究代码之前，需要了解一些应用的子chart的重要细节：
 
 1. 子chart被认为是“独立的”，意味着子chart从来不会显示依赖它的父chart。
 2. 因此，子chart无法访问父chart的值。
 3. 父chart可以覆盖子chart的值。
 4. Helm有一个 _全局值_ 的概念，所有的chart都可以访问。
+
+> 这些限制不一定都适用于提供标准化辅助功能的 [library charts](https://helm.sh/zh/docs/topics/library_charts)。
 
 浏览本节的示例之后，这些概念会变得更加清晰。
 
