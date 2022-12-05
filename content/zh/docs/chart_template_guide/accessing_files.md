@@ -14,6 +14,7 @@ Helm 提供了通过`.Files`对象访问文件的方法。不过，在我们使�
 - 通常处于安全考虑，一些文件无法通过`.Files`对象访问：
   - 无法访问`templates/`中的文件
   - 无法访问使用`.helmignore`排除的文件
+  - helm应用[subchart](https://helm.sh/zh/docs/chart_template_guide/subcharts_and_globals)之外的文件，包括父级中的，不能被访问的
 - Chart不能保留UNIX模式信息，因此当文件涉及到`.Files`对象时，文件级权限不会影响文件的可用性。
 
 <!-- (see https://github.com/jonschlinkert/markdown-toc) -->
