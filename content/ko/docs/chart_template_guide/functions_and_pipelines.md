@@ -243,6 +243,10 @@ Keep in mind that Helm is not supposed to contact the Kubernetes API Server duri
 or a `helm install|update|delete|rollback --dry-run`, so the `lookup` function will return `nil` in 
 such a case.
 
+If you still want to use the `lookup` function during an helm upgrade, you can use the `--dry-run=server`
+option to force the API Server to be contacted. Be aware that this can leads you to leak sensitive data
+stored in your cluster.
+
 ## 연산자는 함수이다
 
 For templates, the operators (`eq`, `ne`, `lt`, `gt`, `and`, `or` and so on) are
