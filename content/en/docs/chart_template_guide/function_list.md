@@ -1207,7 +1207,7 @@ toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
 ## Dictionaries and Dict Functions
 
 Helm provides a key/value storage type called a `dict` (short for "dictionary",
-as in Python). A `dict` is an _unorder_ type.
+as in Python). A `dict` is an _unordered_ type.
 
 The key to a dictionary **must be a string**. However, the value can be any
 type, even another `dict` or `list`.
