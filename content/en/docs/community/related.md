@@ -62,6 +62,8 @@ Tools layered on top of Helm.
 - [avionix](https://github.com/zbrookle/avionix) -
   Python interface for generating Helm
   charts and Kubernetes yaml, allowing for inheritance and less duplication of code
+- [Botkube](https://botkube.io) - Run Helm commands directly from Slack,
+  Discord, Microsoft Teams, and Mattermost.
 - [Captain](https://github.com/alauda/captain) - A Helm3 Controller using
   HelmRequest and Release CRD
 - [Chartify](https://github.com/appscode/chartify) - Generate Helm charts from
