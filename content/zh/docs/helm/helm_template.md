@@ -19,7 +19,7 @@ helm template [NAME] [CHART] [flags]
 ### 可选项
 
 ```shell
-  -a, --api-versions stringArray                   Kubernetes api versions used for Capabilities.APIVersions
+  -a, --api-versions strings                       Kubernetes api versions used for Capabilities.APIVersions
       --atomic                                     if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --atomic is used
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
@@ -29,6 +29,7 @@ helm template [NAME] [CHART] [flags]
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
       --dry-run                                    simulate an install
+      --force                                      force resource updates through a replacement strategy
   -g, --generate-name                              generate the name (and omit the NAME parameter)
   -h, --help                                       help for template
       --include-crds                               include CRDs in the templated output
