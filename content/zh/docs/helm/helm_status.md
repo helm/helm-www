@@ -16,7 +16,7 @@ title: "Helm 状态"
 pending-install, pending-upgrade 或 pending-rollback)
 - 发布版本修订
 - 发布版本描述(可以是完成信息或错误信息，需要用--show-desc启用)
-- 列举版本包含的资源，按类型排序
+- 列举版本包含的资源（使用--show-resources显示）
 - 最后一次测试套件运行的详细信息（如果使用）
 - chart提供的额外的注释
 
@@ -27,10 +27,11 @@ helm status RELEASE_NAME [flags]
 ### 可选项
 
 ```shell
-  -h, --help            help for status
-  -o, --output format   prints the output in the specified format. Allowed values: table, json, yaml (default table)
-      --revision int    if set, display the status of the named release with revision
-      --show-desc       if set, display the description message of the named release
+  -h, --help             help for status
+  -o, --output format    prints the output in the specified format. Allowed values: table, json, yaml (default table)
+      --revision int     if set, display the status of the named release with revision
+      --show-desc        if set, display the description message of the named release
+      --show-resources   if set, display the resources of the named release
 ```
 
 ### 从父命令继承的命令

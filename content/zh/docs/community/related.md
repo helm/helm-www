@@ -45,6 +45,7 @@ Helm的顶层工具。
 
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - 管理各种Kubernetes命名空间中的前缀版本，并删除复杂部署的已完成作业
 - [avionix](https://github.com/zbrookle/avionix) - 生成Helm chart和Kubernetes yaml的Python接口，允许继承及更少的代码重复
+- [Botkube](https://botkube.io) - 直接从Slack,Discord, Microsoft Teams, 和Mattermost运行Helm命令。
 - [Captain](https://github.com/alauda/captain) - 使用HelmRequest和Release CRD的Helm 3控制器
 - [Chartify](https://github.com/appscode/chartify) - 从已经存在的Kubernetes资源中生成Helm chart。
 - [ChartMuseum](https://github.com/helm/chartmuseum) - 支持 Amazon S3 和Google云存储的Helm
