@@ -52,11 +52,11 @@ A [Helm repository]({{< ref "chart_repository.md" >}}) is a way to house and dis
 
 There are several hosted container registries with OCI support that you can use for your Helm charts. For example:
 
-- [JFrog Artifactory] (https://www.jfrog.com/confluence/display/JFROG/Docker+Registry)
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
+- [JFrog Artifactory] (https://www.jfrog.com/confluence/display/JFROG/Docker+Registry)
 
 Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
 
