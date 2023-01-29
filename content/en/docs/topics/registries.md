@@ -56,7 +56,7 @@ There are several hosted container registries with OCI support that you can use 
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
-- [JFrog Artifactory] (https://www.jfrog.com/confluence/display/JFROG/Docker+Registry)
+- [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/Docker+Registry)
 
 Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
 
