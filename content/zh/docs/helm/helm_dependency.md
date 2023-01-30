@@ -16,7 +16,7 @@ Helm chart将依赖存储在'charts/'。对于chart开发者，管理依赖比�
 
 比如Chart.yaml声明了两个依赖：
 
-```shell
+```yaml
 # Chart.yaml
 dependencies:
 - name: nginx
@@ -36,7 +36,7 @@ dependencies:
 
 从2.2.0开始，仓库可以被定义为本地存储的依赖chart的目录路径。路径应该以"file://"前缀开头，比如：
 
-```shell
+```yaml
 # Chart.yaml
 dependencies:
 - name: nginx
@@ -44,7 +44,18 @@ dependencies:
   repository: "file://../dependency_chart/nginx"
 ```
 
-如果在本地检索依赖chart，不需要使用"helm add repo"将仓库加入到helm。该示例中也支持版本匹配》。
+如果在本地检索依赖chart，不需要使用"helm add repo"将仓库加入到helm。该示例中也支持版本匹配。
+
+如果需要重复使用多次，需要添加别名：
+
+```yaml
+# Chart.yaml
+dependencies:
+- name: nginx
+  version: "1.2.3"
+  repository: "file://../dependency_chart/nginx"
+  alias: nginx-alias
+```
 
 ### 可选项
 
