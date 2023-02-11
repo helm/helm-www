@@ -48,6 +48,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema
       --dry-run                                    simulate an upgrade
+      --enable-dns                                 enable DNS lookups when rendering templates
       --force                                      force resource updates through a replacement strategy
   -h, --help                                       help for upgrade
       --history-max int                            limit the maximum number of revisions saved per release. Use 0 for no limit (default 10)
