@@ -106,7 +106,6 @@ helm install [NAME] [CHART] [flags]
       --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
       --dry-run                                    simulate an install
       --enable-dns                                 enable DNS lookups when rendering templates
-      --force                                      force resource updates through a replacement strategy
   -g, --generate-name                              generate the name (and omit the NAME parameter)
   -h, --help                                       help for install
       --insecure-skip-tls-verify                   skip tls certificate checks for the chart download
