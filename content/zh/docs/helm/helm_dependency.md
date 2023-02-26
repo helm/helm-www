@@ -46,17 +46,6 @@ dependencies:
 
 如果在本地检索依赖chart，不需要使用"helm add repo"将仓库加入到helm。该示例中也支持版本匹配。
 
-如果需要重复使用多次，需要添加别名：
-
-```yaml
-# Chart.yaml
-dependencies:
-- name: nginx
-  version: "1.2.3"
-  repository: "file://../dependency_chart/nginx"
-  alias: nginx-alias
-```
-
 ### 可选项
 
 ```shell
