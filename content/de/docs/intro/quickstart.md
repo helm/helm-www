@@ -110,7 +110,7 @@ release "mysql-1612624192" uninstalled
 ```
 
 Das wird `mysql-1612624192` von Kubernetes deinstallieren, was wiederum alle
-Resourcen löscht, die mit dieser Version verbunden sind, genaus wie die Versionshistorie.
+Resourcen löscht, die mit dieser Version verbunden sind, genauso wie die Versionshistorie.
 
 Wenn die Option `--keep-history` verwendet wird, bleibt die Versionshistorie erhalten.
 So können Sie Informationen über diese Version erhalten:
