@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -74,14 +74,14 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.1.0
+        uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
 La configuración anterior utiliza [@helm/chart-releaser-action](https://github.com/helm/chart-releaser-action) para converitr su proyecto GitHub en un repositorio de Helm chart autoalojado. Lo hace - durante cada push a main - comprobando cada chart en su proyecto, y siempre que la nueva versión de chart, crea una versión correspondiente en GitHub con el nombre de la versión del chart, añade artefactos de Helm chart al release, y crea o actualiza un fichero `index.yaml` con metadatos sobre esas releases, que luego se alojan en la páginas de GitHub.
 
-El número de versión de la Chart Releaser Action utilizado en el ejemplo anterior es `v1.1.0`.
+El número de versión de la Chart Releaser Action utilizado en el ejemplo anterior es `v1.5.0`.
 Puedes cambiarlo por la [última versión disponible](https://github.com/helm/chart-releaser-action/releases).
 
 Nota: El Chart Releaser Action se utiliza casi siempre junto con [Helm Testing
