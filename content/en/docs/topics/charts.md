@@ -263,7 +263,7 @@ dependencies:
 - You might use the name of the repo instead of URL
 
 ```console
-$ helm repo add fantastic-charts https://fantastic-charts.storage.googleapis.com
+$ helm repo add fantastic-charts https://charts.helm.sh/incubator
 ```
 
 ```yaml
