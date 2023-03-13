@@ -285,6 +285,25 @@ parts is to create a top-level umbrella chart that exposes the global
 configurations, and then use the `charts/` subdirectory to embed each of the
 components.
 
+## Different version Dependencies for different environment
+
+Sometimes you want to upgrade a chart in multiple environments but want to also 
+gradually upgrade the dependencies of this chart. This creates an issue as the 
+dependency has the same name e.g. nginx.
+
+The way Helm supports doing this type of upgrade is by using aliases:
+```yaml
+dependencies:
+- name: nginx
+  version: "1.3.1"
+  condition: is.stg
+  alias: nginx-staging
+- name: nginx 
+  version: "1.2.1"
+  condition: is.prd
+  alias: nginx-production
+```
+
 ## YAML is a Superset of JSON
 
 According to the YAML specification, YAML is a superset of JSON. That means that

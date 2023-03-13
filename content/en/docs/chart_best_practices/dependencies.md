@@ -80,3 +80,14 @@ tags:
 ```
 
 This allows a user to turn that feature on and off with one tag.
+
+#### Note:
+
+The conditions are only looked at during the actual install or upgrade.
+When running
+
+```shell
+helm dependency update
+```
+
+the dependencies will be installed even if they are disabled.
