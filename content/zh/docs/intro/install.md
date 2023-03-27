@@ -17,7 +17,7 @@ Helm社区提供了通过不同包管理器安装Helm的方法。这些方法可
 
 1. 下载[需要的版本](https://github.com/helm/helm/releases)
 2. 解压(`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. 在解压目中找到`helm`程序，移动到需要的目录中(`mv linux-amd64/helm /usr/local/bin/helm`)
+3. 在解压目录中找到`helm`程序，移动到需要的目录中(`mv linux-amd64/helm /usr/local/bin/helm`)
 
 然后就可以执行客户端程序并[添加稳定仓库](https://helm.sh/zh/docs/intro/quickstart/#初始化): `helm help`.
 
