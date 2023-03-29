@@ -1,6 +1,6 @@
 ---
 title: "Helm Completes Fuzzing Security Audit"
-slug: "helm-fuzzing-integrated"
+slug: "helm-completes-fuzzing-security-audit"
 authorname: "Adam Korczynski, David Korczynski & Martin Hickey"
 author: "@AdamKorcz, @DavidKorczynski & @hickeyma"
 authorlink: "https://helm.sh"
