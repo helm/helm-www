@@ -4,7 +4,8 @@ description: "배포판, FAQ, 플러그인의 설명을 포함한 헬름 설치 
 weight: 1
 ---
 
-이 가이드는 헬름을 빠르게 시작하는 방법에 대해 다룬다.
+이 가이드는 헬름을 빠르게 시작하는 
+방법에 대해 다룬다.
 
 ## 전제 조건
 
@@ -22,8 +23,7 @@ weight: 1
   릴리스 버전 설치를 권장한다.
 - 또한 로컬로 구성된 `kubectl` 복사본이 있어야 한다.
 
-참고: 1.6 이전의 쿠버네티스 버전은 역할 기반 접근 제어(RBAC)가 제한되거나
-제공되지 않는다.
+헬름과 쿠버네티스 사이의 버전차이정책(skew) 최대 버전은 [헬름 버전 지원 정책](https://helm.sh/docs/topics/version_skew/)을 참고한다. 
 
 ## 헬름 설치
 
@@ -35,77 +35,88 @@ weight: 1
 
 ## 헬름 차트 리포지토리 초기화
 
-헬름이 준비되면, 차트 리포지토리를 추가할 수 있다. 처음에 주로 사용하는 곳은 공식 헬름 stable 차트들이다:
+헬름이 준비되면, 차트 리포지토리를 추가할 수 있다. 가능한 헬름 차트 레포지토리를 위해서 [Artifact 
+Hub](https://artifacthub.io/packages/search?kind=0)를 
+확인한다. 
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 차트 리포지토리 추가가 완료되면 설치할 수 있는 차트들의 목록을 볼 수 있다.
 
 ```console
-helm search repo stable
-NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
-stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
-stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
-stable/airflow                          4.1.0           1.10.4                          Airflow is a platform to programmatically autho...
-stable/ambassador                       4.1.0           0.81.0                          A Helm chart for Datawire Ambassador
+$ helm search repo bitnami
+NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
+bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
+bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
+bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
+bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
 # ... and many more
 ```
 
 ## 예제 차트 설치
 
 차트를 설치하기 위해서, `helm install` 커맨드를 실행한다.
-헬름은 차트를 설치하기 위한 몇가지 방법들이 존재하는데, 가장 쉬운 방법은 공식적인 `stable` 차트들을 이용하는 것이다.
+헬름은 차트를 설치하기 위한 몇가지 방법들이 존재하는데, 
+가장 쉬운 방법은 `bitnami` 차트들을 이용하는 것이다.
 
 ```console
 $ helm repo update              # Make sure we get the latest list of charts
-$ helm install stable/mysql --generate-name
-Released smiling-penguin
+$ helm install bitnami/mysql --generate-name
+NAME: mysql-1612624192
+LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES: ...
 ```
 
-위의 예에서, `stable/mysql` 차트가 릴리스되었고,
-새로운 릴리스의 이름은 `smiling-penguin` 이다.
+위의 예에서, `bitnami/mysql` 차트가 릴리스되었고,
+새로운 릴리스의 이름은 `mysql-1612624192` 이다.
 
 MySQL 차트에 대한 간단한 정보를 보려면
-`helm show chart stable/mysql` 를 실행한다. 또는 차트에 대한 모든 정보를 보려면 `helm show all stable/mysql`
+`helm show chart bitnami/mysql` 를 실행한다. 또는 차트에 대한 모든 정보를 보려면 `helm show all bitnami/mysql`
 를 실행할 수도 있다.
 
 차트를 설치할 때마다, 새로운 릴리스가 생성된다. 따라서 하나의 차트를
 동일한 클러스터에 여러 번 설치할 수 있다. 각각을 독립적으로
 관리 및 업그레이드 할 수 있다.
 
-`helm install` 커맨드는 다양한 기능을 가진 매우 강력한 커맨드이다. 더 많은 정보를 얻으려면, 이곳을 확인하면 된다. [헬름 사용 가이드]({{< ref "using_helm.md" >}})
+`helm install` 커맨드는 다양한 기능을 가진 매우 강력한 커맨드이다. 
+더 많은 정보를 얻으려면, 이곳을 확인하면 된다. 
+[헬름 사용 가이드]({{< ref "using_helm.md" >}})
 
 ## 릴리스에 대해 알아보기
 
 헬름을 사용하여 릴리스된 내용을 쉽게 확인할 수 있다.
 
 ```console
-$ helm ls
-NAME             VERSION   UPDATED                   STATUS    CHART
-smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+$ helm list
+NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
+mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-`helm list` 함수는 배포된 모든 릴리스 목록을 보여준다.
+`helm list` (or `helm ls`) 함수는 배포된 모든 릴리스 목록을 보여준다.
 
 ## 릴리스 설치 제거
 
 릴리스를 설치 제거하려면, `helm uninstall` 커맨드를 사용한다.
 
 ```console
-$ helm uninstall smiling-penguin
-Removed smiling-penguin
+$ helm uninstall mysql-1612624192
+release "mysql-1612624192" uninstalled
 ```
 
-쿠버네티스에서 `smiling-penguin` 를 설치 제거하면, 릴리스 이력 뿐 아니라
+쿠버네티스에서 `mysql-1612624192` 를 설치 제거하면, 릴리스 이력 뿐 아니라
 릴리스와 관련된 리소스들도 모두 제거된다.
 
 `--keep-history` 플래그가 제공되면, 릴리스 이력은 유지된다. 그러면
 릴리스에 대한 정보를 요청할 수 있다.
 
 ```console
-$ helm status smiling-penguin
+$ helm status mysql-1612624192
 Status: UNINSTALLED
 ...
 ```
