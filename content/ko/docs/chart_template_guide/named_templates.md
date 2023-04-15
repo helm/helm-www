@@ -26,6 +26,13 @@ of the chart: `{{ define "mychart.labels" }}`. By using the specific chart name
 as a prefix we can avoid any conflicts that may arise due to two different
 charts that implement templates of the same name.
 
+This behavior also applies to different versions of a chart. If you have
+`mychart` version `1.0.0` that defines a template one way, and a `mychart`
+version `2.0.0` that modifies the existing named template, it will use the one
+that was loaded last. You can work around this issue by also adding a version
+in the name of the chart: `{{ define "mychart.v1.labels" }}` and
+`{{ define "mychart.v2.labels" }}`.
+
 ## 단편(partial)과 `_` 파일
 
 So far, we've used one file, and that one file has contained a single template.
