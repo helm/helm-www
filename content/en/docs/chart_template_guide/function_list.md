@@ -1342,6 +1342,27 @@ merge a b c | dig "one" "two" "three" "<missing>"
 Merge two or more dictionaries into one, giving precedence to the dest
 dictionary:
 
+Given:
+
+```
+dst:
+  default: default
+  overwrite: me
+  key: true
+
+src:
+  overwrite: overwritten
+  key: false
+```
+
+will result in:
+
+```
+newdict:
+  default: default
+  overwrite: me
+  key: true
+```
 ```
 $newdict := merge $dest $source1 $source2
 ```
