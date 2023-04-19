@@ -1,6 +1,6 @@
 # Cheat Sheet - HELM
 
-Helm cheatsheet featuring  all the necessary commands required to manage an application through Helm.
+Helm cheatsheet featuring all the necessary commands required to manage an application through Helm.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 ### Basic interpretations/context
