@@ -1,12 +1,12 @@
 # Cheat Sheet - HELM
 
-Helm cheatsheet featuring  all the necessary commands required to  manage application through Helm.
+Helm cheatsheet featuring  all the necessary commands required to manage an application through Helm.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 ### Basic interpretations/context
 
 Chart:
-- It is name of your chart in case it has been pulled and untared.
+- It is name of your chart in case it has been pulled and untarred.
 - It is <repo_name>/<chart_name> in case the repository has been added but chart not pulled.
 - It is the URL/Absolute path to the chart.
 
