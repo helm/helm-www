@@ -274,7 +274,7 @@ YAML规范存储了一种引用值的方法，然后通过引用指向该值。Y
 
 ```yaml
 coffee: "yes, please"
-favorite: &favoriteCoffee "Cappucino"
+favorite: &favoriteCoffee "Cappuccino"
 coffees:
   - Latte
   - *favoriteCoffee
@@ -290,10 +290,10 @@ coffees:
 
 ```yaml
 coffee: yes, please
-favorite: Cappucino
+favorite: Cappuccino
 coffees:
 - Latte
-- Cappucino
+- Cappuccino
 - Espresso
 ```
 
