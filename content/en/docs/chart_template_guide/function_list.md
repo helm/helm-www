@@ -1785,25 +1785,6 @@ Return the smallest of a series of integers.
 
 `min 1 2 3` will return `1`.
 
-### floor
-
-Returns the greatest float value less than or equal to input value.
-
-`floor 123.9999` will return `123.0`.
-
-### ceil
-
-Returns the greatest float value greater than or equal to input value.
-
-`ceil 123.001` will return `124.0`.
-
-### round
-
-Returns a float value with the remainder rounded to the given number to digits
-after the decimal point.
-
-`round 123.555555 3` will return `123.556`.
-
 ### len
 
 Returns the length of the argument as an integer.
@@ -1879,6 +1860,25 @@ This will return `1.5`:
 ```
 minf 1.5 2 3
 ```
+
+### floor
+
+Returns the greatest float value less than or equal to input value.
+
+`floor 123.9999` will return `123.0`.
+
+### ceil
+
+Returns the greatest float value greater than or equal to input value.
+
+`ceil 123.001` will return `124.0`.
+
+### round
+
+Returns a float value with the remainder rounded to the given number to digits
+after the decimal point.
+
+`round 123.555555 3` will return `123.556`.
 
 ## Network Functions
 
