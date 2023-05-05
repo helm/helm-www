@@ -16,6 +16,7 @@ They are listed here and broken down by the following categories:
 * [Logic and Flow Control](#logic-and-flow-control-functions)
 * [Lists](#lists-and-list-functions)
 * [Math](#math-functions)
+* [Float Math](#float-math-functions)
 * [Network](#network-functions)
 * [Reflection](#reflection-functions)
 * [Regular Expressions](#regular-expressions)
