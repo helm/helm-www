@@ -7,7 +7,7 @@ weight: 11
 쿠버네티스에서 사용자 또는 애플리케이션별 서비스 계정에 
 역할을 부여하는 것은 애플리케이션이 지정한 권한범위 내에서 작동하도록 
 하는 모범 사례이다. [공식 쿠버네티스 
-문서에서](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions) 서비스 계정 권한에 대해 
+문서에서](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions) 서비스 계정 권한에 대해 
 자세히 알아보도록 하자.
 
 쿠버네티스 1.6 부터는 역할 기반 접근 제어(RBAC)가 기본적으로 활성화된다.
