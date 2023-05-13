@@ -19,7 +19,11 @@ helm push [chart] [remote] [flags]
 ### 可选项
 
 ```shell
-  -h, --help   help for push
+      --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
+      --cert-file string           identify registry client using this SSL certificate file
+  -h, --help                       help for push
+      --insecure-skip-tls-verify   skip tls certificate checks for the chart upload
+      --key-file string            identify registry client using this SSL key file
 ```
 
 ### 从父命令继承的可选项

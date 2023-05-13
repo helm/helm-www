@@ -20,10 +20,7 @@ weight: 1
 $ make
 ```
 
-注意： 如果不是从`$GOPATH/src/helm.sh/helm`路径执行就会失败。目录`helm.sh`不应该是软链接，否则
-`build` 找不到相关的包。
-
-有必要的话要先安装依赖，重新构建 `vendor/` 目录，并验证配置。然后会编译 `helm` 并将其放到`bin/helm`。
+有必要的话要先安装依赖，并验证配置。然后会编译 `helm` 并将其放到 `bin/helm`。
 
 在本地执行Helm，可以执行 `bin/helm`。
 
@@ -31,7 +28,7 @@ $ make
 
 ## 执行测试
 
-要运行所有测试（除了`vendor/`），执行 `make test`。作为先决条件，需要安装
+要运行所有测试，执行 `make test`。作为先决条件，需要安装
 [golangci-lint](https://golangci-lint.run)。
 
 ## 贡献指南
@@ -42,7 +39,7 @@ $ make
 
 确保你已经阅读并理解主要贡献指南：
 
-https://github.com/helm/helm/blob/main/CONTRIBUTING.md
+<https://github.com/helm/helm/blob/main/CONTRIBUTING.md>
 
 ### 代码结构
 
@@ -70,12 +67,10 @@ Go依赖管理在不断变化，而且在Helm生命周期中很可能发生变�
 
 我们通过GitHub的Pull Requests(PRs)接受更改。操作工作流如下：
 
-1. 进入 `$GOPATH/src` 目录，然后 `mkdir helm.sh; cd helm.sh` 并`git clone`这个
-  `github.com/helm/helm`仓库。
-2. Fork仓库到自己的GitHub账户
-3. 为 `$GOPATH/src/helm.sh/helm` 添加自己的远程仓库
-4. 创建一个新分支(`git checkout -b feat/my-feature`) 并在新分支上开发。
-5. 当你准备好待审查代码时，将分支推送到GitHub，并开一个新的pull request 给我们。
+1. Fork `github.com/helm/helm` 仓库到自己的GitHub账户
+2. `git clone` 这个仓库到你想要的目录。
+3. 创建一个新分支(`git checkout -b feat/my-feature`) 并在新分支上开发。
+4. 当你准备好待审查代码时，将分支推送到GitHub，并开一个新的pull request 给我们。
 
 对于Git提交信息，我们遵循
 [语义化提交信息](https://karma-runner.github.io/0.13/dev/git-commit-msg.html)：
