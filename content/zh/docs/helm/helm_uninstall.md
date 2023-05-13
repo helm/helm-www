@@ -21,6 +21,7 @@ helm uninstall RELEASE_NAME [...] [flags]
 ### 可选项
 
 ```shell
+      --cascade string       Must be "background", "orphan", or "foreground". Selects the deletion cascading strategy for the dependents. Defaults to background. (default "background")
       --description string   add a custom description
       --dry-run              simulate a uninstall
   -h, --help                 help for uninstall
