@@ -43,6 +43,8 @@ functionality remains.
 
 ### Improved Upgrade Strategy: 3-way Strategic Merge Patches
 
+_Note: Details on 3-way Strategic Merge Patches is now maintained in [Resource Upgrades](../topics/resource_upgrades.md)_
+
 Helm 2 used a two-way strategic merge patch. During an upgrade, it compared the
 most recent chart's manifest against the proposed chart's manifest (the one
 supplied during `helm upgrade`). It compared the differences between these two
