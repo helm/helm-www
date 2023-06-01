@@ -1,6 +1,6 @@
 ---
-title: "Resource Upgrades: three-way strategic merge patches"
-description: "Describes Helm's approach to upgrades."
+title: "Resource Upgrades"
+description: "Describes Helm's approach to updating resources during upgrades."
 ---
 
 Helm uses a three-way strategic merge and patch process to update resources when upgrading a chart.
