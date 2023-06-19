@@ -94,8 +94,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
-mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
+NAME            	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART       	APP VERSION
+mysql-1687186447	default  	1       	2023-06-19 20:24:09.038439322 +0530 IST	deployed	mysql-9.10.4	8.0.33  
 ```
 
 The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
@@ -105,8 +105,8 @@ The `helm list` (or `helm ls`) function will show you a list of all deployed rel
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall mysql-1612624192
-release "mysql-1612624192" uninstalled
+$ helm uninstall mysql-1687186447
+release "mysql-1687186447" uninstalled
 ```
 
 This will uninstall `mysql-1612624192` from Kubernetes, which will remove all
@@ -116,7 +116,7 @@ If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status mysql-1612624192
+$ helm status mysql-1687186447
 Status: UNINSTALLED
 ...
 ```
