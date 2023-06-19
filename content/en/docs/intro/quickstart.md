@@ -74,7 +74,7 @@ NOTES: ...
 ```
 
 In the example above, the `bitnami/mysql` chart was released, and the name of
-our new release is `mysql-1612624192`.
+our new release is `mysql-1687186447`.
 
 You get a simple idea of the features of this MySQL chart by running `helm show
 chart bitnami/mysql`. Or you could run `helm show all bitnami/mysql` to get all
