@@ -222,3 +222,35 @@ with the following command:
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
+
+### S3 compatible storage backend
+
+There is a S3 storage backend that stores release information in S3 compatible blob storage.
+
+The usage of S3 could be a better alternative compared to the ConfigMaps/Secrets approach as it doesn't have the limit of 1MB
+and in parallel it also doesn't have the disadvantage of SQL that usually Databases are the resources with the
+highest level of protection (Firewall etc).
+
+To enable the S3 compatible backend, you'll need to create a S3 Bucket and an IAM role with the following Actions:
+
+* `s3:GetObject`
+* `s3:ListBucket`
+* `s3:PutObject`
+* `s3:DeleteObject`
+
+Dependent on your S3 Bucket configuration for kms also other Actions like `kms:Decrypt` and `kms:Encrypt` could be needed.
+
+Helm utilizes the [default credential chain](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials) for Credentials lookup.
+An example configuration looks like this:
+
+```shell
+export HELM_DRIVER=s3
+export HELM_DRIVER_S3_BUCKET_NAME="test-bucket"
+```
+
+If you plan to utilize this with other Cloud providers then AWS or locally with tools like localstack the following additional variables can be exposed:
+
+```shell
+export HELM_DRIVER_S3_BUCKET_LOCATION_URL="http://127.0.0.1:9002"
+export HELM_DRIVER_S3_USE_PATH_STYLE="true"
+```
