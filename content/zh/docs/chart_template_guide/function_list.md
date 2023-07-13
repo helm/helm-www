@@ -15,6 +15,7 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 * [Logic and Flow Control](#logic-and-flow-control-functions)
 * [Lists](#lists-and-list-functions)
 * [Math](#math-functions)
+* [Float Math](#float-math-functions)
 * [Network](#network-functions)
 * [Reflection](#reflection-functions)
 * [Regular Expressions](#regular-expressions)
@@ -1647,6 +1648,82 @@ max 1 2 3
 
 `min 1 2 3` 会返回 `1`。
 
+### len
+
+返回参数的长度。
+
+```yaml
+len .Arg
+```
+
+## Float Math Functions
+
+所有的数学函数使用`float64`格式。
+
+### addf
+
+使用`addf`求和
+
+下面的例子会返回`5.5`:
+
+```yaml
+addf 1.5 2 2
+```
+
+### add1f
+
+使用`add1f`递增1
+
+### subf
+
+相减使用`subf`
+
+下面例子相当于`7.5 - 2 - 3` 并返回 `2.5`:
+
+```yaml
+subf 7.5 2 3
+```
+
+### divf
+
+使用`divf`实现整数除法
+
+以下相当于`10 / 2 / 4` 并返回 `1.25`:
+
+```yaml
+divf 10 2 4
+```
+
+### mulf
+
+使用`mulf`做乘法
+
+以下会返回`6`:
+
+```yaml
+mulf 1.5 2 2
+```
+
+### maxf
+
+返回最大浮点数
+
+以下会返回`3`:
+
+```yaml
+maxf 1 2.5 3
+```
+
+### minf
+
+返回最小浮点数
+
+以下会返回 `1.5`:
+
+```yaml
+minf 1.5 2 3
+```
+
 ### floor
 
 返回小于等于输入值的最大浮点整数。
@@ -1664,14 +1741,6 @@ max 1 2 3
 返回一个四舍五入到给定小数位的数。
 
 `round 123.555555 3` will return `123.556`。
-
-### len
-
-以整数返回参数的长度。
-
-```yaml
-len .Arg
-```
 
 ## Network Functions
 
