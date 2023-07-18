@@ -1,4 +1,8 @@
-# Cheat Sheet - HELM
+---
+title: "Cheat Sheet"
+description: "Helm cheatsheet"
+weight: 4
+---
 
 Helm cheatsheet featuring all the necessary commands required to manage an application through Helm.
 
