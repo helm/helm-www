@@ -190,8 +190,8 @@
       "kube-store-operator/commons/logger"
   )
   
-  // 查看指定仓库的Chart信息
-  // repoName 仓库名
+  // 查看指定仓库中最新的Chart信息
+  // search(仓库名)
   func search(repoName string) ([]*ChartListResponse, error) {
       settings := cli.New()
   
@@ -203,22 +203,55 @@
       }
   
       var chartList []*ChartListResponse
-      //// 遍历所有 Chart 的信息
-      //for _, entries := range indexFile.Entries {
-      //    for _, entry := range entries {
-      //        // 将每个 Chart 的主要信息提取出来
-      //        chart := &ChartListResponse{
-      //            ChartName:    entry.Name,
-      //            ChartVersion: entry.Version,
-      //            AppVersion:   entry.AppVersion,
-      //            Description:  entry.Description,
-      //        }
-      //        chartList = append(chartList, chart)
-      //    }
-      //}
   
       // 遍历指定仓库的 Chart 信息
-      for _, entry := range indexFile.Entries[repoName] {
+      for _, entry := range indexFile.Entries {
+          // 将每个 Chart 的最新信息提取出来
+          chart := &ChartListResponse{
+              ChartName:    entry[0].Name,
+              ChartVersion: entry[0].Version,
+              AppVersion:   entry[0].AppVersion,
+              Description:  entry[0].Description,
+          }
+          chartList = append(chartList, chart)
+      }
+  
+      // 指定仓库的Chart信息
+      logger.Debugf("%s", chartList)
+      return chartList, nil
+  }
+  ```
+
+- > 此功能相当于: helm search repo 仓库名
+
+### 检索指定仓库中Chart的所有版本信息
+
+- ``` go
+  package kubestore
+  
+  import (
+      "fmt"
+      "helm.sh/helm/v3/pkg/cli"
+      "helm.sh/helm/v3/pkg/repo"
+      "kube-store-operator/commons/logger"
+  )
+  
+  // 查看指定仓库的Chart所有版本信息
+  // searchAll(仓库名, Chart名)
+  func searchAll(repoName, chartName string) ([]*ChartListResponse, error) {
+      settings := cli.New()
+  
+      path := fmt.Sprintf("%s/%s-index.yaml", settings.RepositoryCache, repoName)
+      // 加载 xxx-index.yaml 文件
+      indexFile, err := repo.LoadIndexFile(path)
+      if err != nil {
+          return nil, fmt.Errorf("仓库 %s 不存在", repoName)
+      }
+  
+      var chartList []*ChartListResponse
+  
+      // 遍历指定仓库的 Chart 信息
+      for _, entry := range indexFile.Entries[chartName] {
           // 将每个 Chart 的主要信息提取出来
           chart := &ChartListResponse{
               ChartName:    entry.Name,
@@ -234,8 +267,8 @@
       return chartList, nil
   }
   ```
-
-- > 此功能相当于: helm search repo 仓库名
+  
+- > 此功能相当于: helm search repo 仓库名 -l
 
 
 
