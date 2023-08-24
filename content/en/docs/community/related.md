@@ -18,6 +18,7 @@ request](https://github.com/helm/helm-www/pulls).
   existing k8s resources into a new generated helm chart.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
+- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) - Plugin that helps distributing Helm charts across OCI registries and on Air gap environments
 - [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - GUI for Helm, visualize releases and repositories, manifest diffs
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - Plugin to manage repositories
   on Google Cloud Storage
