@@ -1084,7 +1084,7 @@ The current date/time. Use this in conjunction with other date functions.
 
 ### ago
 
-The `ago` function returns duration from time.Now in seconds resolution.
+The `ago` function returns duration from time. Now in seconds resolution.
 
 ```
 ago .CreatedAt
