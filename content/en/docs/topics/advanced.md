@@ -222,3 +222,63 @@ with the following command:
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
+The following Bash script will assist you in migrating all existing Helm releases to PostgreSQL. Please use it at your own risk, and ensure that the releases are properly migrated before proceeding with any subsequent Helm operations.
+
+```shell
+#!/bin/bash
+
+# Define your PostgreSQL connection parameters
+PG_HOST="<DB_HOST>"
+PG_PORT="<DB_PORT>"
+PG_DATABASE="<HELM_DB>"
+PG_USER="<DB_USER>"
+PG_PASSWORD="<YOUR_DB_PASSWORD>"
+export PGPASSWORD=${PG_PASSWORD}
+# Function to insert data into PostgreSQL
+insert_data() {
+  local secret_name="$1"
+  local secret_type="$2"
+  local body="$3"
+  local name="$4"
+  local namespace="$5"
+  local version="$6"
+  local status="$7"
+  local owner="$8"
+  local createdat="$9"
+  local modifiedat="${10}"
+  echo "INSERT INTO releases_v1 (key, type, body, name, namespace, version, status, owner, createdat, modifiedat) VALUES ('$secret_name', '$secret_type', '$body', '$name', '$namespace', '$version', '$status', '$owner', $createdat, $modifiedat);" > statements.sql
+  psql -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" -d "$PG_DATABASE" -f  statements.sql
+}
+
+# List all Kubernetes namespaces
+namespaces=$(kubectl get namespaces -o jsonpath='{.items[*].metadata.name}')
+
+# Iterate through namespaces
+for namespace in $namespaces; do
+  # Select all secrets with label owner=helm in the current namespace
+  secrets=$(kubectl get secrets -n "$namespace" -l "owner=helm" -o jsonpath='{.items[*].metadata.name}')
+
+  # Iterate through secrets in the current namespace
+  for secret_name in $secrets; do
+    # Get body of the release
+    body=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.data.release}' | base64 --decode)
+
+    # Get labels on secret
+    lablename=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.labels.name}')
+    secret_type=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.type}')
+    version=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.labels.version}')
+    status=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.labels.status}')
+    owner=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.labels.owner}')
+
+    # Get modifiedAt in epoch time
+    modifiedat=$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.labels.modifiedAt}')
+
+    # Get creation timestamp in epoch time
+    createdat=$(date -d "$(kubectl -n "$namespace" get secret "$secret_name" -o jsonpath='{.metadata.creationTimestamp}')" +%s)
+
+    # Insert data into PostgreSQL
+    insert_data "$secret_name" "$secret_type" "$body" "$lablename" "$namespace" "$version" "$status" "$owner" "$createdat" "$modifiedat"
+  done
+done
+unset PGPASSWORD
+```
