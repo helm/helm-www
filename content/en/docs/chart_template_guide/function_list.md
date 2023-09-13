@@ -688,6 +688,8 @@ The following type conversion functions are provided by Helm:
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `toToml`: Convert list, slice, array, dict, or object to indented TOML.
+- `fromToml`: Convert a TOML string to an object.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
 to convert from any type to the destination type. For example, `int64` can
@@ -786,6 +788,37 @@ The `fromJson` function takes a YAML string and returns an object that can be us
 ```
 ```yaml
 {{- $person := .Files.Get "jsons/person.json" | fromJson }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
+
+### toToml
+
+The `toToml` function encodes an item into a TOML string. If the item cannot be
+converted to TOML, the function will return an error.
+
+```
+toToml .Item
+```
+
+The above returns a TOML string representation of `.Item`.
+
+### fromToml
+
+The `fromToml` function takes a TOML string and returns an object that can be
+used in templates.
+
+`File at: tomls/person.toml`
+
+```toml
+name = "Bob"
+age = 25
+hobbies = [ "hiking", "fishing", "cooking" ]
+```
+
+```yaml
+{{- $person := .Files.Get "tomls/person.toml" | fromToml }}
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
