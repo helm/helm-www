@@ -10,7 +10,7 @@ them elsewhere. A _named template_ (sometimes called a _partial_ or a
 _subtemplate_) is simply a template defined inside of a file, and given a name.
 We'll see two ways to create them, and a few different ways to use them.
 
-In the [Flow Control](../control_structures) section we introduced three actions
+In the [Flow Control](./control_structures.md) section we introduced three actions
 for declaring and managing templates: `define`, `template`, and `block`. In this
 section, we'll cover those three actions, and also introduce a special-purpose
 `include` function that works similarly to the `template` action.
