@@ -687,7 +687,9 @@ The following type conversion functions are provided by Helm:
   JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
+- `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
 to convert from any type to the destination type. For example, `int64` can
@@ -770,7 +772,7 @@ greeting: |
 
 ### fromJson
 
-The `fromJson` function takes a YAML string and returns an object that can be used in templates.
+The `fromJson` function takes a JSON string and returns an object that can be used in templates.
 
 `File at: jsons/person.json`
 ```json
@@ -790,6 +792,46 @@ greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
+
+
+### fromJsonArray
+
+The `fromJsonArray` function takes a JSON Array and returns a list that can be used in templates.
+
+`File at: jsons/people.json`
+```json
+[
+ { "name": "Bob","age": 25 },
+ { "name": "Ram","age": 16 }
+]
+```
+```yaml
+{{- $people := .Files.Get "jsons/people.json" | fromJsonArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
+### fromYamlArray
+
+The `fromYamlArray` function takes a YAML Array and returns a list that can be used in templates.
+
+`File at: yamls/people.yml`
+```yaml
+- name: Bob
+  age: 25
+- name: Ram
+  age: 16
+```
+```yaml
+{{- $people := .Files.Get "yamls/people.yml" | fromYamlArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
 
 ## Regular Expressions
 
