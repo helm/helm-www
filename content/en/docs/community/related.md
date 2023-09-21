@@ -83,6 +83,10 @@ Tools layered on top of Helm.
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version
   controlled desired state files (described in a simple TOML format)
+- [HULL](https://github.com/vidispine/hull) - This library chart provides a 
+  ready-to-use interface for specifying all Kubernetes objects directly in the `values.yaml`.
+  It removes the need to write any templates for your charts and comes with many
+  additional features to simplify Helm chart creation and usage.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -
   Generate Helm charts for your
   existing projects.
