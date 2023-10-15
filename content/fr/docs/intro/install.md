@@ -60,6 +60,14 @@ Les membres de la communauté Helm ont contribué à la création d'un [package 
 choco install kubernetes-helm
 ```
 
+### Depuis Winget (Windows)
+
+Les membres de la communauté Helm ont contribué à la création d'un [package Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) build pour [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Ce package est généralement à jour.
+
+```console
+winget install Helm.Helm
+```
+
 ### Depuis Apt (Debian/Ubuntu)
 
 Les membres de la communauté Helm ont contribué à la création d'un [package Helm](https://helm.baltorepo.com/stable/debian/) for Apt. Ce package est généralement à jour.
