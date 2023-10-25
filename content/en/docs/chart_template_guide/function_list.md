@@ -31,7 +31,7 @@ They are listed here and broken down by the following categories:
 Helm includes numerous logic and control flow functions including [and](#and),
 [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
 [fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
-[not](#not), and [or](#or).
+[not](#not), [or](#or), and [required](#required).
 
 ### and
 
@@ -133,6 +133,18 @@ The definition of "empty" depends on type:
 
 For structs, there is no definition of empty, so a struct will never return the
 default.
+
+### required
+
+Specify values that must be set with `required`:
+
+```
+required "A valid foo is required!" .Bar
+```
+
+If `.Bar` is empty or not defined (see [default](#default) on how this is 
+evaluated), the template will not render and will return the error message 
+supplied instead.
 
 ### empty
 
