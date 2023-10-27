@@ -18,6 +18,7 @@ request](https://github.com/helm/helm-www/pulls).
   existing k8s resources into a new generated helm chart.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
+- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) - Plugin that helps distributing Helm charts across OCI registries and on Air gap environments
 - [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - GUI for Helm, visualize releases and repositories, manifest diffs
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - Plugin to manage repositories
   on Google Cloud Storage
@@ -82,6 +83,10 @@ Tools layered on top of Helm.
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version
   controlled desired state files (described in a simple TOML format)
+- [HULL](https://github.com/vidispine/hull) - This library chart provides a 
+  ready-to-use interface for specifying all Kubernetes objects directly in the `values.yaml`.
+  It removes the need to write any templates for your charts and comes with many
+  additional features to simplify Helm chart creation and usage.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -
   Generate Helm charts for your
   existing projects.

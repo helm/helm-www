@@ -16,6 +16,7 @@ They are listed here and broken down by the following categories:
 * [Logic and Flow Control](#logic-and-flow-control-functions)
 * [Lists](#lists-and-list-functions)
 * [Math](#math-functions)
+* [Float Math](#float-math-functions)
 * [Network](#network-functions)
 * [Reflection](#reflection-functions)
 * [Regular Expressions](#regular-expressions)
@@ -30,7 +31,7 @@ They are listed here and broken down by the following categories:
 Helm includes numerous logic and control flow functions including [and](#and),
 [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
 [fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
-[not](#not), and [or](#or).
+[not](#not), [or](#or), and [required](#required).
 
 ### and
 
@@ -132,6 +133,18 @@ The definition of "empty" depends on type:
 
 For structs, there is no definition of empty, so a struct will never return the
 default.
+
+### required
+
+Specify values that must be set with `required`:
+
+```
+required "A valid foo is required!" .Bar
+```
+
+If `.Bar` is empty or not defined (see [default](#default) on how this is 
+evaluated), the template will not render and will return the error message 
+supplied instead.
 
 ### empty
 
@@ -686,7 +699,9 @@ The following type conversion functions are provided by Helm:
   JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
+- `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
 to convert from any type to the destination type. For example, `int64` can
@@ -769,7 +784,7 @@ greeting: |
 
 ### fromJson
 
-The `fromJson` function takes a YAML string and returns an object that can be used in templates.
+The `fromJson` function takes a JSON string and returns an object that can be used in templates.
 
 `File at: jsons/person.json`
 ```json
@@ -789,6 +804,46 @@ greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
+
+
+### fromJsonArray
+
+The `fromJsonArray` function takes a JSON Array and returns a list that can be used in templates.
+
+`File at: jsons/people.json`
+```json
+[
+ { "name": "Bob","age": 25 },
+ { "name": "Ram","age": 16 }
+]
+```
+```yaml
+{{- $people := .Files.Get "jsons/people.json" | fromJsonArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
+### fromYamlArray
+
+The `fromYamlArray` function takes a YAML Array and returns a list that can be used in templates.
+
+`File at: yamls/people.yml`
+```yaml
+- name: Bob
+  age: 25
+- name: Ram
+  age: 16
+```
+```yaml
+{{- $people := .Files.Get "yamls/people.yml" | fromYamlArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
 
 ## Regular Expressions
 
@@ -1083,7 +1138,7 @@ The current date/time. Use this in conjunction with other date functions.
 
 ### ago
 
-The `ago` function returns duration from time.Now in seconds resolution.
+The `ago` function returns duration from time. Now in seconds resolution.
 
 ```
 ago .CreatedAt
@@ -1168,7 +1223,7 @@ The `dateModify` takes a modification and a date and returns the timestamp.
 Subtract an hour and thirty minutes from the current time:
 
 ```
-now | date_modify "-1.5h"
+now | dateModify "-1.5h"
 ```
 
 If the modification format is wrong `dateModify` will return the date
@@ -1784,6 +1839,82 @@ Return the smallest of a series of integers.
 
 `min 1 2 3` will return `1`.
 
+### len
+
+Returns the length of the argument as an integer.
+
+```
+len .Arg
+```
+
+## Float Math Functions
+
+All math functions operate on `float64` values.
+
+### addf
+
+Sum numbers with `addf`
+
+This will return `5.5`:
+
+```
+addf 1.5 2 2
+```
+
+### add1f
+
+To increment by 1, use `add1f`
+
+### subf
+
+To subtract, use `subf`
+
+This is equivalent to `7.5 - 2 - 3` and will return `2.5`:
+
+```
+subf 7.5 2 3
+```
+
+### divf
+
+Perform integer division with `divf`
+
+This is equivalent to `10 / 2 / 4` and will return `1.25`:
+
+```
+divf 10 2 4
+```
+
+### mulf
+
+Multiply with `mulf`
+
+This will return `6`:
+
+```
+mulf 1.5 2 2
+```
+
+### maxf
+
+Return the largest of a series of floats:
+
+This will return `3`:
+
+```
+maxf 1 2.5 3
+```
+
+### minf
+
+Return the smallest of a series of floats.
+
+This will return `1.5`:
+
+```
+minf 1.5 2 3
+```
+
 ### floor
 
 Returns the greatest float value less than or equal to input value.
@@ -1802,14 +1933,6 @@ Returns a float value with the remainder rounded to the given number to digits
 after the decimal point.
 
 `round 123.555555 3` will return `123.556`.
-
-### len
-
-Returns the length of the argument as an integer.
-
-```
-len .Arg
-```
 
 ## Network Functions
 

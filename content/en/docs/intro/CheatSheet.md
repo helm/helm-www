@@ -1,8 +1,7 @@
 ---
-title: "Cheat Sheet - HELM"
-description: "Helm cheatsheet."
+title: "Cheat Sheet"
+description: "Helm cheatsheet"
 weight: 4
-aliases: ["/docs/cheatsheet/"]
 ---
 
 Helm cheatsheet featuring all the necessary commands required to manage an application through Helm.
@@ -11,7 +10,7 @@ Helm cheatsheet featuring all the necessary commands required to manage an appli
 ### Basic interpretations/context
 
 Chart:
-- It is name of your chart in case it has been pulled and untarred.
+- It is the name of your chart in case it has been pulled and untarred.
 - It is <repo_name>/<chart_name> in case the repository has been added but chart not pulled.
 - It is the URL/Absolute path to the chart.
 
