@@ -60,8 +60,7 @@ lifecycle is altered like this:
 4. After some verification, the library renders the `foo` templates
 5. The library prepares to execute the `pre-install` hooks (loading hook
    resources into Kubernetes)
-6. The library sorts hooks by weight (assigning a weight of 0 by default), 
-   by resource kind and finally by name in ascending order.
+6. The library sorts hooks by weight (assigning a weight of 0 by default) in ascending order, then by name in alphabetical order.
 7. The library then loads the hook with the lowest weight first (negative to
    positive)
 8. The library waits until the hook is "Ready" (except for CRDs)
@@ -180,8 +179,7 @@ annotations:
 ```
 
 Hook weights can be positive or negative numbers but must be represented as
-strings. When Helm starts the execution cycle of hooks of a particular Kind it
-will sort those hooks in ascending order.
+strings. Hooks with a smaller value weight are installed first, with ties broken by name alphabetically.
 
 ### Hook deletion policies
 
