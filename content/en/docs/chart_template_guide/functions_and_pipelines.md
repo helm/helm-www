@@ -242,9 +242,10 @@ to query Kubernetes. If any error is returned when interacting with calling the
 API server (for example due to lack of permission to access a resource), helm's
 template processing will fail.
 
-Keep in mind that Helm is not supposed to contact the Kubernetes API Server
-during a `helm template` or a `helm install|upgrade|delete|rollback --dry-run`,
-so the `lookup` function will return an empty list (i.e. dict) in such a case.
+Keep in mind that Helm is not supposed to contact the Kubernetes API Server during 
+a `helm template|install|upgrade|delete|rollback --dry-run` operation. To test `lookup` 
+against a running cluster, `helm template|install|upgrade|delete|rollback --dry-run=server`
+should be used instead to allow cluster connection.
 
 ## Operators are functions
 
