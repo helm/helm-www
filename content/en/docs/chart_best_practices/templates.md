@@ -184,7 +184,7 @@ memory: {{ .Values.maxMem | quote }}
 The comment above is visible when the user runs `helm install --debug`, while
 comments specified in `{{- /* */}}` sections are not.
 
-Beware of adding `#` YAML-comments on template sections containing Helm values that may be required by certain template functions.
+Beware of adding `#` YAML comments on template sections containing Helm values that may be required by certain template functions.
 
 For example, if `required` function is introduced to the above example, and `maxMem` is unset, then a `#` YAML comment will introduce a rendering error.
 
@@ -201,6 +201,8 @@ Incorrect: `helm template` returns `Error: execution error at (templates/test.ya
 # This may cause problems if the value is more than 100Gi
 # memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
 ```
+
+Review [Debugging Templates](../chart_template_guide/debugging.md) for another example of this behavior of how YAML comments are left intact.
 
 ## Use of JSON in Templates and Template Output
 
