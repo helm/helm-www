@@ -16,6 +16,7 @@ request](https://github.com/helm/helm-www/pulls).
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt
   existing k8s resources into a new generated helm chart.
+- [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) - Snapshot testing plugin for Helm charts.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
 - [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) - Plugin that helps distributing Helm charts across OCI registries and on Air gap environments
