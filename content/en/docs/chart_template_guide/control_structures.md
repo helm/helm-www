@@ -164,7 +164,7 @@ data:
 ```
 
 Notice that we received a few empty lines in our YAML. Why? When the template
-engine runs, it _removes_ the contents inside of `{{` end `}}`, but it leaves
+engine runs, it _removes_ the contents inside of `{{` and `}}`, but it leaves
 the remaining whitespace exactly as is.
 
 YAML ascribes meaning to whitespace, so managing the whitespace becomes pretty
