@@ -10,7 +10,7 @@ statements). There are even a few ways to create new objects within your
 templates, like with the `tuple` function we'll see later.
 
 Objects can be simple, and have just one value. Or they can contain other
-objects or functions. For example. the `Release` object contains several objects
+objects or functions. For example, the `Release` object contains several objects
 (like `Release.Name`) and the `Files` object has a few functions.
 
 In the previous section, we use `{{ .Release.Name }}` to insert the name of a
@@ -63,9 +63,9 @@ access in your templates.
     Kubernetes version.
   - `Capabilities.KubeVersion.Major` is the Kubernetes major version.
   - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
-  - `Capabilities.HelmVersion` is the object containing the Helm Version details, it is the same output of `helm version`  
+  - `Capabilities.HelmVersion` is the object containing the Helm Version details, it is the same output of `helm version`.
   - `Capabilities.HelmVersion.Version` is the current Helm version in semver format.
-  - `Capabilities.HelmVersion.GitCommit` is the Helm git sha1. 
+  - `Capabilities.HelmVersion.GitCommit` is the Helm git sha1.
   - `Capabilities.HelmVersion.GitTreeState` is the state of the Helm git tree.
   - `Capabilities.HelmVersion.GoVersion` is the version of the Go compiler used.
 - `Template`: Contains information about the current template that is being
