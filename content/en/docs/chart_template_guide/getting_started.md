@@ -202,7 +202,7 @@ TEST SUITE: None
 
 You can run `helm get manifest clunky-serval` to see the entire generated YAML.
 
-Note that the config map inside kubernetes name is `clunky-serval-configmap`
+Note that the ConfigMap inside Kubernetes name is `clunky-serval-configmap`
 instead of `mychart-configmap` previously.
 
 At this point, we've seen templates at their most basic: YAML files that have
