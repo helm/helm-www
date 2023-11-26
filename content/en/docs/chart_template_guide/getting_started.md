@@ -97,7 +97,7 @@ data:
 ```
 
 **TIP:** Template names do not follow a rigid naming pattern. However, we
-recommend using the suffix `.yaml` for YAML files and `.tpl` for helpers.
+recommend using the extension `.yaml` for YAML files and `.tpl` for helpers.
 
 The YAML file above is a bare-bones ConfigMap, having the minimal necessary
 fields. In virtue of the fact that this file is in the `mychart/templates/`
