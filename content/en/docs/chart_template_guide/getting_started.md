@@ -100,7 +100,7 @@ data:
 recommend using the extension `.yaml` for YAML files and `.tpl` for helpers.
 
 The YAML file above is a bare-bones ConfigMap, having the minimal necessary
-fields. In virtue of the fact that this file is in the `mychart/templates/`
+fields. By virtue of the fact that this file is in the `mychart/templates/`
 directory, it will be sent through the template engine.
 
 It is just fine to put a plain YAML file like this in the `mychart/templates/`
