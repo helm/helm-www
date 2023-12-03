@@ -21,6 +21,9 @@ docs.helm.sh/
 # JetBrains IDEs (GoLand, IntelliJ, ...) config folder
 .idea
 
+# Obsidian IDE config folder
+.obsidian
+
 # Link checker artifacts
 bin/
 tmp/
