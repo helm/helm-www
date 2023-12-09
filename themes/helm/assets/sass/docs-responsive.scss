@@ -201,14 +201,6 @@
 // mobile adjustments
 */
 @media only screen and (max-width: 768px) {
-  html,
-  body,
-  #helm {
-    width: 100vw !important;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
   // mobile menu
   .navbar-burger {
     position: fixed;
@@ -435,6 +427,11 @@
     }
   }
 
+  .content-columns.columns {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   section.content-docs {
     order: 1;
   }
@@ -450,13 +447,13 @@
     bottom: auto;
     left: auto;
     min-height: 2rem;
-    width: 100vw;
+    width: 100%;
     overflow: visible;
 
     .sidebar {
       position: relative;
       margin-top: 2.5rem;
-      width: 100vw;
+      width: 100%;
       min-height: 2rem;
       padding: 0;
       border: none;
@@ -469,7 +466,7 @@
 
     // toggle docs menu on mobile
     #sidebar-toggle {
-      width: 100vw;
+      width: 100%;
       position: relative;
       text-align: center;
       margin: 0 auto;
@@ -491,11 +488,9 @@
       display: none;
       padding: 1rem 7.5vw;
       border: 12px solid $light2;
-      margin-left: 8px;
       z-index: 940;
 
       .sidebar-nav {
-        width: 80vw;
         position: relative;
         top: auto;
         bottom: auto;
@@ -509,7 +504,6 @@
         display: block;
         left: 0;
         right: 0;
-        width: 96.8%;
         min-height: 100vh;
         z-index: 1850;
         background: url("/img/topography.png") left 100px repeat-x;
@@ -539,7 +533,7 @@
 
   // content sizes
   .content-wrapper {
-    max-width: 90vw !important;
+    max-width: 92vw !important;
     padding: 2rem 5vw 3rem;
 
     h1 {
@@ -548,8 +542,8 @@
     }
 
     article {
-      padding-left: 7.5vw;
-      padding-right: 7.5vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
 
       h1 {
         font-size: 5.35vw;

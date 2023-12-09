@@ -24,7 +24,6 @@
 
 // boat full width default
 .boat {
-  width: 100vw;
   position: absolute;
   top: auto;
   bottom: 8px;
@@ -70,7 +69,7 @@
     margin: 0;
     left: 0;
       // offsets for navy border
-      right: 15px;
+      right: 0;
       bottom: -8px;
     height: 15vw;
     overflow: hidden;
