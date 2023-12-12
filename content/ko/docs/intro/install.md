@@ -111,15 +111,6 @@ Fedora 35부터, 공식 저장소에서 헬름을 사용할 수 있다.
 sudo dnf install helm
 ```
 
-### Snap으로 
-
-[Snapcrafters](https://github.com/snapcrafters) 커뮤니티는 
-[헬름 패키지](https://snapcraft.io/helm)의 Snap 버전을 유지보수한다.
-
-```console
-sudo snap install helm --classic
-```
-
 ### pkg로 (FreeBSD)
 
 FreeBSD 커뮤니티 멤버들은 [FreeBSD Ports Collections](https://man.freebsd.org/ports)용 

@@ -89,14 +89,6 @@ sudo apt-get install helm
 sudo dnf install helm
 ```
 
-### 使用Snap
-
-[Snapcrafters](https://github.com/snapcrafters)社区维护了[Helm 包](https://snapcraft.io/helm)的Snap版本：
-
-```console
-sudo snap install helm --classic
-```
-
 ### 使用 pkg (FreeBSD)
 
 FreeBSD社区成员贡献了一个[Helm页面](https://www.freshports.org/sysutils/helm)来构建[FreeBSD

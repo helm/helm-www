@@ -87,15 +87,6 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### Используя Snap
-
-[Snapcrafters](https://github.com/snapcrafters) сообщество поддерживает Snap-версию
-[Helm пакета](https://snapcraft.io/helm):
-
-```console
-sudo snap install helm --classic
-```
-
 ### Используя pkg (FreeBSD)
 
 Члены сообщества FreeBSD внесли свой вклад в создание [Helm

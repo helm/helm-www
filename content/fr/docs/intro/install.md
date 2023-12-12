@@ -72,14 +72,6 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### Depuis Snap
-
-La communauté des [Snapcrafters](https://github.com/snapcrafters) maintiennent la version Snap du [package Helm](https://snapcraft.io/helm) à jour :
-
-```console
-sudo snap install helm --classic
-```
-
 ### Depuis pkg (FreeBSD)
 
 Les membres de la communauté FreeBSD ont contribué à la création d'un [package Helm](https://www.freshports.org/sysutils/helm) build pour la [Collection de Ports FreeBSD](https://man.freebsd.org/ports). Ce package est généralement à jour.
