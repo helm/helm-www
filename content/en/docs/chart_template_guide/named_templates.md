@@ -207,7 +207,7 @@ the template like this:
 ```
 
 No pipeline value was provided to its second parameter, so within the template `.` is empty.
-`$.` will therefore also be empty.
+`$` will therefore also be empty.
 This is easy enough to fix, though. We simply pass a pipeline value as a second parameter to `template`:
 
 ```yaml
