@@ -126,12 +126,12 @@ That variable will be in scope for the entire template. But in our last example,
 `$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}`
 block.
 
-However, there is one variable that is always available - `$.` - this variable will
+However, there is one variable that is always available - `$` - this variable will
 either point to the chart or sub-chart's initial context, or to the context passed to `template` or `include`.
 This can be very useful inside control structures that change `.` when you need to use things from the initial
 context, such as the chart's release name.
 
-An example illustrating that `range` alters `.`, but `$.` provides access to the initial context:
+An example illustrating that `range` alters `.`, but `$` provides access to the initial context:
 ```yaml
 {{- range .Values.tlsSecrets }}
 ---
