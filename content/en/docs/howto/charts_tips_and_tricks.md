@@ -249,13 +249,11 @@ prevent it from being uninstalled.
 kind: Secret
 metadata:
   annotations:
-    "helm.sh/resource-policy": keep
+    helm.sh/resource-policy: keep
 [...]
 ```
 
-(Quotation marks are required)
-
-The annotation `"helm.sh/resource-policy": keep` instructs Helm to skip deleting
+The annotation `helm.sh/resource-policy: keep` instructs Helm to skip deleting
 this resource when a helm operation (such as `helm uninstall`, `helm upgrade` or
 `helm rollback`) would result in its deletion. _However_, this resource becomes
 orphaned. Helm will no longer manage it in any way. This can lead to problems if
