@@ -1,39 +1,33 @@
 ---
-title: "Helm Completion Bash"
+title: "Helm Completion Fish"
 ---
 
-## helm completion bash
+## helm completion fish
 
-Générer des scripts d'auto-complétion pour bash
+Générer des scripts d'auto-complétion pour fish
 
 ### Synopsis
 
-
-Générer des scripts d'auto-complétion pour Helm pour le shell bash.
+Générer des scripts d'auto-complétion pour Helm pour le shell fish.
 
 Pour charger les complétions dans votre session shell courante :
 
-    source <(helm completion bash)
+    helm completion fish | source
 
-Pour charger les complétions pour chaque nouvelles sessions, exécutez une fois :
-- Linux:
+Pour charger les complétion pour chaque nouvelles session, exécutez une fois :
 
-      helm completion bash > /etc/bash_completion.d/helm
-
-- MacOS:
-
-      helm completion bash > /usr/local/etc/bash_completion.d/helm
+    helm completion fish > ~/.config/fish/completions/helm.fish
 
 Vous devez relancer un nouveau shell pour que cette configuration prenne effet.
 
 ```
-helm completion bash [flags]
+helm completion fish [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help              Aide pour bash
+  -h, --help              Aide pour fish
       --no-descriptions   Désactiver les descriptions des complétions
 ```
 
