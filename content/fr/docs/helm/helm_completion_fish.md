@@ -4,7 +4,7 @@ title: "Helm Completion Fish"
 
 ## helm completion fish
 
-Générer des scripts d'auto-complétion pour fish
+générer des scripts d'auto-complétion pour fish
 
 ### Synopsis
 
@@ -19,6 +19,7 @@ Pour charger les complétion pour chaque nouvelles session, exécutez une fois :
     helm completion fish > ~/.config/fish/completions/helm.fish
 
 Vous devez relancer un nouveau shell pour que cette configuration prenne effet.
+
 
 ```
 helm completion fish [flags]

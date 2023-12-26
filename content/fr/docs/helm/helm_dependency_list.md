@@ -8,7 +8,6 @@ liste les dépendances pour un chart donné
 
 ### Synopsis
 
-
 Liste toutes les dépendances déclarées dans un chart.
 
 Cela prend en entrée les archives de chart et le répertoire des charts. Cela ne modifiera pas le contenu d'un chart.

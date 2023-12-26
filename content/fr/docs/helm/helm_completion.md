@@ -4,10 +4,9 @@ title: "Helm Completion"
 
 ## helm completion
 
-Générer des scripts d'auto-complétion pour le shell spécifié
+générer des scripts d'auto-complétion pour le shell spécifié
 
 ### Synopsis
-
 
 Générer des scripts d'auto-complétion pour Helm pour le shell spécifié.
 

@@ -8,7 +8,6 @@ Créer un nouveau chart avec le nom donné
 
 ### Synopsis
 
-
 Cette commande créer un dossier chart ainsi que les fichiers et répertoires courants utilisés dans un chart.
 
 Par exemple, `helm create foo` va créer une structure de répertoires qui ressemble à ceci :

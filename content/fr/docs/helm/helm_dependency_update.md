@@ -8,7 +8,6 @@ met à jour le dossier charts/ basé sur le contenu du fichier Chart.yaml
 
 ### Synopsis
 
-
 Met à jour les dépendances sur le disque pour correspondre au fichier `Chart.yaml`.
 
 Cette commande vérifie que les charts requis, tel qu'exprimés dans le fichier `Chart.yaml`, soient présent dans le dossier `charts/` et sont dans une version acceptable. Elle récupéra les derniers charts qui satisfont les dépendances et nettoiera les anciennes dépendances. 

@@ -4,10 +4,9 @@ title: "Helm Completion Zsh"
 
 ## helm completion zsh
 
-Générer des scripts d'auto-complétion pour Zsh
+générer des scripts d'auto-complétion pour Zsh
 
 ### Synopsis
-
 
 Générer des scripts d'auto-complétion pour Helm pour Zsh
 

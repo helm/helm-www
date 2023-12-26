@@ -4,10 +4,9 @@ title: "Helm Completion Powershell"
 
 ## helm completion PowerShell
 
-Générer des scripts d'auto-complétion pour PowerShell
+générer des scripts d'auto-complétion pour PowerShell
 
 ### Synopsis
-
 
 Générer des scripts d'auto-complétion Helm pour PowerShell.
 

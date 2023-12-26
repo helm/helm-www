@@ -8,7 +8,6 @@ Gestion des dépendances d'un chart
 
 ### Synopsis
 
-
 Gère les dépendances d'un chart.
 
 Les charts Helm stockent leurs dépendances dans le dossier `charts/`. Pour les développeurs de chart, Il est souvent plus facile de gérer les dépendances dans le fichier `Chart.yaml` qui déclare toutes les dépendances.
@@ -42,7 +41,6 @@ L'URL du 'repository' doit pointer vers un dépôt de Chart. Helm s'attend à ce
       repository: "file://../dependency_chart/nginx"
 
 Si le chart dépendant est récupéré localement, il n'est pas nécessaire d'ajouter le dépôt à Helm avec la commande `helm add repo`. La correspondance des versions est également prise en charge pour ce cas.
-
 
 ### Options
 

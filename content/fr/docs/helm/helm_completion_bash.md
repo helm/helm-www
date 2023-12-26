@@ -4,10 +4,9 @@ title: "Helm Completion Bash"
 
 ## helm completion bash
 
-Générer des scripts d'auto-complétion pour bash
+générer des scripts d'auto-complétion pour bash
 
 ### Synopsis
-
 
 Générer des scripts d'auto-complétion pour Helm pour le shell bash.
 
@@ -25,6 +24,7 @@ Pour charger les complétions pour chaque nouvelles sessions, exécutez une fois
       helm completion bash > /usr/local/etc/bash_completion.d/helm
 
 Vous devez relancer un nouveau shell pour que cette configuration prenne effet.
+
 
 ```
 helm completion bash [flags]
