@@ -4,7 +4,7 @@ title: "Helm Dependency"
 
 ## helm dependency
 
-Gestion des dépendances d'un chart
+gestion des dépendances d'un chart
 
 ### Synopsis
 

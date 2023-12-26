@@ -4,7 +4,7 @@ title: "Helm Create"
 
 ## helm create
 
-Créer un nouveau chart avec le nom donné
+créer un nouveau chart avec le nom donné
 
 ### Synopsis
 
