@@ -49,7 +49,7 @@ helm completion bash [flags]
       --kube-context string             Nom du contexte kubeconfig à utiliser
       --kube-insecure-skip-tls-verify   Si indiqué, la validité du certificat de l'API Kubernetes ne sera pas vérifiée. Cela rend votre connexion HTTPS non sécurisée
       --kube-tls-server-name string     Nom du serveur à utiliser pour la validité du certificat de l'API Kubernetes. Si non renseigné, le nom d'hôte utilisé pour contacter le serveur sera utilisé
-      --kube-token string               Jeton bearer pour l'autentification
+      --kube-token string               Jeton bearer pour l'authentification
       --kubeconfig string               Chemin vers le fichier kubeconfig
   -n, --namespace string                Namespace pour cette requête
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
