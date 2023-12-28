@@ -1,0 +1,49 @@
+---
+title: "Helm Get Values"
+---
+
+## helm get values
+
+télécharge le fichier de valeurs d'une version donnée
+
+### Synopsis
+
+Cette commande télécharge un fichier de valeurs d'une version donnée
+
+
+```
+helm get values RELEASE_NAME [flags]
+```
+
+### Options
+
+```
+  -a, --all             Récupère toutes les valeurs (calculées)
+  -h, --help            Aide pour la commande get values
+  -o, --output format   Affiche la sortie sous différents formats. Valeurs possible : table, json, yaml (par defaut table)
+      --revision int    Récupère la version donnée avec sa révision
+```
+
+### Options héritées des commandes parents
+
+```
+      --burst-limit int                 Limitation coté client (par dfaut 100)
+      --debug                           Active la sortie détaillée
+      --kube-apiserver string           L'adresse et le port de l'API Kubernetes
+      --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet indicateur peut être répété pour spécifier plusieurs groupes
+      --kube-as-user string             Nom d'utilisateur à utiliser pour l'opération
+      --kube-ca-file string             Le fichier de l'autorité de certification pour se connecter au serveur de l'API Kubernetes
+      --kube-context string             Nom du contexte kubeconfig à utiliser
+      --kube-insecure-skip-tls-verify   Si indiqué, la validité du certificat de l'API Kubernetes ne sera pas vérifiée. Cela rend votre connexion HTTPS non sécurisée
+      --kube-tls-server-name string     Nom du serveur à utiliser pour la validité du certificat de l'API Kubernetes. Si non renseigné, le nom d'hôte utilisé pour contacter le serveur sera utilisé
+      --kube-token string               Jeton bearer pour l'authentification
+      --kubeconfig string               Chemin vers le fichier kubeconfig
+  -n, --namespace string                Namespace pour cette requête
+      --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
+      --repository-cache string         Chemin vers le fichier contenant les index du référentiel mis en cache (par défaut "~/.cache/helm/repository")
+      --repository-config string        Chemin vers le fichier contenant les URL du référentiel (par défaut "~/.config/helm/repositories.yaml")
+```
+
+### Voir également
+
+* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
