@@ -1,6 +1,6 @@
 ---
 title: "Community"
-weight: 7
+weight: 8
 ---
 
 # Community Guides
