@@ -87,6 +87,10 @@
   background: 
     url('/img/topography.png') repeat top left,
     linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
+  // for ios 5.0+
+  background: 
+  url('/img/topography.png') repeat top left,
+  -webkit-linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
   background-blend-mode: color-burn;
   background-attachment: fixed;
   padding-top: 7.5rem;
