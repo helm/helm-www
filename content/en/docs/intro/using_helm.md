@@ -493,7 +493,8 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-And new repositories can be added with `helm repo add`:
+And new repositories can be added with `helm repo
+add [NAME] [URL]`:
 
 ```console
 $ helm repo add dev https://example.com/dev-charts
