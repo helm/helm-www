@@ -59,6 +59,9 @@ The above searches for all `wordpress` charts on Artifact Hub.
 
 With no filter, `helm search hub` shows you all of the available charts.
 
+`helm search hub` exposes the repo URL which comes in handy when you are looking to add a new repo: `helm repo
+add [NAME] [URL]`.
+
 Using `helm search repo`, you can find the names of the charts in repositories
 you have already added:
 
