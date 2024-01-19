@@ -4,9 +4,9 @@ description: "Introduces the Helm Go SDK"
 aliases: ["/docs/gosdk"]
 weight: 1
 ---
-Helm provides a Go SDK to enable building software and tools that leverage Helm charts and Helm functionality for managing Kubernetes software deployment. In fact, the Helm CLI is just one such tool(!).
+Helm's Go SDK enables custom software to leverage Helm charts and Helm's functionality for managing Kubernetes software deployment (In fact, the Helm CLI is effectively just one such tool!)
 
-Currently, the SDK has been functionally separated from the Helm CLI, and the SDK can (and is) used by standalone tooling. The Helm project has committed to API stability for the SDK. But... as a warning, the SDK has some rough edges remaining from the initial work to separate the CLI and the SDK. Which the Helm project aims to improve and over time provide a cleaner SDK API.
+Currently, the SDK has been functionally separated from the Helm CLI, and the SDK can (and is) used by standalone tooling. The Helm project has committed to API stability for the SDK. As a warning, the SDK has some rough edges remaining from the initial work to separate the CLI and the SDK. Which the Helm project aims to improve and over time.
 
 Full API documentation can be found at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3).
 
