@@ -105,7 +105,7 @@ weight = 2
 
 [[languages.en.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.en.menus.main]]
@@ -138,7 +138,7 @@ weight = 2
 
 [[languages.de.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.de.menus.main]]
@@ -174,7 +174,7 @@ weight = 2
 
 [[languages.es.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.es.menus.main]]
@@ -207,7 +207,7 @@ weight = 2
 
 [[languages.fr.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.fr.menus.main]]
@@ -240,7 +240,7 @@ weight = 2
 
 [[languages.gr.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.gr.menus.main]]
@@ -273,7 +273,7 @@ weight = 2
 
 [[languages.ja.menus.main]]
 name = "チャート"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.ja.menus.main]]
@@ -310,7 +310,7 @@ weight = 2
 
 [[languages.ko.menus.main]]
 name = "차트"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 external = "yes"
 
@@ -347,7 +347,7 @@ weight = 2
 
 [[languages.pt.menus.main]]
 name = "Charts"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 
 [[languages.pt.menus.main]]
@@ -383,7 +383,7 @@ weight = 2
 
 [[languages.ru.menus.main]]
 name = "Chart-ы"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 external = "yes"
 
@@ -420,7 +420,7 @@ weight = 2
 
 [[languages.zh.menus.main]]
 name = "应用中心"
-url = "https://artifacthub.io//"
+url = "https://artifacthub.io/"
 weight = 3
 external = "yes"
 
