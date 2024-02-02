@@ -173,7 +173,7 @@ Helm installs resources in the following order:
 - APIService
 
 Helm does not wait until all of the resources are running before it exits. Many
-charts require Docker images that are over 600M in size, and may take a long
+charts require Docker images that are over 600MB in size, and may take a long
 time to install into the cluster.
 
 To keep track of a release's state, or to re-read configuration information, you
