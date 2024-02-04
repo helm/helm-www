@@ -1,0 +1,231 @@
+{{ define "title" }}
+Helm
+{{ end }}
+
+{{ define "main" }}
+{{ $home := site.BaseURL }}
+{{ $nextversion := site.Params.nextversion }}
+
+<div id="helm" class="page-wrapper page-home">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
+
+  <section class="home-intro hero">
+    <article>
+      <img src="/img/helm.svg" alt="Helm" class="logo" />
+      <h1>
+        {{ T "main_title" | markdownify }}
+      </h1>
+      <h2>
+        {{ T "main_subtitle" | markdownify }}
+      </h2>
+    </article>
+
+    {{ partial "boat.html" . }}
+  </section>
+
+  <section class="home-overview-wrap">
+    <section class="columns">
+      <div class="column has-text-centered">
+        <img src="/img/helm-pyramid.png" alt="Helm" class="pyramid" />
+        <h2>{{ T "main_what_is_helm_title" | markdownify }}</h2>
+      </div>
+    </section>
+
+    <section class="content-wrapper columns">
+
+      <div class="column is-three-fifths">
+        <article class="lead">
+          {{ T "main_what_is_helm_description" | markdownify }}
+        </article>
+      </div>
+      <div class="column is-hidden-mobile tile-features is-two-fifths">
+        <div class="tile is-parent is-vertical">
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_01_title" }}
+            </p>
+            <p>
+              {{ T "feature_01_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+                {{ T "feature_02_title" }}
+            </p>
+              <p>
+              {{ T "feature_02_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_03_title" }}
+            </p>
+            <p>
+              {{ T "feature_03_desc" | markdownify }}
+            </p>
+          </div>
+          <div class="tile is-child">
+            <p class="title">
+              {{ T "feature_04_title" }}
+            </p>
+            <p>
+              {{ T "feature_04_desc" | markdownify }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="tile tile-actions is-parent is-horizontal">
+      <div class="tile is-child">
+        <h2>{{ T "get_helm_title" }}</h2>
+        <p>{{ T "get_helm_desc" | markdownify }}</p>
+
+        <ul class="tabs" data-tabgroup="tab-group">
+          <li id="tablinks"><a href="#Homebrew" class="active">Homebrew</a></li>
+          <li id="tablinks"><a href="#Chocolatey">Chocolatey</a></li>
+          <li id="tablinks"><a href="#Scoop">Scoop</a></li>
+          <li id="tablinks"><a href="#Snap">Snap</a></li>
+        </ul>
+        <div class="tabgroup">
+          <div class="tabcontent" id="Homebrew">
+            <input id="copybrew" value="brew install helm" />
+            <button data-clipboard-target="#copybrew" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent " id="Chocolatey">
+            <input id="copychoc" value="choco install kubernetes-helm" />
+            <button data-clipboard-target="#copychoc" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent" id="Scoop">
+            <input id="copyscoop" value="scoop install helm" />
+            <button data-clipboard-target="#copyscoop" class="button">{{ T "action_copy" }}</button>
+          </div>
+          <div class="tabcontent" id="Snap">
+            <input id="copysnap" value="sudo snap install helm --classic" />
+            <button data-clipboard-target="#copysnap" class="button">{{ T "action_copy" }}</button>
+          </div>
+        </div>
+
+        <p>{{ T "get_helm_next" | markdownify }}</p>
+      </div>
+
+      <div class="tile is-child is-centered has-text-centered">
+        <h2>{{ T "get_charts_title" }}</h2>
+
+        <p>{{ T "get_charts_desc" | markdownify }}</p>
+
+        <div class="has-text-center is-centered">
+          <p><a href="https://artifacthub.io/"><img src="/img/artifact-hub.jpg" alt="Artifact Hub" class="is-centered"></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="has-text-centered columns">
+      <nav class="level level-faqs">
+        <div class="level-item has-text-centered is-hidden-mobile">
+          <div>
+            <a><img src="/img/helm-3-badge.svg" alt="Helm 3" class="badge" /></a>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">{{ T "get_upgrade_title" | markdownify }}</p>
+            <p class="title">{{ T "get_upgrade_desc" | markdownify }}</p>
+          </div>
+        </div>
+      </nav>
+    </section>
+  </section>
+
+  <section class="helm-community">
+    <h2 class="has-text-centered">{{ T "community_title" }}</h2>
+    <p class="has-text-centered">{{ T "community_desc" }}</p>
+
+    <div class="columns is-desktop community-boxes">
+
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_next_release" }}</h1>
+          <dl>
+            <dt>
+              {{ T "community_next_release_version" | markdownify }} {{ $nextversion.version }}
+              <br>
+              {{ T "community_next_release_date" | markdownify }} {{ $nextversion.date }}
+              <br>
+              <br>
+              {{ T "community_release_calendar" | markdownify }}
+            </dt>
+          <dl>
+        </section>
+
+        <section class="box">
+          <h1 class="title">{{ T "community_events_title" }}</h1>
+          <dl>
+            <dt>{{ T "community_upcoming_events_title" }}</dt>
+            <dd><small class="placeholder">{{ T "community_upcoming_events_desc" | markdownify }}</small></dd>
+            <dt>{{ T "community_past_events_title" }}</dt>
+            <dd>{{ T "community_past_event_01" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_02" | markdownify }}</dd>
+            <dd>{{ T "community_past_event_03" | markdownify }}</dd>
+          </dl>
+        </section>
+
+        <section class="box">
+          <h1 class="title">{{ T "community_sig_title" }}</h1>
+          <h2 class="subtitle">
+            {{ T "community_sig_subtitle" }}
+          </h2>
+          {{ T "community_sig_desc" | markdownify }}
+        </section>
+      </div>
+
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_standup_title" }}</h1>
+          <h2 class="subtitle">
+            <a href="https://zoom.us/j/696660622"><span class="icon"><i class="mdi mdi-message-video"></i></span> {{ T "community_standup_time" }}</a>
+          </h2>
+          <p>{{ T "community_standup_desc" | markdownify }}</p>
+        </section>
+        
+        <section class="box">
+          <h1 class="title">{{ T "community_slack_title" }}</h1>
+          <dl>
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-users">{{ T "community_slack_group_01_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_01_desc" }}</dd>
+
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/helm-dev">{{ T "community_slack_group_02_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_02_desc" }}</dd>
+
+            <dt><span class="icon"><i class="mdi mdi-chat"></i></span> <a href="https://kubernetes.slack.com/messages/charts">{{ T "community_slack_group_03_title" }}</a></dt>
+            <dd>{{ T "community_slack_group_03_desc" }}</dd>
+          </dl>
+
+          <h2 class="subtitle">
+            {{ T "community_slack_join" | markdownify }}
+          </h2>
+        </section>
+      </div>
+
+      <div class="column is-one-third-desktop">
+        <section class="box">
+          <h1 class="title">{{ T "community_contrib_title" }}</h1>
+          <h2 class="subtitle">
+            {{ T "community_contrib_subtitle" }}
+          </h2>
+          {{ T "community_contrib_desc" | markdownify }}
+        </section>
+      </div>
+    </div>
+  </section>
+
+  {{ partial "footer.html" . }}
+</div> <!-- / #helm .page-home -->
+
+{{ partial "footer-links.html" . }}
+
+{{ end }}
