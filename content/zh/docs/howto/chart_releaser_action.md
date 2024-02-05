@@ -60,6 +60,8 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -73,7 +75,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.5.0
+        uses: helm/chart-releaser-action@v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
@@ -83,7 +85,7 @@ jobs:
 且每当有新的chart版本时，会创建一个与chart版本对应的GitHub版本，添加Helm chart组件到这个版本中，
 并用该版本的元数据创建或更新一个`index.yaml`文件，然后托管在GitHub页面上。
 
-上述Chart发布操作示例使用的版本号是`v1.5.0`。你可以将其改成[最新可用版本](https://github.com/helm/chart-releaser-action/releases)。
+上述Chart发布操作示例使用的版本号是`v1.6.0`。你可以将其改成[最新可用版本](https://github.com/helm/chart-releaser-action/releases)。
 
 注意：Chart发布操作程序几乎总是和 [Helm测试操作Action](https://github.com/marketplace/actions/helm-chart-testing)
 以及[Kind操作](https://github.com/marketplace/actions/kind-cluster)。
