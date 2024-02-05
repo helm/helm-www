@@ -522,7 +522,7 @@ The above will wrap the string in `$someText` at 80 columns.
 wrapWith 5 "\t" "Hello World"
 ```
 
-The above produces `hello world` (where the whitespace is an ASCII tab
+The above produces `Hello World` (where the whitespace is an ASCII tab
 character)
 
 ### contains
