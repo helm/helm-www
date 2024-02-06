@@ -259,6 +259,16 @@ From the end user's perspective, `helm install --verify myrepo/mychart-1.2.3`
 should result in the download of both the chart and the provenance file with no
 additional user configuration or action.
 
+### Signatures in OCI-based registries
+
+Whe publishing charts to an [OCI-based registry]({{< ref "registries.md" >}}), the
+[`helm-sigstore` plugin](https://github.com/sigstore/helm-sigstore/) can be used 
+to publish provenance to [sigstore](https://sigstore.dev/).  [As described in the
+documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), the
+process of creating provenance and signing with a GPG key are common, but the
+`helm sigstore upload` command can be used to publish the provenance to an
+immutable transparency log.
+
 ## Establishing Authority and Authenticity
 
 When dealing with chain-of-trust systems, it is important to be able to
