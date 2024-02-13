@@ -8,7 +8,6 @@ Rechercher par mot clé dans les répertoires de charts
 
 ### Synopsis
 
-
 La recherche parcourt tous les référentiels configurés sur le système et recherche les correspondances.. La recherche dans ces répertoires utilise les métadonnées stockées sur le système.
 
 Il affichera les dernières versions stables des charts trouvés. Si vous spécifiez l'argument `--devel`, cela inclura des versions préliminaires.
