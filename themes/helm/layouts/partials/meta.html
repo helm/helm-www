@@ -1,0 +1,30 @@
+{{ $isHome := .IsHome }}
+{{ $desc   := .Param "description" }}
+{{ $title  := .Title }}
+{{ $url    := .Permalink }}
+{{ $img    := "img/favicon-152.png" | absURL }}
+{{ $og_img    := "img/og-image.png" | absURL }}
+{{ $icon   := "img/apple-touch-icon-precomposed.png" | relURL }}
+{{ $gsv    := site.Params.googleSiteVerification }}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+{{ with $desc }}
+<meta name="description" content="{{ . }}">
+{{ end }}
+
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:description" content="{{ $desc }}" />
+
+{{ if .Params.twittertype }}<meta name="twitter:card" content="{{ .Params.twittertype }}">{{ else }}<meta name="twitter:card" content="{{ .Site.Params.twittertype }}">{{ end }}
+{{ if .Params.twitterimage }}<meta name="twitter:image" content="{{ .Params.twitterimage | absURL }}">{{ else }}<meta name="twitter:image" content="{{ .Site.Params.twitterimage | absURL }}">{{ end }}
+<meta name="twitter:title" content="Helm | {{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+
+<meta name="google-site-verification" content="{{ $gsv }}">
+
+<link rel="icon" href="{{ $img }}" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" href="{{ $icon }}">
