@@ -4,11 +4,11 @@ title: "Helm Upgrade"
 
 ## helm upgrade
 
-Met à jour une release
+Met à niveau une release
 
 ### Synopsis
 
-Cette commande met à jour une release vers une nouvelle version du chart.
+Cette commande met à niveau une release vers une nouvelle version du chart.
 
 Cette commande prend une release et un chart. L'argument 'CHART' peut être soit :  une référence de chart ('example/mariadb'), un chemin vers un répertoire de chart,
 un chart packagé, ou une URL complète. Pour les références de chart, la dernière version sera spécifiée à moins que l'argument `--version` soit défini.
@@ -35,50 +35,51 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     if set, upgrade process rolls back changes made in case of failed upgrade. The --wait flag will be set automatically if --atomic is used
-      --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
-      --cert-file string                           identify HTTPS client using this SSL certificate file
-      --cleanup-on-fail                            allow deletion of new resources created in this upgrade when upgrade fails
-      --create-namespace                           if --install is set, create the release namespace if not present
-      --dependency-update                          update dependencies if they are missing before installing the chart
-      --description string                         add a custom description
-      --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
-      --disable-openapi-validation                 if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
-      --enable-dns                                 enable DNS lookups when rendering templates
-      --force                                      force resource updates through a replacement strategy
-  -h, --help                                       help for upgrade
-      --history-max int                            limit the maximum number of revisions saved per release. Use 0 for no limit (default 10)
-      --insecure-skip-tls-verify                   skip tls certificate checks for the chart download
-  -i, --install                                    if a release by this name doesn't already exist, run an install
-      --key-file string                            identify HTTPS client using this SSL key file
-      --keyring string                             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
-  -l, --labels stringToString                      Labels that would be added to release metadata. Should be separated by comma. Original release labels will be merged with upgrade labels. You can unset label using null. (default [])
-      --no-hooks                                   disable pre/post upgrade hooks
-  -o, --output format                              prints the output in the specified format. Allowed values: table, json, yaml (default table)
-      --pass-credentials                           pass credentials to all domains
-      --password string                            chart repository password where to locate the requested chart
-      --plain-http                                 use insecure HTTP connections for the chart download
-      --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
-      --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
-      --render-subchart-notes                      if set, render subchart notes along with the parent
-      --repo string                                chart repository url where to locate the requested chart
-      --reset-then-reuse-values                    when upgrading, reset the values to the ones built into the chart, apply the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' or '--reuse-values' is specified, this is ignored
-      --reset-values                               when upgrading, reset the values to the ones built into the chart
-      --reuse-values                               when upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored
-      --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
-      --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
-      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
-      --set-literal stringArray                    set a literal STRING value on the command line
-      --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
-      --skip-crds                                  if set, no CRDs will be installed when an upgrade is performed with install flag enabled. By default, CRDs are installed if not already present, when an upgrade is performed with install flag enabled
-      --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
-      --username string                            chart repository username where to locate the requested chart
-  -f, --values strings                             specify values in a YAML file or a URL (can specify multiple)
-      --verify                                     verify the package before using it
-      --version string                             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
-      --wait                                       if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
-      --wait-for-jobs                              if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
+      --atomic                                     Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
+      --ca-file string                             Vérifie les certificats des serveurs ayant activé HTTPS en utilisant ce fichier de certificat racine (CA bundle)
+      --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
+      --cleanup-on-fail                            Autoriser la suppression des nouvelles ressources créées dans cette release en cas d'échec de la mise à niveau
+      --create-namespace                           Si --install est fixé, Créer le namespace de la version s'il n'est pas présent
+      --dependency-update                          Met à jour les dépendances si elles sont manquantes avant l'installation du chart
+      --description string                         Ajoute une description personnalisée
+      --devel                                      Utiliser également les versions de développement. Équivalent à version '>0.0.0-0'. Si --versions est fixé, ceci est ignoré
+      --disable-openapi-validation                 Si fixé, le processus de mise à niveau ne validera pas les modèles générés par rapport au schéma OpenAPI de Kubernetes
+      --dry-run string[="client"]                  Simule une installation. Si '--dry-run' est fixé sans option ou comme '--dry-run=client', aucune tentative de connexion au cluster ne sera éffectuée. En définissant '--dy-run=server', des tentatives de connexion au cluster seront autorisées
+      --enable-dns                                 Active les recherches DNS lors du rendu des modèles
+      --force                                      Force les mise à jour des ressources en utilisant une stratègie de remplacement
+  -h, --help                                       Aide pour la commande upgrade
+      --history-max int                            Limite le nombre maximum de révisions sauvegardées par release. Utiliser 0 pour pas avoir de limite (par défaut 10)
+      --insecure-skip-tls-verify                   Ignore les vérifications de certificat TLS lors du téléchargement du chart
+  -i, --install                                    Si une release avec ce nom n'existe pas, lance une installation
+      --key-file string                            Identifie le client HTTPS en utilisant ce fichier de clé SSL
+      --keyring string                             Emplacement des clés publiques utilisées pour la vérification (par defaut "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Étiquettes qui seront ajoutées aux métadonnées de la publication. Doit être séparé par des virgules. (par defaut [])
+      --no-hooks                                   Empêche les hooks de fonctionner pendant l'installation
+  -o, --output format                              Affiche la sortie dans un format spécifique. Valeurs possibles : table, json, yaml (par defaut table)
+      --pass-credentials                           Affiche la sortie dans un format spécifique. Valeurs possibles : table, json, yaml (par defaut table)
+      --password string                            Mot de passe du dépôt de chart où est localisé le chart demandé
+      --plain-http                                 Utiliser des connexion HTTP non sécurisées pour le téléchargement du chart
+      ```fallback
+--post-renderer postRendererString                 Chemin vers un éxécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié. 
+      --post-renderer-args postRendererArgsSlice   Un argument pour le post-rendu (peut être spécifié plusieurs fois) (par défaut [])
+      --render-subchart-notes                      Si défini, génère les notes du sous-chart avec le chart parent
+      --repo string                                Url du dépôt de chart où est localisé le chart demandé
+      --reset-then-reuse-values                    Lors de la mise à niveau, réinitialise les valeurs sur celles intégrées au chart, applique les valeurs de la dernières version et fussionne tout les valeurs à partir de la ligne de commande via --set et -f. Si '--reset-values' ou '--reuse-values' sont spécifié, ceci sera ignoré
+      --reset-values                               Lors de la mise à niveau, réinitialise les valeurs à celles intégrées au chart
+      --reuse-values                               Lors de la mise à niveau, réutilise les valeurs de la dernière version et fussionne toutes les valeurs depuis la ligne de commande via '--set' et '-f'. Si '--reset-values' est spécifié, ceci sera ignoré
+      --set stringArray                            Défini des valeurs en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
+      --set-file stringArray                       Défini des valeurs depuis un fichier spécifique en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=path1,key2=path2)
+      --set-json stringArray                       Défini des valeurs en JSON en ligne de commande (vous pouvez spécifier plusieurs ou séparer les valeurs par des virgules : key1=jsonval1,key2=jsonval2)
+      --set-literal stringArray                    Défini une valeur littérale de type STRING en ligne de commande
+      --set-string stringArray                     Défini des valeurs de type STRING en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
+      --skip-crds                                  Si défini, aucun CRD ne sera installé. Par défaut, les CRD sont installés s'ils ne sont pas déjà présents, lorsqu'une mise à niveau est effectuée avec l'indicateur d'installation activé
+      --timeout duration                           Temps d'attente pour chaque opération Kubernetes (comme les Jobs pour les hooks) (par défaut 5m0s)
+      --username string                            Nom d'utilisateur du dépôt de chart où est localisé le chart demandé
+  -f, --values strings                             Spécifie les valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
+      --verify                                     vVérifie le paquet avant de l'utiliser
+      --version string                             Spécifier une contrainte de version pour la version du chart à utiliser. Cette contrainte peut être un tag spécifique (par exemple, 1.1.1) ou elle peut faire référence à une plage valide (par exemple, ^2.0.0). Si cela n'est pas spécifié, la dernière version est utilisée
+      --wait                                       Si défini, cela attendra que tous les pods, PVCs, services, et le nombre minimum de pods d'un déploiement, StatefulSet ou ReplicaSet soient dans un état prêt avant de marquer la publication comme réussie. Il attendra aussi longtemps que spécifié par '--timeout'
+      --wait-for-jobs                              Si défini et que '--wait' est activé, cela attendra que tous les Jobs soient terminés avant de marquer la publication comme réussie. Il attendra aussi longtemps que spécifié par '--timeout'
 ```
 
 ### Options héritées des commandes parents
