@@ -57,4 +57,4 @@ helm history RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de paquets Helm officiel pour Kubernetes
+* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes

@@ -71,7 +71,7 @@ Si le chart dépendant est récupéré localement, il n'est pas nécessaire d'aj
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de paquets Helm officiel pour Kubernetes.
+* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes.
 * [helm dependency build](helm_dependency_build.md) - Reconstruire le répertoire charts/ en fonction du fichier Chart.lock
 * [helm dependency list](helm_dependency_list.md) - Lister les dépendances pour un chart donné
 * [helm dependency update](helm_dependency_update.md) - Met à jour le répertoire charts/ basé sur le contenu du fichier Chart.yaml

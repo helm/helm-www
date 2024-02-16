@@ -40,7 +40,7 @@ Gère les plugins Helm côté client.
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de paquets Helm officiel pour Kubernetes
+* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
 * [helm plugin install](helm_plugin_install.md) - Installe un ou plusieurs plugins Helm
 * [helm plugin list](helm_plugin_list.md) - Liste les plugins Helm installés
 * [helm plugin uninstall](helm_plugin_uninstall.md) - Désinstalle un ou plusieurs plugins Helm

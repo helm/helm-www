@@ -46,7 +46,7 @@ Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilis�
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de paquets Helm officiel pour Kubernetes
+* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
 * [helm get all](helm_get_all.md) - Télécharge toutes les informations d'une version donnée
 * [helm get hooks](helm_get_hooks.md) - Télécharge tous les hooks pour une version donnée
 * [helm get manifest](helm_get_manifest.md) - Télécharge le manifeste d'une version donnée
