@@ -84,7 +84,7 @@ helm install [NAME] [CHART] [flags]
       --create-namespace                           Créer le namespace de la version s'il n'est pas présent
       --dependency-update                          Met à jour les dépendances si elles sont manquantes avant l'installation du chart
       --description string                         Ajoute une description personnalisée
-      --devel                                      Utiliser également les versiosn de développement. Équivalent à version '>0.0.0-0'. Si --versions est fixé, ceci est ignoré
+      --devel                                      Utiliser également les versions de développement. Équivalent à version '>0.0.0-0'. Si --versions est fixé, ceci est ignoré
       --disable-openapi-validation                 Si défini, le processus d'installation ne validera pas les modèles générés par rapport au schéma OpenAPI de Kubernetes
       --dry-run string[="client"]                  Simule une installation. Si '--dry-run' est fixé sans option ou comme '--dry-run=client', aucune tentative de connexion au cluster ne sera éffectuée. En définissant '--dy-run=server', des tentatives de connexion au cluster seront autorisées
       --enable-dns                                 Active les recherches DNS lors du rendu des modèles
@@ -136,6 +136,7 @@ helm install [NAME] [CHART] [flags]
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
   -n, --namespace string                Namespace à utilisé pour la requête
+      --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
       --repository-config string        Chemin vers le fichier contenant les noms et URLs des répertoires (par défaut "~/.config/helm/repositories.yaml")
