@@ -31,9 +31,9 @@ Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilis�
       --kube-apiserver string           L'adresse et le port API du serveur Kubernetes
       --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
       --kube-as-user string             Nom d'utilisateur à utiliser pour l'operation
-      --kube-ca-file string             Le fichier de l'autorité de certification pour la connection à l'API Kubernetes
+      --kube-ca-file string             Le fichier de l'autorité de certification pour la connexion à l'API Kubernetes
       --kube-context string             Nom du contexte kubeconfig à utiliser
-      --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela fera les connections HTTPS non sûres
+      --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela fera les connexions HTTPS non sûres
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
