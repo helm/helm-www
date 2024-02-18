@@ -37,6 +37,9 @@ access in your templates.
   print out the `mychart-0.1.0`.
   - The available fields are listed in the [Charts Guide]({{< ref
     "/docs/topics/charts.md#the-chartyaml-file" >}})
+- `Subcharts`: This provides access to the scope (.Values, .Charts, .Releases etc.)
+  of subcharts to the parent. For example `.Subcharts.mySubChart.myValue` to access
+  the `myValue` in the `mySubChart` chart.
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
   chart. See the section [Accessing Files]({{< ref
