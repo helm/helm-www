@@ -1396,6 +1396,9 @@ merge a b c | dig "one" "two" "three" "<missing>"
 
 Merge two or more dictionaries into one, giving precedence to the dest
 dictionary:
+```
+$newdict := merge $dest $source1 $source2
+```
 
 Given:
 
@@ -1410,6 +1413,7 @@ src:
   key: false
 ```
 
+
 will result in:
 
 ```
@@ -1417,9 +1421,6 @@ newdict:
   default: default
   overwrite: me
   key: true
-```
-```
-$newdict := merge $dest $source1 $source2
 ```
 
 This is a deep merge operation but not a deep copy operation. Nested objects
@@ -1437,6 +1438,9 @@ deepCopy $source | merge $dest
 
 Merge two or more dictionaries into one, giving precedence from **right to
 left**, effectively overwriting values in the dest dictionary:
+```
+$newdict := mergeOverwrite $dest $source1 $source2
+```
 
 Given:
 
@@ -1458,10 +1462,6 @@ newdict:
   default: default
   overwrite: overwritten
   key: false
-```
-
-```
-$newdict := mergeOverwrite $dest $source1 $source2
 ```
 
 This is a deep merge operation but not a deep copy operation. Nested objects
