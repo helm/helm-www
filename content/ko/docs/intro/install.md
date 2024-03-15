@@ -89,6 +89,16 @@ choco install kubernetes-helm
 scoop install helm
 ```
 
+### Winget로 (윈도우)
+
+헬름 커뮤니티 멤버들은 [Winget](https://learn.microsoft.com/en-us/windows/package-manager/)용 
+[헬름 패키지](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) 빌드에 기여해왔다. 
+이 패키지는 보통 최신이다.
+
+```console
+winget install Helm.Helm
+```
+
 ### Apt로 (데비안/우분투)
 
 헬름 커뮤니티 멤버들은 Apt용 

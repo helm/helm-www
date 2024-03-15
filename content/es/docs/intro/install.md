@@ -79,6 +79,16 @@ Los miembros de la comunidad Helm han contribuido con un
 choco install kubernetes-helm
 ```
 
+### Desde Winget (Windows)
+
+Los miembros de la comunidad Helm han contribuido con un
+[paquete Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) construido para
+[Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Este paquete generalmente está actualizado.
+
+```console
+winget install Helm.Helm
+```
+
 ### Desde Apt (Debian/Ubuntu)
 
 Los miembros de la comunidad Helm han contribuido con un

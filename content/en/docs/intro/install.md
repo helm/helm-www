@@ -89,6 +89,15 @@ package](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) bu
 scoop install helm
 ```
 
+### From Winget (Windows)
+
+Members of the Helm community have contributed a [Helm
+package](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) build to [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). This package is generally up to date.
+
+```console
+winget install Helm.Helm
+```
+
 ### From Apt (Debian/Ubuntu)
 
 Members of the Helm community have contributed a [Helm
