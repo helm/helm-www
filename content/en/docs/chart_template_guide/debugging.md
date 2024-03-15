@@ -15,7 +15,7 @@ There are a few commands that can help you debug.
 - `helm template --debug` will test rendering chart templates locally.  
 - `helm install --dry-run --debug` will also render your chart locally without
 installing it, but will also check if conflicting resources are already running
-on the cluster. Setting `--dry-run==server` will additionally execute any
+on the cluster. Setting `--dry-run=server` will additionally execute any
 `lookup` in your chart towards the server.
 - `helm get manifest`: This is a good way to see what templates are installed on
   the server.
