@@ -111,15 +111,6 @@ You can install helm with invoking:
 sudo dnf install helm
 ```
 
-### From Snap
-
-The [Snapcrafters](https://github.com/snapcrafters) community maintains the Snap
-version of the [Helm package](https://snapcraft.io/helm):
-
-```console
-sudo snap install helm --classic
-```
-
 ### From pkg (FreeBSD)
 
 Members of the FreeBSD community have contributed a [Helm

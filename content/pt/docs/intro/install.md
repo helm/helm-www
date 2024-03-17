@@ -92,15 +92,6 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### Snap
-
-A comunidade dos [_Snapcrafters_](https://github.com/snapcrafters) mantém a versão
-do [pacote Helm](https://snapcraft.io/helm) para o Snap:
-
-```console
-sudo snap install helm --classic
-```
-
 ### pkg (FreeBSD)
 
 Membros da comunidade do FreeBSD contribuíram com um [pacote Helm](https://www.freshports.org/sysutils/helm)

@@ -91,15 +91,6 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### Snap から
-
-[Snapcrafters](https://github.com/snapcrafters) コミュニティは、
-[Helm パッケージ](https://snapcraft.io/helm)の Snap バージョンを維持しています。
-
-```console
-sudo snap install helm --classic
-```
-
 ### Development ビルド
 
 リリースに加えて、Helm の開発スナップショットをダウンロードまたはインストールできます。
