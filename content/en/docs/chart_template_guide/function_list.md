@@ -1445,10 +1445,12 @@ dst:
   default: default
   overwrite: me
   key: true
+  unset: me
 
 src:
   overwrite: overwritten
   key: false
+  unset: nil
 ```
 
 will result in:
