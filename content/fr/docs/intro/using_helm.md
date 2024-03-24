@@ -282,7 +282,7 @@ Dans le cas ci-dessus la release `happy-panda`  est mis à jour depuis la même 
 mariadb.auth.username: user1
 ```
 
-Vous pouvez utiliser `helm get values` si votre nouvelle configuration à pris effet ou non :
+Vous pouvez utiliser `helm get values` pour voir si votre nouvelle configuration à pris effet ou non :
 
 ```console
 $ helm get values happy-panda
@@ -291,7 +291,7 @@ mariadb:
     username: user1
 ```
 
-La commande `helm get` est un outil utile pour voir les informations d'une release dans le cluster. Et comme nous venons de le voir ci-dessus, la commande peut également être utilisé pour voir si les nouvelles valeurs de `panda.yaml` sont bien déployés sur le cluster.
+La commande `helm get` est un outil utile pour voir les informations d'une release dans le cluster. Et comme nous venons de le voir ci-dessus, la commande peut également être utilisée pour voir si les nouvelles valeurs de `panda.yaml` sont bien déployées sur le cluster.
 
 Maintenant admettons que quelque chose ne se passe pas comme prévu lors d'une release, il est facile de revenir à une version précédente en utilisant `helm rollback [RELEASE_NAME] [VERSION]`.
 
@@ -299,7 +299,7 @@ Maintenant admettons que quelque chose ne se passe pas comme prévu lors d'une r
 $ helm rollback happy-panda 1
 ```
 
-la commande précédente ramène notre happy-panda à sa toute première version. Une version de release est une révision incrémentielle. Chaque fois qu'une installation, qu'une mise à jour ou qu'une restauration est faite, le numéro de révision est incrémenté de 1. La première release est toujours la version numéro 1. Et vous pouvez utiliser `helm history [RELEASE]` voir les versions d'une release.
+la commande précédente ramène notre happy-panda à sa toute première version. Une version de release est une révision incrémentielle. Chaque fois qu'une installation, qu'une mise à jour ou qu'une restauration est faite, le numéro de révision est incrémenté de 1. La première release est toujours la version numéro 1. Et vous pouvez utiliser `helm history [RELEASE]` pour voir les versions d'une release.
 
 ## Options utiles pour l'installation / la mise à jour / la restauration
 
