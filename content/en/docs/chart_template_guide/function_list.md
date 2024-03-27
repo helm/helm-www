@@ -1445,10 +1445,12 @@ dst:
   default: default
   overwrite: me
   key: true
+  nullify: me
 
 src:
   overwrite: overwritten
   key: false
+  nullify: nil # AKA null
 ```
 
 will result in:
@@ -1458,6 +1460,7 @@ newdict:
   default: default
   overwrite: overwritten
   key: false
+  nullify: nil # AKA null
 ```
 
 ```
