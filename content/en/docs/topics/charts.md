@@ -958,6 +958,11 @@ parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
 
+Schema validation can be disabled by setting the option shown below.
+```console
+helm install --skip-schema-validation
+```
+
 ### References
 
 When it comes to writing templates, values, and schema files, there are several
