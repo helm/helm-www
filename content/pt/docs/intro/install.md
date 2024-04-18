@@ -79,6 +79,15 @@ para o [Chocolatey](https://chocolatey.org/). Esse pacote geralmente está atual
 choco install kubernetes-helm
 ```
 
+### Winget (Windows)
+
+Membros da comunidade Helm contribuíram com um build do [pacote Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm)
+para o [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Esse pacote geralmente está atualizado.
+
+```console
+winget install Helm.Helm
+```
+
 ### Apt (Debian/Ubuntu)
 
 Membros da comunidade Helm contribuíram com um [pacote do Helm](https://helm.baltorepo.com/stable/debian/)

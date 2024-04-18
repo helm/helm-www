@@ -78,6 +78,16 @@ Helm コミュニティのメンバーが [Chocolatey](https://chocolatey.org/) 
 choco install kubernetes-helm
 ```
 
+### Winget から (Windows)
+
+Helm コミュニティのメンバーが [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) に
+[Helm パッケージ](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) のビルドを提供しました。
+このパッケージは一般に最新です。
+
+```console
+winget install Helm.Helm
+```
+
 ### Apt から (Debian/Ubuntu)
 
 Helm コミュニティのメンバーは、Apt の [Helm パッケージ](https://helm.baltorepo.com/stable/debian/) を提供しています。
