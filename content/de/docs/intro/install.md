@@ -80,6 +80,16 @@ Paket](https://chocolatey.org/packages/kubernetes-helm) gebaut mit
 choco install kubernetes-helm
 ```
 
+### Von Winget (Windows)
+
+Mitglieder der Helm Gemeinschaft haben ein [Helm
+Paket](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) gebaut mit
+[Winget](https://learn.microsoft.com/en-us/windows/package-manager/) beigetragen. Dieses Paket ist generell aktuell.
+
+```console
+winget install Helm.Helm
+```
+
 ### Von Apt (Debian/Ubuntu)
 
 Mitglieder der Helm Gemeinschaft haben ein [Helm
