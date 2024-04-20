@@ -1106,7 +1106,15 @@ implementing server, and thus raise the barrier for setting up a repository.
 ## Chart Starter Packs
 
 The `helm create` command takes an optional `--starter` option that lets you
-specify a "starter chart".
+specify a "starter chart". Also, the starter option has a short alias `-p`.
+
+Examples of usage:
+
+```console
+helm create my-chart --starter starter-name
+helm create my-chart -p starter-name
+helm create my-chart -p /absolute/path/to/starter-name
+```
 
 Starters are just regular charts, but are located in
 `$XDG_DATA_HOME/helm/starters`. As a chart developer, you may author charts that
@@ -1116,8 +1124,7 @@ with the following considerations in mind:
 - The `Chart.yaml` will be overwritten by the generator.
 - Users will expect to modify such a chart's contents, so documentation should
   indicate how users can do so.
-- All occurrences of `<CHARTNAME>` will be replaced with the specified chart
-  name so that starter charts can be used as templates.
+- All occurrences of `<CHARTNAME>` will be replaced with the specified chart name so that starter charts can be used as templates, except for some variable files. For example, if you use custom files in the `vars` directory or certain `README.md` files, `<CHARTNAME>` will NOT override inside them. Additionally, the chart description is not inherited.
 
 Currently the only way to add a chart to `$XDG_DATA_HOME/helm/starters` is to
 manually copy it there. In your chart's documentation, you may want to explain
