@@ -116,7 +116,6 @@ Tools layered on top of Helm.
 - [VIM-Kubernetes](https://github.com/andrewstuart/vim-kubernetes) - VIM plugin
   for Kubernetes and Helm
 
-
 ## Helm Included
 
 Platforms, distributions, and services that include Helm support.
