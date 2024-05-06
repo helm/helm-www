@@ -56,7 +56,7 @@ chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且�
 - [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
-- [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/Docker+Registry)
+- [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
 
 参照托管平台提供的文档来创建和配置支持OCI的注册中心。
 
