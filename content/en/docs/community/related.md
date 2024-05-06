@@ -81,6 +81,10 @@ Tools layered on top of Helm.
   Continuous and progressive delivery from Git to Kubernetes.
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile is a declarative
   spec for deploying helm charts
+- [Helmper](https://github.com/ChristofferNissen/helmper) - Helmper helps you
+  import Helm Charts - including all OCI artifacts(images), to your own OCI
+  registries. Helmper also facilitates security scanning and patching of OCI
+  images. Helmper utilizes Helm, Oras, Trivy, Copacetic and Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version
