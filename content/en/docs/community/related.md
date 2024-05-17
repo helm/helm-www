@@ -48,7 +48,8 @@ request](https://github.com/helm/helm-www/pulls).
   testing chart locally with YAML
 - [helm-val](https://github.com/HamzaZo/helm-val) - A plugin to get
   values from a previous release.
-- [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc)
+- [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc.)
+- [helm-images](https://github.com/nikhilsbhat/helm-images) - Helm plugin to fetch all possible images from the chart before deployment or from a deployed release
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
@@ -80,6 +81,10 @@ Tools layered on top of Helm.
   Continuous and progressive delivery from Git to Kubernetes.
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile is a declarative
   spec for deploying helm charts
+- [Helmper](https://github.com/ChristofferNissen/helmper) - Helmper helps you
+  import Helm Charts - including all OCI artifacts(images), to your own OCI
+  registries. Helmper also facilitates security scanning and patching of OCI
+  images. Helmper utilizes Helm, Oras, Trivy, Copacetic and Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version

@@ -239,7 +239,7 @@ for the existence of an object.
 
 The `lookup` function uses Helm's existing Kubernetes connection configuration
 to query Kubernetes. If any error is returned when interacting with calling the
-API server (for example due to lack of permission to access a resource), helm's
+API server (for example due to lack of permission to access a resource), Helm's
 template processing will fail.
 
 Keep in mind that Helm is not supposed to contact the Kubernetes API Server during 

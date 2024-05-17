@@ -173,7 +173,7 @@ Helm installs resources in the following order:
 - APIService
 
 Helm does not wait until all of the resources are running before it exits. Many
-charts require Docker images that are over 600M in size, and may take a long
+charts require Docker images that are over 600MB in size, and may take a long
 time to install into the cluster.
 
 To keep track of a release's state, or to re-read configuration information, you
@@ -263,7 +263,7 @@ There are two ways to pass configuration data during install:
 - `--set`: Specify overrides on the command line.
 
 If both are used, `--set` values are merged into `--values` with higher
-precedence. Overrides specified with `--set` are persisted in a ConfigMap.
+precedence. Overrides specified with `--set` are persisted in a Secret.
 Values that have been `--set` can be viewed for a given release with `helm get
 values <release-name>`. Values that have been `--set` can be cleared by running
 `helm upgrade` with `--reset-values` specified.

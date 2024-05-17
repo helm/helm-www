@@ -522,7 +522,7 @@ The above will wrap the string in `$someText` at 80 columns.
 wrapWith 5 "\t" "Hello World"
 ```
 
-The above produces `hello world` (where the whitespace is an ASCII tab
+The above produces `Hello World` (where the whitespace is an ASCII tab
 character)
 
 ### contains
@@ -702,6 +702,7 @@ The following type conversion functions are provided by Helm:
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 - `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to `toYaml`, except list items will be indented two spaces past the parent key.
+- `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
 - `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt

@@ -21,7 +21,7 @@ this works:
   security reasons.
   - Files in `templates/` cannot be accessed.
   - Files excluded using `.helmignore` cannot be accessed.
-  - Files outside of a helm application [subchart]({{< ref
+  - Files outside of a Helm application [subchart]({{< ref
 "/docs/chart_template_guide/subcharts_and_globals.md" >}}), including those of the parent, cannot be accessed
 - Charts do not preserve UNIX mode information, so file-level permissions will
   have no impact on the availability of a file when it comes to the `.Files`
@@ -34,8 +34,7 @@ this works:
 - [Basic example](#basic-example)
 - [Path helpers](#path-helpers)
 - [Glob patterns](#glob-patterns)
-- [ConfigMap and Secrets utility
-  functions](#configmap-and-secrets-utility-functions)
+- [ConfigMap and Secrets utility functions](#configmap-and-secrets-utility-functions)
 - [Encoding](#encoding)
 - [Lines](#lines)
 
@@ -82,7 +81,7 @@ data:
   {{- end }}
 ```
 
-This config map uses several of the techniques discussed in previous sections.
+This ConfigMap uses several of the techniques discussed in previous sections.
 For example, we create a `$files` variable to hold a reference to the `.Files`
 object. We also use the `tuple` function to create a list of files that we loop
 through. Then we print each file name (`{{ . }}: |-`) followed by the contents

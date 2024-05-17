@@ -69,6 +69,14 @@ Helm社区成员贡献了一个针对 [Scoop](https://scoop.sh) 的[Helm包](htt
 scoop install helm
 ```
 
+### 使用Winget (Windows)
+
+Helm社区成员贡献了一个针对 [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) 的[Helm包](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm)，该包通常是最新的。
+
+```console
+winget install Helm.Helm
+```
+
 ### 使用Apt (Debian/Ubuntu)
 
 Helm社区成员贡献了针对Apt的一个[Helm包](https://helm.baltorepo.com/stable/debian/)，包通常是最新的。
