@@ -38,6 +38,8 @@ chart的helm v3插件。
 - [helm-external-val](https://github.com/kuuji/helm-external-val) - 从外部资源（configMaps，
 Secrets等）获取Helm values的插件
 - [helm-images](https://github.com/nikhilsbhat/helm-images) - 从未部署或已部署的chart版本中获取所有可能镜像的插件。
+- [helm-drift](https://github.com/nikhilsbhat/helm-drift) - 识别从Helm chart拉取的配置的插件。
+
 我们同样鼓励使用GitHub的各位使用[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
 给插件仓库打tag。
 

@@ -918,13 +918,21 @@ Helm 团队已经测试了一些服务器，包括激活websit模组的Google Cl
 
 ## Chart Starter 包
 
-`helm create`命令可以附带一个可选的 `--starter` 选项让您指定一个 "starter chart"。
+`helm create`命令可以附带一个可选的 `--starter` 选项让您指定一个 "starter chart"。另外，starter选项还有个别名`-p`。
+
+使用示例：
+
+```console
+helm create my-chart --starter starter-name
+helm create my-chart -p starter-name
+helm create my-chart -p /absolute/path/to/starter-name
+```
 
 Starter就只是普通chart，但是被放置在`$XDG_DATA_HOME/helm/starters`。作为一个chart开发者，
 您可以编写被特别设计用来作为启动的chart。设计此类chart应注意以下考虑因素：
 
 - `Chart.yaml`会被生成器覆盖。
 - 用户将希望修改此类chart的内容，所以文档应该说明用户如果做到这一点。
-- 所有出现的`<CHARTNAME>`都会被替换为指定为chart名称，以便chart可以作为模板使用。
+- 除了一些变量文件，所有出现的`<CHARTNAME>`都会被替换为指定为chart名称，以便chart可以作为模板使用。比如，如果想在`vars`目录使用自定义文件或者特定的`README.md`文件，`<CHARTNAME>`不会覆盖其中的chart名称。另外，chart的描述也不会被继承。
 
 当前增加一个chart的唯一方式就是拷贝chart到`$XDG_DATA_HOME/helm/starters`。在您的chart文档中，您可能需要解释这个过程。
