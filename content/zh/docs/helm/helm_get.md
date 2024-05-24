@@ -14,6 +14,7 @@ title: "Helm 获取扩展"
 - 生成的清单文件
 - 发布的chart提供的注释
 - 与版本关联的钩子
+- 版本元信息
 
 ### 可选项
 
@@ -36,6 +37,7 @@ title: "Helm 获取扩展"
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
@@ -47,5 +49,6 @@ title: "Helm 获取扩展"
 - [helm get all](helm_get_all.md) - 下载命名版本的所有信息
 - [helm get hooks](helm_get_hooks.md) - 下载命名版本的所有钩子
 - [helm get manifest](helm_get_manifest.md) - 下载命名版本的清单
+- [helm get metadata](helm_get_metadata.md) - 该命令获取给定版本的元数据
 - [helm get notes](helm_get_notes.md) - 下载命名版本的注释
 - [helm get values](helm_get_values.md) - 下载命名版本的values文件

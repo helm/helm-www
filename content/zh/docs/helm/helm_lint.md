@@ -20,6 +20,7 @@ helm lint PATH [flags]
 
 ```shell
   -h, --help                     help for lint
+      --kube-version string       Kubernetes version used for capabilities and deprecation checks
       --set stringArray          set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray     set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
       --set-json stringArray     set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
@@ -45,6 +46,7 @@ helm lint PATH [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

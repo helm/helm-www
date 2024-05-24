@@ -25,6 +25,7 @@ helm uninstall RELEASE_NAME [...] [flags]
       --description string   add a custom description
       --dry-run              simulate a uninstall
   -h, --help                 help for uninstall
+      --ignore-not-found     Treat "release not found" as a successful uninstall
       --keep-history         remove all associated resources and mark the release as deleted, but retain the release history
       --no-hooks             prevent hooks from running during uninstallation
       --timeout duration     time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
@@ -46,6 +47,7 @@ helm uninstall RELEASE_NAME [...] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

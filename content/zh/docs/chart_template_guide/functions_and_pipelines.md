@@ -199,10 +199,11 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 当对象未找到时，会返回空值。可以用来检测对象是否存在。
 
 `lookup`函数使用Helm已有的Kubernetes连接配置查询Kubernetes。当与调用API服务交互时返回了错误
-（比如缺少资源访问的权限），helm 的模板操作会失败。
+（比如缺少资源访问的权限），Helm的模板操作会失败。
 
-请记住，Helm在`helm template`或者`helm install|upgrade|delete|rollback --dry-run`时，
-不应该请求Kubernetes API服务。由此，`lookup`函数在该案例中会返回空列表（即字典）。
+请记住，Helm在执行`helm template|install|upgrade|delete|rollback --dry-run`时，
+不应该请求Kubernetes API服务。对于正在运行的集群测试`lookup`，应该使用
+`helm template|install|upgrade|delete|rollback --dry-run=server` 而不是连接集群。
 
 ## 运算符也是函数
 

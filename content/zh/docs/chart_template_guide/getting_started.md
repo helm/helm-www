@@ -46,8 +46,8 @@ Creating mychart
 
 - `NOTES.txt`: chart的"帮助文本"。这会在你的用户执行`helm install`时展示给他们。
 - `deployment.yaml`: 创建Kubernetes
-  [工作负载](https://kubernetes.io/docs/user-guide/deployments/)的基本清单
-- `service.yaml`: 为你的工作负载创建一个[service终端](https://kubernetes.io/docs/user-guide/services/)基本清单。
+  [部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)的基本清单
+- `service.yaml`: 为你的工作负载创建一个[service终端](https://kubernetes.io/docs/concepts/services-networking/service/)基本清单。
 - `_helpers.tpl`: 放置可以通过chart复用的模板辅助对象
 
 然后我们要做的是... _把它们全部删掉！_ 这样我们就可以从头开始学习我们的教程。我们在开始时会创造自己的`NOTES.txt`和`_helpers.tpl`。

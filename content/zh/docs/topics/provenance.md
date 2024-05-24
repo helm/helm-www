@@ -208,6 +208,11 @@ Chart仓库必须要保证通过指定的http请求提供源文件，同时要�
 
 从终端用户的角度来看，`helm install --verify myrepo/mychart-1.2.3`应该同时下载chart和源文件，且不需要额外的用户配置或操作。
 
+### 基于OCI注册中心的签名
+
+将chart发布到[OCI注册中心](https://helm.sh/zh/docs/topics/registries/)时，可以使用[`helm-sigstore`插件](https://github.com/sigstore/helm-sigstore/)将源发布到 [sigstore](https://sigstore.dev/)。
+[如该文档所述](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md)，创建源和使用GPG签名的过程很常见，但可以使用`helm sigstore upload`命令将源发布到不透明日志中。
+
 ## 建立权威和真实性
 
 当处理信任链系统时，建立签名者的权威变得非常重要。或者简单来说，上面的系统实际上取决于你信任的签名chart的人。也就意味着你需要信任签名者的公钥。

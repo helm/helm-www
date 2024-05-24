@@ -154,7 +154,7 @@ Helm按照以下顺序安装资源：
 - Ingress
 - APIService
 
-Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到集群中。
+Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600MB 的 Docker 镜像，可能需要很长时间才能安装到集群中。
 
 你可以使用 `helm status` 来追踪 release 的状态，或是重新读取配置信息：
 
@@ -236,7 +236,7 @@ $ helm install -f values.yaml bitnami/wordpress --generate-name
 - `--set`：通过命令行的方式对指定项进行覆盖。
 
 如果同时使用两种方式，则 `--set` 中的值会被合并到 `--values` 中，但是 `--set` 中的值优先级更高。在`--set`
-中覆盖的内容会被被保存在 ConfigMap 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
+中覆盖的内容会被被保存在 Secret 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
 `--set` 设置的值。也可以通过运行 `helm upgrade` 并指定 `--reset-values` 字段来清除 `--set` 中设置的值。
 
 #### `--set` 的格式和限制

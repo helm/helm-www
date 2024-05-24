@@ -31,6 +31,12 @@ title: "Helm 升级"
     $ helm upgrade --set foo=bar --set foo=newbar redis ./redis
 ```
 
+也可以使用这个命令通过'--reuse-values' 来更新现有版本。'RELEASE'和'CHART'应该被设置为初始参数，且现有版本的value将与通过'--values'/'-f'或'--set'和任意值合并。优先考虑新值。
+
+```shell
+ $ helm upgrade --reuse-values --set foo=bar --set foo=newbar redis ./redis
+```
+
 ```shell
 helm upgrade [RELEASE] [CHART] [flags]
 ```
@@ -47,7 +53,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --description string                         add a custom description
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run                                    simulate an upgrade
+      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
       --enable-dns                                 enable DNS lookups when rendering templates
       --force                                      force resource updates through a replacement strategy
   -h, --help                                       help for upgrade
@@ -56,14 +62,17 @@ helm upgrade [RELEASE] [CHART] [flags]
   -i, --install                                    if a release by this name doesn't already exist, run an install
       --key-file string                            identify HTTPS client using this SSL key file
       --keyring string                             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Labels that would be added to release metadata. Should be separated by comma. Original release labels will be merged with upgrade labels. You can unset label using null. (default [])
       --no-hooks                                   disable pre/post upgrade hooks
   -o, --output format                              prints the output in the specified format. Allowed values: table, json, yaml (default table)
       --pass-credentials                           pass credentials to all domains
       --password string                            chart repository password where to locate the requested chart
+      --plain-http                                 use insecure HTTP connections for the chart download
       --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
       --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
       --render-subchart-notes                      if set, render subchart notes along with the parent
       --repo string                                chart repository url where to locate the requested chart
+      --reset-then-reuse-values                    when upgrading, reset the values to the ones built into the chart, apply the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' or '--reuse-values' is specified, this is ignored
       --reset-values                               when upgrading, reset the values to the ones built into the chart
       --reuse-values                               when upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
@@ -96,6 +105,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

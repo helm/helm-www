@@ -106,7 +106,7 @@ helm install [NAME] [CHART] [flags]
       --description string           add a custom description
       --devel                        use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation   if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run                      simulate an install
+      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
       --enable-dns                                 enable DNS lookups when rendering templates
       --force                        force resource updates through a replacement strategy
   -g, --generate-name                generate the name (and omit the NAME parameter)
@@ -114,11 +114,13 @@ helm install [NAME] [CHART] [flags]
       --insecure-skip-tls-verify     skip tls certificate checks for the chart download
       --key-file string              identify HTTPS client using this SSL key file
       --keyring string               location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Labels that would be added to release metadata. Should be divided by comma. (default [])
       --name-template string         specify template used to name the release
       --no-hooks                     prevent hooks from running during install
   -o, --output format                prints the output in the specified format. Allowed values: table, json, yaml (default table)
       --pass-credentials             pass credentials to all domains
       --password string              chart repository password where to locate the requested chart
+      --plain-http                                 use insecure HTTP connections for the chart download
       --post-renderer postrenderer   the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path (default exec)
       --render-subchart-notes        if set, render subchart notes along with the parent
       --replace                      re-use the given name, only if that name is a deleted release which remains in the history. This is unsafe in production
@@ -152,6 +154,7 @@ helm install [NAME] [CHART] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

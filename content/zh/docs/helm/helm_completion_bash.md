@@ -18,11 +18,11 @@ title: "Helm补全 - bash"
 
 - Linux:
 
-      helm completion bash | sudo tee /etc/bash_completion.d/helm
+      helm completion bash > /etc/bash_completion.d/helm
 
 - MacOS:
 
-      helm completion bash | sudo tee /usr/local/etc/bash_completion.d/helm
+      helm completion bash > /usr/local/etc/bash_completion.d/helm
 
 ```shell
 helm completion bash [flags]
@@ -51,6 +51,7 @@ helm completion bash [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

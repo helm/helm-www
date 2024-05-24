@@ -380,7 +380,7 @@ data:
 
 现在，我们已经处理了一些棘手的事情。`toppings: |-`行是声明的多行字符串。所以这个配料列表实际上不是YAML列表，
 是个大字符串。为什么要这样做？因为在配置映射`data`中的数据是由键值对组成，key和value都是简单的字符串。
-要理解这个示例，请查看[Kubernetes ConfigMap 文档](https://kubernetes.io/docs/user-guide/configmap/)。
+要理解这个示例，请查看[Kubernetes ConfigMap 文档](https://kubernetes.io/docs/concepts/configuration/configmap/)。
 但对于我们来说，这个细节并不重要。
 
 > 正如例子中所示，`|-`标识在YAML中是指多行字符串。这在清单列表中嵌入大块数据是很有用的技术。

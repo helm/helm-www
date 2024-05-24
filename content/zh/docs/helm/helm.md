@@ -43,6 +43,7 @@ Helm的一般操作：
 | $HELM_KUBEINSECURE_SKIP_TLS_VERIFY | 设置 Kubernetes API 服务的证书验证是否跳过（不安全）                             |
 | $HELM_KUBETLS_SERVER_NAME          | 设置用于验证 Kubernetes API 服务器证书的服务器名称                                      |
 | $HELM_BURST_LIMIT                  | 设置当 kubernetes 服务包含很大量CRD时的默认上限值（默认100, -1是不可用）                           |
+| $HELM_QPS                          | 设置每秒请求量以防大量调用超出较高的突发值                                            |
 
 Helm 基于以下配置顺序存储缓存，配置和添加数据：
 
@@ -74,6 +75,7 @@ Helm 基于以下配置顺序存储缓存，配置和添加数据：
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

@@ -8,7 +8,7 @@ weight: 3
 
 对象可以是非常简单的:仅有一个值。或者可以包含其他对象或方法。比如，`Release`对象可以包含其他对象（比如：`Release.Name`）和`Files`对象有一组方法。
 
-在上一部分中，我们用`{{ .Release.Name }}`在模板中插入版本名称。`Release`是你可以在模板中访问的顶层对象之一。 
+在上一部分中，我们用`{{ .Release.Name }}`在模板中插入版本名称。`Release`是你可以在模板中访问的顶层对象之一。
 
 - `Release`： `Release`对象描述了版本发布本身。包含了以下对象：
   - `Release.Name`： release名称
@@ -21,6 +21,8 @@ weight: 3
 - `Chart`： `Chart.yaml`文件内容。 `Chart.yaml`里的所有数据在这里都可以可访问的。比如
 `{{ .Chart.Name }}-{{ .Chart.Version }}` 会打印出 `mychart-0.1.0`
   - 在[Chart 指南](https://helm.sh/zh/docs/topics/charts#Chart-yaml-文件) 中列出了可获得属性
+- `Subcharts`: 提供了父级对子级访问范围 (.Values, .Charts, .Releases 等等)。
+比如 `.Subcharts.mySubChart.myValue` 在 `mySubChart` 中访问 `myValue` 值。
 - `Files`： 在chart中提供访问所有的非特殊文件的对象。你不能使用它访问`Template`对象，只能访问其他文件。
 请查看这个[文件访问](https://helm.sh/zh/docs/chart_template_guide/accessing_files)部分了解更多信息
   - `Files.Get` 通过文件名获取文件的方法。 （`.Files.Getconfig.ini`）

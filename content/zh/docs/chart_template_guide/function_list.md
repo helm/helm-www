@@ -29,7 +29,7 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 
 Helm 包括了需要逻辑和流控制函数，包括[and](#and),[coalesce](#coalesce), [default](#default),
 [empty](#empty), [eq](#eq),[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt),
-[ne](#ne), [not](#not), and [or](#or)。
+[ne](#ne), [not](#not), [or](#or) 和 [required](#required)。
 
 ### and
 
@@ -484,7 +484,7 @@ wrap 80 $someText
 wrapWith 5 "\t" "Hello World"
 ```
 
-上述结果为： `hello world` (其中空格是ASCII tab字符)
+上述结果为： `Hello World` (其中空格是ASCII tab字符)
 
 ### contains
 
@@ -648,7 +648,10 @@ Helm提供了以下类型转换函数：
 * `toRawJson` (`mustToRawJson`): 将列表、切片、数组、字典或对象转换成HTML字符未转义的JSON。
 * `fromYaml`：将YAML字符串转化成对象。
 * `fromJson`: 将JSON字符串转化成对象。
+* `fromJsonArray`: 将JSON数组转换成列表。
 * `toYaml`: 将列表，切片，数组，字典或对象转换成已缩进的yaml，可以从任意源拷贝yaml块。该功能和Go的yaml.Marshal函数一样，文档详见：https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+* `toToml`: 将列表，切片，数组，字典或对象转换成TOML格式。可以从任意源拷贝toml块。
+* `fromYamlArray`: 将YAML数组转换成列表。
 
 只有`atoi`需要输入一个特定的类型。其他的会尝试将任何类型转换成目标类型。比如，`int64`可以把浮点数转换成整型，也可以把字符串转换成整型。
 
@@ -747,6 +750,48 @@ greeting: |
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
+
+### fromJsonArray
+
+`fromJsonArray` 函数带一个JSON数组并返回一个在模板中可用的列表。
+
+`File at: jsons/people.json`
+
+```json
+[
+ { "name": "Bob","age": 25 },
+ { "name": "Ram","age": 16 }
+]
+```
+
+```yaml
+{{- $people := .Files.Get "jsons/people.json" | fromJsonArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
+### fromYamlArray
+
+`fromYamlArray` 函数带一个YAML数组并返回一个在模板中可用的列表。
+
+`File at: yamls/people.yml`
+
+```yaml
+- name: Bob
+  age: 25
+- name: Ram
+  age: 16
+```
+
+```yaml
+{{- $people := .Files.Get "yamls/people.yml" | fromYamlArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
 ```
 
 ## Regular Expressions
@@ -1090,7 +1135,7 @@ now | unixEpoch
 从当前时间减去一个小时三十分钟：
 
 ```yaml
-now | date_modify "-1.5h"
+now | dateModify "-1.5h"
 ```
 
 如果修改格式错误， `dateModify`会返回日期未定义。而`mustDateModify`会返回错误。

@@ -55,6 +55,7 @@ chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且�
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
 - [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
+- [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
 - [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
 
@@ -62,6 +63,12 @@ chart的方式。基于OCI的的注册中心包含0个或多个Helm仓库，且�
 
 **注：** 你可以在开发电脑上运行基于OCI的注册中心 [Docker Registry](https://docs.docker.com/registry/deploying/)
 或者 [`zot`](https://github.com/project-zot/zot)。在开发电脑上运行只能用于测试目的。
+
+### 使用sigstore签名OCI chart
+
+[`helm-sigstore`](https://github.com/sigstore/helm-sigstore)插件允许使用 [Sigstore](https://sigstore.dev/)用与签名容器镜像相同的工具来签名。这提供了一种通过经典[chart仓库](https://helm.sh/zh/docs/topics/chart_repository/)支持[GPG源](https://helm.sh/zh/docs/topics/provenance/)的可选方案。
+
+For more details on using the `helm sigstore` plugin, see [that project's documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
 ## 用于处理注册中心的命令
 

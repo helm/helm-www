@@ -10,7 +10,7 @@ title: "Helm 回滚"
 
 该命令回滚发布到上一个版本
 
-回滚命令的第一个参数是发布的名称，第二是修订（版本）号，如果省略此参数，会回滚到上一个版本。
+回滚命令的第一个参数是发布的名称，第二是修订（版本）号，如果省略此参数或者设置为0，会回滚到上一个版本。
 
 要查看修订号，执行'helm history RELEASE'。
 
@@ -48,6 +48,7 @@ helm rollback <RELEASE> [REVISION] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
       --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")

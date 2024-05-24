@@ -13,7 +13,9 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - 将现有k8s资源转换成新生成的helm
 chart的helm v3插件。
+- [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) - Helm charts快照测试插件。
 - [Helm Diff](https://github.com/databus23/helm-diff) - `helm upgrade`的彩色diff预览
+- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) -在OCI注册表和Air gap环境中分发Helm charts的插件。
 - [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - Helm的GUI界面，可视化release、repository及manifest的差异
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - 管理Google Cloud Storage中仓库的插件
 - [helm-git](https://github.com/aslafy-z/helm-git) - 从Git仓库中安装chart并检索values文件。
@@ -35,7 +37,7 @@ chart的helm v3插件。
 - [helm-val](https://github.com/HamzaZo/helm-val) - 从之前的版本中获取值的插件
 - [helm-external-val](https://github.com/kuuji/helm-external-val) - 从外部资源（configMaps，
 Secrets等）获取Helm values的插件
-
+- [helm-images](https://github.com/nikhilsbhat/helm-images) - 从未部署或已部署的chart版本中获取所有可能镜像的插件。
 我们同样鼓励使用GitHub的各位使用[helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
 给插件仓库打tag。
 
@@ -54,8 +56,11 @@ Chart仓库
 - [Codefresh](https://codefresh.io) - 带有UI界面的管理Helm chart和版本的Kubernetes原生CI/CD及管理平台
 - [Flux](https://fluxcd.io/docs/components/helm/) -  从Git到Kubernetes的连续和渐进交付
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile是用于部署helm chart的声明性规范
+- [Helmper](https://github.com/ChristofferNissen/helmper) - Helmper 帮你导入Helm Charts - 包括所有的OCI组件（镜像）到你自己的OCI注册表。
+Helmper也便于对OCI镜像进行安全扫描和打补丁。Helmper 使用 Helm, Oras, Trivy, Copacetic 和 Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman是helm-charts-as-code工具，
   可以从版本控制所需的状态文件（以简单的TOML格式描述）安装、升级、保护、移动及删除发布版本。
+- [HULL](https://github.com/vidispine/hull) - 这个库提供了一个现成的接口，用于直接在`values.yaml`中指定所有Kubernetes对象。不需要再为chart写任何模板，并提供了很多额外特性来简化Helm chart的创建和使用。
 - [Terraform Helm
   Provider](https://github.com/hashicorp/terraform-provider-helm) - 为HashiCorp Terraform提供Helm，
   以声明性的结构作为代码的语法实现Helm Chart的生命周期管理。Helm提供者通常与其他Terraform提供者配对，

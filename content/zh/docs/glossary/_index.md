@@ -116,6 +116,11 @@ chart仓库服务器就是一个简单的HTTP服务器，提供一个`index.yaml
 
 Helm客户端可以指向0个或多个chart仓库。默认没有配置仓库。Chart仓库可以随时使用`helm repo add`命令添加。
 
+## Chart Registry (OCI-based Registry)
+
+Helm Chart 注册中心是一个[基于OCI](https://opencontainers.org/about/overview/) 的存储和分发系统，用于托管和共享Helm chart。更多详情请参阅
+[Helm documentation on registries](https://helm.sh/docs/topics/registries/).
+
 ## Values (Values文件, values.yaml)
 
 Values 提供了一种使用您自己的信息覆盖模板默认值的方式。

@@ -1,27 +1,24 @@
 ---
-title: "Helm 获取注释"
+title: "Helm获取元数据"
 ---
 
-## helm get notes
+## helm get metadata
 
-下载命名版本的注释
-
-### 简介
-
-该命令显示了由指定版本chart提供的注释
+该命令获取给定版本的元数据。
 
 ```shell
-helm get notes RELEASE_NAME [flags]
+helm get metadata RELEASE_NAME [flags]
 ```
 
 ### 可选项
 
 ```shell
-  -h, --help           help for notes
-      --revision int   get the named release with revision
+  -h, --help            help for metadata
+  -o, --output format   prints the output in the specified format. Allowed values: table, json, yaml (default table)
+      --revision int    specify release revision
 ```
 
-### 从父命令继承的命令
+### 从父命令集成的选项
 
 ```shell
       --burst-limit int                 client-side default throttling limit (default 100)

@@ -204,13 +204,11 @@ spec:
 kind: Secret
 metadata:
   annotations:
-    "helm.sh/resource-policy": keep
+    helm.sh/resource-policy: keep
 [...]
 ```
 
-（需要引号）
-
-这个说明`"helm.sh/resource-policy": keep`指示Helm操作(比如`helm uninstall`，`helm upgrade`
+这个说明`helm.sh/resource-policy: keep`指示Helm操作(比如`helm uninstall`，`helm upgrade`
 或`helm rollback`)要删除时跳过删除这个资源，_然而_，这个资源会变成孤立的。Helm不再以任何方式管理它。
 如果在已经卸载的但保留资源的版本上使用`helm install --replace`会出问题。
 

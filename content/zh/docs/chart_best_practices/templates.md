@@ -173,6 +173,27 @@ memory: {{ .Values.maxMem | quote }}
 
 以上注释在用户执行`helm install --debug`时是可见的，而在`{{- /* */}}`部分指定注释不会显示。
 
+在包含Helm值的模板部分添加`#` YAML注释时要格外注意，因为模板函数可能需要这些注释。
+比如说，如果在上述示例中引入了`required`函数，且`maxMem`未设置，那么`#` YAML注释会引入渲染错误。
+正确方式： `helm template` 不会渲染下面的块：
+
+``` yaml
+{{- /*
+# This may cause problems if the value is more than 100Gi
+memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
+*/ -}}
+```
+
+不正确的方式: `helm template` 返回了 `Error: execution error at (templates/test.yaml:2:13): maxMem must be set`
+
+```yaml
+
+# This may cause problems if the value is more than 100Gi
+# memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
+```
+
+其他YAML注释保持不变的示例请查看[Debugging Templates](../chart_template_guide/debugging.md)
+
 ## 在模板和模板输出中使用JSON
 
 YAML是JSON的超集。在某些情况下，使用JSON语法比其他YAML表示更具可读性。

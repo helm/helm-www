@@ -10,7 +10,8 @@ weight: 14
 
 - `helm lint` 是验证chart是否遵循最佳实践的首选工具。
 - `helm template --debug` 在本地测试渲染chart模板。
-- `helm install --dry-run --debug`：我们已经看到过这个技巧了，这是让服务器渲染模板的好方法，然后返回生成的清单文件。
+- `helm install --dry-run --debug`：也会在本地渲染你的chart而无需安装，但也会检查集群上正在运行的资源是否有冲突。设置
+`--dry-run=server` 将额外向服务器执行你的chart中的 `lookup` 。
 - `helm get manifest`: 这是查看安装在服务器上的模板的好方法。
 
 当你的YAML文件解析失败，但你想知道生成了什么，检索YAML一个简单的方式是注释掉模板中有问题的部分，
