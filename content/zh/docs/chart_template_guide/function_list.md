@@ -756,7 +756,7 @@ greeting: |
 
 `fromJsonArray` 函数带一个JSON数组并返回一个在模板中可用的列表。
 
-`File at: jsons/people.json`
+`文件位置: jsons/people.json`
 
 ```json
 [
@@ -777,7 +777,7 @@ greeting: |
 
 `fromYamlArray` 函数带一个YAML数组并返回一个在模板中可用的列表。
 
-`File at: yamls/people.yml`
+`文件位置: yamls/people.yml`
 
 ```yaml
 - name: Bob
