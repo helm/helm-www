@@ -51,13 +51,15 @@ a[b-d].txt
 temp?
 ```
 
-Some notable differences from .gitignore:
+#### Some notable differences from .gitignore:
 - The '**' syntax is not supported.
 - The globbing library is Go's 'filepath.Match', not fnmatch(3)
 - Trailing spaces are always ignored (there is no supported escape sequence)
 - There is no support for '\!' as a special leading sequence.
 - It does not exclude itself by default, you have to add an explicit entry for `.helmignore`
 
+#### Pitfalls to avoid
+- Do not add `*.tgz` to your list of ignore rules because `helm package` will ignore dependency archives from being packaged in your chart. Instead, narrow down your glob filter or specify exact file names in your rule that does not conflict with any dependency packages
 
 **We'd love your help** making this document better. To add, correct, or remove
 information, [file an issue](https://github.com/helm/helm-www/issues) or send us a
