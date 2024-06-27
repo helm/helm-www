@@ -29,5 +29,6 @@ For those interested in playing a role in the next version of Helm (we’d love 
     1. [Zoom Meeting](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
 2. Participate in discussions in the [#helm-dev](https://kubernetes.slack.com/archives/C51E88VDG) channel on the Kubernetes Slack, where members of the Helm community collaborate on Helm development efforts, including those focused on Helm version 4.
 3. Submit an [issue](https://github.com/helm/helm/issues) within the Helm [GitHub repository](https://github.com/helm/helm).
+4. Follow [@HelmPack](https://x.com/HelmPack) on Twitter/X for project updates.
 
 Helm helped define how to package and manage software for Kubernetes. But let’s not stop there - as we update and develop new features and capabilities in Helm 4, Helm will continue to be a tool that the community can continue to leverage confidently to find, share, and run software on Kubernetes.
