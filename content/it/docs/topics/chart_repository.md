@@ -15,7 +15,7 @@ partecipazione. Ma Helm permette anche di creare e gestire un proprio repository
 ## Prerequisiti
 
 * Leggere la guida [Quickstart]({{< ref "quickstart.md" >}})
-* Leggere il documento [Chart]({{< ref "/docs/topics/charts.md" >}})
+* Leggere il documento [Charts]({{< ref "/docs/topics/charts.md" >}})
 
 ## Creare un chart repository
 
@@ -151,7 +151,7 @@ Noi adotteremo il secondo approccio, anche se il primo è altrettanto semplice.
 Il primo passo sarà quello di **creare il branch gh-pages**.  È possibile farlo
 localmente come.
 
-``console
+```console
 $ git checkout -b gh-pages
 ```
 
