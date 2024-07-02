@@ -134,8 +134,10 @@ A partire da Helm v3.5.0, `helm create` avvolge il campo predefinito `appVersion
 Il campo opzionale `kubeVersion` può definire i vincoli di semver sulle versioni supportate di Kubernetes. Helm convaliderà i vincoli di versione al momento dell'installazione del chart e fallirà se il cluster esegue una versione di Kubernetes non supportata.
 
 I vincoli di versione possono comprendere confronti AND separati da spazi, come ad esempio
-``` >= 1.13.0 < 1.15.0
-``` 
+
+```
+>= 1.13.0 < 1.15.0
+```
 che possono essere combinati con l'operatore OR `||` come nel seguente esempio
 
 ```
