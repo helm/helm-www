@@ -1,6 +1,6 @@
 ---
-titolo: "Docs Home"
-descrizione: "Tutto quello che c'è da sapere su come è organizzata la documentazione".
+title: "Docs Home"
+description: "Tutto quello che c'è da sapere su come è organizzata la documentazione".
 ---
 
 # Benvenuto
@@ -16,6 +16,6 @@ Helm ha molta documentazione. Una panoramica di alto livello su come è organizz
 - I [Tutorial](chart_template_guide/getting_started/) vi accompagnano attraverso una serie di passi per creare il vostro primo Chart Helm.
   Iniziate da qui se siete alle prime armi con Helm.
 - Le [guide agli argomenti](topics) trattano gli argomenti e i concetti chiave a un livello piuttosto alto e forniscono informazioni di base e spiegazioni utili.
-- Le [Guide alla comunità]( community) trattano argomenti incentrati sulla comunità di Helm.
+- Le [Guide alla comunità](community) trattano argomenti incentrati sulla comunità di Helm.
   Iniziate da qui se volete saperne di più sul processo di sviluppo di Helm e su come potete contribuire.
 - Le [guide how-to](howto) sono ricette. Vi guidano attraverso i passi necessari per affrontare problemi e casi d'uso chiave. Sono più avanzate dei tutorial e presuppongono una certa conoscenza del funzionamento di Helm.
