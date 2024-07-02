@@ -1,6 +1,6 @@
 ---
 title: "Docs Home"
-description: "Tutto quello che c'è da sapere su come è organizzata la documentazione".
+description: "Tutto quello che c'è da sapere su come è organizzata la documentazione."
 ---
 
 # Benvenuto
