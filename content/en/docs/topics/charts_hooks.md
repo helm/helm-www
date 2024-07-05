@@ -127,8 +127,8 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
+    # This is what defines this resource as a hook.
+    # Without this line, the job is considered part of the release.
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
@@ -144,8 +144,8 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-install-job
-        image: "alpine:3.3"
-        command: ["/bin/sleep","{{ default "10" .Values.sleepyTime }}"]
+        image: "alpine"
+        command: ["/bin/sleep","10"]
 
 ```
 
