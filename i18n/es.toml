@@ -8,7 +8,7 @@ other = "Empieza"
 other = "/es/docs/intro/quickstart"
 
 [action_translate]
-other = "Traduzca esta pagina"
+other = "Traduzca esta página"
 
 [action_translate_link]
 other = "https://github.com/helm/helm-www#internationalization--translation"
