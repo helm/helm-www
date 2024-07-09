@@ -1,0 +1,223 @@
+# site-wide copy
+
+## actions and labels
+[action_get_started]
+other = "Inizia"
+
+[action_get_started_link]
+other = "/docs/intro/quickstart"
+
+[action_translate]
+other = "Traduci questa pagina"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
+[action_copy]
+other = "Copia"
+
+## site-wide banner about versioning
+[banner_1]
+other = ""
+
+## footer
+[footer_support_title]
+other = "Helm è supportato e sviluppato da una comunità di oltre 400 sviluppatori."
+
+[footer_support_subtitle]
+other = "...e molti altri meravigliosi [helm](https://github.com/helm/helm/blob/main/OWNERS) manutentori principali."
+
+[footer_cncf_status]
+other = "Noi siamo un progetto graduated della Cloud Native Computing Foundation."
+
+# homepage copy
+
+## homepage intro
+[main_title]
+other = "**Il** **package manager** **per Kubernetes**"
+
+[main_subtitle]
+other = "Helm è il modo migliore per trovare, condividere e utilizzare il software realizzato per [Kubernetes](https://kubernetes.io)."
+
+## homepage about helm
+[main_what_is_helm_title]
+other = "Cos'è Helm?"
+
+[main_what_is_helm_description]
+other = """
+Helm vi aiuta a gestire le applicazioni Kubernetes - I Charts di Helm vi aiutano a definire, installare e aggiornare anche le applicazioni Kubernetes più complesse. 
+
+I Charts sono facili da creare, modificare, condividere e pubblicare — iniziate a usare Helm e smettete di fare copia-incolla.
+
+Helm è un graduated project nel [CNCF](https://cncf.io) ed è mantenuto dalla [Helm community](https://github.com/helm/community).
+
+### Learn more:
+
+* [Helm Architecture](./docs/topics/architecture/)
+* [Quick Start Guide](/docs/intro/quickstart/)
+* [Video: Un introduzione a Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+"""
+
+[main_why_teams_love]
+other = 'Perchè Teams <i class="fa fa-heart"></i> Helm'
+
+[feature_01_title]
+other = "Gestire la Complessità"
+
+[feature_01_desc]
+other = "I Charts descrivono anche le applicazioni più complesse, consentono di ripetere l'installazione delle applicazioni e fungono da unico punto di riferimento."
+
+[feature_02_title]
+other = "Aggiornamenti facili"
+
+[feature_02_desc]
+other = "Eliminate il fastidio degli aggiornamenti con gli upgrade in-place e gli hooks personalizzati."
+
+[feature_03_title]
+other = "Condivisione semplice"
+
+[feature_03_desc]
+other = "I Charts sono facili da versionare, condividere e ospitare su server pubblici o privati."
+
+[feature_04_title]
+other = "Rollbacks"
+
+[feature_04_desc]
+other = "Usate `helm rollback` per tornare facilmente a una versione precedente di una release."
+
+## homepage get helm
+[get_helm_title]
+other = "Prendete Helm!"
+
+[get_helm_desc]
+other = "Installate Helm con un gestore pacchetti o [scaricate un binario].(https://github.com/helm/helm/releases/latest)."
+
+[get_helm_next]
+other = "Una volta installato, scompattate il binario di helm e aggiungetelo al vostro PATH e sarete pronti a partire! Consultate la [documentazione](/docs/intro/install/) per ulteriori informazioni e [istruzioni d'uso](/docs/intro/using_helm/)."
+
+[get_charts_title]
+other = "Prendete i Charts"
+
+[get_charts_desc]
+other = "Visita [Artifact Hub](https://artifacthub.io) per esplorare i [charts Helm](https://artifacthub.io/packages/search?kind=0) da numerosi repositories pubblici."
+
+[get_upgrade_title]
+other = "[Aggiornamento da versione v2 a v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+[get_upgrade_desc]
+other = "[Per maggiori dettagli, leggete il documento sulla migrazione.](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+## homepage community
+[community_title]
+other = "Unisciti alla community"
+
+[community_desc]
+other = "Ulteriori informazioni sul progetto Helm e su come contribuire."
+
+[community_next_release]
+other = "Prossimo rilascio"
+
+[community_next_release_version]
+other = "__Versione:__ "
+
+[community_next_release_date]
+other = "__Data:__ "
+
+[community_release_calendar]
+other = "[Calendario rilasci](https://helm.sh/calendar/release)"
+
+[community_events_title]
+other = "Eventi"
+
+[community_upcoming_events_title]
+other = "Prossimi eventi"
+
+[community_upcoming_events_desc]
+other = "Guarda questo spazio..."
+
+[community_past_events_title]
+other = "Eventi Passati"
+
+[community_past_event_01]
+other = "_25 Febbraio 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+
+[community_past_event_02]
+other = "_18 Novembre 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+
+[community_past_event_03]
+other = "_11 Settembre 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+
+[community_sig_title]
+other = "SIG Apps"
+
+[community_sig_subtitle]
+other = "Uno Special Interest Group per la distribuzione e il funzionamento delle applicazioni in Kubernetes."
+
+[community_sig_desc]
+other = """
+[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) è uno Special Interest Group per la distribuzione e il funzionamento delle applicazioni in Kubernetes.
+
+[si incontrano ogni settimana](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) per dimostrare e discutere strumenti e progetti. Gli incontri della comunità vengono registrati e [condivisi su YouTube](https://www.youtube.com/results?search_query=kubernetes+sig+apps).
+"""
+
+[community_standup_title]
+other = "Standup per sviluppatori"
+
+[community_standup_time]
+other = "Giovedì 9:30-10 (PT)"
+
+[community_standup_desc]
+other = "Questi incontri sono aperti a tutti. Controllare la [community repository](https://github.com/helm/community/blob/main/communication.md#meetings) per le note e i dettagli."
+
+[community_slack_title]
+other = "Slack"
+
+[community_slack_group_01_title]
+other = "Utenti Helm"
+
+[community_slack_group_01_desc]
+other = "Discussione sull'uso di Helm, sul lavoro con i Charts e sulla risoluzione degli errori più comuni."
+
+[community_slack_group_02_title]
+other = "Sviluppo di Helm"
+
+[community_slack_group_02_desc]
+other = "Argomenti riguardanti lo sviluppo di Helm, le PR in corso, i comunicati, ecc."
+
+[community_slack_group_03_title]
+other = "Charts"
+
+[community_slack_group_03_desc]
+other = "Discussione per utenti e collaboratori di Charts Helm ."
+
+[community_slack_join]
+other = "[Richiedi accesso qui](https://slack.k8s.io/) per unirti al team Slack di Kubernetes."
+
+[community_contrib_title]
+other = "Contribuire"
+
+[community_contrib_subtitle]
+other = "Helm accoglie sempre nuovi apporti al progetto!"
+
+
+[community_contrib_desc]
+other = """
+### Dove iniziare?
+
+Helm è un grande progetto con molti utenti e collaboratori. Può essere un'esperienza da non perdere!
+
+Abbiamo un elenco di [buone prime issues](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) se volete aiutare ma non sapete da dove cominciare.
+
+### Cosa devo fare?
+
+Prima di contribuire con del codice, leggete la nostra [Guida al contributo] (https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Essa illustra i processi di creazione e revisione delle pull requests.
+
+Una volta scritto del codice, si prega di [firmare i propri commit](https://helm.sh/blog/helm-dco/index.html) per garantire che Helm aderisca all'accordo [DCO](https://developercertificate.org/) utilizzato dal [CNCF](https://www.cncf.io/).
+"""
+
+# 404 page
+[404_title]
+other = "**404** **Pagina non trovata.**"
+
+[404_subtitle]
+other = "Mi spiace per questo. Se qualcosa non funziona, per favore [segnalalo qui](https://github.com/helm/helm-www/issues/new)"
