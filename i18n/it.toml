@@ -54,7 +54,7 @@ Helm è un graduated project nel [CNCF](https://cncf.io) ed è mantenuto dalla [
 ### Learn more:
 
 * [Helm Architecture](./docs/topics/architecture/)
-* [Quick Start Guide](./docs/intro/quickstart/)
+* [Quick Start Guide](/docs/intro/quickstart/)
 * [Video: Un introduzione a Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "Prendete Helm!"
 other = "Installate Helm con un gestore pacchetti o [scaricate un binario].(https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Una volta installato, scompattate il binario di helm e aggiungetelo al vostro PATH e sarete pronti a partire! Consultate la [documentazione](./docs/intro/install/) per ulteriori [installazioni](./docs/intro/install/) e [istruzioni d'uso](./docs/intro/using_helm/)."
+other = "Una volta installato, scompattate il binario di helm e aggiungetelo al vostro PATH e sarete pronti a partire! Consultate la [documentazione](/docs/intro/install/) per ulteriori informazioni e [istruzioni d'uso](/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Prendete i Charts"
