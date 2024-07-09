@@ -49,7 +49,7 @@ kind: Deployment
 ## Utenti Helm
 
 È necessario verificare i chart che si utilizzano (in modo simile a [chart
-maintainers](#chart-maintainers)) e identificare tutti i chart in cui le versioni delle API sono
+maintainers](#maintainers-dei-chart)) e identificare tutti i chart in cui le versioni delle API sono
 deprecate o rimosse in una versione di Kubernetes. Per i chart identificati, è necessario verificare l'ultima versione del chart (che ha versioni API supportate) o aggiornare il chart da soli.
 
 Inoltre, è necessario verificare tutti i chart distribuiti (ad esempio, i rilasci di Helm).
@@ -73,7 +73,7 @@ come segue:
   - In caso contrario (ad esempio, si sta già utilizzando una versione di Kubernetes dove
     alcune versioni di API segnalate da `helm get manifest` non sono più disponibili):
     - È necessario modificare il manifest di rilascio memorizzato nel cluster per
-      aggiornare le versioni delle API a quelle supportate. Vedere [Aggiornamento delle versioni API di un Release Manifest](#updating-api-versions-of-a-release-manifest) per maggiori dettagli.
+      aggiornare le versioni delle API a quelle supportate. Vedere [Aggiornamento delle versioni API di un Release Manifest](#aggiornamento-delle-versioni-api-di-un-release-manifest) per maggiori dettagli.
 
 > Nota: in tutti i casi di aggiornamento di una release di Helm con API supportate, non si dovrebbe
 mai eseguire il rollback della release a una versione precedente a quella con le API supportate.

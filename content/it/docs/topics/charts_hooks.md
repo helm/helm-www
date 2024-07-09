@@ -92,7 +92,7 @@ le risorse hook che non devono mai essere cancellate dovrebbero essere annotate 
 
 In pratica, ciò significa che se si creano delle risorse in un hook, non si può fare affidamento su `helm uninstall` per rimuovere le risorse. Per distruggere tali
 risorse, è necessario o [aggiungere un'annotazione personalizzata `helm.sh/hook-delete-policy
-personalizzata](#hook-delete-policies) al file template dell'hook, oppure [impostare il campo time
+personalizzata](#politiche-di-cancellazione-degli-hook) al file template dell'hook, oppure [impostare il campo time
 to live (TTL) di una risorsa Job](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
 ## Scrivere un hook
