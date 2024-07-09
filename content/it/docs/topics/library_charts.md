@@ -46,8 +46,7 @@ Anche il file values non sarà necessario.
 $ rm -f mylibchart/values.yaml
 ```
 
-Prima di lanciarci nella creazione di codice comune, facciamo un rapido ripasso di alcuni concetti rilevanti di Helm. Un [named template]({{< ref
-"/docs/chart_template_guide/named_templates.md" >}}) (talvolta chiamato partial
+Prima di lanciarci nella creazione di codice comune, facciamo un rapido ripasso di alcuni concetti rilevanti di Helm. Un [named template]({{< relref path="/docs/chart_template_guide/named_templates.md" lang="en" >}}) (talvolta chiamato partial
 o un subtemplate) è semplicemente un template definito all'interno di un file e a cui viene dato un nome.
 Nella cartella `templates/`, qualsiasi file che inizia con un trattino basso(_)
 non è previsto come output di un file manifest di Kubernetes. Quindi, per convenzione, i template
@@ -306,7 +305,7 @@ metadata:
 A causa della loro incapacità di agire come chart autonomi, i library charts possono sfruttare le seguenti funzionalità:
 - L'oggetto `.Files` fa riferimento ai percorsi dei file del chart padre, anziché al percorso locale del library charts.
 - L'oggetto `.Values` è lo stesso del chart padre, a differenza dei 
-[subcharts]({{< ref "/docs/chart_template_guide/subcharts_and_globals.md" >}}) dell'applicazione che ricevono la sezione di valori configurata sotto la loro intestazione nel chart padre.
+[subcharts]({{< relref path="/docs/chart_template_guide/subcharts_and_globals.md" lang="en" >}}) dell'applicazione che ricevono la sezione di valori configurata sotto la loro intestazione nel chart padre.
 
 
 ## The Common Helm Helper Chart

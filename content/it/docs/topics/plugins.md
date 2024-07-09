@@ -9,7 +9,7 @@ Un plugin di Helm è uno strumento a cui si può accedere tramite la CLI `helm`,
 non fa parte della base di codice di Helm.
 
 I plugin esistenti possono essere trovati nella sezione 
-[related]({{< ref "related.md#helm-plugins" >}}) o cercando su
+[related]({{< relref path="related.md#helm-plugins" lang="en" >}}) o cercando su
 [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 
 Questa guida spiega come usare e creare i plugin.

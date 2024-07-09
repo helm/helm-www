@@ -14,7 +14,7 @@ partecipazione. Ma Helm permette anche di creare e gestire un proprio repository
 
 ## Prerequisiti
 
-* Leggere la guida [Quickstart]({{< ref "quickstart.md" >}})
+* Leggere la guida [Quickstart]({{< relref path="quickstart.md" lang="en">}})
 * Leggere il documento [Charts]({{< ref "/docs/topics/charts.md" >}})
 
 ## Creare un chart repository
@@ -178,7 +178,7 @@ Charts](https://github.com/technosophos/tscharts) è accessibile all'indirizzo
 `https://technosophos.github.io/tscharts/`.
 
 If you have decided to use GitHub pages to host the chart repository, check out
-[Chart Releaser Action]({{< ref "/docs/howto/chart_releaser_action.md" >}}).
+[Chart Releaser Action]({{< relref path="/docs/howto/chart_releaser_action.md" lang="en" >}}).
 Chart Releaser Action is a GitHub Action workflow to turn a GitHub project into
 a self-hosted Helm chart repo, using
 [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI tool.
@@ -249,7 +249,7 @@ L'ultimo comando prende il percorso della cartella locale appena creata e l'URL 
 l'URL del chart repository remoto e compone un file `index.yaml` all'interno della cartella indicata.
 
 Ora è possibile caricare il chart e il file di indice nel chart repository, utilizzando uno strumento di sincronizzazione o manualmente.
-Se si utilizza Google Cloud Storage, si può dare un'occhiata a questo [esempio di flusso di lavoro]({{< ref "/docs/howto/chart_repository_sync_example.md" >}}) utilizzando il client gsutil. Per GitHub, è sufficiente inserire i chart nel branch di destinazione appropriato.
+Se si utilizza Google Cloud Storage, si può dare un'occhiata a questo [esempio di flusso di lavoro]({{< relref path="/docs/howto/chart_repository_sync_example.md" lang="en" >}}) utilizzando il client gsutil. Per GitHub, è sufficiente inserire i chart nel branch di destinazione appropriato.
 
 ### Aggiungere nuovi chart a un repository esistente
 

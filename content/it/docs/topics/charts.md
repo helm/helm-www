@@ -559,7 +559,7 @@ in kind_sorter.go (si veda [il file sorgente di Helm](https://github.com/helm/he
 ## Templates e Values
 
 I template di Helm Chart sono scritti nel linguaggio [Go template](https://golang.org/pkg/text/template/), con l'aggiunta di una cinquantina di
-funzioni template [dalla libreria Sprig](https://github.com/Masterminds/sprig) e alcune altre [funzioni specializzate]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}}).
+funzioni template [dalla libreria Sprig](https://github.com/Masterminds/sprig) e alcune altre [funzioni specializzate]({{< relref path="/docs/howto/charts_tips_and_tricks.md" lang="en" >}}).
 
 Tutti i file dei template sono memorizzati nella cartella `templates/` di un chart. Quando Helm
 esegue il rendering dei chart, passerà ogni file in quella cartella attraverso il motore dei
@@ -692,7 +692,7 @@ Si noti che solo l'ultimo campo è stato sovrascritto.
 **NOTA:** Se il flag `--set` è usato in `helm install` o `helm upgrade`, quei valori sono semplicemente convertiti in YAML.
 
 **NOTA:** Se esistono voci richieste nel file dei valori, queste possono essere dichiarate
-come richieste nel template del chart, utilizzando la funzione ['required']({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})
+come richieste nel template del chart, utilizzando la funzione ['required']({{< relref path="/docs/howto/charts_tips_and_tricks.md" lang="en" >}})
 
 Tutti questi valori sono poi accessibili all'interno dei template utilizzando l'oggetto `.Values`:
 
