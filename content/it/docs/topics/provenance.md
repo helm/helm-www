@@ -236,7 +236,7 @@ configurazione o azione aggiuntiva da parte dell'utente.
 
 ### Firme nei registri basati su OCI
 
-Se si pubblicano charts in un [registro basato su OCI]({{< ref "registri.md" >}}), si può usare il
+Se si pubblicano charts in un [registro basato su OCI]({{< ref "registries.md" >}}), si può usare il
 [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/)  
 per pubblicare la provenienza su [sigstore](https://sigstore.dev/).
 [Come descritto nella documentazione](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), il processo di creazione della provenienza e di firma con una chiave GPG sono comuni, ma il comando `helm sigstore upload` può essere usato per pubblicare la provenienza in un registro di trasparenza immutabile.

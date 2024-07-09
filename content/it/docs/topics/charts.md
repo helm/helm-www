@@ -178,7 +178,7 @@ che non sia contrassegnata come deprecata. Il flusso di lavoro per la deprecazio
 
 Il campo `type` definisce il tipo di chart. Esistono due tipi:`application`
 e `library`. Application è il tipo predefinito e rappresenta il chart standard
-che può essere utilizzato completamente. Il [Chart di tipo Library]({{< rif.
+che può essere utilizzato completamente. Il [Chart di tipo Library]({{< ref
 "/docs/topics/library_charts.md" >}}) fornisce utilità o funzioni per il costruttore di chart.
 Un chart library si differenzia da un chart applicativo perché non è
 installabile e di solito non contiene oggetti risorsa.
@@ -692,8 +692,7 @@ Si noti che solo l'ultimo campo è stato sovrascritto.
 **NOTA:** Se il flag `--set` è usato in `helm install` o `helm upgrade`, quei valori sono semplicemente convertiti in YAML.
 
 **NOTA:** Se esistono voci richieste nel file dei valori, queste possono essere dichiarate
-come richieste nel template del chart, utilizzando la funzione ['required']({{< ref
-"/docs/howto/charts_tips_and_tricks.md" >}})
+come richieste nel template del chart, utilizzando la funzione ['required']({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})
 
 Tutti questi valori sono poi accessibili all'interno dei template utilizzando l'oggetto `.Values`:
 

@@ -25,8 +25,7 @@ il tipo di chart.
 
 ## Creare un Simple Library Chart
 
- Come accennato in precedenza, un library chart è un tipo di [Helm chart]({{< rif.
-"/docs/topics/charts.md" >}}).  
+ Come accennato in precedenza, un library chart è un tipo di [Helm chart]({{< ref "/docs/topics/charts.md" >}}).  
 Ciò significa che si può iniziare creando un chart:
 
 ```console

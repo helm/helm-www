@@ -249,9 +249,7 @@ L'ultimo comando prende il percorso della cartella locale appena creata e l'URL 
 l'URL del chart repository remoto e compone un file `index.yaml` all'interno della cartella indicata.
 
 Ora è possibile caricare il chart e il file di indice nel chart repository, utilizzando uno strumento di sincronizzazione o manualmente.
-Se si utilizza Google Cloud Storage, si può dare un'occhiata a questo
-[esempio di flusso di lavoro]({{< rif. "/docs/howto/chart_repository_sync_example.md" >}})
-utilizzando il client gsutil. Per GitHub, è sufficiente inserire i chart nel branch di destinazione appropriato.
+Se si utilizza Google Cloud Storage, si può dare un'occhiata a questo [esempio di flusso di lavoro]({{< ref "/docs/howto/chart_repository_sync_example.md" >}}) utilizzando il client gsutil. Per GitHub, è sufficiente inserire i chart nel branch di destinazione appropriato.
 
 ### Aggiungere nuovi chart a un repository esistente
 
