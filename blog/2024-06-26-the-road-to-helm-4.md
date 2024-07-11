@@ -11,7 +11,7 @@ One of the primary tenets that the Helm project takes very seriously is its poli
 authorname: "Helm Maintainers"
 author: "@HelmPack"
 authorlink: "https://helm.sh"
-date: "2024-06-26"
+date: "2024-07-10"
 ---
 
 We have been saying it for a while now – Helm is "stable software". That should not come as a surprise to anyone familiar with Kubernetes and the surrounding ecosystem as many within the Kubernetes community consider Helm to be the de-facto package manager. The use of Helm is far reaching: from open source community projects, to startups, to Fortune 500 organizations. Helm has become an essential component of build and deployment workflows that handle mission critical workloads.
