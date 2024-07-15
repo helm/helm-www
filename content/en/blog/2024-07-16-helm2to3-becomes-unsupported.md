@@ -11,10 +11,8 @@ Over four years ago, we [introduced Helm 3](https://helm.sh/blog/helm-3-released
 
 One year later, [Helm 2 became unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/).
 
-Here we are, over 3 years since Helm 2 became unsupported. It would be expected that all users should be migrated by now. Following consensus among the Helm org maintainers, we are announcing today the official end of support for the [helm-2to3](https://github.com/helm/helm-2to3) tool.
+Here we are, over 3 years since Helm 2 became unsupported. It would be expected that all users should be migrated to Helm 3 by this time. Following consensus among the Helm org maintainers, we are announcing today the official end of support for the [helm-2to3](https://github.com/helm/helm-2to3) tool.
 
-In practice, this means the following:
+In practice, this means that **Helm 2to3** will receive no more updates (not even security patches).
 
-- **Helm 2to3** will receive no more updates (not even security patches).
-
-We strongly discourage use of Helm 2to3, as it will be receiving no future security updates or patches.
+We strongly discourage the use of the [helm-2to3](https://github.com/helm/helm-2to3) tool moving forward, as it will be receiving no future security updates or patches. We hope that it has been a useful tool to aid in the migration from Helm 2 to 3.
