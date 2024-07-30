@@ -1188,7 +1188,7 @@ Formats a given amount of seconds as a `time.Duration`.
 This returns 1m35s
 
 ```
-duration 95
+duration "95"
 ```
 
 ### durationRound
