@@ -60,6 +60,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema
       --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
+      --hide-secret                                when set with --dry-run, the Secret content is removed from the output
       --enable-dns                                 enable DNS lookups when rendering templates
       --force                                      force resource updates through a replacement strategy
   -h, --help                                       help for upgrade
