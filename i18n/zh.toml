@@ -1,0 +1,223 @@
+# site-wide copy
+
+## actions and labels
+[action_get_started]
+other = "从这里开始"
+
+[action_get_started_link]
+other = "/zh/docs/intro/quickstart"
+
+[action_translate]
+other = "翻译这个页面"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
+[action_copy]
+other = "复制"
+
+## site-wide banner about versioning
+[banner_1]
+other = ""
+
+## footer
+[footer_support_title]
+other = "Helm 项目受到社区超过 400 开发者构建和支持。"
+
+[footer_support_subtitle]
+other = "...还有很多其他精彩内容包括 [helm](https://github.com/helm/helm/blob/main/OWNERS) 和 [charts](https://github.com/helm/charts/blob/master/OWNERS) 的核心开发者."
+
+[footer_cncf_status]
+other = "我们是 CNCF 的毕业项目。"
+
+# homepage copy
+
+## homepage intro
+[main_title]
+other = "**Kubernetes** **包管理器**"
+
+[main_subtitle]
+other = "Helm 是查找、分享和使用软件构建 [Kubernetes](https://kubernetes.io) 的最优方式。"
+
+## homepage about helm
+[main_what_is_helm_title]
+other = "Helm 是什么？"
+
+[main_what_is_helm_description]
+other = """
+Helm 帮助您管理 Kubernetes 应用—— Helm Chart，即使是最复杂的 Kubernetes 应用程序，都可以帮助您定义，安装和升级。
+
+Helm Chart 易于创建、发版、分享和发布，所以停止复制粘贴，开始使用 Helm 吧。
+
+Helm 是 [CNCF](https://cncf.io) 的毕业项目，由 [Helm 社区](https://github.com/helm/community)维护。
+
+### Learn more:
+
+* [Helm 架构](https://helm.sh/docs/topics/architecture/)
+* [快速开始 指引](https://helm.sh/docs/intro/quickstart/)
+* [Helm 视频介绍（YouTube）](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+"""
+
+[main_why_teams_love]
+other = '为什么团队 <i class="fa fa-heart"></i> Helm'
+
+[feature_01_title]
+other = "复杂性管理"
+
+[feature_01_desc]
+other = "即使是最复杂的应用，Helm Chart 依然可以描述， 提供使用单点授权的可重复安装应用程序。"
+
+[feature_02_title]
+other = "易于升级"
+
+[feature_02_desc]
+other = "随时随地升级和自定义的钩子消除您升级的痛苦。"
+
+[feature_03_title]
+other = "分发简单"
+
+[feature_03_desc]
+other = "Helm Chart 很容易在公共或私有化服务器上发版，分发和部署站点。"
+
+[feature_04_title]
+other = "回滚"
+
+[feature_04_desc]
+other = "使用 `helm rollback` 可以轻松回滚到之前的发布版本。"
+
+## homepage get helm
+[get_helm_title]
+other = "获取 Helm！"
+
+[get_helm_desc]
+other = "使用包管理器安装 Helm 或者 [下载二进制包](https://github.com/helm/helm/releases/latest)."
+
+[get_helm_next]
+other = "安装完成后，解压二进制包并添加到PATH，就可以使用了！ 可以在[安装](https://helm.sh/docs/intro/install/)查看更多[安装步骤](https://helm.sh/docs/intro/install/)和[使用说明](https://helm.sh/docs/intro/using_helm/)."
+
+[get_charts_title]
+other = "获取 Chart"
+
+[get_charts_desc]
+other = "访问 [Helm 应用中心](https://hub.helm.sh) 浏览公共库大量的 Charts。"
+
+[get_upgrade_title]
+other = "[从 v2 升级到 v3](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+[get_upgrade_desc]
+other = "[阅读迁移文档了解更多信息](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+## homepage community
+[community_title]
+other = "加入社区"
+
+[community_desc]
+other = "关于 Helm 项目的更多信息，以及如何参与。"
+
+[community_next_release]
+other = "下一个功能版本"
+
+[community_next_release_version]
+other = "__Version:__ "
+
+[community_next_release_date]
+other = "__Date:__ "
+
+[community_release_calendar]
+other = "[发布日志](https://helm.sh/calendar/release)"
+
+[community_events_title]
+other = "大事记"
+
+[community_upcoming_events_title]
+other = "即将到来的内容"
+
+[community_upcoming_events_desc]
+other = "了解该部分..."
+
+[community_past_events_title]
+other = "以往事迹"
+
+[community_past_event_01]
+other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+
+[community_past_event_02]
+other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+
+[community_past_event_03]
+other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+
+[community_sig_title]
+other = "SIG Apps"
+
+[community_sig_subtitle]
+other = "在 Kubernetes 中部署和操作应用的特别兴趣小组。"
+
+[community_sig_desc]
+other = """
+[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) 是在 Kubernetes 中部署和操作应用的特别兴趣小组。
+
+他们[每周会面](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) 演示和讨论工具及项目。 社区会议会被记录并[分享到 YouTube](https://www.youtube.com/results?search_query=kubernetes+sig+apps)。
+"""
+
+[community_standup_title]
+other = "开发者站立会"
+
+[community_standup_time]
+other = "周四上午 9:30-10 (PT)"
+
+[community_standup_desc]
+other = "会议向大众开放，查看[社区记录](https://github.com/helm/community/blob/main/communication.md#meetings)了解公告和细节。"
+
+[community_slack_title]
+other = "Slack"
+
+[community_slack_group_01_title]
+other = "Helm 用户"
+
+[community_slack_group_01_desc]
+other = "围绕使用 Helm，chart 和解决一般性错误进行讨论。"
+
+[community_slack_group_02_title]
+other = "Helm 开发"
+
+[community_slack_group_02_desc]
+other = "议题涉及 Helm 开发，正在进行的 PR，发版等等。"
+
+[community_slack_group_03_title]
+other = "Helm Chart"
+
+[community_slack_group_03_desc]
+other = "关于 Helm Chart 的用户和贡献者的讨论。"
+
+[community_slack_join]
+other = "[从此处请求访问](https://slack.k8s.io/)加入 Kubernetes Slack 组."
+
+[community_contrib_title]
+other = "贡献"
+
+[community_contrib_subtitle]
+other = "Helm 一直欢迎对此项目的新贡献！"
+
+
+[community_contrib_desc]
+other = """
+### 从哪里开始？
+
+Helm 是一个有着大量用户和开发者的大型项目，还会有更多人加入！
+
+如果您想帮助我们但是不知道从哪里开始，我们有个[首要任务列表](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22)。
+
+### 我该做什么？
+
+在开始贡献代码之前，请阅读我们的[贡献指南](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)。它涵盖了创建和查看拉取请求的内容。
+
+一旦你开始写代码，请[签名你的提交](https://helm.sh/blog/helm-dco/index.html)来保证 Helm 使用 [CNCF](https://www.cncf.io/) 坚持使用的 [DCO](https://developercertificate.org/) 协议。
+"""
+
+# 404 page
+[404_title]
+other = "**404** **页面未找到。**"
+
+[404_subtitle]
+other = "抱歉。如果有问题请 [在这里报告](https://github.com/helm/helm-www/issues/new)。"
