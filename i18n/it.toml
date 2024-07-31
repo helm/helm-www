@@ -37,7 +37,7 @@ other = "Noi siamo un progetto graduated della Cloud Native Computing Foundation
 other = "**Il** **package manager** **per Kubernetes**"
 
 [main_subtitle]
-other = "Helm è il modo migliore per trovare, condividere e utilizzare il software realizzato per [Kubernetes](https://kubernetes.io)."
+other = "Helm è il modo migliore per trovare, condividere e utilizzare applicazioni realizzate per [Kubernetes](https://kubernetes.io)."
 
 ## homepage about helm
 [main_what_is_helm_title]
