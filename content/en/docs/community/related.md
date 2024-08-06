@@ -78,6 +78,8 @@ Tools layered on top of Helm.
   Hosts on OCI Registry
 - [Codefresh](https://codefresh.io) - Kubernetes native CI/CD and management
   platform with UI dashboards for managing Helm charts and releases
+- ⁠[Cyclops](https://cyclops-ui.com) - Dynamic Kubernetes UI rendering based
+  on Helm charts
 - [Flux](https://fluxcd.io/docs/components/helm/) -
   Continuous and progressive delivery from Git to Kubernetes.
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile is a declarative
