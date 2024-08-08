@@ -14,8 +14,8 @@ Versioning](https://semver.org/spec/v2.0.0.html) terminology.
 
 The Helm project maintains a release branch for the most recent minor release.
 Applicable fixes, including security fixes, are cherry-picked into the release
-branch, depending on severity and feasibility. More details can be found in 
-[Helm's release policy](/topics/release_policy.md).
+branch, depending on severity and feasibility. More details can be found in
+[Helm's release policy](release_policy.md).
 
 ## Supported Version Skew
 
@@ -46,6 +46,7 @@ with your cluster.
 
 | Helm Version | Supported Kubernetes Versions |
 |--------------|-------------------------------|
+| 4.0.x        | 1.34.x - 1.31.x               |
 | 3.19.x       | 1.34.x - 1.31.x               |
 | 3.18.x       | 1.33.x - 1.30.x               |
 | 3.17.x       | 1.32.x - 1.29.x               |
@@ -66,20 +67,3 @@ with your cluster.
 | 3.2.x        | 1.18.x - 1.15.x               |
 | 3.1.x        | 1.17.x - 1.14.x               |
 | 3.0.x        | 1.16.x - 1.13.x               |
-| 2.16.x       | 1.16.x - 1.15.x               |
-| 2.15.x       | 1.15.x - 1.14.x               |
-| 2.14.x       | 1.14.x - 1.13.x               |
-| 2.13.x       | 1.13.x - 1.12.x               |
-| 2.12.x       | 1.12.x - 1.11.x               |
-| 2.11.x       | 1.11.x - 1.10.x               |
-| 2.10.x       | 1.10.x - 1.9.x                |
-| 2.9.x        | 1.10.x - 1.9.x                |
-| 2.8.x        | 1.9.x - 1.8.x                 |
-| 2.7.x        | 1.8.x - 1.7.x                 |
-| 2.6.x        | 1.7.x - 1.6.x                 |
-| 2.5.x        | 1.6.x - 1.5.x                 |
-| 2.4.x        | 1.6.x - 1.5.x                 |
-| 2.3.x        | 1.5.x - 1.4.x                 |
-| 2.2.x        | 1.5.x - 1.4.x                 |
-| 2.1.x        | 1.5.x - 1.4.x                 |
-| 2.0.x        | 1.4.x - 1.3.x                 |
