@@ -14,7 +14,7 @@ Versioning](https://semver.org/spec/v2.0.0.html) terminology.
 
 The Helm project maintains a release branch for the most recent minor release.
 Applicable fixes, including security fixes, are cherry-picked into the release
-branch, depending on severity and feasibility. More details can be found in 
+branch, depending on severity and feasibility. More details can be found in
 [Helm's release policy](release_policy.md).
 
 ## Supported Version Skew
@@ -46,6 +46,7 @@ with your cluster.
 
 | Helm Version | Supported Kubernetes Versions |
 |--------------|-------------------------------|
+| 3.15.x       | 1.30.x - 1.27.x               |
 | 3.14.x       | 1.29.x - 1.26.x               |
 | 3.13.x       | 1.28.x - 1.25.x               |
 | 3.12.x       | 1.27.x - 1.24.x               |
