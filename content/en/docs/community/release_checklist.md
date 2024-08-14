@@ -161,7 +161,7 @@ Creating a [helm/helm
 milestone](https://github.com/helm/helm/milestones) is optional for patch
 releases.
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
+Make sure to check [GitHub Actions](https://github.com/helm/helm/actions) to see
 that the release passed CI before proceeding. Patch releases can skip steps 2-5
 and proceed to step 6 to [Finalize the Release](#6-finalize-the-release).
 
@@ -232,7 +232,7 @@ upstream and start the test process.
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Make sure to check [helm on CircleCI](https://circleci.com/gh/helm/helm) to see
+Make sure to check [GitHub Actions](https://github.com/helm/helm/actions) to see
 that the release passed CI before proceeding.
 
 If anyone is available, let others peer-review the branch before continuing to
@@ -249,10 +249,10 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI will automatically create a tagged release image and client binary to
+GitHub Actions will automatically create a tagged release image and client binary to
 test with.
 
-For testers, the process to start testing after CircleCI finishes building the
+For testers, the process to start testing after GitHub Actions finishes building the
 artifacts involves the following steps to grab the client:
 
 linux/amd64, using /bin/bash:
@@ -329,7 +329,7 @@ git push upstream $RELEASE_NAME
 ```
 
 Verify that the release succeeded in
-[CircleCI](https://circleci.com/gh/helm/helm). If not, you will need to fix the
+[GitHub Actions](https://github.com/helm/helm/actions). If not, you will need to fix the
 release and push the release again.
 
 As the CI job will take some time to run, you can move on to writing release

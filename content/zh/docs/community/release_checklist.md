@@ -130,7 +130,7 @@ git push upstream $RELEASE_BRANCH_NAME
 
 针对补丁版本，创建[helm/helm里程碑](https://github.com/helm/helm/milestones)是可选的。
 
-继续之前确保[helm 在 CircleCI](https://circleci.com/gh/helm/helm)通过CI。补丁版本可以跳过2-5步，
+继续之前确保[helm 在 GitHub Actions](https://github.com/helm/helm/actions)通过CI。补丁版本可以跳过2-5步，
 直接执行6 [完成发布](#6-finalize-the-release)。
 
 ## 2. Major/Minor releases: Change the Version Number in Git
@@ -194,7 +194,7 @@ git push origin bump-version-<release-version>
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-继续之前确保 [helm 在CircleCI](https://circleci.com/gh/helm/helm)版本通过CI。
+继续之前确保 [helm 在GitHub Actions](https://github.com/helm/helm/actions)版本通过CI。
 
 如果有人可用，让其他人在确保所有更改都已正确处理且所有该版本的提交都已存在，并提前对分支进行同行评审。
 
@@ -207,9 +207,9 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI 会自动创建一个打tag的发布镜像，同时测试客户端库。
+GitHub Actions 会自动创建一个打tag的发布镜像，同时测试客户端库。
 
-对测试人员来说，在CircleCI完成测试构建过程之后开始测试，包括以下步骤来获取客户端：
+对测试人员来说，在GitHub Actions完成测试构建过程之后开始测试，包括以下步骤来获取客户端：
 
 linux/amd64, 使用 /bin/bash:
 
@@ -271,7 +271,7 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-在[CircleCI](https://circleci.com/gh/helm/helm)中验证发布是否成功。如果不行，需要修复这个版本并重新推送。
+在[GitHub Actions](https://github.com/helm/helm/actions)中验证发布是否成功。如果不行，需要修复这个版本并重新推送。
 
 由于CI作业需要运行一段时间，你可以在等待其完成时去写发布日志。
 

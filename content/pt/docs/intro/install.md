@@ -31,7 +31,7 @@ um repositório dos Charts do Helm](https://helm.sh/docs/intro/quickstart/#initi
 `helm help`.
 
 **Nota:** Os testes automatizados do Helm são realizados para a plataforma Linux
-AMD64 somente durante os _builds_ e _releases_ do CircleCI. Testes para outros
+AMD64 somente durante os _builds_ e _releases_ do GitHub Actions. Testes para outros
 sistemas operacionais não estão cobertos e são de responsabilidade da comunidade
 em solicitá-los.
 

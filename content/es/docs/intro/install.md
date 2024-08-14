@@ -31,7 +31,7 @@ De ahí, debes ser capaz de correr el cliente y
 `helm help`.
 
 **Nota:** Las pruebas automatizadas de Helm se realizan para Linux AMD64 solo durante
-las compilaciones y lanzamientes de CircleCi. Las pruebas de otros sistemas operativos
+las compilaciones y lanzamientes de GitHub Actions. Las pruebas de otros sistemas operativos
 son responsabilidad de la comunidad que solicita Helm para el sistema operativo
 en cuestión.
 
