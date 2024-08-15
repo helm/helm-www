@@ -22,7 +22,7 @@ et installé.
 
 A ce stade, vous devriez être cappable de lancer le client et [d'ajouter le dépot stable](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
 
-**Remarque:** Les tests automatisés de Helm sont effectués pour Linux AMD64 uniquement pendant les build et release CircleCi. Les tests d'autres systèmes d'exploitation sont sous la responsabilité de la communauté qui demande Helm pour le système d'exploitation en question.
+**Remarque:** Les tests automatisés de Helm sont effectués pour Linux AMD64 uniquement pendant les build et release GitHub Actions. Les tests d'autres systèmes d'exploitation sont sous la responsabilité de la communauté qui demande Helm pour le système d'exploitation en question.
 
 ### À partir du script
 
