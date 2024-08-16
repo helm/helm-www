@@ -35,6 +35,7 @@ helm lint PATH [flags]
       --strict                    fail on lint warnings
   -f, --values strings            specify values in a YAML file or a URL (can specify multiple)
       --with-subcharts            lint dependent charts
+      --lint-ignore-file          path to .helmlintignore file to specify ignore patterns
 ```
 
 ### Options inherited from parent commands

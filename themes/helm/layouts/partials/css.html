@@ -1,4 +1,4 @@
-{{ $serverMode  := site.IsServer }}
+{{ $serverMode  := hugo.IsServer }}
 {{ $isDoc       := eq .Section "docs" }}
 {{ $sass        := "sass/styles.scss" }}
 {{ $includes    := (slice "node_modules") }}

@@ -1,5 +1,5 @@
 {{ $jquery     := resources.Get "js/jquery.js" | resources.Minify | fingerprint }}
-{{ $serverMode := site.IsServer }}
+{{ $serverMode := hugo.IsServer }}
 {{ $jsOut      := "js/bundle.js" }}
 {{ $isDoc      := eq .Section "docs" }}
 {{ $jsFiles    := site.Params.jsFiles }}
