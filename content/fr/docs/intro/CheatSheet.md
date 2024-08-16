@@ -93,7 +93,7 @@ helm search hub <keyword>         # Recherche des charts sur l'Artificat Hub ou 
 helm list                       # Liste toutes les versions pour un namespace spécifique, utilise le namespace du contexte courant si le namespace n'est pas spécifié.
 helm list --all                 # Liste toutes les versions sans filtre appliqué, vous pouvez utiliser '-a'.
 helm list --all-namespaces      # Liste toutes les versions dans tous les namespaces, vous pouvez utiliser '-A'.
-helm -l key1=value1,key2=value2 # Sélécteur (requête sur les étiquettes) sur lequel filtrer, prend en charge '=', '==', et '!='.
+helm list -l key1=value1,key2=value2 # Sélécteur (requête sur les étiquettes) sur lequel filtrer, prend en charge '=', '==', et '!='.
 helm list --date                # Tri par date de sortie.
 helm list --deployed            # Liste les versions déployées. Si aucune n'est spécifiée, cela sera automatiquement activé.
 helm list --pending             # Liste les versions en attente.
