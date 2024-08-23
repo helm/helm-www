@@ -21,16 +21,16 @@ Ces instructions couvriront la configuration initiale suivie du processus de pub
 [Configuration Initiale](#configuration-initiale)
 
 1. [Créer une branche de release](#1-créer-une-branche-de-release)
-2. [Major/Minor releases: Change the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-git)
-3. [Major/Minor releases: Commit and Push the Release Branch](#3-majorminor-releases-commit-and-push-the-release-branch)
-4. [Major/Minor releases: Create a Release Candidate](#4-majorminor-releases-create-a-release-candidate)
-5. [Major/Minor releases: Iterate on Successive Release Candidates](#5-majorminor-releases-iterate-on-successive-release-candidates)
-6. [Finalize the Release](#6-finalize-the-release)
-7. [Write the Release Notes](#7-write-the-release-notes)
-8. [PGP Sign the downloads](#8-pgp-sign-the-downloads)
-9. [Publish Release](#9-publish-release)
-10. [Update Docs](#10-update-docs)
-11. [Tell the Community](#11-tell-the-community)
+2. [Versions majeures/mineures : Modifier le numéro de version dans Git](#2-versions-majeuresmineures--modifier-le-numéro-de-version-dans-git)
+3. [Versions majeures/mineures : Commiter et pousser la branche de version](#3-versions-majeuresmineures--commiter-et-pousser-la-branche-de-version)
+4. [Version majeures/mineures : Créer une version candidate](#4-version-majeuresmineures--créer-une-version-candidate)
+5. [Versions majeures/mineures : Itérer sur les candidats à la version successifs](#5-versions-majeuresmineures--itérer-sur-les-candidats-à-la-version-successifs)
+6. [Finaliser la version](#6-finaliser-la-version)
+7. [Rédiger les notes de version](#7-rédiger-les-notes-de-version)
+8. [Signer les téléchargements avec PGP](#8-signer-les-téléchargements-avec-pgp)
+9. [Publication d'une version](#9-publication-dune-version)
+10. [Mettre à jour la documentation](#10-mettre-à-jour-la-documentation)
+11. [Informer la communauté](#11-informer-la-communauté)
 
 ## Configuration Initiale
 

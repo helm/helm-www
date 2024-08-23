@@ -1,10 +1,6 @@
 ---
 title: "Foire Aux Questions"
 weight: 8
-aliases: [
-  "/fr/docs/topics/faq/",
-  "/fr/docs/faq/"
-]
 ---
 
 # Foire Aux Questions
