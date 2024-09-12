@@ -131,6 +131,7 @@ func main() {
     client := action.NewList(actionConfig)
     // Only list deployed
     client.Deployed = true
+    client.SetStateMask()
     results, err := client.Run()
     if err != nil {
         log.Printf("%+v", err)
