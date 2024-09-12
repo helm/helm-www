@@ -35,6 +35,18 @@ As a pre-requisite, you would need to have
 [golangci-lint](https://golangci-lint.run)
 installed.
 
+## Running Locally
+
+You can update your path and add the path of your local helm binary. In an editor
+open your shell config file. Add the following line making sure you replace
+`<path to your binary folder>` with your local bin directory.
+
+``` bash
+export PATH="<path to your binary folder>:$PATH"
+```
+
+This will allow you to run the locally built version of helm from your terminal.
+
 ## Contribution Guidelines
 
 We welcome contributions. This project has set up some guidelines in order to
