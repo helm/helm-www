@@ -1,0 +1,211 @@
+# site-wide copy
+
+## actions and labels
+[action_get_started]
+other = "始めましょう"
+
+[action_get_started_link]
+other = "/ja/docs/intro/quickstart"
+
+[action_translate]
+other = "このページを翻訳"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
+[action_copy]
+other = "コピー"
+
+## site-wide banner about versioning
+[banner_1]
+other = ""
+
+## footer
+[footer_support_title]
+other = "Helm は、400人を超える開発者のコミュニティによってサポートされ、構築されています。"
+
+[footer_support_subtitle]
+other = "...そして他の多くの素晴らしい [helm](https://github.com/helm/helm/blob/main/OWNERS) と [charts](https://github.com/helm/charts/blob/master/OWNERS) コアメンテナー。"
+
+[footer_cncf_status]
+other = "私たちは Cloud Native Computing Foundation の Graduated プロジェクトです。"
+
+# homepage copy
+
+## homepage intro
+[main_title]
+other = "**Kubernetes 用** **パッケージマネージャー**"
+
+[main_subtitle]
+other = "Helm は、[Kubernetes](https://kubernetes.io) 用に構築されたソフトウェアを検索、共有、使用するための最良の方法です。"
+
+## homepage about helm
+[main_what_is_helm_title]
+other = "Helm とは何ですか？"
+
+[main_what_is_helm_description]
+other = """
+Helm は、Kubernetes アプリケーションの管理を支援します。Helm チャートは、最も複雑な Kubernetes アプリケーションの定義、インストール、およびアップグレードを支援します。
+
+チャートは簡単に作成、バージョン管理、共有、公開できるので、Helm の使用を開始し、コピー & ペーストはやめましょう。
+
+Helm は [CNCF](https://cncf.io) の Graduated プロジェクトであり、[Helm コミュニティ](https://github.com/helm/community)によって管理されています。
+
+### Learn more:
+
+* [Helm アーキテクチャ](./docs/topics/architecture/)
+* [クイックスタートガイド](./docs/intro/quickstart/)
+* [ビデオ: Helm の概要](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+"""
+
+[main_why_teams_love]
+other = 'Why Teams <i class="fa fa-heart"></i> Helm'
+
+[feature_01_title]
+other = "複雑さを管理する"
+
+[feature_01_desc]
+other = "チャートは最も複雑なアプリについても説明し、繰り返し可能なアプリケーションのインストールを提供し、単一の権限ポイントとして機能します。"
+
+[feature_02_title]
+other = "簡単なアップデート"
+
+[feature_02_desc]
+other = "in-place アップグレードとカスタムフックを使用して、更新の手間を省きます。"
+
+[feature_03_title]
+other = "簡単な共有"
+
+[feature_03_desc]
+other = "チャートは、バージョン管理、共有、パブリックサーバーまたはプライベートサーバーでのホストが簡単です。"
+
+[feature_04_title]
+other = "ロールバック"
+
+[feature_04_desc]
+other = "`helm rollback` を使用すると、リリースの古いバージョンに簡単にロールバックできます。"
+
+## homepage get helm
+[get_helm_title]
+other = "ヘルムを入手！"
+
+[get_helm_desc]
+other = "Helm をパッケージマネージャーでインストールするか、[バイナリをダウンロード](https://github.com/helm/helm/releases/latest)します。"
+
+[get_helm_next]
+other = "インストールしたら、helm バイナリを解凍して PATH に追加すれば準備完了です。[インストール](./docs/intro/install/)と[使用手順](./docs/intro/using_helm/)については、[docs](./docs/intro/install/) を確認してください。"
+
+[get_charts_title]
+other = "チャートを取得"
+
+[get_charts_desc]
+other = "[Helm Hub](https://hub.helm.sh) にアクセスして、多くの公開 Helm リポジトリからチャートを探索してください。"
+
+[get_upgrade_title]
+other = "[v2 から v3 にアップグレードしますか？](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+[get_upgrade_desc]
+other = "[詳細については、移行ドキュメントをご覧ください。](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+## homepage community
+[community_title]
+other = "コミュニティに参加"
+
+[community_desc]
+other = "Helm プロジェクトの詳細と貢献方法。"
+
+[community_events_title]
+other = "イベント"
+
+[community_upcoming_events_title]
+other = "今後のイベント"
+
+[community_upcoming_events_desc]
+other = "このスペースをご覧ください..."
+
+[community_past_events_title]
+other = "過去のイベント"
+
+[community_past_event_01]
+other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+
+[community_past_event_02]
+other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+
+[community_past_event_03]
+other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+
+[community_sig_title]
+other = "SIG Apps"
+
+[community_sig_subtitle]
+other = "Kubernetes でアプリをデプロイして操作するための特に興味深いグループ。"
+
+[community_sig_desc]
+other = """
+[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) は、Kubernetes でアプリをデプロイして操作するための特に興味深いグループです。
+
+彼らは[毎週会って](https://github.com/kubernetes/community/blob/master/sig-apps/README.md)デモやツールやプロジェクトについて議論します。コミュニティミーティングは記録され、[YouTube で共有されます](https://www.youtube.com/results?search_query=kubernetes+sig+apps)。
+"""
+
+[community_standup_title]
+other = "開発者スタンドアップ"
+
+[community_standup_time]
+other = "Thursdays 9:30-10am (PT)"
+
+[community_standup_desc]
+other = "これらの会議は誰でも参加できます。メモと詳細については、[コミュニティリポジトリ](https://github.com/helm/community/blob/main/communication.md#meetings) を確認してください。"
+
+[community_slack_title]
+other = "Slack"
+
+[community_slack_group_01_title]
+other = "Helm ユーザ"
+
+[community_slack_group_01_desc]
+other = "Helm の使用、チャートの操作、一般的なエラーの解決に関するディスカッション。"
+
+[community_slack_group_02_title]
+other = "Helm 開発"
+
+[community_slack_group_02_desc]
+other = "Helm 開発、進行中の PR、リリースなどに関するトピック"
+
+[community_slack_group_03_title]
+other = "チャート"
+
+[community_slack_group_03_desc]
+other = "Helm チャートのユーザと貢献者のためのディスカッション。"
+
+[community_slack_join]
+other = "[ここからアクセスをリクエスト](https://slack.k8s.io/)して、Kubernetes Slack チームに参加してください。"
+
+[community_contrib_title]
+other = "貢献"
+
+[community_contrib_subtitle]
+other = "Helm は常にプロジェクトへの新しい貢献を歓迎します！"
+
+
+[community_contrib_desc]
+other = """
+### どこから始めますか？
+
+Helm は、多くのユーザーと貢献者がいる大きなプロジェクトです。 取り込むのは大変です！
+
+貢献したいがどこから始めればよいかわからない場合は、[good first issues](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) のリストを用意しています。
+
+### 何をしますか？
+
+コードを投稿する前に、[貢献ガイド](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)をお読みください。プルリクエストの作成と確認に関するプロセスについて説明します。
+
+コードを書いたら、[コミットに署名](https://helm.sh/blog/helm-dco/index.html)して、[CNCF](https://www.cncf.io/) が使用する [DCO](https://developercertificate.org/) 契約に Helm が確実に準拠するようにしてください。
+"""
+
+# 404 page
+[404_title]
+other = "**404** **ページが見つかりません。**"
+
+[404_subtitle]
+other = "申し訳ありません。何かが壊れている場合は、[ここに報告してください](https://github.com/helm/helm-www/issues/new)。"
