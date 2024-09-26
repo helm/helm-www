@@ -1,0 +1,258 @@
+#banner {
+  background: $light2;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  z-index: 850;
+
+  p {
+    color: $navy;
+    padding: 0.75rem 0 1rem;
+  }
+
+  a {
+    color: $navyl;
+    @include ripple;
+  }
+
+  display: block;
+}
+
+.navbar-top {
+  z-index: 1150;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 5.125rem;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  border: none;
+  @include transition;
+
+  &.navbar-top-fixed {
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    top: -120px;
+    padding-top: 0;
+    min-height: 5rem;
+    background: white url('/img/topography.png') left top repeat;
+    background-attachment: fixed;
+    z-index: 1140;
+
+    &.is-active {
+      display: block;
+      top: 8px;
+    }
+  }
+
+  a.navbar-item {
+    color: $navy;
+    font-size: 1rem;
+    @include ripple;
+    @include klinicBold;
+    padding: 1.75rem 1.5vw;
+
+    &:hover {
+      @include opacity(rgba($salmon, 0.5), white);
+    }
+  }
+
+  .navbar-menu {
+    align-items: center;
+    justify-content: center;
+  }
+
+  a.button {
+    margin: 1rem 0;
+    background-color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    position: absolute;
+    height: 3rem !important;
+    right: 1rem;
+    padding: 1rem 1.25vw;
+    border: 2px solid $navyl;
+    color: $navyl;
+    @include transition;
+
+    &:hover {
+      background-color: $navyl;
+      color: white;
+      border-color: $navyl;
+    }
+  }
+
+  li.versioner {
+    padding: 1rem 0.5rem 0 !important;
+    margin: 0 -3rem -1px !important;
+    position: absolute;
+    right: 3.5rem;
+
+    &.l18ner {
+      right: 10rem;
+      
+      a.versioner-trigger {
+        min-width: auto;
+        padding-right: 2.25rem;
+      }
+
+      .l18n-prompt a {
+        background-color: $light1;
+        display: block;
+        text-align: center;
+        line-height: 1.75;
+        margin: 0.5rem auto;
+      }
+
+      ul.dropdown-menu {
+        padding-top: 1rem;
+        li.navbar-item {
+          a {
+
+            code {
+              color: $navy;
+              background-color: lighten($yellow, 25%);
+              border-radius: 50%;
+              display: inline-block;
+              line-height: 2;
+              margin-right: 0.667rem;
+            }
+            
+            &.active {
+              font-weight: bold;
+              color: $dark;
+
+              code {
+                color: $dark;
+                background-color: lighten($salmon, 7.5%);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    a.versioner-trigger {
+      background: rgba(255,255,255,0.5);
+      min-width: 6.25rem;
+      padding: 0.82rem 0.8rem;
+      display: inline-block;
+      text-align: left;
+      position: relative;
+      color: $navyl;
+      font-size: .825rem;
+      @include klinicBold;
+      @include border-radius;
+      letter-spacing: 0;
+      border: 1px solid darken($light2, 5%);
+      overflow: visible;
+    }
+  
+    // versioning dropdown
+    ul.dropdown-menu {
+      padding: 0;
+      margin: 0 0 0 1rem;
+      text-align: left;
+      min-width: 12.5rem;
+      
+      li {
+        margin: 0;
+        display: block;
+        
+        a.navbar-item {
+          margin: 0;
+          color: $blue3;
+          text-align: left;
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+          min-height: 1rem;
+          line-height: 1.8;
+          display: block;
+  
+          em {
+            color: $grey2;
+            font-family: monospace;
+            font-size: 0.825em;
+            font-style: normal;
+            font-weight: normal;
+            padding-left: 0.5rem;
+          }
+          
+          &.active {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  min-height: 0 !important;
+
+  a {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+
+    svg {
+      width: 10rem;
+    }
+  }
+}
+
+
+// Modifiers
+
+  // Home
+  .page-home,
+  .page-404 {
+    .navbar-top-fixed .container {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .navbar-brand {
+      display: none;
+    }
+  }
+
+  .docs,
+  .page-docs {
+    .navbar-top {
+      a.button {
+        display: none;
+      }
+    }
+  }
+
+  .home,
+  .page-blog {
+    .versioner {
+      display: none;
+    }
+
+    li.versioner.l18ner {
+      display: block;
+      right: 13.75rem;
+    }
+  }
+
+  body.ko {
+    .navbar-top {
+      li.versioner {
+        right: 12vw;
+      }
+
+      li.versioner.l18ner {
+        right: 20vw;
+      }
+    }
+  }

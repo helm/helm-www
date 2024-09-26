@@ -1,0 +1,19 @@
+<li class="sidebar-nav-item toctree-l1">
+  <a class="reference internal" href="{{ .RelPermalink }}">
+    <span class="ripple">
+      {{ .Title }}
+    </span>
+  </a>
+
+  {{ with .Pages }}
+  <ul class="current">
+    {{ range . }}
+    <li class="toctree-12">
+      <a href="{{ .RelPermalink }}" title="Switch to {{ .Title }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</li>

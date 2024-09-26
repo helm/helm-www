@@ -1,0 +1,30 @@
+{{ $jquery     := resources.Get "js/jquery.js" | resources.Minify | fingerprint }}
+{{ $serverMode := site.IsServer }}
+{{ $jsOut      := "js/bundle.js" }}
+{{ $isDoc      := eq .Section "docs" }}
+{{ $jsFiles    := site.Params.jsFiles }}
+{{ $jsAll      := (slice) }}
+{{ range $jsFiles }}
+{{ $path := printf "js/%s.js" . }}
+{{ $js   := resources.Get $path }}
+{{ $jsAll = $jsAll | append $js }}
+{{ end }}
+{{ $jsBundle := $jsAll | resources.Concat $jsOut | resources.Minify }}
+<script src="{{ $jquery.RelPermalink }}" integrity="{{ $jquery.Data.Integrity }}"></script>
+
+
+{{ if $serverMode }}
+<script src="{{ $jsBundle.RelPermalink }}"></script>
+{{ else }}
+{{ $prodJsBundle := $jsBundle | fingerprint }}
+<script src="{{ $prodJsBundle.RelPermalink }}" integrity="{{ $prodJsBundle.Data.Integrity }}"></script>
+{{ end }}
+
+{{ if $isDoc }}
+<script async src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '8bca76b0664b04581dc9f9854e844a90',
+  indexName: 'helm',
+  inputSelector: '#q',
+  debug: false // Set debug to true if you want to inspect the dropdown
+  })"></script>
+{{ end }}
