@@ -29,6 +29,7 @@ request](https://github.com/helm/helm-www/pulls).
   Charts from hiera using k8comp
 - [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - Update helm release
   metadata to replace deprecated or removed Kubernetes APIs
+- [helm-migrate-values](https://github.com/OctopusDeployLabs/helm-migrate-values) - Plugin to migrate user-specified values across Helm chart versions to handle breaking schema changes in `values.yaml`
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin to
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - Plugin for Release management, Update release values, pulls(re-creates) helm Charts from deployed releases, set helm release TTL.
