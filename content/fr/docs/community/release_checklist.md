@@ -89,7 +89,7 @@ Cette nouvelle branche servira de base pour la version, sur laquelle nous allons
 
 Vérifiez qu'un [milestone helm/helm](https://github.com/helm/helm/milestones) pour la version existe sur GitHub (en le créant si nécessaire). Assurez-vous que les PRs et les issues pour cette version sont inclus dans ce milestone.
 
-Pour les versions majeures et mineures, passez à l'étape 2 : [Versions majeures/minor : Changer le numéro de version dans Git](#2-majorminor-releases-change-the-version-number-in-git).
+Pour les versions majeures et mineures, passez à l'étape 2 : [Versions majeures/minor : Changer le numéro de version dans Git](#2-versions-majeuresmineures--modifier-le-numéro-de-version-dans-git).
 
 ### Versions de correction
 
@@ -120,7 +120,7 @@ Pousser la branche déclenchera l'exécution des tests. Assurez-vous qu'ils pass
 
 La création d'un [jalon Helm/helm](https://github.com/helm/helm/milestones) est facultative pour les versions de correction.
 
-Assurez-vous de vérifier [helm sur CircleCI](https://circleci.com/gh/helm/helm) pour voir si la version a réussi les tests CI avant de continuer. Les versions de correction peuvent sauter les étapes 2 à 5 et passer directement à l'étape 6 pour [Finaliser la version](#6-finalize-the-release).
+Assurez-vous de vérifier [helm sur CircleCI](https://circleci.com/gh/helm/helm) pour voir si la version a réussi les tests CI avant de continuer. Les versions de correction peuvent sauter les étapes 2 à 5 et passer directement à l'étape 6 pour [Finaliser la version](#6-finaliser-la-version).
 
 ## 2. Versions majeures/mineures : Modifier le numéro de version dans Git
 
@@ -243,7 +243,7 @@ git push upstream $RELEASE_CANDIDATE_NAME
 
 Une fois poussée sur GitHub, vérifiez que la branche avec ce tag se construit correctement dans CI.
 
-À partir de là, répétez simplement ce processus en testant en continu jusqu'à ce que vous soyez satisfait du candidat à la version. Pour un candidat à la version, nous ne rédigeons pas les notes complètes, mais vous pouvez esquisser quelques [notes de version](#7-write-the-release-notes).
+À partir de là, répétez simplement ce processus en testant en continu jusqu'à ce que vous soyez satisfait du candidat à la version. Pour un candidat à la version, nous ne rédigeons pas les notes complètes, mais vous pouvez esquisser quelques [notes de version](#7-rédiger-les-notes-de-version).
 
 ## 6. Finaliser la version
 
