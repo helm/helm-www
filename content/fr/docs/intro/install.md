@@ -20,7 +20,7 @@ et installé.
 2. Décompressez l'archive (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
 3. Trouvez le binaire `helm` dans le répertoire décompréssé, et déplacez le dans la destination voulue (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-A ce stade, vous devriez être cappable de lancer le client et [d'ajouter le dépot stable](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
+A ce stade, vous devriez être cappable de lancer le client et [d'ajouter le dépot stable]({{< ref "docs/intro/quickstart.mc#initialiser-un-dépot-de-charts-helm" >}}): `helm help`.
 
 **Remarque:** Les tests automatisés de Helm sont effectués pour Linux AMD64 uniquement pendant les build et release CircleCi. Les tests d'autres systèmes d'exploitation sont sous la responsabilité de la communauté qui demande Helm pour le système d'exploitation en question.
 
@@ -128,4 +128,4 @@ Si nécessaire, Helm récupérera les dépendances et les mettra en cache, il po
 
 Dans la plupart des cas, l'installation est aussi simple que de télécharger un binaire `helm` pré-compilé. Ce document couvre des cas supplémentaires pour ceux qui veulent utiliser Helm dans des cas plus sophistiqués.
 
-Une fois que le client Helm est installé avec succès, vous pouvez passer à l'utilisation de Helm pour gérer des Charts [ajouter le dépot stable](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+Une fois que le client Helm est installé avec succès, vous pouvez passer à l'utilisation de Helm pour gérer des Charts [ajouter le dépot stable]({{< ref "docs/intro/quickstart.mc#initialiser-un-dépot-de-charts-helm" >}}).

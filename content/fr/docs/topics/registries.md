@@ -115,7 +115,7 @@ to be created beforehand. Otherwise, an error will be produced during the
 
 Si vous avez créé un [fichier de provenance]({{< ref "provenance.md" >}}) (`.prov`) et qu'il est présent à côté du fichier `.tgz` du chart, il sera automatiquement téléchargé vers le registre lors de l'opération `push`. Cela ajoute une couche supplémentaire sur [le manifeste du chart Helm](#helm-chart-manifest).
 
-Les utilisateurs du [plugin helm-push](https://github.com/chartmuseum/helm-push) (pour télécharger des charts vers [ChartMuseum]({{}}) peuvent rencontrer des problèmes, car le plugin entre en conflit avec la nouvelle fonction `push` intégrée. Depuis la version v0.10.0, le plugin a été renommé en `cm-push`.
+Les utilisateurs du [plugin helm-push](https://github.com/chartmuseum/helm-push) (pour télécharger des charts vers [ChartMuseum]({{< ref "/docs/topics/chart_repository.md#serveur-de-dépôt-chartmuseum" >}}) peuvent rencontrer des problèmes, car le plugin entre en conflit avec la nouvelle fonction `push` intégrée. Depuis la version v0.10.0, le plugin a été renommé en `cm-push`.
 
 ### Autres sous-commandes
 

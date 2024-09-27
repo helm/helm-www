@@ -6,7 +6,7 @@ weight: 12
 
 Un plugin Helm est un outil qui peut être accédé via l'interface en ligne de commande `helm`, mais qui ne fait pas partie de la base de code intégrée de Helm.
 
-Les plugins existants peuvent être trouvés dans la section [liée]({{}}) ou en recherchant sur [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
+Les plugins existants peuvent être trouvés dans la section [liée]({{< ref "/docs/community/related.md#plugins-helm" >}}) ou en recherchant sur [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 
 Ce guide explique comment utiliser et créer des plugins.
 
@@ -190,9 +190,9 @@ Remarques :
 3. Les arguments courts et longs peuvent et doivent être spécifiés. Un argument court n'a pas besoin d'être associé à sa forme longue correspondante, mais les deux formes doivent être listées.
 4. Les arguments n'ont pas besoin d'être ordonnés de manière spécifique, mais doivent être listés au bon endroit dans la hiérarchie des sous-commandes du fichier.
 5. Les arguments globaux existants de Helm sont déjà pris en charge par le mécanisme d'auto-complétion de Helm, donc les plugins n'ont pas besoin de spécifier les arguments suivants : `--debug`, `--namespace` ou `-n`, `--kube-context`, et `--kubeconfig`, ou tout autre flag global.
-6. La liste `validArgs` fournit une liste statique de complétions possibles pour le premier paramètre suivant une sous-commande. Il n'est pas toujours possible de fournir une telle liste à l'avance (voir la section [Complétion Dynamique]() ci-dessous), auquel cas la section `validArgs` peut être omise.
+6. La liste `validArgs` fournit une liste statique de complétions possibles pour le premier paramètre suivant une sous-commande. Il n'est pas toujours possible de fournir une telle liste à l'avance (voir la section [Complétion Dynamique](#complétion-dynamique) ci-dessous), auquel cas la section `validArgs` peut être omise.
 
-Le fichier `completion.yaml` est entièrement optionnel. S'il n'est pas fourni, Helm ne proposera tout simplement pas l'auto-complétion shell pour le plugin (à moins que la [Complétion Dynamique]() soit supportée par le plugin). De plus, l'ajout d'un fichier `completion.yaml` est rétrocompatible et n'affectera pas le comportement du plugin avec les versions antérieures de Helm.
+Le fichier `completion.yaml` est entièrement optionnel. S'il n'est pas fourni, Helm ne proposera tout simplement pas l'auto-complétion shell pour le plugin (à moins que la [Complétion Dynamique](#complétion-dynamique) soit supportée par le plugin). De plus, l'ajout d'un fichier `completion.yaml` est rétrocompatible et n'affectera pas le comportement du plugin avec les versions antérieures de Helm.
 
 Par exemple, pour le [`plugin fullstatus`](https://github.com/marckhouzam/helm-fullstatus) qui n'a pas de sous-commandes mais accepte les mêmes flags que la commande `helm status`, le fichier `completion.yaml` est :
 
@@ -278,7 +278,7 @@ Le vrai script du plugin `fullstatus` (`status.sh`) doit alors rechercher l'argu
 ### Conseils et astuces
 
 1. Le shell filtrera automatiquement les choix de complétion qui ne correspondent pas à l'entrée de l'utilisateur. Un plugin peut donc retourner toutes les complétions pertinentes sans supprimer celles qui ne correspondent pas à l'entrée de l'utilisateur. Par exemple, si la ligne de commande est `helm fullstatus ngin<TAB>`, le script `plugin.complete` peut imprimer *tous* les noms de release (de l'espace de noms `default`), pas seulement ceux commençant par `ngin` ; le shell ne conservera que ceux commençant par `ngin`.
-2. Pour simplifier le support de la complétion dynamique, surtout si vous avez un plugin complexe, vous pouvez faire en sorte que votre script `plugin.complete` appelle votre script principal de plugin et demande des choix de complétion. Voir la section [Complétion Dynamique]() ci-dessus pour un exemple.
+2. Pour simplifier le support de la complétion dynamique, surtout si vous avez un plugin complexe, vous pouvez faire en sorte que votre script `plugin.complete` appelle votre script principal de plugin et demande des choix de complétion. Voir la section [Complétion Dynamique](#complétion-dynamique) ci-dessus pour un exemple.
 3. Pour déboguer la complétion dynamique et le fichier `plugin.complete`, vous pouvez exécuter ce qui suit pour voir les résultats de complétion :
    - `helm __complete <pluginName> <arguments à compléter>`. Par exemple :
      - `helm __complete fullstatus --output js<ENTER>`,

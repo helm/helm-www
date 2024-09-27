@@ -6,24 +6,24 @@ weight: 6
 
 Helm comprend de nombreuses fonctions de modèle que vous pouvez utiliser dans les modèles. Elles sont listées ici et classées par les catégories suivantes :
 
-* [Cryptographic and Security](#cryptographic-and-security-functions)
-* [Date](#date-functions)
-* [Dictionaries](#dictionaries-and-dict-functions)
-* [Encoding](#encoding-functions)
-* [File Path](#file-path-functions)
-* [Kubernetes and Chart](#kubernetes-and-chart-functions)
-* [Logic and Flow Control](#logic-and-flow-control-functions)
-* [Lists](#lists-and-list-functions)
-* [Math](#math-functions)
-* [Float Math](#float-math-functions)
-* [Network](#network-functions)
-* [Reflection](#reflection-functions)
-* [Regular Expressions](#regular-expressions)
-* [Semantic Versions](#semantic-version-functions)
+* [Cryptographiques et Sécurité](#fonctions-cryptographiques-et-de-sécurité)
+* [Date](#fonctions-de-date)
+* [Dictionnaires](#dictionnaires-et-fonctions-de-dictionnaire)
+* [Encodage](#fonctions-dencodage)
+* [Chemin de Fichier](#fonctions-de-chemin-de-fichier)
+* [Kubernetes et Charts](#kubernetes-et-fonctions-de-charts)
+* [Logique et de Contrôle de Flux.](#fonctions-de-logique-et-de-contrôle-de-flux)
+* [Listes](#listes-et-fonctions-de-liste)
+* [Mathématiques](#fonctions-mathématiques)
+* [Flottant en Mathématique](#fonctions-mathématiques-pour-les-nombres-à-virgule-flottante)
+* [Réseau](#fonctions-réseau)
+* [Réflexion](#fonctions-de-réflexion)
+* [Expressions régulières](#expressions-régulières)
+* [Version Sémantique](#fonctions-de-version-sémantique)
 * [String](#string-functions)
-* [Type Conversion](#type-conversion-functions)
-* [URL](#url-functions)
-* [UUID](#uuid-functions)
+* [Conversion de Type](#fonctions-de-conversion-de-type)
+* [URL](#fonctions-durl)
+* [UUID](#fonctions-uuid)
 
 ## Fonctions de logique et de contrôle de flux.
 
@@ -207,17 +207,17 @@ Ce qui précède renvoie `"bar"`.
 
 Helm comprend les fonctions de chaîne suivantes : [abbrev](#abbrev),
 [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
-[contains](#contains), [hasPrefix](#hasprefix-and-hassuffix),
-[hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials),
+[contains](#contains), [hasPrefix](#hasprefix-et-hassuffix),
+[hasSuffix](#hasprefix-et-hassuffix), [indent](#indent), [initials](#initials),
 [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent),
 [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf),
-[println](#println), [quote](#quote-and-squote),
-[randAlpha](#randalphanum-randalpha-randnumeric-and-randascii),
-[randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii),
-[randAscii](#randalphanum-randalpha-randnumeric-and-randascii),
-[randNumeric](#randalphanum-randalpha-randnumeric-and-randascii),
+[println](#println), [quote](#quote-et-squote),
+[randAlpha](#randalphanum-randalpha-randnumeric-et-randascii),
+[randAlphaNum](#randalphanum-randalpha-randnumeric-et-randascii),
+[randAscii](#randalphanum-randalpha-randnumeric-et-randascii),
+[randNumeric](#randalphanum-randalpha-randnumeric-et-randascii),
 [repeat](#repeat), [replace](#replace), [shuffle](#shuffle),
-[snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr),
+[snakecase](#snakecase), [squote](#quote-et-squote), [substr](#substr),
 [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall),
 [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc),
 [untitle](#untitle), [upper](#upper), [wrap](#wrap) et [wrapWith](#wrapwith).
@@ -515,7 +515,7 @@ hasPrefix "cat" "catch"
 
 Ce qui précède renvoie `true` car `catch` a le préfixe `cat`.
 
-### quote and squote
+### quote et squote
 
 Ces fonctions enveloppent une chaîne entre des guillemets doubles (`quote`) ou des guillemets simples (`squote`).
 
@@ -1788,7 +1788,7 @@ Renvoie une valeur à virgule flottante avec le reste arrondi au nombre donné d
 
 `round 123.555555 3` renverra `123.556`.
 
-## Fonctions Réseaux
+## Fonctions Réseau
 
 Helm dispose d'une seule fonction réseau, `getHostByName`.
 
@@ -1846,7 +1846,7 @@ Go possède plusieurs _kinds_ primitifs, comme `string`, `slice`, `int64`, et `b
 
 Go possède un système de _types_ ouvert qui permet aux développeurs de créer leurs propres types.
 
-Helm fournit un ensemble de fonctions pour chaque via [fonctions de kind](#kind-functions) et [fonctions de type](#type-functions). Une fonction [deepEqual](#deepequal) est également fournie pour comparer deux valeurs.
+Helm fournit un ensemble de fonctions pour chaque via [fonctions de kind](#fonctions-de-kind) et [fonctions de type](#functions-de-type). Une fonction [deepEqual](#deepequal) est également fournie pour comparer deux valeurs.
 
 ### Fonctions de Kind
 
@@ -2063,13 +2063,13 @@ L'exemple 'ci-dessus renverra un nouvel UUID de type v4 (généré de manière a
 
 Helm inclut des fonctions pour travailler avec Kubernetes, y compris
 [.Capabilities.APIVersions.Has](#capabilitiesapiversionshas),
-[Files](#file-functions) et [lookup](#lookup).
+[Fichiers](#fonctions-de-fichiers) et [lookup](#lookup).
 
 ### lookup
 
 `lookup` est utilisé pour rechercher des ressources dans un cluster en cours d'exécution. Lorsqu'il est utilisé avec la commande `helm template`, il renvoie toujours une réponse vide.
 
-Vous pouvez trouver plus de détails dans la [documentation sur la fonction lookup]({{}}).
+Vous pouvez trouver plus de détails dans la [documentation sur la fonction lookup](functions_and_pipelines.md/#utilisation-de-la-fonction-lookup).
 
 ### .Capabilities.APIVersions.Has
 
@@ -2080,10 +2080,10 @@ Renvoie si une version d'API ou une ressource est disponible dans un cluster.
 .Capabilities.APIVersions.Has "apps/v1/Deployment"
 ```
 
-Plus d'informations sont disponibles sur le [built-in objects]({{}}).
+Plus d'informations sont disponibles sur le [built-in objects](builtin_objects.md).
 
 ### Fonctions de Fichiers
 
-Il existe plusieurs fonctions qui vous permettent d'accéder à des fichiers non spéciaux dans un chart. Par exemple, pour accéder aux fichiers de configuration de l'application. Ces fonctions sont documentées dans [Accéder aux fichiers à l'intérieur des modèles]({{}}).
+Il existe plusieurs fonctions qui vous permettent d'accéder à des fichiers non spéciaux dans un chart. Par exemple, pour accéder aux fichiers de configuration de l'application. Ces fonctions sont documentées dans [Accéder aux fichiers à l'intérieur des modèles](accessing_files.md).
 
 _Remarque : la documentation pour beaucoup de ces fonctions provient de [Sprig](https://github.com/Masterminds/sprig). Sprig est une bibliothèque de fonctions de modèle disponible pour les applications Go._

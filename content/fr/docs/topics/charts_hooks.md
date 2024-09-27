@@ -67,7 +67,7 @@ Pour tous les autres types, dès que Kubernetes marque la ressource comme charg�
 
 Les ressources créées par un hook ne sont actuellement pas suivies ni gérées dans le cadre de la release. Une fois que Helm vérifie que le hook a atteint son état prêt, il laissera la ressource de hook telle quelle. La collecte des ressources de hook lors de la suppression de la release correspondante pourrait être ajoutée à Helm 3 à l'avenir, donc toute ressource de hook qui ne doit jamais être supprimée doit être annotée avec `helm.sh/resource-policy: keep`.
 
-En pratique, cela signifie que si vous créez des ressources dans un hook, vous ne pouvez pas compter sur `helm uninstall` pour supprimer les ressources. Pour détruire ces ressources, vous devez soit [ajouter une annotation personnalisée `helm.sh/hook-delete-policy`](#hook-deletion-policies) au fichier template du hook, soit [définir le champ de durée de vie (TTL) d'une ressource Job](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
+En pratique, cela signifie que si vous créez des ressources dans un hook, vous ne pouvez pas compter sur `helm uninstall` pour supprimer les ressources. Pour détruire ces ressources, vous devez soit [ajouter une annotation personnalisée `helm.sh/hook-delete-policy`](#politiques-de-suppression-des-hooks) au fichier template du hook, soit [définir le champ de durée de vie (TTL) d'une ressource Job](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
 ## Écrire un Hook
 

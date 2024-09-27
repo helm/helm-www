@@ -19,9 +19,10 @@ Dans la section précédente, nous avons utilisé `{{ .Release.Name }}` pour ins
   - `Release.Service` : Le service qui rend le template en cours. Avec Helm, c'est toujours `Helm`.
 - `Values` : Valeurs passées dans le template depuis le fichier `values.yaml` et les fichiers fournis par l'utilisateur. Par défaut, `Values` est vide.
 - `Chart` : Contenu du fichier `Chart.yaml`. Toutes les données de ce fichier sont accessibles ici. Par exemple, `{{ .Chart.Name }}-{{ .Chart.Version }}` affichera `mychart-0.1.0`.
-  - Les champs disponibles sont listés dans le [Guide des Charts]({{}}).
+  - Les champs disponibles sont listés dans le [Guide des Charts]({{< ref
+    "/docs/topics/charts.md#le-fichier-chartyaml" >}}).
 - `Subcharts` : Donne accès à la portée (.Values, .Charts, .Releases, etc.) des sous-charts du parent. Par exemple, `.Subcharts.mySubChart.myValue` permet d'accéder à `myValue` dans le chart `mySubChart`.
-- `Files` : Permet d'accéder à tous les fichiers non-spéciaux d'un chart, mais pas aux templates. 
+- `Files` : Permet d'accéder à tous les fichiers non-spéciaux d'un chart, mais pas aux templates. Consultez la section [Accéder aux fichiers]({{< ref "/docs/chart_template_guide/accessing_files" >}}) pour en savoir plus.
   - `Files.Get` permet d'obtenir un fichier par son nom (`.Files.Get config.ini`).
   - `Files.GetBytes` retourne le contenu du fichier sous forme de tableau d'octets au lieu d'une chaîne. Utile pour des fichiers comme des images.
   - `Files.Glob` retourne une liste de fichiers dont les noms correspondent au pattern glob donné.

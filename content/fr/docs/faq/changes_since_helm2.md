@@ -119,7 +119,7 @@ Avec ce meilleur alignement aux espaces de noms natifs du cluster, la commande `
 
 ### Secret comme pilote de stockage par défaut
 
-Dans Helm 3, les Secrets sont désormais utilisés comme [pilote de stockage par défaut](/docs/topics/advanced/#storage-backends). Helm 2 utilisait des ConfigMaps par défaut pour stocker les informations de release. Dans Helm 2.7.0, un nouveau backend de stockage utilisant des Secrets pour conserver les informations de release a été implémenté, et il est désormais le pilote de stockage par défaut à partir de Helm 3.
+Dans Helm 3, les Secrets sont désormais utilisés comme [pilote de stockage par défaut]({{< ref "/docs/topics/advanced.md#stockage-des-backends" >}}). Helm 2 utilisait des ConfigMaps par défaut pour stocker les informations de release. Dans Helm 2.7.0, un nouveau backend de stockage utilisant des Secrets pour conserver les informations de release a été implémenté, et il est désormais le pilote de stockage par défaut à partir de Helm 3.
 
 Le passage aux Secrets par défaut dans Helm 3 permet une sécurité accrue pour protéger les charts en conjonction avec la fonctionnalité de chiffrement des Secrets dans Kubernetes.
 
@@ -133,7 +133,7 @@ Dans Helm 3, Helm a modifié le chemin d'importation Go de `k8s.io/helm` à `hel
 
 L'objet intégré `.Capabilities`, disponible durant la phase de rendu, a été simplifié.
 
-[Built-in Objects](/docs/chart_template_guide/builtin_objects/)
+[Objets intégrés]({{< ref "/docs/chart_template_guide/builtin_objects.md" >}})
 
 ### Validation des valeurs de Chart avec JSONSchema
 
@@ -146,7 +146,7 @@ La validation a lieu lorsque l'une des commandes suivantes est invoquée :
 * `helm template`
 * `helm lint`
 
-Consultez la documentation sur les [fichiers de schéma](fr/docs/topics/charts#schema-files) pour plus d'informations.
+Consultez la documentation sur les [fichiers de schéma]({{< ref "/docs/topics/charts.md#fichiers-de-schéma" >}}) pour plus d'informations.
 
 ### Remplacement de `requirements.yaml` en `Chart.yaml`
 
@@ -201,7 +201,7 @@ Le projet Distribution de Docker (également connu sous le nom de Docker Registr
 
 Veuillez consulter `helm help chart` et `helm help registry` pour plus d'informations sur la manière d'empaqueter un chart et de le publier dans un registre Docker.
 
-Pour plus d'information, consultez [cette page](/fr/docs/topics/registries/).
+Pour plus d'information, consultez [cette page]({{< ref "/docs/topics/registries.md" >}}).
 
 ### Suppression de `helm serve`
 

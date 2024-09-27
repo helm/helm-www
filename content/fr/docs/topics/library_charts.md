@@ -54,7 +54,7 @@ data: {}
 
 Le construct ConfigMap est défini dans le template nommé `mylibchart.configmap.tpl`. C'est un ConfigMap simple avec une ressource vide, `data`. Dans ce fichier, il y a un autre template nommé appelé `mylibchart.configmap`. Ce template nommé inclut un autre template nommé, `mylibchart.util.merge`, qui prendra deux templates nommés en arguments : le template appelant `mylibchart.configmap` et `mylibchart.configmap.tpl`.
 
-La fonction d'assistance `mylibchart.util.merge` est un template nommé dans `mylibchart/templates/_util.yaml`. C'est un utilitaire pratique de [Le Chart d'Assistance Helm Commun]() car il fusionne les deux templates et remplace les parties communes dans les deux :
+La fonction d'assistance `mylibchart.util.merge` est un template nommé dans `mylibchart/templates/_util.yaml`. C'est un utilitaire pratique de [Le Chart d'Assistance Helm Commun](#le-chart-dassistance-helm-commun) car il fusionne les deux templates et remplace les parties communes dans les deux :
 
 ```yaml
 {{- /*

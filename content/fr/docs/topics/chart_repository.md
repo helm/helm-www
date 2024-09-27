@@ -11,7 +11,7 @@ Le dépôt de charts Helm communautaire distribué est situé sur [Artifact Hub]
 ## Prérequis
 
 * Consultez le guide [Quickstart]({{< ref "quickstart.md" >}})
-* Lisez le document [Charts]({{}})
+* Lisez le document [Charts]({{< ref "charts.md" >}})
 
 ## Créer un dépôt de charts
 
@@ -23,7 +23,7 @@ Parce qu'un dépôt de charts peut être n'importe quel serveur HTTP capable de 
 
 ### La structure du dépôt de charts
 
-Un dépôt de charts se compose de charts emballés et d'un fichier spécial appelé `index.yaml`, qui contient un index de tous les charts dans le dépôt. Souvent, les charts décrits par `index.yaml` sont également hébergés sur le même serveur, tout comme les [fichiers de provenance]({{}}).
+Un dépôt de charts se compose de charts emballés et d'un fichier spécial appelé `index.yaml`, qui contient un index de tous les charts dans le dépôt. Souvent, les charts décrits par `index.yaml` sont également hébergés sur le même serveur, tout comme les [fichiers de provenance]({{< ref "provenance.md" >}}).
 
 Par exemple, la structure du dépôt `https://example.com/charts` pourrait ressembler à ceci :
 

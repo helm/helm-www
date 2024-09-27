@@ -73,7 +73,7 @@ AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea
 
 Le fichier de configuration global du site, [`config.toml`](https://github.com/helm/helm-www/blob/main/config.toml#L83L89), est l'endroit où la navigation entre les langues est configurée.
 
-Pour ajouter une nouvelle langue, ajoutez un nouvel ensemble de paramètres en utilisant le [code de langue à deux lettres](./localization/#two-letter-language-code) défini ci-dessus. Exemple :
+Pour ajouter une nouvelle langue, ajoutez un nouvel ensemble de paramètres en utilisant le [code de langue à deux lettres](./localization/#code-de-la-langue-à-2-lettres) défini ci-dessus. Exemple :
 
 ```
 # Korean

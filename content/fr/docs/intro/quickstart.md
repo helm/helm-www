@@ -19,7 +19,7 @@ Les conditions préalables suivantes sont requises pour une utilisation correcte
 - Vous devez avoir installé Kubernetes. Pour la dernière release de Helm, nous recommandons la dernière version stable de Kubernetes, qui est dans la plupart des cas la deuxième release mineure la plus récente.
 - Vous devriez également avoir une copie locale configurée de `kubectl`.
 
-Lisez la [Politique de prise en charge de la version Helm](https://helm.sh/docs/topics/version_skew/) pour connaitre la différence de version maximal pris en charge entre Helm et Kubernetes.
+Lisez la [Politique de prise en charge de la version Helm]({{< ref "/docs/topics/version_skew.md" >}}) pour connaitre la différence de version maximal pris en charge entre Helm et Kubernetes.
 
 ## Installer Helm
 

@@ -16,7 +16,7 @@ En plus de cela, il fournit quelques actions pour déclarer et utiliser des segm
 - `template` importe un modèle nommé
 - `block` déclare une sorte de zone de modèle remplissable spéciale
 
-Dans cette section, nous parlerons de `if`, `with` et `range`. Les autres sont abordées dans la section [Modèles nommés]({{}}) plus loin dans ce guide.
+Dans cette section, nous parlerons de `if`, `with` et `range`. Les autres sont abordées dans la section [Modèles nommés](named_templates.md) plus loin dans ce guide.
 
 ## If/Else
 

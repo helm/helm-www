@@ -94,8 +94,8 @@ Le champ `apiVersion` doit être `v2` pour les charts Helm qui nécessitent au m
 
 Changements de `v1` à `v2` :
 
-- Un champ `dependencies` définissant les dépendances du chart, qui étaient situées dans un fichier `requirements.yaml` séparé pour les charts `v1` (voir [Dépendances des Charts](#chart-dependencies)).
-- Le champ `type`, discriminant les charts d'application et les charts de bibliothèque (voir [Types de Charts](#chart-types)).
+- Un champ `dependencies` définissant les dépendances du chart, qui étaient situées dans un fichier `requirements.yaml` séparé pour les charts `v1` (voir [Dépendances des Charts](#dépendances-des-charts)).
+- Le champ `type`, discriminant les charts d'application et les charts de bibliothèque (voir [Types de Charts](#types-de-charts)).
 
 ### Le champ `appVersion`
 
@@ -136,7 +136,7 @@ Lors de la gestion des charts dans un dépôt de charts, il est parfois nécessa
 
 ### Types de Charts
 
-Le champ `type` définit le type de chart. Il y a deux types : `application` et `library`. `application` est le type par défaut et c'est le chart standard qui peut être entièrement utilisé. Le [chart de bibliothèque]({{}}) fournit des utilitaires ou des fonctions pour le constructeur de charts. Un chart de bibliothèque diffère d'un chart d'application car il n'est pas installable et ne contient généralement aucun objet de ressource.
+Le champ `type` définit le type de chart. Il y a deux types : `application` et `library`. `application` est le type par défaut et c'est le chart standard qui peut être entièrement utilisé. Le [chart de bibliothèque]({{< ref "/docs/topics/library_charts.md" >}}) fournit des utilitaires ou des fonctions pour le constructeur de charts. Un chart de bibliothèque diffère d'un chart d'application car il n'est pas installable et ne contient généralement aucun objet de ressource.
 
 **Remarque :** Un chart d'application peut être utilisé comme un chart de bibliothèque. Cela est possible en définissant le type sur `library`. Le chart sera alors rendu comme un chart de bibliothèque où toutes les utilitaires et fonctions peuvent être utilisées. Tous les objets de ressource du chart ne seront pas rendus.
 
@@ -155,7 +155,7 @@ Un README pour un chart devrait être formaté en Markdown (README.md) et devrai
 
 Lorsque les hubs et autres interfaces utilisateur affichent des détails sur un chart, ces détails sont tirés du contenu du fichier `README.md`.
 
-Le chart peut également contenir un fichier `templates/NOTES.txt` en texte brut qui sera imprimé après l'installation et lors de la consultation du statut d'une release. Ce fichier est évalué comme un [template](#templates-and-values) et peut être utilisé pour afficher des notes d'utilisation, des étapes suivantes ou toute autre information pertinente pour une release du chart. Par exemple, des instructions pourraient être fournies pour se connecter à une base de données ou accéder à une interface web. Étant donné que ce fichier est imprimé sur STDOUT lors de l'exécution de `helm install` ou `helm status`, il est recommandé de garder le contenu bref et de renvoyer au README pour plus de détails.
+Le chart peut également contenir un fichier `templates/NOTES.txt` en texte brut qui sera imprimé après l'installation et lors de la consultation du statut d'une release. Ce fichier est évalué comme un [template](#modèles-et-valeurs) et peut être utilisé pour afficher des notes d'utilisation, des étapes suivantes ou toute autre information pertinente pour une release du chart. Par exemple, des instructions pourraient être fournies pour se connecter à une base de données ou accéder à une interface web. Étant donné que ce fichier est imprimé sur STDOUT lors de l'exécution de `helm install` ou `helm status`, il est recommandé de garder le contenu bref et de renvoyer au README pour plus de détails.
 
 ## Dépendances des Charts
 
@@ -314,7 +314,7 @@ Dans certains cas, il est souhaitable de permettre aux valeurs d'un chart enfant
 
 Les clés contenant les valeurs à importer peuvent être spécifiées dans les dépendances du chart parent dans le champ `import-values` en utilisant une liste YAML. Chaque élément de la liste est une clé qui est importée depuis le champ `exports` du chart enfant.
 
-Pour importer des valeurs non contenues dans la clé `exports`, utilisez le format [child-parent](#using-the-child-parent-format). Des exemples des deux formats sont décrits ci-dessous.
+Pour importer des valeurs non contenues dans la clé `exports`, utilisez le format [child-parent](#utilisation-du-format-enfant-parent). Des exemples des deux formats sont décrits ci-dessous.
 
 ##### Utilisation du format `exports`
 
@@ -575,7 +575,7 @@ Notez que seul le dernier champ a été remplacé.
 
 **REMARQUE :** Si l'option `--set` est utilisée avec `helm install` ou `helm upgrade`, ces valeurs sont simplement converties en YAML côté client.
 
-**REMARQUE :** Si des entrées requises dans le fichier de valeurs existent, elles peuvent être déclarées comme requises dans le modèle de chart en utilisant la fonction ['required']({{}})
+**REMARQUE :** Si des entrées requises dans le fichier de valeurs existent, elles peuvent être déclarées comme requises dans le modèle de chart en utilisant la fonction ['required']({{< ref "/docs/howto/charts_tips_and_tricks.md#utilisation-de-la-fonction-required" >}})
 
 Chacune de ces valeurs est ensuite accessible à l'intérieur des modèles en utilisant l'objet `.Values` :
 

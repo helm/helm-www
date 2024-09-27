@@ -34,7 +34,7 @@ Si le dépôt a été ajouté au fichier d'index des dépôts, le nom du dépôt
 
 Les URLs de type `file://...` sont considérées comme un "cas spécial" pour les charts qui sont assemblés par un pipeline de déploiement fixe.
 
-Lorsque vous utilisez des [plugins de téléchargement](), le schéma de l'URL sera spécifique au plugin. Notez qu'un utilisateur du chart devra avoir un plugin prenant en charge le schéma installé pour mettre à jour ou construire la dépendance.
+Lorsque vous utilisez des [plugins de téléchargement]({{< ref "../topics/plugins#plugins-de-téléchargement" >}}), le schéma de l'URL sera spécifique au plugin. Notez qu'un utilisateur du chart devra avoir un plugin prenant en charge le schéma installé pour mettre à jour ou construire la dépendance.
 
 Helm ne peut pas effectuer d'opérations de gestion des dépendances sur la dépendance lorsque le champ `repository` est laissé vide. Dans ce cas, Helm supposera que la dépendance se trouve dans un sous-répertoire du dossier `charts`, avec un nom identique à la propriété `name` de la dépendance.
 

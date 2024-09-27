@@ -213,4 +213,4 @@ data:
 
 L'utilisation de `--dry-run` facilitera le test de votre code, mais cela ne garantira pas que Kubernetes acceptera les modèles que vous générez. Il est préférable de ne pas supposer que votre graphique s'installera simplement parce que `--dry-run` fonctionne.
 
-Dans le [Guide des modèles de graphiques](content/en/docs/chart_template_guide/_index.md), nous prendrons le graphique de base que nous avons défini ici et explorerons en détail le langage de modèle Helm. Nous commencerons par les objets intégrés.
+Dans le [Guide des modèles de graphiques](_index.md), nous prendrons le graphique de base que nous avons défini ici et explorerons en détail le langage de modèle Helm. Nous commencerons par les objets intégrés.

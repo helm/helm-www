@@ -207,7 +207,7 @@ Du point de vue de l'utilisateur final, la commande `helm install --verify myrep
 
 ### Signatures dans les registres basés sur OCI
 
-Lors de la publication de charts dans un [registre basé sur OCI]({{}}), le [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/) peut être utilisé pour publier les informations de provenance sur [sigstore](https://sigstore.dev/). [Comme décrit dans la documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), le processus de création de provenance et de signature avec une clé GPG est similaire, mais la commande `helm sigstore upload` peut être utilisée pour publier la provenance sur un registre d'immuabilité transparent.
+Lors de la publication de charts dans un [registre basé sur OCI]({{< ref "/docs/topics/registries.md" >}}), le [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/) peut être utilisé pour publier les informations de provenance sur [sigstore](https://sigstore.dev/). [Comme décrit dans la documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), le processus de création de provenance et de signature avec une clé GPG est similaire, mais la commande `helm sigstore upload` peut être utilisée pour publier la provenance sur un registre d'immuabilité transparent.
 
 ## Établir l'Autorité et l'Authenticité
 

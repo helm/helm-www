@@ -22,7 +22,7 @@ Vous pouvez exécuter les tests prédéfinis dans Helm sur une release en utilis
 
 ## Exemple de test
 
-La commande [helm create](/docs/helm/helm_create) créera automatiquement un certain nombre de dossiers et de fichiers. Pour essayer la fonctionnalité de test Helm, commencez par créer un chart Helm de démonstration.
+La commande [helm create]({{< ref "/docs/helm/helm_create.md" >}}) créera automatiquement un certain nombre de dossiers et de fichiers. Pour essayer la fonctionnalité de test Helm, commencez par créer un chart Helm de démonstration.
 
 ```console
 $ helm create demo
@@ -83,4 +83,4 @@ Phase:          Succeeded
 
 - Vous pouvez définir autant de tests que vous le souhaitez dans un seul fichier yaml ou les répartir dans plusieurs fichiers yaml dans le répertoire `templates/`.
 - Vous êtes libre de regrouper votre suite de tests sous un répertoire `tests/`, comme `<chart-name>/templates/tests/`, pour une meilleure isolation.
-- Un test est un [hook Helm](/docs/charts_hooks/), donc des annotations telles que `helm.sh/hook-weight` et `helm.sh/hook-delete-policy` peuvent être utilisées avec les ressources de test.
+- Un test est un [hook Helm]({{< ref "/docs/topics/charts_hooks.md" >}}), donc des annotations telles que `helm.sh/hook-weight` et `helm.sh/hook-delete-policy` peuvent être utilisées avec les ressources de test.

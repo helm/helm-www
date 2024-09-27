@@ -5,7 +5,7 @@ description: "Tout ce que vous devez savoir sur l'organisation de la documentati
 
 # Bienvenue
 
-Bienvenue dans la documentation de [Helm](https://helm.sh/). Helm est le manageur de paquet pour Kubernetes. Les informations générales détaillées sont disponnibles ici : [CNCF Helm Project Journey report](https://www.cncf.io/cncf-helm-project-journey/).
+Bienvenue dans la documentation de [Helm](https://helm.sh/). Helm est le manageur de paquet pour Kubernetes. Les informations générales détaillées sont disponibles ici : [CNCF Helm Project Journey report](https://www.cncf.io/cncf-helm-project-journey/).
 
 # Comment la documentation est organisée
 

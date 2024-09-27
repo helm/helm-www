@@ -13,7 +13,7 @@ Avant de plonger dans le code, il y a quelques détails importants à connaître
 3. Un chart parent peut remplacer les valeurs des sous-charts.
 4. Helm possède un concept de _valeurs globales_ qui peuvent être accessibles par tous les charts.
 
-> Ces limitations ne s'appliquent pas forcément à [library charts]({{< ref "/docs/topics/library_charts.md" >}}), qui sont conçus pour fournir des fonctionnalités d'assistance standardisées.
+> Ces limitations ne s'appliquent pas forcément aux [charts librairies]({{< ref "/docs/topics/library_charts.md" >}}), qui sont conçus pour fournir des fonctionnalités d'assistance standardisées.
 
 Au fur et à mesure que nous parcourrons les exemples de cette section, beaucoup de ces concepts deviendront plus clairs.
 

@@ -14,7 +14,7 @@ weight: 2
   sur votre bucket GCS au cas où vous supprimeriez accidentellement quelque chose._
 
 ## Mise en place d'un dépôt de charts local
-Créez un dépôt local, comme nous l'avons fait dans [le guide du dépôt de charts](), et placez-y vos charts packagés.
+Créez un dépôt local, comme nous l'avons fait dans [le guide des dépôts de charts]({{< ref "/docs/topics/chart_repository.md" >}}), et placez-y vos charts packagés.
 
 Pour exemple :
 ```console
@@ -78,7 +78,7 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Liens utiles :
 * Documentation sur [gsutil
   rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [Guide du dépôt de chart]()
+* [Guide des dépôts de chart]({{< ref "/docs/topics/chart_repository.md" >}})
 * Documentation sur [object versioning and concurrency
   control](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)
   sur Google Cloud Storage

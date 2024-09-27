@@ -23,8 +23,8 @@ Helm permet d'accéder aux fichiers via l'objet `.Files`. Avant de commencer ave
 - [Aides pour les chemins](#aides-pour-les-chemins)
 - [Modèles Glob](#modèles-glob)
 - [Fonctions utilitaires pour ConfigMap et Secrets](#fonctions-utilitaires-pour-configmap-et-secrets)
-- [Encoding](#encoding)
-- [Lines](#lines)
+- [Encodage](#encodage)
+- [Lignes](#lignes)
 
 <!-- tocstop -->
 

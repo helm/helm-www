@@ -9,7 +9,7 @@ Ce document décrit l'écart de version maximal supporté entre Helm et Kubernet
 
 Les versions de Helm sont exprimées sous la forme `x.y.z`, où `x` est la version majeure, `y` est la version mineure et `z` est la version de correction, conformément à la terminologie du [Versionnage Sémantique](https://semver.org/spec/v2.0.0.html).
 
-Le projet Helm maintient une branche de version pour la dernière version mineure en date. Les correctifs applicables, y compris les correctifs de sécurité, sont sélectionnés et intégrés dans la branche de version, en fonction de la gravité et de la faisabilité. Plus de détails peuvent être trouvés dans la [politique de publication de Helm]({{}}).
+Le projet Helm maintient une branche de version pour la dernière version mineure en date. Les correctifs applicables, y compris les correctifs de sécurité, sont sélectionnés et intégrés dans la branche de version, en fonction de la gravité et de la faisabilité. Plus de détails peuvent être trouvés dans la [politique de publication de Helm]({{< ref "/docs/topics/release_policy.md" >}}).
 
 ## Écart de version supporté
 

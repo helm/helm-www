@@ -6,7 +6,7 @@ weight: 9
 
 Il est temps de passer au-delà d'un seul template et de commencer à en créer d'autres. Dans cette section, nous verrons comment définir des _templates nommés_ dans un fichier, puis les utiliser ailleurs. Un _template nommé_ (parfois appelé _partiel_ ou _sous-template_) est simplement un template défini à l'intérieur d'un fichier et auquel on donne un nom. Nous verrons deux façons de les créer et quelques façons différentes de les utiliser.
 
-Dans la section [Contrôle de flux](content/en/docs/chart_template_guide/control_structures.md), nous avons présenté trois actions pour déclarer et gérer des templates : `define`, `template` et `block`. Dans cette section, nous aborderons ces trois actions, et nous introduirons également une fonction à usage spécial `include` qui fonctionne de manière similaire à l'action `template`.
+Dans la section [Contrôle de flux]({{< ref "/docs/chart_template_guide/control_structures.md">}}) , nous avons présenté trois actions pour déclarer et gérer des templates : `define`, `template` et `block`. Dans cette section, nous aborderons ces trois actions, et nous introduirons également une fonction à usage spécial `include` qui fonctionne de manière similaire à l'action `template`.
 
 Un détail important à garder à l'esprit lors de la nomination des templates : **les noms des templates sont globaux**. Si vous déclarez deux templates avec le même nom, celui qui est chargé en dernier sera celui utilisé. Étant donné que les templates dans les sous-charts sont compilés avec les templates de niveau supérieur, vous devez faire attention à nommer vos templates avec des _noms spécifiques au chart_.
 
