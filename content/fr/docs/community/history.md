@@ -4,7 +4,7 @@ description: "Fournit un aperçu général de l'historique du projet."
 weight: 4
 ---
 
-Helm est un [projet de la CNCF](https://www.cncf.io/projects/), qui a été [récompensé](https://helm.sh/blog/celebrating-helms-cncf-graduation/).
+Helm est un [projet récompensé](https://helm.sh/blog/celebrating-helms-cncf-graduation/) par la [CNCF](https://www.cncf.io/projects/).
 
 
 Helm a commencé sous ce qui est maintenant connu sous le nom de [Helm Classic](https://github.com/helm/helm-classic), un projet Deis lancé en 2015 et présenté lors de la première KubeCon.
