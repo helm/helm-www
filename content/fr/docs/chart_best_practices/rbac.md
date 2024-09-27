@@ -58,7 +58,7 @@ Le modèle d'aide suivant devrait être utilisé pour le ServiceAccount :
 
 ```yaml
 {{/*
-Create the name of the service account to use
+Créer le nom du compte de service à utiliser
 */}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
@@ -68,7 +68,3 @@ Create the name of the service account to use
 {{- end -}}
 {{- end -}}
 ```
-
-À l'heure actuelle, Helm ne dispose pas de mécanisme permettant d'extraire les RBAC nécessaire pour l'installation, la mise à jour et la désinstallation des charts. Ce qui est contraignant, si l'opérateur exécutant ces commandes Helm, n'a pas les droits admin sur le cluster Kubernetes ou des droits inférieurs à ceux présents dans les charts, cela peut faire remonté des erreurs. Pour ce faire, vous devrez lister manuellement tous les rôles présent dans les ressources RBAC des charts, en plus des rôles de `create`, `list`, `read`, `update`, ... obligatoire pour manipuler vos ressources. Ensuite attribuez ces rôles à l'opérateur pour qu'il puisse disposer au minimum de droit équivalent ou supérieur à ceux du chart.
-
-Note : Certain chart trouvable sur l'ArtifactHub n'ont pas été conçus pour être déployé avec des droits restreints (mais avec tous les droits `*`). Il se peut que vous devrez les modifier.
