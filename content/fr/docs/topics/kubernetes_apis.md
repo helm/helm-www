@@ -36,7 +36,7 @@ Les moyens de mettre à jour une release Helm vers des APIs prises en charge dé
    - Si vous utilisez une version de Kubernetes où les versions d'API sont encore disponibles (par exemple, vous êtes sur Kubernetes 1.15 et vous avez trouvé que vous utilisez des APIs qui seront supprimées dans Kubernetes 1.16) :
      - Suivez la procédure de l'étape 1.
    - Sinon (par exemple, vous utilisez déjà une version de Kubernetes où certaines versions d'API signalées par `helm get manifest` ne sont plus disponibles) :
-     - Vous devez éditer le manifeste de la release stocké dans le cluster pour mettre à jour les versions d'API vers des APIs prises en charge. Voir [Mise à jour des versions d'API d'un manifeste de release](#updating-api-versions-of-a-release-manifest) pour plus de détails.
+     - Vous devez éditer le manifeste de la release stocké dans le cluster pour mettre à jour les versions d'API vers des APIs prises en charge. Voir [Mise à jour des versions d'API d'un manifeste de release](#mise-à-jour-des-versions-dapi-dun-manifeste-de-release) pour plus de détails.
 
 > Remarque : Dans tous les cas de mise à jour d'une release Helm avec des APIs prises en charge, vous ne devez jamais faire de rollback de la release vers une version antérieure à la version de la release avec les APIs prises en charge.
 

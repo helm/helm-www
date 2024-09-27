@@ -20,7 +20,7 @@ Helm comprend de nombreuses fonctions de modèle que vous pouvez utiliser dans l
 * [Réflexion](#fonctions-de-réflexion)
 * [Expressions régulières](#expressions-régulières)
 * [Version Sémantique](#fonctions-de-version-sémantique)
-* [String](#string-functions)
+* [Chaîne de Caractères](#fonction-de-chaîne-de-caractères)
 * [Conversion de Type](#fonctions-de-conversion-de-type)
 * [URL](#fonctions-durl)
 * [UUID](#fonctions-uuid)
