@@ -179,6 +179,72 @@ livenessProbe handler. To overcome this, you may instruct Helm to delete the
 helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
 ```
 
+## Overriding indexes between values files
+In most cases, lists get overridden between different value files layers as they get merged together. For example, the following in base values:
+```yml
+# values.yaml
+myList:
+- one
+- two
+- three
+```
+when combined with these additional values passed in through `-f`
+```yml
+# -f more-values.yaml
+myList:
+- new
+```
+will result in:
+```yml
+# Computed Values
+```yml
+# values.yaml
+myList:
+- new
+```
+
+If we want to instead do a targeted override of an existing list index, we can use the `--index-override` flag as of helm `3.16`:
+
+```yml
+# base values yaml
+volumeMounts:
+- name: foo
+  mountPath: "/etc/foo"
+  readOnly: true
+- name: second
+  mountPath: "/mnt/second"
+  readOnly: true
+```
+
+```yml
+# overlay values
+volumeMounts[1]:
+- name: second
+  mountPath: "/etc/new-place"
+  readOnly: false
+```
+
+```yml
+# computed values
+volumeMounts:
+- name: foo
+  mountPath: "/etc/foo"
+  readOnly: true
+- name: second
+  mountPath: "/etc/new-place"
+  readOnly: false
+```
+
+### Limitations
+There are some key restrictions on the override behavior offered by the `--index-override` flag:
+- The provided index must be valid within the underlying list (not out of bounds, not invalid such as `[]`)
+  - In the example above, only `volumeMounts[0]` and `volumeMounts[1]` would be valid override keys
+- The base key must be present in a lower layer
+  - In the example above would be invalid if the base layer did not contain `volumeMounts`
+- Overrides can not be set in the same layer as the plain key
+  - In the example above, it would be invalid to provide the plain `volumeMounts` key within the overlay values file
+
+
 At this point, we've seen several built-in objects, and used them to inject
 information into a template. Now we will take a look at another aspect of the
 template engine: functions and pipelines.
