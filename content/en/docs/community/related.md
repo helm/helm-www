@@ -60,6 +60,7 @@ tag on their plugin repositories.
 
 Tools layered on top of Helm.
 
+- [Aptakube](https://aptakube.com) - Desktop UI for Kubernetes and Helm Releases
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - Manage
   prefixed releases throughout various Kubernetes namespaces, and removes
   completed jobs for complex deployments
