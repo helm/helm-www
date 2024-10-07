@@ -128,4 +128,4 @@ Si nécessaire, Helm récupérera les dépendances et les mettra en cache, il po
 
 Dans la plupart des cas, l'installation est aussi simple que de télécharger un binaire `helm` pré-compilé. Ce document couvre des cas supplémentaires pour ceux qui veulent utiliser Helm dans des cas plus sophistiqués.
 
-Une fois que le client Helm est installé avec succès, vous pouvez passer à l'utilisation de Helm pour gérer des Charts [ajouter le dépot stable]({{< ref "docs/intro/quickstart.mc#initialiser-un-dépot-de-charts-helm" >}}).
+Une fois que le client Helm est installé avec succès, vous pouvez passer à l'utilisation de Helm pour gérer des Charts [ajouter le dépot stable]({{< ref "docs/intro/quickstart.md#initialiser-un-dépot-de-charts-helm" >}}).
