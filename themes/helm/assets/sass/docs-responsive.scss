@@ -155,9 +155,16 @@
 
 // mobile and tablet combined
 @media only screen and (max-width: 1023px) {
+  .home-overview-wrap {
+    background-image: linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
+    background-blend-mode: normal;
+  }
+
   section.footer-links {
     padding-left: 10vw;
     padding-right: 10vw;
+    background-image: linear-gradient(180deg, darken($navy, 5%) 0%, $navy 100%);
+    background-blend-mode: normal;
 
     img {
       float: left;
