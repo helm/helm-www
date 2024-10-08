@@ -14,16 +14,16 @@ covers the particulars of Helm commands, and explains how to use Helm.
 
 ## Three Big Concepts
 
-A _Chart_ is a Helm package. It contains all of the resource definitions
+A *Chart* is a Helm package. It contains all of the resource definitions
 necessary to run an application, tool, or service inside of a Kubernetes
 cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, an
 Apt dpkg, or a Yum RPM file.
 
-A _Repository_ is the place where charts can be collected and shared. It's like
+A *Repository* is the place where charts can be collected and shared. It's like
 Perl's [CPAN archive](https://www.cpan.org) or the [Fedora Package
 Database](https://src.fedoraproject.org/), but for Kubernetes packages.
 
-A _Release_ is an instance of a chart running in a Kubernetes cluster. One chart
+A *Release* is an instance of a chart running in a Kubernetes cluster. One chart
 can often be installed many times into the same cluster. And each time it is
 installed, a new _release_ is created. Consider a MySQL chart. If you want two
 databases running in your cluster, you can install that chart twice. Each one
@@ -289,7 +289,6 @@ c: d
 
 More complex expressions are supported. For example, `--set outer.inner=value`
 is translated into this:
-
 ```yaml
 outer:
   inner: value
@@ -358,7 +357,7 @@ nodeSelector:
 
 Deeply nested data structures can be difficult to express using `--set`. Chart
 designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file (read more about [Values Files](../chart_template_guide/values_files/)).
+of a `values.yaml` file  (read more about [Values Files](../chart_template_guide/values_files/)).
 
 ### More Installation Methods
 
