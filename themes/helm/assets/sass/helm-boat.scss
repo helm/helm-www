@@ -1,24 +1,30 @@
 @keyframes boat-bob {
   0% {
     bottom: 2vw;
+    transform: rotate(4deg);
   }
   50% {
     bottom: 3.5vw;
+    transform: rotate(-6deg);
   }
   100% {
     bottom: 2vw;
+    transform: rotate(4deg);
   }
 }
 
 @keyframes boat-badge-bob {
   0% {
     top: 0.425vw;
+    transform: rotate(-4deg);
   }
   50% {
     top: 0.75vw;
+    transform: rotate(2deg);
   }
   100% {
     top: 0.425vw;
+    transform: rotate(-4deg);
   }
 }
 
