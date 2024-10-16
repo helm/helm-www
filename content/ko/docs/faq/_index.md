@@ -192,7 +192,7 @@ containers:
 ### 기본 스토리지 드라이버로서의 시크릿(Secret)
 
 헬름 3에서 시크릿은 이제 [기본 스토리지
-드라이버](/docs/topics/advanced/#storage-backends)로 사용됩니다. 헬름 2는
+드라이버](/docs/topics/advanced/)로 사용됩니다. 헬름 2는
 기본적으로 컨피그맵(ConfigMap)을 사용하여 릴리스 정보를 저장합니다. 헬름 2.7.0에서
 릴리스 정보를 저장하기 위해 시크릿을 사용하는 새로운 스토리지 백엔드가 구현되었으며
 헬름 3부터는 기본값이 되었습니다.
@@ -235,7 +235,7 @@ containers:
 * `helm template`
 * `helm lint`
 
-자세한 내용은 [스키마 파일](/ko/docs/topics/charts#스키마-파일) 문서를
+자세한 내용은 [스키마 파일](/ko/docs/topics/charts) 문서를
 참조하십시오.
 
 ### `requirements.yaml`이 `Chart.yaml` 로 통합

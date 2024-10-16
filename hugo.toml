@@ -9,7 +9,7 @@ enableEmoji = true
 canonifyURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy"]
 
 [markup]
 [markup.goldmark]
