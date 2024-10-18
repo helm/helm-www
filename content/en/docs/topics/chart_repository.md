@@ -139,13 +139,21 @@ simple HTTPS at this address: `https://bucket-name.storage.googleapis.com/`.
 
 You can also set up chart repositories using Cloudsmith. Read more about
 chart repositories with Cloudsmith
-[here](https://help.cloudsmith.io/docs/helm-chart-repository)
+[here](https://help.cloudsmith.io/docs/helm-chart-repository).
 
 ### JFrog Artifactory
 
 Similarly, you can also set up chart repositories using JFrog Artifactory. Read more about
 chart repositories with JFrog Artifactory
-[here](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories)
+[here](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories).
+
+### ProGet
+
+ProGet allows you to set up a Helm feed that acts as a chart repository. On this feed, you also
+connect to other Chart Repositories (including Artifact Hub) to proxy third-party charts through and 
+create a curated list of approved Helm Charts.
+
+See [ProGet's Helm feed documentation](https://docs.inedo.com/docs/proget/feeds/helm) to learn more.
 
 ### GitHub Pages example
 
