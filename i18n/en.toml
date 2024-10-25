@@ -133,7 +133,7 @@ other = "Events"
 other = "Upcoming Events"
 
 [community_upcoming_events_desc]
-other = "Watch this space..."
+other = "_Nov 14th 2024_ - [KubeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)"
 
 [community_past_events_title]
 other = "Past Events"
