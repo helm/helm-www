@@ -60,6 +60,8 @@ Chart仓库
   Provider](https://github.com/hashicorp/terraform-provider-helm) - 为HashiCorp Terraform提供Helm，
   以声明性的结构作为代码的语法实现Helm Chart的生命周期管理。Helm提供者通常与其他Terraform提供者配对，
   类似于Kubernetes提供者，创建一个横跨所有基础服务的通用工作流。
+- [K8Studio](https://k8studio.io) -
+  用于管理 Kubernetes 集群的桌面 UI，集成 Helm 管理器。
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -为现有项目生成Helm chart。
 - [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper获取一组具有值（所需状态）的Helm
 hart引用，并在Kubernetes集群中实现。"
