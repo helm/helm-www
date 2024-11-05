@@ -35,7 +35,7 @@ helm lint PATH [flags]
       --skip-schema-validation    if set, disables JSON schema validation
       --strict                    fail on lint warnings
   -f, --values strings            specify values in a YAML file or a URL (can specify multiple)
-      --with-subcharts            lint dependent charts
+      --with-subcharts            lint subcharts as independent charts (note that without this option, the chart will be validated as a whole, including subcharts as its part)
 ```
 
 ### Options inherited from parent commands
