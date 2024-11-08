@@ -21,6 +21,7 @@ helm test [RELEASE] [flags]
 ```none
       --filter strings     вказати тести за атрибутом (в даний час "name") використовуючи синтаксис attribute=value або '!attribute=value', щоб виключити тест (можна вказати кілька або розділити значення комами: name=test1,name=test2)
   -h, --help               довідка test
+      --hide-notes         якщо встановлено, не показувати примітки у виводі встановлення. Не впливає на присутність у метаданих чарту
       --logs               отримати логи з тестових podʼів (це виконується після завершення всіх тестів, але перед будь-яким очищенням)
       --timeout duration   час очікування для будь-якої окремої операції Kubernetes (наприклад, Jobs для хуків) (стандартно 5м0с)
 ```
@@ -42,7 +43,7 @@ helm test [RELEASE] [flags]
   -n, --namespace string                простір імен для цього запиту
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
-      --repository-cache string         шлях до файлу, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
+      --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
       --repository-config string        шлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
 ```
 
@@ -50,4 +51,4 @@ helm test [RELEASE] [flags]
 
 - [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 24 січня 2024
+###### Автоматично згенеровано spf13/cobra 11 вересня 2024

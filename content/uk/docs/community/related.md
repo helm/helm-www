@@ -19,6 +19,7 @@ weight: 3
 - [helm-git](https://github.com/aslafy-z/helm-git) — Встановлює чарти та отримує файли значень з ваших Git репозиторіїв.
 - [helm-k8comp](https://github.com/cststack/k8comp) — Втулок для створення Helm чартів з hiera за допомогою k8comp.
 - [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) — Оновлює метадані релізу Helm для заміни застарілих або видалених API Kubernetes.
+- [helm-migrate-values](https://github.com/OctopusDeployLabs/helm-migrate-values) — Втулок для перенесення вказаних користувачем значень між версіями чартів Helm, щоб впоратися зі змінами схеми у файлі `values.yaml`.
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) — Втулок для моніторингу релізу та відкату на основі запиту Prometheus/ElasticSearch.
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) — Втулок для управління релізами, оновлення значень релізу, витягує (перестворює) Helm чарти з розгорнутих релізів, встановлює TTL релізу Helm.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) — Втулок Helm, який дозволяє використовувати AWS S3 як [приватний] репозиторій чартів.
@@ -39,6 +40,7 @@ weight: 3
 
 Інструменти, які використовуються поверх Helm.
 
+- [Aptakube](https://aptakube.com) — Графічний інтерфейс для керування релізами Helm та Kubernetes.
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) — Керування префіксованими релізами через різні Kubernetes простори імен, а також видалення завершених завдань для складних розгортань.
 - [avionix](https://github.com/zbrookle/avionix) — Інтерфейс Python для генерації Helm чартів та Kubernetes yaml, що дозволяє успадкування та зменшення дублювання коду.
 - [Botkube](https://botkube.io) — Виконання Helm команд безпосередньо з Slack, Discord, Microsoft Teams та Mattermost.
