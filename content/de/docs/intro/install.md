@@ -32,7 +32,7 @@ Von dort aus sollten Sie in der Lage sein, das Programm aufzurufen und ein
 `helm help`.
 
 **Hinweis:** In den automatisierten Tests von Helm wird nur die Version von
-Linux AMD64 beim Bau durch CircleCi berücksichtig. Das Testen von anderen
+Linux AMD64 beim Bau durch GitHub Actions berücksichtig. Das Testen von anderen
 Betriebssystemen liegt in der Zuständigkeit der Gemeinschaft.
 
 ### Von einem Script

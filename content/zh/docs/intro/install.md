@@ -21,7 +21,7 @@ Helm社区提供了通过不同包管理器安装Helm的方法。这些方法可
 
 然后就可以执行客户端程序并[添加稳定仓库](https://helm.sh/zh/docs/intro/quickstart/#初始化): `helm help`.
 
-**注意** 针对Linux AMD64，Helm的自动测试只有在CircleCi构建和发布时才会执行。测试其他操作系统是社区针对系统问题请求Helm的责任。
+**注意** 针对Linux AMD64，Helm的自动测试只有在GitHub Actions构建和发布时才会执行。测试其他操作系统是社区针对系统问题请求Helm的责任。
 
 ### 使用脚本安装
 
