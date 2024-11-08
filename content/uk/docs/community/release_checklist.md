@@ -119,7 +119,7 @@ git push upstream $RELEASE_BRANCH_NAME
 
 Створення [віхи в helm/helm](https://github.com/helm/helm/milestones) є необов’язковим для патч-релізів.
 
-Обов’язково перевірте [helm на CircleCI](https://circleci.com/gh/helm/helm), щоб переконатися, що випуск пройшов CI, перш ніж продовжити. Патч-релізи можуть пропустити кроки 2-5 і перейти до кроку 6 для [Завершення випуску](#6-finalize-the-release).
+Обов’язково перевірте [GitHub Actions](https://github.com/helm/helm/actions), щоб переконатися, що випуск пройшов CI, перш ніж продовжити. Патч-релізи можуть пропустити кроки 2-5 і перейти до кроку 6 для [Завершення випуску](#6-finalize-the-release).
 
 ## 2. Основні/Мінорні випуски: Зміна номера версії в Git {#2-majorminor-releases-change-the-version-number-in-git}
 
@@ -181,7 +181,7 @@ git push origin bump-version-<release-version>
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Переконайтеся, що перевірили [Helm на CircleCI](https://circleci.com/gh/helm/helm), щоб побачити, що реліз пройшов CI перед тим, як продовжити.
+Переконайтеся, що перевірили [GitHub Actions](https://github.com/helm/helm/actions), щоб побачити, що реліз пройшов CI перед тим, як продовжити.
 
 Якщо є можливість, дайте іншим перевірити гілку, перш ніж продовжувати, щоб переконатися, що всі необхідні зміни внесені та всі коміти для релізу присутні.
 
@@ -194,9 +194,9 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI автоматично створить образ з теґом релізу та клієнтський бінарний файл для тестування.
+GitHub Actions автоматично створить образ з теґом релізу та клієнтський бінарний файл для тестування.
 
-Для тестувальників процес початку тестування після завершення побудови артефактів CircleCI включає наступні кроки для отримання клієнта:
+Для тестувальників процес початку тестування після завершення побудови артефактів GitHub Actions включає наступні кроки для отримання клієнта:
 
 Linux/amd64, використовуючи /bin/bash:
 
@@ -254,7 +254,7 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-Переконайтеся, що реліз успішно пройшов на [CircleCI](https://circleci.com/gh/helm/helm). Якщо ні, вам доведеться виправити помилки та знову надіслати реліз.
+Переконайтеся, що реліз успішно пройшов на [GitHub Actions](https://github.com/helm/helm/actions). Якщо ні, вам доведеться виправити помилки та знову надіслати реліз.
 
 Оскільки CI-завдання займе деякий час для виконання, ви можете перейти до написання реліз-нотаток, поки процес триває.
 

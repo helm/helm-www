@@ -34,6 +34,22 @@ $ helm plugin install https://github.com/adamreese/helm-env
 
 Якщо у вас є дистрибутив втулка у форматі tar, просто розпакуйте втулок у теку `$HELM_PLUGINS`. Ви також можете встановлювати втулки tarball безпосередньо з URL, використовуючи `helm plugin install https://domain/path/to/plugin.tar.gz`.
 
+## Тестування локально створеного втулка {#testing-a-locally-built-plugin}
+
+Спочатку вам потрібно знайти шлях до `HELM_PLUGINS`, для цього виконайте наступну команду:
+
+```bash
+helm env
+```
+
+Змініть поточну теку на теку, в яку встановлено `HELM_PLUGINS`.
+
+Тепер ви можете додати символічне посилання на збірку вашого втулка, у цьому прикладі ми зробили це для `mapkubeapis`.
+
+```bash
+ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
+```
+
 ## Створення втулків {#building-a-plugin}
 
 З усіх боків втулок схожий на чарт. Кожен втулок має теку верхнього рівня, а також файл `plugin.yaml`.

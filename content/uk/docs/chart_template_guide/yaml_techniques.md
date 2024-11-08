@@ -214,7 +214,7 @@ coffee: >-
 ```yaml
 
 ---
-document:1
+document: 1
 ...
 ---
 document: 2
