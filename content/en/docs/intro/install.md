@@ -31,7 +31,7 @@ repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)
 `helm help`.
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during
-CircleCi builds and releases. Testing of other OSes are the responsibility of
+GitHub Actions builds and releases. Testing of other OSes are the responsibility of
 the community requesting Helm for the OS in question.
 
 ### From Script

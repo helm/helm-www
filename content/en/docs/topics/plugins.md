@@ -53,6 +53,22 @@ If you have a plugin tar distribution, simply untar the plugin into the
 directly from url by issuing `helm plugin install
 https://domain/path/to/plugin.tar.gz`
 
+## Testing a locally built Plugin
+
+First you need to find your `HELM_PLUGINS` path to do it run the folowing command:
+
+``` bash
+helm env
+```
+
+Change your current directory to the director that `HELM_PLUGINS` is set to.
+
+Now you can add a symbolic link to your build out put of your plugin in this example we did it for `mapkubeapis`.
+
+``` bash
+ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
+```
+
 ## Building Plugins
 
 In many ways, a plugin is similar to a chart. Each plugin has a top-level

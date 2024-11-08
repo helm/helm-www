@@ -27,7 +27,7 @@ Helm のすべての [リリース](https://github.com/helm/helm/releases) は�
 
 そこから、クライアントを実行し、[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)できるはずです: `helm help` を参考
 
-**注**: Helm 自動テストは、CircleCi のビルドとリリース中にのみLinux AMD64 に対して実行されます。
+**注**: Helm 自動テストは、GitHub Actions のビルドとリリース中にのみLinux AMD64 に対して実行されます。
 他の OS のテストは、
 対象の OS の Helm を要求するコミュニティの責任の元で行われています。
 
