@@ -41,6 +41,8 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      О
 
 Без фільтрації `helm search hub` показує всі доступні чарти.
 
+`helm search hub` показує URL-адресу розташування на [artifacthub.io](https://artifacthub.io/), але не власне репозиторій Helm. `helm search hub --list-repo-url` показує фактичну URL-адресу репозиторію Helm, що може бути корисним, коли ви хочете додати новий репозиторій: `helm repo add [NAME] [URL]`.
+
 За допомогою `helm search repo` ви можете знайти імена чартів у репозиторіях, які ви вже додали:
 
 ```console
@@ -393,7 +395,7 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-Нові репозиторії можна додати за допомогою `helm repo add`:
+Нові репозиторії можна додати за допомогою `helm repo add [NAME] [URL]`:
 
 ```console
 $ helm repo add dev https://example.com/dev-charts

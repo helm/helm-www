@@ -33,6 +33,7 @@ helm template [NAME] [CHART] [flags]
       --force                                      примусово оновлювати ресурси через стратегію заміни
   -g, --generate-name                              згенерувати імʼя (та опустити параметр NAME)
   -h, --help                                       довідка по template
+      --hide-notes                                 якщо встановлено, не показувати примітки у виводі встановлення. Не впливає на присутність у метаданих чарту
       --include-crds                               включити CRD у вивід шаблонів
       --insecure-skip-tls-verify                   пропустити перевірки TLS сертифікатів для завантаження чарту
       --is-upgrade                                 встановити .Release.IsUpgrade замість .Release.IsInstall
@@ -59,6 +60,7 @@ helm template [NAME] [CHART] [flags]
       --set-string stringArray                     встановити STRING значення в командному рядку (можна вказати кілька або розділити значення комами: key1=val1,key2=val2)
   -s, --show-only stringArray                      показати тільки маніфести, відрендерені з вказаних шаблонів
       --skip-crds                                  якщо вказано, CRD не будуть встановлені. Ствндартно CRD встановлюються, якщо ще не присутні
+      --skip-schema-validation                     якщо встановлено, вимикає перевірку схеми JSON
       --skip-tests                                 пропустити тести з виводу шаблонів
       --timeout duration                           час очікування для будь-якої окремої операції Kubernetes (наприклад, Jobs для хук) (стандартно 5м0с)
       --username string                            імʼя користувача репозиторію чартів, де знайти запитуваний чарт
@@ -87,7 +89,7 @@ helm template [NAME] [CHART] [flags]
   -n, --namespace string                простір імен для цього запиту
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
-      --repository-cache string         шлях до файлу, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
+      --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
       --repository-config string        шлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
 ```
 
@@ -95,4 +97,4 @@ helm template [NAME] [CHART] [flags]
 
 - [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 24 січня 2024
+###### Автоматично згенеровано spf13/cobra 11 вересня 2024

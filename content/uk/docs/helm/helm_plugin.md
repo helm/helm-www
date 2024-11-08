@@ -33,16 +33,16 @@ title: "Helm Plugin"
   -n, --namespace string                простір імен для цього запиту
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
-      --repository-cache string         шлях до файлу, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
+      --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
       --repository-config string        шлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
 * [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
-* [helm plugin install](helm_plugin_install.md) — встановити один або кілька втулків Helm
+* [helm plugin install](helm_plugin_install.md) — встановити втулок Helm
 * [helm plugin list](helm_plugin_list.md) — переглянути встановлені втулки Helm
 * [helm plugin uninstall](helm_plugin_uninstall.md) — видалити один або кілька втулків Helm
 * [helm plugin update](helm_plugin_update.md) — оновити один або кілька втулків Helm
 
-###### Автоматично згенеровано spf13/cobra 24 січня 2024
+###### Автоматично згенеровано spf13/cobra 11 вересня 2024

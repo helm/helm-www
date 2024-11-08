@@ -33,7 +33,7 @@ helm plugin update <plugin>... [flags]
   -n, --namespace string                простір імен для цього запиту
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
-      --repository-cache string         шлях до файлу, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
+      --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
       --repository-config string        шлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
 ```
 
@@ -41,4 +41,4 @@ helm plugin update <plugin>... [flags]
 
 * [helm plugin](helm_plugin.md) — встановити, вивести перелік або видалити втулки Helm
 
-###### Автоматично згенеровано spf13/cobra 24 січня 2024
+###### Автоматично згенеровано spf13/cobra 11 вересня 2024
