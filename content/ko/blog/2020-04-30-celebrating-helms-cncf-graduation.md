@@ -9,7 +9,7 @@ twittertype: "summary_large_image"
 twitterimage: "blog/images/helmgraduation-twitter.png"
 ---
 
-![../images/helmgraduation.png](../images/helmgraduation.png)
+![../images/helmgraduation.png](/blog/images/helmgraduation.png)
 
 오늘 헬름이 [CNCF 사다리의 마지막 단계에 도달한 것](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/)을 보게 되어 기쁘다. 헬름은 [CNCF 프로젝트](https://www.cncf.io/projects/)의 인큐베이팅 단계에서 졸업 단계로 이동하여, 쿠버네티스 등 다른 선택된 프로젝트들과 나란히 서게 되었다.
 
