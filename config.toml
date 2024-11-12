@@ -9,7 +9,7 @@ enableEmoji = true
 canonifyURLs = "false"
 pluralizeListTitles = "false"
 plainIdAnchors = "true"
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy"]
 
 [markup]
 [markup.goldmark]
@@ -18,6 +18,8 @@ typographer = false
 [markup.highlight]
 style = "manni"
 guessSyntax = true
+[markup.goldmark.renderer]
+unsafe = true
 
 [Permalinks]
 code = "/:filename/"
@@ -88,7 +90,6 @@ disableLanguages = ["zh"]
 # English
 [languages.en]
 title = "Helm"
-description = "Helm - The Kubernetes Package Manager."
 contentDir = "content/en"
 languageName = "English"
 weight = 1
@@ -118,10 +119,12 @@ name = "Community"
 url = "https://github.com/helm/community"
 weight = 5
 
+[languages.en.params]
+description = "Helm - The Kubernetes Package Manager."
+
 # German
 [languages.de]
 title = "Helm"
-description = "Helm - Der Kubernetes Paket Manager."
 contentDir = "content/de"
 languageName = "Deutsch"
 weight = 2
@@ -153,11 +156,11 @@ weight = 5
 
 [languages.de.params]
 language_alternatives = ["en"]
+description = "Helm - Der Kubernetes Paket Manager."
 
 # Spanish
 [languages.es]
 title = "Helm"
-description = "Helm - El Administrador de Paquetes de Kubernetes."
 contentDir = "content/es"
 languageName = "Español"
 weight = 3
@@ -187,10 +190,12 @@ name = "Comunidad"
 url = "https://github.com/helm/community"
 weight = 5
 
+[languages.es.params]
+description = "Helm - El Administrador de Paquetes de Kubernetes."
+
 # French
 [languages.fr]
 title = "Helm"
-description = "Helm - Le manageur de paquets de Kubernetes."
 contentDir = "content/fr"
 languageName = "Français"
 weight = 4
@@ -220,10 +225,12 @@ name = "Communauté"
 url = "https://github.com/helm/community"
 weight = 5
 
+[languages.fr.params]
+description = "Helm - Le manageur de paquets de Kubernetes."
+
 # Ελληνικά
 [languages.gr]
 title = "Helm"
-description = "Helm - Ο package manager του Kubernetes."
 contentDir = "content/gr"
 languageName = "Ελληνικά"
 weight = 5
@@ -253,10 +260,12 @@ name = "Επικοινωνία"
 url = "https://github.com/helm/community"
 weight = 5
 
+[languages.gr.params]
+description = "Helm - Ο package manager του Kubernetes."
+
 # Japanese
 [languages.ja]
 title = "Helm"
-description = "Helm - Kubernetes パッケージマネージャー"
 contentDir = "content/ja"
 languageName = "日本語"
 weight = 6
@@ -288,12 +297,11 @@ weight = 5
 
 [languages.ja.params]
 language_alternatives = ["en"]
-
+description = "Helm - Kubernetes パッケージマネージャー"
 
 # Korean
 [languages.ko]
 title = "헬름"
-description = "헬름 - 쿠버네티스 패키지 매니저"
 contentDir = "content/ko"
 languageName = "한국어"
 weight = 7
@@ -326,11 +334,11 @@ weight = 5
 
 [languages.ko.params]
 language_alternatives = ["en"]
+description = "헬름 - 쿠버네티스 패키지 매니저"
 
 # Portuguese
 [languages.pt]
 title = "Helm"
-description = "Helm - O Gerenciador de Pacotes do Kubernetes."
 contentDir = "content/pt"
 languageName = "Português"
 weight = 8
@@ -362,11 +370,11 @@ weight = 5
 
 [languages.pt.params]
 language_alternatives = ["en"]
+description = "Helm - O Gerenciador de Pacotes do Kubernetes."
 
 # Russian
 [languages.ru]
 title = "Helm"
-description = "Helm – Менеджер Пакетов Kubernetes."
 contentDir = "content/ru"
 languageName = "Русский"
 weight = 9
@@ -399,11 +407,11 @@ weight = 5
 
 [languages.ru.params]
 language_alternatives = ["en"]
+description = "Helm – Менеджер Пакетов Kubernetes."
 
 # Chinese
 [languages.zh]
 title = "Helm"
-description = "Helm - Kubernetes 包管理器"
 contentDir = "content/zh"
 languageName = "中文"
 weight = 10
@@ -436,3 +444,4 @@ weight = 5
 
 [languages.zh.params]
 language_alternatives = ["en"]
+description = "Helm - Kubernetes 包管理器"
