@@ -23,31 +23,32 @@ Helm | Docs
         {{ .Content }}
 
         <div class="quick-links helm-commands">
-          <h3 class="text-center">Quicklinks</h3>
-          
+          <h3 class="text-center">{{ i18n "quicklinks_section_title" }}</h3>
+
           {{ if $isDocsRoot }}
-          {{ $quicklinks := site.Params.quicklinks }}
-          {{ range $quicklinks }}
-          <a href="{{ .url }}" class="quick-item"> 
-            <h4>
-              {{ .title }}
-              {{ with .via }}
-              &nbsp;<small><i class="fa fa-external-link"></i></small>
-              {{ end }}
-            </h4>
-            <p>
-              {{ .description }}
-              {{ with .via }}
-              - <small>
-                (via {{ . }})
-              </small>
-              {{ end }}
-            </p>
+          <a href="{{ i18n "quicklink_quickstart_url" }}" class="quick-item">
+            <h4>{{ i18n "quicklink_quickstart_title" }}</h4>
+            <p>{{ i18n "quicklink_quickstart_desc" }}</p>
           </a>
-          {{ end }}
-          
+          <a href="{{ i18n "quicklink_charts_url" }}" class="quick-item">
+            <h4>{{ i18n "quicklink_charts_title" }}</h4>
+            <p>{{ i18n "quicklink_charts_desc" }}</p>
+          </a>
+          <a href="{{ i18n "quicklink_video_intro_url" }}" class="quick-item">
+            <h4>{{ i18n "quicklink_video_intro_title" }}</h4>
+            <p>{{ i18n "quicklink_video_intro_desc" }}</p>
+          </a>
+          <a href="{{ i18n "quicklink_v2_v3_migration_url" }}" class="quick-item">
+            <h4>{{ i18n "quicklink_v2_v3_migration_title" }}</h4>
+            <p>{{ i18n "quicklink_v2_v3_migration_desc" }}</p>
+          </a>
+          <a href="{{ i18n "quicklink_sec_audit_url" }}" class="quick-item">
+            <h4>{{ i18n "quicklink_sec_audit_title" }}</h4>
+            <p>{{ i18n "quicklink_sec_audit_desc" }}</p>
+          </a>
+
           {{ else }}
-          
+
           {{ range .Pages }}
           <a href="{{ .RelPermalink }}" class="quick-item">
             <h4>
