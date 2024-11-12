@@ -412,7 +412,6 @@ description = "Helm – Менеджер Пакетов Kubernetes."
 # Ukrainian
 [languages.uk]
 title = "Helm"
-description = "Helm — Менеджер Пакунків Kubernetes."
 contentDir = "content/uk"
 languageName = "Українська"
 weight = 9
@@ -445,6 +444,7 @@ weight = 5
 
 [languages.uk.params]
 language_alternatives = ["en"]
+description = "Helm — Менеджер Пакунків Kubernetes."
 
 # Chinese
 [languages.zh]
