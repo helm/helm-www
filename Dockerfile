@@ -1,4 +1,5 @@
-FROM hugomods/hugo:node
+ARG HUGO_VERSION=
+FROM hugomods/hugo:node-${HUGO_VERSION}
 
 WORKDIR /src
 
