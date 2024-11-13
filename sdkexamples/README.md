@@ -2,8 +2,9 @@
 
 This directory implements various Go SDK examples and a "driver".
 
-These examples are fulling working, and can be run by:
+These examples are fully working, and can be run by:
 
 ```
-$ helm-www/sdkexamples $ go run ./...
+# cd helm-www/sdkexamples
+$ go run ./...
 ```
