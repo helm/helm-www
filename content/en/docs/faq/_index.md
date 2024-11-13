@@ -1,6 +1,6 @@
 ---
 title: "Frequently Asked Questions"
-weight: 8
+weight: 9
 aliases: [
   "/docs/topics/faq/",
   "/docs/faq/"
