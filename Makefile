@@ -23,6 +23,10 @@ run-link-checker:
 
 check-links-ci: set-up-link-checker run-link-checker
 
+.PHONY: sdkexamples
+sdkexamples:
+	cd sdkexamples; make
+
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0
 
