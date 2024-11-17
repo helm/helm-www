@@ -22,3 +22,7 @@ run-link-checker:
 	bin/htmltest
 
 check-links-ci: set-up-link-checker run-link-checker
+
+.PHONY: sdkexamples
+sdkexamples:
+	cd sdkexamples; make
