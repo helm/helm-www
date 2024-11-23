@@ -43,6 +43,6 @@ helm registry logout [host] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm registry](helm_registry.md) — увійти або вийти з реєстру.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024
