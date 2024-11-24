@@ -409,6 +409,43 @@ weight = 5
 language_alternatives = ["en"]
 description = "Helm – Менеджер Пакетов Kubernetes."
 
+# Ukrainian
+[languages.uk]
+title = "Helm"
+contentDir = "content/uk"
+languageName = "Українська"
+weight = 9
+
+[[languages.uk.menus.main]]
+name = "Головна"
+url = "/"
+weight = 1
+
+[[languages.uk.menus.main]]
+name = "Документація"
+url = "/docs"
+weight = 2
+
+[[languages.uk.menus.main]]
+name = "Чарти"
+url = "https://artifacthub.io/"
+weight = 3
+external = "yes"
+
+[[languages.uk.menus.main]]
+name = "Блог"
+url = "https://helm.sh/blog"
+weight = 4
+
+[[languages.uk.menus.main]]
+name = "Спільнота"
+url = "https://github.com/helm/community"
+weight = 5
+
+[languages.uk.params]
+language_alternatives = ["en"]
+description = "Helm — Менеджер Пакунків Kubernetes."
+
 # Chinese
 [languages.zh]
 title = "Helm"
