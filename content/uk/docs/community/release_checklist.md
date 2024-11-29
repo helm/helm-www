@@ -357,7 +357,7 @@ make sign
 
 ## 10. Оновлення документації {#10-update-docs}
 
-Розділ документації на сайті [Helm](https://helm.sh/docs) містить версії Helm. Необхідно оновити на сайті версії для major, minor і patch. Також потрібно оновити дату наступного minor релізу.
+Розділ документації на сайті [Helm](/docs) містить версії Helm. Необхідно оновити на сайті версії для major, minor і patch. Також потрібно оновити дату наступного minor релізу.
 
 Щоб це зробити, створіть pull request в репозиторії [helm-www](https://github.com/helm/helm-www). У файлі `config.toml` знайдіть відповідний розділ `params.versions` та оновіть версію Helm, як у цьому прикладі [оновлення поточної версії](https://github.com/helm/helm-www/pull/676/files). У тому ж файлі `config.toml` оновіть розділ `params.nextversion`.
 

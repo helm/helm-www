@@ -53,59 +53,7 @@ type PostRenderer interface {
 
 ## Go SDK {#go-sdk}
 
-Helm 3 представив повністю переписаний Go SDK для кращого досвіду при розробці програмного забезпечення та інструментів, які використовують Helm. Повну документацію можна знайти на [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), але короткий огляд деяких найбільш популярних пакетів і простий приклад наведені нижче.
-
-### Огляд пакетів {#package-overview}
-
-Ось список найбільш часто використовуваних пакетів з простим поясненням кожного:
-
-- `pkg/action`: Містить основний "клієнт" для виконання дій Helm. Це той самий пакет, який використовує CLI "під капотом". Якщо вам просто потрібно виконати базові команди Helm з іншої програми Go, цей пакет для вас.
-- `pkg/{chart,chartutil}`: Методи та допоміжні засоби для завантаження та маніпулювання чартами.
-- `pkg/cli` і його пакети: Містять усі обробники стандартних змінних середовища Helm, а його пакети містять обробку виводів та файлів значень.
-- `pkg/release`: Визначає обʼєкт `Release` та статуси.
-
-Очевидно, існує багато інших пакетів, тому перегляньте документацію для отримання додаткової інформації!
-
-### Простий приклад {#simple-example}
-
-Ось простий приклад виконання `helm list` за допомогою Go SDK:
-
-```go
-package main
-
-import (
-    "log"
-    "os"
-
-    "helm.sh/helm/v3/pkg/action"
-    "helm.sh/helm/v3/pkg/cli"
-)
-
-func main() {
-    settings := cli.New()
-
-    actionConfig := new(action.Configuration)
-    // Ви можете передати порожній рядок замість settings.Namespace(), щоб
-    // перелічити всі простори імен
-    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    client := action.NewList(actionConfig)
-    // Лише перерахувати розгорнуті
-    client.Deployed = true
-    results, err := client.Run()
-    if err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    for _, rel := range results {
-        log.Printf("%+v", rel)
-    }
-}
-```
+Helm 3 представив повністю переписаний Go SDK для кращого досвіду при розробці програмного забезпечення та інструментів, які використовують Helm. Повну документацію можна знайти в [розділі Go SDK](../sdk/gosdk.md).
 
 ## Сховища даних {#storage-backends}
 

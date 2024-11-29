@@ -1,7 +1,7 @@
 ---
-title: "Глосарій" 
+title: "Глосарій"
 description: "Терміни, що використовуються для опису компонентів архітектури Helm."
-weight: 9
+weight: 10
 ---
 
 # Глосарій {#glossary}
@@ -105,7 +105,7 @@ Helm зберігає свої конфігураційні файли в тек
 
 ## Реєстр чартів (OCI реєстр) {#chart-registry-oci-based-registry}
 
-Реєстр чартів Helm є системою зберігання та розподілу на основі [OCI](https://opencontainers.org/about/overview/), яка використовується для розміщення та обміну пакетами чартів Helm. Для отримання додаткової інформації див. [документацію Helm про реєстри](https://helm.sh/docs/topics/registries/).
+Реєстр чартів Helm є системою зберігання та розподілу на основі [OCI](https://opencontainers.org/about/overview/), яка використовується для розміщення та обміну пакетами чартів Helm. Для отримання додаткової інформації див. [документацію Helm про реєстри](/docs/topics/registries/).
 
 ## Значення (Файли значень, values.yaml) {#values-values-files-valuesyaml}
 

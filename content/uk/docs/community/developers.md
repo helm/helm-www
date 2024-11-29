@@ -62,7 +62,7 @@ export PATH="<path to your binary folder>:$PATH"
 
 З Helm 3 документація була перенесена в окремий репозиторій. При написанні нових функцій, будь ласка, напишіть супутню документацію та надішліть її до репозиторію [helm-www](https://github.com/helm/helm-www).
 
-Єдине виключення: [вивід CLI Helm (англійською)](https://helm.sh/docs/helm/) генеруються безпосередньо з бінарного файлу `helm`. Дивіться [Оновлення довідкових документів CLI Helm](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs) для інструкцій, як згенерувати цей вивід. Після перекладу, вивід CLI не генерується і може бути знайдений у `/content/<lang>/docs/helm`.
+Єдине виключення: [вивід CLI Helm (англійською)](/docs/helm/) генеруються безпосередньо з бінарного файлу `helm`. Дивіться [Оновлення довідкових документів CLI Helm](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs) для інструкцій, як згенерувати цей вивід. Після перекладу, вивід CLI не генерується і може бути знайдений у `/content/<lang>/docs/helm`.
 
 ### Домовленості Git {#git-conventions}
 
