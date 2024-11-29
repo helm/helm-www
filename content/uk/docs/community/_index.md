@@ -1,6 +1,6 @@
 ---
 title: "Спільнота"
-weight: 7
+weight: 8
 ---
 
 # Настанови спільноти {#community-guides}
