@@ -44,12 +44,12 @@ access in your templates.
   cannot use it to access templates, you can use it to access other files in the
   chart. See the section [Accessing Files]({{< ref
     "/docs/chart_template_guide/accessing_files.md" >}}) for more.
-  - `Files.Get` is a function for getting a file by name (`.Files.Get
+  - `Files.Get` is a function that returns the file contents as string (`.Files.Get
     config.ini`)
-  - `Files.GetBytes` is a function for getting the contents of a file as an
+  - `Files.GetBytes` is a function that returns the contents of a file as an
     array of bytes instead of as a string. This is useful for things like
     images.
-  - `Files.Glob` is a function that returns a list of files whose names match
+  - `Files.Glob` is a function that returns a list of file path, content bytes tuples whose names match
     the given shell glob pattern.
   - `Files.Lines` is a function that reads a file line-by-line. This is useful
     for iterating over each line in a file.
