@@ -7,7 +7,7 @@ authorlink: "https://rimusz.net"
 date: "2019-09-11"
 ---
 
-![../images/helm-2to3.png](../images/helm-2to3.png)
+![../images/helm-2to3.png](/blog/images/helm-2to3.png)
 
 One of the most important parts of upgrading to a new major release of Helm is the migration of data. This is especially true of Helm v2 to v3 considering the architectural changes between the releases. This is where the [helm-2to3](https://github.com/helm/helm-2to3) plugin comes in.
 

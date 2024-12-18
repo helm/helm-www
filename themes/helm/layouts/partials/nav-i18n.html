@@ -3,7 +3,7 @@
 {{ $menu      := site.Menus.main }}
 
 <!-- i18n -->
-{{ if .Site.IsMultiLingual }}
+{{ if hugo.IsMultilingual }}
   <li class="versioner l18ner navbar-item has-dropdown is-right is-hoverable">
     <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="versioner-trigger navbar-link">
       {{ .Language.LanguageName }} <i class="fa fa-caret-down"></i>

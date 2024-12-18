@@ -260,7 +260,7 @@ done by prefixing a new document with `---` and ending the document with
 ```yaml
 
 ---
-document:1
+document: 1
 ...
 ---
 document: 2
