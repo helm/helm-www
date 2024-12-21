@@ -176,6 +176,7 @@ conjunction with the `Glob` method.
 Given the directory structure from the [Glob](#glob-patterns) example above:
 
 ```yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
