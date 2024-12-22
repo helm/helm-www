@@ -125,40 +125,35 @@ The imported functions are:
 ## Glob patterns
 
 As your chart grows, you may find you have a greater need to organize your files
-more, and so we provide a `Files.Glob(pattern string)` method to assist in
+more, and so we provide the `.Files.Glob(pattern string)` method to assist in
 extracting certain files with all the flexibility of [glob
 patterns](https://godoc.org/github.com/gobwas/glob).
 
 `.Glob` returns a `Files` type, so you may call any of the `Files` methods on
 the returned object.
 
-For example, imagine the directory structure:
-
-```
-foo/:
-  foo.txt foo.yaml
-
-bar/:
-  bar.go bar.conf baz.yaml
-```
-
-You have multiple options with Globs:
-
+For example, to return all Yaml files from all available directories, you have
+multiple options with Glob:
 
 ```yaml
-{{ $currentScope := .}}
 {{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
-    {{- with $currentScope}}
-        {{ .Files.Get $path }}
-    {{- end }}
+    {{ .Get $path }}
 {{ end }}
 ```
 
 Or
 
 ```yaml
-{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
-      {{ $.Files.Get $path }}
+{{ range $path, $content :=  .Files.Glob  "**.yaml" }}
+    {{ $content | toString }}
+{{ end }}
+```
+
+Or
+
+```yaml
+{{ range .Files.Glob  "**.yaml" }}
+    {{ . | toString }}
 {{ end }}
 ```
 
