@@ -106,6 +106,14 @@ annotation](#hook-deletion-policies) to the hook template file, or [set the time
 to live (TTL) field of a Job
 resource](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/).
 
+### Hook resource output is not captured by default
+
+When Pod and Job resources are created as hooks they are often used to perform
+pre or post requisite actions. In these cases it is often useful to return the 
+output of the action to the helm client. To achieve this you can [add a custom 
+`helm.sh/hook-output-log-policy` annotation](#hook-output-log-policies) to the
+template.
+
 ## Writing a Hook
 
 Hooks are just Kubernetes manifest files with special annotations in the
@@ -132,6 +140,7 @@ metadata:
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-output-log-policy": hook-failed
 spec:
   template:
     metadata:
@@ -204,3 +213,23 @@ You can choose one or more defined annotation values:
 
 If no hook deletion policy annotation is specified, the `before-hook-creation`
 behavior applies by default.
+
+### Hook output log policies
+
+It is possible to define policies that determine when to output logs on the client side from pod 
+or job hooks. Hook output log policies are defined using the following annotation:
+
+```yaml
+annotations:
+  "helm.sh/hook-output-log-policy": hook-failed,hook-succeeded
+```
+
+You can choose one or more defined annotation values:
+
+| Annotation Value   | Description                                                           |
+| ------------------ | --------------------------------------------------------------------- |
+| `hook-succeeded`   | Output logs of the pod or job on the client side if the hook succeeds |
+| `hook-failed`      | Output logs of the pod or job on the client side if the hook fails    |
+
+If no hook output log policy annotation is specified then logs will not be output on the client 
+side. 
