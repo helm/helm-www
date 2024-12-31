@@ -121,8 +121,8 @@ That variable will be in scope for the entire template. But in our last example,
 `$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}`
 block.
 
-However, there is one variable that is always global - `$` - this variable will
-always point to the root context. This can be very useful when you are looping
+However, there is one variable that will always point to the root context: - `$` -.
+This can be very useful when you are looping
 in a range and you need to know the chart's release name.
 
 An example illustrating this:
