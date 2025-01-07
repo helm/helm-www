@@ -219,7 +219,8 @@ metadata:
 
 Note that we pass `.` at the end of the `template` call. We could just as easily
 pass `.Values` or `.Values.favorite` or whatever scope we want. But what we want
-is the top-level scope.
+is the top-level scope. In the context of the named template, `$` will refer
+to the scope you passed in and not some global scope.
 
 Now when we execute this template with `helm install --dry-run --debug
 plinking-anaco ./mychart`, we get this:
