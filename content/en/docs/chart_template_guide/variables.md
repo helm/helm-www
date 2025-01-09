@@ -128,6 +128,7 @@ in a range and you need to know the chart's release name.
 An example illustrating this:
 ```yaml
 {{- range .Values.tlsSecrets }}
+---
 apiVersion: v1
 kind: Secret
 metadata:
@@ -146,7 +147,6 @@ type: kubernetes.io/tls
 data:
   tls.crt: {{ .certificate }}
   tls.key: {{ .key }}
----
 {{- end }}
 ```
 
