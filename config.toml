@@ -5,6 +5,7 @@ theme = "helm"
 contentDir = "content"
 publishdir = "app"
 enableEmoji = true
+enableGitInfo = true
 
 canonifyURLs = "false"
 pluralizeListTitles = "false"
