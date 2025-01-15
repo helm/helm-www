@@ -99,6 +99,8 @@ Tools layered on top of Helm.
   ready-to-use interface for specifying all Kubernetes objects directly in the `values.yaml`.
   It removes the need to write any templates for your charts and comes with many
   additional features to simplify Helm chart creation and usage.
+- [K8Studio](https://k8studio.io) -
+  Desktop UI for Managing Kubernetes Clusters with Integrated Helm Manager.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -
   Generate Helm charts for your
   existing projects.
