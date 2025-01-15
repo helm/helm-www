@@ -127,7 +127,7 @@ entrambi utilizzati per generare il testo di aiuto di un comando.
 L'opzione `ignoreFlags` indica a Helm di non passare i flag al plugin. Quindi, se un plugin è chiamato con `helm myplugin --foo` e `ignoreFlags: true`, allora
 `--foo` viene silenziosamente scartato.
 
-### Il campo `platformCommand
+### Il campo `platformCommand`
 
 Il campo `platformCommand` configura il comando che il plugin eseguirà quando viene chiamato. Non è possibile impostare sia `platformCommand` che `command`, in quanto ciò provocherebbe un errore. Per decidere quale comando utilizzare si applicano le seguenti regole:
 
@@ -140,7 +140,7 @@ Il campo `platformCommand` configura il comando che il plugin eseguirà quando v
 verrà utilizzato.
   - Se il comando è vuoto, Helm uscirà con un errore.
 
-### Il campo `platformHooks
+### Il campo `platformHooks`
 
 Il campo `platformHooks` configura i comandi che il plugin eseguirà per gli eventi del ciclo di vita. Non è possibile impostare sia `platformHooks` che `hooks`, in quanto si otterrebbe un errore.
 Per decidere quale comando di hook utilizzare, si applicano le seguenti regole:
@@ -224,7 +224,7 @@ Le variabili d'ambiente vengono interpolate prima dell'esecuzione del plugin. Il
 
 Esistono alcune strategie per lavorare con i comandi dei plugin:
 
-- Se un plugin include un eseguibile, l'eseguibile per un `platformCommand:` oppure
+- Se un plugin include un eseguibile, l'eseguibile per un `platformCommand:`
   dovrebbe essere impacchettato nella cartella del plugin o installato tramite un hook.
 - La linea `platformCommand:` o `command:` avrà le variabili d'ambiente espanse prima dell'esecuzione. 
 `$HELM_PLUGIN_DIR` punterà alla cartella dei plugin.
