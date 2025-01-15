@@ -649,7 +649,7 @@ accessibili all'interno dell'oggetto `Chart`. Pertanto, `Chart.yaml` non può es
 passare dati strutturati in modo arbitrario nel template. Il file values può essere usato
 per questo, però.
 
-### Files Values
+### Values Files
 
 Considerando il modello della sezione precedente, un file `values.yaml` che fornisce i valori necessari
 avrebbe il seguente aspetto:
