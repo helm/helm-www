@@ -237,7 +237,7 @@ commands:
 
 Note:
 1. Tutte le sezioni sono facoltative ma devono essere fornite se applicabili.
-1. I flag non devono includere il prefisso `-` o `--`.
+2. I flag non devono includere il prefisso `-` o `--`.
 1. Possono e devono essere specificati flag sia brevi che lunghi. Un flag breve non deve necessariamente
  essere associato alla corrispondente forma lunga, ma entrambe le forme devono essere
    elencate.
