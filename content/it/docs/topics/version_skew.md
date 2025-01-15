@@ -40,6 +40,8 @@ Per determinare quale versione di Helm è compatibile con il vostro cluster, con
 
 | Helm Version | Supported Kubernetes Versions |
 |--------------|-------------------------------|
+| 3.16.x       | 1.31.x - 1.28.x               |
+| 3.15.x       | 1.30.x - 1.27.x               |
 | 3.14.x       | 1.29.x - 1.26.x               |
 | 3.13.x       | 1.28.x - 1.25.x               |
 | 3.12.x       | 1.27.x - 1.24.x               |
