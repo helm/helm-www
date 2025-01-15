@@ -155,7 +155,7 @@ Allo stesso modo, non c'è limite al numero di risorse diverse che possono
 implementare un determinato hook. Per esempio, si potrebbero dichiarare sia un segreto che una config map
 come pre-install hook.
 
-Quando i chart secondari dichiarano degli hook, anche questi vengono valutati. Non c'è modo per un chart di
+Quando sottochart dichiarano degli hook, anche questi vengono valutati. Non c'è modo per un chart di
 di livello superiore di disabilitare gli hook dichiarati dai sottochart.
 
 È possibile definire un peso per un hook, che aiuterà a costruire un ordine di esecuzione deterministico. I pesi si definiscono utilizzando la seguente
