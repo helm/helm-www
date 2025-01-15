@@ -14,7 +14,7 @@ Questo documento descrive l'architettura di Helm ad alto livello.
 Helm è uno strumento per la gestione dei pacchetti Kubernetes chiamati _charts_. Helm può fare quanto segue:
 
 - Creare nuovi chart da zero
-- pacchettizzare i chart in archivi (tgz)
+- Pacchettizzare i chart in file archivi (tgz)
 - Interagire con i repository dei chart, dove questi sono memorizzati
 - installare e disinstallare chart in un cluster Kubernetes esistente
 - Gestire il ciclo di rilascio dei chart installati con Helm.
