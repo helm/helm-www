@@ -7,15 +7,15 @@ weight: 9
 
 Questa sezione illustra varie funzioni e tecniche avanzate di utilizzo di Helm.
 Le informazioni contenute in questa sezione sono destinate ai "power user" di Helm che desiderano
-personalizzare e manipolare in modo avanzato i Charts e le Release. Ognuna di queste funzioni avanzate comporta dei compromessi e degli avvertimenti, per cui
+personalizzare e manipolare in modo avanzato i charts e le release. Ognuna di queste funzioni avanzate comporta dei compromessi e degli avvertimenti, per cui
 ognuna di esse deve essere utilizzata con attenzione e con una conoscenza approfondita di Helm. O in altre parole,
 ricordate il [principio di Peter Parker](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
 
 ## Post Rendering
 Il post rendering offre agli installatori di Charts la possibilità di manipolare manualmente,
 configurare e/o convalidare i manifesti renderizzati prima che vengano installati da Helm.
-Questo permette agli utenti con esigenze di configurazione avanzate di poter usare strumenti come [`kustomize`](https://kustomize.io) per applicare le modifiche alla configurazione senza la necessità di dover fare il fork di un Chart pubblico o senza richiedere ai manutentori del Chart di specificare ogni singola opzione di
-di configurazione per un pezzo di software. Esistono anche casi d'uso per iniettare strumenti comuni e macchine secondarie in ambienti aziendali o l'analisi dei manifesi prima della distribuzione.
+Questo permette agli utenti con esigenze di configurazione avanzate di poter usare strumenti come [`kustomize`](https://kustomize.io) per applicare le modifiche alla configurazione senza la necessità di dover fare il fork di un chart pubblico o senza richiedere ai manutentori del chart di specificare ogni singola opzione di
+per un pezzo di software. Esistono anche casi d'uso per iniettare strumenti comuni e macchine secondarie in ambienti aziendali o l'analisi dei manifesi prima della distribuzione.
 
 ### Prerequisiti
 - Helm 3.1+
