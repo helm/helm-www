@@ -76,65 +76,15 @@ di creazione di software e strumenti che sfruttano Helm. La documentazione compl
 all'indirizzo [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), ma
 una breve panoramica di alcuni dei pacchetti più comuni e di un semplice esempio qui di seguito.
 
-### Package overview
-Questo è un elenco dei pacchetti più comunemente utilizzati, con una semplice spiegazione di ciascuno di essi: 
+## Storage backends
 
-- `pkg/action`: Contiene il "client" principale per eseguire le azioni di Helm. Questo è lo stesso pacchetto che la CLI utilizza sotto il cofano. Se si ha solo bisogno di eseguire comandi di Helm base da un altro programma Go, questo pacchetto fa al caso vostro.
-- `pkg/{chart,chartutil}`: Metodi e helper utilizzati per caricare e manipolare i chart.
-- `pkg/cli` e i suoi sottopacchetti: Contiene tutti i gestori per le variabili d'ambiente standard di Helm e i suoi sottopacchetti contenenti file di output e di values
-- `pkg/release`: Definisce l'oggetto `Release` e i suoi stati.
-
-Ovviamente ci sono molti altri pacchetti oltre a questi, quindi date un'occhiata alla documentazione per maggiori informazioni!
-### Simple example
-Questo è un semplice esempio di come fare `helm list` usando l'SDK di Go:
-
-```go
-package main
-
-import (
-    "log"
-    "os"
-
-    "helm.sh/helm/v3/pkg/action"
-    "helm.sh/helm/v3/pkg/cli"
-)
-
-func main() {
-    settings := cli.New()
-
-    actionConfig := new(action.Configuration)
-    // You can pass an empty string instead of settings.Namespace() to list
-    // all namespaces
-    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    client := action.NewList(actionConfig)
-    // Only list deployed
-    client.Deployed = true
-    results, err := client.Run()
-    if err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    for _, rel := range results {
-        log.Printf("%+v", rel)
-    }
-}
-
-```
-
-## Supporti di archiviazione
-
-Helm 3 ha cambiato la memorizzazione predefinita delle informazioni sul rilascio in Segreti nello spazio dei nomi della release.
-Helm 2 per impostazione predefinita memorizza le informazioni di rilascio come ConfigMaps nello spazio dei nomi dell'istanza di Tiller. Le sottosezioni che seguono
-mostrano come configurare i diversi backend. Questa configurazione si basa sul parametro
+Helm 3 ha cambiato il default in cui memorizzare le informazioni sul rilascio in Secrets nel namespace della release. Helm 2 per impostazione predefinita memorizza le informazioni della release in
+ConfigMaps nel namespace dell'istanza di Tiller. Le sottosezioni che seguono
+mostrano come configurare i diversi backend. Questa configurazione si basa sulla 
 variabile d'ambiente `HELM_DRIVER`. Può essere impostata su uno dei valori:
 `[configmap, secret, sql]`.
 
-### ConfigMap storage backend
+###  Storage backend ConfigMap
 
 Per abilitare il backend ConfigMap, è necessario impostare la variabile d'ambiente
 `HELM_DRIVER` a `configmap`.
@@ -145,44 +95,52 @@ Si può impostare in una shell come segue:
 export HELM_DRIVER=configmap
 ```
 
-Se si vuole passare dallo storage predefinito a quello di ConfigMap, si dovrà fare la migrazione per conto proprio. È possibile recuperare le informazioni sul rilascio con il seguente comando:
+Se si vuole passare dal backend predefinito a quello ConfigMap, si 
+dovrà fare la migrazione autonomamente. È possibile recuperare le informazioni sulla release
+con il seguente comando:
 
 ```shell
-kubectl get secret --all-namespaces -l "owner=helm"
+kubectl get secret --all-namespaces -l “owner=helm”
 ```
 
-**NOTE DI PRODUZIONE**: Le informazioni di rilascio includono i contenuti dei charts e dei file di values, e quindi potrebbero contenere dati sensibili (come password, chiavi private e altre credenziali) che devono essere protetti dall'accesso non autorizzato. Quando si gestisce l'autorizzazione di Kubernetes, ad esempio con
-[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), è possibile concedere un accesso più ampio alle risorse ConfigMap, mentre si limita l'accesso alle risorse Secret.
+**NOTE DI PRODUZIONE**: Le informazioni sulla release includono il contenuto dei chart e dei values file, e quindi potrebbero contenere dati sensibili (come
+password, chiavi private e altre credenziali) che devono essere protetti dall'accesso non autorizzato. Quando si gestisce l'autorizzazione di Kubernetes, ad esempio con
+[RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/), è possibile
+concedere un accesso più ampio alle risorse ConfigMap, mentre si limita l'accesso alle risorse Secret. 
 Ad esempio, il ruolo predefinito [user-facing
 utente](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
-"view" garantisce l'accesso alla maggior parte delle risorse, ma non ai segreti. Inoltre, i dati dei segreti
+“view” garantisce l'accesso alla maggior parte delle risorse, ma non ai Secret. Inoltre, i dati dei Secret
 possono essere configurati per [archiviazione criptata](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
-Tenere presente questo aspetto se si decide di passare al backend ConfigMap, perché potrebbe esporre i dati sensibili dell'applicazione.
+Si tenga presente questo aspetto se si decide di passare al backend ConfigMap, perché potrebbe esporre i dati sensibili dell'applicazione.
 
-### SQL storage backend
+### Storage backend SQL
 
-Esiste un backend di archiviazione SQL in ***beta*** che memorizza le informazioni di rilascio in un database SQL.
+Esiste uno storage backend SQL ***beta*** che memorizza le informazioni di rilascio in un database SQL.
 
-L'uso di un backend di memorizzazione di questo tipo è particolarmente utile se le informazioni sul rilascio pesano più di 1 MB (in tal caso, non possono essere memorizzate in ConfigMaps/Secrets a causa dei limiti interni dell'archivio di valori chiave etcd di Kubernetes).
+L'uso di uno storage backend di questo tipo è particolarmente utile se le informazioni sulla release
+pesano più di 1 MB (nel qual caso non possono essere memorizzate in ConfigMaps/Secrets).
+a causa dei limiti nello storage key-values di etcd in Kubernetes).
 
-Per abilitare il backend SQL, è necessario distribuire un database SQL e impostare la variabile d'ambiente `HELM_DRIVER` a `sql`. I dettagli del DB sono impostati con la variabile d'ambiente `HELM_DRIVER_SQL_CONNECTION_STRING`.
+Per abilitare il backend SQL, è necessario distribuire un database SQL e impostare la variabile d'ambiente `HELM_DRIVER' a `sql`. I dettagli del DB sono impostati con la variabile d'ambiente `HELM_DRIVER_SQL_CONNECTION_STRING`.
 
 È possibile impostarla in una shell come segue:
 
-```shell
-export HELM_DRIVER=sql
+``shell
+esportare HELM_DRIVER=sql
 export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?user=helm&password=changeme
 ```
 
-> Note: Solo PostgreSQL è supportato al momento.
+> Nota: al momento è supportato solo PostgreSQL.
 
-**NOTE DI PRODUZIONE**: Si consiglia di:
-- Preparare il database alla produzione. Per PostgreSQL, consultare i documenti di [Server Administration](https://www.postgresql.org/docs/12/admin.html) per maggiori dettagli. 
+**NOTE DI PRODUZIONE**: Si raccomanda di:
+- Preparare il database alla produzione. Per PostgreSQL, consultare i documenti di [Server Administration](https://www.postgresql.org/docs/12/admin.html) per maggiori dettagli.
 - Abilitare la [gestione dei permessi](/docs/permissions_sql_storage_backend/) per
-rispecchiare Kubernetes RBAC per le informazioni di rilascio
+rispecchiare le RBAC di Kubernetes per le informazioni della release
 
-Se si vuole passare dal backend predefinito al backend SQL, si dovrà fare la migrazione per conto proprio. È possibile recuperare le informazioni sul rilascio con il seguente comando:
+Se si vuole passare dal backend predefinito al backend SQL, si dovrà
+fare la migrazione in autonomia. È possibile recuperare le informazioni sulla release
+con il seguente comando:
 
-```shell
-kubectl get secret --all-namespaces -l "owner=helm"
+``shell
+kubectl get secret --all-namespaces -l “owner=helm”
 ```
