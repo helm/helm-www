@@ -52,87 +52,206 @@ Se si dispone di una distribuzione tar del plugin, è sufficiente decomprimere i
  direttamente da url, lanciando `helm plugin install
 https://domain/path/to/plugin.tar.gz`
 
-## Building Plugins
+## La struttura del file Plugin
 
 Per molti versi, un plugin è simile a un chart. Ogni plugin ha una cartella di primo livello
- e un file `plugin.yaml`.
+ e un file `plugin.yaml`. Possono essere presenti altri file, ma è necessario solo il file plugin.yaml.
 
 ```
 $HELM_PLUGINS/
   |- last/
-      |
       |- plugin.yaml
-      |- last.sh
-
 ```
+## Il file plugin.yaml
 
-Nell'esempio precedente, il plugin `last` è contenuto in una cartella
-chiamata `last`. Ha due file:  `plugin.yaml` (obbligatorio) e uno script eseguibile, `last.sh` (opzionale).
-
-Il core di un plugin è un semplice file YAML chiamato `plugin.yaml`. Ecco un file YAML per un plugin che aiuta a ottenere il nome dell'ultimo rilascio:
+Il file plugin.yaml è necessario per un plugin. Contiene i seguenti campi:
 
 ```yaml
-name: "last"
-version: "0.1.0"
-usage: "get the last release name"
-description: "get the last release name"
-ignoreFlags: false
-command: "$HELM_BIN --host $TILLER_HOST list --short --max 1 --date -r"
-platformCommand:
-  - os: linux
-    arch: i386
-    command: "$HELM_BIN list --short --max 1 --date -r"
-  - os: linux
-    arch: amd64
-    command: "$HELM_BIN list --short --max 1 --date -r"
-  - os: windows
-    arch: amd64
-    command: "$HELM_BIN list --short --max 1 --date -r"
+name: il nome del plugin (OBBLIGATORIO)
+version: Una versione in formato SemVer 2 (OBBLIGATORIA)
+usage: Testo d'uso a riga singola mostrato nella guida
+descrizione: Lunga descrizione mostrata in luoghi come l'help di Helm
+ignoreFlags: Ignora i flag passati in Helm
+platformCommand: # Configura il comando da eseguire in base alla piattaforma
+  - os: OS match, può essere vuoto o omesso per corrispondere a tutti i sistemi operativi.
+    arch: Architecture match, può essere vuoto o omesso per corrispondere a tutte le architetture
+    command: Comando del plugin da eseguire
+    args: Argomenti del comando del plugin
+command: (DEPRECATO) Comando del plugin, utilizzare invece platformCommand
+platformHooks: # Configura gli hook del ciclo di vita del plugin in base alla piattaforma
+  install: # Comando di install
+    - os: OS match, può essere vuoto o omesso per corrispondere a tutti i sistemi operativi.
+      arch: Architecture match, può essere vuoto o omesso per corrispondere a tutte le architetture
+      comando: Comando di installazione del plugin da eseguire
+      args: Argomenti del comando di installazione del plugin
+  update: # Comando di update
+    - os: OS match, può essere vuoto o omesso per corrispondere a tutti i sistemi operativi.
+      arch: Architecture match, può essere vuoto o omesso per corrispondere a tutte le architetture
+      comando: Comando di aggiornamento del plugin da eseguire
+      args: Argomenti del comando di aggiornamento del plugin
+  delete: # Comando di delete plugin
+    - os: OS match, può essere vuoto o omesso per corrispondere a tutti i sistemi operativi.
+      arch: Architecture match, può essere vuoto o omesso per corrispondere a tutte le architetture
+      comando: Comando di cancellazione del plugin da eseguire
+      args: Argomenti del comando di cancellazione del plugin
+hooks: # (Deprecato) Hook del plugin, usare invece platformHooks
+  install: Comando per installare il plugin
+  update: Comando per aggiornare il plugin
+  delete: Comando per cancellare il plugin
+downloader: # Configura la capacità dei downloader
+  - command: Comando da invocare
+    protocolli:
+      - Schema di protocollo supportato
 ```
 
-Il `name` è il nome del plugin. Quando Helm esegue questo plugin, questo è il nome che che utilizzerà (ad esempio, `helm NAME` invocherà questo plugin).
+### Il campo `name`
+
+Il campo `name` è il nome del plugin. Quando Helm esegue questo plugin, questo
+è il nome che utilizzerà (ad esempio, `helm NAME` invocherà questo plugin).
 
 _`name` deve corrispondere al nome della cartella._ Nell'esempio precedente, ciò significa che il plugin
-con `name: last` dovrebbe essere contenuto in una cartella chiamata `last`.
+con `name: last` deve essere contenuto in una cartella chiamata `last`.
 
 Restrizioni su `name`:
 
 - `name` non può duplicare uno dei comandi di primo livello esistenti `helm`.
 - `name` deve essere limitato ai caratteri ASCII a-z, A-Z, 0-9, `_` e `-`.
 
-`version` è la versione SemVer 2 del plugin. `usage` e `description` sono
-utilizzati per generare il testo di aiuto di un comando.
+### Il campo `version`
 
-Lo switch `ignoreFlags` indica a Helm di non passare flag al plugin. Quindi, se un plugin viene chiamato con `helm myplugin --foo` e `ignoreFlags: true`, allora
+La `version` è la versione in formato SemVer 2 del plugin. I campi `usage` e `description` sono
+entrambi utilizzati per generare il testo di aiuto di un comando.
+
+### Il campo `ignoreFlags`
+
+L'opzione `ignoreFlags` indica a Helm di non passare i flag al plugin. Quindi, se un plugin è chiamato con `helm myplugin --foo` e `ignoreFlags: true`, allora
 `--foo` viene silenziosamente scartato.
 
-Infine, cosa più importante, `platformCommand` o `command` è il comando
-che questo plugin eseguirà quando viene chiamato. La sezione `platformCommand`
-definisce le varianti di un comando specifiche per sistema operativo/architettura. Le seguenti
-regole per decidere quale comando utilizzare:
+### Il campo `platformCommand
 
-- Se `platformCommand` è presente, verrà cercato per primo.
-- Se sia `os` che `arch` corrispondono alla piattaforma corrente, la ricerca si interrompe e viene utilizzato il comando.
-- Se `os` corrisponde e non c'è una corrispondenza più specifica con `arch`, il comando verrà utilizzato.
-- Se non viene trovata alcuna corrispondenza con `platformCommand`, verrà utilizzato il comando predefinito `command`.
-- Se non vengono trovate corrispondenze in `platformCommand` e non è presente alcun `comando`, Helm   uscirà con un errore.
+Il campo `platformCommand` configura il comando che il plugin eseguirà quando viene chiamato. Non è possibile impostare sia `platformCommand` che `command`, in quanto ciò provocherebbe un errore. Per decidere quale comando utilizzare si applicano le seguenti regole:
 
-Le variabili d'ambiente vengono interpolate prima dell'esecuzione del plugin. Il modello
-illustra la via preferenziale per indicare dove risiede il programma del plugin.
+- Se `platformCommand` è presente, verrà utilizzato.
+  - Se sia `os` che `arch` corrispondono alla piattaforma corrente, la ricerca si interrompe e viene utilizzato il comando
+  - Se `os` corrisponde e `arch` è vuoto, verrà utilizzato il comando.
+  - Se `os` e `arch` sono entrambi vuoti, verrà utilizzato il comando.
+  - Se non c'è corrispondenza, Helm uscirà con un errore.
+- Se `platformCommand` non è presente e il deprecato `command` è presente
+verrà utilizzato.
+  - Se il comando è vuoto, Helm uscirà con un errore.
+
+### Il campo `platformHooks
+
+Il campo `platformHooks` configura i comandi che il plugin eseguirà per gli eventi del ciclo di vita. Non è possibile impostare sia `platformHooks` che `hooks`, in quanto si otterrebbe un errore.
+Per decidere quale comando di hook utilizzare, si applicano le seguenti regole:
+
+- Se `platformHooks` è presente, verrà utilizzato e i comandi per l'evento del ciclo di vita saranno processati.
+  - Se sia `os` che `arch` corrispondono alla piattaforma corrente, la ricerca si interrompe e il comando sarà utilizzato
+  - Se `os` corrisponde e `arch` è vuoto, il comando verrà utilizzato.
+  - Se `os` e `arch` sono entrambi vuoti, verrà utilizzato il comando.
+  - Se non c'è corrispondenza, Helm salterà l'evento.
+- Se `platformHooks` non è presente e il deprecato `hooks` è presente il comando
+per l'evento del ciclo di vita sarà usato.
+  - Se il comando è vuoto, Helm salterà l'evento.
+
+
+## Building a Plugin
+
+Ecco un plugin YAML per un semplice plugin che aiuta a recuperare il nome dell'ultima release:
+
+```yaml
+name: last
+version: 0.1.0
+usage: get the last release name
+description: get the last release name
+ignoreFlags: false
+platformCommand:
+  - command: ${HELM_BIN}
+    args:
+      - list
+      - --short
+      - --max=1
+      - --date
+      - -r
+```
+
+I plugin possono richiedere script ed eseguibili aggiuntivi.
+Gli script possono essere inclusi nella cartella dei plugin e gli eseguibili possono essere scaricati
+tramite un hook. Il seguente è un esempio di plugin:
+
+```console
+$HELM_PLUGINS/
+  |- myplugin/
+    |- scripts/
+      |- install.ps1
+      |- install.sh
+    |- plugin.yaml
+```
+
+```yaml
+name: myplugin
+version: 0.1.0
+usage: example plugin
+description: example plugin
+ignoreFlags: false
+platformCommand:
+  - command: ${HELM_PLUGIN_DIR}/bin/myplugin
+  - os: windows
+    command: ${HELM_PLUGIN_DIR}\bin\myplugin.exe
+platformHooks:
+  install:
+    - command: ${HELM_PLUGIN_DIR}/scripts/install.sh
+    - os: windows
+      command: pwsh
+      args:
+        - -c
+        - ${HELM_PLUGIN_DIR}\scripts\install.ps1
+  update:
+    - command: ${HELM_PLUGIN_DIR}/scripts/install.sh
+      args:
+        - -u
+    - os: windows
+      command: pwsh
+      args:
+        - -c
+        - ${HELM_PLUGIN_DIR}\scripts\install.ps1
+        - -Update
+```
+
+Le variabili d'ambiente vengono interpolate prima dell'esecuzione del plugin. Il modello sopra illustra il modo preferito per indicare dove risiede il programma del plugin.
+
+### Comandi dei plugin
 
 Esistono alcune strategie per lavorare con i comandi dei plugin:
 
-- Se un plugin include un eseguibile, l'eseguibile per un `platformCommand:` o un `command:` deve essere impacchettato nella directory del plugin.
+- Se un plugin include un eseguibile, l'eseguibile per un `platformCommand:` oppure
+  dovrebbe essere impacchettato nella cartella del plugin o installato tramite un hook.
 - La linea `platformCommand:` o `command:` avrà le variabili d'ambiente espanse prima dell'esecuzione. 
 `$HELM_PLUGIN_DIR` punterà alla cartella dei plugin.
 - Il comando stesso non viene eseguito in una shell. Quindi non è possibile eseguire uno script.
-- Helm inietta molte configurazioni nelle variabili d'ambiente. 
-Date un occhiata  per vedere quali informazioni sono disponibili.
-- Helm non fa alcuna ipotesi sul linguaggio del plugin. È possibile scriverlo
+- Helm inietta molte configurazioni nelle variabili d'ambiente. Si può dare un'occhiata all'ambiente per vedere quali informazioni sono disponibili.
+- Helm non fa alcuna ipotesi sulla linguaggio del plugin. È possibile scriverlo
   in qualsiasi linguaggio si preferisca.
 - I comandi sono responsabili dell'implementazione di testi di aiuto specifici per `-h` e
   `--help`. Helm userà `usage` e `description` per `helm help` e `helm
   help myplugin`, ma non gestirà `helm myplugin --help`.
+
+### Testare un plugin locale
+
+Per prima cosa è necessario trovare il percorso `HELM_PLUGINS` e per farlo eseguire il seguente comando:
+
+``` bash
+helm env
+```
+
+Cambiare la propria directory corrente nella directory in cui è impostato `HELM_PLUGINS`.
+
+Ora si può aggiungere un collegamento simbolico all'output di compilazione del plugin, in questo esempio
+lo abbiamo fatto per `mapkubeapis`.
+
+``` bash
+ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
+```
 
 ## Downloader Plugins
 Per impostazione predefinita, Helm è in grado di estrarre i chart tramite HTTP/S. A partire da Helm 2.4.0, i plugin 
