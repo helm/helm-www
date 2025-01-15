@@ -31,7 +31,6 @@ e può rispondere a richieste GET, si ha una pletora di opzioni quando si tratta
 Ad esempio, è possibile utilizzare un bucket di Google
 Cloud Storage (GCS), Amazon S3, GitHub Pages o addirittura creare il proprio server web.
 
-### The chart repository structure
 ### La struttura del chart repository
 
 Un chart repository è composto da chart pacchettizzati e da un file speciale chiamato`index.yaml` che contiene un indice di tutti i chart presenti nel repository.
