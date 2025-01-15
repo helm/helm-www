@@ -241,7 +241,7 @@ Note:
 3. Possono e devono essere specificati flag sia brevi che lunghi. Un flag breve non deve necessariamente
  essere associato alla corrispondente forma lunga, ma entrambe le forme devono essere
    elencate.
-1. I flag non devono essere ordinati in alcun modo, ma devono essere elencati nel punto corretto della gerarchia dei sottocomandi del file.
+4. I flag non devono essere ordinati in alcun modo, ma devono essere elencati nel punto corretto della gerarchia dei sottocomandi del file.
 5. I flag globali esistenti di Helm sono già gestiti dal meccanismo di autocompletamento di Helm, quindi i plugin non devono specificare i seguenti flag `--debug`,
 `--namespace` o `-n`, `--kube-context` e `--kubeconfig`, o qualsiasi altro flag globale.
 
