@@ -7,7 +7,7 @@ weight: 9
 
 Questa sezione illustra varie funzioni e tecniche avanzate di utilizzo di Helm.
 Le informazioni contenute in questa sezione sono destinate ai "power user" di Helm che desiderano
-personalizzare e manipolare in modo avanzato i Charts e le Release. Ognuna di queste funzioni avanzate comporta dei compromessi e degli avvertimenti, per cui
+personalizzare e manipolare in modo avanzato i charts e le release. Ognuna di queste funzioni avanzate comporta dei compromessi e degli avvertimenti, per cui
 ognuna di esse deve essere utilizzata con attenzione e con una conoscenza approfondita di Helm. O in altre parole,
 ricordate il [principio di Peter Parker](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
 
