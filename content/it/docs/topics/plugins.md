@@ -245,7 +245,7 @@ Note:
 5. I flag globali esistenti di Helm sono già gestiti dal meccanismo di autocompletamento di Helm, quindi i plugin non devono specificare i seguenti flag `--debug`,
 `--namespace` o `-n`, `--kube-context` e `--kubeconfig`, o qualsiasi altro flag globale.
 
-1. L'elenco `validArgs` fornisce un elenco statico di possibili completamenti del
+6. L'elenco `validArgs` fornisce un elenco statico di possibili completamenti del
    primo parametro di un sottocomando.  Non è sempre possibile
    fornire tale elenco in anticipo (vedere la sezione [Completamento dinamico](#completamento-dinamico)), nel qual caso la sezione
 `validArgs` può essere omessa.
