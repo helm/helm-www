@@ -5,7 +5,7 @@ description: "Все, що вам потрібно знати про те, як 
 
 # Ласкаво просимо {#welcome}
 
-Ласкаво просимо до документації [Helm](https://helm.sh/). Helm —  це менеджер пакунків для Kubernetes, і ви можете прочитати детальну довідкову інформацію у [звіті CNCF Helm Project Journey](https://www.cncf.io/cncf-helm-project-journey/).
+Ласкаво просимо до документації [Helm](../). Helm — це менеджер пакунків для Kubernetes, і ви можете прочитати детальну довідкову інформацію у [звіті CNCF Helm Project Journey](https://www.cncf.io/cncf-helm-project-journey/).
 
 # Як організована документація {#how-the-documentation-is-organized}
 
