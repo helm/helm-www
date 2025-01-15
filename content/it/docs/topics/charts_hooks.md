@@ -41,7 +41,7 @@ un'installazione di `helm`. Per impostazione predefinita, il ciclo di vita appar
 
 1. L'utente esegue `helm install foo`
 2. Viene richiamata l'API di installazione della libreria Helm3. 
-Dopo alcune verifiche, la libreria restituisce i manifest `foo`.
+3. Dopo alcune verifiche, la libreria restituisce i manifest `foo`.
 4. La libreria carica le risorse risultanti in Kubernetes
 5. La libreria restituisce l'oggetto di rilascio (e altri dati) al client.
 6. Il client esce
