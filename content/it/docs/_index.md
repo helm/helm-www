@@ -13,7 +13,7 @@ per Kubernetes e si possono avere informazioni di base dettagliate nel
 
 Helm ha molta documentazione. Una panoramica di alto livello su come è organizzata la documentazione vi aiuterà a capire dove cercare determinate cose:
 
-- I [Tutorial]({{< relref path="/docs/chart_template_guide/getting_started" lang="en" >}}) vi accompagnano attraverso una serie di passi per creare il vostro primo Chart Helm.
+- I [Tutorial]({{< relref path="/docs/chart_template_guide/getting_started" lang="en" >}}) vi accompagnano attraverso una serie di passi per creare il vostro primo Helm chart.
   Iniziate da qui se siete alle prime armi con Helm.
 - Le [guide agli argomenti](topics) trattano gli argomenti e i concetti chiave a un livello piuttosto alto e forniscono informazioni di base e spiegazioni utili.
 - Le [Guide alla comunità]({{< relref path="/docs/community" lang="en" >}}) trattano argomenti incentrati sulla comunità di Helm.
