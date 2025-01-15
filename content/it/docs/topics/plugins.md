@@ -365,7 +365,7 @@ e, se lo trova, stampare il completamento corretto.
    stampare *tutti* i nomi dei rilasci (dello spazio dei nomi `default`), non solo quelli che iniziano con `ngin`.
 ; la shell manterrà solo quelli che iniziano con
    `ngin`.
-1. Per semplificare il supporto al completamento dinamico, specialmente se si ha un plugin complesso, 
+2. Per semplificare il supporto al completamento dinamico, specialmente se si ha un plugin complesso, 
    si può fare in modo che lo script `plugin.complete` chiami lo script principale del plugin e richieda le scelte di completamento.
  Si veda la sezione [Completamento dinamico](#completamento-dinamico) per un esempio.
 1. Per eseguire il debug del completamento dinamico e del file `plugin.complete`, si può eseguire il comando
