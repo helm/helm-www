@@ -14,7 +14,7 @@ ricordate il [principio di Peter Parker](https://en.wikipedia.org/wiki/With_grea
 ## Post Rendering
 Il post rendering offre agli installatori di Charts la possibilità di manipolare manualmente,
 configurare e/o convalidare i manifesti renderizzati prima che vengano installati da Helm.
-Questo permette agli utenti con esigenze di configurazione avanzate di poter usare strumenti come [`kustomize`](https://kustomize.io) per applicare le modifiche alla configurazione senza la necessità di dover fare il fork di un Chart pubblico o senza richiedere ai manutentori del Chart di specificare ogni singola opzione di
+Questo permette agli utenti con esigenze di configurazione avanzate di poter usare strumenti come [`kustomize`](https://kustomize.io) per applicare le modifiche alla configurazione senza la necessità di dover fare il fork di un chart pubblico o senza richiedere ai manutentori del chart di specificare ogni singola opzione di
 di configurazione per un pezzo di software. Esistono anche casi d'uso per iniettare strumenti comuni e macchine secondarie in ambienti aziendali o l'analisi dei manifesi prima della distribuzione.
 
 ### Prerequisiti
