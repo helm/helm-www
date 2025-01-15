@@ -175,7 +175,7 @@ data:
 ```
 
 Si può notare che si semplifica il lavoro da fare, ereditando la definizione comune di
-ConfigMap, che aggiunge proprietà standard per ConfigMap. Nel nostro
+ConfigMap, che aggiunge proprietà standard per ConfigMap. Nel nostro modello
 aggiungiamo la configurazione, in questo caso la chiave dati `myvalue` e il suo valore.
 valore. La configurazione sovrascrive la risorsa vuota del ConfigMap comune.
 Questo è possibile grazie alla funzione helper `mylibchart.util.merge` di cui abbiamo parlato nella sezione precedente.
