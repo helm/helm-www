@@ -5,9 +5,7 @@ aliases: ["/docs/chart_tests/"]
 weight: 3
 ---
 
-Un chart contiene una serie di risorse e componenti Kubernetes che lavorano
-insieme. Come autore di un chart, si potrebbe voler scrivere alcuni test per convalidare che funzioni come previsto quando viene installato. Questi test aiutano anche il
-consumatore del chart a capire cosa dovrebbe fare.
+Un chart contiene una serie di risorse e componenti Kubernetes che lavorano insieme. Come autore di un chart, potresti voler scrivere alcuni test che convalidino che il tuo chart funzioni come previsto quando viene installato. Questi test aiutano anche l'utente del chart a capire cosa dovrebbe fare il chart.
 
 Un **test** in un chart helm si trova nella cartella `templates/` ed è una definizione di lavoro che specifica un container con un determinato comando da eseguire. Il container
 deve terminare con successo (exit 0) perché il test sia considerato superato. La definizione del job deve contenere l'annotazione helm test hook: `helm.sh/hook: test`.
