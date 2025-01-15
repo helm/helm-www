@@ -238,7 +238,7 @@ commands:
 Note:
 1. Tutte le sezioni sono facoltative ma devono essere fornite se applicabili.
 2. I flag non devono includere il prefisso `-` o `--`.
-1. Possono e devono essere specificati flag sia brevi che lunghi. Un flag breve non deve necessariamente
+3. Possono e devono essere specificati flag sia brevi che lunghi. Un flag breve non deve necessariamente
  essere associato alla corrispondente forma lunga, ma entrambe le forme devono essere
    elencate.
 1. I flag non devono essere ordinati in alcun modo, ma devono essere elencati nel punto corretto della gerarchia dei sottocomandi del file.
