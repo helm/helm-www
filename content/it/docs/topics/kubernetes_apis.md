@@ -110,7 +110,7 @@ per maggiori dettagli.
 
 In alternativa, si possono seguire i seguenti passaggi manuali per eseguire l'aggiornamento delle versioni APIdi un manifest di rilascio. 
 A seconda della configurazione, si seguiranno
-i passi per il  Secret o la ConfigMap.
+i passi per il backend Secret o la ConfigMap.
 
 - Ottenere il nome del Secret o della Configmap associata all'ultima release distribuita :
   - backend Secrets: `kubectl get secret -l 
