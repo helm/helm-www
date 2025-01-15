@@ -566,8 +566,10 @@ esegue il rendering dei chart, passerà ogni file in quella cartella attraverso 
  template.
 
 I values dei template possono essere forniti in due modi:
-- Gli sviluppatori dei chart possono fornire un file chiamato `values.yaml` all'interno di un chartrafico.
-  Questo file p
+- Gli sviluppatori dei chart possono fornire un file chiamato `values.yaml` all'interno di di un chart. Questo file può contenere valori predefiniti.
+- Gli utenti dei chart possono fornire un file YAML contenente i valori. Questo può essere fornito a riga di comando con helm install.
+
+Quando un utente fornisce valori personalizzati, questi valori sovrascrivono quelli del file values.yaml del chart.
 
 ### File Template
 
