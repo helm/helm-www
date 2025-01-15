@@ -628,7 +628,7 @@ dati predefiniti a cui si può accedere nei template.
 I seguenti valori sono predefiniti, sono disponibili per ogni template e non possono essere sovrascritti. Come per tutti i valori, i nomi sono _sensibili alle maiuscole_.
 
 - `Release.Name`: Il nome della release (non il chart).
-- `Release.Namespace`: il namespace dove sarà rilasciato il chart
+- `Release.Namespace`: il namespace in cui è stato rilasciato il chart
 - `Release.Service`: Il servizio che ha effettuato il rilascio.
 - `Release.IsUpgrade`: Viene impostato a true se l'operazione corrente è un
   aggiornamento o rollback.
