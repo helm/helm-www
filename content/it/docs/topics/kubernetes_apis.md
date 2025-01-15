@@ -112,8 +112,13 @@ In alternativa, si possono seguire i seguenti passaggi manuali per eseguire l'ag
 A seconda della configurazione, si seguiranno
 i passi per il backend Secret o la ConfigMap.
 
+<<<<<<< HEAD
 - Ottenere il nome del Secret o della Configmap associata all'ultima release distribuita :
   - backend Secrets: `kubectl get secret -l 
+=======
+- Ottenere il nome del Segreto o della Configmap associata all'ultima release distribuita :
+  - Secrets backend: `kubectl get secret -l 
+>>>>>>> f5474b75 (Update content/it/docs/topics/kubernetes_apis.md)
     owner=helm,status=deployed,name=<nome_release> --namespace
     <namespace_di_rilascio> | awk '{print $1}' | grep -v NAME`   
 - ConfigMap backend: `kubectl get configmap -l
