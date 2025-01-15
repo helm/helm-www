@@ -121,12 +121,12 @@ L'uso di uno storage backend di questo tipo è particolarmente utile se le infor
 pesano più di 1 MB (nel qual caso non possono essere memorizzate in ConfigMaps/Secrets).
 a causa dei limiti nello storage key-values di etcd in Kubernetes).
 
-Per abilitare il backend SQL, è necessario distribuire un database SQL e impostare la variabile d'ambiente `HELM_DRIVER' a `sql`. I dettagli del DB sono impostati con la variabile d'ambiente `HELM_DRIVER_SQL_CONNECTION_STRING`.
+Per abilitare il backend SQL, è necessario distribuire un database SQL e impostare la variabile d'ambiente `HELM_DRIVER` a `sql`. I dettagli del DB sono impostati con la variabile d'ambiente `HELM_DRIVER_SQL_CONNECTION_STRING`.
 
 È possibile impostarla in una shell come segue:
 
-``shell
-esportare HELM_DRIVER=sql
+```shell
+export HELM_DRIVER=sql
 export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?user=helm&password=changeme
 ```
 
@@ -141,6 +141,6 @@ Se si vuole passare dal backend predefinito al backend SQL, si dovrà
 fare la migrazione in autonomia. È possibile recuperare le informazioni sulla release
 con il seguente comando:
 
-``shell
+```shell
 kubectl get secret --all-namespaces -l “owner=helm”
 ```
