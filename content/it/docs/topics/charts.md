@@ -896,7 +896,7 @@ riferimenti standard che vi aiuteranno.
 ## Definizioni di risorse personalizzate (CRD)
 
 Kubernetes fornisce un meccanismo per dichiarare nuovi tipi di oggetti Kubernetes.
-Utilizzando le CustomResourceDefinitions (CRD), gli sviluppatori Kubernetes possono dichiarare tipi di risorse personalizzate.
+Utilizzando le CustomResourceDefinitions (CRDs), gli sviluppatori Kubernetes possono dichiarare tipi di risorse personalizzate.
 
 In Helm 3, i CRD sono trattati come un tipo speciale di oggetto. Vengono installati
 prima del resto del chart e sono soggetti ad alcune limitazioni.
