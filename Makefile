@@ -27,7 +27,6 @@ check-links-ci: set-up-link-checker run-link-checker
 sdkexamples:
 	cd sdkexamples; make
 
-
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0
 
