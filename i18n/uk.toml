@@ -102,10 +102,10 @@ other = "Отримання чартів"
 other = "Відвідайте [Artifact Hub](https://artifacthub.io) для пошуку [чартів Helm](https://artifacthub.io/packages/search?kind=0) з багатоьох публічних репозиторіїв."
 
 [get_upgrade_title]
-other = "[Оновлення з v2 до v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[Оновлення з v2 до v3?](https://helm.sh/uk/docs/topics/v2_v3_migration/)"
 
 [get_upgrade_desc]
-other = "[Прочитайте документ про міграцію, щоб дізнатися більше.](https://helm.sh/docs/topics/v2_v3_migration/)"
+other = "[Прочитайте документ про міграцію, щоб дізнатися більше.](https://helm.sh/uk/docs/topics/v2_v3_migration/)"
 
 ## homepage community
 [community_title]

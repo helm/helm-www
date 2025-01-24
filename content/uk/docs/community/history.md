@@ -5,7 +5,7 @@ description: "Надає загальний огляд історії проєк
 weight: 4
 ---
 
-Helm є [дипломованим](https://helm.sh/blog/celebrating-helms-cncf-graduation/) [проєктом CNCF](https://www.cncf.io/projects/).
+Helm є [дипломованим](/blog/celebrating-helms-cncf-graduation/) [проєктом CNCF](https://www.cncf.io/projects/).
 
 Helm почався як те, що тепер відоме як [Helm Classic](https://github.com/helm/helm-classic), проєкт Deis, розпочатий у 2015 році та представлений на перших KubeCon.
 
