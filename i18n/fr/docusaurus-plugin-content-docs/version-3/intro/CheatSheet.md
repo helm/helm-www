@@ -74,7 +74,7 @@ helm uninstall <name>                                 # Désinstalle un chart.
 
 ```bash
 helm upgrade <release> <chart>                            # Met à niveau une version
-helm upgrade <release> <chart> --atomic                   # Si fixé, le processus de mise à niveau restore en cas d'erreur
+helm upgrade <release> <chart> --rollback-on-failure      # Si fixé, le processus de mise à niveau restore en cas d'erreur
 helm upgrade <release> <chart> --dependency-update        # Met à jour les dépendances si elles sont manquantes avant d'installer le chart
 helm upgrade <release> <chart> --version <version_number> # Spécifie une version à installer
 helm upgrade <release> <chart> --values                   # Spécifier des valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
