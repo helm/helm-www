@@ -8,24 +8,24 @@ title: helm upgrade
 이 명령어는 릴리스를 새 버전의 차트로 업그레이드한다.
 
 업그레이드 시 사용되는 인수는 릴리스 및 차트여야 한다.
-차트의 인수는 차트 참조('example/mariadb'), 차트 디렉터리 경로, 
+차트의 인수는 차트 참조('example/mariadb'), 차트 디렉터리 경로,
 패키지 차트 또는 정규화된 URL 중 하나일 수 있다.
 차트 참조 시 '--version' 플래그가 설정되지 않았을 경우 최신 버전이 지정된다.
 
 차트의 값을 재정의하려면 '--values' 플래그를 사용하고 파일을
 전달하거나 '--set' 플래그를 사용하고 명령 줄에서 구성을 전달하고,
 문자열 값을 강제하려면 '--set-string' 을 사용한다. 값이 큰 경우
-'--value'나 '--set' 대신 
+'--value'나 '--set' 대신
 '--set-file'을 사용하여 파일에서 하나의 큰 값을 읽을 수도 있다.
 
-'--values'/'-f' 플래그를 여러 번 지정할 수도 있다. 지정된 마지막(가장 오른쪽) 파일에 우선 순위가 부여된다. 
+'--values'/'-f' 플래그를 여러 번 지정할 수도 있다. 지정된 마지막(가장 오른쪽) 파일에 우선 순위가 부여된다.
 예를 들어 myvalues.yaml과 override.yaml에 'Test' 라는 키가 포함된 경우
 override.yaml에 설정된 값이 우선한다.
 
     $ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis
 
-'--set' 플래그도 여러 번 지정할 수 있다. 지정된 마지막(가장 오른쪽) 파일에 
-우선 순위가 부여된다. 예를 들어 'foo' 라는 키에 대해 'bar' 와 'newbar' 에서 
+'--set' 플래그도 여러 번 지정할 수 있다. 지정된 마지막(가장 오른쪽) 파일에
+우선 순위가 부여된다. 예를 들어 'foo' 라는 키에 대해 'bar' 와 'newbar' 에서
 값이 모두 설정된 경우 'newbar' 가 우선한다.
 
     $ helm upgrade --set foo=bar --set foo=newbar redis ./redis
@@ -38,7 +38,7 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### 옵션
 
 ```
-      --atomic                       설정된 경우, 업그레이드 실패 시 변경 사항을 롤백. --atomic 을 사용하면 --wait 플래그가 자동으로 설정
+      --rollback-on-failure          설정된 경우, 업그레이드 실패 시 변경 사항을 롤백. --rollback-on-failure 을 사용하면 --wait 플래그가 자동으로 설정
       --ca-file string               이 CA 번들을 사용하여 HTTPS 사용 서버의 인증서를 확인
       --cert-file string             이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트를 식별
       --cleanup-on-fail              업그레이드 실패 시, 이 업그레이드에서 생성된 새 리소스 삭제를 허용

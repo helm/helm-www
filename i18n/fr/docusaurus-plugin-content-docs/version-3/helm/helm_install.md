@@ -38,7 +38,7 @@ Vous pouvez spécifier l'argument `--set` plusieurs fois. La priorité sera donn
 
     $ helm install --set foo=bar --set foo=newbar  myredis ./redis
 
-De même, dans l'exemple suivant, 'foo' est défini sur '["four"]' : 
+De même, dans l'exemple suivant, 'foo' est défini sur '["four"]' :
 
     $ helm install --set-json='foo=["one", "two", "three"]' --set-json='foo=["four"]' myredis ./redis
 
@@ -65,7 +65,7 @@ Une référence de chart est un moyen pratique de référencer un chart dans un 
 
 Lorsque vous utilisez une référence de chart avec un préfixe de dépôt ('example/mariadb'), Helm va rechercher dans la configuration locale, si un dépôt nommé 'example' et recherchera ensuite si un chart dans ce référentiel dont le nom est 'mariadb'. Il installera la dernière version stable de ce chart jusqu'à ce que vous le spécifiiez avec l'argument `--devel` pour inclure également la version de développement (alpha, beta et les versions candidates), ou fournissez un numéro de version avec l'argument `--version`.
 
-Pour voir la liste des dépôts, utilisez la commande `helm repo list`. Pour chercher un chart dans un dépôt, utilisez la commande `helm search`. 
+Pour voir la liste des dépôts, utilisez la commande `helm repo list`. Pour chercher un chart dans un dépôt, utilisez la commande `helm search`.
 
 
 ```
@@ -75,7 +75,7 @@ helm install [NAME] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
+      --rollback-on-failure                        Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --rollback-on-failure est utilisé
       --ca-file string                             Vérifie les certificats des serveurs ayant activé HTTPS en utilisant ce fichier de certificat racine (CA bundle)
       --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --create-namespace                           Créer le namespace de la version s'il n'est pas présent
@@ -98,7 +98,7 @@ helm install [NAME] [CHART] [flags]
       --pass-credentials                           Transmet les informations d'identification à tous les domaines
       --password string                            Mot de passe du dépôt de chart où est localisé le chart demandé
       --plain-http                                 Utiliser des connexion HTTP non sécurisées pour le téléchargement du chart
-      --post-renderer postRendererString           Chemin vers un éxécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié. 
+      --post-renderer postRendererString           Chemin vers un éxécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié.
       --post-renderer-args postRendererArgsSlice   Un argument pour le post-rendu (peut être spécifié plusieurs fois) (par défaut [])
       --render-subchart-notes                      Si défini, génère les notes du sous-chart avec le chart parent
       --replace                                    Réutilise le nom donné, uniquement si ce nom correspond à une publication supprimé qui reste dans l'historique. Ceci n'est pas sûre en production
