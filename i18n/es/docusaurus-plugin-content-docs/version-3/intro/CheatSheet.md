@@ -39,40 +39,39 @@ helm package <chart-path>               # Empaqueta una chart en un archivo char
 helm lint <chart>                       # Ejecuta pruebas para examinar una chart e identificar posibles problemas.
 helm show all <chart>                   # Inspecciona una chart y lista su contenido.
 helm show values <chart>                # Muestra el contenido del archivo values.yaml.
-helm pull <chart>                       # Descarga una chart.
-helm pull <chart> --untar=true          # Si se establece en true, descomprime la chart después de descargarla.
-helm pull <chart> --verify              # Verifica el paquete antes de usarlo.
-helm pull <chart> --version <number>    # Por defecto se usa la última versión; especifica una restricción de versión para la chart.
-helm dependency list <chart>            # Muestra una lista de las dependencias de una chart.
+helm pull <chart>                       # Descargar/extraer chart
+helm pull <chart> --untar=true          #  Si se establece en true, se desempaquetará la chart después de descargar
+helm pull <chart> --verify              # Verificar el paquete antes de usarlo
+helm pull <chart> --version <number>    # Se usa Default-latest, especifica una restricción de versión para la versión de la chart a usar
+helm dependency list <chart>            # Mostrar una lista de las dependencias de una chart
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Instalar y desinstalar aplicaciones
 
 ```bash
-helm install <name> <chart>                           # Instala la chart con un nombre.
-helm install <name> <chart> --namespace <namespace>   # Instala la chart en un namespace específico.
-helm install <name> <chart> --set key1=val1,key2=val2 # Establece valores en la línea de comandos (puede especificar varios o separarlos con comas).
-helm install <name> <chart> --values <yaml-file/url>  # Instala la chart con los valores especificados.
-helm install <name> <chart> --dry-run --debug         # Ejecuta una instalación de prueba para validar la chart (p).
-helm install <name> <chart> --verify                  # Verifica el paquete antes de usarlo.
-helm install <name> <chart> --dependency-update       # Actualiza dependencias si faltan antes de instalar la chart.
-helm uninstall <name>                                 # Desinstala una release del namespace actual (por defecto).
-helm uninstall <release-name> --namespace <namespace> # Desinstala una release del namespace especificado.
+helm install <name> <chart>                           # Instalar la chart con un nombre
+helm install <name> <chart> --namespace <namespace>   # Instalar la chart en un namespace específico
+helm install <name> <chart> --set key1=val1,key2=val2 # Establecer valores en la línea de comandos (se pueden especificar varios valores o separarlos con comas)
+helm install <name> <chart> --values <yaml-file/url>  # Instalar la chart con los valores especificados
+helm install <name> <chart> --dry-run --debug         # Ejecuta una instalación de prueba para validar la chart (p)
+helm install <name> <chart> --verify                  # Verificar el paquete antes de usarlo
+helm install <name> <chart> --dependency-update       # actualizar dependencias si faltan antes de instalar la chart
+helm uninstall <name>                                 # Desinstalar una release
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Actualizar y revertir la aplicación (Rollback)
 
 ```bash
-helm upgrade <release> <chart>                            # Actualiza una release.
-helm upgrade <release> <chart> --rollback-on-failure      # Si se establece, el proceso de actualización revierte los cambios en caso de fallo.
-helm upgrade <release> <chart> --dependency-update        # Actualiza las dependencias si faltan antes de instalar la chart.
-helm upgrade <release> <chart> --version <version_number> # Especifica una restricción de versión para la chart a usar.
-helm upgrade <release> <chart> --values                   # Especifica valores en un archivo YAML o una URL (puede especificar múltiples).
-helm upgrade <release> <chart> --set key1=val1,key2=val2  # Establece valores en la línea de comandos (puede especificar múltiples o separados).
-helm upgrade <release> <chart> --force                    # Fuerza la actualización de recursos mediante una estrategia de reemplazo.
-helm rollback <release> <revision>                        # Revierte una release a una revisión específica.
-helm rollback <release> <revision>  --cleanup-on-fail     # Permite eliminar nuevos recursos creados en este rollback si el rollback falla.
+helm upgrade <release> <chart>                            # Actualizar una release
+helm upgrade <release> <chart> --rollback-on-failure      # Si se establece, el proceso de actualización deshace los cambios realizados en caso de actualización fallida.
+helm upgrade <release> <chart> --dependency-update        # Actualiza las dependencias si faltan antes de instalar la chart
+helm upgrade <release> <chart> --version <version_number> # especifica una restricción de versión para la versión de la chart a usar
+helm upgrade <release> <chart> --values                   # especificar valores en un archivo YAML o una URL (puede especificar múltiple
+helm upgrade <release> <chart> --set key1=val1,key2=val2  # Establecer valores en la línea de comandos (puede especificar valores múltiples o separadose)
+helm upgrade <release> <chart> --force                    # Forzar actualizaciones de recursos mediante una estrategia de reemplazo.
+helm rollback <release> <revision>                        # Retroceder una versión a una revisión específica
+helm rollback <release> <revision>  --cleanup-on-fail     # Permitir el borrado de nuevos recursos creados en este rollback cuando el rollback falla
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Listar, añadir, eliminar y actualizar repositorios

@@ -16,7 +16,7 @@ Vous pouvez spécifier l'argument `--values`/`-f` plusieurs fois. La priorité s
 
     $ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis
 
-Vous pouvez spécifier l'argument `--set` plusieurs fois. La priorité sera donnée à la dernière valeur spécifiée (la plus à droite). Par exemple, si les valeurs 'bar' et 'newbar' sont définies pour une clé nommée 'foo', la valeur 'newbar' sera prioritaire :
+Vous pouvez spécifier l'argument `--set` plusieurs fois. La priorité sera donnée au dernier spécifié (à l'extreme droite). Par exemple, si les valeurs 'bar' et 'newbar' sont fixé pour la clé nommée 'newbar', la valeur 'newbar' sera prioritaire :
 
     $ helm upgrade --set foo=bar --set foo=newbar redis ./redis
 
@@ -34,8 +34,8 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     Si défini, le processus de mise à niveau annule les modifications effectuées en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
-      --ca-file string                             Vérifie les certificats des serveurs HTTPS en utilisant ce fichier de certificat racine (CA bundle)
+      --rollback-on-failure                        Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --rollback-on-failure est utilisé
+      --ca-file string                             Vérifie les certificats des serveurs ayant activé HTTPS en utilisant ce fichier de certificat racine (CA bundle)
       --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --cleanup-on-fail                            Autorise la suppression des nouvelles ressources créées lors de cette mise à niveau en cas d'échec
       --create-namespace                           Si --install est défini, crée le namespace de la release s'il n'est pas présent
@@ -53,18 +53,19 @@ helm upgrade [RELEASE] [CHART] [flags]
       --insecure-skip-tls-verify                   Ignore les vérifications de certificat TLS lors du téléchargement du chart
   -i, --install                                    Si une release avec ce nom n'existe pas, lance une installation
       --key-file string                            Identifie le client HTTPS en utilisant ce fichier de clé SSL
-      --keyring string                             Emplacement des clés publiques utilisées pour la vérification (par défaut "~/.gnupg/pubring.gpg")
-  -l, --labels stringToString                      étiquettes qui seront ajoutées aux métadonnées de la release. Doivent être séparées par des virgules. Les étiquettes de la release originale seront fusionnées avec les étiquettes de mise à niveau. Vous pouvez supprimer une étiquette en utilisant null. (par défaut [])
-      --no-hooks                                   Désactive les hooks pre/post mise à niveau
-  -o, --output format                              Affiche la sortie dans le format spécifié. Valeurs autorisées : table, json, yaml (par défaut table)
-      --pass-credentials                           Transmet les identifiants à tous les domaines
-      --password string                            Mot de passe du dépôt de charts où se trouve le chart demandé
-      --plain-http                                 Utilise des connexions HTTP non sécurisées pour le téléchargement du chart
-      --post-renderer postRendererString           Chemin vers un exécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié
-      --post-renderer-args postRendererArgsSlice   Un argument pour le post-renderer (peut être spécifié plusieurs fois) (par défaut [])
-      --render-subchart-notes                      Si défini, génère les notes des sous-charts avec le chart parent
-      --repo string                                URL du dépôt de charts où se trouve le chart demandé
-      --reset-then-reuse-values                    Lors de la mise à niveau, réinitialise les valeurs sur celles intégrées au chart, applique les valeurs de la dernière release et fusionne toutes les valeurs à partir de la ligne de commande via --set et -f. Si '--reset-values' ou '--reuse-values' est spécifié, ceci sera ignoré
+      --keyring string                             Emplacement des clés publiques utilisées pour la vérification (par defaut "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Étiquettes qui seront ajoutées aux métadonnées de la publication. Doit être séparé par des virgules. (par defaut [])
+      --no-hooks                                   Empêche les hooks de fonctionner pendant l'installation
+  -o, --output format                              Affiche la sortie dans un format spécifique. Valeurs possibles : table, json, yaml (par defaut table)
+      --pass-credentials                           Affiche la sortie dans un format spécifique. Valeurs possibles : table, json, yaml (par defaut table)
+      --password string                            Mot de passe du dépôt de chart où est localisé le chart demandé
+      --plain-http                                 Utiliser des connexion HTTP non sécurisées pour le téléchargement du chart
+      ```fallback
+--post-renderer postRendererString                 Chemin vers un éxécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié.
+      --post-renderer-args postRendererArgsSlice   Un argument pour le post-rendu (peut être spécifié plusieurs fois) (par défaut [])
+      --render-subchart-notes                      Si défini, génère les notes du sous-chart avec le chart parent
+      --repo string                                Url du dépôt de chart où est localisé le chart demandé
+      --reset-then-reuse-values                    Lors de la mise à niveau, réinitialise les valeurs sur celles intégrées au chart, applique les valeurs de la dernières version et fussionne tout les valeurs à partir de la ligne de commande via --set et -f. Si '--reset-values' ou '--reuse-values' sont spécifié, ceci sera ignoré
       --reset-values                               Lors de la mise à niveau, réinitialise les valeurs à celles intégrées au chart
       --reuse-values                               Lors de la mise à niveau, réutilise les valeurs de la dernière release et fusionne toutes les valeurs depuis la ligne de commande via '--set' et '-f'. Si '--reset-values' est spécifié, ceci sera ignoré
       --set stringArray                            Définit des valeurs en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
