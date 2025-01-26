@@ -30,6 +30,16 @@ Pour exécuter Helm localement, vous pouvez exécuter `bin/helm`.
 
 Pour exécuter tous les tests, lancez `make test`. Comme prérequis, vous devez avoir [golangci-lint](https://golangci-lint.run) installé.
 
+## Exécution locale
+
+Vous pouvez mettre à jour votre variable PATH et ajouter le chemin de votre binaire Helm local. Dans un éditeur, ouvrez votre fichier de configuration de shell. Ajoutez la ligne suivante en veillant à remplacer `<path to your binary folder>` par le répertoire de votre dossier binaire local :
+
+```
+export PATH="<path to your binary folder>:$PATH"
+```
+
+Cela vous permettra d'exécuter la version construite localement de Helm depuis votre terminal.
+
 ## Directives de Contribution
 
 Nous accueillons volontiers les contributions. Ce projet a établi certaines directives afin de garantir que (a) la qualité du code reste élevée, (b) le projet reste cohérent, et (c) les contributions respectent les exigences légales en matière de logiciel open source. Notre intention n'est pas de surcharger les contributeurs, mais de construire un code open source élégant et de haute qualité afin que nos utilisateurs en bénéficient.

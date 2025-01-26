@@ -168,7 +168,7 @@ metadata:
   {{- template "mychart.labels" . }}
 ```
 
-Notez que nous passons `.` à la fin de l'appel `template`. Nous pourrions tout aussi bien passer `.Values`, `.Values.favorite` ou tout autre scope que nous souhaitons. Mais ce que nous voulons, c'est le scope de niveau supérieur.
+Notez que nous passons `.` à la fin de l'appel `template`. Nous pourrions tout aussi bien passer `.Values`, `.Values.favorite` ou tout autre scope souhaité. Mais ce que nous voulons ici, c'est le scope de niveau supérieur. Dans le contexte du modèle nommé, `$` fera référence au scope que vous avez passé et non à un scope global.
 
 Maintenant, lorsque nous exécutons ce modèle avec `helm install --dry-run --debug plinking-anaco ./mychart`, nous obtenons ceci :
 

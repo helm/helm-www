@@ -6,7 +6,7 @@ weight: 6
 
 Cette section explique comment créer et travailler avec des dépôts de charts Helm. À un niveau élevé, un dépôt de charts est un emplacement où les charts emballés peuvent être stockés et partagés.
 
-Le dépôt de charts Helm communautaire distribué est situé sur [Artifact Hub](https://artifacthub.io/packages/search?kind=0) et accueille la participation. Cependant, Helm permet également de créer et de gérer votre propre dépôt de charts. Ce guide explique comment procéder.
+Le dépôt de charts Helm communautaire distribué est situé sur [Artifact Hub](https://artifacthub.io/packages/search?kind=0) et accueille la participation. Cependant, Helm permet également de créer et de gérer votre propre dépôt de charts. Ce guide explique comment procéder. Si vous envisagez de créer un dépôt de charts, vous pourriez envisager d'utiliser à la place un [registre OCI]({{< ref "../topics/registries" >}}).
 
 ## Prérequis
 

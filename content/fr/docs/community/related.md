@@ -19,6 +19,7 @@ Si vous avez quelque chose à ajouter à cette liste, n'hésitez pas à ouvrir u
 - [helm-git](https://github.com/aslafy-z/helm-git) - Installer des charts et récupérer des fichiers de valeurs depuis vos dépôts Git
 - [helm-k8comp](https://github.com/cststack/k8comp) - Plugin pour créer des Helm Charts à partir de hiera en utilisant k8comp
 - [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - Mettre à jour les métadonnées des releases Helm pour remplacer les API Kubernetes obsolètes ou supprimées
+- [helm-migrate-values](https://github.com/OctopusDeployLabs/helm-migrate-values) - Plugin pour migrer les valeurs spécifiées par l'utilisateur entre différentes versions d'un chart Helm afin de gérer les changements de schéma incompatibles dans le fichier `values.yaml`
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin pour surveiller une release et effectuer un rollback basé sur une requête Prometheus/ElasticSearch
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - Plugin pour la gestion des releases : mettre à jour les valeurs des releases, extraire (et recréer) les Helm Charts à partir des releases déployées, et définir le TTL des releases Helm.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) -Plugin Helm permettant d'utiliser AWS S3 comme [dépôt] privé de charts
@@ -33,6 +34,7 @@ Si vous avez quelque chose à ajouter à cette liste, n'hésitez pas à ouvrir u
 - [helm-external-val](https://github.com/kuuji/helm-external-val) - Plugin qui récupère les valeurs Helm depuis des sources externes (ConfigMaps, Secrets, etc.).
 - [helm-images](https://github.com/nikhilsbhat/helm-images) - Plugin Helm pour récupérer toutes les images possibles depuis le chart avant le déploiement ou depuis une release déployée.
 - [helm-drift](https://github.com/nikhilsbhat/helm-drift) - Plugin Helm qui identifie la configuration ayant divergé du Helm chart.
+- [helm-tui](https://github.com/pidanou/helm-tui) - Une interface légère pour gérer vos ressources Helm sans quitter le terminal
 
 Nous encourageons également les auteurs sur GitHub à utiliser le tag [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) sur leurs dépôts de plugins.
 
@@ -42,6 +44,7 @@ Outils superposés à Helm.
 
 Voici la traduction des outils et plugins mentionnés :
 
+- [Aptakube](https://aptakube.com/) - Interface bureau pour les versions Kubernetes et Helm
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - Gère les releases préfixées à travers divers namespaces Kubernetes et supprime les jobs terminés pour des déploiements complexes.
 - [avionix](https://github.com/zbrookle/avionix) - Interface Python pour générer des Helm charts et des fichiers Kubernetes YAML, permettant l'héritage et moins de duplication de code.
 - [Botkube](https://botkube.io) - Exécute des commandes Helm directement depuis Slack, Discord, Microsoft Teams et Mattermost.
@@ -50,11 +53,13 @@ Voici la traduction des outils et plugins mentionnés :
 - [ChartMuseum](https://github.com/helm/chartmuseum) - Dépôt de Helm Charts avec support pour Amazon S3 et Google Cloud Storage.
 - [chart-registry](https://github.com/hangyan/chart-registry) - Héberge des Helm Charts sur OCI Registry.
 - [Codefresh](https://codefresh.io) - Plateforme CI/CD et de gestion native Kubernetes avec des tableaux de bord UI pour gérer les Helm charts et les releases.
+- [Cyclops]https://cyclops-ui.com/) - Rendu dynamique d'une interface utilisateur Kubernetes basé sur des charts Helm
 - [Flux](https://fluxcd.io/docs/components/helm/) - Livraison continue et progressive de Git à Kubernetes.
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile est un spécification déclarative pour déployer des Helm charts.
 - [Helmper](https://github.com/ChristofferNissen/helmper) - Helmper vous aide à importer des Helm Charts - y compris tous les artefacts OCI (images), dans vos propres OCI registries. Helmper facilite également le scan de sécurité et le patch des images OCI. Helmper utilise Helm, Oras, Trivy, Copacetic et Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman est un outil de type helm-charts-as-code qui permet d’installer, mettre à jour, protéger, déplacer et supprimer des releases à partir de fichiers d'état désiré versionnés (décrits dans un format TOML simple).
 - [HULL](https://github.com/vidispine/hull) - Cette bibliothèque chart fournit une interface prête à l'emploi pour spécifier tous les objets Kubernetes directement dans le `values.yaml`. Elle élimine la nécessité d'écrire des templates pour vos charts et propose de nombreuses fonctionnalités supplémentaires pour simplifier la création et l'utilisation des Helm charts.
+- [K8Studio](https://k8studio.io/) - Interface utilisateur de bureau pour la gestion des clusters Kubernetes avec un gestionnaire Helm intégré.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) - Génère des Helm charts pour vos projets existants.
 - [Landscaper](https://github.com/Eneco/landscaper/) - "Landscaper prend un ensemble de références de Helm Chart avec des valeurs (un état désiré) et le réalise dans un cluster Kubernetes."
 - [Monocular](https://github.com/helm/monocular) - Interface Web pour les dépôts de Helm Charts.

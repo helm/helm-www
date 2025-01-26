@@ -44,61 +44,7 @@ type PostRenderer interface {
 }
 ```
 
-Pour plus d'informations sur l'utilisation du Go SDK, consultez la [section Go SDK](#go-sdk).
-
-## Go SDK
-Helm 3 a introduit un Go SDK entièrement restructuré pour offrir une meilleure expérience lors de la création de logiciels et d'outils utilisant Helm. La documentation complète est disponible sur [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), mais un court aperçu de certains des packages les plus courants ainsi qu'un exemple simple suivent ci-dessous.
-
-### Vue d'ensemble des packages
-Voici une liste des packages les plus couramment utilisés avec une explication simple pour chacun :
-
-- `pkg/action` : Contient le « client » principal pour effectuer des actions Helm. Il s'agit du même package utilisé en interne par la CLI. Si vous devez simplement exécuter des commandes Helm de base depuis un autre programme Go, ce package est fait pour vous.
-- `pkg/{chart,chartutil}` : Méthodes et outils utilisés pour charger et manipuler des charts.
-- `pkg/cli` et ses sous-packages : Contient tous les gestionnaires des variables d'environnement Helm standard, et ses sous-packages gèrent la sortie et les fichiers de valeurs.
-- `pkg/release` : Définit l'objet `Release` et ses statuts.
-
-Évidemment, il existe de nombreux autres packages en plus de ceux-ci, alors consultez la documentation pour plus d'informations !
-
-### Exemple simple
-Voici un exemple simple de réalisation d'un `helm list` en utilisant le Go SDK :
-
-```go
-package main
-
-import (
-    "log"
-    "os"
-
-    "helm.sh/helm/v3/pkg/action"
-    "helm.sh/helm/v3/pkg/cli"
-)
-
-func main() {
-    settings := cli.New()
-
-    actionConfig := new(action.Configuration)
-    // // Vous pouvez passer une chaîne vide au lieu de settings.Namespace() pour lister tous les namespaces
-    
-    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    client := action.NewList(actionConfig)
-    // Liste uniquement les déploiements
-    client.Deployed = true
-    results, err := client.Run()
-    if err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    for _, rel := range results {
-        log.Printf("%+v", rel)
-    }
-}
-
-```
+Pour plus d'informations sur l'utilisation du Go SDK, consultez la [section Go SDK](https://helm.sh/docs/sdk/gosdk/).
 
 ## Stockage des backends
 

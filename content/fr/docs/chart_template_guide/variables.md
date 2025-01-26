@@ -86,7 +86,7 @@ data:
   {{- end }}
 ```
 
-Pour les structures de données qui ont à la fois une clé et une valeur, nous pouvons utiliser `range` pour obtenir les deux. Par exemple, nous pouvons boucler sur `.Values.favorite` comme ceci :
+Lors de la première itération, `$key` sera à `drink` et `$val` sera à `coffee` et lors de la seconde, `$key` sera à `food` et `$val` sera à `pizza`. L'exécution de ce qui précède générera ceci :
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
