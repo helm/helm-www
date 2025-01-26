@@ -120,7 +120,7 @@ Pousser la branche déclenchera l'exécution des tests. Assurez-vous qu'ils pass
 
 La création d'un [jalon Helm/helm](https://github.com/helm/helm/milestones) est facultative pour les versions de correction.
 
-Assurez-vous de vérifier [helm sur CircleCI](https://circleci.com/gh/helm/helm) pour voir si la version a réussi les tests CI avant de continuer. Les versions de correction peuvent sauter les étapes 2 à 5 et passer directement à l'étape 6 pour [Finaliser la version](#6-finaliser-la-version).
+Assurez-vous de vérifier [GitHub Actions](https://github.com/helm/helm/actions) pour voir si la version a réussi les tests CI avant de continuer. Les versions de correction peuvent sauter les étapes 2 à 5 et passer directement à l'étape 6 pour [Finaliser la version](#6-finaliser-la-version).
 
 ## 2. Versions majeures/mineures : Modifier le numéro de version dans Git
 
@@ -182,7 +182,7 @@ Pour que les autres puissent commencer les tests, nous pouvons maintenant pousse
 git push upstream $RELEASE_BRANCH_NAME
 ```
 
-Assurez-vous de vérifier [helm sur CircleCI](https://circleci.com/gh/helm/helm) pour voir si la version a réussi les tests CI avant de continuer.
+Assurez-vous de vérifier [GitHub Actions](https://github.com/helm/helm/actions) pour voir si la version a réussi les tests CI avant de continuer.
 
 Si possible, demandez à d'autres personnes de faire une révision par les pairs de la branche avant de poursuivre, afin de garantir que toutes les modifications nécessaires ont été apportées et que tous les commits pour la version sont présents.
 
@@ -195,9 +195,9 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI créera automatiquement une image de version taguée et un binaire client pour les tests.
+GitHub Actions créera automatiquement une image de version taguée et un binaire client pour les tests.
 
-Pour les testeurs, le processus pour commencer les tests après que CircleCI ait terminé la construction des artefacts comprend les étapes suivantes pour récupérer le client :
+Pour les testeurs, le processus pour commencer les tests après que GitHub Actions ait terminé la construction des artefacts comprend les étapes suivantes pour récupérer le client :
 
 linux/amd64, utilisez /bin/bash:
 
@@ -255,7 +255,7 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-Vérifiez que la version a réussi dans [CircleCI](https://circleci.com/gh/helm/helm). Si ce n'est pas le cas, vous devrez corriger la version et la pousser à nouveau.
+Vérifiez que la version a réussi dans [GitHub Actions](https://github.com/helm/helm/actions). Si ce n'est pas le cas, vous devrez corriger la version et la pousser à nouveau.
 
 Comme le job CI prendra un certain temps à s'exécuter, vous pouvez passer à la rédaction des notes de version pendant que vous attendez sa conclusion.
 

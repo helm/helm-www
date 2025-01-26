@@ -301,6 +301,7 @@ pizzaToppings:
   - cheese
   - peppers
   - onions
+  - pineapple
 ```
 
 Nous avons maintenant une liste (appelée `slice` dans les modèles) de `pizzaToppings`. Nous pouvons modifier notre modèle pour imprimer cette liste dans notre ConfigMap :
@@ -360,6 +361,7 @@ data:
     - "Cheese"
     - "Peppers"
     - "Onions"
+    - "Pineapple"
 ```
 
 Dans cet exemple, nous avons fait quelque chose de subtil. La ligne `toppings: |-` déclare une chaîne multi-lignes. Donc, notre liste de garnitures n'est en réalité pas une liste YAML. C'est une grande chaîne de caractères. Pourquoi ferions-nous cela ? Parce que les données dans les `ConfigMaps` `data` sont composées de paires clé/valeur, où la clé et la valeur sont toutes deux des chaînes simples. Pour comprendre pourquoi c'est le cas, consultez la [documentation des ConfigMaps Kubernetes](https://kubernetes.io/docs/concepts/configuration/configmap/). Pour nous, cependant, ce détail n'a pas beaucoup d'importance.

@@ -15,7 +15,6 @@ Helm permet d'accéder aux fichiers via l'objet `.Files`. Avant de commencer ave
   - Les fichiers en dehors d'une application Helm [sous-chart]({{< ref "/docs/chart_template_guide/subcharts_and_globals.md" >}}), y compris ceux du parent, ne peuvent pas être accédés.
 - Les charts ne conservent pas les informations de mode UNIX, donc les permissions au niveau des fichiers n'affecteront pas la disponibilité d'un fichier via l'objet `.Files`.
 
-<!-- (see https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
 
