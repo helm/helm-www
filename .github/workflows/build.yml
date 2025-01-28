@@ -19,16 +19,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        go-version: ['1.23']
       fail-fast: true
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # pin@v4.2.2
-      - name: Setup Go ${{ matrix.go-version }}
+      - name: Setup Go sdkexamples/go.mod file
         uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed # pin@5.1.0
         with:
-          go-version: ${{ matrix.go-version }}
+          go-version-file: 'sdkexamples/go.mod'
           check-latest: true
       - name: Build sdkexamples
         run: make sdkexamples
