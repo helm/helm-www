@@ -25,7 +25,7 @@ check-links-ci: set-up-link-checker run-link-checker
 
 .PHONY: sdkexamples
 sdkexamples:
-	cd sdkexamples; make
+	make -C sdkexamples
 
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0
