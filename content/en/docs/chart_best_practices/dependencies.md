@@ -58,6 +58,9 @@ is in a sub-directory of the `charts` folder with the name being the same as the
 
 Conditions or tags should be added to any dependencies that _are optional_.
 
+> [!IMPORTANT]
+> By default a `condition` is `true`.
+
 The preferred form of a condition is:
 
 ```yaml
