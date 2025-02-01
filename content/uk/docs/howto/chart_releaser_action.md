@@ -33,7 +33,7 @@ weight: 3
 
 Щоб видалити чарт:
 
-    helm delete my-<chart-name>
+    helm uninstall my-<chart-name>
 ```
 
 Чарти будуть опубліковані на вебсайті з URL-адресою типу:
