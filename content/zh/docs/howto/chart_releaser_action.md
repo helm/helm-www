@@ -39,7 +39,7 @@ To install the <chart-name> chart:
 
 To uninstall the chart:
 
-    helm delete my-<chart-name>
+    helm uninstall my-<chart-name>
 ```
 
 发布后的chart的url类似这样：
