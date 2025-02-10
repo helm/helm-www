@@ -53,8 +53,8 @@ Helm adalah proyek yang telah lulus dari [CNCF](https://cncf.io) dan dikelola ol
 
 ### Pelajari lebih lanjut:
 
-* [Arsitektur Helm](./docs/topics/architecture/)
-* [Panduan Cepat](./docs/intro/quickstart/)
+* [Arsitektur Helm](/docs/topics/architecture/)
+* [Panduan Cepat](/docs/intro/quickstart/)
 * [Video: Pengenalan Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
@@ -93,7 +93,7 @@ other = "Unduh Helm!"
 other = "Pasang Helm dengan pengelola paket, atau [unduh *binary*-nya](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "Setelah ter-*install*, ekstrak *binary* Helm dan tambahkan ke PATH Anda. Sekarang, Anda bisa lanjut menggunakan Helm! Kunjungi [dokumentasi](./docs/intro/install/) untuk [panduan instalasi lebih lanjut](./docs/intro/install/) dan [pelajari cara menggunakannya](./docs/intro/using_helm/)."
+other = "Setelah ter-*install*, ekstrak *binary* Helm dan tambahkan ke PATH Anda. Sekarang, Anda bisa lanjut menggunakan Helm! Kunjungi [dokumentasi](/docs/intro/install/) untuk [panduan instalasi lebih lanjut](/docs/intro/install/) dan [pelajari cara menggunakannya](/docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Unduh Charts"

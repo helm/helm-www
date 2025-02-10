@@ -507,7 +507,7 @@ weight = 3
 
 [[languages.id.menus.main]]
 name = "Blog"
-url = "/blog"
+url = "https://helm.sh/blog"
 weight = 4
 
 [[languages.id.menus.main]]
