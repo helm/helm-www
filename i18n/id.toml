@@ -197,7 +197,7 @@ other = "[Silahkan untuk meminta akses](https://slack.k8s.io/) untuk bergabung d
 other = "Berkontribusi"
 
 [community_contrib_subtitle]
-other = "Helm always welcomes new contributions to the project!"
+other = "Helm selalu menyambut kontributor baru untuk proyek ini!"
 
 [community_contrib_desc]
 other = """
