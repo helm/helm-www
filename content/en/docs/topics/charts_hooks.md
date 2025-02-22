@@ -139,9 +139,10 @@ metadata:
     # job is considered part of the release.
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-delete-policy": hook-failed, hook-succeeded
     "helm.sh/hook-output-log-policy": hook-failed
 spec:
+  backoffLimit: 0  
   template:
     metadata:
       name: "{{ .Release.Name }}"
@@ -153,8 +154,8 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-install-job
-        image: "alpine:3.3"
-        command: ["/bin/sleep","{{ default "10" .Values.sleepyTime }}"]
+        image: "alpine:latest"
+        command: ["sh", "-c", "for i in $(seq 1 5); do echo job log $i; sleep 5; done; exit 1"]
 
 ```
 
