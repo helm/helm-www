@@ -162,7 +162,7 @@ git push upstream $RELEASE_BRANCH_NAME
 [헬름/헬름 마일스톤] (https://github.com/helm/helm/milestones) 
 생성은 선택사항이다.
 
-계속 진행하기 전에 릴리스가 CI를 통과했는지 [CircleCI 에서의 헬름](https://circleci.com/gh/helm/helm)를 
+계속 진행하기 전에 릴리스가 CI를 통과했는지 [GitHub Actions 에서의 헬름](https://github.com/helm/helm/actions)를
 확인하자. 패치 릴리스는 2-5 단계를 건너 뛰고 6 단계로 진행하여 
 [릴리스 확정](#6-릴리스-확정)를 수행할 수 있다.
 
@@ -234,7 +234,7 @@ git push upstream $RELEASE_BRANCH_NAME
 ```
 
 계속 진행하기 전에 릴리스가 CI를 통과했는지 
-[CircleCI 에서의 헬름] (https://circleci.com/gh/helm/helm)을 확인하자.
+[GitHub Actions 에서의 헬름] (https://github.com/helm/helm/actions)을 확인하자.
 
 사용 가능한 사람이 있는 경우 모든 적절한 변경 사항이 적용되고 
 릴리스에 대한 모든 커밋이 있는지 계속 확인하기 전에 
@@ -250,10 +250,10 @@ git tag --sign --annotate "${RELEASE_CANDIDATE_NAME}" --message "Helm release ${
 git push upstream $RELEASE_CANDIDATE_NAME
 ```
 
-CircleCI는 테스트할 태그된 릴리스 이미지와 클라이언트 바이너리를 
+GitHub Actions는 테스트할 태그된 릴리스 이미지와 클라이언트 바이너리를 
 자동으로 생성한다.
 
-테스터의 경우 CircleCI가 아티팩트 빌드를 완료한 후 
+테스터의 경우 GitHub Actions가 아티팩트 빌드를 완료한 후 
 테스트를 시작하는 프로세스에는 다음과 같이 클라이언트를 받는 단계가 포함된다.
 
 리눅스/amd64 의 경우, /bin/bash 를 사용한다
@@ -329,7 +329,7 @@ git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NA
 git push upstream $RELEASE_NAME
 ```
 
-릴리스가 [CircleCI](https://circleci.com/gh/helm/helm)에서 
+릴리스가 [GitHub Actions](https://github.com/helm/helm/actions)에서 
 성공했는지 확인하자. 그렇지 않은 경우 릴리스를 수정하고 
 릴리스를 다시 푸시해야 한다.
 

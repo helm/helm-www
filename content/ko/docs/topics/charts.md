@@ -551,7 +551,7 @@ wordpress:
       # ...
 ```
 
-위의 예제는 어떻게 WordPress 차트가 Apache와 MySLQ에 대한 의존성을
+위의 예제는 어떻게 WordPress 차트가 Apache와 MySQL에 대한 의존성을
 표현하는지 `charts/` 디렉터리에 이 차트들을 포함시킴으로써 보여준다.
 
 **팁:** _`charts/` 디렉터리 안에 종속성을 가져오려면,
