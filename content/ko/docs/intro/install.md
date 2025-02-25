@@ -30,7 +30,7 @@ weight: 2
 추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)할 수 있어야 한다: 
 `helm help`.
 
-**참고:** 헬름 자동화 테스트는 CircleCi 빌드와 릴리스 사이에, 리눅스 AMD64에서만 수행된다.
+**참고:** 헬름 자동화 테스트는 GitHub Actions 빌드와 릴리스 사이에, 리눅스 AMD64에서만 수행된다.
 다른 OS들에 대한 테스트는, 
 대상 OS에 대한 헬름을 요청하는 커뮤니티에서 담당한다.
 

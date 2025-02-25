@@ -253,14 +253,14 @@ both the spacing and the newlines are still there.
 
 ## Embedding Multiple Documents in One File
 
-It is possible to place more than one YAML documents into a single file. This is
+It is possible to place more than one YAML document into a single file. This is
 done by prefixing a new document with `---` and ending the document with
 `...`
 
 ```yaml
 
 ---
-document:1
+document: 1
 ...
 ---
 document: 2

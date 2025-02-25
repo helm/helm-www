@@ -83,68 +83,7 @@ For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found
-at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3), but
-a brief overview of some of the most common packages and a simple example follow
-below.
-
-### Package overview
-This is a list of the most commonly used packages with a simple explanation
-about each one:
-
-- `pkg/action`: Contains the main “client” for performing Helm actions. This is
-  the same package that the CLI is using underneath the hood. If you just need
-  to perform basic Helm commands from another Go program, this package is for
-  you
-- `pkg/{chart,chartutil}`: Methods and helpers used for loading and manipulating
-  charts
-- `pkg/cli` and its subpackages: Contains all the handlers for the standard Helm
-  environment variables and its subpackages contain output and values file
-  handling
-- `pkg/release`: Defines the `Release` object and statuses
-
-Obviously there are many more packages besides these, so go check out the
-documentation for more information!
-
-### Simple example
-This is a simple example of doing a `helm list` using the Go SDK:
-
-```go
-package main
-
-import (
-    "log"
-    "os"
-
-    "helm.sh/helm/v3/pkg/action"
-    "helm.sh/helm/v3/pkg/cli"
-)
-
-func main() {
-    settings := cli.New()
-
-    actionConfig := new(action.Configuration)
-    // You can pass an empty string instead of settings.Namespace() to list
-    // all namespaces
-    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    client := action.NewList(actionConfig)
-    // Only list deployed
-    client.Deployed = true
-    results, err := client.Run()
-    if err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    for _, rel := range results {
-        log.Printf("%+v", rel)
-    }
-}
-
-```
+in the [Go SDK Section](../sdk/gosdk.md).
 
 ## Storage backends
 
