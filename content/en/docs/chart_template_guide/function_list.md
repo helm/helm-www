@@ -857,18 +857,38 @@ Helm includes the following regular expression functions: [regexFind
 (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral),
 [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit).
 
-### regexMatch, mustRegexMatch
+### regexMatch
 
-Returns true if the input string contains any match of the regular expression.
+Returns `true` if the input string contains any match of the regular expression.
 
 ```
-regexMatch "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" "test@acme.com"
+{{- if regexMatch "^abc$" "abc" -}}
+valid: true
+{{- end -}}
+```
+The above produces `valid: true`.
+
+`regexMatch` will ignore regex compilation errors, and simply return `false` ([ref](https://github.com/Masterminds/sprig/blob/master/regex.go#L7))
+
+```
+{{- if regexMatch "[" "abc" -}}
+valid: true
+{{- end -}}
+```
+The above produces nothing.
+
+### mustRegexMatch
+
+Similar to `regexMatch`, but will return an error to the templating engine if the regex fails to compile:
+
+```
+{{- if mustRegexMatch "[" "abc" -}}
+valid: true
+{{- end -}}
 ```
 
-The above produces `true`
+The above produces `error: "error parsing regexp: missing closing ]`.
 
-`regexMatch` panics if there is a problem and `mustRegexMatch` returns an error
-to the template engine if there is a problem.
 
 ### regexFindAll, mustRegexFindAll
 
@@ -885,7 +905,7 @@ The above produces `[2 4 6 8]`
 `regexFindAll` panics if there is a problem and `mustRegexFindAll` returns an
 error to the template engine if there is a problem.
 
-### regexFind, mustRegexFind
+### regexFind
 
 Return the first (left most) match of the regular expression in the input string
 
@@ -895,8 +915,15 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 
 The above produces `d1`
 
-`regexFind` panics if there is a problem and `mustRegexFind` returns an error to
-the template engine if there is a problem.
+`regexFind` will result in a panic if the regex fails to compile ([ref](https://github.com/Masterminds/sprig/blob/master/regex.go#L30)), whereas
+`mustRegexFind` will return an error to the templating engine if the regex fails to compile ([ref](https://github.com/Masterminds/sprig/blob/master/regex.go#L34)).
+
+Note that neither function will panic/return an error if the input string does not match the regex. Both functions return an empty string in this case:
+
+```
+{{ regexFind "^abc$" "abcd" }}
+```
+The above produces an empty string.
 
 ### regexReplaceAll, mustRegexReplaceAll
 
