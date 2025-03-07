@@ -193,13 +193,22 @@ Helm은 플러그인을 실행할 때, 외부 환경을 플러그인에 전달�
 플러그인을 실행할 때 헬름은 자체 사용을 위해 전역 플래그를 구문 분석한다. 
 이러한 플래그는 플러그인에 전달되지 않는다.
 
+- `--burst-limit`: 이 플래그는 `$HELM_BURST_LIMIT` 로 변환된다.
 - `--debug`: 지정하면`$ HELM_DEBUG`가`1`로 설정된다.
-- `--registry-config`: 이 플래그는 `$ HELM_REGISTRY_CONFIG` 로 변환된다.
-- `--repository-cache`: 이 플래그는 `$ HELM_REPOSITORY_CACHE` 로 변환된다.
-- `--repository-config`: 이 플래그는 `$ HELM_REPOSITORY_CONFIG` 로 변환된다.
-- `--namespace` and `-n`: 이 플래그는 `$ HELM_NAMESPACE` 로 변환된다.
-- `--kube-context`: 이 플래그는 `$ HELM_KUBECONTEXT` 로 변환된다.
+- `--kube-apiserver`: 이 플래그는 `$HELM_KUBEAPISERVER` 로 변환된다.
+- `--kube-as-group`: 이 플래그는 `$HELM_KUBEASGROUPS` 로 변환된다.
+- `--kube-as-user`: 이 플래그는 `$HELM_KUBEASUSER` 로 변환된다.
+- `--kube-ca-file`: 이 플래그는 `$HELM_KUBECAFILE` 로 변환된다.
+- `--kube-context`: 이 플래그는 `$HELM_KUBECONTEXT` 로 변환된다.
+- `--kube-insecure-skip-tls-verify`: 이 플래그는 `$HELM_KUBEINSECURE_SKIP_TLS_VERIFY` 로 변환된다.
+- `--kube-tls-server-name`: 이 플래그는 `$HELM_KUBETLS_SERVER_NAME` 로 변환된다.
+- `--kube-token`: 이 플래그는 `$HELM_KUBETOKEN` 로 변환된다.
 - `--kubeconfig`: 이 플래그는 `$KUBECONFIG` 로 변환된다.
+- `--namespace` and `-n`: 이 플래그는 `$HELM_NAMESPACE` 로 변환된다.
+- `--qps`: 이 플래그는 `$HELM_QPS` 로 변환된다.
+- `--registry-config`: 이 플래그는 `$HELM_REGISTRY_CONFIG` 로 변환된다.
+- `--repository-cache`: 이 플래그는 `$HELM_REPOSITORY_CACHE` 로 변환된다.
+- `--repository-config`: 이 플래그는 `$HELM_REPOSITORY_CONFIG` 로 변환된다.
 
 플러그인은 도움말 텍스트를 표시한 다음 `-h` 및 `--help` 를 위해 _종료해야 한다_. 
 다른 모든 경우에는, 플러그인은 적절하게 플래그를 사용할 수 있다.
