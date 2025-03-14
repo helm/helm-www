@@ -16,6 +16,7 @@ request](https://github.com/helm/helm-www/pulls).
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt
   existing k8s resources into a new generated helm chart.
+- [helm-cel](https://github.com/idsulik/helm-cel) - Plugin that uses Common Expression Language (CEL) to validate values.
 - [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) - Snapshot testing plugin for Helm charts.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
@@ -52,6 +53,7 @@ request](https://github.com/helm/helm-www/pulls).
 - [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc.)
 - [helm-images](https://github.com/nikhilsbhat/helm-images) - Helm plugin to fetch all possible images from the chart before deployment or from a deployed release
 - [helm-drift](https://github.com/nikhilsbhat/helm-drift) - Helm plugin that identifies the configuration that has drifted from the Helm chart
+- [helm-tui](https://github.com/pidanou/helm-tui) - A light UI to manage your Helm assets without leaving the terminal
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
@@ -98,6 +100,8 @@ Tools layered on top of Helm.
   ready-to-use interface for specifying all Kubernetes objects directly in the `values.yaml`.
   It removes the need to write any templates for your charts and comes with many
   additional features to simplify Helm chart creation and usage.
+- [K8Studio](https://k8studio.io) -
+  Desktop UI for Managing Kubernetes Clusters with Integrated Helm Manager.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -
   Generate Helm charts for your
   existing projects.

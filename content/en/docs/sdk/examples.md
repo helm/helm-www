@@ -9,7 +9,7 @@ Intended to document various SDK functionalities.
 
 The final example shows `main.go` driver ([link](#driver)). That runs the below actions and includes necessary helper functions.
 
-The code for the examples lives in the [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/sdkexamples) directory.
+The code for the examples lives in the [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples) directory.
 And is intended to be fully functional.
 
 ## Actions
