@@ -1,6 +1,6 @@
 ---
-url: "helm/v2"
-name: "helm/v2"
+url: "helm/v4"
+name: "helm/v4"
 repoURL: "https://github.com/helm/helm"
-branch: "dev-v2"
+branch: "main"
 ---
