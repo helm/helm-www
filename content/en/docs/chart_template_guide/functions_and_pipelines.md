@@ -203,7 +203,8 @@ The synopsis of the lookup function is `lookup apiVersion, kind, namespace, name
 | name       | string |
 
 Both `name` and `namespace` are optional and can be passed as an empty string
-(`""`).
+(`""`). However, if you're working with a namespace-scoped resource, both `name`
+and `namespace` must be specified.
 
 The following combination of parameters are possible:
 

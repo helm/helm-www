@@ -16,6 +16,7 @@ request](https://github.com/helm/helm-www/pulls).
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt
   existing k8s resources into a new generated helm chart.
+- [helm-cel](https://github.com/idsulik/helm-cel) - Plugin that uses Common Expression Language (CEL) to validate values.
 - [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) - Snapshot testing plugin for Helm charts.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
