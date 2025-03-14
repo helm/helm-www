@@ -62,4 +62,4 @@ helm create NAME [flags]
 
 * [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025

@@ -11,6 +11,7 @@ weight: 3
 ## Втулки Helm {#helm-plugins}
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) — Втулок Helm v3 для включення поточних ресурсів k8s у нові згенеровані Helm чарти.
+- [helm-cel](https://github.com/idsulik/helm-cel) — Втулок, який використовує Common Expression Language (CEL) для перевірки значень.
 - [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) — Втулок для тестування знімків для Helm чартів.
 - [Helm Diff](https://github.com/databus23/helm-diff) — Попередній перегляд `helm upgrade` у вигляді кольорового diff.
 - [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) — Втулок, який допомагає розподілити Helm чарти між OCI реєстрами та в умовах Air gap.

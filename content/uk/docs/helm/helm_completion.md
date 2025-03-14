@@ -45,4 +45,4 @@ title: "Helm Completion"
 * [helm completion powershell](helm_completion_powershell.md) — генерувати скрипт автодоповнення для powershell
 * [helm completion zsh](helm_completion_zsh.md) — генерувати скрипт автодоповнення для zsh
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025

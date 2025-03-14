@@ -50,4 +50,4 @@ helm dependency list CHART [flags]
 
 * [helm dependency](helm_dependency.md) — керувати залежностями чарту
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025
