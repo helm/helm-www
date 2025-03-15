@@ -1,27 +1,17 @@
 ---
-title: "Docs Home"
-description: "Everything you need to know about how the documentation is organized."
+title: "दस्तावेज़ मुखपृष्ठ"
+description: "दस्तावेज़ीकरण कैसे संगठित किया गया है, इस पर सभी आवश्यक जानकारी।"
 ---
 
-# Welcome
+# स्वागत है  
 
-Welcome to the [Helm](https://helm.sh/) documentation. Helm is the package
-manager for Kubernetes, and you can read detailed background information in the
-[CNCF Helm Project Journey
-report](https://www.cncf.io/cncf-helm-project-journey/).
+[Helm](https://helm.sh/) दस्तावेज़ीकरण में आपका स्वागत है। Helm Kubernetes के लिए एक पैकेज प्रबंधक है, और आप इसके बारे में विस्तृत जानकारी [CNCF Helm प्रोजेक्ट जर्नी रिपोर्ट](https://www.cncf.io/cncf-helm-project-journey/) में पढ़ सकते हैं।  
 
-# How the documentation is organized
+# दस्तावेज़ीकरण का संगठन  
 
-Helm has a lot of documentation. A high-level overview of how it’s organized
-will help you know where to look for certain things:
+Helm का व्यापक दस्तावेज़ीकरण उपलब्ध है। इसे समझने के लिए उच्च-स्तरीय अवलोकन मदद कर सकता है:  
 
-- [Tutorials](chart_template_guide/getting_started/) take you by the hand through a series of steps to create
-  your first Helm chart. Start here if you’re new to Helm.
-- [Topic guides](topics) discuss key topics and concepts at a fairly high level
-  and provide useful background information and explanation.
-- [Community Guides](community) discuss topics centered around Helm’s community.
-  Start here if you want to learn more about the development process of Helm
-  itself and how you can contribute.
-- [How-to guides](howto) are recipes. They guide you through the steps involved
-  in addressing key problems and use-cases. They are more advanced than
-  tutorials and assume some knowledge of how Helm works.
+- [ट्यूटोरियल्स](chart_template_guide/getting_started/) आपको चरण-दर-चरण मार्गदर्शन देकर पहला Helm चार्ट बनाने में मदद करते हैं। यदि आप Helm में नए हैं, तो यहां से शुरुआत करें।  
+- [विषय मार्गदर्शिकाएँ](topics) प्रमुख विषयों और अवधारणाओं पर गहन जानकारी प्रदान करती हैं और उपयोगी पृष्ठभूमि विवरण उपलब्ध कराती हैं।  
+- [समुदाय](community) Helm समुदाय से संबंधित विषयों पर केंद्रित हैं। यदि आप Helm के विकास प्रक्रिया के बारे में जानना चाहते हैं और इसमें योगदान देना चाहते हैं, तो यहां से शुरू करें।  
+- [हाउ-टू मार्गदर्शिकाएँ](howto) व्यावहारिक समाधान प्रदान करती हैं। वे प्रमुख समस्याओं और उपयोग के मामलों को हल करने की चरण-दर-चरण प्रक्रिया को कवर करती हैं। ये ट्यूटोरियल्स से अधिक उन्नत हैं और यह मानती हैं कि आपको Helm की कार्यप्रणाली की कुछ जानकारी है।

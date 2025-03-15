@@ -1,25 +1,19 @@
----
-title: "Chart Template Guide"
-weight: 5
-aliases: ["/topics/chart_template_guide/"]
----
+---  
+title: "चार्ट टेम्पलेट मार्गदर्शिका"  
+weight: 5  
+aliases: ["/topics/chart_template_guide/"]  
+---  
 
-# The Chart Template Developer's Guide
+# चार्ट टेम्पलेट डेवलपर गाइड  
 
-This guide provides an introduction to Helm's chart templates, with emphasis on
-the template language.
+यह मार्गदर्शिका Helm के चार्ट टेम्पलेट्स का परिचय देती है, विशेष रूप से टेम्पलेट भाषा पर जोर देती है।  
 
-Templates generate manifest files, which are YAML-formatted resource
-descriptions that Kubernetes can understand. We'll look at how templates are
-structured, how they can be used, how to write Go templates, and how to debug
-your work.
+टेम्पलेट्स मैनिफेस्ट फ़ाइलें उत्पन्न करते हैं, जो YAML-स्वरूपित संसाधन विवरण होते हैं जिन्हें Kubernetes समझ सकता है। हम देखेंगे कि टेम्पलेट्स कैसे संरचित होते हैं, उनका उपयोग कैसे किया जाता है, Go टेम्पलेट्स कैसे लिखे जाते हैं, और अपने कार्य का डिबग कैसे किया जाता है।  
 
-This guide focuses on the following concepts:
+यह मार्गदर्शिका निम्नलिखित अवधारणाओं पर केंद्रित है:  
 
-- The Helm template language
-- Using values
-- Techniques for working with templates
+- Helm टेम्पलेट भाषा  
+- मानों (Values) का उपयोग  
+- टेम्पलेट्स के साथ काम करने की तकनीकें  
 
-This guide is oriented toward learning the ins and outs of the Helm template
-language. Other guides provide introductory material, examples, and best
-practices.
+यह मार्गदर्शिका विशेष रूप से Helm टेम्पलेट भाषा को सीखने पर केंद्रित है। अन्य मार्गदर्शिकाएँ परिचयात्मक सामग्री, उदाहरण और सर्वोत्तम प्रथाएँ प्रदान करती हैं।

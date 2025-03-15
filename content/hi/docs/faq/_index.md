@@ -1,17 +1,14 @@
----
-title: "Frequently Asked Questions"
-weight: 9
-aliases: [
-  "/docs/topics/faq/",
-  "/docs/faq/"
-]
----
+---  
+title: "अक्सर पूछे जाने वाले प्रश्न"  
+weight: 9  
+aliases: [  
+  "/docs/topics/faq/",  
+  "/docs/faq/"  
+]  
+---  
 
-# Frequently Asked Questions
+# अक्सर पूछे जाने वाले प्रश्न  
 
-> This section provides help with the most common questions.
+> यह अनुभाग सबसे सामान्य प्रश्नों के उत्तर प्रदान करता है।  
 
-**We'd love your help** making this document better. To add, correct, or remove
-information, [file an issue](https://github.com/helm/helm-www/issues) or send us
-a pull request.
-
+**हम आपकी सहायता की सराहना करेंगे** इस दस्तावेज़ को बेहतर बनाने में। यदि आप कोई जानकारी जोड़ना, सुधारना या हटाना चाहते हैं, तो [इश्यू दर्ज करें](https://github.com/helm/helm-www/issues) या हमें एक पुल रिक्वेस्ट भेजें।

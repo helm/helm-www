@@ -1,9 +1,8 @@
----
-title: "Topics"
-weight: 3
----
+---  
+title: "विषय"  
+weight: 3  
+---  
 
-# Topic Guides
+# विषय मार्गदर्शिकाएँ  
 
-Here you’ll find introductions to all the key parts of Helm you’ll need or want
-to know.
+यहाँ आपको Helm के सभी प्रमुख भागों का परिचय मिलेगा, जिन्हें समझना या जानना आपके लिए आवश्यक हो सकता है।
