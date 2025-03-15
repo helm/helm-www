@@ -1,9 +1,8 @@
----
-title: "Community"
-weight: 8
----
+---  
+title: "समुदाय (Community)"  
+weight: 8  
+---  
 
-# Community Guides
+# सामुदायिक मार्गदर्शिकाएँ  
 
-Learn here about the development process for the Helm project itself and how you
-can contribute.
+यहाँ जानें कि Helm प्रोजेक्ट का विकास प्रक्रिया कैसी है और आप इसमें कैसे योगदान दे सकते हैं।

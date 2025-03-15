@@ -1,10 +1,10 @@
----
-title: "Helm Commands"
-description: "Documentation for the full list of helm CLI commands."
-weight: 6
-slug: helm
----
+---  
+title: "Helm कमांड्स"  
+description: "Helm CLI कमांड्स की पूरी सूची के लिए दस्तावेज़ीकरण।"  
+weight: 6  
+slug: helm  
+---  
 
-# Helm Commands
+# Helm कमांड्स  
 
-Here you’ll find the list of CLI commands for Helm, with help info on their usage.
+यहाँ आपको Helm के CLI कमांड्स की सूची मिलेगी, साथ ही उनके उपयोग से संबंधित जानकारी भी उपलब्ध होगी।

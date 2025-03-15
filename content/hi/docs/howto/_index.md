@@ -1,11 +1,8 @@
----
-title: "How-to"
-weight: 2
----
+---  
+title: "कैसे करें"  
+weight: 2  
+---  
 
-# How-to Guides
+# कैसे करें मार्गदर्शिकाएँ  
 
-Here you’ll find short answers to “How do I….?” types of questions. These how-to
-guides don’t cover topics in depth – you’ll find that material in the [Topic
-Guides](../topics). However, these guides will help you quickly accomplish
-common tasks.
+यहाँ आपको "मैं यह कैसे करूँ...?" जैसे प्रश्नों के संक्षिप्त उत्तर मिलेंगे। ये "कैसे करें" मार्गदर्शिकाएँ विषयों को गहराई से कवर नहीं करती हैं—उन विषयों की विस्तृत जानकारी आपको [विषय मार्गदर्शिकाओं](../topics) में मिलेगी। हालांकि, ये मार्गदर्शिकाएँ आपको सामान्य कार्यों को तेजी से पूरा करने में सहायता करेंगी।

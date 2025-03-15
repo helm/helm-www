@@ -1,9 +1,9 @@
 ---
-title: "Introduction"
-weight: 1
-aliases: ["/docs/using_helm/"]
+title: "परिचय"  
+weight: 1  
+aliases: ["/docs/using_helm/"]  
 ---
 
-# Introduction to Helm
+# Helm का परिचय  
 
-Are you new to Helm? This is the place to start!
+क्या आप Helm में नए हैं? यह शुरुआत करने का सही स्थान है!
