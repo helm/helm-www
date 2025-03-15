@@ -334,14 +334,22 @@ will be set as the `KUBECONFIG` variable
 
 When executing a plugin, Helm will parse global flags for its own use. None of
 these flags are passed on to the plugin.
-
+- `--burst-limit`: This is converted to `$HELM_BURST_LIMIT`
 - `--debug`: If this is specified, `$HELM_DEBUG` is set to `1`
+- `--kube-apiserver`: This is converted to `$HELM_KUBEAPISERVER`
+- `--kube-as-group`: These are converted to `$HELM_KUBEASGROUPS`
+- `--kube-as-user`: This is converted to `$HELM_KUBEASUSER`
+- `--kube-ca-file`: This is converted to `$HELM_KUBECAFILE`
+- `--kube-context`: This is converted to `$HELM_KUBECONTEXT`
+- `--kube-insecure-skip-tls-verify`: This is converted to `$HELM_KUBEINSECURE_SKIP_TLS_VERIFY`
+- `--kube-tls-server-name`: This is converted to `$HELM_KUBETLS_SERVER_NAME`
+- `--kube-token`: This is converted to `$HELM_KUBETOKEN`
+- `--kubeconfig`: This is converted to `$KUBECONFIG`
+- `--namespace` and `-n`: This is converted to `$HELM_NAMESPACE`
+- `--qps`: This is converted to `$HELM_QPS`
 - `--registry-config`: This is converted to `$HELM_REGISTRY_CONFIG`
 - `--repository-cache`: This is converted to `$HELM_REPOSITORY_CACHE`
 - `--repository-config`: This is converted to `$HELM_REPOSITORY_CONFIG`
-- `--namespace` and `-n`: This is converted to `$HELM_NAMESPACE`
-- `--kube-context`: This is converted to `$HELM_KUBECONTEXT`
-- `--kubeconfig`: This is converted to `$KUBECONFIG`
 
 Plugins _should_ display help text and then exit for `-h` and `--help`. In all
 other cases, plugins may use flags as appropriate.
