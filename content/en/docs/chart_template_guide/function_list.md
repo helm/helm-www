@@ -953,7 +953,8 @@ Helm provides some advanced cryptographic functions. They include
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
 [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
-[htpasswd](#htpasswd), [sha1sum](#sha1sum), and [sha256sum](#sha256sum).
+[htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), and
+[sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -994,6 +995,16 @@ htpasswd "myUser" "myPassword"
 ```
 
 Note that it is insecure to store the password directly in the template.
+
+### randBytes
+
+The randBytes function accepts a count N and generates a cryptographically
+secure (uses crypto/rand) random sequence of N bytes. The sequence is returned
+as a base64 encoded string.
+
+```
+randBytes 24
+```
 
 ### derivePassword
 
