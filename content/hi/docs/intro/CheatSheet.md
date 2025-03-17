@@ -1,128 +1,133 @@
----
-title: "Cheat Sheet"
-description: "Helm cheatsheet"
-weight: 4
----
+---  
+title: "चीट शीट"  
+description: "Helm चीट शीट"  
+weight: 4  
+---  
 
-Helm cheatsheet featuring all the necessary commands required to manage an application through Helm.
+Helm चीट शीट, जिसमें Helm के माध्यम से किसी एप्लिकेशन को प्रबंधित करने के लिए आवश्यक सभी महत्वपूर्ण कमांड शामिल हैं।
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
-### Basic interpretations/context
+### मूल व्याख्याएँ / संदर्भ  
 
-Chart:
-- It is the name of your chart in case it has been pulled and untarred.
-- It is <repo_name>/<chart_name> in case the repository has been added but chart not pulled.
-- It is the URL/Absolute path to the chart.
+चार्ट (Chart):  
+- यदि चार्ट को डाउनलोड और अनटार किया गया है, तो यह आपके चार्ट का नाम होता है।  
+- यदि रिपॉजिटरी जोड़ी गई है, लेकिन चार्ट डाउनलोड नहीं किया गया है, तो यह `<repo_name>/<chart_name>` के रूप में होगा।  
+- यह चार्ट का URL या पूर्ण पथ (Absolute Path) भी हो सकता है।  
 
-Name:
-- It is the name you want to give to your current helm chart installation.
+नाम (Name):  
+- यह वह नाम है जिसे आप अपनी वर्तमान Helm चार्ट इंस्टॉलेशन को देना चाहते हैं।  
 
-Release:
-- Is the name you assigned to an installation instance. 
+रिलीज़ (Release):  
+- यह उस इंस्टॉलेशन इंस्टेंस का नाम होता है जिसे आपने असाइन किया है।  
 
-Revision:
-- Is the value from the Helm history command
+संशोधन (Revision):  
+- यह Helm इतिहास (Helm history) कमांड से प्राप्त मान होता है।  
 
-Repo-name:
-- The name of a repository. 
+रिपो-नाम (Repo-name):
+- यह किसी रिपॉजिटरी का नाम होता है।  
 
-DIR:
-- Directory name/path
+डायरेक्टरी (DIR): 
+- यह डायरेक्टरी का नाम या उसका पथ (Path) होता है।
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Chart Management
+### चार्ट प्रबंधन (Chart Management)  
 
 ```bash
-helm create <name>                      # Creates a chart directory along with the common files and directories used in a chart.
-helm package <chart-path>               # Packages a chart into a versioned chart archive file.
-helm lint <chart>                       # Run tests to examine a chart and identify possible issues:
-helm show all <chart>                   # Inspect a chart and list its contents:
-helm show values <chart>                # Displays the contents of the values.yaml file
-helm pull <chart>                       # Download/pull chart 
-helm pull <chart> --untar=true          # If set to true, will untar the chart after downloading it
-helm pull <chart> --verify              # Verify the package before using it
-helm pull <chart> --version <number>    # Default-latest is used, specify a version constraint for the chart version to use
-helm dependency list <chart>            # Display a list of a chart’s dependencies:
-``` 
+helm create <name>                      # एक चार्ट डायरेक्टरी बनाता है, जिसमें चार्ट के लिए आवश्यक सामान्य फ़ाइलें और डायरेक्टरी होती हैं।  
+helm package <chart-path>               # एक चार्ट को संस्करणयुक्त चार्ट आर्काइव फ़ाइल में पैकेज करता है।  
+helm lint <chart>                       # चार्ट का परीक्षण करके संभावित समस्याओं की पहचान करता है।  
+helm show all <chart>                   # चार्ट का निरीक्षण करता है और उसकी सामग्री सूचीबद्ध करता है।  
+helm show values <chart>                # values.yaml फ़ाइल की सामग्री प्रदर्शित करता है।  
+helm pull <chart>                       # चार्ट को डाउनलोड/खींचता है।  
+helm pull <chart> --untar=true          # यदि true सेट किया गया हो, तो डाउनलोड के बाद चार्ट को अनटार करता है।  
+helm pull <chart> --verify              # पैकेज का उपयोग करने से पहले सत्यापन करता है।  
+helm pull <chart> --version <number>    # डिफ़ॉल्ट रूप से नवीनतम संस्करण उपयोग होता है; एक विशिष्ट चार्ट संस्करण के लिए संस्करण बाधा निर्दिष्ट करें।  
+helm dependency list <chart>            # चार्ट की निर्भरताओं (dependencies) की सूची प्रदर्शित करता है।  
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Install and Uninstall Apps
+### ऐप्स इंस्टॉल और अनइंस्टॉल करें (Install and Uninstall Apps)  
 
 ```bash
-helm install <name> <chart>                           # Install the chart with a name
-helm install <name> <chart> --namespace <namespace>   # Install the chart in a specific namespace
-helm install <name> <chart> --set key1=val1,key2=val2 # Set values on the command line (can specify multiple or separate values with commas)
-helm install <name> <chart> --values <yaml-file/url>  # Install the chart with your specified values
-helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
-helm install <name> <chart> --verify                  # Verify the package before using it 
-helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
-helm uninstall <name>                                 # Uninstall a release
+helm install <name> <chart>                           # दिए गए नाम के साथ चार्ट इंस्टॉल करें।  
+helm install <name> <chart> --namespace <namespace>   # चार्ट को एक विशेष नेमस्पेस में इंस्टॉल करें।  
+helm install <name> <chart> --set key1=val1,key2=val2 # कमांड लाइन पर मान सेट करें (एकाधिक मानों को कॉमा से अलग करके निर्दिष्ट कर सकते हैं)।  
+helm install <name> <chart> --values <yaml-file/url>  # निर्दिष्ट मानों के साथ चार्ट इंस्टॉल करें।  
+helm install <name> <chart> --dry-run --debug         # चार्ट को मान्य करने के लिए परीक्षण इंस्टॉलेशन चलाएं।  
+helm install <name> <chart> --verify                  # उपयोग करने से पहले पैकेज का सत्यापन करें।  
+helm install <name> <chart> --dependency-update       # इंस्टॉलेशन से पहले यदि कोई निर्भरताएँ गायब हैं, तो उन्हें अपडेट करें।  
+helm uninstall <name>                                 # एक रिलीज़ को अनइंस्टॉल करें।  
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
-### Perform App Upgrade and Rollback
+
+### ऐप अपग्रेड और रोलबैक करें (Perform App Upgrade and Rollback)  
 
 ```bash
-helm upgrade <release> <chart>                            # Upgrade a release
-helm upgrade <release> <chart> --atomic                   # If set, upgrade process rolls back changes made in case of failed upgrade.
-helm upgrade <release> <chart> --dependency-update        # update dependencies if they are missing before installing the chart
-helm upgrade <release> <chart> --version <version_number> # specify a version constraint for the chart version to use
-helm upgrade <release> <chart> --values                   # specify values in a YAML file or a URL (can specify multiple)
-helm upgrade <release> <chart> --set key1=val1,key2=val2  # Set values on the command line (can specify multiple or separate valuese)
-helm upgrade <release> <chart> --force                    # Force resource updates through a replacement strategy
-helm rollback <release> <revision>                        # Roll back a release to a specific revision
-helm rollback <release> <revision>  --cleanup-on-fail     # Allow deletion of new resources created in this rollback when rollback fails
-``` 
+helm upgrade <release> <chart>                            # एक रिलीज़ को अपग्रेड करें।  
+helm upgrade <release> <chart> --atomic                   # यदि सेट किया गया है, तो असफल अपग्रेड की स्थिति में परिवर्तनों को रोलबैक कर देगा।  
+helm upgrade <release> <chart> --dependency-update        # यदि कोई निर्भरताएँ गायब हैं, तो उन्हें इंस्टॉलेशन से पहले अपडेट करें।  
+helm upgrade <release> <chart> --version <version_number> # उपयोग करने के लिए चार्ट संस्करण के लिए एक संस्करण बाधा निर्दिष्ट करें।  
+helm upgrade <release> <chart> --values                   # YAML फ़ाइल या URL में निर्दिष्ट मानों का उपयोग करें (एकाधिक निर्दिष्ट कर सकते हैं)।  
+helm upgrade <release> <chart> --set key1=val1,key2=val2  # कमांड लाइन पर मान सेट करें (एकाधिक या अलग-अलग मान निर्दिष्ट कर सकते हैं)।  
+helm upgrade <release> <chart> --force                    # प्रतिस्थापन रणनीति के माध्यम से संसाधनों के अपडेट को बाध्य करें।  
+helm rollback <release> <revision>                        # एक रिलीज़ को एक विशिष्ट पुनरीक्षण पर रोलबैक करें।  
+helm rollback <release> <revision> --cleanup-on-fail      # यदि रोलबैक विफल हो जाता है, तो नए बनाए गए संसाधनों को हटाने की अनुमति दें।  
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------
-### List, Add, Remove, and Update Repositories
+
+### रिपॉजिटरी सूचीबद्ध करें, जोड़ें, हटाएं और अपडेट करें (List, Add, Remove, and Update Repositories)  
 
 ```bash
-helm repo add <repo-name> <url>   # Add a repository from the internet:
-helm repo list                    # List added chart repositories
-helm repo update                  # Update information of available charts locally from chart repositories
-helm repo remove <repo_name>      # Remove one or more chart repositories
-helm repo index <DIR>             # Read the current directory and generate an index file based on the charts found.
-helm repo index <DIR> --merge     # Merge the generated index with an existing index file
-helm search repo <keyword>        # Search repositories for a keyword in charts
-helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
+helm repo add <repo-name> <url>   # इंटरनेट से एक रिपॉजिटरी जोड़ें।  
+helm repo list                    # जोड़ी गई चार्ट रिपॉजिटरी की सूची देखें।  
+helm repo update                  # चार्ट रिपॉजिटरी से स्थानीय रूप से उपलब्ध चार्ट की जानकारी अपडेट करें।  
+helm repo remove <repo_name>      # एक या अधिक चार्ट रिपॉजिटरी हटाएं।  
+helm repo index <DIR>             # वर्तमान डायरेक्टरी को पढ़ें और वहां मौजूद चार्ट के आधार पर एक इंडेक्स फ़ाइल बनाएं।  
+helm repo index <DIR> --merge     # मौजूदा इंडेक्स फ़ाइल के साथ उत्पन्न इंडेक्स को मर्ज करें।  
+helm search repo <keyword>        # चार्ट में किसी कीवर्ड के लिए रिपॉजिटरी खोजें।  
+helm search hub <keyword>         # आर्टिफैक्ट हब या अपने स्वयं के हब इंस्टेंस में चार्ट खोजें।  
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Helm Release monitoring
+
+### हेल्म रिलीज़ मॉनिटरिंग (Helm Release Monitoring)  
 
 ```bash
-helm list                       # Lists all of the releases for a specified namespace, uses current namespace context if namespace not specified
-helm list --all                 # Show all releases without any filter applied, can use -a
-helm list --all-namespaces      # List releases across all namespaces, we can use -A
-helm list -l key1=value1,key2=value2 # Selector (label query) to filter on, supports '=', '==', and '!='
-helm list --date                # Sort by release date
-helm list --deployed            # Show deployed releases. If no other is specified, this will be automatically enabled
-helm list --pending             # Show pending releases
-helm list --failed              # Show failed releases
-helm list --uninstalled         # Show uninstalled releases (if 'helm uninstall --keep-history' was used)
-helm list --superseded          # Show superseded releases
-helm list -o yaml               # Prints the output in the specified format. Allowed values: table, json, yaml (default table)
-helm status <release>           # This command shows the status of a named release.
-helm status <release> --revision <number>   # if set, display the status of the named release with revision
-helm history <release>          # Historical revisions for a given release.
-helm env                        # Env prints out all the environment information in use by Helm.
+helm list                       # निर्दिष्ट नामस्थान (namespace) के सभी रिलीज़ दिखाएं। यदि नामस्थान निर्दिष्ट नहीं किया गया है, तो वर्तमान संदर्भ का उपयोग करें।  
+helm list --all                 # बिना किसी फ़िल्टर के सभी रिलीज़ दिखाएं, इसे `-a` से भी उपयोग कर सकते हैं।  
+helm list --all-namespaces      # सभी नामस्थानों में रिलीज़ सूचीबद्ध करें, इसे `-A` से भी उपयोग कर सकते हैं।  
+helm list -l key1=value1,key2=value2 # किसी विशेष लेबल के आधार पर फ़िल्टर करें। '=', '==', और '!=' ऑपरेटर समर्थित हैं।  
+helm list --date                # रिलीज़ को उनकी तारीख के अनुसार क्रमबद्ध करें।  
+helm list --deployed            # केवल डिप्लॉय की गई रिलीज़ दिखाएं। यदि कोई अन्य विकल्प निर्दिष्ट नहीं किया गया है, तो यह डिफ़ॉल्ट रूप से सक्षम होगा।  
+helm list --pending             # लंबित (Pending) रिलीज़ दिखाएं।  
+helm list --failed              # असफल (Failed) रिलीज़ दिखाएं।  
+helm list --uninstalled         # अनइंस्टॉल (Uninstalled) की गई रिलीज़ दिखाएं (यदि 'helm uninstall --keep-history' का उपयोग किया गया था)।  
+helm list --superseded          # प्रतिस्थापित (Superseded) रिलीज़ दिखाएं।  
+helm list -o yaml               # आउटपुट को निर्दिष्ट प्रारूप में प्रिंट करें। मान्य विकल्प: table, json, yaml (डिफ़ॉल्ट table)।  
+helm status <release>           # किसी विशेष रिलीज़ की स्थिति देखें।  
+helm status <release> --revision <number>   # निर्दिष्ट संस्करण (revision) के साथ रिलीज़ की स्थिति प्रदर्शित करें।  
+helm history <release>          # किसी रिलीज़ के ऐतिहासिक संस्करणों (revisions) को देखें।  
+helm env                        # हेल्म द्वारा उपयोग किए जा रहे सभी पर्यावरण चर (Environment Variables) को प्रिंट करें।  
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Download Release Information
+
+### डाउनलोड रिलीज़ जानकारी (Download Release Information)  
 
 ```bash
-helm get all <release>      # A human readable collection of information about the notes, hooks, supplied values, and generated manifest file of the given release.
-helm get hooks <release>    # This command downloads hooks for a given release. Hooks are formatted in YAML and separated by the YAML '---\n' separator.
-helm get manifest <release> # A manifest is a YAML-encoded representation of the Kubernetes resources that were generated from this release's chart(s). If a chart is dependent on other charts, those resources will also be included in the manifest.
-helm get notes <release>    # Shows notes provided by the chart of a named release.
-helm get values <release>   # Downloads a values file for a given release. use -o to format output
+helm get all <release>      # निर्दिष्ट रिलीज़ की पूरी जानकारी प्राप्त करें, जिसमें नोट्स, हुक्स, प्रदान किए गए वैल्यूज़ और जेनरेट किया गया मैनिफ़ेस्ट फ़ाइल शामिल है।  
+helm get hooks <release>    # किसी रिलीज़ के लिए सभी हुक्स (Hooks) डाउनलोड करें। हुक्स YAML प्रारूप में होंगे और '---\n' विभाजक से अलग किए जाएंगे।  
+helm get manifest <release> # किसी रिलीज़ से उत्पन्न किए गए Kubernetes संसाधनों (Resources) का YAML-एनकोडेड मैनिफ़ेस्ट प्राप्त करें। यदि कोई चार्ट अन्य चार्ट्स पर निर्भर है, तो उन संसाधनों को भी मैनिफ़ेस्ट में शामिल किया जाएगा।  
+helm get notes <release>    # किसी रिलीज़ के चार्ट द्वारा प्रदान किए गए नोट्स प्रदर्शित करें।  
+helm get values <release>   # निर्दिष्ट रिलीज़ के लिए उपयोग की गई वैल्यूज़ (Values) फ़ाइल डाउनलोड करें। आउटपुट प्रारूप बदलने के लिए `-o` विकल्प का उपयोग करें।  
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Plugin Management
+
+### प्लगइन प्रबंधन (Plugin Management)
 
 ```bash
-helm plugin install <path/url>      # Install plugins
-helm plugin list                    # View a list of all installed plugins
-helm plugin update <plugin>         # Update plugins
-helm plugin uninstall <plugin>      # Uninstall a plugin
+helm plugin install <path/url>      # प्लगइन इंस्टॉल करें (स्थानीय पथ या URL से)  
+helm plugin list                    # सभी इंस्टॉल किए गए प्लगइनों की सूची देखें  
+helm plugin update <plugin>         # निर्दिष्ट प्लगइन को अपडेट करें  
+helm plugin uninstall <plugin>      # किसी प्लगइन को अनइंस्टॉल करें  
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------

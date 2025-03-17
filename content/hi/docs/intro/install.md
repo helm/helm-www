@@ -1,47 +1,34 @@
 ---
-title: "Installing Helm"
-description: "Learn how to install and get running with Helm."
+title: "Helm स्थापित करना"
+description: "Helm को स्थापित करने और इसे चलाने का तरीका जानें।"
 weight: 2
 aliases: ["/docs/install/"]
 ---
 
-This guide shows how to install the Helm CLI. Helm can be installed either from
-source, or from pre-built binary releases.
+यह गाइड दिखाती है कि Helm CLI को कैसे इंस्टॉल किया जाए। Helm को या तो स्रोत से इंस्टॉल किया जा सकता है या पहले से निर्मित बाइनरी रिलीज़ से।
 
-## From The Helm Project
+## Helm प्रोजेक्ट से  
 
-The Helm project provides two ways to fetch and install Helm. These are the
-official methods to get Helm releases. In addition to that, the Helm community
-provides methods to install Helm through different package managers.
-Installation through those methods can be found below the official methods.
+Helm प्रोजेक्ट Helm को प्राप्त करने और इंस्टॉल करने के दो तरीके प्रदान करता है। ये Helm रिलीज़ प्राप्त करने के आधिकारिक तरीके हैं। इसके अलावा, Helm समुदाय विभिन्न पैकेज मैनेजरों के माध्यम से Helm को इंस्टॉल करने के तरीके भी प्रदान करता है। उन तरीकों की जानकारी आधिकारिक विधियों के नीचे दी गई है।
 
-### From the Binary Releases
+### बाइनरी रिलीज़ से  
 
-Every [release](https://github.com/helm/helm/releases) of Helm provides binary
-releases for a variety of OSes. These binary versions can be manually downloaded
-and installed.
+Helm के हर [रिलीज़](https://github.com/helm/helm/releases) में विभिन्न ऑपरेटिंग सिस्टम के लिए बाइनरी रिलीज़ उपलब्ध होते हैं। इन बाइनरी संस्करणों को मैन्युअली डाउनलोड और इंस्टॉल किया जा सकता है।
 
-1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. Find the `helm` binary in the unpacked directory, and move it to its desired
-   destination (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. अपनी [पसंदीदा संस्करण](https://github.com/helm/helm/releases) डाउनलोड करें।  
+2. इसे अनपैक करें (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)।  
+3. अनपैक की गई डायरेक्टरी में `helm` बाइनरी को ढूंढें और इसे अपनी इच्छित लोकेशन पर मूव करें (`mv linux-amd64/helm /usr/local/bin/helm`)।  
 
-From there, you should be able to run the client and [add the stable
-chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
-`helm help`.
+इसके बाद, आप क्लाइंट चला सकते हैं और [स्थिर चार्ट रिपॉजिटरी जोड़ सकते हैं](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):  
+`helm help`  
 
-**Note:** Helm automated tests are performed for Linux AMD64 only during
-GitHub Actions builds and releases. Testing of other OSes are the responsibility of
-the community requesting Helm for the OS in question.
+**नोट:** Helm के स्वचालित परीक्षण केवल Linux AMD64 के लिए GitHub Actions बिल्ड और रिलीज़ के दौरान किए जाते हैं। अन्य ऑपरेटिंग सिस्टम के परीक्षण की ज़िम्मेदारी उस समुदाय की है जो उस विशेष OS के लिए Helm का अनुरोध कर रहा है।
 
-### From Script
+### स्क्रिप्ट से इंस्टॉलेशन  
 
-Helm now has an installer script that will automatically grab the latest version
-of Helm and [install it
-locally](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
+Helm के पास अब एक इंस्टॉलर स्क्रिप्ट है जो स्वचालित रूप से Helm का नवीनतम संस्करण डाउनलोड करेगी और [स्थानीय रूप से इंस्टॉल](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) करेगी।  
 
-You can fetch that script, and then execute it locally. It's well documented so
-that you can read through it and understand what it is doing before you run it.
+आप इस स्क्रिप्ट को डाउनलोड कर सकते हैं और फिर इसे स्थानीय रूप से चला सकते हैं। यह अच्छी तरह से प्रलेखित (documented) है ताकि आप इसे चलाने से पहले पढ़कर समझ सकें कि यह क्या कर रही है।
 
 ```console
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -159,12 +146,11 @@ links to the common builds:
 - [Experimental Windows
   AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### From Source (Linux, macOS)
+### स्रोत से (Linux, macOS)
 
-Building Helm from source is slightly more work, but is the best way to go if
-you want to test the latest (pre-release) Helm version.
+स्रोत से Helm बनाना थोड़ा अधिक काम हो सकता है, लेकिन यदि आप Helm के नवीनतम (प्री-रिलीज़) संस्करण का परीक्षण करना चाहते हैं, तो यह सबसे अच्छा तरीका है।  
 
-You must have a working Go environment.
+इसके लिए आपके पास एक कार्यशील Go वातावरण (Go environment) होना आवश्यक है।
 
 ```console
 $ git clone https://github.com/helm/helm.git
@@ -172,15 +158,10 @@ $ cd helm
 $ make
 ```
 
-If required, it will fetch the dependencies and cache them, and validate
-configuration. It will then compile `helm` and place it in `bin/helm`.
+यदि आवश्यक हो, तो यह निर्भरताओं (dependencies) को डाउनलोड और कैश करेगा, और कॉन्फ़िगरेशन को मान्य करेगा। इसके बाद, यह `helm` को कम्पाइल करेगा और इसे `bin/helm` में रखेगा।
 
-## Conclusion
+## निष्कर्ष  
 
-In most cases, installation is as simple as getting a pre-built `helm` binary.
-This document covers additional cases for those who want to do more
-sophisticated things with Helm.
+अधिकतर मामलों में, इंस्टॉलेशन केवल `helm` बाइनरी को डाउनलोड और उपयोग करने जितना सरल होता है। यह दस्तावेज़ उन उपयोगकर्ताओं के लिए अतिरिक्त जानकारी प्रदान करता है जो Helm के साथ अधिक उन्नत कार्य करना चाहते हैं।  
 
-Once you have the Helm Client successfully installed, you can move on to using
-Helm to manage charts and [add the stable
-chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+एक बार जब आप Helm क्लाइंट को सफलतापूर्वक इंस्टॉल कर लेते हैं, तो आप चार्ट्स को प्रबंधित करने और [स्थिर चार्ट रिपॉजिटरी जोड़ने](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository) के लिए आगे बढ़ सकते हैं।
