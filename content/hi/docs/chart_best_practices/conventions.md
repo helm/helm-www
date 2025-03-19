@@ -1,18 +1,19 @@
 ---
-title: "General Conventions"
-description: "General conventions for charts."
+title: "सामान्य परंपराएँ"
+description: "चार्ट के लिए सामान्य परंपराएँ।"
 weight: 1
 aliases: ["/docs/topics/chart_best_practices/conventions/"]
 ---
 
-This part of the Best Practices Guide explains general conventions.
-
-## Chart Names
-
-Chart names must be lower case letters and numbers. Words _may_ be separated
-with dashes (-):
-
 Examples:
+
+यह सर्वोत्तम प्रक्रियाओं मार्गदर्शिका का यह भाग सामान्य परंपराओं को समझाता है।
+
+## चार्ट नाम
+
+चार्ट के नाम छोटे अक्षरों (लोअरकेस) और संख्याओं में होने चाहिए। शब्दों को डैश (-) से अलग किया जा सकता है:
+
+उदाहरण:
 
 ```
 drupal
@@ -20,31 +21,28 @@ nginx-lego
 aws-cluster-autoscaler
 ```
 
-Neither uppercase letters nor underscores can be used in chart names. Dots
-should not be used in chart names.
+चार्ट नामों में बड़े अक्षर (uppercase) या अंडरस्कोर (_) का उपयोग नहीं किया जा सकता।  
+चार्ट नामों में डॉट्स (.) का उपयोग नहीं किया जाना चाहिए।  
 
-## Version Numbers
+## संस्करण संख्याएँ (Version Numbers)  
 
-Wherever possible, Helm uses [SemVer 2](https://semver.org) to represent version
-numbers. (Note that Docker image tags do not necessarily follow SemVer, and are
-thus considered an unfortunate exception to the rule.)
+जहाँ संभव हो, Helm संस्करण संख्याओं को दर्शाने के लिए [SemVer 2](https://semver.org) का उपयोग करता है।  
+(ध्यान दें कि Docker इमेज टैग हमेशा SemVer का पालन नहीं करते हैं, और इस कारण यह एक दुर्भाग्यपूर्ण अपवाद माना जाता है।)  
 
-When SemVer versions are stored in Kubernetes labels, we conventionally alter
-the `+` character to an `_` character, as labels do not allow the `+` sign as a
-value.
+जब Kubernetes लेबल्स में SemVer संस्करणों को संग्रहीत किया जाता है, तो परंपरागत रूप से `+` अक्षर को `_` में बदल दिया जाता है,  
+क्योंकि लेबल्स में `+` चिह्न की अनुमति नहीं होती।  
 
-## Formatting YAML
+## YAML स्वरूपण (Formatting YAML)  
 
-YAML files should be indented using _two spaces_ (and never tabs).
+YAML फ़ाइलों को _दो स्थानों (two spaces)_ से इनडेंट किया जाना चाहिए (और कभी भी टैब का उपयोग नहीं करना चाहिए)।  
 
-## Usage of the Words Helm and Chart
+## Helm और Chart शब्दों का उपयोग (Usage of the Words Helm and Chart)  
 
-There are a few conventions for using the words _Helm_ and _helm_.
+_Helm_ और _helm_ शब्दों के उपयोग के लिए कुछ परंपराएँ हैं:  
 
-- _Helm_ refers to the project as a whole
-- `helm` refers to the client-side command
-- The term `chart` does not need to be capitalized, as it is not a proper noun
-- However, `Chart.yaml` does need to be capitalized because the file name is
-  case sensitive
+- _Helm_ पूरे प्रोजेक्ट को संदर्भित करता है।  
+- `helm` क्लाइंट-साइड कमांड को संदर्भित करता है।  
+- `chart` शब्द को बड़े अक्षरों में लिखने की आवश्यकता नहीं है, क्योंकि यह एक विशेष संज्ञा (proper noun) नहीं है।  
+- हालाँकि, `Chart.yaml` को बड़े अक्षरों में लिखा जाना आवश्यक है क्योंकि फ़ाइल नाम केस सेंसिटिव होता है।  
 
-When in doubt, use _Helm_ (with an uppercase 'H').
+यदि संदेह हो, तो _Helm_ (बड़े 'H' के साथ) का उपयोग करें।  

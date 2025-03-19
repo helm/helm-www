@@ -1,5 +1,5 @@
 ---
-title: "Best Practices"
+title: "सर्वोत्तम प्रक्रियाएँ"
 sidebar: true
 weight: 4
 aliases: ["/docs/topics/chart_best_practices/"]

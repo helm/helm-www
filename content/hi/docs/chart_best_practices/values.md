@@ -1,42 +1,42 @@
 ---
-title: "Values"
-description: "Focuses on how you should structure and use your values."
+title: "मान (Values)"
+description: "इसका फोकस इस पर है कि आपको अपने मानों (values) को कैसे संरचित और उपयोग करना चाहिए।"
 weight: 2
 aliases: ["/docs/topics/chart_best_practices/values/"]
 ---
 
-This part of the best practices guide covers using values. In this part of the
-guide, we provide recommendations on how you should structure and use your
-values, with focus on designing a chart's `values.yaml` file.
+यह सर्वोत्तम प्रक्रियाओं मार्गदर्शिका (Best Practices Guide) का वह भाग है जो मानों (values) के उपयोग को कवर करता है।  
+इस अनुभाग में, हम यह अनुशंसा प्रदान करते हैं कि आपको अपने मानों की संरचना और उपयोग कैसे करना चाहिए,  
+जिसमें विशेष रूप से किसी चार्ट की `values.yaml` फ़ाइल को डिज़ाइन करने पर ध्यान केंद्रित किया गया है।
 
-## Naming Conventions
+## नामकरण संधियाँ (Naming Conventions)
 
-Variable names should begin with a lowercase letter, and words should be
-separated with camelcase:
+वेरिएबल (variable) के नाम छोटे अक्षर (lowercase letter) से शुरू होने चाहिए, और शब्दों को **camelCase** में अलग किया जाना चाहिए:
 
-Correct:
+सही:
 
 ```yaml
 chicken: true
 chickenNoodleSoup: true
 ```
 
-Incorrect:
+गलत:
 
 ```yaml
-Chicken: true  # initial caps may conflict with built-ins
-chicken-noodle-soup: true # do not use hyphens in the name
+Chicken: true # प्रारंभिक बड़े अक्षर (initial caps) अंतर्निहित (built-in) नामों से टकरा सकते हैं
+chicken-noodle-soup: true # नाम में हाइफ़न (hyphen) का उपयोग न करें
 ```
 
-Note that all of Helm's built-in variables begin with an uppercase letter to
-easily distinguish them from user-defined values: `.Release.Name`,
-`.Capabilities.KubeVersion`.
+ध्यान दें कि Helm के सभी अंतर्निहित (built-in) वेरिएबल्स बड़े अक्षर (uppercase letter) से शुरू होते हैं,  
+ताकि उन्हें उपयोगकर्ता-परिभाषित (user-defined) मानों से आसानी से अलग किया जा सके:
 
-## Flat or Nested Values
+उदाहरण: `.Release.Name`, `.Capabilities.KubeVersion`।
 
-YAML is a flexible format, and values may be nested deeply or flattened.
+## समतल (Flat) या नेस्टेड (Nested) मान
 
-Nested:
+YAML एक लचीला प्रारूप (flexible format) है, और मानों (values) को गहराई से नेस्ट किया जा सकता है या समतल रखा जा सकता है।
+
+नेस्टेड (Nested):
 
 ```yaml
 server:
@@ -44,18 +44,21 @@ server:
   port: 80
 ```
 
-Flat:
+इस संरचना में, `server` शीर्ष-स्तरीय कुंजी है, और इसके अंतर्गत `name` और `port` नेस्टेड (अंदर मौजूद) हैं।
+
+समतल (Flat):
 
 ```yaml
 serverName: nginx
 serverPort: 80
 ```
 
-In most cases, flat should be favored over nested. The reason for this is that
-it is simpler for template developers and users.
+इस संरचना में, सभी कुंजियाँ शीर्ष स्तर (top-level) पर हैं और नेस्टेड नहीं हैं।
 
+अधिकांश मामलों में, समतल (Flat) संरचना को नेस्टेड (Nested) संरचना की तुलना में प्राथमिकता देनी चाहिए।  
+इसका कारण यह है कि यह टेम्प्लेट डेवलपर्स और उपयोगकर्ताओं के लिए अधिक सरल होती है।
 
-For optimal safety, a nested value must be checked at every level:
+सुरक्षा के लिए, नेस्टेड मानों की प्रत्येक स्तर पर जाँच आवश्यक होती है:
 
 ```
 {{ if .Values.server }}
@@ -63,53 +66,55 @@ For optimal safety, a nested value must be checked at every level:
 {{ end }}
 ```
 
-For every layer of nesting, an existence check must be done. But for flat
-configuration, such checks can be skipped, making the template easier to read
-and use.
+हर नेस्टिंग स्तर (layer) के लिए, अस्तित्व (existence) की जाँच करनी आवश्यक होती है।  
+लेकिन समतल (Flat) संरचना में, ऐसी जाँचों को छोड़ा जा सकता है, जिससे टेम्प्लेट पढ़ना और उपयोग करना आसान हो जाता है।
 
 ```
 {{ default "none" .Values.serverName }}
 ```
 
-When there are a large number of related variables, and at least one of them is
-non-optional, nested values may be used to improve readability.
+जब कई संबंधित वेरिएबल्स (variables) हों और उनमें से कम से कम एक अनिवार्य (non-optional) हो,  
+तो पठनीयता (readability) में सुधार करने के लिए नेस्टेड (Nested) मानों का उपयोग किया जा सकता है।
 
-## Make Types Clear
+## प्रकार (Types) को स्पष्ट करें
 
-YAML's type coercion rules are sometimes counterintuitive. For example, `foo:
-false` is not the same as `foo: "false"`. Large integers like `foo: 12345678`
-will get converted to scientific notation in some cases.
+YAML के प्रकार अनुकूलन (type coercion) नियम कभी-कभी अप्रत्याशित होते हैं।  
+उदाहरण के लिए, `foo: false` और `foo: "false"` समान नहीं होते हैं।  
+कुछ मामलों में, बड़े पूर्णांक (integers) जैसे `foo: 12345678` वैज्ञानिक संकेतन (scientific notation) में परिवर्तित हो सकते हैं।
 
-The easiest way to avoid type conversion errors is to be explicit about strings,
-and implicit about everything else. Or, in short, _quote all strings_.
+प्रकार रूपांतरण (type conversion) त्रुटियों से बचने का सबसे आसान तरीका यह है कि:
 
-Often, to avoid the integer casting issues, it is advantageous to store your
-integers as strings as well, and use `{{ int $value }}` in the template to
-convert from a string back to an integer.
+- स्ट्रिंग्स (strings) को स्पष्ट रूप से उद्धरण (quotes) में लिखें।
+- अन्य सभी प्रकारों को सामान्य रूप में छोड़ दें।
 
-In most cases, explicit type tags are respected, so `foo: !!string 1234` should
-treat `1234` as a string. _However_, the YAML parser consumes tags, so the type
-data is lost after one parse.
+संक्षेप में कहा जाए तो, _"सभी स्ट्रिंग्स को उद्धरणों में रखें।"_
 
-## Consider How Users Will Use Your Values
+अक्सर, पूर्णांक (integers) से संबंधित समस्याओं से बचने के लिए, उन्हें स्ट्रिंग के रूप में संग्रहीत करना फायदेमंद होता है।  
+बाद में, टेम्प्लेट में `{{ int $value }}` का उपयोग करके उन्हें फिर से पूर्णांक में बदला जा सकता है।
 
-There are three potential sources of values:
+अधिकांश मामलों में, स्पष्ट प्रकार टैग (explicit type tags) का सम्मान किया जाता है,  
+इसलिए `foo: !!string 1234` को `1234` एक स्ट्रिंग के रूप में माना जाएगा।
 
-- A chart's `values.yaml` file
-- A values file supplied by `helm install -f` or `helm upgrade -f`
-- The values passed to a `--set` or `--set-string` flag on `helm install` or
-  `helm upgrade`
+हालांकि, YAML पार्सर (parser) टैग को खपत (consume) कर लेता है,  
+जिसके कारण एक बार पार्स (parse) करने के बाद प्रकार संबंधी डेटा खो सकता है।
 
-When designing the structure of your values, keep in mind that users of your
-chart may want to override them via either the `-f` flag or with the `--set`
-option.
+## इस बात पर विचार करें कि उपयोगकर्ता आपके मानों (Values) का उपयोग कैसे करेंगे
 
-Since `--set` is more limited in expressiveness, the first guidelines for
-writing your `values.yaml` file is _make it easy to override from `--set`_.
+मानों के तीन संभावित स्रोत होते हैं:
 
-For this reason, it's often better to structure your values file using maps.
+- किसी चार्ट की `values.yaml` फ़ाइल
+- `helm install -f` या `helm upgrade -f` द्वारा प्रदान की गई मान फ़ाइल
+- `helm install` या `helm upgrade` पर `--set` या `--set-string` फ्लैग द्वारा दिए गए मान
 
-Difficult to use with `--set`:
+जब आप अपने मानों की संरचना डिज़ाइन कर रहे हों, तो ध्यान रखें कि  
+आपके चार्ट के उपयोगकर्ता या तो `-f` फ्लैग का उपयोग करके या `--set` विकल्प के माध्यम से उन्हें ओवरराइड करना चाह सकते हैं।
+
+चूंकि `--set` अभिव्यक्ति (expressiveness) में अधिक सीमित है,  
+इसलिए `values.yaml` फ़ाइल लिखने का पहला नियम यह है कि इसे `--set` से _आसानी से ओवरराइड किया जा सके।_
+
+इसी कारण, अपने मान फ़ाइल की संरचना को मैप्स (maps) के रूप में रखना अक्सर बेहतर होता है।
+
+`--set` के साथ उपयोग करने में कठिन:
 
 ```yaml
 servers:
@@ -119,12 +124,13 @@ servers:
     port: 81
 ```
 
-The above cannot be expressed with `--set` in Helm `<=2.4`. In Helm 2.5,
-accessing the port on foo is `--set servers[0].port=80`. Not only is it harder
-for the user to figure out, but it is prone to errors if at some later time the
-order of the `servers` is changed.
+उपरोक्त संरचना को Helm `<=2.4` में `--set` के साथ व्यक्त नहीं किया जा सकता।  
+Helm 2.5 में, `foo` पर पोर्ट तक पहुँचने के लिए `--set servers[0].port=80` का उपयोग किया जाता है।
 
-Easy to use:
+यह न केवल उपयोगकर्ताओं के लिए समझना कठिन है, बल्कि यदि बाद में `servers` की क्रमबद्धता (order) बदल जाती है,  
+तो यह त्रुटियों (errors) की संभावना भी बढ़ा देता है।
+
+उपयोग में आसान:
 
 ```yaml
 servers:
@@ -134,31 +140,29 @@ servers:
     port: 81
 ```
 
-Accessing foo's port is much more obvious: `--set servers.foo.port=80`.
+`foo` के पोर्ट तक पहुँचना कहीं अधिक स्पष्ट है।: `--set servers.foo.port=80`
 
-## Document `values.yaml`
+## `values.yaml` का दस्तावेज़ीकरण करें
 
-Every defined property in `values.yaml` should be documented. The documentation
-string should begin with the name of the property that it describes, and then
-give at least a one-sentence description.
+`values.yaml` में परिभाषित प्रत्येक प्रॉपर्टी का दस्तावेज़ीकरण किया जाना चाहिए।  
+डॉक्यूमेंटेशन स्ट्रिंग को उस प्रॉपर्टी के नाम से शुरू होना चाहिए जिसे यह वर्णित कर रही है,  
+और फिर कम से कम एक वाक्य में उसका विवरण देना चाहिए।
 
-Incorrect:
+गलत:
 
-```yaml
-# the host name for the webserver
+````yaml
+# वेब सर्वर के लिए होस्ट नाम
 serverHost: example
 serverPort: 9191
-```
 
-Correct:
+सही:
 
 ```yaml
-# serverHost is the host name for the webserver
+# serverHost वेब सर्वर के लिए होस्ट नाम है
 serverHost: example
-# serverPort is the HTTP listener port for the webserver
+# serverPort वेब सर्वर के लिए HTTP लिसनर पोर्ट है
 serverPort: 9191
-```
+````
 
-Beginning each comment with the name of the parameter it documents makes it easy
-to grep out documentation, and will enable documentation tools to reliably
-correlate doc strings with the parameters they describe.
+प्रत्येक टिप्पणी को उस पैरामीटर के नाम से शुरू करने से इसे आसानी से खोजा जा सकता है (`grep`),  
+और यह दस्तावेज़ीकरण टूल्स को डॉक्यूमेंटेशन स्ट्रिंग को सही पैरामीटर से जोड़ने में मदद करता है।
