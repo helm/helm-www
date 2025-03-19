@@ -1,72 +1,64 @@
 ---
-title: "Custom Resource Definitions"
-description: "How to handle creating and using CRDs."
+title: "कस्टम संसाधन परिभाषाएँ"
+description: "CRDs बनाने और उपयोग करने की प्रक्रिया।"
 weight: 7
 aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
 ---
 
-This section of the Best Practices Guide deals with creating and using Custom
-Resource Definition objects.
+यह सर्वोत्तम प्रक्रियाओं मार्गदर्शिका (Best Practices Guide) का वह भाग है जो कस्टम संसाधन परिभाषा (Custom Resource Definition - CRD) ऑब्जेक्ट्स को बनाने और उपयोग करने से संबंधित है।  
 
-When working with Custom Resource Definitions (CRDs), it is important to
-distinguish two different pieces:
+कस्टम संसाधन परिभाषाओं (CRDs) के साथ काम करते समय, दो अलग-अलग भागों को समझना आवश्यक है:  
 
-- There is a declaration of a CRD. This is the YAML file that has the kind
-  `CustomResourceDefinition`
-- Then there are resources that _use_ the CRD. Say a CRD defines
-  `foo.example.com/v1`. Any resource that has `apiVersion: example.com/v1` and
-  kind `Foo` is a resource that uses the CRD.
+- एक CRD की घोषणा होती है। यह YAML फ़ाइल होती है, जिसमें `CustomResourceDefinition` प्रकार (kind) होता है।  
+- फिर वे संसाधन होते हैं जो इस CRD का _उपयोग_ करते हैं। मान लीजिए कि एक CRD `foo.example.com/v1` को परिभाषित करता है।  
+  कोई भी संसाधन जिसमें `apiVersion: example.com/v1` और प्रकार (kind) `Foo` हो, वह इस CRD का उपयोग करने वाला संसाधन माना जाएगा।  
 
-## Install a CRD Declaration Before Using the Resource
+## संसाधन का उपयोग करने से पहले एक CRD घोषणा स्थापित करें  
 
-Helm is optimized to load as many resources into Kubernetes as fast as possible.
-By design, Kubernetes can take an entire set of manifests and bring them all
-online (this is called the reconciliation loop).
+Helm को यथासंभव तेज़ी से अधिकतम संसाधनों को Kubernetes में लोड करने के लिए अनुकूलित किया गया है।  
+डिज़ाइन के अनुसार, Kubernetes पूरी मैनिफेस्ट फ़ाइलों के सेट को एक साथ लोड कर सकता है और उन्हें सक्रिय कर सकता है (इसे समन्वय लूप - **reconciliation loop** कहा जाता है)।  
 
-But there's a difference with CRDs.
+लेकिन CRDs के मामले में स्थिति अलग होती है।  
 
-For a CRD, the declaration must be registered before any resources of that CRDs
-kind(s) can be used. And the registration process sometimes takes a few seconds.
+CRD के लिए, इसकी घोषणा को पंजीकृत (register) करना आवश्यक होता है, इससे पहले कि उस CRD प्रकार (kind) के किसी भी संसाधन का उपयोग किया जा सके।  
+और यह पंजीकरण प्रक्रिया कभी-कभी कुछ सेकंड तक ले सकती है।  
 
-### Method 1: Let `helm` Do It For You
+### विधि 1: `helm` को यह काम करने दें  
 
-With the arrival of Helm 3, we removed the old `crd-install` hooks for a more
-simple methodology. There is now a special directory called `crds` that you can
-create in your chart to hold your CRDs. These CRDs are not templated, but will
-be installed by default when running a `helm install` for the chart. If the CRD
-already exists, it will be skipped with a warning. If you wish to skip the CRD
-installation step, you can pass the `--skip-crds` flag.
+Helm 3 के आने के साथ, हमने पुरानी `crd-install` hooks को हटा दिया और इसे एक सरल प्रक्रिया से बदल दिया।  
+अब आपके चार्ट में एक विशेष डायरेक्टरी `crds` बनाई जा सकती है, जिसमें आपके CRDs रखे जा सकते हैं।  
+ये CRDs टेम्प्लेटेड नहीं होते, लेकिन जब आप चार्ट के लिए `helm install` चलाते हैं, तो ये डिफ़ॉल्ट रूप से स्थापित कर दिए जाते हैं।  
 
-#### Some caveats (and explanations)
+यदि CRD पहले से मौजूद है, तो इसे छोड़ दिया जाएगा और एक चेतावनी (warning) दिखाई जाएगी।  
+यदि आप CRD स्थापना चरण को छोड़ना चाहते हैं, तो आप `--skip-crds` फ़्लैग का उपयोग कर सकते हैं।  
 
-There is no support at this time for upgrading or deleting CRDs using Helm. This
-was an explicit decision after much community discussion due to the danger for
-unintentional data loss. Furthermore, there is currently no community consensus
-around how to handle CRDs and their lifecycle. As this evolves, Helm will add
-support for those use cases.
+#### कुछ चेतावनियाँ (और स्पष्टीकरण)  
 
-The `--dry-run` flag of `helm install` and `helm upgrade` is not currently
-supported for CRDs. The purpose of "Dry Run" is to validate that the output of
-the chart will actually work if sent to the server. But CRDs are a modification
-of the server's behavior. Helm cannot install the CRD on a dry run, so the
-discovery client will not know about that Custom Resource (CR), and validation
-will fail. You can alternatively move the CRDs to their own chart or use `helm
-template` instead.
+वर्तमान में, Helm के माध्यम से CRDs को अपग्रेड या हटाने (delete) का समर्थन नहीं किया गया है।  
+कई चर्चाओं के बाद, समुदाय ने इसे जानबूझकर हटाने का निर्णय लिया क्योंकि इससे अनजाने में डेटा हानि (data loss) हो सकती थी।  
+इसके अलावा, अभी तक CRDs और उनके जीवनचक्र (lifecycle) को संभालने के लिए कोई ठोस सामुदायिक सहमति नहीं बनी है।  
+जैसे-जैसे इस पर प्रगति होगी, Helm इन मामलों के लिए समर्थन जोड़ देगा।  
 
-Another important point to consider in the discussion around CRD support is how
-the rendering of templates is handled. One of the distinct disadvantages of the
-`crd-install` method used in Helm 2 was the inability to properly validate
-charts due to changing API availability (a CRD is actually adding another
-available API to your Kubernetes cluster). If a chart installed a CRD, `helm` no
-longer had a valid set of API versions to work against. This is also the reason
-behind removing templating support from CRDs. With the new `crds` method of CRD
-installation, we now ensure that `helm` has completely valid information about
-the current state of the cluster.
+`helm install` और `helm upgrade` के `--dry-run` फ़्लैग का वर्तमान में CRDs के लिए समर्थन नहीं है।  
+"Dry Run" का उद्देश्य यह सत्यापित करना है कि चार्ट का आउटपुट सर्वर पर भेजे जाने के बाद सही तरीके से कार्य करेगा या नहीं।  
+लेकिन CRDs सर्वर के व्यवहार (behavior) को संशोधित करते हैं।  
+Helm ड्राई रन के दौरान CRD को स्थापित नहीं कर सकता, इसलिए डिस्कवरी क्लाइंट उस कस्टम संसाधन (CR) को पहचान नहीं पाएगा,  
+और इस कारण सत्यापन (validation) विफल हो जाएगा।  
+इसके बजाय, आप CRDs को उनके स्वयं के चार्ट में स्थानांतरित कर सकते हैं या `helm template` का उपयोग कर सकते हैं।  
 
-### Method 2: Separate Charts
+CRD समर्थन पर चर्चा करते समय एक और महत्वपूर्ण बिंदु यह है कि टेम्प्लेट्स की रेंडरिंग कैसे की जाती है।  
+Helm 2 में उपयोग की जाने वाली `crd-install` विधि की एक बड़ी कमी यह थी कि यह API की उपलब्धता बदलने के कारण चार्ट को सही ढंग से मान्य नहीं कर सकती थी।  
+(CRD वास्तव में आपके Kubernetes क्लस्टर में एक नई API जोड़ता है।)  
 
-Another way to do this is to put the CRD definition in one chart, and then put
-any resources that use that CRD in _another_ chart.
+यदि किसी चार्ट ने एक CRD स्थापित किया, तो `helm` के पास एक वैध API संस्करणों का सेट नहीं बचता था।  
+यही कारण है कि CRDs के लिए टेम्प्लेटिंग समर्थन हटा दिया गया।  
+नई `crds` विधि के साथ, अब यह सुनिश्चित किया गया है कि `helm` के पास क्लस्टर की वर्तमान स्थिति की पूरी तरह से वैध जानकारी हो।  
 
-In this method, each chart must be installed separately. However, this workflow
-may be more useful for cluster operators who have admin access to a cluster
+### विधि 2: अलग-अलग चार्ट्स  
+
+इस कार्य को करने का एक और तरीका यह है कि CRD परिभाषा (definition) को एक चार्ट में रखा जाए,  
+और उस CRD का उपयोग करने वाले संसाधनों को _दूसरे_ चार्ट में रखा जाए।  
+
+इस विधि में, प्रत्येक चार्ट को अलग-अलग स्थापित (install) करना आवश्यक होता है।  
+हालाँकि, यह प्रक्रिया क्लस्टर ऑपरेटरों के लिए अधिक उपयोगी हो सकती है,  
+जो क्लस्टर में व्यवस्थापक (admin) एक्सेस रखते हैं।  
