@@ -80,6 +80,97 @@ type PostRenderer interface {
 
 For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 
+#### Simple Example
+
+Here is `custom.go`
+```go
+/*
+Custom helm post render
+Just read yaml from stdin and print the modified manifests
+*/
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"github.com/manifestival/manifestival"
+	"gopkg.in/yaml.v3"
+	"io/ioutil"
+	appsv1 "k8s.io/api/apps/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/client-go/kubernetes/scheme"
+	"log"
+	"os"
+)
+
+type CustomPostRenderer struct{}
+
+func updateDeployment(resource *unstructured.Unstructured) (err error) {
+	if resource.GetKind() != "Deployment" {
+		return nil
+	}
+	// Either manipulate the Unstructured resource directly or...
+	// convert it to a structured type...
+	var deployment = &appsv1.Deployment{}
+	if err := scheme.Scheme.Convert(resource, deployment, nil); err != nil {
+		return err
+	}
+
+	// Now update the deployment!
+	if deployment.Labels == nil {
+		deployment.Labels = map[string]string{}
+	}
+	deployment.Labels["helm.sh/label"] = "post-render"
+	// If you converted it, convert it back, otherwise return nil
+	return scheme.Scheme.Convert(deployment, resource, nil)
+}
+
+// Run receives rendered manifests and returns post rendered manifests.
+func (p *CustomPostRenderer) Run(renderedManifests *bytes.Buffer) (modifiedManifests *bytes.Buffer, err error) {
+	// k8s yaml
+	m, err := manifestival.ManifestFrom(manifestival.Reader(renderedManifests))
+	if err != nil {
+		log.Fatal(err)
+	}
+	m, err = m.Transform(updateDeployment)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var yml []interface{}
+	for _, obj := range m.Resources() {
+		yml = append(yml, obj.Object)
+	}
+
+	ymlBin, err := yaml.Marshal(yml)
+	if err != nil {
+		log.Fatal(err)
+	}
+	modifiedManifests = bytes.NewBuffer(ymlBin)
+	return modifiedManifests, nil
+}
+
+func main() {
+	data, err := ioutil.ReadAll(os.Stdin)
+	if err != nil {
+		log.Fatal(err)
+	}
+	pr := CustomPostRenderer{}
+	buf := bytes.NewBuffer(data)
+	out, err := pr.Run(buf)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Print post rendered manifests to console and it would be used by helm actions `install`, `test` and `template`.
+	fmt.Println(out)
+}
+```
+
+##### Run below commands to apply the custom post-renderer executor:
+```shell
+go build -o custom-postrender custom.go
+helm template RELEASE /path/to/charts --post-renderer ./custom-postrender
+```
+
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found
