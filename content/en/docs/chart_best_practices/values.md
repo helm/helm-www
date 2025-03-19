@@ -162,3 +162,106 @@ serverPort: 9191
 Beginning each comment with the name of the parameter it documents makes it easy
 to grep out documentation, and will enable documentation tools to reliably
 correlate doc strings with the parameters they describe.
+
+### Nested Properties:
+
+When documenting nested properties, use the "fully qualified" name of the property
+as the documented name. Upper-level properties do not need to be documented except
+in situations where the additional context will substantially increase the utility 
+of the child documentation.
+
+Correct:
+
+```yaml
+servers:
+  foo:
+    # servers.foo.port is the port for the foo server
+    port: 80
+  bar:
+    # servers.bar.port is the port for the bar server
+    port: 81
+```
+
+Correct:
+
+```yaml
+# servers are the upstream servers connected to by the quux service
+servers:
+  foo:
+    # servers.foo.port is the port for the foo server
+    port: 80
+  bar:
+    # servers.bar.port is the port for the bar server
+    port: 81
+```
+
+Incorrect:
+
+```yaml
+# servers are the servers to connect to
+servers:
+  # foo is the foo server
+  foo:
+    # port is the port for the foo server
+    port: 80
+  # bar is the bar server
+  bar:
+    # port is the port for the bar server
+    port: 81
+```
+
+This strikes a balance between preserving the natural readability of the values.yaml 
+file and allowing for documentation tool use.
+
+### Subchart Properties
+
+When documenting subchart properties, defer to the subchart for property documentation
+and instead aim to capture the reasoning behind providing the value overrides. Do not
+add documentation where it does not provide value beyond the root documentation.
+
+Correct:
+
+```yaml
+# see https://github.com/chartmarker/subchart/readme.md for detailed documentation
+subchart:
+  componentA:
+    componentFeature:
+      # disable componentFeature as it is not compatible with our implementation
+      enabled: false
+  componentB:
+    replicas: 3
+```
+
+Correct:
+
+```yaml
+# see https://github.com/chartmarker/subchart/readme.md for detailed documentation
+subchart:
+  componentA:
+    componentFeature:
+      # disable componentFeature as it is not compatible with our implementation
+      enabled: false
+  componentB:
+    # complicatedProperty is a value that controls something that is non-obvious and
+    # should be documented at as low a level as possible. For additional information,
+    # refer to https://github.com/chartmarker/subchart/readme.md#subchart.componentB.complicatedProperty
+    complicatedProperty: "['foo', 'bar', 42, false]"
+```
+
+Incorrect:
+
+```yaml
+# subchart is the chart that deploys componentA and componentB
+subchart:
+  componentA:
+    componentFeature:
+      # enabled is the flag that controls whether componentA will be deployed
+      enabled: false
+  componentB:
+    # replicas is the number of replicas of componentB that will be deployed
+    replicas: 3
+```
+
+Attempting to replicate upstream documentation can create drift and possibly result in
+incorrect chart documentation, and needless documentation can impair the overall
+documentation readability while not providing any additional value.
