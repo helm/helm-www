@@ -55,7 +55,16 @@ Some notable differences from .gitignore:
 - The '**' syntax is not supported.
 - The globbing library is Go's 'filepath.Match', not fnmatch(3)
 - Trailing spaces are always ignored (there is no supported escape sequence)
-- There is no support for '\!' as a special leading sequence.
+- There is no support for '\!' as a special leading sequence. That is,
+  ```
+  values-*.yaml
+  !values-example.yaml
+  ```
+  does not "unignore" `values-example.yaml`
+  -- as you might expect if you are familiar with `.gitignore` --
+  but ignores _all_ YAML files _except_ `values-example.yaml` 
+  (which is also excluded because of the first line)
+  -- which would include `Chart.yaml`, leading to a broken chart.
 - It does not exclude itself by default, you have to add an explicit entry for `.helmignore`
 
 
