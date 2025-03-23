@@ -39,12 +39,12 @@ helm package <chart-path>               # Emballe un chart dans une archive comp
 helm lint <chart>                       # Lance des tests pour examiner un chart et identifier des problèmes.
 helm show all <chart>                   # Inspect et liste le contenu d'un chart.
 helm show values <chart>                # Affiche le contenu du fichier values.yaml
-helm pull <chart>                       # Télécharge/pull un chart 
+helm pull <chart>                       # Télécharge/pull un chart
 helm pull <chart> --untar=true          # Si spécifié à true, décompresse le chart une fois téléchargé.
 helm pull <chart> --verify              # Vérifie le package avant de l'utiliser
 helm pull <chart> --version <number>    # Par défaut, c'est la denière version (latest) qui est utilisée, vous pouvez spécifier une version pour utiliser.
 helm dependency list <chart>            # Affiche la liste des dépendances du chart.
-``` 
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Installer et Désinstaller des Applications
@@ -64,7 +64,7 @@ helm uninstall <name>                                 # Désinstalle un chart.
 
 ```bash
 helm upgrade <release> <chart>                            # Met à niveau une version
-helm upgrade <release> <chart> --atomic                   # Si fixé, le processus de mise à niveau restore en cas d'erreur
+helm upgrade <release> <chart> --rollback-on-failure      # Si fixé, le processus de mise à niveau restore en cas d'erreur
 helm upgrade <release> <chart> --dependency-update        # Met à jour les dépendances si elles sont manquantes avant d'installer le chart
 helm upgrade <release> <chart> --version <version_number> # Spécifie une version à installer
 helm upgrade <release> <chart> --values                   # Spécifier des valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
@@ -72,7 +72,7 @@ helm upgrade <release> <chart> --set key1=val1,key2=val2  # Définir des valeurs
 helm upgrade <release> <chart> --force                    # Force la mise à jour des ressources via une stratégie de remplacement
 helm rollback <release> <revision>                        # Restore une release pour une version spécifique
 helm rollback <release> <revision>  --cleanup-on-fail     # Autorise la suppression des nouvelles ressources créées si le rollback échoue
-``` 
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Lister, Ajouter, Supprimer et Mettre à jour des dépôts
 
