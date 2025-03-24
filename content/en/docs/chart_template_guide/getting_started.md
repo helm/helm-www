@@ -175,16 +175,17 @@ The big change comes in the value of the `name:` field, which is now
 > A template directive is enclosed in `{{` and `}}` blocks.
 
 The template directive `{{ .Release.Name }}` injects the release name into the
-template. The values that are passed into a template can be thought of as
-_namespaced objects_, where a dot (`.`) separates each namespaced element.
+template. The data structure that is passed into a template can be thought of as
+hierarchy of nested maps, and is represented as  `.` (aka "dot" or "context").
+Specific values in the context map can be referred to by the name of the key,
+preceded by a period, such as `.Key`. Key invocations may be chained to any
+depth: `.Key1.Key2.Key3`.
 
-The leading dot before `Release` indicates that we start with the top-most
-namespace for this scope (we'll talk about scope in a bit). So we could read
-`.Release.Name` as "start at the top namespace, find the `Release` object, then
-look inside of it for an object called `Name`".
+So, we interpret `.Release.Name` as: "in the current context, find the `Release`
+object, then look inside of it for an object called `Name`".
 
-The `Release` object is one of the built-in objects for Helm, and we'll cover it
-in more depth later. But for now, it is sufficient to say that this will display
+The `Release` object is one of the built-in objects provided by Helm, and we'll cover it
+in more depth later. But for now, it is sufficient to say that this allows us to use
 the release name that the library assigns to our release.
 
 Now when we install our resource, we'll immediately see the result of using this
