@@ -53,8 +53,8 @@ Helm [CNCF](https://cncf.io)-এর একটি গ্র্যাজুয়�
 
 ### Learn more:
 
-* [Helm আর্কিটেকচার](./docs/topics/architecture/)
-* [দ্রুত শুরু করার গাইড](./docs/intro/quickstart/)
+* [Helm আর্কিটেকচার](https://helm.sh/docs/topics/architecture/)
+* [দ্রুত শুরু করার গাইড](https://helm.sh/docs/intro/quickstart/)
 * [ভিডিও: Helm-এর পরিচিতি](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
 """
 
