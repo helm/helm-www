@@ -1,0 +1,223 @@
+# site-wide copy
+
+## actions and labels
+[action_get_started]
+other = "শুরু করুন"
+
+[action_get_started_link]
+other = "/docs/intro/quickstart"
+
+[action_translate]
+other = "এই পৃষ্ঠাটি অনুবাদ করুন"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
+[action_copy]
+other = "কপি"
+
+## site-wide banner about versioning
+[banner_1]
+other = ""
+
+## footer
+[footer_support_title]
+other = "Helm ৪০০-র বেশি ডেভেলপারের সম্প্রদায়ের সহায়তায় নির্মিত ও সমর্থিত।"
+
+[footer_support_subtitle]
+other = "...এবং আরও অনেক অসাধারণ [helm](https://github.com/helm/helm/blob/main/OWNERS) মূল মেইনটেইইনার্স"
+
+[footer_cncf_status]
+other = "আমরা ক্লাউড নেটিভ কম্পিউটিং ফাউন্ডেশনের একটি গ্র্যাজুয়েটেড প্রকল্প।"
+
+# homepage copy
+
+## homepage intro
+[main_title]
+other = "**Kubernetes-এর** **প্যাকেজ ম্যানেজার**"
+
+[main_subtitle]
+other = "Helm হল [Kubernetes](https://kubernetes.io)-এর জন্য সফটওয়্যার খুঁজে বের করা, শেয়ার করা এবং ব্যবহারের সর্বোত্তম উপায়।"
+
+## homepage about helm
+[main_what_is_helm_title]
+other = "Helm কী?"
+
+[main_what_is_helm_description]
+other = """
+Helm আপনাকে Kubernetes অ্যাপ্লিকেশন পরিচালনায় সাহায্য করে — Helm চার্ট আপনাকে এমনকি সবচেয়ে জটিল Kubernetes অ্যাপ্লিকেশনও সংজ্ঞায়িত, ইনস্টল এবং আপগ্রেড করতে সহায়তা করে।
+
+চার্ট তৈরি করা, সংস্করণ নিয়ন্ত্রণ করা, শেয়ার করা এবং প্রকাশ করা সহজ — তাই Helm ব্যবহার শুরু করুন এবং কপি-পেস্ট বন্ধ করুন।
+
+Helm [CNCF](https://cncf.io)-এর একটি গ্র্যাজুয়েটেড প্রকল্প এবং এটি [Helm সম্প্রদায়](https://github.com/helm/community) দ্বারা রক্ষণাবেক্ষণ করা হয়।
+
+### Learn more:
+
+* [Helm আর্কিটেকচার](./docs/topics/architecture/)
+* [দ্রুত শুরু করার গাইড](./docs/intro/quickstart/)
+* [ভিডিও: Helm-এর পরিচিতি](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+"""
+
+[main_why_teams_love]
+other = 'Why Teams <i class="fa fa-heart"></i> Helm'
+
+[feature_01_title]
+other = "জটিলতা পরিচালনা"
+
+[feature_01_desc]
+other = "চার্ট জটিল অ্যাপ বর্ণনা করে, পুনরাবৃত্তিমূলক ইনস্টলেশন নিশ্চিত করে এবং একক নিয়ন্ত্রণ পয়েন্ট হিসেবে কাজ করে।"
+
+[feature_02_title]
+other = "সহজ আপডেট"
+
+[feature_02_desc]
+other = "ইন-প্লেস আপগ্রেড এবং কাস্টম হুকের মাধ্যমে আপডেট সহজ করে তোলে।"
+
+[feature_03_title]
+other = "সহজ শেয়ারিং"
+
+[feature_03_desc]
+other = "চার্ট সহজেই সংস্করণ নিয়ন্ত্রণ, শেয়ার এবং পাবলিক বা প্রাইভেট সার্ভারে হোস্ট করা যায়।"
+
+[feature_04_title]
+other = "রোলব্যাকস"
+
+[feature_04_desc]
+other = "`helm rollback` ব্যবহার করে সহজেই পুরোনো সংস্করণে ফিরে যান।"
+
+## homepage get helm
+[get_helm_title]
+other = "Helm সংগ্রহ করুন!"
+
+[get_helm_desc]
+other = "একটি প্যাকেজ ম্যানেজার দিয়ে Helm ইনস্টল করুন, অথবা [বাইনারি ডাউনলোড করুন](https://github.com/helm/helm/releases/latest)।"
+
+[get_helm_next]
+other = "ইনস্টল করার পরে, Helm বাইনারি আনপ্যাক করুন এবং এটিকে আপনার PATH-এ যোগ করুন। আরও বিস্তারিত জানার জন্য [ডকুমেন্টেশন](./docs/intro/install/) দেখুন।"
+
+[get_charts_title]
+other = "চার্ট সংগ্রহ করুন"
+
+[get_charts_desc]
+other = "[Artifact Hub](https://artifacthub.io)-এ যান এবং বিভিন্ন পাবলিক রিপোজিটরি থেকে [Helm চার্ট](https://artifacthub.io/packages/search?kind=0) অন্বেষণ করুন।"
+
+[get_upgrade_title]
+other = "[v2 থেকে v3-এ আপগ্রেড করছেন?](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+[get_upgrade_desc]
+other = "[বিস্তারিত জানতে মাইগ্রেশন ডক পড়ুন।](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+## homepage community
+[community_title]
+other = "সম্প্রদায়ে যোগ দিন"
+
+[community_desc]
+other = "Helm প্রকল্প সম্পর্কে আরও তথ্য এবং কীভাবে অবদান রাখা যায়।"
+
+[community_next_release]
+other = "পরবর্তী ফিচার রিলিজ"
+
+[community_next_release_version]
+other = "__সংস্করণ:__ "
+
+[community_next_release_date]
+other = "__তারিখ:__ "
+
+[community_release_calendar]
+other = "[রিলিজ ক্যালেন্ডার](https://helm.sh/calendar/release)"
+
+[community_events_title]
+other = "ইভেন্ট"
+
+[community_upcoming_events_title]
+other = "আসন্ন ইভেন্ট"
+
+[community_upcoming_events_desc]
+other = "_নভেম্বর ১৪, ২০২৪_ - [KubeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)"
+
+[community_past_events_title]
+other = "পূর্ববর্তী ইভেন্ট"
+
+[community_past_event_01]
+other = "_ফেব্রুয়ারি ২৫, ২০২০_ - [Helm নিরাপত্তা ওয়েবিনার](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+
+[community_past_event_02]
+other = "_নভেম্বর ১৮, ২০১৯_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+
+[community_past_event_03]
+other = "_সেপ্টেম্বর ১১, ২০১৯_ - [Helm সামিট ২০১৯](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+
+[community_sig_title]
+other = "SIG Apps"
+
+[community_sig_subtitle]
+other = "Kubernetes-এ অ্যাপ স্থাপন ও পরিচালনার জন্য একটি বিশেষ আগ্রহ গোষ্ঠী।"
+
+[community_sig_desc]
+other = """
+[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) হল একটি বিশেষ আগ্রহ গোষ্ঠী যা Kubernetes-এ অ্যাপ স্থাপন ও পরিচালনা নিয়ে কাজ করে।
+
+তারা [সাপ্তাহিক সভা করে](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) যেখানে বিভিন্ন টুল ও প্রকল্প নিয়ে আলোচনা হয়। এসব মিটিং রেকর্ড করা হয় এবং [YouTube-এ শেয়ার করা হয়](https://www.youtube.com/results?search_query=kubernetes+sig+apps)।
+"""
+
+[community_standup_title]
+other = "ডেভেলপার স্ট্যান্ডআপস"
+
+[community_standup_time]
+other = "প্রতি বৃহস্পতিবার সকাল ৯:৩০-১০:০০ (PT)"
+
+[community_standup_desc]
+other = "এই মিটিংগুলো সবার জন্য উন্মুক্ত। নোটস ও বিস্তারিত জানার জন্য [কমিউনিটি রিপোজিটরি](https://github.com/helm/community/blob/main/communication.md#meetings) দেখুন।"
+
+[community_slack_title]
+other = "Slack"
+
+[community_slack_group_01_title]
+other = "Helm ব্যবহারকারী"
+
+[community_slack_group_01_desc]
+other = "হেল্ম ব্যবহারের আলোচনা, চার্ট নিয়ে কাজ করা এবং সাধারণ ত্রুটির সমাধান।"
+
+[community_slack_group_02_title]
+other = "Helm ডেভেলপমেন্ট"
+
+[community_slack_group_02_desc]
+other = "Helm ডেভেলপমেন্ট, চলমান PR, রিলিজ ইত্যাদি সংক্রান্ত আলোচনা।"
+
+[community_slack_group_03_title]
+other = "চার্টস"
+
+[community_slack_group_03_desc]
+other = "Helm চার্ট ব্যবহারকারী ও অবদানকারীদের জন্য আলোচনা।"
+
+[community_slack_join]
+other = "Kubernetes Slack টিমে যোগ দিতে [এখানে অনুরোধ করুন](https://slack.k8s.io/)।"
+
+[community_contrib_title]
+other = "অবদান রাখা"
+
+[community_contrib_subtitle]
+other = "Helm প্রকল্প সর্বদা নতুন অবদানকারীদের স্বাগত জানায়!"
+
+
+[community_contrib_desc]
+other = """
+### কোথা থেকে শুরু করবেন?
+
+হেল্ম একটি বড় প্রকল্প যেখানে অনেক ব্যবহারকারী ও অবদানকারী রয়েছেন। এটি একসঙ্গে বোঝা কঠিন হতে পারে!
+
+যদি আপনি সাহায্য করতে চান কিন্তু কোথা থেকে শুরু করবেন বুঝতে না পারেন, তাহলে আমাদের [শুভ সূচনা ইস্যুগুলোর তালিকা](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) দেখুন।
+
+### আমি কী করব?
+
+কোড অবদান রাখার আগে, দয়া করে আমাদের [অবদান নির্দেশিকা](https://github.com/helm/helm/blob/main/CONTRIBUTING.md) পড়ুন। এটি PR তৈরির এবং পর্যালোচনার প্রক্রিয়া ব্যাখ্যা করে।
+
+আপনি যদি কোড লিখে থাকেন, তাহলে নিশ্চিত করুন যে আপনার কমিটগুলো [স্বাক্ষরিত](https://helm.sh/blog/helm-dco/index.html), যাতে হেল্ম [DCO](https://developercertificate.org/) চুক্তি অনুসরণ করে, যা [CNCF](https://www.cncf.io/) দ্বারা ব্যবহৃত হয়।
+"""
+
+# 404 page
+[404_title]
+other = "**৪০৪** **পৃষ্ঠা খুঁজে পাওয়া যায়নি।**"
+
+[404_subtitle]
+other = "দুঃখিত। যদি কিছু সমস্যা হয়, তবে অনুগ্রহ করে [এখানে রিপোর্ট করুন](https://github.com/helm/helm-www/issues/new)।"
