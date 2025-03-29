@@ -1,0 +1,50 @@
+{
+  // Editor settings
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  // Exclude generated folders from search and file watcher
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/app": true,
+    "**/resources": true,
+    "**/tmp": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/yarn.lock": true,
+    "**/app": true,
+    "**/resources": true,
+    "**/tmp": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/app/**": true,
+    "**/resources/**": true,
+    "**/tmp/**": true
+  },
+  // Markdownlint settings
+  "markdownlint.config": {
+    // Settings are inherited from .markdownlint.json
+  },
+  // Default formatter for Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  // Hugo settings
+  "html.format.wrapLineLength": 0,
+  "html.format.wrapAttributes": "auto",
+  // SCSS/SASS settings
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[sass]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "makefile.configureOnOpen": false
+}
