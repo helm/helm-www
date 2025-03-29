@@ -17,19 +17,20 @@ clean:          ## Remove generated files and directories.
 	rm -rf app resources
 
 build: ## Build the site with Hugo and run link check.
-	clean
+build: clean
 	hugo --minify
 	make check-links-ci
 
 build-preview: ## Build the site for preview.
-	clean
+build-preview: clean
 	hugo \
 	--baseURL $(DEPLOY_PRIME_URL) \
 	--buildDrafts \
 	--buildFuture \
 	--minify
 
-	make check-links-ci
+# Uncomment the line below if you want to run link checking as part of preview
+#	make check-links-ci
 
 set-up-link-checker: ## Set up link checker.
 	curl https://raw.githubusercontent.com/wjdp/htmltest/master/godownloader.sh | bash
@@ -38,8 +39,7 @@ run-link-checker: ## Run link checker.
 	bin/htmltest
 
 check-links-ci: ## Run link checker CI.
-	set-up-link-checker 
-	run-link-checker
+check-links-ci: set-up-link-checker run-link-checker
 
 .PHONY: sdkexamples
 sdkexamples: ## Build SDK examples.
