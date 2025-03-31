@@ -1,47 +1,37 @@
 ---
-title: "Labels and Annotations"
-description: "Covers best practices for using labels and annotations in your Chart."
-weight: 5
-aliases: ["/docs/topics/chart_best_practices/labels/"]
+title: "लेबल्स और एनोटेशन (Labels and Annotations)"  
+description: "आपके चार्ट में लेबल्स और एनोटेशन का उपयोग करने के लिए सर्वोत्तम प्रथाओं को कवर करता है।"  
+weight: 5  
+aliases: ["/docs/topics/chart_best_practices/labels/"]  
 ---
 
-This part of the Best Practices Guide discusses the best practices for using
-labels and annotations in your chart.
+सर्वोत्तम प्रथाओं के मार्गदर्शिका का यह भाग आपके चार्ट में लेबल्स और एनोटेशन का उपयोग करने के लिए सर्वोत्तम प्रथाओं पर चर्चा करता है।
 
-## Is it a Label or an Annotation?
+## क्या यह एक लेबल है या एक एनोटेशन?
 
-An item of metadata should be a label under the following conditions:
+किसी मेटाडेटा आइटम को लेबल तब होना चाहिए जब निम्नलिखित स्थितियाँ हों:
 
-- It is used by Kubernetes to identify this resource
-- It is useful to expose to operators for the purpose of querying the system.
+- इसे Kubernetes द्वारा इस संसाधन की पहचान करने के लिए उपयोग किया जाता है
+- यह ऑपरेटरों के लिए सिस्टम को क्वेरी करने के उद्देश्य से उपयोगी है।
 
-For example, we suggest using `helm.sh/chart: NAME-VERSION` as a label so that
-operators can conveniently find all of the instances of a particular chart to
-use.
+उदाहरण के लिए, हम सुझाव देते हैं कि `helm.sh/chart: NAME-VERSION` को एक लेबल के रूप में उपयोग किया जाए ताकि ऑपरेटर किसी विशेष चार्ट के सभी उदाहरणों को आसानी से ढूँढ़ सकें।
 
-If an item of metadata is not used for querying, it should be set as an
-annotation instead.
+यदि मेटाडेटा का कोई आइटम क्वेरी करने के लिए उपयोग नहीं किया जाता है, तो इसे एनोटेशन के रूप में सेट किया जाना चाहिए।  
 
-Helm hooks are always annotations.
+Helm हुक्स हमेशा एनोटेशन होते हैं।
 
-## Standard Labels
+## मानक लेबल्स
 
-The following table defines common labels that Helm charts use. Helm itself
-never requires that a particular label be present. Labels that are marked REC
-are recommended, and _should_ be placed onto a chart for global consistency.
-Those marked OPT are optional. These are idiomatic or commonly in use, but are
-not relied upon frequently for operational purposes.
+निम्नलिखित तालिका उन सामान्य लेबल्स को परिभाषित करती है जो Helm चार्ट्स उपयोग करते हैं। Helm स्वयं कभी भी यह आवश्यक नहीं मानता कि कोई विशेष लेबल मौजूद होना चाहिए। जो लेबल्स REC के रूप में चिह्नित हैं, वे अनुशंसित हैं, और _उन्हें_ वैश्विक संगतता के लिए एक चार्ट पर रखा जाना चाहिए। जो लेबल्स OPT के रूप में चिह्नित हैं, वे वैकल्पिक हैं। ये आदर्श या सामान्य रूप से उपयोग में होते हैं, लेकिन संचालन उद्देश्यों के लिए अक्सर इन पर निर्भर नहीं रहते।
 
-Name|Status|Description
------|------|----------
-`app.kubernetes.io/name` | REC | This should be the app name, reflecting the entire app. Usually `{{ template "name" . }}` is used for this. This is used by many Kubernetes manifests, and is not Helm-specific.
-`helm.sh/chart` | REC | This should be the chart name and version: `{{ .Chart.Name }}-{{ .Chart.Version \| replace "+" "_" }}`.
-`app.kubernetes.io/managed-by` | REC | This should always be set to `{{ .Release.Service }}`. It is for finding all things managed by Helm.
-`app.kubernetes.io/instance` | REC | This should be the `{{ .Release.Name }}`. It aids in differentiating between different instances of the same application.
-`app.kubernetes.io/version` | OPT | The version of the app and can be set to `{{ .Chart.AppVersion }}`.
-`app.kubernetes.io/component` | OPT | This is a common label for marking the different roles that pieces may play in an application. For example, `app.kubernetes.io/component: frontend`.
-`app.kubernetes.io/part-of` | OPT | When multiple charts or pieces of software are used together to make one application. For example, application software and a database to produce a website. This can be set to the top level application being supported.
+नाम|स्थिति|विवरण  
+-----|------|----------  
+`app.kubernetes.io/name` | REC | यह ऐप का नाम होना चाहिए, जो पूरे ऐप को दर्शाता है। सामान्यतः इसके लिए `{{ template "name" . }}` का उपयोग किया जाता है। इसे कई Kubernetes मैनिफेस्ट्स द्वारा उपयोग किया जाता है, और यह Helm-विशिष्ट नहीं है।  
+`helm.sh/chart` | REC | यह चार्ट का नाम और संस्करण होना चाहिए: `{{ .Chart.Name }}-{{ .Chart.Version \| replace "+" "_" }}`  
+`app.kubernetes.io/managed-by` | REC | इसे हमेशा `{{ .Release.Service }}` पर सेट किया जाना चाहिए। यह Helm द्वारा प्रबंधित सभी चीज़ों को ढूँढ़ने के लिए होता है।  
+`app.kubernetes.io/instance` | REC | यह `{{ .Release.Name }}` होना चाहिए। यह एक ही ऐप्लिकेशन के विभिन्न उदाहरणों के बीच अंतर करने में मदद करता है।  
+`app.kubernetes.io/version` | OPT | ऐप का संस्करण और इसे `{{ .Chart.AppVersion }}` पर सेट किया जा सकता है।  
+`app.kubernetes.io/component` | OPT | यह एक सामान्य लेबल है जो ऐप्लिकेशन के विभिन्न हिस्सों की भूमिकाओं को चिह्नित करने के लिए उपयोग किया जाता है। उदाहरण के लिए, `app.kubernetes.io/component: frontend`।  
+`app.kubernetes.io/part-of` | OPT | जब एक से अधिक चार्ट्स या सॉफ़्टवेयर के टुकड़े मिलकर एक ऐप्लिकेशन बनाते हैं। उदाहरण के लिए, एप्लिकेशन सॉफ़्टवेयर और एक डेटाबेस मिलकर एक वेबसाइट बनाने के लिए। इसे उस शीर्ष स्तर के ऐप्लिकेशन के लिए सेट किया जा सकता है जिसे समर्थन प्राप्त है।
 
-You can find more information on the Kubernetes labels, prefixed with
-`app.kubernetes.io`, in the [Kubernetes
-documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
+आप `app.kubernetes.io` से प्रारंभ होने वाले Kubernetes लेबल्स के बारे में अधिक जानकारी [Kubernetes प्रलेखन](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/) में पा सकते हैं।
