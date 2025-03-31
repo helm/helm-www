@@ -7,7 +7,7 @@ authorlink: "https://bsky.app/profile/karenchu.online"
 date: "2025-03-31"
 ---
 
-It's that time of the year again – the Helm team is headed to KubeCon + CloudNativeCon EU '25 in London, UK this week! Helm 4 is in the works for later this year so be sure to join the conversation with our maintainers during our talk sessions and at our Helm booth in the Project Pavilion! See below for more details on all Helm-related activies throughout the week.
+It's that time of the year again – the Helm team is headed to KubeCon + CloudNativeCon EU '25 in London, UK this week from April 1 - 4! Helm 4 is in the works for later this year so be sure to join the conversation with our maintainers during our talk sessions and at our Helm booth in the Project Pavilion! See below for more details on all Helm-related activies throughout the week.
 
 <!--more-->
 
@@ -21,7 +21,8 @@ LOCATION: Level 3 | ICC Capital Suite 17
 
 Are you passionate about Helm and looking for ways to contribute? Join Helm maintainers at this ContribFest session to help shape the future of the project and its ecosystem! This session focuses on three exciting initiatives: 
 * Exploring the Helm Ecosystem
-* Building a Triage Team, Diving into Helm 4
+* Building a Triage Team
+* Diving into Helm 4
 
 Don't miss this session with [Scott](https://bsky.app/profile/r6by.bsky.social), [Robert](https://bsky.app/profile/sirchia.cloud), and [Ingy](https://bsky.app/profile/ingydotnet.bsky.social) for your chance at contributing to Helm 4 efforts! For more details on the Contribfest session, check the [session page](https://sched.co/1tcyE) for the latest updates. 
 
@@ -51,7 +52,7 @@ Our maintainers and contributors will be staffing the Helm project booth during 
 
 ## Helm Sessions from the Community
 
-Aside from sessions with our Helm maintainers, there are several talks from the cloud native ecosystem that touch on Helm so be sure to check these out as well ~
+Aside from sessions with our Helm maintainers, there are several talks from the cloud native ecosystem that touch on Helm – be sure to check these out as well ~
 
 * [Project Lightning Talk: Stir to Combine: Creating Porter Mixins - Sarah Christoff, Maintainer](https://sched.co/1tcws) // Tuesday April 1, 2025 @ 16:07 - 16:12 BST // Platinum Suite | Level 3
 * [Poster Session: Helmless (PS 06): Fast Serverless Deployments Without the Overhead of Kubernetes and Terraform - Michael Reichenbach, 1KOMMA5°](https://sched.co/1txDf) // Wednesday April 2, 2025 @ 13:30 - 14:30 BST //  Level 1 | Hall Entrance N8-N9 | Poster Pavilion
