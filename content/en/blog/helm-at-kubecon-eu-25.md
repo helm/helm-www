@@ -47,7 +47,7 @@ FRI April 4 @ 12:30 – 14:00 BST
 
 LOCATION: 2B, near the sticker wall + back side of Backstage
 
-Our maintainers and contributors will be staffing the Helm project booth the second half of each day. Let us know how you're using Helm, what questions you have, and learn more about what's coming in Helm 4. We'll have Helm stickers and *custom Helm tea towels* to help us all remember our time in the UK! 
+Our maintainers and contributors will be staffing the Helm project booth during the second half of each day. Let us know how you're using Helm, what questions you have, and learn more about what's coming in Helm 4. We'll have Helm stickers and *custom Helm tea towels* to help us all remember our time in the UK! 
 
 ## Helm Sessions from the Community
 
