@@ -1,82 +1,65 @@
 ---
-title: "Dependencies"
-description: "Covers best practices for Chart dependencies."
-weight: 4
-aliases: ["/docs/topics/chart_best_practices/dependencies/"]
+title: "निर्भरताएँ (Dependencies)"  
+description: "चार्ट निर्भरताओं के लिए सर्वोत्तम प्रथाओं को कवर करता है।"  
+weight: 4  
+aliases: ["/docs/topics/chart_best_practices/dependencies/"]  
 ---
 
-This section of the guide covers best practices for `dependencies` declared in
-`Chart.yaml`.
+यह मार्गदर्शिका का यह अनुभाग `Chart.yaml` में घोषित `निर्भरताओं` के लिए सर्वोत्तम प्रथाओं को कवर करता है।
 
-## Versions
+## संस्करण  
 
-Where possible, use version ranges instead of pinning to an exact version. The
-suggested default is to use a patch-level version match:
+जहाँ संभव हो, किसी निश्चित संस्करण को पिन करने के बजाय संस्करण रेंज का उपयोग करें। सुझाया गया डिफ़ॉल्ट है पैच स्तरीय संस्करण मेल:  
 
 ```yaml
 version: ~1.2.3
-```
+```  
 
-This will match version `1.2.3` and any patches to that release.  In other
-words, `~1.2.3` is equivalent to `>= 1.2.3, < 1.3.0`
+यह संस्करण `1.2.3` और उस रिलीज़ के किसी भी पैच से मेल खाएगा। दूसरे शब्दों में, `~1.2.3` का अर्थ है `>= 1.2.3, < 1.3.0`।  
 
-For the complete version matching syntax, please see the [semver
-documentation](https://github.com/Masterminds/semver#checking-version-constraints).
+संस्करण मिलान सिंटैक्स की पूरी जानकारी के लिए, कृपया [semver प्रलेखन](https://github.com/Masterminds/semver#checking-version-constraints) देखें।
 
-### Prerelease versions
+### पूर्व-रिलीज़ संस्करण  
 
-The above versioning constraints will not match on pre-release versions.
-For example `version: ~1.2.3` will match `version: ~1.2.4` but not `version: ~1.2.3-1`.
-The following provides a pre-release as well as patch-level matching:
+उपरोक्त संस्करण प्रतिबंध पूर्व-रिलीज़ संस्करणों से मेल नहीं खाएँगे।  
+उदाहरण के लिए, `version: ~1.2.3` संस्करण `version: ~1.2.4` से मेल खाएगा, लेकिन `version: ~1.2.3-1` से नहीं।  
+नीचे दिया गया उदाहरण पूर्व-रिलीज़ और पैच-स्तरीय मिलान दोनों प्रदान करता है:  
 
 ```yaml
 version: ~1.2.3-0
 ```
 
-### Repository URLs
+### रिपॉजिटरी URLs  
 
-Where possible, use `https://` repository URLs, followed by `http://` URLs.
+जहाँ संभव हो, `https://` रिपॉजिटरी URLs का उपयोग करें, इसके बाद `http://` URLs का उपयोग करें।  
 
-If the repository has been added to the repository index file, the repository
-name can be used as an alias of URL. Use `alias:` or `@` followed by repository
-names.
+यदि रिपॉजिटरी को रिपॉजिटरी इंडेक्स फ़ाइल में जोड़ा गया है, तो रिपॉजिटरी का नाम URL का उपनाम के रूप में उपयोग किया जा सकता है। `alias:` या `@` का उपयोग करें, इसके बाद रिपॉजिटरी नाम डालें।  
 
-File URLs (`file://...`) are considered a "special case" for charts that are
-assembled by a fixed deployment pipeline.
+फ़ाइल URLs (`file://...`) को "विशेष मामला" माना जाता है, जो उन चार्ट्स के लिए होते हैं जो एक निश्चित डिप्लॉयमेंट पाइपलाइन द्वारा संकलित किए जाते हैं।  
 
-When using [downloader plugins]({{< ref "../topics/plugins#downloader-plugins" >}})
-the URL scheme will be specific to the plugin. Note, a user of the chart will
-need to have a plugin supporting the scheme installed to update or build the
-dependency.
+[डाउनलोडर प्लगइन्स]({{< ref "../topics/plugins#downloader-plugins" >}}) का उपयोग करते समय URL स्कीम विशेष रूप से प्लगइन पर निर्भर होगी। ध्यान दें, चार्ट का उपयोगकर्ता अपडेट करने या निर्भरता बनाने के लिए उस स्कीम को सपोर्ट करने वाला प्लगइन इंस्टॉल करना होगा।  
 
-Helm cannot perform dependency management operations on the dependency when the
-`repository` field is left blank. In that case Helm will assume the dependency
-is in a sub-directory of the `charts` folder with the name being the same as the
-`name` property for the dependency.
+जब `repository` फ़ील्ड को खाली छोड़ा जाता है, तो Helm निर्भरता प्रबंधन ऑपरेशन नहीं कर सकता। उस स्थिति में, Helm मान लेगा कि निर्भरता `charts` फ़ोल्डर के उप-निर्देशिका में है, और उसका नाम निर्भरता के `name` प्रॉपर्टी के समान होगा।
 
-## Conditions and Tags
+## शर्तें और टैग्स  
 
-Conditions or tags should be added to any dependencies that _are optional_.
+शर्तें या टैग्स उन किसी भी निर्भरताओं में जोड़ी जानी चाहिए जो _वैकल्पिक_ हों।  
 
-The preferred form of a condition is:
+एक शर्त का प्राथमिक रूप इस प्रकार है:  
 
 ```yaml
 condition: somechart.enabled
 ```
 
-Where `somechart` is the chart name of the dependency.
+जहाँ `somechart` निर्भरता का चार्ट नाम है।  
 
-When multiple subcharts (dependencies) together provide an optional or swappable
-feature, those charts should share the same tags.
+जब कई सबचार्ट्स (निर्भरता) मिलकर कोई वैकल्पिक या बदलने योग्य फ़ीचर प्रदान करते हैं, तो उन चार्ट्स को समान टैग्स साझा करना चाहिए।  
 
-For example, if both `nginx` and `memcached` together provide performance
-optimizations for the main app in the chart, and are required to both be present
-when that feature is enabled, then they should both have a tags section like
-this:
+उदाहरण के लिए, यदि `nginx` और `memcached` दोनों मिलकर चार्ट में मुख्य ऐप के लिए प्रदर्शन ऑप्टिमाइजेशन प्रदान करते हैं, और उस फ़ीचर को सक्षम करते समय दोनों का होना आवश्यक है, तो दोनों के पास इस तरह का एक टैग सेक्शन होना चाहिए:
 
 ```yaml
 tags:
   - webaccelerator
 ```
 
-This allows a user to turn that feature on and off with one tag.
+यह उपयोगकर्ता को एक टैग के साथ उस फ़ीचर को चालू और बंद करने की अनुमति देता है।
