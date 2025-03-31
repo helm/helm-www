@@ -503,6 +503,7 @@ weight = 2
 [[languages.hi.menus.main]]
 name = "चार्ट्स"
 url = "https://artifacthub.io/"
+external = "yes"
 weight = 3
 
 [[languages.hi.menus.main]]
