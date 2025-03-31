@@ -1,5 +1,5 @@
 ---
-title: "कस्टम संसाधन परिभाषाएँ"
+title: "कस्टम संसाधन परिभाषाएँ (Custom Resource Definitions)"
 description: "CRDs बनाने और उपयोग करने की प्रक्रिया।"
 weight: 7
 aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
