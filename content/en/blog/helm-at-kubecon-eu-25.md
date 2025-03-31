@@ -23,7 +23,7 @@ Are you passionate about Helm and looking for ways to contribute? Join Helm main
 * Exploring the Helm Ecosystem
 * Building a Triage Team, Diving into Helm 4
 
-Don't miss this session with [Scott](https://bsky.app/profile/r6by.bsky.social), [Robert](https://bsky.app/profile/sirchia.cloud), and [Ingy](https://bsky.app/profile/ingydotnet.bsky.social) for your chance at contributing to Helm 4 efforts! For more details on the Contribfest, check the [session page](https://sched.co/1tcyE) for the latest updates. 
+Don't miss this session with [Scott](https://bsky.app/profile/r6by.bsky.social), [Robert](https://bsky.app/profile/sirchia.cloud), and [Ingy](https://bsky.app/profile/ingydotnet.bsky.social) for your chance at contributing to Helm 4 efforts! For more details on the Contribfest session, check the [session page](https://sched.co/1tcyE) for the latest updates. 
 
 ## Helm Maintainer Track Talk: [Helm 4 You](https://sched.co/1td0b)
 
