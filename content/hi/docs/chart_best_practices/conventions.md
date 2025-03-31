@@ -1,5 +1,5 @@
 ---
-title: "सामान्य परंपराएँ"
+title: "सामान्य परंपराएँ (General Conventions)"
 description: "चार्ट के लिए सामान्य परंपराएँ।"
 weight: 1
 aliases: ["/docs/topics/chart_best_practices/conventions/"]
