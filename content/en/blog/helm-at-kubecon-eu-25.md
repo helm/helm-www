@@ -19,7 +19,7 @@ TIME: 16:15 - 17:30 BST
 
 LOCATION: Level 3 | ICC Capital Suite 17
 
-Are you passionate about Helm and looking for ways to contribute? Join Helm maintainers at this ContribFest to help shape the future of the project and its ecosystem! This session focuses on three exciting initiatives: 
+Are you passionate about Helm and looking for ways to contribute? Join Helm maintainers at this ContribFest session to help shape the future of the project and its ecosystem! This session focuses on three exciting initiatives: 
 * Exploring the Helm Ecosystem
 * Building a Triage Team, Diving into Helm 4
 
