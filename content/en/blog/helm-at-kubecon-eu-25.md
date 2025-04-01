@@ -54,6 +54,7 @@ Our maintainers and contributors will be staffing the Helm project booth during 
 
 Aside from sessions with our Helm maintainers, there are several talks from the cloud native ecosystem that touch on Helm – be sure to check these out as well ~
 
+* [Project Lightning Talk: Kubeflow Helm Chart - Krzysztof Romanowski, Maintainer](https://sched.co/1tcvo) // Tuesday April 1, 2025 @ 12:34 - 12:39 BST // Platinum Suite | Level 3
 * [Project Lightning Talk: Stir to Combine: Creating Porter Mixins - Sarah Christoff, Maintainer](https://sched.co/1tcws) // Tuesday April 1, 2025 @ 16:07 - 16:12 BST // Platinum Suite | Level 3
 * [Poster Session: Helmless (PS 06): Fast Serverless Deployments Without the Overhead of Kubernetes and Terraform - Michael Reichenbach, 1KOMMA5°](https://sched.co/1txDf) // Wednesday April 2, 2025 @ 13:30 - 14:30 BST //  Level 1 | Hall Entrance N8-N9 | Poster Pavilion
 * [Jaeger V2: OpenTelemetry at the Core of Modern Distributed Tracing - Jonah Kowall, Paessler](https://sched.co/1tcyZ) // Wednesday April 2, 2025 @ 17:00 - 17:30 BST // Level 3 | ICC Capital Suite 10-12
