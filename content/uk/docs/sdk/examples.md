@@ -8,7 +8,7 @@ weight: 2
 
 Останній приклад показує драйвер `main.go` ([посилання](#driver)). Він виконує наведені нижче дії та включає необхідні допоміжні функції.
 
-Код для прикладів знаходиться в директорії [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/sdkexamples). І він повністю функціональний.
+Код для прикладів знаходиться в директорії [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples). І він повністю функціональний.
 
 ## Дії {#actions}
 
