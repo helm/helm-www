@@ -162,14 +162,22 @@ downloaders:
 ## Примітка про парсинг прапорців {#note-on-flag-parsing}
 
 При виконанні втулка Helm буде розбирати глобальні прапорці для власного використання. Жоден з цих пропорців не передається втулку.
-
+- `--burst-limit`: Це перетворюється в `$HELM_BURST_LIMIT`.
 - `--debug`: Якщо цей прапорець вказаний, `$HELM_DEBUG` встановлюється в `1`.
+- `--kube-apiserver`: Це перетворюється в `$HELM_KUBEAPISERVER`.
+- `--kube-as-group`: Ці перетворюються в `$HELM_KUBEASGROUPS`.
+- `--kube-as-user`: Це перетворюється в `$HELM_KUBEASUSER`.
+- `--kube-ca-file`: Це перетворюється в `$HELM_KUBECAFILE`.
+- `--kube-context`: Це перетворюється в `$HELM_KUBECONTEXT`.
+- `--kube-insecure-skip-tls-verify`: Це перетворюється в `$HELM_KUBEINSECURE_SKIP_TLS_VERIFY`.
+- `--kube-tls-server-name`: Це перетворюється в `$HELM_KUBETLS_SERVER_NAME`.
+- `--kube-token`: Це перетворюється в `$HELM_KUBETOKEN`.
+- `--kubeconfig`: Це перетворюється в `$KUBECONFIG`.
+- `--namespace` and `-n`: Це перетворюється в `$HELM_NAMESPACE`.
+- `--qps`: Це перетворюється в `$HELM_QPS`.
 - `--registry-config`: Це перетворюється в `$HELM_REGISTRY_CONFIG`.
 - `--repository-cache`: Це перетворюється в `$HELM_REPOSITORY_CACHE`.
 - `--repository-config`: Це перетворюється в `$HELM_REPOSITORY_CONFIG`.
-- `--namespace` та `-n`: Це перетворюється в `$HELM_NAMESPACE`.
-- `--kube-context`: Це перетворюється в `$HELM_KUBECONTEXT`.
-- `--kubeconfig`: Це перетворюється в `$KUBECONFIG`.
 
 Втулки _повинні_ відображати текст довідки та виходити для `-h` та `--help`. У всіх інших випадках втулки можуть використовувати прапорці за потреби.
 

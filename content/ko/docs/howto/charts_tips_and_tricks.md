@@ -9,31 +9,21 @@ weight: 1
 
 ## 템플릿 함수 이해하기
 
-Helm uses [Go templates](https://godoc.org/text/template) for templating your
-resource files. While Go ships several built-in functions, we have added many
-others.
+Helm은 리소스 파일의 템플릿을 위해 [Go 템플릿](https://godoc.org/text/template)을 사용합니다. Go는 여러 가지 내장 함수를 제공하지만, 우리는 많은 추가 함수들을 제공했습니다.
 
-First, we added all of the functions in the [Sprig
-library](https://masterminds.github.io/sprig/).
+우리는 먼저 [Sprig 라이브러리](https://masterminds.github.io/sprig/)에 있는 모든 함수를 추가했습니다.
 
-We also added two special template functions: `include` and `required`. The
-`include` function allows you to bring in another template, and then pass the
-results to other template functions.
+그리고 두 가지 특별한 템플릿 함수인 `include`와 `required`를 추가했습니다. `include` 함수는 다른 템플릿을 불러오고, 그 결과를 다른 템플릿 함수에 전달할 수 있게 해줍니다.
 
-For example, this template snippet includes a template called `mytpl`, then
-lowercases the result, then wraps that in double quotes.
+예를 들어, 이 템플릿 조각은 `mytpl`이라는 템플릿을 포함한 후, 결과를 소문자로 변환하고, 그것을 큰따옴표로 감쌉니다.
 
 ```yaml
 value: {{ include "mytpl" . | lower | quote }}
 ```
 
-The `required` function allows you to declare a particular values entry as
-required for template rendering.  If the value is empty, the template rendering
-will fail with a user submitted error message.
+`required` 함수는 템플릿 렌더링을 위해 특정 값 항목이 필수임을 선언할 수 있게 해줍니다. 만약 값이 비어있다면, 템플릿 렌더링은 사용자 제출 오류 메시지와 함께 실패하게 됩니다.
 
-The following example of the `required` function declares an entry for
-.Values.who is required, and will print an error message when that entry is
-missing:
+다음은 `required` 함수의 예시로, .Values.who 항목이 필수로 선언되며, 해당 항목이 없을 경우 오류 메시지를 출력합니다:
 
 ```yaml
 value: {{ required "A valid .Values.who entry required!" .Values.who }}

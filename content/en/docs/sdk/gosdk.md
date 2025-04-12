@@ -25,7 +25,7 @@ See the [Examples](./examples.md) section for more examples and a more full feat
   If you just need to perform basic Helm commands from another Go program, this package is for you
 - [pkg/chart](https://pkg.go.dev/helm.sh/helm/v3/pkg/chart), [pkg/chartutil](https://pkg.go.dev/helm.sh/helm/v3/pkg/chartutil):
   Methods and helpers used for loading and manipulating charts
-- [pkg/chart](https://pkg.go.dev/helm.sh/helm/v3/pkg/cli) and its subpackages:
+- [pkg/cli](https://pkg.go.dev/helm.sh/helm/v3/pkg/cli) and its subpackages:
   Contains all the handlers for the standard Helm environment variables and its subpackages contain output and values file handling
 - [pkg/release](https://pkg.go.dev/helm.sh/helm/v3/pkg/release):
   Defines the `Release` object and statuses
