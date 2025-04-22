@@ -69,4 +69,4 @@ helm search repo [keyword] [flags]
 
 * [helm search](helm_search.md) — пошук ключового слова в чартах
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025
