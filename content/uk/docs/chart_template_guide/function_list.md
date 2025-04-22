@@ -711,7 +711,7 @@ hobbies:
   - cooking
 ```
 
-```yaml 
+```yaml
 {{- $person := .Files.Get "yamls/person.yaml" | fromYaml }}
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
@@ -863,7 +863,7 @@ regexSplit "z+" "pizza" -1
 
 ## Функції криптографії та безпеки {#cryptographic-and-security-functions}
 
-Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [sha1sum](#sha1sum), та [sha256sum](#sha256sum).
+Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum) та [sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -900,6 +900,14 @@ htpasswd "myUser" "myPassword"
 ```
 
 Зверніть увагу, що небезпечно зберігати пароль безпосередньо в шаблоні.
+
+### randBytes
+
+Функція randBytes приймає число N і генерує криптографічно захищену (використовує crypto/rand) випадкову послідовність з N байт. Послідовність повертається у вигляді рядка в кодуванні base64.
+
+```yaml
+randBytes 24
+```
 
 ### derivePassword
 
