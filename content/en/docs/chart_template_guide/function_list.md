@@ -701,7 +701,7 @@ The following type conversion functions are provided by Helm:
 - `fromJson`: Convert a JSON string to an object.
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
-- `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces
+- `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
 - `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
 - `fromYamlArray`: Convert a YAML array to a list.
 
