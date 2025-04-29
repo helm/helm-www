@@ -56,7 +56,7 @@ is in a sub-directory of the `charts` folder with the name being the same as the
 
 ## Conditions and Tags
 
-Conditions or tags should be added to any dependencies that _are optional_.
+Conditions or tags should be added to any dependencies that _are optional_. Note that by default a `condition` is `true`.
 
 The preferred form of a condition is:
 
