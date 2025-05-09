@@ -8,6 +8,15 @@ aliases: ["/docs/install/"]
 This guide shows how to install the Helm CLI. Helm can be installed either from
 source, or from pre-built binary releases.
 
+## Try Helm Online
+
+If you want to try Helm without installing anything on your local machine, you can use an online learning platform:
+
+- [KodeKloud Free Playground](https://kodekloud.com/public-playgrounds)
+- [KillerCoda](https://killercoda.com/playgrounds/scenario/kubernetes)
+
+Using an online playground is particularly useful for learning and evaluation purposes before proceeding with a local installation.
+
 ## From The Helm Project
 
 The Helm project provides two ways to fetch and install Helm. These are the

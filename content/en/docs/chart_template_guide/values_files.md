@@ -8,6 +8,15 @@ In the previous section we looked at the built-in objects that Helm templates
 offer. One of the built-in objects is `Values`. This object provides access to
 values passed into the chart. Its contents come from multiple sources:
 
+## Try Helm Online
+
+If you want to try Helm without installing anything on your local machine, you can use an online learning platform:
+
+- [KodeKloud Free Playground](https://kodekloud.com/public-playgrounds)
+- [KillerCoda](https://killercoda.com/playgrounds/scenario/kubernetes)
+
+Using an online playground is particularly useful for learning and evaluation purposes before proceeding with a local installation.
+
 - The `values.yaml` file in the chart
 - If this is a subchart, the `values.yaml` file of a parent chart
 - A values file is passed into `helm install` or `helm upgrade` with the `-f`
