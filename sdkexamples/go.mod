@@ -2,7 +2,7 @@ module github.com/helm/helm-www/sdkexamples
 
 go 1.23.0
 
-require helm.sh/helm/v3 v3.17.2
+require helm.sh/helm/v3 v3.17.3
 
 require (
 	dario.cat/mergo v1.0.1 // indirect
