@@ -19,9 +19,11 @@ In an earlier example, we saw that this code will fail:
   {{- end }}
 ```
 
-`Release.Name` is not inside of the scope that's restricted in the `with` block.
-One way to work around scoping issues is to assign objects to variables that can
-be accessed without respect to the present scope.
+`.Release.Name` does not exist in the context set by the `with` block.
+One possible alternative is to use `$.Release.Name` instead, assuming we're not inside
+one or more calls to `template` or `include` which have set `$` to a different value.
+Another alternative is to assign objects to variables that can
+be accessed without respect to the context.
 
 In Helm templates, a variable is a named reference to another object. It follows
 the form `$name`. Variables are assigned with a special assignment operator:
@@ -115,17 +117,21 @@ data:
   food: "pizza"
 ```
 
-Variables are normally not "global". They are scoped to the block in which they
-are declared. Earlier, we assigned `$relname` in the top level of the template.
+If a variable contains a map or nested maps, chaining keys works just as it does in `.`. For example, `$foo.bar.baz`.
+
+Variables are not "global". A variable's scope extends to the `end` action of the control structure
+in which it is declared, or to the end of the template if there is no such control structure. Earlier,
+we assigned `$relname` in the top level of the template.
 That variable will be in scope for the entire template. But in our last example,
 `$key` and `$val` will only be in scope inside of the `{{ range... }}{{ end }}`
 block.
 
-However, there is one variable that will always point to the root context: - `$` -.
-This can be very useful when you are looping
-in a range and you need to know the chart's release name.
+However, there is one variable that is always available - `$` - this variable will
+either point to the chart or sub-chart's initial context, or to the context passed to `template` or `include`.
+This can be very useful inside control structures that change `.` when you need to use things from the initial
+context, such as the chart's release name.
 
-An example illustrating this:
+An example illustrating that `range` alters `.`, but `$` provides access to the initial context:
 ```yaml
 {{- range .Values.tlsSecrets }}
 ---
