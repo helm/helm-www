@@ -26,6 +26,15 @@ For example, this Chart.yaml declares two dependencies:
     - name: nginx
       version: "1.2.3"
       repository: "https://example.com/charts"
+      alias: "frontend"
+      condition: frontend.enabled
+      tags:
+        - frontend
+        - nginx
+      enabled: true
+      import-values:
+        - child: service
+          parent: nginxService
     - name: memcached
       version: "3.2.1"
       repository: "https://another.example.com/charts"
@@ -40,6 +49,80 @@ The 'repository' URL should point to a Chart Repository. Helm expects that by
 appending '/index.yaml' to the URL, it should be able to retrieve the chart
 repository's index. Note: 'repository' can be an alias. The alias must start
 with 'alias:' or '@'.
+
+The 'alias' field allows you to use a different name for the dependency chart in your chart.
+For example, if you have two dependencies using the same chart but with different configurations,
+you can use aliases to distinguish between them:
+
+    dependencies:
+    - name: nginx
+      repository: "https://example.com/charts"
+      version: "1.2.3"
+      alias: "frontend"
+    - name: nginx
+      repository: "https://example.com/charts"
+      version: "1.2.3"
+      alias: "backend"
+
+The 'condition' field enables/disables charts with a path to a boolean value in the top-level values.
+This allows you to conditionally include a subchart based on a value in the parent chart's values.yaml:
+
+    dependencies:
+    - name: metrics-server
+      repository: "https://charts.bitnami.com/bitnami"
+      version: "5.2.0"
+      condition: metrics.enabled
+
+With this configuration, the subchart will only be installed if the value at metrics.enabled is true
+in the parent chart's values.
+
+The 'tags' field allows you to group charts for enabling/disabling together.
+You can enable or disable all charts with a common tag by specifying the tag and a boolean value
+in the parent chart's values.yaml:
+
+    # Chart.yaml
+    dependencies:
+    - name: nginx
+      repository: "https://example.com/charts"
+      version: "1.2.3"
+      tags:
+        - frontend
+        - web
+    - name: memcached
+      repository: "https://another.example.com/charts"
+      version: "3.2.1"
+      tags:
+        - cache
+        - web
+
+    # values.yaml
+    tags:
+      web: true    # This would enable both nginx and memcached
+      frontend: false  # This would disable nginx, regardless of the web tag
+
+The 'enabled' field determines if the chart should be loaded.
+It provides a simple way to explicitly enable or disable a dependency:
+
+    dependencies:
+    - name: metrics-server
+      repository: "https://charts.bitnami.com/bitnami"
+      version: "5.2.0"
+      enabled: false  # This dependency won't be installed by default
+
+The 'import-values' field holds mappings of source values to parent keys to be imported.
+This allows you to import values from a subchart into the parent chart's values. There are two
+supported formats:
+
+1. A list of child/parent mappings:
+
+    import-values:
+      - child: service.ports
+        parent: nginxServicePorts
+
+2. A list of keys from the child chart to import:
+
+    import-values:
+      - defaultNetwork  # imports child.defaultNetwork as defaultNetwork
 
 Starting from 2.2.0, repository can be defined as the path to the directory of
 the dependency charts stored locally. The path should start with a prefix of
