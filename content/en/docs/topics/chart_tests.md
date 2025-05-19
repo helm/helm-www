@@ -101,5 +101,5 @@ Phase:          Succeeded
 - You are welcome to nest your test suite under a `tests/` directory like
   `<chart-name>/templates/tests/` for more isolation.
 - A test is a [Helm hook](/docs/charts_hooks/), so annotations like
-  `helm.sh/hook-weight` and `helm.sh/hook-delete-policy` may be used with test
-  resources.
+  `helm.sh/hook-weight`, `helm.sh/hook-delete-policy` and `hook-output-log-policy` 
+- may be used with test resources.
