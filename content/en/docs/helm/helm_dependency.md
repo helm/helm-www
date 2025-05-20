@@ -50,7 +50,7 @@ appending '/index.yaml' to the URL, it should be able to retrieve the chart
 repository's index. Note: 'repository' can be an alias. The alias must start
 with 'alias:' or '@'.
 
-The 'alias' field allows you to use a different name for the dependency chart in your chart.
+The 'alias' field allows the use of a different name for the dependency chart in your chart.
 For example, if you have two dependencies using the same chart but with different configurations,
 you can use aliases to distinguish between them:
 
@@ -65,7 +65,7 @@ you can use aliases to distinguish between them:
       alias: "backend"
 
 The 'condition' field enables/disables charts with a path to a boolean value in the top-level values.
-This allows you to conditionally include a subchart based on a value in the parent chart's values.yaml:
+This allows to conditionally include a subchart based on a value in the parent chart's values.yaml:
 
     dependencies:
     - name: metrics-server
@@ -76,7 +76,7 @@ This allows you to conditionally include a subchart based on a value in the pare
 With this configuration, the subchart will only be installed if the value at metrics.enabled is true
 in the parent chart's values.
 
-The 'tags' field allows you to group charts for enabling/disabling together.
+The 'tags' field allows to group charts for enabling/disabling together.
 You can enable or disable all charts with a common tag by specifying the tag and a boolean value
 in the parent chart's values.yaml:
 
