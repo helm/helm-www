@@ -10,6 +10,15 @@ them elsewhere. A _named template_ (sometimes called a _partial_ or a
 _subtemplate_) is simply a template defined inside of a file, and given a name.
 We'll see two ways to create them, and a few different ways to use them.
 
+## Try Helm Online
+
+If you want to try Helm without installing anything on your local machine, you can use an online learning platform:
+
+- [KodeKloud Free Playground](https://kodekloud.com/public-playgrounds)
+- [KillerCoda](https://killercoda.com/playgrounds/scenario/kubernetes)
+
+Using an online playground is particularly useful for learning and evaluation purposes before proceeding with a local installation.
+
 In the [Flow Control](./control_structures.md) section we introduced three actions
 for declaring and managing templates: `define`, `template`, and `block`. In this
 section, we'll cover those three actions, and also introduce a special-purpose
