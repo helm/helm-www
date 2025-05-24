@@ -36,8 +36,6 @@ request](https://github.com/helm/helm-www/pulls).
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - Plugin for Release management, Update release values, pulls(re-creates) helm Charts from deployed releases, set helm release TTL.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - Helm plugin that allows to
   use AWS S3 as a [private] chart repository
-- [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - Helm
-  Plugin that generates values yaml schema for your Helm 3 charts
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage
   and store secrets safely (based on [sops](https://github.com/mozilla/sops))
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) -
@@ -46,7 +44,7 @@ request](https://github.com/helm/helm-www/pulls).
   rendering Tanka/Jsonnet inside Helm charts.
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit testing
   charts locally using OPA (Open Policy Agent) & Rego
-- [helm-unittest](https://github.com/quintush/helm-unittest) - Plugin for unit
+- [helm-unittest](https://github.com/helm-unittest/helm-unittest) - Plugin for unit
   testing chart locally with YAML
 - [helm-val](https://github.com/HamzaZo/helm-val) - A plugin to get
   values from a previous release.
