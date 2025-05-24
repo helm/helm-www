@@ -23,12 +23,11 @@ weight: 3
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) — Втулок для моніторингу релізу та відкату на основі запиту Prometheus/ElasticSearch.
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) — Втулок для управління релізами, оновлення значень релізу, витягує (перестворює) Helm чарти з розгорнутих релізів, встановлює TTL релізу Helm.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) — Втулок Helm, який дозволяє використовувати AWS S3 як [приватний] репозиторій чартів.
-- [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) — Втулок Helm, який генерує схему yaml значень для ваших Helm 3 чартів.
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) — Втулок для безпечного керування та зберігання секретів (на основі [sops](https://github.com/mozilla/sops)).
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) — Втулок для Helm для інтеграції з екосистемою [sigstore](https://sigstore.dev/). Пошук, завантаження та перевірка підписаних Helm чартів.
 - [helm-tanka](https://github.com/Duologic/helm-tanka) — Втулок Helm для рендерингу Tanka/Jsonnet всередині Helm чартів.
 - [hc-unit](https://github.com/xchapter7x/hcunit) — Втулок для юніт-тестування чартів локально за допомогою OPA (Open Policy Agent) & Rego.
-- [helm-unittest](https://github.com/quintush/helm-unittest) — Втулок для юніт-тестування чартів локально з YAML.
+- [helm-unittest](https://github.com/helm-unittest/helm-unittest) — Втулок для юніт-тестування чартів локально з YAML.
 - [helm-val](https://github.com/HamzaZo/helm-val) — Втулок для отримання значень з попереднього релізу.
 - [helm-external-val](https://github.com/kuuji/helm-external-val) — Втулок, який отримує значення helm з зовнішніх джерел (configMaps, Secrets тощо).
 - [helm-images](https://github.com/nikhilsbhat/helm-images) — Втулок Helm для отримання всіх можливих зображень з чарту перед розгортанням або з розгорнутого релізу.
