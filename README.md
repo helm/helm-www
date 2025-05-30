@@ -52,7 +52,7 @@ To update these docs, you'll need to:
 4. Commit the changes and create a PR to update the website.
 
 > [!TIP]
-> If you are on Mac OS and want to avoid unnesccary changes on config location. You can use this Docker command from the `content/en/docs/helm/` folder
+> If you are on macOS and want to avoid unnecessary changes to the config location, you can use this Docker command from the `content/en/docs/helm/` folder
 > ```
 > docker run --rm -v $(pwd):/output \
 >  --entrypoint /bin/sh \
