@@ -51,6 +51,18 @@ To update these docs, you'll need to:
 3. Run `HOME='~' helm docs --type markdown --generate-headers` to generate the markdown docs files, replacing any prior markdown files.  **Note:** Make sure you run the version of helm you want to build the docs for (for example, by checking out the correct tag and building it)
 4. Commit the changes and create a PR to update the website.
 
+> [!TIP]
+> If you are on Mac OS and want to avoid unnesccary changes on config location. You can use this Docker command from the `content/en/docs/helm/` folder
+> ```
+> docker run --rm -v $(pwd):/output \
+>  --entrypoint /bin/sh \
+>  alpine:latest -c "
+>    apk add --no-cache curl bash && \
+>    curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
+>    export HOME='~' && \
+>    helm docs --type markdown --generate-headers --dir /output
+>  "
+> ```
 
 ### How to Write a Blog Post
 
