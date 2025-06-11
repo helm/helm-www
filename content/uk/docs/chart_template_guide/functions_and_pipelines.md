@@ -58,8 +58,6 @@ data:
 Під час обробки цей шаблон створить такий результат:
 
 ```yaml
-
-```yaml
 # Source: mychart/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -165,7 +163,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 | namespace | string |
 | name | string |
 
-Обидва параметри `name` та `namespace` є необов’язковими та можуть передаватися як порожній рядок (`""`).
+Обидва параметри `name` та `namespace` є необов’язковими та можуть передаватися як порожній рядок (`""`). Однак, якщо ви працюєте з ресурсом, що обмежений простором імен, необхідно вказати і `name`, і `namespace`.
 
 Можливі такі комбінації параметрів:
 
