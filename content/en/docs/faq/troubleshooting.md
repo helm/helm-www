@@ -160,3 +160,17 @@ Or if a different version is needed, use the --tiller-image flag to override the
 `helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
 
 **Note:** The Helm maintainers recommend migration to a currently-supported version of Helm. Helm v2.17.0 was the final release of Helm v2; Helm v2 is unsupported since November 2020, as detailed in [Helm 2 and the Charts Project Are Now Unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/). Many CVEs have been flagged against Helm since then, and those exploits are patched in Helm v3 but will never be patched in Helm v2. See the [current list of published Helm advisories](https://github.com/helm/helm/security/advisories?state=published) and make a plan to [migrate to Helm v3](https://helm.sh/docs/topics/v2_v3_migration/#helm) today.
+
+### Helm commands fail when connected to Z-Scaler VPN
+
+Some users have reported issues with `helm repo add` or `helm install` timing out or failing when connected through Z-Scaler VPN. This may be caused by Z-Scaler's deep packet inspection interfering with Helm's HTTPS requests.
+
+#### Solution
+
+If you're experiencing connectivity issues while using Helm behind Z-Scaler VPN, try the following:
+- Disconnect from the VPN and retry the command.
+- Switch to a different network that does not perform SSL/TLS interception.
+- Request your IT department to whitelist Helm domains or bypass SSL inspection for Helm-related traffic.
+
+See related GitHub discussion: [helm/helm#30860](https://github.com/helm/helm/issues/30860)
+
