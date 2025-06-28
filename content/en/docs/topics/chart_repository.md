@@ -12,7 +12,9 @@ and shared.
 The distributed community Helm chart repository is located at
 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) and welcomes
 participation. But Helm also makes it possible to create and run your own chart
-repository. This guide explains how to do so.
+repository. This guide explains how to do so. If you are considering creating a
+chart repository, you may want to consider using an
+[OCI registry]({{< ref "/docs/topics/registries.md" >}}) instead.
 
 ## Prerequisites
 
