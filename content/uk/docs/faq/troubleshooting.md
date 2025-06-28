@@ -101,7 +101,7 @@ helm list -v 6
 
 ### Встановлення Tiller припинило працювати і доступ заборонено {#installing-tiller-stopped-working-and-access-is-denied}
 
-Релізи Helm раніше були доступні за адресою <https://storage.googleapis.com/kubernetes-helm/>. Як пояснюється в ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), офіційне місце розташування змінилося у червні 2019 року. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) робить всі старі образи Tiller доступними.
+Релізи Helm раніше були доступні за адресою <https://storage.googleapis.com/kubernetes-helm/>. Як пояснюється в ["Announcing get.helm.sh"](/blog/get-helm-sh/), офіційне місце розташування змінилося у червні 2019 року. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) робить всі старі образи Tiller доступними.
 
 Якщо ви намагаєтеся завантажити старі версії Helm з кошику зберігання, який ви використовували раніше, ви можете виявити, що вони відсутні:
 
@@ -129,4 +129,4 @@ helm list -v 6
 
 `helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
 
-**Примітка:** Розробники Helm рекомендують міграцію на підтримувану версію Helm. Helm v2.17.0 був останнім випуском Helm v2; Helm v2 більше не підтримується з листопада 2020 року, як детально описано в [Helm 2 та проєкт Charts більше не підтримуються](https://helm.sh/blog/helm-2-becomes-unsupported/). Багато CVE було виявлено в Helm з того часу, і ці експлойти виправлені в Helm v3, але ніколи не будуть виправлені в Helm v2. Перегляньте [актуальний список опублікованих сповіщень Helm](https://github.com/helm/helm/security/advisories?state=published) і складіть план [міграції на Helm v3](https://helm.sh/docs/topics/v2_v3_migration/#helm) сьогодні.
+**Примітка:** Розробники Helm рекомендують міграцію на підтримувану версію Helm. Helm v2.17.0 був останнім випуском Helm v2; Helm v2 більше не підтримується з листопада 2020 року, як детально описано в [Helm 2 та проєкт Charts більше не підтримуються](/blog/helm-2-becomes-unsupported/). Багато CVE було виявлено в Helm з того часу, і ці експлойти виправлені в Helm v3, але ніколи не будуть виправлені в Helm v2. Перегляньте [актуальний список опублікованих сповіщень Helm](https://github.com/helm/helm/security/advisories?state=published) і складіть план [міграції на Helm v3](/docs/topics/v2_v3_migration/#helm) сьогодні.
