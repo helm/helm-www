@@ -55,13 +55,13 @@ To update these docs, you'll need to:
 > If you are on macOS and want to avoid unnecessary changes to the config location, you can use this Docker command from the `content/en/docs/helm/` folder
 > ```
 > docker run --rm -v $(pwd):/output \
->  --entrypoint /bin/sh \
->  alpine:latest -c "
->    apk add --no-cache curl bash && \
->    curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
->    export HOME='~' && \
->    helm docs --type markdown --generate-headers --dir /output
->  "
+>   --entrypoint /bin/bash \
+>   ubuntu:latest -c "
+>     apt-get update && apt-get install -y curl && \
+>     curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
+>     export HOME='~' && \
+>     helm docs --type markdown --generate-headers --dir /output
+>   "
 > ```
 
 ### How to Write a Blog Post
