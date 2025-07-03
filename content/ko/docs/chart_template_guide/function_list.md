@@ -803,6 +803,10 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 $1은 첫 번째 부분의 일치하는 텍스트를 나타낸다.
 
 ```
+regexReplaceAll <pattern> <input> <replacement>
+```
+
+```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ```
 
@@ -816,6 +820,10 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 입력 문자열의 복사본을 반환하고 
 정규 표현식의 일치 항목을 대체 문자열로 변경한다. 
 대체 문자열은 확장(Expand)를 사용하지 않고 직접 대체된다.
+
+```
+regexReplaceAllLiteral <pattern> <input> <replacement>
+```
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"

@@ -830,6 +830,10 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 Повертає копію вхідного рядка, замінюючи збіг регулярного виразу на рядок заміни `replacement`. У рядку заміни знаки `$` інтерпретуються як в Expand, тому, наприклад, `$1` представляє текст першого збігу.
 
 ```yaml
+regexReplaceAll <pattern> <input> <replacement>
+```
+
+```yaml
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ```
 
@@ -840,6 +844,10 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
 Повертає копію вхідного рядка, замінюючи збіг регулярного виразу на рядок заміни `replacement`. Рядок заміни підставляється без використання Expand.
+
+```yaml
+regexReplaceAllLiteral <pattern> <input> <replacement>
+```
 
 ```yaml
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
