@@ -1,0 +1,224 @@
+# site-wide copy
+
+## actions and labels
+[action_get_started]
+other = "Memulai"
+
+[action_get_started_link]
+other = "/docs/intro/quickstart"
+
+[action_translate]
+other = "Terjemahkan halaman ini"
+
+[action_translate_link]
+other = "https://github.com/helm/helm-www#internationalization--translation"
+
+[action_copy]
+other = "Salin"
+
+## site-wide banner about versioning
+[banner_1]
+other = ""
+
+## footer
+[footer_support_title]
+other = "Helm didukung dan dibangun oleh komunitas dengan lebih dari 400 pengembang."
+
+[footer_support_subtitle]
+other = "...dan banyak pengelola inti [helm](https://github.com/helm/helm/blob/main/OWNERS) hebat lainnya."
+
+[footer_cncf_status]
+other = "Kami adalah proyek lulusan Cloud Native Computing Foundation."
+
+# homepage copy
+
+## homepage intro
+[main_title]
+other = "**Manajer paket** **untuk Kubernetes**"
+
+[main_subtitle]
+other = "Helm adalah cara terbaik untuk menemukan, berbagi, dan menggunakan perangkat lunak yang dibuat untuk [Kubernetes](https://kubernetes.io)."
+
+## homepage about helm
+[main_what_is_helm_title]
+other = "Apa itu Helm?"
+
+[main_what_is_helm_description]
+other = """
+Helm membantu Anda mengelola aplikasi Kubernetes — Helm Charts membantu Anda mendefinisikan, menginstal, dan upgrade aplikasi Kubernetes bahkan yang paling kompleks sekalipun.
+
+Charts mudah dibuat, diberi versi, dibagikan, dan dipublikasikan — jadi mulailah menggunakan Helm dan hentikan praktik salin-tempel.
+
+Helm adalah proyek lulusan [CNCF](https://cncf.io) dan dikelola oleh [komunitas Helm](https://github.com/helm/community).
+
+### Pelajari lebih lanjut:
+
+* [Arsitektur Helm](/docs/topics/architecture/)
+* [Panduan Memulai Cepat](/docs/intro/quickstart/)
+* [Video: Pengantar Helm](https://www.youtube.com/watch?v=Zzwq9FmZdsU&t=2s)
+"""
+
+[main_why_teams_love]
+other = 'Mengapa Tim <i class="fa fa-heart"></i> Helm'
+
+[feature_01_title]
+other = "Kelola Kompleksitas"
+
+[feature_01_desc]
+other = "Charts mendeskripsikan bahkan aplikasi yang paling kompleks sekalipun, menyediakan instalasi aplikasi yang dapat diulang, dan berfungsi sebagai satu titik otoritas."
+
+[feature_02_title]
+other = "Update Mudah"
+
+[feature_02_desc]
+other = "Singkirkan kerumitan update dengan upgrade di tempat dan custom hook."
+
+[feature_03_title]
+other = "Berbagi Mudah"
+
+[feature_03_desc]
+other = "Charts mudah untuk diberi versi, dibagikan, dan di-host di server publik atau pribadi."
+
+[feature_04_title]
+other = "Rollback"
+
+[feature_04_desc]
+other = "Gunakan `helm rollback` untuk kembali ke versi rilis yang lebih lama dengan mudah."
+
+## homepage get helm
+[get_helm_title]
+other = "Dapatkan Helm!"
+
+[get_helm_desc]
+other = "Instal Helm dengan manajer paket, atau [unduh binary](https://github.com/helm/helm/releases/latest)."
+
+[get_helm_next]
+other = "Setelah terinstal, ekstrak binary Helm dan tambahkan ke PATH Anda, dan Helm siap digunakan! Periksa [dokumentasi](/docs/intro/install/) untuk [instalasi](/docs/intro/install/) dan [instruksi penggunaan](/docs/intro/using_helm/) lebih lanjut."
+
+
+[get_charts_title]
+other = "Dapatkan Charts"
+
+[get_charts_desc]
+other = "Kunjungi [Artifact Hub](https://artifacthub.io) untuk menjelajahi [Helm Charts](https://artifacthub.io/packages/search?kind=0) dari berbagai repositori publik."
+
+[get_upgrade_title]
+other = "[Upgrade dari v2 ke v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+[get_upgrade_desc]
+other = "[Baca dokumen migrasi untuk detail lebih lanjut.](https://helm.sh/docs/topics/v2_v3_migration/)"
+
+## homepage community
+[community_title]
+other = "Gabung dengan Komunitas"
+
+[community_desc]
+other = "Informasi lebih lanjut tentang proyek Helm, dan cara berkontribusi."
+
+[community_next_release]
+other = "Rilis Fitur Berikutnya"
+
+[community_next_release_version]
+other = "__Version:__ "
+
+[community_next_release_date]
+other = "__Date:__ "
+
+[community_release_calendar]
+other = "[Kalender Rilis](https://helm.sh/calendar/release)"
+
+[community_events_title]
+other = "Acara"
+
+[community_upcoming_events_title]
+other = "Acara Mendatang"
+
+[community_upcoming_events_desc]
+other = "_Nov 14th 2024_ - [KubeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)"
+
+[community_past_events_title]
+other = "Acara Sebelumnya"
+
+[community_past_event_01]
+other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+
+[community_past_event_02]
+other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+
+[community_past_event_03]
+other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+
+[community_sig_title]
+other = "SIG Apps"
+
+[community_sig_subtitle]
+other = "Grup Minat Khusus untuk deployment dan pengoperasian aplikasi di Kubernetes."
+
+[community_sig_desc]
+other = """
+[SIG-Apps](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) adalah Grup Minat Khusus untuk deployment dan pengoperasian aplikasi di Kubernetes.
+
+Mereka [bertemu setiap minggu](https://github.com/kubernetes/community/blob/master/sig-apps/README.md) untuk mendemonstrasikan dan mendiskusikan berbagai alat dan proyek. Pertemuan komunitas direkam dan [dibagikan ke YouTube](https://www.youtube.com/results?search_query=kubernetes+sig+apps).
+"""
+
+[community_standup_title]
+other = "Standup Pengembang"
+
+[community_standup_time]
+other = "Thursdays 9:30-10am (PT)"
+
+[community_standup_desc]
+other = "Pertemuan ini terbuka untuk semua. Periksa [repo komunitas](https://github.com/helm/community/blob/main/communication.md#meetings) untuk catatan dan detail."
+
+[community_slack_title]
+other = "Slack"
+
+[community_slack_group_01_title]
+other = "Pengguna Helm"
+
+[community_slack_group_01_desc]
+other = "Diskusi seputar penggunaan Helm, bekerja dengan charts, dan mengatasi kesalahan umum."
+
+[community_slack_group_02_title]
+other = "Pengembangan Helm"
+
+[community_slack_group_02_desc]
+other = "Topik seputar pengembangan Helm, PR yang sedang berlangsung, rilis, dll."
+
+[community_slack_group_03_title]
+other = "Charts"
+
+[community_slack_group_03_desc]
+other = "Diskusi untuk pengguna dan kontributor Helm Charts."
+
+[community_slack_join]
+other = "[Minta akses di sini](https://slack.k8s.io/) untuk bergabung dengan tim Slack Kubernetes."
+
+[community_contrib_title]
+other = "Berkontribusi"
+
+[community_contrib_subtitle]
+other = "Helm selalu menyambut kontribusi baru untuk proyek ini!"
+
+
+[community_contrib_desc]
+other = """
+### Mulai dari mana?
+
+Helm adalah proyek besar dengan banyak pengguna dan kontributor. Mungkin terasa banyak yang harus dipahami!
+
+Kami memiliki daftar [good first issues](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) jika Anda ingin membantu tetapi tidak tahu harus mulai dari mana.
+
+### Apa yang harus saya lakukan?
+
+Sebelum Anda berkontribusi kode, harap baca [Panduan Kontribusi](https://github.com/helm/helm/blob/main/CONTRIBUTING.md) kami. Panduan ini menjelaskan proses seputar pembuatan dan peninjauan pull request.
+
+Setelah Anda menulis kode, harap [tandatangani komit Anda](https://helm.sh/blog/helm-dco/index.html) untuk memastikan Helm mematuhi perjanjian [DCO](https://developercertificate.org/) yang digunakan oleh [CNCF](https://www.cncf.io/).
+"""
+
+# 404 page
+[404_title]
+other = "**404** **Halaman tidak ditemukan.**"
+
+[404_subtitle]
+other = "Maaf atas ketidaknyamanan ini. Jika ada yang rusak, silakan [laporkan di sini](https://github.com/helm/helm-www/issues/new)."
