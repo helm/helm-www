@@ -1578,7 +1578,7 @@ $myList := list 1 2 3 4 5
 The above creates a list of `[1 2 3 4 5]`.
 
 Helm provides the following list functions: [append
-(mustAppend)](#append-mustappend), [compact
+(mustAppend)](#append-mustappend), [chunk](#chunk), [compact
 (mustCompact)](#compact-mustcompact), [concat](#concat), [first
 (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
@@ -1794,6 +1794,16 @@ seq 2 -2    => 2 1 0 -1 -2
 seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
+
+### chunk
+
+To split a list into chunks of given size, use `chunk size list`. This is useful for pagination.
+
+```
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
 ## Math Functions
 
