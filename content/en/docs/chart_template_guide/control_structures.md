@@ -259,11 +259,13 @@ The next control structure to look at is the `with` action. This controls
 variable scoping. Recall that `.` is a reference to _the current scope_. So
 `.Values` tells the template to find the `Values` object in the current scope.
 
-The syntax for `with` is similar to a simple `if` statement:
+The syntax for `with` is similar to the `if`/`else` block:
 
 ```
 {{ with PIPELINE }}
-  # restricted scope
+  # restricted scope, if PIPELINE is true
+{{ else }}
+  # restricted scope, if PIPELINE is false
 {{ end }}
 ```
 
