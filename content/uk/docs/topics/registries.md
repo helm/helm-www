@@ -51,11 +51,13 @@ export HELM_EXPERIMENTAL_OCI=1
 
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Cloudsmith](https://help.cloudsmith.io/docs/oci-repository)
 - [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
 - [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
 - [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
+- [RepoFlow](https://docs.repoflow.io/PackageTypes/helm#oci-helm-support)
 
 Щоб створити та налаштувати реєстр з підтримкою OCI, дотримуйтесь документації постачальника реєстру контейнерів на хостингу.
 

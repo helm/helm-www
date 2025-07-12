@@ -1413,7 +1413,7 @@ $myList := list 1 2 3 4 5
 
 Це створить список `[1 2 3 4 5]`.
 
-Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
+Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [chunk](#chunk), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
 
 ### first, mustFirst
 
@@ -1603,6 +1603,16 @@ seq 2 -2    => 2 1 0 -1 -2
 seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
+
+### chunk
+
+Щоб розділити список на частини заданого розміру, використовуйте `chunk size list`. Це корисно для пагінації.
+
+```none
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
 ## Математичні функції {#math-functions}
 
