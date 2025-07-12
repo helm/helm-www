@@ -861,7 +861,7 @@ Helm includes the following regular expression functions: [regexFind
 
 Returns true if the input string contains any match of the regular expression.
 
-```
+```yaml
 regexMatch "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" "test@acme.com"
 ```
 
@@ -876,7 +876,7 @@ Returns a slice of all matches of the regular expression in the input string.
 The last parameter n determines the number of substrings to return, where -1
 means return all matches
 
-```
+```yaml
 regexFindAll "[2,4,6,8]" "123456789" -1
 ```
 
@@ -889,7 +889,7 @@ error to the template engine if there is a problem.
 
 Return the first (left most) match of the regular expression in the input string
 
-```
+```yaml
 regexFind "[a-zA-Z][1-9]" "abcd1234"
 ```
 
@@ -905,11 +905,11 @@ replacement string replacement. Inside string replacement, $ signs are
 interpreted as in Expand, so for instance $1 represents the text of the first
 submatch
 
-```
+```yaml
 regexReplaceAll <pattern> <input> <replacement>
 ```
 
-```
+```yaml
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ```
 
@@ -924,11 +924,11 @@ Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. The replacement string is substituted directly,
 without using Expand
 
-```
+```yaml
 regexReplaceAllLiteral <pattern> <input> <replacement>
 ```
 
-```
+```yaml
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
 ```
 
@@ -945,7 +945,7 @@ a slice of the substrings between those expression matches. The last parameter
 `n` determines the number of substrings to return, where `-1` means return all
 matches
 
-```
+```yaml
 regexSplit "z+" "pizza" -1
 ```
 
