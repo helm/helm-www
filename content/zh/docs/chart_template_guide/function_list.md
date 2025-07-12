@@ -799,6 +799,10 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。在替换字符串里面， $ 标志被解释为扩展，因此对于实例来说 $1 表示第一个子匹配的文本
 
 ```yaml
+regexReplaceAll <pattern> <input> <replacement>
+```
+
+```yaml
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ```
 
@@ -809,6 +813,11 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
 返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。匹配字符串直接替换而不是扩展。
+
+
+```yaml
+regexReplaceAllLiteral <pattern> <input> <replacement>
+```
 
 ```yaml
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
