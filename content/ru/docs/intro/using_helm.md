@@ -8,7 +8,7 @@ weight: 3
 кластере Kubernetes. Руководство предполагает, что вы уже [установили]({{< ref
 "install.md" >}}) Helm CLI.
 
-Если вы просто заинтересованы нескольких командам, то можете начать с [Краткого Руководства]({{< ref "quickstart.md" >}}). В этой главе
+Если вы просто заинтересованы в нескольких командах, то можете начать с [Краткого Руководства]({{< ref "quickstart.md" >}}). В этой главе
 описаны особенности команд Helm.
 
 ## Three Big Concepts
@@ -79,8 +79,7 @@ NAME            CHART VERSION APP VERSION DESCRIPTION
 brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-Поиск – это хороший способ найти доступные пакеты. Как только вы нашли пакет
-, который хотите установить, вы можете использовать `helm install` для его установки.
+Поиск – это хороший способ найти доступные пакеты. Как только вы нашли пакет, который хотите установить, вы можете использовать `helm install` для его установки.
 
 ## 'helm install': Установка пакета
 
@@ -208,7 +207,7 @@ $ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values
 $ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-Команды выше создадут пользователя для MariaDB с именем `user0` и предоставит
+Команды выше создадут пользователя для MariaDB с именем `user0` и предоставят
 этому пользователю доступ к созданной базе данных `user0db`, но использует остальные значения chart-а по умолчанию.
 
 Существует два способа передачи конфигурационных данных во время установки:
@@ -222,7 +221,7 @@ $ helm install -f values.yaml bitnami/wordpress --generate-name
 values <release-name>`. Значения `--set`, можно очистить, выполнив
 `helm upgrade` с `--reset-values`.
 
-#### Формат и Ограничения`--set`
+#### Формат и Ограничения `--set`
 
 Параметр `--set` принимает ноль или более пар имя/значение. В самом простом случае он
 используется следующим образом: `--set name=value`. Пример в YAML формате:
@@ -288,9 +287,7 @@ nodeSelector:
   kubernetes.io/role: master
 ```
 
-Deeply nested data structures can be difficult to express using `--set`. Chart
-designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file  (read more about [Values Files](https://helm.sh/docs/chart_template_guide/values_files/)).
+Глубоко вложенные структуры данных может быть трудно выразить используя `--set`. Разработчикам чартов рекомендуется учитывать использование `--set` при разработке формата файла `values.yaml` (читать подробнее про [Values Files](https://helm.sh/docs/chart_template_guide/values_files/)).
 
 ### Дополнительные Методы Установки
 
@@ -305,11 +302,6 @@ of a `values.yaml` file  (read more about [Values Files](https://helm.sh/docs/ch
 
 Когда выпускается новая версия chart-а или когда вы хотите изменить
 конфигурацию своего релиза, вы можете использовать команду `helm upgrade`.
-
-An upgrade takes an existing release and upgrades it according to the
-information you provide. Because Kubernetes charts can be large and complex,
-Helm tries to perform the least invasive upgrade. It will only update things
-that have changed since the last release.
 
 Обновление использует существующий релиз и обновляет его в соответствии с
 предоставленной вами информацией. Из-за того, что chart-ы Kubernetes могут быть большими и сложными,
@@ -326,7 +318,7 @@ $ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
 mariadb.auth.username: user1
 ```
 
-Вы можете использовать `helm get values`, чтобы увидеть, заработа ли новая версия.
+Вы можете использовать `helm get values`, чтобы увидеть, заработала ли новая версия.
 
 ```console
 $ helm get values happy-panda
@@ -339,15 +331,15 @@ mariadb:
 И как мы видим выше, она показывает, что наши новые значения из `panda.yaml` были
 развернуты в кластере.
 
-Теперь, если что-то идет не так, как планировалось во время выпуска, легко
-откатиться к предыдущему выпуску, используя `helm rollback [RELEASE] [REVISION]`.
+Теперь, если что-то идёт не так, как планировалось во время релиза, легко
+откатиться к предыдущему релизу, используя `helm rollback [RELEASE] [REVISION]`.
 
 ```console
 $ helm rollback happy-panda 1
 ```
 
-Пример выше возвращает happy-panda к самой первой версии выпуска. Версия
-выпуска-это инкрементная версия. Каждый раз, когда происходит установка, обновление или
+Пример выше возвращает happy-panda к самой первой версии релиза. Версия
+релиза - это инкрементная версия. Каждый раз, когда происходит установка, обновление или
 откат, номер версии увеличивается на 1. Первый
 номер редакции всегда равен 1. Мы можем использовать `helm history [RELEASE]`, чтобы увидеть
 номера версий для определенного релиза.
@@ -360,17 +352,17 @@ $ helm rollback happy-panda 1
 <command> --help`.
 
 - `--timeout`: [Go duration](https://golang.org/pkg/time/#ParseDuration) время ожидания выполнения Kubernetes команд. Стандартное время `5m0s`.
-- `--wait`: Ждет, пока все Pods не будут в состоянии готовности,
-  Развертывания должны иметь минимум (`Desired` минус `maxUnavailable`) Pods в состоянии готовности
+- `--wait`: Ждёт, пока все Pods не будут в состоянии готовности,
+  Deployments должны иметь минимум (`Desired` минус `maxUnavailable`) Pods в состоянии готовности
   и Services должны иметь IP адрес (и Ingress если есть `LoadBalancer`) перед пометкой успешного релиза.
   Он будет ждать до значения `--timeout`.
-  Если тайм - аут достигнут, то релиз будет помечен как `FAILED`. Note: In
-  scenarios where Deployment has `replicas` set to 1 and `maxUnavailable` is not
-  set to 0 as part of rolling update strategy, `--wait` will return as ready as
-  it has satisfied the minimum Pod in ready condition.
+  Если тайм - аут достигнут, то релиз будет помечен как `FAILED`.
+  Заметка: в сценариях где в Deployment значения `replicas` равно 1 и `maxUnavailable` не равно 0
+  как часть стратегии rolling update, `--wait`
+  вернёт значение ready, поскольку будет удовлетворено условие минимального количества Pod в состоянии ready.
 - `--no-hooks`: Это пропускает запуск hooks для команды
 - `--recreate-pods` (доступно только для `upgrade` и `rollback`): Этот флаг
-  приведет к пересозданию всех pods (with the exception of pods belonging to
+  приведёт к пересозданию всех pods (за исключением pods принадлежащих
   deployments). (УСТАРЕЛО в Helm 3)
 
 ## 'helm uninstall': Удаление Релиза
@@ -393,7 +385,7 @@ inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0
 Из примера выше видно, что релиз `happy-panda` был удален.
 
 В предыдущих версиях Helm, когда релиз удалялся, запись о его
-удалении оставалась. В Helm 3, Удаление удаляет записи релиза, а также.
+удалении оставалась. В Helm 3, удаление также удаляет запись об удалении релиза.
 Если вы хотите сохранить запись об удалении выпуска, используйте `helm uninstall
 --keep-history`. Использование `helm list --uninstalled` покажет только те выпуски, которые
 были удалены с флагом `--keep-history`.
@@ -414,10 +406,10 @@ kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0
 
 ## 'helm repo': Работа с Репозиториями
 
-Helm 3 больше не поставляется со стандартным хранилищем chart-ов. Команды `helm repo`
+Helm 3 больше не поставляется со стандартным хранилищем chart-ов. Группа команд `helm repo`
 предоставляет возможности добавления, перечисления и удаления репозиториев.
 
-Узнать о настроенных репозитории можно с помощью `helm repo list`:
+Узнать о настроенных репозиториях можно с помощью `helm repo list`:
 
 ```console
 $ helm repo list
@@ -432,7 +424,7 @@ mumoshu         https://mumoshu.github.io/charts
 $ helm repo add dev https://example.com/dev-charts
 ```
 
-Поскольку репозитории диаграмм часто меняются, в любой момент вы можете убедиться,
+Поскольку репозитории chart-ов часто меняются, в любой момент вы можете убедиться,
 что ваш клиент Helm обновлен, запустив `helm repo update`.
 
 Репозитории могут быть удалены с помощью `helm repo remove`.
@@ -471,7 +463,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Упакованные chart-ы могут быть загружены в репозиторий chart-ов. Смотрите документацию по
-[Helm chart репозитории](https://helm.sh/docs/topics/charts/) для того, что бы узнать новые детали.
+[Helm chart репозитории](https://helm.sh/docs/topics/charts/) для того, чтобы узнать новые детали.
 
 ## Заключение
 
