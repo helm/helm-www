@@ -903,7 +903,8 @@ the template engine if there is a problem.
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. Inside string replacement, $ signs are
 interpreted as in Expand, so for instance $1 represents the text of the first
-submatch
+submatch. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -918,7 +919,8 @@ an error to the template engine if there is a problem.
 
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. The replacement string is substituted directly,
-without using Expand
+without using Expand. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
