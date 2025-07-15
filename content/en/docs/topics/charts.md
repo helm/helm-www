@@ -54,7 +54,7 @@ The `Chart.yaml` file is required for a chart. It contains the following fields:
 ```yaml
 apiVersion: The chart API version (required)
 name: The name of the chart (required)
-version: A version of the chart (required)
+version: The version of the chart (required)
 kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
 description: A single-sentence description of this project (optional)
 type: The type of the chart (optional)
