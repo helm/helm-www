@@ -45,4 +45,4 @@ title: "Helm Plugin"
 * [helm plugin uninstall](helm_plugin_uninstall.md) — видалити один або кілька втулків Helm
 * [helm plugin update](helm_plugin_update.md) — оновити один або кілька втулків Helm
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025
