@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "DavidAnson.vscode-markdownlint",
+    "bungcip.better-toml",
+    "budparr.language-hugo-vscode",
+    "stylelint.vscode-stylelint",
+    "syler.sass-indented",
+    "csstools.postcss",
+    "ms-vscode.makefile-tools",
+    "ms-azuretools.vscode-docker",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag"
+  ]
+}
