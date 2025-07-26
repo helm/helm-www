@@ -42,12 +42,12 @@ helm package <chart-path>               # Packages a chart into a versioned char
 helm lint <chart>                       # Run tests to examine a chart and identify possible issues:
 helm show all <chart>                   # Inspect a chart and list its contents:
 helm show values <chart>                # Displays the contents of the values.yaml file
-helm pull <chart>                       # Download/pull chart 
+helm pull <chart>                       # Download/pull chart
 helm pull <chart> --untar=true          # If set to true, will untar the chart after downloading it
 helm pull <chart> --verify              # Verify the package before using it
 helm pull <chart> --version <number>    # Default-latest is used, specify a version constraint for the chart version to use
 helm dependency list <chart>            # Display a list of a chart’s dependencies:
-``` 
+```
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 安装和卸载应用
@@ -58,7 +58,7 @@ helm install <name> <chart> --namespace <namespace>   # Install the chart in a s
 helm install <name> <chart> --set key1=val1,key2=val2 # Set values on the command line (can specify multiple or separate values with commas)
 helm install <name> <chart> --values <yaml-file/url>  # Install the chart with your specified values
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
-helm install <name> <chart> --verify                  # Verify the package before using it 
+helm install <name> <chart> --verify                  # Verify the package before using it
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
 helm uninstall <name>                                 # Uninstall a release
 ```
@@ -69,7 +69,7 @@ helm uninstall <name>                                 # Uninstall a release
 
 ```bash
 helm upgrade <release> <chart>                            # Upgrade a release
-helm upgrade <release> <chart> --atomic                   # If set, upgrade process rolls back changes made in case of failed upgrade.
+helm upgrade <release> <chart> --rollback-on-failure      # If set, upgrade process rolls back changes made in case of failed upgrade.
 helm upgrade <release> <chart> --dependency-update        # update dependencies if they are missing before installing the chart
 helm upgrade <release> <chart> --version <version_number> # specify a version constraint for the chart version to use
 helm upgrade <release> <chart> --values                   # specify values in a YAML file or a URL (can specify multiple)
