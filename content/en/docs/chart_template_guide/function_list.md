@@ -701,6 +701,7 @@ The following type conversion functions are provided by Helm:
 - `fromJson`: Convert a JSON string to an object.
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
 - `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
 - `fromYamlArray`: Convert a YAML array to a list.
 
@@ -824,6 +825,32 @@ The `fromJsonArray` function takes a JSON Array and returns a list that can be u
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
 {{ end }}
+```
+
+### toYaml, toYamlPretty
+
+The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, dict, or object) into an indented YAML string.
+
+> Note that `toYamlPretty` is functionally equivalent but will output YAML with additional indents for list elements
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
 ```
 
 ### fromYamlArray
@@ -1578,7 +1605,7 @@ $myList := list 1 2 3 4 5
 The above creates a list of `[1 2 3 4 5]`.
 
 Helm provides the following list functions: [append
-(mustAppend)](#append-mustappend), [compact
+(mustAppend)](#append-mustappend), [chunk](#chunk), [compact
 (mustCompact)](#compact-mustcompact), [concat](#concat), [first
 (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
@@ -1794,6 +1821,16 @@ seq 2 -2    => 2 1 0 -1 -2
 seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
+
+### chunk
+
+To split a list into chunks of given size, use `chunk size list`. This is useful for pagination.
+
+```
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
 ## Math Functions
 
