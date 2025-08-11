@@ -57,7 +57,8 @@ helm install <name> <chart> --values <yaml-file/url>  # Install the chart with y
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
 helm install <name> <chart> --verify                  # Verify the package before using it 
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
-helm uninstall <name>                                 # Uninstall a release
+helm uninstall <name>                                 # Uninstalls a release from the current (default) namespace
+helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Perform App Upgrade and Rollback
