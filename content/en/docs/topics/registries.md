@@ -134,6 +134,7 @@ Support for the `oci://` protocol is also available in various other subcommands
 Here is a complete list:
 
 - `helm pull`
+- `helm push`
 - `helm show `
 - `helm template`
 - `helm install`
