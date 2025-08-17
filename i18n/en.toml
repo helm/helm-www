@@ -45,7 +45,7 @@ other = "What is Helm?"
 
 [main_what_is_helm_description]
 other = """
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. 
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
 
 Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
 
@@ -221,3 +221,42 @@ other = "**404** **Page not found.**"
 
 [404_subtitle]
 other = "Sorry about that. If something is broken please [report it here](https://github.com/helm/helm-www/issues/new)."
+
+# quicklinks section
+[quicklinks_section_title]
+other = "Quicklinks"
+
+[quicklink_quickstart_title]
+other = "Quickstart Guide"
+[quicklink_quickstart_desc]
+other = "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
+[quicklink_quickstart_url]
+other = "/docs/intro/quickstart"
+
+[quicklink_charts_title]
+other = "Chart Guide"
+[quicklink_charts_desc]
+other = "Practical steps for building Helm charts—how to structure, sign, and sync your charts."
+[quicklink_charts_url]
+other = "/docs/topics/charts"
+
+[quicklink_video_intro_title]
+other = "Video: Intro to Helm"
+[quicklink_video_intro_desc]
+other = "Watch Matt Farina and Josh Dolitsky present an introduction to Helm at KubeCon 2019."
+[quicklink_video_intro_url]
+other = "https://www.youtube.com/watch?v=Zzwq9FmZdsU"
+
+[quicklink_v2_v3_migration_title]
+other = "Migrating from v2 to v3"
+[quicklink_v2_v3_migration_desc]
+other = "Read our blog post on how to migrate from Helm v2 to Helm v3."
+[quicklink_v2_v3_migration_url]
+other = "/blog/migrate-from-helm-v2-to-helm-v3/"
+
+[quicklink_sec_audit_title]
+other = "Helm Security Audit"
+[quicklink_sec_audit_desc]
+other = "Helm has been audited and deemed as recommended for public deployment during a third-party security audit funded by the CNCF."
+[quicklink_sec_audit_url]
+other = "/blog/2019-11-04-helm-security-audit-results/"
