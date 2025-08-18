@@ -132,7 +132,7 @@ default "foo" .Bar
 required "A valid foo is required!" .Bar
 ```
 
-如果 `.Bar` 为空或者未定义（参考 [default](#defualt) 中如何判定该值是否为空），模板将不会渲染，而是返回所提供的错误消息。
+如果 `.Bar` 为空或者未定义（参考 [default](#default) 中如何判定该值是否为空），模板将不会渲染，而是返回所提供的错误消息。
 
 ### empty
 
