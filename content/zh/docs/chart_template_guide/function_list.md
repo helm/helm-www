@@ -29,7 +29,7 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 
 Helm 包括了需要逻辑和流控制函数，包括[and](#and),[coalesce](#coalesce), [default](#default),
 [empty](#empty), [eq](#eq),[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt),
-[ne](#ne), [not](#not), and [or](#or)。
+[ne](#ne), [not](#not), [or](#or) 和 [required](#required)。
 
 ### and
 
@@ -123,6 +123,16 @@ default "foo" .Bar
 * 以及所有的`nil` (或 null)
 
 对于结构体，没有空的定义，所以结构体从来不会返回默认值。
+
+### required
+
+使用 `required` 标明必须设置的值：
+
+```
+required "A valid foo is required!" .Bar
+```
+
+如果 `.Bar` 为空或者未定义（参考 [default](#defualt) 中如何判定该值是否为空），模板将不会渲染，而是返回所提供的错误消息。
 
 ### empty
 
