@@ -100,8 +100,7 @@ winget install Helm.Helm
 
 ### From Apt (Debian/Ubuntu)
 
-Members of the Helm community have contributed a [Helm
-package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is
+Members of the Helm community have contributed an Apt package for Debian/Ubuntu. This package is
 generally up to date. Thanks to Buildkite for hosting the repo.
 
 ```console
