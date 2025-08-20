@@ -642,8 +642,9 @@ Helm пропонує такі функції для перетворення т
 * `fromYaml`: Перетворює YAML рядок на обʼєкт.
 * `fromJson`: Перетворює JSON рядок на обʼєкт.
 * `fromJsonArray`: Перетворює JSON масив на список.
-* `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт на відформатований YAML.
-* `toToml`: Перетворює список, зріз, масив, словник або обʼєкт на TOML.
+* `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт на відформатований YAML, який може використовуватися для копіювання фрагментів YAML з будь-якого джерела. Ця функція еквівалентна функції GoLang yaml.Marshal, див. документацію тут: <https://pkg.go.dev/gopkg.in/yaml.v2#Marshal>
+* `toYamlPretty`: Перетворює список, зріз, масив, словник або обʼєкт на YAML з відступами. Еквівалентно `toYaml`, але додатково робить відступи для списків у 2 пробіли.
+* `toToml`: Перетворює список, зріз, масив, словник або обʼєкт у toml, що можна використовувати для копіювання фрагментів toml з будь-якого джерела.
 * `fromYamlArray`: Перетворює YAML масив на список.
 
 ### toStrings
@@ -711,7 +712,7 @@ hobbies:
   - cooking
 ```
 
-```yaml 
+```yaml
 {{- $person := .Files.Get "yamls/person.yaml" | fromYaml }}
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
@@ -762,6 +763,32 @@ greeting: |
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
 {{ end }}
+```
+
+### toYaml, toYamlPretty
+
+Функції `toYaml` та `toYamlPretty` кодують обʼєкт (список, зріз, масив, словник або обʼєкт) у рядок YAML з відступами.
+
+> Зверніть увагу, що функція `toYamlPretty` є функціонально еквівалентною, але виведе YAML з додатковими відступами для елементів списку.
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
 ```
 
 ### fromYamlArray
@@ -863,7 +890,7 @@ regexSplit "z+" "pizza" -1
 
 ## Функції криптографії та безпеки {#cryptographic-and-security-functions}
 
-Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [sha1sum](#sha1sum), та [sha256sum](#sha256sum).
+Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum) та [sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -900,6 +927,14 @@ htpasswd "myUser" "myPassword"
 ```
 
 Зверніть увагу, що небезпечно зберігати пароль безпосередньо в шаблоні.
+
+### randBytes
+
+Функція randBytes приймає число N і генерує криптографічно захищену (використовує crypto/rand) випадкову послідовність з N байт. Послідовність повертається у вигляді рядка в кодуванні base64.
+
+```yaml
+randBytes 24
+```
 
 ### derivePassword
 
@@ -1405,7 +1440,7 @@ $myList := list 1 2 3 4 5
 
 Це створить список `[1 2 3 4 5]`.
 
-Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
+Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [chunk](#chunk), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
 
 ### first, mustFirst
 
@@ -1595,6 +1630,16 @@ seq 2 -2    => 2 1 0 -1 -2
 seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
+
+### chunk
+
+Щоб розділити список на частини заданого розміру, використовуйте `chunk size list`. Це корисно для пагінації.
+
+```none
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
 ## Математичні функції {#math-functions}
 

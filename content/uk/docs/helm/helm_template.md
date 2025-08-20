@@ -16,7 +16,7 @@ title: "Helm Template"
 helm template [NAME] [CHART] [flags]
 ```
 
-### Параметри
+### Параметри {#options}
 
 ```none
   -a, --api-versions strings                       версії API Kubernetes, які використовуються для Capabilities.APIVersions
@@ -62,6 +62,7 @@ helm template [NAME] [CHART] [flags]
       --skip-crds                                  якщо вказано, CRD не будуть встановлені. Ствндартно CRD встановлюються, якщо ще не присутні
       --skip-schema-validation                     якщо встановлено, вимикає перевірку схеми JSON
       --skip-tests                                 пропустити тести з виводу шаблонів
+      --take-ownership                             якщо встановлено, install проігнорує перевірку на наявність анотацій helm і візьме на себе відповідальність за наявні ресурси.
       --timeout duration                           час очікування для будь-якої окремої операції Kubernetes (наприклад, Jobs для хук) (стандартно 5м0с)
       --username string                            імʼя користувача репозиторію чартів, де знайти запитуваний чарт
       --validate                                   перевірити ваші маніфести на відповідність кластеру Kubernetes, до якого ви в даний час звертаєтеся. Це така ж перевірка, яка виконується при установці
@@ -97,4 +98,4 @@ helm template [NAME] [CHART] [flags]
 
 - [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 січня 2025

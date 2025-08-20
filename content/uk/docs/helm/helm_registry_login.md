@@ -24,6 +24,7 @@ helm registry login [host] [flags]
       --key-file string    ідентифікувати клієнта реєстру за допомогою цього файлу ключа SSL
   -p, --password string    пароль для реєстру або токен ідентифікації
       --password-stdin     зчитати пароль або токен ідентифікації з stdin
+      --plain-http         використовувати незахищені HTTP-зʼєднання для надсилання чартів
   -u, --username string    імʼя користувача реєстру
 ```
 
@@ -52,4 +53,4 @@ helm registry login [host] [flags]
 
 * [helm registry](helm_registry.md) — увійти або вийти з реєстру.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 30 травня 2025
