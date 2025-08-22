@@ -261,7 +261,7 @@ additional user configuration or action.
 
 ### Signatures in OCI-based registries
 
-Whe publishing charts to an [OCI-based registry]({{< ref "registries.md" >}}), the
+When publishing charts to an [OCI-based registry]({{< ref "registries.md" >}}), the
 [`helm-sigstore` plugin](https://github.com/sigstore/helm-sigstore/) can be used 
 to publish provenance to [sigstore](https://sigstore.dev/).  [As described in the
 documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), the
