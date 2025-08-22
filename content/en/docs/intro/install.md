@@ -101,7 +101,7 @@ winget install Helm.Helm
 ### From Apt (Debian/Ubuntu)
 
 Members of the Helm community have contributed an Apt package for Debian/Ubuntu. This package is
-generally up to date. Thanks to Buildkite for hosting the repo.
+generally up to date. Thanks to [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) for hosting the repo.
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes
