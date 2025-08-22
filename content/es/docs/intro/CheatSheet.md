@@ -35,12 +35,12 @@ helm package <chart-path>               # Empaqueta una chart en un archivo char
 helm lint <chart>                       # Ejecuta pruebas para examinar una chart e identificar posibles problemas
 helm show all <chart>                   # Inspeccionar una chart y listar su contenido
 helm show values <chart>                # Muestra el contenido del archivo values.yaml.
-helm pull <chart>                       # Descargar/extraer chart 
+helm pull <chart>                       # Descargar/extraer chart
 helm pull <chart> --untar=true          #  Si se establece en true, se desempaquetará la chart después de descargar
 helm pull <chart> --verify              # Verificar el paquete antes de usarlo
 helm pull <chart> --version <number>    # Se usa Default-latest, especifica una restricción de versión para la versión de la chart a usar
 helm dependency list <chart>            # Mostrar una lista de las dependencias de una chart
-``` 
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Instalar y desinstalar aplicaciones
@@ -51,7 +51,7 @@ helm install <name> <chart> --namespace <namespace>   # Instalar la chart en un 
 helm install <name> <chart> --set key1=val1,key2=val2 # Establecer valores en la línea de comandos (se pueden especificar varios valores o separarlos con comas)
 helm install <name> <chart> --values <yaml-file/url>  # Instalar la chart con los valores especificados
 helm install <name> <chart> --dry-run --debug         # Ejecuta una instalación de prueba para validar la chart (p)
-helm install <name> <chart> --verify                  # Verificar el paquete antes de usarlo 
+helm install <name> <chart> --verify                  # Verificar el paquete antes de usarlo
 helm install <name> <chart> --dependency-update       # actualizar dependencias si faltan antes de instalar la chart
 helm uninstall <name>                                 # Desinstalar una release
 ```
@@ -60,7 +60,7 @@ helm uninstall <name>                                 # Desinstalar una release
 
 ```bash
 helm upgrade <release> <chart>                            # Actualizar una release
-helm upgrade <release> <chart> --atomic                   # Si se establece, el proceso de actualización deshace los cambios realizados en caso de actualización fallida.
+helm upgrade <release> <chart> --rollback-on-failure      # Si se establece, el proceso de actualización deshace los cambios realizados en caso de actualización fallida.
 helm upgrade <release> <chart> --dependency-update        # Actualiza las dependencias si faltan antes de instalar la chart
 helm upgrade <release> <chart> --version <version_number> # especifica una restricción de versión para la versión de la chart a usar
 helm upgrade <release> <chart> --values                   # especificar valores en un archivo YAML o una URL (puede especificar múltiple
@@ -68,7 +68,7 @@ helm upgrade <release> <chart> --set key1=val1,key2=val2  # Establecer valores e
 helm upgrade <release> <chart> --force                    # Forzar actualizaciones de recursos mediante una estrategia de reemplazo.
 helm rollback <release> <revision>                        # Retroceder una versión a una revisión específica
 helm rollback <release> <revision>  --cleanup-on-fail     # Permitir el borrado de nuevos recursos creados en este rollback cuando el rollback falla
-``` 
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Listar, añadir, eliminar y actualizar repositorios
 
