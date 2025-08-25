@@ -103,3 +103,4 @@ Phase:          Succeeded
 - A test is a [Helm hook](/docs/charts_hooks/), so annotations like
   `helm.sh/hook-weight` and `helm.sh/hook-delete-policy` may be used with test
   resources.
+- Often the contents in the `tests/` directory does not need to be packaged and published. Consider adding `tests/` to the `.helmignore` file.
