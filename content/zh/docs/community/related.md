@@ -23,15 +23,13 @@ chart的helm v3插件。
   Prometheus/ElasticSearch的用于监控版本发布和回滚的插件
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - 该插件用于管理已部署的release，更新release值，拉取（重建）helm chart，以及设置helm release TTL。
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - 允许使用AWS S3作为[私有]chart仓库的插件
-- [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - 为Helm
-  3生成values的yaml框架的插件
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - 安全存储密钥的插件
   （基于[sops](https://github.com/mozilla/sops)）
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) - Helm集成[sigstore](https://sigstore.dev/)生态的插件。
 用于搜索、上传及验证已签名的Helm chart。
 - [helm-tanka](https://github.com/Duologic/helm-tanka) - 在Helm chart中渲染Tanka/Jsonnet的插件
 - [hc-unit](https://github.com/xchapter7x/hcunit) - 使用OPA (Open Policy Agent) 和 Rego本地进行chart单元测试的插件
-- [helm-unittest](https://github.com/quintush/helm-unittest) - 使用YAML本地进行chart单元测试的插件
+- [helm-unittest](https://github.com/helm-unittest/helm-unittest) - 使用YAML本地进行chart单元测试的插件
 - [helm-val](https://github.com/HamzaZo/helm-val) - 从之前的版本中获取值的插件
 - [helm-external-val](https://github.com/kuuji/helm-external-val) - 从外部资源（configMaps，
 Secrets等）获取Helm values的插件
