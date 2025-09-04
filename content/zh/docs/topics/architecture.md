@@ -4,8 +4,6 @@ description: "Describes the Helm architecture at a high level."
 weight: 8
 ---
 
-# Helm 架构
-
 本文从较高的层次描述Helm的体系结构。
 
 ## Helm的目标
