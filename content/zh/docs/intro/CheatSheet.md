@@ -1,3 +1,9 @@
+---
+title: "速查表"
+description: "Helm 速查表"
+weight: 1
+---
+
 # 速查表 - HELM
 
 Helm 速查表包含了通过Helm管理应用的所有必需命令。
