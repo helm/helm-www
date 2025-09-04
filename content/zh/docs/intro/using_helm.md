@@ -113,7 +113,7 @@ To access your WordPress site from outside the cluster follow the steps below:
 ```
 
 现在`wordpress` chart 已经安装。注意安装chart时创建了一个新的 _release_ 对象。上述发布被命名为 `happy-panda`。
-（如果想让Helm生成一个名称，删除发布名称并使用`--generate-name`。）
+（如果想让Helm为你自动生成一个名称，删除发布名称参数`happy-panda`并使用`--generate-name`。）
 
 在安装过程中，`helm` 客户端会打印一些有用的信息，其中包括：哪些资源已经被创建，release当前的状态，以及你是否还需要执行额外的配置步骤。
 
@@ -308,7 +308,7 @@ servers:
 name: "value1,value2"
 ```
 
-类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
+类似的，你也可以转义点`.`符号（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
 node selectors 时派上用场。`--set nodeSelector."kubernetes\.io/role"=master` 语法就变成了：
 
 ```yaml
