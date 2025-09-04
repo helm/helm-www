@@ -1,7 +1,7 @@
 ---
 title: "速查表"
 description: "Helm 速查表"
-weight: 1
+weight: 4
 ---
 
 # 速查表 - HELM
