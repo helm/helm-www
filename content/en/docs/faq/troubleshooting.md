@@ -5,9 +5,9 @@ weight: 4
 
 ## Troubleshooting
 
-#### `helm plugin install <git-url>` fails copying `.git/fsmonitor--daemon.ipc` (Helm versions below v3.19.0)
+#### `helm plugin install <git-url>` fails copying `.git/fsmonitor--daemon.ipc` (Helm versions below v3.19.1)
 
-When using Helm versions below v3.19.0 with Git Filesystem Monitor enabled, `helm plugin install <git-url>` may fail trying to copy the `.git/fsmonitor--daemon.ipc` UNIX domain socket file. This socket is created by Git for inter-process communication and cannot be copied like a regular file.
+When using Helm versions below v3.19.1 with Git Filesystem Monitor enabled, `helm plugin install <git-url>` may fail trying to copy the `.git/fsmonitor--daemon.ipc` UNIX domain socket file. This socket is created by Git for inter-process communication and cannot be copied like a regular file.
 
 The error will look something like:
 
@@ -21,7 +21,7 @@ Check your Helm version:
 $ helm version
 ```
 
-If you're using a version below v3.19.0 and Git Filesystem Monitor is enabled:
+If you're using a version below v3.19.1 and Git Filesystem Monitor is enabled:
 
 ```
 $ git config --get core.fsmonitor
@@ -35,7 +35,7 @@ $ helm plugin install <git-url>  # Run your helm plugin install command
 $ git config core.fsmonitor true  # Re-enable if needed
 ```
 
-Note: This issue has been fixed in Helm v3.19.0+. If possible, upgrade to v3.19.0 or later to avoid this problem:
+Note: This issue has been fixed in Helm v3.19.1+. If possible, upgrade to v3.19.1 or later to avoid this problem:
 
 ### I am getting a warning about "Unable to get an update from the "stable" chart repository"
 
