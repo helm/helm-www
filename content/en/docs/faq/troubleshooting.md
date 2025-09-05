@@ -5,23 +5,55 @@ weight: 4
 
 ## Troubleshooting
 
+#### `helm plugin install <git-url>` fails copying `.git/fsmonitor--daemon.ipc` (Helm versions below v3.19.0)
+
+When using Helm versions below v3.19.0 with Git Filesystem Monitor enabled, `helm plugin install <git-url>` may fail trying to copy the `.git/fsmonitor--daemon.ipc` UNIX domain socket file. This socket is created by Git for inter-process communication and cannot be copied like a regular file.
+
+The error will look something like:
+
+```
+Error: copying directory failed: copying file failed: open /Users/name/Library/Caches/helm/plugins/https-github.com-helm-unittest-helm-unittest.git/.git/fsmonitor--daemon.ipc: operation not supported on socket
+```
+
+Check your Helm version:
+
+```
+$ helm version
+```
+
+If you're using a version below v3.19.0 and Git Filesystem Monitor is enabled:
+
+```
+$ git config --get core.fsmonitor
+```
+
+If it returns true, the monitor is enabled. You can temporarily disable it:
+
+```
+$ git config core.fsmonitor false
+$ helm plugin install <git-url>  # Run your helm plugin install command
+$ git config core.fsmonitor true  # Re-enable if needed
+```
+
+Note: This issue has been fixed in Helm v3.19.0+. If possible, upgrade to v3.19.0 or later to avoid this problem:
+
 ### I am getting a warning about "Unable to get an update from the "stable" chart repository"
 
 Run `helm repo list`. If it shows your `stable` repository pointing to a `storage.googleapis.com` URL, you
 will need to update that repository. On November 13, 2020, the Helm Charts repo [became unsupported](https://github.com/helm/charts#deprecation-timeline) after a year-long deprecation. An archive has been made available at
-`https://charts.helm.sh/stable` but will no longer receive updates. 
+`https://charts.helm.sh/stable` but will no longer receive updates.
 
 You can run the following command to fix your repository:
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 The same goes for the `incubator` repository, which has an archive available at https://charts.helm.sh/incubator.
 You can run the following command to repair it:
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### I am getting the warning 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'
@@ -31,18 +63,18 @@ The old Google helm chart repository has been replaced by a new Helm chart repos
 Run the following command to permanently fix this:
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 If you get a similar error for `incubator`, run this command:
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### When I add a Helm repo, I get the error 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'
 
-The Helm Chart repositories are no longer supported after [a year-long deprecation period](https://github.com/helm/charts#deprecation-timeline). 
+The Helm Chart repositories are no longer supported after [a year-long deprecation period](https://github.com/helm/charts#deprecation-timeline).
 Archives for these repositories are available at `https://charts.helm.sh/stable` and `https://charts.helm.sh/incubator`, however they will no longer receive updates. The command
 `helm repo add` will not let you add the old URLs unless you specify `--use-deprecated-repos`.
 
