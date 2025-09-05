@@ -158,9 +158,10 @@
     // versioning dropdown
     ul.dropdown-menu {
       padding: 0;
-      margin: 0 0 0 1rem;
+      right: 0;
+      left: auto;
+      margin: 0.2rem 0.6rem 0 0;
       text-align: left;
-      min-width: 12.5rem;
       
       li {
         margin: 0;
