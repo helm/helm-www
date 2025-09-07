@@ -55,7 +55,7 @@ version = "v2.17.0"
 url = "https://v2.helm.sh/docs"
 
 [params.nextversion]
-version = "v3.18.0"
+version = "v3.19.0"
 date = "May 14, 2025"
 
 [[params.quicklinks]]
