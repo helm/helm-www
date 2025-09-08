@@ -7,8 +7,6 @@ aliases: [
 ]
 ---
 
-# Frequently Asked Questions
-
 > This section provides help with the most common questions.
 
 **We'd love your help** making this document better. To add, correct, or remove

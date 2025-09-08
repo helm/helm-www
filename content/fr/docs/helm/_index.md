@@ -5,6 +5,4 @@ weight: 6
 slug: helm
 ---
 
-# Commandes Helm
-
 Vous trouverez ici la liste des commandes CLI helm, avec l'aide sur leur utilisation

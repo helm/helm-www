@@ -5,6 +5,4 @@ weight: 6
 slug: helm
 ---
 
-# Helm 命令行
-
 这里可以看到 Helm 命令行列表和使用帮助。

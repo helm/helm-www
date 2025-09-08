@@ -3,8 +3,6 @@ title: "Fragen und Antworten"
 weight: 8
 ---
 
-# Fragen und Antworten
-
 > Was sind die Kernunterschiede zwischen Helm 2 und Helm 3?
 > Diese Seite bietet Antworten zu oft gestelten Fragen (FAQ)
 
