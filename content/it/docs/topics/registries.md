@@ -93,7 +93,7 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### Il sottocomando `push
+### Il sottocomando `push`
 
 Carica un chart in un registry basato su OCI:
 
