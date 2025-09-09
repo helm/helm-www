@@ -100,14 +100,13 @@ winget install Helm.Helm
 
 ### From Apt (Debian/Ubuntu)
 
-Members of the Helm community have contributed a [Helm
-package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is
-generally up to date.
+Members of the Helm community have contributed an Apt package for Debian/Ubuntu. This package is
+generally up to date. Thanks to [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) for hosting the repo.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```
