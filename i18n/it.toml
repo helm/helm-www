@@ -90,7 +90,7 @@ other = "Usate `helm rollback` per tornare facilmente a una versione precedente 
 other = "Prendete Helm!"
 
 [get_helm_desc]
-other = "Installate Helm con un gestore pacchetti o [scaricate un binario].(https://github.com/helm/helm/releases/latest)."
+other = "Installate Helm con un gestore pacchetti o [scaricate un binario](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
 other = "Una volta installato, scompattate il binario di helm e aggiungetelo al vostro PATH e sarete pronti a partire! Consultate la [documentazione](/docs/intro/install/) per ulteriori informazioni e [istruzioni d'uso](/docs/intro/using_helm/)."
