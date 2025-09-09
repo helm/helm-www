@@ -1030,7 +1030,7 @@ specificare un "chart iniziale". Inoltre, l'opzione starter ha un alias breve `-
 
 Esempi di utilizzo:
 
-``console
+```console
 helm create my-chart --starter starter-name
 helm create my-chart -p starter-name
 helm create my-chart -p /absolute/path/to/starter-name
