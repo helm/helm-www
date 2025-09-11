@@ -133,19 +133,19 @@ other = "Events"
 other = "Upcoming Events"
 
 [community_upcoming_events_desc]
-other = "_Nov 14th 2024_ - [KubeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)"
+other = "_Nov 10-13th 2025_ - [KubeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)"
 
 [community_past_events_title]
 other = "Past Events"
 
 [community_past_event_01]
-other = "_Feb 25th 2020_ - [Helm Security Webinar](https://www.cncf.io/webinars/helm-security-a-look-below-deck/)"
+other = "_Apr 1-4th 2025_ - [KubeCon Europe 2025](https://events.linuxfoundation.org/archive/2025/kubecon-cloudnativecon-europe/)"
 
 [community_past_event_02]
-other = "_Nov 18th 2019_ - [KubeCon North America](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/)"
+other = "_Nov 12-15th 2024_ - [KubeCon North America 2024](https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-north-america/)"
 
 [community_past_event_03]
-other = "_Sep 11th 2019_ - [Helm Summit 2019](https://events19.linuxfoundation.org/events/helm-summit-2019/)"
+other = "_May 19-22nd 2024_ - [KubeCon Europe 2024](https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-europe/)"
 
 [community_sig_title]
 other = "SIG Apps"
