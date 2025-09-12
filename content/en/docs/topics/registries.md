@@ -60,6 +60,7 @@ There are several hosted container registries with OCI support that you can use 
 - [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
 - [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
+- [RepoFlow](https://docs.repoflow.io/PackageTypes/helm#oci-helm-support)
   
 
 Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
