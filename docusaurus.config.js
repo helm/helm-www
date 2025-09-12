@@ -111,7 +111,7 @@ const config = {
             // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
             // and v5 will then live in /docs
             current: { label: "4.0.0-rc.1 🚧" },
-            3: { label: "3.19.0" },
+            3: { label: "3.19.1" },
             2: { label: "2.17.0", path: "v2" },
           },
         },
