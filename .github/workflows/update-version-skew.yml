@@ -5,6 +5,15 @@ on:
     # Run daily at 11am UTC (after the docs update workflows)
     - cron: '0 11 * * *'
   workflow_dispatch: # Allow manual trigger
+    inputs:
+      version:
+        description: 'Helm major version to update (v2 or v3)'
+        required: true
+        default: 'v3'
+        type: choice
+        options:
+          - v2
+          - v3
 
 permissions:
   contents: write
@@ -31,7 +40,7 @@ jobs:
           sudo apt-get install -y jq curl
 
       - name: Run version skew update
-        run: make update-version-skew
+        run: make update-version-skew VERSION=${{ inputs.version || 'v3' }}
 
       - name: Check for changes
         id: changes
