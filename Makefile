@@ -27,6 +27,10 @@ check-links-ci: set-up-link-checker run-link-checker
 sdkexamples:
 	make -C sdkexamples
 
+.PHONY: update-version-skew
+update-version-skew:
+	./scripts/update-version-skew.sh
+
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0
 
