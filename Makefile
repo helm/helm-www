@@ -1,3 +1,5 @@
+VERSION = v3
+
 clean:
 	rm -rf app resources
 
@@ -29,7 +31,7 @@ sdkexamples:
 
 .PHONY: update-version-skew
 update-version-skew:
-	./scripts/update-version-skew.sh
+	./scripts/update-version-skew.sh $(VERSION)
 
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0

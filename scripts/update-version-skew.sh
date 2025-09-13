@@ -13,7 +13,7 @@
 # 4. Calculates supported Kubernetes versions using Helm's n-3 support policy
 # 5. Updates the version skew table in content/en/docs/topics/version_skew.md
 #
-# Usage: ./update-version-skew.sh
+# Usage: ./update-version-skew.sh <v2|v3>
 #
 # The script follows Helm's support policy where each version supports the
 # Kubernetes version it was built against plus the 3 prior minor versions.
@@ -23,7 +23,14 @@
 #
 set -euo pipefail
 
-HELM_MAJOR_VERSION=v3
+# Validate command line arguments
+if [ $# -ne 1 ] || { [ "$1" != "v2" ] && [ "$1" != "v3" ]; }; then
+    echo "Usage: $0 <v2|v3>" >&2
+    echo "Specify either 'v2' or 'v3' to update version skew for that major version" >&2
+    exit 1
+fi
+
+HELM_MAJOR_VERSION="$1"
 
 # Colors for output
 RED='\033[0;31m'
