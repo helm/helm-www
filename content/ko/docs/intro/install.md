@@ -95,12 +95,12 @@ winget install Helm.Helm
 
 ### Apt로 (데비안/우분투)
 
-헬름 커뮤니티 멤버들은 Debian/Ubuntu용 Apt [헬름 패키지](https://helm.baltorepo.com/stable/debian/)를 기여했습니다. 이 패키지는 일반적으로 최신 상태로 유지됩니다.
+헬름 커뮤니티 멤버들은 Debian/Ubuntu용 Apt 패키지를 기여했습니다. 이 패키지는 일반적으로 최신 상태로 유지됩니다. 저장소 호스팅을 제공해준 [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian)에 감사드립니다.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```
