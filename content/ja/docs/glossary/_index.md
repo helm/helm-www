@@ -4,8 +4,6 @@ description: "Helm のアーキテクチャのコンポーネントを説明す�
 weight: 9
 ---
 
-# 用語集
-
 ## チャート
 
 Kubernetes リソースのセットを Kubernetes クラスターにインストールするのに

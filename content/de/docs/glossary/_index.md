@@ -4,8 +4,6 @@ description: "Benutzte Ausdrücke zur Beschreibung der Komponenten der Helm Arch
 weight: 9
 ---
 
-# Glossar
-
 ## Chart
 
 Ein Helm Paket was Informationen zum Installieren eines Sets von Kubernetes Resourcen
