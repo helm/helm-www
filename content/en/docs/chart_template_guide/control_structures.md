@@ -9,7 +9,7 @@ template author, with the ability to control the flow of a template's
 generation. Helm's template language provides the following control structures:
 
 - `if`/`else` for creating conditional blocks
-- `with` to specify a scope
+- `with`/`else` to run a block of code with a user-provided value for the "dot" context 
 - `range`, which provides a "for each"-style loop
 
 In addition to these, it provides a few actions for declaring and using named
@@ -253,23 +253,24 @@ instead of trying to master the spacing of template directives. For that reason,
 you may sometimes find it useful to use the `indent` function (`{{ indent 2
 "mug:true" }}`).
 
-## Modifying scope using `with`
+## Running a block with a different dot context using `with`
 
-The next control structure to look at is the `with` action. This controls
-variable scoping. Recall that `.` is a reference to _the current scope_. So
-`.Values` tells the template to find the `Values` object in the current scope.
+The next control structure to look at is the `with` action. When Helm renders templates, it provides context objects 
+in a data structure called "dot", represented by a period `.`. For example,
+`.Values` refers to the `Values` object in the current context. It also sets `$` to the starting value of dot, 
+discussed in more detail below.
 
 The syntax for `with` is similar to a simple `if` statement:
 
 ```
 {{ with PIPELINE }}
-  # restricted scope
+  # code with altered dot
 {{ end }}
 ```
 
-Scopes can be changed. `with` can allow you to set the current scope (`.`) to a
-particular object. For example, we've been working with `.Values.favorite`.
-Let's rewrite our ConfigMap to alter the `.` scope to point to
+The `with` block performs two functions: conditional execution and temporarily setting dot to a different value.
+In the scope of the `with` statement, dot is set to the value of the given `PIPELINE`. For example, 
+we've been working with `.Values.favorite`. Let's rewrite our ConfigMap to alter the `.` context to point to
 `.Values.favorite`:
 
 ```yaml
@@ -286,15 +287,15 @@ data:
 ```
 
 Note that we removed the `if` conditional from the previous exercise
-because it is now unnecessary - the block after `with` only executes
+because it is now unnecessary - the block inside `with` only executes
 if the value of `PIPELINE` is not empty.
 
 Notice that now we can reference `.drink` and `.food` without qualifying them.
-That is because the `with` statement sets `.` to point to `.Values.favorite`.
-The `.` is reset to its previous scope after `{{ end }}`.
+That is because our code's `with` statement sets `.` to point to `.Values.favorite`.
+The `.` is reset to its previous value after `{{ end }}`.
 
-But here's a note of caution! Inside of the restricted scope, you will not be
-able to access the other objects from the parent scope using `.`. This, for
+But here's a note of caution! Inside the `with` block, our example code cannot
+access objects from the original dot context via `.`. This, for
 example, will fail:
 
 ```yaml
@@ -305,9 +306,11 @@ example, will fail:
   {{- end }}
 ```
 
-It will produce an error because `Release.Name` is not inside of the restricted
-scope for `.`. However, if we swap the last two lines, all will work as expected
-because the scope is reset after `{{ end }}`.
+It will produce an error because `Release.Name` is not inside of the current value of `.`.
+The expression `.Release.Name` inside our `with` statement is the same as `.Values.favorite.Release.Name` 
+outside the `with`, which of course does not exist.
+However, if we swap the last two lines, all will work as expected
+because `.` is reset after `{{ end }}`.
 
 ```yaml
   {{- with .Values.favorite }}
@@ -317,9 +320,9 @@ because the scope is reset after `{{ end }}`.
   release: {{ .Release.Name }}
 ```
 
-Or, we can use `$` for accessing the object `Release.Name` from the parent
-scope. `$` is mapped to the root scope when template execution begins and it
-does not change during template execution. The following would work as well:
+When Helm starts rendering templates (and temporarily when named templates are rendered with `template` or `include`)
+it sets `$` to the starting value of dot. Statements such as `with` and `range` do not alter the value of `$`.
+Therefore, we can use `$` inside our `with` for accessing the object `Release.Name` as follows:
 
 ```yaml
   {{- with .Values.favorite }}
@@ -329,8 +332,10 @@ does not change during template execution. The following would work as well:
   {{- end }}
 ```
 
+`with` also supports an `else` block which runs when the value of the `PIPELINE` is empty, without altering dot.
+
 After looking at `range`, we will take a look at template variables, which offer
-one solution to the scoping issue above.
+another solution to the scoping issue above.
 
 ## Looping with the `range` action
 
@@ -373,9 +378,9 @@ data:
 
 ```
 
-We can use `$` for accessing the list `Values.pizzaToppings` from the parent
-scope. `$` is mapped to the root scope when template execution begins and it
-does not change during template execution. The following would work as well:
+We can use `$` for accessing the list `Values.pizzaToppings` from the initial context.
+As explained in the section above about `with`, when Helm starts rendering templates, and when named templates are 
+rendered with `template` or `include`, it sets `$` to the starting value of dot. The following would work as well:
 
 ```yaml
 apiVersion: v1
@@ -396,8 +401,8 @@ data:
 
 Let's take a closer look at the `toppings:` list. The `range` function will
 "range over" (iterate through) the `pizzaToppings` list. But now something
-interesting happens. Just like `with` sets the scope of `.`, so does a `range`
-operator. Each time through the loop, `.` is set to the current pizza topping.
+interesting happens. In the same way that `with` sets `.`, so too does `range`.
+Each time through the loop, `.` is set to the current pizza topping.
 That is, the first time, `.` is set to `mushrooms`. The second iteration it is
 set to `cheese`, and so on.
 
