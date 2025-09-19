@@ -175,7 +175,7 @@ Status: Downloaded newer chart for localhost:5000/myrepo/mychart:2.7.0
 사양](https://github.com/opencontainers/image-spec/blob/main/image-layout.md)은
 파일시스템 레이아웃에 엄격하게 적용되는데, 예를 들면 다음과 같다.
 ```console
-$ tree ~/Library/Caches/helm/
+$ tree ~/.cache/helm/
 /Users/myuser/Library/Caches/helm/
 └── registry
     ├── cache
@@ -193,7 +193,7 @@ $ tree ~/Library/Caches/helm/
 모든 헬름 차트 매니페스트에 대한 참조(ref)를 포함하는 예시 index.json:
 
 ```console
-$ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
+$ cat ~/.cache/helm/registry/cache/index.json  | jq
 {
   "schemaVersion": 2,
   "manifests": [
@@ -212,7 +212,7 @@ $ cat ~/Library/Caches/helm/registry/cache/index.json  | jq
 헬름 차트 매니페스트 예시 ('mediaType' 필드를 주목하자):
 
 ```console
-$ cat ~/Library/Caches/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
+$ cat ~/.cache/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790122269a1b3b458607dbe106aba7059ef | jq
 {
   "schemaVersion": 2,
   "config": {

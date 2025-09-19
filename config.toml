@@ -45,7 +45,7 @@ jsFiles = [
 ]
 
 [[params.versions]]
-version = "v3.17.0"
+version = "v3.19.0"
 patch = "stable"
 url = "https://helm.sh/docs"
 primary = true
@@ -55,8 +55,8 @@ version = "v2.17.0"
 url = "https://v2.helm.sh/docs"
 
 [params.nextversion]
-version = "v3.18.0"
-date = "May 14, 2025"
+version = "v4.0.0"
+date = "November, 2025"
 
 [[params.quicklinks]]
 title = "Quickstart Guide"
@@ -80,7 +80,7 @@ url = "/blog/migrate-from-helm-v2-to-helm-v3/"
 
 [[params.quicklinks]]
 title = "Helm Security Audit"
-description = "Helm has been audited and deemed as recommended for public deployment  during a third-party security audit funded by the CNCF."
+description = "Helm has been audited and deemed as recommended for public deployment during a third-party security audit funded by the CNCF."
 url = "/blog/2019-11-04-helm-security-audit-results/"
 
 # Multilingual configuration
