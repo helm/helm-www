@@ -10,7 +10,7 @@ Helm.sh는 사용자 지정 테마를 사용하여 구축된 간단한 [휴고(H
 
 ```
 brew install hugo
-yarn install
+npm install
 ```
 
 설치 후에 사이트를 로컬에서 컴파일하고 실행할 수 있습니다.

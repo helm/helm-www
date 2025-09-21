@@ -2,7 +2,6 @@
 .jekyll-metadata
 rootfs/svc
 .sass-cache/
-.yarnclean
 _site/*
 _site/
 .hugo_build.lock
