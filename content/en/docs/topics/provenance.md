@@ -60,9 +60,13 @@ can use `gpg --list-secret-keys` to list the keys you have.
 the default location  `~/.gnupg/pubring.kbx`. Please use the following command
 to convert your keyring to the legacy gpg format:
 
+**Warning:** Helm cannot sign packages if there is an ed25519 key inside your
+keyring. Please only export the gpg keys that you will use for signing by using
+the `--export-filter keep-uid` option:
+
 ```console
-$ gpg --export >~/.gnupg/pubring.gpg
-$ gpg --export-secret-keys >~/.gnupg/secring.gpg
+$ gpg --export-filter keep-uid="John Smith" --export >~/.gnupg/pubring.gpg
+$ gpg --export-filter keep-uid="John Smith" --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
 At this point, you should see both `mychart-0.1.0.tgz` and
