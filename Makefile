@@ -1,3 +1,5 @@
+VERSION = v3
+
 clean:
 	rm -rf app resources
 
@@ -26,6 +28,10 @@ check-links-ci: set-up-link-checker run-link-checker
 .PHONY: sdkexamples
 sdkexamples:
 	make -C sdkexamples
+
+.PHONY: update-docs
+update-docs:
+	./scripts/update-docs.sh $(VERSION)
 
 serve:
 	hugo server --buildDrafts --buildFuture --bind 0.0.0.0
