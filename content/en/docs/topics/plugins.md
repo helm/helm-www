@@ -57,7 +57,7 @@ https://domain/path/to/plugin.tar.gz`
 ## The Plugin File Structure
 
 In many ways, a plugin is similar to a chart. Each plugin has a top-level
-directory containing a `plugin.yaml` file. Additonal files may be present but
+directory containing a `plugin.yaml` file. Additional files may be present but
 only the `plugin.yaml` file is required.
 
 ```console
@@ -77,25 +77,25 @@ usage: Single line usage text shown in help
 description: Long description shown in places like helm help
 ignoreFlags: Ignore flags passed in from Helm
 platformCommand: # Configure command to run based on the platform
-  - os: OS match, can be empty or ommited to match all OS'
-    arch: Architecture match, can be empty or ommited to match all architectures
+  - os: OS match, can be empty or omitted to match all OS'
+    arch: Architecture match, can be empty or omitted to match all architectures
     command: Plugin command to execute
     args: Plugin command arguments
 command: (DEPRECATED) Plugin command, use platformCommand instead
 platformHooks: # Configure plugin lifecycle hooks based on the platform
   install: # Install lifecycle commands
-    - os: OS match, can be empty or ommited to match all OS'
-      arch: Architecture match, can be empty or ommited to match all architectures
+    - os: OS match, can be empty or omitted to match all OS'
+      arch: Architecture match, can be empty or omitted to match all architectures
       command: Plugin install command to execute
       args: Plugin install command arguments
   update: # Update lifecycle commands
-    - os: OS match, can be empty or ommited to match all OS'
-      arch: Architecture match, can be empty or ommited to match all architectures
+    - os: OS match, can be empty or omitted to match all OS'
+      arch: Architecture match, can be empty or omitted to match all architectures
       command: Plugin update command to execute
       args: Plugin update command arguments
   delete: # Delete lifecycle commands
-    - os: OS match, can be empty or ommited to match all OS'
-      arch: Architecture match, can be empty or ommited to match all architectures
+    - os: OS match, can be empty or omitted to match all OS'
+      arch: Architecture match, can be empty or omitted to match all architectures
       command: Plugin delete command to execute
       args: Plugin delete command arguments
 hooks: # (Deprecated) Plugin lifecycle hooks, use platformHooks instead
@@ -253,7 +253,7 @@ There are some strategies for working with plugin commands:
 
 ### Testing a Local Plugin
 
-First you need to find your `HELM_PLUGINS` path to do it run the folowing command:
+First you need to find your `HELM_PLUGINS` path to do it run the following command:
 
 ``` bash
 helm env
