@@ -47,6 +47,6 @@ This example pulls a chart from an OCI repository
 
 ## Driver
 
-The driver here shows the necessary auxillary functions needed for the Helm SDK actions to function. And shows the above examples in action, to pull, install, update, and uninstall the 'podinfo' chart from an OCI repository.
+The driver here shows the necessary auxiliary functions needed for the Helm SDK actions to function. And shows the above examples in action, to pull, install, update, and uninstall the 'podinfo' chart from an OCI repository.
 
 {{< highlightexamplego file="sdkexamples/main.go" >}}
