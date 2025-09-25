@@ -25,6 +25,15 @@ use of Helm.
 
 See the [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) for the maximum version skew supported between Helm and Kubernetes.
 
+## Try Helm Online
+
+If you want to try Helm without installing anything on your local machine, you can use an online learning platform:
+
+- [KodeKloud Free Playground](https://kodekloud.com/public-playgrounds)
+- [KillerCoda](https://killercoda.com/playgrounds/scenario/kubernetes)
+
+Using an online playground is particularly useful for learning and evaluation purposes before proceeding with a local installation.
+
 ## Install Helm
 
 Download a binary release of the Helm client. You can use tools like `homebrew`,
