@@ -37,7 +37,7 @@ All the download URLs in our [GitHub releases](https://github.com/helm/helm/rele
 1. [Azure CDN](https://azure.microsoft.com/en-ca/services/cdn/)
 1. The domain name `get.helm.sh`
 
-In our release pipeline, Helm 2 and Helm 3 downloads are [uploaded to Azure Blob Storage](https://github.com/helm/helm/commit/022c8869bee37d02cf01507c11c6cfc6d58a1eca) (Helm 2 downloads are also [uploaded to Google Cloud Storage](https://github.com/helm/helm/commit/95775d0c60804b3d3674510e1f57a30ca8074ddd) for backwards compatibililty). Azure CDN serves that content, which is fronted with a custom domain name.
+In our release pipeline, Helm 2 and Helm 3 downloads are [uploaded to Azure Blob Storage](https://github.com/helm/helm/commit/022c8869bee37d02cf01507c11c6cfc6d58a1eca) (Helm 2 downloads are also [uploaded to Google Cloud Storage](https://github.com/helm/helm/commit/95775d0c60804b3d3674510e1f57a30ca8074ddd) for backwards compatibility). Azure CDN serves that content, which is fronted with a custom domain name.
 
 ## Why the new location?
 
