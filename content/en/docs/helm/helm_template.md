@@ -66,7 +66,6 @@ helm template [NAME] [CHART] [flags]
       --skip-crds                                  if set, no CRDs will be installed. By default, CRDs are installed if not already present
       --skip-schema-validation                     if set, disables JSON schema validation
       --skip-tests                                 skip tests from templated output
-      --take-ownership                             if set, install will ignore the check for helm annotations and take ownership of the existing resources
       --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
       --username string                            chart repository username where to locate the requested chart
       --validate                                   validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install
