@@ -44,3 +44,8 @@
   from = "/calendar/release"
   to = "https://calendar.google.com/calendar/u/0/embed?src=8tji8e0obp5skr2pval9g55ftk@group.calendar.google.com"
   status = 302
+
+[[redirects]]
+  from = "/v4-launch-party-sponsorship"
+  to = "https://docs.google.com/document/d/10cyzggPiLeLz169cDF1UaUMmM4uZx6rO3Bw9rRQRjJA/edit?usp=sharing"
+  status = 302
