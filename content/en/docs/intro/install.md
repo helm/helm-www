@@ -111,6 +111,8 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
+However, Ubuntu users may prefer to use the built-in snap packages
+
 ### From dnf/yum (fedora)
 Since Fedora 35, helm is available on the official repository.
 You can install helm with invoking:
@@ -127,6 +129,9 @@ version of the [Helm package](https://snapcraft.io/helm):
 ```console
 sudo snap install helm --classic
 ```
+
+There is another alternative for snap users: If you installed kubernetes with "snap install --classic k8s", then 
+you should already be able to use "k8s helm", just like you already use "k8s kubectl"
 
 ### From pkg (FreeBSD)
 
