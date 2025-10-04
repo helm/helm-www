@@ -22,7 +22,7 @@ guessSyntax = true
 unsafe = true
 
 [Permalinks]
-code = "/:filename/"
+code = "/:contentbasename/"
 
 [params]
 title = "Helm"
