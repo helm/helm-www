@@ -7,7 +7,7 @@ authorlink: "https://bsky.app/profile/karenchu.online"
 date: "2025-03-31"
 ---
 
-It's that time of the year again – the Helm team is headed to KubeCon + CloudNativeCon EU '25 in London, UK this week from April 1 - 4! Helm 4 is in the works for later this year so be sure to join the conversation with our maintainers during our talk sessions and at our Helm booth in the Project Pavilion! See below for more details on all Helm-related activies throughout the week.
+It's that time of the year again – the Helm team is headed to KubeCon + CloudNativeCon EU '25 in London, UK this week from April 1 - 4! Helm 4 is in the works for later this year so be sure to join the conversation with our maintainers during our talk sessions and at our Helm booth in the Project Pavilion! See below for more details on all Helm-related activities throughout the week.
 
 <!--more-->
 
