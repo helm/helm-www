@@ -4,8 +4,6 @@ description: "用于描述Helm体系结构的组件。"
 weight: 9
 ---
 
-# 术语表
-
 ## Chart
 
 Helm包涵盖了将Kubernetes资源安装到Kubernetes集群所需要的足够多的信息。
