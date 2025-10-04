@@ -5,8 +5,6 @@ aliases: ["/docs/architecture/"]
 weight: 8
 ---
 
-# Arquitectura de Helm
-
 Este documento describe la arquitectura de Helm a alto nivel.
 
 ## El propósito de Helm
