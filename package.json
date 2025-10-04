@@ -10,8 +10,8 @@
     "url": "git+https://github.com/helm/helm-www"
   },
   "devDependencies": {
-    "autoprefixer": "9.7.4",
-    "postcss-cli": "7.1.0"
+    "autoprefixer": "^10.4.21",
+    "postcss-cli": "^11.0.1"
   },
   "browserslist": [
     "> 0.5%",

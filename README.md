@@ -10,7 +10,7 @@ Helm.sh is a simple [Hugo](https://gohugo.io/) static site, built with a custom 
 
 ```
 brew install hugo
-yarn install
+npm install
 ```
 
 You can then compile and run the site locally:
