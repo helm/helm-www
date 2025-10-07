@@ -4,9 +4,9 @@ node_modules
 # Ignore any log files
 *.log
 
-# Ignore Dockerfile and .dockerignore itself
-Dockerfile
-.dockerignore
+# Ignore Containerfile and .containerignore itself
+Containerfile
+.containerignore
 
 # Ignore git repository files
 .git
