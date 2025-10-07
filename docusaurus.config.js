@@ -8,6 +8,15 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const siteURL = process.env.SITE_URL || 'http://localhost:3000';
+const rawBaseUrl = process.env.BASE_URL;
+const normalizedBaseUrl =
+  rawBaseUrl === undefined
+    ? '/'
+    : rawBaseUrl.endsWith('/')
+      ? rawBaseUrl
+      : rawBaseUrl + '/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'My Site',
@@ -20,10 +29,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: siteURL,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: normalizedBaseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
