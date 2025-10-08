@@ -1,0 +1,23 @@
+# Ignore node_modules directory
+node_modules
+
+# Ignore any log files
+*.log
+
+# Ignore Containerfile and .containerignore itself
+Containerfile
+.containerignore
+
+# Ignore git repository files
+.git
+.gitignore
+
+# Ignore temporary files
+tmp
+*.tmp
+
+# Ignore build output
+dist
+build
+resources
+app

@@ -1,0 +1,5 @@
+# Global docs replacements - apply to all docs files
+# Format: old_text|new_text
+# Note: Escape special regex characters like parentheses: \( and \)
+
+weight:|sidebar_position:
