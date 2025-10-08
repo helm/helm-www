@@ -1,0 +1,54 @@
+# Per-file docs replacements - apply specific transformations to individual files
+# Format: filename|old_text|new_text
+# Note: Escape special regex characters like parentheses: \( and \)
+
+chart_best_practices/dependencies.md|{{< ref "../topics/plugins#downloader-plugins" >}}|../topics/plugins.md#downloader-plugins
+chart_template_guide/accessing_files.md|{{< ref\n"/docs/chart_template_guide/subcharts_and_globals.md" >}}|subcharts_and_globals.md
+chart_template_guide/builtin_objects.md|{{< ref\n    "/docs/topics/charts.md#the-chartyaml-file" >}}|../topics/charts.md#the-chartyaml-file
+chart_template_guide/builtin_objects.md|{{< ref\n    "/docs/chart_template_guide/accessing_files.md" >}}|accessing_files.md
+chart_template_guide/getting_started.md|../../topics/charts|../topics/charts
+chart_template_guide/getting_started.md|\(_index.md\)|\(../\)
+chart_template_guide/subcharts_and_globals.md|{{< ref\n"/docs/topics/library_charts.md" >}}|../topics/library_charts.md
+chart_template_guide/subcharts_and_globals.md|{{< ref "../topics/charts.md" >}}|../topics/charts.md
+chart_template_guide/wrapping_up.md|../../topics/charts/|../topics/charts.md
+chart_template_guide/wrapping_up.md|../../topics/charts_hooks/|../topics/charts_hooks.md
+chart_template_guide/wrapping_up.md|../../howto/charts_tips_and_tricks/|../howto/charts_tips_and_tricks.md
+chart_template_guide/function_list.md|functions_and_pipelines.md/#using-the-lookup-function|functions_and_pipelines.md#using-the-lookup-function
+howto/chart_repository_sync_example.md|{{< ref\n"/docs/topics/chart_repository.md" >}}|../topics/chart_repository.md
+howto/chart_repository_sync_example.md|{{< ref "/docs/topics/chart_repository.md" >}}|../topics/chart_repository.md
+intro/quickstart.md|{{< ref\n"install.md" >}}|install.md
+intro/quickstart.md|{{< ref "using_helm.md">}}|using_helm.md
+intro/quickstart.md|{{< ref "using_helm.md"\n>}}|using_helm.md
+intro/using_helm.md|{{< ref\n"install.md" >}}|install.md
+intro/using_helm.md|{{< ref "quickstart.md" >}}|quickstart.md
+intro/using_helm.md|{{< ref "../topics/charts.md" >}}|../topics/charts.md
+intro/using_helm.md|{{< ref "/docs/topics/chart_repository.md" >}}|../topics/chart_repository.md
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/install.go" >}}|<Install />
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/upgrade.go" >}}|<Upgrade />
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/uninstall.go" >}}|<Uninstall />
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/list.go" >}}|<List />
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/pull.go" >}}|<Pull />
+sdk/examples.mdx|{{< highlightexamplego file="sdkexamples/main.go" >}}|<Main />
+sdk/gosdk.md|./examples.md|examples.mdx
+topics/advanced.md|/docs/permissions_sql_storage_backend/|permissions_sql_storage_backend.md
+topics/chart_repository.md|{{< ref "/docs/topics/registries.md" >}}|registries.md
+topics/chart_repository.md|{{< ref "quickstart.md" >}}|../intro/quickstart.md
+topics/chart_repository.md|{{< ref "/docs/topics/charts.md" >}}|charts.md
+topics/chart_repository.md|{{< ref "provenance.md" >}}|provenance.md
+topics/chart_repository.md|{{< ref "/docs/howto/chart_releaser_action.md" >}}|../howto/chart_releaser_action.md
+topics/chart_repository.md|{{< ref "/docs/howto/chart_repository_sync_example.md" >}}|../howto/chart_repository_sync_example.md
+topics/chart_tests.md|/docs/helm/helm_create|../commands/helm_create.md
+topics/chart_tests.md|/docs/charts_hooks/|charts_hooks.md
+topics/charts.md|{{< ref\n"/docs/topics/library_charts.md" >}}|library_charts.md
+topics/charts.md|{{< ref "/docs/howto/charts_tips_and_tricks.md" >}}|../howto/charts_tips_and_tricks.md
+topics/charts.md|{{< ref\n"/docs/howto/charts_tips_and_tricks.md" >}}|../howto/charts_tips_and_tricks.md
+topics/charts_hooks.md|/docs/chart_tests/|chart_tests.md
+topics/library_charts.md|{{< ref "/docs/topics/charts.md" >}}|charts.md
+topics/library_charts.md|{{< ref\n"/docs/topics/charts.md" >}}|charts.md
+topics/library_charts.md|{{< ref\n"/docs/chart_template_guide/named_templates.md" >}}|../chart_template_guide/named_templates.md
+topics/library_charts.md|{{< ref\n"/docs/chart_template_guide/subcharts_and_globals.md" >}}|../chart_template_guide/subcharts_and_globals.md
+topics/plugins.md|{{< ref "related.md#helm-plugins"\n>}}|../community/related.md#helm-plugins
+topics/provenance.md|{{< ref "registries.md" >}}|registries.md
+topics/registries.md|{{< ref "chart_repository.md" >}}|chart_repository.md
+topics/registries.md|{{< ref "provenance.md" >}}|provenance.md
+topics/registries.md|{{< ref "chart_repository.md" >}}|chart_repository.md
