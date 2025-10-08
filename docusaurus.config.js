@@ -68,6 +68,22 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+
+          // "lastVersion" means the latest release
+          // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
+          // where "current" means the /docs folder
+          lastVersion: '3',
+          versions: {
+            // v4 is "current" (does not necessarily mean latest, see above)
+            // v3 is in /versioned_docs/version-3
+            // v2 is in /versioned_docs/version-2
+            // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
+            // and v5 will then live in /docs
+            current: { label: '4.0.0-alpha.1 🚧' },
+            '3': { label: '3.19.0' },
+            // TODO uncomment when we import v2 docs
+            // '2': { label: '2.17.0' },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -106,6 +122,10 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
