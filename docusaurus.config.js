@@ -111,6 +111,12 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
         title: "Helm",
         logo: {
