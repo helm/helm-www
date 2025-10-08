@@ -26,6 +26,14 @@ const config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  // Opt-in to less strict, standard CommonMark support with options
+  // Automatically detects .md and .mdx extensions
+  // See https://docusaurus.io/docs/markdown-features/react#markdown-and-jsx-interoperability
+  // See https://github.com/prettier/prettier/issues/17089
+  markdown: {
+    format: "detect",
+  },
+
   // Set the production url of your site here
   url: siteURL,
   // Set the /<baseUrl>/ pathname under which your site is served
