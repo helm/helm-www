@@ -144,6 +144,7 @@ bar/:
 Задана структура теки з прикладу [Glob](#glob-patterns):
 
 ```yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
