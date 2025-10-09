@@ -88,6 +88,9 @@ const config = {
             type: ["rss", "atom"],
             xslt: true,
           },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: "https://github.com/helm/helm-www/blob/main/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -191,7 +194,15 @@ const config = {
               },
               {
                 label: "Developing Charts",
-                to: "docs/topics/charts",
+                to: "#",
+              },
+              {
+                label: "Chart tips & tricks",
+                to: "#",
+              },
+              {
+                label: "Developing Charts",
+                to: "#",
               },
               {
                 label: "Search 800+ Charts",
