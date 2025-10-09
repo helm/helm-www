@@ -1,0 +1,164 @@
+/**
+ * Main global styles and CSS variables for the Helm documentation site.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css');
+
+:root {
+  /* Helm style guide colors https://github.com/helm/community/tree/main/art */
+  
+  /* Primary */
+  --navy: #0F1689;
+  
+  /* Secondary */
+  --blue-dark: #090E6F;
+  --blue-light: #1B53C2;
+  
+  /* Shades */
+  --shade-dark: #050843;
+  --shade-mid: #B7C2E9;
+  --shade-light: #DBE1F3;
+  
+  /* Accents */
+  --accent-blue: #3B82BF;
+  --accent-green: #2F84A7;
+  --accent-red: #95297C;
+  --accent-yellow: #D1AA9B;
+  
+  /* Additional colors not in style guide */
+  --light: #E5E5E5;
+  --grey: #4E4E4E;
+  --salmon: #F8DCDF;
+
+  /* Docusaurus/Infima variables */
+  /* You can override the default Infima variables here. */
+  --ifm-color-primary: var(--navy);
+  --ifm-color-primary-dark: var(--navy);
+  --ifm-color-primary-light: var(--blue-light);
+  --ifm-heading-color: var(--navy);
+  --ifm-link-color: var(--navy);
+  --ifm-link-hover-color: #2BA0D3;
+  --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: underline;
+  --ifm-font-family-base: "Public Sans", Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: "Space Mono", "Courier New", monaco, monospace;
+  --ifm-heading-font-weight: 700;
+
+  /* Footer specific variables */
+  --footer-navy: #001f3f;
+  --footer-navy-dark: #001833;
+  --footer-blue1: var(--blue-light);
+  --footer-blue2: #4A90E2;
+  --footer-blue3: #7FB3D3;
+  --footer-grey1: #8E9AAF;
+}
+
+/* [data-theme='dark'] {
+} */
+
+/* Global page wrapper styles */
+html {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-sizing: border-box;
+  height: fit-content !important; /* needed for border to fit content instead of initial viewport */
+  border: 8px solid var(--navy);
+}
+
+.page-wrapper {
+  position: relative;
+  background: transparent;
+}
+
+/* Fix for iOS background-attachment: fixed issues */
+html {
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+/* Fixed background container that works on iOS */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/topography.png");
+  background-repeat: repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Ensure pattern shows on non-blue sections */
+.home-intro,
+.helm-community,
+.level-faqs {
+  background-attachment: local; /* Works on iOS */
+}
+
+/* Remove background-image from body and nav since we're using ::before */
+body, nav {
+  background-image: none;
+}
+
+main, .theme-doc-breadcrumbs {
+  background: white;
+}
+
+/* Global link styling */
+a {
+  color: var(--ifm-link-hover-color);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline animation on hover */
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--ifm-link-hover-color);
+  transition: width 0.3s ease;
+}
+
+a:hover:not(.contrib-logos *):not(.theme-doc-sidebar-container *):not(.pagination-nav *):not(.theme-doc-toc-desktop *):not(.theme-doc-toc-mobile *):not(.breadcrumbs *):not(.navbar-sidebar *)::after {
+  width: 100%;
+}
+
+.anchor {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem) !important;
+}
+
+/* Remove topography background from pagination navigation */
+.pagination-nav {
+  background: none;
+}
+
+.pagination-nav__link {
+  background: white;
+}
+
+/* Material Design Icons support */
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+}

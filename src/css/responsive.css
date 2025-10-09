@@ -1,0 +1,130 @@
+/**
+ * Responsive styles for the Helm documentation site.
+ * Contains all media queries and responsive behavior for different screen sizes.
+ */
+
+/* Responsive adjustments for smaller screens - Footer */
+@media (max-width: 768px) {
+  .footer__cncf-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.125rem; /* Much tighter spacing - 1/6 of original */
+  }
+
+  .footer__cncf-text {
+    min-width: auto;
+  }
+
+  /* Reduce footer padding on mobile */
+  .footer {
+    padding: 1rem 1rem 0.5rem;
+  }
+
+  .footer__links {
+    gap: 0.25rem; /* Much tighter - 1/6 of original */
+    padding-bottom: 0.25rem;
+  }
+
+  .footer__logo {
+    max-width: 100%;
+  }
+}
+
+/* Responsive styles for hero section */
+@media screen and (max-width: 1200px) {
+  .home-intro h1 {
+    font-size: 3.5vw; /* Slightly larger on medium screens */
+  }
+
+  /* Removed fixed h2 font size - now handled by clamp() in landing-page.css */
+}
+
+@media screen and (max-width: 768px) {
+  .home-intro {
+    height: calc(100vh - var(--ifm-navbar-height));
+    padding: 1rem;
+  }
+
+  /* Make blue background sections opaque on mobile */
+  .home-overview-wrap {
+    background: var(--navy); /* Solid color instead of gradient */
+  }
+  
+  /* Mobile styles are now handled by clamp() functions, no overrides needed */
+  .home-intro {
+    padding: 1rem;
+  }
+
+  /* Show two-fifths section on mobile instead of hiding */
+  .is-hidden-mobile {
+    display: block !important;
+  }
+  
+  .column.is-one-third-desktop {
+    width: 100%;
+  }
+
+  /* Stack two-fifths and three-fifths columns on mobile */
+  .column.is-two-fifths,
+  .column.is-three-fifths {
+    width: 100%;
+    flex: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-intro h1 {
+    font-size: 1.75rem; /* Even smaller for very small screens */
+  }
+
+  /* Removed fixed h2 styles - now handled by clamp() in landing-page.css */
+
+  .home-intro img.logo {
+    width: 60px;
+    max-width: 60px;
+  }
+}
+
+/* Responsive adjustments for boat badge */
+@media screen and (max-width: 768px) {
+  /* Keep boat positioning absolute to stay at bottom of hero section */
+  .boat {
+    position: absolute; /* Keep absolute positioning */
+    bottom: 0; /* Stay at bottom */
+    width: 100vw;
+  }
+  
+  .boat .boat-ship {
+    left: 3.25vw; /* Keep original positioning */
+    bottom: 2vw;
+    max-width: 15vw;
+    min-width: 60px; /* Add minimum size for mobile */
+  }
+  
+  .boat.boat-badge {
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+  }
+  
+  .boat.boat-badge .boat-ship {
+    left: 0.3rem;
+    top: 0.1rem;
+    max-width: 60px;
+  }
+  
+  .boat.boat-badge .wave-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .boat.boat-badge .wave-wrapper .waves {
+    margin-top: 30px;
+  }
+  
+  .boat.boat-badge .wave-wrapper:before {
+    height: 25px;
+    top: 35px;
+  }
+}

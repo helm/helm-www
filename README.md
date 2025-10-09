@@ -6,17 +6,16 @@ This is where you'll find all of the assets that make up [helm.sh](https://helm.
 
 ## Development
 
-Helm.sh is a simple [Hugo](https://gohugo.io/) static site, built with a custom theme. To run the website locally, you'll need to first [install](https://gohugo.io/getting-started) Hugo extended edition and any dependencies.
+Helm.sh is a simple [Docusaurus](https://docusaurus.io/) static site. To run the website locally, you'll need to first install the dependencies:
 
 ```
-brew install hugo
-yarn install
+yarn
 ```
 
 You can then compile and run the site locally:
 
 ```
-hugo serve
+yarn start
 ```
 
 ## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)

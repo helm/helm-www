@@ -1,0 +1,205 @@
+/**
+ * Footer styles for the Helm documentation site.
+ * Includes main footer styling, links, copyright, and CNCF section.
+ */
+
+.footer {
+  margin-left: 0; /* Removed the 18.5rem left margin to work better with Docusaurus layout */
+  background: var(--navy);
+  /* Remove background-attachment: fixed for iOS compatibility - pattern is handled by body::before */
+  padding: 2rem 3.5vw 1.5rem;
+  max-width: 100%;
+  border: none;
+  text-align: left;
+  background: var(--navy);
+}
+
+/* Enhanced background with blend mode for supported browsers */
+@supports (background-blend-mode: color-burn) {
+  @media screen and (min-width: 769px) {
+    .footer {
+      background:
+        url('/img/topography.png'),
+        linear-gradient(180deg, var(--blue-dark) 0%, var(--navy) 100%);
+      background-blend-mode: color-burn;
+      background-attachment: fixed;
+    }
+  }
+}
+
+.footer hr {
+  background-color: var(--footer-blue1);
+}
+
+/* Footer Copyright Section */
+.footer__copyright {
+  color: var(--footer-grey1);
+  font-family: 'Space Mono', 'Courier New', monaco, monospace;
+}
+
+.footer__copyright a {
+  color: var(--ifm-link-hover-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.footer__copyright a:hover {
+  color: var(--ifm-link-hover-color);
+  }
+  
+  .footer__copyright a::after {
+    background-color: var(--ifm-link-hover-color);
+}
+
+.footer__copyright a:first-child {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* New CNCF Footer Section */
+.footer__bottom {
+  padding: 2rem 0;
+}
+
+.footer__cncf-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 1.5rem auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+}
+
+.footer__cncf-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.footer__cncf-text p {
+  color: white;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  font-family: 'Space Mono', 'Courier New', monaco, monospace;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer__copyright-text {
+  text-align: center;
+  color: var(--footer-grey1);
+  font-family: 'Space Mono', 'Courier New', monaco, monospace;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+/* Footer Links Styling */
+.footer__links {
+  font-family: 'Space Mono', 'Courier New', monaco, monospace;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* gap: 3rem; */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__col {
+  margin-bottom: calc(var(--ifm-spacing-vertical) * 1);
+}
+.footer__title {
+  color: var(--footer-blue3);
+  font-family: 'Space Mono', 'Courier New', monaco, monospace;
+  font-weight: 700;
+  margin: 1.2rem 0;
+}
+
+.footer__item a {
+  color: var(--ifm-link-hover-color);
+  line-height: 1.5;
+  display: inline-block;
+  background-color: transparent !important;
+  border-bottom: none;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer__item a:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: none;
+}
+
+.footer__item a::after {
+  background-color: var(--ifm-link-hover-color);
+}
+/* Additional custom footer sections */
+.contrib-text {
+  padding: 2rem 0;
+}
+
+.contrib-text p {
+  color: white;
+  font-size: 1rem;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.contrib-text p.lead {
+  font-size: 1.2rem;
+  margin: 2rem auto 3rem;
+  position: relative;
+  line-height: 4;
+}
+
+.contrib-text p.lead:after {
+  content: " ";
+  display: block;
+  width: 14%;
+  position: absolute;
+  bottom: -1.25rem;
+  left: 43%;
+  height: 5px;
+  background: var(--footer-grey1);
+  opacity: 0.25;
+}
+
+.contrib-text p img {
+  max-height: 24px;
+  margin: -2px 0 0 22px;
+}
+
+.contrib-text p a {
+  color: var(--ifm-link-hover-color);
+  font-weight: bold;
+  position: relative;
+  }
+  
+  .contrib-text p a::after {
+    background-color: var(--ifm-link-hover-color);
+}
+
+.cncf-wrap {
+  min-height: 2rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.cncf-wrap img {
+  max-width: 10rem;
+  min-width: 20vw;
+  margin: 1.25rem 1.667vw;
+}
+
+.cncf-wrap p {
+  margin: 1.5vw 2.5% 0 0;
+  display: inline-block;
+  color: white;
+  font-size: 1.125vw;
+  font-weight: bold;
+}
+
+.cncf-wrap p:hover {
+  color: var(--footer-blue2);
+}

@@ -1,0 +1,38 @@
+/* Overrides TODO: find a better solution*/
+
+/* ensures the skip to main content accessiblity button doesn't mess with page border*/
+a[href="#__docusaurus_skipToContent_fallback"] {
+  position: absolute;
+}
+/* sets correct colors for site nav links including sidebar, toc, breadcrumbs, navbar */
+.table-of-contents__link {
+    color: var(--ifm-toc-link-color);
+}
+
+.table-of-contents__link--active, .table-of-contents__link--active code, .table-of-contents__link:hover, .table-of-contents__link:hover code {
+    color: var(--ifm-color-primary);
+}
+
+.menu__link, .menu__link:hover {
+    color: var(--ifm-menu-color);
+}
+
+.menu__link--active, .menu__link--active:hover {
+    color: var(--ifm-menu-color-active);
+}
+
+.breadcrumbs__link {
+    color: var(--ifm-font-color-base);
+}
+
+.navbar__link, .navbar__link:hover, .navbar__link--active {
+    color: var(--ifm-navbar-link-hover-color);
+}
+
+/* Import component-specific stylesheets */
+@import './main.css';
+@import './navbar.css';
+@import './footer.css';
+@import './landing-page.css';
+@import './boat.css';
+@import './responsive.css';

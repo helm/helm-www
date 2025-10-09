@@ -1,0 +1,100 @@
+/**
+ * Navbar styles for the Helm documentation site.
+ */
+
+/* Remove navbar border and account for body border */
+.navbar {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  height: 5rem;
+  min-height: 5rem;
+  left: 8px;
+  right: 8px;
+  border-top: 8px solid var(--navy);
+  margin-top: -8px;
+  /* Restore background image for content flow */
+  background-image: url('/img/topography.png');
+  background-repeat: repeat;
+  background-position: -8px -8px;
+  backdrop-filter: none;
+}
+
+/* Navbar Link Styling with frontend prototype link behavior */
+.navbar__link {
+  color: var(--navy);
+  font-size: 1rem;
+  transition: all .3s ease-in-out;
+  font-family: "Space Mono", "Courier New", monaco, monospace;
+  font-weight: bold;
+  letter-spacing: 0.035rem;
+  padding: 0.75rem 1.5vw;
+  text-decoration: none;
+  position: relative;
+}
+
+.navbar__item::after {
+  background-color: var(--blue-light);
+  height: 3px;
+  bottom: -11px;
+}
+
+/* Navbar dropdowns */
+.navbar__item .navbar__link::after {
+  display: none;
+}
+
+/* Navbar Brand/Title Styling */
+.navbar__brand .navbar__title {
+  color: var(--navy);
+  font-family: "Space Mono", "Courier New", monaco, monospace;
+  font-weight: bold;
+  letter-spacing: 0.035rem;
+}
+
+.navbar__brand:hover .navbar__title {
+  color: var(--navy);
+}
+
+/* Make Helm logo bigger to match original site and center it */
+.navbar__brand img {
+  max-height: 3.5rem;
+  height: 3.5rem;
+  width: auto;
+  transition: transform 0.6s ease-in-out;
+  object-fit: contain;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar__brand:hover img {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Adjust navbar brand container for larger logo */
+.navbar__brand {
+  padding: 0 1rem;
+  height: 100%;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar__brand::after {
+  display: none;
+}
+
+/* Remove hover background from right-side navbar items (dropdowns and icons) */
+.navbar__items--right .navbar__item .navbar__link:hover,
+.navbar__item.dropdown .navbar__link:hover,
+.navbar__link--icon:hover {
+  background-color: transparent !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Hide the navbar title text, keep only the logo */
+.navbar__title {
+  display: none;
+}
