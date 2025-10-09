@@ -15,7 +15,7 @@ weight: 10
 
 - 헬름 차트에 파일을 추가해도 된다. 추가된 파일들은 하나로 묶인다.
   다만, 쿠버네티스 객체 저장소에는 제한이 있어
-  차트는 1M 보다 작아야 한다. 
+  차트는 1M 보다 작아야 한다.
 - 어떤 파일은 `.Files` 객체를 통해 액세스할 수 없는데,
   주로 보안 상의 이유 때문이다.
   - `templates/`에 있는 파일은 액세스할 수 없다.
@@ -46,19 +46,19 @@ three directly inside of the `mychart/` directory.
 `config1.toml`:
 
 ```toml
-message = Hello from config 1
+message = "Hello from config 1"
 ```
 
 `config2.toml`:
 
 ```toml
-message = This is config 2
+message = "This is config 2"
 ```
 
 `config3.toml`:
 
 ```toml
-message = Goodbye from config 3
+message = "Goodbye from config 3"
 ```
 
 Each of these is a simple TOML file (think old-school Windows INI files). We
@@ -95,13 +95,13 @@ metadata:
   name: quieting-giraf-configmap
 data:
   config1.toml: |-
-    message = Hello from config 1
+    message = "Hello from config 1"
 
   config2.toml: |-
-    message = This is config 2
+    message = "This is config 2"
 
   config3.toml: |-
-    message = Goodbye from config 3
+    message = "Goodbye from config 3"
 ```
 
 ## 경로 헬퍼
@@ -216,7 +216,7 @@ metadata:
 type: Opaque
 data:
   token: |-
-    bWVzc2FnZSA9IEhlbGxvIGZyb20gY29uZmlnIDEK
+    bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
 ## Lines 메소드
