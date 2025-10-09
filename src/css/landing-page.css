@@ -1,0 +1,700 @@
+/**
+ * Helm Landing Page Styles
+ * 
+ * This file contains all the homepage-specific styling for the Helm documentation site.
+ * 
+ * TABLE OF CONTENTS:
+ * ==================
+ * 1. Content Container (.content-container)
+ * 2. Feature Tiles (.tile-features)
+ * 3. Get Helm/Get Charts (.tile-actions)
+ * 4. Migration Notice (.level-faqs)
+ * 5. Community Section (.helm-community)
+ * 6. Contributors Section (.helm-contrib-logos)
+ * 7. Grid System (Bulma-style classes)
+ */
+
+ /* Ensure content sections have appropriate backgrounds */
+.home-intro {
+  background: transparent; /* Pattern shows through */
+}
+
+.helm-community {
+  background: white; /* White background for readability */
+}
+
+.level-faqs {
+  background-color: var(--light); /* Keep existing light background */
+}
+
+/* Override main background for homepage only */
+.homepage-wrapper main {
+  background: transparent;
+}
+
+/* Override hero background for homepage only */
+.homepage-wrapper .hero {
+  background: transparent;
+}
+
+/* =============================================================================
+   1. CONTENT CONTAINER AND BLOCKS
+   ============================================================================= */
+
+/* Account for navbar */
+   /* .content-container {
+  margin-top: 5rem;
+} */
+  
+
+.content-block {
+  min-height: calc(100vh - 5rem);
+  /* Account for navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 2rem;
+  position: relative;
+}
+
+/* First content block - pattern background */
+.content-block:first-child {
+  /* Height will be dynamically set by JavaScript */
+  position: relative;
+  overflow: visible;
+  padding-bottom: clamp(4rem, 10vh, 6rem);
+}
+
+/* First content block's content should scale and center properly */
+.content-block:first-child .block-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Safe area padding: 5rem top (navbar) + 90px bottom (waves) + side padding - reduced by 30px */
+  padding: calc(5rem + 1rem - 30px) 1.25rem calc(90px + 1rem);
+  box-sizing: border-box;
+  position: relative;
+  /* iOS Safari viewport fixes */
+  min-height: -webkit-fill-available;
+  min-height: stretch;
+}
+
+/* Responsive text scaling for first block */
+.content-block:first-child h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+  text-align: center;
+}
+
+.content-block:first-child h2 {
+  /* Restored visual styles with dynamic values */
+  border: clamp(3px, 0.8vw, 5px) solid var(--shade-light);
+  background: rgba(255,255,255,0.67);
+  padding: clamp(1rem, 2vw, 2rem) clamp(1.5rem, 5.5vw, 4rem) clamp(1rem, 2vw, 2rem) clamp(1rem, 2.5vw, 2rem);
+
+  /* Dynamic sizing - no absolute positioning */
+  width: clamp(300px, 48vw, 600px);
+  max-width: calc(100% - 2rem);
+  margin: clamp(0.5rem, 1.5vw, 1rem) auto 0;
+
+  /* Responsive typography */
+  font-size: clamp(0.875rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -0.015rem;
+  color: var(--blue-dark);
+  font-family: var(--ifm-font-family-base);
+  font-weight: normal;
+  text-align: left;
+
+  /* Ensure proper scaling */
+  box-sizing: border-box;
+}
+
+/* Additional responsive scaling for smaller viewport heights */
+@media (max-height: 700px) {
+  .content-block:first-child h1 {
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  }
+
+  .content-block:first-child h2 {
+    font-size: clamp(0.75rem, 1.8vw, 1.25rem);
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(1.25rem, 4vw, 3rem) clamp(0.75rem, 1.5vw, 1.5rem) clamp(0.75rem, 2vw, 1.5rem);
+    line-height: 1.3;
+  }
+}
+
+@media (max-height: 500px) {
+  .content-block:first-child h1 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(0.25rem, 1vw, 0.75rem);
+  }
+
+  .content-block:first-child h2 {
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 3vw, 2rem) clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1.5vw, 1rem);
+    line-height: 1.2;
+  }
+}
+
+.content-block:first-child p {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  line-height: 1.6;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Ensure content never overflows */
+.content-block:first-child .block-content * {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Text centered layout */
+.text-centered {
+  text-align: center;
+}
+
+/* Two column layout */
+.two-column {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Layout spacing */
+.layout-spacing {
+  margin-top: 2rem;
+}
+
+/* Content block background patterns */
+.content-block:nth-child(odd) {
+  background: transparent;
+  color: var(--navy);
+}
+
+.content-block:nth-child(even) {
+  position: relative;
+  background: transparent;
+  color: white;
+}
+
+.content-block:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Fallback for browsers that don't support blend modes or mobile devices */
+  background: var(--navy);
+  pointer-events: none;
+}
+
+.content-block:nth-child(even) code {
+  background-color: inherit;
+}
+
+/* Enhanced background with blend mode for supported browsers */
+@supports (background-blend-mode: color-burn) {
+  @media screen and (min-width: 769px) {
+    .content-block:nth-child(even)::before {
+      background:
+        url('/img/topography.png'),
+        linear-gradient(180deg, var(--blue-dark) 0%, var(--navy) 100%);
+      background-blend-mode: color-burn;
+      background-attachment: fixed;
+    }
+  }
+}
+
+/* Force flat color on smaller screens */
+@media (max-width: 768px) {
+  .content-block:nth-child(even)::before {
+    background: var(--navy) !important;
+  }
+}
+
+.content-block:nth-child(even) .block-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* All content on blue backgrounds should be white, except inside .tile.is-child */
+.content-block:nth-child(even) h1:not(.tile.is-child *),
+.content-block:nth-child(even) h2:not(.tile.is-child *),
+.content-block:nth-child(even) h3:not(.tile.is-child *),
+.content-block:nth-child(even) h4:not(.tile.is-child *),
+.content-block:nth-child(even) h5:not(.tile.is-child *),
+.content-block:nth-child(even) h6:not(.tile.is-child *),
+.content-block:nth-child(even) p:not(.tile.is-child *),
+.content-block:nth-child(even) li:not(.tile.is-child *),
+.content-block:nth-child(even) .title:not(.tile.is-child *) {
+  color: white !important;
+}
+
+/* Links on blue backgrounds are white with white underline animation, except inside .tile.is-child */
+.content-block:nth-child(even) a:not(.tile.is-child *) {
+  color: white !important;
+}
+
+.content-block:nth-child(even) a:hover:not(.tile.is-child *) {
+  color: white !important;
+}
+
+.content-block:nth-child(even) a::after:not(.tile.is-child *) {
+  background-color: white !important;
+}
+
+/* Block content styling */
+.block-content {
+  max-width: 80vw;
+  width: 100%;
+}
+
+/* Block headers styling */
+.block-content>h2 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.block-content>h2+p {
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+/* =============================================================================
+   2. FEATURE TILES - Small feature highlight boxes
+   ============================================================================= */
+.tile-features {
+  display: flex;
+  flex-direction: column;
+}
+
+.tile-features .tile.is-child {
+  background: var(--shade-dark);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: none;
+}
+
+.tile-features .tile.is-child p {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.6;
+    margin: 0.75rem 0 0;
+    color: white;
+}
+
+.tile-features .tile.is-child p.title {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin: 0 0 0.5rem 0;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .tile-features .tile.is-child {
+    padding: 1rem;
+  }
+}
+
+/* =============================================================================
+   3. GET HELM/GET CHARTS - Installation and chart discovery sections
+   ============================================================================= */
+.tile-actions {
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.tile-actions .tile.is-child {
+  padding: 0.75vw 2.5vw 3vw;
+  /* Remove white borders */
+  border: none;
+  /* Pattern background like frontend prototype background-window */
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+  
+.tile-actions .tile.is-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/img/topography.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+  
+/* White background on mobile devices */
+@media (max-width: 768px) {
+  .tile-actions .tile.is-child {
+    background: white;
+  }
+
+  .tile-actions .tile.is-child::before {
+    display: none;
+  }
+}
+
+.tile-actions .tile.is-child>* {
+  position: relative;
+  z-index: 1;
+}
+
+.tile-actions .tile.is-child p {
+  font-size: 1rem; /* Fixed size instead of responsive scaling */
+  line-height: 1.7;
+  color: var(--navy); /* Blue text on pattern background */
+}
+
+.tile-actions .tile.is-child img {
+  max-width: 66.67%;
+  margin: 2.5vw auto 0;
+  box-shadow: 0 2px 5px var(--grey);
+}
+
+.tile-actions h2 {
+  color: var(--navy); /* Blue text on pattern background */
+  text-align: center;
+}
+
+.tile-actions ul.tabs {
+  margin: 2.5vw 0 0.75vw;
+  position: relative;
+  overflow: visible;
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.tile-actions ul.tabs li {
+  margin: 0 0 -2px;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+
+.tile-actions ul.tabs li a {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: bold;
+  letter-spacing: 0.035rem;
+  font-size: 1vw;
+  margin: 0;
+  padding: 0.5rem 0.75rem; /* Reduce horizontal padding to save space */
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap; /* Prevent tab text from wrapping */
+}
+
+.tile-actions ul.tabs li a::after {
+  display: none;
+}
+
+.tile-actions ul.tabs li a.active {
+  color: var(--blue-light);
+  border-bottom: 2px solid var(--blue-light);
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.tabcontent {
+  display: none;
+  animation: fadeEffect 1s;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+.tabcontent code,
+.tabcontent pre,
+.tabcontent input {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  background: var(--light);
+  border: none;
+  outline: none;
+  color: var(--blue-dark);
+  font-size: 1.333vw;
+  font-family: monospace;
+  font-weight: 400;
+  width: 100%;
+  padding: 1.2rem 6.25rem 1.2rem 1.2rem;
+}
+
+.tabcontent code:before,
+.tabcontent pre:before,
+.tabcontent input:before {
+  display: none;
+}
+
+.tabcontent button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.45rem;
+  background: white;
+  border: 2px solid var(--blue-light);
+  font-size: 0.875rem; /* Fixed size instead of vw scaling */
+  color: var(--blue-light);
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.tabcontent button:hover {
+  background-color: var(--blue-light);
+  color: white;
+}
+
+.tabcontent button:active {
+  background: var(--accent-green);
+  color: white;
+}
+
+/* =============================================================================
+   4. MIGRATION NOTICE - Helm upgrade call-to-action
+   ============================================================================= */
+.level-faqs {
+  background-color: var(--light);
+  min-width: 37.5vw;
+  margin: clamp(0.5rem, 2vh, 1rem) auto clamp(3rem, 12vh, 7.5rem);
+  padding: clamp(0.5rem, 2vw, 1vw);
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-faqs img {
+  max-width: 6vw;
+  margin-left: -1vw;
+}
+
+.level-faqs p {
+  min-width: 25vw;
+}
+
+.level-faqs p.heading {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: bold;
+  letter-spacing: 0.035rem;
+  -webkit-font-smoothing: antialiased;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.333rem;
+  text-transform: none;
+}
+
+.level-faqs p.title {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  margin-bottom: 0;
+}
+
+.level-faqs .level-item {
+  padding: 0.5rem 0;
+}
+
+/* =============================================================================
+   5. COMMUNITY SECTION - Community information and social links
+=============================================================================*/
+
+
+/* =============================================================================
+   6. CONTRIBUTORS SECTION - Contributor logos and community text
+   ============================================================================= */
+.helm-contrib-logos {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.helm-contrib-logos img {
+  padding: 0;
+  display: inline-block;
+  margin: 0 2vw;
+  width: 23vw;
+  max-width: 12rem;
+}
+
+.helm-contrib-logos .helm-logo {
+  margin: 0 auto 2.25em;
+  display: block;
+  text-align: center;
+  padding: 3.5em 0 0;
+}
+
+.helm-contrib-logos p {
+  text-align: center;
+}
+
+.helm-contrib-logos .contributors {
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 1.333em;
+  line-height: 2;
+  letter-spacing: 0.025em;
+  font-weight: normal;
+}
+
+.helm-contrib-logos .contrib-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.helm-contrib-logos .contrib-logos .column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.helm-contrib-logos .contrib-logos a {
+  display: inline-block;
+  margin: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.helm-contrib-logos .contrib-logos a:hover {
+  transform: scale(1.5);
+}
+
+.helm-contrib-logos p a::after {
+  display: none;
+}
+
+/* =============================================================================
+   7. GRID SYSTEM - Bulma-style layout classes for responsive design
+   ============================================================================= */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 0.75rem;
+}
+
+.column.is-three-fifths {
+  flex: none;
+  width: 60%;
+}
+
+.column.is-two-fifths {
+  flex: none;
+  width: 40%;
+}
+
+.column.is-one-third-desktop {
+  flex: none;
+  width: 33.333%;
+}
+
+.column.has-text-centered {
+  text-align: center;
+}
+
+.is-hidden-mobile {
+  display: block;
+}
+
+.tile {
+  display: block;
+}
+
+.tile.is-parent {
+  display: flex;
+  flex-direction: column;
+}
+
+.tile.is-child {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.tile.is-horizontal {
+  flex-direction: row;
+}
+
+/* Stack tiles on mobile */
+@media screen and (max-width: 768px) {
+  .tile.is-horizontal {
+    flex-direction: column;
+  }
+
+  .tile.is-parent {
+    flex-direction: column;
+  }
+
+  .tile-features .tile.is-child {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Make tabs more compact on mobile with higher specificity */
+  .tile-actions ul.tabs li a {
+    padding: 0.375rem 0.5rem;
+    font-size: 2vw;
+  }
+
+  /* Adjust tabcontent for mobile with higher specificity */
+  .tabcontent code,
+  .tabcontent pre,
+  .tabcontent input {
+    padding: 0.75rem 4rem 0.75rem 0.75rem;
+    font-size: 2vw;;
+  }
+
+  .tabcontent button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    right: 0.125rem;
+    top: 0.125rem;
+  }
+}
+
+.has-text-centered {
+  text-align: center;
+}
+
+/* Bulma box component */
+.box {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: var(--grey);
+  display: block;
+  padding: 1.25rem;
+}
