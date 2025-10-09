@@ -1,0 +1,100 @@
+/* Blog layout styles based on docs layout structure */
+
+:root {
+  --doc-sidebar-width: 300px;
+  --doc-sidebar-hidden-width: 30px;
+}
+
+.docRoot {
+  display: flex;
+  width: 100%;
+}
+
+.docsWrapper {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.docSidebarContainer {
+  display: none;
+}
+
+@media (min-width: 997px) {
+  .docSidebarContainer {
+    display: block;
+    width: var(--doc-sidebar-width);
+    margin-top: calc(-1 * var(--ifm-navbar-height));
+    border-right: 1px solid var(--ifm-toc-border-color);
+    will-change: width;
+    transition: width var(--ifm-transition-fast) ease;
+    clip-path: inset(0);
+  }
+
+  .sidebarViewport {
+    top: 0;
+    position: sticky;
+    height: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+  }
+}
+
+.docMainContainer {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 997px) {
+  .docMainContainer {
+    flex-grow: 1;
+    max-width: calc(100% - var(--doc-sidebar-width));
+  }
+
+  .docMainContainerEnhanced {
+    max-width: calc(100% - var(--doc-sidebar-hidden-width));
+  }
+
+  .docItemWrapperEnhanced {
+    max-width: calc(
+      var(--ifm-container-width) + var(--doc-sidebar-width)
+    ) !important;
+  }
+}
+
+.docItemWrapper {
+  /* Additional spacing for blog content */
+}
+
+.docItemRow {
+  /* Row containing main content + TOC */
+}
+
+.docItemCol {
+  /* Main content column - always constrained to 75% like docs */
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+}
+
+.tocWrapper {
+  /* TOC column styling */
+}
+
+.tocMobile {
+  /* Mobile TOC styling - hidden on desktop */
+}
+
+@media (min-width: 997px) {
+  .tocMobile {
+    display: none;
+  }
+}
+
+.docItemContainer header + *,
+.docItemContainer article > *:first-child {
+  margin-top: 0;
+}
