@@ -57,33 +57,33 @@ To update these docs, you'll need to:
 
 Blog posts are created via pull requests. The following steps are used to add them:
 
-1) Add a new file to the `/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
-2) Add the header meta-data to the file using this format. 
+1. Add a new file to the `/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
+2. Add the header meta-data to the file using this format. 
 
-```yaml
----
-title: "Blog Title"
-slug: "blog-slug"
-# from /blog/authors.yml
-authors: ["firstlast"]
-date: "YYYY-MM-DD"
----
-```
-3) If this is the first blog post by this author, update `/blog/authors.yml` to add a new author record.
-```yaml
-# authors.yml
-johndoe:
-  name: John Doe
-  image_url: https://github.com/johndoe.png
-  page: true
-  socials:
-    github: johndoe
-    linkedin: johndoe
-    website: http://johndoe.com/
-```
-4) Add the content below the `---` as Markdown. The title does not need to be included in this section
-5) Any images should be placed in the `/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
-6) To summarize the content on the blog index page, insert a `<!--truncate-->` break in your markdown. This will truncate the content with a _Read More_ link.
+    ```yaml
+    ---
+    title: "Blog Title"
+    slug: "blog-slug"
+    # from /blog/authors.yml
+    authors: ["firstlast"]
+    date: "YYYY-MM-DD"
+    ---
+    ```
+3. If this is the first blog post by this author, update `/blog/authors.yml` to add a new author record.
+    ```yaml
+    # authors.yml
+    johndoe:
+      name: John Doe
+      image_url: https://github.com/johndoe.png
+      page: true
+      socials:
+        github: johndoe
+        linkedin: johndoe
+        website: http://johndoe.com/
+    ```
+4. Add the content below the `---` as Markdown. The title does not need to be included in this section
+5. Any images should be placed in the `/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
+6. To summarize the content on the blog index page, insert a `<!--truncate-->` break in your markdown. This will truncate the content with a _Read More_ link.
 
 Blog PRs require approval from the core Helm [maintainers](https://github.com/helm/helm/blob/main/OWNERS) before merge.
 
