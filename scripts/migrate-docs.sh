@@ -18,16 +18,21 @@ function is_rules_file() {
 # adds the correct dir inside versioned_docs/ and versioned_sidebars/ and
 # updates versions.json
 function skaffold_major_version() {
-    npm run docusaurus docs:version $MAJOR_VERSION
+    if [[ ! -d $VERSION_DIR ]]; then
+        npm run docusaurus docs:version $MAJOR_VERSION
 
-    # we use a different versioning strategy than docusaurus default so clear
-    # out the files copied from the pre-release dir (/docs) before migrating
-    # our files into it
-    rm -r $VERSION_DIR/*
+        # we use a different versioning strategy than docusaurus default so clear
+        # out the files copied from the pre-release dir (/docs) before migrating
+        # our files into it
+        rm -r $VERSION_DIR/*
+    fi
 }
 
 function move_docs() {
-    git mv content/en/docs/* $VERSION_DIR
+    local old_docs='content/en/docs'
+    if [[ -d $old_docs  ]]; then
+        git mv $old_docs/* $VERSION_DIR
+    fi
 }
 
 function delete_deprecated_files() {
@@ -44,7 +49,9 @@ function rename_categories() {
         [[ -z "$entry" || "$entry" == \#* ]] && continue
         local old="${entry%%|*}"
         local new="${entry#*|}"
-        mv "$VERSION_DIR/$old" "$VERSION_DIR/$new" 2>/dev/null
+        if [[ -d "$VERSION_DIR/$old" ]]; then
+            mv "$VERSION_DIR/$old" "$VERSION_DIR/$new"
+        fi
     done < "$rules_file"
 }
 
@@ -211,6 +218,10 @@ import_sdk() {
     mv "$file.tmp" "$file"
 }
 
+function add_docs_index_list() {
+    ./scripts/append-cards.sh "$VERSION_DIR"
+}
+
 skaffold_major_version
 move_docs
 delete_deprecated_files
@@ -222,3 +233,4 @@ replace_text "$VERSION_DIR" "scripts/rules/docs_replace_text.txt"
 replace_text_per_file "$VERSION_DIR" "scripts/rules/docs_replace_text_per_file.txt"
 add_metadata_lines
 import_sdk
+add_docs_index_list
