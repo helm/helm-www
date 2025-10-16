@@ -1,6 +1,6 @@
 {
   "home.about.whatIsHelm": {
-    "message": "Helm te ayuda a gestionar aplicaciones de Kubernetes — Los Helm Charts te ayudan a definir, instalar y actualizar incluso las aplicaciones de Kubernetes más complejas.",
+    "message": "Helm te ayuda a administrar aplicaciones de Kubernetes — Los Helm Charts te ayudan a definir, instalar y actualizar incluso las aplicaciones de Kubernetes más complejas.",
     "description": "What is Helm? first paragraph"
   },
   "home.about.chartsDescription": {
@@ -36,7 +36,7 @@
     "description": "What is Helm? title"
   },
   "home.community.nextFeatureRelease": {
-    "message": "Próximo Lanzamiento de Características",
+    "message": "Próxima Liberación de Características",
     "description": "Next Feature Release section title"
   },
   "home.community.nextFeatureRelease.version": {
@@ -80,7 +80,7 @@
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
-    "message": "Reuniones de Desarrolladores"
+    "message": "Standups para desarrolladores"
   },
   "home.community.developerStandups.time": {
     "message": "Jueves 9:30-10am (PT)",
@@ -135,7 +135,7 @@
     "description": "Good first issues sentence with link"
   },
   "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
-    "message": "buenos primeros issues",
+    "message": "buenos primeros tickets",
     "description": "Good first issues link"
   },
   "home.community.contributing.whatDoIDo": {
@@ -167,7 +167,7 @@
     "description": "Join the Community subtitle"
   },
   "home.features.manageComplexity": {
-    "message": "Gestiona la Complejidad",
+    "message": "Administra la Complejidad",
     "description": "Manage Complexity section title"
   },
   "home.features.manageComplexity.description": {
@@ -183,7 +183,7 @@
     "description": "Easy Updates section description"
   },
   "home.features.simpleSharing": {
-    "message": "Compartir Simple",
+    "message": "Uso Compartido Simple",
     "description": "Simple Sharing section title"
   },
   "home.features.simpleSharing.description": {
@@ -191,7 +191,7 @@
     "description": "Simple Sharing section description"
   },
   "home.features.rollbacks": {
-    "message": "Reversiones",
+    "message": "Retrocesos",
     "description": "Rollbacks section title"
   },
   "home.features.rollbacks.description": {
@@ -207,7 +207,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Obtener Helm",
+    "message": "Obtener Helm!",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {

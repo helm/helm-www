@@ -36,7 +36,7 @@
     "description": "What is Helm? title"
   },
   "home.community.nextFeatureRelease": {
-    "message": "Prochaine Version",
+    "message": "Prochaine Feature Release",
     "description": "Next Feature Release section title"
   },
   "home.community.nextFeatureRelease.version": {
@@ -80,7 +80,7 @@
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
-    "message": "Réunions des Développeurs"
+    "message": "Rencontres Développeur"
   },
   "home.community.developerStandups.time": {
     "message": "Jeudis 9:30-10h (PT)",
@@ -119,7 +119,7 @@
     "description": "Contributing section title"
   },
   "home.community.contributing.description": {
-    "message": "Helm accueille toujours de nouvelles contributions au projet !",
+    "message": "Helm accueille toujours les contributeurs avec plaisir !",
     "description": "Contributing section description"
   },
   "home.community.contributing.whereToBegin": {
@@ -159,7 +159,7 @@
     "description": "Sign your commits link"
   },
   "home.community.title": {
-    "message": "Rejoindre la Communauté",
+    "message": "Rejoignez la communauté !",
     "description": "Join the Community title"
   },
   "home.community.subtitle": {
@@ -179,7 +179,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Obtenir Helm",
+    "message": "Télécharger Helm !",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -207,7 +207,7 @@
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "Obtenir des Charts",
+    "message": "Télécharger des Charts",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {

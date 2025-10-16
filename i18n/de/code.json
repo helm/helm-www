@@ -4,19 +4,19 @@
     "description": "What is Helm? first paragraph"
   },
   "home.about.chartsDescription": {
-    "message": "Charts sind einfach zu erstellen, zu versionieren, zu teilen und zu veröffentlichen — also fangen Sie an, Helm zu verwenden und hören Sie auf zu kopieren und einzufügen.",
+    "message": "Charts sind einfach zu erstellen, zu versionieren, zu teilen und zu publizieren — also fangen Sie an, Helm zu verwenden und hören Sie auf zu kopieren und einzufügen.",
     "description": "What is Helm? charts paragraph"
   },
   "home.about.cncf": {
-    "message": "Helm ist ein graduiertes Projekt in der {cncfLink} und wird von der {helmCommunityLink} gepflegt.",
+    "message": "Helm ist ein promoviertes Projekt in der {cncfLink} und wird von der {helmCommunityLink} gepflegt.",
     "description": "What is Helm? CNCF Graduated Project paragraph"
   },
   "home.about.cncf.helmCommunityLink": {
-    "message": "Helm-Community",
+    "message": "Helm Gemeinschaft",
     "description": "Helm community link"
   },
   "home.about.learnMore": {
-    "message": "Mehr erfahren:",
+    "message": "Mehr lernen:",
     "description": "Learn more label"
   },
   "home.about.learnMore.helmArchitectureLink": {
@@ -115,7 +115,7 @@
     "description": "Request access to slack link"
   },
   "home.community.contributing": {
-    "message": "Mitwirken",
+    "message": "Beitragen",
     "description": "Contributing section title"
   },
   "home.community.contributing.description": {
@@ -159,7 +159,7 @@
     "description": "Sign your commits link"
   },
   "home.community.title": {
-    "message": "Der Community beitreten",
+    "message": "Der Gemeinschaft beitreten",
     "description": "Join the Community title"
   },
   "home.community.subtitle": {
@@ -171,7 +171,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Helm beziehen",
+    "message": "Helm bekommen",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -211,7 +211,7 @@
     "description": "Helm charts link"
   },
   "home.header.tagline": {
-    "message": "Der Paketmanager für Kubernetes",
+    "message": "Der Paket Manager für Kubernetes",
     "description": "Helm tagline"
   },
   "home.header.subtitle": {
@@ -227,7 +227,7 @@
     "description": "Manage Complexity section description"
   },
   "home.features.easyUpdates": {
-    "message": "Einfache Updates",
+    "message": "Einfache Aktualisierungen",
     "description": "Easy Updates section title"
   },
   "home.features.easyUpdates.description": {
@@ -243,7 +243,7 @@
     "description": "Simple Sharing section description"
   },
   "home.features.rollbacks": {
-    "message": "Rollbacks",
+    "message": "Zurückrollen",
     "description": "Rollbacks section title"
   },
   "home.features.rollbacks.description": {

@@ -80,7 +80,7 @@
     "description": "The label of footer link with label=X linking to https://x.com/helmpack"
   },
   "copyright": {
-    "message": "<a href=\"https://www.cncf.io/\">Somos un proyecto graduado de la Cloud Native Computing Foundation.</a><br/>© Autores de Helm 2025. Documentación distribuida bajo <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Todos los derechos reservados. The Linux Foundation tiene marcas registradas y usa marcas comerciales. Para una lista de marcas comerciales de The Linux Foundation, consulte nuestra <a href=\"https://www.linuxfoundation.org/trademark-usage/\">página de Uso de Marcas</a>.",
+    "message": "<a href=\"https://www.cncf.io/\">Somos un proyecto graduado de Cloud Native Computing Foundation.</a><br/>© Autores de Helm 2025. Documentación distribuida bajo <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Todos los derechos reservados. The Linux Foundation tiene marcas registradas y usa marcas comerciales. Para una lista de marcas comerciales de The Linux Foundation, consulte nuestra <a href=\"https://www.linuxfoundation.org/trademark-usage/\">página de Uso de Marcas</a>.",
     "description": "The footer copyright"
   },
   "logo.alt": {

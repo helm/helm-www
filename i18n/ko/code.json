@@ -80,7 +80,7 @@
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
-    "message": "개발자 스탠드업"
+    "message": "개발자 스탠드업 회의"
   },
   "home.community.developerStandups.time": {
     "message": "목요일 오전 9:30-10시 (PT)",
@@ -135,7 +135,7 @@
     "description": "Good first issues sentence with link"
   },
   "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
-    "message": "초보자용 이슈",
+    "message": "적당한 첫번째 이슈",
     "description": "Good first issues link"
   },
   "home.community.contributing.whatDoIDo": {
@@ -171,7 +171,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Helm 설치",
+    "message": "헬름 설치하기!",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -199,7 +199,7 @@
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "차트 가져오기",
+    "message": "차트 받기",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {
