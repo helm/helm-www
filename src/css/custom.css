@@ -1,5 +1,6 @@
 /* Import component-specific stylesheets */
 @import './main.css';
+@import './announcement-bar.css';
 @import './navbar.css';
 @import './footer.css';
 
@@ -55,10 +56,10 @@
 
   /* global navbar style (needed elsewhere) */
   --ifm-navbar-height: 5.5rem;
-}
 
-body .theme-announcement-bar {
-  font-size: 1.5rem;
-  height: fit-content;
-  padding: .5rem;
+  /* announcement bar */
+  --docusaurus-announcement-bar-height: 5rem;
+
+  /* custom site vars */
+  --helm-body-border: 8px;
 }
