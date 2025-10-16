@@ -56,3 +56,9 @@
   /* global navbar style (needed elsewhere) */
   --ifm-navbar-height: 5.5rem;
 }
+
+body .theme-announcement-bar {
+  font-size: 1.5rem;
+  height: fit-content;
+  padding: .5rem;
+}
