@@ -2,9 +2,10 @@
   /* Restore background image so content flows "beneath" it */
   background-image: url("/img/topography.png");
   background-repeat: repeat;
-  background-position: -8px -8px;
-  border-top: 8px solid var(--navy);
-  margin-top: -8px;
+  /* To get -8px we have to use calc, because -var(--name) doesn't work */
+  background-position: calc(-1 * var(--helm-body-border)) calc(-1 * var(--helm-body-border));
+  margin-top: calc(-1 * var(--helm-body-border));
+  border-top: var(--helm-body-border) solid var(--navy);
 }
 
 /* logo */
