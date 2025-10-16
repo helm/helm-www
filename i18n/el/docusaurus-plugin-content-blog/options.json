@@ -1,14 +1,14 @@
 {
   "title": {
-    "message": "Blog",
+    "message": "Ιστολόγιο",
     "description": "The title for the blog used in SEO"
   },
   "description": {
-    "message": "Blog",
+    "message": "Ιστολόγιο",
     "description": "The description for the blog used in SEO"
   },
   "sidebar.title": {
-    "message": "All posts",
+    "message": "Όλες οι δημοσιεύσεις",
     "description": "The label for the left sidebar"
   }
 }
