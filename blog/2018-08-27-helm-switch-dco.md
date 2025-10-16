@@ -61,7 +61,7 @@ An example signed commit message might look like:
 
 > An example commit message
 > 
-> Signed-off-by: Some Developer <somedev@example.com>
+> Signed-off-by: Some Developer somedev@example.com
 
 Git has a flag that can sign a commit for you. An example using it is:
 
@@ -87,8 +87,8 @@ If more than one person works on something it's possible for more than one perso
 
 > An example commit message
 > 
-> Signed-off-by: Some Developer <somedev@example.com>
-> Signed-off-by: Another Developer <anotherdev@example.com>
+> Signed-off-by: Some Developer somedev@example.com
+> Signed-off-by: Another Developer anotherdev@example.com
 
 ### If I Contribute As An Employee Does My Employer Need To Sign Anything
 

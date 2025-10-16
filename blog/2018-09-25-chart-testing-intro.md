@@ -114,6 +114,7 @@ Linting, without trying to operate the chart, is easy to incorporate into a work
 
 In this case the environment variables for the configuration are stored in a file name `.testenv`. This file holds the environment variables and is sourced into the environment. The following is an example from the community charts:
 
+```
     # The name of the Git remote
     REMOTE=k8s
 
@@ -137,6 +138,7 @@ In this case the environment variables for the configuration are stored in a fil
     )
 
     TIMEOUT=600
+```
 
 ## Try It in Your Workflow
 

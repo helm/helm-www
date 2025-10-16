@@ -5,7 +5,7 @@ authors: ["mattfisher"]
 date: "2019-06-10"
 ---
 
-The Helm Client has long been available to download from Google Cloud Storage at the bucket <https://kubernetes-helm.storage.googleapis.com>. This bucket in Google Cloud has been used by Helm since before Kubernetes was part of the CNCF. The first release hosted on this bucket was Helm v2.0.0-alpha.5!
+The Helm Client has long been available to download from Google Cloud Storage at the bucket https://kubernetes-helm.storage.googleapis.com. This bucket in Google Cloud has been used by Helm since before Kubernetes was part of the CNCF. The first release hosted on this bucket was Helm v2.0.0-alpha.5!
 
 Google has long been gracious in providing funding for this location. Since Helm started using it, Helm (as part of Kubernetes) moved into the CNCF, and then moved out from under the Kubernetes umbrella, becoming a sister project to Kubernetes within the CNCF.<!-- truncate -->
 
@@ -13,7 +13,7 @@ The CNCF is in the process of taking over the infrastructure for Kubernetes. It 
 
 ## Where are we now?
 
-The Helm project now publishes client downloads to <https://get.helm.sh>. All Helm releases from Helm v2.0.0-alpha.5 onwards are available for download, as well as the latest Helm 3 alpha.1 release.
+The Helm project now publishes client downloads to [https://get.helm.sh](https://get.helm.sh). All Helm releases from Helm v2.0.0-alpha.5 onwards are available for download, as well as the latest Helm 3 alpha.1 release.
 
 For backwards compatibility concerns, new releases of Helm 2 will continue to be published at the old URL, however we strongly encourage users to migrate.
 
@@ -21,7 +21,7 @@ Going forward, this is the only location where you will find Helm 3; they are no
 
 ## What do I need to do?
 
-If you're using the old URL in your CI pipeline, you can replace <https://kubernetes-helm.storage.googleapis.com/kubernetes-helm> with <https://get.helm.sh>.
+If you're using the old URL in your CI pipeline, you can replace https://kubernetes-helm.storage.googleapis.com/kubernetes-helm with https://get.helm.sh.
 
 If you're using [the get script](https://helm.sh/docs/using_helm/#from-script), it is now [pulling from the new URL](https://github.com/helm/helm/blob/2ca025d48222d6fa188653e2ca5eda6ed799145c/scripts/get#L114), so no changes on your end are required.
 
@@ -47,7 +47,7 @@ During this transition, we wanted to ensure that we won't disrupt users a second
 
 ### Content delivery at the edge
 
-<https://get.helm.sh> is fronted by [Azure CDN](https://azure.microsoft.com/en-ca/services/cdn/), a Content Delivery Network that is globally available. This should provide faster downloads to those distributed around the world, not just to those located in the Eastern United States.
+[https://get.helm.sh](https://get.helm.sh) is fronted by [Azure CDN](https://azure.microsoft.com/en-ca/services/cdn/), a Content Delivery Network that is globally available. This should provide faster downloads to those distributed around the world, not just to those located in the Eastern United States.
 
 It also provides availability in regions that were previously unavailable, such as...
 
@@ -70,7 +70,7 @@ One of the questions that keep popping up in our minds was how users are consumi
 
 Our new CDN provides a rich set of metrics can provide answers to these questions.
 
-While these metrics are only available to core maintainers at this time, we are discussing how we can share these metrics with the community similar to <https://devstats.cncf.io/>.
+While these metrics are only available to core maintainers at this time, we are discussing how we can share these metrics with the community similar to https://devstats.cncf.io/.
 
 ## Caveat: Tiller and Chart downloads
 

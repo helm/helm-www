@@ -20,8 +20,8 @@ Here are some Helm 3 resources:
 - [Installing Helm](https://helm.sh/docs/intro/install/)
 - [Documentation on Helm 2 to Helm 3 migration](https://helm.sh/docs/topics/v2_v3_migration/)
 - [Plugin to help migrate from Helm 2 to Helm 3](https://github.com/helm/helm-2to3)
-- Chat with developers and contributors in the [#helm-users Kubernetes Slack channel](https://slack.k8s.io/)
-- Please report bugs at <https://github.com/helm/helm/issues>
+- Chat with developers and contributors in the [#helm-users Kubernetes Slack channel](https://slack.k8s.io)
+- Please report bugs using [GitHub issues](https://github.com/helm/helm/issues)
 
 ## What is Helm?
 
