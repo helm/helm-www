@@ -27,4 +27,4 @@ For Helm 3, a release has one or more release version secrets associated with it
 
 With Tiller gone, Helm 3 stores release data in the same namespace as the release's destination. This change allows one to install a chart with the same release name in another namespace, and data is persisted between cluster upgrades/reboots in etcd. You can install Wordpress into namespace "foo" as well as namespace "bar", and both releases can be referred to as "wordpress".
 
-Speaking of Charts...read the next blog [here](https://helm.sh/blog/helm-3-preview-pt5/) where we discuss changes to chart dependicies in our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
+Speaking of Charts...read the next blog [here](https://helm.sh/blog/helm-3-preview-pt5/) where we discuss changes to chart dependencies in our *Helm 3 Preview: Charting Our Future* blog series over the course of 4 weeks.
