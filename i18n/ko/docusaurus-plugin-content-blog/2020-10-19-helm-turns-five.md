@@ -10,7 +10,7 @@ date: "2020-10-19"
 {{< figure src="https://helm.sh/blog/images/happy-5th.png" alt="헬름의 5번째 생일 축하" >}}
 
 5년 전, Deis(그 후 마이크로스프트에 인수됨)의 해커톤에서 헬름이 탄생했다.
-<!--more-->
+<!-- truncate -->
 
 ```
 commit ecad6e2ef9523a0218864ec552bbfc724f0b9d3d

@@ -6,7 +6,7 @@ authorlink: "https://mattfarina.com"
 date: "2019-11-15"
 ---
 
-다음 주에는 연례행사인 [KubeCon 과 CloudNativeCon 이 북미에서](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/) 열린다. 헬름 프로젝트 및 유지관리자들은 몇 가지를 준비하고 있고 여러분을 초대하고 싶다.
+다음 주에는 연례행사인 [KubeCon 과 CloudNativeCon 이 북미에서](https://events19.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/) 열린다. 헬름 프로젝트 및 유지관리자들은 몇 가지를 준비하고 있고 여러분을 초대하고 싶다.<!-- truncate -->
 
 헬름 관련으로는 유지관리자 트랙 세션이 2개 있으며, [_헬름 소개_](https://sched.co/UajI) 및 [_헬름 3 심층 분석_](https://sched.co/Uagg)에 초점을 둔 내용이다. 헬름을 처음 사용하거나, 사용해야 하는 이유와 방법에 관심이 있는 사람은 _헬름 소개_ 세션에 참석해보자. [최근 출시된 헬름 3](https://helm.sh/blog/helm-3-released/)가 궁금한 사용자는 _헬름 3 심층 분석_ 세션이 적당할 것 같다. 관심을 가질 법한 주변 사람들에게도 널리 알려주자.
 
