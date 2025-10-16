@@ -49,3 +49,36 @@
   from = "/v4-launch-party-sponsorship"
   to = "https://docs.google.com/document/d/10cyzggPiLeLz169cDF1UaUMmM4uZx6rO3Bw9rRQRjJA/edit?usp=sharing"
   status = 302
+
+# START: Helm v2 docs redirects - managed by scripts/helm2-to-docusaurus.js
+# Redirect v2 docs to new combined site
+# Category-level redirects only (fragments not supported by Netlify)
+# Maps old underscore URLs to new dash URLs
+# TODO: Change status codes from 302 to 301 after cutover verification
+
+[[redirects]]
+  from = "https://v2.helm.sh/docs/using_helm/"
+  to = "/docs/2/using-helm/"
+  status = 302
+
+[[redirects]]
+  from = "https://v2.helm.sh/docs/helm/"
+  to = "/docs/2/helm/"
+  status = 302
+
+[[redirects]]
+  from = "https://v2.helm.sh/docs/developing_charts/"
+  to = "/docs/2/developing-charts/"
+  status = 302
+
+[[redirects]]
+  from = "https://v2.helm.sh/docs/chart_template_guide/"
+  to = "/docs/2/chart-template-guide/"
+  status = 302
+
+[[redirects]]
+  from = "https://v2.helm.sh/docs/chart_best_practices/"
+  to = "/docs/2/chart-best-practices/"
+  status = 302
+
+# END: Helm v2 docs redirects
