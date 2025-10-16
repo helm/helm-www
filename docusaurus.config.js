@@ -65,7 +65,6 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/helm/helm-www/blob/main/",
-
           // "lastVersion" means the latest release
           // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
           // where "current" means the /docs folder
@@ -76,7 +75,7 @@ const config = {
             // v2 is in /versioned_docs/version-2
             // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
             // and v5 will then live in /docs
-            current: { label: "4.0.0-alpha.1 🚧" },
+            current: { label: "4.0.0-beta.1 🚧" },
             3: { label: "3.19.0" },
             2: { label: "2.17.0" },
           },
@@ -104,6 +103,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: "helm4_prerelease",
+        content:
+          '📢 Helm 4 beta 1 is out! See the <a href="/docs/next/category/helm-4">pre-release docs</a> for details!',
+        backgroundColor: "#2e8555",
+        textColor: "#ffffff",
+        isCloseable: false,
+      },
       // Replace with your project's social card
       image: "img/helm-social-card.png",
       colorMode: {

@@ -1,0 +1,9 @@
+{
+  "label": "Helm 4",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Helm 4 ⏳ Work in Progress",
+    "description": "Helm v4 represents a significant evolution from v3, introducing breaking changes, new architectural patterns, and enhanced functionality while maintaining backwards compatibility for charts. See below for a summary for full changelog."
+  }
+}
