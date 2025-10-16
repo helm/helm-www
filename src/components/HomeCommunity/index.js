@@ -3,52 +3,53 @@ import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
 import homeSections from "@site/src/css/home-sections.module.css";
 import homeCards from "@site/src/css/home-cards.module.css";
+import Translate from '@docusaurus/Translate';
 
 const BlockList = [
   {
-    title: "Next Feature Release",
+    title: <Translate id="home.community.nextFeatureRelease" description="Next Feature Release section title">Next Feature Release</Translate>,
     description: (
       <>
         <dl>
           <dt>
             <p>
-              <strong>Version:</strong> v3.16.3
+              <strong><Translate id="home.community.nextFeatureRelease.version" description="Version label">Version:</Translate></strong> v3.16.3
               <br />
-              <strong>Date:</strong> 2024-11-12
+              <strong><Translate id="home.community.nextFeatureRelease.date" description="Date label">Date:</Translate></strong> 2024-11-12
             </p>
-            <a href="calendar/release">Release Calendar</a>
+            <a href="calendar/release"><Translate id="home.community.nextFeatureRelease.calendar" description="Release Calendar link">Release Calendar</Translate></a>
           </dt>
         </dl>
       </>
     ),
   },
   {
-    title: "Upcoming Events",
+    title: <Translate id="home.community.upcomingEvents" description="Upcoming Events section title">Upcoming Events</Translate>,
     description: (
       <>
         <dl>
-          <dt>Upcoming Events</dt>
+          <dt><Translate id="home.community.upcomingEventsSubtitle" description="Upcoming Events subtitle">Upcoming Events</Translate></dt>
           <dd>
-            <em>Nov 10-13th 2025</em> -{" "}
+            <em>2025-11-10 - 2025-11-13</em> -{" "}
             <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/">
               KubeCon North America
             </a>
           </dd>
-          <dt>Past Events</dt>
+          <dt><Translate id="home.community.pastEventsSubtitle" description="Past Events subtitle">Past Events</Translate></dt>
           <dd>
-            <em>Apr 1-4th 2025</em> -{" "}
+            <em>2025-04-01 - 2025-04-04</em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2025/kubecon-cloudnativecon-europe/">
               KubeCon Europe 2025
             </a>
           </dd>
           <dd>
-            <em>Nov 12-15th 2024</em> -{" "}
+            <em>2024-11-12 - 2024-11-15</em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-north-america/">
               KubeCon North America 2024
             </a>
           </dd>
           <dd>
-            <em>May 19-22nd 2024</em> -{" "}
+            <em>2024-05-19 - 2024-05-22</em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-europe/">
               KubeCon Europe 2024
             </a>
@@ -58,47 +59,66 @@ const BlockList = [
     ),
   },
   {
-    title: "SIG Apps",
+    title: <Translate id="home.community.sigApps" description="SIG Apps section title">SIG Apps</Translate>,
     description: (
       <>
         <p>
-          <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">
-            SIG-Apps
-          </a>{" "}
-          is a Special Interest Group for deploying and operating apps in
-          Kubernetes.
-        </p>
-        <p>
-          They{" "}
-          <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">
-            meet each week
-          </a>{" "}
-          to demo and discuss tools and projects. Community meetings are
-          recorded and{" "}
-          <a href="https://www.youtube.com/results?search_query=kubernetes+sig+apps">
-            shared to YouTube
-          </a>
-          .
-        </p>
+            <Translate
+              id="home.community.sigApps.description"
+              description="SIG Apps meeting description"
+              values={{
+                meetLink: (
+                  <a href="https://github.com/kubernetes/community/blob/master/sig-apps/README.md">
+                    <Translate
+                      id="home.community.sigApps.meetLink"
+                      description="Link to SIG Apps meetings">
+                      meet each week
+                    </Translate>
+                  </a>
+                ),
+                youtubeLink: (
+                  <a href="https://www.youtube.com/results?search_query=kubernetes+sig+apps">
+                    <Translate
+                      id="home.community.sigApps.youtubeLink"
+                      description="Link to YouTube recordings">
+                      shared to YouTube
+                    </Translate>
+                  </a>
+                ),
+              }}>
+              {'They {meetLink} to demo and discuss tools and projects. Community meetings are recorded and {youtubeLink}.'}
+            </Translate>
+          </p>
       </>
     ),
   },
   {
-    title: "Developer Standups",
+    title: <Translate id="home.community.developerStandups">Developer Standups</Translate>,
     description: (
       <>
         <p>
           <a href="https://zoom.us/j/696660622">
-            <span className="mdi mdi-message-video"></span> Thursdays 9:30-10am
-            (PT)
+            <span className="mdi mdi-message-video"></span> 
+            <Translate id="home.community.developerStandups.time" description="Developer Standups day and time">
+              Thursdays 9:30-10am (PT)
+            </Translate>  
           </a>
         </p>
         <p>
-          These meetings are open to all. Check the{" "}
-          <a href="https://github.com/helm/community/blob/main/communication.md#meetings">
-            community repo
-          </a>{" "}
-          for notes and details.
+          <Translate
+            id="home.community.developerStandups.description"
+            description="Developer Standups description with community repo link"
+            values={{
+              communityRepoLink: (
+                <a href="https://github.com/helm/community/blob/main/communication.md#meetings">
+                  <Translate id="home.community.developerStandups.communityRepoLink" description="Community repo link">
+                    community repo
+                  </Translate>
+                </a>
+              ),
+            }}>
+            {'These meetings are open to all. Check the {communityRepoLink} for notes and details.'}
+          </Translate>
         </p>
       </>
     ),
@@ -115,8 +135,7 @@ const BlockList = [
             </a>
           </dt>
           <dd>
-            Discussion around using Helm, working with charts and solving common
-            errors.
+            <Translate id="home.community.slack.helmUsers.description" description="helm-users slack channel description">Discussion around using Helm, working with charts and solving common errors.</Translate>
           </dd>
 
           <dt>
@@ -126,55 +145,103 @@ const BlockList = [
             </a>
           </dt>
           <dd>
-            Topics regarding Helm development, ongoing PRs, releases, etc.
+            <Translate id="home.community.slack.helmDevelopment.description" description="helm-dev slack channel description">Topics regarding Helm development, ongoing PRs, releases, etc.</Translate>
           </dd>
 
           <dt>
             <span className="mdi mdi-chat"></span>{" "}
             <a href="https://kubernetes.slack.com/messages/charts">Charts</a>
           </dt>
-          <dd>Discussion for users and contributors to Helm Charts.</dd>
+          <dd><Translate id="home.community.slack.charts.description" description="charts slack channel description">Discussion for users and contributors to Helm Charts.</Translate></dd>
         </dl>
 
         <p>
-          <a href="https://slack.k8s.io/">Request access here</a> to join the
-          Kubernetes Slack team.
+          <Translate
+            id="home.community.slack.join"
+            description="How to join the Kubernetes Slack team with slack link"
+            values={{
+              slackLink: (
+                <a href="https://slack.k8s.io/">
+                  <Translate id="home.community.slack.join.slackLink" description="Request access to slack link">
+                    Request access here
+                  </Translate>
+                </a>
+              ),
+            }}>
+          {'{slackLink} to join the Kubernetes Slack team.'}
+          </Translate>
         </p>
       </>
     ),
   },
   {
-    title: "Contributing",
+    title: <Translate id="home.community.contributing" description="Contributing section title">Contributing</Translate>,
     description: (
       <>
-        <p>Helm always welcomes new contributions to the project!</p>
-        <h3>Where to begin?</h3>
+        <p><Translate id="home.community.contributing.description" description="Contributing section description">Helm always welcomes new contributions to the project!</Translate></p>
+        <h3><Translate id="home.community.contributing.whereToBegin" description="Where to begin? section title">Where to begin?</Translate></h3>
         <p>
-          Helm is a big project with a lot of users and contributors. It can be
-          a lot to take in!
+          <Translate id="home.community.contributing.whereToBegin.description" description="Where to begin? section description">Helm is a big project with a lot of users and contributors. It can be a lot to take in!</Translate>
         </p>
         <p>
-          We have a list of{" "}
-          <a href="https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22">
-            good first issues
-          </a>{" "}
-          if you want to help but don't know where to start.
+          <Translate
+            id="home.community.contributing.whereToBegin.goodFirstIssues"
+            description="Good first issues sentence with link"
+            values={{
+              goodFirstIssuesLink: (
+                <a href="https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22">
+                  <Translate id="home.community.contributing.whereToBegin.goodFirstIssuesLink" description="Good first issues link">
+                    good first issues
+                  </Translate>
+                </a>
+              ),
+            }}>
+          {'We have a list of {goodFirstIssuesLink} if you want to help but don\'t know where to start.'}
+          </Translate>
         </p>
 
-        <h3>What do I do?</h3>
+        <h3><Translate id="home.community.contributing.whatDoIDo" description="What do I do? section title">What do I do?</Translate></h3>
         <p>
-          Before you contribute some code, please read our{" "}
-          <a href="https://github.com/helm/helm/blob/main/CONTRIBUTING.md">
-            Contribution Guide
-          </a>
-          . It goes over the processes around creating and reviewing pull
-          requests.
+          <Translate
+            id="home.community.contributing.whatDoIDo.contributionGuide"
+            description="What do I do? contribution guide description"
+            values={{
+              contributionGuideLink: (
+                <a href="https://github.com/helm/helm/blob/main/CONTRIBUTING.md">
+                  <Translate id="home.community.contributing.whatDoIDo.contributionGuideLink" description="Contribution Guide link">
+                  Contribution Guide
+                  </Translate>
+                </a>
+              ),
+            }}>
+            {'Before you contribute some code, please read our {contributionGuideLink}. It goes over the processes around creating and reviewing pull requests.'}
+          </Translate>    
         </p>
         <p>
-          Once you write some code, please{" "}
-          <a href="blog/helm-dco">sign your commits</a> to ensure Helm adheres
-          to the <a href="https://developercertificate.org/">DCO</a> agreement
-          used by the <a href="https://www.cncf.io/">CNCF</a>.
+          <Translate
+            id="home.community.contributing.whatDoIDo.signYourCommits"
+            description="What do I do? sign your commits description"
+            values={{
+              signYourCommitsLink: (
+                <a href="blog/helm-dco">
+                  <Translate id="home.community.contributing.whatDoIDo.signYourCommitsLink" description="Sign your commits link">
+                    sign your commits
+                  </Translate>
+                </a>
+              ),
+              dcoLink: (
+                <a href="https://developercertificate.org/">
+                  DCO
+                </a>
+              ),
+              cncfLink: (
+                <a href="https://www.cncf.io/">
+                  CNCF
+                </a>
+              ),
+            }}>
+            {'After you write some code, please {signYourCommitsLink} to ensure Helm adheres to the {dcoLink} agreement used by the {cncfLink}.'}
+            </Translate>
         </p>
       </>
     ),
@@ -204,8 +271,8 @@ export default function HomeCommunity() {
       )}
     >
       <div className="container">
-        <Heading as="h2">Join the Community</Heading>
-        <p>More information about the Helm project, and how to contribute.</p>
+        <Heading as="h2"><Translate id="home.community.title" description="Join the Community title">Join the Community</Translate></Heading>
+        <p><Translate id="home.community.subtitle" description="Join the Community subtitle">More information about the Helm project, and how to contribute.</Translate></p>
         <div className="row">
           {BlockList.map((props, idx) => (
             <Block key={idx} {...props} />
