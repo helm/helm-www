@@ -50,3 +50,6 @@ sdkexamples/sdkexamples
 # Link checker artifacts
 bin/
 tmp/
+
+# Helm v2 source repository (cloned for conversion)
+helm2/
