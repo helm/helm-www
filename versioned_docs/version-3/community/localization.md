@@ -26,9 +26,9 @@ examples:
 
 - In the `i18n` directory, there are subdirectories for each language code. The
   localized content for the language is in each subdirectory.
-- Localized content in each 
+- Localized content in each
 - For each language, there is a `code.json` file for each language with
-  phrases used on the website.   
+  phrases used on the website.
 
 English, with a language code of `en`, is the default language and source for
 translations.
@@ -76,8 +76,8 @@ The following describes the files/directories that are used to translate the doc
   - `code.json` used for translating React code in the site (including the landing page)
   - `i18n/<language-code>/docusaurus-plugin-content-blog` subdirectory with blog translations
   - `i18n/<language-code>/docusaurus-plugin-content-docs` subdirectory with:
-     - Version subdirectories for docs content translations (eg `i18n/<language-code>/docusaurus-plugin-content-docs/version-3/`)
-     - JSON files for each version of the docs with translations for the categories in the sidebar (eg, `current.json`, `version-3.json`, etc)
+    - Version subdirectories for docs content translations (eg `i18n/<language-code>/docusaurus-plugin-content-docs/version-3/`)
+    - JSON files for each version of the docs with translations for the categories in the sidebar (eg, `current.json`, `version-3.json`, etc)
   - `i18n/docusaurus-theme-classic` subdirectory with `footer.json` and `navbar.json` files for translating the visible text in the site navbar and footer
 - The `i18n` key in the `docusaurus.config.js` file lists all the locales and exposes config options for the locale dropdown in the site navbar
 
@@ -91,70 +91,79 @@ To start a new language:
 
 1. Run the Docusaurus `write-translations` command. For example, to add the `fr` (French) locale: `npm run write-translations -- --locale fr`. This creates the required directory structure for the language and initializes the JSON translation files required to translate site elements like the navbar, footer, landing page, and sidebar.
 
-    **npm:**
-    ```
-    npm run write-translations -- --locale <language-code>
-    ```
-    **Yarn:**
-    ```
-    yarn write-translations --locale <language-code>
-    ```
+   **npm:**
+
+   ```
+   npm run write-translations -- --locale <language-code>
+   ```
+
+   **Yarn:**
+
+   ```
+   yarn write-translations --locale <language-code>
+   ```
 
 1. Do the minimum translations for the new language:
+
    1. Translate the `code.json` file.
    1. In the `i18n/docusaurus-theme-classic` subdirectory, translate the `footer.json` and `navbar.json` files.
    1. In the `docusaurus-plugin-content-blog/options.json`, translate the blog elements in the `options.json` file.
 
 1. Add the language to the `i18n` key of the `docusaurus.config.js` file so that it appears in the dropdown in the navbar:
 
-    ```yaml
-    i18n: {
-      defaultLocale: 'en',
-      # add new language to this list of locales
-      locales: ['en', 'de', 'es', 'fr', 'gr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
-      localeConfigs: {
-        en: {
-          htmlLang: 'en-us',
-          label: 'English',
-        },
-        de: {
-          label: 'Deutsch',
-        },
-      # new_lang {
-      #   label: 'Navbar label',
-      # }
-      },
-    },
-    ```
+   ```yaml
+   i18n: {
+     defaultLocale: 'en',
+     # add new language to this list of locales
+     locales: ['en', 'de', 'es', 'fr', 'gr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
+     localeConfigs: {
+       en: {
+         htmlLang: 'en-us',
+         label: 'English',
+       },
+       de: {
+         label: 'Deutsch',
+       },
+     # new_lang {
+     #   label: 'Navbar label',
+     # }
+     },
+   },
+   ```
 
 1. (Optional) Translate docs or blog content. See _Translating_ below.
 
 1. Test your changes by starting the localized site in dev mode, specifying the locale:
 
    **npm:**
+
    ```
    npm run start -- --locale fr
    ```
+
    **Yarn:**
+
    ```
    yarn run start --locale fr
    ```
+
    **NOTE:** Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
 
 ### Translating
 
 Before you translate docs content, review the following best practices and guidelines:
-* Translation tools can help with the process. This includes machine
-generated translations. Machine generated translations should be edited or
-otherwise reviewing for grammar and meaning by a native language speaker before
-publishing.
-* Do not add an untranslated copy of an English file to `i18n/[LANG]/plugin-content-docs` or `i18n/[LANG]/plugin-content-blog`.
-Once a language exists on the site, any untranslated pages will redirect to
-English automatically. Translation takes time, and you always want to be
-translating the most current version of the docs, not an outdated fork.
-* Make sure you remove any `aliases` lines from the header section. A line like
-`aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
-are redirections for old links which don't exist for new pages.
+
+- Translation tools can help with the process. This includes machine
+  generated translations. Machine generated translations should be edited or
+  otherwise reviewing for grammar and meaning by a native language speaker before
+  publishing.
+- Do not add an untranslated copy of an English file to `i18n/[LANG]/plugin-content-docs` or `i18n/[LANG]/plugin-content-blog`.
+  Once a language exists on the site, any untranslated pages will redirect to
+  English automatically. Translation takes time, and you always want to be
+  translating the most current version of the docs, not an outdated fork.
+- Make sure you remove any `aliases` lines from the header section. A line like
+  `aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
+  are redirections for old links which don't exist for new pages.
 
 To translate docs and blog content:
 
@@ -162,32 +171,35 @@ To translate docs and blog content:
 
 1. Copy one or more markdown files that you want to translate from `/docs` or `/versioned_docs` to the appropriate version folder in `i18n/<language-code>/docusaurus-plugin-content-docs`.
 
-     For example, to translate `versioned_docs/version-3/example.md` into Korean:
+   For example, to translate `versioned_docs/version-3/example.md` into Korean:
 
-     ```sh
-     cp versioned_docs/version-3/topics/example.md i18n/ko/docusaurus-plugin-content-docs/version-3/topics/example.md
-     ```
+   ```sh
+   cp versioned_docs/version-3/topics/example.md i18n/ko/docusaurus-plugin-content-docs/version-3/topics/example.md
+   ```
 
 1. Copy one or more markdown files that you want to translate from `/blog` to `i18n/<language-code>/docusaurus-plugin-content-blog`.
 
-    For example, to translate `blog/2025-09-09-path-to-helm-v4.md` into Korean:
+   For example, to translate `blog/2025-09-09-path-to-helm-v4.md` into Korean:
 
-     ```sh
-     cp blog/2025-09-09-path-to-helm-v4.md i18n/ko/docusaurus-plugin-content-blog/2025-09-09-path-to-helm-v4.md
-     ```
+   ```sh
+   cp blog/2025-09-09-path-to-helm-v4.md i18n/ko/docusaurus-plugin-content-blog/2025-09-09-path-to-helm-v4.md
+   ```
 
 1. Test your changes by starting the localized site in dev mode, specifying the locale:
 
    **npm:**
+
    ```
    npm run start -- --locale ko
    ```
+
    **Yarn:**
+
    ```
    yarn run start --locale ko
    ```
-   **NOTE:** Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
 
+   **NOTE:** Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
 
 ## Navigating Between Languages
 

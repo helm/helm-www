@@ -1,0 +1,6 @@
+# Add metadata lines to docs files
+# Format: filename|metadata_line
+# Note: Metadata will be added to YAML frontmatter before the closing ---
+
+index.md|sidebar_position: 1
+index.md|hide_table_of_contents: true

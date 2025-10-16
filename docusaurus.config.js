@@ -26,6 +26,14 @@ const config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  // Opt-in to less strict, standard CommonMark support with options
+  // Automatically detects .md and .mdx extensions
+  // See https://docusaurus.io/docs/markdown-features/react#markdown-and-jsx-interoperability
+  // See https://github.com/prettier/prettier/issues/17089
+  markdown: {
+    format: "detect",
+  },
+
   // Set the production url of your site here
   url: siteURL,
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -57,6 +65,22 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/helm/helm-www/blob/main/",
+
+          // "lastVersion" means the latest release
+          // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
+          // where "current" means the /docs folder
+          lastVersion: "3",
+          versions: {
+            // v4 is "current" (does not necessarily mean latest, see above)
+            // v3 is in /versioned_docs/version-3
+            // v2 is in /versioned_docs/version-2
+            // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
+            // and v5 will then live in /docs
+            current: { label: "4.0.0-alpha.1 🚧" },
+            3: { label: "3.19.0" },
+            // TODO uncomment when we import v2 docs
+            // '2': { label: '2.17.0' },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -87,6 +111,12 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
         title: "Helm",
         logo: {
@@ -95,9 +125,10 @@ const config = {
         },
         items: [
           {
-            to: "docs",
-            label: "Docs",
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
             position: "left",
+            label: "Docs",
           },
           {
             href: "https://artifacthub.io/",
