@@ -1,0 +1,12 @@
+---
+title: "Спільнота"
+weight: 8
+---
+
+# Настанови спільноти {#community-guides}
+
+Дізнайтесь про процес розробки проєкту Helm та як ви можете зробити свій внесок.
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
