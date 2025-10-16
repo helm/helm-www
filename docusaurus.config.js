@@ -78,8 +78,7 @@ const config = {
             // and v5 will then live in /docs
             current: { label: "4.0.0-alpha.1 🚧" },
             3: { label: "3.19.0" },
-            // TODO uncomment when we import v2 docs
-            // '2': { label: '2.17.0' },
+            2: { label: "2.17.0" },
           },
         },
         blog: {
@@ -180,15 +179,15 @@ const config = {
             items: [
               {
                 label: "Introduction",
-                to: "#",
+                to: "docs/intro",
               },
               {
                 label: "Chart tips & tricks",
-                to: "#",
+                to: "docs/howto/charts_tips_and_tricks",
               },
               {
                 label: "Developing Charts",
-                to: "#",
+                to: "docs/topics/charts",
               },
               {
                 label: "Search 800+ Charts",
