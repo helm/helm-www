@@ -1,6 +1,6 @@
 {
   "home.community.nextFeatureRelease": {
-    "message": "Наступний реліз функцій",
+    "message": "Наступний реліз",
     "description": "Next Feature Release section title"
   },
   "home.community.nextFeatureRelease.version": {
@@ -215,7 +215,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Отримати Helm",
+    "message": "Отримайте Helm!",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -243,7 +243,7 @@
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "Отримати чарти",
+    "message": "Отримання чартів",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {

@@ -171,7 +171,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "获取 Helm",
+    "message": "获取 Helm！",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -199,7 +199,7 @@
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "获取 Charts",
+    "message": "获取 Chart",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {

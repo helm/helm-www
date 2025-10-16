@@ -12,7 +12,7 @@
     "description": "The title of the footer links column with title=Development in the footer"
   },
   "link.title.Community": {
-    "message": "Community",
+    "message": "Gemeinschaft",
     "description": "The title of the footer links column with title=Community in the footer"
   },
   "link.item.label.Source code": {
@@ -64,7 +64,7 @@
     "description": "The label of footer link with label=Weekly Meetings linking to https://github.com/helm/community/blob/main/communication.md#meetings"
   },
   "link.item.label.GitHub Community": {
-    "message": "GitHub-Community",
+    "message": "GitHub-Gemeinschaft",
     "description": "The label of footer link with label=GitHub Community linking to https://github.com/helm/community"
   },
   "link.item.label.Slack (#helm-users)": {
@@ -80,7 +80,7 @@
     "description": "The label of footer link with label=X linking to https://x.com/helmpack"
   },
   "copyright": {
-    "message": "<a href=\"https://www.cncf.io/\">Wir sind ein graduiertes Projekt der Cloud Native Computing Foundation.</a><br/>© Helm-Autoren 2025. Dokumentation verteilt unter <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Alle Rechte vorbehalten. The Linux Foundation besitzt eingetragene Marken und verwendet Marken. Eine Liste der Marken der Linux Foundation finden Sie auf unserer <a href=\"https://www.linuxfoundation.org/trademark-usage/\">Seite zur Markennutzung</a>.",
+    "message": "<a href=\"https://www.cncf.io/\">Wir sind ein promoviertes Projekt der Cloud Native Computing Foundation.</a><br/>© Helm-Autoren 2025. Dokumentation verteilt unter <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Alle Rechte vorbehalten. The Linux Foundation besitzt eingetragene Marken und verwendet Marken. Eine Liste der Marken der Linux Foundation finden Sie auf unserer <a href=\"https://www.linuxfoundation.org/trademark-usage/\">Seite zur Markennutzung</a>.",
     "description": "The footer copyright"
   },
   "logo.alt": {
