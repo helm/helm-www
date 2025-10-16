@@ -36,7 +36,7 @@
     "description": "What is Helm? title"
   },
   "home.community.nextFeatureRelease": {
-    "message": "Следующий релиз функций",
+    "message": "Следующая версия",
     "description": "Next Feature Release section title"
   },
   "home.community.nextFeatureRelease.version": {
@@ -159,7 +159,7 @@
     "description": "Sign your commits link"
   },
   "home.community.title": {
-    "message": "Присоединяйтесь к сообществу",
+    "message": "Присоединиться к сообществу",
     "description": "Join the Community title"
   },
   "home.community.subtitle": {
@@ -207,7 +207,7 @@
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Получить Helm",
+    "message": "Скачайте Helm!",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
@@ -235,7 +235,7 @@
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "Получить Charts",
+    "message": "Скачайте Chart-ы",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {
