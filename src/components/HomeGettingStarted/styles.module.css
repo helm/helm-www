@@ -1,0 +1,38 @@
+
+.gettingStarted :global(.card) {
+  height: 100%;
+}
+
+.gettingStarted :global(.col) {
+  margin-bottom: 1rem;
+}
+
+/* Install Helm tabs */
+
+.gettingStarted :global(.tabs) {
+  /* Needed to wrap tabs. Wrap instead of horizontal overflow scrolling or scaling smaller */
+  flex-wrap: wrap;
+}
+
+/* Use standard Helm link color for tabs */
+.gettingStarted :global(.tabs__item) {
+  color: var(--ifm-color-white);
+  /* Needed to wrap tabs. Wrap instead of horizontal overflow scrolling or scaling smaller */
+  white-space: normal;
+}
+
+.gettingStarted :global(.tabs__item--active) {
+  color: var(--shade-green-bright);
+  border-bottom-color: var(--shade-green-bright);
+}
+
+.gettingStarted :global(.tabs__item):hover {
+  color: var(--shade-green-bright);
+}
+
+/* Ensure copy buttons are visible on mobile */
+@media (max-width: 996px) {
+  .gettingStarted :global(button.clean-btn) {
+    opacity: 1 !important;
+  }
+}
