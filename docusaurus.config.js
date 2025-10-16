@@ -131,18 +131,13 @@ const config = {
           src: "img/helm.svg",
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Docs",
-          },
+          { to: "docs", label: "Docs", position: "left" },
           {
             href: "https://artifacthub.io/",
             label: "Charts",
             position: "left",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/helm/community/",
             label: "Community",
