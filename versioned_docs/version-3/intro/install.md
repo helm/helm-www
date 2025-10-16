@@ -27,7 +27,7 @@ and installed.
    destination (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 From there, you should be able to run the client and [add the stable
-chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
+chart repository](../intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during
@@ -182,4 +182,4 @@ sophisticated things with Helm.
 
 Once you have the Helm Client successfully installed, you can move on to using
 Helm to manage charts and [add the stable
-chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+chart repository](../intro/quickstart.md#initialize-a-helm-chart-repository).
