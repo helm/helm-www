@@ -103,14 +103,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: "helm4_prerelease",
-        content:
-          '📢 Helm 4 beta 1 is out! See the <a href="/docs/next/category/helm-4">pre-release docs</a> for details!',
-        backgroundColor: "#2e8555",
-        textColor: "#ffffff",
-        isCloseable: false,
-      },
+      // TODO: fix announcement styles before enabling
+      // announcementBar: {
+      //   id: "helm4_prerelease",
+      //   content:
+      //     '📢 Helm 4 beta 1 is out! See the <a href="/docs/next/category/helm-4">pre-release docs</a> for details!',
+      //   backgroundColor: "#2e8555",
+      //   textColor: "#ffffff",
+      //   isCloseable: false,
+      // },
       // Replace with your project's social card
       image: "img/helm-social-card.png",
       colorMode: {
