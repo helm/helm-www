@@ -120,7 +120,7 @@ helm get values <release>   # Télécharge un fichier de valeurs pour une versio
 ### Gestion des Plugins
 
 ```bash
-helm plugin install <path/url1>     # Installe des plugins
+helm plugin install <path/url>     # Installe des plugins
 helm plugin list                    # Affiche la liste des plugins installés
 helm plugin update <plugin>         # Met à jour des plugins
 helm plugin uninstall <plugin>      # Désinstalle un plugin
