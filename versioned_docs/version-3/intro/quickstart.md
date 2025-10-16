@@ -23,7 +23,7 @@ use of Helm.
   second-latest minor release.
 - You should also have a local configured copy of `kubectl`.
 
-See the [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) for the maximum version skew supported between Helm and Kubernetes.
+See the [Helm Version Support Policy](../topics/version_skew.md) for the maximum version skew supported between Helm and Kubernetes.
 
 ## Install Helm
 
