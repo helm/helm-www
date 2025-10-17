@@ -148,7 +148,7 @@ Helm 3 では、特定のリリースの情報は新しくリリース自体と�
 
 ### Secret がデフォルトのストレージドライバーになった
 
-Helm 3 からは、Secret が[デフォルトのストレージドライバー](/ja/docs/topics/advanced/#ストレージバックエンド)として使われるようになりました。Helm 2 では、ConfigMap がデフォルトでリリース情報を保存するために使用されていました。Helm 2.7.0 でリリース情報を保存するために Secret を使用する新しいストレージバックエンドが実装され、Helm 3 からはデフォルトで使用されるようになりました。
+Helm 3 からは、Secret が[デフォルトのストレージドライバー](/topics/advanced.md#ストレージバックエンド)として使われるようになりました。Helm 2 では、ConfigMap がデフォルトでリリース情報を保存するために使用されていました。Helm 2.7.0 でリリース情報を保存するために Secret を使用する新しいストレージバックエンドが実装され、Helm 3 からはデフォルトで使用されるようになりました。
 
 Helm 3 で Secret がデフォルトに変更されたことで、Kubernetes のリリースの Secret の暗号化と組み合わせて、チャートを保護する際のセキュリティが強化できます。
 
@@ -164,7 +164,7 @@ Helm 3 では、Helm は Go のインポートパスを `k8s.io/helm` から `he
 
 レンダリングステージで利用可能な `.Capabilities` 組み込みオブジェクトが簡略されました。
 
-[ビルトインオブジェクト](/docs/chart_template_guide/builtin_objects/)
+[ビルトインオブジェクト](/chart_template_guide/builtin_objects.md)
 
 ### チャートの Values の JSONSchema による検証
 

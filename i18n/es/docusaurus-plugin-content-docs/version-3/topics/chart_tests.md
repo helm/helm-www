@@ -138,6 +138,6 @@ Phase:          Succeeded
   en varios archivos yaml en el directorio `templates/`.
 - Le invitamos a anidar su suite de pruebas en un directorio `tests/` como
   `<chart-name>/templates/tests/` para mayor aislamiento.
-- Una prueba es un [gancho de Helm](/docs/charts_hooks/), por lo que anotaciones
+- Una prueba es un [gancho de Helm](/topics/charts_hooks.md), por lo que anotaciones
   como `helm.sh/hook-weight` y `helm.sh/hook-delete-policy` pueden usarse con
   recursos de prueba.

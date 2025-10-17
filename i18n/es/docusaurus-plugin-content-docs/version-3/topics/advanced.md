@@ -142,7 +142,7 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 
 **NOTAS DE PRODUCCIÓN**: Se recomienda:
 - Preparar la base de datos para la producción. Para PostgreSQL, consulta la documentación [Administración del servidor](https://www.postgresql.org/docs/12/admin.html) para más detalles
-- Habilitar [gestión de permisos](/docs/permissions_sql_storage_backend/) para reflejar Kubernetes RBAC y obtener información sobre la versión
+- Habilitar [gestión de permisos](/topics/permissions_sql_storage_backend.md) para reflejar Kubernetes RBAC y obtener información sobre la versión
 
 Si desea cambiar del backend por defecto al backend SQL, tendrá que hacer la migración por su cuenta. Puede recuperar la información de lanzamiento con el siguiente comando:
 

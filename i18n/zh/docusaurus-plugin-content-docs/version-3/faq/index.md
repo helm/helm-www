@@ -154,7 +154,7 @@ containers:
 
 ### 作为默认存储器的密钥
 
-在 Helm 3中, 密钥被作为[默认存储驱动](https://helm.sh/zh/docs/topics/advanced#后端存储)使用。
+在 Helm 3中, 密钥被作为[默认存储驱动](/topics/advanced.md)使用。
 Helm 2默认使用ConfigMaps记录版本信息。在Helm 2.7.0中，新的存储后台使用密钥来存储版本信息，
 现在是Helm 3的默认设置。
 
@@ -173,7 +173,7 @@ Helm 3默认允许更改密钥作为额外的安全措施在Kubernetes中和密�
 
 `.Capabilities`内置对象会在已经简化的渲染阶段生效。
 
-[内置对象](https://helm.sh/zh/docs/chart_template_guide/builtin_objects/)
+[内置对象](/chart_template_guide/builtin_objects.md)
 
 ### 使用Json格式验证Chart Values
 
@@ -187,7 +187,7 @@ chart values现在可以使用JSON结构了。这保证用户提供value可以�
 * `helm template`
 * `helm lint`
 
-查看 [格式文档](https://docs.helm.sh/zh/docs/topics/charts#架构文件) 了解更多信息。
+查看 [格式文档](/topics/charts.md) 了解更多信息。
 
 ### 将 `requirements.yaml` 合并到了 `Chart.yaml`
 

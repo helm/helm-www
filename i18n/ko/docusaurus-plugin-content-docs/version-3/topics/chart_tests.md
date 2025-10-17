@@ -137,6 +137,6 @@ Phase:          Succeeded
   yaml 파일에 분산하여 할 수도 있다.
 - 따로 분리하기 위해 `<차트-이름>/templates/tests/` 와 같은 `tests/` 디렉토리 아래에
   테스트 스위트를 넣어둘 수도 있다.
-- 테스트는 [헬름 훅](/docs/charts_hooks/) 이므로, 
+- 테스트는 [헬름 훅](charts_hooks.md) 이므로, 
   `helm.sh/hook-weight` 나 `helm.sh/hook-delete-policy` 와 같은 어노테이션을 테스트
   리소스와 함께 사용할 수 있다.

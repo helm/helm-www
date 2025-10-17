@@ -10,9 +10,9 @@ weight: 14
 
 - CNCF [Artifact Hub](https://artifacthub.io/packages/search?kind=0) є незамінним джерелом чартів.
 - [Документація Kubernetes](https://kubernetes.io/docs/home/) надає детальні приклади різних ресурсів, які ви можете використовувати, від ConfigMaps і Secrets до DaemonSets і Deployments.
-- Посібник [Чарти Helm](../../topics/charts/) пояснює робочий процес використання чартів.
-- Посібник [Хуки чартів Helm](../../topics/charts_hooks/) пояснює, як створювати хук для життєвого циклу.
-- Стаття [Поради та підказки для розробки чартів](../../howto/charts_tips_and_tricks/) надає кілька корисних порад для написання чартів.
+- Посібник [Чарти Helm](/topics/charts.md) пояснює робочий процес використання чартів.
+- Посібник [Хуки чартів Helm](/topics/charts_hooks.md) пояснює, як створювати хук для життєвого циклу.
+- Стаття [Поради та підказки для розробки чартів](/howto/charts_tips_and_tricks.md) надає кілька корисних порад для написання чартів.
 - Документація [Sprig](https://github.com/Masterminds/sprig) описує більше ніж шістдесят функцій шаблонів.
 - Документація [Go templates](https://godoc.org/text/template) детально пояснює синтаксис шаблонів.
 - Інструмент [Schelm](https://github.com/databus23/schelm) є корисною утилітою для налагодження чартів.
