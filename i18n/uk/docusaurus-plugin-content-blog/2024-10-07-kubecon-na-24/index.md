@@ -1,15 +1,13 @@
 ---
 title: "Helm на KubeCon/CloudNativeCon SLC"
 slug: "kubecon-slc"
-authorname: "Matt Farina"
-author: "@mattfarina"
-authorlink: "https://mattfarina.com"
+authors: ["mattfarina"]
 date: "2024-11-07"
 ---
 
 ![Логотип KubeCon / CloudNativeCon](kubecon.png)
 
-Helm буде присутній на KubeCon / CloudNativeCon North America в Солт-Лейк-Сіті. Щодня під час основної частини конференції відбуватимуться різні події, зокрема:
+Helm буде присутній на KubeCon / CloudNativeCon North America в Солт-Лейк-Сіті. Щодня під час основної частини конференції відбуватимуться різні події, зокрема:<!-- truncate -->
 
 * Середа:
   * Присутність на стенді в павільйоні проєктів з 3:15pm до 8pm.

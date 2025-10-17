@@ -34,7 +34,7 @@ Se definen los siguientes ganchos:
 | `post-upgrade`     | Se ejecuta en una solicitud de actualización después de que se hayan actualizado todos los recursos.                                 |
 | `pre-rollback`     | Se ejecuta en una solicitud de reversión después de renderizar las plantillas, pero antes de revertir los recursos                   |
 | `post-rollback`    | Se ejecuta en una solicitud de reversión después de que se hayan modificado todos los recursos.                                      |
-| `test`             | Se ejecuta cuando se invoca el subcomando Helm test ([ver documentos de prueba](/docs/chart_tests/))                                 |
+| `test`             | Se ejecuta cuando se invoca el subcomando Helm test ([ver documentos de prueba](/topics/chart_tests.md))                                 |
 
 _Note que el gancho `crd-install` se ha eliminado a favor del directorio `crds/`
 en Helm 3._

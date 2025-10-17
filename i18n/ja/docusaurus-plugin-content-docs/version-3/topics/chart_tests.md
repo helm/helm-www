@@ -94,5 +94,5 @@ Phase:          Succeeded
   `templates/` ディレクトリ内の複数の yaml ファイルに分散することができます
 - より分離するために、テストスイートを `<chart-name>/templates/tests/` のような 
   `tests/` ディレクトリの下にネストすることができます
-- テストは [Helm フック](/docs/charts_hooks/)であるため、
+- テストは [Helm フック](/topics/charts_hooks.md)であるため、
   `helm.sh/hook-weight` や `helm.sh/hook-delete-policy` などのアノテーションをテストリソースで使用できます

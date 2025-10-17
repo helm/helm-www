@@ -209,7 +209,7 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 
 **운영 참고사항**: 다음을 권장한다.
 - 운영 데이터베이스를 준비하자. PostgreSQL에 대한 자세한 내용은 [서버 관리](https://www.postgresql.org/docs/12/admin.html) 문서를 참조하자.
-- 릴리스 정보를 위해 쿠버네티스 RBAC를 미러링하도록 [권한 관리](/docs/permissions_sql_storage_backend/)를 
+- 릴리스 정보를 위해 쿠버네티스 RBAC를 미러링하도록 [권한 관리](permissions_sql_storage_backend.md)를 
 활성화하자.
 
 기본 백엔드에서 SQL 백엔드로 전환하려면 

@@ -13,4 +13,4 @@ Whether you are a Helm aficionado or just have an interest in release engineerin
 
 Not able to make it to KubeCon + CloudNativeCon North America? Don’t fret! The session will be recorded and made available at a later date.
 
-This release session is just one of several Helm related events taking place at KubeCon + CloudNativeCon North America 2024. A full overview can be found [here](2024-10-07-kubecon-na-24/index.md).
+This release session is just one of several Helm related events taking place at KubeCon + CloudNativeCon North America 2024. A full overview can be found [here](/blog/2024-10-07-kubecon-na-24/index.md).
