@@ -113,7 +113,7 @@ func main() {
 
 ```
 
-## 后端存储
+## 后端存储 {#storage-backends}
 
 Helm 3 改变了存储命名空间版本秘钥的默认版本信息。Helm 2 默认将版本信息作为ConfigMap存储在命名空间的Tiller实例中。
 下面小节部分会演示如果配置不同的后端。配置是基于 `HELM_DRIVER` 环境变量。它会被设置成这几个值其中之一：`[configmap, secret, sql]`。

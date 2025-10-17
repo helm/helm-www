@@ -44,7 +44,7 @@ wordpress/
 Helm se reserva el uso de los directorios `charts/`, `crds/` y `templates/`, y
 de los nombres de archivo listados. Los demás archivos se dejarán como están.
 
-## El Archivo Chart.yaml
+## El Archivo Chart.yaml {#the-chartyaml-file}
 
 El archivo `Chart.yaml` es requerido para un chart. Contiene los siguientes campos:
 
@@ -899,7 +899,7 @@ forma de que un sub-chart influya en los valores del chart padre.
 Además, las variables globales de los charts padres tienen prioridad sobre las
 variables globales de los subcharts.
 
-### Archivos de Esquema
+### Archivos de Esquema {#schema-files}
 
 A veces, un mantenedor de charts puede querer definir una estructura sobre sus
 valores. Esto se puede hacer definiendo un esquema en el archivo
