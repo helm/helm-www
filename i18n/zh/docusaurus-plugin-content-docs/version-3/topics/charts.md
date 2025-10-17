@@ -725,7 +725,7 @@ apache:
 
 并且，父chart的全局变量优先于子chart中的全局变量。
 
-### 架构文件
+### 架构文件 {#schema-files}
 
 有时候，chart容器可能想基于它们的values值定义一个结构，这可以在`values.schema.json`文件中定义一个架构实现。
 架构使用[JSON 架构](https://json-schema.org/)表示。看起来像这样：
