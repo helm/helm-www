@@ -1,9 +1,7 @@
 ---
 title: "헬름 차트 저장소 지원 중단 업데이트"
 slug: "charts-repo-deprecation"
-authorname: "Vic Iglesias"
-author: "@vicnastea"
-authorlink: "https://twitter.com/vicnastea"
+authors: ["viciglesias"]
 date: "2020-10-30"
 ---
 

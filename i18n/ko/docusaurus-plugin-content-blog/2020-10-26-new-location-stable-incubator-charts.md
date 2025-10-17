@@ -1,9 +1,7 @@
 ---
 title: "Stable 및 Incubator 차트를 위한 새로운 공간"
 slug: "new-location-stable-incubator-charts"
-authorname: "Matt Farina"
-author: "@mattfarina"
-authorlink: "https://mattfarina.com"
+authors: ["mattfarina"]
 date: "2020-10-26"
 ---
 
