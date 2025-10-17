@@ -1,9 +1,7 @@
 ---
 title: "헬름의 CNCF 졸업을 축하하며"
 slug: "celebrating-helms-cncf-graduation"
-authorname: "Matt Butcher"
-author: "@technosophos"
-authorlink: "https://twitter.com/technosophos"
+authors: ["mattbutcher"]
 date: "2020-04-30"
 twittertype: "summary_large_image"
 twitterimage: "blog/images/helmgraduation-twitter.png"

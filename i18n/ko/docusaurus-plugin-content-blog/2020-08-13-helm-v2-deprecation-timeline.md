@@ -1,9 +1,7 @@
 ---
 title: "헬름 v2 사용중단 타임라인"
 slug: "helm-v2-deprecation-timeline"
-authorname: "Bridget Kromhout"
-author: "@bridgetkromhout"
-authorlink: "https://twitter.com/bridgetkromhout"
+authors: ["bridgetkromhout"]
 date: "2020-08-12"
 ---
 

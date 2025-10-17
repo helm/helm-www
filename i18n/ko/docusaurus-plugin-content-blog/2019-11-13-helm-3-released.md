@@ -1,9 +1,7 @@
 ---
 title: "Helm 3.0.0 출시!"
 slug: "helm-3-released"
-authorname: "Matthew Fisher"
-author: "@bacongobbler"
-authorlink: "https://blog.bacongobbler.com"
+authors: ["mattfisher"]
 date: "2019-11-13"
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "KubeCon + CloudNativeCon NA 2019 에서의 헬름"
-authorname: "Matt Farina"
-author: "@mattfarina"
-authorlink: "https://mattfarina.com"
+authors: ["mattfarina"]
 date: "2019-11-15"
 ---
 
