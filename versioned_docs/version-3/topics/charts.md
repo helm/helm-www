@@ -47,7 +47,7 @@ wordpress/
 Helm reserves use of the `charts/`, `crds/`, and `templates/` directories, and
 of the listed file names. Other files will be left as they are.
 
-## The Chart.yaml File
+## The Chart.yaml File {#the-chartyaml-file}
 
 The `Chart.yaml` file is required for a chart. It contains the following fields:
 

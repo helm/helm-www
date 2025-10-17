@@ -101,7 +101,7 @@ func main() {
 }
 ```
 
-## Backends de almacenamiento
+## Backends de almacenamiento {#storage-backends}
 Helm 3 cambió el almacenamiento por defecto de la información de la release a Secrets en el namespace de la release. Helm 2 por defecto almacena la información de la release como ConfigMaps en el namespace de la instancia de Tiller. Las subsecciones siguientes muestran cómo configurar diferentes backends. Esta configuración se basa en la variable de entorno `HELM_DRIVER`. Se puede establecer a uno de los valores:
 `[configmap, secret, sql]`.
 
