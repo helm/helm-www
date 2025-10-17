@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-sidebar_label: 🔍 Full Changelog
+sidebar_label: Full Changelog
 ---
 
 # Helm 4 🔍 Full Changelog
