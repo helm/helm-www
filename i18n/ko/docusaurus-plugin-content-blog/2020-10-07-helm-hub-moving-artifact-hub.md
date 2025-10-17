@@ -1,9 +1,7 @@
 ---
 title: "헬름 허브의 아티팩트 허브로의 이동"
 slug: "helm-hub-moving-to-artifact-hub"
-authorname: "Matt Farina"
-author: "@mattfarina"
-authorlink: "https://mattfarina.com"
+authors: ["mattfarina"]
 date: "2020-10-07"
 ---
 
