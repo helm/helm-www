@@ -2,6 +2,7 @@
 @import './main.css';
 @import './announcement-bar.css';
 @import './navbar.css';
+@import './content.css';
 @import './footer.css';
 
 /* You can override the default Infima variables here. */

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: 🔭 Overview
+sidebar_label: Overview
 ---
 
 # Helm 4 🔭 Overview
