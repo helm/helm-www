@@ -110,7 +110,7 @@ const config = {
         // Change id to show again for users who have already closed it
         id: "helm4_beta_1",
         content:
-          '📢 Helm 4 beta 1 is out! See the <a href="/docs/next/category/helm-4">pre-release docs</a> for details!',
+          '📢 Helm 4 beta 1 is out! See the <a href="/docs/next">pre-release docs</a> for details!',
         isCloseable: true,
       },
       // Replace with your project's social card
