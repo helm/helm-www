@@ -2024,7 +2024,7 @@ Helm включає функції для роботи з Kubernetes, зокре
 
 `lookup` використовується для пошуку ресурсу в працюючому кластері. При використанні з командою `helm template` він завжди повертає порожній результат.
 
-Більше деталей можна знайти в [документації по функції lookup](functions_and_pipelines.md/#using-the-lookup-function).
+Більше деталей можна знайти в [документації по функції lookup](functions_and_pipelines.md#using-the-lookup-function).
 
 ### .Capabilities.APIVersions.Has
 

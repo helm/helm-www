@@ -2044,7 +2044,7 @@ uuidv4
 `lookup` 은 실행중인 클러스터에서 리소스를 조회하는 데 사용된다. 
 `helm template` 명령어와 함께 사용하면 항상 빈 응답을 반환한다.
 
-[조회 함수에 대한 문서](functions_and_pipelines.md/#lookup-함수-사용하기)에서 
+[조회 함수에 대한 문서](functions_and_pipelines.md#lookup-함수-사용하기)에서 
 자세한 내용을 확인할 수 있다.
 
 ### .Capabilities.APIVersions.Has

@@ -2,7 +2,6 @@
 title: "헬름 명령어"
 description: "헬름 CLI 명령어 전체 목록 문서"
 weight: 6
-slug: helm
 ---
 
 # 헬름 명령어

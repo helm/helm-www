@@ -22,7 +22,7 @@ weight: 3
 
 ## Приклад тесту {#example-test}
 
-Команда [helm create](/docs/helm/helm_create) автоматично створює кілька тек і файлів. Щоб спробувати функціональність тестів Helm, спочатку створіть демонстраційний Helm чарт.
+Команда [helm create](/commands/helm_create.md) автоматично створює кілька тек і файлів. Щоб спробувати функціональність тестів Helm, спочатку створіть демонстраційний Helm чарт.
 
 ```console
 $ helm create demo
@@ -82,4 +82,4 @@ Phase:          Succeeded
 
 - Ви можете визначити стільки тестів, скільки бажаєте, в одному yaml файлі або розподілити їх по кількох yaml файлах у теці `templates/`.
 - Ви можете організувати ваші тести у теці `tests/`, наприклад, `<chart-name>/templates/tests/` для більшої ізоляції.
-- Тест є [Helm хуком](/docs/charts_hooks/), тому анотації, такі як `helm.sh/hook-weight` і `helm.sh/hook-delete-policy`, можуть використовуватися з ресурсами тестів.
+- Тест є [Helm хуком](charts_hooks.md), тому анотації, такі як `helm.sh/hook-weight` і `helm.sh/hook-delete-policy`, можуть використовуватися з ресурсами тестів.

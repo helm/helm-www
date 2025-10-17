@@ -219,7 +219,7 @@ containers:
 렌더링 단계에서 사용 가능한 `.Capabilities` 빌트인 객체가
 간소화되었습니다.
 
-[빌트인 객체](/docs/chart_template_guide/builtin_objects/)
+[빌트인 객체](/chart_template_guide/builtin_objects.md)
 
 ### JSON 스키마로 차트 값 유효성 검사
 
@@ -235,7 +235,7 @@ containers:
 * `helm template`
 * `helm lint`
 
-자세한 내용은 [스키마 파일](/ko/docs/topics/charts#스키마-파일) 문서를
+자세한 내용은 [스키마 파일](/topics/charts.md#스키마-파일) 문서를
 참조하십시오.
 
 ### `requirements.yaml`이 `Chart.yaml` 로 통합

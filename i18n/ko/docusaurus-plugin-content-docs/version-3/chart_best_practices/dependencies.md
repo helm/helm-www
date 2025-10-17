@@ -33,7 +33,7 @@ version: ~1.2.3
 
 #### OCI 레지스트리에서 호스팅되는 차트에 대한 실험적 기능지원
 
-[실험적 OCI 지원을 활성화(enabled)](/docs/registries/)했다면, 
+[실험적 OCI 지원을 활성화(enabled)](/topics/registries.md)했다면, 
 리포지터리 URL의 OCI 참조(`oci://registry/group/image:tag`)를 지정할 수 있다.
 
 OCI 참조를 지정한 경우, 리포지터리 URL이 이미지 태그(`oci://nginx:1.10`)를 가지고 있으면 `version` 인자를 생략해도 된다.

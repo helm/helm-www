@@ -483,7 +483,7 @@ $ helm repo add dev https://example.com/dev-charts
 
 ## 独自のチャートを作成する
 
-[チャート開発ガイド](https://helm.sh/docs/topics/charts/) は、独自のチャートを開発する方法を説明しています。
+[チャート開発ガイド](/topics/charts.md) は、独自のチャートを開発する方法を説明しています。
 ただし、`helm create` コマンドを使用すると、すぐに開始できます。
 
 ```console
