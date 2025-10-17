@@ -33,7 +33,7 @@
   },
   "link.item.label.Introduction": {
     "message": "简介",
-    "description": "The label of footer link with label=Introduction linking to #"
+    "description": "The label of footer link with label=Introduction linking to docs/intro"
   },
   "link.item.label.Chart tips & tricks": {
     "message": "Chart 提示与技巧",
