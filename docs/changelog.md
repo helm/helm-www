@@ -3,7 +3,7 @@ sidebar_position: 2
 sidebar_label: Full Changelog
 ---
 
-# Helm 4 🔍 Full Changelog
+# Helm 4 Full Changelog
 
 **Scope**: 258 PRs from `main` branch (`v4.0.0-beta.1`) compared to `v3.19.0`
 **v4-only**: 235 PRs (23 backported to v3 excluded)

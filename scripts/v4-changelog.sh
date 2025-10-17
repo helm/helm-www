@@ -89,5 +89,5 @@ echo
 
 echo "⚠️  Remember to manually check if each PR was backported to v3."
 echo "   Because there's not a good way to automate that check when commit SHAs differ,"
-echo "   and git diffs will often neccessarily differ between v4 and v3."
+echo "   and git diffs will often necessarily differ between v4 and v3."
 echo
