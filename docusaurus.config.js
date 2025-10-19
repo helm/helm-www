@@ -47,12 +47,45 @@ const config = {
 
   onBrokenLinks: "throw",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'el','es', 'fr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-us',
+        label: 'English',
+      },
+      de: {
+        label: 'Deutsch (German)',
+      },
+      es: {
+        label: 'Español (Spanish)',
+      },
+      fr: {
+        label: 'Français (French)',
+      },
+      el: {
+        label: 'Ελληνικά (Greek)',
+      },
+      ja: {
+        label: '日本語 (Japanese)',
+      },
+      ko: {
+        label: '한국어 (Korean)',
+      },
+      pt: {
+        label: 'Português (Portuguese)',
+      },
+      ru: {
+        label: 'Русский (Russian)',
+      },
+      uk: {
+        label: 'Українська (Ukrainian)',
+      },
+      zh: {
+        label: '中文 (Chinese)',
+      },
+    },
   },
 
   presets: [
@@ -88,6 +121,9 @@ const config = {
             type: ["rss", "atom"],
             xslt: true,
           },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: "https://github.com/helm/helm-www/blob/main/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -191,7 +227,15 @@ const config = {
               },
               {
                 label: "Developing Charts",
-                to: "docs/topics/charts",
+                to: "#",
+              },
+              {
+                label: "Chart tips & tricks",
+                to: "#",
+              },
+              {
+                label: "Developing Charts",
+                to: "#",
               },
               {
                 label: "Search 800+ Charts",

@@ -1,0 +1,584 @@
+{
+  "home.features.manageComplexity": {
+    "message": "복잡성 관리",
+    "description": "Manage Complexity section title"
+  },
+  "home.features.manageComplexity.description": {
+    "message": "차트는 가장 복잡한 앱도 설명하고, 반복 가능한 애플리케이션 설치를 제공하며, 단일 권한 소스 역할을 합니다.",
+    "description": "Manage Complexity section description"
+  },
+  "home.features.easyUpdates": {
+    "message": "쉬운 업데이트",
+    "description": "Easy Updates section title"
+  },
+  "home.features.easyUpdates.description": {
+    "message": "제자리 업그레이드와 사용자 정의 후크로 업데이트의 어려움을 없애세요.",
+    "description": "Easy Updates section description"
+  },
+  "home.features.simpleSharing": {
+    "message": "간단한 공유",
+    "description": "Simple Sharing section title"
+  },
+  "home.features.simpleSharing.description": {
+    "message": "차트는 버전 관리, 공유, 공개 또는 비공개 서버에서의 호스팅이 쉽습니다.",
+    "description": "Simple Sharing section description"
+  },
+  "home.features.rollbacks": {
+    "message": "롤백",
+    "description": "Rollbacks section title"
+  },
+  "home.features.rollbacks.description": {
+    "message": "{helmRollback}을 사용하여 릴리스의 이전 버전으로 쉽게 롤백할 수 있습니다.",
+    "description": "Rollbacks section description"
+  },
+  "home.features.title": {
+    "message": "기능",
+    "description": "Features section title"
+  },
+  "home.community.nextFeatureRelease": {
+    "message": "다음 기능 릴리스",
+    "description": "Next Feature Release section title"
+  },
+  "home.community.nextFeatureRelease.version": {
+    "message": "버전:",
+    "description": "Version label"
+  },
+  "home.community.nextFeatureRelease.date": {
+    "message": "날짜:",
+    "description": "Date label"
+  },
+  "home.community.nextFeatureRelease.calendar": {
+    "message": "릴리스 일정",
+    "description": "Release Calendar link"
+  },
+  "home.community.upcomingEvents": {
+    "message": "다가오는 이벤트",
+    "description": "Upcoming Events section title"
+  },
+  "home.community.upcomingEventsSubtitle": {
+    "message": "다가오는 이벤트",
+    "description": "Upcoming Events subtitle"
+  },
+  "home.community.pastEventsSubtitle": {
+    "message": "지난 이벤트",
+    "description": "Past Events subtitle"
+  },
+  "home.community.sigApps": {
+    "message": "SIG Apps",
+    "description": "SIG Apps section title"
+  },
+  "home.community.sigApps.description": {
+    "message": "도구와 프로젝트를 시연하고 논의하기 위해 {meetLink}. 커뮤니티 회의는 녹화되어 {youtubeLink}.",
+    "description": "SIG Apps meeting description"
+  },
+  "home.community.sigApps.meetLink": {
+    "message": "매주 모입니다",
+    "description": "Link to SIG Apps meetings"
+  },
+  "home.community.sigApps.youtubeLink": {
+    "message": "YouTube에 공유됩니다",
+    "description": "Link to YouTube recordings"
+  },
+  "home.community.developerStandups": {
+    "message": "개발자 스탠드업 회의"
+  },
+  "home.community.developerStandups.time": {
+    "message": "목요일 오전 9:30-10시 (PT)",
+    "description": "Developer Standups day and time"
+  },
+  "home.community.developerStandups.description": {
+    "message": "이 회의는 모두에게 열려 있습니다. 메모와 세부 사항은 {communityRepoLink}를 확인하세요.",
+    "description": "Developer Standups description with community repo link"
+  },
+  "home.community.developerStandups.communityRepoLink": {
+    "message": "커뮤니티 저장소",
+    "description": "Community repo link"
+  },
+  "home.community.slack.helmUsers.description": {
+    "message": "Helm 사용, 차트 작업 및 일반적인 오류 해결에 대한 토론.",
+    "description": "helm-users slack channel description"
+  },
+  "home.community.slack.helmDevelopment.description": {
+    "message": "Helm 개발, 진행 중인 PR, 릴리스 등에 관한 주제.",
+    "description": "helm-dev slack channel description"
+  },
+  "home.community.slack.charts.description": {
+    "message": "Helm Charts 사용자 및 기여자를 위한 토론.",
+    "description": "charts slack channel description"
+  },
+  "home.community.slack.join": {
+    "message": "Kubernetes Slack 팀에 참여하려면 {slackLink}.",
+    "description": "How to join the Kubernetes Slack team with slack link"
+  },
+  "home.community.slack.join.slackLink": {
+    "message": "여기에서 액세스 요청",
+    "description": "Request access to slack link"
+  },
+  "home.community.contributing": {
+    "message": "기여하기",
+    "description": "Contributing section title"
+  },
+  "home.community.contributing.description": {
+    "message": "Helm은 항상 프로젝트에 대한 새로운 기여를 환영합니다!",
+    "description": "Contributing section description"
+  },
+  "home.community.contributing.whereToBegin": {
+    "message": "어디서부터 시작할까요?",
+    "description": "Where to begin? section title"
+  },
+  "home.community.contributing.whereToBegin.description": {
+    "message": "Helm은 많은 사용자와 기여자가 있는 큰 프로젝트입니다. 받아들일 것이 많을 수 있습니다!",
+    "description": "Where to begin? section description"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssues": {
+    "message": "도움을 주고 싶지만 어디서 시작해야 할지 모르겠다면 {goodFirstIssuesLink} 목록이 있습니다.",
+    "description": "Good first issues sentence with link"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
+    "message": "적당한 첫번째 이슈",
+    "description": "Good first issues link"
+  },
+  "home.community.contributing.whatDoIDo": {
+    "message": "무엇을 해야 하나요?",
+    "description": "What do I do? section title"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuide": {
+    "message": "코드를 기여하기 전에 {contributionGuideLink}를 읽어주세요. Pull Request 생성 및 검토 프로세스를 다룹니다.",
+    "description": "What do I do? contribution guide description"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuideLink": {
+    "message": "기여 가이드",
+    "description": "Contribution Guide link"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommits": {
+    "message": "코드를 작성한 후 Helm이 {cncfLink}에서 사용하는 {dcoLink} 계약을 준수하도록 {signYourCommitsLink}를 해주세요.",
+    "description": "What do I do? sign your commits description"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommitsLink": {
+    "message": "커밋에 서명",
+    "description": "Sign your commits link"
+  },
+  "home.community.title": {
+    "message": "커뮤니티 참여",
+    "description": "Join the Community title"
+  },
+  "home.community.subtitle": {
+    "message": "Helm 프로젝트에 대한 자세한 정보와 기여 방법.",
+    "description": "Join the Community subtitle"
+  },
+  "home.gettingStarted.title": {
+    "message": "시작하기",
+    "description": "Getting started section title"
+  },
+  "home.gettingStarted.getHelmTitle": {
+    "message": "헬름 설치하기!",
+    "description": "Get Helm section title"
+  },
+  "home.gettingStarted.installHelm": {
+    "message": "패키지 관리자로 Helm을 설치하거나 {downloadLink}.",
+    "description": "Getting started install with package manager sentence with download link"
+  },
+  "home.gettingStarted.installHelm.downloadLink": {
+    "message": "바이너리를 다운로드하세요",
+    "description": "Download a binary link"
+  },
+  "home.gettingStarted.postInstall.instructions": {
+    "message": "설치가 완료되면 helm 바이너리의 압축을 풀고 PATH에 추가하면 바로 사용할 수 있습니다! 자세한 {installationLink} 및 {usageLink}는 {docsLink}를 확인하세요.",
+    "description": "Instructions after installing Helm"
+  },
+  "home.gettingStarted.postInstall.docsLink": {
+    "message": "문서",
+    "description": "Link to installation docs"
+  },
+  "home.gettingStarted.postInstall.installationLink": {
+    "message": "설치 방법",
+    "description": "Link to installation instructions"
+  },
+  "home.gettingStarted.postInstall.usageLink": {
+    "message": "사용 방법",
+    "description": "Link to usage instructions"
+  },
+  "home.gettingStarted.getChartsTitle": {
+    "message": "차트 받기",
+    "description": "Getting started get charts title"
+  },
+  "home.gettingStarted.artifactHub": {
+    "message": "{artifactHubLink}를 방문하여 수많은 공개 저장소의 {helmChartsLink}를 탐색하세요.",
+    "description": "Artifact Hub link"
+  },
+  "home.gettingStarted.artifactHub.helmChartsLink": {
+    "message": "Helm 차트",
+    "description": "Helm charts link"
+  },
+  "home.about.whatIsHelm": {
+    "message": "Helm은 Kubernetes 애플리케이션 관리를 도와줍니다 — Helm Charts는 가장 복잡한 Kubernetes 애플리케이션도 정의, 설치 및 업그레이드할 수 있도록 도와줍니다.",
+    "description": "What is Helm? first paragraph"
+  },
+  "home.about.chartsDescription": {
+    "message": "차트는 생성, 버전 관리, 공유 및 게시가 쉽습니다 — 그러니 Helm을 사용하고 복사-붙여넣기는 그만하세요.",
+    "description": "What is Helm? charts paragraph"
+  },
+  "home.about.cncf": {
+    "message": "Helm은 {cncfLink}의 졸업 프로젝트이며 {helmCommunityLink}에 의해 유지 관리됩니다.",
+    "description": "What is Helm? CNCF Graduated Project paragraph"
+  },
+  "home.about.cncf.helmCommunityLink": {
+    "message": "Helm 커뮤니티",
+    "description": "Helm community link"
+  },
+  "home.about.learnMore": {
+    "message": "자세히 알아보기:",
+    "description": "Learn more label"
+  },
+  "home.about.learnMore.helmArchitectureLink": {
+    "message": "Helm 아키텍처",
+    "description": "Helm Architecture link"
+  },
+  "home.about.learnMore.quickStartGuideLink": {
+    "message": "빠른 시작 가이드",
+    "description": "Quick Start Guide link"
+  },
+  "home.about.learnMore.videoLink": {
+    "message": "동영상: Helm 소개",
+    "description": "Video: An Introduction to Helm link"
+  },
+  "home.about.title": {
+    "message": "Helm이란 무엇인가요?",
+    "description": "What is Helm? title"
+  },
+  "home.header.tagline": {
+    "message": "Kubernetes를 위한 패키지 관리자",
+    "description": "Helm tagline"
+  },
+  "home.header.subtitle": {
+    "message": "Helm은 소프트웨어를 찾고, 공유하고, 사용하는 가장 좋은 방법입니다",
+    "description": "Home page header subtitle"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "페이지에 오류가 발생하였습니다.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "맨 위로 스크롤하기",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "게시물 목록",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "게시물 목록",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "블로그 게시물 목록 탐색",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "이전 페이지",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "다음 페이지",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "블로그 게시물 탐색",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "이전 게시물",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "다음 게시물",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "모든 태그 보기",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "탐색 경로",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "{count} 항목",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "시스템 모드",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "밝은 모드",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "어두운 모드",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "어두운 모드와 밝은 모드 전환하기 (현재 {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "문서 페이지",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "이전",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "다음",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "{count}개 문서가",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} \"{tagName}\" 태그에 분류되었습니다",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "버전: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "{siteTitle} {versionLabel} 문서는 아직 정식 공개되지 않았습니다.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "{siteTitle} {versionLabel} 문서는 더 이상 업데이트되지 않습니다.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "최신 문서는 {latestVersionLink} ({versionLabel})을 확인하세요.",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "최신 버전",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "페이지 편집",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "{heading}에 대한 직접 링크",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " {date}에",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " {user}가",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "최종 수정: {atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "버전",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.NotFound.title": {
+    "message": "페이지를 찾을 수 없습니다.",
+    "description": "The title of the 404 page"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "태그:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "주의",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "위험",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "정보",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "노트",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "팁",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "경고",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "닫기",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "최근 블로그 문서 둘러보기",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "사이드바 분류 '{label}' 펼치기",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "사이드바 분류 '{label}' 접기",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(새 탭에서 열림)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "메인",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "언어",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.NotFound.p1": {
+    "message": "원하는 페이지를 찾을 수 없습니다.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "사이트 관리자에게 링크가 깨진 것을 알려주세요.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "이 페이지에서",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readMore": {
+    "message": "자세히 보기",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "{title} 에 대해 더 읽어보기",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "약 {readingTime}분",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "복사",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "복사했습니다",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "클립보드에 코드 복사",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "줄 바꿈 전환",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "홈",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "문서 사이드바",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "사이드바 숨기기",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "사이드바 숨기기",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "사이드바 닫기",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← 메인 메뉴로 돌아가기",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "사이드바 펼치거나 접기",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "드롭다운 펼치기",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "드롭다운 접기",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "사이드바 열기",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "사이드바 열기",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.blog.post.plurals": {
+    "message": "{count}개 게시물",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "\"{tagName}\" 태그로 연결된 {nPosts}개의 게시물이 있습니다.",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "저자",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "모든 저자 보기",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "작성자가 아직 게시글을 작성하지 않았습니다.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "색인되지 않은 문서",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "이 문서는 색인되지 않습니다. 검색 엔진이 이 문서를 색인하지 않으며, 주소를 알고 있는 사용자만 접근할 수 있습니다.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "작성 중인 페이지",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "이 페이지는 아직 작성 중입니다. 개발 환경에서만 보이며 프로덕션 빌드에서는 제외됩니다.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "다시 시도해 보세요",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "본문으로 건너뛰기",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "태그",
+    "description": "The title of the tag list page"
+  }
+}

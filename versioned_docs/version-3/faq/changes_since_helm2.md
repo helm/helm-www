@@ -183,7 +183,7 @@ Helm 2.
 ### Secrets as the default storage driver
 
 In Helm 3, Secrets are now used as the [default storage
-driver](/docs/topics/advanced/#storage-backends). Helm 2 used ConfigMaps by
+driver](/topics/advanced.md#storage-backends). Helm 2 used ConfigMaps by
 default to store release information. In Helm 2.7.0, a new storage backend that
 uses Secrets for storing release information was implemented, and it is now the
 default starting in Helm 3.
@@ -210,7 +210,7 @@ make sure to change your import paths.
 The `.Capabilities` built-in object available during the rendering stage has
 been simplified.
 
-[Built-in Objects](/docs/chart_template_guide/builtin_objects/)
+[Built-in Objects](/chart_template_guide/builtin_objects.md)
 
 ### Validating Chart Values with JSONSchema
 
@@ -226,7 +226,7 @@ Validation occurs when any of the following commands are invoked:
 * `helm template`
 * `helm lint`
 
-See the documentation on [Schema files](/docs/topics/charts#schema-files) for
+See the documentation on [Schema files](/topics/charts.md#schema-files) for
 more information.
 
 ### Consolidation of `requirements.yaml` into `Chart.yaml`
