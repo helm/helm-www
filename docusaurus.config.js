@@ -65,7 +65,6 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/helm/helm-www/blob/main/",
-
           // "lastVersion" means the latest release
           // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
           // where "current" means the /docs folder
@@ -76,7 +75,7 @@ const config = {
             // v2 is in /versioned_docs/version-2
             // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
             // and v5 will then live in /docs
-            current: { label: "4.0.0-alpha.1 🚧" },
+            current: { label: "4.0.0-beta.1 🚧" },
             3: { label: "3.19.0" },
             2: { label: "2.17.0" },
           },
@@ -104,6 +103,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        backgroundColor: "#0f1689",
+        textColor: "#ffffff",
+        // Note that closed state is stored in browser
+        // Change id to show again for users who have already closed it
+        id: "helm4_beta_1",
+        content:
+          '📢 Helm 4 beta 1 is out! See the <a href="/docs/next">pre-release docs</a> for details!',
+        isCloseable: true,
+      },
       // Replace with your project's social card
       image: "img/helm-social-card.png",
       colorMode: {
@@ -123,18 +132,13 @@ const config = {
           src: "img/helm.svg",
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Docs",
-          },
+          { to: "docs", label: "Docs", position: "left" },
           {
             href: "https://artifacthub.io/",
             label: "Charts",
             position: "left",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/helm/community/",
             label: "Community",

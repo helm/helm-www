@@ -1,6 +1,8 @@
 /* Import component-specific stylesheets */
 @import './main.css';
+@import './announcement-bar.css';
 @import './navbar.css';
+@import './content.css';
 @import './footer.css';
 
 /* You can override the default Infima variables here. */
@@ -55,4 +57,10 @@
 
   /* global navbar style (needed elsewhere) */
   --ifm-navbar-height: 5.5rem;
+
+  /* announcement bar */
+  --docusaurus-announcement-bar-height: 5rem;
+
+  /* custom site vars */
+  --helm-body-border: 8px;
 }

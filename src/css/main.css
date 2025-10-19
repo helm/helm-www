@@ -10,7 +10,7 @@
 body {
   /* needed for border to fit content instead of initial viewport */
   height: fit-content !important;
-  border: 8px solid var(--navy);
+  border: var(--helm-body-border) solid var(--navy);
 }
 
 /* background image */
@@ -33,5 +33,5 @@ main:not(.home) {
 
 /* fix headers visually cut off by navbar */
 .anchor {
-  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem) !important;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
 }
