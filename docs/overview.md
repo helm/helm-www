@@ -6,16 +6,16 @@ sidebar_label: Overview
 # Helm 4 Overview
 
 :::note
-**Help us test Helm 4 before the November release at KubeCon Atlanta!** Try the pre-release builds and let us know what works, what breaks, and what could be better. For more information, see [What to Test](#what-to-test) and [How to Give Feedback](#how-to-give-feedback).
+**Help us test Helm 4 before the November release at KubeCon Atlanta!** Try the pre-release builds and let us know what works, what breaks, and what could be better. For more information, see [What's New](#whats-new), [What to Test](#what-to-test), and [How to Give Feedback](#how-to-give-feedback).
 :::
 
-## What's New in Helm 4
+## What's New
 
 This section provides an overview of what's new in Helm 4, including breaking changes, major new features, and other improvements. For complete technical details, see the [Full Changelog](./changelog.md).
 
 ### Summary
 
-- **Breaking changes**: [HIP-0026 plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md) completely redesigned, package restructuring, flag renaming
+- **Breaking changes**: [HIP-0026 plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md) completely redesigned, package restructuring, CLI flag renaming
 - **New features**: kstatus watcher, OCI digest support, multi-doc values, JSON arguments
 - **Architecture changes**: Move to versioned packages, chart v3 support, content-based caching
 - **Modernization**: slog migration, Go 1.24 update, dependency cleanup
@@ -32,13 +32,13 @@ See [example plugins](https://github.com/scottrigby/h4-example-plugins).
 Existing plugins work as before. The new WebAssembly runtime is optional but recommended for enhanced security.
 :::
 
-#### Flags renamed
+#### CLI Flags renamed
 
-Some common flags are renamed:
+Some common CLI flags are renamed:
 - `--atomic` → `--rollback-on-failure`
 - `--force` → `--force-replace`
 
-Update any automation that uses these renamed flags.
+Update any automation that uses these renamed CLI flags.
 
 #### Post-renderers implemented as plugins
 Post-renderers are implemented as plugins. With this change, it is no longer possible to pass an executable directly to `helm render --post-renderer`, but a plugin name must be passed. This might require updates to existing any post-renderer workflows. 
@@ -90,7 +90,7 @@ Our goal is to make Helm 4 rock-solid for everyone when it ships in November! To
 * Test all 3 plugin types (CLI, getter, post-renderer).
 * Try building WebAssembly plugins with the new runtime (see [example plugins](https://github.com/scottrigby/h4-example-plugins))
 * SDK users: test the now-stable API. Try to break it and share your feedback.
-* Test your CI/CD pipelines and fix any script errors from the renamed flags.
+* Test your CI/CD pipelines and fix any script errors from the renamed CLI flags.
 * Test your post-renderer integrations.
 * Test registry authentication and chart installation in your OCI workflows.
 
@@ -107,10 +107,18 @@ Our goal is to make Helm 4 rock-solid for everyone when it ships in November! To
 
 Find issues? Have suggestions? We want to hear from you before the November release:
 
-- **GitHub Issues**: [Report bugs and feature requests](https://github.com/helm/helm/issues/new)
-- **Community Slack**: Join [Kubernetes Slack](https://slack.kubernetes.io/) channels:
-  - `#helm-dev` for development discussions
-  - `#helm-users` for user support and testing feedback
-- **Weekly Dev Meetings**: Every Thursday 9:30am PT on [Zoom](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09) for live discussion with maintainers
+### GitHub Issues
+
+Review the [list of open issues and feature requests](https://github.com/helm/helm/issues) in the Helm repo. Add comments on the existing items, or [create new](https://github.com/helm/helm/issues/new/choose) issues and requests.
+
+### Community Slack
+
+Join [Kubernetes Slack](https://slack.kubernetes.io/) channels:
+- `#helm-dev` for development discussions
+- `#helm-users` for user support and testing feedback
+
+### Weekly Dev Meetings
+
+Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
 
 For more options, see the Helm community [communication details](https://github.com/helm/community/blob/main/communication.md).
