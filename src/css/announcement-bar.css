@@ -35,3 +35,15 @@
 .theme-announcement-bar + .navbar + .main-wrapper {
   margin-top: var(--docusaurus-announcement-bar-height);
 }
+
+/* offset the sidebar viewport when announcement is present */
+@media (min-width: 997px) {
+  #__docusaurus:has(.theme-announcement-bar) [class*="sidebarViewport"] {
+    top: var(--docusaurus-announcement-bar-height);
+  }
+}
+
+/* bump TOC on desktop down when announcement is present */
+#__docusaurus:has(.theme-announcement-bar) .theme-doc-toc-desktop {
+  top: calc(var(--ifm-navbar-height) + 1rem + var(--docusaurus-announcement-bar-height));
+}
