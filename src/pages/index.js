@@ -6,6 +6,7 @@ import HomeAbout from "@site/src/components/HomeAbout";
 import HomeFeatures from "@site/src/components/HomeFeatures";
 import HomeGettingStarted from "@site/src/components/HomeGettingStarted";
 import HomeCommunity from "@site/src/components/HomeCommunity";
+import HomeSupport from "@site/src/components/HomeSupport";
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -20,6 +21,7 @@ export default function Home() {
         <HomeFeatures />
         <HomeGettingStarted />
         <HomeCommunity />
+        <HomeSupport />
       </main>
     </Layout>
   );

@@ -27,7 +27,10 @@
 
 [[redirects]]
   from = "/docs/developing_charts/"
-  to = "https://v2.helm.sh/docs/developing_charts/"
+  to = "https://helm.sh/docs/2/developing-charts/"
+
+# Go module import support handled by static HTML files in /static/
+# These paths serve HTML with go-import meta tags + client-side redirects
 
 # redirect Go package lookups
 [[redirects]]
@@ -40,6 +43,7 @@
   to = "/helm/v2"
   status = 200
 
+# custom external redirects
 [[redirects]]
   from = "/calendar/release"
   to = "https://calendar.google.com/calendar/u/0/embed?src=8tji8e0obp5skr2pval9g55ftk@group.calendar.google.com"
