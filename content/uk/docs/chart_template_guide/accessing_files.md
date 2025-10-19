@@ -35,19 +35,19 @@ Helm надає доступ до файлів через обʼєкт `.Files`.
 `config1.toml`:
 
 ```toml
-message = Hello from config 1
+message = "Hello from config 1"
 ```
 
 `config2.toml`:
 
 ```toml
-message = This is config 2
+message = "This is config 2"
 ```
 
 `config3.toml`:
 
 ```toml
-message = Goodbye from config 3
+message = "Goodbye from config 3"
 ```
 
 Кожен з цих файлів є простим TOML-файлом (згадайте про старі INI-файли Windows). Ми знаємо імена цих файлів, тому можемо використовувати функцію `range`, щоб перебрати їх і вставити їх вміст у наш ConfigMap.
@@ -77,13 +77,13 @@ metadata:
   name: quieting-giraf-configmap
 data:
   config1.toml: |-
-    message = Hello from config 1
+    message = "Hello from config 1"
 
   config2.toml: |-
-    message = This is config 2
+    message = "This is config 2"
 
   config3.toml: |-
-    message = Goodbye from config 3
+    message = "Goodbye from config 3"
 ```
 
 ## Помічники оброки шляхів {#path-helpers}
@@ -187,7 +187,7 @@ metadata:
 type: Opaque
 data:
   token: |-
-    bWVzc2FnZSA9IEhlbGxvIGZyb20gY29uZmlnIDEK
+    bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
 ## Рядки {#lines}
