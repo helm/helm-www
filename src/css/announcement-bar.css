@@ -47,3 +47,8 @@
 #__docusaurus:has(.theme-announcement-bar) .theme-doc-toc-desktop {
   top: calc(var(--ifm-navbar-height) + 1rem + var(--docusaurus-announcement-bar-height));
 }
+
+/* fix headers visually cut off by announcement bar */
+#__docusaurus:has(.theme-announcement-bar) .anchor {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem + var(--docusaurus-announcement-bar-height));
+}
