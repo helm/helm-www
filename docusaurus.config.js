@@ -48,42 +48,42 @@ const config = {
   onBrokenLinks: "throw",
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'de', 'el','es', 'fr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
+    defaultLocale: "en",
+    locales: ["en", "de", "el", "es", "fr", "ja", "ko", "pt", "ru", "uk", "zh"],
     localeConfigs: {
       en: {
-        htmlLang: 'en-us',
-        label: 'English',
+        htmlLang: "en-us",
+        label: "English",
       },
       de: {
-        label: 'Deutsch (German)',
+        label: "Deutsch (German)",
       },
       es: {
-        label: 'Español (Spanish)',
+        label: "Español (Spanish)",
       },
       fr: {
-        label: 'Français (French)',
+        label: "Français (French)",
       },
       el: {
-        label: 'Ελληνικά (Greek)',
+        label: "Ελληνικά (Greek)",
       },
       ja: {
-        label: '日本語 (Japanese)',
+        label: "日本語 (Japanese)",
       },
       ko: {
-        label: '한국어 (Korean)',
+        label: "한국어 (Korean)",
       },
       pt: {
-        label: 'Português (Portuguese)',
+        label: "Português (Portuguese)",
       },
       ru: {
-        label: 'Русский (Russian)',
+        label: "Русский (Russian)",
       },
       uk: {
-        label: 'Українська (Ukrainian)',
+        label: "Українська (Ukrainian)",
       },
       zh: {
-        label: '中文 (Chinese)',
+        label: "中文 (Chinese)",
       },
     },
   },
@@ -290,7 +290,7 @@ const config = {
           alt: "CNCF Logo",
           src: "/img/cncf-white.png",
         },
-        copyright: `<a href="https://www.cncf.io/">We are a Cloud Native Computing Foundation graduated project.</a><br/>© Helm Authors ${new Date().getFullYear()}. Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0">CC-BY-4.0.</a><br/>© ${new Date().getFullYear()} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage page</a>.`,
+        copyright: `<p>We are a <a href="https://www.cncf.io/">Cloud Native Computing Foundation</a> graduated project.</p><p>© Helm Authors ${new Date().getFullYear()}. Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0">CC-BY-4.0.</a></p><p>© ${new Date().getFullYear()} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage page</a>.</p>`,
       },
       prism: {
         theme: prismThemes.github,
