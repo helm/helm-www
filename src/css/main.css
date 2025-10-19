@@ -33,5 +33,5 @@ main:not(.home) {
 
 /* fix headers visually cut off by navbar */
 .anchor {
-  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem) !important;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
 }
