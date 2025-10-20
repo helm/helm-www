@@ -580,5 +580,9 @@
   "theme.tags.tagsPageTitle": {
     "message": "Etiquetas",
     "description": "The title of the tag list page"
+  },
+  "theme.blog.list.pageTitle": {
+    "message": "Blog",
+    "description": "The word 'Blog' in breadcrumbs"
   }
 }
