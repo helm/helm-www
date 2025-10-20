@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
-import {useSidebarBreadcrumbs} from '@docusaurus/plugin-content-docs/client';
+import {useSidebarBreadcrumbs, useDocsVersion, useVersions} from '@docusaurus/plugin-content-docs/client';
 import {useHomePageRoute} from '@docusaurus/theme-common/internal';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
@@ -36,6 +36,14 @@ function BreadcrumbsItem({children, active}) {
 export default function DocBreadcrumbs() {
   const breadcrumbs = useSidebarBreadcrumbs();
   const homePageRoute = useHomePageRoute();
+  const docsVersion = useDocsVersion();
+  const versions = useVersions(docsVersion.pluginId);
+
+  // Find the current version in the full versions list to get the main doc path
+  const currentVersion = versions.find(v => v.name === docsVersion.version);
+  const versionMainDoc = currentVersion?.docs.find((doc) => doc.id === currentVersion.mainDocId);
+  const docsPath = versionMainDoc?.path || '/docs';
+
   if (!breadcrumbs) {
     return null;
   }
@@ -56,7 +64,7 @@ export default function DocBreadcrumbs() {
           {homePageRoute && <HomeBreadcrumbItem />}
           {homePageRoute && (
             <BreadcrumbsItem>
-              <BreadcrumbsItemLink href="/docs" isLast={false}>
+              <BreadcrumbsItemLink href={docsPath} isLast={false}>
                 Docs
               </BreadcrumbsItemLink>
             </BreadcrumbsItem>
