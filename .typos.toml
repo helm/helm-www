@@ -32,6 +32,8 @@ extend-exclude = [
   "i18n/",
   # Portuguese content - these are not English typos
   "content/pt/**",
+  # Polish content
+  "content/pl/**",
   # Russian content
   "content/ru/**",
   # Ukrainian content
