@@ -1,9 +1,7 @@
 ---
 title: "Helm Turns 10"
 slug: "helm-turns-ten"
-authorname: "Matt Farina"
-author: "@mattfarina"
-authorlink: "https://mattfarina.com"
+authors: ["mattfarina"]
 date: "2025-10-19"
 ---
 
@@ -16,6 +14,7 @@ Date:   Mon Oct 19 17:43:26 2015 -0600
 
     initial add
 ```
+<!-- truncate -->
 
 [The first commit](https://github.com/helm/helm-classic/commit/ecad6e2ef9523a0218864ec552bbfc724f0b9d3d) can be found on the helm-classic Git repository where the codebase for Helm v1 is located. This is the original Helm, before it merged with Deployment Manager and was folded into the Kubernetes project.<!--more-->
 
@@ -23,5 +22,4 @@ This commit was just the beginning. Helm would be shown off at the first KubeCon
 
 Happy 10th Birthday, Helm!
 
-{{< figure src="happy-10th.png" alt="Happy 10th Birthday Helm" >}}
-
+![Happy 10th Birthday Helm](happy-10th.png)
