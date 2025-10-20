@@ -1,9 +1,7 @@
 ---
-sidebar_position: 103
+sidebar_position: 10
 sidebar_label: "Developer Guide"
-slug: developer-guide
 ---
-
 # Developers Guide
 
 This guide explains how to set up your environment for developing on

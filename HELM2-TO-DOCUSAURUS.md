@@ -4,11 +4,12 @@ Automated conversion of Helm v2 documentation from the original source repositor
 
 ## Key Features
 
+- **Complete Structure Analysis** - Analyzes live v2.helm.sh to capture exact sidebar structure
+- **Image Path Replacement** - Updates all image references to `/img/helm2/` format
+- **H2 Heading Removal** - Removes redundant first H2 headings from helm command files
+- **Index File Creation** - Generates proper Docusaurus landing page with DocCardList
+- **Proper Positioning** - Maintains v2.helm.sh hierarchical organization
 - **Fully idempotent** - Safe to re-run multiple times
-- **IDE-compatible links** - Uses actual file paths with .md extensions
-- **Automated redirects** - Generates Netlify redirects with start/end markers
-- **Complete migration** - Handles docs, images, CLI references, and frontmatter
-- **Original structure preserved** - Maintains v2.helm.sh organization and positioning
 
 ## Usage
 
@@ -17,32 +18,46 @@ Automated conversion of Helm v2 documentation from the original source repositor
    git clone --single-branch --branch release-2.17 git@github.com:helm/helm.git helm2
    ```
 
-2. **Run conversion:**
+2. **Generate menu structure:**
    ```bash
-   node scripts/helm2-to-docusaurus.js
+   node scripts/v2-menu-generate.js
+   ```
+
+3. **Copy all files:**
+   ```bash
+   node scripts/v2-copy-files.js
+   ```
+
+4. **Copy images:**
+   ```bash
+   cp -r helm2/docs/images static/img/helm2
    ```
 
 ## What It Does
 
-The script performs a complete automated conversion:
+The conversion process includes:
 
-1. **Content Processing**: Removes UTF-8 BOM, fixes all internal links with proper .md extensions, updates image paths
-2. **Structure Creation**: Generates the full `versioned_docs/version-2/` hierarchy matching v2.helm.sh navigation
-3. **Frontmatter Generation**: Adds proper `sidebar_position`, `sidebar_label`, and `slug` to all files
-4. **Image Migration**: Copies all images to `static/img/helm2/`
-5. **Redirect Generation**: Creates Netlify redirects with managed start/end markers (302 status, upgradeable to 301)
+1. **Structure Analysis**: `v2-menu-generate.js` fetches and analyzes the complete v2.helm.sh sidebar structure using WebFetch
+2. **Content Processing**: `v2-copy-files.js` processes all files:
+   - Removes UTF-8 BOM characters
+   - Replaces image paths from `(images/` to `(/img/helm2/`
+   - Removes first H2 headings from helm command files
+   - Creates proper Docusaurus frontmatter with hierarchical positioning
+3. **Structure Creation**: Generates `versioned_docs/version-2/` with proper category organization
+4. **Index Generation**: Creates `index.mdx` landing page with DocCardList component
+5. **Image Migration**: Manual copy of images to `static/img/helm2/` directory
 
 ## Output Structure
 
 ```
 versioned_docs/version-2/     # Complete Docusaurus v2 docs
-├── index.mdx                 # Auto-generated landing page
-├── using-helm/               # Basic usage (position 2)
-├── helm/                     # CLI reference (position 3, 46 commands)
-├── developing-charts/        # Chart development (position 4)
-├── chart-template-guide/     # Template guides (position 5)
-├── chart-best-practices/     # Best practices (position 6)
-└── [5 top-level files]       # architecture, developers, etc. (positions 101-105)
+├── index.mdx                 # Landing page (position 1)
+├── using_helm/               # Basic usage (position 2)
+├── helm/                     # CLI reference (position 3, 45 commands)
+├── developing_charts/        # Chart development (position 4)
+├── chart_template_guide/     # Template guides (position 5)
+├── chart_best_practices/     # Best practices (position 6)
+└── [5 top-level files]       # architecture, developers, etc. (positions 7-11)
 
 static/img/helm2/             # All migrated images
 ```
@@ -50,14 +65,16 @@ static/img/helm2/             # All migrated images
 ## Validation & Maintenance
 
 **Verify after running:**
-- Navigation matches v2.helm.sh structure with correct positioning (2,3,4,5,6,101-105)
+- Navigation matches v2.helm.sh structure with correct positioning (1,2,3,4,5,6,7-11)
 - All images display correctly (`/img/helm2/` paths)
-- Internal links use proper .md extensions for IDE compatibility
-- Netlify redirects include managed start/end markers with 302 status codes
+- Index files use parent category labels in sidebar
+- First H2 headings removed from all helm command files
+- Netlify redirects handle v2 → v3 category mapping
 
 **Key paths:**
-- Script: `scripts/helm2-to-docusaurus.js`
+- Scripts: `scripts/v2-menu-generate.js` and `scripts/v2-copy-files.js`
+- Generated data: `scripts/v2-menu.json`
 - Source: `helm2/docs/` (from cloned repository)
 - Output: `versioned_docs/version-2/` and `static/img/helm2/`
 
-The script is fully idempotent and handles all aspects of the conversion automatically.
+The conversion is fully automated and idempotent - safe to re-run multiple times.

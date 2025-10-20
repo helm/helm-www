@@ -2,7 +2,6 @@
 title: "Custom Resource Definitions"
 description: "How to handle creating and using CRDs."
 sidebar_position: 7
-aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
 ---
 
 This section of the Best Practices Guide deals with creating and using Custom

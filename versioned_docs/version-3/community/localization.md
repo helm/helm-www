@@ -1,7 +1,6 @@
 ---
 title: "Localizing Helm Documentation"
 description: "Instructions for localizing the Helm documentation."
-aliases: ["/docs/localization/"]
 sidebar_position: 5
 ---
 
@@ -161,9 +160,6 @@ Before you translate docs content, review the following best practices and guide
   Once a language exists on the site, any untranslated pages will redirect to
   English automatically. Translation takes time, and you always want to be
   translating the most current version of the docs, not an outdated fork.
-- Make sure you remove any `aliases` lines from the header section. A line like
-  `aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
-  are redirections for old links which don't exist for new pages.
 
 To translate docs and blog content:
 

@@ -2,7 +2,6 @@
 title: "Values"
 description: "Focuses on how you should structure and use your values."
 sidebar_position: 2
-aliases: ["/docs/topics/chart_best_practices/values/"]
 ---
 
 This part of the best practices guide covers using values. In this part of the

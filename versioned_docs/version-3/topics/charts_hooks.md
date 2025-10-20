@@ -1,7 +1,6 @@
 ---
 title: "Chart Hooks"
 description: "Describes how to work with chart hooks."
-aliases: ["/docs/charts_hooks/"]
 sidebar_position: 2
 ---
 

@@ -19,26 +19,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# TODO: assess pre-docusaurus ignore rules below
-.DS_Store
-.jekyll-metadata
-rootfs/svc
-.sass-cache/
-.yarnclean
-_site/*
-_site/
-.hugo_build.lock
-.ncurc.yml
-.publish/*
-.publish/
-node_modules/
-bower_components/
-vendor/
-rootfs/
-app/*
-resources/
-helm.sh/
-docs.helm.sh/
+# SDKExamples build output
 sdkexamples/sdkexamples
 
 # JetBrains IDEs (GoLand, IntelliJ, ...) config folder
