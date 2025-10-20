@@ -2,7 +2,6 @@
 title: "Dependencies"
 description: "Covers best practices for Chart dependencies."
 sidebar_position: 4
-aliases: ["/docs/topics/chart_best_practices/dependencies/"]
 ---
 
 This section of the guide covers best practices for `dependencies` declared in

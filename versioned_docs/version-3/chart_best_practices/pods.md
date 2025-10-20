@@ -2,7 +2,6 @@
 title: "Pods and PodTemplates"
 description: "Discusses formatting the Pod and PodTemplate portions in Chart manifests."
 sidebar_position: 6
-aliases: ["/docs/topics/chart_best_practices/pods/"]
 ---
 
 This part of the Best Practices Guide discusses formatting the Pod and

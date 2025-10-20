@@ -2,7 +2,6 @@
 title: "Syncing Your Chart Repository"
 description: "Describes how to synchronize your local and remote chart repositories."
 sidebar_position: 2
-aliases: ["/docs/chart_repository_sync_example/"]
 ---
 
 *Note: This example is specifically for a Google Cloud Storage (GCS) bucket

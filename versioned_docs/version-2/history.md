@@ -1,9 +1,7 @@
 ---
-sidebar_position: 104
+sidebar_position: 11
 sidebar_label: "History"
-slug: history
 ---
-
 ## The History of the Project
 
 Kubernetes Helm is the merged result of [Helm

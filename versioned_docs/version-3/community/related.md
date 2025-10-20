@@ -2,7 +2,6 @@
 title: "Related Projects and Documentation"
 description: "third-party tools, plugins and documentation provided by the community!"
 sidebar_position: 3
-aliases: ["/docs/related/"]
 ---
 
 The Helm community has produced many extra tools, plugins, and documentation

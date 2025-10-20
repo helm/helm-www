@@ -1,7 +1,6 @@
 ---
 title: "Chart Tests"
 description: "Describes how to run and test your charts."
-aliases: ["/docs/chart_tests/"]
 sidebar_position: 3
 ---
 
