@@ -542,7 +542,7 @@
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
-    "message": "Authors",
+    "message": "Συγγραφείς",
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
@@ -580,5 +580,9 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "theme.blog.list.pageTitle": {
+    "message": "Ιστολόγιο",
+    "description": "The word 'Blog' in breadcrumbs"
   }
 }

@@ -37,7 +37,13 @@ export default function BlogBreadcrumbs() {
             to="/blog"
             itemProp="item"
           >
-            <span itemProp="name">Blog</span>
+            <span itemProp="name">
+              {translate({
+                id: 'theme.blog.list.pageTitle',
+                message: 'Blog',
+                description: 'The word "Blog" in breadcrumbs'
+              })}
+            </span>
           </Link>
           <meta itemProp="position" content="2" />
         </li>
