@@ -19,7 +19,10 @@ function initializeHeroHeightCalculation() {
       const navbar = document.querySelector(".navbar");
       const navbarHeight = navbar ? navbar.offsetHeight : 88; // fallback to 88px
 
-      const heroHeight = vh - navbarHeight;
+      const announcementBar = document.querySelector("div.theme-announcement-bar");
+      const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
+
+      const heroHeight = vh - navbarHeight - announcementBarHeight;
 
       hero.style.height = `${heroHeight}px`;
       hero.style.minHeight = `${heroHeight}px`;
@@ -28,6 +31,7 @@ function initializeHeroHeightCalculation() {
       console.log("Hero height calculation:", {
         vh,
         navbarHeight,
+        announcementBarHeight,
         heroHeight,
       });
     }
@@ -55,12 +59,36 @@ function initializeHeroHeightCalculation() {
     // iOS Safari specific events
     window.addEventListener("pageshow", handleResize);
 
+    // Watch for announcement bar close button clicks
+    function observeAnnouncementBar() {
+      const announcementBar = document.querySelector("div.theme-announcement-bar");
+      if (announcementBar) {
+        const closeButton = announcementBar.querySelector("button");
+        if (closeButton) {
+          closeButton.addEventListener("click", () => {
+            // Delay recalculation to allow DOM to update after close animation
+            setTimeout(handleResize, 300);
+          });
+        }
+      }
+    }
+
+    // Set up announcement bar observer
+    observeAnnouncementBar();
+
     // Initial setup with multiple attempts for better compatibility
     updateHeroHeight();
+    observeAnnouncementBar();
 
     // Delayed recalculation for dynamic content
-    setTimeout(updateHeroHeight, 100);
-    setTimeout(updateHeroHeight, 500);
+    setTimeout(() => {
+      updateHeroHeight();
+      observeAnnouncementBar();
+    }, 100);
+    setTimeout(() => {
+      updateHeroHeight();
+      observeAnnouncementBar();
+    }, 500);
   }
 
   // Initialize on page load
@@ -76,16 +104,22 @@ function initializeHeroHeightCalculation() {
 
   history.pushState = function() {
     originalPushState.apply(history, arguments);
-    setTimeout(calculateHeroHeight, 100);
+    setTimeout(() => {
+      calculateHeroHeight();
+    }, 100);
   };
 
   history.replaceState = function() {
     originalReplaceState.apply(history, arguments);
-    setTimeout(calculateHeroHeight, 100);
+    setTimeout(() => {
+      calculateHeroHeight();
+    }, 100);
   };
 
   window.addEventListener("popstate", () => {
-    setTimeout(calculateHeroHeight, 100);
+    setTimeout(() => {
+      calculateHeroHeight();
+    }, 100);
   });
 
   // Handle hot module replacement during development
