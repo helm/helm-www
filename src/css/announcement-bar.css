@@ -38,14 +38,27 @@
 
 /* offset the sidebar viewport when announcement is present */
 @media (min-width: 997px) {
-  #__docusaurus:has(.theme-announcement-bar) [class*="sidebarViewport"] {
-    top: var(--docusaurus-announcement-bar-height);
+  #__docusaurus:has(.theme-announcement-bar) .theme-doc-sidebar-container {
+    margin-top: calc(-1 * calc(var(--ifm-navbar-height) + var(--docusaurus-announcement-bar-height)));
+  }
+
+  #__docusaurus:has(.theme-announcement-bar) [class*="sidebarViewport"] .sidebar_njMd {
+    padding-top: calc(var(--ifm-navbar-height) + var(--docusaurus-announcement-bar-height));
+  }
+
+  [class*="menuWithAnnouncementBar"] {
+    margin-bottom: 0px;
   }
 }
 
 /* bump TOC on desktop down when announcement is present */
-#__docusaurus:has(.theme-announcement-bar) .theme-doc-toc-desktop {
+#__docusaurus:has(.theme-announcement-bar) .theme-doc-toc-desktop,
+#__docusaurus:has(.theme-announcement-bar) [class*="tableOfContents"] {
   top: calc(var(--ifm-navbar-height) + 1rem + var(--docusaurus-announcement-bar-height));
+}
+
+#__docusaurus:has(.theme-announcement-bar) [class*="tableOfContents"] {
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem + var(--docusaurus-announcement-bar-height)));
 }
 
 /* fix headers visually cut off by announcement bar */
