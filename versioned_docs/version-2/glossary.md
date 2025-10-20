@@ -1,9 +1,7 @@
 ---
-sidebar_position: 105
+sidebar_position: 12
 sidebar_label: "Glossary"
-slug: glossary
 ---
-
 # Helm Glossary
 
 Helm uses a few special terms to describe components of the

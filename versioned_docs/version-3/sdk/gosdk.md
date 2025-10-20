@@ -1,7 +1,6 @@
 ---
 title: "Introduction"
 description: "Introduces the Helm Go SDK"
-aliases: ["/docs/gosdk"]
 sidebar_position: 1
 ---
 Helm's Go SDK enables custom software to leverage Helm charts and Helm's functionality for managing Kubernetes software deployment

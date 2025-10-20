@@ -1,7 +1,6 @@
 ---
 title: "Library Charts"
 description: "Explains library charts and examples of usage"
-aliases: ["docs/library_charts/"]
 sidebar_position: 4
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Advanced Helm Techniques"
 description: "Explains various advanced features for Helm power users"
-aliases: ["/docs/advanced_helm_techniques"]
 sidebar_position: 9
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "The History of the Project"
 description: "Provides a high-level overview of the project's history."
-aliases: ["/docs/history/"]
 sidebar_position: 4
 ---
 
