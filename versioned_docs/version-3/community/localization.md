@@ -1,6 +1,7 @@
 ---
 title: "Localizing Helm Documentation"
 description: "Instructions for localizing the Helm documentation."
+aliases: ["/docs/localization/"]
 sidebar_position: 5
 ---
 
@@ -23,11 +24,14 @@ language codes. For example, the two-letter code for Korean is `ko`.
 In content and configuration you will find the language code in use. Here are 3
 examples:
 
-- In the `i18n` directory, there are subdirectories for each language code. The
-  localized content for the language is in each subdirectory.
-- Localized content in each
-- For each language, there is a `code.json` file for each language with
-  phrases used on the website.
+- In the `content` directory the language codes are the subdirectories and the
+  localized content for the language is in each directory. Primarily in the
+  `docs` subdirectory of each language code directory.
+- The `i18n` directory contains a configuration file for each language with
+  phrases used on the website. The files are named with the pattern `[LANG].toml`
+  where `[LANG]` is the two letter language code.
+- In the top level `config.toml` file there is configuration for navigation and
+  other details organized by language code.
 
 English, with a language code of `en`, is the default language and source for
 translations.
@@ -69,159 +73,93 @@ file.
 Localizing all of the Helm content is a large task. It is ok to start small. The
 translations can be expanded over time.
 
-The following describes the files/directories that are used to translate the docs content, blog content, and site elements in the Helm documentation site:
-
-- `i18n/<language-code>` directory:
-  - `code.json` used for translating React code in the site (including the landing page)
-  - `i18n/<language-code>/docusaurus-plugin-content-blog` subdirectory with blog translations
-  - `i18n/<language-code>/docusaurus-plugin-content-docs` subdirectory with:
-    - Version subdirectories for docs content translations (eg `i18n/<language-code>/docusaurus-plugin-content-docs/version-3/`)
-    - JSON files for each version of the docs with translations for the categories in the sidebar (eg, `current.json`, `version-3.json`, etc)
-  - `i18n/docusaurus-theme-classic` subdirectory with `footer.json` and `navbar.json` files for translating the visible text in the site navbar and footer
-- The `i18n` key in the `docusaurus.config.js` file lists all the locales and exposes config options for the locale dropdown in the site navbar
-
-For more information, see [i18n - Introduction](https://docusaurus.io/docs/i18n/introduction) in the Docusaurus docs.
-
 ### Starting A New Language
 
-For a tutorial that walks you through how to translate site content, see [i18n - Tutorial](https://docusaurus.io/docs/i18n/tutorial) in the Docusaurus docs.
+When starting a new language there is a minimum needed. This includes:
 
-To start a new language:
-
-1. Run the Docusaurus `write-translations` command. For example, to add the `fr` (French) locale: `npm run write-translations -- --locale fr`. This creates the required directory structure for the language and initializes the JSON translation files required to translate site elements like the navbar, footer, landing page, and sidebar.
-
-   **npm:**
-
-   ```
-   npm run write-translations -- --locale <language-code>
-   ```
-
-   **Yarn:**
-
-   ```
-   yarn write-translations --locale <language-code>
-   ```
-
-1. Do the minimum translations for the new language:
-
-   1. Translate the `code.json` file.
-   1. In the `i18n/docusaurus-theme-classic` subdirectory, translate the `footer.json` and `navbar.json` files.
-   1. In the `docusaurus-plugin-content-blog/options.json`, translate the blog elements in the `options.json` file.
-
-1. Add the language to the `i18n` key of the `docusaurus.config.js` file so that it appears in the dropdown in the navbar:
-
-   ```yaml
-   i18n: {
-     defaultLocale: 'en',
-     # add new language to this list of locales
-     locales: ['en', 'de', 'es', 'fr', 'gr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
-     localeConfigs: {
-       en: {
-         htmlLang: 'en-us',
-         label: 'English',
-       },
-       de: {
-         label: 'Deutsch',
-       },
-     # new_lang {
-     #   label: 'Navbar label',
-     # }
-     },
-   },
-   ```
-
-1. (Optional) Translate docs or blog content. See _Translating_ below.
-
-1. Test your changes by starting the localized site in dev mode, specifying the locale:
-
-   **npm:**
-
-   ```
-   npm run start -- --locale fr
-   ```
-
-   **Yarn:**
-
-   ```
-   yarn run start --locale fr
-   ```
-
-   **NOTE:** Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
+- Adding a `content/[LANG]/docs` directory containing an `_index.md` file. This
+  is the top level documentation landing page.
+- Creating a `[LANG].toml` file in the `i18n` directory. Initially you can copy
+  the `en.toml` file as a starting point.
+- Adding a section for the language to the `config.toml` file to expose the new
+  language. An existing language section can serve as a starting point.
 
 ### Translating
 
-Before you translate docs content, review the following best practices and guidelines:
+Translated content needs to reside in the `content/[LANG]/docs` directory. It
+should have the same URL as the English source. For example, to translate the
+intro into Korean it can be useful to copy the english source like:
 
-- Translation tools can help with the process. This includes machine
-  generated translations. Machine generated translations should be edited or
-  otherwise reviewing for grammar and meaning by a native language speaker before
-  publishing.
-- Do not add an untranslated copy of an English file to `i18n/[LANG]/plugin-content-docs` or `i18n/[LANG]/plugin-content-blog`.
-  Once a language exists on the site, any untranslated pages will redirect to
-  English automatically. Translation takes time, and you always want to be
-  translating the most current version of the docs, not an outdated fork.
+```sh
+mkdir -p content/ko/docs/intro
+cp content/en/docs/intro/install.md content/ko/docs/intro/install.md
+```
 
-To translate docs and blog content:
+The content in the new file can then be translated into the other language.
 
-1. Make sure that target locale exists in the `i18n` directory. If it doesn't, see _Starting a New Language_ above.
+Do not add an untranslated copy of an English file to `content/[LANG]/`.
+Once a language exists on the site, any untranslated pages will redirect to
+English automatically. Translation takes time, and you always want to be
+translating the most current version of the docs, not an outdated fork.
 
-1. Copy one or more markdown files that you want to translate from `/docs` or `/versioned_docs` to the appropriate version folder in `i18n/<language-code>/docusaurus-plugin-content-docs`.
+Make sure you remove any `aliases` lines from the header section. A line like
+`aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
+are redirections for old links which don't exist for new pages.
 
-   For example, to translate `versioned_docs/version-3/example.md` into Korean:
+Note, translation tools can help with the process. This includes machine
+generated translations. Machine generated translations should be edited or
+otherwise reviewing for grammar and meaning by a native language speaker before
+publishing.
 
-   ```sh
-   cp versioned_docs/version-3/topics/example.md i18n/ko/docusaurus-plugin-content-docs/version-3/topics/example.md
-   ```
-
-1. Copy one or more markdown files that you want to translate from `/blog` to `i18n/<language-code>/docusaurus-plugin-content-blog`.
-
-   For example, to translate `blog/2025-09-09-path-to-helm-v4.md` into Korean:
-
-   ```sh
-   cp blog/2025-09-09-path-to-helm-v4.md i18n/ko/docusaurus-plugin-content-blog/2025-09-09-path-to-helm-v4.md
-   ```
-
-1. Test your changes by starting the localized site in dev mode, specifying the locale:
-
-   **npm:**
-
-   ```
-   npm run start -- --locale ko
-   ```
-
-   **Yarn:**
-
-   ```
-   yarn run start --locale ko
-   ```
-
-   **NOTE:** Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
 
 ## Navigating Between Languages
 
-Users navigate between languages in the locale dropdown in the site navbar.
+![Screen Shot 2020-05-11 at 11 24 22
+AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea-9834-cd9dcef4e914.png)
 
-The `i18n` key in the site global `docusaurus.config.js` file is where language navigation is configured.
+The site global
+[config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89)
+file is where language navigation is configured.
 
-To add a new language, add the locale using the [two-letter
+To add a new language, add a new set of parameters using the [two-letter
 language code](./localization/#two-letter-language-code) defined above. Example:
 
-```yaml
-i18n: {
-  defaultLocale: 'en',
-  # add new language to this list of locales
-  locales: ['en', 'de', 'es', 'fr', 'gr', 'ja', 'ko', 'pt', 'ru', 'uk', 'zh'],
-  localeConfigs: {
-    en: {
-        htmlLang: 'en-us',
-        label: 'English',
-    },
-    de: {
-        label: 'Deutsch',
-    },
-    # new_lang {
-    #   label: 'Navbar label',
-    # }
-  },
-},
 ```
+# Korean
+[languages.ko]
+title = "Helm"
+description = "Helm - The Kubernetes Package Manager."
+contentDir = "content/ko"
+languageName = "한국어 Korean"
+weight = 1
+```
+
+## Resolving Internal Links
+
+Translated content will sometimes include links to pages that only exist in
+another language. This will result in site [build
+errors](https://app.netlify.com/sites/helm-merge/deploys). Example:
+
+```
+12:45:31 PM: htmltest started at 12:45:30 on app
+12:45:31 PM: ========================================================================
+12:45:31 PM: ko/docs/chart_template_guide/accessing_files/index.html
+12:45:31 PM:   hash does not exist --- ko/docs/chart_template_guide/accessing_files/index.html --> #basic-example
+12:45:31 PM: ✘✘✘ failed in 197.566561ms
+12:45:31 PM: 1 error in 212 documents
+```
+
+To resolve this, you need to check your content for internal links.
+
+* anchor links need to reflect the translated `id` value
+* internal page links need to be fixed
+
+For internal pages that do not exist _(or have not been translated yet)_, the
+site will not build until a correction is made. As a fallback, the url can point
+to another language where that content _does_ exist as follows:
+
+`< relref path="/docs/topics/library_charts.md" lang="en" >`
+
+See the [Hugo Docs on cross references between
+languages](https://gohugo.io/content-management/cross-references/#link-to-another-language-version)
+for more info.
