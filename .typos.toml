@@ -1,0 +1,58 @@
+[default]
+extend-ignore-re = [
+  # Hex color codes in SCSS/CSS
+  "F[0-9A-F]{2,4}",
+]
+
+[default.extend-words]
+# Company/Publisher names
+Packt = "Packt"
+SkippBox = "SkippBox"
+Skipp = "Skipp"
+KOMMA = "KOMMA"
+Hashi = "Hashi"  # HashiCorp
+
+# Icon/variable names
+stange = "stange"
+mutliple = "mutliple"  # May be intentional in legacy code
+multiplebgs = "multiplebgs"
+psuedo = "psuedo"  # Legacy typo in vendor code
+
+# Technical terms
+AKS = "AKS"  # Azure Kubernetes Service
+ba = "ba"
+ede = "ede"  # Git commit hash
+
+# German words in translations
+Paket = "Paket"  # German for "package"
+
+[files]
+extend-exclude = [
+  # Internationalization files
+  "i18n/",
+  # Portuguese content - these are not English typos
+  "content/pt/**",
+  # Russian content
+  "content/ru/**",
+  # Ukrainian content
+  "content/uk/**",
+  # Korean content
+  "content/ko/**",
+  # Japanese content
+  "content/ja/**",
+  # German content
+  "content/de/**",
+  # Spanish content
+  "content/es/**",
+  # French content
+  "content/fr/**",
+  # Greek content
+  "content/gr/**",
+  # Chinese content
+  "content/zh/**",
+  # Theme files
+  "themes/",
+  # Go dependencies
+  "sdkexamples/go.mod",
+  "sdkexamples/go.sum",
+]
