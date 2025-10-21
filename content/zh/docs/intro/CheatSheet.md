@@ -133,7 +133,7 @@ helm get values <release>   # Downloads a values file for a given release. use -
 ## 插件管理
 
 ```bash
-helm plugin install <path/url1>     # Install plugins
+helm plugin install <path/url>     # Install plugins
 helm plugin list                    # View a list of all installed plugins
 helm plugin update <plugin>         # Update plugins
 helm plugin uninstall <plugin>      # Uninstall a plugin
