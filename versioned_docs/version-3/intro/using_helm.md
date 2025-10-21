@@ -5,10 +5,10 @@ sidebar_position: 3
 ---
 
 This guide explains the basics of using Helm to manage packages on your
-Kubernetes cluster. It assumes that you have already [installed](/intro/install.md) the Helm client.
+Kubernetes cluster. It assumes that you have already [installed](install.md) the Helm client.
 
 If you are simply interested in running a few quick commands, you may wish to
-begin with the [Quickstart Guide](/intro/quickstart.md). This chapter
+begin with the [Quickstart Guide](quickstart.md). This chapter
 covers the particulars of Helm commands, and explains how to use Helm.
 
 ## Three Big Concepts

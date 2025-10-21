@@ -2,6 +2,7 @@
 title: "Chart Development Tips and Tricks"
 description: "Covers some of the tips and tricks Helm chart developers have learned while building production-quality charts."
 sidebar_position: 1
+aliases: ["/docs/charts_tips_and_tricks/"]
 ---
 
 This guide covers some of the tips and tricks Helm chart developers have learned

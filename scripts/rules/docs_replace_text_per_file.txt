@@ -37,7 +37,7 @@ topics/chart_repository.md|{{< ref "/docs/topics/charts.md" >}}|charts.md
 topics/chart_repository.md|{{< ref "provenance.md" >}}|provenance.md
 topics/chart_repository.md|{{< ref "/docs/howto/chart_releaser_action.md" >}}|../howto/chart_releaser_action.md
 topics/chart_repository.md|{{< ref "/docs/howto/chart_repository_sync_example.md" >}}|../howto/chart_repository_sync_example.md
-topics/chart_tests.md|/docs/helm/helm_create|../commands/helm_create.md
+topics/chart_tests.md|/docs/helm/helm_create|../helm/helm_create.md
 topics/chart_tests.md|/docs/charts_hooks/|charts_hooks.md
 topics/charts.md|{{< ref\n"/docs/topics/library_charts.md" >}}|library_charts.md
 topics/charts.md|{{< ref "/docs/howto/charts_tips_and_tricks.md" >}}|../howto/charts_tips_and_tricks.md

@@ -2,6 +2,7 @@
 title: "Templates"
 description: "A closer look at best practices surrounding templates."
 sidebar_position: 3
+aliases: ["/docs/topics/chart_best_practices/templates/"]
 ---
 
 This part of the Best Practices Guide focuses on templates.
