@@ -1,6 +1,7 @@
 ---
 title: "Permissions management for SQL storage backend"
 description: "Get to know how to setup permissions when using SQL storage backend."
+aliases: ["/docs/permissions_sql_storage_backend/"]
 ---
 
 This document aims to provide guidance to users for setting up and managing

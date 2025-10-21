@@ -15,6 +15,13 @@ function is_rules_file() {
     return 0
 }
 
+function start_fresh() {
+    rm -r $VERSION_DIR
+    mkdir $VERSION_DIR
+    rm -r content/en/docs
+    git restore --source main -- content/en/docs
+}
+
 # adds the correct dir inside versioned_docs/ and versioned_sidebars/ and
 # updates versions.json
 function skaffold_major_version() {
@@ -31,7 +38,7 @@ function skaffold_major_version() {
 function move_docs() {
     local old_docs='content/en/docs'
     if [[ -d $old_docs  ]]; then
-        git mv $old_docs/* $VERSION_DIR
+        mv $old_docs/* $VERSION_DIR
     fi
 }
 
@@ -39,20 +46,6 @@ function delete_deprecated_files() {
     grep -rl 'section: deprecated' "$VERSION_DIR" --include="*.md" --include="*.mdx" | while read -r file; do
         rm "$file"
     done
-}
-
-function rename_categories() {
-    local rules_file="${1:-scripts/rules/docs_rename_categories.txt}"
-    is_rules_file "$rules_file" "${FUNCNAME[0]}" || return 0
-
-    while IFS= read -r entry || [[ -n "$entry" ]]; do
-        [[ -z "$entry" || "$entry" == \#* ]] && continue
-        local old="${entry%%|*}"
-        local new="${entry#*|}"
-        if [[ -d "$VERSION_DIR/$old" ]]; then
-            mv "$VERSION_DIR/$old" "$VERSION_DIR/$new"
-        fi
-    done < "$rules_file"
 }
 
 function rename_files() {
@@ -92,7 +85,15 @@ function remove_lines() {
 
     while IFS= read -r pattern || [[ -n "$pattern" ]]; do
         [[ -z "$pattern" || "$pattern" == \#* ]] && continue
-        find "$basedir" -type f \( -name "*.md" -o -name "*.mdx" \) -exec sed -i '' "/$pattern/d" {} +
+        find "$basedir" -type f \( -name "*.md" -o -name "*.mdx" \) -print0 | while IFS= read -r -d '' file; do
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                # macOS sed requires -i ''
+                sed -i '' "/$pattern/d" "$file"
+            else
+                # Linux sed uses -i without argument
+                sed -i "/$pattern/d" "$file"
+            fi
+        done
     done < "$rules_file"
 }
 
@@ -222,10 +223,10 @@ function add_docs_index_list() {
     ./scripts/append-cards.sh "$VERSION_DIR"
 }
 
+start_fresh
 skaffold_major_version
 move_docs
 delete_deprecated_files
-rename_categories
 rename_files
 rename_files_per_category
 remove_lines "$VERSION_DIR" "scripts/rules/docs_remove_lines.txt"

@@ -380,7 +380,7 @@ Download Helm X.Y. The common platform binaries are here:
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-The [Quickstart Guide](../intro/quickstart.md) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](../intro/install.md). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
+The [Quickstart Guide](https://docs.helm.sh/using_helm/#quickstart-guide) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](https://docs.helm.sh/using_helm/#installing-helm). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
 
 ## What's Next
 
@@ -455,7 +455,7 @@ release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 
 ## 10. Update Docs
 
-The [Helm website docs section](../index.mdx) lists the Helm versions
+The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
 for the docs. Major, minor, and patch versions need to be updated on the site.
 The date for the next minor release is also published on the site and must be
 updated.
