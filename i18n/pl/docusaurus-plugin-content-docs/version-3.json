@@ -4,27 +4,27 @@
     "description": "The label for version 3"
   },
   "sidebar.tutorialSidebar.category.Introduction": {
-    "message": "Introduction",
+    "message": "Wprowadzenie",
     "description": "The label for category Introduction in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.How-to": {
-    "message": "How-to",
+    "message": "Poradniki",
     "description": "The label for category How-to in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Topics": {
-    "message": "Topics",
+    "message": "Zagadnienia",
     "description": "The label for category Topics in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Best Practices": {
-    "message": "Best Practices",
+    "message": "Najlepsze praktyki",
     "description": "The label for category Best Practices in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Chart Template Guide": {
-    "message": "Chart Template Guide",
+    "message": "Przewodnik po szablonach Chartów",
     "description": "The label for category Chart Template Guide in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Helm Commands": {
-    "message": "Helm Commands",
+    "message": "Polecenia Helma",
     "description": "The label for category Helm Commands in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Go SDK": {
@@ -32,11 +32,11 @@
     "description": "The label for category Go SDK in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Community": {
-    "message": "Community",
+    "message": "Społeczność",
     "description": "The label for category Community in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Frequently Asked Questions": {
-    "message": "Frequently Asked Questions",
+    "message": "Najczęściej zadawane pytania",
     "description": "The label for category Frequently Asked Questions in sidebar tutorialSidebar"
   }
 }
