@@ -164,18 +164,27 @@ function updateIndexMdx(helmDir) {
       return;
     }
 
-    // Check if id already exists
-    if (frontmatter.hasOwnProperty('id')) {
-      console.log(`  ⏭️  index.mdx already has id field`);
-      return;
+    let needsUpdate = false;
+
+    // Add id field if missing
+    if (!frontmatter.hasOwnProperty('id')) {
+      frontmatter.id = 'helm-category';
+      needsUpdate = true;
     }
 
-    // Add the id field
-    frontmatter.id = 'helm-category';
-    const updatedContent = frontMatterToYaml(frontmatter, restContent);
+    // Remove slug field if present (Docusaurus handles helm/ directory slug automatically)
+    if (frontmatter.hasOwnProperty('slug')) {
+      delete frontmatter.slug;
+      needsUpdate = true;
+    }
 
-    fs.writeFileSync(indexPath, updatedContent);
-    console.log(`  🔧 Added id to index.mdx`);
+    if (needsUpdate) {
+      const updatedContent = frontMatterToYaml(frontmatter, restContent);
+      fs.writeFileSync(indexPath, updatedContent);
+      console.log(`  🔧 Updated index.mdx metadata`);
+    } else {
+      console.log(`  ⏭️  index.mdx already up to date`);
+    }
 
   } catch (error) {
     console.error(`  ❌ Error updating index.mdx:`, error.message);
