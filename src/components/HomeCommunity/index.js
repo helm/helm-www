@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import homeSections from "@site/src/css/home-sections.module.css";
 import homeCards from "@site/src/css/home-cards.module.css";
 import Translate from "@docusaurus/Translate";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   MdVideoCall,
   MdForum,
@@ -15,6 +16,42 @@ import {
   MdLogin,
   MdCalendarMonth,
 } from "react-icons/md";
+
+function CustomDate({dateString, formatType, endDateString}) {
+  const {i18n} = useDocusaurusContext();
+  const date = new Date(dateString);
+
+  const formats = {
+    day: { day: 'numeric', month: 'short', year: 'numeric' },
+    month: { month: 'long', year: 'numeric' },
+  };
+
+  if (formatType === 'dayRange') {
+    const startDate = new Date(dateString);
+    const endDate = endDateString ? new Date(endDateString) : new Date(startDate.getTime() + 4 * 24 * 60 * 60 * 1000); // 4 days later if no endDate
+    const formatter = new Intl.DateTimeFormat(i18n.currentLocale, {
+      day: 'numeric',
+      month: 'short',
+    });
+    const yearFormatter = new Intl.DateTimeFormat(i18n.currentLocale, {
+      year: 'numeric'
+    });
+
+    const startFormatted = formatter.format(startDate);
+    const endFormatted = formatter.format(endDate);
+    const year = yearFormatter.format(startDate);
+
+    return (
+      <span>
+        {startFormatted} - {endFormatted}, {year}
+      </span>
+    );
+  } else {
+    const options = formats[formatType] || formats['day'];
+    const formatter = new Intl.DateTimeFormat(i18n.currentLocale, options);
+    return <span>{formatter.format(date)}</span>;
+  }
+}
 
 const BlockList = [
   {
@@ -39,7 +76,7 @@ const BlockList = [
             </Translate>
           </dt>
           <dd>
-            <em>November, 2025</em>
+            <em><CustomDate dateString="2025-11-01" formatType="month" /></em>
           </dd>
 
           <dt>
@@ -76,7 +113,7 @@ const BlockList = [
             </Translate>
           </dt>
           <dd>
-            <em>Nov 10-13, 2025</em> -{" "}
+            <em><CustomDate dateString="2025-11-10" endDateString="2025-11-13" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/">
               KubeCon North America
             </a>
@@ -91,19 +128,19 @@ const BlockList = [
             </Translate>
           </dt>
           <dd>
-            <em>Apr 1-4, 2025</em> -{" "}
+            <em><CustomDate dateString="2025-04-01" endDateString="2025-04-04" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2025/kubecon-cloudnativecon-europe/">
               KubeCon Europe 2025
             </a>
           </dd>
           <dd>
-            <em>Nov 12-15, 2024</em> -{" "}
+            <em><CustomDate dateString="2024-11-12" endDateString="2024-11-15" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-north-america/">
               KubeCon North America 2024
             </a>
           </dd>
           <dd>
-            <em>May 19-22, 2024</em> -{" "}
+            <em><CustomDate dateString="2024-05-19" endDateString="2024-05-22" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-europe/">
               KubeCon Europe 2024
             </a>
