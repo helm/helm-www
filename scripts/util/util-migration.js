@@ -7,25 +7,54 @@ const { findFiles, moveDirectoryContents, removeDirectory, createDirectory } = r
 const { frontMatterFromYaml, frontMatterToYaml } = require('./util-frontmatter.js');
 
 /**
- * Reset directories and restore clean content from git main
- * Ensures migration starts from latest main branch content
- * @param {number} majorVersion - Version number (e.g., 3)
+ * Clean up version directory for fresh migration
+ * @param {number} majorVersion - Version number (e.g., 2, 3)
  */
-function startFresh(majorVersion = 3) {
+function startFresh(majorVersion) {
   console.log('🔄 Starting fresh migration...');
-
   const versionDir = `versioned_docs/version-${majorVersion}`;
-  const contentDir = 'content/en/docs';
 
   // Remove version directory and recreate
   removeDirectory(versionDir);
   createDirectory(versionDir);
 
-  // Reset content directory from git main
-  removeDirectory(contentDir);
-  execSync('git restore --source main -- content/en/docs', { stdio: 'inherit' });
-
   console.log('✅ Fresh migration setup completed');
+}
+
+/**
+ * Restore source content for specified version to orig/ directory
+ * @param {number} majorVersion - Version number (2 or 3)
+ */
+function restoreSourceContent(majorVersion) {
+  console.log(`📥 Restoring v${majorVersion} source content...`);
+
+  // Clean and create orig directory structure
+  removeDirectory('orig');
+  execSync('mkdir -p orig', { stdio: 'inherit' });
+
+  if (majorVersion === 2) {
+    // Clone helm2 repository
+    console.log('📥 Cloning Helm v2 repository...');
+    try {
+      execSync('git clone --single-branch --branch release-2.17 https://github.com/helm/helm.git helm2', { stdio: 'inherit' });
+      execSync('mv helm2/docs orig/docs-v2', { stdio: 'inherit' });
+      removeDirectory('helm2');
+      console.log('✅ v2 source content restored to orig/docs-v2');
+    } catch (error) {
+      console.error('❌ Failed to clone Helm v2 repository:', error.message);
+      process.exit(1);
+    }
+  } else if (majorVersion === 3) {
+    // Restore content from git main
+    console.log('📥 Restoring v3 content from git main...');
+    execSync('git restore --source main -- content/en/docs', { stdio: 'inherit' });
+    execSync('mv content/en/docs orig/docs-v3', { stdio: 'inherit' });
+    removeDirectory('content/en');
+    console.log('✅ v3 source content restored to orig/docs-v3');
+  } else {
+    console.error(`❌ Unsupported major version: ${majorVersion}`);
+    process.exit(1);
+  }
 }
 
 /**
@@ -62,7 +91,7 @@ function skaffoldMajorVersion(majorVersion = 3) {
 function moveDocs(majorVersion = 3) {
   console.log('📦 Moving docs from Hugo to Docusaurus structure...');
 
-  const sourceDir = 'content/en/docs';
+  const sourceDir = `orig/docs-v${majorVersion}`;
   const versionDir = `versioned_docs/version-${majorVersion}`;
 
   if (fs.existsSync(sourceDir)) {
@@ -352,6 +381,7 @@ function renameIndexFilesToMdx(majorVersion = 3) {
 
 module.exports = {
   startFresh,
+  restoreSourceContent,
   skaffoldMajorVersion,
   moveDocs,
   deleteDeprecatedFiles,
