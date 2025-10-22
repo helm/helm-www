@@ -4,23 +4,23 @@
     "description": "The label for version 2"
   },
   "sidebar.tutorialSidebar.category.Using Helm": {
-    "message": "Using Helm",
+    "message": "Korzystanie z Helma",
     "description": "The label for category Using Helm in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Helm Commands": {
-    "message": "Helm Commands",
+    "message": "Polecenia Helma",
     "description": "The label for category Helm Commands in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Charts": {
-    "message": "Charts",
+    "message": "Charty",
     "description": "The label for category Charts in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Developing Templates": {
-    "message": "Developing Templates",
+    "message": "Tworzenie szablonów",
     "description": "The label for category Developing Templates in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Best Practices": {
-    "message": "Best Practices",
+    "message": "Najlepsze praktyki",
     "description": "The label for category Best Practices in sidebar tutorialSidebar"
   }
 }

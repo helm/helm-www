@@ -1,66 +1,66 @@
 {
   "home.about.whatIsHelm": {
-    "message": "Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.",
+    "message": "Helm pomaga zarządzać aplikacjami Kubernetesa - Charty Helma pomagają definiować, instalować i aktualizować nawet najbardziej złożone aplikacje Kubernetesa.",
     "description": "What is Helm? first paragraph"
   },
   "home.about.chartsDescription": {
-    "message": "Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.",
+    "message": "Charty są łatwe do tworzenia, wersjonowania, udostępniania i publikowania - zacznij używać Helma i pożegnaj kopiuj–wklej.",
     "description": "What is Helm? charts paragraph"
   },
   "home.about.cncf": {
-    "message": "Helm is a graduated project in the {cncfLink} and is maintained by the {helmCommunityLink}.",
+    "message": "Helm jest dojrzałym projektem w {cncfLink} i jest utrzymywany przez {helmCommunityLink}.",
     "description": "What is Helm? CNCF Graduated Project paragraph"
   },
   "home.about.cncf.helmCommunityLink": {
-    "message": "Helm community",
+    "message": "Społeczność Helma",
     "description": "Helm community link"
   },
   "home.about.learnMore": {
-    "message": "Learn more:",
+    "message": "Dowiedz się więcej:",
     "description": "Learn more label"
   },
   "home.about.learnMore.helmArchitectureLink": {
-    "message": "Helm Architecture",
+    "message": "Architektura Helma",
     "description": "Helm Architecture link"
   },
   "home.about.learnMore.quickStartGuideLink": {
-    "message": "Quick Start Guide",
+    "message": "Przewodnik szybkiego startu",
     "description": "Quick Start Guide link"
   },
   "home.about.learnMore.videoLink": {
-    "message": "Video: An Introduction to Helm",
+    "message": "Wideo: Wprowadzenie do Helma",
     "description": "Video: An Introduction to Helm link"
   },
   "home.about.title": {
-    "message": "What is Helm?",
+    "message": "Czym jest Helm?",
     "description": "What is Helm? title"
   },
   "home.community.nextFeatureRelease": {
-    "message": "Next Feature Release",
+    "message": "Najbliższe wydanie",
     "description": "Next Feature Release section title"
   },
   "home.community.nextFeatureRelease.version": {
-    "message": "Version:",
+    "message": "Wersja:",
     "description": "Version label"
   },
   "home.community.nextFeatureRelease.date": {
-    "message": "Date:",
+    "message": "Data:",
     "description": "Date label"
   },
   "home.community.nextFeatureRelease.calendar": {
-    "message": "Release Calendar",
+    "message": "Kalendarz wydań",
     "description": "Release Calendar link"
   },
   "home.community.upcomingEvents": {
-    "message": "Upcoming Events",
+    "message": "Nadchodzące wydarzenia",
     "description": "Upcoming Events section title"
   },
   "home.community.upcomingEventsSubtitle": {
-    "message": "Upcoming Events",
+    "message": "Nadchodzące wydarzenia",
     "description": "Upcoming Events subtitle"
   },
   "home.community.pastEventsSubtitle": {
-    "message": "Past Events",
+    "message": "Minione wydarzenia",
     "description": "Past Events subtitle"
   },
   "home.community.sigApps": {
@@ -68,190 +68,190 @@
     "description": "SIG Apps section title"
   },
   "home.community.sigApps.description": {
-    "message": "They {meetLink} to demo and discuss tools and projects. Community meetings are recorded and {youtubeLink}.",
+    "message": "Spotykaj się {meetLink}, aby prezentować i omawiać narzędzia oraz projekty. Spotkania społeczności są nagrywane i {youtubeLink}.",
     "description": "SIG Apps meeting description"
   },
   "home.community.sigApps.meetLink": {
-    "message": "meet each week",
+    "message": "spotykaj się co tydzień",
     "description": "Link to SIG Apps meetings"
   },
   "home.community.sigApps.youtubeLink": {
-    "message": "shared to YouTube",
+    "message": "udostępnione w serwisie YouTube",
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
-    "message": "Developer Standups"
+    "message": "Spotkania deweloperów"
   },
   "home.community.developerStandups.time": {
-    "message": "Thursdays 9:30-10am (PT)",
+    "message": "Czwartki 9:30–10:00 (PT)",
     "description": "Developer Standups day and time"
   },
   "home.community.developerStandups.description": {
-    "message": "These meetings are open to all. Check the {communityRepoLink} for notes and details.",
+    "message": "Te spotkania są otwarte dla wszystkich. Sprawdź {communityRepoLink}, aby zobaczyć notatki i szczegóły.",
     "description": "Developer Standups description with community repo link"
   },
   "home.community.developerStandups.communityRepoLink": {
-    "message": "community repo",
+    "message": "repozytorium społeczności",
     "description": "Community repo link"
   },
   "home.community.slack.helmUsers.description": {
-    "message": "Discussion around using Helm, working with charts and solving common errors.",
+    "message": "Dyskusje o korzystaniu z Helma, pracy z chartami oraz rozwiązywaniu typowych błędów.",
     "description": "helm-users slack channel description"
   },
   "home.community.slack.helmDevelopment.description": {
-    "message": "Topics regarding Helm development, ongoing PRs, releases, etc.",
+    "message": "Tematy dotyczące rozwoju Helma, otwartych PR-ów, wydań itp.",
     "description": "helm-dev slack channel description"
   },
   "home.community.slack.charts.description": {
-    "message": "Discussion for users and contributors to Helm Charts.",
+    "message": "Dyskusje dla użytkowników i współtwórców chartów Helma.",
     "description": "charts slack channel description"
   },
   "home.community.slack.join": {
-    "message": "{slackLink} to join the Kubernetes Slack team.",
+    "message": "{slackLink}, aby dołączyć do zespołu Kubernetes Slack.",
     "description": "How to join the Kubernetes Slack team with slack link"
   },
   "home.community.slack.join.slackLink": {
-    "message": "Request access here",
+    "message": "Poproś o dostęp tutaj",
     "description": "Request access to slack link"
   },
   "home.community.contributing": {
-    "message": "Contributing",
+    "message": "Wkład w projekt",
     "description": "Contributing section title"
   },
   "home.community.contributing.description": {
-    "message": "Helm always welcomes new contributions to the project!",
+    "message": "Helm zawsze chętnie przyjmuje nowe wkłady do projektu!",
     "description": "Contributing section description"
   },
   "home.community.contributing.whereToBegin": {
-    "message": "Where to begin?",
+    "message": "Od czego zacząć?",
     "description": "Where to begin? section title"
   },
   "home.community.contributing.whereToBegin.description": {
-    "message": "Helm is a big project with a lot of users and contributors. It can be a lot to take in!",
+    "message": "Helm to duży projekt z wieloma użytkownikami i współtwórcami. To może być sporo do ogarnięcia!",
     "description": "Where to begin? section description"
   },
   "home.community.contributing.whereToBegin.goodFirstIssues": {
-    "message": "We have a list of {goodFirstIssuesLink} if you want to help but don't know where to start.",
+    "message": "Mamy listę {goodFirstIssuesLink}, jeśli chcesz pomóc, ale nie wiesz, od czego zacząć.",
     "description": "Good first issues sentence with link"
   },
   "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
-    "message": "good first issues",
+    "message": "dobre na pierwsze zadanie",
     "description": "Good first issues link"
   },
   "home.community.contributing.whatDoIDo": {
-    "message": "What do I do?",
+    "message": "Co mam zrobić?",
     "description": "What do I do? section title"
   },
   "home.community.contributing.whatDoIDo.contributionGuide": {
-    "message": "Before you contribute some code, please read our {contributionGuideLink}. It goes over the processes around creating and reviewing pull requests.",
+    "message": "Zanim dodasz kod, przeczytaj proszę nasz {contributionGuideLink}. Opisuje on proces tworzenia i przeglądania pull requestów.",
     "description": "What do I do? contribution guide description"
   },
   "home.community.contributing.whatDoIDo.contributionGuideLink": {
-    "message": "Contribution Guide",
+    "message": "Przewodnik dla współtwórców",
     "description": "Contribution Guide link"
   },
   "home.community.contributing.whatDoIDo.signYourCommits": {
-    "message": "After you write some code, please {signYourCommitsLink} to ensure Helm adheres to the {dcoLink} agreement used by the {cncfLink}.",
+    "message": "Po napisaniu kodu proszę {signYourCommitsLink}, aby Helm był zgodny z {dcoLink} używanym przez {cncfLink}.",
     "description": "What do I do? sign your commits description"
   },
   "home.community.contributing.whatDoIDo.signYourCommitsLink": {
-    "message": "sign your commits",
+    "message": "podpisz swoje commity",
     "description": "Sign your commits link"
   },
   "home.community.title": {
-    "message": "Join the Community",
+    "message": "Dołącz do społeczności",
     "description": "Join the Community title"
   },
   "home.community.subtitle": {
-    "message": "More information about the Helm project, and how to contribute.",
+    "message": "Więcej informacji o projekcie Helm i o tym, jak się zaangażować.",
     "description": "Join the Community subtitle"
   },
   "home.features.manageComplexity": {
-    "message": "Manage Complexity",
+    "message": "Zarządzaj złożonością",
     "description": "Manage Complexity section title"
   },
   "home.features.manageComplexity.description": {
-    "message": "Charts describe even the most complex apps, provide repeatable application installation, and serve as a single point of authority.",
+    "message": "Charty opisują nawet najbardziej złożone aplikacje, zapewniają powtarzalną instalację i stanowią pojedyncze źródło prawdy.",
     "description": "Manage Complexity section description"
   },
   "home.features.easyUpdates": {
-    "message": "Easy Updates",
+    "message": "Łatwe aktualizacje",
     "description": "Easy Updates section title"
   },
   "home.features.easyUpdates.description": {
-    "message": "Take the pain out of updates with in-place upgrades and custom hooks.",
+    "message": "Pozbądź się bólu aktualizacji dzięki uaktualnieniom w miejscu i własnym hookom.",
     "description": "Easy Updates section description"
   },
   "home.features.simpleSharing": {
-    "message": "Simple Sharing",
+    "message": "Proste udostępnianie",
     "description": "Simple Sharing section title"
   },
   "home.features.simpleSharing.description": {
-    "message": "Charts are easy to version, share, and host on public or private servers.",
+    "message": "Charty są łatwe do wersjonowania, udostępniania i hostowania na serwerach publicznych lub prywatnych.",
     "description": "Simple Sharing section description"
   },
   "home.features.rollbacks": {
-    "message": "Rollbacks",
+    "message": "Przywracanie wersji",
     "description": "Rollbacks section title"
   },
   "home.features.rollbacks.description": {
-    "message": "Use {helmRollback} to roll back to an older version of a release with ease.",
+    "message": "Użyj {helmRollback}, aby z łatwością przywrócić starszą wersję wydania.",
     "description": "Rollbacks section description"
   },
   "home.features.title": {
-    "message": "Features",
+    "message": "Funkcje",
     "description": "Features section title"
   },
   "home.gettingStarted.title": {
-    "message": "Getting Started",
+    "message": "Pierwsze kroki",
     "description": "Getting started section title"
   },
   "home.gettingStarted.getHelmTitle": {
-    "message": "Get Helm",
+    "message": "Pobierz Helma",
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
-    "message": "Install Helm with a package manager, or {downloadLink}.",
+    "message": "Zainstaluj Helma za pomocą menedżera pakietów lub {downloadLink}.",
     "description": "Getting started install with package manager sentence with download link"
   },
   "home.gettingStarted.installHelm.downloadLink": {
-    "message": "download a binary",
+    "message": "pobierz plik binarny",
     "description": "Download a binary link"
   },
   "home.gettingStarted.postInstall.instructions": {
-    "message": "Once installed, unpack the helm binary and add it to your PATH and you are good to go! Check the {docsLink} for further {installationLink} and {usageLink}.",
+    "message": "Po instalacji rozpakuj plik wykonywalny helm, dodaj go do zmiennej PATH i możesz działać! Sprawdź {docsLink}, aby uzyskać więcej informacji o {installationLink} i {usageLink}.",
     "description": "Instructions after installing Helm"
   },
   "home.gettingStarted.postInstall.docsLink": {
-    "message": "docs",
+    "message": "dokumentacja",
     "description": "Link to installation docs"
   },
   "home.gettingStarted.postInstall.installationLink": {
-    "message": "installation",
+    "message": "instalacja",
     "description": "Link to installation instructions"
   },
   "home.gettingStarted.postInstall.usageLink": {
-    "message": "usage instructions",
+    "message": "instrukcje użycia",
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
-    "message": "Get Charts",
+    "message": "Pobierz charty",
     "description": "Getting started get charts title"
   },
   "home.gettingStarted.artifactHub": {
-    "message": "Visit {artifactHubLink} to explore {helmChartsLink} from numerous public repositories.",
+    "message": "Odwiedź {artifactHubLink}, aby przeglądać {helmChartsLink} z wielu publicznych repozytoriów.",
     "description": "Artifact Hub link"
   },
   "home.gettingStarted.artifactHub.helmChartsLink": {
-    "message": "Helm charts",
+    "message": "Charty Helma",
     "description": "Helm charts link"
   },
   "home.header.tagline": {
-    "message": "The package manager for Kubernetes",
+    "message": "Menedżer pakietów dla Kubernetesa",
     "description": "Helm tagline"
   },
   "home.header.subtitle": {
-    "message": "Helm is the best way to find, share, and use software built for",
+    "message": "Helm to najlepszy sposób na wyszukiwanie, udostępnianie i używanie oprogramowania",
     "description": "Home page header subtitle"
   },
   "theme.docs.breadcrumbs.home": {
@@ -319,7 +319,7 @@
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "system mode",
+    "message": "tryb systemowy",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
@@ -362,7 +362,7 @@
     "message": "Wersja: {versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "Ta dokumentacja dotyczy najnowszej i nieopublikowanej jeszce wersji {siteTitle} ({versionLabel}).",
+    "message": "Ta dokumentacja dotyczy najnowszej i nieopublikowanej jeszcze wersji {siteTitle} ({versionLabel}).",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
@@ -430,7 +430,7 @@
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
-    "message": "warning",
+    "message": "ostrzeżenie",
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.AnnouncementBar.closeButtonAriaLabel": {
@@ -438,19 +438,19 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Expand sidebar category '{label}'",
+    "message": "Rozwiń kategorię panelu bocznego '{label}'",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Collapse sidebar category '{label}'",
+    "message": "Zwiń kategorię panelu bocznego '{label}'",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "(otwiera się w nowej karcie)",
     "description": "The ARIA label for the external link icon"
   },
   "theme.NavBar.navAriaLabel": {
-    "message": "Main",
+    "message": "Strona główna",
     "description": "The ARIA label for the main navigation"
   },
   "theme.navbar.mobileLanguageDropdown.label": {
@@ -518,11 +518,11 @@
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
+    "message": "Rozwiń menu",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
+    "message": "Zwiń menu",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
@@ -566,11 +566,11 @@
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Draft page",
+    "message": "Strona robocza",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "message": "Ta strona jest w wersji roboczej. Będzie widoczna tylko w środowisku deweloperskim i wyłączona z kompilacji produkcyjnej.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
