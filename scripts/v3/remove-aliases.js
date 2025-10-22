@@ -113,8 +113,7 @@ function removeAliasesFromV3Files() {
       summary: {
         totalFilesProcessed,
         filesWithAliases,
-        aliasesRemoved,
-        processedAt: new Date().toISOString()
+        aliasesRemoved
       },
       aliases: aliasesFound
     };
