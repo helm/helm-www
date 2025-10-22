@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 const { processHelmFiles } = require('./v3/process-helm-files.js');
-const { removeAliasesFromV3Files } = require('./v3/remove-aliases.js');
+const { removeAliasesFromFiles } = require('./v3/remove-aliases.js');
 const { migrateSdkSection } = require("./v3/migrate-sdk-section.js");
 const { addNetlifyRedirects } = require("./v3/add-netlify-redirects.js");
 const {
   startFresh,
+  restoreSourceContent,
   skaffoldMajorVersion,
   moveDocs,
   deleteDeprecatedFiles,
@@ -27,6 +28,7 @@ async function migrateV3Docs(majorVersion = 3) {
     // Step 1: Start with clean slate (reset directories and restore from git main)
     console.log("\n📋 Step 1: Starting fresh...");
     startFresh(majorVersion);
+    restoreSourceContent(majorVersion);
 
     // Step 2: Setup Docusaurus version structure (idempotent)
     console.log("\n📋 Step 2: Setting up Docusaurus version structure...");
@@ -66,7 +68,7 @@ async function migrateV3Docs(majorVersion = 3) {
 
     // Step 11: Remove all aliases from v3 files
     console.log("\n📋 Step 11: Removing aliases...");
-    removeAliasesFromV3Files();
+    removeAliasesFromFiles();
 
     // Step 12: Add DocCardList components to index pages
     console.log("\n📋 Step 12: Adding DocCardList components...");

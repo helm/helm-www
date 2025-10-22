@@ -7,7 +7,7 @@ const { frontMatterFromYaml, frontMatterToYaml } = require('../util/util-frontma
 /**
  * Find and remove all aliases from v3 .md and .mdx files
  */
-function removeAliasesFromV3Files() {
+function removeAliasesFromFiles() {
   console.log('🔍 Finding and removing aliases from version-3 files...');
 
   const v3DocsDir = path.join(__dirname, '..', '..', 'versioned_docs', 'version-3');
@@ -131,7 +131,7 @@ function removeAliasesFromV3Files() {
 
 // Main execution
 if (require.main === module) {
-  removeAliasesFromV3Files();
+  removeAliasesFromFiles();
 }
 
-module.exports = { removeAliasesFromV3Files };
+module.exports = { removeAliasesFromFiles };

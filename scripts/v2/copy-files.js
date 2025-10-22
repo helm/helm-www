@@ -20,11 +20,11 @@ function copyV2DocsToDocusaurus() {
 
   const menuData = JSON.parse(fs.readFileSync(structureFile, 'utf8'));
   const navigationStructure = menuData.navigationStructure;
-  const helm2DocsPath = path.join(__dirname, '..', '..', 'helm2', 'docs');
+  const helm2DocsPath = path.join(__dirname, '..', '..', 'orig', 'docs-v2');
   const outputPath = path.join(__dirname, '..', '..', 'versioned_docs', 'version-2');
 
   if (!fs.existsSync(helm2DocsPath)) {
-    console.error('❌ helm2/docs directory not found');
+    console.error('❌ orig/docs-v2 directory not found');
     process.exit(1);
   }
 
@@ -39,7 +39,7 @@ function copyV2DocsToDocusaurus() {
   createIndexFile(outputPath);
   console.log('📄 Created index.mdx file');
 
-  // Build file header mapping from helm2/docs
+  // Build file header mapping from orig/docs-v2
   console.log('🔍 Building header-to-file mapping from local markdown files...');
   const headerToFileMap = buildHeaderFileMap(helm2DocsPath);
   console.log(`📊 Found ${Object.keys(headerToFileMap).size} headers in ${headerToFileMap._totalFiles} files`);

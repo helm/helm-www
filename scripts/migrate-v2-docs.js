@@ -1,33 +1,8 @@
 #!/usr/bin/env node
 
-const { startFresh, skaffoldMajorVersion } = require("./util/util-migration.js");
+const { startFresh, restoreSourceContent, skaffoldMajorVersion } = require("./util/util-migration.js");
 const { copyV2DocsToDocusaurus } = require("./v2/copy-files.js");
-const { execSync } = require('child_process');
-const fs = require('fs');
 const path = require('path');
-
-/**
- * Clone Helm v2 repository for migration
- */
-function cloneV2() {
-  const helm2Dir = 'helm2';
-
-  // Remove helm2 directory and re-clone
-  if (fs.existsSync(helm2Dir)) {
-    fs.rmSync(helm2Dir, { recursive: true, force: true });
-    console.log(`🗑️  Removed directory: ${helm2Dir}`);
-  }
-
-  // Clone helm2 repository
-  console.log('📥 Cloning Helm v2 repository...');
-  try {
-    execSync('git clone --single-branch --branch release-2.17 https://github.com/helm/helm.git helm2', { stdio: 'inherit' });
-    console.log('✅ Helm v2 repository cloned successfully');
-  } catch (error) {
-    console.error('❌ Failed to clone Helm v2 repository:', error.message);
-    process.exit(1);
-  }
-}
 
 /**
  * Master orchestrator for v2 docs migration
@@ -37,12 +12,10 @@ async function migrateV2Docs(majorVersion = 2) {
   console.log("🚀 Starting v2 docs migration...");
 
   try {
-    // Step 1: Start with clean slate (reset directories and restore from git main)
+    // Step 1: Start with clean slate and restore source content
     console.log("\n📋 Step 1: Starting fresh...");
     startFresh(majorVersion);
-
-    // Clone helm2 repository for v2 migration
-    cloneV2();
+    restoreSourceContent(majorVersion);
 
     // Step 2: Setup Docusaurus version structure (creates versioned_docs/version-2)
     console.log("\n📋 Step 2: Setting up Docusaurus version structure...");
