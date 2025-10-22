@@ -1,6 +1,6 @@
 ---
-title: "Debugging Templates"
-description: "Troubleshooting charts that are failing to deploy."
+title: Debugging Templates
+description: Troubleshooting charts that are failing to deploy.
 sidebar_position: 13
 ---
 

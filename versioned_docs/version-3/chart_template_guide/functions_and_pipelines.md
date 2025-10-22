@@ -1,6 +1,6 @@
 ---
-title: "Template Functions and Pipelines"
-description: "Using functions in templates."
+title: Template Functions and Pipelines
+description: Using functions in templates.
 sidebar_position: 5
 ---
 

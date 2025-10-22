@@ -4,24 +4,24 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Copy script that uses v2-menu.json with header extraction to find and copy files
+ * Copy script that uses menu.json with header extraction to find and copy files
  * Matches headers to local markdown files and creates proper Docusaurus structure
  */
 
 function copyV2DocsToDocusaurus() {
   console.log('📋 Starting v2 docs copy to Docusaurus...');
 
-  // Read the v2-menu.json structure
-  const structureFile = path.join(__dirname, 'v2-menu.json');
+  // Read the menu.json structure
+  const structureFile = path.join(__dirname, 'menu.json');
   if (!fs.existsSync(structureFile)) {
-    console.error('❌ v2-menu.json not found. Run v2-menu-generate.js first.');
+    console.error('❌ menu.json not found. Run menu-generate.js first.');
     process.exit(1);
   }
 
   const menuData = JSON.parse(fs.readFileSync(structureFile, 'utf8'));
   const navigationStructure = menuData.navigationStructure;
-  const helm2DocsPath = path.join(__dirname, '..', 'helm2', 'docs');
-  const outputPath = path.join(__dirname, '..', 'versioned_docs', 'version-2');
+  const helm2DocsPath = path.join(__dirname, '..', '..', 'helm2', 'docs');
+  const outputPath = path.join(__dirname, '..', '..', 'versioned_docs', 'version-2');
 
   if (!fs.existsSync(helm2DocsPath)) {
     console.error('❌ helm2/docs directory not found');

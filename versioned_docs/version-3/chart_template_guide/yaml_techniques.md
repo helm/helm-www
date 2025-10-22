@@ -1,6 +1,6 @@
 ---
 title: "Appendix: YAML Techniques"
-description: "A closer look at the YAML specification and how it applies to Helm."
+description: A closer look at the YAML specification and how it applies to Helm.
 sidebar_position: 15
 ---
 

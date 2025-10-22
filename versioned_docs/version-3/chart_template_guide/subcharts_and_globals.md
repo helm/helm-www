@@ -1,6 +1,6 @@
 ---
-title: "Subcharts and Global Values"
-description: "Interacting with a subchart's and global values."
+title: Subcharts and Global Values
+description: Interacting with a subchart's and global values.
 sidebar_position: 11
 ---
 

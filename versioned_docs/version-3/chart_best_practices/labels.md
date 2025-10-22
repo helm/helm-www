@@ -1,8 +1,7 @@
 ---
-title: "Labels and Annotations"
-description: "Covers best practices for using labels and annotations in your Chart."
+title: Labels and Annotations
+description: Covers best practices for using labels and annotations in your Chart.
 sidebar_position: 5
-aliases: ["/docs/topics/chart_best_practices/labels/"]
 ---
 
 This part of the Best Practices Guide discusses the best practices for using

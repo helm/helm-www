@@ -1,7 +1,6 @@
 ---
-title: "The Chart Repository Guide"
-description: "How to create and work with Helm chart repositories."
-aliases: ["/docs/chart_repository/"]
+title: The Chart Repository Guide
+description: How to create and work with Helm chart repositories.
 sidebar_position: 6
 ---
 

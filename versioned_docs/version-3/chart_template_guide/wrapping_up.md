@@ -1,6 +1,6 @@
 ---
-title: "Next Steps"
-description: "Wrapping up - some useful pointers to other documentation that will help you."
+title: Next Steps
+description: Wrapping up - some useful pointers to other documentation that will help you.
 sidebar_position: 14
 ---
 

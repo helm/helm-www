@@ -245,7 +245,7 @@ const main = async () => {
     const navigationStructure = await convertToSimplifiedFormat(rawNavTree);
 
     // Write the simplified menu structure
-    const outputPath = './scripts/v2-menu-simplify.json';
+    const outputPath = './scripts/v2/menu.json';
     const output = {
       navigationStructure,
       metadata: {

@@ -1,6 +1,6 @@
 ---
-title: "Named Templates"
-description: "How to define named templates."
+title: Named Templates
+description: How to define named templates.
 sidebar_position: 9
 ---
 

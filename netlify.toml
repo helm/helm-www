@@ -243,3 +243,45 @@
   from = "/docs/library_charts/"
   to = "/docs/topics/library_charts/"
   status = 302
+# Additional redirects for Hugo frontmatter aliases removed during v3 migration
+[[redirects]]
+  from = "/docs/developers/"
+  to = "/docs/community/developers/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/history/"
+  to = "/docs/community/history/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/related/"
+  to = "/docs/community/related/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/faq/"
+  to = "/docs/faq/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/using_helm/"
+  to = "/docs/intro/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/architecture/"
+  to = "/docs/topics/architecture/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/developing_charts/"
+  to = "/docs/topics/charts/"
+  status = 302
+
+[[redirects]]
+  from = "/developing_charts/"
+  to = "/docs/topics/charts/"
+  status = 302
+
+# End of Hugo frontmatter aliases redirects

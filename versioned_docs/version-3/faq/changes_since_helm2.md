@@ -1,5 +1,5 @@
 ---
-title: "Changes Since Helm 2"
+title: Changes Since Helm 2
 sidebar_position: 1
 ---
 

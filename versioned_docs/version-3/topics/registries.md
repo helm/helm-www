@@ -1,7 +1,6 @@
 ---
-title: "Use OCI-based registries"
-description: "Describes how to use OCI for Chart distribution."
-aliases: ["/docs/registries/"]
+title: Use OCI-based registries
+description: Describes how to use OCI for Chart distribution.
 sidebar_position: 7
 ---
 

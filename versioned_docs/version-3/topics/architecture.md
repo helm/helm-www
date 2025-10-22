@@ -1,7 +1,6 @@
 ---
-title: "Helm Architecture"
-description: "Describes the Helm architecture at a high level."
-aliases: ["/docs/architecture/"]
+title: Helm Architecture
+description: Describes the Helm architecture at a high level.
 sidebar_position: 8
 ---
 
