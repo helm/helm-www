@@ -1,6 +1,6 @@
 ---
-title: "Migrating Helm v2 to v3"
-description: "Learn how to migrate Helm v2 to v3."
+title: Migrating Helm v2 to v3
+description: Learn how to migrate Helm v2 to v3.
 sidebar_position: 13
 ---
 

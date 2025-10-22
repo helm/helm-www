@@ -1,6 +1,6 @@
 ---
-title: "Values Files"
-description: "Instructions on how to use the --values flag."
+title: Values Files
+description: Instructions on how to use the --values flag.
 sidebar_position: 4
 ---
 

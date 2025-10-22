@@ -1,8 +1,7 @@
 ---
-title: "Installing Helm"
-description: "Learn how to install and get running with Helm."
+title: Installing Helm
+description: Learn how to install and get running with Helm.
 sidebar_position: 2
-aliases: ["/docs/install/"]
 ---
 
 This guide shows how to install the Helm CLI. Helm can be installed either from

@@ -1,6 +1,6 @@
 ---
-title: "Flow Control"
-description: "A quick overview on the flow structure within templates."
+title: Flow Control
+description: A quick overview on the flow structure within templates.
 sidebar_position: 7
 ---
 

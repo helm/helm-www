@@ -1,7 +1,6 @@
 ---
-title: "The Helm Plugins Guide"
-description: "Introduces how to use and create plugins to extend Helm's functionality."
-aliases: ["/docs/plugins/"]
+title: The Helm Plugins Guide
+description: Introduces how to use and create plugins to extend Helm's functionality.
 sidebar_position: 12
 ---
 

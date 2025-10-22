@@ -1,6 +1,6 @@
 ---
-title: "Chart Releaser Action to Automate GitHub Page Charts"
-description: "Describe how to use Chart Releaser Action to automate releasing charts through GitHub pages."
+title: Chart Releaser Action to Automate GitHub Page Charts
+description: Describe how to use Chart Releaser Action to automate releasing charts through GitHub pages.
 sidebar_position: 3
 ---
 
