@@ -40,7 +40,7 @@ It can be used to add, remove, list, and index chart repositories.
 
 ### SEE ALSO
 
-* [helm](helm.md)	 - The Helm package manager for Kubernetes.
+* [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 * [helm repo add](helm_repo_add.md)	 - add a chart repository
 * [helm repo index](helm_repo_index.md)	 - generate an index file given a directory containing packaged charts
 * [helm repo list](helm_repo_list.md)	 - list chart repositories

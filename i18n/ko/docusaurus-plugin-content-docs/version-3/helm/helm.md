@@ -1,5 +1,6 @@
 ---
-title: "helm"
+title: Helm
+slug: helm
 ---
 
 ## helm

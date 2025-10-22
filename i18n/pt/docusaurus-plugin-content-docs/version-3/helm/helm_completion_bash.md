@@ -60,4 +60,4 @@ helm completion bash [argumentos]
 
 ### Veja também
 
-* [helm completion](helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
+* [helm completion](/helm/helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico

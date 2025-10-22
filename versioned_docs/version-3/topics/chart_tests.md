@@ -34,7 +34,7 @@ their release of a chart (or application) works as expected.
 
 ## Example Test
 
-The [helm create](../helm/helm_create.md) command will automatically create a number of folders and files. To try the helm test functionality, first create a demo helm chart. 
+The [helm create](/helm/helm_create.md) command will automatically create a number of folders and files. To try the helm test functionality, first create a demo helm chart. 
 
 ```console
 $ helm create demo

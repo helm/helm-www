@@ -17,11 +17,11 @@ other documentation that will help you as you create new charts:
 - The Kubernetes [Documentation](https://kubernetes.io/docs/home/) provides
   detailed examples of the various resource kinds that you can use, from
   ConfigMaps and Secrets to DaemonSets and Deployments.
-- The Helm [Charts Guide](../topics/charts.md) explains the workflow of using
+- The Helm [Charts Guide](/topics/charts.md) explains the workflow of using
   charts.
-- The Helm [Chart Hooks Guide](../topics/charts_hooks.md) explains how to
+- The Helm [Chart Hooks Guide](/topics/charts_hooks.md) explains how to
   create lifecycle hooks.
-- The Helm [Charts Tips and Tricks](../howto/charts_tips_and_tricks.md) article
+- The Helm [Charts Tips and Tricks](/howto/charts_tips_and_tricks.md) article
   provides some useful tips for writing charts.
 - The [Sprig documentation](https://github.com/Masterminds/sprig) documents more
   than sixty of the template functions.

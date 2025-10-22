@@ -38,7 +38,7 @@ This command consists of multiple subcommands to display information about a cha
 
 ### SEE ALSO
 
-* [helm](helm.md)	 - The Helm package manager for Kubernetes.
+* [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 * [helm show all](helm_show_all.md)	 - show all information of the chart
 * [helm show chart](helm_show_chart.md)	 - show the chart's definition
 * [helm show crds](helm_show_crds.md)	 - show the chart's CRDs
