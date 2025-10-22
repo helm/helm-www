@@ -236,7 +236,7 @@ const countTotalItems = (items) => {
   }, 0);
 };
 
-// Add missing files that exist in helm2/docs but aren't in the menu
+// Add missing files that exist in orig/docs-v2 but aren't in the menu
 const addMissingFilesToMenu = (navigationStructure) => {
   console.log('🔍 Adding missing files to navigation menu...');
 
@@ -286,7 +286,7 @@ const main = async () => {
     console.log('\n🔍 Extracting header texts from live site...');
     const navigationStructure = await convertToSimplifiedFormat(rawNavTree);
 
-    // Add missing files that exist in helm2/docs but aren't in the menu
+    // Add missing files that exist in orig/docs-v2 but aren't in the menu
     addMissingFilesToMenu(navigationStructure);
 
     // Write the simplified menu structure
