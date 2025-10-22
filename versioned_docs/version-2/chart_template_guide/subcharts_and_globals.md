@@ -26,7 +26,7 @@ Creating mysubchart
 $ rm -rf mysubchart/templates/*.*
 ```
 
-Notice that just as before, we deleted all of the base templates so that we can start from scratch. In this guide, we are focused on how templates work, not on managing dependencies. But the [Charts Guide](../charts.md) has more information on how subcharts work.
+Notice that just as before, we deleted all of the base templates so that we can start from scratch. In this guide, we are focused on how templates work, not on managing dependencies. But the [Charts Guide](../developing_charts/developing_charts.md) has more information on how subcharts work.
 
 ## Adding Values and a Template to the Subchart
 

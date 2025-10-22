@@ -1,6 +1,6 @@
 ---
 title: "helm history"
-sidebar_position: 13
+sidebar_position: 14
 sidebar_label: "Helm History"
 ---
 Fetch release history

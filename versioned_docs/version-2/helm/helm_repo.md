@@ -1,6 +1,6 @@
 ---
 title: "helm repo"
-sidebar_position: 28
+sidebar_position: 30
 sidebar_label: "Helm Repo"
 ---
 Add, list, remove, update, and index chart repositories

@@ -57,6 +57,13 @@ async function migrateV2Docs(majorVersion = 2) {
     console.log("\n📋 Step 4: Processing v2 files with Docusaurus structure...");
     copyV2DocsToDocusaurus();
 
+    // Step 5: Fix v2 href differences (link paths)
+    console.log("\n📋 Step 5: Fixing v2 href differences...");
+    const path = require('path');
+    const { processHrefDifferences } = require("./util/href-diffs-process.js");
+    const differencesFile = path.join(__dirname, 'v2/href-diffs.json');
+    processHrefDifferences(majorVersion, differencesFile);
+
     console.log("\n🎉 v2 docs migration completed successfully!");
   } catch (error) {
     console.error("❌ Migration failed:", error.message);

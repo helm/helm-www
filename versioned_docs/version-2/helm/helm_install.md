@@ -1,6 +1,6 @@
 ---
 title: "helm install"
-sidebar_position: 19
+sidebar_position: 21
 sidebar_label: "Helm Install"
 ---
 Install a chart archive

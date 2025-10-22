@@ -92,7 +92,7 @@ Because of the relative longevity of Helm, the Helm chart ecosystem evolved with
 
 As with all shared software, in a controlled or shared environment you must validate all software you install yourself _before_ you install it. If you have secured Tiller with TLS and have installed it with permissions to only one or a subset of namespaces, some charts may fail to install -- but in these environments, that is exactly what you want. If you need to use the chart, you may have to work with the creator or modify it yourself in order to use it securely in a multitenant cluster with proper RBAC rules applied. The `helm template` command renders the chart locally and displays the output.
 
-Once vetted, you can use Helm's provenance tools to [ensure the provenance and integrity of charts](provenance.md) that you use.
+Once vetted, you can use Helm's provenance tools to [ensure the provenance and integrity of charts](../developing_charts/provenance.md) that you use.
 
 ### gRPC Tools and Secured Tiller Configurations
 

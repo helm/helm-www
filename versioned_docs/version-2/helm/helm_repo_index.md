@@ -1,6 +1,6 @@
 ---
 title: "helm repo index"
-sidebar_position: 30
+sidebar_position: 32
 sidebar_label: "Helm Repo Index"
 ---
 Generate an index file given a directory containing packaged charts

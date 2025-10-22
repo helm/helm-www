@@ -1,6 +1,6 @@
 ---
 title: "helm repo remove"
-sidebar_position: 32
+sidebar_position: 34
 sidebar_label: "Helm Repo Remove"
 ---
 Remove a chart repository

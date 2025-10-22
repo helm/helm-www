@@ -1,6 +1,6 @@
 ---
 title: "helm lint"
-sidebar_position: 20
+sidebar_position: 22
 sidebar_label: "Helm Lint"
 ---
 Examines a chart for possible issues

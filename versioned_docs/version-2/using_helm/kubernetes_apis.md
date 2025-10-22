@@ -112,7 +112,7 @@ for more details on how to recover from this scenario.
 
 The manifest is a property of the Helm release object which is stored in the data
 field of a ConfigMap (default) or Secret in the cluster. The data field contains
-a gzipped [protobuf object](developers#grpc-and-protobuf) which is base 64
+a gzipped [protobuf object](../developers.md#grpc-and-protobuf) which is base 64
 encoded (there is an additional base 64 encoding for a Secret). There is
 a Secret/ConfigMap per release version/revision in the namespace of the release.
 

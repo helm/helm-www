@@ -1,6 +1,6 @@
 ---
 title: "helm plugin update"
-sidebar_position: 27
+sidebar_position: 29
 sidebar_label: "Helm Plugin Update"
 ---
 Update one or more Helm plugins

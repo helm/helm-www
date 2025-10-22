@@ -1,6 +1,6 @@
 ---
 title: "helm repo update"
-sidebar_position: 33
+sidebar_position: 35
 sidebar_label: "Helm Repo Update"
 ---
 Update information of available charts locally from chart repositories

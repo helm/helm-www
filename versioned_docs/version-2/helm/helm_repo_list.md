@@ -1,6 +1,6 @@
 ---
 title: "helm repo list"
-sidebar_position: 31
+sidebar_position: 33
 sidebar_label: "Helm Repo List"
 ---
 List chart repositories

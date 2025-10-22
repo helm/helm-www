@@ -1,6 +1,6 @@
 ---
 title: "helm upgrade"
-sidebar_position: 41
+sidebar_position: 43
 sidebar_label: "Helm Upgrade"
 ---
 Upgrade a release

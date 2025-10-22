@@ -1,6 +1,6 @@
 ---
 title: "helm inspect chart"
-sidebar_position: 17
+sidebar_position: 18
 sidebar_label: "Helm Inspect Chart"
 ---
 shows inspect chart

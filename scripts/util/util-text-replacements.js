@@ -92,12 +92,14 @@ function replaceHugoShortcodes(majorVersion = 3) {
 
 /**
  * Category C: Fix markdown link hrefs based on href differences
- * Uses the separate href processor to apply link fixes
+ * Uses the shared href processor to apply link fixes
  * @param {number} majorVersion - Version number (e.g., 3)
  */
 function fixMarkdownLinkHrefs(majorVersion = 3) {
-  const { processHrefDifferences } = require('../v3/href-diffs-process.js');
-  processHrefDifferences(majorVersion);
+  const path = require('path');
+  const { processHrefDifferences } = require('./href-diffs-process.js');
+  const differencesFile = path.join(__dirname, `../v${majorVersion}/href-diffs.json`);
+  processHrefDifferences(majorVersion, differencesFile);
 }
 
 /**

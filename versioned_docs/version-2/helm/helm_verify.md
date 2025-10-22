@@ -1,6 +1,6 @@
 ---
 title: "helm verify"
-sidebar_position: 42
+sidebar_position: 44
 sidebar_label: "Helm Verify"
 ---
 Verify that a chart at the given path has been signed and is valid

@@ -1,6 +1,6 @@
 ---
 title: "helm list"
-sidebar_position: 21
+sidebar_position: 23
 sidebar_label: "Helm List"
 ---
 List releases

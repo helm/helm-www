@@ -1,6 +1,6 @@
 ---
 title: "helm package"
-sidebar_position: 22
+sidebar_position: 24
 sidebar_label: "Helm Package"
 ---
 Package a chart directory into a chart archive
