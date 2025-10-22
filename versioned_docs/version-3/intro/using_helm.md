@@ -1,6 +1,6 @@
 ---
-title: "Using Helm"
-description: "Explains the basics of Helm."
+title: Using Helm
+description: Explains the basics of Helm.
 sidebar_position: 3
 ---
 

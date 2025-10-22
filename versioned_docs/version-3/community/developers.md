@@ -1,8 +1,7 @@
 ---
-title: "Developer Guide"
-description: "Instructions for setting up your environment for developing Helm."
+title: Developer Guide
+description: Instructions for setting up your environment for developing Helm.
 sidebar_position: 1
-aliases: ["/docs/developers/"]
 ---
 
 This guide explains how to set up your environment for developing on Helm.

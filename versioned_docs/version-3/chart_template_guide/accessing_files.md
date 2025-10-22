@@ -1,6 +1,6 @@
 ---
-title: "Accessing Files Inside Templates"
-description: "How to access files from within a template."
+title: Accessing Files Inside Templates
+description: How to access files from within a template.
 sidebar_position: 10
 ---
 

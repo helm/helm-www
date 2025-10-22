@@ -1,6 +1,6 @@
 ---
-title: "Release Checklist"
-description: "Checklist for maintainers when releasing the next version of Helm."
+title: Release Checklist
+description: Checklist for maintainers when releasing the next version of Helm.
 sidebar_position: 2
 ---
 

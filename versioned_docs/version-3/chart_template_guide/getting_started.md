@@ -1,8 +1,7 @@
 ---
-title: "Getting Started"
+title: Getting Started
+description: A quick guide on Chart templates.
 sidebar_position: 2
-description: "A quick guide on Chart templates."
-aliases: ["/intro/getting_started/"]
 ---
 
 In this section of the guide, we'll create a chart and then add a first

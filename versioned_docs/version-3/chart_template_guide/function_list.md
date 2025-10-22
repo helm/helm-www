@@ -1,6 +1,6 @@
 ---
-title: "Template Function List"
-description: "A list of template functions available in Helm"
+title: Template Function List
+description: A list of template functions available in Helm
 sidebar_position: 6
 ---
 

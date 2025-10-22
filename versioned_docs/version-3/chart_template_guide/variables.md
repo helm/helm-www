@@ -1,6 +1,6 @@
 ---
-title: "Variables"
-description: "Using variables in templates."
+title: Variables
+description: Using variables in templates.
 sidebar_position: 8
 ---
 

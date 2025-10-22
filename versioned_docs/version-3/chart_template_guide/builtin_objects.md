@@ -1,6 +1,6 @@
 ---
-title: "Built-in Objects"
-description: "Built-in objects available to templates."
+title: Built-in Objects
+description: Built-in objects available to templates.
 sidebar_position: 3
 ---
 

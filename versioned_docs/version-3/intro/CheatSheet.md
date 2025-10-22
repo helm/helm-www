@@ -1,6 +1,6 @@
 ---
-title: "Cheat Sheet"
-description: "Helm cheatsheet"
+title: Cheat Sheet
+description: Helm cheatsheet
 sidebar_position: 4
 ---
 

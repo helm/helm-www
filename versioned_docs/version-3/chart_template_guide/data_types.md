@@ -1,6 +1,6 @@
 ---
 title: "Appendix: Go Data Types and Templates"
-description: "A quick overview on variables in templates."
+description: A quick overview on variables in templates.
 sidebar_position: 16
 ---
 

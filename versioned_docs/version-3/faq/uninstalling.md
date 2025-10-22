@@ -1,5 +1,5 @@
 ---
-title: "Uninstalling"
+title: Uninstalling
 sidebar_position: 3
 ---
 
