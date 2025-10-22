@@ -1,6 +1,6 @@
 ---
 title: "helm test"
-sidebar_position: 40
+sidebar_position: 42
 sidebar_label: "Helm Test"
 ---
 Test a release

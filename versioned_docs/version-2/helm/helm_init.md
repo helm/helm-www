@@ -1,6 +1,6 @@
 ---
 title: "helm init"
-sidebar_position: 15
+sidebar_position: 16
 sidebar_label: "Helm Init"
 ---
 Initialize Helm on both client and server

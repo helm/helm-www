@@ -1,6 +1,6 @@
 ---
 title: "helm version"
-sidebar_position: 43
+sidebar_position: 45
 sidebar_label: "Helm Version"
 ---
 Print the client/server version information

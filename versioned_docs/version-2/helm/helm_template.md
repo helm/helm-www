@@ -1,6 +1,6 @@
 ---
 title: "helm template"
-sidebar_position: 39
+sidebar_position: 41
 sidebar_label: "Helm Template"
 ---
 Locally render templates

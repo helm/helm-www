@@ -1,6 +1,6 @@
 ---
 title: "helm repo add"
-sidebar_position: 29
+sidebar_position: 31
 sidebar_label: "Helm Repo Add"
 ---
 Add a chart repository

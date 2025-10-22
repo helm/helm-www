@@ -1,6 +1,6 @@
 ---
 title: "helm plugin list"
-sidebar_position: 25
+sidebar_position: 27
 sidebar_label: "Helm Plugin List"
 ---
 List installed Helm plugins

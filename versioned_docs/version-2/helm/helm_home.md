@@ -1,6 +1,6 @@
 ---
 title: "helm home"
-sidebar_position: 14
+sidebar_position: 15
 sidebar_label: "Helm Home"
 ---
 Displays the location of HELM_HOME

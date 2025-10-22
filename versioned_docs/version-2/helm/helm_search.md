@@ -1,6 +1,6 @@
 ---
 title: "helm search"
-sidebar_position: 36
+sidebar_position: 38
 sidebar_label: "Helm Search"
 ---
 Search for a keyword in charts

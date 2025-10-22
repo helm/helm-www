@@ -1,6 +1,6 @@
 ---
 title: "helm serve"
-sidebar_position: 37
+sidebar_position: 39
 sidebar_label: "Helm Serve"
 ---
 Start a local http web server

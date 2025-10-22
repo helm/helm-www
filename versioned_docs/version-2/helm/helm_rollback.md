@@ -1,6 +1,6 @@
 ---
 title: "helm rollback"
-sidebar_position: 35
+sidebar_position: 37
 sidebar_label: "Helm Rollback"
 ---
 Rollback a release to a previous revision
