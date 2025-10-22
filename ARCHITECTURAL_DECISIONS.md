@@ -35,6 +35,8 @@ src/components/
 
 **Shared CSS modules:** `src/css/home-*.module.css` for common patterns across components.
 
+**Date internationalization:** Uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) for locale-aware date formatting instead of hardcoded strings, automatically adapting to user's language settings.
+
 ## Hero Responsive Design
 
 ### Helm-Specific Requirement
@@ -181,6 +183,32 @@ Legacy Helm v2 documentation from `https://v2.helm.sh/docs/*` redirects to the n
 - **301 (permanent)** after Docusaurus site cutover is verified - provides SEO benefits and signals permanent move
 
 This follows [Netlify's best practices](https://docs.netlify.com/routing/redirects/redirect-options/#http-status-codes) for safe migrations.
+
+## Documentation Migration Automation
+
+### Helm-Specific Requirement
+
+Migrating legacy Helm documentation (v2 from Hugo, v3 from existing content) to Docusaurus while preserving URLs and fixing broken links.
+
+### Solution
+
+**Migration Orchestrators:** `scripts/migrate-v2-docs.js` and `scripts/migrate-v3-docs.js` with corresponding `yarn migrate:v2` and `yarn migrate:v3` commands.
+
+**Modular Architecture:** Scripts organized in `scripts/util/`, `scripts/v2/`, `scripts/v3/` directories following UNIX philosophy - each script has a single purpose and can be composed together.
+
+**Key Features:**
+- **Fresh start capability:** Each migration clears and rebuilds from source
+- **Menu generation:** Extracts navigation structure from live Helm v2 site
+- **Link path correction:** Shared `scripts/util/href-diffs-process.js` applies version-specific link fixes from JSON configuration files
+- **Missing file handling:** Adds helm commands not present in original navigation but available in source
+
+**Why this approach:** Enables repeatable, testable migrations while maintaining URL compatibility and fixing legacy Hugo-to-Docusaurus link issues.
+
+**For contributors:** Run `yarn migrate:v2` or `yarn migrate:v3` to regenerate versioned documentation. Link fixes are managed via JSON files in each version directory.
+
+**Detailed operational guides:**
+- [HELM2-TO-DOCUSAURUS.md](./HELM2-TO-DOCUSAURUS.md) - v2 migration procedures
+- [HELM3-TO-DOCUSAURUS.md](./HELM3-TO-DOCUSAURUS.md) - v3 migration procedures
 
 ## Hugo Legacy Files Cleanup
 
