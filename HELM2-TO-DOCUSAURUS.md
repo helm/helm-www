@@ -1,10 +1,12 @@
-# Helm v2 to Docusaurus Conversion Guide
+# Helm v2 to Docusaurus Migration Guide
 
-Automated conversion of Helm v2 documentation from the original source repository to Docusaurus versioned documentation format, preserving the familiar v2.helm.sh navigation structure.
+Automated migration of Helm v2 documentation from the original source repository to Docusaurus versioned documentation format, preserving the familiar v2.helm.sh navigation structure and fixing broken links.
 
 ## Key Features
 
 - **Complete Structure Analysis** - Analyzes live v2.helm.sh to capture exact sidebar structure
+- **Missing File Integration** - Adds helm commands not present in navigation but available in source
+- **Link Path Correction** - Fixes broken internal links using shared href processing utility
 - **Image Path Replacement** - Updates all image references to `/img/helm2/` format
 - **H2 Heading Removal** - Removes redundant first H2 headings from helm command files
 - **Index File Creation** - Generates proper Docusaurus landing page with DocCardList
@@ -13,39 +15,45 @@ Automated conversion of Helm v2 documentation from the original source repositor
 
 ## Usage
 
-1. **Setup source repository:**
+**Simple command:**
+```bash
+yarn migrate:v2
+```
+
+**Manual steps (if needed):**
+
+1. **Run complete migration:**
    ```bash
-   git clone --single-branch --branch release-2.17 git@github.com:helm/helm.git helm2
+   node scripts/migrate-v2-docs.js
    ```
 
-2. **Generate menu structure:**
-   ```bash
-   node scripts/v2-menu-generate.js
-   ```
-
-3. **Copy all files:**
-   ```bash
-   node scripts/v2-copy-files.js
-   ```
-
-4. **Copy images:**
+2. **Copy images (if not already present):**
    ```bash
    cp -r helm2/docs/images static/img/helm2
    ```
 
+The migration command handles all steps automatically including:
+- Cloning helm2 source repository
+- Generating navigation structure
+- Processing and copying files
+- Applying link path corrections
+
 ## What It Does
 
-The conversion process includes:
+The migration process includes:
 
-1. **Structure Analysis**: `v2-menu-generate.js` fetches and analyzes the complete v2.helm.sh sidebar structure using WebFetch
-2. **Content Processing**: `v2-copy-files.js` processes all files:
+1. **Fresh Start**: Clears existing v2 documentation and helm2 source
+2. **Source Setup**: Clones Helm v2 repository (release-2.17 branch)
+3. **Structure Analysis**: `scripts/v2/menu-generate.js` fetches and analyzes complete v2.helm.sh sidebar structure
+4. **Content Processing**: `scripts/v2/copy-files.js` processes all files:
    - Removes UTF-8 BOM characters
    - Replaces image paths from `(images/` to `(/img/helm2/`
    - Removes first H2 headings from helm command files
    - Creates proper Docusaurus frontmatter with hierarchical positioning
-3. **Structure Creation**: Generates `versioned_docs/version-2/` with proper category organization
-4. **Index Generation**: Creates `index.mdx` landing page with DocCardList component
-5. **Image Migration**: Manual copy of images to `static/img/helm2/` directory
+   - Adds missing helm commands (helm get notes, helm inspect readme)
+5. **Link Correction**: `scripts/util/href-diffs-process.js` fixes broken internal links using `scripts/v2/href-diffs.json`
+6. **Structure Creation**: Generates `versioned_docs/version-2/` with proper category organization
+7. **Index Generation**: Creates `index.mdx` landing page with DocCardList component
 
 ## Output Structure
 
@@ -72,9 +80,13 @@ static/img/helm2/             # All migrated images
 - Netlify redirects handle v2 → v3 category mapping
 
 **Key paths:**
-- Scripts: `scripts/v2-menu-generate.js` and `scripts/v2-copy-files.js`
-- Generated data: `scripts/v2-menu.json`
-- Source: `helm2/docs/` (from cloned repository)
+- Migration orchestrator: `scripts/migrate-v2-docs.js`
+- Component scripts: `scripts/v2/menu-generate.js`, `scripts/v2/copy-files.js`
+- Link correction: `scripts/util/href-diffs-process.js` with `scripts/v2/href-diffs.json`
+- Generated data: `scripts/v2/menu.json`
+- Source: `helm2/docs/` (auto-cloned)
 - Output: `versioned_docs/version-2/` and `static/img/helm2/`
 
-The conversion is fully automated and idempotent - safe to re-run multiple times.
+The migration is fully automated and idempotent - safe to re-run multiple times.
+
+**Link path corrections:** Managed via `scripts/v2/href-diffs.json` - add entries here to fix additional broken links discovered in migrated content.
