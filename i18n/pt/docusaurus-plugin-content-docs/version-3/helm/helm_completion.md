@@ -37,6 +37,6 @@ Gera scripts de preenchimento automático do Helm para um shell específico.
 ### Veja Também
 
 * [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
-* [helm completion bash](/helm/helm_completion_bash.md) - gera o script de preenchimento automático para o bash
-* [helm completion fish](/helm/helm_completion_fish.md) - gera o script de preenchimento automático para o fish
-* [helm completion zsh](/helm/helm_completion_zsh.md) - gera o script de preenchimento automático para o zsh
+* [helm completion bash](helm_completion_bash.md) - gera o script de preenchimento automático para o bash
+* [helm completion fish](helm_completion_fish.md) - gera o script de preenchimento automático para o fish
+* [helm completion zsh](helm_completion_zsh.md) - gera o script de preenchimento automático para o zsh
