@@ -1,9 +1,7 @@
 ---
-sidebar_position: 101
+sidebar_position: 8
 sidebar_label: "Related Projects"
-slug: related-projects
 ---
-
 # Related Projects and Documentation
 
 The Helm community has produced many extra tools, plugins, and documentation about

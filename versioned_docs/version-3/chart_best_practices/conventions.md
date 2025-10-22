@@ -1,8 +1,7 @@
 ---
-title: "General Conventions"
-description: "General conventions for charts."
+title: General Conventions
+description: General conventions for charts.
 sidebar_position: 1
-aliases: ["/docs/topics/chart_best_practices/conventions/"]
 ---
 
 This part of the Best Practices Guide explains general conventions.

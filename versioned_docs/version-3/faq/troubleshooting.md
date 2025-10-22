@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: Troubleshooting
 sidebar_position: 4
 ---
 
@@ -159,4 +159,4 @@ Or if a different version is needed, use the --tiller-image flag to override the
 
 `helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
 
-**Note:** The Helm maintainers recommend migration to a currently-supported version of Helm. Helm v2.17.0 was the final release of Helm v2; Helm v2 is unsupported since November 2020, as detailed in [Helm 2 and the Charts Project Are Now Unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/). Many CVEs have been flagged against Helm since then, and those exploits are patched in Helm v3 but will never be patched in Helm v2. See the [current list of published Helm advisories](https://github.com/helm/helm/security/advisories?state=published) and make a plan to [migrate to Helm v3](/topics/v2_v3_migration.md) today.
+**Note:** The Helm maintainers recommend migration to a currently-supported version of Helm. Helm v2.17.0 was the final release of Helm v2; Helm v2 is unsupported since November 2020, as detailed in [Helm 2 and the Charts Project Are Now Unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/). Many CVEs have been flagged against Helm since then, and those exploits are patched in Helm v3 but will never be patched in Helm v2. See the [current list of published Helm advisories](https://github.com/helm/helm/security/advisories?state=published) and make a plan to [migrate to Helm v3](https://helm.sh/docs/topics/v2_v3_migration/#helm) today.

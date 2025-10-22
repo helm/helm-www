@@ -1,6 +1,6 @@
 ---
-title: "Built-in Objects"
-description: "Built-in objects available to templates."
+title: Built-in Objects
+description: Built-in objects available to templates.
 sidebar_position: 3
 ---
 
@@ -35,7 +35,7 @@ access in your templates.
 - `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will
   be accessible here. For example `{{ .Chart.Name }}-{{ .Chart.Version }}` will
   print out the `mychart-0.1.0`.
-  - The available fields are listed in the [Charts Guide](/topics/charts.md#the-chartyaml-file)
+  - The available fields are listed in the [Charts Guide](../topics/charts.md#the-chartyaml-file)
 - `Subcharts`: This provides access to the scope (.Values, .Charts, .Releases etc.)
   of subcharts to the parent. For example `.Subcharts.mySubChart.myValue` to access
   the `myValue` in the `mySubChart` chart.

@@ -1,48 +1,71 @@
-# Helm v2 to Docusaurus Conversion Guide
+# Helm v2 to Docusaurus Migration Guide
 
-Automated conversion of Helm v2 documentation from the original source repository to Docusaurus versioned documentation format, preserving the familiar v2.helm.sh navigation structure.
+Automated migration of Helm v2 documentation from the original source repository to Docusaurus versioned documentation format, preserving the familiar v2.helm.sh navigation structure and fixing broken links.
 
 ## Key Features
 
+- **Complete Structure Analysis** - Analyzes live v2.helm.sh to capture exact sidebar structure
+- **Missing File Integration** - Adds helm commands not present in navigation but available in source
+- **Link Path Correction** - Fixes broken internal links using shared href processing utility
+- **Image Path Replacement** - Updates all image references to `/img/helm2/` format
+- **H2 Heading Removal** - Removes redundant first H2 headings from helm command files
+- **Index File Creation** - Generates proper Docusaurus landing page with DocCardList
+- **Proper Positioning** - Maintains v2.helm.sh hierarchical organization
 - **Fully idempotent** - Safe to re-run multiple times
-- **IDE-compatible links** - Uses actual file paths with .md extensions
-- **Automated redirects** - Generates Netlify redirects with start/end markers
-- **Complete migration** - Handles docs, images, CLI references, and frontmatter
-- **Original structure preserved** - Maintains v2.helm.sh organization and positioning
 
 ## Usage
 
-1. **Setup source repository:**
+**Simple command:**
+```bash
+yarn migrate:v2
+```
+
+**Manual steps (if needed):**
+
+1. **Run complete migration:**
    ```bash
-   git clone --single-branch --branch release-2.17 git@github.com:helm/helm.git helm2
+   node scripts/migrate-v2-docs.js
    ```
 
-2. **Run conversion:**
+2. **Copy images (if not already present):**
    ```bash
-   node scripts/helm2-to-docusaurus.js
+   cp -r helm2/docs/images static/img/helm2
    ```
+
+The migration command handles all steps automatically including:
+- Cloning helm2 source repository
+- Generating navigation structure
+- Processing and copying files
+- Applying link path corrections
 
 ## What It Does
 
-The script performs a complete automated conversion:
+The migration process includes:
 
-1. **Content Processing**: Removes UTF-8 BOM, fixes all internal links with proper .md extensions, updates image paths
-2. **Structure Creation**: Generates the full `versioned_docs/version-2/` hierarchy matching v2.helm.sh navigation
-3. **Frontmatter Generation**: Adds proper `sidebar_position`, `sidebar_label`, and `slug` to all files
-4. **Image Migration**: Copies all images to `static/img/helm2/`
-5. **Redirect Generation**: Creates Netlify redirects with managed start/end markers (302 status, upgradeable to 301)
+1. **Fresh Start**: Clears existing v2 documentation and helm2 source
+2. **Source Setup**: Clones Helm v2 repository (release-2.17 branch)
+3. **Structure Analysis**: `scripts/v2/menu-generate.js` fetches and analyzes complete v2.helm.sh sidebar structure
+4. **Content Processing**: `scripts/v2/copy-files.js` processes all files:
+   - Removes UTF-8 BOM characters
+   - Replaces image paths from `(images/` to `(/img/helm2/`
+   - Removes first H2 headings from helm command files
+   - Creates proper Docusaurus frontmatter with hierarchical positioning
+   - Adds missing helm commands (helm get notes, helm inspect readme)
+5. **Link Correction**: `scripts/util/href-diffs-process.js` fixes broken internal links using `scripts/v2/href-diffs.json`
+6. **Structure Creation**: Generates `versioned_docs/version-2/` with proper category organization
+7. **Index Generation**: Creates `index.mdx` landing page with DocCardList component
 
 ## Output Structure
 
 ```
 versioned_docs/version-2/     # Complete Docusaurus v2 docs
-├── index.mdx                 # Auto-generated landing page
-├── using-helm/               # Basic usage (position 2)
-├── helm/                     # CLI reference (position 3, 46 commands)
-├── developing-charts/        # Chart development (position 4)
-├── chart-template-guide/     # Template guides (position 5)
-├── chart-best-practices/     # Best practices (position 6)
-└── [5 top-level files]       # architecture, developers, etc. (positions 101-105)
+├── index.mdx                 # Landing page (position 1)
+├── using_helm/               # Basic usage (position 2)
+├── helm/                     # CLI reference (position 3, 45 commands)
+├── developing_charts/        # Chart development (position 4)
+├── chart_template_guide/     # Template guides (position 5)
+├── chart_best_practices/     # Best practices (position 6)
+└── [5 top-level files]       # architecture, developers, etc. (positions 7-11)
 
 static/img/helm2/             # All migrated images
 ```
@@ -50,14 +73,20 @@ static/img/helm2/             # All migrated images
 ## Validation & Maintenance
 
 **Verify after running:**
-- Navigation matches v2.helm.sh structure with correct positioning (2,3,4,5,6,101-105)
+- Navigation matches v2.helm.sh structure with correct positioning (1,2,3,4,5,6,7-11)
 - All images display correctly (`/img/helm2/` paths)
-- Internal links use proper .md extensions for IDE compatibility
-- Netlify redirects include managed start/end markers with 302 status codes
+- Index files use parent category labels in sidebar
+- First H2 headings removed from all helm command files
+- Netlify redirects handle v2 → v3 category mapping
 
 **Key paths:**
-- Script: `scripts/helm2-to-docusaurus.js`
-- Source: `helm2/docs/` (from cloned repository)
+- Migration orchestrator: `scripts/migrate-v2-docs.js`
+- Component scripts: `scripts/v2/menu-generate.js`, `scripts/v2/copy-files.js`
+- Link correction: `scripts/util/href-diffs-process.js` with `scripts/v2/href-diffs.json`
+- Generated data: `scripts/v2/menu.json`
+- Source: `helm2/docs/` (auto-cloned)
 - Output: `versioned_docs/version-2/` and `static/img/helm2/`
 
-The script is fully idempotent and handles all aspects of the conversion automatically.
+The migration is fully automated and idempotent - safe to re-run multiple times.
+
+**Link path corrections:** Managed via `scripts/v2/href-diffs.json` - add entries here to fix additional broken links discovered in migrated content.

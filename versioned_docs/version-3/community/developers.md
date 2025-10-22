@@ -1,8 +1,7 @@
 ---
-title: "Developer Guide"
-description: "Instructions for setting up your environment for developing Helm."
+title: Developer Guide
+description: Instructions for setting up your environment for developing Helm.
 sidebar_position: 1
-aliases: ["/docs/developers/"]
 ---
 
 This guide explains how to set up your environment for developing on Helm.
@@ -81,7 +80,7 @@ Since Helm 3, documentation has been moved to its own repository. When writing
 new features, please write accompanying documentation and submit it to the
 [helm-www](https://github.com/helm/helm-www) repository.
 
-One exception: [Helm CLI output (in English)](../commands/index.mdx) is
+One exception: [Helm CLI output (in English)](https://helm.sh/docs/helm/) is
 generated from the `helm` binary itself. See [Updating the Helm CLI Reference Docs](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs)
 for instructions on how to generate this output. When translated, the CLI
 output is not generated and can be found in `/content/<lang>/docs/helm`.

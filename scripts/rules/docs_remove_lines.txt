@@ -1,5 +1,0 @@
-# Remove metadata lines from docs files after transformations
-# Format: regex_pattern (one per line)
-# Note: Use ^ to match beginning of line
-
-^[[:space:]]*slug:

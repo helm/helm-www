@@ -11,20 +11,25 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "migrate:v2": "node scripts/migrate-v2-docs.js",
+    "migrate:v3": "node scripts/migrate-v3-docs.js"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.1",
     "@docusaurus/preset-classic": "3.9.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "js-yaml": "^4.1.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.1",
-    "@docusaurus/types": "3.9.1"
+    "@docusaurus/types": "3.9.1",
+    "jsdom": "^27.0.1"
   },
   "browserslist": {
     "production": [

@@ -1,6 +1,6 @@
 ---
-title: "Creating a NOTES.txt File"
-description: "How to provide instructions to your Chart users."
+title: Creating a NOTES.txt File
+description: How to provide instructions to your Chart users.
 sidebar_position: 10
 ---
 

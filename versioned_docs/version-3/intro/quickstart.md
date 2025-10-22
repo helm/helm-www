@@ -1,8 +1,7 @@
 ---
-title: "Quickstart Guide"
-description: "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
+title: Quickstart Guide
+description: How to install and get started with Helm including instructions for distros, FAQs, and plugins.
 sidebar_position: 1
-aliases: ["/docs/quickstart/"]
 ---
 
 This guide covers how you can quickly get started using Helm.
@@ -23,7 +22,7 @@ use of Helm.
   second-latest minor release.
 - You should also have a local configured copy of `kubectl`.
 
-See the [Helm Version Support Policy](../topics/version_skew.md) for the maximum version skew supported between Helm and Kubernetes.
+See the [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) for the maximum version skew supported between Helm and Kubernetes.
 
 ## Install Helm
 
