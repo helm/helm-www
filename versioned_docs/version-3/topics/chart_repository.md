@@ -13,12 +13,12 @@ The distributed community Helm chart repository is located at
 participation. But Helm also makes it possible to create and run your own chart
 repository. This guide explains how to do so. If you are considering creating a
 chart repository, you may want to consider using an
-[OCI registry](registries.md) instead.
+[OCI registry](/topics/registries.md) instead.
 
 ## Prerequisites
 
-* Go through the [Quickstart](../intro/quickstart.md) Guide
-* Read through the [Charts](charts.md) document
+* Go through the [Quickstart](/intro/quickstart.md) Guide
+* Read through the [Charts](/topics/charts.md) document
 
 ## Create a chart repository
 
@@ -40,7 +40,7 @@ own web server.
 A chart repository consists of packaged charts and a special file called
 `index.yaml` which contains an index of all of the charts in the repository.
 Frequently, the charts that `index.yaml` describes are also hosted on the same
-server, as are the [provenance files](provenance.md).
+server, as are the [provenance files](/topics/provenance.md).
 
 For example, the layout of the repository `https://example.com/charts` might
 look like this:
@@ -191,7 +191,7 @@ Charts](https://github.com/technosophos/tscharts) repository is accessible at
 `https://technosophos.github.io/tscharts/`.
 
 If you have decided to use GitHub pages to host the chart repository, check out
-[Chart Releaser Action](../howto/chart_releaser_action.md).
+[Chart Releaser Action](/howto/chart_releaser_action.md).
 Chart Releaser Action is a GitHub Action workflow to turn a GitHub project into
 a self-hosted Helm chart repo, using
 [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI tool.
@@ -268,7 +268,7 @@ the given directory path.
 
 Now you can upload the chart and the index file to your chart repository using a
 sync tool or manually. If you're using Google Cloud Storage, check out this
-[example workflow](../howto/chart_repository_sync_example.md)
+[example workflow](/howto/chart_repository_sync_example.md)
 using the gsutil client. For GitHub, you can simply put the charts in the
 appropriate destination branch.
 

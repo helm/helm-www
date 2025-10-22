@@ -38,7 +38,7 @@ Manage client-side Helm plugins.
 
 ### SEE ALSO
 
-* [helm](helm.md)	 - The Helm package manager for Kubernetes.
+* [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 * [helm plugin install](helm_plugin_install.md)	 - install a Helm plugin
 * [helm plugin list](helm_plugin_list.md)	 - list installed Helm plugins
 * [helm plugin uninstall](helm_plugin_uninstall.md)	 - uninstall one or more Helm plugins

@@ -17,7 +17,7 @@ Before we dive into the code, there are a few important details to learn about a
 3. A parent chart can override values for subcharts.
 4. Helm has a concept of _global values_ that can be accessed by all charts.
 
-> These limitations do not all necessarily apply to [library charts](../topics/library_charts.md), which are designed to provide standardized helper functionality.
+> These limitations do not all necessarily apply to [library charts](/topics/library_charts.md), which are designed to provide standardized helper functionality.
 
 As we walk through the examples in this section, many of these concepts will
 become clearer.
@@ -36,7 +36,7 @@ $ rm -rf mysubchart/templates/*
 
 Notice that just as before, we deleted all of the base templates so that we can
 start from scratch. In this guide, we are focused on how templates work, not on
-managing dependencies. But the [Charts Guide](../topics/charts.md)
+managing dependencies. But the [Charts Guide](/topics/charts.md)
 has more information on how subcharts work.
 
 ## Adding Values and a Template to the Subchart

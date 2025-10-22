@@ -46,16 +46,18 @@ Absolute paths from the content root (e.g., `/topics/`) work reliably across all
 
 ### Linking to Index Pages
 
-When linking to a directory's index page:
+When linking to a directory's index page, use the directory path with trailing slash. For example, `[Commands](/commands/)`.
+
+Docusaurus automatically resolves to the index file, regardless of whether it's `.md` or `.mdx`. Sometimes, the index file might have a different extension across locales. So not explicitly using the extension avoids breakage.
+
+**Exception for Versioned Docs:** In some cases within versioned documentation (e.g., `versioned_docs/version-3/`), you may need to explicitly specify the index file with its extension:
 
 ```markdown
-✅ GOOD: [Chart Template Guide](/chart_template_guide/)
-✅ GOOD: [Commands](/commands/)
-❌ BAD:  [Chart Template Guide](/chart_template_guide/index.md)
-❌ BAD:  [Commands](/commands/index.mdx)
+✅ WORKS: [Helm Commands](/helm/index.mdx)
+⚠️ MAY FAIL: [Helm Commands](/helm/)
 ```
 
-Use the directory path with trailing slash. Docusaurus automatically resolves to the index file, regardless of whether it's `.md` or `.mdx`. Sometimes, the index file might have a different extension across locales. So not explicitly using the extension avoids breakage.
+If you encounter broken link errors with directory links in versioned docs, try specifying the full `index.md` or `index.mdx` path explicitly.
 
 ## Blog Post Links
 

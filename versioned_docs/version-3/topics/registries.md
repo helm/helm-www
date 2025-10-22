@@ -45,7 +45,7 @@ The release of [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) i
 
 ### Helm repositories in OCI-based registries
 
-A [Helm repository](chart_repository.md) is a way to house and distribute packaged Helm charts. An OCI-based registry can contain zero or more Helm repositories and each of those repositories can contain zero or more packaged Helm charts.
+A [Helm repository](/topics/chart_repository.md) is a way to house and distribute packaged Helm charts. An OCI-based registry can contain zero or more Helm repositories and each of those repositories can contain zero or more packaged Helm charts.
 
 ### Use hosted registries
 
@@ -68,7 +68,7 @@ Follow the hosted container registry provider's documentation to create and conf
 
 ### Using sigstore to sign OCI-based charts
 
-The [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) plugin allows using [Sigstore](https://sigstore.dev/) to sign Helm charts with the same tools used to sign container images.  This provides an alternative to the [GPG-based provenance](provenance.md) supported by classic [chart repositories](chart_repository.md).
+The [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) plugin allows using [Sigstore](https://sigstore.dev/) to sign Helm charts with the same tools used to sign container images.  This provides an alternative to the [GPG-based provenance](/topics/provenance.md) supported by classic [chart repositories](/topics/chart_repository.md).
 
 For more details on using the `helm sigstore` plugin, see [that project's documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
@@ -119,7 +119,7 @@ Certain registries require the repository and/or namespace (if specified)
 to be created beforehand. Otherwise, an error will be produced during the
  `helm push` operation.
 
-If you have created a [provenance file](provenance.md) (`.prov`), and it is present next to the chart `.tgz` file, it will
+If you have created a [provenance file](/topics/provenance.md) (`.prov`), and it is present next to the chart `.tgz` file, it will
 automatically be uploaded to the registry upon `push`. This results in
 an extra layer on [the Helm chart manifest](#helm-chart-manifest).
 
@@ -221,7 +221,7 @@ Example Helm chart manifest as represented in a registry
 ```
 
 The following example contains a
-[provenance file](provenance.md)
+[provenance file](/topics/provenance.md)
 (note the extra layer):
 
 ```json

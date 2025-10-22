@@ -41,4 +41,4 @@ helm get notes NOME_DA_RELEASE [argumentos]
 
 ### Veja Também
 
-* [helm get](helm_get.md) - baixa informações adicionais de uma dada _release_
+* [helm get](/helm/helm_get.md) - baixa informações adicionais de uma dada _release_
