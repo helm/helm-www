@@ -44,4 +44,4 @@ helm get hooks NOME_DA_RELEASE [argumentos]
 
 ### Veja Também
 
-* [helm get](helm_get.md) - baixa informações adicionais de uma dada release
+* [helm get](/helm/helm_get.md) - baixa informações adicionais de uma dada release

@@ -40,7 +40,7 @@ Use search subcommands to search different locations for charts.
 
 ### SEE ALSO
 
-* [helm](helm.md)	 - The Helm package manager for Kubernetes.
+* [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 * [helm search hub](helm_search_hub.md)	 - search for charts in the Artifact Hub or your own hub instance
 * [helm search repo](helm_search_repo.md)	 - search repositories for a keyword in charts
 
