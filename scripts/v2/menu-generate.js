@@ -294,7 +294,6 @@ const main = async () => {
     const output = {
       navigationStructure,
       metadata: {
-        generatedAt: new Date().toISOString(),
         sourceUrl: V2_DOCS_URL,
         method: 'DOM extraction with header text extraction from live site',
         totalItems: countTotalItems(navigationStructure)
@@ -306,7 +305,6 @@ const main = async () => {
     console.log(`\n✅ Successfully generated ${outputPath}`);
     console.log(`📊 Extracted ${output.metadata.totalItems} total navigation items with header texts`);
     console.log(`🔗 Source: ${V2_DOCS_URL}`);
-    console.log(`⏰ Generated at: ${output.metadata.generatedAt}`);
 
   } catch (error) {
     console.error(`❌ Error: ${error.message}`);

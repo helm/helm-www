@@ -148,35 +148,24 @@ function addMainIndexMetadata(majorVersion = 3) {
   console.log('📝 Adding metadata to main index file...');
 
   const versionDir = `versioned_docs/version-${majorVersion}`;
-  const indexPath = path.join(versionDir, '_index.md');
-  const newIndexPath = path.join(versionDir, 'index.mdx');
+  const indexPath = path.join(versionDir, 'index.mdx');
 
   if (fs.existsSync(indexPath)) {
     const content = fs.readFileSync(indexPath, 'utf8');
-    const { frontmatter, restContent, hasFrontmatter } = frontMatterFromYaml(content);
+    const { frontmatter, restContent } = frontMatterFromYaml(content);
 
-    if (hasFrontmatter) {
-      // Add required metadata (adjust as needed)
-      frontmatter.slug = '/';
-      if (!frontmatter.title) {
-        frontmatter.title = 'Documentation';
-      }
-
-      // Append DocCardList component
-      const updatedRestContent = restContent + '\n\nimport DocCardList from \'@theme/DocCardList\';\n\n<DocCardList />\n';
-
-      const updatedContent = frontMatterToYaml(frontmatter, updatedRestContent);
-      fs.writeFileSync(newIndexPath, updatedContent);
-
-      // Remove old file
-      fs.unlinkSync(indexPath);
-
-      console.log('✅ Main index file updated and renamed to index.mdx');
-    } else {
-      console.warn('⚠️  Main index file has no frontmatter');
+    // Add required metadata (frontmatter only)
+    frontmatter.sidebar_position = 1;
+    if (!frontmatter.title) {
+      frontmatter.title = 'Documentation';
     }
+
+    const updatedContent = frontMatterToYaml(frontmatter, restContent);
+    fs.writeFileSync(indexPath, updatedContent);
+
+    console.log('✅ Main index file metadata updated');
   } else {
-    console.warn('⚠️  Main index file (_index.md) not found');
+    console.warn('⚠️  Main index file (index.mdx) not found');
   }
 }
 
@@ -220,25 +209,10 @@ function addDocsIndexLists(majorVersion = 3) {
       const content = fs.readFileSync(filePath, 'utf8');
 
       // Check if DocCardList is already present
-      if (!content.includes('<DocCardList')) {
-        // Add import and component
-        const docCardListImport = "import DocCardList from '@theme/DocCardList';";
-        const docCardListComponent = '\n\n<DocCardList />\n';
-
-        let updatedContent = content;
-
-        // Add import after frontmatter if not already present
-        if (!content.includes(docCardListImport)) {
-          const { frontmatter, restContent, hasFrontmatter } = frontMatterFromYaml(content);
-          if (hasFrontmatter) {
-            const newRestContent = `\n${docCardListImport}\n${restContent}${docCardListComponent}`;
-            updatedContent = frontMatterToYaml(frontmatter, newRestContent);
-          } else {
-            updatedContent = `${docCardListImport}\n\n${content}${docCardListComponent}`;
-          }
-        } else {
-          updatedContent = content + docCardListComponent;
-        }
+      if (!content.includes('DocCardList')) {
+        // Simply append import and component to the end
+        const updatedContent = content +
+          '\n\nimport DocCardList from \'@theme/DocCardList\';\n\n<DocCardList />\n';
 
         fs.writeFileSync(filePath, updatedContent);
         console.log(`  📋 Added DocCardList: ${path.relative(versionDir, filePath)}`);
