@@ -127,6 +127,11 @@
           "header": "helm get manifest"
         },
         {
+          "label": "Helm Get Notes",
+          "header": "helm get notes",
+          "link": "/docs/helm/helm_get_notes/"
+        },
+        {
           "label": "Helm Get Values",
           "anchor": "helm-get-values",
           "header": "helm get values"
@@ -155,6 +160,11 @@
           "label": "Helm Inspect Chart",
           "anchor": "helm-inspect-chart",
           "header": "helm inspect chart"
+        },
+        {
+          "label": "Helm Inspect Readme",
+          "header": "helm inspect readme",
+          "link": "/docs/helm/helm_inspect_readme/"
         },
         {
           "label": "Helm Inspect Values",
@@ -500,9 +510,9 @@
     }
   ],
   "metadata": {
-    "generatedAt": "2025-10-22T05:05:19.192Z",
+    "generatedAt": "2025-10-22T06:20:58.478Z",
     "sourceUrl": "https://v2.helm.sh/docs/",
     "method": "DOM extraction with header text extraction from live site",
-    "totalItems": 98
+    "totalItems": 100
   }
 }

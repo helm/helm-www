@@ -15,8 +15,8 @@ repository. This guide explains how to do so.
 
 ## Prerequisites
 
-* Go through the [Quickstart](quickstart.md) Guide
-* Read through the [Charts](charts.md) document
+* Go through the [Quickstart](../using_helm/using_helm.md) Guide
+* Read through the [Charts](developing_charts.md) document
 
 ## Create a chart repository
 

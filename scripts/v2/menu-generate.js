@@ -236,6 +236,48 @@ const countTotalItems = (items) => {
   }, 0);
 };
 
+// Add missing files that exist in helm2/docs but aren't in the menu
+const addMissingFilesToMenu = (navigationStructure) => {
+  console.log('🔍 Adding missing files to navigation menu...');
+
+  // Find the "Helm Commands" category
+  const helmCommandsCategory = navigationStructure.find(item =>
+    item.label === "Helm Commands" || (item.children && item.children.some(child =>
+      child.label && child.label.startsWith("Helm ")
+    ))
+  );
+
+  if (helmCommandsCategory && helmCommandsCategory.children) {
+    // Add "helm get notes" before "helm get values"
+    const getValuesIndex = helmCommandsCategory.children.findIndex(child =>
+      child.label === "Helm Get Values"
+    );
+
+    if (getValuesIndex > 0) {
+      helmCommandsCategory.children.splice(getValuesIndex, 0, {
+        label: "Helm Get Notes",
+        header: "helm get notes",
+        link: "/docs/helm/helm_get_notes/"
+      });
+      console.log('  ✅ Added "Helm Get Notes" before "Helm Get Values"');
+    }
+
+    // Add "helm inspect readme" before "helm inspect values"
+    const inspectValuesIndex = helmCommandsCategory.children.findIndex(child =>
+      child.label === "Helm Inspect Values"
+    );
+
+    if (inspectValuesIndex > 0) {
+      helmCommandsCategory.children.splice(inspectValuesIndex, 0, {
+        label: "Helm Inspect Readme",
+        header: "helm inspect readme",
+        link: "/docs/helm/helm_inspect_readme/"
+      });
+      console.log('  ✅ Added "Helm Inspect Readme" before "Helm Inspect Values"');
+    }
+  }
+};
+
 // Main execution
 const main = async () => {
   try {
@@ -243,6 +285,9 @@ const main = async () => {
 
     console.log('\n🔍 Extracting header texts from live site...');
     const navigationStructure = await convertToSimplifiedFormat(rawNavTree);
+
+    // Add missing files that exist in helm2/docs but aren't in the menu
+    addMissingFilesToMenu(navigationStructure);
 
     // Write the simplified menu structure
     const outputPath = './scripts/v2/menu.json';

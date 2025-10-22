@@ -1,6 +1,6 @@
 ---
 title: "helm plugin install"
-sidebar_position: 24
+sidebar_position: 26
 sidebar_label: "Helm Plugin Install"
 ---
 Install one or more Helm plugins

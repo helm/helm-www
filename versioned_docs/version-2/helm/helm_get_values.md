@@ -1,6 +1,6 @@
 ---
 title: "helm get values"
-sidebar_position: 12
+sidebar_position: 13
 sidebar_label: "Helm Get Values"
 ---
 Download the values file for a named release

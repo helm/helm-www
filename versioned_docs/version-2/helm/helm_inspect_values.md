@@ -1,6 +1,6 @@
 ---
 title: "helm inspect values"
-sidebar_position: 18
+sidebar_position: 20
 sidebar_label: "Helm Inspect Values"
 ---
 shows inspect values

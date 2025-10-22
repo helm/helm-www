@@ -1,6 +1,6 @@
 ---
 title: "helm status"
-sidebar_position: 38
+sidebar_position: 40
 sidebar_label: "Helm Status"
 ---
 Displays the status of the named release

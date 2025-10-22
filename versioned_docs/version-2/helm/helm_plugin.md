@@ -1,6 +1,6 @@
 ---
 title: "helm plugin"
-sidebar_position: 23
+sidebar_position: 25
 sidebar_label: "Helm Plugin"
 ---
 Add, list, or remove Helm plugins

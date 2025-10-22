@@ -1,6 +1,6 @@
 ---
 title: "helm plugin remove"
-sidebar_position: 26
+sidebar_position: 28
 sidebar_label: "Helm Plugin Remove"
 ---
 Remove one or more Helm plugins
