@@ -536,7 +536,7 @@ If more control over dependencies is desired, these dependencies can be
 expressed explicitly by copying the dependency charts into the `charts/`
 directory.
 
-A dependency should be an unpacked chart directory but its name cannot start 
+A dependency should be an unpacked chart directory but its name cannot start
 with `_` or `.`. Such files are ignored by the chart loader.
 
 For example, if the WordPress chart depends on the Apache chart, the Apache
@@ -921,6 +921,8 @@ something like this:
   "type": "object"
 }
 ```
+
+JSON schema version [2020-12](https://json-schema.org/draft/2020-12) is supported but you need to explicitly set `$schema` to `https://json-schema.org/draft/2020-12/schema`.
 
 This schema will be applied to the values to validate it. Validation occurs when
 any of the following commands are invoked:
