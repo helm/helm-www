@@ -1991,6 +1991,8 @@ The `getHostByName` receives a domain name and returns the ip address.
 
 `getHostByName "www.google.com"` would return the corresponding ip address of `www.google.com`.
 
+This function requires the `--enable-dns` option to be passed on the helm command line.
+
 ## File Path Functions
 
 While Helm template functions do not grant access to the filesystem, they do

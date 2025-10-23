@@ -90,8 +90,8 @@ winget install Helm.Helm
 
 ### Apt から (Debian/Ubuntu)
 
-Helm コミュニティのメンバーは、Debian/Ubuntu の Apt パッケージを提供しています。
-このパッケージは一般に最新です。リポジトリをホストしてくれている [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) に感謝します。
+Helm コミュニティのメンバーは、Apt の Helm パッケージ を提供しています。
+このパッケージは一般に最新です。
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes
