@@ -876,7 +876,7 @@ htpasswd "myUser" "myPassword"
 
 ### derivePassword
 
-`derivePassword` 函数可用于基于某些共享的“主密码”约束得到特定密码。这方面的算法有[详细说明](https://masterpassword.app/masterpassword-algorithm.pdf)。
+`derivePassword` 函数可用于基于某些共享的“主密码”约束得到特定密码。这方面的算法有[详细说明](https://spectre.app/spectre-algorithm.pdf)。
 
 ```yaml
 derivePassword 1 "long" "password" "user" "example.com"

@@ -57,7 +57,8 @@ helm install <name> <chart> --values <yaml-file/url>  # Install the chart with y
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
 helm install <name> <chart> --verify                  # Verify the package before using it 
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
-helm uninstall <name>                                 # Uninstall a release
+helm uninstall <name>                                 # Uninstalls a release from the current (default) namespace
+helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ### Perform App Upgrade and Rollback
@@ -93,7 +94,7 @@ helm search hub <keyword>         # Search for charts in the Artifact Hub or you
 helm list                       # Lists all of the releases for a specified namespace, uses current namespace context if namespace not specified
 helm list --all                 # Show all releases without any filter applied, can use -a
 helm list --all-namespaces      # List releases across all namespaces, we can use -A
-helm -l key1=value1,key2=value2 # Selector (label query) to filter on, supports '=', '==', and '!='
+helm list -l key1=value1,key2=value2 # Selector (label query) to filter on, supports '=', '==', and '!='
 helm list --date                # Sort by release date
 helm list --deployed            # Show deployed releases. If no other is specified, this will be automatically enabled
 helm list --pending             # Show pending releases
@@ -120,7 +121,7 @@ helm get values <release>   # Downloads a values file for a given release. use -
 ### Plugin Management
 
 ```bash
-helm plugin install <path/url1>     # Install plugins
+helm plugin install <path/url>      # Install plugins
 helm plugin list                    # View a list of all installed plugins
 helm plugin update <plugin>         # Update plugins
 helm plugin uninstall <plugin>      # Uninstall a plugin

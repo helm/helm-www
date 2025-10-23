@@ -1,0 +1,50 @@
+{{ define "title" }}
+Helm | {{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+
+<div id="helm" class="page-docs page-wrapper page-docs-list">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
+
+  <div class="columns" id="helm">
+    <aside class="column is-narrow is-gapless sidebar-wrapper">
+      {{ partial "sidebar.html" . }}
+    </aside>
+    
+    <section class="column content-docs">
+      <article class="content-wrapper">
+        <h1>{{ .Title }}</h1>
+        
+        {{ .Content }}
+
+        <nav class="level prev-next">
+          <div class="level-left level-item">
+            {{ if .NextInSection }}
+            <a class="" href="{{ .NextInSection.Permalink }}" title="{{ .Title }}">
+              <small class="heading">Prev</small>
+              <p class="title">← {{ .NextInSection.Title }}</p>
+            </a>
+            {{ end }}
+          </div>
+          
+          <div class="level-right level-item has-text-right">
+            {{ if .PrevInSection }}
+            <a class="" href="{{ .PrevInSection.Permalink }}" title="{{ .Title }}">
+              <small class="heading">Next</small>
+              <p class="title">{{ .PrevInSection.Title }} →</p>
+            </a>
+            {{ end }}
+          </div>
+        </nav>
+      </article>
+    </section>
+  </div>
+</div>
+
+{{ partial "footer-links.html" . }}
+{{ end }}
