@@ -10,7 +10,7 @@ statements). There are even a few ways to create new objects within your
 templates, like with the `tuple` function we'll see later.
 
 Objects can be simple, and have just one value. Or they can contain other
-objects or functions. For example. the `Release` object contains several objects
+objects or functions. For example, the `Release` object contains several objects
 (like `Release.Name`) and the `Files` object has a few functions.
 
 In the previous section, we use `{{ .Release.Name }}` to insert the name of a
@@ -37,6 +37,9 @@ access in your templates.
   print out the `mychart-0.1.0`.
   - The available fields are listed in the [Charts Guide]({{< ref
     "/docs/topics/charts.md#the-chartyaml-file" >}})
+- `Subcharts`: This provides access to the scope (.Values, .Charts, .Releases etc.)
+  of subcharts to the parent. For example `.Subcharts.mySubChart.myValue` to access
+  the `myValue` in the `mySubChart` chart.
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
   chart. See the section [Accessing Files]({{< ref
@@ -63,9 +66,9 @@ access in your templates.
     Kubernetes version.
   - `Capabilities.KubeVersion.Major` is the Kubernetes major version.
   - `Capabilities.KubeVersion.Minor` is the Kubernetes minor version.
-  - `Capabilities.HelmVersion` is the object containing the Helm Version details, it is the same output of `helm version`  
+  - `Capabilities.HelmVersion` is the object containing the Helm Version details, it is the same output of `helm version`.
   - `Capabilities.HelmVersion.Version` is the current Helm version in semver format.
-  - `Capabilities.HelmVersion.GitCommit` is the Helm git sha1. 
+  - `Capabilities.HelmVersion.GitCommit` is the Helm git sha1.
   - `Capabilities.HelmVersion.GitTreeState` is the state of the Helm git tree.
   - `Capabilities.HelmVersion.GoVersion` is the version of the Go compiler used.
 - `Template`: Contains information about the current template that is being

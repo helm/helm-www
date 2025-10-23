@@ -38,19 +38,19 @@ Helm 提供了通过`.Files`对象访问文件的方法。不过，在我们使�
 `config1.toml`:
 
 ```toml
-message = Hello from config 1
+message = "Hello from config 1"
 ```
 
 `config2.toml`:
 
 ```toml
-message = This is config 2
+message = "This is config 2"
 ```
 
 `config3.toml`:
 
 ```toml
-message = Goodbye from config 3
+message = "Goodbye from config 3"
 ```
 
 每个都是简单的TOML文件（类似于windows老式的INI文件）。我们知道这些文件的名称，因此我们使用`range`功能遍历它们并将它们的内容注入到我们的ConfigMap中。
@@ -81,13 +81,13 @@ metadata:
   name: quieting-giraf-configmap
 data:
   config1.toml: |-
-    message = Hello from config 1
+    message = "Hello from config 1"
 
   config2.toml: |-
-    message = This is config 2
+    message = "This is config 2"
 
   config3.toml: |-
-    message = Goodbye from config 3
+    message = "Goodbye from config 3"
 ```
 
 ## Path helpers
@@ -192,7 +192,7 @@ metadata:
 type: Opaque
 data:
   token: |-
-    bWVzc2FnZSA9IEhlbGxvIGZyb20gY29uZmlnIDEK
+    bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
 ## Lines
@@ -209,5 +209,5 @@ data:
 
 在`helm install`过程中无法将文件传递到chart外。因此如果你想请求用户提供数据，必须使用`helm install -f`或`helm install --set`加载。
 
-该部分讨论整合了我们对编写Helm模板的工具和技术的深入研究。下个章节我们会看到如何使用特殊文件`templates/NOTES.txt`， 
+该部分讨论整合了我们对编写Helm模板的工具和技术的深入研究。下个章节我们会看到如何使用特殊文件`templates/NOTES.txt`，
 向chart的用户发送安装后的说明。

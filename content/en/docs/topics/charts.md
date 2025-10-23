@@ -54,7 +54,7 @@ The `Chart.yaml` file is required for a chart. It contains the following fields:
 ```yaml
 apiVersion: The chart API version (required)
 name: The name of the chart (required)
-version: A SemVer 2 version (required)
+version: The version of the chart (required)
 kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
 description: A single-sentence description of this project (optional)
 type: The type of the chart (optional)
@@ -90,8 +90,8 @@ The recommended approach is to add custom metadata in `annotations`.
 
 ### Charts and Versioning
 
-Every chart must have a version number. A version must follow the [SemVer
-2](https://semver.org/spec/v2.0.0.html) standard. Unlike Helm Classic, Helm v2
+Every chart must have a version number. A version should follow the [SemVer
+2](https://semver.org/spec/v2.0.0.html) standard but it is not strictly enforced. Unlike Helm Classic, Helm v2
 and later uses version numbers as release markers. Packages in repositories are
 identified by name plus version.
 
@@ -104,7 +104,8 @@ nginx-1.2.3.tgz
 
 More complex SemVer 2 names are also supported, such as `version:
 1.2.3-alpha.1+ef365`. But non-SemVer names are explicitly disallowed by the
-system.
+system. Subject to exception are versions in format `x` or `x.y`.
+For example, if there is a leading v or a version listed without all 3 parts (e.g. v1.2) it will attempt to coerce it into a valid semantic version (e.g., v1.2.0).
 
 **NOTE:** Whereas Helm Classic and Deployment Manager were both very GitHub
 oriented when it came to charts, Helm v2 and later does not rely upon or require
@@ -263,7 +264,7 @@ dependencies:
 - You might use the name of the repo instead of URL
 
 ```console
-$ helm repo add fantastic-charts https://fantastic-charts.storage.googleapis.com
+$ helm repo add fantastic-charts https://charts.helm.sh/incubator
 ```
 
 ```yaml
@@ -958,6 +959,12 @@ parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
 
+Schema validation can be disabled by setting the option shown below.
+This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
+```console
+helm install --skip-schema-validation
+```
+
 ### References
 
 When it comes to writing templates, values, and schema files, there are several
@@ -1106,7 +1113,15 @@ implementing server, and thus raise the barrier for setting up a repository.
 ## Chart Starter Packs
 
 The `helm create` command takes an optional `--starter` option that lets you
-specify a "starter chart".
+specify a "starter chart". Also, the starter option has a short alias `-p`.
+
+Examples of usage:
+
+```console
+helm create my-chart --starter starter-name
+helm create my-chart -p starter-name
+helm create my-chart -p /absolute/path/to/starter-name
+```
 
 Starters are just regular charts, but are located in
 `$XDG_DATA_HOME/helm/starters`. As a chart developer, you may author charts that
@@ -1116,8 +1131,7 @@ with the following considerations in mind:
 - The `Chart.yaml` will be overwritten by the generator.
 - Users will expect to modify such a chart's contents, so documentation should
   indicate how users can do so.
-- All occurrences of `<CHARTNAME>` will be replaced with the specified chart
-  name so that starter charts can be used as templates.
+- All occurrences of `<CHARTNAME>` will be replaced with the specified chart name so that starter charts can be used as templates, except for some variable files. For example, if you use custom files in the `vars` directory or certain `README.md` files, `<CHARTNAME>` will NOT override inside them. Additionally, the chart description is not inherited.
 
 Currently the only way to add a chart to `$XDG_DATA_HOME/helm/starters` is to
 manually copy it there. In your chart's documentation, you may want to explain

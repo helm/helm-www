@@ -52,7 +52,7 @@ set for a key called 'foo', the 'newbar' value would take precedence:
 
     $ helm install --set foo=bar --set foo=newbar  myredis ./redis
 
-Similarly, in the following example 'foo' is set to '["four"]': 
+Similarly, in the following example 'foo' is set to '["four"]':
 
     $ helm install --set-json='foo=["one", "two", "three"]' --set-json='foo=["four"]' myredis ./redis
 
@@ -61,7 +61,11 @@ And in the following example, 'foo' is set to '{"key1":"value1","key2":"bar"}':
     $ helm install --set-json='foo={"key1":"value1","key2":"value2"}' --set-json='foo.key2="bar"' myredis ./redis
 
 To check the generated manifests of a release without installing the chart,
-the '--debug' and '--dry-run' flags can be combined.
+the --debug and --dry-run flags can be combined.
+
+The --dry-run flag will output all generated chart manifests, including Secrets
+which can contain sensitive values. To hide Kubernetes Secrets use the
+--hide-secret flag. Please carefully consider how and when these flags are used.
 
 If --verify is set, the chart MUST have a provenance file, and the provenance
 file MUST pass all verification steps.
@@ -104,18 +108,23 @@ helm install [NAME] [CHART] [flags]
       --description string                         add a custom description
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run                                    simulate an install
+      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
+      --enable-dns                                 enable DNS lookups when rendering templates
       --force                                      force resource updates through a replacement strategy
   -g, --generate-name                              generate the name (and omit the NAME parameter)
   -h, --help                                       help for install
+      --hide-notes                                 if set, do not show notes in install output. Does not affect presence in chart metadata
+      --hide-secret                                hide Kubernetes Secrets when also using the --dry-run flag
       --insecure-skip-tls-verify                   skip tls certificate checks for the chart download
       --key-file string                            identify HTTPS client using this SSL key file
       --keyring string                             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Labels that would be added to release metadata. Should be divided by comma. (default [])
       --name-template string                       specify template used to name the release
       --no-hooks                                   prevent hooks from running during install
   -o, --output format                              prints the output in the specified format. Allowed values: table, json, yaml (default table)
       --pass-credentials                           pass credentials to all domains
       --password string                            chart repository password where to locate the requested chart
+      --plain-http                                 use insecure HTTP connections for the chart download
       --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
       --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
       --render-subchart-notes                      if set, render subchart notes along with the parent
@@ -124,8 +133,11 @@ helm install [NAME] [CHART] [flags]
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
       --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
+      --set-literal stringArray                    set a literal STRING value on the command line
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --skip-crds                                  if set, no CRDs will be installed. By default, CRDs are installed if not already present
+      --skip-schema-validation                     if set, disables JSON schema validation
+      --take-ownership                             if set, install will ignore the check for helm annotations and take ownership of the existing resources
       --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
       --username string                            chart repository username where to locate the requested chart
   -f, --values strings                             specify values in a YAML file or a URL (can specify multiple)
@@ -150,8 +162,9 @@ helm install [NAME] [CHART] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-cache string         path to the directory containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
@@ -159,4 +172,4 @@ helm install [NAME] [CHART] [flags]
 
 * [helm](helm.md)	 - The Helm package manager for Kubernetes.
 
-###### Auto generated by spf13/cobra on 18-Jan-2023
+###### Auto generated by spf13/cobra on 11-Sep-2025

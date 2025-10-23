@@ -32,7 +32,7 @@ Von dort aus sollten Sie in der Lage sein, das Programm aufzurufen und ein
 `helm help`.
 
 **Hinweis:** In den automatisierten Tests von Helm wird nur die Version von
-Linux AMD64 beim Bau durch CircleCi berücksichtig. Das Testen von anderen
+Linux AMD64 beim Bau durch GitHub Actions berücksichtig. Das Testen von anderen
 Betriebssystemen liegt in der Zuständigkeit der Gemeinschaft.
 
 ### Von einem Script
@@ -80,6 +80,16 @@ Paket](https://chocolatey.org/packages/kubernetes-helm) gebaut mit
 choco install kubernetes-helm
 ```
 
+### Von Winget (Windows)
+
+Mitglieder der Helm Gemeinschaft haben ein [Helm
+Paket](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) gebaut mit
+[Winget](https://learn.microsoft.com/en-us/windows/package-manager/) beigetragen. Dieses Paket ist generell aktuell.
+
+```console
+winget install Helm.Helm
+```
+
 ### Von Apt (Debian/Ubuntu)
 
 Mitglieder der Helm Gemeinschaft haben ein [Helm
@@ -87,9 +97,9 @@ Paket](https://helm.baltorepo.com/stable/debian/) for Apt beigetragen. Dieses Pa
 ist generell aktuell.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```

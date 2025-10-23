@@ -17,11 +17,11 @@ Helm社区提供了通过不同包管理器安装Helm的方法。这些方法可
 
 1. 下载[需要的版本](https://github.com/helm/helm/releases)
 2. 解压(`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
-3. 在解压目中找到`helm`程序，移动到需要的目录中(`mv linux-amd64/helm /usr/local/bin/helm`)
+3. 在解压目录中找到`helm`程序，移动到需要的目录中(`mv linux-amd64/helm /usr/local/bin/helm`)
 
 然后就可以执行客户端程序并[添加稳定仓库](https://helm.sh/zh/docs/intro/quickstart/#初始化): `helm help`.
 
-**注意** 针对Linux AMD64，Helm的自动测试只有在CircleCi构建和发布时才会执行。测试其他操作系统是社区针对系统问题请求Helm的责任。
+**注意** 针对Linux AMD64，Helm的自动测试只有在GitHub Actions构建和发布时才会执行。测试其他操作系统是社区针对系统问题请求Helm的责任。
 
 ### 使用脚本安装
 
@@ -67,6 +67,14 @@ Helm社区成员贡献了一个针对 [Scoop](https://scoop.sh) 的[Helm包](htt
 
 ```console
 scoop install helm
+```
+
+### 使用Winget (Windows)
+
+Helm社区成员贡献了一个针对 [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) 的[Helm包](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm)，该包通常是最新的。
+
+```console
+winget install Helm.Helm
 ```
 
 ### 使用Apt (Debian/Ubuntu)

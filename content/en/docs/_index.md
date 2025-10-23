@@ -15,7 +15,7 @@ report](https://www.cncf.io/cncf-helm-project-journey/).
 Helm has a lot of documentation. A high-level overview of how it’s organized
 will help you know where to look for certain things:
 
-- [Tutorials](intro) take you by the hand through a series of steps to create
+- [Tutorials](chart_template_guide/getting_started/) take you by the hand through a series of steps to create
   your first Helm chart. Start here if you’re new to Helm.
 - [Topic guides](topics) discuss key topics and concepts at a fairly high level
   and provide useful background information and explanation.

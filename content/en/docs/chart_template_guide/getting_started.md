@@ -35,7 +35,7 @@ _default values_ for a chart. These values may be overridden by users during
 `helm install` or `helm upgrade`.
 
 The `Chart.yaml` file contains a description of the chart. You can access it
-from within a template. 
+from within a template.
 
 The `charts/` directory _may_ contain other charts
 (which we call _subcharts_). Later in this guide we will see how those work when
@@ -59,9 +59,9 @@ files already there.
 - `NOTES.txt`: The "help text" for your chart. This will be displayed to your
   users when they run `helm install`.
 - `deployment.yaml`: A basic manifest for creating a Kubernetes
-  [deployment](https://kubernetes.io/docs/user-guide/deployments/)
+  [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - `service.yaml`: A basic manifest for creating a [service
-  endpoint](https://kubernetes.io/docs/user-guide/services/) for your deployment
+  endpoint](https://kubernetes.io/docs/concepts/services-networking/service/) for your deployment
 - `_helpers.tpl`: A place to put template helpers that you can re-use throughout
   the chart
 
@@ -97,10 +97,10 @@ data:
 ```
 
 **TIP:** Template names do not follow a rigid naming pattern. However, we
-recommend using the suffix `.yaml` for YAML files and `.tpl` for helpers.
+recommend using the extension `.yaml` for YAML files and `.tpl` for helpers.
 
 The YAML file above is a bare-bones ConfigMap, having the minimal necessary
-fields. In virtue of the fact that this file is in the `mychart/templates/`
+fields. By virtue of the fact that this file is in the `mychart/templates/`
 directory, it will be sent through the template engine.
 
 It is just fine to put a plain YAML file like this in the `mychart/templates/`
@@ -202,7 +202,7 @@ TEST SUITE: None
 
 You can run `helm get manifest clunky-serval` to see the entire generated YAML.
 
-Note that the config map inside kubernetes name is `clunky-serval-configmap`
+Note that the ConfigMap inside Kubernetes name is `clunky-serval-configmap`
 instead of `mychart-configmap` previously.
 
 At this point, we've seen templates at their most basic: YAML files that have

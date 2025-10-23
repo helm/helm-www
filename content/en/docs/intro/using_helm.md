@@ -59,6 +59,9 @@ The above searches for all `wordpress` charts on Artifact Hub.
 
 With no filter, `helm search hub` shows you all of the available charts.
 
+`helm search hub` exposes the URL to the location on [artifacthub.io](https://artifacthub.io/) but not the actual Helm repo. `helm search hub --list-repo-url` exposes the actual Helm repo URL which comes in handy when you are looking to add a new repo: `helm repo
+add [NAME] [URL]`.
+
 Using `helm search repo`, you can find the names of the charts in repositories
 you have already added:
 
@@ -171,9 +174,11 @@ Helm installs resources in the following order:
 - CronJob
 - Ingress
 - APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
 
 Helm does not wait until all of the resources are running before it exits. Many
-charts require Docker images that are over 600M in size, and may take a long
+charts require Docker images that are over 600MB in size, and may take a long
 time to install into the cluster.
 
 To keep track of a release's state, or to re-read configuration information, you
@@ -263,7 +268,7 @@ There are two ways to pass configuration data during install:
 - `--set`: Specify overrides on the command line.
 
 If both are used, `--set` values are merged into `--values` with higher
-precedence. Overrides specified with `--set` are persisted in a ConfigMap.
+precedence. Overrides specified with `--set` are persisted in a Secret.
 Values that have been `--set` can be viewed for a given release with `helm get
 values <release-name>`. Values that have been `--set` can be cleared by running
 `helm upgrade` with `--reset-values` specified.
@@ -490,7 +495,8 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-And new repositories can be added with `helm repo add`:
+And new repositories can be added with `helm repo
+add [NAME] [URL]`:
 
 ```console
 $ helm repo add dev https://example.com/dev-charts

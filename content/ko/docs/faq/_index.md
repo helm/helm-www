@@ -192,7 +192,7 @@ containers:
 ### 기본 스토리지 드라이버로서의 시크릿(Secret)
 
 헬름 3에서 시크릿은 이제 [기본 스토리지
-드라이버](/docs/topics/advanced/#storage-backends)로 사용됩니다. 헬름 2는
+드라이버](//docs/topics/advanced/#storage-backends)로 사용됩니다. 헬름 2는
 기본적으로 컨피그맵(ConfigMap)을 사용하여 릴리스 정보를 저장합니다. 헬름 2.7.0에서
 릴리스 정보를 저장하기 위해 시크릿을 사용하는 새로운 스토리지 백엔드가 구현되었으며
 헬름 3부터는 기본값이 되었습니다.
@@ -499,14 +499,14 @@ apiVersion을 v1에서 v2로 격상했습니다.
 다음 명령을 실행하여 저장소를 수정할 수 있습니다.
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 https://charts.helm.sh/incubator 에서 사용할 수 있는 아카이브가 있는 `incubator` 저장소도 마찬가지입니다.
 다음 명령을 실행하여 고칠 수 있습니다.
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'라는 경고가 표시됩니다.
@@ -516,13 +516,13 @@ $ helm repo add incubator https://charts.helm.sh/incubator --force-update
 다음 명령을 실행하여 이 문제를 해결합니다.
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 `incubator` 에 비슷한 오류가 발생한다면 다음 명령을 실행합니다.
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### 헬름 저장소를 추가하면 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'라는 오류가 표시됩니다.

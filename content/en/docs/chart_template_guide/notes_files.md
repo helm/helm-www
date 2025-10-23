@@ -10,7 +10,7 @@ print out a block of helpful information for users. This information is highly
 customizable using templates.
 
 To add installation notes to your chart, simply create a `templates/NOTES.txt`
-file. This file is plain text, but it is processed like as a template, and has
+file. This file is plain text, but it is processed like a template, and has
 all the normal template functions and objects available.
 
 Let's create a simple `NOTES.txt` file:

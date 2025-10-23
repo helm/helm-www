@@ -27,11 +27,11 @@ and installed.
    destination (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 From there, you should be able to run the client and [add the stable
-repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
+chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Note:** Helm automated tests are performed for Linux AMD64 only during
-CircleCi builds and releases. Testing of other OSes are the responsibility of
+GitHub Actions builds and releases. Testing of other OSes are the responsibility of
 the community requesting Helm for the OS in question.
 
 ### From Script
@@ -89,16 +89,24 @@ package](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) bu
 scoop install helm
 ```
 
-### From Apt (Debian/Ubuntu)
+### From Winget (Windows)
 
 Members of the Helm community have contributed a [Helm
-package](https://helm.baltorepo.com/stable/debian/) for Apt. This package is
-generally up to date.
+package](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) build to [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). This package is generally up to date.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+winget install Helm.Helm
+```
+
+### From Apt (Debian/Ubuntu)
+
+Members of the Helm community have contributed an Apt package for Debian/Ubuntu. This package is
+generally up to date. Thanks to [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) for hosting the repo.
+
+```console
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```
@@ -174,4 +182,4 @@ sophisticated things with Helm.
 
 Once you have the Helm Client successfully installed, you can move on to using
 Helm to manage charts and [add the stable
-repo](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+chart repository](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).

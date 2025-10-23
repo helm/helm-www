@@ -5,7 +5,7 @@ weight: 11
 ---
 
 在Kubernetes中，向用户或应用程序特定的服务账户授予角色是确保你的应用程序在指定范围运行的最佳实践。
-有关服务账户权限的更多信息请查看[官方Kubernetes文档](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions)。
+有关服务账户权限的更多信息请查看[官方Kubernetes文档](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions)。
 
 从Kubernetes 1.6开始，基于角色的访问控制默认是启用的。RBAC允许你根据你组织中的用户和角色指定行为类型。
 

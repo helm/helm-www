@@ -164,7 +164,7 @@ data:
 ```
 
 Notice that we received a few empty lines in our YAML. Why? When the template
-engine runs, it _removes_ the contents inside of `{{` end `}}`, but it leaves
+engine runs, it _removes_ the contents inside of `{{` and `}}`, but it leaves
 the remaining whitespace exactly as is.
 
 YAML ascribes meaning to whitespace, so managing the whitespace becomes pretty
@@ -349,6 +349,7 @@ pizzaToppings:
   - cheese
   - peppers
   - onions
+  - pineapple
 ```
 
 Now we have a list (called a `slice` in templates) of `pizzaToppings`. We can
@@ -419,6 +420,7 @@ data:
     - "Cheese"
     - "Peppers"
     - "Onions"
+    - "Pineapple"
 ```
 
 Now, in this example we've done something tricky. The `toppings: |-` line is
@@ -426,7 +428,7 @@ declaring a multi-line string. So our list of toppings is actually not a YAML
 list. It's a big string. Why would we do this? Because the data in ConfigMaps
 `data` is composed of key/value pairs, where both the key and the value are
 simple strings. To understand why this is the case, take a look at the
-[Kubernetes ConfigMap docs](https://kubernetes.io/docs/user-guide/configmap/).
+[Kubernetes ConfigMap docs](https://kubernetes.io/docs/concepts/configuration/configmap/).
 For us, though, this detail doesn't matter much.
 
 > The `|-` marker in YAML takes a multi-line string. This can be a useful

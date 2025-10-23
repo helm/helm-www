@@ -26,7 +26,7 @@ weight: 2
 Сразу после этого можно запустить Helm справку [добавить stable репозиторий](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
 `helm help`.
 
-**Примечание:** Автоматические тесты Helm выполняются для Linux AMD64 только во время сборки и выпуска CircleCI.
+**Примечание:** Автоматические тесты Helm выполняются для Linux AMD64 только во время сборки и выпуска GitHub Actions.
 Тестирование других OSes является обязанностью сообщества, использующего Helm на их OS.
 
 ### Из Скрипта
@@ -72,6 +72,16 @@ brew install helm
 
 ```console
 choco install kubernetes-helm
+```
+
+### Используя Winget (Windows)
+
+Члены сообщества Helm внесли свой вклад в [Helm
+пакет](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) собранный под
+[Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Данная сборка почти всегда актуальна
+
+```console
+winget install Helm.Helm
 ```
 
 ### Используя Apt (Debian/Ubuntu)

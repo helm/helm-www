@@ -9,7 +9,7 @@ In Kubernetes, granting roles to a user or an application-specific service
 account is a best practice to ensure that your application is operating in the
 scope that you have specified. Read more about service account permissions [in
 the official Kubernetes
-docs](https://kubernetes.io/docs/admin/authorization/rbac/#service-account-permissions).
+docs](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions).
 
 From Kubernetes 1.6 onwards, Role-based Access Control is enabled by default.
 RBAC allows you to specify which types of actions are permitted depending on the
