@@ -174,6 +174,8 @@ Helm installs resources in the following order:
 - CronJob
 - Ingress
 - APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
 
 Helm does not wait until all of the resources are running before it exits. Many
 charts require Docker images that are over 600MB in size, and may take a long
