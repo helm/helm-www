@@ -15,14 +15,14 @@ title: "Helm补全 - bash"
     source <(helm completion bash)
 
 为每个新的会话加载自动补全，执行一次：
+
 - Linux:
 
-      helm completion bash > /etc/bash_completion.d/helm
+      helm completion bash | sudo tee /etc/bash_completion.d/helm
 
 - MacOS:
 
-      helm completion bash > /usr/local/etc/bash_completion.d/helm
-
+      helm completion bash | sudo tee /usr/local/etc/bash_completion.d/helm
 
 ```shell
 helm completion bash [flags]

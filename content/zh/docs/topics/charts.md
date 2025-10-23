@@ -207,7 +207,7 @@ dependencies:
 - 你可以使用仓库的名称代替URL
 
 ```console
-$ helm repo add fantastic-charts https://fantastic-charts.storage.googleapis.com
+$ helm repo add fantastic-charts https://charts.helm.sh/incubator
 ```
 
 ```yaml

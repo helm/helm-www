@@ -22,7 +22,7 @@ et installé.
 
 A ce stade, vous devriez être cappable de lancer le client et [d'ajouter le dépot stable](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository): `helm help`.
 
-**Remarque:** Les tests automatisés de Helm sont effectués pour Linux AMD64 uniquement pendant les build et release CircleCi. Les tests d'autres systèmes d'exploitation sont sous la responsabilité de la communauté qui demande Helm pour le système d'exploitation en question.
+**Remarque:** Les tests automatisés de Helm sont effectués pour Linux AMD64 uniquement pendant les build et release GitHub Actions. Les tests d'autres systèmes d'exploitation sont sous la responsabilité de la communauté qui demande Helm pour le système d'exploitation en question.
 
 ### À partir du script
 
@@ -58,6 +58,14 @@ Les membres de la communauté Helm ont contribué à la création d'un [package 
 
 ```console
 choco install kubernetes-helm
+```
+
+### Depuis Winget (Windows)
+
+Les membres de la communauté Helm ont contribué à la création d'un [package Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) build pour [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Ce package est généralement à jour.
+
+```console
+winget install Helm.Helm
 ```
 
 ### Depuis Apt (Debian/Ubuntu)

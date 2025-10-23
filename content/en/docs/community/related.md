@@ -16,8 +16,11 @@ request](https://github.com/helm/helm-www/pulls).
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt
   existing k8s resources into a new generated helm chart.
+- [helm-cel](https://github.com/idsulik/helm-cel) - Plugin that uses Common Expression Language (CEL) to validate values.
+- [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) - Snapshot testing plugin for Helm charts.
 - [Helm Diff](https://github.com/databus23/helm-diff) - Preview `helm upgrade`
   as a coloured diff
+- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) - Plugin that helps distributing Helm charts across OCI registries and on Air gap environments
 - [Helm Dashboard](https://github.com/komodorio/helm-dashboard) - GUI for Helm, visualize releases and repositories, manifest diffs
 - [helm-gcs](https://github.com/hayorov/helm-gcs) - Plugin to manage repositories
   on Google Cloud Storage
@@ -27,13 +30,12 @@ request](https://github.com/helm/helm-www/pulls).
   Charts from hiera using k8comp
 - [helm-mapkubeapis](https://github.com/helm/helm-mapkubeapis) - Update helm release
   metadata to replace deprecated or removed Kubernetes APIs
+- [helm-migrate-values](https://github.com/OctopusDeployLabs/helm-migrate-values) - Plugin to migrate user-specified values across Helm chart versions to handle breaking schema changes in `values.yaml`
 - [helm-monitor](https://github.com/ContainerSolutions/helm-monitor) - Plugin to
   monitor a release and rollback based on Prometheus/ElasticSearch query
 - [helm-release-plugin](https://github.com/JovianX/helm-release-plugin) - Plugin for Release management, Update release values, pulls(re-creates) helm Charts from deployed releases, set helm release TTL.
 - [helm-s3](https://github.com/hypnoglow/helm-s3) - Helm plugin that allows to
   use AWS S3 as a [private] chart repository
-- [helm-schema-gen](https://github.com/karuppiah7890/helm-schema-gen) - Helm
-  Plugin that generates values yaml schema for your Helm 3 charts
 - [helm-secrets](https://github.com/jkroepke/helm-secrets) - Plugin to manage
   and store secrets safely (based on [sops](https://github.com/mozilla/sops))
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) -
@@ -42,11 +44,14 @@ request](https://github.com/helm/helm-www/pulls).
   rendering Tanka/Jsonnet inside Helm charts.
 - [hc-unit](https://github.com/xchapter7x/hcunit) - Plugin for unit testing
   charts locally using OPA (Open Policy Agent) & Rego
-- [helm-unittest](https://github.com/quintush/helm-unittest) - Plugin for unit
+- [helm-unittest](https://github.com/helm-unittest/helm-unittest) - Plugin for unit
   testing chart locally with YAML
 - [helm-val](https://github.com/HamzaZo/helm-val) - A plugin to get
   values from a previous release.
-- [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc)
+- [helm-external-val](https://github.com/kuuji/helm-external-val) - A plugin that fetches helm values from external sources (configMaps, Secrets, etc.)
+- [helm-images](https://github.com/nikhilsbhat/helm-images) - Helm plugin to fetch all possible images from the chart before deployment or from a deployed release
+- [helm-drift](https://github.com/nikhilsbhat/helm-drift) - Helm plugin that identifies the configuration that has drifted from the Helm chart
+- [helm-tui](https://github.com/pidanou/helm-tui) - A light UI to manage your Helm assets without leaving the terminal
 
 We also encourage GitHub authors to use the
 [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)
@@ -56,6 +61,7 @@ tag on their plugin repositories.
 
 Tools layered on top of Helm.
 
+- [Aptakube](https://aptakube.com) - Desktop UI for Kubernetes and Helm Releases
 - [Armada](https://airshipit.readthedocs.io/projects/armada/en/latest/) - Manage
   prefixed releases throughout various Kubernetes namespaces, and removes
   completed jobs for complex deployments
@@ -74,14 +80,26 @@ Tools layered on top of Helm.
   Hosts on OCI Registry
 - [Codefresh](https://codefresh.io) - Kubernetes native CI/CD and management
   platform with UI dashboards for managing Helm charts and releases
+- ⁠[Cyclops](https://cyclops-ui.com) - Dynamic Kubernetes UI rendering based
+  on Helm charts
 - [Flux](https://fluxcd.io/docs/components/helm/) -
   Continuous and progressive delivery from Git to Kubernetes.
 - [Helmfile](https://github.com/helmfile/helmfile) - Helmfile is a declarative
   spec for deploying helm charts
+- [Helmper](https://github.com/ChristofferNissen/helmper) - Helmper helps you
+  import Helm Charts - including all OCI artifacts(images), to your own OCI
+  registries. Helmper also facilitates security scanning and patching of OCI
+  images. Helmper utilizes Helm, Oras, Trivy, Copacetic and Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) - Helmsman is a
   helm-charts-as-code tool which enables
   installing/upgrading/protecting/moving/deleting releases from version
   controlled desired state files (described in a simple TOML format)
+- [HULL](https://github.com/vidispine/hull) - This library chart provides a
+  ready-to-use interface for specifying all Kubernetes objects directly in the `values.yaml`.
+  It removes the need to write any templates for your charts and comes with many
+  additional features to simplify Helm chart creation and usage.
+- [K8Studio](https://k8studio.io) -
+  Desktop UI for Managing Kubernetes Clusters with Integrated Helm Manager.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) -
   Generate Helm charts for your
   existing projects.

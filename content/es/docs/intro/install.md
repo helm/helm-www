@@ -31,7 +31,7 @@ De ahí, debes ser capaz de correr el cliente y
 `helm help`.
 
 **Nota:** Las pruebas automatizadas de Helm se realizan para Linux AMD64 solo durante
-las compilaciones y lanzamientes de CircleCi. Las pruebas de otros sistemas operativos
+las compilaciones y lanzamientes de GitHub Actions. Las pruebas de otros sistemas operativos
 son responsabilidad de la comunidad que solicita Helm para el sistema operativo
 en cuestión.
 
@@ -77,6 +77,16 @@ Los miembros de la comunidad Helm han contribuido con un
 
 ```console
 choco install kubernetes-helm
+```
+
+### Desde Winget (Windows)
+
+Los miembros de la comunidad Helm han contribuido con un
+[paquete Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) construido para
+[Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Este paquete generalmente está actualizado.
+
+```console
+winget install Helm.Helm
 ```
 
 ### Desde Apt (Debian/Ubuntu)

@@ -29,6 +29,7 @@ helm template [NAME] [CHART] [flags]
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
       --dry-run                                    simulate an install
+      --enable-dns                                 enable DNS lookups when rendering templates
       --force                                      force resource updates through a replacement strategy
   -g, --generate-name                              generate the name (and omit the NAME parameter)
   -h, --help                                       help for template
@@ -52,6 +53,7 @@ helm template [NAME] [CHART] [flags]
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
       --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
+      --set-literal stringArray                    set a literal STRING value on the command line
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
   -s, --show-only stringArray                      only show manifests rendered from the given templates
       --skip-crds                                  if set, no CRDs will be installed. By default, CRDs are installed if not already present

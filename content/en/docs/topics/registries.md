@@ -54,12 +54,24 @@ There are several hosted container registries with OCI support that you can use 
 
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Cloudsmith](https://help.cloudsmith.io/docs/oci-repository)
+- [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
+- [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
+- [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
+- [RepoFlow](https://docs.repoflow.io/PackageTypes/helm#oci-helm-support)
+  
 
 Follow the hosted container registry provider's documentation to create and configure a registry with OCI support. 
 
 **Note:**  You can run [Docker Registry](https://docs.docker.com/registry/deploying/) or [`zot`](https://github.com/project-zot/zot), which are OCI-based registries, on your development computer. Running an OCI-based registry on your development computer should only be used for testing purposes.
+
+### Using sigstore to sign OCI-based charts
+
+The [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) plugin allows using [Sigstore](https://sigstore.dev/) to sign Helm charts with the same tools used to sign container images.  This provides an alternative to the [GPG-based provenance]({{< ref "provenance.md" >}}) supported by classic [chart repositories]({{< ref "chart_repository.md" >}}).
+
+For more details on using the `helm sigstore` plugin, see [that project's documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
 ## Commands for working with registries
 

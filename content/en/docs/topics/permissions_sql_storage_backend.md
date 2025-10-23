@@ -34,7 +34,7 @@ To manage permissions, the SQL backend driver leverages the
 Level) feature of PostgreSQL. RLS allows all users to be able to read/write
 from/to the same table, without being able to manipulate the same rows if they
 are not explicitly allowed to. By default, any role that has not been
-explicitely granted with the right privileges will always return an empty list
+explicitly granted with the right privileges will always return an empty list
 when running `helm list` and will not be able to retrieve or modify any resource
 in the cluster.
 

@@ -1,7 +1,7 @@
 ---
-title: "Glossary" 
+title: "Glossary"
 description: "Terms used to describe components of Helm's architecture."
-weight: 9
+weight: 10
 ---
 
 # Glossary
@@ -145,6 +145,10 @@ as the `index.yaml` file.)
 A Helm client can point to zero or more chart repositories. By default, Helm
 clients are not configured with any chart repositories. Chart repositories can
 be added at any time using the `helm repo add` command.
+
+## Chart Registry (OCI-based Registry)
+
+A Helm Chart Registry is an [OCI-based](https://opencontainers.org/about/overview/) storage and distribution system that is used to host and share Helm chart packages. For more information, see the [Helm documentation on registries](https://helm.sh/docs/topics/registries/).
 
 ## Values (Values Files, values.yaml)
 

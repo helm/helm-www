@@ -108,7 +108,7 @@ mysubchart:
 ```
 
 Note the last two lines. Any directives inside of the `mysubchart` section will
-be sent to the `mysubchart` chart. So if we run `helm install --dry-run --debug
+be sent to the `mysubchart` chart. So if we run `helm install --generate-name --dry-run --debug
 mychart`, one of the things we will see is the `mysubchart` ConfigMap:
 
 ```yaml

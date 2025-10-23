@@ -10,7 +10,7 @@ them elsewhere. A _named template_ (sometimes called a _partial_ or a
 _subtemplate_) is simply a template defined inside of a file, and given a name.
 We'll see two ways to create them, and a few different ways to use them.
 
-In the [Flow Control](../control_structures) section we introduced three actions
+In the [Flow Control](./control_structures.md) section we introduced three actions
 for declaring and managing templates: `define`, `template`, and `block`. In this
 section, we'll cover those three actions, and also introduce a special-purpose
 `include` function that works similarly to the `template` action.
@@ -25,6 +25,13 @@ One popular naming convention is to prefix each defined template with the name
 of the chart: `{{ define "mychart.labels" }}`. By using the specific chart name
 as a prefix we can avoid any conflicts that may arise due to two different
 charts that implement templates of the same name.
+
+This behavior also applies to different versions of a chart. If you have
+`mychart` version `1.0.0` that defines a template one way, and a `mychart`
+version `2.0.0` that modifies the existing named template, it will use the one
+that was loaded last. You can work around this issue by also adding a version
+in the name of the chart: `{{ define "mychart.v1.labels" }}` and
+`{{ define "mychart.v2.labels" }}`.
 
 ## Partials and `_` files
 
@@ -212,7 +219,8 @@ metadata:
 
 Note that we pass `.` at the end of the `template` call. We could just as easily
 pass `.Values` or `.Values.favorite` or whatever scope we want. But what we want
-is the top-level scope.
+is the top-level scope. In the context of the named template, `$` will refer
+to the scope you passed in and not some global scope.
 
 Now when we execute this template with `helm install --dry-run --debug
 plinking-anaco ./mychart`, we get this:

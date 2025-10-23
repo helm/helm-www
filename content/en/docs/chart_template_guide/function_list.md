@@ -16,6 +16,7 @@ They are listed here and broken down by the following categories:
 * [Logic and Flow Control](#logic-and-flow-control-functions)
 * [Lists](#lists-and-list-functions)
 * [Math](#math-functions)
+* [Float Math](#float-math-functions)
 * [Network](#network-functions)
 * [Reflection](#reflection-functions)
 * [Regular Expressions](#regular-expressions)
@@ -30,7 +31,7 @@ They are listed here and broken down by the following categories:
 Helm includes numerous logic and control flow functions including [and](#and),
 [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
 [fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
-[not](#not), and [or](#or).
+[not](#not), [or](#or), and [required](#required).
 
 ### and
 
@@ -132,6 +133,18 @@ The definition of "empty" depends on type:
 
 For structs, there is no definition of empty, so a struct will never return the
 default.
+
+### required
+
+Specify values that must be set with `required`:
+
+```
+required "A valid foo is required!" .Bar
+```
+
+If `.Bar` is empty or not defined (see [default](#default) on how this is 
+evaluated), the template will not render and will return the error message 
+supplied instead.
 
 ### empty
 
@@ -509,7 +522,7 @@ The above will wrap the string in `$someText` at 80 columns.
 wrapWith 5 "\t" "Hello World"
 ```
 
-The above produces `hello world` (where the whitespace is an ASCII tab
+The above produces `Hello World` (where the whitespace is an ASCII tab
 character)
 
 ### contains
@@ -686,7 +699,11 @@ The following type conversion functions are provided by Helm:
   JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
+- `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
+- `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
+- `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
 to convert from any type to the destination type. For example, `int64` can
@@ -769,7 +786,7 @@ greeting: |
 
 ### fromJson
 
-The `fromJson` function takes a YAML string and returns an object that can be used in templates.
+The `fromJson` function takes a JSON string and returns an object that can be used in templates.
 
 `File at: jsons/person.json`
 ```json
@@ -789,6 +806,72 @@ greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
+
+
+### fromJsonArray
+
+The `fromJsonArray` function takes a JSON Array and returns a list that can be used in templates.
+
+`File at: jsons/people.json`
+```json
+[
+ { "name": "Bob","age": 25 },
+ { "name": "Ram","age": 16 }
+]
+```
+```yaml
+{{- $people := .Files.Get "jsons/people.json" | fromJsonArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
+### toYaml, toYamlPretty
+
+The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, dict, or object) into an indented YAML string.
+
+> Note that `toYamlPretty` is functionally equivalent but will output YAML with additional indents for list elements
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
+```
+
+### fromYamlArray
+
+The `fromYamlArray` function takes a YAML Array and returns a list that can be used in templates.
+
+`File at: yamls/people.yml`
+```yaml
+- name: Bob
+  age: 25
+- name: Ram
+  age: 16
+```
+```yaml
+{{- $people := .Files.Get "yamls/people.yml" | fromYamlArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
 
 ## Regular Expressions
 
@@ -847,7 +930,8 @@ the template engine if there is a problem.
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. Inside string replacement, $ signs are
 interpreted as in Expand, so for instance $1 represents the text of the first
-submatch
+submatch. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -862,7 +946,8 @@ an error to the template engine if there is a problem.
 
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. The replacement string is substituted directly,
-without using Expand
+without using Expand. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -897,7 +982,8 @@ Helm provides some advanced cryptographic functions. They include
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
 [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
-[htpasswd](#htpasswd), [sha1sum](#sha1sum), and [sha256sum](#sha256sum).
+[htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), and
+[sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -939,11 +1025,21 @@ htpasswd "myUser" "myPassword"
 
 Note that it is insecure to store the password directly in the template.
 
+### randBytes
+
+The randBytes function accepts a count N and generates a cryptographically
+secure (uses crypto/rand) random sequence of N bytes. The sequence is returned
+as a base64 encoded string.
+
+```
+randBytes 24
+```
+
 ### derivePassword
 
 The `derivePassword` function can be used to derive a specific password based on
 some shared "master password" constraints. The algorithm for this is [well
-specified](https://masterpassword.app/masterpassword-algorithm.pdf).
+specified](https://web.archive.org/web/20211019121301/https://masterpassword.app/masterpassword-algorithm.pdf).
 
 ```
 derivePassword 1 "long" "password" "user" "example.com"
@@ -1083,7 +1179,7 @@ The current date/time. Use this in conjunction with other date functions.
 
 ### ago
 
-The `ago` function returns duration from time.Now in seconds resolution.
+The `ago` function returns duration from time. Now in seconds resolution.
 
 ```
 ago .CreatedAt
@@ -1132,7 +1228,7 @@ Formats a given amount of seconds as a `time.Duration`.
 This returns 1m35s
 
 ```
-duration 95
+duration "95"
 ```
 
 ### durationRound
@@ -1168,7 +1264,7 @@ The `dateModify` takes a modification and a date and returns the timestamp.
 Subtract an hour and thirty minutes from the current time:
 
 ```
-now | date_modify "-1.5h"
+now | dateModify "-1.5h"
 ```
 
 If the modification format is wrong `dateModify` will return the date
@@ -1207,7 +1303,7 @@ toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
 ## Dictionaries and Dict Functions
 
 Helm provides a key/value storage type called a `dict` (short for "dictionary",
-as in Python). A `dict` is an _unorder_ type.
+as in Python). A `dict` is an _unordered_ type.
 
 The key to a dictionary **must be a string**. However, the value can be any
 type, even another `dict` or `list`.
@@ -1216,7 +1312,7 @@ Unlike `list`s, `dict`s are not immutable. The `set` and `unset` functions will
 modify the contents of a dictionary.
 
 Helm provides the following functions to support working with dicts: [deepCopy
-(mustDeepCopy)](#deepcopy-mustdeepcopy), [dict](#dict), [get](#get),
+(mustDeepCopy)](#deepcopy-mustdeepcopy), [dict](#dict), [dig](#dig), [get](#get),
 [hasKey](#haskey), [keys](#keys), [merge (mustMerge)](#merge-mustmerge),
 [mergeOverwrite (mustMergeOverwrite)](#mergeoverwrite-mustmergeoverwrite),
 [omit](#omit), [pick](#pick), [pluck](#pluck), [set](#set), [unset](#unset), and
@@ -1303,11 +1399,66 @@ inserted.
 A common idiom in Helm templates is to use `pluck... | first` to get the first
 matching key out of a collection of dictionaries.
 
+### dig
+
+The `dig` function traverses a nested set of dicts, selecting keys from a list
+of values. It returns a default value if any of the keys are not found at the
+associated dict.
+
+```
+dig "user" "role" "humanName" "guest" $dict
+```
+
+Given a dict structured like
+```
+{
+  user: {
+    role: {
+      humanName: "curator"
+    }
+  }
+}
+```
+
+the above would return `"curator"`. If the dict lacked even a `user` field,
+the result would be `"guest"`.
+
+Dig can be very useful in cases where you'd like to avoid guard clauses,
+especially since Go's template package's `and` doesn't shortcut. For instance
+`and a.maybeNil a.maybeNil.iNeedThis` will always evaluate
+`a.maybeNil.iNeedThis`, and panic if `a` lacks a `maybeNil` field.)
+
+`dig` accepts its dict argument last in order to support pipelining. For instance:
+```
+merge a b c | dig "one" "two" "three" "<missing>"
+```
+
 ### merge, mustMerge
 
 Merge two or more dictionaries into one, giving precedence to the dest
 dictionary:
 
+Given:
+
+```
+dst:
+  default: default
+  overwrite: me
+  key: true
+
+src:
+  overwrite: overwritten
+  key: false
+```
+
+will result in:
+
+```
+newdict:
+  default: default
+  overwrite: me
+  key: true
+```
 ```
 $newdict := merge $dest $source1 $source2
 ```
@@ -1456,7 +1607,7 @@ $myList := list 1 2 3 4 5
 The above creates a list of `[1 2 3 4 5]`.
 
 Helm provides the following list functions: [append
-(mustAppend)](#append-mustappend), [compact
+(mustAppend)](#append-mustappend), [chunk](#chunk), [compact
 (mustCompact)](#compact-mustcompact), [concat](#concat), [first
 (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
@@ -1673,6 +1824,16 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
+### chunk
+
+To split a list into chunks of given size, use `chunk size list`. This is useful for pagination.
+
+```
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
+
 ## Math Functions
 
 All math functions operate on `int64` values unless specified otherwise.
@@ -1729,6 +1890,82 @@ Return the smallest of a series of integers.
 
 `min 1 2 3` will return `1`.
 
+### len
+
+Returns the length of the argument as an integer.
+
+```
+len .Arg
+```
+
+## Float Math Functions
+
+All math functions operate on `float64` values.
+
+### addf
+
+Sum numbers with `addf`
+
+This will return `5.5`:
+
+```
+addf 1.5 2 2
+```
+
+### add1f
+
+To increment by 1, use `add1f`
+
+### subf
+
+To subtract, use `subf`
+
+This is equivalent to `7.5 - 2 - 3` and will return `2.5`:
+
+```
+subf 7.5 2 3
+```
+
+### divf
+
+Perform integer division with `divf`
+
+This is equivalent to `10 / 2 / 4` and will return `1.25`:
+
+```
+divf 10 2 4
+```
+
+### mulf
+
+Multiply with `mulf`
+
+This will return `6`:
+
+```
+mulf 1.5 2 2
+```
+
+### maxf
+
+Return the largest of a series of floats:
+
+This will return `3`:
+
+```
+maxf 1 2.5 3
+```
+
+### minf
+
+Return the smallest of a series of floats.
+
+This will return `1.5`:
+
+```
+minf 1.5 2 3
+```
+
 ### floor
 
 Returns the greatest float value less than or equal to input value.
@@ -1748,14 +1985,6 @@ after the decimal point.
 
 `round 123.555555 3` will return `123.556`.
 
-### len
-
-Returns the length of the argument as an integer.
-
-```
-len .Arg
-```
-
 ## Network Functions
 
 Helm has a single network function, `getHostByName`.
@@ -1763,6 +1992,8 @@ Helm has a single network function, `getHostByName`.
 The `getHostByName` receives a domain name and returns the ip address.
 
 `getHostByName "www.google.com"` would return the corresponding ip address of `www.google.com`.
+
+This function requires the `--enable-dns` option to be passed on the helm command line.
 
 ## File Path Functions
 

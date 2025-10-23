@@ -21,14 +21,8 @@ We use Make to build our programs. The simplest way to get started is:
 $ make
 ```
 
-NOTE: This will fail if not running from the path `$GOPATH/src/helm.sh/helm`.
-The directory `helm.sh` should not be a symlink or `build` will not find the
-relevant packages.
-
-If required, this will first install dependencies, rebuild the `vendor/` tree,
-and validate configuration. It will then compile `helm` and place it in
+If required, this will first install dependencies and validate configuration. It will then compile `helm` and place it in
 `bin/helm`.
-
 
 To run Helm locally, you can run `bin/helm`.
 
@@ -36,11 +30,22 @@ To run Helm locally, you can run `bin/helm`.
 
 ## Running tests
 
-To run all the tests (without running the tests for `vendor/`), run `make test`.
-As a pre-requisite, you would need to have 
-[golangci-lint](https://golangci-lint.run) 
+To run all the tests, run `make test`.
+As a pre-requisite, you would need to have
+[golangci-lint](https://golangci-lint.run)
 installed.
 
+## Running Locally
+
+You can update your path and add the path of your local helm binary. In an editor
+open your shell config file. Add the following line making sure you replace
+`<path to your binary folder>` with your local bin directory.
+
+``` bash
+export PATH="<path to your binary folder>:$PATH"
+```
+
+This will allow you to run the locally built version of helm from your terminal.
 
 ## Contribution Guidelines
 
@@ -52,7 +57,7 @@ code so that our users will benefit.
 
 Make sure you have read and understood the main CONTRIBUTING guide:
 
-https://github.com/helm/helm/blob/main/CONTRIBUTING.md
+<https://github.com/helm/helm/blob/main/CONTRIBUTING.md>
 
 ### Structure of the Code
 
@@ -89,13 +94,11 @@ the current development candidate. Releases are tagged.
 We accept changes to the code via GitHub Pull Requests (PRs). One workflow for
 doing this is as follows:
 
-1. Go to your `$GOPATH/src` directory, then `mkdir helm.sh; cd helm.sh` and `git
-   clone` the `github.com/helm/helm` repository.
-2. Fork that repository into your GitHub account
-3. Add your repository as a remote for `$GOPATH/src/helm.sh/helm`
-4. Create a new working branch (`git checkout -b feat/my-feature`) and do your
+1. Fork the `github.com/helm/helm` repository into your GitHub account
+2. `git clone` the forked repository into your desired directory
+3. Create a new working branch (`git checkout -b feat/my-feature`) and do your
    work on that branch.
-5. When you are ready for us to review, push your branch to GitHub, and then
+4. When you are ready for us to review, push your branch to GitHub, and then
    open a new pull request with us.
 
 For Git commit messages, we follow the [Semantic Commit
@@ -125,6 +128,7 @@ Common scopes:
 - `*`: two or more scopes
 
 Read more:
+
 - The [Deis
   Guidelines](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md)
   were the inspiration for this section.

@@ -17,11 +17,14 @@ helm registry login [host] [flags]
 ### 可选项
 
 ```shell
-  -h, --help              help for login
-      --insecure          allow connections to TLS registry without certs
-  -p, --password string   registry password or identity token
-      --password-stdin    read password or identity token from stdin
-  -u, --username string   registry username
+      --ca-file string     verify certificates of HTTPS-enabled servers using this CA bundle
+      --cert-file string   identify registry client using this SSL certificate file
+  -h, --help               help for login
+      --insecure           allow connections to TLS registry without certs
+      --key-file string    identify registry client using this SSL key file
+  -p, --password string    registry password or identity token
+      --password-stdin     read password or identity token from stdin
+  -u, --username string    registry username
 ```
 
 ### 从父命令继承的可选项

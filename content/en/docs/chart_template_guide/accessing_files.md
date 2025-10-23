@@ -21,7 +21,7 @@ this works:
   security reasons.
   - Files in `templates/` cannot be accessed.
   - Files excluded using `.helmignore` cannot be accessed.
-  - Files outside of a helm application [subchart]({{< ref
+  - Files outside of a Helm application [subchart]({{< ref
 "/docs/chart_template_guide/subcharts_and_globals.md" >}}), including those of the parent, cannot be accessed
 - Charts do not preserve UNIX mode information, so file-level permissions will
   have no impact on the availability of a file when it comes to the `.Files`
@@ -34,8 +34,7 @@ this works:
 - [Basic example](#basic-example)
 - [Path helpers](#path-helpers)
 - [Glob patterns](#glob-patterns)
-- [ConfigMap and Secrets utility
-  functions](#configmap-and-secrets-utility-functions)
+- [ConfigMap and Secrets utility functions](#configmap-and-secrets-utility-functions)
 - [Encoding](#encoding)
 - [Lines](#lines)
 
@@ -50,19 +49,19 @@ three directly inside of the `mychart/` directory.
 `config1.toml`:
 
 ```toml
-message = Hello from config 1
+message = "Hello from config 1"
 ```
 
 `config2.toml`:
 
 ```toml
-message = This is config 2
+message = "This is config 2"
 ```
 
 `config3.toml`:
 
 ```toml
-message = Goodbye from config 3
+message = "Goodbye from config 3"
 ```
 
 Each of these is a simple TOML file (think old-school Windows INI files). We
@@ -82,7 +81,7 @@ data:
   {{- end }}
 ```
 
-This config map uses several of the techniques discussed in previous sections.
+This ConfigMap uses several of the techniques discussed in previous sections.
 For example, we create a `$files` variable to hold a reference to the `.Files`
 object. We also use the `tuple` function to create a list of files that we loop
 through. Then we print each file name (`{{ . }}: |-`) followed by the contents
@@ -99,13 +98,13 @@ metadata:
   name: quieting-giraf-configmap
 data:
   config1.toml: |-
-    message = Hello from config 1
+    message = "Hello from config 1"
 
   config2.toml: |-
-    message = This is config 2
+    message = "This is config 2"
 
   config3.toml: |-
-    message = Goodbye from config 3
+    message = "Goodbye from config 3"
 ```
 
 ## Path helpers
@@ -177,6 +176,7 @@ conjunction with the `Glob` method.
 Given the directory structure from the [Glob](#glob-patterns) example above:
 
 ```yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -220,7 +220,7 @@ metadata:
 type: Opaque
 data:
   token: |-
-    bWVzc2FnZSA9IEhlbGxvIGZyb20gY29uZmlnIDEK
+    bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
 ## Lines

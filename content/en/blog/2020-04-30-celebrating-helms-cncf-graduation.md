@@ -9,7 +9,7 @@ twittertype: "summary_large_image"
 twitterimage: "blog/images/helmgraduation-twitter.png"
 ---
 
-![../images/helmgraduation.png](../images/helmgraduation.png)
+![../images/helmgraduation.png](/blog/images/helmgraduation.png)
 
 Today we are happy to see Helm [reach the final stage of the CNCF ladder](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/). Helm has moved from the incubating level to the graduated level as a [CNCF project](https://www.cncf.io/projects/), alongside Kubernetes and other select projects.
 

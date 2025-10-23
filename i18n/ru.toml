@@ -71,13 +71,13 @@ other = "Charts описывают даже самые сложные прило
 other = "Простые обновления"
 
 [feature_02_desc]
-other = "Избавьтесь от боли при обновлениях с помощью встроенных обновлений и пользовательских hooks."
+other = "Избавьтесь от боли при обновлениях с помощью встроенных обновлений и пользовательских хуков."
 
 [feature_03_title]
 other = "Простое распостранение"
 
 [feature_03_desc]
-other = "Charts легко версовать, совместно использовать и размещать на общедоступных или частных серверах."
+other = "Charts легко версионировать, совместно использовать и размещать на общедоступных или частных серверах."
 
 [feature_04_title]
 other = "Откаты"
@@ -93,13 +93,13 @@ other = "Скачайте Helm!"
 other = "Установите Helm менеджером пакетов, или [скачайте binary](https://github.com/helm/helm/releases/latest)."
 
 [get_helm_next]
-other = "После установки, распакуйте двоичный файл Helm и добавьте его в свой PATH! Проверьте [документацию](./docs/intro/install/) для получения информацию об [уставновке](./docs/intro/install/) и [использовании](./docs/intro/using_helm/)."
+other = "После установки, распакуйте двоичный файл Helm и добавьте его в свой PATH! Проверьте [документацию](./docs/intro/install/) для получения информацию об [установке](./docs/intro/install/) и [использовании](./docs/intro/using_helm/)."
 
 [get_charts_title]
 other = "Скачайте Chart-ы"
 
 [get_charts_desc]
-other = "Посетите [Artifact Hub](https://artifacthub.io) чтобы познакомиться [Helm charts](https://artifacthub.io/packages/search?kind=0) из многочисленных публичных репозиториев."
+other = "Посетите [Artifact Hub](https://artifacthub.io), чтобы познакомиться с [Helm charts](https://artifacthub.io/packages/search?kind=0) из многочисленных публичных репозиториев."
 
 [get_upgrade_title]
 other = "[Обновляетесь с v2 на v3?](https://helm.sh/docs/topics/v2_v3_migration/)"
@@ -204,15 +204,15 @@ other = "Helm всегда рад новым вкладам в проект!"
 other = """
 ### С чего начать?
 
-Helm -–большой проект с большим количеством пользователей и соавторов. Это может быть много, чтобы принять в нем участие!
+Helm – большой проект с большим количеством пользователей и соавторов. Это может быть много, чтобы принять в нем участие!
 
 У нас есть список [хороших первых issues](https://github.com/helm/helm/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3A%22good+first+issue%22) для тех кто хочет поучаствовать, но не знает с чего начать.
 
 ### Что мне делать?
 
-Прежде чем вы внесете свой вклад в какой-то код, пожалуйста, прочтите наш [Руководство по вкладам](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Он описывает процессы, связанные с созданием и анализом pull requests.
+Прежде чем вы внесете свой вклад в какой-то код, пожалуйста, прочтите наше [Руководство по вкладам](https://github.com/helm/helm/blob/main/CONTRIBUTING.md). Оно описывает процессы, связанные с созданием и анализом pull requests.
 
-Как только вы напишете какой-нибудь код, пожалуйста [подпишите свои коммиты](https://helm.sh/blog/helm-dco/index.html) что бы гарантировать, что Helm придерживается [DCO](https://developercertificate.org/) используемого [CNCF](https://www.cncf.io/).
+Как только вы напишете какой-нибудь код, пожалуйста [подпишите свои коммиты](https://helm.sh/blog/helm-dco/index.html) чтобы гарантировать, что Helm придерживается [DCO](https://developercertificate.org/) используемого [CNCF](https://www.cncf.io/).
 """
 
 # 404 page

@@ -15,6 +15,7 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 * [Logic and Flow Control](#logic-and-flow-control-functions)
 * [Lists](#lists-and-list-functions)
 * [Math](#math-functions)
+* [Float Math](#float-math-functions)
 * [Network](#network-functions)
 * [Reflection](#reflection-functions)
 * [Regular Expressions](#regular-expressions)
@@ -875,7 +876,7 @@ htpasswd "myUser" "myPassword"
 
 ### derivePassword
 
-`derivePassword` 函数可用于基于某些共享的“主密码”约束得到特定密码。这方面的算法有[详细说明](https://masterpassword.app/masterpassword-algorithm.pdf)。
+`derivePassword` 函数可用于基于某些共享的“主密码”约束得到特定密码。这方面的算法有[详细说明](https://spectre.app/spectre-algorithm.pdf)。
 
 ```yaml
 derivePassword 1 "long" "password" "user" "example.com"
@@ -1130,7 +1131,7 @@ Helm 提供了一个key/value存储类型称为`dict`（"dictionary"的简称，
 不像`list`， `dict`不是不可变的。`set`和`unset`函数会修改字典的内容。
 
 Helm 提供了以下函数支持使用字典：[deepCopy(mustDeepCopy)](#deepcopy-mustdeepcopy),
-[dict](#dict), [get](#get),[hasKey](#haskey), [keys](#keys), [merge (mustMerge)](#merge-mustmerge),
+[dict](#dict), [dig](#dig), [get](#get),[hasKey](#haskey), [keys](#keys), [merge (mustMerge)](#merge-mustmerge),
 [mergeOverwrite (mustMergeOverwrite)](#mergeoverwrite-mustmergeoverwrite),
 [omit](#omit), [pick](#pick), [pluck](#pluck), [set](#set), [unset](#unset),和[values](#values)。
 
@@ -1204,9 +1205,63 @@ pluck "name1" $myDict $myOtherDict
 
 Helm模板中的一个常见用法是使用`pluck... | first` 从字典集合中获取第一个匹配的键。
 
+### dig
+
+`dig` 函数遍历嵌套的字典，从值列表中选择键。如果在关联的字典中找不到键，会返回默认值。
+
+```yaml
+dig "user" "role" "humanName" "guest" $dict
+```
+
+给一个结构化的字典如下：
+
+```yaml
+{
+  user: {
+    role: {
+      humanName: "curator"
+    }
+  }
+}
+```
+
+那上述命令就会返回`"curator"`。 如果字典连`user`都没有，就会返回`"guest"`。
+
+如果你想避开保护规则，dig就很有用，特别是Go模板包的`and`没有快捷方式。譬如
+`and a.maybeNil a.maybeNil.iNeedThis`
+总是会描述为`a.maybeNil.iNeedThis`，如果 `maybeNil` 字段缺少 `a` 就会报错。
+
+`dig` 为了支持管道符会接受字典参数，比如：
+
+```yaml
+merge a b c | dig "one" "two" "three" "<missing>"
+```
+
 ### merge, mustMerge
 
 将两个或多个字典合并为一个， 目标字典优先：
+
+给出：
+
+```yaml
+dst:
+  default: default
+  overwrite: me
+  key: true
+
+src:
+  overwrite: overwritten
+  key: false
+```
+
+会得到结果：
+
+```yaml
+newdict:
+  default: default
+  overwrite: me
+  key: true
+```
 
 ```yaml
 $newdict := merge $dest $source1 $source2
@@ -1593,6 +1648,82 @@ max 1 2 3
 
 `min 1 2 3` 会返回 `1`。
 
+### len
+
+返回参数的长度。
+
+```yaml
+len .Arg
+```
+
+## Float Math Functions
+
+所有的数学函数使用`float64`格式。
+
+### addf
+
+使用`addf`求和
+
+下面的例子会返回`5.5`:
+
+```yaml
+addf 1.5 2 2
+```
+
+### add1f
+
+使用`add1f`递增1
+
+### subf
+
+相减使用`subf`
+
+下面例子相当于`7.5 - 2 - 3` 并返回 `2.5`:
+
+```yaml
+subf 7.5 2 3
+```
+
+### divf
+
+使用`divf`实现整数除法
+
+以下相当于`10 / 2 / 4` 并返回 `1.25`:
+
+```yaml
+divf 10 2 4
+```
+
+### mulf
+
+使用`mulf`做乘法
+
+以下会返回`6`:
+
+```yaml
+mulf 1.5 2 2
+```
+
+### maxf
+
+返回最大浮点数
+
+以下会返回`3`:
+
+```yaml
+maxf 1 2.5 3
+```
+
+### minf
+
+返回最小浮点数
+
+以下会返回 `1.5`:
+
+```yaml
+minf 1.5 2 3
+```
+
 ### floor
 
 返回小于等于输入值的最大浮点整数。
@@ -1610,14 +1741,6 @@ max 1 2 3
 返回一个四舍五入到给定小数位的数。
 
 `round 123.555555 3` will return `123.556`。
-
-### len
-
-以整数返回参数的长度。
-
-```yaml
-len .Arg
-```
 
 ## Network Functions
 
@@ -1920,10 +2043,10 @@ Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has]
 .Capabilities.APIVersions.Has "apps/v1/Deployment"
 ```
 
-更多信息可查看 [内置对象文档](https://helm.sh/zh/docs/chart_template_guide/builtin_objects.md)。
+更多信息可查看 [内置对象文档](https://helm.sh/zh/docs/chart_template_guide/builtin_objects)。
 
 ### File Functions
 
-有几个函数能使您能够访问chart中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files.md)。
+有几个函数能使您能够访问chart中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files)。
 
 _注意，这里很多函数的文档是来自[Sprig](https://github.com/Masterminds/sprig)。Sprig是一个适用于Go应用的函数模板库。_

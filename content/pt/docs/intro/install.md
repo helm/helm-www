@@ -31,7 +31,7 @@ um repositório dos Charts do Helm](https://helm.sh/docs/intro/quickstart/#initi
 `helm help`.
 
 **Nota:** Os testes automatizados do Helm são realizados para a plataforma Linux
-AMD64 somente durante os _builds_ e _releases_ do CircleCI. Testes para outros
+AMD64 somente durante os _builds_ e _releases_ do GitHub Actions. Testes para outros
 sistemas operacionais não estão cobertos e são de responsabilidade da comunidade
 em solicitá-los.
 
@@ -77,6 +77,15 @@ para o [Chocolatey](https://chocolatey.org/). Esse pacote geralmente está atual
 
 ```console
 choco install kubernetes-helm
+```
+
+### Winget (Windows)
+
+Membros da comunidade Helm contribuíram com um build do [pacote Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm)
+para o [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Esse pacote geralmente está atualizado.
+
+```console
+winget install Helm.Helm
 ```
 
 ### Apt (Debian/Ubuntu)

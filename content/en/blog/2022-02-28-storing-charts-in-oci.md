@@ -42,7 +42,7 @@ More detail on [working with registries can be found in the Helm documentation](
 
 ## The Helm SDK
 
-The Helm SDK, which is useful for those building tools to integrate with Helm, also includes support to work with registries programatically. The following example illustrates pushing a chart to a registry:
+The Helm SDK, which is useful for those building tools to integrate with Helm, also includes support to work with registries programmatically. The following example illustrates pushing a chart to a registry:
 
 ```go
 package main

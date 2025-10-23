@@ -203,7 +203,8 @@ The synopsis of the lookup function is `lookup apiVersion, kind, namespace, name
 | name       | string |
 
 Both `name` and `namespace` are optional and can be passed as an empty string
-(`""`).
+(`""`). However, if you're working with a namespace-scoped resource, both `name`
+and `namespace` must be specified.
 
 The following combination of parameters are possible:
 
@@ -239,12 +240,13 @@ for the existence of an object.
 
 The `lookup` function uses Helm's existing Kubernetes connection configuration
 to query Kubernetes. If any error is returned when interacting with calling the
-API server (for example due to lack of permission to access a resource), helm's
+API server (for example due to lack of permission to access a resource), Helm's
 template processing will fail.
 
-Keep in mind that Helm is not supposed to contact the Kubernetes API Server
-during a `helm template` or a `helm install|upgrade|delete|rollback --dry-run`,
-so the `lookup` function will return an empty list (i.e. dict) in such a case.
+Keep in mind that Helm is not supposed to contact the Kubernetes API Server during 
+a `helm template|install|upgrade|delete|rollback --dry-run` operation. To test `lookup` 
+against a running cluster, `helm template|install|upgrade|delete|rollback --dry-run=server`
+should be used instead to allow cluster connection.
 
 ## Operators are functions
 
