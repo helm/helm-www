@@ -10,9 +10,9 @@ values passed into the chart. Its contents come from multiple sources:
 
 - The `values.yaml` file in the chart
 - If this is a subchart, the `values.yaml` file of a parent chart
-- A values file if passed into `helm install` or `helm upgrade` with the `-f`
+- A values file is passed into `helm install` or `helm upgrade` with the `-f`
   flag (`helm install -f myvals.yaml ./mychart`)
-- Individual parameters passed with `--set` (such as `helm install --set foo=bar
+- Individual parameters are passed with `--set` (such as `helm install --set foo=bar
   ./mychart`)
 
 The list above is in order of specificity: `values.yaml` is the default, which

@@ -349,6 +349,7 @@ pizzaToppings:
   - cheese
   - peppers
   - onions
+  - pineapple
 ```
 
 Now we have a list (called a `slice` in templates) of `pizzaToppings`. We can
@@ -419,6 +420,7 @@ data:
     - "Cheese"
     - "Peppers"
     - "Onions"
+    - "Pineapple"
 ```
 
 Now, in this example we've done something tricky. The `toppings: |-` line is

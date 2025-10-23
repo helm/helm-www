@@ -27,7 +27,7 @@ Helm のすべての [リリース](https://github.com/helm/helm/releases) は�
 
 そこから、クライアントを実行し、[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)できるはずです: `helm help` を参考
 
-**注**: Helm 自動テストは、CircleCi のビルドとリリース中にのみLinux AMD64 に対して実行されます。
+**注**: Helm 自動テストは、GitHub Actions のビルドとリリース中にのみLinux AMD64 に対して実行されます。
 他の OS のテストは、
 対象の OS の Helm を要求するコミュニティの責任の元で行われています。
 
@@ -90,13 +90,13 @@ winget install Helm.Helm
 
 ### Apt から (Debian/Ubuntu)
 
-Helm コミュニティのメンバーは、Apt の [Helm パッケージ](https://helm.baltorepo.com/stable/debian/) を提供しています。
+Helm コミュニティのメンバーは、Apt の Helm パッケージ を提供しています。
 このパッケージは一般に最新です。
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
 ```

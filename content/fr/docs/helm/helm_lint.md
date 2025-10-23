@@ -29,7 +29,7 @@ helm lint PATH [flags]
       --set-string stringArray    Défini des valeurs de type STRING en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
       --strict                    Échoue en cas d'avertissements
   -f, --values strings            Spécifie les valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
-      --with-subcharts            Vérrifie les sous-charts dépendants
+      --with-subcharts            Vérifie les sous-charts dépendants
 ```
 
 ### Options héritées des commandes parents

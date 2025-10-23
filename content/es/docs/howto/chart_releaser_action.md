@@ -38,7 +38,7 @@ helm install my-<chart-name> <alias>/<chart-name>
 ```
 Para desinstalar el chart:
 ```
-helm delete my-<chart-name>
+helm uninstall my-<chart-name>
 ```
 
 Los charts se publicarán en un sitio web con una URL como esta:
