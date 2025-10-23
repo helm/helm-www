@@ -701,6 +701,7 @@ The following type conversion functions are provided by Helm:
 - `fromJson`: Convert a JSON string to an object.
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
 - `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
 - `fromYamlArray`: Convert a YAML array to a list.
 
@@ -826,6 +827,32 @@ greeting: |
 {{ end }}
 ```
 
+### toYaml, toYamlPretty
+
+The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, dict, or object) into an indented YAML string.
+
+> Note that `toYamlPretty` is functionally equivalent but will output YAML with additional indents for list elements
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
+```
+
 ### fromYamlArray
 
 The `fromYamlArray` function takes a YAML Array and returns a list that can be used in templates.
@@ -903,7 +930,8 @@ the template engine if there is a problem.
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. Inside string replacement, $ signs are
 interpreted as in Expand, so for instance $1 represents the text of the first
-submatch
+submatch. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -918,7 +946,8 @@ an error to the template engine if there is a problem.
 
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. The replacement string is substituted directly,
-without using Expand
+without using Expand. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -953,7 +982,8 @@ Helm provides some advanced cryptographic functions. They include
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
 [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
-[htpasswd](#htpasswd), [sha1sum](#sha1sum), and [sha256sum](#sha256sum).
+[htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), and
+[sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -994,6 +1024,16 @@ htpasswd "myUser" "myPassword"
 ```
 
 Note that it is insecure to store the password directly in the template.
+
+### randBytes
+
+The randBytes function accepts a count N and generates a cryptographically
+secure (uses crypto/rand) random sequence of N bytes. The sequence is returned
+as a base64 encoded string.
+
+```
+randBytes 24
+```
 
 ### derivePassword
 
@@ -1188,7 +1228,7 @@ Formats a given amount of seconds as a `time.Duration`.
 This returns 1m35s
 
 ```
-duration 95
+duration "95"
 ```
 
 ### durationRound
@@ -1567,7 +1607,7 @@ $myList := list 1 2 3 4 5
 The above creates a list of `[1 2 3 4 5]`.
 
 Helm provides the following list functions: [append
-(mustAppend)](#append-mustappend), [compact
+(mustAppend)](#append-mustappend), [chunk](#chunk), [compact
 (mustCompact)](#compact-mustcompact), [concat](#concat), [first
 (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
@@ -1784,6 +1824,16 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
+### chunk
+
+To split a list into chunks of given size, use `chunk size list`. This is useful for pagination.
+
+```
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
+
 ## Math Functions
 
 All math functions operate on `int64` values unless specified otherwise.
@@ -1942,6 +1992,8 @@ Helm has a single network function, `getHostByName`.
 The `getHostByName` receives a domain name and returns the ip address.
 
 `getHostByName "www.google.com"` would return the corresponding ip address of `www.google.com`.
+
+This function requires the `--enable-dns` option to be passed on the helm command line.
 
 ## File Path Functions
 

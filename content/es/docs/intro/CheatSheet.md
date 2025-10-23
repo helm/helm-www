@@ -89,7 +89,7 @@ helm search hub <keyword>         # Buscar charts en Artifact Hub o en la propia
 helm list                       # Lista todas las release. Usa el contexto del namespace actual si no se especifica.
 helm list -all                  # Muestra todas las releases sin aplicar ningún filtro, puede usar -a
 helm list -all-namespaces       # Muestra todas las releases de todos los namespaces, podemos usar -A
-helm -l key1=value1,key2=value2 # Selector (label query) para filtrar, soporta '=', '==', y '!='
+helm list -l key1=value1,key2=value2 # Selector (label query) para filtrar, soporta '=', '==', y '!='
 helm list --date                # Ordenar por fecha de publicación
 helm list --deployed            # Muestra las releases desplegadas. Si no se especifica otra, se activará automáticamente
 helm list --pending             # Muestra las releases pendientes
