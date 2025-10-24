@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "3.19.0",
+    "description": "L'etichetta per la versione 3"
+  },
+  "sidebar.tutorialSidebar.category.Introduction": {
+    "message": "Introduzione",
+    "description": "L'etichetta per la categoria Introduzione nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.How-to": {
+    "message": "How-to",
+    "description": "L'etichetta per la categoria How-to nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Topics": {
+    "message": "Topics",
+    "description": "L'etichetta per la categoria Topics nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Best Practices": {
+    "message": "Best Practices",
+    "description": "L'etichetta per la categoria Best Practices nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Chart Template Guide": {
+    "message": "Chart Template Guide",
+    "description": "L'etichetta per la categoria Chart Template Guide nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Helm Commands": {
+    "message": "Comandi Helm",
+    "description": "L'etichetta per la categoria Comandi Helm nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Go SDK": {
+    "message": "Go SDK",
+    "description": "L'etichetta per la categoria Go SDK nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Community": {
+    "message": "Community",
+    "description": "L'etichetta per la categoria Community nella barra laterale tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Frequently Asked Questions": {
+    "message": "Frequently Asked Questions",
+    "description": "L'etichetta per la categoria Frequently Asked Questions nella barra laterale tutorialSidebar"
+  }
+}

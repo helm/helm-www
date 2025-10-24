@@ -1,0 +1,90 @@
+{
+  "link.title.Helm Project": {
+    "message": "Helm Project",
+    "description": "Il titolo della colonna dei link a piè di pagina con titolo=Helm Project nel piè di pagina"
+  },
+  "link.title.Charts": {
+    "message": "Charts",
+    "description": "Il titolo della colonna dei link a piè di pagina con titolo=Charts nel piè di pagina"
+  },
+  "link.title.Development": {
+    "message": "Development",
+    "description": "Il titolo della colonna dei link a piè di pagina con titolo=Development nel piè di pagina"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "Il titolo della colonna dei link a piè di pagina con titolo=Community nel piè di pagina"
+  },
+  "link.item.label.Source code": {
+    "message": "Codice sorgente",
+    "description": "L'etichetta del link a piè di pagina con label=Codice sorgente che rimanda a https://github.com/helm/helm"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "L'etichetta del link a piè di pagina con label=Blog che rimanda al blog"
+  },
+  "link.item.label.Events": {
+    "message": "Eventi",
+    "description": "L'etichetta del link a piè di pagina con label=Events che rimanda a https://www.cncf.io/community/kubecon-cloudnativecon-events/"
+  },
+  "link.item.label.Code of Conduct": {
+    "message": "Code of Conduct",
+    "description": "L'etichetta del link a piè di pagina con label=Code of Conduct che rimanda a https://github.com/cncf/foundation/blob/master/code-of-conduct.md"
+  },
+  "link.item.label.Introduction": {
+    "message": "Introduction",
+    "description": "L'etichetta del link a piè di pagina con label=Introduction che rimanda a docs/intro"
+  },
+  "link.item.label.Chart tips & tricks": {
+    "message": "Chart tips & tricks",
+    "description": "L'etichetta del link a piè di pagina con label=Chart tips & tricks che rimanda a #"
+  },
+  "link.item.label.Developing Charts": {
+    "message": "Developing Charts",
+    "description": "L'etichetta del link a piè di pagina con label=Developing Charts che rimanda a #"
+  },
+  "link.item.label.Search 800+ Charts": {
+    "message": "Search 800+ Charts",
+    "description": "L'etichetta del link a piè di pagina con label=Search 800+ Charts che rimanda a https://artifacthub.io/"
+  },
+  "link.item.label.Slack (#helm-dev)": {
+    "message": "Slack (#helm-dev)",
+    "description": "L'etichetta del link a piè di pagina con label=Slack (#helm-dev) che rimanda a https://kubernetes.slack.com/messages/C51E88VDG"
+  },
+  "link.item.label.Contribution Guide": {
+    "message": "Contribution Guide",
+    "description": "L'etichetta del link a piè di pagina con label=Contribution Guide che rimanda a https://github.com/helm/helm/blob/main/CONTRIBUTING.md"
+  },
+  "link.item.label.Maintainers": {
+    "message": "Maintainers",
+    "description": "L'etichetta del link a piè di pagina con label=Maintainers che rimanda a https://github.com/helm/helm/blob/main/OWNERS"
+  },
+  "link.item.label.Weekly Meetings": {
+    "message": "Weekly Meetings",
+    "description": "L'etichetta del link a piè di pagina con label=Weekly Meetings che rimanda a https://github.com/helm/community/blob/main/communication.md#meetings"
+  },
+  "link.item.label.GitHub Community": {
+    "message": "GitHub Community",
+    "description": "L'etichetta del link a piè di pagina con label=GitHub Community che rimanda a https://github.com/helm/community"
+  },
+  "link.item.label.Slack (#helm-users)": {
+    "message": "Slack (#helm-users)",
+    "description": "L'etichetta del link a piè di pagina con label=Slack (#helm-users) che rimanda a https://kubernetes.slack.com/"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "L'etichetta del link a piè di pagina con label=Stack Overflow che rimanda a https://stackoverflow.com/questions/tagged/kubernetes-helm"
+  },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "L'etichetta del link a piè di pagina con label=X che rimanda a https://x.com/helmpack"
+  },
+  "copyright": {
+    "message": "<p>Noi siamo un progetto graduated della <a href=\"https://www.cncf.io/\">Cloud Native Computing Foundation</a>.</p><p>© Helm Authors 2025. Documentazione distribuita sotto licenza <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a></p><p>© 2025 The Linux Foundation. Tutti i diritti riservati. The Linux Foundation ha registrato marchi commerciali e utilizza marchi commerciali. Per un elenco dei marchi commerciali di The Linux Foundation, consultare la nostra pagina <a href=\"https://www.linuxfoundation.org/trademark-usage/\">Trademark Usage</a>.</p>",
+    "description": "Il copyright a piè di pagina"
+  },
+  "logo.alt": {
+    "message": "CNCF Logo",
+    "description": "Testo alternativo al logo a piè di pagina"
+  }
+}

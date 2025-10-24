@@ -1,0 +1,600 @@
+{
+  "home.about.whatIsHelm": {
+    "message": "Helm ti aiuta a gestire le applicazioni Kubernetes: Helm Charts ti aiuta a definire, installare e aggiornare anche le applicazioni Kubernetes più complesse.",
+    "description": "Che cos'è Helm? Primo paragrafo"
+  },
+  "home.about.chartsDescription": {
+    "message": "I chart sono facili da creare, aggiornare, condividere e pubblicare: inizia a usare Helm e smetti di copiare e incollare.",
+    "description": "Che cos'è Helm? Paragrafo Charts"
+  },
+  "home.about.cncf": {
+    "message": "Helm è un progetto graduated del {cncfLink} ed è gestito dalla {helmCommunityLink}.",
+    "description": "Che cos'è Helm? Paragrafo CNCF Graduated Project"
+  },
+  "home.about.cncf.helmCommunityLink": {
+    "message": "community Helm",
+    "description": "Link alla community Helm"
+  },
+  "home.about.learnMore": {
+    "message": "Learn more:",
+    "description": "Etichetta Learn more"
+  },
+  "home.about.learnMore.helmArchitectureLink": {
+    "message": "Architettura Helm",
+    "description": "Link Architettura Helm"
+  },
+  "home.about.learnMore.quickStartGuideLink": {
+    "message": "Guida rapida",
+    "description": "Link alla Guida rapida"
+  },
+  "home.about.learnMore.videoLink": {
+    "message": "Video: Un'introduzione a Helm",
+    "description": "Link a Video: Un'introduzione a Helm"
+  },
+  "home.about.title": {
+    "message": "Che cos'è Helm?",
+    "description": "Titolo Che cos'è Helm?"
+  },
+  "home.gettingStarted.title": {
+    "message": "Per iniziare",
+    "description": "titolo sezione Per iniziare"
+  },
+  "home.gettingStarted.getHelmTitle": {
+    "message": "Get Helm",
+    "description": "Titolo sezione Get Helm"
+  },
+  "home.gettingStarted.installHelm": {
+    "message": "Installa Helm con un gestore di pacchetti o {downloadLink}.",
+    "description": "Frase Installa Helm con un gestore di pacchetti o con link per il download."
+  },
+  "home.gettingStarted.installHelm.downloadLink": {
+    "message": "scaricare un file binario",
+    "description": "Link scaricare un file binario"
+  },
+  "home.gettingStarted.postInstall.instructions": {
+    "message": "Una volta installato, decomprimi il binario helm e aggiungilo al tuo PATH e sei pronto per partire! Controlla {docsLink} per ulteriori {installationLink} e {usageLink}.",
+    "description": "Istruzioni dopo l'installazione di Helm"
+  },
+  "home.gettingStarted.postInstall.docsLink": {
+    "message": "documenti",
+    "description": "Link alla documentazione di installazione"
+  },
+  "home.gettingStarted.postInstall.installationLink": {
+    "message": "installazione",
+    "description": "Link alle istruioni di installazione"
+  },
+  "home.gettingStarted.postInstall.usageLink": {
+    "message": "istruzioni di utilizzo",
+    "description": "Link alle istruzioni di utilizzo"
+  },
+  "home.gettingStarted.getChartsTitle": {
+    "message": "Get Charts",
+    "description": "Titolo Iniziare con Get Charts"
+  },
+  "home.gettingStarted.artifactHub": {
+    "message": "Visita {artifactHubLink} per esplorare {helmChartsLink} da numerosi repository pubblici.",
+    "description": "Link ad Artifact Hub"
+  },
+  "home.gettingStarted.artifactHub.helmChartsLink": {
+    "message": "Helm charts",
+    "description": "Link Helm charts"
+  },
+  "home.header.tagline": {
+    "message": "Il gestore di pacchetti per Kubernetes",
+    "description": "tagline Helm"
+  },
+  "home.header.subtitle": {
+    "message": "Helm è il modo migliore per trovare, condividere e utilizzare software creato per",
+    "description": "sottotitolo Home page"
+  },
+  "home.features.manageComplexity": {
+    "message": "Gestire la complessità",
+    "description": "titolo sezione Gestire la complessità"
+  },
+  "home.features.manageComplexity.description": {
+    "message": "Charts descrivono anche le app più complesse, consentono un'installazione ripetibile delle applicazioni e fungono da unico punto di riferimento autorevole.",
+    "description": "Descrizione sezione Gestire la complessità"
+  },
+  "home.features.easyUpdates": {
+    "message": "Aggiornamenti facili",
+    "description": "Titolo sezione Aggiornamenti facili"
+  },
+  "home.features.easyUpdates.description": {
+    "message": "Elimina il fastidio degli aggiornamenti con aggiornamenti in loco e hook personalizzati.",
+    "description": "Descrizione sezione Aggiornamenti facili"
+  },
+  "home.features.simpleSharing": {
+    "message": "Condivisione semplice",
+    "description": "Titolo sezione Condivisione semplice"
+  },
+  "home.features.simpleSharing.description": {
+    "message": "I Charts sono facili da versionare, condividere e ospitare su server pubblici o privati.",
+    "description": "Descrizione sezione Condivisione semplice"
+  },
+  "home.features.rollbacks": {
+    "message": "Rollbacks",
+    "description": "titolo sezione Rollbacks"
+  },
+  "home.features.rollbacks.description": {
+    "message": "Utilizza {helmRollback} per ripristinare facilmente una versione precedente di una release.",
+    "description": "Descrizione sezione Rollbacks"
+  },
+  "home.features.title": {
+    "message": "Features",
+    "description": "Titolo sezione Features"
+  },
+  "home.support.title": {
+    "message": "Supporters",
+    "description": "Titolo sezione Community support"
+  },
+  "home.support.subtitle": {
+    "message": "Helm è supportato e sviluppato da una comunità di oltre 400 sviluppatori.",
+    "description": "Sottotitolo sezione Community support"
+  },
+  "home.support.maintainers": {
+    "message": "...e {maintainersLink}.",
+    "description": "Link a core maintainers"
+  },
+  "home.support.maintainersLink": {
+    "message": "many other wonderful helm core maintainers",
+    "description": "Core maintainers link text"
+  },
+  "home.community.nextFeatureRelease": {
+    "message": "Next Feature Release",
+    "description": "Next Feature Release section title"
+  },
+  "home.community.nextFeatureRelease.version": {
+    "message": "v4.0.0",
+    "description": "Next Feature Release version"
+  },
+  "home.community.nextFeatureRelease.calendar": {
+    "message": "Release Calendar",
+    "description": "Release Calendar link"
+  },
+  "home.community.events": {
+    "message": "Events",
+    "description": "Events section title"
+  },
+  "home.community.upcomingEventsSubtitle": {
+    "message": "Upcoming Events",
+    "description": "Upcoming Events subtitle"
+  },
+  "home.community.pastEventsSubtitle": {
+    "message": "Past Events",
+    "description": "Past Events subtitle"
+  },
+  "home.community.sigApps": {
+    "message": "SIG Apps",
+    "description": "SIG Apps section title"
+  },
+  "home.community.sigApps.description": {
+    "message": "They {meetLink} to demo and discuss tools and projects. Community meetings are recorded and {youtubeLink}.",
+    "description": "SIG Apps meeting description"
+  },
+  "home.community.sigApps.meetLink": {
+    "message": "meet each week",
+    "description": "Link to SIG Apps meetings"
+  },
+  "home.community.sigApps.youtubeLink": {
+    "message": "shared to YouTube",
+    "description": "Link to YouTube recordings"
+  },
+  "home.community.developerStandups": {
+    "message": "Developer Standups"
+  },
+  "home.community.developerStandups.time": {
+    "message": "Thursdays 9:30-10am (PT)",
+    "description": "Developer Standups day and time"
+  },
+  "home.community.developerStandups.description": {
+    "message": "These meetings are open to all. Check the {communityRepoLink} for notes and details.",
+    "description": "Developer Standups description with community repo link"
+  },
+  "home.community.developerStandups.communityRepoLink": {
+    "message": "community repo",
+    "description": "Community repo link"
+  },
+  "home.community.slack.join": {
+    "message": "{slackLink} to join the Kubernetes Slack team.",
+    "description": "How to join the Kubernetes Slack team with slack link"
+  },
+  "home.community.slack.join.slackLink": {
+    "message": "Request access here",
+    "description": "Request access to slack link"
+  },
+  "home.community.slack.helmUsers.description": {
+    "message": "Discussion around using Helm, working with charts and solving common errors.",
+    "description": "helm-users slack channel description"
+  },
+  "home.community.slack.helmDevelopment.description": {
+    "message": "Topics regarding Helm development, ongoing PRs, releases, etc.",
+    "description": "helm-dev slack channel description"
+  },
+  "home.community.slack.charts.description": {
+    "message": "Discussion for users and contributors to Helm Charts.",
+    "description": "charts slack channel description"
+  },
+  "home.community.contributing": {
+    "message": "Contributing",
+    "description": "Contributing section title"
+  },
+  "home.community.contributing.description": {
+    "message": "Helm always welcomes new contributions to the project!",
+    "description": "Contributing section description"
+  },
+  "home.community.contributing.whereToBegin": {
+    "message": "Where to begin?",
+    "description": "Where to begin? section title"
+  },
+  "home.community.contributing.whereToBegin.description": {
+    "message": "Helm is a big project with a lot of users and contributors. It can be a lot to take in!",
+    "description": "Where to begin? section description"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssues": {
+    "message": "We have a list of {goodFirstIssuesLink} if you want to help but don't know where to start.",
+    "description": "Good first issues sentence with link"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
+    "message": "good first issues",
+    "description": "Good first issues link"
+  },
+  "home.community.contributing.whatDoIDo": {
+    "message": "What do I do?",
+    "description": "What do I do? section title"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuide": {
+    "message": "Before you contribute some code, please read our {contributionGuideLink}. It goes over the processes around creating and reviewing pull requests.",
+    "description": "What do I do? contribution guide description"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuideLink": {
+    "message": "Contribution Guide",
+    "description": "Contribution Guide link"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommits": {
+    "message": "After you write some code, please {signYourCommitsLink} to ensure Helm adheres to the {dcoLink} agreement used by the {cncfLink}.",
+    "description": "What do I do? sign your commits description"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommitsLink": {
+    "message": "sign your commits",
+    "description": "Sign your commits link"
+  },
+  "home.community.title": {
+    "message": "Join the Community",
+    "description": "Join the Community title"
+  },
+  "home.community.subtitle": {
+    "message": "More information about the Helm project, and how to contribute.",
+    "description": "Join the Community subtitle"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Pagina principale",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.blog.list.pageTitle": {
+    "message": "Blog",
+    "description": "The word \"Blog\" in breadcrumbs"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Briciole di pane",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Navigazione dei post recenti del blog",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Su questa pagina",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Questa pagina è andata in crash.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Torna indietro all'inizio",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archivio",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archivio",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Navigazione nella pagina dei post del blog ",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Post più recenti",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Post più vecchi",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Navigazione nella pagina dei post del blog ",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Post più recente",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Post più vecchio",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Guarda tutte le etichette",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "system mode",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "modalità luce",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "Modalità scura",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Passa dalla modalità scura a quella chiara (currently {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 elemento|{count} elementi",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Un documento etichettato|{count} documenti etichettati",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} con \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Questa è documentazione inedita per {siteTitle} versione {versionLabel}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Questa è la documentazione per {siteTitle} {versionLabel}, che non è più attivamente mantenuta.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Per la documentazione aggiornata, guarda la {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "ultima versione",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Versione: {versionLabel}"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Pagina del documento",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Precedente",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Successivo",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.common.editThisPage": {
+    "message": "Modifica questa pagina",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Link diretto a {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " il {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " da {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Ultimo aggiornamento{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Pagina non trovata",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versioni",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Etichette:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "attenzione",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "pericolo",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "informazioni",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "note",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "suggerimento",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "warning",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Chiudi",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Expand sidebar category '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Collapse sidebar category '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(opens in new tab)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NotFound.p1": {
+    "message": "Non siamo riusciti a trovare quello che stavi cercando.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Contatta il proprietario del sito che ti ha collegato all'URL originale e fagli sapere che il loro collegamento è interrotto.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Principale",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Linguaggio",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Leggi di più",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Leggi di più su {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Lettura di 1 minuto|{readingTime} minuti di lettura",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Attiva/disattiva a capo automatico",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copia",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copiato",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copia il codice negli appunti",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collassa la barra laterale",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collassa la barra laterale",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Barra laterale dei documenti",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Chiudi la barra di navigazione",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Expand the dropdown",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Collapse the dropdown",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Indietro al menu principale",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Attiva/disattiva la barra di navigazione",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Espandi la barra laterale",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Espandi la barra laterale",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Un post|{count} post",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} etichettati con \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Authors",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "View All Authors",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Pagina non in elenco",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Questa pagina non è in elenco. I motori di ricerca non lo indicheranno e solo gli utenti con collegamento diretto possono accedervi.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Draft page",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Prova di nuovo",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Passa al contenuto principale",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Etichette",
+    "description": "The title of the tag list page"
+  }
+}
