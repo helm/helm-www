@@ -1,0 +1,39 @@
+/* Float right with sensible sizing and margins; text wraps around */
+.float-right {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  max-width: 420px;
+  width: 50%;
+}
+
+/* Float left variant */
+.float-left {
+  float: left;
+  margin: 0 1rem 1rem 0;
+  max-width: 420px;
+  width: 50%;
+}
+
+/* Mobile: disable float and make the image full-width for readability */
+@media (max-width: 768px) {
+  .float-right,
+  .float-left {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+}
+
+/* Optional: ensure images don’t overflow their container */
+.float-right img,
+.float-left img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional clear utility: add where you want to stop wrapping below */
+.clear-wrap {
+  clear: both;
+}

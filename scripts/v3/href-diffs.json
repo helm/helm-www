@@ -1,0 +1,188 @@
+[
+  {
+    "line": 5,
+    "fileName": "chart_best_practices/dependencies.md",
+    "before": "../topics/plugins#downloader-plugins",
+    "after": "../topics/plugins.md#downloader-plugins"
+  },
+  {
+    "line": 6,
+    "fileName": "chart_template_guide/accessing_files.md",
+    "before": "/docs/chart_template_guide/subcharts_and_globals.md",
+    "after": "subcharts_and_globals.md"
+  },
+  {
+    "line": 7,
+    "fileName": "chart_template_guide/builtin_objects.md",
+    "before": "/docs/topics/charts.md#the-chartyaml-file",
+    "after": "../topics/charts.md#the-chartyaml-file"
+  },
+  {
+    "line": 8,
+    "fileName": "chart_template_guide/builtin_objects.md",
+    "before": "/docs/chart_template_guide/accessing_files.md",
+    "after": "accessing_files.md"
+  },
+  {
+    "line": 9,
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "../../topics/charts",
+    "after": "../topics/charts"
+  },
+  {
+    "line": 10,
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "_index.md",
+    "after": "../"
+  },
+  {
+    "line": 11,
+    "fileName": "chart_template_guide/subcharts_and_globals.md",
+    "before": "/docs/topics/library_charts.md",
+    "after": "../topics/library_charts.md"
+  },
+  {
+    "line": 13,
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../topics/charts/",
+    "after": "../topics/charts.md"
+  },
+  {
+    "line": 14,
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../topics/charts_hooks/",
+    "after": "../topics/charts_hooks.md"
+  },
+  {
+    "line": 15,
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../howto/charts_tips_and_tricks/",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "line": 16,
+    "fileName": "chart_template_guide/function_list.md",
+    "before": "functions_and_pipelines.md/#using-the-lookup-function",
+    "after": "functions_and_pipelines.md#using-the-lookup-function"
+  },
+  {
+    "line": 17,
+    "fileName": "howto/chart_repository_sync_example.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "line": 18,
+    "fileName": "howto/chart_repository_sync_example.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "line": 25,
+    "fileName": "intro/using_helm.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "line": 33,
+    "fileName": "topics/advanced.md",
+    "before": "/docs/permissions_sql_storage_backend/",
+    "after": "permissions_sql_storage_backend.md"
+  },
+  {
+    "line": 34,
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/topics/registries.md",
+    "after": "registries.md"
+  },
+  {
+    "line": 35,
+    "fileName": "topics/chart_repository.md",
+    "before": "quickstart.md",
+    "after": "../intro/quickstart.md"
+  },
+  {
+    "line": 36,
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "line": 38,
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/howto/chart_releaser_action.md",
+    "after": "../howto/chart_releaser_action.md"
+  },
+  {
+    "line": 39,
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/howto/chart_repository_sync_example.md",
+    "after": "../howto/chart_repository_sync_example.md"
+  },
+  {
+    "line": 40,
+    "fileName": "topics/chart_tests.md",
+    "before": "/docs/helm/helm_create",
+    "after": "../helm/helm_create.md"
+  },
+  {
+    "line": 41,
+    "fileName": "topics/chart_tests.md",
+    "before": "/docs/charts_hooks/",
+    "after": "charts_hooks.md"
+  },
+  {
+    "line": 42,
+    "fileName": "topics/charts.md",
+    "before": "/docs/topics/library_charts.md",
+    "after": "library_charts.md"
+  },
+  {
+    "line": 43,
+    "fileName": "topics/charts.md",
+    "before": "/docs/howto/charts_tips_and_tricks.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "line": 44,
+    "fileName": "topics/charts.md",
+    "before": "/docs/howto/charts_tips_and_tricks.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "line": 45,
+    "fileName": "topics/charts_hooks.md",
+    "before": "/docs/chart_tests/",
+    "after": "chart_tests.md"
+  },
+  {
+    "line": 46,
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "line": 47,
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "line": 48,
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/chart_template_guide/named_templates.md",
+    "after": "../chart_template_guide/named_templates.md"
+  },
+  {
+    "line": 49,
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/chart_template_guide/subcharts_and_globals.md",
+    "after": "../chart_template_guide/subcharts_and_globals.md"
+  },
+  {
+    "line": 50,
+    "fileName": "topics/plugins.md",
+    "before": "related.md#helm-plugins",
+    "after": "../community/related.md#helm-plugins"
+  }
+]

@@ -1,0 +1,118 @@
+adamkorczynski:
+  name: Adam Korczynski
+  image_url: https://github.com/AdamKorcz.png
+  page: true
+  socials:
+    github: AdamKorcz
+    linkedin: adam-korczynski-731909119
+andrewblock:
+  name: Andrew Block
+  image_url: https://github.com/sabre1041.png
+  page: true
+  socials:
+    github: sabre1041
+    linkedin: andrewsblock
+    # keybase: sabre1041
+    website: https://t.co/utJRRBeHm1
+bridgetkromhout:
+  name: Bridget Kromhout
+  image_url: https://github.com/bridgetkromhout.png
+  page: true
+  socials:
+    github: bridgetkromhout
+    linkedin: bridgetkromhout
+davidkorczynski:
+  name: David Korczynski
+  image_url: https://github.com/davidkorczynski.png
+  page: true
+  socials:
+    github: davidkorczynski
+    linkedin: david-korczynski-875a4957
+helmmaintainers:
+  name: Helm Maintainers
+  image_url: https://raw.githubusercontent.com/helm/community/refs/heads/main/art/images/Logo-Tweak-Dark.png
+  page: true
+  socials:
+    github: helm
+    website: https://helm.sh
+joshdolitsky:
+  name: Josh Dolitsky
+  image_url: https://github.com/jdolitsky.png
+  page: true
+  socials:
+    github: jdolitsky
+    linkedin: jdolitsky
+    # keybase: jdolitsky
+karenchu:
+  name: Karen Chu
+  image_url: https://github.com/karenhchu.png
+  page: true
+  socials:
+    github: karenhchu
+    linkedin: karenhchu
+martinhickey:
+  name: Martin Hickey
+  image_url: https://github.com/hickeyma.png
+  page: true
+  socials:
+    github: hickeyma
+    linkedin: martin-hickey-b64a374
+    website: https://hickeyma.github.io/
+mattbutcher:
+  name: Matt Butcher
+  image_url: https://github.com/technosophos.png
+  page: true
+  socials:
+    github: technosophos
+    linkedin: mattbutcher
+    # keybase: technosophos
+    website: http://technosophos.com/
+mattfarina:
+  name: Matt Farina
+  image_url: https://github.com/mattfarina.png
+  page: true
+  socials:
+    github: mattfarina
+    linkedin: matthewfarina
+    # keybase: mattfarina
+    website: https://mattfarina.com/
+mattfisher:
+  name: Matt Fisher
+  image_url: https://github.com/bacongobbler.png
+  page: true
+  socials:
+    github: bacongobbler
+    linkedin: bacongobbler
+    website: https://blog.bacongobbler.com/
+rimasmocevicius:
+  name: Rimas Mocevicius
+  image_url: https://github.com/rimusz.png
+  page: true
+  socials:
+    github: rimusz
+    linkedin: rimantasmocevicius
+    website: https://rimusz.net/
+scottrigby:
+  name: Scott Rigby
+  image_url: https://github.com/scottrigby.png
+  page: true
+  socials:
+    github: scottrigby
+    linkedin: scottrigby
+    # keybase: r6by
+    website: http://basekamp.com/
+terryhowe:
+  name: Terry Howe
+  image_url: https://github.com/terryhowe.png
+  page: true
+  socials:
+    github: terryhowe
+    linkedin: terrylhowe
+    website: https://terryhowe.wordpress.com/
+viciglesias:
+  name: Vic Iglesias
+  image_url: https://github.com/viglesiasce.png
+  page: true
+  socials:
+    github: viglesiasce
+    linkedin: viglesias

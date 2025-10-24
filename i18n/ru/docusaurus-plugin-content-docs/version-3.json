@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "3.19.0",
+    "description": "The label for version 3"
+  },
+  "sidebar.tutorialSidebar.category.Introduction": {
+    "message": "Введение",
+    "description": "The label for category Introduction in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.How-to": {
+    "message": "Как делать",
+    "description": "The label for category How-to in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Topics": {
+    "message": "Темы",
+    "description": "The label for category Topics in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Best Practices": {
+    "message": "Лучшие практики",
+    "description": "The label for category Best Practices in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Chart Template Guide": {
+    "message": "Руководство по шаблонам чартов",
+    "description": "The label for category Chart Template Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Helm Commands": {
+    "message": "Команды Helm",
+    "description": "The label for category Helm Commands in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Go SDK": {
+    "message": "Go SDK",
+    "description": "The label for category Go SDK in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Community": {
+    "message": "Сообщество",
+    "description": "The label for category Community in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Frequently Asked Questions": {
+    "message": "Часто задаваемые вопросы",
+    "description": "The label for category Frequently Asked Questions in sidebar tutorialSidebar"
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "line": 26,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/install.go",
+    "after": "<Install />"
+  },
+  {
+    "line": 27,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/upgrade.go",
+    "after": "<Upgrade />"
+  },
+  {
+    "line": 28,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/uninstall.go",
+    "after": "<Uninstall />"
+  },
+  {
+    "line": 29,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/list.go",
+    "after": "<List />"
+  },
+  {
+    "line": 30,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/pull.go",
+    "after": "<Pull />"
+  },
+  {
+    "line": 31,
+    "fileName": "sdk/examples.mdx",
+    "before": "sdkexamples/main.go",
+    "after": "<Main />"
+  },
+  {
+    "line": 32,
+    "fileName": "sdk/gosdk.md",
+    "before": "./examples.md",
+    "after": "examples.mdx"
+  }
+]

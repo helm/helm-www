@@ -1,0 +1,57 @@
+[
+  {
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "../charts.md",
+    "after": "../developing_charts/developing_charts.md"
+  },
+  {
+    "fileName": "chart_template_guide/subcharts_and_globals.md",
+    "before": "../charts.md",
+    "after": "../developing_charts/developing_charts.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../charts.md",
+    "after": "../developing_charts/developing_charts.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../charts_hooks.md",
+    "after": "../developing_charts/charts_hooks.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../charts_tips_and_tricks.md",
+    "after": "../developing_charts/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "developing_charts/chart_repository.md",
+    "before": "quickstart.md",
+    "after": "../using_helm/using_helm.md"
+  },
+  {
+    "fileName": "developing_charts/chart_repository.md",
+    "before": "charts.md",
+    "after": "developing_charts.md"
+  },
+  {
+    "fileName": "using_helm/securing_installation.md",
+    "before": "provenance.md",
+    "after": "../developing_charts/provenance.md"
+  },
+  {
+    "fileName": "using_helm/kubernetes_apis.md",
+    "before": "developers#grpc-and-protobuf",
+    "after": "../developers.md#grpc-and-protobuf"
+  },
+  {
+    "fileName": "using_helm/install.md",
+    "before": "#kubernetes-distribution-guide",
+    "after": "kubernetes_distros.md"
+  },
+  {
+    "fileName": "using_helm/using_helm.md",
+    "before": "#Install-Helm",
+    "after": "install.md"
+  }
+]
