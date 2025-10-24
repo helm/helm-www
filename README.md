@@ -9,8 +9,8 @@ This is where you'll find all of the assets that make up [helm.sh](https://helm.
 Helm.sh is a simple [Hugo](https://gohugo.io/) static site, built with a custom theme. To run the website locally, you'll need to first [install](https://gohugo.io/getting-started) Hugo extended edition and any dependencies.
 
 ```
-brew install hugo yarn node
-yarn install
+brew install hugo node
+npm install
 ```
 
 You can then compile and run the site locally:
