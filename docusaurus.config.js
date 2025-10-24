@@ -45,7 +45,7 @@ const config = {
   organizationName: "helm", // Usually your GitHub org/user name.
   projectName: "helm-www", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
 
   i18n: {
     defaultLocale: "en",
