@@ -9,7 +9,7 @@
 Helm.sh는 사용자 지정 테마를 사용하여 구축된 간단한 [휴고(Hugo)](https://gohugo.io/) 정적 사이트입니다. 웹 사이트를 로컬에서 실행하려면 먼저 휴고와 이와 관련된 모듈(dependencies)을 [설치](https://gohugo.io/getting-started)해야 합니다.
 
 ```
-brew install hugo
+brew install hugo yarn node
 yarn install
 ```
 
