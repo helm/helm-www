@@ -156,9 +156,9 @@ templates, it is best to name your templates with _chart specific names_. A
 popular naming convention is to prefix each defined template with the name of
 the chart: `{{ define "mychart.labels" }}`.
 
-## Setting the scope of a template
+## Setting the context of a template
 
-In the template we defined above, we did not use any objects. We just used
+In the template we defined above, we did not use any objects from the dot context `.`. We just used
 functions. Let's modify our defined template to include the chart name and chart
 version:
 
@@ -173,7 +173,7 @@ version:
 {{- end }}
 ```
 
-If we render this, we will get an error like this:
+If we render this with `template` as above, we will get an error like this:
 
 ```console
 $ helm install --dry-run moldy-jaguar ./mychart
@@ -197,17 +197,18 @@ metadata:
     version:
 ```
 
-What happened to the name and version? They weren't in the scope for our defined
-template. When a named template (created with `define`) is rendered, it will
-receive the scope passed in by the `template` call. In our example, we included
+What happened to the name and version? The value of `.` was empty while our named template was rendered.
+When a named template (created with 
+`define`) is rendered without a second parameter, its `.` is empty. In our example, we included
 the template like this:
 
 ```yaml
 {{- template "mychart.labels" }}
 ```
 
-No scope was passed in, so within the template we cannot access anything in `.`.
-This is easy enough to fix, though. We simply pass a scope to the template:
+No pipeline value was provided to its second parameter, so within the template `.` is empty.
+`$` will therefore also be empty.
+This is easy enough to fix, though. We simply pass a pipeline value as a second parameter to `template`:
 
 ```yaml
 apiVersion: v1
@@ -218,8 +219,8 @@ metadata:
 ```
 
 Note that we pass `.` at the end of the `template` call. We could just as easily
-pass `.Values` or `.Values.favorite` or whatever scope we want. But what we want
-is the top-level scope. In the context of the named template, `$` will refer
+pass `.Values` or `.Values.favorite` or any kind of pipeline. But in this example,
+we want to continue using the same value of `.`. In the context of the named template, `$` will refer
 to the scope you passed in and not some global scope.
 
 Now when we execute this template with `helm install --dry-run --debug
@@ -241,7 +242,26 @@ metadata:
 Now `{{ .Chart.Name }}` resolves to `mychart`, and `{{ .Chart.Version }}`
 resolves to `0.1.0`.
 
+In the earlier discussion of Flow Control and `with`, we mentioned that both `template` and `include` set `$` to the 
+same value as `.` when they start executing. For example, if we render the template as follows:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  {{- template "mychart.labels" .Values.foo }}
+```
+
+Then we cannot refer to values such as `$.Chart.Name` within "mychart.labels",
+because `$` has been set to `.Values.foo`. If we want to render a template with
+a specific value in its context, but still allow it to access top-level objects like `Chart`,
+we can construct a custom dict and pass it to the template:
+see [Charts Tips and Tricks](../../howto/charts_tips_and_tricks/).
+
 ## The `include` function
+
+`include` behaves the same with regard to `.` and `$` as `template`. See above for more info.
 
 Say we've defined a simple template that looks like this:
 

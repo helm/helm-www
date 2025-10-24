@@ -792,14 +792,13 @@ spec:
               value: {{ default "minio" .Values.storage }}
 ```
 
-### Scope, Dependencies, and Values
+### Context, Dependencies, and Values
 
-Values files can declare values for the top-level chart, as well as for any of
-the charts that are included in that chart's `charts/` directory. Or, to phrase
-it differently, a values file can supply values to the chart as well as to any
+Values files can declare values for the top-level chart, values for
+subcharts that are included in that chart's `charts/` directory, and to any
 of its dependencies. For example, the demonstration WordPress chart above has
 both `mysql` and `apache` as dependencies. The values file could supply values
-to all of these components:
+to each of these components:
 
 ```yaml
 title: "My WordPress Site" # Sent to the WordPress template
@@ -814,14 +813,13 @@ apache:
 
 Charts at a higher level have access to all of the variables defined beneath. So
 the WordPress chart can access the MySQL password as `.Values.mysql.password`.
-But lower level charts cannot access things in parent charts, so MySQL will not
+But lower level charts cannot access values from parent charts, so MySQL will not
 be able to access the `title` property. Nor, for that matter, can it access
 `apache.port`.
 
-Values are namespaced, but namespaces are pruned. So for the WordPress chart, it
-can access the MySQL password field as `.Values.mysql.password`. But for the
-MySQL chart, the scope of the values has been reduced and the namespace prefix
-removed, so it will see the password field simply as `.Values.password`.
+Whereas the top-level chart might refer to `.Values.mysql.password`, in the mysql
+chart `.Values.mysql` becomes just `.Values`, so it would refer to that value
+as `.Values.password` instead.
 
 #### Global Values
 
@@ -850,21 +848,22 @@ For example, the `mysql` templates may access `app` as `{{
 file above is regenerated like this:
 
 ```yaml
-title: "My WordPress Site" # Sent to the WordPress template
+# Availeble in the WordPress template as .Values.title
+title: "My WordPress Site"
 
 global:
   app: MyWordPress
 
-mysql:
+mysql: # Available in mysql templates as .Values
   global:
     app: MyWordPress
-  max_connections: 100 # Sent to MySQL
+  max_connections: 100
   password: "secret"
 
-apache:
+apache: # Available in apache templates as .Values
   global:
     app: MyWordPress
-  port: 8080 # Passed to Apache
+  port: 8080
 ```
 
 This provides a way of sharing one top-level variable with all subcharts, which

@@ -126,8 +126,9 @@ The value at the top level has now overridden the value of the subchart.
 There's an important detail to notice here. We didn't change the template of
 `mychart/charts/mysubchart/templates/configmap.yaml` to point to
 `.Values.mysubchart.dessert`. From that template's perspective, the value is
-still located at `.Values.dessert`. As the template engine passes values along,
-it sets the scope. So for the `mysubchart` templates, only values specifically
+still located at `.Values.dessert`. When the template engine renders a subchart,
+it passes an altered context object which provides the subchart Values under
+`.Values`. So, in the `mysubchart` templates, only values specifically
 for `mysubchart` will be available in `.Values`.
 
 Sometimes, though, you do want certain values to be available to all of the
