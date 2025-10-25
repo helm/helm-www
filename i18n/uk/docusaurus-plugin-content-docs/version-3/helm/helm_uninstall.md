@@ -1,9 +1,6 @@
 ---
-title: "Helm Uninstall"
+title: helm uninstall
 ---
-
-## helm uninstall
-
 видалити реліз
 
 ### Опис {#synopsis}
@@ -55,6 +52,6 @@ helm uninstall RELEASE_NAME [...] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

@@ -1,7 +1,7 @@
 ---
-title: "一般的な慣習"
-description: "チャートについての一般的な慣習です。"
-weight: 1
+title: 一般的な慣習
+description: チャートについての一般的な慣習です。
+sidebar_position: 1
 ---
 
 ベストプラクティスガイドのこの部分では一般的な慣習について説明します。

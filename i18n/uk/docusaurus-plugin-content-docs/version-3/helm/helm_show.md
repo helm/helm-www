@@ -1,9 +1,6 @@
 ---
-title: "Helm Show"
+title: helm show
 ---
-
-## helm show
-
 показати інформацію про чарт
 
 ### Опис {#synopsis}
@@ -39,11 +36,11 @@ title: "Helm Show"
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
-* [helm show all](helm_show_all.md) — показати всю інформацію про чарт
-* [helm show chart](helm_show_chart.md) — показати визначення чарту
-* [helm show crds](helm_show_crds.md) — показати CRD чарту
-* [helm show readme](helm_show_readme.md) — показати README чарту
-* [helm show values](helm_show_values.md) — показати значення чарту
+* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm show all](/helm/helm_show_all.md) — показати всю інформацію про чарт
+* [helm show chart](/helm/helm_show_chart.md) — показати визначення чарту
+* [helm show crds](/helm/helm_show_crds.md) — показати CRD чарту
+* [helm show readme](/helm/helm_show_readme.md) — показати README чарту
+* [helm show values](/helm/helm_show_values.md) — показати значення чарту
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

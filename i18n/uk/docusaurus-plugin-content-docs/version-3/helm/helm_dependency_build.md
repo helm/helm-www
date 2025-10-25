@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency Build"
+title: helm dependency build
 ---
-
-## helm dependency build
-
 перебудувати теку charts/ на основі файлу Chart.lock
 
 ### Опис {#synopsis}
@@ -50,6 +47,6 @@ helm dependency build CHART [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm dependency](helm_dependency.md) — керувати залежностями чарту
+* [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

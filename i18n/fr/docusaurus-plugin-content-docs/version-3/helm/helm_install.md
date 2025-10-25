@@ -1,9 +1,6 @@
 ---
-title: "Helm Install"
+title: helm install
 ---
-
-## helm install
-
 installe un chart
 
 ### Synopsis
@@ -144,4 +141,4 @@ helm install [NAME] [CHART] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes.
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes.

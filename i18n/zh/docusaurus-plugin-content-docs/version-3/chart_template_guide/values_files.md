@@ -1,7 +1,7 @@
 ---
-title: "Values 文件"
+title: Values 文件
 description: "--values参数操作说明"
-weight: 4
+sidebar_position: 4
 ---
 
 在上一部分我们了解了Helm模板提供的内置对象。其中一个是`Values`对象。该对象提供了传递值到chart的方法，

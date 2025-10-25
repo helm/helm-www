@@ -1,7 +1,7 @@
 ---
-title: "Kubernetes分发指南"
-description: "捕获在特定Kubernetes环境中使用Helm的有关信息"
-weight: 10
+title: Kubernetes分发指南
+description: 捕获在特定Kubernetes环境中使用Helm的有关信息
+sidebar_position: 10
 ---
 
 

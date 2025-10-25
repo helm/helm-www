@@ -1,7 +1,7 @@
 ---
-title: "헬름 문서 현지화"
-description: "헬름 문서 현지화를 위한 설명서"
-weight: 5
+title: 헬름 문서 현지화
+description: 헬름 문서 현지화를 위한 설명서
+sidebar_position: 5
 ---
 
 이 가이드에서는 헬름 문서를 현지화하는 방법에 대해 설명한다.
@@ -120,7 +120,7 @@ AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea
 파일에서 언어 변경을 구성한다.
 
 새로운 언어를 추가하려면 위에서 정의한 [두 글자
-언어 코드](./localization/#두-글자-언어-코드)를 사용하여 새로운 매개 변수 집합을
+언어 코드](/community/localization.md#두-글자-언어-코드)를 사용하여 새로운 매개 변수 집합을
 추가하자. 예:
 
 ```

@@ -1,15 +1,14 @@
 ---
-title: "Uso de Helm"
-description: "Explica los conceptos básicos de Helm.."
-weight: 3
+title: Uso de Helm
+description: Explica los conceptos básicos de Helm..
+sidebar_position: 3
 ---
 
 Esta guía explica los conceptos básicos del uso de Helm para administrar paquetes
-en su clúster de Kubernetes. Asume que ya has [instalado]({{< ref
-"install.md" >}}) el cliente de Helm.
+en su clúster de Kubernetes. Asume que ya has [instalado](/intro/install.md) el cliente de Helm.
 
 Si simplemente está interesado en ejecutar algunos comandos rápidos, es posible
-que desee comenzar con la [Guía de inicio rápido]({{< ref "quickstart.md" >}}).
+que desee comenzar con la [Guía de inicio rápido](/intro/quickstart.md).
 Este capítulo cubre los detalles de los comandos de Helm y explica cómo usar Helm.
 
 ## Tres Grandes Conceptos
@@ -310,7 +309,7 @@ nodeSelector:
 Las estructuras de datos profundamente anidadas pueden ser difíciles de expresar
 usando `--set`. Se alienta a los diseñadores de charts a considerar el uso de
 `--set` al diseñar el formato de un archivo `values.yaml`
-(lea más sobre [Archivos Values]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
+(lea más sobre [Archivos Values](/chart_template_guide/values_files.md)).
 
 ### Más Métodos de Instalación
 
@@ -461,7 +460,7 @@ Los repositorios se pueden eliminar con `helm repo remove`.
 
 ## Creación de sus Propios Charts
 
-La [Guía de Desarrollo de Chart]({{< relref path="/docs/topics/charts.md" lang="en" >}})
+La [Guía de Desarrollo de Chart](/topics/charts.md)
 explica cómo desarrollar sus propios charts. Pero puede comenzar rápidamente usando
 el comando `helm create`:
 
@@ -491,7 +490,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Los Charts empaquetados se pueden cargar en repositorios de charts. Consulte la
-documentación de los [Repositorios de Charts de Helm]({{< ref path="/docs/topics/chart_repository.md"  lang="en" >}})
+documentación de los [Repositorios de Charts de Helm](/topics/chart_repository.md)
 para obtener más detalles.
 
 ## Conclusión
@@ -503,5 +502,5 @@ la búsqueda, instalación, actualización y desinstalación. También ha cubier
 Para obtener más información sobre estos comandos, consulte la ayuda incorporada
 de Helm: `helm help`.
 
-En el [capítulo siguiente]({{< relref path="/docs/howto/charts_tips_and_tricks/_index.md" lang="en" >}}),
+En el [capítulo siguiente](/howto/charts_tips_and_tricks.md),
 analizamos el proceso de desarrollo de charts.

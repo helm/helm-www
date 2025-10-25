@@ -1,7 +1,9 @@
 ---
-title: "Guia de Início Rápido"
-description: "Como instalar e começar com os primeiros passos no Helm, incluindo instruções para Distros, Perguntas Frequentes e plugins."
-weight: 1
+title: Guia de Início Rápido
+description: >-
+  Como instalar e começar com os primeiros passos no Helm, incluindo instruções para Distros, Perguntas Frequentes e
+  plugins.
+sidebar_position: 1
 ---
 
 Esse guia cobre como você rapidamente pode começar a utilizar o Helm.
@@ -31,7 +33,7 @@ para a máxima diferença de versões suportadas entre o Helm e o Kubernetes.
 Faça o download do binário do cliente Helm. Você pode utilizar ferramentas
 como o `homebrew` ou pesquisar na [página oficial de _releases_ do Helm](https://github.com/helm/helm/releases).
 
-Para mais detalhes ou outras opções veja o [guia de instalação](./install.md).
+Para mais detalhes ou outras opções veja o [guia de instalação](/intro/install.md).
 
 ## Inicialize um Repositório para os Charts do Helm
 
@@ -85,8 +87,7 @@ Chart pode ser instalado diversas vezes em um mesmo cluster. Assim cada Chart po
 ser gerenciado e atualizado de forma independente.
 
 O comando `helm install` é bem poderoso e com muitas funcionalidades. Para saber
-mais acesse o [Guia de Utilização do Helm]({{< relref path="/docs/intro/using_helm.md"
- lang="en" >}})
+mais acesse o [Guia de Utilização do Helm](/intro/using_helm.md)
 
 ## Saiba mais sobre _Releases_
 

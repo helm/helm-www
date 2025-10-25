@@ -1,7 +1,7 @@
 ---
-title: "变量"
-description: "在模板中使用变量。"
-weight: 8
+title: 变量
+description: 在模板中使用变量。
+sidebar_position: 8
 ---
 
 函数、管道符、对象和控制结构都可以控制，我们转向很多编程语言中更基本的思想之一：变量。

@@ -1,9 +1,6 @@
 ---
-title: "Helm List"
+title: helm list
 ---
-
-## helm list
-
 liste les publications
 
 ### Synopsis
@@ -77,4 +74,4 @@ helm list [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

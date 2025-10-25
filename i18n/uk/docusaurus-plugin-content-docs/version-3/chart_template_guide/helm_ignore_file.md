@@ -1,7 +1,7 @@
 ---
-title: "Файл .helmignore"
-description: "Файл `.helmignore` використовується для вказівки файлів, які не слід включати у ваш Helm чарт."
-weight: 12
+title: Файл .helmignore
+description: Файл `.helmignore` використовується для вказівки файлів, які не слід включати у ваш Helm чарт.
+sidebar_position: 12
 ---
 
 Файл `.helmignore` використовується для вказівки файлів, які не слід включати у ваш Helm чарт.

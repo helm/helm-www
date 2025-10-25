@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency List"
+title: helm dependency list
 ---
-
-## helm dependency list
-
 liste les dépendances pour un chart donné
 
 ### Synopsis
@@ -49,4 +46,4 @@ helm dependency list CHART [flags]
 
 ### Voir également
 
-* [helm dependency](helm_dependency.md) - Gérer les dépendances d'un chart
+* [helm dependency](/helm/helm_dependency.md) - Gérer les dépendances d'un chart

@@ -1,9 +1,6 @@
 ---
-title: "Helm List"
+title: helm list
 ---
-
-## helm list
-
 Перегляд релізів
 
 ### Опис {#synopsis}
@@ -77,6 +74,6 @@ helm list [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

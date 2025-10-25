@@ -1,7 +1,7 @@
 ---
-title: "安装Helm"
-description: "了解如何安装并运行Helm"
-weight: 2
+title: 安装Helm
+description: 了解如何安装并运行Helm
+sidebar_position: 2
 ---
 
 该指南展示了如何安装Helm CLI。Helm可以用源码或构建的二进制版本安装。

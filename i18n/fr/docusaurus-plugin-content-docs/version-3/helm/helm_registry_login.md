@@ -1,9 +1,6 @@
 ---
-title: "Helm Registry Login"
+title: helm registry login
 ---
-
-## helm registry login
-
 Se connecter à un registre
 
 ### Synopsis
@@ -52,4 +49,4 @@ helm registry login [host] [flags]
 
 ### Voir également
 
-* [helm registry](helm_registry.md) - Se connecter et se déconnecter d'un registre
+* [helm registry](/helm/helm_registry.md) - Se connecter et se déconnecter d'un registre

@@ -123,7 +123,7 @@ If you have created a [provenance file](/topics/provenance.md) (`.prov`), and it
 automatically be uploaded to the registry upon `push`. This results in
 an extra layer on [the Helm chart manifest](#helm-chart-manifest).
 
-Users of the [helm-push plugin](https://github.com/chartmuseum/helm-push) (for uploading charts to [ChartMuseum](chart_repository.md#chartmuseum-repository-server))
+Users of the [helm-push plugin](https://github.com/chartmuseum/helm-push) (for uploading charts to [ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server))
 may experience issues, since the plugin conflicts with the new, built-in `push`.
 As of version v0.10.0, the plugin has been renamed to `cm-push`.
 
@@ -249,7 +249,7 @@ The following example contains a
 
 ## Migrating from chart repos
 
-Migrating from classic [chart repositories](chart_repository.md)
+Migrating from classic [chart repositories](/topics/chart_repository.md)
 (index.yaml-based repos) is as simple using `helm pull`, then using `helm push` to upload the resulting `.tgz` files to a registry.
 
 

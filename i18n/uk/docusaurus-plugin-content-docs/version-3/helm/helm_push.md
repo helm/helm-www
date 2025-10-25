@@ -1,9 +1,6 @@
 ---
-title: "Helm Push"
+title: helm push
 ---
-
-## helm push
-
 завантажити чарт на віддалений сервер
 
 ### Опис {#synopsis}
@@ -50,6 +47,6 @@ helm push [chart] [remote] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

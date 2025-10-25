@@ -1,7 +1,7 @@
 ---
-title: "레지스트리"
-description: "차트 배포를 위한 OCI 사용법을 설명한다."
-weight: 7
+title: 레지스트리
+description: 차트 배포를 위한 OCI 사용법을 설명한다.
+sidebar_position: 7
 ---
 
 헬름 3는 패키지 배포를 위해 <a href="https://www.opencontainers.org/"
@@ -232,5 +232,5 @@ $ cat ~/.cache/helm/registry/cache/blobs/sha256/31fb454efb3c69fafe53672598006790
 
 ## 차트 저장소에서 마이그레이션
 
-클래식 [차트 저장소]({{< ref path="chart_repository.md" lang="ko" >}}) (index.yaml 기반 저장소)에서 마이그레이션하는 작업은 `helm fetch` (헬름 2 CLI), `helm
+클래식 [차트 저장소](/topics/chart_repository.md) (index.yaml 기반 저장소)에서 마이그레이션하는 작업은 `helm fetch` (헬름 2 CLI), `helm
 chart save`, `helm chart push` 정도로 간단하다.

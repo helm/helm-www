@@ -1,7 +1,7 @@
 ---
-title: "Guide de démarrage rapide"
-description: "Comment installer et débuter sur Helm, comprends les instructions pour les distros, FAQs, et plugins."
-weight: 1
+title: Guide de démarrage rapide
+description: Comment installer et débuter sur Helm, comprends les instructions pour les distros, FAQs, et plugins.
+sidebar_position: 1
 ---
 
 Ce guide explique comment commencer rapidement à utiliser Helm.
@@ -25,7 +25,7 @@ Lisez la [Politique de prise en charge de la version Helm](https://helm.sh/docs/
 
 Télécharger le binaire de la dernière release de Helm. Vous pouvez également utiliser un gestionnaire de package tel que `homebrew`, ou regarder sur [la page des releases officielles](https://github.com/helm/helm/releases).
 
-Pour plus de détails, ou d'autre options d'installation rendez vous sur [le guide d'installation]({{< ref "install.md" >}}).
+Pour plus de détails, ou d'autre options d'installation rendez vous sur [le guide d'installation](/intro/install.md).
 
 ## Initialiser un dépot de charts Helm
 
@@ -63,7 +63,7 @@ Vous pouvez obtenir les informations simples des fonctionnalités de ce chart My
 
 Chaque fois que vous installez un chart, une nouvelle release est créée. Un chart peut donc être installé plusieurs fois sur le même cluster. Et chaque release peut être indépendamment gérée et mise à jour.
 
-La commande `helm install` est très puissante et possède beaucoup de fonctionnalités. Pour en apprendre plus sur cette commande lisez le [Guide d'utilisation de Helm]({{< ref "using_helm.md">}})
+La commande `helm install` est très puissante et possède beaucoup de fonctionnalités. Pour en apprendre plus sur cette commande lisez le [Guide d'utilisation de Helm](/intro/using_helm.md)
 
 ## Apprenez en plus sur le système de release
 

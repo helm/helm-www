@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Zsh"
+title: helm completion zsh
 ---
-
-## helm completion zsh
-
 Генерація скрипта автодоповнення для zsh
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm completion zsh [прапорці]
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm completion](helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
+* [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

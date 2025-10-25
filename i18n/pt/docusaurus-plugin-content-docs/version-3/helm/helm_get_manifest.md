@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Manifest"
+title: helm get manifest
 ---
-
-## helm get manifest
-
 Baixa o manifesto de uma dada _release_
 
 ### Sinopse
@@ -45,4 +42,4 @@ helm get manifest NOME_DA_RELEASE [argumentos]
 
 ### Veja Também
 
-* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm](/helm/helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.

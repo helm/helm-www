@@ -1,7 +1,7 @@
 ---
-title: "Шпаргалка"
-description: "Шпаргалка Helm"
-weight: 4
+title: Шпаргалка
+description: Шпаргалка Helm
+sidebar_position: 4
 ---
 
 Підказка Helm з усіма необхідними командами для керування програмою через Helm.

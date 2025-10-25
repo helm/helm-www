@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Chart"
+title: helm show chart
 ---
-
-## helm show chart
-
 показати визначення чарту
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm show chart [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm show](helm_show.md) — показати інформацію про чарт
+* [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

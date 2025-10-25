@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion"
+title: helm completion
 ---
-
-## helm completion
-
 Генерація скриптів автодоповнення для вказаної оболонки
 
 ### Опис {#synopsis}
@@ -39,10 +36,10 @@ title: "Helm Completion"
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
-* [helm completion bash](helm_completion_bash.md) — генерувати скрипт автодоповнення для bash
-* [helm completion fish](helm_completion_fish.md) — генерувати скрипт автодоповнення для fish
-* [helm completion powershell](helm_completion_powershell.md) — генерувати скрипт автодоповнення для powershell
-* [helm completion zsh](helm_completion_zsh.md) — генерувати скрипт автодоповнення для zsh
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm completion bash](/helm/helm_completion_bash.md) — генерувати скрипт автодоповнення для bash
+* [helm completion fish](/helm/helm_completion_fish.md) — генерувати скрипт автодоповнення для fish
+* [helm completion powershell](/helm/helm_completion_powershell.md) — генерувати скрипт автодоповнення для powershell
+* [helm completion zsh](/helm/helm_completion_zsh.md) — генерувати скрипт автодоповнення для zsh
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

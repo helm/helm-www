@@ -2321,7 +2321,7 @@ Helm includes functions for working with Kubernetes including
 `helm template` command it always returns an empty response.
 
 You can find more detail in the [documentation on the lookup
-function](functions_and_pipelines.md#using-the-lookup-function).
+function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function).
 
 ### .Capabilities.APIVersions.Has
 
@@ -2333,13 +2333,13 @@ Returns if an API version or resource is available in a cluster.
 ```
 
 More information is available on the [built-in object
-documentation](builtin_objects.md).
+documentation](/chart_template_guide/builtin_objects.md).
 
 ### File Functions
 
 There are several functions that enable you to get to non-special files within a
 chart. For example, to access application configuration files. These are
-documented in [Accessing Files Inside Templates](accessing_files.md).
+documented in [Accessing Files Inside Templates](/chart_template_guide/accessing_files.md).
 
 _Note, the documentation for many of these functions come from
 [Sprig](https://github.com/Masterminds/sprig). Sprig is a template function

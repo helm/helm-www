@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin"
+title: helm plugin
 ---
-
-## helm plugin
-
 встановлення, перегляд списку або видалення втулків Helm
 
 ### Опис {#synopsis}
@@ -39,10 +36,10 @@ title: "Helm Plugin"
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
-* [helm plugin install](helm_plugin_install.md) — встановити втулок Helm
-* [helm plugin list](helm_plugin_list.md) — переглянути встановлені втулки Helm
-* [helm plugin uninstall](helm_plugin_uninstall.md) — видалити один або кілька втулків Helm
-* [helm plugin update](helm_plugin_update.md) — оновити один або кілька втулків Helm
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm plugin install](/helm/helm_plugin_install.md) — встановити втулок Helm
+* [helm plugin list](/helm/helm_plugin_list.md) — переглянути встановлені втулки Helm
+* [helm plugin uninstall](/helm/helm_plugin_uninstall.md) — видалити один або кілька втулків Helm
+* [helm plugin update](/helm/helm_plugin_update.md) — оновити один або кілька втулків Helm
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

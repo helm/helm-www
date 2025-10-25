@@ -1,9 +1,6 @@
 ---
-title: "Helm Search Repo"
+title: helm search repo
 ---
-
-## helm search repo
-
 шукати репозиторії за ключовим словом у чартах
 
 ### Опис {#synopsis}
@@ -67,6 +64,6 @@ helm search repo [keyword] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm search](helm_search.md) — пошук ключового слова в чартах
+* [helm search](/helm/helm_search.md) — пошук ключового слова в чартах
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

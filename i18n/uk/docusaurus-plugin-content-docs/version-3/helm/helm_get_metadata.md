@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Metadata"
+title: helm get metadata
 ---
-
-## helm get metadata
-
 Ця команда завантажує метадані для вказаного релізу
 
 ```shell
@@ -41,6 +38,6 @@ helm get metadata RELEASE_NAME [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm get](helm_get.md) — завантажити розширену інформацію про вказаний реліз
+* [helm get](/helm/helm_get.md) — завантажити розширену інформацію про вказаний реліз
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

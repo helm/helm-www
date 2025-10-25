@@ -1,7 +1,7 @@
 ---
 title: "부록: YAML 기법"
-description: "YAML 명세와 그것이 헬름에 어떻게 적용되는지 자세히 알아보기"
-weight: 15
+description: YAML 명세와 그것이 헬름에 어떻게 적용되는지 자세히 알아보기
+sidebar_position: 15
 ---
 
 Most of this guide has been focused on writing the template language. Here,

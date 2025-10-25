@@ -1,9 +1,6 @@
 ---
-title: "Helm Status"
+title: helm status
 ---
-
-## helm status
-
 Affiche le statut de la release nommée
 
 ### Synopsis
@@ -57,4 +54,4 @@ helm status RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

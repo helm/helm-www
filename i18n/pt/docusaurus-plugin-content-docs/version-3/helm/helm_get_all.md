@@ -1,9 +1,6 @@
 ---
-title: "Helm Get All"
+title: helm get all
 ---
-
-## helm get all
-
 Baixa toda informação sobre uma dada _release_
 
 ### Sinopse

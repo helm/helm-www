@@ -1,8 +1,7 @@
 ---
-title: "차트 테스트"
-description: "차트를 실행하고 테스트 하는 방법을 설명한다."
-
-weight: 3
+title: 차트 테스트
+description: 차트를 실행하고 테스트 하는 방법을 설명한다.
+sidebar_position: 3
 ---
 
 차트에는 함께 작동하는 여러 쿠버네티스 리소스 및 구성요소가 포함되어
@@ -137,6 +136,6 @@ Phase:          Succeeded
   yaml 파일에 분산하여 할 수도 있다.
 - 따로 분리하기 위해 `<차트-이름>/templates/tests/` 와 같은 `tests/` 디렉토리 아래에
   테스트 스위트를 넣어둘 수도 있다.
-- 테스트는 [헬름 훅](charts_hooks.md) 이므로, 
+- 테스트는 [헬름 훅](/topics/charts_hooks.md) 이므로, 
   `helm.sh/hook-weight` 나 `helm.sh/hook-delete-policy` 와 같은 어노테이션을 테스트
   리소스와 함께 사용할 수 있다.

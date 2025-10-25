@@ -1,9 +1,6 @@
 ---
-title: "Helm Package"
+title: helm package
 ---
-
-## helm package
-
 упакувати теку чарту в архів чартів
 
 ### Опис {#synopsis}
@@ -61,6 +58,6 @@ helm package [CHART_PATH] [...] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

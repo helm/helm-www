@@ -1,9 +1,6 @@
 ---
-title: "Helm Search Hub"
+title: helm search hub
 ---
-
-## helm search hub
-
 Recherche de charts dans l'Artifact Hub ou dans votre propre instance du hub
 
 ### Synopsis
@@ -55,5 +52,5 @@ helm search hub [KEYWORD] [flags]
 
 ### Voir également
 
-* [helm search](helm_search.md) - Recherche par mot clé dans les charts
+* [helm search](/helm/helm_search.md) - Recherche par mot clé dans les charts
 

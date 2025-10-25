@@ -1,9 +1,6 @@
 ---
-title: "Helm Status"
+title: helm status
 ---
-
-## helm status
-
 показати статус вказаного релізу
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm status RELEASE_NAME [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

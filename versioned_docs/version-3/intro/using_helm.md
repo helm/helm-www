@@ -356,7 +356,7 @@ nodeSelector:
 
 Deeply nested data structures can be difficult to express using `--set`. Chart
 designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file  (read more about [Values Files](../chart_template_guide/values_files/)).
+of a `values.yaml` file  (read more about [Values Files](/chart_template_guide/values_files.md)).
 
 ### More Installation Methods
 
@@ -506,7 +506,7 @@ Repositories can be removed with `helm repo remove`.
 
 ## Creating Your Own Charts
 
-The [Chart Development Guide](../topics/charts.md) explains how
+The [Chart Development Guide](/topics/charts.md) explains how
 to develop your own charts. But you can get started quickly by using the `helm
 create` command:
 
@@ -538,7 +538,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 
 Charts that are packaged can be loaded into chart repositories. See the
 documentation for [Helm chart
-repositories](../topics/chart_repository.md) for more details.
+repositories](/topics/chart_repository.md) for more details.
 
 ## Conclusion
 
@@ -549,4 +549,4 @@ covered useful utility commands like `helm status`, `helm get`, and `helm repo`.
 For more information on these commands, take a look at Helm's built-in help:
 `helm help`.
 
-In the [next chapter](../howto/charts_tips_and_tricks/), we look at the process of developing charts.
+In the [next chapter](/howto/charts_tips_and_tricks.md), we look at the process of developing charts.

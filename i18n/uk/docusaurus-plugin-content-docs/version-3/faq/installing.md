@@ -1,6 +1,6 @@
 ---
-title: "Встановлення"
-weight: 2
+title: Встановлення
+sidebar_position: 2
 ---
 
 ## Встановлення {#installing}

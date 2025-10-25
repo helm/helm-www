@@ -1,7 +1,7 @@
 ---
-title: "값"
-description: "값을 구성하고 사용하는 방법을 집중적으로 다룬다."
-weight: 2
+title: 값
+description: 값을 구성하고 사용하는 방법을 집중적으로 다룬다.
+sidebar_position: 2
 ---
 
 이 부분은 모범사례 가이드의 일부로서 값(values)을 사용하는 방법을 다룬다.
