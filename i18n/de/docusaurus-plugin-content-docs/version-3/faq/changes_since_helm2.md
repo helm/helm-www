@@ -184,7 +184,7 @@ die Option `--all-namespaces` zu `helm list` eingeben müssen, wie bei Helm 2.
 
 ### Secrets als der Standardspeichertreiber
 
-In Helm 3 werden jetzt Secrets als der [Standardspeichertreiber](/docs/topics/advanced/#storage-backends)
+In Helm 3 werden jetzt Secrets als der [Standardspeichertreiber](/topics/advanced.md#storage-backends)
 benutzt. Helm 2 benutzte ConfigMaps als Standard, um Versionsinformationen zu
 speichern. In Helm 2.7.0 wurde ein neues Speicher-Backend implementiert, was
 jetzt in Helm 3 der Standard ist.
@@ -208,7 +208,7 @@ Sie die Änderung des Importpfads sicher.
 Die Verfügbarkeit des eingebauten `.Capabilities` Objekts wurde im Stadium
 des Renderns vereinfacht.
 
-[Eingebaute Objekte](/docs/chart_template_guide/builtin_objects/)
+[Eingebaute Objekte](/chart_template_guide/builtin_objects.md)
 
 ### Validierung der Chart Values mit JSONSchema
 
@@ -224,7 +224,7 @@ Eine Validierung erfolgt bei folgenden Kommandos:
 * `helm template`
 * `helm lint`
 
-Sehen Sie die Dokumentation zu [Schema Dateien](/docs/topics/charts#schema-files) für
+Sehen Sie die Dokumentation zu [Schema Dateien](/topics/charts.md#schema-files) für
 mehr Informationen.
 
 ### Konsolidierung von `requirements.yaml` in `Chart.yaml`
@@ -306,7 +306,7 @@ Vorgehensweisen und Kampftests.
 Bitte schauen Sie nach `helm help chart` und `helm help registry` für mehr
 wie ein Chart zu packen und in eine Docker Registry zu laden ist.
 
-Für mehr Informationen schauen Sie [diese Seite](/docs/topics/registries/).
+Für mehr Informationen schauen Sie [diese Seite](/topics/registries.md).
 
 ### Löschen von `helm serve`
 

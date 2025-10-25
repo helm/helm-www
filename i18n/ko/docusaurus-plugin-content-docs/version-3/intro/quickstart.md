@@ -1,7 +1,7 @@
 ---
-title: "퀵스타트 가이드"
-description: "배포판, FAQ, 플러그인의 설명을 포함한 헬름 설치 및 시작 방법"
-weight: 1
+title: 퀵스타트 가이드
+description: 배포판, FAQ, 플러그인의 설명을 포함한 헬름 설치 및 시작 방법
+sidebar_position: 1
 ---
 
 이 가이드는 헬름을 빠르게 시작하는 
@@ -31,7 +31,7 @@ weight: 1
 [공식 릴리스 페이지](https://github.com/helm/helm/releases)를 참고하면 된다.
 
 자세한 내용이나 다른 옵션에 대해서는 [설치
-가이드]({{< ref "install.md" >}})를 참고한다.
+가이드](/intro/install.md)를 참고한다.
 
 ## 헬름 차트 리포지토리 초기화
 
@@ -86,7 +86,7 @@ MySQL 차트에 대한 간단한 정보를 보려면
 
 `helm install` 커맨드는 다양한 기능을 가진 매우 강력한 커맨드이다. 
 더 많은 정보를 얻으려면, 이곳을 확인하면 된다. 
-[헬름 사용 가이드]({{< ref "using_helm.md" >}})
+[헬름 사용 가이드](/intro/using_helm.md)
 
 ## 릴리스에 대해 알아보기
 

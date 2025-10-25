@@ -1,9 +1,6 @@
 ---
-title: "Helm Show All"
+title: helm show all
 ---
-
-## helm show all
-
 показати всю інформацію про чарт
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm show all [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm show](helm_show.md) — показати інформацію про чарт
+* [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

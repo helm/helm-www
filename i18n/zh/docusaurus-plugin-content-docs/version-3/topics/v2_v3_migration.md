@@ -1,14 +1,14 @@
 ---
-title: "Helm v2 迁移到 v3"
-description: "了解如何将Helm v2 迁移到v3。"
-weight: 13
+title: Helm v2 迁移到 v3
+description: 了解如何将Helm v2 迁移到v3。
+sidebar_position: 13
 ---
 
 该指南介绍如何将Helm v2迁移到v3。Helm v2需要被安装且在一个或多个集群中管理版本。
 
 ## Helm 3变化概述
 
-Helm 2 to 3完整的变化列表在 [FAQ 部分](https://v3.helm.sh/docs/faq/#changes-since-helm-2)。
+Helm 2 to 3完整的变化列表在 [FAQ 部分](/faq/changes_since_helm2.md)。
 以下是用户在迁移之前应该要注意的一些改变的概述：
 
 1. 移除了Tiller:

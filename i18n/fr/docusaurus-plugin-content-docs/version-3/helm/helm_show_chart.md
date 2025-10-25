@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Chart"
+title: helm show chart
 ---
-
-## helm show chart
-
 Affiche la définition du chart
 
 ### Synopsis
@@ -57,5 +54,5 @@ helm show chart [CHART] [flags]
 
 ### Voir également
 
-* [helm show](helm_show.md) - Affiche les informations sur un chart
+* [helm show](/helm/helm_show.md) - Affiche les informations sur un chart
 

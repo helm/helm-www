@@ -1,7 +1,7 @@
 ---
-title: "일반적인 관례"
-description: "차트에 대한 일반적인 관례"
-weight: 1
+title: 일반적인 관례
+description: 차트에 대한 일반적인 관례
+sidebar_position: 1
 ---
 
 이 부분은 모범사례 가이드의 일부로서 일반적인 관례를 설명한다.

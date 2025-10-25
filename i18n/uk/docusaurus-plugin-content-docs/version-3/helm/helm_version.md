@@ -1,9 +1,6 @@
 ---
-title: "Helm Version"
+title: helm version
 ---
-
-## helm version
-
 друкує інформацію про версію клієнта
 
 ### Опис {#synopsis}
@@ -63,6 +60,6 @@ helm version [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

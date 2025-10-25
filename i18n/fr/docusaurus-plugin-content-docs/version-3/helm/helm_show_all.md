@@ -1,9 +1,6 @@
 ---
-title: "Helm Show All"
+title: helm show all
 ---
-
-## helm show all
-
 Affiche toutes les informations sur un chart
 
 ### Synopsis
@@ -57,5 +54,5 @@ helm show all [CHART] [flags]
 
 ### Voir également
 
-* [helm show](helm_show.md) - Affiche les informations sur un chart
+* [helm show](/helm/helm_show.md) - Affiche les informations sur un chart
 

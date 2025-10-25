@@ -1,7 +1,7 @@
 ---
-title: "Дистрибутиви Kubernetes"
-description: "Містить інформацію про використання Helm у специфічних середовищах Kubernetes."
-weight: 10
+title: Дистрибутиви Kubernetes
+description: Містить інформацію про використання Helm у специфічних середовищах Kubernetes.
+sidebar_position: 10
 ---
 
 Helm повинен працювати з будь-якою [відповідною версією Kubernetes](https://github.com/cncf/k8s-conformance) (сертифікованою чи ні).

@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo"
+title: helm repo
 ---
-
-## helm repo
-
 додати, вивести перелік, видалити, оновити та індексувати репозиторії чартів
 
 ### Опис {#synopsis}
@@ -41,11 +38,11 @@ title: "Helm Repo"
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
-* [helm repo add](helm_repo_add.md) — додати репозиторій чартів
-* [helm repo index](helm_repo_index.md) — згенерувати файл індексу для теки, що містить упаковані чарти
-* [helm repo list](helm_repo_list.md) — вивести перелік репозиторіїв чартів
-* [helm repo remove](helm_repo_remove.md) — видалити один або кілька репозиторіїв чартів
-* [helm repo update](helm_repo_update.md) — оновити інформацію про доступні чарти локально з репозиторіїв чартів
+* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm repo add](/helm/helm_repo_add.md) — додати репозиторій чартів
+* [helm repo index](/helm/helm_repo_index.md) — згенерувати файл індексу для теки, що містить упаковані чарти
+* [helm repo list](/helm/helm_repo_list.md) — вивести перелік репозиторіїв чартів
+* [helm repo remove](/helm/helm_repo_remove.md) — видалити один або кілька репозиторіїв чартів
+* [helm repo update](/helm/helm_repo_update.md) — оновити інформацію про доступні чарти локально з репозиторіїв чартів
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

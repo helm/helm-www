@@ -30,8 +30,7 @@ für die maximal unterstützte Version zwischen Helm und Kubernetes.
 Laden Sie eine Binary Version von Helm herunter. Sie können Werkzeuge verwenden wie homebrew
 oder schauen Sie auf [die offizielle Versionsseite](https://github.com/helm/helm/releases).
 
-Für mehr Details oder weitere Optionen schauen Sie in die [Installationsanleitung]({{< ref
-"install.md" >}}).
+Für mehr Details oder weitere Optionen schauen Sie in die [Installationsanleitung](/intro/install.md).
 
 ## Initialisieren eines Helm Chart Repository
 
@@ -85,8 +84,7 @@ ein Chart beliebig oft im selben Cluster installiert und unabhängig verwaltet u
 aktualisiert werden.
 
 Das `helm install` Kommando ist ein sehr mächtiges Kommand mit vielen Möglichkeiten.
-Um mehr darüber zu lernen, schauen Sie ins [Helm Benutzerhandbuch]({{< ref "using_helm.md"
->}})
+Um mehr darüber zu lernen, schauen Sie ins [Helm Benutzerhandbuch](/intro/using_helm.md)
 
 ## Mehr über Versionen lernen
 

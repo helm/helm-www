@@ -1,7 +1,7 @@
 ---
-title: "헬름 아키텍처"
-description: "헬름 아키텍처를 개괄적으로 설명한다."
-weight: 8
+title: 헬름 아키텍처
+description: 헬름 아키텍처를 개괄적으로 설명한다.
+sidebar_position: 8
 ---
 
 # 쿠버네티스 헬름 아키텍처

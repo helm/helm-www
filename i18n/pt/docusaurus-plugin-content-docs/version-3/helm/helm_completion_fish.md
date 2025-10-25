@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Fish"
+title: helm completion fish
 ---
-
-## helm completion fish
-
 Gera scripts de preenchimento automático para o fish
 
 ### Sinopse

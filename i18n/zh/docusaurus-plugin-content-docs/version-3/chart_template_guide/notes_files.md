@@ -1,7 +1,7 @@
 ---
-title: "创建一个NOTES.txt文件"
-description: "如何向chart用户提供说明。"
-weight: 11
+title: 创建一个NOTES.txt文件
+description: 如何向chart用户提供说明。
+sidebar_position: 11
 ---
 
 该部分会介绍为chart用户提供说明的Helm工具。在`helm install` 或 `helm upgrade`命令的最后，Helm会打印出对用户有用的信息。

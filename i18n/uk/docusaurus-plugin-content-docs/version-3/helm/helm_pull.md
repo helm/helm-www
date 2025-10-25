@@ -1,9 +1,6 @@
 ---
-title: "Helm Pull"
+title: helm pull
 ---
-
-## helm pull
-
 завантажити чарт з репозиторію та (за бажанням) розпакувати його в локальну теку
 
 ### Опис {#synopsis}
@@ -66,6 +63,6 @@ helm pull [URL чарта | репозиторій/назвачартa] [...] [f
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

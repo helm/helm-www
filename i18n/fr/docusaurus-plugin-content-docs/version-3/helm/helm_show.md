@@ -1,9 +1,6 @@
 ---
-title: "Helm Show"
+title: helm show
 ---
-
-## helm show
-
 Affiche les informations sur le chart
 
 ### Synopsis
@@ -40,10 +37,10 @@ Cette commande se compose de plusieurs sous-commandes pour afficher des informat
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
-* [helm show all](helm_show_all.md) - Affiche toutes les informations sur le chart
-* [helm show chart](helm_show_chart.md) - Affiche le définition du chart
-* [helm show crds](helm_show_crds.md) - Affiche les CRDs du chart
-* [helm show readme](helm_show_readme.md) - Affiche le README du chart
-* [helm show values](helm_show_values.md) - Affiche les Values du chart
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm show all](/helm/helm_show_all.md) - Affiche toutes les informations sur le chart
+* [helm show chart](/helm/helm_show_chart.md) - Affiche le définition du chart
+* [helm show crds](/helm/helm_show_crds.md) - Affiche les CRDs du chart
+* [helm show readme](/helm/helm_show_readme.md) - Affiche le README du chart
+* [helm show values](/helm/helm_show_values.md) - Affiche les Values du chart
 

@@ -1,7 +1,7 @@
 ---
-title: "Helm ドキュメントの国際化"
-description: "Helm ドキュメントを国際化するための手順。"
-weight: 5
+title: Helm ドキュメントの国際化
+description: Helm ドキュメントを国際化するための手順。
+sidebar_position: 5
 ---
 
 このガイドでは Helm ドキュメントをどのように国際化するかを説明します。
@@ -74,7 +74,7 @@ AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea
 
 サイトグローバルな　[config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89) ファイルで言語ナビゲーションが設定されています。
 
-新たな言語を追加するには、上で定義した新たな[2文字言語コード](./localization/#2文字言語コード)を追加する必要があります。例：
+新たな言語を追加するには、上で定義した新たな[2文字言語コード](/community/localization.md#2文字言語コード)を追加する必要があります。例：
 
 ```
 # Korean

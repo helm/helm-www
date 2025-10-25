@@ -1,9 +1,6 @@
 ---
-title: "Helm Env"
+title: helm env
 ---
-
-## helm env
-
 informations sur l'environnement du client Helm
 
 ### Synopsis
@@ -45,4 +42,4 @@ helm env [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire officiel de paquets Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire officiel de paquets Helm pour Kubernetes

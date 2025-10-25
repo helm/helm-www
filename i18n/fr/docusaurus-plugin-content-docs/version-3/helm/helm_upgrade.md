@@ -1,9 +1,6 @@
 ---
-title: "Helm Upgrade"
+title: helm upgrade
 ---
-
-## helm upgrade
-
 Met à niveau une release
 
 ### Synopsis
@@ -105,5 +102,5 @@ helm upgrade [RELEASE] [CHART] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

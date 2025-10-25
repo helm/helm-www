@@ -1,7 +1,7 @@
 ---
-title: "헬름 설치하기"
-description: "헬름 설치하고 작동하는 방법 배우기."
-weight: 2
+title: 헬름 설치하기
+description: 헬름 설치하고 작동하는 방법 배우기.
+sidebar_position: 2
 ---
 
 이 가이드는 헬름 CLI를 설치하는 방법을 설명합니다.
@@ -26,7 +26,7 @@ weight: 2
    (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 설치가 완료되면 헬름 클라이언트를 실행하고 [stable 저장소를
-추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)할 수 있습니다.:
+추가](/intro/quickstart.md#initialize-a-helm-chart-repository)할 수 있습니다.:
 `helm help`.
 
 **참고:** 헬름 자동화 테스트는 GitHub Actions 빌드와 릴리스 사이에, 리눅스 AMD64에서만 수행됩니다. 다른 OS들에 대한 테스트는, 대상 OS에 대한 헬름을 요청한 커뮤니티에서 진행합니다.
@@ -171,4 +171,4 @@ $ make
 이 문서는 헬름으로 더 정교한 작업을 하려는 사용자를 위한 추가적인 경우들을 다룹니다.
 
 헬름 클라이언트가 성공적으로 설치되면, 헬름을 사용하여 차트를 관리하고
-[stable 차트 저장소를 추가](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)할 수 있습니다.
+[stable 차트 저장소를 추가](/intro/quickstart.md#initialize-a-helm-chart-repository)할 수 있습니다.

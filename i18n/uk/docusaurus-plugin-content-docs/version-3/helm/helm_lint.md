@@ -1,9 +1,6 @@
 ---
-title: "Helm Lint"
+title: helm lint
 ---
-
-## helm lint
-
 перевіряє чарт на можливі проблеми
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm lint PATH [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

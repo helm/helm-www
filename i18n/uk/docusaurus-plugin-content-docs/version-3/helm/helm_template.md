@@ -1,9 +1,6 @@
 ---
-title: "Helm Template"
+title: helm template
 ---
-
-## helm template
-
 локальний рендеринг шаблонів
 
 ### Опис {#synopsis}
@@ -95,6 +92,6 @@ helm template [NAME] [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

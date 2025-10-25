@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Powershell"
+title: helm completion powershell
 ---
-
-## helm completion powershell
-
 Генерація скрипта автодоповнення для PowerShell
 
 ### Опис {#synopsis}
@@ -53,6 +50,6 @@ helm completion powershell [прапорці]
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm completion](helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
+* [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

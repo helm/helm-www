@@ -1,7 +1,7 @@
 ---
-title: "Шаблони"
-description: "Ближче ознайомлення з найкращими практиками щодо шаблонів."
-weight: 3
+title: Шаблони
+description: Ближче ознайомлення з найкращими практиками щодо шаблонів.
+sidebar_position: 3
 ---
 
 Ця частина посібника з найкращих практик фокусується на шаблонах.
@@ -192,7 +192,7 @@ memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 # memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
 ```
 
-Огляньте [Налагодження шаблонів](../chart_template_guide/debugging.md) для іншого прикладу цієї поведінки того, як коментарі YAML залишаються недоторканими.
+Огляньте [Налагодження шаблонів](/chart_template_guide/debugging.md) для іншого прикладу цієї поведінки того, як коментарі YAML залишаються недоторканими.
 
 ## Використання JSON у шаблонах і виході шаблонів {#use-of-json-in-templates-and-template-output}
 

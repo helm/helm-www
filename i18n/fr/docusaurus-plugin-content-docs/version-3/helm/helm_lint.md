@@ -1,9 +1,6 @@
 ---
-title: "Helm Lint"
+title: helm lint
 ---
-
-## helm lint
-
 examine un chart pour détecter d'éventuels problèmes
 
 ### Synopsis
@@ -55,4 +52,4 @@ helm lint PATH [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

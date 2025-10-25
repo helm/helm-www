@@ -1,10 +1,10 @@
 ---
-title: "라이브러리 차트"
-description: "Explains library charts and examples of usage"
-weight: 4
+title: 라이브러리 차트
+description: Explains library charts and examples of usage
+sidebar_position: 4
 ---
 
-A library chart is a type of [Helm chart]({{< ref "/docs/topics/charts.md" >}})
+A library chart is a type of [Helm chart](/topics/charts.md)
 that defines chart primitives or definitions which can be shared by Helm
 templates in other charts. This allows users to share snippets of code that can
 be re-used across charts, avoiding repetition and keeping charts
@@ -25,8 +25,7 @@ the chart type.
 
 ## 간단한 라이브러리 차트 만들기
 
-As mentioned previously, a library chart is a type of [Helm chart]({{< ref
-"/docs/topics/charts.md" >}}). This means that you can start off by creating a
+As mentioned previously, a library chart is a type of [Helm chart](/topics/charts.md). This means that you can start off by creating a
 scaffold chart:
 
 ```console
@@ -48,8 +47,7 @@ $ rm -f mylibchart/values.yaml
 ```
 
 Before we jump into creating common code, lets do a quick review of some
-relevant Helm concepts. A [named template]({{< ref
-"/docs/chart_template_guide/named_templates.md" >}}) (sometimes called a partial
+relevant Helm concepts. A [named template](/chart_template_guide/named_templates.md) (sometimes called a partial
 or a subtemplate) is simply a template defined inside of a file, and given a
 name.  In the `templates/` directory, any file that begins with an underscore(_)
 is not expected to output a Kubernetes manifest file. So by convention, helper

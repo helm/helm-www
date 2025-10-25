@@ -1,7 +1,7 @@
 ---
-title: "附录： YAML技术"
-description: "详细描述了YAML规范以及如何应用于Helm。"
-weight: 16
+title: 附录： YAML技术
+description: 详细描述了YAML规范以及如何应用于Helm。
+sidebar_position: 16
 ---
 
 本指南大部分都聚焦于编写模板语言。这里，我们要看看YAML格式。作为模板作者，YAML有一些有用的特性

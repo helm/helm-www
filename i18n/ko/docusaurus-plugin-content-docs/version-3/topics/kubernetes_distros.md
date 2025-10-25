@@ -1,7 +1,7 @@
 ---
-title: "쿠버네티스 배포판 가이드"
-description: "특정 쿠버네티스 환경에서 헬름 사용에 대한 정보 정리."
-weight: 10
+title: 쿠버네티스 배포판 가이드
+description: 특정 쿠버네티스 환경에서 헬름 사용에 대한 정보 정리.
+sidebar_position: 10
 ---
 
 헬름은 ([인증 여부](https://www.cncf.io/certification/software-conformance/)와 

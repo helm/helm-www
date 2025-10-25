@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency Update"
+title: helm dependency update
 ---
-
-## helm dependency update
-
 met à jour le dossier charts/ basé sur le contenu du fichier Chart.yaml
 
 ### Synopsis
@@ -53,4 +50,4 @@ helm dependency update CHART [flags]
 
 ### Voir également
 
-* [helm dependency](helm_dependency.md) - Gérer les dépendances d'un chart
+* [helm dependency](/helm/helm_dependency.md) - Gérer les dépendances d'un chart

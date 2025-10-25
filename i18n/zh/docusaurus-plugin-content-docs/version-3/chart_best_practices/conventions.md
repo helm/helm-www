@@ -1,7 +1,7 @@
 ---
-title: "一般惯例"
-description: "chart的一般惯例"
-weight: 1
+title: 一般惯例
+description: chart的一般惯例
+sidebar_position: 1
 ---
 
 最佳实践的这部分阐述了一般惯例。

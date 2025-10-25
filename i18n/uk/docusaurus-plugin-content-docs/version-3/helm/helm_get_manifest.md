@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Manifest"
+title: helm get manifest
 ---
-
-## helm get manifest
-
 завантажити маніфест для вказаного релізу
 
 ### Опис {#synopsis}
@@ -46,6 +43,6 @@ helm get manifest RELEASE_NAME [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm get](helm_get.md) — завантажити розширену інформацію про вказаний реліз
+* [helm get](/helm/helm_get.md) — завантажити розширену інформацію про вказаний реліз
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024
