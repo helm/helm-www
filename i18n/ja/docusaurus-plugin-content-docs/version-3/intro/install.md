@@ -1,7 +1,7 @@
 ---
-title: "Helm のインストール"
-description: "Helm をインストールして実行する方法を学びます。"
-weight: 2
+title: Helm のインストール
+description: Helm をインストールして実行する方法を学びます。
+sidebar_position: 2
 ---
 
 このガイドでは、Helm CLI のインストール方法を示します。Helm はソースから、またはビルド済みのバイナリリリースから
@@ -25,7 +25,7 @@ Helm のすべての [リリース](https://github.com/helm/helm/releases) は�
 3. 展開したディレクトリで `helm` バイナリを見つけ、
    目的の場所に移動します (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-そこから、クライアントを実行し、[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)できるはずです: `helm help` を参考
+そこから、クライアントを実行し、[Stable リポジトリを追加](/intro/quickstart.md#initialize-a-helm-chart-repository)できるはずです: `helm help` を参考
 
 **注**: Helm 自動テストは、GitHub Actions のビルドとリリース中にのみLinux AMD64 に対して実行されます。
 他の OS のテストは、
@@ -151,4 +151,4 @@ $ make
 追加のケースについて説明します。
 
 Helm クライアントが正常にインストールされたら、Helm を使用してチャートを管理し、
-[Stable リポジトリを追加](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository) できます。
+[Stable リポジトリを追加](/intro/quickstart.md#initialize-a-helm-chart-repository) できます。

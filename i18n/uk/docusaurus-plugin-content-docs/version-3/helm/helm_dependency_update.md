@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency Update"
+title: helm dependency update
 ---
-
-## helm dependency update
-
 оновлення charts/ на основі вмісту Chart.yaml
 
 ### Опис {#synopsis}
@@ -52,6 +49,6 @@ helm dependency update CHART [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm dependency](helm_dependency.md) — керувати залежностями чарту
+* [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

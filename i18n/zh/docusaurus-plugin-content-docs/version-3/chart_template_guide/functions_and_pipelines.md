@@ -1,7 +1,7 @@
 ---
-title: "模板函数和流水线"
-description: "使用函数和管道"
-weight: 5
+title: 模板函数和流水线
+description: 使用函数和管道
+sidebar_position: 5
 ---
 
 到目前为止，我们已经知道了如何将信息传到模板中。 但是传入的信息并不能被修改。

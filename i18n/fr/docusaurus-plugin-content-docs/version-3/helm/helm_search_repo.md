@@ -1,9 +1,6 @@
 ---
-title: "Helm Search Repo"
+title: helm search repo
 ---
-
-## helm search repo
-
 Rechercher par mot clé dans les répertoires de charts
 
 ### Synopsis
@@ -67,5 +64,5 @@ helm search repo [keyword] [flags]
 
 ### Voir également
 
-* [helm search](helm_search.md) - Recherche par mot clé dans les charts
+* [helm search](/helm/helm_search.md) - Recherche par mot clé dans les charts
 

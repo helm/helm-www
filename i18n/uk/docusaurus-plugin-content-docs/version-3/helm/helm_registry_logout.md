@@ -1,9 +1,6 @@
 ---
-title: "Helm Registry Logout"
+title: helm registry logout
 ---
-
-## helm registry logout
-
 вихід з реєстру
 
 ### Опис {#synopsis}
@@ -43,6 +40,6 @@ helm registry logout [host] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm registry](helm_registry.md) — увійти або вийти з реєстру.
+* [helm registry](/helm/helm_registry.md) — увійти або вийти з реєстру.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

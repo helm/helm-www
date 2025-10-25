@@ -1,7 +1,7 @@
 ---
-title: "依存関係"
-description: "チャートの依存関係についての解説です。"
-weight: 4
+title: 依存関係
+description: チャートの依存関係についての解説です。
+sidebar_position: 4
 ---
 
 このセクションでは、`Chart.yaml`に宣言された`依存関係`のベストプラクティスについて
@@ -44,7 +44,7 @@ version: ~1.2.3-0
 ファイルのURL（`file://...`）は固定されたデプロイパイプラインによって組み立てられた
 チャートのための"特殊なケース"と考えられます。
 
-[downloader plugins]({{< ref path="/docs/topics/plugins.md#downloader-plugins" lang="en" >}})を使用する場合、
+[downloader plugins](/topics/plugins.md#downloader-plugins)を使用する場合、
 URLのスキームはプラグインに固有になります。注意としては、チャートの利用者はその依存関係を
 ビルドもしくは更新するために、スキームをサポートするプラグインをインストールする必要があります。
 

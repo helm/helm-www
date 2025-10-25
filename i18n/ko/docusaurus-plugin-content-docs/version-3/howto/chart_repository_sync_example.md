@@ -1,7 +1,7 @@
 ---
-title: "차트 리포지토리 동기화"
-description: "로컬 및 원격 차트 리포지토리를 동기화하는 방법"
-weight: 2
+title: 차트 리포지토리 동기화
+description: 로컬 및 원격 차트 리포지토리를 동기화하는 방법
+sidebar_position: 2
 ---
 
 *참고: 이곳의 예제들은 차트 리포지토리를 제공하는*
@@ -13,8 +13,7 @@ weight: 2
 * _선택 사항: 실수로 파일을 삭제할 경우를 대비하여 GCS 버킷에 [오브젝트 버전 관리](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page)를 설정하는 것을 추천한다._
 
 ## 로컬 차트 리포지토리 디렉터리 설정
-[차트 리포지토리 가이드]({{< ref
-"/docs/topics/chart_repository.md" >}})에서 한 것처럼 로컬 디렉터리를 만들고, 패키지된 차트를 그 디렉터리로 옮긴다.
+[차트 리포지토리 가이드](/topics/chart_repository.md)에서 한 것처럼 로컬 디렉터리를 만들고, 패키지된 차트를 그 디렉터리로 옮긴다.
 
 예제:
 ```console
@@ -82,7 +81,7 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 유용한 링크:
 * [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description) 에 
   대한 문서
-* [차트 리포지토리 가이드]({{< ref "/docs/topics/chart_repository.md" >}})
+* [차트 리포지토리 가이드](/topics/chart_repository.md)
 * Google Cloud Storage의 
   [오브젝트 버전 관리 및 동시성 제어](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)에 
   대한 문서

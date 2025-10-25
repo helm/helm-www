@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Bash"
+title: helm completion bash
 ---
-
-## helm completion bash
-
 Генерація скрипта автодоповнення для bash
 
 ### Опис {#synopsis}
@@ -64,6 +61,6 @@ helm completion bash [прапорці]
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-- [helm completion](helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
+- [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

@@ -1,7 +1,7 @@
 ---
-title: "Chart Hook"
-description: "详述如何使用chart hook"
-weight: 2
+title: Chart Hook
+description: 详述如何使用chart hook
+sidebar_position: 2
 ---
 
 Helm 提供了一个 _hook_ 机制允许chart开发者在发布生命周期的某些点进行干预。比如你可以使用hook用于：

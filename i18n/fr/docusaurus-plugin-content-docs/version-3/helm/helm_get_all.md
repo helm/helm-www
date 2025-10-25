@@ -1,9 +1,6 @@
 ---
-title: "Helm Get All"
+title: helm get all
 ---
-
-## helm get all
-
 télécharge toutes les informations pour une version donnée
 
 ### Synopsis
@@ -46,4 +43,4 @@ helm get all RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

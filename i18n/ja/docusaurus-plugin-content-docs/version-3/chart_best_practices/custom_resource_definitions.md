@@ -1,8 +1,7 @@
 ---
-title: "カスタムリソース定義"
-description: "CRDの作成と使用方法"
-weight: 7
-aliases: ["/docs/topics/chart_best_practices/custom_resource_definitions/"]
+title: カスタムリソース定義
+description: CRDの作成と使用方法
+sidebar_position: 7
 ---
 
 このセクションでは、カスタムリソース定義オブジェクトの作成と使用方法について説明します。

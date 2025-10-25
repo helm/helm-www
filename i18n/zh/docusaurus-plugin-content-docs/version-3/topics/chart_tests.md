@@ -1,7 +1,7 @@
 ---
-title: "Chart Test"
-description: "描述如何执行和测试你的chart"
-weight: 3
+title: Chart Test
+description: 描述如何执行和测试你的chart
+sidebar_position: 3
 ---
 
 &emsp;&emsp;chart包含了很多一起工作的Kubernetes资源和组件。作为一个chart作者，你可能想写一些测试验证chart安装时是否按照预期工作。

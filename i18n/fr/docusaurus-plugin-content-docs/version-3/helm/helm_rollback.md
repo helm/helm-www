@@ -1,9 +1,6 @@
 ---
-title: "Helm Rollback"
+title: helm rollback
 ---
-
-## helm rollback
-
 Restaurer une release vers une révision précédente
 
 ### Synopsis
@@ -57,5 +54,5 @@ helm rollback <RELEASE> [REVISION] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

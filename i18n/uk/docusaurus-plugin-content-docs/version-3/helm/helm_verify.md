@@ -1,9 +1,6 @@
 ---
-title: "Helm Verify"
+title: helm verify
 ---
-
-## helm verify
-
 перевірити, що чарт за вказаним шляхом підписаний і є дійсним
 
 ### Опис {#synopsis}
@@ -48,6 +45,6 @@ helm verify PATH [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

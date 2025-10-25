@@ -1,7 +1,7 @@
 ---
-title: "Установка Helm"
-description: "Узнайте, как установить и начать работать с Helm."
-weight: 2
+title: Установка Helm
+description: Узнайте, как установить и начать работать с Helm.
+sidebar_position: 2
 ---
 
 В этом руководстве рассказывается, как установить Helm CLI. Helm может быть установлен как из
@@ -23,7 +23,7 @@ weight: 2
 2. Распакуйте её (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
 3. Найдите `helm` binary файл в директории из распаковки, и переместите в нужное место (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-Сразу после этого можно запустить Helm справку [добавить stable репозиторий](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
+Сразу после этого можно запустить Helm справку [добавить stable репозиторий](/intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Примечание:** Автоматические тесты Helm выполняются для Linux AMD64 только во время сборки и выпуска GitHub Actions.
@@ -158,4 +158,4 @@ $ make
 с Helm более сложные вещи.
 
 После успешной установки клиента Helm вы можете перейти к использованию
-Helm для управления chart-ми и [добавить stable репозиторий](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+Helm для управления chart-ми и [добавить stable репозиторий](/intro/quickstart.md#initialize-a-helm-chart-repository).

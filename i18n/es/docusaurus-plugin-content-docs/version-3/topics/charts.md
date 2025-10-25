@@ -198,8 +198,7 @@ para charts obsoletos es:
 
 El campo `type` define el tipo de chart. Hay dos tipos: `application` (aplicación)
 y `library` (biblioteca). Aplicación es el tipo predeterminado y es el chart estándar
-con el que se puede operar completamente. El [chart de biblioteca]({{< ref
-"/docs/topics/library_charts.md" >}})
+con el que se puede operar completamente. El [chart de biblioteca](/topics/library_charts.md)
 proporciona utilidades o funciones para el generador de charts. Un chart de biblioteca
 se diferencia de un chart de aplicación porque no se puede instalar y, por lo
 general, no contiene ningún objeto de recurso.
@@ -629,7 +628,7 @@ InstallOrder en kind_sorter.go (ver [el archivo fuente de Helm](https://github.c
 Las plantillas de Charts de Helm están escritas en el [lenguaje Go
 template](https://golang.org/pkg/text/template/), con la adición de unas 50
 funciones de plantilla complementarias [de la biblioteca Sprig](https://github.com/Masterminds/sprig)
-y algunas otras [funciones especializadas]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}}).
+y algunas otras [funciones especializadas](/howto/charts_tips_and_tricks.md).
 
 Todos los archivos de plantilla se almacenan en la carpeta `templates/` de un chart.
 Cuando Helm renderiza los charts, pasará todos los archivos de ese directorio a
@@ -777,7 +776,7 @@ simplemente se convierten a YAML en el lado del cliente.
 
 **NOTA:** Si existen entradas obligatorias en el archivo values, se pueden declarar
 según sea necesario en la plantilla del chart mediante la [función
-'required']({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})
+'required'](/howto/charts_tips_and_tricks.md)
 
 Cualquiera de estos valores es accesible dentro de las plantillas usando el objeto
 `.Values`:

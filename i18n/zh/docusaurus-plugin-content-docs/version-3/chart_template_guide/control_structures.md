@@ -1,7 +1,7 @@
 ---
-title: "流控制"
-description: "模板中流结构的快速概述"
-weight: 7
+title: 流控制
+description: 模板中流结构的快速概述
+sidebar_position: 7
 ---
 
 控制结构(在模板语言中称为"actions")提供给你和模板作者控制模板迭代流的能力。

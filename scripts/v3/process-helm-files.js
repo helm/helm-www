@@ -6,7 +6,7 @@ const { frontMatterFromYaml, frontMatterToYaml } = require('../util/util-frontma
 
 
 /**
- * Process Helm command files in version-3/helm/
+ * Process Helm command files in version-3/helm/ and i18n directories
  * - Extract first H2 heading text and set as frontmatter title
  * - Remove the original H2 heading line
  * - Add special configurations for helm category
@@ -14,18 +14,46 @@ const { frontMatterFromYaml, frontMatterToYaml } = require('../util/util-frontma
 function processHelmFiles() {
   console.log('🔧 Processing Helm v3 command files...');
 
-  const helmDir = path.join(__dirname, '..', '..', 'versioned_docs', 'version-3', 'helm');
-
-  if (!fs.existsSync(helmDir)) {
-    console.error('❌ Helm directory not found:', helmDir);
-    process.exit(1);
+  // Process main docs
+  const mainHelmDir = path.join(__dirname, '..', '..', 'versioned_docs', 'version-3', 'helm');
+  if (fs.existsSync(mainHelmDir)) {
+    console.log('  📁 Processing main docs: versioned_docs/version-3/helm');
+    processHelmDirectory(mainHelmDir);
   }
+
+  // Process i18n directories
+  const i18nDir = path.join(__dirname, '..', '..');
+  if (fs.existsSync(i18nDir)) {
+    const i18nPath = path.join(i18nDir, 'i18n');
+    if (fs.existsSync(i18nPath)) {
+      const languages = fs.readdirSync(i18nPath, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const langHelmDir = path.join(i18nPath, lang, 'docusaurus-plugin-content-docs', 'version-3', 'helm');
+        if (fs.existsSync(langHelmDir)) {
+          console.log(`  🌐 Processing ${lang} translations: i18n/${lang}/docusaurus-plugin-content-docs/version-3/helm`);
+          processHelmDirectory(langHelmDir);
+        }
+      });
+    }
+  }
+
+  console.log('🎉 Helm files processing completed');
+}
+
+/**
+ * Process Helm files in a specific directory
+ * @param {string} helmDir - Path to helm directory
+ */
+function processHelmDirectory(helmDir) {
 
   const files = fs.readdirSync(helmDir).filter(file =>
     file.endsWith('.md') && file !== 'index.md' && file !== 'index.mdx'
   );
 
-  console.log(`📄 Found ${files.length} Helm command files to process`);
+  console.log(`    📄 Found ${files.length} Helm command files to process`);
 
   let processedCount = 0;
 
@@ -45,19 +73,19 @@ function processHelmFiles() {
         if (!frontmatter.hasOwnProperty('slug')) {
           frontmatter.slug = 'helm';
           processedContent = frontMatterToYaml(frontmatter, restContent);
-          console.log(`  🔧 Added slug metadata to helm.md`);
+          console.log(`    🔧 Added slug metadata to helm.md`);
         }
       }
 
       if (processedContent !== content) {
         fs.writeFileSync(filePath, processedContent);
-        console.log(`  ✅ Processed: ${fileName}`);
+        console.log(`    ✅ Processed: ${fileName}`);
         processedCount++;
       } else {
-        console.log(`  ⏭️  Skipped: ${fileName} (no H2 found or already processed)`);
+        console.log(`    ⏭️  Skipped: ${fileName} (no H2 found or already processed)`);
       }
     } catch (error) {
-      console.error(`  ❌ Error processing ${fileName}:`, error.message);
+      console.error(`    ❌ Error processing ${fileName}:`, error.message);
     }
   });
 
@@ -67,7 +95,7 @@ function processHelmFiles() {
   // Create _category_.json
   createCategoryJson(helmDir);
 
-  console.log(`🎉 Successfully processed ${processedCount} files`);
+  console.log(`    🎉 Successfully processed ${processedCount} files`);
 }
 
 /**
@@ -151,7 +179,7 @@ function updateIndexMdx(helmDir) {
   const indexPath = path.join(helmDir, 'index.mdx');
 
   if (!fs.existsSync(indexPath)) {
-    console.warn(`  ⚠️  index.mdx not found`);
+    console.warn(`    ⚠️  index.mdx not found`);
     return;
   }
 
@@ -160,7 +188,7 @@ function updateIndexMdx(helmDir) {
     const { frontmatter, restContent, hasFrontmatter } = frontMatterFromYaml(content);
 
     if (!hasFrontmatter) {
-      console.warn(`  ⚠️  No frontmatter found in index.mdx`);
+      console.warn(`    ⚠️  No frontmatter found in index.mdx`);
       return;
     }
 
@@ -181,13 +209,13 @@ function updateIndexMdx(helmDir) {
     if (needsUpdate) {
       const updatedContent = frontMatterToYaml(frontmatter, restContent);
       fs.writeFileSync(indexPath, updatedContent);
-      console.log(`  🔧 Updated index.mdx metadata`);
+      console.log(`    🔧 Updated index.mdx metadata`);
     } else {
-      console.log(`  ⏭️  index.mdx already up to date`);
+      console.log(`    ⏭️  index.mdx already up to date`);
     }
 
   } catch (error) {
-    console.error(`  ❌ Error updating index.mdx:`, error.message);
+    console.error(`    ❌ Error updating index.mdx:`, error.message);
   }
 }
 
@@ -205,9 +233,9 @@ function createCategoryJson(helmDir) {
 
   try {
     fs.writeFileSync(categoryPath, categoryContent);
-    console.log(`  📁 Created _category_.json`);
+    console.log(`    📁 Created _category_.json`);
   } catch (error) {
-    console.error(`  ❌ Error creating _category_.json:`, error.message);
+    console.error(`    ❌ Error creating _category_.json:`, error.message);
   }
 }
 

@@ -1,7 +1,7 @@
 ---
-title: "템플릿"
-description: "템플릿에 관한 모범사례 들여다보기"
-weight: 3
+title: 템플릿
+description: 템플릿에 관한 모범사례 들여다보기
+sidebar_position: 3
 ---
 
 이 부분은 모범사례 가이드의 일부로서 템플릿을 자세히 알아본다.

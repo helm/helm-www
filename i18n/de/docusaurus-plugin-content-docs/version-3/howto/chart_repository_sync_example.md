@@ -14,8 +14,7 @@ welcher ein Chart Repository bereitstellt.*
 * _Optional: Wir empfehlen, dass Sie die [Objektversionierung](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page) in Ihrem GCS Bucket gesetzt haben, falls Sie etwas versehentlich löschen._
 
 ## Ein lokales Chart Repository Verzeichnis aufsetzen
-Erstellen Sie ein lokales Verzeichnis wie wir es im [Chart Repository Handbuch]({{< relref
-path="/docs/topics/chart_repository.md" lang="en">}}) gemacht haben und legen Sie Ihr Chart Paket
+Erstellen Sie ein lokales Verzeichnis wie wir es im [Chart Repository Handbuch](/topics/chart_repository.md) gemacht haben und legen Sie Ihr Chart Paket
 in das Verzeichnis.
 
 Zum Beispiel:
@@ -85,5 +84,5 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Hilfreiche Links:
 * Dokumentation von [gsutil
   rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [Das Chart Repository Handbuch]({{< relref path="/docs/topics/chart_repository.md" lang="en">}})
+* [Das Chart Repository Handbuch](/topics/chart_repository.md)
 * Documentation von [Objekt Versionierung und parallele Zugriffe](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview) in Google Cloud Storage

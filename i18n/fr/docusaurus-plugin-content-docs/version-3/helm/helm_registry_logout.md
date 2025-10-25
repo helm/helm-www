@@ -1,9 +1,6 @@
 ---
-title: "Helm Registry Logout"
+title: helm registry logout
 ---
-
-## helm registry logout
-
 Se déconnecter d'un registre
 
 ### Synopsis
@@ -44,4 +41,4 @@ helm registry logout [host] [flags]
 
 ### Voir également
 
-* [helm registry](helm_registry.md) - Se connecter ou se déconnecter d'un registre
+* [helm registry](/helm/helm_registry.md) - Se connecter ou se déconnecter d'un registre

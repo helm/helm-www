@@ -1,7 +1,7 @@
 ---
-title: "Helm高级技术"
-description: "为Helm的高级用户说明各种高级特性"
-weight: 9
+title: Helm高级技术
+description: 为Helm的高级用户说明各种高级特性
+sidebar_position: 9
 ---
 
 这部分解释说明了使用Helm的各种高级特性和技术。

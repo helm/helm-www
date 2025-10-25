@@ -1,7 +1,7 @@
 ---
-title: "차트"
-description: "차트 형식을 설명하고, 헬름으로 차트를 빌드하기 위한 기본지침을 제공한다."
-weight: 1
+title: 차트
+description: 차트 형식을 설명하고, 헬름으로 차트를 빌드하기 위한 기본지침을 제공한다.
+sidebar_position: 1
 ---
 
 헬름은 *charts* 라는 패키지 포맷을 사용한다. 차트는 쿠버네티스 리소스와
@@ -192,7 +192,7 @@ semver 제약 조건을 정의할 수 있다. 헬름은 차트를 설치할 때 
 `type` 필드는 차트의 타입을 정의한다. `application`, `library` 의
 두가지 타입이 있다. Application은 기본 타입이며
 온전하게 작동할 수 있는 표준 차트이다.
-[library chart]({{< ref "/docs/topics/library_charts.md" >}}) 는 차트 빌더에
+[library chart](/topics/library_charts.md) 는 차트 빌더에
 유틸리티나 함수를 제공한다. library chart는 설치가 불가능하고, 보통
 어떤 리소스 오브젝트도 갖지 않는다는 점에서 application chart와는 다르다.
 
@@ -603,7 +603,7 @@ kind_sorter.go([the Helm source file](https://github.com/helm/helm/blob/484d4391
 
 헬름 차트 템플릿은 [sprig 라이브러리](https://github.com/Masterminds/sprig)에서
 50개 정도의 애드온 템플릿 함수와
-몇가지 기타 [특수 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})가
+몇가지 기타 [특수 함수](/howto/charts_tips_and_tricks.md)가
 추가된 [Go template language](https://golang.org/pkg/text/template/)로
 작성되었다.
 
@@ -740,7 +740,7 @@ storage: "gcs"
 이 값들은 클라이언트에서 YAML로 간단하게 변환된다.
 
 **참고:** values 파일에 필수적인 엔트리가 있다면, 차트 템플릿에서
-['required' 함수]({{< ref "/docs/howto/charts_tips_and_tricks.md" >}})를 사용함으로써 필수로 정의될 수 있다.
+['required' 함수](/howto/charts_tips_and_tricks.md)를 사용함으로써 필수로 정의될 수 있다.
 
 값중 어떤 것이라도 템플릿의 안에서 `.Values` 오브젝트를 사용하여
 접근이 가능하다.

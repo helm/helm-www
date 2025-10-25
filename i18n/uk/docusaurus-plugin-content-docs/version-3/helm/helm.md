@@ -1,10 +1,7 @@
 ---
-title: Helm
+title: helm
 slug: helm
 ---
-
-## helm
-
 Менеджер пакетів Helm для Kubernetes.
 
 ### Опис {#synopsis}
@@ -85,30 +82,30 @@ Helm зберігає кеш, конфігурацію та дані на осн
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-- [helm completion](helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
-- [helm create](helm_create.md) — створити новий чарт з вказаною назвою
-- [helm dependency](helm_dependency.md) — керування залежностями чарту
-- [helm env](helm_env.md) — інформація про середовище клієнта helm
-- [helm get](helm_get.md) — завантажити розширену інформацію про зазначений реліз
-- [helm history](helm_history.md) — отримати історію релізу
-- [helm install](helm_install.md) — встановити чарт
-- [helm lint](helm_lint.md) — перевірити чарт на можливі проблеми
-- [helm list](helm_list.md) — переглянути список релізів
-- [helm package](helm_package.md) — упакувати теку чарту в архів чарту
-- [helm plugin](helm_plugin.md) — встановити, переглянути або видалити втулки Helm
-- [helm pull](helm_pull.md) — завантажити чарт з репозиторію та (за бажанням) розпакувати його в локальній теці
-- [helm push](helm_push.md) — завантажити чарт до віддаленого сервера
-- [helm registry](helm_registry.md) — увійти або вийти з реєстру
-- [helm repo](helm_repo.md) — додати, переглянути, видалити, оновити та індексувати репозиторії чартів
-- [helm rollback](helm_rollback.md) — відкотити реліз до попередньої версії
-- [helm search](helm_search.md) — шукати ключове слово в чартах
-- [helm show](helm_show.md) — показати інформацію про чарт
-- [helm status](helm_status.md) — відобразити статус зазначеного релізу
-- [helm template](helm_template.md) — локально рендерити шаблони
-- [helm test](helm_test.md) — запустити тести для релізу
-- [helm uninstall](helm_uninstall.md) — видалити реліз
-- [helm upgrade](helm_upgrade.md) — оновити реліз
-- [helm verify](helm_verify.md) — перевірити, чи підписаний та, чи є дійсним чарт за вказаним шляхом
-- [helm version](helm_version.md) — відобразити інформацію про версію клієнта
+- [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
+- [helm create](/helm/helm_create.md) — створити новий чарт з вказаною назвою
+- [helm dependency](/helm/helm_dependency.md) — керування залежностями чарту
+- [helm env](/helm/helm_env.md) — інформація про середовище клієнта helm
+- [helm get](/helm/helm_get.md) — завантажити розширену інформацію про зазначений реліз
+- [helm history](/helm/helm_history.md) — отримати історію релізу
+- [helm install](/helm/helm_install.md) — встановити чарт
+- [helm lint](/helm/helm_lint.md) — перевірити чарт на можливі проблеми
+- [helm list](/helm/helm_list.md) — переглянути список релізів
+- [helm package](/helm/helm_package.md) — упакувати теку чарту в архів чарту
+- [helm plugin](/helm/helm_plugin.md) — встановити, переглянути або видалити втулки Helm
+- [helm pull](/helm/helm_pull.md) — завантажити чарт з репозиторію та (за бажанням) розпакувати його в локальній теці
+- [helm push](/helm/helm_push.md) — завантажити чарт до віддаленого сервера
+- [helm registry](/helm/helm_registry.md) — увійти або вийти з реєстру
+- [helm repo](/helm/helm_repo.md) — додати, переглянути, видалити, оновити та індексувати репозиторії чартів
+- [helm rollback](/helm/helm_rollback.md) — відкотити реліз до попередньої версії
+- [helm search](/helm/helm_search.md) — шукати ключове слово в чартах
+- [helm show](/helm/helm_show.md) — показати інформацію про чарт
+- [helm status](/helm/helm_status.md) — відобразити статус зазначеного релізу
+- [helm template](/helm/helm_template.md) — локально рендерити шаблони
+- [helm test](/helm/helm_test.md) — запустити тести для релізу
+- [helm uninstall](/helm/helm_uninstall.md) — видалити реліз
+- [helm upgrade](/helm/helm_upgrade.md) — оновити реліз
+- [helm verify](/helm/helm_verify.md) — перевірити, чи підписаний та, чи є дійсним чарт за вказаним шляхом
+- [helm version](/helm/helm_version.md) — відобразити інформацію про версію клієнта
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

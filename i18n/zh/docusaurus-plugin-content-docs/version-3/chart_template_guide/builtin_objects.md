@@ -1,7 +1,7 @@
 ---
-title: "内置对象"
-description: "模板可用的内置对象"
-weight: 3
+title: 内置对象
+description: 模板可用的内置对象
+sidebar_position: 3
 ---
 
 对象可以通过模板引擎传递到模板中。 当然你的代码也可以传递对象。（我们在使用`with`和`range`语句时，会看到示例）。有几种方式可以在模板中创建新对象，比如说我们后面会看到的`tuple`功能。

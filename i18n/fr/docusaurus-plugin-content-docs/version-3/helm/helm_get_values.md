@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Values"
+title: helm get values
 ---
-
-## helm get values
-
 télécharge le fichier de valeurs d'une version donnée
 
 ### Synopsis
@@ -47,4 +44,4 @@ helm get values RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

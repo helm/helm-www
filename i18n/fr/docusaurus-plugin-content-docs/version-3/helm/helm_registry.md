@@ -1,9 +1,6 @@
 ---
-title: "Helm Registry"
+title: helm registry
 ---
-
-## helm registry
-
 Se connecter ou se déconnecter d'un registre
 
 ### Synopsis
@@ -40,6 +37,6 @@ Cette commande se compose de plusieurs sous-commandes pour interagir avec des re
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
-* [helm registry login](helm_registry_login.md) - Se connecter à un registre
-* [helm registry logout](helm_registry_logout.md) - Se déconnecter d'un registre
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm registry login](/helm/helm_registry_login.md) - Se connecter à un registre
+* [helm registry logout](/helm/helm_registry_logout.md) - Se déconnecter d'un registre

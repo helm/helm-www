@@ -1,7 +1,7 @@
 ---
-title: "模板函数列表"
-description: "Helm中模板函数变量的列表"
-weight: 6
+title: 模板函数列表
+description: Helm中模板函数变量的列表
+sidebar_position: 6
 ---
 
 Helm 包含了很多可以在模板中利用的模板函数。以下列出了具体分类：

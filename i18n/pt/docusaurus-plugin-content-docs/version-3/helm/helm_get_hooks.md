@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Hooks"
+title: helm get hooks
 ---
-
-## helm get hooks
-
 Baixa todos os _hooks_ para uma dada _release_
 
 ### Sinopse

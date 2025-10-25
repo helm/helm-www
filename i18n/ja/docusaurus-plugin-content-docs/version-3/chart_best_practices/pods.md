@@ -1,8 +1,7 @@
 ---
-title: "PodとPodテンプレート"
-description: "チャートマニフェストの、PodとPodテンプレート部分のフォーマットについて説明します。"
-weight: 6
-aliases: ["/docs/topics/chart_best_practices/pods/"]
+title: PodとPodテンプレート
+description: チャートマニフェストの、PodとPodテンプレート部分のフォーマットについて説明します。
+sidebar_position: 6
 ---
 
 ベストプラクティスのこの部分では、チャートマニフェストの、PodとPodテンプレート部分の

@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Values"
+title: helm show values
 ---
-
-## helm show values
-
 показати значення чарту
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm show values [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm show](helm_show.md) — показати інформацію про чарт
+* [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

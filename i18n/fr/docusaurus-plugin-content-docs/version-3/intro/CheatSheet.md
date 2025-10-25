@@ -1,7 +1,7 @@
 ---
-title: "Cheat Sheet"
-description: "Helm cheatsheet"
-weight: 4
+title: Cheat Sheet
+description: Helm cheatsheet
+sidebar_position: 4
 ---
 
 La cheatsheet d'Helm contient toutes les commandes nécessaires pour gérer une application avec Helm.

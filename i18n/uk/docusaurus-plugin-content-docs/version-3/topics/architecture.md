@@ -1,7 +1,7 @@
 ---
-title: "Архітектура Helm"
-description: "Описує архітектуру Helm на високому рівні."
-weight: 8
+title: Архітектура Helm
+description: Описує архітектуру Helm на високому рівні.
+sidebar_position: 8
 ---
 
 # Архітектура Helm {#helm-architecture}

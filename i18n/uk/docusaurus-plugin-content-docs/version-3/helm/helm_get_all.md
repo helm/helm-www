@@ -1,9 +1,6 @@
 ---
-title: "Helm Get All"
+title: helm get all
 ---
-
-## helm get all
-
 завантажити всю інформацію про вказаний реліз
 
 ### Опис {#synopsis}
@@ -45,6 +42,6 @@ helm get all RELEASE_NAME [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm get](helm_get.md) — завантажити розширену інформацію про вказаний реліз
+* [helm get](/helm/helm_get.md) — завантажити розширену інформацію про вказаний реліз
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

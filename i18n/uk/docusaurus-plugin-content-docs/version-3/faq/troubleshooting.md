@@ -1,6 +1,6 @@
 ---
-title: "Усунення несправностей"
-weight: 4
+title: Усунення несправностей
+sidebar_position: 4
 ---
 
 ## Усунення несправностей {#troubleshooting}

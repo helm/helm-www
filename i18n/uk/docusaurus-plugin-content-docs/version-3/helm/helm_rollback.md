@@ -1,9 +1,6 @@
 ---
-title: "Helm Rollback"
+title: helm rollback
 ---
-
-## helm rollback
-
 відкотити реліз до попередньої версії
 
 ### Опис {#synopsis}
@@ -56,6 +53,6 @@ helm rollback <RELEASE> [REVISION] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

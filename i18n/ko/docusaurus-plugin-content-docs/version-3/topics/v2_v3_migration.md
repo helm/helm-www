@@ -1,7 +1,7 @@
 ---
-title: "헬름 v2를 v3로 마이그레이션"
-description: "헬름 v2를 v3로 마이그레이션하는 방법을 배운다."
-weight: 13
+title: 헬름 v2를 v3로 마이그레이션
+description: 헬름 v2를 v3로 마이그레이션하는 방법을 배운다.
+sidebar_position: 13
 ---
 
 이 가이드에서는 헬름 v2를 v3로 마이그레이션하는 방법을 보여준다.
@@ -9,7 +9,7 @@ weight: 13
 
 ## 헬름 3 변경사항 개요
 
-헬름 2 에서 3로의 변경사항 전체 목록은 [FAQ](https://v3.helm.sh/docs/faq/#changes-since-helm-2)
+헬름 2 에서 3로의 변경사항 전체 목록은 [FAQ](/faq/changes_since_helm2.md)
 에 작성되어 있다. 다음은 
 마이그레이션 준비 및 작업간에 사용자가 알아야 할 몇 가지 변경 사항에 
 대한 요약이다:

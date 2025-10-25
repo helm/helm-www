@@ -1,7 +1,7 @@
 ---
-title: "在模板内部访问文件"
-description: "如何从模板中访问文件"
-weight: 10
+title: 在模板内部访问文件
+description: 如何从模板中访问文件
+sidebar_position: 10
 ---
 
 

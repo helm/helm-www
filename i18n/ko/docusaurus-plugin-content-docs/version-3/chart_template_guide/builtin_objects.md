@@ -1,7 +1,7 @@
 ---
-title: "빌트인 객체"
-description: "템플릿에서 사용가능한 빌트인 객체"
-weight: 3
+title: 빌트인 객체
+description: 템플릿에서 사용가능한 빌트인 객체
+sidebar_position: 3
 ---
 
 객체는 템플릿 엔진에서 템플릿으로 전달된다. 그리고 사용자의 코드는 
@@ -35,7 +35,7 @@ weight: 3
 - `Chart`: `Chart.yaml` 파일의 내용. `Chart.yaml` 안의 모든 데이터는 여기서 
   접근 가능하다. 예를 들어 `{{ .Chart.Name }}-{{ .Chart.Version }}` 은 
   `mychart-0.1.0` 를 출력한다.
-  - 사용가능한 필드는 [차트 가이드]({{< ref path="/docs/topics/charts.md#the-chartyaml-file" lang="ko" >}})
+  - 사용가능한 필드는 [차트 가이드](/topics/charts.md#the-chartyaml-file)
     에 나열되어 있다.
 - `Files`: 차트 내의 모든 특수하지 않은(non-special) 파일에 대한 접근을 제공한다.
   템플릿에 접근하는 데에는 사용할 수 없지만, 차트 내의 다른 파일에 접근하는 데에는 사용할 수 있다.

@@ -1,8 +1,7 @@
 ---
-
-title: "Історія Проєкту"
-description: "Надає загальний огляд історії проєкту."
-weight: 4
+title: Історія Проєкту
+description: Надає загальний огляд історії проєкту.
+sidebar_position: 4
 ---
 
 Helm є [дипломованим](/blog/celebrating-helms-cncf-graduation/) [проєктом CNCF](https://www.cncf.io/projects/).

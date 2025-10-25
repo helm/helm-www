@@ -14,8 +14,11 @@ const {
   replaceWeightWithSidebarPosition,
   addMainIndexMetadata,
   addDocsIndexLists,
+  renameCommandsToHelm,
 } = require("./util/util-migration.js");
 const { applyAllTextReplacements } = require("./util/util-text-replacements.js");
+const { convertRelativeLinksToAbsolute } = require("./util/util-docusaurus-links.js");
+const { processHrefDifferences } = require("./util/href-diffs-process.js");
 
 /**
  * Master orchestrator for v3 docs migration
@@ -58,25 +61,37 @@ async function migrateV3Docs(majorVersion = 3) {
     console.log("\n📋 Step 8: Migrating SDK section...");
     migrateSdkSection(majorVersion);
 
-    // Step 9: Apply text replacements (Hugo shortcodes and per-file rules)
-    console.log("\n📋 Step 9: Applying text replacements...");
+    // Step 9: Rename commands directories to helm in i18n
+    console.log("\n📋 Step 9: Renaming commands to helm in i18n directories...");
+    renameCommandsToHelm(majorVersion);
+
+    // Step 10: Apply text replacements (Hugo shortcodes and per-file rules)
+    console.log("\n📋 Step 10: Applying text replacements...");
     applyAllTextReplacements(majorVersion);
 
-    // Step 10: Process Helm files (H2 → titles, add slug/id metadata)
-    console.log("\n📋 Step 10: Processing Helm files...");
+    // Step 11: Process Helm files (H2 → titles, add slug/id metadata)
+    console.log("\n📋 Step 11: Processing Helm files...");
     processHelmFiles();
 
-    // Step 11: Remove all aliases from v3 files
-    console.log("\n📋 Step 11: Removing aliases...");
+    // Step 12: Remove all aliases from v3 files
+    console.log("\n📋 Step 12: Removing aliases...");
     removeAliasesFromFiles();
 
-    // Step 12: Add DocCardList components to index pages
-    console.log("\n📋 Step 12: Adding DocCardList components...");
+    // Step 13: Add DocCardList components to index pages
+    console.log("\n📋 Step 13: Adding DocCardList components...");
     addDocsIndexLists(majorVersion);
 
-    // Step 13: Add netlify redirects for removed aliases
-    console.log("\n📋 Step 13: Adding netlify redirects...");
+    // Step 14: Add netlify redirects for removed aliases
+    console.log("\n📋 Step 14: Adding netlify redirects...");
     addNetlifyRedirects();
+
+    // Step 15: Process href differences (fix broken links)
+    console.log("\n📋 Step 15: Processing href differences...");
+    processHrefDifferences(majorVersion, `./scripts/v${majorVersion}/href-diffs.json`);
+
+    // Step 16: Convert all relative links to absolute Docusaurus paths
+    console.log("\n📋 Step 16: Converting relative links to absolute paths...");
+    convertRelativeLinksToAbsolute(majorVersion);
 
     console.log("\n🎉 v3 docs migration completed successfully!");
   } catch (error) {

@@ -1,7 +1,7 @@
 ---
-title: "下一步"
-description: "收尾 - 一些能帮到你的指向其他的文档的链接。"
-weight: 15
+title: 下一步
+description: 收尾 - 一些能帮到你的指向其他的文档的链接。
+sidebar_position: 15
 ---
 
 本指南旨在为chart开发者提供对如何使用Helm模板语言的强大理解能力。该模板聚焦于模板开发的技术层面。

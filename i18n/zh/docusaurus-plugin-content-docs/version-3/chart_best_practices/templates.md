@@ -1,7 +1,7 @@
 ---
-title: "模板"
-description: "进一步了解围绕模板的最佳实践。"
-weight: 3
+title: 模板
+description: 进一步了解围绕模板的最佳实践。
+sidebar_position: 3
 ---
 
 最佳实践指南的这部分聚焦于模板。

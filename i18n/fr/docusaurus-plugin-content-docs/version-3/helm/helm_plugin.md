@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin"
+title: helm plugin
 ---
-
-## helm plugin
-
 installer, lister ou désinstaller des plugins Helm.
 
 ### Synopsis
@@ -40,8 +37,8 @@ Gère les plugins Helm côté client.
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
-* [helm plugin install](helm_plugin_install.md) - Installe un ou plusieurs plugins Helm
-* [helm plugin list](helm_plugin_list.md) - Liste les plugins Helm installés
-* [helm plugin uninstall](helm_plugin_uninstall.md) - Désinstalle un ou plusieurs plugins Helm
-* [helm plugin update](helm_plugin_update.md) - Met à jour un ou plusieurs plugins Helm
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm plugin install](/helm/helm_plugin_install.md) - Installe un ou plusieurs plugins Helm
+* [helm plugin list](/helm/helm_plugin_list.md) - Liste les plugins Helm installés
+* [helm plugin uninstall](/helm/helm_plugin_uninstall.md) - Désinstalle un ou plusieurs plugins Helm
+* [helm plugin update](/helm/helm_plugin_update.md) - Met à jour un ou plusieurs plugins Helm

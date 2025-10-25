@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Notes"
+title: helm get notes
 ---
-
-## helm get notes
-
 télécharge les notes pour une version donnée
 
 ### Synopsis
@@ -46,4 +43,4 @@ helm get notes RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

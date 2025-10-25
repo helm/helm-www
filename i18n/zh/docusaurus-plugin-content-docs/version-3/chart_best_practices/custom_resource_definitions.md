@@ -1,7 +1,7 @@
 ---
-title: "自定义资源"
-description: "如何创建和使用CRD"
-weight: 7
+title: 自定义资源
+description: 如何创建和使用CRD
+sidebar_position: 7
 ---
 
 最佳实践的这部分处理创建和使用自定义资源。

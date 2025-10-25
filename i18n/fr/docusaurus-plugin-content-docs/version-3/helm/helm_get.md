@@ -1,9 +1,6 @@
 ---
-title: "Helm Get"
+title: helm get
 ---
-
-## helm get
-
 télécharger les informations détaillées d'une version donnée
 
 ### Synopsis
@@ -46,10 +43,10 @@ Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilis�
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
-* [helm get all](helm_get_all.md) - Télécharge toutes les informations d'une version donnée
-* [helm get hooks](helm_get_hooks.md) - Télécharge tous les hooks pour une version donnée
-* [helm get manifest](helm_get_manifest.md) - Télécharge le manifeste d'une version donnée
-* [helm get metadata](helm_get_metadata.md) - Cette commande récupère les métadonnées d'une version donnée
-* [helm get notes](helm_get_notes.md) -Télécharge les notes d'une version donnée
-* [helm get values](helm_get_values.md) - Télécharge le fichier valeurs d'une version donnée
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm get all](/helm/helm_get_all.md) - Télécharge toutes les informations d'une version donnée
+* [helm get hooks](/helm/helm_get_hooks.md) - Télécharge tous les hooks pour une version donnée
+* [helm get manifest](/helm/helm_get_manifest.md) - Télécharge le manifeste d'une version donnée
+* [helm get metadata](/helm/helm_get_metadata.md) - Cette commande récupère les métadonnées d'une version donnée
+* [helm get notes](/helm/helm_get_notes.md) -Télécharge les notes d'une version donnée
+* [helm get values](/helm/helm_get_values.md) - Télécharge le fichier valeurs d'une version donnée

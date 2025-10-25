@@ -1,7 +1,7 @@
 ---
-title: "Chart发布操作用以自动化GitHub的页面Chart"
-description: "描述如何使用Chart发布操作通过GitHub页面自动发布chart。"
-weight: 3
+title: Chart发布操作用以自动化GitHub的页面Chart
+description: 描述如何使用Chart发布操作通过GitHub页面自动发布chart。
+sidebar_position: 3
 ---
 
 该指南描述了如何使用[Chart发布操作](https://github.com/marketplace/actions/helm-chart-releaser)

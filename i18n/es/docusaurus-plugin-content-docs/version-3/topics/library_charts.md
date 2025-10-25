@@ -4,7 +4,7 @@ description: "Explica los Charts de biblioteca y ejemplos de uso."
 sidebar_position: 4
 ---
 
-Un chart de biblioteca es un tipo de [chart de Helm]({{< ref "/docs/topics/charts.md" >}})
+Un chart de biblioteca es un tipo de [chart de Helm](/topics/charts.md)
 que define las primitivas o definiciones del chart que pueden ser compartidas por
 las plantillas de Helm en otros charts. Esto permite a los usuarios compartir
 fragmentos de código que se pueden reutilizar en los charts, evitando la repetición
@@ -27,7 +27,7 @@ se pueden compartir cambiando el tipo de chart.
 ## Crear un Chart de Biblioteca Simple
 
 Como se mencionó anteriormente, un chart de biblioteca es un tipo de [chart de
-Helm]({{< ref "/docs/topics/charts.md" >}}). Esto significa que puede comenzar
+Helm](/topics/charts.md). Esto significa que puede comenzar
 creando un chart de estantería:
 
 ```console
@@ -49,7 +49,7 @@ $ rm -f mylibchart/values.yaml
 ```
 
 Antes de pasar a la creación de código común, hagamos una revisión rápida de algunos
-conceptos relevantes de Helm. Una [plantilla con nombre]({{< relref path="/docs/chart_template_guide/named_templates.md" lang="en" >}}) 
+conceptos relevantes de Helm. Una [plantilla con nombre](/chart_template_guide/named_templates.md) 
 (a veces llamada parcial o subplantilla) es simplemente una plantilla definida
 dentro de un archivo, y se le dio un nombre. En el directorio `templates/`, no se
 espera que ningún archivo que comience con un guión bajo (_) genere un archivo de

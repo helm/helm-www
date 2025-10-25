@@ -1,7 +1,7 @@
 ---
-title: "커스텀 리소스 데피니션(CRD)"
-description: "CRD를 생성하고 사용하는 방법"
-weight: 7
+title: 커스텀 리소스 데피니션(CRD)
+description: CRD를 생성하고 사용하는 방법
+sidebar_position: 7
 ---
 
 이 부분은 모범사례 가이드의 일부로서 커스텀 리소스 데피니션 객체를 생성하고 사용하는 것을 다룬다.

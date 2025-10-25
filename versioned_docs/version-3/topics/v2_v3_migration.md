@@ -10,7 +10,7 @@ and managing releases in one or more clusters.
 ## Overview of Helm 3 Changes
 
 The full list of changes from Helm 2 to 3 are documented in the [FAQ
-section](https://v3.helm.sh/docs/faq/#changes-since-helm-2). The following is a
+section](/faq/changes_since_helm2.md). The following is a
 summary of some of those changes that a user should be aware of before and
 during migration:
 

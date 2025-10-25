@@ -1,7 +1,7 @@
 ---
-title: "附录：Go 数据类型和模板"
-description: "模板中变量的简单概述。"
-weight: 17
+title: 附录：Go 数据类型和模板
+description: 模板中变量的简单概述。
+sidebar_position: 17
 ---
 
 Helm 模板语言是用强类型Go编程语言实现的。 因此，模板中的变量是 _有类型的_。大多数情况下，变量将作为以下类型之一显示：

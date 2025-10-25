@@ -1,7 +1,7 @@
 ---
-title: "Синхронізація вашого репозиторію чартів"
-description: "Описує, як синхронізувати ваші локальні та віддалені репозиторії чартів."
-weight: 2
+title: Синхронізація вашого репозиторію чартів
+description: Описує, як синхронізувати ваші локальні та віддалені репозиторії чартів.
+sidebar_position: 2
 ---
 
 *Примітка: Цей приклад для хмарного сховища Google (GCS), яке обслуговує репозиторій чартів.*
@@ -14,7 +14,7 @@ weight: 2
 
 ## Налаштування теки локального репозиторію чартів {#set-up-a-local-chart-repository-directory}
 
-Створіть локальну теку, як ми це робили в [керівництві з репозиторію чартів]({{< ref "/docs/topics/chart_repository.md" >}}), і помістіть ваші упаковані чарти в цю теку.
+Створіть локальну теку, як ми це робили в [керівництві з репозиторію чартів](/topics/chart_repository.md), і помістіть ваші упаковані чарти в цю теку.
 
 Наприклад:
 
@@ -85,5 +85,5 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Корисні посилання:
 
 * Документація щодо [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [Керівництво репозиторію чартів]({{< ref "/docs/topics/chart_repository.md" >}})
+* [Керівництво репозиторію чартів](/topics/chart_repository.md)
 * Документація щодо [версіювання обʼєктів та керування паралельністю](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview) у хмарному сховищі Google

@@ -1,9 +1,6 @@
 ---
-title: "Helm Search"
+title: helm search
 ---
-
-## helm search
-
 шукати ключове слово у чартах
 
 ### Опис {#synopsis}
@@ -40,8 +37,8 @@ title: "Helm Search"
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
-* [helm search hub](helm_search_hub.md) — шукати чарти в Artifact Hub або у власному екземплярі хабу
-* [helm search repo](helm_search_repo.md) — шукати репозиторії за ключовим словом у чартах
+* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm search hub](/helm/helm_search_hub.md) — шукати чарти в Artifact Hub або у власному екземплярі хабу
+* [helm search repo](/helm/helm_search_repo.md) — шукати репозиторії за ключовим словом у чартах
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

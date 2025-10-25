@@ -1,7 +1,7 @@
 ---
-title: "Guía de inicio rápido"
-description: "Cómo instalar y comenzar con Helm, incluidas instrucciones para distribuciones, preguntas frecuentes y complementos."
-weight: 1
+title: Guía de inicio rápido
+description: Cómo instalar y comenzar con Helm, incluidas instrucciones para distribuciones, preguntas frecuentes y complementos.
+sidebar_position: 1
 ---
 
 Esta guía explica cómo empezar a utilizar Helm rápidamente.
@@ -32,7 +32,7 @@ Descargue una versión binaria del cliente Helm. Puedes usar herramientas como
 oficiales](https://github.com/helm/helm/releases).
 
 Para obtener más detalles u otras opciones, consulte [la guía de
-instalación]({{< ref "install.md" >}}).
+instalación](/intro/install.md).
 
 ## Inicializar un Repositorio de Helm Chart
 
@@ -81,7 +81,7 @@ y actualizar de forma independiente.
 
 El comando `helm install` es un comando muy poderoso con muchas capacidades.
 Para obtener más información al respecto, consulte la [Guía de Uso de
-Helm]({{< ref "using_helm.md" >}})
+Helm](/intro/using_helm.md)
 
 ## Más Información sobre Releases
 

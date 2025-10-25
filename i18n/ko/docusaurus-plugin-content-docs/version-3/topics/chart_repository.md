@@ -1,7 +1,7 @@
 ---
-title: "차트 저장소 가이드"
-description: "헬름 차트 저장소를 만들고 작업하는 방법"
-weight: 6
+title: 차트 저장소 가이드
+description: 헬름 차트 저장소를 만들고 작업하는 방법
+sidebar_position: 6
 ---
 
 이 섹션에서는 Helm 차트 저장소를 만들고 작업하는 방법을 설명한다.
@@ -15,8 +15,8 @@ weight: 6
 
 ## 전제 조건
 
-* [빠른 시작]({{< ref path="quickstart.md" lang="en" >}}) 가이드 살펴보기
-* [차트]({{< ref path="/docs/topics/charts.md" lang="en" >}}) 문서 읽기
+* [빠른 시작](/intro/quickstart.md) 가이드 살펴보기
+* [차트](/topics/charts.md) 문서 읽기
 
 ## 차트 저장소 생성
 
@@ -38,7 +38,7 @@ GET 요청에 응답할 수 있는 모든 HTTP 서버가 될 수 있기 때문�
 
 차트 저장소는 패키지형 차트와 저장소에 있는 모든 차트의 인덱스를 가진 `index.yaml` 이라는
 특수 파일로 구성된다. 종종 `index.yaml` 에 기술된 차트도
-[출처 파일]({{< ref path="provenance.md" lang="en" >}})처럼 동일한 서버에서
+[출처 파일](/topics/provenance.md)처럼 동일한 서버에서
 호스팅된다.
 
 예를 들어, 저장소 `https://example.com/charts` 의 레이아웃은 
@@ -253,7 +253,7 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 
 이제 동기화 도구를 사용하거나 수동으로 차트 저장소에 
 차트 및 인덱스 파일을 업로드할 수 있다. 구글 클라우드 스토리지를 
-사용하는 경우 gsutil 클라이언트를 사용하여 이  [예제 워크플로우]({{< ref path="/docs/howto/chart_repository_sync_example.md" lang="en" >}})를
+사용하는 경우 gsutil 클라이언트를 사용하여 이  [예제 워크플로우](/howto/chart_repository_sync_example.md)를
 확인하자. 깃헙의 경우 해당 목적지 브랜치에 차트를 간단히 넣을 수 있다.
 
 ### 기존 저장소에 새로운 차트 추가

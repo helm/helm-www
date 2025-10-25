@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin List"
+title: helm plugin list
 ---
-
-## helm plugin list
-
 вивести перелік встановлених втулків Helm
 
 ```shell
@@ -39,6 +36,6 @@ helm plugin list [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm plugin](helm_plugin.md) — встановити, вивести перелік або видалити втулки Helm
+* [helm plugin](/helm/helm_plugin.md) — встановити, вивести перелік або видалити втулки Helm
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

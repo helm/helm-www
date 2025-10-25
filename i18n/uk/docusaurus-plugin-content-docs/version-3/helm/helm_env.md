@@ -1,9 +1,6 @@
 ---
-title: "Helm Env"
+title: helm env
 ---
-
-## helm env
-
 інформація про середовище клієнта Helm
 
 ### Опис {#synopsis}
@@ -43,6 +40,6 @@ helm env [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

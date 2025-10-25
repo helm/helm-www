@@ -1,7 +1,7 @@
 ---
-title: "Chart仓库指南"
-description: "如何创建和使用Helm chart 仓库"
-weight: 6
+title: Chart仓库指南
+description: 如何创建和使用Helm chart 仓库
+sidebar_position: 6
 ---
 
 本节介绍如何创建和使用chart仓库。在高层级中，chart仓库是打包的chart存储和分享的位置。

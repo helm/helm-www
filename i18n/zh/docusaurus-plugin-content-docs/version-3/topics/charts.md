@@ -1,7 +1,7 @@
 ---
-title: "Chart"
-description: "阐述chart格式，并提供使用Helm构建chart的基本指导。"
-weight: 1
+title: Chart
+description: 阐述chart格式，并提供使用Helm构建chart的基本指导。
+sidebar_position: 1
 ---
 
 Helm使用的包格式称为 _chart_。 chart就是一个描述Kubernetes相关资源的文件集合。单个chart可以用来部署一些简单的，

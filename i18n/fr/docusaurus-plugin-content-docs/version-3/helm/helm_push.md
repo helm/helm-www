@@ -1,9 +1,6 @@
 ---
-title: "Helm Push"
+title: helm push
 ---
-
-## helm push
-
 Pousse un chart a distance
 
 ### Synopsis
@@ -51,4 +48,4 @@ helm push [chart] [remote] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

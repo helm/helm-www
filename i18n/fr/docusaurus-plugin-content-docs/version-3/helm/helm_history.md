@@ -1,9 +1,6 @@
 ---
-title: "Helm History"
+title: helm history
 ---
-
-## helm history
-
 récupère l'historique des versions
 
 ### Synopsis
@@ -57,4 +54,4 @@ helm history RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

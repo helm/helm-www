@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo Remove"
+title: helm repo remove
 ---
-
-## helm repo remove
-
 Supprime un ou plusieurs répertoires de charts
 
 ```
@@ -39,5 +36,5 @@ helm repo remove [REPO1 [REPO2 ...]] [flags]
 
 ### Voir également
 
-* [helm repo](helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
+* [helm repo](/helm/helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
 

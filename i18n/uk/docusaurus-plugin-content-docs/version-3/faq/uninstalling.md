@@ -1,6 +1,6 @@
 ---
-title: "Видалення"
-weight: 3
+title: Видалення
+sidebar_position: 3
 ---
 
 ## Видалення {#uninstalling}

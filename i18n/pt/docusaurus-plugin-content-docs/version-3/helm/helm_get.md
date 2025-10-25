@@ -1,9 +1,6 @@
 ---
-title: "Helm Get"
+title: helm get
 ---
-
-## helm get
-
 Baixa informações adicionais de uma dada _release_
 
 ### Sinopse
@@ -43,9 +40,9 @@ adicionais sobre uma dada _release_, incluindo:
 
 ### Veja Também
 
-* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
-* [helm get all](helm_get_all.md)	 - baixa todas as informações de uma dada _release_
-* [helm get hooks](helm_get_hooks.md)	 - baixa todos os _hooks_ de uma dada _release_
-* [helm get manifest](helm_get_manifest.md)	 - baixa o manifesto de uma dada _release_
-* [helm get notes](helm_get_notes.md)	 - baixa as notas de uma dada _release_
-* [helm get values](helm_get_values.md)	 - baixa o arquivo de valores de uma dada _release_
+* [helm](/helm/helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm get all](/helm/helm_get_all.md)	 - baixa todas as informações de uma dada _release_
+* [helm get hooks](/helm/helm_get_hooks.md)	 - baixa todos os _hooks_ de uma dada _release_
+* [helm get manifest](/helm/helm_get_manifest.md)	 - baixa o manifesto de uma dada _release_
+* [helm get notes](/helm/helm_get_notes.md)	 - baixa as notas de uma dada _release_
+* [helm get values](/helm/helm_get_values.md)	 - baixa o arquivo de valores de uma dada _release_

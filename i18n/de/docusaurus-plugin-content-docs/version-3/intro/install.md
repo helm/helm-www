@@ -28,7 +28,7 @@ kann man herunterladen und installieren.
    gewünschten Ziel (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 Von dort aus sollten Sie in der Lage sein, das Programm aufzurufen und ein
-[erstes Repo hinzuzufügen](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
+[erstes Repo hinzuzufügen](/intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Hinweis:** In den automatisierten Tests von Helm wird nur die Version von
@@ -167,5 +167,5 @@ Helm Binaries. Dieses Dokument deckt zusätzliche Fälle ab für Leute, die ansp
 Dinge mit Helm bewerkstelligen wollen.
 
 Wenn Sie das Helm Programm erfolgreich installiert haben, können Sie zur Verwaltung
-von Charts und [Hinzufügen des stabilen Repos](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository)
+von Charts und [Hinzufügen des stabilen Repos](/intro/quickstart.md#initialize-a-helm-chart-repository)
 wechseln.

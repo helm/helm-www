@@ -1,7 +1,7 @@
 ---
-title: "标签和注释"
-description: "涵盖了在chart中使用标签和注释的最佳实践。"
-weight: 5
+title: 标签和注释
+description: 涵盖了在chart中使用标签和注释的最佳实践。
+sidebar_position: 5
 ---
 
 最佳实践的这部分讨论关于在chart中使用标签和注释的最佳方式。

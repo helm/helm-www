@@ -1,9 +1,6 @@
 ---
-title: "Helm Create"
+title: helm create
 ---
-
-## helm create
-
 créer un nouveau chart avec le nom donné
 
 ### Synopsis
@@ -58,4 +55,4 @@ helm create NAME [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes

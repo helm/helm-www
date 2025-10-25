@@ -43,7 +43,7 @@ names.
 File URLs (`file://...`) are considered a "special case" for charts that are
 assembled by a fixed deployment pipeline.
 
-When using [downloader plugins](../topics/plugins.md#downloader-plugins)
+When using [downloader plugins](/topics/plugins.md#downloader-plugins)
 the URL scheme will be specific to the plugin. Note, a user of the chart will
 need to have a plugin supporting the scheme installed to update or build the
 dependency.

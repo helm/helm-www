@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin List"
+title: helm plugin list
 ---
-
-## helm plugin list
-
 liste les plugins Helm installés
 
 
@@ -40,4 +37,4 @@ helm plugin list [flags]
 
 ### Voir également
 
-* [helm plugin](helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm
+* [helm plugin](/helm/helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm

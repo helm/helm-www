@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Hooks"
+title: helm get hooks
 ---
-
-## helm get hooks
-
 télécharge les hooks pour une version donnée
 
 ### Synopsis
@@ -47,4 +44,4 @@ helm get hooks RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

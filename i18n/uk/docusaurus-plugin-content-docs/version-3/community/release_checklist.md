@@ -1,7 +1,7 @@
 ---
-title: "Перевірка випуску"
-description: "Чеклист для супровідників при випуску нової версії Helm."
-weight: 2
+title: Перевірка випуску
+description: Чеклист для супровідників при випуску нової версії Helm.
+sidebar_position: 2
 ---
 
 # Посібник для супровідників щодо випуску Helm
@@ -299,7 +299,7 @@ Helm vX.Y.Z — це реліз з новими функціями. Цього 
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-[Короткий посібник з налаштування](https://docs.helm.sh/using_helm/#quickstart-guide) допоможе вам розпочати роботу. Для інструкцій з оновлення або детальних нотаток з встановлення перегляньте [посібник з встановлення](https://docs.helm.sh/using_helm/#installing-helm). Ви також можете використовувати [скрипт для встановлення](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) на будь-якій системі з `bash`.
+[Короткий посібник з налаштування](/intro/quickstart.md) допоможе вам розпочати роботу. Для інструкцій з оновлення або детальних нотаток з встановлення перегляньте [посібник з встановлення](/intro/install.md). Ви також можете використовувати [скрипт для встановлення](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) на будь-якій системі з `bash`.
 
 ## Що далі
 
@@ -357,7 +357,7 @@ make sign
 
 ## 10. Оновлення документації {#10-update-docs}
 
-Розділ документації на сайті [Helm](/docs) містить версії Helm. Необхідно оновити на сайті версії для major, minor і patch. Також потрібно оновити дату наступного minor релізу.
+Розділ документації на сайті [Helm](/index.mdx) містить версії Helm. Необхідно оновити на сайті версії для major, minor і patch. Також потрібно оновити дату наступного minor релізу.
 
 Щоб це зробити, створіть pull request в репозиторії [helm-www](https://github.com/helm/helm-www). У файлі `config.toml` знайдіть відповідний розділ `params.versions` та оновіть версію Helm, як у цьому прикладі [оновлення поточної версії](https://github.com/helm/helm-www/pull/676/files). У тому ж файлі `config.toml` оновіть розділ `params.nextversion`.
 

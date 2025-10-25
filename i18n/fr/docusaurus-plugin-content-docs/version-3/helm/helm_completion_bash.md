@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Bash"
+title: helm completion bash
 ---
-
-## helm completion bash
-
 générer des scripts d'auto-complétion pour bash
 
 ### Synopsis
@@ -60,4 +57,4 @@ helm completion bash [flags]
 
 ### Voir également
 
-* [helm completion](helm_completion.md) - Générer des scripts d'auto-complétion pour le shell spécifié
+* [helm completion](/helm/helm_completion.md) - Générer des scripts d'auto-complétion pour le shell spécifié

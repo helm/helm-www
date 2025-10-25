@@ -1,9 +1,6 @@
 ---
-title: "Helm Package"
+title: helm package
 ---
-
-## helm package
-
 emballe un dossier de chart dans une archive de chart 
 
 ### Synopsis
@@ -61,4 +58,4 @@ helm package [CHART_PATH] [...] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes.
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes.

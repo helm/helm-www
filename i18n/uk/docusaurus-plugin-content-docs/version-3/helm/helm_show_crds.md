@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Crds"
+title: helm show crds
 ---
-
-## helm show crds
-
 показати CRD чарту
 
 ### Опис {#synopsis}
@@ -57,6 +54,6 @@ helm show crds [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm show](helm_show.md) — показати інформацію про чарт
+* [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

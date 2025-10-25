@@ -1,7 +1,7 @@
 ---
-title: "프로젝트 연혁"
-description: "프로젝트의 연혁에 대한 개요를 설명한다."
-weight: 4
+title: 프로젝트 연혁
+description: 프로젝트의 연혁에 대한 개요를 설명한다.
+sidebar_position: 4
 ---
 
 헬름 3는 [인큐베이션(incubation) 최종단계](https://github.com/cncf/toc/blob/main/process/graduation_criteria.adoc)에 있는 [CNCF 프로젝트](https://www.cncf.io/projects/)이다.

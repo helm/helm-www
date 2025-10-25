@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Manifest"
+title: helm get manifest
 ---
-
-## helm get manifest
-
 télécharge le manifeste pour une version donnée
 
 ### Synopsis
@@ -47,4 +44,4 @@ helm get manifest RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

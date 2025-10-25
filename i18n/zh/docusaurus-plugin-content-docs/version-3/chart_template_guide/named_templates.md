@@ -1,7 +1,7 @@
 ---
-title: "命名模板"
-description: "如何定义命名模板"
-weight: 9
+title: 命名模板
+description: 如何定义命名模板
+sidebar_position: 9
 ---
 
 此时需要越过模板，开始创建其他内容了。该部分我们会看到如何在一个文件中定义

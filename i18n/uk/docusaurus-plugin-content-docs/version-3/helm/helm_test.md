@@ -1,9 +1,6 @@
 ---
-title: "Helm Test"
+title: helm test
 ---
-
-## helm test
-
 запустити тести для релізу
 
 ### Опис {#synopsis}
@@ -49,6 +46,6 @@ helm test [RELEASE] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

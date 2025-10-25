@@ -1,7 +1,7 @@
 ---
-title: ".helmignore 文件"
+title: .helmignore 文件
 description: "`.helmignore` 文件用来指定你不想包含在你的helm chart中的文件。"
-weight: 13
+sidebar_position: 13
 ---
 
 `.helmignore` 文件用来指定你不想包含在你的helm chart中的文件。

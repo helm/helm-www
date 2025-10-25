@@ -13,6 +13,10 @@ const { findFiles } = require('./util-file-operations.js');
 function processHrefDifferences(majorVersion, differencesFile) {
   console.log(`🔗 Processing v${majorVersion} href differences and applying link fixes...`);
 
+  let totalFilesProcessed = 0;
+  let totalFixesApplied = 0;
+
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
 
   if (!fs.existsSync(differencesFile)) {
@@ -25,7 +29,45 @@ function processHrefDifferences(majorVersion, differencesFile) {
   const hrefDifferences = JSON.parse(fs.readFileSync(differencesFile, 'utf8'));
   console.log(`📋 Loaded ${hrefDifferences.length} v${majorVersion} href differences`);
 
-  const files = findFiles(versionDir, ['.md', '.mdx']);
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = processHrefDifferencesInDirectory(versionDir, hrefDifferences, majorVersion);
+    totalFilesProcessed += result.filesProcessed;
+    totalFixesApplied += result.fixesApplied;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = processHrefDifferencesInDirectory(translationVersionDir, hrefDifferences, majorVersion);
+          totalFilesProcessed += result.filesProcessed;
+          totalFixesApplied += result.fixesApplied;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Applied ${totalFixesApplied} href fixes across ${totalFilesProcessed} files`);
+}
+
+/**
+ * Process href differences in a specific directory
+ * @param {string} dirPath - Directory to process
+ * @param {Array} hrefDifferences - Array of href difference objects
+ * @param {number} majorVersion - Major version number
+ * @returns {Object} - Results with filesProcessed and fixesApplied
+ */
+function processHrefDifferencesInDirectory(dirPath, hrefDifferences, majorVersion) {
+  const files = findFiles(dirPath, ['.md', '.mdx']);
 
   // Group transformations by target file
   const fileTransforms = {};
@@ -52,7 +94,7 @@ function processHrefDifferences(majorVersion, differencesFile) {
 
   files.forEach(filePath => {
     try {
-      const relativePath = path.relative(versionDir, filePath);
+      const relativePath = path.relative(dirPath, filePath);
 
       // Only apply transformations specific to this file
       if (!fileTransforms[relativePath]) {
@@ -75,14 +117,27 @@ function processHrefDifferences(majorVersion, differencesFile) {
             totalFixes++;
           }
         } else {
-          // V3 uses markdown link pattern matching
-          const escapedFrom = fromPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-          const linkPattern = new RegExp(`(\\[[^\\]]+\\])\\(${escapedFrom}\\)`, 'g');
+          // V3 uses markdown link pattern matching, but also handles raw text for special cases
+          if (fromPath.includes('<') && fromPath.includes('>') || toPath === '') {
+            // Special cases:
+            // 1. Raw text replacement for angle bracket URLs (MDX compilation fixes)
+            // 2. Text deletion (when toPath is empty string)
+            const beforeRegex = new RegExp(fromPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+            if (content.includes(fromPath)) {
+              content = content.replace(beforeRegex, toPath);
+              hasChanges = true;
+              totalFixes++;
+            }
+          } else {
+            // Standard V3 markdown link pattern matching
+            const escapedFrom = fromPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const linkPattern = new RegExp(`(\\[[^\\]]+\\])\\(${escapedFrom}\\)`, 'g');
 
-          if (content.includes(`](${fromPath})`)) {
-            content = content.replace(linkPattern, `$1(${toPath})`);
-            hasChanges = true;
-            totalFixes++;
+            if (content.includes(`](${fromPath})`)) {
+              content = content.replace(linkPattern, `$1(${toPath})`);
+              hasChanges = true;
+              totalFixes++;
+            }
           }
         }
       });
@@ -98,7 +153,7 @@ function processHrefDifferences(majorVersion, differencesFile) {
     }
   });
 
-  console.log(`✅ Applied ${totalFixes} href fixes across ${updatedCount} files`);
+  return { filesProcessed: updatedCount, fixesApplied: totalFixes };
 }
 
 module.exports = {

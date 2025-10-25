@@ -1,9 +1,7 @@
 ---
-title: "从这里开始吧"
-weight: 2
-description: "Chart模板的快速指南。"
-
-
+title: 从这里开始吧
+description: Chart模板的快速指南。
+sidebar_position: 2
 ---
 
 指南的该部分，我们会创建一个chart并添加第一个模板。创建的chart会在后续指南中用到。
@@ -222,5 +220,5 @@ data:
 使用`--dry-run`会让你变得更容易测试，但不能保证Kubernetes会接受你生成的模板。
 最好不要仅仅因为`--dry-run`可以正常运行就觉得chart可以安装。
 
-在[Chart模板指南](./)中，我们以这里定义的chart基本模板为例详细讨论Helm模板语言。
+在[Chart模板指南](/chart_template_guide/index.mdx)中，我们以这里定义的chart基本模板为例详细讨论Helm模板语言。
 然后开始讨论内置对象。

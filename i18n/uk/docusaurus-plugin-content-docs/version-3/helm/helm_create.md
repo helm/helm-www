@@ -1,9 +1,6 @@
 ---
-title: "Helm Create"
+title: helm create
 ---
-
-## helm create
-
 створити новий чарт із вказаним імʼям
 
 ### Опис {#synopsis}
@@ -60,6 +57,6 @@ helm create NAME [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

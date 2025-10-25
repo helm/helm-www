@@ -1,7 +1,7 @@
 ---
-title: "高度な Helm のテクニック"
-description: "Helm パワーユーザー向けのさまざまな高度な機能について説明します"
-weight: 9
+title: 高度な Helm のテクニック
+description: Helm パワーユーザー向けのさまざまな高度な機能について説明します
+sidebar_position: 9
 ---
 
 このセクションでは、Helm を使用するためのさまざまな高度な機能とテクニックについて説明します。

@@ -1,8 +1,7 @@
 ---
-title: "介绍"
-description: "介绍Helm Go SDK"
-aliases: ["/docs/gosdk"]
-weight: 1
+title: 介绍
+description: 介绍Helm Go SDK
+sidebar_position: 1
 ---
 
 Helm 的 Go SDK 使自定义软件能够利用 Helm charts 和 Helm 的功能来管理 Kubernetes 软件部署
@@ -16,7 +15,7 @@ Helm 项目已承诺为 SDK 提供 API 稳定性。
 完整的 API 文档可以在 [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3) 找到。
 
 下面简要概述了一些主要类型的包和一个简单示例。
-有关更多示例和功能更完整的"驱动程序"，请参阅[示例](examples.mdx)部分。
+有关更多示例和功能更完整的"驱动程序"，请参阅[示例](/sdk/examples.mdx)部分。
 
 ## 主要包概览
 
@@ -35,7 +34,7 @@ Helm 项目已承诺为 SDK 提供 API 稳定性。
 
 ### 简单示例
 这是使用 Go SDK 执行 `helm list` 的简单示例。
-有关功能更完整的示例，请参阅[示例](examples.mdx)部分。
+有关功能更完整的示例，请参阅[示例](/sdk/examples.mdx)部分。
 
 ```go
 package main

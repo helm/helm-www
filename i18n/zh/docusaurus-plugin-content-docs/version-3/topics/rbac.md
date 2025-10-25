@@ -1,7 +1,7 @@
 ---
-title: "基于角色的访问控制"
-description: "解释Helm如何与Kubernetes基于角色的访问控制交互。"
-weight: 11
+title: 基于角色的访问控制
+description: 解释Helm如何与Kubernetes基于角色的访问控制交互。
+sidebar_position: 11
 ---
 
 在Kubernetes中，向用户或应用程序特定的服务账户授予角色是确保你的应用程序在指定范围运行的最佳实践。

@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Readme"
+title: helm show readme
 ---
-
-## helm show readme
-
 Affiche le README du chart
 
 ### Synopsis
@@ -56,5 +53,5 @@ helm show readme [CHART] [flags]
 
 ### Voir également
 
-* [helm show](helm_show.md) - Affiche les informations du chart
+* [helm show](/helm/helm_show.md) - Affiche les informations du chart
 

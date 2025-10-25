@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency List"
+title: helm dependency list
 ---
-
-## helm dependency list
-
 список залежностей для заданого чарту
 
 ### Опис {#synopsis}
@@ -48,6 +45,6 @@ helm dependency list CHART [flags]
 
 ### Дивіться також {#see-also}
 
-* [helm dependency](helm_dependency.md) — керувати залежностями чарту
+* [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

@@ -1,7 +1,7 @@
 ---
-title: "차트 훅(hooks)"
-description: "차트 훅을 이용하여 작업하는 방법을 설명한다."
-weight: 2
+title: 차트 훅(hooks)
+description: 차트 훅을 이용하여 작업하는 방법을 설명한다.
+sidebar_position: 2
 ---
 
 헬름은 차트 개발자가 릴리스 수명주기의 특정 지점에 개입할 수 있도록 _hook_ 매커니즘을 제공한다.
@@ -31,7 +31,7 @@ weight: 2
 | `post-upgrade`   | 업그레이드 요청 중에서, 모든 리소스가 업그레이드된 후 실행된다.                                                             |
 | `pre-rollback`   | 롤백 요청 중에서, 템플릿은 렌더링되었지만 아직 아무 리소스도 롤백되지 않은 시점에 실행된다.                                                    |
 | `post-rollback`  | 롤백 요청 중에서, 모든 리소스가 수정된 후에 실행된다.                                                                 |
-| `test`           | 헬름 test 하위 명령어가 호출될 때 실행된다. ([테스트 문서 보기](chart_tests.md))                                  |
+| `test`           | 헬름 test 하위 명령어가 호출될 때 실행된다. ([테스트 문서 보기](/topics/chart_tests.md))                                  |
 
 _헬름 3에서는 `crd-install` 훅은 제거되었고 대신 `crds/` 디렉터리를 
 사용한다는 점을 잊지 말자._ 

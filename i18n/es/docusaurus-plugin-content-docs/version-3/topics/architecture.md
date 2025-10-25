@@ -1,8 +1,7 @@
 ---
-title: "Arquitectura Helm"
-description: "Describe la arquitectura de Helm a alto nivel."
-aliases: ["/docs/architecture/"]
-weight: 8
+title: Arquitectura Helm
+description: Describe la arquitectura de Helm a alto nivel.
+sidebar_position: 8
 ---
 
 # Arquitectura de Helm

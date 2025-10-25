@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Notes"
+title: helm get notes
 ---
-
-## helm get notes
-
 Baixa as notas de uma dada _release_
 
 ### Sinopse

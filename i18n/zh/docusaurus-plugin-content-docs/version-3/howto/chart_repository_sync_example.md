@@ -1,7 +1,7 @@
 ---
-title: "同步你的Chart仓库"
-description: "描述如何同步本地和远程仓库"
-weight: 2
+title: 同步你的Chart仓库
+description: 描述如何同步本地和远程仓库
+sidebar_position: 2
 ---
 
 *注意： 该示例是专门针对Google Cloud Storage (GCS)提供的chart仓库。*

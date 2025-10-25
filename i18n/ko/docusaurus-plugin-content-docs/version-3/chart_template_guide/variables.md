@@ -1,7 +1,7 @@
 ---
-title: "변수"
-description: "템플릿에서 변수 사용하기"
-weight: 7
+title: 변수
+description: 템플릿에서 변수 사용하기
+sidebar_position: 7
 ---
 
 With functions, pipelines, objects, and control structures under our belts, we

@@ -1,7 +1,7 @@
 ---
-title: "Pruebas de Chart"
-description: "Describe cómo ejecutar y probar sus charts."
-weight: 3
+title: Pruebas de Chart
+description: Describe cómo ejecutar y probar sus charts.
+sidebar_position: 3
 ---
 
 Un chart contiene varios recursos y componentes de Kubernetes que funcionan

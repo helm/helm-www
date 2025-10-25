@@ -1,9 +1,6 @@
 ---
-title: "Helm Search Hub"
+title: helm search hub
 ---
-
-## helm search hub
-
 шукати чарти в Artifact Hub або у власному екземплярі хабу
 
 ### Опис {#synopsis}
@@ -54,6 +51,6 @@ helm search hub [KEYWORD] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm search](helm_search.md) — пошук ключового слова в чартах
+* [helm search](/helm/helm_search.md) — пошук ключового слова в чартах
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

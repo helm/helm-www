@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency"
+title: helm dependency
 ---
-
-## helm dependency
-
 керування залежностями чарту
 
 ### Опис {#synopsis}
@@ -74,9 +71,9 @@ dependencies:
 
 ### Дивіться також {#see-also}
 
-* [helm](helm.md) — Менеджер пакетів Helm для Kubernetes.
-* [helm dependency build](helm_dependency_build.md) — відновлення теки charts/ на основі файлу Chart.lock
-* [helm dependency list](helm_dependency_list.md) — перелік залежностей для даного чарта
-* [helm dependency update](helm_dependency_update.md) — оновлення charts/ на основі вмісту Chart.yaml
+* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm dependency build](/helm/helm_dependency_build.md) — відновлення теки charts/ на основі файлу Chart.lock
+* [helm dependency list](/helm/helm_dependency_list.md) — перелік залежностей для даного чарта
+* [helm dependency update](/helm/helm_dependency_update.md) — оновлення charts/ на основі вмісту Chart.yaml
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

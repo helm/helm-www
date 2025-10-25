@@ -1,7 +1,7 @@
 ---
-title: "템플릿 디버깅"
-description: "배포에 실패한 차트의 트러블슈팅"
-weight: 13
+title: 템플릿 디버깅
+description: 배포에 실패한 차트의 트러블슈팅
+sidebar_position: 13
 ---
 
 렌더링된 템플릿이 쿠버네티스 API 서버로 전송될 때 문서 형식 

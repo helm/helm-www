@@ -1,9 +1,6 @@
 ---
-title: "Helm Uninstall"
+title: helm uninstall
 ---
-
-## helm uninstall
-
 Désinstalle une release
 
 ### Synopsis
@@ -56,5 +53,5 @@ helm uninstall RELEASE_NAME [...] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

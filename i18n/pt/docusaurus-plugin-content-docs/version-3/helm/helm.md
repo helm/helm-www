@@ -1,10 +1,7 @@
 ---
-title: Helm
+title: helm
 slug: helm
 ---
-
-## helm
-
 O gerenciador de pacotes para o Kubernetes.
 
 ### Sinopse
@@ -77,11 +74,11 @@ Por padrão, os diretórios padrões dependem do Sistema Operacional. Abaixo seg
 ```
 
 ### Veja Também
-* [helm completion](helm_completion.md) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
-* [helm create](helm_create.md) - cria um novo chart com um nome.
+* [helm completion](/helm/helm_completion.md) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
+* [helm create](/helm/helm_create.md) - cria um novo chart com um nome.
 * [helm dependency](/helm/helm_dependency.md) - gerencia as dependências dos Charts.
 * [helm env](/helm/helm_env.md) - exibe as informações de variáveis de ambiente do cliente helm.
-* [helm get](helm_get.md) - recupera mais informações de uma dada _release_.
+* [helm get](/helm/helm_get.md) - recupera mais informações de uma dada _release_.
 * [helm history](/helm/helm_history.md) - recupera o histórico de uma _release_.
 * [helm install](/helm/helm_install.md) - instala um Chart.
 * [helm lint](/helm/helm_lint.md) - verifica o Chart por potenciais problemas.

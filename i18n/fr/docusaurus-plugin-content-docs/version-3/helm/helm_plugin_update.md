@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin Update"
+title: helm plugin update
 ---
-
-## helm plugin update
-
 met à jour un ou plusieurs plugins Helm
 
 
@@ -40,4 +37,4 @@ helm plugin update <plugin>... [flags]
 
 ### Voir également
 
-* [helm plugin](helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm
+* [helm plugin](/helm/helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm

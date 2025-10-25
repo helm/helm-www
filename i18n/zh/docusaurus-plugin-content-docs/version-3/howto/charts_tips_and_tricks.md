@@ -1,7 +1,7 @@
 ---
-title: "chart开发提示和技巧"
-description: "涵盖了Helm chart开发人员在构建产品质量chart时学到的一些提示和技巧"
-weight: 1
+title: chart开发提示和技巧
+description: 涵盖了Helm chart开发人员在构建产品质量chart时学到的一些提示和技巧
+sidebar_position: 1
 ---
 
 本指南涵盖了Helm chart的开发人员在构建生产环境质量的chart时学到的一些提示和技巧。

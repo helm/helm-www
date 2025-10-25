@@ -1,7 +1,7 @@
 ---
-title: "Підтвердження походження та цілісності в Helm"
-description: "Описує, як перевірити цілісність та походження чарту."
-weight: 5
+title: Підтвердження походження та цілісності в Helm
+description: Описує, як перевірити цілісність та походження чарту.
+sidebar_position: 5
 ---
 
 Helm має інструменти підтвердження походження, які допомагають користувачам чартів перевіряти цілісність та походження пакета. Використовуючи інструменти на основі PKI, GnuPG та відомих менеджерів пакетів, Helm може створювати та перевіряти підписані файли.
@@ -207,7 +207,7 @@ qtgooNdohoyGSzR5oapd7fEvauRQswJxOA0m0V+u9/eyLR0+JcYB8Udi1prnWf8=
 
 ### Підписи в OCI-реєстрах {#signatures-in-oci-based-registries}
 
-При публікації чартів до [реєстру на основі OCI]({{< ref "registries.md" >}}), втулок [`helm-sigstore`](https://github.com/sigstore/helm-sigstore/) може бути використаний для публікації файлів походження у [sigstore](https://sigstore.dev/). Як описано у [документації](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), процес створення файлів походження та підписання за допомогою ключа GPG є загальним, але команда `helm sigstore upload` може бути використана для публікації файлів походження до незмінного прозорого логу.
+При публікації чартів до [реєстру на основі OCI](/topics/registries.md), втулок [`helm-sigstore`](https://github.com/sigstore/helm-sigstore/) може бути використаний для публікації файлів походження у [sigstore](https://sigstore.dev/). Як описано у [документації](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), процес створення файлів походження та підписання за допомогою ключа GPG є загальним, але команда `helm sigstore upload` може бути використана для публікації файлів походження до незмінного прозорого логу.
 
 ## Встановлення авторитету та автентичності {#establishing-authority-and-authenticity}
 

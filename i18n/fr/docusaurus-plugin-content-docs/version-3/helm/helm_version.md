@@ -1,9 +1,6 @@
 ---
-title: "Helm Version"
+title: helm version
 ---
-
-## helm version
-
 Affiche les informations sur la version du client
 
 ### Synopsis
@@ -65,5 +62,5 @@ helm version [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

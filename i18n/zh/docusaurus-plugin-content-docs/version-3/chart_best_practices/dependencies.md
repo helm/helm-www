@@ -1,7 +1,7 @@
 ---
-title: "依赖"
-description: "涵盖chart依赖的最佳实践"
-weight: 4
+title: 依赖
+description: 涵盖chart依赖的最佳实践
+sidebar_position: 4
 ---
 
 最佳实践的这部分阐述`Chart.yaml`中声明的`dependencies`。

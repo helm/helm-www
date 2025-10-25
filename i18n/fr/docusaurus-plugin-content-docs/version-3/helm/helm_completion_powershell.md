@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Powershell"
+title: helm completion PowerShell
 ---
-
-## helm completion PowerShell
-
 générer des scripts d'auto-complétion pour PowerShell
 
 ### Synopsis
@@ -49,4 +46,4 @@ helm completion powershell [flags]
 ```
 
 ### Voir également
-* [helm completion](helm_completion.md) - Générer des scripts d'auto-complétion pour un shell spécifique
+* [helm completion](/helm/helm_completion.md) - Générer des scripts d'auto-complétion pour un shell spécifique

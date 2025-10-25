@@ -190,7 +190,7 @@ that is not marked as deprecated. The workflow for deprecating charts is:
 
 The `type` field defines the type of chart. There are two types: `application`
 and `library`. Application is the default type and it is the standard chart
-which can be operated on fully. The [library chart](library_charts.md) provides utilities or functions for the
+which can be operated on fully. The [library chart](/topics/library_charts.md) provides utilities or functions for the
 chart builder. A library chart differs from an application chart because it is
 not installable and usually doesn't contain any resource objects.
 

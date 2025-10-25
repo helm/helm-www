@@ -1,15 +1,15 @@
 ---
-title: "Helm の使い方"
-description: "Helm の基本について説明します。"
-weight: 3
+title: Helm の使い方
+description: Helm の基本について説明します。
+sidebar_position: 3
 ---
 
 このガイドでは、Helm を使用して Kubernetes クラスタ上のパッケージを管理する基本について説明します。
-Helm クライアントが既に [インストール済み]({{< ref "install.md" >}}) であると
+Helm クライアントが既に [インストール済み](/intro/install.md) であると
 想定しています。
 
 いくつかのクイックコマンドを実行したいだけの場合は、
-[クイックスタートガイド]({{< ref "quickstart.md" >}}) から始めてください。
+[クイックスタートガイド](/intro/quickstart.md) から始めてください。
 この章では、Helm コマンドの詳細について説明し、Helm の使用方法を説明します。
 
 ## 3つの大きな概念

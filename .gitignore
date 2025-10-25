@@ -34,3 +34,5 @@ tmp/
 
 # Migration source files
 orig/
+.claude
+CLAUDE.md

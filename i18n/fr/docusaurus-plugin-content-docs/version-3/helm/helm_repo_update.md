@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo Update"
+title: helm repo update
 ---
-
-## helm repo update
-
 Met à jour les informations sur les charts disponible localement à partir des répertoires de charts
 
 ### Synopsis
@@ -49,5 +46,5 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
 
 ### Voir également
 
-* [helm repo](helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
+* [helm repo](/helm/helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
 

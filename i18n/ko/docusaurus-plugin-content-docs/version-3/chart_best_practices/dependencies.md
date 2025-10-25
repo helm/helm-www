@@ -1,7 +1,7 @@
 ---
-title: "의존성"
-description: "차트 의존성에 관한 모범사례를 다룬다."
-weight: 4
+title: 의존성
+description: 차트 의존성에 관한 모범사례를 다룬다.
+sidebar_position: 4
 ---
 
 이 부분은 가이드의 일부로서 `Chart.yaml`에서 선언되는 `dependencies`에 관한 모범사례를 다룬다.

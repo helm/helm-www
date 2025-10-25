@@ -1,7 +1,7 @@
 ---
-title: "値"
-description: "どのように値を設定するかを解説します。"
-weight: 2
+title: 値
+description: どのように値を設定するかを解説します。
+sidebar_position: 2
 ---
 
 ベストプラクティスガイドのこの部分では、値の設定方法を解説します。

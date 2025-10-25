@@ -1,7 +1,7 @@
 ---
-title: "Helm插件指南"
-description: "介绍如何使用和创建插件来扩展Helm功能。"
-weight: 12
+title: Helm插件指南
+description: 介绍如何使用和创建插件来扩展Helm功能。
+sidebar_position: 12
 ---
 
 Helm插件是一个可以通过`helm` CLI访问的工具，但不是Helm的内置代码。

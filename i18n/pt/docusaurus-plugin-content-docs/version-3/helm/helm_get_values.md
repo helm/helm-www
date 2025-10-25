@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Values"
+title: helm get values
 ---
-
-## helm get values
-
 Baixa o arquivo com os valores de uma dada _release_
 
 ### Sinopse

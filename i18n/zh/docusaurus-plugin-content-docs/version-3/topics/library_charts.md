@@ -1,7 +1,7 @@
 ---
-title: "库类型Chart"
-description: "阐述库类型chart及使用案例"
-weight: 4
+title: 库类型Chart
+description: 阐述库类型chart及使用案例
+sidebar_position: 4
 ---
 
 库类型chart是一种[Helm chart](https://helm.sh/zh/docs/topics/charts)，定义了可以由其他chart中Helm

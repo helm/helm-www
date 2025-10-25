@@ -1,7 +1,7 @@
 ---
-title: "NOTES.txt 파일 작성하기"
-description: "차트 사용자에게 설명서를 제공하는 방법"
-weight: 10
+title: NOTES.txt 파일 작성하기
+description: 차트 사용자에게 설명서를 제공하는 방법
+sidebar_position: 10
 ---
 
 이 섹션에서는 차트 사용자에게 지침을 제공하는 헬름의 도구들을 살펴본다.

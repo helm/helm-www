@@ -21,7 +21,7 @@ this works:
   security reasons.
   - Files in `templates/` cannot be accessed.
   - Files excluded using `.helmignore` cannot be accessed.
-  - Files outside of a Helm application [subchart](subcharts_and_globals.md), including those of the parent, cannot be accessed
+  - Files outside of a Helm application [subchart](/chart_template_guide/subcharts_and_globals.md), including those of the parent, cannot be accessed
 - Charts do not preserve UNIX mode information, so file-level permissions will
   have no impact on the availability of a file when it comes to the `.Files`
   object.

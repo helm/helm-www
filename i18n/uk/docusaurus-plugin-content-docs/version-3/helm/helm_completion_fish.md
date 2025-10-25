@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Fish"
+title: helm completion fish
 ---
-
-## helm completion fish
-
 Генерація скрипта автодоповнення для fish
 
 ### Опис {#synopsis}
@@ -58,6 +55,6 @@ helm completion fish [прапорці]
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm completion](helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
+* [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024

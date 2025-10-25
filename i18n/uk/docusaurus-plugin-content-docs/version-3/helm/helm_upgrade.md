@@ -1,9 +1,6 @@
 ---
-title: "Helm Upgrade"
+title: helm upgrade
 ---
-
-## helm upgrade
-
 оновити реліз
 
 ### Опис {#synopsis}
@@ -113,6 +110,6 @@ helm upgrade [RELEASE] [CHART] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-- [helm](helm.md) — менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
 ###### Автоматично згенеровано spf13/cobra 11 вересня 2024
