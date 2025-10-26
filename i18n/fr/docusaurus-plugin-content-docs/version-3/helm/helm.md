@@ -1,9 +1,7 @@
 ---
-title: "Helm"
+title: helm
+slug: helm
 ---
-
-## helm
-
 Helm, Le gestionnaire de paquets pour Kubernetes
 
 ### Synopsis

@@ -1,7 +1,7 @@
 ---
-title: "Helm 架构"
-description: "Describes the Helm architecture at a high level."
-weight: 8
+title: Helm 架构
+description: Describes the Helm architecture at a high level.
+sidebar_position: 8
 ---
 
 # Helm 架构

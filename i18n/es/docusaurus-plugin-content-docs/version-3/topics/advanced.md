@@ -1,8 +1,7 @@
 ---
-title: "Técnicas avanzadas de Helm"
-description: "Explica varias características avanzadas para usuarios de Helm"
-aliases: ["/docs/advanced_helm_techniques"]
-weight: 9
+title: Técnicas avanzadas de Helm
+description: Explica varias características avanzadas para usuarios de Helm
+sidebar_position: 9
 ---
 
 Esta sección explica varias características avanzadas y técnicas para usar Helm.

@@ -1,9 +1,6 @@
 ---
-title: "Helm Search"
+title: helm search
 ---
-
-## helm search
-
 Recherche un mot clé dans les charts
 
 ### Synopsis
@@ -41,7 +38,7 @@ Utilisez les sous-commandes de search pour rechercher des charts dans différent
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
-* [helm search hub](helm_search_hub.md)	 - Rechercher des charts dans Artifact Hub ou dans votre propre instance de hub
-* [helm search repo](helm_search_repo.md) - Rechercher dans les répertoires un mot-clé dans les charts
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm search hub](/helm/helm_search_hub.md)	 - Rechercher des charts dans Artifact Hub ou dans votre propre instance de hub
+* [helm search repo](/helm/helm_search_repo.md) - Rechercher dans les répertoires un mot-clé dans les charts
 

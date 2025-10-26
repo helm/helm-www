@@ -1,7 +1,7 @@
 ---
-title: "템플릿 함수 목록"
-description: "헬름에서 사용가능한 템플릿 함수에 대한 목록"
-weight: 6
+title: 템플릿 함수 목록
+description: 헬름에서 사용가능한 템플릿 함수에 대한 목록
+sidebar_position: 6
 ---
 
 헬름에는 템플릿에서 활용할 수 있는 많은 템플릿 함수들이 포함되어 있다.
@@ -2044,7 +2044,7 @@ uuidv4
 `lookup` 은 실행중인 클러스터에서 리소스를 조회하는 데 사용된다. 
 `helm template` 명령어와 함께 사용하면 항상 빈 응답을 반환한다.
 
-[조회 함수에 대한 문서](functions_and_pipelines.md#lookup-함수-사용하기)에서 
+[조회 함수에 대한 문서](/chart_template_guide/functions_and_pipelines.md#lookup-함수-사용하기)에서 
 자세한 내용을 확인할 수 있다.
 
 ### .Capabilities.APIVersions.Has
@@ -2056,14 +2056,14 @@ uuidv4
 .Capabilities.APIVersions.Has "apps/v1/Deployment"
 ```
 
-더 많은 정보는 [내장 객체 문서](builtin_objects.md)에서 
+더 많은 정보는 [내장 객체 문서](/chart_template_guide/builtin_objects.md)에서 
 확인할 수 있다.
 
 ### 파일 함수
 
 차트 내에서 비 특수 파일을 얻을 수 있는 함수가 몇 가지 있다. 
 예를 들면, 애플리케이션 구성 파일에 액세스하는 것이다. 
-이는 [템플릿 내 파일 액세스](accessing_files.md)에 설명되어 있다.
+이는 [템플릿 내 파일 액세스](/chart_template_guide/accessing_files.md)에 설명되어 있다.
 
 _ 참고로, 이렇게 많은 함수들에 대한 문서화는 
 [Sprig](https://github.com/Masterminds/sprig)로 이루어졌다.

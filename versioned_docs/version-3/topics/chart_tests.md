@@ -34,7 +34,7 @@ their release of a chart (or application) works as expected.
 
 ## Example Test
 
-The [helm create](../helm/helm_create.md) command will automatically create a number of folders and files. To try the helm test functionality, first create a demo helm chart. 
+The [helm create](/helm/helm_create.md) command will automatically create a number of folders and files. To try the helm test functionality, first create a demo helm chart. 
 
 ```console
 $ helm create demo
@@ -99,7 +99,7 @@ Phase:          Succeeded
   across several yaml files in the `templates/` directory.
 - You are welcome to nest your test suite under a `tests/` directory like
   `<chart-name>/templates/tests/` for more isolation.
-- A test is a [Helm hook](charts_hooks.md), so annotations like
+- A test is a [Helm hook](/topics/charts_hooks.md), so annotations like
   `helm.sh/hook-weight` and `helm.sh/hook-delete-policy` may be used with test
   resources.
 - Often the contents in the `tests/` directory does not need to be packaged and published. Consider adding `tests/` to the `.helmignore` file.

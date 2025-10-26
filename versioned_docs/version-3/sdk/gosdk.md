@@ -14,7 +14,7 @@ As a warning, the SDK has some rough edges remaining from the initial work to se
 Full API documentation can be found at [https://pkg.go.dev/helm.sh/helm/v3](https://pkg.go.dev/helm.sh/helm/v3).
 
 A brief overview of some of the main types of packages and a simple example follows below.
-See the [Examples](examples.mdx) section for more examples and a more full featured 'driver'.
+See the [Examples](/sdk/examples.mdx) section for more examples and a more full featured 'driver'.
 
 ## Main package overview
 
@@ -33,7 +33,7 @@ There are many more packages besides these, so go check out the documentation fo
 
 ### Simple example
 This is a simple example of doing a `helm list` using the Go SDK.
-See the [Examples](examples.mdx) section for more full featured examples.
+See the [Examples](/sdk/examples.mdx) section for more full featured examples.
 
 ```go
 package main

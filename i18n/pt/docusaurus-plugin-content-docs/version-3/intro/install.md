@@ -1,7 +1,7 @@
 ---
-title: "Instalando o  Helm"
-description: "Aprenda como instalar e rodar o Helm."
-weight: 2
+title: Instalando o  Helm
+description: Aprenda como instalar e rodar o Helm.
+sidebar_position: 2
 ---
 
 Esse guia ensina como instalar a CLI do Helm. O Helm pode ser instalado
@@ -27,7 +27,7 @@ ser baixadas manualmente e instaladas.
 de destino (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 A partir daí, você já deve conseguir rodar o cliente e [adicionar
-um repositório dos Charts do Helm](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository):
+um repositório dos Charts do Helm](/intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Nota:** Os testes automatizados do Helm são realizados para a plataforma Linux
@@ -162,4 +162,4 @@ do `helm`. Este documento cobre casos de pessoas que querem executar cargas de
 trabalho mais sofisticadas com o Helm.
 
 Uma vez instalado com sucesso o cliente Helm você pode seguir com o uso do Helm
-para o gerenciamento de charts [adição de um repositório estável](https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository).
+para o gerenciamento de charts [adição de um repositório estável](/intro/quickstart.md#initialize-a-helm-chart-repository).

@@ -1,7 +1,7 @@
 ---
-title: "흐름(flow) 제어"
-description: "템플릿 내부의 흐름 구조에 대한 간단한 개요"
-weight: 6
+title: 흐름(flow) 제어
+description: 템플릿 내부의 흐름 구조에 대한 간단한 개요
+sidebar_position: 6
 ---
 
 Control structures (called "actions" in template parlance) provide you, the

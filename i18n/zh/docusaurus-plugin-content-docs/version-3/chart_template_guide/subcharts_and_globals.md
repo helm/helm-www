@@ -1,7 +1,7 @@
 ---
-title: "子chart和全局值"
-description: "与子chart和全局值进行交互"
-weight: 12
+title: 子chart和全局值
+description: 与子chart和全局值进行交互
+sidebar_position: 12
 ---
 
 到目前为止，我们只使用了一个chart。但chart可以使用依赖，称为 _子chart_，且有自己的值和模板。

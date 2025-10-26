@@ -1,9 +1,6 @@
 ---
-title: "Helm Test"
+title: helm test
 ---
-
-## helm test
-
 Lance des tests sur une release
 
 ### Synopsis
@@ -49,5 +46,5 @@ helm test [RELEASE] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

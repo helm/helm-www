@@ -201,7 +201,7 @@ Incorrect: `helm template` returns `Error: execution error at (templates/test.ya
 # memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
 ```
 
-Review [Debugging Templates](../chart_template_guide/debugging.md) for another example of this behavior of how YAML comments are left intact.
+Review [Debugging Templates](/chart_template_guide/debugging.md) for another example of this behavior of how YAML comments are left intact.
 
 ## Use of JSON in Templates and Template Output
 

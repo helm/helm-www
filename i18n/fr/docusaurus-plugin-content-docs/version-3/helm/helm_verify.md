@@ -1,9 +1,6 @@
 ---
-title: "Helm Verify"
+title: helm verify
 ---
-
-## helm verify
-
 Vérifie que le chart à l'emplacement donné a été signé et est valide
 
 ### Synopsis
@@ -49,5 +46,5 @@ helm verify PATH [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

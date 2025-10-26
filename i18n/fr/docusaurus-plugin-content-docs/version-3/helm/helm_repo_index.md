@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo Index"
+title: helm repo index
 ---
-
-## helm repo index
-
 Génère un fichier index à partir d'un répertoire contenant des charts packagés
 
 ### Synopsis
@@ -51,5 +48,5 @@ helm repo index [DIR] [flags]
 
 ### Voir également
 
-* [helm repo](helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
+* [helm repo](/helm/helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
 

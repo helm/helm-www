@@ -1,7 +1,7 @@
 ---
-title: "使用Helm"
-description: "解释 Helm 的基础知识。"
-weight: 3
+title: 使用Helm
+description: 解释 Helm 的基础知识。
+sidebar_position: 3
 ---
 
 本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。在这之前，假定您已经

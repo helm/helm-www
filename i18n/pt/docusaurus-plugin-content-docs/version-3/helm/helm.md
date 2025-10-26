@@ -1,9 +1,7 @@
 ---
-title: "Helm"
+title: helm
+slug: helm
 ---
-
-## helm
-
 O gerenciador de pacotes para o Kubernetes.
 
 ### Sinopse
@@ -76,26 +74,26 @@ Por padrão, os diretórios padrões dependem do Sistema Operacional. Abaixo seg
 ```
 
 ### Veja Também
-* [helm completion](helm_completion.md) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
-* [helm create](helm_create.md) - cria um novo chart com um nome.
-* [helm dependency]({{< relref path="/docs/helm/helm_dependency.md" lang="en" >}}) - gerencia as dependências dos Charts.
-* [helm env]({{< relref path="/docs/helm/helm_env.md" lang="en" >}}) - exibe as informações de variáveis de ambiente do cliente helm.
-* [helm get](helm_get.md) - recupera mais informações de uma dada _release_.
-* [helm history]({{< relref path="/docs/helm/helm_history.md" lang="en" >}}) - recupera o histórico de uma _release_.
-* [helm install](helm_install.md) - instala um Chart.
-* [helm lint]({{< relref path="/docs/helm/helm_lint.md" lang="en" >}}) - verifica o Chart por potenciais problemas.
-* [helm list]({{< relref path="/docs/helm/helm_list.md" lang="en" >}}) - lista as _releases_.
-* [helm package]({{< relref path="/docs/helm/helm_package.md" lang="en" >}}) - empacota um diretório de um Chart em um Chart Archive.
-* [helm plugin]({{< relref path="/docs/helm/helm_plugin.md" lang="en" >}}) - instala, lista, ou desinstala plugins do Helm.
-* [helm pull]({{< relref path="/docs/helm/helm_pull.md" lang="en" >}}) - baixa um Chart de um repositório, e opcionalmente, descompacta-o em um diretório local.
-* [helm repo]({{< relref path="/docs/helm/helm_repo.md" lang="en" >}}) - adiciona, lista, remove, atualiza, e indexa um repositório de Chart.
-* [helm rollback]({{< relref path="/docs/helm/helm_rollback.md" lang="en" >}}) - faz a regressão (_roll back_) de uma _release_ para uma versão anterior.
-* [helm search]({{< relref path="/docs/helm/helm_search.md" lang="en" >}}) - busca por uma palavra-chave entre os Charts.
-* [helm show]({{< relref path="/docs/helm/helm_show.md" lang="en" >}}) - exibe as informações de um Chart.
-* [helm status]({{< relref path="/docs/helm/helm_status.md" lang="en" >}}) - exibe o status de uma dada _release_.
-* [helm template]({{< relref path="/docs/helm/helm_template.md" lang="en" >}}) - renderiza localmente os templates dos manifestos com os valores de configuração.
-* [helm test]({{< relref path="/docs/helm/helm_test.md" lang="en" >}}) - roda os testes para uma _release_.
-* [helm uninstall]({{< relref path="/docs/helm/helm_uninstall.md" lang="en" >}}) - desinstala uma _release_.
-* [helm upgrade]({{< relref path="/docs/helm/helm_upgrade.md" lang="en" >}}) - atualiza uma _release_.
-* [helm verify]({{< relref path="/docs/helm/helm_verify.md" lang="en" >}}) - verifica se um Chart em um dado caminho foi assinado e está válido.
-* [helm version]({{< relref path="/docs/helm/helm_version.md" lang="en" >}}) - exibe as informações sobre a versão do cliente helm.
+* [helm completion](/helm/helm_completion.md) - gera os scripts de preenchimento automático (_autocompletion_) para o shell especificado.
+* [helm create](/helm/helm_create.md) - cria um novo chart com um nome.
+* [helm dependency](/helm/helm_dependency.md) - gerencia as dependências dos Charts.
+* [helm env](/helm/helm_env.md) - exibe as informações de variáveis de ambiente do cliente helm.
+* [helm get](/helm/helm_get.md) - recupera mais informações de uma dada _release_.
+* [helm history](/helm/helm_history.md) - recupera o histórico de uma _release_.
+* [helm install](/helm/helm_install.md) - instala um Chart.
+* [helm lint](/helm/helm_lint.md) - verifica o Chart por potenciais problemas.
+* [helm list](/helm/helm_list.md) - lista as _releases_.
+* [helm package](/helm/helm_package.md) - empacota um diretório de um Chart em um Chart Archive.
+* [helm plugin](/helm/helm_plugin.md) - instala, lista, ou desinstala plugins do Helm.
+* [helm pull](/helm/helm_pull.md) - baixa um Chart de um repositório, e opcionalmente, descompacta-o em um diretório local.
+* [helm repo](/helm/helm_repo.md) - adiciona, lista, remove, atualiza, e indexa um repositório de Chart.
+* [helm rollback](/helm/helm_rollback.md) - faz a regressão (_roll back_) de uma _release_ para uma versão anterior.
+* [helm search](/helm/helm_search.md) - busca por uma palavra-chave entre os Charts.
+* [helm show](/helm/helm_show.md) - exibe as informações de um Chart.
+* [helm status](/helm/helm_status.md) - exibe o status de uma dada _release_.
+* [helm template](/helm/helm_template.md) - renderiza localmente os templates dos manifestos com os valores de configuração.
+* [helm test](/helm/helm_test.md) - roda os testes para uma _release_.
+* [helm uninstall](/helm/helm_uninstall.md) - desinstala uma _release_.
+* [helm upgrade](/helm/helm_upgrade.md) - atualiza uma _release_.
+* [helm verify](/helm/helm_verify.md) - verifica se um Chart em um dado caminho foi assinado e está válido.
+* [helm version](/helm/helm_version.md) - exibe as informações sobre a versão do cliente helm.

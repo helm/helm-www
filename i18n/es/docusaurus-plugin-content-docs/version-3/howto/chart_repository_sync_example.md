@@ -18,7 +18,7 @@ que sirve como repositorio de charts.*
 
 ## Configurar un directorio de repositorio de charts local
 
-Cree un directorio local como lo hicimos en [la guía del repositorio de charts]({{< relref path="/docs/topics/chart_repository.md" lang="en" >}})
+Cree un directorio local como lo hicimos en [la guía del repositorio de charts](/topics/chart_repository.md)
 , y coloque sus charts empaquetados en ese directorio.
 
 Por ejemplo:
@@ -96,7 +96,7 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Enlaces Útiles:
 
 * Documentación sobre [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [La Guía del Repositorio de Charts]({{< relref path="/docs/topics/chart_repository.md" lang="en" >}})
+* [La Guía del Repositorio de Charts](/topics/chart_repository.md)
 * Documentación sobre [Control de versiones de objetos y control de 
   simultaneidad](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)
   en Google Cloud Storage

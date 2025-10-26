@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Values"
+title: helm get values
 ---
-
-## helm get values
-
 Baixa o arquivo com os valores de uma dada _release_
 
 ### Sinopse
@@ -43,4 +40,4 @@ helm get values NOME_DA_RELEASE [argumentos]
 
 ### Veja Também
 
-* [helm get](helm_get.md) - baixa informações adicionais de uma dada _release_
+* [helm get](/helm/helm_get.md) - baixa informações adicionais de uma dada _release_

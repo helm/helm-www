@@ -1,9 +1,6 @@
 ---
-title: "Helm Pull"
+title: helm pull
 ---
-
-## helm pull
-
 Télécharge un chart depuis un répertoire et (optionnellement) le décompresser dans un répertoire local.
 
 ### Synopsis
@@ -68,4 +65,4 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 
 ### Voir également
 
-* [helm](helm.md) -  Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) -  Le gestionnaire de package Helm pour Kubernetes

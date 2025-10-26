@@ -1,7 +1,7 @@
 ---
 title: "Appendix: Go データ型とテンプレート"
-description: "テンプレート内の変数の概要。"
-weight: 16
+description: テンプレート内の変数の概要。
+sidebar_position: 16
 ---
 
 Helm テンプレート言語は、厳密に型指定された Go プログラミング言語で実装されています。

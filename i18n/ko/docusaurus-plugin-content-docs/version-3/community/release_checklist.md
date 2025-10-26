@@ -1,7 +1,7 @@
 ---
-title: "릴리스 체크리스트"
-description: "다음 버전의 헬름을 출시할 때 유지관리자를 위한 체크리스트"
-weight: 2
+title: 릴리스 체크리스트
+description: 다음 버전의 헬름을 출시할 때 유지관리자를 위한 체크리스트
+sidebar_position: 2
 ---
 
 # 헬름 릴리스에 대한 유지관리자 가이드
@@ -381,7 +381,7 @@ Helm vX.Y.Z는 기능 릴리스이다. 이번 릴리스에서는 <insert focal p
 - [리눅스 s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [윈도우 amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-[빠른 시작 가이드](https://docs.helm.sh/using_helm/#quickstart-guide)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](https://docs.helm.sh/using_helm/#installing-helm)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)를 사용할 수도 있다.
+[빠른 시작 가이드](/intro/quickstart.md)를 참조하세요. **업그레이드 안내** 또는 자세한 설치 정보는 [설치 가이드](/intro/install.md)를 확인하세요. `bash` 가 있는 모든 시스템에서 [설치할 스크립트] (https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)를 사용할 수도 있다.
 
 ## 향후 계획
 

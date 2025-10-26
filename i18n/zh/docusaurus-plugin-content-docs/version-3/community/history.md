@@ -1,7 +1,7 @@
 ---
-title: "项目历史"
-description: "提供项目历史的高级概述。"
-weight: 4
+title: 项目历史
+description: 提供项目历史的高级概述。
+sidebar_position: 4
 ---
 
 Helm 是[CNCF](https://www.cncf.io/projects/)的[毕业项目](https://helm.sh/blog/celebrating-helms-cncf-graduation/)。

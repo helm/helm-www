@@ -1,8 +1,7 @@
 {
   "summary": {
-    "totalFilesProcessed": 133,
-    "filesWithAliases": 36,
-    "aliasesRemoved": 38
+    "filesWithAliases": 42,
+    "aliasesRemoved": 44
   },
   "aliases": [
     {

@@ -1,7 +1,7 @@
 ---
-title: "本地化Helm文档"
-description: "本地化Helm文档的说明。"
-weight: 5
+title: 本地化Helm文档
+description: 本地化Helm文档的说明。
+sidebar_position: 5
 ---
 
 本指南介绍如何本地化Helm文档。

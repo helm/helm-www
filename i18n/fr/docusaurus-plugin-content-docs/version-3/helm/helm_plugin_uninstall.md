@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin Uninstall"
+title: helm plugin uninstall
 ---
-
-## helm plugin uninstall
-
 désinstalle un ou plusieurs plugins Helm
 
 
@@ -40,4 +37,4 @@ helm plugin uninstall <plugin>... [flags]
 
 ### Voir également
 
-* [helm plugin](helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm
+* [helm plugin](/helm/helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm

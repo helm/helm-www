@@ -35,13 +35,13 @@ access in your templates.
 - `Chart`: The contents of the `Chart.yaml` file. Any data in `Chart.yaml` will
   be accessible here. For example `{{ .Chart.Name }}-{{ .Chart.Version }}` will
   print out the `mychart-0.1.0`.
-  - The available fields are listed in the [Charts Guide](../topics/charts.md#the-chartyaml-file)
+  - The available fields are listed in the [Charts Guide](/topics/charts.md#the-chartyaml-file)
 - `Subcharts`: This provides access to the scope (.Values, .Charts, .Releases etc.)
   of subcharts to the parent. For example `.Subcharts.mySubChart.myValue` to access
   the `myValue` in the `mySubChart` chart.
 - `Files`: This provides access to all non-special files in a chart. While you
   cannot use it to access templates, you can use it to access other files in the
-  chart. See the section [Accessing Files](accessing_files.md) for more.
+  chart. See the section [Accessing Files](/chart_template_guide/accessing_files.md) for more.
   - `Files.Get` is a function for getting a file by name (`.Files.Get
     config.ini`)
   - `Files.GetBytes` is a function for getting the contents of a file as an

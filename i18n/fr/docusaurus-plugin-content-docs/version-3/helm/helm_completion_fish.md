@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Fish"
+title: helm completion fish
 ---
-
-## helm completion fish
-
 générer des scripts d'auto-complétion pour fish
 
 ### Synopsis
@@ -55,4 +52,4 @@ helm completion fish [flags]
 
 ### Voir également
 
-* [helm completion](helm_completion.md) - Générer des scripts d'auto-complétion pour le shell spécifié
+* [helm completion](/helm/helm_completion.md) - Générer des scripts d'auto-complétion pour le shell spécifié

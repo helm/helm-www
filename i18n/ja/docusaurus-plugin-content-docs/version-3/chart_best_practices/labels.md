@@ -1,8 +1,7 @@
 ---
-title: "ラベルとアノテーション"
-description: "チャートの中でラベルとアノテーションを使用するためのベストプラクティスを解説します。"
-weight: 5
-aliases: ["/docs/topics/chart_best_practices/labels/"]
+title: ラベルとアノテーション
+description: チャートの中でラベルとアノテーションを使用するためのベストプラクティスを解説します。
+sidebar_position: 5
 ---
 
 ベストプラクティスのこの部分では、チャートの中でラベルとアノテーションを使用する際の

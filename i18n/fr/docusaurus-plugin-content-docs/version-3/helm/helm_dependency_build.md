@@ -1,9 +1,6 @@
 ---
-title: "Helm Dependency Build"
+title: helm dependency build
 ---
-
-## helm dependency build
-
 reconstruire le répertoire charts/ à partir du fichier Chart.lock
 
 ### Synopsis
@@ -50,4 +47,4 @@ helm dependency build CHART [flags]
 
 ### Voir également
 
-* [helm dependency](helm_dependency.md) - Gérer les dépendances d'un chart
+* [helm dependency](/helm/helm_dependency.md) - Gérer les dépendances d'un chart

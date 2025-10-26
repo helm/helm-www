@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Crds"
+title: helm show crds
 ---
-
-## helm show crds
-
 Affiche les CRDs du chart
 
 ### Synopsis
@@ -57,5 +54,5 @@ helm show crds [CHART] [flags]
 
 ### Voir également
 
-* [helm show](helm_show.md) - Affiche les informations du chart
+* [helm show](/helm/helm_show.md) - Affiche les informations du chart
 

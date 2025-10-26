@@ -1,7 +1,7 @@
 ---
-title: ".helmignore 파일"
+title: .helmignore 파일
 description: "`.helmignore` 파일은 헬름 차트에 포함시키고 싶지 않은 파일들을 지정하는 데 사용한다."
-weight: 12
+sidebar_position: 12
 ---
 
 `.helmignore` 파일은 헬름 차트에 포함시키고 싶지 않은 파일들을 지정하는 데 사용한다.

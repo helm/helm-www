@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Fish"
+title: helm completion fish
 ---
-
-## helm completion fish
-
 Gera scripts de preenchimento automático para o fish
 
 ### Sinopse
@@ -56,4 +53,4 @@ helm completion fish [argumentos]
 
 ### Veja Também
 
-* [helm completion](helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
+* [helm completion](/helm/helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
