@@ -1,19 +1,12 @@
 [build]
   command = "make build"
-  publish = "app"
+  publish = "build"
 
 [build.environment]
-  HUGO_VERSION = "0.138.0"
-  HUGO_ENABLEGITINFO = "true"
+  NODE_VERSION = "20"
 
 [context.production.environment]
-  HUGO_ENV = "production"
-
-[context.deploy-preview]
-  command = "make build-preview"
-
-[context.branch-deploy]
-  command = "make build-preview"
+  SITE_URL = "https://helm.sh"
 
 # redirect docs homepage
 [[redirects]]
