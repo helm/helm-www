@@ -136,183 +136,183 @@
     "description": "Link a core maintainers"
   },
   "home.support.maintainersLink": {
-    "message": "many other wonderful helm core maintainers",
-    "description": "Core maintainers link text"
+    "message": "molti altri meravigliosi manutentori del core di Helm",
+    "description": "Testo del link Core maintainers"
   },
   "home.community.nextFeatureRelease": {
-    "message": "Next Feature Release",
-    "description": "Next Feature Release section title"
+    "message": "Prossima verisone",
+    "description": "Titolo sezione Prossima versione"
   },
   "home.community.nextFeatureRelease.version": {
     "message": "v4.0.0",
-    "description": "Next Feature Release version"
+    "description": "Prossima versione"
   },
   "home.community.nextFeatureRelease.calendar": {
-    "message": "Release Calendar",
-    "description": "Release Calendar link"
+    "message": "Calendario dei rilasci",
+    "description": "Link Calendario dei rilasci"
   },
   "home.community.events": {
-    "message": "Events",
-    "description": "Events section title"
+    "message": "Eventi",
+    "description": "Titolo sezione Eventi"
   },
   "home.community.upcomingEventsSubtitle": {
-    "message": "Upcoming Events",
-    "description": "Upcoming Events subtitle"
+    "message": "Prossimi Eventi",
+    "description": "Sottotiolo prossimi eventi"
   },
   "home.community.pastEventsSubtitle": {
-    "message": "Past Events",
-    "description": "Past Events subtitle"
+    "message": "Eventi Passati",
+    "description": "Sottotiolo Eventi Passati"
   },
   "home.community.sigApps": {
     "message": "SIG Apps",
-    "description": "SIG Apps section title"
+    "description": "Titolo sezione SIG Apps"
   },
   "home.community.sigApps.description": {
-    "message": "They {meetLink} to demo and discuss tools and projects. Community meetings are recorded and {youtubeLink}.",
-    "description": "SIG Apps meeting description"
+    "message": "Si {meetLink} per demo e discussioni su strumenti e progetti. Gli incontri della community vengono registrati e {youtubeLink}.",
+    "description": "Descrizione meeting SIG Apps"
   },
   "home.community.sigApps.meetLink": {
-    "message": "meet each week",
-    "description": "Link to SIG Apps meetings"
+    "message": "incontri ogni settimana",
+    "description": "Link ai meeting SIG Apps"
   },
   "home.community.sigApps.youtubeLink": {
-    "message": "shared to YouTube",
-    "description": "Link to YouTube recordings"
+    "message": "condivisi su YouTube",
+    "description": "Link alle registrazioni YouTube"
   },
   "home.community.developerStandups": {
     "message": "Developer Standups"
   },
   "home.community.developerStandups.time": {
-    "message": "Thursdays 9:30-10am (PT)",
-    "description": "Developer Standups day and time"
+    "message": "Giovedì dalle 9:30 alle 10:00 (ora del Pacifico)",
+    "description": "Giorno e ora dei Developer Standups"
   },
   "home.community.developerStandups.description": {
-    "message": "These meetings are open to all. Check the {communityRepoLink} for notes and details.",
-    "description": "Developer Standups description with community repo link"
+    "message": "Questi incontri sono aperti a tutti. Controlla {communityRepoLink} per note e dettagli.",
+    "description": "Descrizione con link ai repository dei Developer Standups"
   },
   "home.community.developerStandups.communityRepoLink": {
     "message": "community repo",
-    "description": "Community repo link"
+    "description": "Link ai Community repo"
   },
   "home.community.slack.join": {
-    "message": "{slackLink} to join the Kubernetes Slack team.",
-    "description": "How to join the Kubernetes Slack team with slack link"
+    "message": "{slackLink} per entrare a far parte del team Slack di Kubernetes.",
+    "description": "Link come entrare a far parte del team Slack di Kubernetes"
   },
   "home.community.slack.join.slackLink": {
-    "message": "Request access here",
-    "description": "Request access to slack link"
+    "message": "Richiedi l'accesso qui",
+    "description": "Link Richiedi l'accesso a slack"
   },
   "home.community.slack.helmUsers.description": {
-    "message": "Discussion around using Helm, working with charts and solving common errors.",
-    "description": "helm-users slack channel description"
+    "message": "Discussione sull'uso di Helm, sul lavoro con i chart e sulla risoluzione degli errori più comuni.",
+    "description": "Descrizione canale slack helm-users"
   },
   "home.community.slack.helmDevelopment.description": {
-    "message": "Topics regarding Helm development, ongoing PRs, releases, etc.",
-    "description": "helm-dev slack channel description"
+    "message": "Argomenti relativi allo sviluppo di Helm, PR in corso, rilasci, ecc.",
+    "description": "Descrizione canale slack helm-dev"
   },
   "home.community.slack.charts.description": {
-    "message": "Discussion for users and contributors to Helm Charts.",
-    "description": "charts slack channel description"
+    "message": "Discussione per utenti e collaboratori di Helm Charts.",
+    "description": "Descrizione canale slack charts"
   },
   "home.community.contributing": {
-    "message": "Contributing",
-    "description": "Contributing section title"
+    "message": "Contribuire",
+    "description": "Titolo sezione Contribuire"
   },
   "home.community.contributing.description": {
-    "message": "Helm always welcomes new contributions to the project!",
-    "description": "Contributing section description"
+    "message": "Helm accoglie sempre con favore nuovi contributi al progetto!",
+    "description": "Descrizione sezione Contribuire"
   },
   "home.community.contributing.whereToBegin": {
-    "message": "Where to begin?",
-    "description": "Where to begin? section title"
+    "message": "Dove iniziare?",
+    "description": "Titolo sezione Dove iniziare?"
   },
   "home.community.contributing.whereToBegin.description": {
-    "message": "Helm is a big project with a lot of users and contributors. It can be a lot to take in!",
-    "description": "Where to begin? section description"
+    "message": "Helm è un progetto di grandi dimensioni con molti utenti e collaboratori. Può essere difficile da comprendere appieno!",
+    "description": "Descrizione sezione Dove iniziare?"
   },
   "home.community.contributing.whereToBegin.goodFirstIssues": {
-    "message": "We have a list of {goodFirstIssuesLink} if you want to help but don't know where to start.",
-    "description": "Good first issues sentence with link"
+    "message": "Abbiamo un elenco di {goodFirstIssuesLink} se desideri dare una mano ma non sai da dove iniziare.",
+    "description": "Frase con link per Good first issues"
   },
   "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
     "message": "good first issues",
-    "description": "Good first issues link"
+    "description": "Link Good first issues"
   },
   "home.community.contributing.whatDoIDo": {
-    "message": "What do I do?",
-    "description": "What do I do? section title"
+    "message": "Cosa devo fare?",
+    "description": "Titolos ezione Cosa devo fare?"
   },
   "home.community.contributing.whatDoIDo.contributionGuide": {
-    "message": "Before you contribute some code, please read our {contributionGuideLink}. It goes over the processes around creating and reviewing pull requests.",
-    "description": "What do I do? contribution guide description"
+    "message": "Prima di contribuire con del codice, leggi la nostra {contributionGuideLink}. Descrive le procedure relative alla creazione e alla revisione delle pull requests.",
+    "description": "Descrizione guida Cosa devo fare?What do I do?"
   },
   "home.community.contributing.whatDoIDo.contributionGuideLink": {
-    "message": "Contribution Guide",
-    "description": "Contribution Guide link"
+    "message": "Guida come contribuire",
+    "description": "Link Guida come contribuire"
   },
   "home.community.contributing.whatDoIDo.signYourCommits": {
-    "message": "After you write some code, please {signYourCommitsLink} to ensure Helm adheres to the {dcoLink} agreement used by the {cncfLink}.",
-    "description": "What do I do? sign your commits description"
+    "message": "Dopo aver scritto del codice, ti preghiamo di {signYourCommitsLink} per garantire che Helm rispetti l'accordo {dcoLink} utilizzato da {cncfLink}.",
+    "description": "Descrizione Cosa devo fare? Firma i tuoi commit."
   },
   "home.community.contributing.whatDoIDo.signYourCommitsLink": {
-    "message": "sign your commits",
-    "description": "Sign your commits link"
+    "message": "firma i tuoi commit",
+    "description": "Link firma i tuoi commit"
   },
   "home.community.title": {
-    "message": "Join the Community",
-    "description": "Join the Community title"
+    "message": "Uisciti alla Community",
+    "description": "Titolo Uisciti alla Community"
   },
   "home.community.subtitle": {
-    "message": "More information about the Helm project, and how to contribute.",
-    "description": "Join the Community subtitle"
+    "message": "Maggiori informazioni sul progetto Helm e su come contribuire.",
+    "description": "sottotitolo Uisciti alla Community"
   },
   "theme.docs.breadcrumbs.home": {
     "message": "Pagina principale",
-    "description": "The ARIA label for the home page in the breadcrumbs"
+    "description": "L'etichetta ARIA per la homepage nei breadcrumbs"
   },
   "theme.blog.list.pageTitle": {
     "message": "Blog",
-    "description": "The word \"Blog\" in breadcrumbs"
+    "description": "La parola \"Blog\" in breadcrumbs"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
-    "message": "Briciole di pane",
-    "description": "The ARIA label for the breadcrumbs"
+    "message": "Breadcrumbs",
+    "description": "l'etichetta ARIA per i breadcrumbs"
   },
   "theme.blog.sidebar.navAriaLabel": {
     "message": "Navigazione dei post recenti del blog",
-    "description": "The ARIA label for recent posts in the blog sidebar"
+    "description": "L'etichetta ARIA nella sidebar per i post recenti nel blog"
   },
   "theme.TOCCollapsible.toggleButtonLabel": {
     "message": "Su questa pagina",
-    "description": "The label used by the button on the collapsible TOC component"
+    "description": "L'etichetta utilizzata dal pulsante sul componente TOC comprimibile"
   },
   "theme.ErrorPageContent.title": {
     "message": "Questa pagina è andata in crash.",
-    "description": "The title of the fallback page when the page crashed"
+    "description": "Il titolo della pagina di fallback quando la pagina si è bloccata"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
     "message": "Torna indietro all'inizio",
-    "description": "The ARIA label for the back to top button"
+    "description": "L'etichetta ARIA per il pulsante Torna all'inizio"
   },
   "theme.blog.archive.title": {
     "message": "Archivio",
-    "description": "The page & hero title of the blog archive page"
+    "description": "Il titolo della pagina archivio del blog"
   },
   "theme.blog.archive.description": {
     "message": "Archivio",
-    "description": "The page & hero description of the blog archive page"
+    "description": "Descrizione della pagina archivio del blog"
   },
   "theme.blog.paginator.navAriaLabel": {
     "message": "Navigazione nella pagina dei post del blog ",
-    "description": "The ARIA label for the blog pagination"
+    "description": "L'etichetta ARIA per l'impaginazione del blog"
   },
   "theme.blog.paginator.newerEntries": {
     "message": "Post più recenti",
-    "description": "The label used to navigate to the newer blog posts page (previous page)"
+    "description": "L'etichetta utilizzata per navigare alla pagina dei post più recenti del blog (pagina precedente)"
   },
   "theme.blog.paginator.olderEntries": {
     "message": "Post più vecchi",
-    "description": "The label used to navigate to the older blog posts page (next page)"
+    "description": "L'etichetta utilizzata per navigare alla pagina dei post più vecchi del blog (pagina successiva)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
     "message": "Navigazione nella pagina dei post del blog ",
@@ -450,15 +450,15 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Expand sidebar category '{label}'",
+    "message": "Espandi la categoria '{label}' della barra laterale",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Collapse sidebar category '{label}'",
+    "message": "Chiudi la categoria '{label}' della barra laterale",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "(apri in un nuovo tab)",
     "description": "The ARIA label for the external link icon"
   },
   "theme.NotFound.p1": {
@@ -522,11 +522,11 @@
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
+    "message": "Espandi il menu a tendina",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
+    "message": "Chiudi il menu a tendina",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
@@ -558,15 +558,15 @@
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
-    "message": "Authors",
+    "message": "Authori",
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
-    "message": "View All Authors",
+    "message": "Vedi Tutti gli Authori",
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "This author has not written any posts yet.",
+    "message": "Questo autore non ha ancora scritto alcun post.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
@@ -578,11 +578,11 @@
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Draft page",
+    "message": "Bozza della pagina",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "message": "Questa pagina è una bozza. Sarà visibile solo in dev e sarà esclusa dalla build di produzione.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
