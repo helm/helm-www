@@ -120,9 +120,11 @@ This section provides guidance for working with markdown links in the Helm docs 
 
 ### Use absolute paths
 
-Absolute paths are more verbose but needed for maintainability in our multi-locale site with ongoing English content additions. The workflow for translating docs for this site involves copying English docs to different locales. If a given file exists in English but there is no translated version of the file in a given locale (which is common for this site), then using absolute paths ensures that Docusaurus will redirect to the English version of the file.
+Absolute paths are more verbose but needed in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
 
-* When linking from one doc page to another, or from one blog to another, use the absolute path, starting from the directory within /blogs or within the version-specific docs folder. As in, don't include `/blog/` or `/docs/` in the path. For example, `[Blog to blog link](/2024-10-07-kubecon-na-24/index.md)` or `[Doc to doc link](/topics/advanced.md)`.
+When adding absolute path links to docs and/or blogs, use the following guidance:
+
+* When linking from one doc page to another or from one blog to another, use the absolute path, starting from the directory within `/blogs` or within the version-specific docs folder. As in, don't include `/blog/` or `/docs/` in the path. For example, `[Blog to blog link](/2024-10-07-kubecon-na-24/index.md)` or `[Doc to doc link](/topics/advanced.md)`.
 * When linking a doc to a blog or from a blog to a doc, use the _absolute URL path_ of the doc or blog, rather than the absolute file path. Additionally, if the doc or blog has a `slug` defined in its front matter, then you need to use the slug in the URL path. For example, `[See this blog post](/blog/my-slug)` (if a slug exists) or `[See this blog post](/blog/2024-01-01-title)` (if no slug).
 
 Examples:
