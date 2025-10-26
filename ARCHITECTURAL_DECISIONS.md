@@ -118,8 +118,6 @@ See [Docusaurus swizzling docs](https://docusaurus.io/docs/swizzling) for how th
 
 This section provides guidance for working with markdown links in the Helm docs site.
 
-BUT between blogs and docs, we need to link to the absolute URL path of that blog or doc, not the file. For that, we need to be cognizant of the slug or anything that changes the url path. 
-
 ### Use absolute paths
 
 Absolute paths are more verbose but needed for maintainability in our multi-locale site with ongoing English content additions. The workflow for translating docs for this site involves copying English docs to different locales. If a given file exists in English but there is no translated version of the file in a given locale (which is common for this site), then using absolute paths ensures that Docusaurus will redirect to the English version of the file.
