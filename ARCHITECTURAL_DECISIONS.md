@@ -114,6 +114,69 @@ src/theme/TOCCollapsible/          # Mobile "On this page" menu
 
 See [Docusaurus swizzling docs](https://docusaurus.io/docs/swizzling) for how these theme components work.
 
+## Markdown Links
+
+This section provides guidance for working with markdown links in the Helm docs site.
+
+BUT between blogs and docs, we need to link to the absolute URL path of that blog or doc, not the file. For that, we need to be cognizant of the slug or anything that changes the url path. 
+
+### Use absolute paths
+
+Absolute paths are more verbose but needed for maintainability in our multi-locale site with ongoing English content additions. The workflow for translating docs for this site involves copying English docs to different locales. If a given file exists in English but there is no translated version of the file in a given locale (which is common for this site), then using absolute paths ensures that Docusaurus will redirect to the English version of the file.
+
+* When linking from one doc page to another, or from one blog to another, use the absolute path, starting from the directory within /blogs or within the version-specific docs folder. As in, don't include `/blog/` or `/docs/` in the path. For example, `[Blog to blog link](/2024-10-07-kubecon-na-24/index.md)` or `[Doc to doc link](/topics/advanced.md)`.
+* When linking a doc to a blog or from a blog to a doc, use the _absolute URL path_ of the doc or blog, rather than the absolute file path. Additionally, if the doc or blog has a `slug` defined in its front matter, then you need to use the slug in the URL path. For example, `[See this blog post](/blog/my-slug)` (if a slug exists) or `[See this blog post](/blog/2024-01-01-title)` (if no slug).
+
+Examples:
+
+```markdown
+✅ GOOD: [Advanced Topics](/topics/advanced.md)
+❌ AVOID:  [Advanced Topics](../topics/advanced.md)
+❌ AVOID:  [Advanced Topics](advanced.md)
+❌ AVOID (unless linking to the page from a blog):  [Advanced Topics](/docs/topics/advanced.md)
+```
+
+### Anchor links
+
+Anchor links are challenging in multi-locale sites because anchor IDs are automatically generated from the heading text. This means that any links that point to English language anchor IDs will break in other locales if the given heading is translated to a different language. 
+
+For example:
+
+```markdown
+English: ## Storage backends  → #storage-backends
+Chinese: ## 后端存储         → #后端存储 (different anchor ID)
+```
+
+To avoid broken anchor links, add explicit IDs to headings in English in all translations. For example:
+
+```markdown
+## Storage backends {#storage-backends}
+## 后端存储 {#storage-backends}
+```
+
+In this case, anchor links to the given ID will work across all locales since the anchor ID itself remains the same in all translations.
+
+Alternatively, you can also choose to link to the given page without anchors. While the user will need to manually find the referenced heading or content, excluding anchors all together will avoid broken anchor links.
+
+### Troubleshooting broken links
+
+You can run a local build to check for broken links (`yarn build` or `npm run build`). If there are broken links, you'll see an error like this in the build output:
+
+```bash
+Broken link on source page path = /docs/faq/changes_since_helm2
+   -> linking to /topics/charts.md
+```
+
+To troubleshoot, go to the _source page_ listed in the error message. Note that the source page with the broken link might be in the English docs, even if the broken link was triggered for a different locale. 
+
+Check the following:
+
+* Make sure the link uses an absolute path. For example, use `/topics/advanced.md` instead of `../topics/advanced.md` or `advanced.md`.
+* Make sure the file extension used in the link matches the file extension of the target file (`.md` versus `.mdx`)
+* If you are linking from a doc to a blog or vice versa, check if the target page has a slug defined in its metadata. If so, ensure that you use the slug in the absolute URL path
+* Check that the link does _not_ use a trailing slash (eg `/topics/charts/` should be changed to `/topics/charts.md`)
+
+
 ## Netlify Redirects Strategy
 
 ### Hugo to Docusaurus Migration Requirements
