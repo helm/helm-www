@@ -118,13 +118,15 @@ See [Docusaurus swizzling docs](https://docusaurus.io/docs/swizzling) for how th
 
 This section provides guidance for working with markdown links in the Helm docs site.
 
-### Links to docs and blogs
+### Absolute paths required
 
-When linking to docs and/or blogs in this site, absolute paths are required. Absolute paths are more verbose but necessary to avoid broken links in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
+Absolute paths are required for all links. Absolute paths are more verbose but necessary to avoid broken links in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
+
+The sections below include more information about how and when to use absolute file paths or URL paths.
 
 #### Linking within docs or blogs
 
-When linking from one doc page to another or from one blog to another, use the _absolute file path_:
+When linking from one doc page to another or from one blog post to another, use the _absolute file path_:
    
 * Exclude `/blog/` or `/docs/` from the path
 * Start the path from the directory within `/blogs` (eg `/2024-10-07-kubecon-na-24/`), or from the version-specific docs folder (eg, `/topics/`, `/chart_template_guide/`, `/helm/`)
@@ -135,9 +137,10 @@ Examples:
 ```markdown
 ✅ GOOD (doc to doc link): [Advanced Topics](/topics/advanced.md)
 ✅ GOOD (blog to blog link): [Helm at KubeCon/CloudNativeCon SLC](/2024-10-07-kubecon-na-24/index.md)
-❌ AVOID: [Advanced Topics](../topics/advanced.md)
-❌ AVOID: [Advanced Topics](advanced.md)
-❌ AVOID: [Advanced Topics](/docs/topics/advanced.md)
+❌ AVOID (relative file path): [Advanced Topics](../topics/advanced.md)
+❌ AVOID (relative file path): [Advanced Topics](advanced.md)
+❌ AVOID (adding /docs): [Advanced Topics](/docs/topics/advanced.md)
+❌ AVOID (absolute URL path, no .md/.mdx): [Advanced Topics](/docs/topics/advanced)
 ```
 
 #### Linking across docs and blogs
@@ -146,13 +149,13 @@ When linking to a doc from a blog, or from a blog to a doc, use the _absolute UR
    
 * Include `/blog/` or `/docs/`
 * Exclude the `.md` or `.mdx` file extension
-* If the doc or blog has a `slug` defined in its front matter, use the slug in the URL path instead of the filename.
+* If the doc or blog has a `slug` defined in its front matter, use the slug in the URL path instead of the filename
 
 Examples:
 
 ```markdown
-✅ GOOD (without slug): [See this blog post](/blog/2024-01-01-title)
-✅ GOOD (with slug): [See this blog post](/blog/my-slug)
+✅ GOOD (file name without .md extension when no slug is in front matter): [See this blog post](/blog/2024-01-01-title)
+✅ GOOD (when slug is in front matter): [See this blog post](/blog/my-slug)
 ❌ AVOID (don't use the file extension):  [Advanced Topics](/docs/topics/advanced.md)
 ```
 
@@ -176,26 +179,16 @@ To avoid broken anchor links, add explicit IDs to headings in all translations. 
 
 In this case, anchor links to the given ID will work across all locales since the anchor ID itself remains the same in all translations.
 
-Alternatively, you can also choose to link to the given page without anchors. While the user will need to manually find the referenced heading or content, excluding anchors all together will avoid broken anchor links.
-
 ### Troubleshoot broken links
 
-You can run a local build to check for broken links (`yarn build` or `npm run build`). If there are broken links, you'll see an error like this in the build output:
+You can run a local build to check for broken links (`yarn build`). If there are broken links, you'll see an error like this in the build output:
 
 ```bash
 Broken link on source page path = /docs/faq/changes_since_helm2
    -> linking to /topics/charts.md
 ```
 
-To troubleshoot, go to the _source page_ listed in the error message. Note that the source page with the broken link might be in the English docs, even if the broken link was triggered for a different locale. 
-
-Check the following:
-
-* Make sure the link uses an absolute path. For example, use `/topics/advanced.md` instead of `../topics/advanced.md` or `advanced.md`.
-* For absolute file paths, make sure the extension used in the link matches the file extension of the target file (`.md` versus `.mdx`)
-* If you are linking from a doc to a blog or vice versa, check if the target page has a slug defined in its metadata. If so, ensure that you use the slug in the absolute URL path
-* Check that the link does not use a trailing slash (eg `/topics/charts/` should be changed to `/topics/charts.md`)
-* Make sure that the link does not mix the URL and file path. For example, including both `/docs/` and `.md` in the path (eg `/docs/topics/advanced.md`) will result in a broken link.
+To troubleshoot, go to the _source page_ listed in the error message. Note that the source page with the broken link might be in the English docs, even if the broken link was triggered for a different locale.
 
 ## Netlify Redirects Strategy
 
