@@ -35,7 +35,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "/docs/developing_charts/"
-  to = "https://helm.sh/docs/2/developing-charts/"
+  to = "https://helm.sh/docs/v2/developing-charts/"
 
 # Go module import support handled by static HTML files in /static/
 # These paths serve HTML with go-import meta tags + client-side redirects
@@ -68,7 +68,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "https://v2.helm.sh/docs/using_helm/"
-  to = "/docs/2/using-helm/"
+  to = "/docs/v2/using-helm/"
   status = 302
 
 [[redirects]]
@@ -78,7 +78,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "https://v2.helm.sh/docs/developing_charts/"
-  to = "/docs/2/developing-charts/"
+  to = "/docs/v2/developing-charts/"
   status = 302
 
 [[redirects]]
