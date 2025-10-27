@@ -59,9 +59,6 @@
   /* global navbar style (needed elsewhere) */
   --ifm-navbar-height: 5.5rem;
 
-  /* announcement bar */
-  --docusaurus-announcement-bar-height: 5rem;
-
   /* custom site vars */
   --helm-body-border: 8px;
 }
