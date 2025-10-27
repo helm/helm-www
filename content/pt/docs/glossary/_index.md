@@ -4,8 +4,6 @@ description: "Termos utilizados para descrever a arquitetura do Helm."
 weight: 9
 ---
 
-# Glossário
-
 ## Chart
 
 É um pacote Helm que contém as informações necessárias para instalar
