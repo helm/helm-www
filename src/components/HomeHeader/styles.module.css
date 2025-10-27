@@ -5,6 +5,9 @@
   overflow: hidden;
   --ifm-hero-background-color: none;
   --ifm-hero-text-color: var(--navy);
+  /* Prevent layout shift on page load/refresh by setting a reasonable default height */
+  /* Use 90vh to account for potential announcement bar and avoid exact match with JS calculation */
+  min-height: 90vh;
 }
 
 .container {
