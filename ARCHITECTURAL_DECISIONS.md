@@ -231,3 +231,24 @@ Remove them only after:
 1. Docusaurus site cutover is verified
 2. All redirects are tested and working
 3. No rollback scenarios require Hugo functionality
+
+## Netlify Build Caching
+
+### Problem
+Docusaurus builds take ~11 minutes. Need faster builds for development workflow.
+
+### Solution
+Custom Netlify plugins cache `.docusaurus/`, `node_modules/`, and `build/` directories.
+
+**Current:** `cache-docusaurus-dirs-file` (stable, 2-4 minute builds)
+**Future:** `cache-docusaurus-dirs-api` (beta, potentially 10x faster)
+
+### Build Pipeline Changes
+Changed from `make build` (runs destructive `clean`) to `make netlify-build` (preserves cache).
+
+### Cache Strategy
+- **Production/branches:** Isolated per branch
+- **PR previews:** Shared across PRs via `CACHE_PER_BRANCH=false`
+- **Auto-invalidation:** `yarn.lock` changes, `CACHE_VERSION` environment variable
+
+See `netlify-plugins/README.md` for configuration details.
