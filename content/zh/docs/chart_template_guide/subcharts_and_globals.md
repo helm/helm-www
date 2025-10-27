@@ -92,7 +92,7 @@ mysubchart:
   dessert: ice cream
 ```
 
-注意最后两行，在`mysubchart`中的所有指令会被发送到`mysubchart`chart中。因此如果运行`helm install --dry-run --debug
+注意最后两行，在`mysubchart`中的所有指令会被发送到`mysubchart`chart中。因此如果运行`helm install --generate-name --dry-run --debug
 mychart`，会看到一项`mysubchart`的配置：
 
 ```yaml
