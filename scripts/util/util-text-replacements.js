@@ -14,9 +14,48 @@ const { findFiles } = require('./util-file-operations.js');
 function replaceHugoShortcodes(majorVersion = 3) {
   console.log('🔗 Converting Hugo shortcodes...');
 
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
-  const files = findFiles(versionDir, ['.md', '.mdx']);
+  let updatedCount = 0;
+  let totalReplacements = 0;
 
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = processHugoShortcodesInDirectory(versionDir);
+    updatedCount += result.updatedCount;
+    totalReplacements += result.totalReplacements;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = processHugoShortcodesInDirectory(translationVersionDir);
+          updatedCount += result.updatedCount;
+          totalReplacements += result.totalReplacements;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Converted ${totalReplacements} Hugo shortcodes in ${updatedCount} files`);
+}
+
+/**
+ * Process Hugo shortcodes in a specific directory
+ * @param {string} dirPath - Directory to process
+ * @returns {Object} - Results with updatedCount and totalReplacements
+ */
+function processHugoShortcodesInDirectory(dirPath) {
+  const files = findFiles(dirPath, ['.md', '.mdx']);
   let updatedCount = 0;
   let totalReplacements = 0;
 
@@ -44,9 +83,19 @@ function replaceHugoShortcodes(majorVersion = 3) {
         const shortcode = content.substring(startIndex, endIndex + 3);
         let replacement = null;
 
-        // Handle ref shortcodes: {{< ref "path" >}} or {{< ref\n"path" >}} → path
+        // Handle ref shortcodes: {{< ref "path" >}} or {{< relref path="path" lang="en">}} → path
         if (shortcode.includes('ref')) {
-          const pathMatch = shortcode.match(/"([^"]+)"/);
+          // Handle both ref and relref shortcodes
+          let pathMatch;
+
+          // Try relref pattern first: {{< relref path="/docs/path.md" lang="en">}}
+          if (shortcode.includes('relref') && shortcode.includes('path=')) {
+            pathMatch = shortcode.match(/path="([^"]+)"/);
+          } else {
+            // Standard ref pattern: {{< ref "path" >}}
+            pathMatch = shortcode.match(/"([^"]+)"/);
+          }
+
           if (pathMatch) {
             replacement = pathMatch[1].replace(/[\\()]/g, ''); // Strip escape characters
           }
@@ -77,16 +126,16 @@ function replaceHugoShortcodes(majorVersion = 3) {
 
       if (hasChanges) {
         fs.writeFileSync(filePath, content);
-        console.log(`  🔗 Updated: ${path.relative(versionDir, filePath)}`);
+        console.log(`    🔗 Updated: ${path.relative(dirPath, filePath)}`);
         updatedCount++;
       }
 
     } catch (error) {
-      console.warn(`  ⚠️  Error processing ${filePath}: ${error.message}`);
+      console.warn(`    ⚠️  Error processing ${filePath}: ${error.message}`);
     }
   });
 
-  console.log(`✅ Converted ${totalReplacements} Hugo shortcodes in ${updatedCount} files`);
+  return { updatedCount, totalReplacements };
 }
 
 
@@ -109,11 +158,12 @@ function fixMarkdownLinkHrefs(majorVersion = 3) {
 function applyAllTextReplacements(majorVersion = 3) {
   console.log('📖 Applying all text replacements...');
 
-  // Step 1: Convert Hugo shortcodes to standard content
-  replaceHugoShortcodes(majorVersion);
-
-  // Step 2: Fix markdown link hrefs (add .md extensions, fix paths)
+  // Step 1: Fix markdown link hrefs BEFORE Hugo shortcode conversion
+  // This allows href-diffs to catch /docs/ paths inside shortcodes
   fixMarkdownLinkHrefs(majorVersion);
+
+  // Step 2: Convert Hugo shortcodes to standard content
+  replaceHugoShortcodes(majorVersion);
 
   console.log('✅ All text replacements completed');
 }

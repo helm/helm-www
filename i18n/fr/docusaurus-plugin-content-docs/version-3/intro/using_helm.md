@@ -1,12 +1,12 @@
 ---
-title: "Utilisation de Helm"
-description: "Explique la base de Helm."
-weight: 3
---- 
+title: Utilisation de Helm
+description: Explique la base de Helm.
+sidebar_position: 3
+---
 
-Ce guide explique les bases de l'utilisation de Helm pour gérer les packages sur votre cluster Kubernetes. Nous partons du principe que vous avez déjà [installé]({{< ref "install.md" >}}) le client Helm.
+Ce guide explique les bases de l'utilisation de Helm pour gérer les packages sur votre cluster Kubernetes. Nous partons du principe que vous avez déjà [installé](/intro/install.md) le client Helm.
 
-Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez commencer par le [Guide de démarrage rapide]({{< ref "quickstart.md" >}}). Ce chapitre couvre les différentes commandes Helm et explique comment les utiliser.
+Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez commencer par le [Guide de démarrage rapide](/intro/quickstart.md). Ce chapitre couvre les différentes commandes Helm et explique comment les utiliser.
 
 ## Trois grands concepts
 
@@ -255,7 +255,7 @@ nodeSelector:
   kubernetes.io/role: master
 ```
 
-Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs à configurer (en savoir plus sur [les fichiers de valeurs]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
+Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs à configurer (en savoir plus sur [les fichiers de valeurs](/chart_template_guide/values_files.md)).
 
 ### Autres methodes d'installations
 
@@ -369,7 +369,7 @@ Les dépôts peuvent être supprimés avec `helm repo remove`.
 
 ## Création de vos propres charts
 
-Le [Guide de développement de charts]({{< relref path="/docs/topics/charts.md" lang="en" >}}) explique comment développer vos propres charts. Mais vous pouvez vous lancer rapidement dans la création de charts avec la commande `helm create`:
+Le [Guide de développement de charts](/topics/charts.md) explique comment développer vos propres charts. Mais vous pouvez vous lancer rapidement dans la création de charts avec la commande `helm create`:
 
 ```console
 $ helm create deis-workflow
@@ -395,7 +395,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Les charts packagés peuvent être uploadés dans des dépôts. Jetez un oeil à la
-[documentation des dépôts]({{< ref path="/docs/topics/chart_repository.md"  lang="en" >}}) de charts Helm pour plus de détails.
+[documentation des dépôts](/topics/chart_repository.md) de charts Helm pour plus de détails.
 
 ## Conclusion
 
@@ -403,4 +403,4 @@ Ce chapitre a couvert les utilisations de base du client `helm`, y compris la re
 
 Pour plus d'informations sur ces commandes, consultez l'aide intégrée de Helm: `helm help`.
 
-Dans le [chapitre suivant]({{< relref path="/docs/howto/charts_tips_and_tricks/_index.md" lang="en" >}}), nous verrons le processus de développement des charts.
+Dans le [chapitre suivant](/howto/charts_tips_and_tricks.md), nous verrons le processus de développement des charts.

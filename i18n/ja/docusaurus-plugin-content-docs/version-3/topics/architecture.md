@@ -1,7 +1,7 @@
 ---
-title: "Helm アーキテクチャ"
-description: "Helm アーキテクチャの概要を説明します。"
-weight: 8
+title: Helm アーキテクチャ
+description: Helm アーキテクチャの概要を説明します。
+sidebar_position: 8
 ---
 
 # Kubernetes Helm アーキテクチャ

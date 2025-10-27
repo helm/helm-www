@@ -1,9 +1,6 @@
 ---
-title: "Helm Get All"
+title: helm get all
 ---
-
-## helm get all
-
 Baixa toda informação sobre uma dada _release_
 
 ### Sinopse
@@ -44,4 +41,4 @@ helm get all NOME_DA_RELEASE [argumentos]
 
 ### Veja Também
 
-* [helm get](helm_get.md) - baixa informações adicionais de uma dada release
+* [helm get](/helm/helm_get.md) - baixa informações adicionais de uma dada release

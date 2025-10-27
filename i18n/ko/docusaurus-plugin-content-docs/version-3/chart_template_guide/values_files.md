@@ -1,7 +1,7 @@
 ---
-title: "Values 파일"
+title: Values 파일
 description: "--values 플래그 사용법 설명"
-weight: 4
+sidebar_position: 4
 ---
 
 이전 섹션에서 우리는 헬름 템플릿에서 제공하는 빌트인 객체를 살펴봤다. 기본 객체 중 하나는 `Values`이다. 이 객체는 차트로 전달된 값에 접근할 수 있게 해준다. 이 객체의 내용들은 여러 출처에서 나온다:

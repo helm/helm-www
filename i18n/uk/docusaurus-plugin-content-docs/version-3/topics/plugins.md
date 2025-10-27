@@ -1,12 +1,12 @@
 ---
-title: "Втулки Helm"
-description: "Описує, як використовувати та створювати втулки для розширення функціональності Helm."
-weight: 12
+title: Втулки Helm
+description: Описує, як використовувати та створювати втулки для розширення функціональності Helm.
+sidebar_position: 12
 ---
 
 Втулок Helm — це інструмент, до якого можна отримати доступ через CLI `helm`, але який не є частиною основного коду Helm.
 
-Наявні втулки можна знайти у [відповідному]({{< ref "/docs/community/related.md#helm-plugins" >}}) розділі або шукаючи на [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
+Наявні втулки можна знайти у [відповідному](/community/related.md#helm-plugins) розділі або шукаючи на [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 
 Цей посібник пояснює, як використовувати та створювати втулки.
 

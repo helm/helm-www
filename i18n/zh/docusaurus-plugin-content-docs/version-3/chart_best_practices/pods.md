@@ -1,7 +1,7 @@
 ---
-title: "pod和pod模板"
-description: "讨论在chart清单中格式化Pod和Pod模板部分"
-weight: 6
+title: pod和pod模板
+description: 讨论在chart清单中格式化Pod和Pod模板部分
+sidebar_position: 6
 ---
 
 最佳实践的这部分讨论在chart清单中格式化Pod和Pod模板部分。

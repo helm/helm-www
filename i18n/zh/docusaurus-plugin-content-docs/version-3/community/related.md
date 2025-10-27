@@ -1,7 +1,7 @@
 ---
-title: "相关项目及文档"
-description: "社区提供的第三方工具，插件以及文档！"
-weight: 3
+title: 相关项目及文档
+description: 社区提供的第三方工具，插件以及文档！
+sidebar_position: 3
 ---
 
 Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我们乐于听到这些项目声音。

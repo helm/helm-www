@@ -1,7 +1,7 @@
 ---
-title: "開発者ガイド"
-description: "Helmを開発するための環境をセットアップする方法を説明します。"
-weight: 1
+title: 開発者ガイド
+description: Helmを開発するための環境をセットアップする方法を説明します。
+sidebar_position: 1
 ---
 
 このガイドでは、Helmで開発するための環境をセットアップする方法について説明します。
@@ -59,7 +59,7 @@ Helm 3では、Goバージョン1.13以降を使用することをお勧めし�
 
 Helm 3以降、ドキュメントは独自のリポジトリに移動されました。 新しい機能を作成する場合は付属のドキュメントを作成して、[helm-www](https://github.com/helm/helm-www)にsubmitしてください。
 
-例外: [Helm CLI output (英語)](https://helm.sh/docs/helm/) は `helm` のバイナリ自体から生成されます。
+例外: [Helm CLI output (英語)](/helm/index.mdx) は `helm` のバイナリ自体から生成されます。
 このoutputを生成する方法については[Updating the Helm CLI Reference Docs](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs)
 をご覧ください。 翻訳された場合、CLI出力は生成されず`/content/<lang>/docs/helm`に生成されます。
 

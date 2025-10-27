@@ -1,7 +1,7 @@
 ---
-title: "调试模板"
-description: "对部署失败的chart进行故障排除"
-weight: 14
+title: 调试模板
+description: 对部署失败的chart进行故障排除
+sidebar_position: 14
 ---
 
 调试模板可能很棘手，因为渲染后的模板发送给了Kubernetes API server，可能会以格式化以外的原因拒绝YAML文件。

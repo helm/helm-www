@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo Add"
+title: helm repo add
 ---
-
-## helm repo add
-
 Ajouter un répertoire de chart
 
 ```
@@ -50,5 +47,5 @@ helm repo add [NAME] [URL] [flags]
 
 ### Voir également
 
-* [helm repo](helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
+* [helm repo](/helm/helm_repo.md) - Ajouter, lister, supprimer, mettre à jour et indexer des répertoires de charts
 

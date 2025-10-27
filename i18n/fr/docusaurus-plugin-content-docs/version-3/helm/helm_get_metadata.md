@@ -1,9 +1,6 @@
 ---
-title: "Helm Get Metadata"
+title: helm get metadata
 ---
-
-## helm get metadata
-
 Cette commande récupère les métadonnées pour une version donnée
 
 ```
@@ -41,4 +38,4 @@ helm get metadata RELEASE_NAME [flags]
 
 ### Voir également
 
-* [helm get](helm_get.md) - Télécharge les informations détaillées pour une version donnée
+* [helm get](/helm/helm_get.md) - Télécharge les informations détaillées pour une version donnée

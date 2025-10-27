@@ -1,9 +1,6 @@
 ---
-title: "Helm Repo"
+title: helm repo
 ---
-
-## helm repo
-
 Ajoute, supprime, liste, met à jour et index les référentiels de charts
 
 ### Synopsis
@@ -42,10 +39,10 @@ Elle peut être utilisé pour ajouter, supprimer, lister et indexer des référe
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de packages Helm pour Kubernetes
-* [helm repo add](helm_repo_add.md) - Ajoute un référentiel de charts
-* [helm repo index](helm_repo_index.md) - Génère un fichier d'index à partir d'un référentiel contenant des charts packagés
-* [helm repo list](helm_repo_list.md) - Liste les référentiels
-* [helm repo remove](helm_repo_remove.md) - Supprime un ou plusieurs référentiels
-* [helm repo update](helm_repo_update.md) - Met à jour les informations des charts disponible localement à partir des référentiels
+* [helm](/helm/helm.md) - Le gestionnaire de packages Helm pour Kubernetes
+* [helm repo add](/helm/helm_repo_add.md) - Ajoute un référentiel de charts
+* [helm repo index](/helm/helm_repo_index.md) - Génère un fichier d'index à partir d'un référentiel contenant des charts packagés
+* [helm repo list](/helm/helm_repo_list.md) - Liste les référentiels
+* [helm repo remove](/helm/helm_repo_remove.md) - Supprime un ou plusieurs référentiels
+* [helm repo update](/helm/helm_repo_update.md) - Met à jour les informations des charts disponible localement à partir des référentiels
 

@@ -1,7 +1,7 @@
 ---
-title: "Pods та PodTemplates"
-description: "Обговорює форматування частин Pod та PodTemplate у маніфестах Chart."
-weight: 6
+title: Pods та PodTemplates
+description: Обговорює форматування частин Pod та PodTemplate у маніфестах Chart.
+sidebar_position: 6
 ---
 
 Цей розділ посібника з найкращих практик обговорює форматування частин Pod та PodTemplate у маніфестах чарту.

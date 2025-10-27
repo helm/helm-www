@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion"
+title: helm completion
 ---
-
-## helm completion
-
 générer des scripts d'auto-complétion pour le shell spécifié
 
 ### Synopsis
@@ -40,8 +37,8 @@ Générer des scripts d'auto-complétion pour Helm pour le shell spécifié.
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de paquets Helm pour Kubernetes
-* [helm completion bash](helm_completion_bash.md) - Générer des scripts d'auto-complétion pour bash
-* [helm completion fish](helm_completion_fish.md)	- Générer des scripts d'auto-complétion pour fish
-* [helm completion powershell](helm_completion_powershell.md) - Générer des scripts d'auto-complétion pour powershell
-* [helm completion zsh](helm_completion_zsh.md) - Générer des scripts d'auto-complétion pour zsh
+* [helm](/helm/helm.md) - Le gestionnaire de paquets Helm pour Kubernetes
+* [helm completion bash](/helm/helm_completion_bash.md) - Générer des scripts d'auto-complétion pour bash
+* [helm completion fish](/helm/helm_completion_fish.md)	- Générer des scripts d'auto-complétion pour fish
+* [helm completion powershell](/helm/helm_completion_powershell.md) - Générer des scripts d'auto-complétion pour powershell
+* [helm completion zsh](/helm/helm_completion_zsh.md) - Générer des scripts d'auto-complétion pour zsh

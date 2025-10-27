@@ -1,9 +1,6 @@
 ---
-title: "Helm Completion Zsh"
+title: helm completion zsh
 ---
-
-## helm completion zsh
-
 Gera scripts de preenchimento automático para o zsh
 
 ### Sinopse
@@ -54,4 +51,4 @@ helm completion zsh [argumentos]
 
 ### Veja também
 
-* [helm completion](helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico
+* [helm completion](/helm/helm_completion.md)	 - gera scripts de preenchimento automático para um shell específico

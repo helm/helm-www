@@ -1,7 +1,7 @@
 ---
-title: "プロジェクトの歴史"
-description: "プロジェクトの歴史の概要を提供します。"
-weight: 4
+title: プロジェクトの歴史
+description: プロジェクトの歴史の概要を提供します。
+sidebar_position: 4
 ---
 
 Helm は [CNCF の Graduated プロジェクト](https://helm.sh/blog/celebrating-helms-cncf-graduation/)です。

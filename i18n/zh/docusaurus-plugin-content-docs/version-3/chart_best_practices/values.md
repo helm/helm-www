@@ -1,7 +1,7 @@
 ---
-title: "values"
-description: "聚焦于如何构建和使用你的values。"
-weight: 2
+title: values
+description: 聚焦于如何构建和使用你的values。
+sidebar_position: 2
 ---
 
 最佳实践的该部分包括了values的使用。这部分指南中，我们提供了关于你如何构建和使用values的建议，以及专注于设计chart的 `values.yaml`文件。

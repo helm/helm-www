@@ -11,6 +11,7 @@ function removeAliasesFromFiles() {
   console.log('🔍 Finding and removing aliases from version-3 files...');
 
   const v3DocsDir = path.join(__dirname, '..', '..', 'versioned_docs', 'version-3');
+  const i18nDir = path.join(__dirname, '..', '..', 'i18n');
 
   if (!fs.existsSync(v3DocsDir)) {
     console.error('❌ Version-3 docs directory not found:', v3DocsDir);
@@ -18,7 +19,6 @@ function removeAliasesFromFiles() {
   }
 
   const aliasesFound = [];
-  let totalFilesProcessed = 0;
   let filesWithAliases = 0;
   let aliasesRemoved = 0;
 
@@ -50,7 +50,6 @@ function removeAliasesFromFiles() {
    * @param {string} relativeFilePath - Relative path for display
    */
   function processMarkdownFile(filePath, relativeFilePath) {
-    totalFilesProcessed++;
 
     try {
       const content = fs.readFileSync(filePath, 'utf8');
@@ -64,11 +63,14 @@ function removeAliasesFromFiles() {
       if (frontmatter.hasOwnProperty('aliases') && Array.isArray(frontmatter.aliases)) {
         const aliases = [...frontmatter.aliases]; // Copy the array
 
-        // Record the aliases found
-        aliasesFound.push({
-          file: relativeFilePath,
-          aliases: aliases
-        });
+        // Only record aliases from main docs, not i18n docs
+        const isI18nFile = relativeFilePath.startsWith('i18n/');
+        if (!isI18nFile) {
+          aliasesFound.push({
+            file: relativeFilePath,
+            aliases: aliases
+          });
+        }
 
         filesWithAliases++;
         aliasesRemoved += aliases.length;
@@ -91,9 +93,18 @@ function removeAliasesFromFiles() {
   // Start processing from v3 docs directory
   processDirectory(v3DocsDir);
 
+  // Process i18n translation directories for v3
+  const languages = ['de', 'es', 'fr', 'ja', 'ko', 'zh'];
+  languages.forEach(lang => {
+    const i18nVersionDir = path.join(i18nDir, lang, 'docusaurus-plugin-content-docs', 'version-3');
+    if (fs.existsSync(i18nVersionDir)) {
+      console.log(`\n🌍 Processing translation directory: ${lang}`);
+      processDirectory(i18nVersionDir, `i18n/${lang}/version-3`);
+    }
+  });
+
   // Display results
   console.log('\n📊 Summary:');
-  console.log(`  Total files processed: ${totalFilesProcessed}`);
   console.log(`  Files with aliases: ${filesWithAliases}`);
   console.log(`  Total aliases removed: ${aliasesRemoved}`);
 
@@ -111,7 +122,6 @@ function removeAliasesFromFiles() {
     // Also write to a file for reference
     const aliasesReport = {
       summary: {
-        totalFilesProcessed,
         filesWithAliases,
         aliasesRemoved
       },

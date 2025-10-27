@@ -110,9 +110,45 @@ function moveDocs(majorVersion = 3) {
 function deleteDeprecatedFiles(majorVersion = 3) {
   console.log('🗑️  Removing deprecated files...');
 
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
-  const files = findFiles(versionDir, ['.md', '.mdx']);
+  let deletedCount = 0;
 
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = deleteDeprecatedFilesInDirectory(versionDir);
+    deletedCount += result.deletedCount;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = deleteDeprecatedFilesInDirectory(translationVersionDir);
+          deletedCount += result.deletedCount;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Removed ${deletedCount} deprecated files`);
+}
+
+/**
+ * Delete deprecated files in a specific directory
+ * @param {string} dirPath - Directory path to process
+ * @returns {Object} - Results with deletedCount
+ */
+function deleteDeprecatedFilesInDirectory(dirPath) {
+  const files = findFiles(dirPath, ['.md', '.mdx']);
   let deletedCount = 0;
 
   files.forEach(filePath => {
@@ -122,15 +158,15 @@ function deleteDeprecatedFiles(majorVersion = 3) {
 
       if (hasFrontmatter && frontmatter.section === 'deprecated') {
         fs.unlinkSync(filePath);
-        console.log(`  🗑️  Deleted: ${path.relative(versionDir, filePath)}`);
+        console.log(`    🗑️  Deleted: ${path.relative(dirPath, filePath)}`);
         deletedCount++;
       }
     } catch (error) {
-      console.warn(`  ⚠️  Error checking ${filePath}: ${error.message}`);
+      console.warn(`    ⚠️  Error checking ${filePath}: ${error.message}`);
     }
   });
 
-  console.log(`✅ Removed ${deletedCount} deprecated files`);
+  return { deletedCount };
 }
 
 /**
@@ -140,9 +176,45 @@ function deleteDeprecatedFiles(majorVersion = 3) {
 function replaceWeightWithSidebarPosition(majorVersion = 3) {
   console.log('🔄 Converting weight → sidebar_position in frontmatter...');
 
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
-  const files = findFiles(versionDir, ['.md', '.mdx']);
+  let updatedCount = 0;
 
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = replaceWeightInDirectory(versionDir);
+    updatedCount += result.updatedCount;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = replaceWeightInDirectory(translationVersionDir);
+          updatedCount += result.updatedCount;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Updated ${updatedCount} files with sidebar_position`);
+}
+
+/**
+ * Replace weight with sidebar_position in a specific directory
+ * @param {string} dirPath - Directory path to process
+ * @returns {Object} - Results with updatedCount
+ */
+function replaceWeightInDirectory(dirPath) {
+  const files = findFiles(dirPath, ['.md', '.mdx']);
   let updatedCount = 0;
 
   files.forEach(filePath => {
@@ -158,15 +230,15 @@ function replaceWeightWithSidebarPosition(majorVersion = 3) {
         const updatedContent = frontMatterToYaml(frontmatter, restContent);
         fs.writeFileSync(filePath, updatedContent);
 
-        console.log(`  🔄 Updated: ${path.relative(versionDir, filePath)}`);
+        console.log(`    🔄 Updated: ${path.relative(dirPath, filePath)}`);
         updatedCount++;
       }
     } catch (error) {
-      console.warn(`  ⚠️  Error processing ${filePath}: ${error.message}`);
+      console.warn(`    ⚠️  Error processing ${filePath}: ${error.message}`);
     }
   });
 
-  console.log(`✅ Updated ${updatedCount} files with sidebar_position`);
+  return { updatedCount };
 }
 
 /**
@@ -206,8 +278,44 @@ function addMainIndexMetadata(majorVersion = 3) {
 function addDocsIndexLists(majorVersion = 3) {
   console.log('📋 Adding DocCardList components to index pages...');
 
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
+  let updatedCount = 0;
 
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = addDocCardListInDirectory(versionDir);
+    updatedCount += result.updatedCount;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = addDocCardListInDirectory(translationVersionDir);
+          updatedCount += result.updatedCount;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Added DocCardList to ${updatedCount} index pages`);
+}
+
+/**
+ * Add DocCardList components in a specific directory
+ * @param {string} dirPath - Directory path to process
+ * @returns {Object} - Results with updatedCount
+ */
+function addDocCardListInDirectory(dirPath) {
   // Find all index.mdx files (category pages)
   const indexFiles = [];
   function findIndexFiles(dir) {
@@ -223,10 +331,10 @@ function addDocsIndexLists(majorVersion = 3) {
     });
   }
 
-  findIndexFiles(versionDir);
+  findIndexFiles(dirPath);
 
   // Also add the root index.mdx file if it exists
-  const rootIndexPath = path.join(versionDir, 'index.mdx');
+  const rootIndexPath = path.join(dirPath, 'index.mdx');
   if (fs.existsSync(rootIndexPath)) {
     indexFiles.push(rootIndexPath);
   }
@@ -244,15 +352,15 @@ function addDocsIndexLists(majorVersion = 3) {
           '\n\nimport DocCardList from \'@theme/DocCardList\';\n\n<DocCardList />\n';
 
         fs.writeFileSync(filePath, updatedContent);
-        console.log(`  📋 Added DocCardList: ${path.relative(versionDir, filePath)}`);
+        console.log(`    📋 Added DocCardList: ${path.relative(dirPath, filePath)}`);
         updatedCount++;
       }
     } catch (error) {
-      console.warn(`  ⚠️  Error processing ${filePath}: ${error.message}`);
+      console.warn(`    ⚠️  Error processing ${filePath}: ${error.message}`);
     }
   });
 
-  console.log(`✅ Added DocCardList to ${updatedCount} index pages`);
+  return { updatedCount };
 }
 
 /**
@@ -351,32 +459,136 @@ function importSDK(majorVersion = 3) {
 function renameIndexFilesToMdx(majorVersion = 3) {
   console.log('🔄 Renaming Hugo _index.md → Docusaurus index.mdx files...');
 
+  // Process main version docs
   const versionDir = `versioned_docs/version-${majorVersion}`;
+  let renamedCount = 0;
 
-  // Find all _index.md files (Hugo category pages)
+  if (fs.existsSync(versionDir)) {
+    console.log(`  📁 Processing main docs: ${versionDir}`);
+    const result = renameIndexFilesInDirectory(versionDir);
+    renamedCount += result.renamedCount;
+  }
+
+  // Process translation docs (only for v3 and above)
+  if (majorVersion >= 3) {
+    const i18nDir = 'i18n';
+    if (fs.existsSync(i18nDir)) {
+      const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+
+      languages.forEach(lang => {
+        const translationVersionDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}`;
+        if (fs.existsSync(translationVersionDir)) {
+          console.log(`  🌐 Processing ${lang} translations: ${translationVersionDir}`);
+          const result = renameIndexFilesInDirectory(translationVersionDir);
+          renamedCount += result.renamedCount;
+        }
+      });
+    }
+  }
+
+  console.log(`✅ Renamed ${renamedCount} Hugo index files to Docusaurus .mdx`);
+}
+
+/**
+ * Rename index files in a specific directory
+ * @param {string} dirPath - Directory path to process
+ * @returns {Object} - Results with renamedCount
+ */
+function renameIndexFilesInDirectory(dirPath) {
+  // Find all _index.md and index.md files that should become index.mdx
   const indexFiles = [];
-  function findHugoIndexFiles(dir) {
+  function findIndexFiles(dir) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     entries.forEach(entry => {
       if (entry.isDirectory()) {
-        findHugoIndexFiles(path.join(dir, entry.name));
-      } else if (entry.name === '_index.md') {
+        findIndexFiles(path.join(dir, entry.name));
+      } else if (entry.name === '_index.md' || entry.name === 'index.md') {
         indexFiles.push(path.join(dir, entry.name));
       }
     });
   }
 
-  findHugoIndexFiles(versionDir);
+  findIndexFiles(dirPath);
 
   let renamedCount = 0;
   indexFiles.forEach(filePath => {
-    const newPath = filePath.replace('_index.md', 'index.mdx');
+    const newPath = filePath.replace(/(_index\.md|index\.md)$/, 'index.mdx');
     fs.renameSync(filePath, newPath);
-    console.log(`  🔄 Renamed: ${path.relative(versionDir, filePath)} → index.mdx`);
+    const originalName = path.basename(filePath);
+    console.log(`    🔄 Renamed: ${path.relative(dirPath, filePath)} → index.mdx`);
     renamedCount++;
   });
 
-  console.log(`✅ Renamed ${renamedCount} Hugo index files to Docusaurus .mdx`);
+  return { renamedCount };
+}
+
+/**
+ * Rename commands directories to helm in i18n translations
+ * This fixes structural inconsistencies in i18n directories where some languages
+ * have a top-level "commands" directory instead of "helm"
+ * @param {number} majorVersion - Major version number (e.g., 3)
+ */
+function renameCommandsToHelm(majorVersion) {
+  console.log('🔧 Renaming commands directories to helm in i18n directories...');
+
+  const i18nDir = 'i18n';
+  if (!fs.existsSync(i18nDir)) {
+    console.log('  ⏭️  No i18n directory found, skipping');
+    return;
+  }
+
+  const languages = fs.readdirSync(i18nDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+
+  let renamedCount = 0;
+
+  languages.forEach(lang => {
+    const commandsDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}/commands`;
+    const helmDir = `${i18nDir}/${lang}/docusaurus-plugin-content-docs/version-${majorVersion}/helm`;
+
+    if (fs.existsSync(commandsDir)) {
+      console.log(`  🔄 Renaming ${lang}: commands → helm`);
+
+      if (fs.existsSync(helmDir)) {
+        console.log(`  ⚠️  Warning: ${lang} has both commands and helm directories, merging...`);
+
+        // Move all files from commands to helm
+        const files = fs.readdirSync(commandsDir);
+        files.forEach(file => {
+          const oldPath = path.join(commandsDir, file);
+          const newPath = path.join(helmDir, file);
+          if (!fs.existsSync(newPath)) {
+            fs.renameSync(oldPath, newPath);
+          } else {
+            console.log(`    ⚠️  Skipping ${file} (already exists in helm directory)`);
+          }
+        });
+      } else {
+        // Simply rename commands to helm
+        fs.renameSync(commandsDir, helmDir);
+      }
+
+      // Remove empty commands directory if it still exists
+      if (fs.existsSync(commandsDir)) {
+        try {
+          fs.rmdirSync(commandsDir);
+        } catch (error) {
+          // Directory might not be empty, that's okay
+        }
+      }
+
+      renamedCount++;
+    }
+  });
+
+  if (renamedCount > 0) {
+    console.log(`✅ Renamed commands to helm in ${renamedCount} language(s)`);
+  } else {
+    console.log('  ✅ No commands directories found to rename');
+  }
 }
 
 module.exports = {
@@ -388,5 +600,6 @@ module.exports = {
   replaceWeightWithSidebarPosition,
   addMainIndexMetadata,
   addDocsIndexLists,
-  renameIndexFilesToMdx
+  renameIndexFilesToMdx,
+  renameCommandsToHelm
 };

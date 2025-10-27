@@ -1,9 +1,6 @@
 ---
-title: "Helm Show Values"
+title: helm show values
 ---
-
-## helm show values
-
 Affiche les values du chart
 
 ### Synopsis
@@ -57,5 +54,5 @@ helm show values [CHART] [flags]
 ```
 
 ### Voir également
-* [helm show](helm_show.md) - Affiche les informations du chart
+* [helm show](/helm/helm_show.md) - Affiche les informations du chart
 

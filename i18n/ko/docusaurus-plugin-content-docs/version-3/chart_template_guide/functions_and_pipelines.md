@@ -1,7 +1,7 @@
 ---
-title: "템플릿 함수와 파이프라인"
-description: "템플릿에서 함수 사용하기"
-weight: 5
+title: 템플릿 함수와 파이프라인
+description: 템플릿에서 함수 사용하기
+sidebar_position: 5
 ---
 
 So far, we've seen how to place information into a template. But that

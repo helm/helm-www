@@ -1,7 +1,7 @@
 ---
-title: "Helm来源和完整性"
-description: "描述如何验证Chart的完整性和来源。"
-weight: 5
+title: Helm来源和完整性
+description: 描述如何验证Chart的完整性和来源。
+sidebar_position: 5
 ---
 
 Helm有一个来源工具帮助chart用户检测包的完整性和来源。使用基于PKI，GnuPG及流行包管理器的行业标准工具，Helm可以生成和检测签名文件。

@@ -1,7 +1,7 @@
 ---
 title: "부록: Go 자료형과 템플릿"
-description: "템플릿에서의 변수에 관한 간단한 개괄"
-weight: 16
+description: 템플릿에서의 변수에 관한 간단한 개괄
+sidebar_position: 16
 ---
 
 헬름 템플릿 언어는 강한 타이핑(strongly typed)인 Go 프로그래밍 언어로 구현된다.

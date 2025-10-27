@@ -1,7 +1,7 @@
 ---
-title: "Краткое Руководство"
-description: "How to install and get started with Helm including instructions for distros, FAQs, and plugins."
-weight: 1
+title: Краткое Руководство
+description: How to install and get started with Helm including instructions for distros, FAQs, and plugins.
+sidebar_position: 1
 ---
 
 Это руководство описывает, как вы можете быстро начать использовать Helm.
@@ -28,8 +28,7 @@ weight: 1
 Загрузите binary релиз клиента Helm. Вы можете использовать такие инструменты, как `homebrew`,
 или посмотрите на [официальную страницу релизов](https://github.com/helm/helm/releases).
 
-Для получения более подробной информации или других вариантов смотрите [руководство по установке]({{< ref
-"install.md" >}}).
+Для получения более подробной информации или других вариантов смотрите [руководство по установке](/intro/install.md).
 
 ## Инициализация Helm Chart Repository
 
@@ -75,8 +74,7 @@ chart stable/mysql`.
 И каждый из них может управляться и обновляться независимо.
 
 `helm install` очень мощная команда со многими возможностями.
-Узнать больше можно в [Руководстве по эксплуатации Helm]({{< ref "using_helm.md"
->}})
+Узнать больше можно в [Руководстве по эксплуатации Helm](/intro/using_helm.md)
 
 ## Подробнее О Релизах
 

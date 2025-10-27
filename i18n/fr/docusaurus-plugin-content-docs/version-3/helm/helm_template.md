@@ -1,9 +1,6 @@
 ---
-title: "Helm Template"
+title: helm template
 ---
-
-## helm template
-
 Rendu local de modèles
 
 ### Synopsis
@@ -94,5 +91,5 @@ helm template [NAME] [CHART] [flags]
 
 ### Voir également
 
-* [helm](helm.md) - Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes
 

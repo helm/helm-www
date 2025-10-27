@@ -6,10 +6,10 @@ sidebar_position: 3
 
 Diese Anleiting erklärt die Grundsätze zu Helm, um Pakete in Ihrem Kubernetes
 Cluster zu verwalten. Es wird erwartet, dass Sie das Helm Programm bereits
-[installiert]({{< ref "install.md" >}}) haben.
+[installiert](/intro/install.md) haben.
 
 Wenn Sie nur daran interessiert, ein paar einfache Kommandos schnell zu lernen,
-beginnen Sie mit der [Schnellstartanleitung]({{< ref "quickstart.md" >}}). 
+beginnen Sie mit der [Schnellstartanleitung](/intro/quickstart.md). 
 Dieses Kapitel erklärt die speziellen Helm Kommandos und erklärt, wie 
 Helm zu benutzen ist.
 
@@ -304,7 +304,7 @@ nodeSelector:
 Tief verzweigte Datenstrukturen können schwierig darzustellen sein mit `--set`. Chart Designer
 sind angewiesen, die Benutzung von `--set` durch die Benutzung des Formats
 der `values.yaml` Datei zu minimieren.
-(Lesen Sie mehr dazu in [Values Files]({{< relref path="/docs/chart_template_guide/values_files/_index.md" lang="en" >}})).
+(Lesen Sie mehr dazu in [Values Files](/chart_template_guide/values_files.md)).
 
 ### Mehr Installationsmethoden
 
@@ -455,7 +455,7 @@ Repositories können mit `helm repo remove` gelöscht werden.
 
 ## Ihr eigenes Chart erstellen
 
-Das [Chart Entwicklungshandbuch]({{< relref path="/docs/topics/charts.md" lang="en">}}) erklärt,
+Das [Chart Entwicklungshandbuch](/topics/charts.md) erklärt,
 wie Sie Ihr eigenes Chart entwickeln können. Aber Sie können auch schnell starten
 mit dem Kommando `helm create`:
 
@@ -485,7 +485,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ```
 
 Chart Pakete können einfach in ein Repository geladen werden. Schauen Sie
-die Dokumentation für [Helm Chart Repositories]({{< relref path="/docs/topics/chart_repository.md" lang="en">}}) für mehr Details.
+die Dokumentation für [Helm Chart Repositories](/topics/chart_repository.md) für mehr Details.
 
 ## Zusammenfassung
 
@@ -496,5 +496,5 @@ hilfreiche Zusatzkommandos besprochen wie `helm status`, `helm get` und `helm re
 Für mehr Informationen zu diesen Kommandos, schauen Sie in die eingebaute Hilfe:
 `helm help`.
 
-Im [nächsten Kapitel]({{< relref path="/docs/howto/charts_tips_and_tricks.md" lang="en">}}) werden wir
+Im [nächsten Kapitel](/howto/charts_tips_and_tricks.md) werden wir
 einen Blick in die Entwicklung von Charts.

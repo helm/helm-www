@@ -1,6 +1,6 @@
 ---
-title: "Зміни з часів Helm 2"
-weight: 1
+title: Зміни з часів Helm 2
+sidebar_position: 1
 ---
 
 ## Зміни з часів Helm 2 {#changes-since-helm-2}
@@ -121,7 +121,7 @@ containers:
 
 ### Secrets як стандартний драйвер зберігання {#secrets-as-the-default-storage-driver}
 
-У Helm 3 Secrets тепер використовуються як [стандартний драйвер зберігання](/docs/topics/advanced/#storage-backends). Helm 2 стандартно використовував ConfigMaps для зберігання інформації про релізи. У Helm 2.7.0 було впроваджено новий бекенд зберігання, що використовує Secrets для зберігання інформації про релізи, і тепер це є стандартним починаючи з Helm 3.
+У Helm 3 Secrets тепер використовуються як [стандартний драйвер зберігання](/topics/advanced.md#storage-backends). Helm 2 стандартно використовував ConfigMaps для зберігання інформації про релізи. У Helm 2.7.0 було впроваджено новий бекенд зберігання, що використовує Secrets для зберігання інформації про релізи, і тепер це є стандартним починаючи з Helm 3.
 
 Перехід на Secrets як стандарт для Helm 3 забезпечує додаткову безпеку у захисті чарту разом з випуском шифрування Secrets у Kubernetes.
 
@@ -135,7 +135,7 @@ containers:
 
 Вбудований обʼєкт `.Capabilities`, доступний під час етапу рендерингу, був спрощений.
 
-[Вбудовані Обʼєкти](/docs/chart_template_guide/builtin_objects/)
+[Вбудовані Обʼєкти](/chart_template_guide/builtin_objects.md)
 
 ### Перевірка значень чарту з JSONSchema {#validating-chart-values-with-jsonschema}
 
@@ -148,7 +148,7 @@ containers:
 * `helm template`
 * `helm lint`
 
-Дивіться документацію про [Файли схем](/docs/topics/charts#schema-files) для додаткової інформації.
+Дивіться документацію про [Файли схем](/topics/charts.md#schema-files) для додаткової інформації.
 
 ### Консолідація `requirements.yaml` в `Chart.yaml` {#consolidation-of-requirementsyaml-into-chartyaml}
 
@@ -203,7 +203,7 @@ dependencies:
 
 Будь ласка, ознайомтеся з `helm help chart` та `helm help registry` для отримання додаткової інформації про те, як упакувати чарт і опублікувати його в Docker реєстрі.
 
-Більше інформації можна знайти на [цій сторінці](/docs/topics/registries/).
+Більше інформації можна знайти на [цій сторінці](/topics/registries.md).
 
 ### Видалення `helm serve` {#removal-of-helm-serve}
 

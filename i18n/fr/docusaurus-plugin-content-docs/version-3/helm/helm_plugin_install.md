@@ -1,9 +1,6 @@
 ---
-title: "Helm Plugin Install"
+title: helm plugin install
 ---
-
-## helm plugin install
-
 installe un ou plusieurs plugins Helm
 
 ### Synopsis
@@ -45,4 +42,4 @@ helm plugin install [options] <path|url>... [flags]
 
 ### Voir également
 
-* [helm plugin](helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm
+* [helm plugin](/helm/helm_plugin.md) - Installer, lister ou désinstaller des plugins Helm

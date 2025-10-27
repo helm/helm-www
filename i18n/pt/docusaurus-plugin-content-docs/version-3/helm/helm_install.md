@@ -1,14 +1,11 @@
 ---
-title: "Helm Install"
+title: helm install
 ---
-
-## helm install
-
 Instala um Chart
 
 ### Sinopse
 
-Esse comando instala um [_Chart Archive_](docs/glossary/_index.md#chart-archive).
+Esse comando instala um [_Chart Archive_](/glossary/index.mdx#chart-archive).
 
 O argumento de instalação deve ser uma referência a um Chart, ou um caminho para
 um Chart empacotado, ou um caminho para um Chart descompactado ou uma URL.
@@ -51,7 +48,7 @@ terá precedência:
 Os argumentos `--debug` e `--dry-run` podem ser combinados com o comando `helm install`
 para verificar os manifestos gerados de uma release sem instalar o Chart.
 
-Se o argumento `--verify` for utilizado, o Chart **DEVE** ter um arquivo de [linhagem](docs/glossary/_index.md#linhagem-arquivo-de-linhagem),
+Se o argumento `--verify` for utilizado, o Chart **DEVE** ter um arquivo de [linhagem](/glossary/index.mdx#linhagem-arquivo-de-linhagem),
 e este arquivo **DEVE** passar em todas as etapas de verificação.
 
 Há cinco maneiras diferentes de se instalar um Chart:
@@ -140,4 +137,4 @@ helm install [NOME_DA_SUA_RELEASE] [CHART] [argumentos]
 
 ### Veja Também
 
-* [helm](helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm](/helm/helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
