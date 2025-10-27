@@ -118,25 +118,45 @@ See [Docusaurus swizzling docs](https://docusaurus.io/docs/swizzling) for how th
 
 This section provides guidance for working with markdown links in the Helm docs site.
 
-### Use absolute paths
+### Links to docs and blogs
 
-Absolute paths are more verbose but needed in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
+When linking to docs and/or blogs in this site, absolute paths are required. Absolute paths are more verbose but necessary to avoid broken links in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
 
-When adding absolute path links to docs and/or blogs, use the following guidance:
+#### Linking within docs or blogs
 
-* When linking from one doc page to another or from one blog to another, use the absolute path, starting from the directory within `/blogs` or within the version-specific docs folder. As in, don't include `/blog/` or `/docs/` in the path. For example, `[Blog to blog link](/2024-10-07-kubecon-na-24/index.md)` or `[Doc to doc link](/topics/advanced.md)`.
-* When linking a doc to a blog or from a blog to a doc, use the _absolute URL path_ of the doc or blog, rather than the absolute file path. Additionally, if the doc or blog has a `slug` defined in its front matter, then you need to use the slug in the URL path. For example, `[See this blog post](/blog/my-slug)` (if a slug exists) or `[See this blog post](/blog/2024-01-01-title)` (if no slug).
+When linking from one doc page to another or from one blog to another, use the _absolute file path_:
+   
+* Exclude `/blog/` or `/docs/` from the path
+* Start the path from the directory within `/blogs` (eg `/2024-10-07-kubecon-na-24/`), or from the version-specific docs folder (eg, `/topics/`, `/chart_template_guide/`, `/helm/`)
+* Include the `.md` or `.mdx` file extension
 
 Examples:
 
 ```markdown
-✅ GOOD: [Advanced Topics](/topics/advanced.md)
-❌ AVOID:  [Advanced Topics](../topics/advanced.md)
-❌ AVOID:  [Advanced Topics](advanced.md)
-❌ AVOID (unless linking to the page from a blog):  [Advanced Topics](/docs/topics/advanced.md)
+✅ GOOD (doc to doc link): [Advanced Topics](/topics/advanced.md)
+✅ GOOD (blog to blog link): [Helm at KubeCon/CloudNativeCon SLC](/2024-10-07-kubecon-na-24/index.md)
+❌ AVOID: [Advanced Topics](../topics/advanced.md)
+❌ AVOID: [Advanced Topics](advanced.md)
+❌ AVOID: [Advanced Topics](/docs/topics/advanced.md)
 ```
 
-### Anchor links
+#### Linking across docs and blogs
+
+When linking to a doc from a blog, or from a blog to a doc, use the _absolute URL path_:
+   
+* Include `/blog/` or `/docs/`
+* Exclude the `.md` or `.mdx` file extension
+* If the doc or blog has a `slug` defined in its front matter, use the slug in the URL path instead of the filename.
+
+Examples:
+
+```markdown
+✅ GOOD (without slug): [See this blog post](/blog/2024-01-01-title)
+✅ GOOD (with slug): [See this blog post](/blog/my-slug)
+❌ AVOID (don't use the file extension):  [Advanced Topics](/docs/topics/advanced.md)
+```
+
+### Anchor links to headings
 
 Anchor links are challenging in multi-locale sites because anchor IDs are automatically generated from the heading text. This means that any links that point to English language anchor IDs will break in other locales if the given heading is translated to a different language. 
 
@@ -147,7 +167,7 @@ English: ## Storage backends  → #storage-backends
 Chinese: ## 后端存储         → #后端存储 (different anchor ID)
 ```
 
-To avoid broken anchor links, add explicit IDs to headings in English in all translations. For example:
+To avoid broken anchor links, add explicit IDs to headings in all translations. For example:
 
 ```markdown
 ## Storage backends {#storage-backends}
@@ -158,7 +178,7 @@ In this case, anchor links to the given ID will work across all locales since th
 
 Alternatively, you can also choose to link to the given page without anchors. While the user will need to manually find the referenced heading or content, excluding anchors all together will avoid broken anchor links.
 
-### Troubleshooting broken links
+### Troubleshoot broken links
 
 You can run a local build to check for broken links (`yarn build` or `npm run build`). If there are broken links, you'll see an error like this in the build output:
 
@@ -172,10 +192,10 @@ To troubleshoot, go to the _source page_ listed in the error message. Note that 
 Check the following:
 
 * Make sure the link uses an absolute path. For example, use `/topics/advanced.md` instead of `../topics/advanced.md` or `advanced.md`.
-* Make sure the file extension used in the link matches the file extension of the target file (`.md` versus `.mdx`)
+* For absolute file paths, make sure the extension used in the link matches the file extension of the target file (`.md` versus `.mdx`)
 * If you are linking from a doc to a blog or vice versa, check if the target page has a slug defined in its metadata. If so, ensure that you use the slug in the absolute URL path
-* Check that the link does _not_ use a trailing slash (eg `/topics/charts/` should be changed to `/topics/charts.md`)
-
+* Check that the link does not use a trailing slash (eg `/topics/charts/` should be changed to `/topics/charts.md`)
+* Make sure that the link does not mix the URL and file path. For example, including both `/docs/` and `.md` in the path (eg `/docs/topics/advanced.md`) will result in a broken link.
 
 ## Netlify Redirects Strategy
 
