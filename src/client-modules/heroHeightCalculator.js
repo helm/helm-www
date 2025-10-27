@@ -17,23 +17,23 @@ function initializeHeroHeightCalculation() {
     function updateHeroHeight() {
       const vh = window.innerHeight;
       const navbar = document.querySelector(".navbar");
-      const navbarHeight = navbar ? navbar.offsetHeight : 88; // fallback to 88px
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
+      // Check for announcement bar
       const announcementBar = document.querySelector("div.theme-announcement-bar");
-      const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
+      let announcementBarHeight = 0;
+
+      if (announcementBar && announcementBar.offsetHeight > 0) {
+        // Only count it if it's visible and has height
+        announcementBarHeight = announcementBar.offsetHeight;
+      }
 
       const heroHeight = vh - navbarHeight - announcementBarHeight;
 
+      // Apply the calculated height
       hero.style.height = `${heroHeight}px`;
       hero.style.minHeight = `${heroHeight}px`;
       hero.style.maxHeight = `${heroHeight}px`;
-
-      console.log("Hero height calculation:", {
-        vh,
-        navbarHeight,
-        announcementBarHeight,
-        heroHeight,
-      });
     }
 
     // Throttled scroll and resize handler
@@ -91,12 +91,88 @@ function initializeHeroHeightCalculation() {
     }, 500);
   }
 
+  // Track if we've successfully applied styles
+  let stylesApplied = false;
+
+  function ensureHeroStylesApplied() {
+    if (!stylesApplied && hero && hero.style.height) {
+      stylesApplied = true;
+      return true;
+    }
+    return false;
+  }
+
+  // Initialize with multiple strategies to catch hydration
+  function initializeHero() {
+    calculateHeroHeight();
+
+    // Keep trying until styles are actually applied
+    let attempts = 0;
+    const checkInterval = setInterval(() => {
+      attempts++;
+      if (ensureHeroStylesApplied() || attempts > 20) {
+        clearInterval(checkInterval);
+      } else {
+        calculateHeroHeight();
+      }
+    }, 100);
+  }
+
   // Initialize on page load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', calculateHeroHeight);
+    document.addEventListener('DOMContentLoaded', initializeHero);
   } else {
-    calculateHeroHeight();
+    initializeHero();
   }
+
+  // Also listen for React hydration completion
+  if (typeof window !== 'undefined') {
+    // React 18+ hydration
+    const reactRoot = document.getElementById('__docusaurus');
+    if (reactRoot) {
+      // Use MutationObserver to detect when React modifies the DOM
+      const observer = new MutationObserver((mutations) => {
+        if (window.location.pathname === '/' && !stylesApplied) {
+          calculateHeroHeight();
+          if (ensureHeroStylesApplied()) {
+            observer.disconnect();
+          }
+        }
+      });
+
+      observer.observe(reactRoot, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+
+      // Disconnect after 5 seconds to prevent memory leaks
+      setTimeout(() => observer.disconnect(), 5000);
+    }
+  }
+
+  // Force scroll to top AFTER browser's scroll restoration
+  if (window.location.pathname === '/') {
+    // Disable scroll restoration for this page
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Multiple attempts to ensure we stay at top
+    window.scrollTo(0, 0);
+    setTimeout(() => window.scrollTo(0, 0), 0);
+    setTimeout(() => window.scrollTo(0, 0), 100);
+    setTimeout(() => window.scrollTo(0, 0), 300);
+  }
+
+  // Handle Docusaurus route changes
+  window.addEventListener('docusaurus:route-did-update', () => {
+    if (window.location.pathname === '/') {
+      stylesApplied = false;  // Reset for new navigation
+      setTimeout(initializeHero, 100);
+    }
+  });
 
   // Handle client-side navigation (Docusaurus SPA routing)
   const originalPushState = history.pushState;
