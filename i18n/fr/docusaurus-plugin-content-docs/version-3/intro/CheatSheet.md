@@ -6,30 +6,37 @@ sidebar_position: 4
 
 La cheatsheet d'Helm contient toutes les commandes nécessaires pour gérer une application avec Helm.
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 ### Base
 
 Chart:
+
 - Il s'agit du nom de votre chart dans le cas où il aurait été téléchargé ou décompressé.
 - Il s'agit du <repo_name>/<chart_name> dans le cas où le répertoire a été ajouté mais que le chart n'a pas été téléchargé.
 - Il s'agit de l'URL/chemin absolu vers le chart.
 
 Name:
+
 - C'est le nom que vous souhaitez donner à votre installation du Chart Helm.
 
 Release:
+
 - C'est le nom que vous donnez à une instance d'installation.
 
 Revision:
+
 - C'est le numéro de l'historique de déploiement.
 
 Repo-name:
+
 - Le nom d'un répertoire
 
 DIR:
+
 - Nom/chemin du dossier
 
-------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ### Gestion des Chart
 
@@ -39,13 +46,14 @@ helm package <chart-path>               # Emballe un chart dans une archive comp
 helm lint <chart>                       # Lance des tests pour examiner un chart et identifier des problèmes.
 helm show all <chart>                   # Inspect et liste le contenu d'un chart.
 helm show values <chart>                # Affiche le contenu du fichier values.yaml
-helm pull <chart>                       # Télécharge/pull un chart 
+helm pull <chart>                       # Télécharge/pull un chart
 helm pull <chart> --untar=true          # Si spécifié à true, décompresse le chart une fois téléchargé.
 helm pull <chart> --verify              # Vérifie le package avant de l'utiliser
 helm pull <chart> --version <number>    # Par défaut, c'est la denière version (latest) qui est utilisée, vous pouvez spécifier une version pour utiliser.
 helm dependency list <chart>            # Affiche la liste des dépendances du chart.
-``` 
---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ### Installer et Désinstaller des Applications
 
@@ -59,7 +67,9 @@ helm install <name> <chart> --verify                  # Vérifie le package avan
 helm install <name> <chart> --dependency-update       # Met à jour les dépendances si elles sont manquantes avant d'installer le chart.
 helm uninstall <name>                                 # Désinstalle un chart.
 ```
-------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 ### Mise à jour et Restauration de l'Application
 
 ```bash
@@ -72,8 +82,10 @@ helm upgrade <release> <chart> --set key1=val1,key2=val2  # Définir des valeurs
 helm upgrade <release> <chart> --force                    # Force la mise à jour des ressources via une stratégie de remplacement
 helm rollback <release> <revision>                        # Restore une release pour une version spécifique
 helm rollback <release> <revision>  --cleanup-on-fail     # Autorise la suppression des nouvelles ressources créées si le rollback échoue
-``` 
-------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+
 ### Lister, Ajouter, Supprimer et Mettre à jour des dépôts
 
 ```bash
@@ -86,7 +98,9 @@ helm repo index <DIR> --merge     # Fusionne l'index généré avec un fichier d
 helm search repo <keyword>        # Recherche des dépôts pour un mot clé dans les charts.
 helm search hub <keyword>         # Recherche des charts sur l'Artificat Hub ou sur votre propre hub.
 ```
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 ### Surveillance des Version Helm
 
 ```bash
@@ -106,7 +120,9 @@ helm status <release> --revision <number>   # Si fixé, affiche l'état d'un ver
 helm history <release>          # Historique des révisions pour une version donnée.
 helm env                        # Affiche toutes les informations sur l'environnement utilisées par Helm.
 ```
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 ### Télécharger les Informations des Versions
 
 ```bash
@@ -116,13 +132,16 @@ helm get manifest <release> # Un manifeste est une réprésentation encodée en 
 helm get notes <release>    # Affiche les notes fournies par le chart d'une version donnée.
 helm get values <release>   # Télécharge un fichier de valeurs pour une version donnée. Utilisez l'argument '-o' pour formater la sortie.
 ```
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 ### Gestion des Plugins
 
 ```bash
-helm plugin install <path/url>     # Installe des plugins
+helm plugin install <path/url>      # Installe des plugins
 helm plugin list                    # Affiche la liste des plugins installés
 helm plugin update <plugin>         # Met à jour des plugins
 helm plugin uninstall <plugin>      # Désinstalle un plugin
 ```
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
