@@ -61,7 +61,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 # v2.helm.sh to current domain
 [[redirects]]
   from = "https://v2.helm.sh/docs/*"
-  to = "https://helm.sh/docs/v2/docs/:splat"
+  to = "https://helm.sh/docs/v2/:splat"
   status = 302
 
 # v2.helm.sh categories not present in v3 docs
