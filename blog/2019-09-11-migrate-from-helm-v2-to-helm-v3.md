@@ -115,9 +115,9 @@ $ helm3 2to3 move config --dry-run
 2019/11/14 14:54:04
 2019/11/14 14:54:04 WARNING: Helm v3 configuration maybe overwritten during this operation.
 2019/11/14 14:54:04
-[Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
+[Move Config/confirm] Are you sure you want to move the v2 configuration? [y/N]: y
 2019/11/14 14:54:12
-Helm v2 configuration will be moved to Helm v3 configration.
+Helm v2 configuration will be moved to Helm v3 configuration.
 2019/11/14 14:54:12 [Helm 2] Home directory: /Users/rimas/.helm
 2019/11/14 14:54:12 [Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
 2019/11/14 14:54:12 [Helm 3] Data directory: /Users/rimas/Library/helm
@@ -134,9 +134,9 @@ Cool, now let's do the actual migration:
 $ helm3 2to3 move config
 WARNING: Helm v3 configuration maybe overwritten during this operation.
 
-[Move Config/confirm] Are you sure you want to move the v2 configration? [y/N]: y
+[Move Config/confirm] Are you sure you want to move the v2 configuration? [y/N]: y
 
-2019/11/14 14:55:00 Helm v2 configuration will be moved to Helm v3 configration.
+2019/11/14 14:55:00 Helm v2 configuration will be moved to Helm v3 configuration.
 2019/11/14 14:55:00 [Helm 2] Home directory: /Users/rimas/.helm
 2019/11/14 14:55:00 [Helm 3] Config directory: /Users/rimas/Library/Preferences/helm
 2019/11/14 14:55:00 [Helm 3] Data directory: /Users/rimas/Library/helm
@@ -150,7 +150,7 @@ WARNING: Helm v3 configuration maybe overwritten during this operation.
 2019/11/14 14:55:00 [Helm 2] plugins "/Users/rimas/.helm/plugins" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/plugins" .
 2019/11/14 14:55:00 [Helm 2] starters "/Users/rimas/.helm/starters" will copy to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
 2019/11/14 14:55:00 [Helm 2] starters "/Users/rimas/.helm/starters" copied successfully to [Helm 3] data folder "/Users/rimas/Library/helm/starters" .
-2019/11/14 14:55:00 Helm v2 configuration was moved successfully to Helm v3 configration.
+2019/11/14 14:55:00 Helm v2 configuration was moved successfully to Helm v3 configuration.
 ```
 
 Now let's run `helm3 repo list` again:
@@ -254,7 +254,7 @@ $ helm3 2to3 convert postgres
 2019/11/14 15:03:57 v2 release information should only be removed using `helm 2to3` cleanup and when all releases have been migrated over.
 ```
 
-Check out whether it was succesful:
+Check out whether it was successful:
 
 ```
 $ helm list
