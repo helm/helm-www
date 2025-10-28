@@ -1,20 +1,20 @@
 # 速查表 - HELM
 
-Helm 速查表包含了通过Helm管理应用的所有必需命令。
+Helm 速查表包含了通过 Helm 管理应用的所有必需命令。
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 基本方法/上下文
 
 Chart:
 
-- chart名称，防止被拉取和标记。
+- chart 名称，防止被拉取和标记。
 - <repo_name>/<chart_name> 防止已添加但未被拉取的库。
-- chart使用URL绝对路径。
+- chart 使用 URL 绝对路径。
 
 Name:
 
-- 当前安装的helm chart的名称。
+- 当前安装的 helm chart 的名称。
 
 Release:
 
@@ -32,7 +32,7 @@ DIR:
 
 - 目录 name/path
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## Chart 管理
 
@@ -42,13 +42,14 @@ helm package <chart-path>               # Packages a chart into a versioned char
 helm lint <chart>                       # Run tests to examine a chart and identify possible issues:
 helm show all <chart>                   # Inspect a chart and list its contents:
 helm show values <chart>                # Displays the contents of the values.yaml file
-helm pull <chart>                       # Download/pull chart 
+helm pull <chart>                       # Download/pull chart
 helm pull <chart> --untar=true          # If set to true, will untar the chart after downloading it
 helm pull <chart> --verify              # Verify the package before using it
 helm pull <chart> --version <number>    # Default-latest is used, specify a version constraint for the chart version to use
 helm dependency list <chart>            # Display a list of a chart’s dependencies:
-``` 
------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+---
 
 ## 安装和卸载应用
 
@@ -58,12 +59,12 @@ helm install <name> <chart> --namespace <namespace>   # Install the chart in a s
 helm install <name> <chart> --set key1=val1,key2=val2 # Set values on the command line (can specify multiple or separate values with commas)
 helm install <name> <chart> --values <yaml-file/url>  # Install the chart with your specified values
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
-helm install <name> <chart> --verify                  # Verify the package before using it 
+helm install <name> <chart> --verify                  # Verify the package before using it
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
 helm uninstall <name>                                 # Uninstall a release
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 应用升级和回滚
 
@@ -79,7 +80,7 @@ helm rollback <release> <revision>                        # Roll back a release 
 helm rollback <release> <revision>  --cleanup-on-fail     # Allow deletion of new resources created in this rollback when rollback fails
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 列出，添加，移除和升级仓库
 
@@ -94,7 +95,7 @@ helm search repo <keyword>        # Search repositories for a keyword in charts
 helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## Helm 发布检测
 
@@ -116,7 +117,7 @@ helm history <release>          # Historical revisions for a given release.
 helm env                        # Env prints out all the environment information in use by Helm.
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 下载发布信息
 
@@ -128,15 +129,15 @@ helm get notes <release>    # Shows notes provided by the chart of a named relea
 helm get values <release>   # Downloads a values file for a given release. use -o to format output
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 插件管理
 
 ```bash
-helm plugin install <path/url>     # Install plugins
+helm plugin install <path/url>      # Install plugins
 helm plugin list                    # View a list of all installed plugins
 helm plugin update <plugin>         # Update plugins
 helm plugin uninstall <plugin>      # Uninstall a plugin
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------
+---
