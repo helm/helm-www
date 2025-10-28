@@ -1,3 +1,5 @@
+# Build configs
+
 [build]
   command = "make netlify-build"
   publish = "build"
@@ -22,20 +24,6 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [context.branch-deploy.environment]
   CACHE_VERSION = "branch-v1"
-
-# redirect docs homepage
-[[redirects]]
-  from = "https://docs.helm.sh/"
-  to = "https://helm.sh/docs/"
-
-# redirect docs subpages
-[[redirects]]
-  from = "https://docs.helm.sh/*"
-  to = "https://helm.sh/docs/:splat"
-
-[[redirects]]
-  from = "/docs/developing_charts/"
-  to = "https://helm.sh/docs/v2/developing-charts/"
 
 # Go module import support handled by static HTML files in /static/
 # These paths serve HTML with go-import meta tags + client-side redirects
@@ -62,46 +50,56 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "https://docs.google.com/document/d/10cyzggPiLeLz169cDF1UaUMmM4uZx6rO3Bw9rRQRjJA/edit?usp=sharing"
   status = 302
 
-# Redirect v2 docs to new combined site
-# Category-level redirects only (fragments not supported by Netlify)
-# TODO: Change status codes from 302 to 301 after cutover verification
-
+# docs.helm.sh to current domain
 [[redirects]]
-  from = "https://v2.helm.sh/docs/using_helm/"
-  to = "/docs/v2/using-helm/"
+  from = "https://docs.helm.sh/*"
+  to = "https://helm.sh/docs/:splat"
+
+# v2.helm.sh redirects
+# TODO: Change status codes below from 302 to 301 after Docusaurus cutover verification
+
+# v2.helm.sh to current domain
+[[redirects]]
+  from = "https://v2.helm.sh/docs/*"
+  to = "https://helm.sh/docs/v2/:splat"
+  status = 302
+
+# v2.helm.sh categories not present in v3 docs
+# Category-level redirects only (no wildcard) because v2.helm.sh did not have
+# sub-pages, only anchors to one combined category page
+# Note URL fragments are not supported by Netlify redirects
+[[redirects]]
+  from = "/docs/using_helm/"
+  to = "/docs/v2/using_helm/"
   status = 302
 
 [[redirects]]
-  from = "https://v2.helm.sh/docs/helm/"
-  to = "/docs/commands"
+  from = "/docs/developing_charts/"
+  to = "/docs/v2/developing_charts/"
   status = 302
 
+# v2.helm.sh categories with new corresponding v3 paths
 [[redirects]]
-  from = "https://v2.helm.sh/docs/developing_charts/"
-  to = "/docs/v2/developing-charts/"
-  status = 302
-
-[[redirects]]
-  from = "https://v2.helm.sh/docs/related/"
+  from = "/docs/related/"
   to = "/docs/community/related/"
   status = 302
 
 [[redirects]]
-  from = "https://v2.helm.sh/docs/architecture/"
+  from = "/docs/architecture/"
   to = "/docs/topics/architecture/"
   status = 302
 
 [[redirects]]
-  from = "https://v2.helm.sh/docs/developers/"
+  from = "/docs/developers/"
   to = "/docs/community/developers/"
   status = 302
 
 [[redirects]]
-  from = "https://v2.helm.sh/docs/history/"
+  from = "/docs/history/"
   to = "/docs/community/history/"
   status = 302
 
-# Additional from v3 docs md headers hugo aliases key
+# START - Hugo frontmatter aliases redirects, removed during Docusaurus migration
 [[redirects]]
   from = "/docs/advanced_helm_techniques"
   to = "/docs/topics/advanced/"
@@ -292,4 +290,4 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "/docs/topics/charts/"
   status = 302
 
-# End of Hugo frontmatter aliases redirects
+# END - Hugo frontmatter aliases redirects

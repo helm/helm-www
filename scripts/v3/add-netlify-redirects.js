@@ -74,8 +74,9 @@ function addNetlifyRedirects() {
   ];
 
   // Check if our section already exists
-  const startMarker = '# Additional redirects for Hugo frontmatter aliases removed during v3 migration';
-  const endMarker = '# End of Hugo frontmatter aliases redirects';
+  const startMarker =
+    "# START - Hugo frontmatter aliases redirects, removed during docusaurus migration";
+  const endMarker = "# END - Hugo frontmatter aliases redirects";
 
   const startIndex = netlifyContent.indexOf(startMarker);
   const endIndex = netlifyContent.indexOf(endMarker);
