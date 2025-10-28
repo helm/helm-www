@@ -114,6 +114,82 @@ src/theme/TOCCollapsible/          # Mobile "On this page" menu
 
 See [Docusaurus swizzling docs](https://docusaurus.io/docs/swizzling) for how these theme components work.
 
+## Markdown Links
+
+This section provides guidance for working with markdown links in the Helm docs site.
+
+### Absolute paths required
+
+Absolute paths are required for all links. Absolute paths are more verbose but necessary to avoid broken links in our multi-locale site due to the following Docusaurus i18n bug: [facebook/docusaurus#10907](https://github.com/facebook/docusaurus/issues/10907).
+
+The sections below include more information about how and when to use absolute file paths or URL paths.
+
+#### Linking within docs or blogs
+
+When linking from one doc page to another or from one blog post to another, use the _absolute file path_:
+   
+* Exclude `/blog/` or `/docs/` from the path
+* Start the path from the directory within `/blogs` (eg `/2024-10-07-kubecon-na-24/`), or from the version-specific docs folder (eg, `/topics/`, `/chart_template_guide/`, `/helm/`)
+* Include the `.md` or `.mdx` file extension
+
+Examples:
+
+```markdown
+✅ GOOD (doc to doc link): [Advanced Topics](/topics/advanced.md)
+✅ GOOD (blog to blog link): [Helm at KubeCon/CloudNativeCon SLC](/2024-10-07-kubecon-na-24/index.md)
+❌ AVOID (relative file path): [Advanced Topics](../topics/advanced.md)
+❌ AVOID (relative file path): [Advanced Topics](advanced.md)
+❌ AVOID (adding /docs): [Advanced Topics](/docs/topics/advanced.md)
+❌ AVOID (absolute URL path, no .md/.mdx): [Advanced Topics](/docs/topics/advanced)
+```
+
+#### Linking across docs and blogs
+
+When linking to a doc from a blog, or from a blog to a doc, use the _absolute URL path_:
+   
+* Include `/blog/` or `/docs/`
+* Exclude the `.md` or `.mdx` file extension
+* If the doc or blog has a `slug` defined in its front matter, use the slug in the URL path instead of the filename
+
+Examples:
+
+```markdown
+✅ GOOD (file name without .md extension when no slug is in front matter): [See this blog post](/blog/2024-01-01-title)
+✅ GOOD (when slug is in front matter): [See this blog post](/blog/my-slug)
+❌ AVOID (don't use the file extension):  [Advanced Topics](/docs/topics/advanced.md)
+```
+
+### Anchor links to headings
+
+Anchor links are challenging in multi-locale sites because anchor IDs are automatically generated from the heading text. This means that any links that point to English language anchor IDs will break in other locales if the given heading is translated to a different language. 
+
+For example:
+
+```markdown
+English: ## Storage backends  → #storage-backends
+Chinese: ## 后端存储         → #后端存储 (different anchor ID)
+```
+
+To avoid broken anchor links, add explicit IDs to headings in all translations. For example:
+
+```markdown
+## Storage backends {#storage-backends}
+## 后端存储 {#storage-backends}
+```
+
+In this case, anchor links to the given ID will work across all locales since the anchor ID itself remains the same in all translations.
+
+### Troubleshoot broken links
+
+You can run a local build to check for broken links (`yarn build`). If there are broken links, you'll see an error like this in the build output:
+
+```bash
+Broken link on source page path = /docs/faq/changes_since_helm2
+   -> linking to /topics/charts.md
+```
+
+To troubleshoot, go to the _source page_ listed in the error message. Note that the source page with the broken link might be in the English docs, even if the broken link was triggered for a different locale.
+
 ## Netlify Redirects Strategy
 
 ### Hugo to Docusaurus Migration Requirements
@@ -231,3 +307,24 @@ Remove them only after:
 1. Docusaurus site cutover is verified
 2. All redirects are tested and working
 3. No rollback scenarios require Hugo functionality
+
+## Netlify Build Caching
+
+### Problem
+Docusaurus builds take ~11 minutes. Need faster builds for development workflow.
+
+### Solution
+Custom Netlify plugins cache `.docusaurus/`, `node_modules/`, and `build/` directories.
+
+**Current:** `cache-docusaurus-dirs-file` (stable, 2-4 minute builds)
+**Future:** `cache-docusaurus-dirs-api` (beta, potentially 10x faster)
+
+### Build Pipeline Changes
+Changed from `make build` (runs destructive `clean`) to `make netlify-build` (preserves cache).
+
+### Cache Strategy
+- **Production/branches:** Isolated per branch
+- **PR previews:** Shared across PRs via `CACHE_PER_BRANCH=false`
+- **Auto-invalidation:** `yarn.lock` changes, `CACHE_VERSION` environment variable
+
+See `netlify-plugins/README.md` for configuration details.
