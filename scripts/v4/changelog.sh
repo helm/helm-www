@@ -33,7 +33,7 @@ while [[ "${hasNextPage:-}" != "false" ]]; do
               totalCount
               nodes {
                 abbreviatedOid
-                ## UNCOMMMENT FOR CO-AUTHORS
+                ## UNCOMMENT FOR CO-AUTHORS
                 ## SEE commit authors doc
                 ## REF https://docs.github.com/en/graphql/reference/objects#commit
                 # oid
