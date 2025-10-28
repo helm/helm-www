@@ -36,7 +36,7 @@ Kubernetes 1.16 and 1.15.
 
 It is not recommended to use Helm with a version of Kubernetes that is newer
 than the version it was compiled against, as Helm does not make any forward
-compatiblility guarantees.
+compatibility guarantees.
 
 If you choose to use Helm with a version of Kubernetes that it does not support,
 you are using it at your own risk.

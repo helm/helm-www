@@ -930,7 +930,8 @@ the template engine if there is a problem.
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. Inside string replacement, $ signs are
 interpreted as in Expand, so for instance $1 represents the text of the first
-submatch
+submatch. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -945,7 +946,8 @@ an error to the template engine if there is a problem.
 
 Returns a copy of the input string, replacing matches of the Regexp with the
 replacement string replacement. The replacement string is substituted directly,
-without using Expand
+without using Expand. The first argument is `<pattern>`, second is `<input>`,
+and third is `<replacement>`.
 
 ```
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -1990,6 +1992,8 @@ Helm has a single network function, `getHostByName`.
 The `getHostByName` receives a domain name and returns the ip address.
 
 `getHostByName "www.google.com"` would return the corresponding ip address of `www.google.com`.
+
+This function requires the `--enable-dns` option to be passed on the helm command line.
 
 ## File Path Functions
 

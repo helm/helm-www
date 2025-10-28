@@ -70,12 +70,12 @@ La commande `helm install` est très puissante et possède beaucoup de fonctionn
 Il est facile de voir ce qui à été deployé avec Helm :
 
 ```console
-$ helm ls
+$ helm list
 NAME             VERSION   UPDATED                   STATUS    chart
 smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
 ```
 
-La fonction `helm list` vous montrera une liste de toutes les release déployées.
+La fonction `helm list` (ou `helm ls`) vous montrera une liste de toutes les release déployées.
 
 ## Désinstaller une release
 
