@@ -110,7 +110,7 @@ const config = {
             // and v5 will then live in /docs
             current: { label: "4.0.0-beta.1 🚧" },
             3: { label: "3.19.0" },
-            2: { label: "2.17.0" },
+            2: { label: "2.17.0", path: "v2" },
           },
         },
         blog: {
