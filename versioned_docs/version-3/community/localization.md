@@ -92,7 +92,7 @@ To start a new language:
 1. If you haven't already, install dependencies:
 
    ```
-   yarn
+   yarn install --frozen-lockfile
    ```
 
 1. Run the Docusaurus `write-translations` command. For example, to add the `fr` (French) locale: `yarn write-translations -- --locale fr`. This creates the required directory structure for the language and initializes the JSON translation files required to translate site elements like the navbar, footer, landing page, and sidebar.
@@ -166,7 +166,7 @@ To translate docs and blog content:
 1. If you haven't already, install dependencies:
 
    ```
-   yarn
+   yarn install --frozen-lockfile
    ```
 
 1. Test your changes by starting the localized site in dev mode, specifying the locale:
