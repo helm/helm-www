@@ -154,7 +154,7 @@ Helm의 사전 릴리스 버전이 GA로 승격될 때, 사전 릴리스 문서�
 
 새 버전을 만들려면:
 
-1. `<version>`이 주요 Helm 버전에 해당하는 정수인 `npm run docusaurus docs:version version-<version>`을 실행합니다. 예를 들어, Helm v5에 대한 새로운 사전 릴리스 문서를 게시하려면 v4 문서 내용을 새로운 `version-4` 폴더로 복사하기 위해 `npm run docusaurus docs:version version-4`를 실행할 수 있습니다.
+1. `<version>`이 주요 Helm 버전에 해당하는 정수인 `yarn docusaurus docs:version version-<version>`을 실행합니다. 예를 들어, Helm v5에 대한 새로운 사전 릴리스 문서를 게시하려면 v4 문서 내용을 새로운 `version-4` 폴더로 복사하기 위해 `yarn docusaurus docs:version version-4`를 실행할 수 있습니다.
 
      이 명령은 다음을 수행합니다:
      * 전체 `docs/` 폴더 내용을 새로운 `versioned_docs/version-<version>/` 폴더로 복사합니다.
