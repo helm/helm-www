@@ -154,7 +154,7 @@ Cutting a new version refers to copying the full `/docs` directory contents to a
 
 To cut a new version:
 
-1. Run `yarn docusaurus docs:version version-<version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, if you want to publish new pre-release docs for Helm v5, then you can run `yarn docusaurus docs:version version-4` to copy the v4 docs content to a new `version-4` folder.
+1. Run `yarn docusaurus docs:version <version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, when we publish Helm 4.0.0 we will run `yarn docusaurus docs:version 4`.
 
      This command does the following:
      * Copies the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
