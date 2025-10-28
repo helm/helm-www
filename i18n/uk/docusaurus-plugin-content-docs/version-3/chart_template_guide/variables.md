@@ -107,6 +107,7 @@ data:
 
 ```yaml
 {{- range .Values.tlsSecrets }}
+---
 apiVersion: v1
 kind: Secret
 metadata:
@@ -125,7 +126,6 @@ type: kubernetes.io/tls
 data:
   tls.crt: {{ .certificate }}
   tls.key: {{ .key }}
----
 {{- end }}
 ```
 

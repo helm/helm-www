@@ -50,7 +50,7 @@ The `Chart.yaml` file is required for a chart. It contains the following fields:
 ```yaml
 apiVersion: The chart API version (required)
 name: The name of the chart (required)
-version: A SemVer 2 version (required)
+version: The version of the chart (required)
 kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
 description: A single-sentence description of this project (optional)
 type: The type of the chart (optional)
@@ -86,8 +86,8 @@ The recommended approach is to add custom metadata in `annotations`.
 
 ### Charts and Versioning
 
-Every chart must have a version number. A version must follow the [SemVer
-2](https://semver.org/spec/v2.0.0.html) standard. Unlike Helm Classic, Helm v2
+Every chart must have a version number. A version should follow the [SemVer
+2](https://semver.org/spec/v2.0.0.html) standard but it is not strictly enforced. Unlike Helm Classic, Helm v2
 and later uses version numbers as release markers. Packages in repositories are
 identified by name plus version.
 
@@ -951,6 +951,12 @@ schemas. This means that restrictions on a subchart can't be circumvented by a
 parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
+
+Schema validation can be disabled by setting the option shown below.
+This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
+```console
+helm install --skip-schema-validation
+```
 
 ### References
 
