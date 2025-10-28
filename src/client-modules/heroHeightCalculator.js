@@ -5,8 +5,11 @@ function initializeHeroHeightCalculation() {
     return;
   }
 
+  // Move hero to outer scope so it's accessible by all functions
+  let hero = null;
+
   function calculateHeroHeight() {
-    const hero = document.querySelector(".hero");
+    hero = document.querySelector(".hero");
 
     if (!hero) {
       // Retry after React components have rendered
