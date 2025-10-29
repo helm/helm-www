@@ -1,0 +1,90 @@
+{
+  "link.title.Helm Project": {
+    "message": "Проєкт Helm",
+    "description": "The title of the footer links column with title=Helm Project in the footer"
+  },
+  "link.title.Charts": {
+    "message": "Чарти",
+    "description": "The title of the footer links column with title=Charts in the footer"
+  },
+  "link.title.Development": {
+    "message": "Розробка",
+    "description": "The title of the footer links column with title=Development in the footer"
+  },
+  "link.title.Community": {
+    "message": "Спільнота",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.item.label.Source code": {
+    "message": "Вихідний код",
+    "description": "The label of footer link with label=Source code linking to https://github.com/helm/helm"
+  },
+  "link.item.label.Blog": {
+    "message": "Блог",
+    "description": "The label of footer link with label=Blog linking to blog"
+  },
+  "link.item.label.Events": {
+    "message": "Події",
+    "description": "The label of footer link with label=Events linking to https://www.cncf.io/community/kubecon-cloudnativecon-events/"
+  },
+  "link.item.label.Code of Conduct": {
+    "message": "Кодекс поведінки",
+    "description": "The label of footer link with label=Code of Conduct linking to https://github.com/cncf/foundation/blob/master/code-of-conduct.md"
+  },
+  "link.item.label.Introduction": {
+    "message": "Вступ",
+    "description": "The label of footer link with label=Introduction linking to docs/intro"
+  },
+  "link.item.label.Chart tips & tricks": {
+    "message": "Поради та хитрощі для чартів",
+    "description": "The label of footer link with label=Chart tips & tricks linking to #"
+  },
+  "link.item.label.Developing Charts": {
+    "message": "Розробка чартів",
+    "description": "The label of footer link with label=Developing Charts linking to #"
+  },
+  "link.item.label.Search 800+ Charts": {
+    "message": "Пошук 800+ чартів",
+    "description": "The label of footer link with label=Search 800+ Charts linking to https://artifacthub.io/"
+  },
+  "link.item.label.Slack (#helm-dev)": {
+    "message": "Slack (#helm-dev)",
+    "description": "The label of footer link with label=Slack (#helm-dev) linking to https://kubernetes.slack.com/messages/C51E88VDG"
+  },
+  "link.item.label.Contribution Guide": {
+    "message": "Посібник з внеску",
+    "description": "The label of footer link with label=Contribution Guide linking to https://github.com/helm/helm/blob/main/CONTRIBUTING.md"
+  },
+  "link.item.label.Maintainers": {
+    "message": "Мейнтейнери",
+    "description": "The label of footer link with label=Maintainers linking to https://github.com/helm/helm/blob/main/OWNERS"
+  },
+  "link.item.label.Weekly Meetings": {
+    "message": "Щотижневі зустрічі",
+    "description": "The label of footer link with label=Weekly Meetings linking to https://github.com/helm/community/blob/main/communication.md#meetings"
+  },
+  "link.item.label.GitHub Community": {
+    "message": "Спільнота на GitHub",
+    "description": "The label of footer link with label=GitHub Community linking to https://github.com/helm/community"
+  },
+  "link.item.label.Slack (#helm-users)": {
+    "message": "Slack (#helm-users)",
+    "description": "The label of footer link with label=Slack (#helm-users) linking to https://kubernetes.slack.com/"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/kubernetes-helm"
+  },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "The label of footer link with label=X linking to https://x.com/helmpack"
+  },
+  "copyright": {
+    "message": "<a href=\"https://www.cncf.io/\">Ми є випускним проєктом Cloud Native Computing Foundation.</a><br/>© Автори Helm 2025. Документація поширюється за ліцензією <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Усі права захищені. The Linux Foundation має зареєстровані торгові марки та використовує торгові марки. Щоб переглянути список торгових марок The Linux Foundation, відвідайте нашу <a href=\"https://www.linuxfoundation.org/trademark-usage/\">сторінку використання торгових марок</a>.",
+    "description": "The footer copyright"
+  },
+  "logo.alt": {
+    "message": "Логотип CNCF",
+    "description": "The alt text of footer logo"
+  }
+}

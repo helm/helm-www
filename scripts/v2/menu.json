@@ -1,0 +1,518 @@
+{
+  "navigationStructure": [
+    {
+      "label": "Docs Home",
+      "link": "/docs"
+    },
+    {
+      "label": "Using Helm",
+      "link": "/docs/using_helm/",
+      "header": "Quickstart Guide",
+      "children": [
+        {
+          "label": "Quickstart",
+          "anchor": "quickstart-guide",
+          "header": "Quickstart Guide"
+        },
+        {
+          "label": "Installing Helm",
+          "anchor": "installing-helm",
+          "header": "Installing Helm"
+        },
+        {
+          "label": "Deprecated Kubernetes APIs",
+          "anchor": "deprecated-kubernetes-apis",
+          "header": "Deprecated Kubernetes APIs"
+        },
+        {
+          "label": "Kubernetes Distro Notes",
+          "anchor": "kubernetes-distribution-guide",
+          "header": "Kubernetes Distribution Guide"
+        },
+        {
+          "label": "Install FAQ",
+          "anchor": "installation-frequently-asked-questions",
+          "header": "Installation: Frequently Asked Questions"
+        },
+        {
+          "label": "Using Helm",
+          "anchor": "using-helm",
+          "header": "Using Helm"
+        },
+        {
+          "label": "Plugins",
+          "anchor": "the-helm-plugins-guide",
+          "header": "The Helm Plugins Guide"
+        },
+        {
+          "label": "Role-Based Access Control",
+          "anchor": "role-based-access-control",
+          "header": "Role-based Access Control"
+        },
+        {
+          "label": "TLS/SSL for Helm and Tiller",
+          "anchor": "using-ssl-between-helm-and-tiller",
+          "header": "Using SSL Between Helm and Tiller"
+        },
+        {
+          "label": "Securing Helm",
+          "anchor": "securing-your-helm-installation",
+          "header": "Securing your Helm Installation"
+        }
+      ]
+    },
+    {
+      "label": "Helm Commands",
+      "link": "/docs/helm/",
+      "header": "helm",
+      "children": [
+        {
+          "label": "Helm",
+          "anchor": "helm",
+          "header": "helm"
+        },
+        {
+          "label": "Helm Completion",
+          "anchor": "helm-completion",
+          "header": "helm completion"
+        },
+        {
+          "label": "Helm Create",
+          "anchor": "helm-create",
+          "header": "helm create"
+        },
+        {
+          "label": "Helm Delete",
+          "anchor": "helm-delete",
+          "header": "helm delete"
+        },
+        {
+          "label": "Helm Dependency",
+          "anchor": "helm-dependency",
+          "header": "helm dependency"
+        },
+        {
+          "label": "Helm Dependency Build",
+          "anchor": "helm-dependency-build",
+          "header": "helm dependency build"
+        },
+        {
+          "label": "Helm Dependency List",
+          "anchor": "helm-dependency-list",
+          "header": "helm dependency list"
+        },
+        {
+          "label": "Helm Dependency Update",
+          "anchor": "helm-dependency-update",
+          "header": "helm dependency update"
+        },
+        {
+          "label": "Helm Fetch",
+          "anchor": "helm-fetch",
+          "header": "helm fetch"
+        },
+        {
+          "label": "Helm Get",
+          "anchor": "helm-get",
+          "header": "helm get"
+        },
+        {
+          "label": "Helm Get Hooks",
+          "anchor": "helm-get-hooks",
+          "header": "helm get hooks"
+        },
+        {
+          "label": "Helm Get Manifest",
+          "anchor": "helm-get-manifest",
+          "header": "helm get manifest"
+        },
+        {
+          "label": "Helm Get Notes",
+          "header": "helm get notes",
+          "link": "/docs/helm/helm_get_notes/"
+        },
+        {
+          "label": "Helm Get Values",
+          "anchor": "helm-get-values",
+          "header": "helm get values"
+        },
+        {
+          "label": "Helm History",
+          "anchor": "helm-history",
+          "header": "helm history"
+        },
+        {
+          "label": "Helm Home",
+          "anchor": "helm-home",
+          "header": "helm home"
+        },
+        {
+          "label": "Helm Init",
+          "anchor": "helm-init",
+          "header": "helm init"
+        },
+        {
+          "label": "Helm Inspect",
+          "anchor": "helm-inspect",
+          "header": "helm inspect"
+        },
+        {
+          "label": "Helm Inspect Chart",
+          "anchor": "helm-inspect-chart",
+          "header": "helm inspect chart"
+        },
+        {
+          "label": "Helm Inspect Readme",
+          "header": "helm inspect readme",
+          "link": "/docs/helm/helm_inspect_readme/"
+        },
+        {
+          "label": "Helm Inspect Values",
+          "anchor": "helm-inspect-values",
+          "header": "helm inspect values"
+        },
+        {
+          "label": "Helm Install",
+          "anchor": "helm-install",
+          "header": "helm install"
+        },
+        {
+          "label": "Helm Lint",
+          "anchor": "helm-lint",
+          "header": "helm lint"
+        },
+        {
+          "label": "Helm List",
+          "anchor": "helm-list",
+          "header": "helm list"
+        },
+        {
+          "label": "Helm Package",
+          "anchor": "helm-package",
+          "header": "helm package"
+        },
+        {
+          "label": "Helm Plugin",
+          "anchor": "helm-plugin",
+          "header": "helm plugin"
+        },
+        {
+          "label": "Helm Plugin Install",
+          "anchor": "helm-plugin-install",
+          "header": "helm plugin install"
+        },
+        {
+          "label": "Helm Plugin List",
+          "anchor": "helm-plugin-list",
+          "header": "helm plugin list"
+        },
+        {
+          "label": "Helm Plugin Remove",
+          "anchor": "helm-plugin-remove",
+          "header": "helm plugin remove"
+        },
+        {
+          "label": "Helm Plugin Update",
+          "anchor": "helm-plugin-update",
+          "header": "helm plugin update"
+        },
+        {
+          "label": "Helm Repo",
+          "anchor": "helm-repo",
+          "header": "helm repo"
+        },
+        {
+          "label": "Helm Repo Add",
+          "anchor": "helm-repo-add",
+          "header": "helm repo add"
+        },
+        {
+          "label": "Helm Repo Index",
+          "anchor": "helm-repo-index",
+          "header": "helm repo index"
+        },
+        {
+          "label": "Helm Repo List",
+          "anchor": "helm-rep-list"
+        },
+        {
+          "label": "Helm Repo Remove",
+          "anchor": "helm-repo-remove",
+          "header": "helm repo remove"
+        },
+        {
+          "label": "Helm Repo Update",
+          "anchor": "helm-repo-update",
+          "header": "helm repo update"
+        },
+        {
+          "label": "Helm Reset",
+          "anchor": "helm-reset",
+          "header": "helm reset"
+        },
+        {
+          "label": "Helm Rollback",
+          "anchor": "helm-rollback",
+          "header": "helm rollback"
+        },
+        {
+          "label": "Helm Search",
+          "anchor": "helm-search",
+          "header": "helm search"
+        },
+        {
+          "label": "Helm Serve",
+          "anchor": "helm-serve",
+          "header": "helm serve"
+        },
+        {
+          "label": "Helm Status",
+          "anchor": "helm-status",
+          "header": "helm status"
+        },
+        {
+          "label": "Helm Template",
+          "anchor": "helm-template",
+          "header": "helm template"
+        },
+        {
+          "label": "Helm Test",
+          "anchor": "helm-test",
+          "header": "helm test"
+        },
+        {
+          "label": "Helm Upgrade",
+          "anchor": "helm-upgrade",
+          "header": "helm upgrade"
+        },
+        {
+          "label": "Helm Verify",
+          "anchor": "helm-verify",
+          "header": "helm verify"
+        },
+        {
+          "label": "Helm Version",
+          "anchor": "helm-version",
+          "header": "helm version"
+        }
+      ]
+    },
+    {
+      "label": "Charts",
+      "link": "/docs/developing_charts/",
+      "header": "Charts",
+      "children": [
+        {
+          "label": "Intro to Charts",
+          "anchor": "charts",
+          "header": "Charts"
+        },
+        {
+          "label": "Chart Lifecycle Hooks",
+          "anchor": "hooks",
+          "header": "Hooks"
+        },
+        {
+          "label": "Charts Tips and Tricks",
+          "anchor": "chart-development-tips-and-tricks",
+          "header": "Chart Development Tips and Tricks"
+        },
+        {
+          "label": "Charts Repository Guide",
+          "anchor": "the-chart-repository-guide",
+          "header": "The Chart Repository Guide"
+        },
+        {
+          "label": "Syncing Your Chart Repo",
+          "anchor": "syncing-your-chart-repository",
+          "header": "Syncing Your Chart Repository"
+        },
+        {
+          "label": "Signing Charts",
+          "anchor": "helm-provenance-and-integrity",
+          "header": "Helm Provenance and Integrity"
+        },
+        {
+          "label": "Chart Tests",
+          "anchor": "chart-tests",
+          "header": "Chart Tests"
+        },
+        {
+          "label": "Chart Repository FAQ",
+          "anchor": "chart-repositories-frequently-asked-questions",
+          "header": "Chart Repositories: Frequently Asked Questions"
+        }
+      ]
+    },
+    {
+      "label": "Developing Templates",
+      "link": "/docs/chart_template_guide/",
+      "header": "The Chart Template Developer’s Guide",
+      "children": [
+        {
+          "label": "Intro",
+          "anchor": "the-chart-template-developer-s-guide",
+          "header": "The Chart Template Developer’s Guide"
+        },
+        {
+          "label": "Getting Started",
+          "anchor": "getting-started-with-a-chart-template",
+          "header": "Getting Started with a Chart Template"
+        },
+        {
+          "label": "Built-In Objects",
+          "anchor": "built-in-objects",
+          "header": "Built-in Objects"
+        },
+        {
+          "label": "Values Files",
+          "anchor": "values-files",
+          "header": "Values Files"
+        },
+        {
+          "label": "Template Functions and Pipelines",
+          "anchor": "template-functions-and-pipelines",
+          "header": "Template Functions and Pipelines"
+        },
+        {
+          "label": "Flow Control",
+          "anchor": "flow-control",
+          "header": "Flow Control"
+        },
+        {
+          "label": "Variables",
+          "anchor": "variables",
+          "header": "Variables"
+        },
+        {
+          "label": "Named Templates",
+          "anchor": "named-templates",
+          "header": "Named Templates"
+        },
+        {
+          "label": "Accessing Files Inside Templates",
+          "anchor": "accessing-files-inside-templates",
+          "header": "Accessing Files Inside Templates"
+        },
+        {
+          "label": "Creating a NOTES.txt File",
+          "anchor": "creating-a-notes-txt-file",
+          "header": "Creating a NOTES.txt File"
+        },
+        {
+          "label": "Subcharts and Global Values",
+          "anchor": "subcharts-and-global-values",
+          "header": "Subcharts and Global Values"
+        },
+        {
+          "label": "The .helmignore File",
+          "anchor": "the-helmignore-file",
+          "header": "The .helmignore file"
+        },
+        {
+          "label": "Debugging Templates",
+          "anchor": "debugging-templates",
+          "header": "Debugging Templates"
+        },
+        {
+          "label": "Next Steps",
+          "anchor": "wrapping-up",
+          "header": "Wrapping Up"
+        },
+        {
+          "label": "Appendix: YAML Techniques",
+          "anchor": "yaml-techniques",
+          "header": "YAML Techniques"
+        },
+        {
+          "label": "Appendix: Go Data Types and Templates",
+          "anchor": "appendix-go-data-types-and-templates",
+          "header": "Appendix: Go Data Types and Templates"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "link": "/docs/chart_best_practices/",
+      "header": "The Chart Best Practices Guide",
+      "children": [
+        {
+          "label": "Intro",
+          "anchor": "the-chart-best-practices-guide",
+          "header": "The Chart Best Practices Guide"
+        },
+        {
+          "label": "General Conventions",
+          "anchor": "general-conventions",
+          "header": "General Conventions"
+        },
+        {
+          "label": "Values",
+          "anchor": "values",
+          "header": "Values"
+        },
+        {
+          "label": "Templates",
+          "anchor": "templates",
+          "header": "Templates"
+        },
+        {
+          "label": "Requirements",
+          "anchor": "requirements-files",
+          "header": "Requirements Files"
+        },
+        {
+          "label": "Labels & Annotations",
+          "anchor": "labels-and-annotations",
+          "header": "Labels and Annotations"
+        },
+        {
+          "label": "Pods & PodTemplates",
+          "anchor": "pods-and-podtemplates",
+          "header": "Pods and PodTemplates"
+        },
+        {
+          "label": "Custom Resource Definitions",
+          "anchor": "custom-resource-definitions",
+          "header": "Custom Resource Definitions"
+        },
+        {
+          "label": "RBAC",
+          "anchor": "role-based-access-control",
+          "header": "Role-Based Access Control"
+        }
+      ]
+    },
+    {
+      "label": "Related Projects",
+      "link": "/docs/related/",
+      "header": "Related Projects and Documentation"
+    },
+    {
+      "label": "Architecture",
+      "link": "/docs/architecture/",
+      "header": "The Kubernetes Helm Architecture"
+    },
+    {
+      "label": "Developer Guide",
+      "link": "/docs/developers/",
+      "header": "Developers Guide"
+    },
+    {
+      "label": "History",
+      "link": "/docs/history/",
+      "header": "The History of the Project"
+    },
+    {
+      "label": "Glossary",
+      "link": "/docs/glossary/",
+      "header": "Helm Glossary"
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2025-10-22T06:20:58.478Z",
+    "sourceUrl": "https://v2.helm.sh/docs/",
+    "method": "DOM extraction with header text extraction from live site",
+    "totalItems": 100
+  }
+}

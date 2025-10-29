@@ -1,0 +1,226 @@
+{
+  "summary": {
+    "filesWithAliases": 42,
+    "aliasesRemoved": 44
+  },
+  "aliases": [
+    {
+      "file": "chart_best_practices/conventions.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/conventions/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/custom_resource_definitions.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/custom_resource_definitions/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/dependencies.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/dependencies/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/index.mdx",
+      "aliases": [
+        "/docs/topics/chart_best_practices/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/labels.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/labels/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/pods.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/pods/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/rbac.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/rbac/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/templates.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/templates/"
+      ]
+    },
+    {
+      "file": "chart_best_practices/values.md",
+      "aliases": [
+        "/docs/topics/chart_best_practices/values/"
+      ]
+    },
+    {
+      "file": "chart_template_guide/getting_started.md",
+      "aliases": [
+        "/intro/getting_started/"
+      ]
+    },
+    {
+      "file": "chart_template_guide/index.mdx",
+      "aliases": [
+        "/topics/chart_template_guide/"
+      ]
+    },
+    {
+      "file": "community/developers.md",
+      "aliases": [
+        "/docs/developers/"
+      ]
+    },
+    {
+      "file": "community/history.md",
+      "aliases": [
+        "/docs/history/"
+      ]
+    },
+    {
+      "file": "community/localization.md",
+      "aliases": [
+        "/docs/localization/"
+      ]
+    },
+    {
+      "file": "community/related.md",
+      "aliases": [
+        "/docs/related/"
+      ]
+    },
+    {
+      "file": "faq/index.mdx",
+      "aliases": [
+        "/docs/topics/faq/",
+        "/docs/faq/"
+      ]
+    },
+    {
+      "file": "howto/chart_repository_sync_example.md",
+      "aliases": [
+        "/docs/chart_repository_sync_example/"
+      ]
+    },
+    {
+      "file": "howto/charts_tips_and_tricks.md",
+      "aliases": [
+        "/docs/charts_tips_and_tricks/"
+      ]
+    },
+    {
+      "file": "intro/index.mdx",
+      "aliases": [
+        "/docs/using_helm/"
+      ]
+    },
+    {
+      "file": "intro/install.md",
+      "aliases": [
+        "/docs/install/"
+      ]
+    },
+    {
+      "file": "intro/quickstart.md",
+      "aliases": [
+        "/docs/quickstart/"
+      ]
+    },
+    {
+      "file": "sdk/gosdk.md",
+      "aliases": [
+        "/docs/gosdk"
+      ]
+    },
+    {
+      "file": "topics/advanced.md",
+      "aliases": [
+        "/docs/advanced_helm_techniques"
+      ]
+    },
+    {
+      "file": "topics/architecture.md",
+      "aliases": [
+        "/docs/architecture/"
+      ]
+    },
+    {
+      "file": "topics/chart_repository.md",
+      "aliases": [
+        "/docs/chart_repository/"
+      ]
+    },
+    {
+      "file": "topics/chart_tests.md",
+      "aliases": [
+        "/docs/chart_tests/"
+      ]
+    },
+    {
+      "file": "topics/charts.md",
+      "aliases": [
+        "docs/developing_charts/",
+        "developing_charts"
+      ]
+    },
+    {
+      "file": "topics/charts_hooks.md",
+      "aliases": [
+        "/docs/charts_hooks/"
+      ]
+    },
+    {
+      "file": "topics/kubernetes_apis.md",
+      "aliases": [
+        "docs/k8s_apis/"
+      ]
+    },
+    {
+      "file": "topics/kubernetes_distros.md",
+      "aliases": [
+        "/docs/kubernetes_distros/"
+      ]
+    },
+    {
+      "file": "topics/library_charts.md",
+      "aliases": [
+        "docs/library_charts/"
+      ]
+    },
+    {
+      "file": "topics/permissions_sql_storage_backend.md",
+      "aliases": [
+        "/docs/permissions_sql_storage_backend/"
+      ]
+    },
+    {
+      "file": "topics/plugins.md",
+      "aliases": [
+        "/docs/plugins/"
+      ]
+    },
+    {
+      "file": "topics/provenance.md",
+      "aliases": [
+        "/docs/provenance/"
+      ]
+    },
+    {
+      "file": "topics/rbac.md",
+      "aliases": [
+        "/docs/rbac/"
+      ]
+    },
+    {
+      "file": "topics/registries.md",
+      "aliases": [
+        "/docs/registries/"
+      ]
+    }
+  ]
+}

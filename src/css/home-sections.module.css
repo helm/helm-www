@@ -1,0 +1,76 @@
+/* Section styles shared by multiple home module components */
+
+/* Base section styling */
+.section {
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Section headers */
+.section h2 {
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.section h2 + div,
+.section h2 + p + div {
+  margin-top: 3rem;
+}
+
+.section h2 + p {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Light sections (pattern background, navy text) */
+.sectionLight {
+  color: var(--navy);
+}
+
+.sectionLight h2,
+.sectionLight h3,
+.sectionLight h4 {
+  color: var(--navy);
+}
+
+/* Dark sections (blue pattern background, white text) */
+.sectionDark {
+  background: var(--navy);
+  color: white;
+}
+
+/* Enhanced background with blend mode for supported browsers */
+@supports (background-blend-mode: color-burn) {
+  @media screen and (min-width: 769px) {
+    .sectionDark {
+      background: url("/img/topography.png"), var(--navy);
+      background-blend-mode: color-burn;
+      background-attachment: fixed;
+    }
+  }
+}
+
+.sectionDark h2,
+.sectionDark h3,
+.sectionDark h4 {
+  color: var(--ifm-color-white);
+}
+
+.sectionDark :global(code) {
+  background-color: inherit;
+}
+
+/* Card styles for light sections */
+.sectionLight :global(.card) {
+  --ifm-card-background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 5px 12px var(--ifm-color-secondary-dark);
+}
+
+/* Card styles for dark sections */
+.sectionDark :global(.card) {
+  --ifm-card-background-color: var(--shade-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
