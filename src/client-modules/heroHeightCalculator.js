@@ -5,8 +5,11 @@ function initializeHeroHeightCalculation() {
     return;
   }
 
+  // Move hero to outer scope so it's accessible by all functions
+  let hero = null;
+
   function calculateHeroHeight() {
-    const hero = document.querySelector(".hero");
+    hero = document.querySelector(".hero");
 
     if (!hero) {
       // Retry after React components have rendered
@@ -15,12 +18,19 @@ function initializeHeroHeightCalculation() {
     }
 
     function updateHeroHeight() {
+      // Safety check - hero might have been removed from DOM
+      if (!hero) {
+        return;
+      }
+
       const vh = window.innerHeight;
       const navbar = document.querySelector(".navbar");
       const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
       // Check for announcement bar
-      const announcementBar = document.querySelector("div.theme-announcement-bar");
+      const announcementBar = document.querySelector(
+        "div.theme-announcement-bar"
+      );
       let announcementBarHeight = 0;
 
       if (announcementBar && announcementBar.offsetHeight > 0) {
@@ -30,10 +40,12 @@ function initializeHeroHeightCalculation() {
 
       const heroHeight = vh - navbarHeight - announcementBarHeight;
 
-      // Apply the calculated height
-      hero.style.height = `${heroHeight}px`;
-      hero.style.minHeight = `${heroHeight}px`;
-      hero.style.maxHeight = `${heroHeight}px`;
+      // Apply the calculated height (with safety check)
+      if (hero && hero.style) {
+        hero.style.height = `${heroHeight}px`;
+        hero.style.minHeight = `${heroHeight}px`;
+        hero.style.maxHeight = `${heroHeight}px`;
+      }
     }
 
     // Throttled scroll and resize handler
