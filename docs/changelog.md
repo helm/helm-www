@@ -5,8 +5,8 @@ sidebar_label: Full Changelog
 
 # Helm 4 Full Changelog
 
-**Scope**: 258 PRs from `main` branch (`v4.0.0-beta.1`) compared to `v3.19.0`
-**v4-only**: 235 PRs (23 backported to v3 excluded)
+**Scope**: 260 PRs from (`v4.0.0-beta.2`) compared to `v3.19.0`
+**v4-only**: 237 PRs (23 backported to v3 excluded)
 
 See the [Overview](/overview.md) for an actionable summary of these changes.
 
@@ -15,6 +15,10 @@ See the [Overview](/overview.md) for an actionable summary of these changes.
 New features in Helm 4 that were not backported to v3
 
 ```text
+#31338  2025-10-21T19:51:31Z  yzewei            Add loongarch64 support
+#31351  2025-10-21T19:32:40Z  gjenkins8         feat: `helm version` print Kubernetes (client-go) version
+#31362  2025-10-21T19:21:16Z  fabiocarneiro     Clarify the intent of the resource instructions
+#31376  2025-10-21T19:23:40Z  benoittgt         Do not ignore *.yml file on linting while accepting *.yaml
 #31372  2025-10-10T17:30:07Z  mattfarina        Enable Releases To Have Multiple Versions
 #31254  2025-09-23T00:15:09Z  benoittgt         Warn when we fallback to a different version on `helm pull`
 #31275  2025-09-10T18:52:08Z  benoittgt         Extend --skip-schema-validation for lint command
@@ -45,6 +49,10 @@ New features in Helm 4 that were not backported to v3
 Fixes in Helm 4 that were not backported to v3
 
 ```text
+#31337  2025-10-22T19:40:33Z  rachelvweber      Fixing rollback and uninstall client WaitStrategy
+#31406  2025-10-21T16:36:35Z  jessesimpson36    fix: kube client should return empty results objects instead of nil
+#31204  2025-10-22T19:47:14Z  benoittgt         Avoid panic in helm.sh/helm/v3/pkg/chartutil.ValidateAgainstSchema
+#31393  2025-10-21T19:29:59Z  benoittgt         Return errors during upgrade when the deletion of resources fails
 #31330  2025-09-25T23:06:13Z  mattfarina        Restore lint rule for excluding meaningless name
 #31334  2025-09-30T19:13:56Z  fleaz             Fix typo in bug-report issue template
 #31227  2025-10-03T00:41:41Z  evankanderson     Use filepath.Path when handling directory names
@@ -159,6 +167,12 @@ Major architectural and user-facing changes for v4
 Code quality improvements and modernization
 
 ```text
+#31395  2025-10-21T19:20:09Z  wyrapeseed        chore: fix some comment format
+#31365  2025-10-21T19:43:07Z  reddaisyy         refactor: use reflect.TypeFor
+#31390  2025-10-21T19:49:13Z  TerryHowe         fix: improve pkg/cmd/list test coverage
+#31401  2025-10-17T19:32:08Z  TerryHowe         refactor: remove unused err from pkg/registry/client.go
+#31391  2025-10-15T13:02:51Z  TerryHowe         chore: rename test registry
+#31408  2025-10-21T19:52:55Z  AndiDog           Improve error message when plugin source cannot be determined or a non-directory is passed
 #31292  2025-09-16T19:13:06Z  reddaisyy         refactor: use strings.builder
 #31286  2025-09-12T19:44:31Z  yajianggroup      refactor: use strings.CutPrefix
 #31287  2025-09-16T19:28:20Z  miledxz           improve fileutil test coverage
@@ -268,6 +282,7 @@ Code quality improvements and modernization
 Infrastructure and project management improvements
 
 ```text
+#31392  2025-10-16T10:09:09Z  TerryHowe         feature: create copilot structured context
 #30904  2025-05-23T12:06:12Z  benoittgt         [Doc] Help users avoid specifying URL scheme and path with `helm registry`
 #13563  2024-12-21T13:17:32Z  gjenkins8         Run `build-test` action on `dev-v3` branch
 #30912  2025-06-17T19:18:31Z  Bhargavkonidena   Fix #30893 - issue templates
