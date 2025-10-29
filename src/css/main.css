@@ -1,0 +1,37 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css");
+
+body {
+  /* needed for border to fit content instead of initial viewport */
+  height: fit-content !important;
+  border: var(--helm-body-border) solid var(--navy);
+}
+
+/* background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/topography.png");
+  background-repeat: repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+main:not(.home) {
+  background: white;
+}
+
+/* fix headers visually cut off by navbar */
+.anchor {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
+}

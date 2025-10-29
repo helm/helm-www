@@ -1,0 +1,79 @@
+:root {
+  /* set custom var for announcement bar height because
+  --docusaurus-announcement-bar-height var is not properly overridden from here
+  during yarn build/serve, eve with !important. use this custom var in
+  announcement-bar.css until a better solution is found. */
+  --helm-announcement-bar-height: 5rem;
+}
+
+/* Position the announcement bar fixed below the navbar and keep it within the body border */
+.theme-announcement-bar {
+  position: fixed;
+  top: var(--ifm-navbar-height);
+  left: 0;
+  right: 0;
+  /* z-index 1 beneath boat badge */
+  z-index: calc(var(--ifm-z-index-fixed) - 2);
+  box-sizing: border-box;
+  /* Honor the site's body border visually */
+  margin-inline: var(--helm-body-border);
+  /* we must override the default announcement bar height here for yarn build/serve */
+  height: var(--helm-announcement-bar-height);
+}
+
+[class*="announcementBarContent"] {
+  font-size: inherit;
+}
+
+/* Ensure the close button stays on the right and retains its padding */
+.theme-announcement-bar .close {
+  /* center the icon vertically within the button */
+  align-items: center;
+  opacity: 0.5;
+  padding: 1rem;
+  transition: opacity var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+  /* keep light, assuming announcement bar config will be a medium to dark color. eg, --navy: "#0f1689" */
+  color: var(--ifm-color-white);
+}
+
+.theme-announcement-bar .close:hover {
+  opacity: 1;
+}
+
+/* bump content down when announcement is present */
+.theme-announcement-bar + .navbar + .main-wrapper {
+  margin-top: var(--helm-announcement-bar-height);
+}
+
+/* offset the sidebar viewport when announcement is present */
+@media (min-width: 997px) {
+  #__docusaurus:has(.theme-announcement-bar) .theme-doc-sidebar-container {
+    margin-top: calc(-1 * calc(var(--ifm-navbar-height) + var(--helm-announcement-bar-height)));
+  }
+
+  /* target sidebar menu on both docs and blog with announcement bar */
+  #__docusaurus:has(.theme-announcement-bar) [class*="sidebarViewport"] .thin-scrollbar {
+    padding-top: var(--ifm-navbar-height);
+  }
+
+  /* bottom of docs scrollbar when docusaurus adds this class with js */
+  #__docusaurus:has(.theme-announcement-bar) [class*="menuWithAnnouncementBar"] {
+    margin-bottom: 0px;
+  }
+}
+
+/* bump TOC on desktop down when announcement is present */
+#__docusaurus:has(.theme-announcement-bar) .theme-doc-toc-desktop,
+#__docusaurus:has(.theme-announcement-bar) [class*="tableOfContents"] {
+  top: calc(var(--ifm-navbar-height) + 1rem + var(--helm-announcement-bar-height));
+}
+
+#__docusaurus:has(.theme-announcement-bar) [class*="tableOfContents"] {
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem + var(--helm-announcement-bar-height)));
+}
+
+/* fix headers visually cut off by announcement bar */
+#__docusaurus:has(.theme-announcement-bar) .anchor {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem + var(--helm-announcement-bar-height));
+}

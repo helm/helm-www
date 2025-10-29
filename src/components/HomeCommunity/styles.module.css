@@ -1,0 +1,8 @@
+/* Component has no specific styles - uses shared home module styles */
+
+/* Material Design Icon styling */
+.icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  font-size: 1.2em; /* Make React Icons larger to match other icon libraries */
+}

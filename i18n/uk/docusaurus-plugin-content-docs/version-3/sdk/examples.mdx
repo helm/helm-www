@@ -1,0 +1,55 @@
+---
+title: Приклади
+description: Приклади різних функцій Helm SDK
+sidebar_position: 2
+---
+import Install from './_install.mdx'
+import List from './_list.mdx'
+import Main from './_main.mdx'
+import Pull from './_pull.mdx'
+import Uninstall from './_uninstall.mdx'
+import Upgrade from './_upgrade.mdx'
+
+Цей документ містить серію прикладів використання Helm SDK. Призначений для документування різних функціональних можливостей SDK.
+
+Останній приклад показує драйвер `main.go` ([посилання](#driver)). Він виконує наведені нижче дії та включає необхідні допоміжні функції.
+
+Код для прикладів знаходиться в директорії [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples). І він повністю функціональний.
+
+## Дії {#actions}
+
+### Встановлення (Install) {#install-action}
+
+Цей приклад встановлює вказаний чарт/реліз для вказаної версії та значень:
+
+<Install />
+
+### Оновлення (Upgrade) {#upgrade-action}
+
+Цей приклад оновлює вказаний реліз з вказаним чартом, версією та значеннями:
+
+<Upgrade />
+
+### Видалення (Uninstall) {#uninstall-action}
+
+Цей приклад видаляє вказаний реліз
+
+<Uninstall />
+
+### Виводу списку чартів (List) {#list-action}
+
+Цей приклад показує всі чарти (в поточному налаштованому просторі імен)
+
+<List />
+
+### Завантаження чартів (Pull) {#pull-action}
+
+Цей приклад завантажує чарт з OCI репозиторію
+
+<Pull />
+
+## Драйвер {#driver}
+
+Тут драйвер показує необхідні допоміжні функції, потрібні для роботи дій Helm SDK. І показує наведені вище приклади в дії, щоб завантажити, встановити, оновити та видалити чарт 'podinfo' з OCI репозиторію.
+
+<Main />
