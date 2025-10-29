@@ -23,7 +23,7 @@ There has been refinement to the plans and confusion/questions about what happen
     * **RECOMMENDED ACTION** - If you depend on a chart in the Charts repository look for the new official location. If one does not exist, consider adopting the chart.
 * Nov 6, 2020 the stable and incubator charts repos will be removed from the [Artifact Hub](https://artifacthub.io/)
     * **RECOMMENDED ACTION** - None
-* Nov 13, 2020 - CI on the [helm/charts repository](https://github.com/helm/chart) will be disabled and no more Pull Requests will be accpeted.
+* Nov 13, 2020 - CI on the [helm/charts repository](https://github.com/helm/chart) will be disabled and no more Pull Requests will be accepted.
     * **RECOMMENDED ACTION** - For more info on the ongoing initiative to relocate charts to new repos please see [this issue](https://github.com/helm/charts/issues/21103).
 * *After* Nov 13, 2020 - Downloads of Charts at their old locations will be re-directed to the read-only archive available in GitHub Pages. The old locations may no longer be available after this date.
     * **RECOMMENDED ACTION** - See info on [switching to the archived stable and incubator charts](https://helm.sh/docs/faq/#i-am-getting-a-warning-about-unable-to-get-an-update-from-the-stable-chart-repository). Keep in mind that these charts will no longer be updated with bug fixes or security patches.
