@@ -49,7 +49,7 @@ const config = {
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "de", "el", "es", "fr", "ja", "ko", "pt", "ru", "uk", "zh"],
+    locales: ["en", "de", "el", "es", "fr", "it", "ja", "ko", "pt", "ru", "uk", "zh"],
     localeConfigs: {
       en: {
         htmlLang: "en-us",
@@ -66,6 +66,9 @@ const config = {
       },
       el: {
         label: "Ελληνικά (Greek)",
+      },
+      it: {
+        label: "Italiano (Italian)",
       },
       ja: {
         label: "日本語 (Japanese)",
@@ -98,8 +101,6 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/helm/helm-www/blob/main/",
-          // Links "edit this page" on translated pages to i18n/[LOCALE]/... instead of English source file
-          editLocalizedFiles: true,
           // "lastVersion" means the latest release
           // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
           // where "current" means the /docs folder

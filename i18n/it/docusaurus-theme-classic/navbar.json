@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Helm",
+    "description": "Il titolo nella barra di navigazione"
+  },
+  "logo.alt": {
+    "message": "Helm Logo",
+    "description": "Il testo alternativo del logo nella barra di navigazione"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Elemento della barra di navigazione con etichetta Docs"
+  },
+  "item.label.Charts": {
+    "message": "Charts",
+    "description": "Elemento della barra di navigazione con etichetta Charts"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Elemento della barra di navigazione con etichetta Blog"
+  },
+  "item.label.Community": {
+    "message": "Community",
+    "description": "Elemento della barra di navigazione con etichetta Community"
+  }
+}

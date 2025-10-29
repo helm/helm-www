@@ -52,6 +52,31 @@ To update these docs, you'll need to:
 Blog posts are created via pull requests. The following steps are used to add them:
 
 1. Add a new file to the `/blog/` directory whose name is the published date and the title. The files must be markdown formatted. See the existing titles for examples of the format
+<<<<<<< HEAD
+2. Add the header meta-data to the file using this format. 
+
+    ```yaml
+    ---
+    title: "Blog Title"
+    slug: "blog-slug"
+    # from /blog/authors.yml
+    authors: ["firstlast"]
+    date: "YYYY-MM-DD"
+    ---
+    ```
+3. If this is the first blog post by this author, update `/blog/authors.yml` to add a new author record.
+    ```yaml
+    # authors.yml
+    johndoe:
+      name: John Doe
+      image_url: https://github.com/johndoe.png
+      page: true
+      socials:
+        github: johndoe
+        linkedin: johndoe
+        website: http://johndoe.com/
+    ```
+=======
 2. Add the header meta-data to the file using this format.
 
    ```yaml
@@ -76,6 +101,7 @@ Blog posts are created via pull requests. The following steps are used to add th
        linkedin: johndoe
        website: http://johndoe.com/
    ```
+>>>>>>> main
 4. Add the content below the `---` as Markdown. The title does not need to be included in this section
 5. Any images should be placed in the `/blog/images/` directory. Images should be losslessly compressed to reduce their size. Tools, such as [ImageOptim](https://imageoptim.com/), can be used.
 6. To summarize the content on the blog index page, insert a `<!--truncate-->` break in your markdown. This will truncate the content with a _Read More_ link.
@@ -85,6 +111,41 @@ Blog PRs require approval from the core Helm [maintainers](https://github.com/he
 ### Versioning
 
 The following files in this repo are used to control versioning:
+<<<<<<< HEAD
+* Versioned documentation is located in `versioned_docs`.
+* The corresponding sidebar for each version is located in `versioned_sidebars`.
+* Versioning behavior is managed in the `docusaurus.config.js` file:
+
+    ```js
+    export default {
+      presets: [
+        '@docusaurus/preset-classic',
+        docs: {
+        // lastVersion = the latest released version (either a specific version from /versioned_docs or 'current')
+        // For any versions not listed as the latest, a banner is automatically displayed to warn users that they are viewing either old or pre-release docs  
+          lastVersion: '3',
+          versions: {
+            // current = docs from the top-level /docs directory. These can be pre-release or the latest released version
+            // label = the version label displayed in the navbar dropdown    
+            current: { label: '4.0.0-alpha.1 🚧' },
+            // numbered versions correspond to directories in /versioned_docs 
+            '3': { label: '3.19.0' },
+            '2': { label: '2.17.0' },
+          },
+        },
+      ],
+    };
+    ```
+* The list of available versions is maintained in `versions.json`.
+
+The table below explains the version labels and URL paths that map to versioned docs in this repo:
+
+| Repo Path                               | Version                | URL Path           |
+| --------------------------------------- | ---------------------- | ------------------ |
+| `versioned_docs/version-2/filename.md`  | 2.17.0                 | /docs/2/filename   |
+| `versioned_docs/version-3/filename.md`  | 3.19.0 (latest)        | /docs/filename     |
+| `docs/filename.md`                      | 4.0.0-alpha.1 (current)| /docs/next/filename|
+=======
 
 - Versioned documentation is located in `versioned_docs`.
 - The corresponding sidebar for each version is located in `versioned_sidebars`.
@@ -120,6 +181,7 @@ The table below explains the version labels and URL paths that map to versioned 
 | `versioned_docs/version-2/filename.md` | 2.17.0                  | /docs/2/filename    |
 | `versioned_docs/version-3/filename.md` | 3.19.0 (latest)         | /docs/filename      |
 | `docs/filename.md`                     | 4.0.0-alpha.1 (current) | /docs/next/filename |
+>>>>>>> main
 
 #### How to move pre-release docs to GA
 
@@ -129,6 +191,19 @@ When a pre-release version of Helm is promoted to GA, do the following to move p
 
 1. Update `docusaurus.config.js` to set `lastVersion` to `'current'`. This publishes the content of the main `/docs` folder to helm.sh`/docs`.
 
+<<<<<<< HEAD
+    ```js
+    // docusaurus.config.js
+    lastVersion: 'current',
+    ```
+
+1. Update the navbar `label` for the `current` version. For example:
+
+    ```js
+    // docusaurus.config.js
+    current: { label: '4.0.0' },
+    ```
+=======
    ```js
    // docusaurus.config.js
    lastVersion: 'current',
@@ -140,6 +215,7 @@ When a pre-release version of Helm is promoted to GA, do the following to move p
    // docusaurus.config.js
    current: { label: '4.0.0' },
    ```
+>>>>>>> main
 
 1. Start a local preview to test your changes. You should see that the "unreleased" banner is removed from the current version, and that the current version is now available at helm.sh/docs, rather than at helm.sh/docs/next.
 
@@ -151,6 +227,28 @@ Cutting a new version refers to copying the full `/docs` directory contents to a
 
 To cut a new version:
 
+<<<<<<< HEAD
+1. Run `npm run docusaurus docs:version version-<version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, if you want to publish new pre-release docs for Helm v5, then you can run `npm run docusaurus docs:version version-4` to copy the v4 docs content to a new `version-4` folder.
+
+     This command does the following:
+     * Copies the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
+     * Creates a versioned sidebars file in `versioned_sidebars/version-<version>-sidebars.json`.
+     * Appends the new version number to `versions.json`.
+
+1. Update the `docusaurus.config.js` file:
+
+     1. Set `lastVersion` to to the latest GA version. This ensures that the docs at helm.sh/docs are served from the latest versioned_docs folders. And, the docs at helm.sh/docs/next are served from the main `/docs` folder.
+     
+         For example, if you just cut the Helm v4 docs to a `versioned_docs/version-4/` directory, and want to publish pre-release docs for version Helm v5.0.0-alpha.1, then set `lastVersion` to `'4'`.
+
+     1. Update the navbar `label` for the `current` version. For example, to label the current (pre-release) version `5.0.0-alpha.1`, update the label as follows:
+
+         ```js
+         current: { label: '5.0.0-alpha.1 🚧' },
+         ```
+
+1. Start a local preview to test your changes. You should see the new version in the dropdown, be able to access the pre-release docs at helm.sh/docs/next, and see an "unreleased" banner at the top of all the pre-released docs.             
+=======
 1. Run `yarn docusaurus docs:version <version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, when we publish Helm 4.0.0 we will run `yarn docusaurus docs:version 4`.
 
    This command does the following:
@@ -172,6 +270,7 @@ To cut a new version:
       ```
 
 1. Start a local preview to test your changes. You should see the new version in the dropdown, be able to access the pre-release docs at helm.sh/docs/next, and see an "unreleased" banner at the top of all the pre-released docs.
+>>>>>>> main
 
 For more information about cutting new docs versions, see [Versioning](https://docusaurus.io/docs/versioning) in the Docusaurus documentation.
 
