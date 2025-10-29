@@ -109,14 +109,13 @@ per eseguire l'aggiornamento di una release alle API supportate. Consultare il r
 per maggiori dettagli.
 
 In alternativa, si possono seguire i seguenti passaggi manuali per eseguire l'aggiornamento delle versioni APIdi un manifest di rilascio. 
-A seconda della configurazione, si seguiranno
-i passi per il backend Secret o la ConfigMap.
+A seconda della configurazione, si seguiranno i passi per il backend Secret o la ConfigMap.
 
-- Ottenere il nome del Segreto o della Configmap associata all'ultima release distribuita :
-  - Secrets backend: `kubectl get secret -l 
+- Ottenere il nome del Secret o della Configmap associata all'ultima release distribuita :
+  - backend Secrets: `kubectl get secret -l 
     owner=helm,status=deployed,name=<nome_release> --namespace
     <namespace_di_rilascio> | awk '{print $1}' | grep -v NAME`   
-- ConfigMap backend: `kubectl get configmap -l
+- backend ConfigMap: `kubectl get configmap -l
     owner=helm,status=deployed,name=<nome_rilasciato> --namespace
     <namespace_di_rilascio> | awk '{print $1}' | grep -v NAME`
 - Ottenere i dettagli dell'ultimo rilascio distribuito:

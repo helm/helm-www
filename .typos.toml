@@ -52,6 +52,8 @@ extend-exclude = [
   "content/gr/**",
   # Chinese content
   "content/zh/**",
+  # Italian content
+  "content/it/**",
   # Theme files
   "themes/",
   # Go dependencies
