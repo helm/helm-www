@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Helm",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo Helm",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Docs": {
+    "message": "Documentation",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Charts": {
+    "message": "Charts",
+    "description": "Navbar item with label Charts"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Community": {
+    "message": "Communauté",
+    "description": "Navbar item with label Community"
+  }
+}
