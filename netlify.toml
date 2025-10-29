@@ -1,33 +1,32 @@
+# Build configs
+
 [build]
-  command = "make build"
-  publish = "app"
+  command = "make netlify-build"
+  publish = "build"
 
 [build.environment]
-  HUGO_VERSION = "0.138.0"
-  HUGO_ENABLEGITINFO = "true"
+  NODE_VERSION = "20"
+
+# Cache Docusaurus internal cache (.docusaurus) with optional CACHE_VERSION per environment
+[[plugins]]
+package = "./netlify-plugins/cache-docusaurus-dirs-file"
+
+  [plugins.inputs]
+  dirs = [".docusaurus", "node_modules", "build"]
 
 [context.production.environment]
-  HUGO_ENV = "production"
+  SITE_URL = "https://helm.sh"
+  CACHE_VERSION = "prod-v1"
 
-[context.deploy-preview]
-  command = "make build-preview"
+[context.deploy-preview.environment]
+  CACHE_VERSION = "preview-v1"
+  CACHE_PER_BRANCH = "false"
 
-[context.branch-deploy]
-  command = "make build-preview"
+[context.branch-deploy.environment]
+  CACHE_VERSION = "branch-v1"
 
-# redirect docs homepage
-[[redirects]]
-  from = "https://docs.helm.sh/"
-  to = "https://helm.sh/docs/"
-
-# redirect docs subpages
-[[redirects]]
-  from = "https://docs.helm.sh/*"
-  to = "https://helm.sh/docs/:splat"
-
-[[redirects]]
-  from = "/docs/developing_charts/"
-  to = "https://v2.helm.sh/docs/developing_charts/"
+# Go module import support handled by static HTML files in /static/
+# These paths serve HTML with go-import meta tags + client-side redirects
 
 # redirect Go package lookups
 [[redirects]]
@@ -40,6 +39,7 @@
   to = "/helm/v2"
   status = 200
 
+# custom external redirects
 [[redirects]]
   from = "/calendar/release"
   to = "https://calendar.google.com/calendar/u/0/embed?src=8tji8e0obp5skr2pval9g55ftk@group.calendar.google.com"
@@ -49,3 +49,245 @@
   from = "/v4-launch-party-sponsorship"
   to = "https://docs.google.com/document/d/10cyzggPiLeLz169cDF1UaUMmM4uZx6rO3Bw9rRQRjJA/edit?usp=sharing"
   status = 302
+
+# docs.helm.sh to current domain
+[[redirects]]
+  from = "https://docs.helm.sh/*"
+  to = "https://helm.sh/docs/:splat"
+
+# v2.helm.sh redirects
+# TODO: Change status codes below from 302 to 301 after Docusaurus cutover verification
+
+# v2.helm.sh to current domain
+[[redirects]]
+  from = "https://v2.helm.sh/docs/*"
+  to = "https://helm.sh/docs/v2/:splat"
+  status = 302
+
+# v2.helm.sh categories not present in v3 docs
+# Category-level redirects only (no wildcard) because v2.helm.sh did not have
+# sub-pages, only anchors to one combined category page
+# Note URL fragments are not supported by Netlify redirects
+[[redirects]]
+  from = "/docs/using_helm/"
+  to = "/docs/v2/using_helm/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/developing_charts/"
+  to = "/docs/v2/developing_charts/"
+  status = 302
+
+# v2.helm.sh categories with new corresponding v3 paths
+[[redirects]]
+  from = "/docs/related/"
+  to = "/docs/community/related/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/architecture/"
+  to = "/docs/topics/architecture/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/developers/"
+  to = "/docs/community/developers/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/history/"
+  to = "/docs/community/history/"
+  status = 302
+
+# START - Hugo frontmatter aliases redirects, removed during Docusaurus migration
+[[redirects]]
+  from = "/docs/advanced_helm_techniques"
+  to = "/docs/topics/advanced/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/chart_repository/"
+  to = "/docs/topics/chart_repository/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/chart_repository_sync_example/"
+  to = "/docs/howto/chart_repository_sync_example/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/chart_tests/"
+  to = "/docs/topics/chart_tests/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/charts_hooks/"
+  to = "/docs/topics/charts_hooks/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/charts_tips_and_tricks/"
+  to = "/docs/howto/charts_tips_and_tricks/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/gosdk"
+  to = "/docs/sdk/gosdk/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/install/"
+  to = "/docs/intro/install/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/kubernetes_distros/"
+  to = "/docs/topics/kubernetes_distros/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/localization/"
+  to = "/docs/community/localization/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/permissions_sql_storage_backend/"
+  to = "/docs/topics/permissions_sql_storage_backend/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/plugins/"
+  to = "/docs/topics/plugins/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/provenance/"
+  to = "/docs/topics/provenance/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/quickstart/"
+  to = "/docs/intro/quickstart/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/rbac/"
+  to = "/docs/topics/rbac/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/registries/"
+  to = "/docs/topics/registries/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/"
+  to = "/docs/chart_best_practices/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/conventions/"
+  to = "/docs/chart_best_practices/conventions/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/custom_resource_definitions/"
+  to = "/docs/chart_best_practices/custom_resource_definitions/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/dependencies/"
+  to = "/docs/chart_best_practices/dependencies/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/labels/"
+  to = "/docs/chart_best_practices/labels/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/pods/"
+  to = "/docs/chart_best_practices/pods/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/rbac/"
+  to = "/docs/chart_best_practices/rbac/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/templates/"
+  to = "/docs/chart_best_practices/templates/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/chart_best_practices/values/"
+  to = "/docs/chart_best_practices/values/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/topics/faq/"
+  to = "/docs/faq/"
+  status = 302
+
+[[redirects]]
+  from = "/intro/getting_started/"
+  to = "/docs/chart_template_guide/getting_started/"
+  status = 302
+
+[[redirects]]
+  from = "/topics/chart_template_guide/"
+  to = "/docs/chart_template_guide/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/k8s_apis/"
+  to = "/docs/topics/kubernetes_apis/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/library_charts/"
+  to = "/docs/topics/library_charts/"
+  status = 302
+# Additional redirects for Hugo frontmatter aliases removed during v3 migration
+[[redirects]]
+  from = "/docs/developers/"
+  to = "/docs/community/developers/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/history/"
+  to = "/docs/community/history/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/related/"
+  to = "/docs/community/related/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/faq/"
+  to = "/docs/faq/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/using_helm/"
+  to = "/docs/intro/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/architecture/"
+  to = "/docs/topics/architecture/"
+  status = 302
+
+[[redirects]]
+  from = "/docs/developing_charts/"
+  to = "/docs/topics/charts/"
+  status = 302
+
+[[redirects]]
+  from = "/developing_charts/"
+  to = "/docs/topics/charts/"
+  status = 302
+
+# END - Hugo frontmatter aliases redirects

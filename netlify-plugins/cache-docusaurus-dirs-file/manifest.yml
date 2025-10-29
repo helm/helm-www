@@ -1,0 +1,5 @@
+name: cache-docusaurus-dirs-file
+inputs:
+  - name: dirs
+    description: Array of directories to cache (relative to repo root)
+    required: true

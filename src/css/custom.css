@@ -1,0 +1,64 @@
+/* Import component-specific stylesheets */
+@import './fonts.css';
+@import './main.css';
+@import './announcement-bar.css';
+@import './navbar.css';
+@import './content.css';
+@import './footer.css';
+
+/* You can override the default Infima variables here. */
+:root {
+  /* Helm style guide colors https://github.com/helm/community/tree/main/art */
+
+  /* Primary */
+  --navy: #0f1689;
+
+  /* Secondary */
+  --blue-dark: #090e6f;
+  --blue-light: #1b53c2;
+
+  /* Shades */
+  --shade-dark: #050843;
+  --shade-mid: #b7c2e9;
+  --shade-light: #dbe1f3;
+
+  /* Accents */
+  --accent-blue: #3b82bf;
+  --accent-green: #2f84a7;
+  --accent-red: #95297c;
+  --accent-yellow: #d1aa9b;
+
+  /* Additional colors not in style guide */
+  --light: #e5e5e5;
+  --grey: #4e4e4e;
+  --salmon: #f8dcdf;
+  --shade-green-bright: #2ba0d3;
+
+  --ifm-color-primary: var(--navy);
+  --ifm-color-primary-dark: var(--navy);
+  --ifm-color-primary-darker: var(--blue-dark);
+  --ifm-color-primary-darkest: var(--blue-dark);
+  --ifm-color-primary-light: var(--blue-light);
+  --ifm-color-primary-lighter: var(--blue-light);
+  --ifm-color-primary-lightest: var(--blue-light);
+
+  /* font */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: "Public Sans", Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: "Space Mono", "Courier New", monaco, monospace;
+  --ifm-heading-font-weight: 700;
+
+  /* links */
+  --ifm-link-color: var(--shade-green-bright);
+  --ifm-link-hover-color: var(--shade-green-bright);
+
+  /* headers */
+  --ifm-heading-color: var(--navy);
+
+  /* global navbar style (needed elsewhere) */
+  --ifm-navbar-height: 5.5rem;
+
+  /* custom site vars */
+  --helm-body-border: 8px;
+}

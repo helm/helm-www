@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "2.17.0",
+    "description": "The label for version 2"
+  },
+  "sidebar.tutorialSidebar.category.Using Helm": {
+    "message": "Usando o Helm",
+    "description": "The label for category Using Helm in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Helm Commands": {
+    "message": "Comandos do Helm",
+    "description": "The label for category Helm Commands in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Charts": {
+    "message": "Charts",
+    "description": "The label for category Charts in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Developing Templates": {
+    "message": "Desenvolvendo Templates",
+    "description": "The label for category Developing Templates in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Best Practices": {
+    "message": "Melhores Práticas",
+    "description": "The label for category Best Practices in sidebar tutorialSidebar"
+  }
+}

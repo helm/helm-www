@@ -1,22 +1,25 @@
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
 .DS_Store
-.jekyll-metadata
-rootfs/svc
-.sass-cache/
-.yarnclean
-_site/*
-_site/
-.hugo_build.lock
-.ncurc.yml
-.publish/*
-.publish/
-node_modules/
-bower_components/
-vendor/
-rootfs/
-app/*
-resources/
-helm.sh/
-docs.helm.sh/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# SDKExamples build output
 sdkexamples/sdkexamples
 
 # JetBrains IDEs (GoLand, IntelliJ, ...) config folder
@@ -28,3 +31,8 @@ sdkexamples/sdkexamples
 # Link checker artifacts
 bin/
 tmp/
+
+# Migration source files
+orig/
+.claude
+CLAUDE.md

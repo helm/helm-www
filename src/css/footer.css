@@ -1,0 +1,27 @@
+.footer--dark {
+  --ifm-footer-color: var(--shade-mid);
+  --ifm-footer-background-color: var(--navy);
+  --ifm-footer-link-color: var(--shade-green-bright);
+  --ifm-footer-link-hover-color: var(--shade-green-bright);
+}
+
+/* Enhanced background with blend mode for supported browsers */
+@supports (background-blend-mode: color-burn) {
+  @media screen and (min-width: 769px) {
+    .footer--dark {
+      background: url("/img/topography.png"), var(--navy);
+      background-blend-mode: color-burn;
+      background-attachment: fixed;
+    }
+  }
+}
+
+.footer__links,
+.footer__title,
+.footer__bottom {
+  font-family: var(--ifm-heading-font-family);
+}
+
+.footer__bottom {
+    padding: 2rem 0;
+}
