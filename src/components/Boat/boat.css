@@ -1,0 +1,254 @@
+/**
+ * Helm boat animation styles.
+ */
+
+@keyframes boat-bob {
+  0% {
+    bottom: max(1.5rem, 2vw);
+    transform: rotate(4deg);
+  }
+  50% {
+    bottom: max(2.1rem, 3.5vw);
+    transform: rotate(-6deg);
+  }
+  100% {
+    bottom: max(1.5rem, 2vw);
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes boat-badge-bob {
+  0% {
+    top: 0.425vw;
+    transform: rotate(-4deg);
+  }
+  50% {
+    top: 0.75vw;
+    transform: rotate(2deg);
+  }
+  100% {
+    top: 0.425vw;
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* override search bar to give more z-index room between the navbar and boat layers */
+/* Navbar is --ifm-z-index-fixed, and search was --ifm-z-index-fixed + 1 */
+body .DocSearch-Container {
+  z-index: calc(var(--ifm-z-index-fixed) + 10);
+}
+
+.boat {
+  width: auto;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 10vw;
+  z-index: calc(var(--ifm-z-index-fixed) + 5);
+  transition: all 0.5s ease-in-out;
+  /* Ensure boat is positioned relative to its parent and contained within borders */
+}
+
+.boat .boat-ship {
+  position: absolute;
+  margin-top: max(0.25rem, 0.5vw);
+  left: max(1.5rem, 3.25vw);
+  bottom: max(6rem, 2vw);
+  max-width: max(8rem, 15vw); /* Minimum 8rem boat, scales with viewport */
+  z-index: calc(var(--ifm-z-index-fixed) + 4);
+  animation: boat-bob 7s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+}
+
+.boat:after {
+  content: "ahoy!";
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.75rem;
+  padding: 0.75em;
+  color: var(--navy);
+  background: var(--salmon);
+  position: absolute;
+  bottom: 8vw;
+  left: 13.5vw;
+  line-height: 1;
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+}
+
+.boat:hover:after {
+  opacity: 1;
+  bottom: 11vw;
+}
+
+.boat .wave-wrapper {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: max(3rem, 6vw); /* Just tall enough for waves */
+  overflow: visible;
+  z-index: calc(var(--ifm-z-index-fixed) + 2);
+  background-color: transparent;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.boat .wave-wrapper:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: " ";
+  height: max(1.8rem, 3.5vw); /* Scale down more to match boat */
+  width: 100%;
+  background: var(--blue-light);
+  transition: all 0.3s ease-in-out;
+}
+
+.boat .wave-wrapper .waves {
+  position: relative;
+  width: 100%;
+  height: max(1.2rem, 3vw); /* Scale down more to match boat */
+  transition: all 0.3s ease-in-out;
+}
+
+.boat .parallax > use {
+  animation: move-forever 25s ease-in-out infinite;
+}
+
+.boat .parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.boat .parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.boat .parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.boat .parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+
+/* Boat fixed nav 'badge' mode */
+.boat.boat-badge {
+  position: fixed;
+  top: calc(var(--ifm-navbar-height) + 0.25rem);
+  left: 1rem;
+  width: 7.5vw;
+  height: 7.5vw;
+  z-index: calc(
+    var(--ifm-z-index-fixed) - 1
+  ); /* Lower z-index to stay below navbar */
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.boat.boat-badge .boat-ship {
+  left: 0.636vw;
+  top: 0.2vw;
+  z-index: calc(var(--ifm-z-index-fixed) + 3);
+  max-width: 7vw;
+  animation: boat-badge-bob 7s ease-in-out infinite;
+  bottom: auto;
+  right: auto;
+}
+
+.boat.boat-badge .wave-wrapper {
+  width: 7.5vw;
+  height: 7.5vw;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  background-blend-mode: screen;
+  background: rgba(219, 225, 243, 0.5);
+  bottom: auto;
+  right: auto;
+  overflow: hidden;
+}
+
+.boat.boat-badge .wave-wrapper .waves {
+  margin-top: 3.75vw;
+  margin-bottom: -7px;
+  min-height: 0.25vw;
+  max-height: 1.5vw;
+}
+
+.boat.boat-badge .wave-wrapper:before {
+  width: 100%;
+  height: 3vw;
+  top: 5.25vw;
+  bottom: auto;
+  right: auto;
+}
+
+.boat.boat-badge:after {
+  display: none; /* Hide the tooltip in badge mode */
+}
+
+.boat.boat-badge:hover:after {
+  display: none;
+}
+
+/* Responsive adjustments for boat badge */
+@media screen and (max-width: 768px) {
+  /* Keep boat positioning absolute to stay at bottom of hero section */
+  .boat {
+    position: absolute; /* Keep absolute positioning */
+    bottom: 0; /* Stay at bottom */
+    width: 100vw;
+  }
+
+  .boat .boat-ship {
+    max-width: 15vw;
+    min-width: 100px; /* Add minimum size for mobile */
+  }
+
+  .boat.boat-badge {
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+  }
+
+  .boat.boat-badge .boat-ship {
+    left: 0.3rem;
+    top: 0.1rem;
+    max-width: 60px;
+    min-width: 60px;
+  }
+
+  .boat.boat-badge .wave-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .boat.boat-badge .wave-wrapper .waves {
+    margin-top: 30px;
+  }
+
+  .boat.boat-badge .wave-wrapper:before {
+    height: 25px;
+    top: 35px;
+  }
+}
