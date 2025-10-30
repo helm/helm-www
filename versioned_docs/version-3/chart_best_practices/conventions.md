@@ -47,3 +47,12 @@ There are a few conventions for using the words _Helm_ and _helm_.
   case sensitive
 
 When in doubt, use _Helm_ (with an uppercase 'H').
+
+## Do not specify namespaces in the chart templates
+
+Avoid defining `namespace` property in the `metadata` section of your chart
+templates - the namespace to apply rendered templates to should be
+specified in the call to a Kubernetes client via the flag like `--namespace`.
+Helm is rendering your templates as-is and sending them off to the
+Kubernetes client, whether it be Helm itself or another
+program (kubectl, flux, spinnaker, etc).
