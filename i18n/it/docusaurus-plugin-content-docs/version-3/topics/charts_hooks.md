@@ -28,7 +28,7 @@ Sono definiti i seguenti hook:
 |`post-upgrade` | Viene eseguita una richiesta di aggiornamento dopo che tutte le risorse sono state aggiornate |
 | `pre-rollback` | Viene eseguita una richiesta di rollback dopo che i template sono stati renderizzati, ma prima che le risorse siano state rollbackate |
 | `post-rollback` | Viene eseguita una richiesta di rollback dopo che tutte le risorse sono state modificate |
-| `test` | Viene eseguita quando viene invocato il sottocomando Helm test ([view test docs](/docs/chart_tests/))              |
+| `test` | Viene eseguita quando viene invocato il sottocomando Helm test ([view test docs](/topics/chart_tests.md))              |
 
 Si noti che l'hook `crd-install` è stato rimosso a favore della directory `crds/`.
 in Helm 3._
