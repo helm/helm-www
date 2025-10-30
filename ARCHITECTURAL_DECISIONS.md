@@ -51,6 +51,20 @@ Hero content must never be hidden behind navbar or waves, especially on mobile l
 
 See `src/components/HomeHeader/styles.module.css` for implementation details.
 
+## React Hydration Warning Suppression
+
+### Helm-Specific Requirement
+
+The HomeCommunity component displays event dates using locale-specific formatting, which causes unavoidable hydration mismatches between server and client rendering.
+
+### Solution
+
+Following [React's official guidance for suppressing unavoidable hydration mismatches](https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors), we use `suppressHydrationWarning` on date-displaying `<span>` elements in `src/components/HomeCommunity/index.js`.
+
+**Why this happens:** The server renders dates using one locale during static generation, but the client may have a different locale, causing React error #418 (text content mismatch). Since dates are intentionally locale-aware for internationalization, this mismatch is expected and acceptable.
+
+**Implementation:** Added `suppressHydrationWarning` prop to both date range and single date `<span>` elements in the CustomDate component.
+
 ## Boat and Wave Animation
 
 ### Helm-Specific Requirement
