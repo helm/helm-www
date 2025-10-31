@@ -5,6 +5,16 @@ function initializeHeroHeightCalculation() {
     return;
   }
 
+  // Small delay to let React hydrate first
+  // This prevents interfering with hydration but still runs reliably
+  if (!window.__heroInitialized) {
+    window.__heroInitialized = true;
+    setTimeout(() => {
+      initializeHeroHeightCalculation();
+    }, 50);
+    return;
+  }
+
   // Move hero to outer scope so it's accessible by all functions
   let hero = null;
 
@@ -114,54 +124,31 @@ function initializeHeroHeightCalculation() {
     return false;
   }
 
-  // Initialize with multiple strategies to catch hydration
+  // Initialize with a delay to avoid hydration conflicts
   function initializeHero() {
-    calculateHeroHeight();
+    // Use a reasonable delay to let React hydrate, but not too long
+    setTimeout(() => {
+      calculateHeroHeight();
 
-    // Keep trying until styles are actually applied
-    let attempts = 0;
-    const checkInterval = setInterval(() => {
-      attempts++;
-      if (ensureHeroStylesApplied() || attempts > 20) {
-        clearInterval(checkInterval);
-      } else {
-        calculateHeroHeight();
-      }
-    }, 100);
+      // Keep trying until styles are actually applied (but less aggressively)
+      let attempts = 0;
+      const checkInterval = setInterval(() => {
+        attempts++;
+        if (ensureHeroStylesApplied() || attempts > 10) {
+          clearInterval(checkInterval);
+        } else {
+          calculateHeroHeight();
+        }
+      }, 200); // Slower interval to reduce conflicts
+    }, 100); // Short delay - just enough to avoid most hydration conflicts
   }
 
   // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeHero);
   } else {
+    // In production, delay even if DOM is ready to avoid hydration conflicts
     initializeHero();
-  }
-
-  // Also listen for React hydration completion
-  if (typeof window !== 'undefined') {
-    // React 18+ hydration
-    const reactRoot = document.getElementById('__docusaurus');
-    if (reactRoot) {
-      // Use MutationObserver to detect when React modifies the DOM
-      const observer = new MutationObserver((mutations) => {
-        if (window.location.pathname === '/' && !stylesApplied) {
-          calculateHeroHeight();
-          if (ensureHeroStylesApplied()) {
-            observer.disconnect();
-          }
-        }
-      });
-
-      observer.observe(reactRoot, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class', 'style']
-      });
-
-      // Disconnect after 5 seconds to prevent memory leaks
-      setTimeout(() => observer.disconnect(), 5000);
-    }
   }
 
   // Force scroll to top AFTER browser's scroll restoration
