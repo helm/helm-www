@@ -1,3 +1,4 @@
+import React from "react";
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
@@ -42,14 +43,14 @@ function CustomDate({dateString, formatType, endDateString}) {
     const year = yearFormatter.format(startDate);
 
     return (
-      <span>
+      <span suppressHydrationWarning>
         {startFormatted} - {endFormatted}, {year}
       </span>
     );
   } else {
     const options = formats[formatType] || formats['day'];
     const formatter = new Intl.DateTimeFormat(i18n.currentLocale, options);
-    return <span>{formatter.format(date)}</span>;
+    return <span suppressHydrationWarning>{formatter.format(date)}</span>;
   }
 }
 
