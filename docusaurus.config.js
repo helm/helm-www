@@ -141,6 +141,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: "AYED2EXU9K",
+        apiKey: "ab452074863b15ae08d14d22d393f1e0",
+        indexName: "production",
+      },
       announcementBar: {
         backgroundColor: "#0f1689",
         textColor: "#ffffff",
