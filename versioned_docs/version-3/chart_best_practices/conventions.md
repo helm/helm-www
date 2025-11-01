@@ -50,8 +50,8 @@ When in doubt, use _Helm_ (with an uppercase 'H').
 
 ## Chart templates and namespaces
 
-Avoid defining `namespace` property in the `metadata` section of your chart
-templates - the namespace to apply rendered templates to should be
+Avoid defining the `namespace` property in the `metadata` section of your chart
+templates. The namespace to apply rendered templates to should be
 specified in the call to a Kubernetes client via the flag like `--namespace`.
 Helm is rendering your templates as-is and sending them off to the
 Kubernetes client, whether it be Helm itself or another
