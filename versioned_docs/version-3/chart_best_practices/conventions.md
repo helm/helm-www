@@ -48,7 +48,7 @@ There are a few conventions for using the words _Helm_ and _helm_.
 
 When in doubt, use _Helm_ (with an uppercase 'H').
 
-## Do not specify namespaces in the chart templates
+## Chart templates and namespaces
 
 Avoid defining `namespace` property in the `metadata` section of your chart
 templates - the namespace to apply rendered templates to should be
