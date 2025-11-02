@@ -9,7 +9,7 @@ This guide covers how you can quickly get started using Helm.
 ## Prerequisites
 
 The following prerequisites are required for a successful and properly secured
-use of Helm.
+use of Helm:
 
 1. A Kubernetes cluster
 2. Deciding what security configurations to apply to your installation, if any
@@ -83,7 +83,7 @@ installed multiple times into the same cluster. And each can be independently
 managed and upgraded.
 
 The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide](/intro/using_helm.md)
+learn more about it, check out the [Using Helm Guide](/intro/using_helm.md).
 
 ## Learn About Releases
 
