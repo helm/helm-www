@@ -14,8 +14,16 @@ function getMetaContent(html, name, attr = 'name') {
   const match = html.match(regex);
   if (!match) return null;
   
-  // Extract content value with or without quotes
-  const contentMatch = match[0].match(/content\s*=\s*["']?([^"'>]*)["']?(?:\s|>)/i);
+  // Extract content value - handle both quoted and unquoted attributes
+  // Try quoted first
+  let contentMatch = match[0].match(/content\s*=\s*"([^"]*)"/i);
+  if (contentMatch) return contentMatch[1];
+  
+  contentMatch = match[0].match(/content\s*=\s*'([^']*)'/i);
+  if (contentMatch) return contentMatch[1];
+  
+  // Handle unquoted attributes - match until space or >
+  contentMatch = match[0].match(/content\s*=\s*([^\s>]+)/i);
   return contentMatch ? contentMatch[1] : null;
 }
 
