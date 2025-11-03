@@ -112,7 +112,7 @@ sudo apt-get install helm
 
 ### From dnf/yum (fedora)
 Since Fedora 35, Helm is available on the official repository.
-You can install Helm with invoking:
+You can install Helm by invoking:
 
 ```console
 sudo dnf install helm
