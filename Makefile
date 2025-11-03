@@ -9,6 +9,7 @@ install:
 
 build: clean install
 	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run build
+	yarn test
 
 # Cache-friendly install - only runs if dependencies missing or yarn.lock is newer
 install-if-needed:
