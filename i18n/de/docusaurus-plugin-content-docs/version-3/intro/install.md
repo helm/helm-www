@@ -44,9 +44,9 @@ Sie können dieses Script aufrufen und lokal ausführen. Es ist gut dokumentiert
 so dass Sie es lesen und gut verstehen können, bevor Sie es ausführen.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Ja, Sie können auch `curl

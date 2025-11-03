@@ -39,9 +39,9 @@ sidebar_position: 2
 문서가 잘 작성되어 있으므로, 실행 전에 읽어보면 어떤 작업을 하는 것인지 이해할 수 있습니다.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 최신 버전을 설치하려면 `curl
