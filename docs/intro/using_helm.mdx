@@ -4,8 +4,12 @@ description: Explains the basics of Helm.
 sidebar_position: 3
 ---
 
+import Helm4 from "../_v4-in-progress.mdx" 
+
+<Helm4/>
+
 This guide explains the basics of using Helm to manage packages on your
-Kubernetes cluster. It assumes that you have already [installed](/intro/install.md) the Helm client.
+Kubernetes cluster. It assumes that you have already [installed](/intro/install.mdx) the Helm client.
 
 If you are simply interested in running a few quick commands, you may wish to
 begin with the [Quickstart Guide](/intro/quickstart.md). This chapter
@@ -358,7 +362,7 @@ nodeSelector:
 
 Deeply nested data structures can be difficult to express using `--set`. Chart
 designers are encouraged to consider the `--set` usage when designing the format
-of a `values.yaml` file  (read more about [Values Files](/chart_template_guide/values_files.md)).
+of a `values.yaml` file  (read more about [Values Files](/chart_template_guide/values_files.mdx)).
 
 ### More Installation Methods
 
@@ -508,7 +512,7 @@ Repositories can be removed with `helm repo remove`.
 
 ## Creating Your Own Charts
 
-The [Chart Development Guide](/topics/charts.md) explains how
+The [Chart Development Guide](/topics/charts.mdx) explains how
 to develop your own charts. But you can get started quickly by using the `helm
 create` command:
 

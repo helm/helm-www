@@ -380,7 +380,7 @@ Download Helm X.Y. The common platform binaries are here:
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-The [Quickstart Guide](/intro/quickstart.md) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](/intro/install.md). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
+The [Quickstart Guide](/intro/quickstart.md) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](/intro/install.mdx). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
 
 ## What's Next
 
@@ -470,7 +470,7 @@ Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
 
 Update the [version
-skew](https://github.com/helm/helm-www/blob/main/content/en/docs/topics/version_skew.md)
+skew](https://github.com/helm/helm-www/blob/main/docs/topics/version_skew.mdx)
 for major and minor releases.
 
 Update the release calendar [here](https://helm.sh/calendar/release):

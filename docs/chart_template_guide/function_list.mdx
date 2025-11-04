@@ -4,6 +4,10 @@ description: A list of template functions available in Helm
 sidebar_position: 6
 ---
 
+import Helm4 from "../_v4-in-progress.mdx" 
+
+<Helm4/>
+
 Helm includes many template functions you can take advantage of in templates.
 They are listed here and broken down by the following categories:
 
@@ -87,7 +91,7 @@ lt .Arg1 .Arg2
 ### le
 
 Returns a boolean true if the first argument is less than or equal to the
-second. False is returned otherwise (e.g., Arg1 <= Arg2).
+second. False is returned otherwise (e.g., Arg1 &lt;= Arg2).
 
 ```
 le .Arg1 .Arg2
@@ -2325,7 +2329,7 @@ Helm includes functions for working with Kubernetes including
 `helm template` command it always returns an empty response.
 
 You can find more detail in the [documentation on the lookup
-function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function).
+function](/chart_template_guide/functions_and_pipelines.mdx#using-the-lookup-function).
 
 ### .Capabilities.APIVersions.Has
 

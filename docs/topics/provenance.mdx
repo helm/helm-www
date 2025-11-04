@@ -4,6 +4,10 @@ description: Describes how to verify the integrity and origin of a Chart.
 sidebar_position: 5
 ---
 
+import Helm4 from "../_v4-in-progress.mdx" 
+
+<Helm4/>
+
 Helm has provenance tools which help chart users verify the integrity and origin
 of a package. Using industry-standard tools based on PKI, GnuPG, and
 well-respected package managers, Helm can generate and verify signature files.
@@ -260,7 +264,7 @@ additional user configuration or action.
 
 ### Signatures in OCI-based registries
 
-When publishing charts to an [OCI-based registry](/topics/registries.md), the
+When publishing charts to an [OCI-based registry](/topics/registries.mdx), the
 [`helm-sigstore` plugin](https://github.com/sigstore/helm-sigstore/) can be used 
 to publish provenance to [sigstore](https://sigstore.dev/).  [As described in the
 documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), the
