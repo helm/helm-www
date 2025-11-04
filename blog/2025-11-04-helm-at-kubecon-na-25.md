@@ -1,13 +1,15 @@
 ---
 title: "Helm @ KubeCon + CloudNativeCon NA '25"
 slug: "helm-at-kubecon-na-25"
-authors: ["karenchu"]
+authorname: "Karen Chu"
+author: "@karenhchu"
+authorlink: "https://bsky.app/profile/karenchu.online"
 date: "2025-11-04"
 ---
 
-The Helm team is headed to KubeCon + CloudNativeCon NA '25 in Atlanta, Georgia next week and it's truly a special one for us! This time around, as we celebrate our 10th birthday (fun fact, Helm was launched at the first KubeCon in 2015), we will also be releasing the highly anticipated Helm 4! Join us for a series of exciting activities throughout the week -- read on for more details! 
+The Helm team is headed to KubeCon + CloudNativeCon NA '25 in Atlanta, Georgia next week and it's truly a special one for us! This time around, as we celebrate our 10th birthday (fun fact, Helm was launched at the first KubeCon in 2015), we will also be releasing the highly anticipated Helm 4! Join us for a series of exciting activities thorughout the week -- read on for more details! 
 
-<!-- truncate -->
+<!--more-->
 
 ## Helm Booth in Project Pavilion
 
@@ -61,13 +63,13 @@ Join Helm maintainers for an interactive session contributing to core Helm and b
 
 This session is geared toward anyone interested in Helm development including leveraging and building upon some of the latest features associated with Helm 4!
 
-### [Helm 4 Release Party](/helm-4-release-party/)
+## [Helm 4 Release Party](https://replicated.typeform.com/helmparty)
 
 TIME: 06:00 PM - 09:00 PM EST
 
 LOCATION: [Max Lager's Wood-Fired Grill & Brewery](https://www.google.com/maps/place/Max+Lager's+Wood-Fired+Grill+%26+Brewery/@33.7633384,-84.3869351,16z/data=!3m1!4b1!4m6!3m5!1s0x88f50479f0b45fe9:0x8c53b75958299abd!8m2!3d33.7633384!4d-84.3869351!16s%2Fm%2F01_23gr)
 
-[Replicated](https://www.replicated.com/) and the [CNCF](https://www.cncf.io/) are throwing a Helm 4 Release Party to celebrate the release of Helm 4! Drop by for a low country boil and hang out with the Helm project maintainers for the night! See the invitation [here](/helm-4-release-party/), and don't forget to save your spot – RSVP [here](https://replicated.typeform.com/helmparty).
+[Replicated](https://www.replicated.com/) and the [CNCF](https://www.cncf.io/) are throwing a Helm 4 Release Party to celebrate the release of Helm 4! Drop by for a low country boil and hang out with the Helm project maintainers for the night! Don't forget to save your spot – RSVP [here](https://replicated.typeform.com/helmparty). 
 
 ## Thursday November 13, 2025
 
