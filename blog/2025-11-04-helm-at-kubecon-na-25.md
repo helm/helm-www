@@ -7,7 +7,7 @@ authorlink: "https://bsky.app/profile/karenchu.online"
 date: "2025-11-04"
 ---
 
-The Helm team is headed to KubeCon + CloudNativeCon NA '25 in Atlanta, Georgia next week and it's truly a special one for us! This time around, as we celebrate our 10th birthday (fun fact, Helm was launched at the first KubeCon in 2015), we will also be releasing the highly anticipated Helm 4! Join us for a series of exciting activities thorughout the week -- read on for more details! 
+The Helm team is headed to KubeCon + CloudNativeCon NA '25 in Atlanta, Georgia next week and it's truly a special one for us! This time around, as we celebrate our 10th birthday (fun fact, Helm was launched at the first KubeCon in 2015), we will also be releasing the highly anticipated Helm 4! Join us for a series of exciting activities throughout the week -- read on for more details! 
 
 <!--more-->
 
