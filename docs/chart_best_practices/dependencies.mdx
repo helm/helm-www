@@ -4,6 +4,10 @@ description: Covers best practices for Chart dependencies.
 sidebar_position: 4
 ---
 
+import Helm4 from "../_v4-in-progress.mdx" 
+
+<Helm4/>
+
 This section of the guide covers best practices for `dependencies` declared in
 `Chart.yaml`.
 
@@ -43,7 +47,7 @@ names.
 File URLs (`file://...`) are considered a "special case" for charts that are
 assembled by a fixed deployment pipeline.
 
-When using [downloader plugins](/topics/plugins.md#downloader-plugins)
+When using [downloader plugins](/topics/plugins.mdx#downloader-plugins)
 the URL scheme will be specific to the plugin. Note, a user of the chart will
 need to have a plugin supporting the scheme installed to update or build the
 dependency.

@@ -17,7 +17,7 @@ other documentation that will help you as you create new charts:
 - The Kubernetes [Documentation](https://kubernetes.io/docs/home/) provides
   detailed examples of the various resource kinds that you can use, from
   ConfigMaps and Secrets to DaemonSets and Deployments.
-- The Helm [Charts Guide](/topics/charts.md) explains the workflow of using
+- The Helm [Charts Guide](/topics/charts.mdx) explains the workflow of using
   charts.
 - The Helm [Chart Hooks Guide](/topics/charts_hooks.md) explains how to
   create lifecycle hooks.

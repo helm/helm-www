@@ -4,7 +4,7 @@ description: Explains library charts and examples of usage
 sidebar_position: 4
 ---
 
-A library chart is a type of [Helm chart](/topics/charts.md)
+A library chart is a type of [Helm chart](/topics/charts.mdx)
 that defines chart primitives or definitions which can be shared by Helm
 templates in other charts. This allows users to share snippets of code that can
 be re-used across charts, avoiding repetition and keeping charts
@@ -26,7 +26,7 @@ the chart type.
 
 ## Create a Simple Library Chart
 
-As mentioned previously, a library chart is a type of [Helm chart](/topics/charts.md). This means that you can start off by creating a
+As mentioned previously, a library chart is a type of [Helm chart](/topics/charts.mdx). This means that you can start off by creating a
 scaffold chart:
 
 ```console
