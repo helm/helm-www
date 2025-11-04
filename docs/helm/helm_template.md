@@ -1,7 +1,6 @@
 ---
 title: helm template
 ---
-
 locally render templates
 
 ### Synopsis
@@ -13,16 +12,6 @@ Any values that would normally be looked up or retrieved in-cluster will be
 faked locally. Additionally, none of the server-side testing of chart validity
 (e.g. whether an API is supported) is done.
 
-To specify the Kubernetes API versions used for Capabilities.APIVersions, use
-the '--api-versions' flag. This flag can be specified multiple times or as a
-comma-separated list:
-
-    $ helm template --api-versions networking.k8s.io/v1 --api-versions cert-manager.io/v1 mychart ./mychart
-
-or
-
-    $ helm template --api-versions networking.k8s.io/v1,cert-manager.io/v1 mychart ./mychart
-
 
 ```
 helm template [NAME] [CHART] [flags]
@@ -31,7 +20,8 @@ helm template [NAME] [CHART] [flags]
 ### Options
 
 ```
-  -a, --api-versions strings                       Kubernetes api versions used for Capabilities.APIVersions (multiple can be specified)
+  -a, --api-versions strings                       Kubernetes api versions used for Capabilities.APIVersions
+      --atomic                                     if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --atomic is used
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
       --create-namespace                           create the release namespace if not present
@@ -39,10 +29,9 @@ helm template [NAME] [CHART] [flags]
       --description string                         add a custom description
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run string[="unset"]                   simulates the operation either client-side or server-side. Must be either: "client", or "server". '--dry-run=client simulates the operation client-side only and avoids cluster connections. '--dry-run=server' simulates/validates the operation on the server, requiring cluster connectivity. (default "client")
+      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
       --enable-dns                                 enable DNS lookups when rendering templates
-      --force-conflicts                            if set server-side apply will force changes against conflicts
-      --force-replace                              force resource updates by replacement
+      --force                                      force resource updates through a replacement strategy
   -g, --generate-name                              generate the name (and omit the NAME parameter)
   -h, --help                                       help for template
       --hide-notes                                 if set, do not show notes in install output. Does not affect presence in chart metadata
@@ -59,17 +48,15 @@ helm template [NAME] [CHART] [flags]
       --pass-credentials                           pass credentials to all domains
       --password string                            chart repository password where to locate the requested chart
       --plain-http                                 use insecure HTTP connections for the chart download
-      --post-renderer postRendererString           the name of a postrenderer type plugin to be used for post rendering. If it exists, the plugin will be used
+      --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
       --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
       --release-name                               use release name in the output-dir path.
       --render-subchart-notes                      if set, render subchart notes along with the parent
-      --replace                                    reuse the given name, only if that name is a deleted release which remains in the history. This is unsafe in production
+      --replace                                    re-use the given name, only if that name is a deleted release which remains in the history. This is unsafe in production
       --repo string                                chart repository url where to locate the requested chart
-      --rollback-on-failure                        if set, Helm will rollback (uninstall) the installation upon failure. The --wait flag will be default to "watcher" if --rollback-on-failure is set
-      --server-side                                object updates run in the server instead of the client (default true)
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
-      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2 or using json format: {"key1": jsonval1, "key2": "jsonval2"})
+      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
       --set-literal stringArray                    set a literal STRING value on the command line
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
   -s, --show-only stringArray                      only show manifests rendered from the given templates
@@ -79,10 +66,11 @@ helm template [NAME] [CHART] [flags]
       --take-ownership                             if set, install will ignore the check for helm annotations and take ownership of the existing resources
       --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
       --username string                            chart repository username where to locate the requested chart
+      --validate                                   validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install
   -f, --values strings                             specify values in a YAML file or a URL (can specify multiple)
       --verify                                     verify the package before using it
       --version string                             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
-      --wait WaitStrategy[=watcher]                if specified, wait until resources are ready (up to --timeout). Values: 'watcher', 'hookOnly', and 'legacy'. (default hookOnly)
+      --wait                                       if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
       --wait-for-jobs                              if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
 ```
 
@@ -90,9 +78,6 @@ helm template [NAME] [CHART] [flags]
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
-      --color string                    use colored output (never, auto, always) (default "auto")
-      --colour string                   use colored output (never, auto, always) (default "auto")
-      --content-cache string            path to the directory containing cached content (e.g. charts) (default "~/.cache/helm/content")
       --debug                           enable verbose output
       --kube-apiserver string           the address and the port for the Kubernetes API server
       --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
@@ -114,4 +99,4 @@ helm template [NAME] [CHART] [flags]
 
 * [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 
-###### Auto generated by spf13/cobra on 9-Feb-2026
+###### Auto generated by spf13/cobra on 11-Sep-2025

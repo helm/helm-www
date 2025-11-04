@@ -13,12 +13,12 @@ The distributed community Helm chart repository is located at
 participation. But Helm also makes it possible to create and run your own chart
 repository. This guide explains how to do so. If you are considering creating a
 chart repository, you may want to consider using an
-[OCI registry](/topics/registries.mdx) instead.
+[OCI registry](/topics/registries.md) instead.
 
 ## Prerequisites
 
 * Go through the [Quickstart](/intro/quickstart.md) Guide
-* Read through the [Charts](/topics/charts.mdx) document
+* Read through the [Charts](/topics/charts.md) document
 
 ## Create a chart repository
 
@@ -40,7 +40,7 @@ own web server.
 A chart repository consists of packaged charts and a special file called
 `index.yaml` which contains an index of all of the charts in the repository.
 Frequently, the charts that `index.yaml` describes are also hosted on the same
-server, as are the [provenance files](/topics/provenance.mdx).
+server, as are the [provenance files](/topics/provenance.md).
 
 For example, the layout of the repository `https://example.com/charts` might
 look like this:
@@ -120,15 +120,15 @@ This part shows several ways to serve a chart repository.
 The first step is to **create your GCS bucket**. We'll call ours
 `fantastic-charts`.
 
-![Create a GCS Bucket](/img/helm2/create-a-bucket.png)
+![Create a GCS Bucket](https://helm.sh/img/create-a-bucket.png)
 
 Next, make your bucket public by **editing the bucket permissions**.
 
-![Edit Permissions](/img/helm2/edit-permissions.png)
+![Edit Permissions](https://helm.sh/img/edit-permissions.png)
 
 Insert this line item to **make your bucket public**:
 
-![Make Bucket Public](/img/helm2/make-bucket-public.png)
+![Make Bucket Public](https://helm.sh/img/make-bucket-public.png)
 
 Congratulations, now you have an empty GCS bucket ready to serve charts!
 
@@ -168,13 +168,13 @@ $ git checkout -b gh-pages
 
 Or via web browser using **Branch** button on your GitHub repository:
 
-![Create GitHub Pages branch](/img/helm2/create-a-gh-page-button.png)
+![Create GitHub Pages branch](https://helm.sh/img/create-a-gh-page-button.png)
 
 Next, you'll want to make sure your **gh-pages branch** is set as GitHub Pages,
 click on your repo **Settings** and scroll down to **GitHub pages** section and
 set as per below:
 
-![Create GitHub Pages branch](/img/helm2/set-a-gh-page.png)
+![Create GitHub Pages branch](https://helm.sh/img/set-a-gh-page.png)
 
 By default **Source** usually gets set to **gh-pages branch**. If this is not
 set by default, then select it.
