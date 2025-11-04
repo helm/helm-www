@@ -15,6 +15,7 @@ See the [Overview](/overview.md) for an actionable summary of these changes.
 New features in Helm 4 that were not backported to v3
 
 ```text
+#31435  2025-11-03T18:56:14Z  matheuscscp       Introduce a context for canceling wait operations
 #31338  2025-10-21T19:51:31Z  yzewei            Add loongarch64 support
 #31351  2025-10-21T19:32:40Z  gjenkins8         feat: `helm version` print Kubernetes (client-go) version
 #31362  2025-10-21T19:21:16Z  fabiocarneiro     Clarify the intent of the resource instructions
