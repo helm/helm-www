@@ -29,7 +29,7 @@ See the [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/)
 Download a binary release of the Helm client. You can use tools like `homebrew`,
 or look at [the official releases page](https://github.com/helm/helm/releases).
 
-For more details, or for other options, see [the installation guide](/intro/install.md).
+For more details, or for other options, see [the installation guide](/intro/install.mdx).
 
 ## Initialize a Helm Chart Repository
 
@@ -83,7 +83,7 @@ installed multiple times into the same cluster. And each can be independently
 managed and upgraded.
 
 The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide](/intro/using_helm.md)
+learn more about it, check out the [Using Helm Guide](/intro/using_helm.mdx)
 
 ## Learn About Releases
 

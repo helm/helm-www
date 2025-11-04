@@ -4,14 +4,14 @@ description: Introduces how to use and create plugins to extend Helm's functiona
 sidebar_position: 12
 ---
 
-import Helm4 from "/docs/_v4-in-progress.mdx"
+import Helm4 from "../_v4-in-progress.mdx" 
 
 <Helm4/>
 
 A Helm plugin is a tool that can be accessed through the `helm` CLI, but which
 is not part of the built-in Helm codebase.
 
-Existing plugins can be found on [related](/community/related#helm-plugins) section or by searching
+Existing plugins can be found on [related](/community/related.md#helm-plugins) section or by searching
 [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories).
 
 This guide explains how to use and create plugins.
@@ -423,6 +423,44 @@ flags:
 - o
 - output
 - revision
+```
+
+A more intricate example for the [`2to3
+plugin`](https://github.com/helm/helm-2to3), has a `completion.yaml` file of:
+
+```yaml
+name: 2to3
+commands:
+- name: cleanup
+  flags:
+  - config-cleanup
+  - dry-run
+  - l
+  - label
+  - release-cleanup
+  - s
+  - release-storage
+  - tiller-cleanup
+  - t
+  - tiller-ns
+  - tiller-out-cluster
+- name: convert
+  flags:
+  - delete-v2-releases
+  - dry-run
+  - l
+  - label
+  - s
+  - release-storage
+  - release-versions-max
+  - t
+  - tiller-ns
+  - tiller-out-cluster
+- name: move
+  commands:
+  - name: config
+    flags:
+    - dry-run
 ```
 
 ### Dynamic completion
