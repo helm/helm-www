@@ -1,9 +1,7 @@
 ---
 title: "Helm @ KubeCon + CloudNativeCon NA '25"
 slug: "helm-at-kubecon-na-25"
-authorname: "Karen Chu"
-author: "@karenhchu"
-authorlink: "https://bsky.app/profile/karenchu.online"
+authors: ["karenchu"]
 date: "2025-11-04"
 ---
 
