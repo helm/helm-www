@@ -43,7 +43,7 @@ The documentation for the list of Helm CLI Commands are [exported](https://githu
 To update these docs, you'll need to:
 
 1. Delete all plugins currently installed with `helm plugin uninstall`
-2. Navigate to versioned_docs/version-${HELM_MAJOR_VERSION}/helm/`
+2. Navigate `docs/helm` to update the latest version or navigate to versioned_docs/version-${HELM_MAJOR_VERSION}/helm/` to update an earlier version.
 3. Run `HOME='~' helm docs --type markdown --generate-headers` to generate the markdown docs files, replacing any prior markdown files. **Note:** Make sure you run the version of helm you want to build the docs for (for example, by checking out the correct tag and building it)
 4. Commit the changes and create a PR to update the website.
 
