@@ -11,7 +11,7 @@ sidebar_position: 3
 [이슈](https://github.com/helm/helm-www/issues)나 [풀 
 리퀘스트(PR)](https://github.com/helm/helm-www/pulls) 할 수 있습니다.
 
-## 헬름 플러그인
+## 헬름 플러그인 {#helm-plugins}
 
 - [Helm Diff](https://github.com/databus23/helm-diff) - 컬러 diff로 `helm upgrade` 
   미리보기

@@ -7,8 +7,8 @@ sidebar_position: 12
 헬름 플러그인은 `helm` CLI를 통해 액세스할 수 있는 도구이지만
 기본 제공 헬름 코드 베이스에 포함되지는 않는다.
 
-기존 플러그인은 
-[관련](/community/related.md#helm-plugins) 섹션 또는 
+기존 플러그인은
+[관련](/community/related.md#helm-plugins) 섹션 또는
 [GitHub](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories)을 검색하여 찾을 수 있다.
 
 이 가이드에서는 플러그인을 사용하고 만드는 방법을 설명한다.

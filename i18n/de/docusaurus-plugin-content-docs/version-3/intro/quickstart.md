@@ -32,7 +32,7 @@ oder schauen Sie auf [die offizielle Versionsseite](https://github.com/helm/helm
 
 Für mehr Details oder weitere Optionen schauen Sie in die [Installationsanleitung](/intro/install.md).
 
-## Initialisieren eines Helm Chart Repository
+## Initialisieren eines Helm Chart Repository {#initialize-a-helm-chart-repository}
 
 Wenn Sie Helm installiert haben, können Sie ein Chart Repository hinzufügen. Schauen Sie nach
 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) für verfügbare Helm Chart
