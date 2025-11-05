@@ -153,3 +153,9 @@ Read more:
 If you run the `make test` target, not only will unit tests be run, but so will
 style tests. If the `make test` target fails, even for stylistic reasons, your
 PR will not be considered ready for merging.
+
+## Troubleshooting
+
+To troubleshoot issues and get help from the community, search for your question in the list of issues labeled [`question/support`](https://github.com/helm/helm/issues?q=is%3Aissue%20state%3Aopen%20label%3Aquestion%2Fsupport) in the helm repository.
+
+If you are not able to find an issue that addresses your question, either open a new issue or add a comment to a related issue to share your experience. For more information about contributing and searching issues in the helm repository, see [Issues](https://github.com/helm/helm/blob/main/CONTRIBUTING.md#issues) in _Contributing Guidelines_.
