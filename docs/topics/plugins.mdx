@@ -425,44 +425,6 @@ flags:
 - revision
 ```
 
-A more intricate example for the [`2to3
-plugin`](https://github.com/helm/helm-2to3), has a `completion.yaml` file of:
-
-```yaml
-name: 2to3
-commands:
-- name: cleanup
-  flags:
-  - config-cleanup
-  - dry-run
-  - l
-  - label
-  - release-cleanup
-  - s
-  - release-storage
-  - tiller-cleanup
-  - t
-  - tiller-ns
-  - tiller-out-cluster
-- name: convert
-  flags:
-  - delete-v2-releases
-  - dry-run
-  - l
-  - label
-  - s
-  - release-storage
-  - release-versions-max
-  - t
-  - tiller-ns
-  - tiller-out-cluster
-- name: move
-  commands:
-  - name: config
-    flags:
-    - dry-run
-```
-
 ### Dynamic completion
 
 Also starting with Helm 3.2, plugins can provide their own dynamic shell

@@ -90,9 +90,8 @@ in the [Go SDK Section](/sdk/gosdk.mdx).
 
 ## Storage backends
 
-Helm 3 changed the default release information storage to Secrets in the
-namespace of the release. Helm 2 by default stores release information as
-ConfigMaps in the namespace of the Tiller instance. The subsections which follow
+By default, release information is stored in Secrets in the
+namespace of the release. The subsections which follow
 show how to configure different backends. This configuration is based on the
 `HELM_DRIVER` environment variable. It can be set to one of the values:
 `[configmap, secret, sql]`.
