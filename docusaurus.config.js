@@ -129,7 +129,7 @@ const config = {
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
+          onUntruncatedBlogPosts: "throw",
         },
         theme: {
           customCss: "./src/css/custom.css",
