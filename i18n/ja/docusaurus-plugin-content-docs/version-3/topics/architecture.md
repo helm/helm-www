@@ -4,8 +4,6 @@ description: Helm アーキテクチャの概要を説明します。
 sidebar_position: 8
 ---
 
-# Kubernetes Helm アーキテクチャ
-
 このドキュメントでは、Helm アーキテクチャの概要について説明します。
 
 ## Helm の目的

@@ -4,8 +4,6 @@ description: Описує архітектуру Helm на високому рі
 sidebar_position: 8
 ---
 
-# Архітектура Helm {#helm-architecture}
-
 Цей документ описує архітектуру Helm на високому рівні.
 
 ## Призначення Helm {#the-purpose-of-helm}
