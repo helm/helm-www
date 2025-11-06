@@ -1,0 +1,66 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+main.party {
+  padding: 2rem 2rem 4rem;
+}
+
+main.party h1 {
+  font-size: 3rem;
+}
+
+main.party h2,
+.col p {
+  font-size: 2rem;
+}
+
+main.party h3 {
+  font-size: 1.5rem;
+}
+
+.col {
+  text-align: center;
+  padding: 2rem;
+}
+
+.logocol {
+  padding-bottom: 0;
+}
+
+.hazelcol {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hazel {
+  width: 50%;
+  height: auto;
+}
+
+.menucol {
+  border: 2px solid var(--ifm-link-color);
+  border-radius: var(--ifm-card-border-radius);
+}
+
+.bottomrow {
+  margin-top: 1rem;
+}
+
+.bottomrow .col {
+  --ifm-col-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .bottomrow .col {
+    --ifm-col-width: calc(6 / 12 * 100%);
+  }
+}
+
+/* See HomeCommunity component styles */
+.icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+}
