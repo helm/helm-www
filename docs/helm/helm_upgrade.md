@@ -1,6 +1,7 @@
 ---
 title: helm upgrade
 ---
+
 upgrade a release
 
 ### Synopsis
@@ -18,7 +19,7 @@ or use the '--set' flag and pass configuration from the command line, to force s
 values, use '--set-string'. You can use '--set-file' to set individual
 values from a file when the value itself is too long for the command line
 or is dynamically generated. You can also use '--set-json' to set json values
-(scalars/objects/arrays) from the command line.
+(scalars/objects/arrays) from the command line. Additionally, you can use '--set-json' and passing json object as a string.
 
 You can specify the '--values'/'-f' flag multiple times. The priority will be given to the
 last (right-most) file specified. For example, if both myvalues.yaml and override.yaml
@@ -51,7 +52,6 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     if set, upgrade process rolls back changes made in case of failed upgrade. The --wait flag will be set automatically if --atomic is used
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
       --cleanup-on-fail                            allow deletion of new resources created in this upgrade when upgrade fails
@@ -60,9 +60,10 @@ helm upgrade [RELEASE] [CHART] [flags]
       --description string                         add a custom description
       --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
       --disable-openapi-validation                 if set, the upgrade process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run string[="client"]                  simulate an install. If --dry-run is set with no option being specified or as '--dry-run=client', it will not attempt cluster connections. Setting '--dry-run=server' allows attempting cluster connections.
+      --dry-run string[="unset"]                   simulates the operation without persisting changes. Must be one of: "none" (default), "client", or "server". '--dry-run=none' executes the operation normally and persists changes (no simulation). '--dry-run=client' simulates the operation client-side only and avoids cluster connections. '--dry-run=server' simulates the operation on the server, requiring cluster connectivity. (default "none")
       --enable-dns                                 enable DNS lookups when rendering templates
-      --force                                      force resource updates through a replacement strategy
+      --force-conflicts                            if set server-side apply will force changes against conflicts
+      --force-replace                              force resource updates by replacement
   -h, --help                                       help for upgrade
       --hide-notes                                 if set, do not show notes in upgrade output. Does not affect presence in chart metadata
       --hide-secret                                hide Kubernetes Secrets when also using the --dry-run flag
@@ -77,16 +78,18 @@ helm upgrade [RELEASE] [CHART] [flags]
       --pass-credentials                           pass credentials to all domains
       --password string                            chart repository password where to locate the requested chart
       --plain-http                                 use insecure HTTP connections for the chart download
-      --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
+      --post-renderer postRendererString           the name of a postrenderer type plugin to be used for post rendering. If it exists, the plugin will be used
       --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
       --render-subchart-notes                      if set, render subchart notes along with the parent
       --repo string                                chart repository url where to locate the requested chart
       --reset-then-reuse-values                    when upgrading, reset the values to the ones built into the chart, apply the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' or '--reuse-values' is specified, this is ignored
       --reset-values                               when upgrading, reset the values to the ones built into the chart
       --reuse-values                               when upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored
+      --rollback-on-failure                        if set, Helm will rollback the upgrade to previous success release upon failure. The --wait flag will be defaulted to "watcher" if --rollback-on-failure is set
+      --server-side string                         must be "true", "false" or "auto". Object updates run in the server instead of the client ("auto" defaults the value from the previous chart release's method) (default "auto")
       --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
-      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
+      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2 or using json format: {"key1": jsonval1, "key2": "jsonval2"})
       --set-literal stringArray                    set a literal STRING value on the command line
       --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
       --skip-crds                                  if set, no CRDs will be installed when an upgrade is performed with install flag enabled. By default, CRDs are installed if not already present, when an upgrade is performed with install flag enabled
@@ -97,7 +100,7 @@ helm upgrade [RELEASE] [CHART] [flags]
   -f, --values strings                             specify values in a YAML file or a URL (can specify multiple)
       --verify                                     verify the package before using it
       --version string                             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
-      --wait                                       if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
+      --wait WaitStrategy[=watcher]                if specified, will wait until all resources are in the expected state before marking the operation as successful. It will wait for as long as --timeout. Valid inputs are 'watcher' and 'legacy' (default hookOnly)
       --wait-for-jobs                              if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
 ```
 
@@ -105,6 +108,9 @@ helm upgrade [RELEASE] [CHART] [flags]
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
+      --color string                    use colored output (never, auto, always) (default "auto")
+      --colour string                   use colored output (never, auto, always) (default "auto")
+      --content-cache string            path to the directory containing cached content (e.g. charts) (default "~/.cache/helm/content")
       --debug                           enable verbose output
       --kube-apiserver string           the address and the port for the Kubernetes API server
       --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
@@ -126,4 +132,4 @@ helm upgrade [RELEASE] [CHART] [flags]
 
 * [helm](/helm/helm.md)	 - The Helm package manager for Kubernetes.
 
-###### Auto generated by spf13/cobra on 11-Sep-2025
+###### Auto generated by spf13/cobra on 6-Nov-2025
