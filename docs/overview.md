@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: Overview
+sidebar_label: Helm 4 Overview
 ---
 
 # Helm 4 Overview
@@ -8,6 +8,10 @@ sidebar_label: Overview
 :::note
 **Help us test Helm 4 before the November release at KubeCon Atlanta!** Try the pre-release builds and let us know what works, what breaks, and what could be better. For more information, see [What's New](#whats-new), [What to Test](#what-to-test), and [How to Give Feedback](#how-to-give-feedback).
 :::
+
+Helm v4 represents a significant evolution from v3, introducing breaking changes, new architectural patterns, and enhanced functionality while maintaining backwards compatibility for charts.
+
+For more information about the planned Helm 4 release phases, see [Path to Helm v4](https://helm.sh/blog/path-to-helm-v4/).
 
 ## What's New
 
