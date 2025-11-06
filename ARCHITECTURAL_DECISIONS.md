@@ -49,6 +49,20 @@ Hero content must never be hidden behind navbar or waves, especially on mobile l
 **Text scaling:** Uses CSS `clamp()` for smooth scaling while maintaining readability
 **Container bounds:** Absolute positioning keeps content above wave animations
 
+## CLI Documentation Generation Script
+
+### Helm-Specific Requirement
+
+Regenerate Helm CLI documentation for each release with consistent formatting and Docusaurus-compatible structure.
+
+### Solution
+
+Uses an ESM Node.js script: `scripts/regenerate-cli-docs.mjs`
+
+**Why ESM over CommonJS:** Modern package compatibility (ora, p-limit) and consistency with future Node.js direction while maintaining parallel processing capabilities for performance.
+
+**Post-processing steps:** Automatically handles Docusaurus requirements like converting links to absolute paths, cleaning frontmatter, and creating proper index files - tasks that would be error-prone if done manually for each release.
+
 See `src/components/HomeHeader/styles.module.css` for implementation details.
 
 ## React Hydration Warning Suppression

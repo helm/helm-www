@@ -40,12 +40,23 @@ For earlier versions, see the dev-v2 branch of the main Helm repo [here](https:/
 
 The documentation for the list of Helm CLI Commands are [exported](https://github.com/helm/helm/blob/a6b2c9e2126753f6f94df231e89b2153c2862764/cmd/helm/root.go#L169) from the main helm project repo and rendered [here on the website](https://helm.sh/docs/helm) as a reference.
 
-To update these docs, you'll need to:
+#### Using the automated script
 
-1. Delete all plugins currently installed with `helm plugin uninstall`
-2. Navigate to `content/en/docs/helm/`
-3. Run `HOME='~' helm docs --type markdown --generate-headers` to generate the markdown docs files, replacing any prior markdown files. **Note:** Make sure you run the version of helm you want to build the docs for (for example, by checking out the correct tag and building it)
-4. Commit the changes and create a PR to update the website.
+The automated script regenerates and properly formats the CLI documentation:
+
+```bash
+node scripts/regenerate-cli-docs.mjs <helm-version> <target-directory>
+
+# Examples:
+node scripts/regenerate-cli-docs.mjs v3.19.0 versioned_docs/version-3  # → versioned_docs/version-3/helm/
+node scripts/regenerate-cli-docs.mjs v4.0.0-rc.1 docs                  # → docs/helm/
+node scripts/regenerate-cli-docs.mjs v4.0.0 versioned_docs/version-4   # → versioned_docs/version-4/helm/
+```
+
+The script will:
+- Download the specified Helm version
+- Generate documentation in `<target-directory>/helm/`
+- Apply all necessary post-processing (frontmatter cleanup, link conversion, etc.)
 
 ### How to Write a Blog Post
 
