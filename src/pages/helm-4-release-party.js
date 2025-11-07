@@ -4,7 +4,8 @@ import ReplicatedLogo from "../../static/img/helm-4-release-party/replicated_log
 import CNCFLogo from "../../static/img/helm-4-release-party/cncf-color.svg";
 import styles from "./party.module.css";
 import Link from "@docusaurus/Link";
-import { MdLink } from "react-icons/md";
+import { MdLink, MdCalendarMonth } from "react-icons/md";
+import Admonition from "@theme/Admonition";
 
 export default function Party() {
   return (
@@ -15,10 +16,10 @@ export default function Party() {
       <main className={styles.party}>
         <div className="row">
           <div className={clsx("col col--6", styles.col, styles.logocol)}>
-            <ReplicatedLogo width="100%" height="auto" />
+            <ReplicatedLogo className={styles.svgauto} />
           </div>
           <div className={clsx("col col--6", styles.col, styles.logocol)}>
-            <CNCFLogo width="100%" height="auto" />
+            <CNCFLogo className={styles.svgauto} />
           </div>
         </div>
         <div className="row">
@@ -26,7 +27,7 @@ export default function Party() {
             <h2>Present:</h2>
           </div>
         </div>
-        <div class="row">
+        <div className="row">
           <div className={clsx("col col--6", styles.hazelcol)}>
             <img
               className={styles.hazel}
@@ -52,7 +53,7 @@ export default function Party() {
             />
           </div>
         </div>
-        <div class="row">
+        <div className="row">
           <div className={clsx("col", styles.col)}>
             <h1>The Official Helm 4 Release Party!</h1>
             <h2>Wed, Nov 12 from 6-9 PM</h2>
@@ -82,10 +83,28 @@ export default function Party() {
               <img
                 alt="Hazel 3"
                 src="/img/helm-4-release-party/helm_qr_code.svg"
-                width="100%"
-                height="auto"
+                className={styles.svgauto}
               />
             </Link>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className={clsx("col", styles.col, styles.calendarcol)}>
+            <Admonition
+              className={styles.calendarlink}
+              type="info"
+              title={null}
+              icon={null}
+            >
+              <h3>
+                <Link href="/blog/helm-at-kubecon-na-25">
+                  <MdCalendarMonth className={styles.icon} />
+                  See the full list of Helm events @ KubeCon + CloudNativeCon NA
+                  '25
+                </Link>
+              </h3>
+            </Admonition>
           </div>
         </div>
       </main>
