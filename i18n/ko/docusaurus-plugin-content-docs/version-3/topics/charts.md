@@ -42,7 +42,7 @@ wordpress/
 헬름은 `charts/`, `crds/`, `templates/` 디렉터리와 나열된 파일명의 사용을
 예약한다. 다른 파일들은 그대로 남는다.
 
-## Chart.yaml 파일
+## Chart.yaml 파일 {#the-chartyaml-file}
 
 `Chart.yaml` 파일은 차트의 필수 요소이다. 다음과 같은 필드를 포함한다.
 

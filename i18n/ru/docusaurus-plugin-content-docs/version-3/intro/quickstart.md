@@ -30,7 +30,7 @@ sidebar_position: 1
 
 Для получения более подробной информации или других вариантов смотрите [руководство по установке](/intro/install.md).
 
-## Инициализация Helm Chart Repository
+## Инициализация Helm Chart Repository {#initialize-a-helm-chart-repository}
 
 Как только у вас будет готов Helm, вы можете добавить chart репозиторий. Смотрите [Artifact
 Hub](https://artifacthub.io/packages/search?kind=0) для проверки доступности Helm chart

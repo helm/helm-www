@@ -35,7 +35,7 @@ como o `homebrew` ou pesquisar na [página oficial de _releases_ do Helm](https:
 
 Para mais detalhes ou outras opções veja o [guia de instalação](/intro/install.md).
 
-## Inicialize um Repositório para os Charts do Helm
+## Inicialize um Repositório para os Charts do Helm {#initialize-a-helm-chart-repository}
 
 Depois de tudo pronto com a instalação do Helm você pode adicionar um repositório
 de Charts. Dê uma olhada no [Artifact Hub](https://artifacthub.io/packages/search?kind=0)

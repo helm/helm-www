@@ -33,7 +33,7 @@ sidebar_position: 1
 자세한 내용이나 다른 옵션에 대해서는 [설치
 가이드](/intro/install.md)를 참고한다.
 
-## 헬름 차트 리포지토리 초기화
+## 헬름 차트 리포지토리 초기화 {#initialize-a-helm-chart-repository}
 
 헬름이 준비되면, 차트 리포지토리를 추가할 수 있다. 가능한 헬름 차트 레포지토리를 위해서 [Artifact 
 Hub](https://artifacthub.io/packages/search?kind=0)를 
