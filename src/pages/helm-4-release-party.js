@@ -4,7 +4,8 @@ import ReplicatedLogo from "../../static/img/helm-4-release-party/replicated_log
 import CNCFLogo from "../../static/img/helm-4-release-party/cncf-color.svg";
 import styles from "./party.module.css";
 import Link from "@docusaurus/Link";
-import { MdLink } from "react-icons/md";
+import { MdLink, MdCalendarMonth } from "react-icons/md";
+import Admonition from "@theme/Admonition";
 
 export default function Party() {
   return (
@@ -86,6 +87,25 @@ export default function Party() {
                 height="auto"
               />
             </Link>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className={clsx("col", styles.col, styles.calendarcol)}>
+            <Admonition
+              className={styles.calendarlink}
+              type="info"
+              title={null}
+              icon={null}
+            >
+              <h3>
+                <Link href="/blog/helm-at-kubecon-na-25">
+                  <MdCalendarMonth className={styles.icon} />
+                  See the full list of Helm events @ KubeCon + CloudNativeCon NA
+                  '25
+                </Link>
+              </h3>
+            </Admonition>
           </div>
         </div>
       </main>
