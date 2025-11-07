@@ -33,7 +33,7 @@ Il rilascio di una patch sarà annullato per uno dei seguenti motivi:
 
 I rilasci minori contengono correzioni di sicurezza e bug, oltre a nuove funzionalità.  Sono retrocompatibili per quanto riguarda l'API e l'uso della CLI.
 
-Per allinearsi con i rilasci di Kubernetes, verrà rilasciata una minor release di helm ogni 4 mesi (3 release all'anno).Se necessario, è possibile effettuare ulteriori rilasci minori, che non influenzeranno la tempistica di un rilascio futuro annunciato, a meno che la release annunciata non sia a meno di 7 giorni di distanza.
+Per allinearsi con i rilasci di Kubernetes, verrà rilasciata una minor release di helm ogni 4 mesi (3 release all'anno). Se necessario, è possibile effettuare ulteriori rilasci minori, che non influenzeranno la tempistica di un rilascio futuro annunciato, a meno che la release annunciata non sia a meno di 7 giorni di distanza.
 
 In concomitanza con la pubblicazione di una release, la data della prossima release minore
 sarà annunciata e pubblicata sulla pagina web principale di Helm.
