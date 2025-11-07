@@ -28,15 +28,15 @@
     "description": "SIG Apps section title"
   },
   "home.community.sigApps.description": {
-    "message": "Si {meetLink} per mostrare e discutere strumenti e progetti. Gli incontri della comunità vengono registrati e {youtubeLink}.",
+    "message": "Ci si {meetLink} per mostrare e discutere strumenti e progetti. Gli incontri della comunità vengono registrati e {youtubeLink}.",
     "description": "SIG Apps meeting description"
   },
   "home.community.sigApps.meetLink": {
-    "message": "incontri ogni settimana",
+    "message": "incontra ogni settimana",
     "description": "Link to SIG Apps meetings"
   },
   "home.community.sigApps.youtubeLink": {
-    "message": "condiviso su YouTube",
+    "message": "condivisi su YouTube",
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
