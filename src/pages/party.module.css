@@ -20,6 +20,11 @@ main.party h3 {
   font-size: 1.5rem;
 }
 
+.svgauto {
+  width: 100%;
+  height: auto;
+}
+
 .col {
   text-align: center;
   padding: 2rem;
