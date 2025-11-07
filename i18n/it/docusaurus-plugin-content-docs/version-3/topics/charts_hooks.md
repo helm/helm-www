@@ -9,7 +9,7 @@ Helm fornisce un meccanismo di _hook_ per consentire agli sviluppatori di chart 
 
 - Caricare una ConfigMap o un Segreto durante l'installazione prima che vengano caricati altri chart.
 - Eseguire un Job per eseguire il backup di un database prima dell'installazione di un nuovo chart e poi eseguire un secondo Job dopo l'aggiornamento per ripristinare i dati.
-- Eseguire un Job prima di eliminare una release per togliere in modod gracefully un service dalla rotation prima di rimuoverlo.
+- Eseguire un Job prima di eliminare una release per togliere in modo gracefully un service dalla rotation prima di rimuoverlo.
 
 Gli hook funzionano come i normali templates, ma hanno annotazioni speciali che fanno sì che Helm li utilizzi in modo diverso.
 In questa sezione si illustra il modello d'uso di base degli hook.
