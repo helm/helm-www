@@ -22,7 +22,7 @@ Quando viene rilasciata una nuova versione di Helm, questa viene compilata per u
 versione minore di Kubernetes. Ad esempio, Helm 3.0.0 interagisce con Kubernetes
 utilizzando il client Kubernetes 1.16.2, quindi è compatibile con Kubernetes 1.16.
 
-A partire da Helm 3, si presume che Helm sia compatibile con `n-3` versioni di Kubernetes con cui è stato compilato.A causa dei cambiamenti di Kubernetes tra le versioni minori, la politica di supporto di Helm
+A partire da Helm 3, si presume che Helm sia compatibile con `n-3` versioni di Kubernetes con cui è stato compilato. A causa dei cambiamenti di Kubernetes tra le versioni minori, la politica di supporto di Helm
 2 è leggermente più restrittiva, in quanto si presume che sia compatibile con `n-1` versioni di Kubernetes.
 
 Ad esempio, se si utilizza una versione di Helm 3 compilata con la versione client di
