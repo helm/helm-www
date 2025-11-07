@@ -118,7 +118,7 @@ Si sarà notato che non c'è un ClusterRole disponibile per visualizzare i secre
 
 Per poter eseguire `helm list`, un utente deve essere in grado di leggere i secret. Per questo, si creerà uno speciale ClusterRole `secret-reader`.
 
-Creare il file `cluster-role-secret-reader.yaml` e scrivervi il seguentecontenuto nel file:
+Creare il file `cluster-role-secret-reader.yaml` e scrivervi il seguente contenuto nel file:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1​
