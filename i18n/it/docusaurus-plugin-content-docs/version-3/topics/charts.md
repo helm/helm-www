@@ -195,7 +195,7 @@ e la licenza d'uso di un chart.
 
 La LICENZA è un file di testo semplice che contiene il codice di[licenza](https://en.wikipedia.org/wiki/Software_license) per il chart.Il chart può contenere una licenza perché può contenere logica di programmazione nei modelli e quindi non sarebbe solo di configurazione. Ci possono essere anche licenze separate per l'applicazione installata dal chart, se necessario.
 
-Un README per un chart dovrebbe essere formattato in Markdown (README.md) e dovrebbe contenere genealmente:
+Un README per un chart dovrebbe essere formattato in Markdown (README.md) e dovrebbe contenere generalmente:
 - una descrizione dell'applicazione o del servizio che il chart fornisce
 - Eventuali prerequisiti o requisiti per eseguire il chart
 - Descrizioni delle opzioni in `values.yaml` e dei valori predefiniti
