@@ -54,6 +54,6 @@ La libreria Helm standalone incapsula la logica Helm in modo che possa essere sf
 Il client e la libreria Helm sono scritti nel linguaggio di programmazione Go.
 
 La libreria utilizza il client Kubernetes per comunicare con Kubernetes.
-Attualmente, questa libreria utilizza REST+JSON. Memorizza le informazioni in Secrets situatiall'interno di Kubernetes. Non ha bisogno di un proprio database.
+Attualmente, questa libreria utilizza REST+JSON. Memorizza le informazioni in Secrets situati all'interno di Kubernetes. Non ha bisogno di un proprio database.
 
 I file di configurazione sono, quando possibile, scritti in YAML.
