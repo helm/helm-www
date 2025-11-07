@@ -61,13 +61,13 @@ Join Helm maintainers for an interactive session contributing to core Helm and b
 
 This session is geared toward anyone interested in Helm development including leveraging and building upon some of the latest features associated with Helm 4!
 
-## [Helm 4 Release Party](https://replicated.typeform.com/helmparty)
+### [Helm 4 Release Party](/helm-4-release-party/)
 
 TIME: 06:00 PM - 09:00 PM EST
 
 LOCATION: [Max Lager's Wood-Fired Grill & Brewery](https://www.google.com/maps/place/Max+Lager's+Wood-Fired+Grill+%26+Brewery/@33.7633384,-84.3869351,16z/data=!3m1!4b1!4m6!3m5!1s0x88f50479f0b45fe9:0x8c53b75958299abd!8m2!3d33.7633384!4d-84.3869351!16s%2Fm%2F01_23gr)
 
-[Replicated](https://www.replicated.com/) and the [CNCF](https://www.cncf.io/) are throwing a Helm 4 Release Party to celebrate the release of Helm 4! Drop by for a low country boil and hang out with the Helm project maintainers for the night! Don't forget to save your spot – RSVP [here](https://replicated.typeform.com/helmparty). 
+[Replicated](https://www.replicated.com/) and the [CNCF](https://www.cncf.io/) are throwing a Helm 4 Release Party to celebrate the release of Helm 4! Drop by for a low country boil and hang out with the Helm project maintainers for the night! See the invitation [here](/helm-4-release-party/), and don't forget to save your spot – RSVP [here](https://replicated.typeform.com/helmparty).
 
 ## Thursday November 13, 2025
 
