@@ -2075,7 +2075,14 @@ The above would return `string`. For simple tests (like in `if` blocks), the
 kindIs "int" 123
 ```
 
-The above will return `true`.
+The above will return `true`, but keep in mind that if your operand is from
+the `values.yaml` file it will be treated as a `float64`. The reason for this
+is because the `values.yaml` file is parsed with the Kubernetes yaml parser.
+For example the following will return true even if `looksLikeInt: 123`:
+
+```
+kindIs "float64" .Values.looksLikeInt
+```
 
 ### Type Functions
 
