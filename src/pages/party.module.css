@@ -4,7 +4,7 @@
  */
 
 main.party {
-  padding: 2rem 2rem 4rem;
+  padding: 2rem;
 }
 
 main.party h1 {
@@ -18,6 +18,11 @@ main.party h2,
 
 main.party h3 {
   font-size: 1.5rem;
+}
+
+.svgauto {
+  width: 100%;
+  height: auto;
 }
 
 .col {
@@ -52,9 +57,25 @@ main.party h3 {
   --ifm-col-width: 100%;
 }
 
+.calendarcol {
+  padding-top: 0;
+}
+
+.calendarlink {
+  margin-bottom: 0;
+}
+
 @media (min-width: 576px) {
   .bottomrow .col {
     --ifm-col-width: calc(6 / 12 * 100%);
+  }
+
+  .calendarcol {
+    padding-top: 2rem;
+  }
+
+  .calendarlink {
+    margin-top: 1rem;
   }
 }
 
