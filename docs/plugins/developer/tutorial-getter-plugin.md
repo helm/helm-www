@@ -35,8 +35,7 @@ name: demo-getter
 version: 0.1.0
 runtime: subprocess
 config:
-  protocols:
-    - demo
+  protocols: ["demo"]
 runtimeConfig:
   protocolCommands:
     - protocols:
@@ -124,6 +123,99 @@ Next let's build a version in Wasm runtime…
 - Prerequisites from [Subprocess Runtime](#subprocess-runtime)
 - Go 1.25 installed
 
-:::warning
-To-do: add this section
-:::
+Build a custom protocol getter that converts `demo://` URLs to `https://`.
+
+### 1. Set up repository
+
+Scaffold a new repository from the template (or just clone):
+<https://github.com/gjenkins8/helm-extism-plugin-template>
+
+### 2. Update plugin manifest
+
+Similar to the same step for the Subprocess Getter, except you will do this in your own cloned Git repoosiotry.
+
+Note the `runtime` and `runtimeConfig` field values will change for Wasm:
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: getter/v1
+name: demo-getter
+version: 0.1.0
+runtime: extism/v1
+config:
+  protocols: ["demo"]
+runtimeConfig:
+  memory:
+    maxPages: 16
+  timeout: 30000
+```
+
+### 3. Update `main.go`
+
+Specify the plugins input/output messages:
+
+```go title="main.go" showLineNumbers
+package main
+
+...
+
+type InputMessage struct {
+	URL      string `json:"url"`
+	Protocol string `json:"protocol"`
+}
+
+type OutputMessage struct {
+	Data []byte `json:"data"`
+}
+```
+
+Replace the `replaceMeImplementationGoesHere` function with actual logic:
+
+```go
+...
+
+// Delete the `replaceMeImplementationGoesHere` function
+
+func demoDownloader(input InputMessage) (*OutputMessage, error) {
+
+	// Convert demo:// to https://
+	downloadURL := strings.Replace(input.URL, "demo://", "https://", 1)
+	pdk.Log(pdk.LogLevelInfo, fmt.Sprintf("Converted %s to %s", input.URL, downloadURL))
+
+	// Download content
+	resp, err := http.Get(downloadURL)
+	if err != nil {
+		return nil, fmt.Errorf("failed to download: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// Read and output content
+	data, _ := io.ReadAll(resp.Body)
+	output := OutputMessage{Data: data}
+	return &output, nil
+}
+
+```
+
+Update the runPlugin function to call `demoDownloader` instead:
+
+```go
+func runPlugin() error {
+	...
+	// Remove: output, err := replaceMeImplementationGoesHere(input)
+	output, err := demoDownloader(input)
+```
+
+### 4. Build WebAssembly
+
+```bash
+$ make build
+$ ls -la plugin.wasm
+```
+
+### 5. Install in Dev Mode and Test
+
+Same as the Subprocess CLI Plugin step.
+
+What you built: A WebAssembly plugin with sandboxed execution and structured communication via Extism PDK!
+
