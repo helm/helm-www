@@ -34,7 +34,7 @@ oficiales](https://github.com/helm/helm/releases).
 Para obtener más detalles u otras opciones, consulte [la guía de
 instalación](/intro/install.md).
 
-## Inicializar un Repositorio de Helm Chart
+## Inicializar un Repositorio de Helm Chart {#initialize-a-helm-chart-repository}
 
 Una vez que tengas Helm listo, puede agregar un repositorio de Charts. Consulta
 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) para conocer los

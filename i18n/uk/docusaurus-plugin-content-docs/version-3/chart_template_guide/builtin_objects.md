@@ -19,7 +19,7 @@ sidebar_position: 3
   - `Release.Service`: Сервіс, який обробляє поточний шаблон. У Helm це завжди `Helm`.
 - `Values`: Значення, передані в шаблон з файлу `values.yaml` і з файлів, наданих користувачем. Стандартно `Values` порожній.
 - `Chart`: Вміст файлу `Chart.yaml`. Будь-які дані в `Chart.yaml` будуть доступні тут. Наприклад, `{{ .Chart.Name }}-{{ .Chart.Version }}` виведе `mychart-0.1.0`.
-  - Доступні поля перелічені в [довіднику по Chart](/topics/charts.md#the-chartyaml-file)
+  - Доступні поля перелічені в [довіднику по Chart](/topics/charts.md#the-chart-yaml-file)
 - `Subcharts`: Надає доступ до області дії (.Values, .Charts, .Releases тощо) субшаблонів з батьківського шаблону. Наприклад, `.Subcharts.mySubChart.myValue`, щоб отримати доступ до `myValue` у шаблоні `mySubChart`.
 - `Files`: Це надає доступ до всіх не-спеціальних файлів у шаблоні. Ви не можете використовувати його для доступу до шаблонів, але можете використовувати його для доступу до інших файлів у шаблоні. Див. розділ [Доступ до файлів](/chart_template_guide/accessing_files.md) для отримання додаткової інформації.
   - `Files.Get` — це функція для отримання файлу за іменем (`.Files.Get config.ini`).
