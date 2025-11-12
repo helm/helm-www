@@ -14,7 +14,7 @@ Helm currently has 3 types of Plugins:
 
 - [CLI plugins](#cli-plugins): allow users to add additional `helm` CLI sub-commands
 - [Getter plugins](#getter-plugins): allow users to use Charts and even other Plugins in locations Helm core doesn't have built-in support for
-- [Postrenderer plugins](#postrenderer-plugins): allow users to modify Chart rendered manifests before being sent to the Kuberentes API
+- [Postrenderer plugins](#postrenderer-plugins): allow users to modify Chart rendered manifests before being sent to the Kubernetes API
 
 Starting with Helm 4, the plugin system is set up to more easily allow adding additional plugin types, which would allow users to modify other areas of Helm functionality.
 
@@ -22,7 +22,7 @@ Starting with Helm 4, the plugin system is set up to more easily allow adding ad
 
 What is the advantage of using a plugin to create `helm` CLI subcommands as opposed to using separate scripts, or tools with their own standalone commands?
 
-The main reason is plugins that add `helm` CLI sub-commands can leverage Helm-specific configuration, context, and functionality that stanedalone scripts and tools would otherwise need to develop themselves. They can allow a more seamless extention of `helm` CLI user workflows.
+The main reason is plugins that add `helm` CLI sub-commands can leverage Helm-specific configuration, context, and functionality that stanedalone scripts and tools would otherwise need to develop themselves. They can allow a more seamless extension of `helm` CLI user workflows.
 
 ### Getter Plugins
 
@@ -34,7 +34,7 @@ Helm Getter plugins allow you to extend this storage and download behavior to su
 
 Helm allows users to configure charts by supplying custom values. These user-provided values are what Charts use to render the manifests that allow Helm to manage your applications in Kubernetes.
 
-If you write your own charts, you can update the templates whenever you need additinoal configurability for your rendered manifests. However, if you are using community charts that you don't own, post-rendering allows you to modify the manifests after the charts have rendered them but before Helm uses them to manage your Kubernetes resorces. Starting with Helm 4, postrenderer plugins are the way to do this.
+If you write your own charts, you can update the templates whenever you need additinoal configurability for your rendered manifests. However, if you are using community charts that you don't own, post-rendering allows you to modify the manifests after the charts have rendered them but before Helm uses them to manage your Kubernetes resources. Starting with Helm 4, postrenderer plugins are the way to do this.
 
 ## Plugin API Versions
 
@@ -106,7 +106,7 @@ longHelp: The long message shown in the 'helm help <this-command>' output
 ignoreFlags: Ignores any flags passed in from Helm
 ```
 
-- `usage` is optional. Defaults to "helm PLUGIN_NAME [flags]" if not overriden with a custom usage string. For recommended syntax, see [spf13/cobra.command.Command] Use field comment: https://pkg.go.dev/github.com/spf13/cobra#Command
+- `usage` is optional. Defaults to "helm PLUGIN_NAME [flags]" if not overridden with a custom usage string. For recommended syntax, see [spf13/cobra.command.Command] Use field comment: https://pkg.go.dev/github.com/spf13/cobra#Command
 - `ignoreFlags` switch tells Helm to not pass flags to the plugin. So if a plugin is called with `helm myplugin --foo` and `ignoreFlags: true`, then `--foo` is silently discarded.
 
 #### Getter Plugin Configuration
@@ -157,7 +157,7 @@ runtimeconfig:
           platformCommand: [] # Same structure as "platformCommand" above
 ```
 
-- ⚠️ `protocolCommands` is marked `obsolete/deprecated`, and will be removed in future verions of the plugin system after `apiVersion: v1`. It only applies to the "getter/v1" plugin type. This is a compatibility hangover from the old plugin downloader mechanism, which was extended to support multiple protocols in a given plugin. The command supplied in PlatformCommand should implement protocol specific logic by inspecting the download URL.
+- ⚠️ `protocolCommands` is marked `obsolete/deprecated`, and will be removed in future versions of the plugin system after `apiVersion: v1`. It only applies to the "getter/v1" plugin type. This is a compatibility hangover from the old plugin downloader mechanism, which was extended to support multiple protocols in a given plugin. The command supplied in PlatformCommand should implement protocol specific logic by inspecting the download URL.
 
 #### Wasm Runtime Configuration
 
