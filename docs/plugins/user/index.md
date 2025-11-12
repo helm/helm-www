@@ -21,7 +21,7 @@ Depending on the plugin runtime, you should inspect any plugin from third partie
 - Subprocess runtime has as much access to your system as the user running the commands. Be sure to carefully inspect the plugin code before installing a plugin, uninstalling a plugin, or running any helm commands that could also run these plugins.
 - Wasm runtime, by contrast, runs in a secure sandbox with only the access to your system that you explicitly approve. This plugin runtime has much stronger controls and an inherently higher level of built-in safety. You should still inspect `plugin.yaml` to know what permissions the plugin is requesting.
 
-In both cases, it is highly recommended to verify the provenance of even a Wasm runtime plugin before installing it, so that you can trust where it is downloaded from and who created it. This not only protects you from accidentally installing plugins from spoofed URL attacks, but also network hijacking attacks. Plugin verififcation allows you to cryptographically ensure a chart has not been compromised before you install it.
+In both cases, it is highly recommended to verify the provenance of even a Wasm runtime plugin before installing it, so that you can trust where it is downloaded from and who created it. This not only protects you from accidentally installing plugins from spoofed URL attacks, but also network hijacking attacks. Plugin verification allows you to cryptographically ensure a chart has not been compromised before you install it.
 
 See the `--verify` flag in `helm plugin install --help`.
 
