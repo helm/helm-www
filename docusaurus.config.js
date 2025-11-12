@@ -129,8 +129,8 @@ const config = {
             // v2 is in /versioned_docs/version-2
             // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
             // and v5 will then live in /docs
-            current: { label: "4.0.0-rc.1 🚧" },
-            3: { label: "3.19.0" },
+            current: { label: "4.0.0" },
+            3: { label: "3.19.0", path: "v3" },
             2: { label: "2.17.0", path: "v2" },
           },
         },
@@ -244,9 +244,9 @@ const config = {
         textColor: "#ffffff",
         // Note that closed state is stored in browser
         // Change id to show again for users who have already closed it
-        id: "helm4_rc_1",
+        id: "helm4_ga",
         content:
-          '📢 Helm v4.0.0-rc.1 is out! See the <a href="/docs/next">pre-release docs</a> for details!',
+          '🎉 Helm v4.0.0 is out! See the <a href="/docs/overview">Helm 4 Overview</a> for details!',
         isCloseable: true,
       },
       // Replace with your project's social card
