@@ -9,10 +9,6 @@ Helm v4 represents a significant evolution from v3, introducing breaking changes
 
 For more information about the planned Helm 4 release phases, see [Path to Helm v4](https://helm.sh/blog/path-to-helm-v4/).
 
-Helm v4 represents a significant evolution from v3, introducing breaking changes, new architectural patterns, and enhanced functionality while maintaining backwards compatibility for charts.
-
-For more information about the planned Helm 4 release phases, see [Path to Helm v4](https://helm.sh/blog/path-to-helm-v4/).
-
 ## What's New
 
 This section provides an overview of what's new in Helm 4, including breaking changes, major new features, and other improvements. For complete technical details, see the [Full Changelog](./changelog.md).
@@ -20,7 +16,7 @@ This section provides an overview of what's new in Helm 4, including breaking ch
 ### Summary
 
 - **New features**: Wasm-based plugins, kstatus watcher, OCI digest support, multi-doc values, JSON arguments
-- **Architecture changes**: Plugin system completely redesigned, package restructuring, CLI flag renaming, move to versioned packages, chart v3 support, content-based caching
+- **Architecture changes**: Plugin system completely redesigned, package restructuring, CLI flag renaming Move to versioned packages, chart v3 support, content-based caching
 - **Modernization**: slog migration, Go 1.24 update, dependency cleanup
 - **Security**: Enhanced OCI/registry support, TLS improvements
 
@@ -88,9 +84,7 @@ Better OAuth and token support for private registries.
 
 #### CLI Flags renamed
 
-Some common CLI flags are renamed to better clarify their operation.
-The existing flags remain, but emit a deprecated warning:
-
+Some common CLI flags are renamed:
 - `--atomic` → `--rollback-on-failure`
 - `--force` → `--force-replace`
 
