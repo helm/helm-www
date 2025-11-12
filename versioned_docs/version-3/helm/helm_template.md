@@ -21,7 +21,7 @@ helm template [NAME] [CHART] [flags]
 
 ```
   -a, --api-versions strings                       Kubernetes api versions used for Capabilities.APIVersions
-      --atomic                                     if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --atomic is used
+      --rollback-on-failure                        if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --rollback-on-failure is used
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
       --create-namespace                           create the release namespace if not present
