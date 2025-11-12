@@ -85,6 +85,28 @@ make check-links-ci
 typos
 ```
 
+## Architectural Documentation
+
+This codebase includes an `ARCHITECTURAL_DECISIONS.md` document that explains key architectural decisions made during the Docusaurus implementation. When implementing new features or making significant changes:
+
+1. **Document architectural decisions** in `ARCHITECTURAL_DECISIONS.md` with clear reasoning
+2. **Include requirements** that drove the decision
+3. **Link to relevant Docusaurus documentation** when applicable
+4. **Keep explanations concise** but comprehensive enough for future contributors
+
+This helps maintain consistency and guides future development decisions.
+
+### Writing Guidelines for ARCHITECTURAL_DECISIONS.md
+
+When updating architectural decisions:
+- **Describe current state** - Document what exists now, not proposals or ideas
+- **Keep it concise** - One paragraph per topic, link to external docs instead of repeating them
+- **Focus on the "why"** - Explain decisions that aren't obvious from the code
+- **Help contributors** - Write for developers who need to understand the codebase quickly
+- **Avoid duplication** - Link to Docusaurus docs rather than explaining Docusaurus features
+
+Example: Don't explain what CSS modules are, but DO explain why we chose them over other styling approaches for this specific project.
+
 ## Content Management
 
 ### Documentation
