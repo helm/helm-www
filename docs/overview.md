@@ -5,10 +5,6 @@ sidebar_label: Helm 4 Overview
 
 # Helm 4 Overview
 
-:::note
-**Help us test Helm 4 before the November release at KubeCon Atlanta!** Try the pre-release builds and let us know what works, what breaks, and what could be better. For more information, see [What's New](#whats-new), [What to Test](#what-to-test), and [How to Give Feedback](#how-to-give-feedback).
-:::
-
 Helm v4 represents a significant evolution from v3, introducing breaking changes, new architectural patterns, and enhanced functionality while maintaining backwards compatibility for charts.
 
 For more information about the planned Helm 4 release phases, see [Path to Helm v4](https://helm.sh/blog/path-to-helm-v4/).
@@ -19,35 +15,24 @@ This section provides an overview of what's new in Helm 4, including breaking ch
 
 ### Summary
 
-- **Breaking changes**: [HIP-0026 plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md) completely redesigned, package restructuring, CLI flag renaming
-- **New features**: kstatus watcher, OCI digest support, multi-doc values, JSON arguments
-- **Architecture changes**: Move to versioned packages, chart v3 support, content-based caching
+- **New features**: Wasm-based plugins, kstatus watcher, OCI digest support, multi-doc values, JSON arguments
+- **Architecture changes**: Plugin system completely redesigned, package restructuring, CLI flag renaming Move to versioned packages, chart v3 support, content-based caching
 - **Modernization**: slog migration, Go 1.24 update, dependency cleanup
 - **Security**: Enhanced OCI/registry support, TLS improvements
 
 ### Breaking Changes
 
-#### Plugin System Overhaul
-Helm 4 introduces an optional WebAssembly-based runtime for enhanced security and expanded capabilities. Existing plugins continue to work, but the new runtime opens up more of Helm's core behavior for plugin customization. Helm 4 launches with three plugin types: CLI plugins, getter plugins, and post-renderer plugins, plus a system that enables new plugin types for customizing additional core functionality.
-
-See [example plugins](https://github.com/scottrigby/h4-example-plugins).
-
-:::note
-Existing plugins work as before. The new WebAssembly runtime is optional but recommended for enhanced security.
-:::
-
-#### CLI Flags renamed
-
-Some common CLI flags are renamed:
-- `--atomic` → `--rollback-on-failure`
-- `--force` → `--force-replace`
-
-Update any automation that uses these renamed CLI flags.
-
 #### Post-renderers implemented as plugins
 Post-renderers are implemented as plugins. With this change, it is no longer possible to pass an executable directly to `helm render --post-renderer`, but a plugin name must be passed. This might require updates to existing any post-renderer workflows. 
 
 ### New Features
+
+#### Plugin System Overhaul
+Helm 4 introduces an optional WebAssembly-based runtime for enhanced security and expanded capabilities. Existing plugins continue to work, but the new runtime opens up more of Helm's core behavior for plugin customization. Helm 4 launches with three plugin types: CLI plugins, getter plugins, and post-renderer plugins, plus a system that enables new plugin types for customizing additional core functionality. See [HIP-0026 plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md) and [Helm 4 example plugins](https://github.com/scottrigby/h4-example-plugins).
+
+:::tip
+Existing plugins work as before. The new WebAssembly runtime is optional but recommended for enhanced security.
+:::
 
 #### Better resource monitoring
 New kstatus integration shows detailed status of your deployments. Test with complex applications to see if it catches issues better.
@@ -85,9 +70,17 @@ Clearer, more helpful error output.
 #### Registry Authentication
 Better OAuth and token support for private registries.
 
-## What to Test
+#### CLI Flags renamed
 
-Our goal is to make Helm 4 rock-solid for everyone when it ships in November! To that end, we're asking the Helm community to try the pre-release builds and let us know what works, what breaks, and what could be better.
+Some common CLI flags are renamed:
+- `--atomic` → `--rollback-on-failure`
+- `--force` → `--force-replace`
+
+Update any automation that uses these renamed CLI flags.
+
+## Upgrading to Helm 4
+
+While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. To that end, before upgrading, we've added some tips below for specific things to look out for when testing Helm 4 with your existing workflows. As always, we welcome all feedback about what works, what breaks, and what could be better.
 
 ### High Priority
 * Test your existing charts and releases to verify that they still work with v4.
