@@ -8,13 +8,13 @@ title: helm install
 
 이 명령은 차트 아카이브를 설치한다.
 
-install 인수는 차트 참조, 패키지 된 차트 경로, 
+install 인수는 차트 참조, 패키지 된 차트 경로,
 압축 해제 된 차트 디렉토리 경로 또는 URL 이어야한다.
 
-차트의 값을 재정의하려면 '--values' 플래그를 사용하고 파일을 전달하거나 
-'--set' 플래그를 사용하고 명령 줄에서 구성을 전달하고 
+차트의 값을 재정의하려면 '--values' 플래그를 사용하고 파일을 전달하거나
+'--set' 플래그를 사용하고 명령 줄에서 구성을 전달하고
 문자열 값에 '--set-string' 을 사용한다.
-값이 커서 '--values' 도 '--set' 도 사용하지 않으려면 
+값이 커서 '--values' 도 '--set' 도 사용하지 않으려면
 '--set-file' 을 사용하여 파일에서 하나의 큰 값을 읽도록 하자.
 
     $ helm install -f myvalues.yaml myredis ./redis
@@ -31,23 +31,23 @@ install 인수는 차트 참조, 패키지 된 차트 경로,
 
     $ helm install --set-file my_script=dothings.sh myredis ./redis
 
-'--values'/'-f' 플래그를 여러 번 지정할 수 있다. 지정된 마지막 (가장 오른쪽) 파일에 우선 순위가 부여된다. 
-예를 들어 myvalues.yaml 과 override.yaml 에 'Test' 라는 키가 포함 된 경우 
+'--values'/'-f' 플래그를 여러 번 지정할 수 있다. 지정된 마지막 (가장 오른쪽) 파일에 우선 순위가 부여된다.
+예를 들어 myvalues.yaml 과 override.yaml 에 'Test' 라는 키가 포함 된 경우
 override.yaml에 설정된 값이 우선한다.
 
     $ helm install -f myvalues.yaml -f override.yaml  myredis ./redis
 
-'--set' 플래그를 여러 번 지정할 수 있다. 지정된 마지막 (가장 오른쪽) 세트에 우선 순위가 부여된다. 
-예를 들어 'foo' 라는 키에 대해 'bar' 및 'newbar' 값이 모두 설정된 경우 
+'--set' 플래그를 여러 번 지정할 수 있다. 지정된 마지막 (가장 오른쪽) 세트에 우선 순위가 부여된다.
+예를 들어 'foo' 라는 키에 대해 'bar' 및 'newbar' 값이 모두 설정된 경우
 'newbar' 값이 우선한다.
 
     $ helm install --set foo=bar --set foo=newbar  myredis ./redis
 
 
-차트를 설치하지 않고 생성 된 릴리스의 매니페스트를 확인하려면 
+차트를 설치하지 않고 생성 된 릴리스의 매니페스트를 확인하려면
 '--debug' 및 '--dry-run' 플래그를 결합 할 수 있다.
 
---verify가 설정된 경우 차트에는 출처 파일이 반드시 있어야하며 
+--verify가 설정된 경우 차트에는 출처 파일이 반드시 있어야하며
 출처 파일은 모든 확인 단계를 반드시 통과해야한다.
 
 설치할 차트를 표현할 수 있는 다섯가지 방법이 있다.
@@ -62,13 +62,13 @@ override.yaml에 설정된 값이 우선한다.
 
 차트 참조는 차트 저장소에서 차트를 참조하는 편리한 방법이다.
 
-repo 접두사가 있는 차트 참조 ('example/mariadb')를 사용하면 
+repo 접두사가 있는 차트 참조 ('example/mariadb')를 사용하면
 헬름은 로컬 구성에서 'example' 이라는 차트 저장소를 찾은 뒤
-이름이 'mariadb' 인 해당 저장소에서 차트를 찾는다. 개발 버전(알파, 베타 및 릴리스 후보 릴리스)도 
-포함하도록 '--devel' 플래그를 지정하거나 '--version' 플래그와 
+이름이 'mariadb' 인 해당 저장소에서 차트를 찾는다. 개발 버전(알파, 베타 및 릴리스 후보 릴리스)도
+포함하도록 '--devel' 플래그를 지정하거나 '--version' 플래그와
 함께 버전 번호를 제공하지 않는 한, 해당 차트의 최신 안정 버전을 설치한다.
 
-차트 저장소 목록을 보려면 'helm repo list' 를 사용하자. 
+차트 저장소 목록을 보려면 'helm repo list' 를 사용하자.
 저장소에서 차트를 검색하려면 'helm search' 를 사용하자.
 
 
@@ -79,7 +79,7 @@ helm install [NAME] [CHART] [flags]
 ### 옵션
 
 ```
-      --atomic                       설정된 경우 설치 프로세스는 실패시 설치를 삭제. --atomic 을 사용할 경우 --wait 플래그도 자동으로 설정.
+      --rollback-on-failure          설정된 경우 설치 프로세스는 실패시 설치를 삭제. --rollback-on-failure 을 사용할 경우 --wait 플래그도 자동으로 설정.
       --ca-file string               이 CA 번들을 사용하여 HTTPS 사용 서버의 인증서 확인
       --cert-file string             이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
       --create-namespace             릴리스 네임스페이스가 없는 경우 생성
