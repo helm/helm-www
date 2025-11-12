@@ -4,7 +4,7 @@ sidebar_label: Using Plugins
 sidebar_position: 2
 ---
 
-For an overview of Helm Plugin concepts, how to read their structure, and how to understand what their confifurations mean for you as a user, read the [Plugins Overview](/plugins/overview.md).
+For an overview of Helm Plugin concepts, how to read their structure, and how to understand what their configurations mean for you as a user, read the [Plugins Overview](/plugins/overview.md).
 
 This section focuses on using Helm Plugins as an end-user.
 
