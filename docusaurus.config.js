@@ -104,17 +104,15 @@ const config = {
           // Links "edit this page" on translated pages to i18n/[LOCALE]/... instead of English source file
           editLocalizedFiles: true,
           // "lastVersion" means the latest release
-          // when we cut over to helm 4.0.0, we change lastVersion from "3" to "current"
-          // where "current" means the /docs folder
-          lastVersion: "3",
+          lastVersion: "current",
           versions: {
-            // v4 is "current" (does not necessarily mean latest, see above)
+            // v4 is "current"
             // v3 is in /versioned_docs/version-3
             // v2 is in /versioned_docs/version-2
             // TODO when we start work on Helm v5, we will copy /docs to /versioned_docs/version-4
             // and v5 will then live in /docs
-            current: { label: "4.0.0-rc.1 🚧" },
-            3: { label: "3.19.0" },
+            current: { label: "4.0.0" },
+            3: { label: "3.19.0", path: "v3" },
             2: { label: "2.17.0", path: "v2" },
           },
         },
@@ -154,9 +152,9 @@ const config = {
         textColor: "#ffffff",
         // Note that closed state is stored in browser
         // Change id to show again for users who have already closed it
-        id: "helm4_rc_1",
+        id: "helm4_ga",
         content:
-          '📢 Helm v4.0.0-rc.1 is out! See the <a href="/docs/next">pre-release docs</a> for details!',
+          '🎉 Helm v4.0.0 is out! See the <a href="/docs/overview">Helm 4 Overview</a> for details!',
         isCloseable: true,
       },
       // Replace with your project's social card
@@ -305,6 +303,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ["bash"],
       },
     }),
 

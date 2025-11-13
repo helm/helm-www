@@ -1,0 +1,220 @@
+---
+title: "Tutorial: Build a Getter Plugin"
+sidebar_label: Build a Getter Plugin
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+
+Build a `helm system-info` command that displays system information.
+
+## Subprocess Runtime
+
+Let's build a Getter Plugin using the Subprocess runtime.
+
+### Prerequisites
+
+1. Install the latest Helm 4 release: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. In your terminal session, alias `helm` to the release you downloaded. `helm version --short` should now show the correct Helm version in this terminal session.
+
+### 1. Create Plugin Directory
+
+You can create this anywhere on your filesystem. For example:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/demo-getter
+cd $HOME/code/helm/plugins/demo-getter
+```
+
+### 2. Create plugin manifest
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: getter/v1
+name: demo-getter
+version: 0.1.0
+runtime: subprocess
+config:
+  protocols: ["demo"]
+runtimeConfig:
+  protocolCommands:
+    - protocols:
+        - demo
+      platformCommand:
+        - command: get-demo.sh
+```
+
+### 3. Create Script
+
+Getter plugins are responsible for getting/downloading a packaged artifact – in this case a Chart – and returning the path to the downloaded package. For demo purposes, let's use your system's utility to make a temp directory (it will auto-garbage collect in time on it's own), and use the `helm create` and `helm package` commands to just make a demo chart package in the temp dir, and return the package path:
+
+```bash title="get-demo.sh" showLineNumbers
+#!/usr/bin/env sh
+set -e
+
+URI=$@
+TMPDIR="$(mktemp -d)"
+
+# make a fake chart for testing with the passed URL basename
+FILENAME=$(basename -- $URI)
+helm create $TMPDIR/$FILENAME 1>/dev/null
+helm package $TMPDIR/$FILENAME -d $TMPDIR 1>/dev/null
+# cat $FILENAME-0.1.0.tgz
+# just to not need to know the chart version
+rm -r $TMPDIR/$FILENAME 1>/dev/null
+cat $TMPDIR/$FILENAME-*
+```
+
+Make it executable:
+
+```bash
+chmod +x get-demo.sh
+```
+
+### 4. Install in Dev Mode and Test
+
+Installing a plugin from your filesystem installs in local dev mode, which does not check the provenance:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/demo-getter
+Installing plugin from local directory (development mode)
+Installed plugin: demo-getter
+```
+
+As we saw in the [CLI Plugin tutorial](/plugins/developer/tutorial-cli-plugin.mdx), local dev mode installation creates a symlink from your plugin source directory to the plugins directory. You now have two plugins installed:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 4 r6by  staff   160B Nov 10 04:04 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 04:04 demo-getter -> /Users/r6by/code/helm/plugins/demo-getter
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+Unlike the CLI plugin tutorial, you will not see this plugin in the list of available commands with `helm help`. Only CLI Plugin types appear in the `helm` CLI subcommands list.
+
+But like all plugin types, you can see your installed Postrenderer plugin details with `helm plugin list`:
+
+```bash
+% helm plugin list
+NAME          	VERSION	TYPE           	APIVERSION	PROVENANCE	SOURCE
+demo-getter   	0.1.0  	getter/v1      	v1        	local dev 	unknown
+system-info   	0.1.0  	cli/v1         	v1        	local dev 	unknown
+```
+
+Let's try it out. It should return templated YAML for a chart named "example":
+
+```bash
+% helm template example demo://does-not-matter/example
+LOTS OF YAML, INCLUDING:
+---
+# Source: example/templates/tests/test-connection.yaml
+```
+
+What you built: A demo Getter plugin using the Subprocess runtime!
+
+Next let's build a version in Wasm runtime…
+
+## Wasm Runtime
+
+### Prerequisites
+
+- Prerequisites from [Subprocess Runtime](#subprocess-runtime)
+- Go 1.25 installed
+
+Build a custom protocol getter that converts `demo://` URLs to `https://`.
+
+### 1. Set up repository
+
+Scaffold a new repository from the template (or just clone):
+https://github.com/gjenkins8/helm-extism-plugin-template
+
+### 2. Update plugin manifest
+
+Similar to the same step for the Subprocess Getter, except you will do this in your own cloned Git repoosiotry.
+
+Note the `runtime` and `runtimeConfig` field values will change for Wasm:
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: getter/v1
+name: demo-getter
+version: 0.1.0
+runtime: extism/v1
+config:
+  protocols: ["demo"]
+runtimeConfig:
+  memory:
+    maxPages: 16
+  timeout: 30000
+```
+
+### 3. Update `main.go`
+
+Specify the plugins input/output messages:
+
+```go title="main.go" showLineNumbers
+package main
+
+...
+
+type InputMessage struct {
+	URL      string `json:"url"`
+	Protocol string `json:"protocol"`
+}
+
+type OutputMessage struct {
+	Data []byte `json:"data"`
+}
+```
+
+Replace the `replaceMeImplementationGoesHere` function with actual logic:
+
+```go
+...
+
+// Delete the `replaceMeImplementationGoesHere` function
+
+func demoDownloader(input InputMessage) (*OutputMessage, error) {
+
+	// Convert demo:// to https://
+	downloadURL := strings.Replace(input.URL, "demo://", "https://", 1)
+	pdk.Log(pdk.LogLevelInfo, fmt.Sprintf("Converted %s to %s", input.URL, downloadURL))
+
+	// Download content
+	resp, err := http.Get(downloadURL)
+	if err != nil {
+		return nil, fmt.Errorf("failed to download: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// Read and output content
+	data, _ := io.ReadAll(resp.Body)
+	output := OutputMessage{Data: data}
+	return &output, nil
+}
+
+```
+
+Update the runPlugin function to call `demoDownloader` instead:
+
+```go
+func runPlugin() error {
+	...
+	// Remove: output, err := replaceMeImplementationGoesHere(input)
+	output, err := demoDownloader(input)
+```
+
+### 4. Build WebAssembly
+
+```bash
+$ make build
+$ ls -la plugin.wasm
+```
+
+### 5. Install in Dev Mode and Test
+
+Same as the Subprocess CLI Plugin step.
+
+What you built: A WebAssembly plugin with sandboxed execution and structured communication via Extism PDK!
+

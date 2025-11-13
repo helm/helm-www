@@ -81,7 +81,7 @@ helm install [NOME_DA_SUA_RELEASE] [CHART] [argumentos]
 ### Opções
 
 ```
-      --atomic                       os manifestos já aplicados serão deletados caso haja uma falha durante a instalação. O argumento --wait será configurado nesse caso
+      --rollback-on-failure          os manifestos já aplicados serão deletados caso haja uma falha durante a instalação. O argumento --wait será configurado nesse caso
       --ca-file string               verifica os certificados dos servidores HTTPS utilizando o pacote CA especificado
       --cert-file string             identifica o cliente HTTPS utilizando o certificado SSL especificado
       --create-namespace             cria um namespace para a release caso ainda não exista
@@ -92,7 +92,7 @@ helm install [NOME_DA_SUA_RELEASE] [CHART] [argumentos]
       --dry-run                      simula uma instalação
   -g, --generate-name                gera um novo nome de release (e omite o parâmetro NOME_DA_SUA_RELEASE)
   -h, --help                         exibe ajuda para a instalação da release
-      --insecure-skip-tls-verify     ignora a verificação do certificado tls para o download do Chart 
+      --insecure-skip-tls-verify     ignora a verificação do certificado tls para o download do Chart
       --key-file string              identifica o cliente HTTPS com a chave SSL passada
       --keyring string               caminho das chaves públicas para verificação (padrão "~/.gnupg/pubring.gpg")
       --name-template string         especifica o template usado para nomear a release
