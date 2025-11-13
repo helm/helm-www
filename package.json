@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "migrate:v2": "node scripts/migrate-v2-docs.js",
-    "migrate:v3": "node scripts/migrate-v3-docs.js"
+    "migrate:v3": "node scripts/migrate-v3-docs.js",
+    "test": "jest"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.1",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.1",
     "@docusaurus/types": "3.9.1",
+    "jest": "^30.2.0",
     "jsdom": "^27.0.1"
   },
   "browserslist": {
