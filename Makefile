@@ -1,5 +1,6 @@
 SITE_URL := http://localhost:3000
 BASE_URL := /
+VERSION = v3
 
 clean:
 	rm -rf node_modules/ build/ .docusaurus .cache-loader
@@ -26,6 +27,10 @@ netlify-build: install-if-needed
 .PHONY: sdkexamples
 sdkexamples:
 	make -C sdkexamples
+
+.PHONY: update-version-skew
+update-version-skew:
+	./scripts/update-version-skew.sh $(VERSION)
 
 serve:
 	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run start --host 0.0.0.0
