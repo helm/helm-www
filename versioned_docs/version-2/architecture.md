@@ -1,8 +1,8 @@
 ---
 sidebar_position: 9
 sidebar_label: "Architecture"
+title: "The Kubernetes Helm Architecture"
 ---
-# The Kubernetes Helm Architecture
 
 This document describes the Helm architecture at a high level.
 

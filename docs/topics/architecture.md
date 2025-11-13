@@ -4,8 +4,6 @@ description: Describes the Helm architecture at a high level.
 sidebar_position: 8
 ---
 
-# Helm Architecture
-
 This document describes the Helm architecture at a high level.
 
 ## The Purpose of Helm
