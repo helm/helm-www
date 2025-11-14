@@ -28,32 +28,8 @@ Paket = "Paket"  # German for "package"
 
 [files]
 extend-exclude = [
-  # Internationalization files
+  # Internationalization files (Docusaurus i18n directory)
   "i18n/",
-  # Portuguese content - these are not English typos
-  "content/pt/**",
-  # Polish content
-  "content/pl/**",
-  # Russian content
-  "content/ru/**",
-  # Ukrainian content
-  "content/uk/**",
-  # Korean content
-  "content/ko/**",
-  # Japanese content
-  "content/ja/**",
-  # German content
-  "content/de/**",
-  # Spanish content
-  "content/es/**",
-  # French content
-  "content/fr/**",
-  # Greek content
-  "content/gr/**",
-  # Chinese content
-  "content/zh/**",
-  # Theme files
-  "themes/",
   # Go dependencies
   "sdkexamples/go.mod",
   "sdkexamples/go.sum",
