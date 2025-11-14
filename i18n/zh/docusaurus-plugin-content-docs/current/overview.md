@@ -5,7 +5,7 @@ sidebar_label: Helm 4 概览
 
 # Helm 4 概览
 
-Helm v4 代表了从 v3 的重大演进，引入了破坏性变更、新的架构模式和增强功能，同时保持对 chart 的向后兼容性。
+Helm v4 代表了从 v3 的重大进化，引入了破坏性变更、新的架构模式和增强功能，同时保持对 chart 的向后兼容性。
 
 有关计划的 Helm 4 发布阶段的更多信息，请参阅 [Helm v4 之路](https://helm.sh/blog/path-to-helm-v4/)。
 
