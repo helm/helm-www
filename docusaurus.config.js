@@ -323,7 +323,7 @@ const config = {
               },
               {
                 label: "Developing Charts",
-                to: "docs/topics/charts",
+                to: "#",
               },
               {
                 label: "Search 800+ Charts",
