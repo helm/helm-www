@@ -3,13 +3,16 @@ title: Examples
 description: Examples various features if the Helm SDK
 sidebar_position: 2
 ---
-import Install from './_install.mdx'
-import List from './_list.mdx'
-import Main from './_main.mdx'
-import Pull from './_pull.mdx'
-import Uninstall from './_uninstall.mdx'
-import Upgrade from './_upgrade.mdx'
 import Helm4 from "../_v4-in-progress.mdx"
+
+import CodeBlock from '@theme/CodeBlock';
+
+import MainExampleGo from '!!raw-loader!/sdkexamples/main.go';
+import InstallExampleGo from '!!raw-loader!/sdkexamples/install.go';
+import ListExampleGo from '!!raw-loader!/sdkexamples/list.go';
+import PullExampleGo from '!!raw-loader!/sdkexamples/pull.go';
+import UninstallExampleGo from '!!raw-loader!/sdkexamples/uninstall.go';
+import UpgradeExampleGo from '!!raw-loader!/sdkexamples/upgrade.go';
 
 <Helm4/>
 
@@ -23,39 +26,38 @@ And is intended to be fully functional.
 
 ## Actions
 
-
 ### Install Action
 
 This example installs the given chart/release, for the given version and values:
 
-<Install />
+<CodeBlock language="go" title="sdkexamples/install.go" showLineNumbers>{InstallExampleGo}</CodeBlock>
 
 ### Upgrade Action
 
 This example upgrades the given release, with the given chart, version and values:
 
-<Upgrade />
+<CodeBlock language="go" title="sdkexamples/upgrade.go" showLineNumbers>{UpgradeExampleGo}</CodeBlock>
 
 ### Uninstall Action
 
 This example uninstalls the given release
 
-<Uninstall />
+<CodeBlock language="go" title="sdkexamples/uninstall.go" showLineNumbers>{UninstallExampleGo}</CodeBlock>
 
 ### List Action
 
 This example lists all released charts (in the currently configured namespace)
 
-<List />
+<CodeBlock language="go" title="sdkexamples/list.go" showLineNumbers>{ListExampleGo}</CodeBlock>
 
 ### Pull Action
 
 This example pulls a chart from an OCI repository
 
-<Pull />
+<CodeBlock language="go" title="sdkexamples/pull.go" showLineNumbers>{PullExampleGo}</CodeBlock>
 
 ## Driver
 
 The driver here shows the necessary auxiliary functions needed for the Helm SDK actions to function. And shows the above examples in action, to pull, install, update, and uninstall the 'podinfo' chart from an OCI repository.
 
-<Main />
+<CodeBlock language="go" title="sdkexamples/main.go" showLineNumbers>{MainExampleGo}</CodeBlock>
