@@ -22,7 +22,7 @@ Starting with Helm 4, the plugin system is set up to more easily allow adding ad
 
 What is the advantage of using a plugin to create `helm` CLI subcommands as opposed to using separate scripts, or tools with their own standalone commands?
 
-The main reason is plugins that add `helm` CLI sub-commands can leverage Helm-specific configuration, context, and functionality that stanedalone scripts and tools would otherwise need to develop themselves. They can allow a more seamless extension of `helm` CLI user workflows.
+The main reason is plugins that add `helm` CLI sub-commands can leverage Helm-specific configuration, context, and functionality that standalone scripts and tools would otherwise need to develop themselves. They can allow a more seamless extension of `helm` CLI user workflows.
 
 ### Getter Plugins
 
@@ -34,7 +34,7 @@ Helm Getter plugins allow you to extend this storage and download behavior to su
 
 Helm allows users to configure charts by supplying custom values. These user-provided values are what Charts use to render the manifests that allow Helm to manage your applications in Kubernetes.
 
-If you write your own charts, you can update the templates whenever you need additinoal configurability for your rendered manifests. However, if you are using community charts that you don't own, post-rendering allows you to modify the manifests after the charts have rendered them but before Helm uses them to manage your Kubernetes resources. Starting with Helm 4, postrenderer plugins are the way to do this.
+If you write your own charts, you can update the templates whenever you need additional configurability for your rendered manifests. However, if you are using community charts that you don't own, post-rendering allows you to modify the manifests after the charts have rendered them but before Helm uses them to manage your Kubernetes resources. Starting with Helm 4, postrenderer plugins are the way to do this.
 
 ## Plugin API Versions
 
