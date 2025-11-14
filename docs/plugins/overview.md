@@ -165,7 +165,7 @@ If the `runtime` field is `extism/v1`, it is a [Wasm Runtime](#plugin-runtimes) 
 
 ```yaml
 runtimeconfig:
-    memory: # Describes the limits on the memory the plugin may be allocate
+    memory: # Describes the limits on the memory the plugin may be allocated
         maxPages: The max amount of pages the plugin can allocate. One page is 64Kib. e.g. 16 pages would require 1MiB. Default is 4 pages (256KiB).
         maxHttpResponseBytes: The max size of an Extism HTTP response in bytes. Default is 4096 bytes (4KiB).
         maxVarBytes: The max size of all Extism vars in bytes. Default is 4096 bytes (4KiB).
