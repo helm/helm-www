@@ -235,14 +235,6 @@ const config = {
                 to: "#",
               },
               {
-                label: "Chart tips & tricks",
-                to: "#",
-              },
-              {
-                label: "Developing Charts",
-                to: "#",
-              },
-              {
                 label: "Search 800+ Charts",
                 href: "https://artifacthub.io/",
               },
