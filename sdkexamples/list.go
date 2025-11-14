@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"helm.sh/helm/v3/pkg/action"
-	"helm.sh/helm/v3/pkg/cli"
+	"helm.sh/helm/v4/pkg/action"
+	"helm.sh/helm/v4/pkg/cli"
 )
 
 func runList(logger *log.Logger, settings *cli.EnvSettings) error {
