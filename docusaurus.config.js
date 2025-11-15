@@ -232,15 +232,7 @@ const config = {
               },
               {
                 label: "Developing Charts",
-                to: "#",
-              },
-              {
-                label: "Chart tips & tricks",
-                to: "#",
-              },
-              {
-                label: "Developing Charts",
-                to: "#",
+                to: "docs/topics/charts",
               },
               {
                 label: "Search 800+ Charts",
