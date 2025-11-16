@@ -25,6 +25,10 @@ This section provides an overview of what's new in Helm 4, including breaking ch
 #### Post-renderers implemented as plugins
 Post-renderers are implemented as plugins. With this change, it is no longer possible to pass an executable directly to `helm render --post-renderer`, but a plugin name must be passed. This might require updates to existing any post-renderer workflows.
 
+#### Registry login does not accept full URLs
+The `helm registry login` command must be done with the domain name only in v4.
+This is so login can be scoped at different levels on a registry in the future.
+
 ### New Features
 
 #### Plugin System Overhaul
