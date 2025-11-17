@@ -2,7 +2,7 @@
 title: "Localizing Helm Documentation"
 description: "Instructions for localizing the Helm documentation."
 aliases: ["/docs/localization/"]
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 This guide explains how to localize the Helm documentation.

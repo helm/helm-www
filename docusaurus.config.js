@@ -139,6 +139,20 @@ const config = {
     ],
   ],
 
+  // Note @docusaurus/preset-classic already includes a docs plugin instance for us under "presets"
+  // See https://docusaurus.io/docs/docs-multi-instance#versioned-and-unversioned-doc
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        sidebarPath: "./sidebars_community.js",
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -177,15 +191,11 @@ const config = {
         },
         items: [
           { to: "docs", label: "Docs", position: "left" },
+          { to: "community", label: "Community", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           {
             href: "https://artifacthub.io/",
             label: "Charts",
-            position: "left",
-          },
-          { to: "blog", label: "Blog", position: "left" },
-          {
-            href: "https://github.com/helm/community/",
-            label: "Community",
             position: "left",
           },
           {

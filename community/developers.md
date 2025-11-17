@@ -1,7 +1,7 @@
 ---
-title: Developer Guide
+title: Developer Setup
 description: Instructions for setting up your environment for developing Helm.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 This guide explains how to set up your environment for developing on Helm.

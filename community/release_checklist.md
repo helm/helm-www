@@ -1,7 +1,7 @@
 ---
-title: Release Checklist
+title: Maintainer Release Checklist
 description: Checklist for maintainers when releasing the next version of Helm.
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 # A Maintainer's Guide to Releasing Helm
