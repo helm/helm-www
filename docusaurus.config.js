@@ -149,6 +149,22 @@ const config = {
         path: "community",
         routeBasePath: "community",
         sidebarPath: "./sidebars_community.js",
+        editLocalizedFiles: true,
+        editUrl: "https://github.com/helm/helm-www/blob/main/",
+      },
+    ],
+    [
+      "docusaurus-plugin-remote-content",
+      {
+        name: "community",
+        // the base url for the markdown (gets prepended to all of the documents when fetching)
+        sourceBaseUrl:
+          "https://raw.githubusercontent.com/helm/community/refs/heads/main/",
+        // the base directory to output to
+        outDir: "community",
+        // the file names to download
+        documents: ["SECURITY.md", "communication.md"],
+        noRuntimeDownloads: true,
       },
     ],
   ],
