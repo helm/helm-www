@@ -10,7 +10,7 @@ sidebar_position: 5
 
 翻訳への貢献にはドキュメントへの貢献と同様のプロセスを用います。翻訳は [helm-www](https://github.com/helm/helm-www) git リポジトリへの[プルリクエスト](https://help.github.com/ja/github/collaborating-with-issues-and-pull-requests/about-pull-requests)によって供給され、プルリクエストはウェブサイトの管理チームによってレビューされます。
 
-### 2文字言語コード
+### 2文字言語コード {#two-letter-langauge-code}
 
 ドキュメントは [ISO 639-1
 標準](https://www.loc.gov/standards/iso639-2/php/code_list.php) 言語コードによって管理されます。例えば、韓国語の2文字コードは `ko` です。
@@ -74,7 +74,7 @@ AM](https://user-images.githubusercontent.com/686194/81597103-035de600-937a-11ea
 
 サイトグローバルな　[config.toml](https://github.com/helm/helm-www/blob/main/config.toml#L83L89) ファイルで言語ナビゲーションが設定されています。
 
-新たな言語を追加するには、上で定義した新たな[2文字言語コード](/community/localization.md#2文字言語コード)を追加する必要があります。例：
+新たな言語を追加するには、上で定義した新たな[2文字言語コード](#two-letter-langauge-code)を追加する必要があります。例：
 
 ```
 # Korean
