@@ -44,7 +44,7 @@ You think you have found a vulnerability in a Helm project or a dependency of a 
 ### When Not To Send A Report
 
 * If a vulnerability has been found in an application deployed by a Helm Chart. Instead, contact the application maintainers
-* For guidance on securing Helm, please see the [documentation](https://helm.sh/docs/using_helm/#securing-your-helm-installation) or ask in one of the [support channels](README#how-can-i-help)
+* For guidance on securing Helm, please see the [documentation](https://helm.sh/docs/using_helm/#securing-your-helm-installation) or ask in one of the [support channels](/community#how-can-i-help)
 * You are looking for help applying security updates
 
 ### Security Vulnerability Response
