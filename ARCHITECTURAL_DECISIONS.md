@@ -391,10 +391,10 @@ The plugin configuration includes custom `editUrl` logic that:
 ### For Contributors
 
 To add new community documents:
-1. Add entry to `communityRemoteDocs` array in `docusaurus.config.js`
+1. Add entry to `customFields.communityDocs.remoteDocs` in `docusaurus.config.js`
 2. Include any necessary frontmatter in the `meta` field
 3. Add link exceptions if the document has special link requirements
-4. Run `yarn docusaurus:download-remote-community` to import
+4. Run `yarn download-remote-community` to import
 
 ## Netlify Build Caching
 
