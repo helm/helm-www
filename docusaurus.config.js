@@ -75,6 +75,11 @@ const customFields = {
         "governance.md": "/community/governance/governance",
         "../MAINTAINERS.md": "/community/MAINTAINERS",
       },
+      // To-do: fix these broken links upstream
+      "SECURITY.md": {
+        // Anchors present in source links (eg, #how-can-i-help) will be appended automatically
+        "README.md": "/community",
+      },
       // To-do: consider importing art and slides into website?
       // "README.md": {
       //   "https://github.com/helm/community/tree/main/art": "/community/art",
