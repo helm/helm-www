@@ -336,6 +336,66 @@ Remove them only after:
 2. All redirects are tested and working
 3. No rollback scenarios require Hugo functionality
 
+## Community Documentation Import
+
+### Helm-Specific Requirement
+
+The Helm project maintains community governance documents in a [separate repository](https://github.com/helm/community) that need to be included in the website as an unversioned documentation section.
+
+### Solution
+
+Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-plugin-remote-content) to import and transform content at build time.
+
+**Architecture:**
+- **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`
+- **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle frontmatter injection and link rewriting
+- **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs` for maintainability
+
+### Key Design Decisions
+
+**Why remote content instead of git submodule:**
+- Allows selective import of specific files
+- Enables content transformation during import (frontmatter, link fixing)
+- Simpler for contributors who don't need to understand submodule workflows
+
+**Why transformation functions are needed:**
+- **Frontmatter injection:** Community repo files lack Docusaurus-required metadata (sidebar position, labels)
+- **H1 stripping:** When adding `title` frontmatter, the markdown H1 would override it. Stripping H1 allows the frontmatter title to control the page title
+- **Link rewriting:** Relative markdown links from source repo must map to website URL structure
+
+### Configuration Structure
+
+```javascript
+customFields: {
+  communityDocs: {
+    remoteDocs: [/* file list with optional metadata */],
+    linkExceptions: {/* manual link overrides */}
+  }
+}
+```
+
+The configuration is defined as a `customFields` constant before the main config object, allowing derived values to be calculated upfront. Helper functions in `src/utils/communityDocsConfig.js` derive paths and create the edit URL function. The plugins can then be defined inside the config object using these pre-calculated values, resulting in a cleaner structure.
+
+### Commands
+
+- `yarn download-remote-community` - Fetch and transform latest content
+- `yarn clear-remote-community` - Remove imported files (useful before re-import)
+
+### Edit URL Handling
+
+The plugin configuration includes custom `editUrl` logic that:
+1. Points imported files back to the helm/community repository
+2. Points locally-created files to helm-www repository
+3. Preserves correct paths for both scenarios
+
+### For Contributors
+
+To add new community documents:
+1. Add entry to `communityRemoteDocs` array in `docusaurus.config.js`
+2. Include any necessary frontmatter in the `meta` field
+3. Add link exceptions if the document has special link requirements
+4. Run `yarn docusaurus:download-remote-community` to import
+
 ## Netlify Build Caching
 
 ### Problem

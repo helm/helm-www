@@ -1,0 +1,94 @@
+const path = require("path");
+
+// Build front matter from any meta keys; emit nothing if meta is empty
+function buildFrontMatter(meta) {
+  if (!meta) return "";
+  const entries = Object.entries(meta).filter(
+    ([, value]) => value != null && value !== ""
+  );
+  if (entries.length === 0) return "";
+  const body = entries.map(([key, value]) => `${key}: ${value}`).join("\n");
+  return `---\n${body}\n---\n\n`;
+}
+
+// Strip a single top-level H1 only when meta.title exists
+function stripTopH1WhenFrontMatterTitle(rawBody, meta) {
+  if (!meta?.title) return rawBody;
+  return rawBody.replace(/^\s*#\s+[^\n]+\n/, "");
+}
+
+// Resolve relative link target against current file
+function resolveCanonicalTargetPath(currentFilePath, hrefPath) {
+  const currentDir = path.posix.dirname(currentFilePath);
+  return path.posix.normalize(path.posix.join(currentDir, hrefPath));
+}
+
+// Rewrite relative markdown links using exceptions/slug when available, otherwise strip .md/.mdx
+function rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath) {
+  const linkRe = /!?\[([^\]]+)\]\(([^)\s]+(?:\s+"[^"]*")?)\)/g;
+
+  return content.replace(linkRe, (full, text, hrefRaw) => {
+    if (full.startsWith("!")) return full; // image
+
+    const mTitle = hrefRaw.match(/^([^\s]+)(?:\s+"[^"]*")?$/);
+    const href = mTitle ? mTitle[1] : hrefRaw;
+
+    if (
+      /^([a-z]+:)?\/\//i.test(href) ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:")
+    ) {
+      return full;
+    }
+
+    const m = href.match(/^([^?#]+)(\?[^#]*)?(#.*)?$/);
+    if (!m) return full;
+    const [, pathPart, queryPart = "", hashPart = ""] = m;
+
+    // 1) File-specific exceptions
+    const fileExceptions = linkExceptions[filename];
+    if (
+      fileExceptions &&
+      Object.prototype.hasOwnProperty.call(fileExceptions, pathPart)
+    ) {
+      const forced = fileExceptions[pathPart];
+      return `[${text}](${forced}${queryPart}${hashPart})`;
+    }
+
+    // 2) Canonical target relative to current file (for slug lookup)
+    const canonicalTarget = resolveCanonicalTargetPath(filename, pathPart);
+    const slug = slugByPath[canonicalTarget];
+    if (slug) {
+      return `[${text}](${slug}${queryPart}${hashPart})`;
+    }
+
+    // 3) Default: strip extension
+    const stripped = pathPart.replace(/\.(md|mdx)$/i, "");
+    return `[${text}](${stripped}${queryPart}${hashPart})`;
+  });
+}
+
+// Compose transforms per file
+function transformImportedContent(filename, rawContent, metaByPath, slugByPath, linkExceptions) {
+  const meta = metaByPath[filename] || null;
+
+  // 1) Strip H1 when meta.title exists
+  let body = stripTopH1WhenFrontMatterTitle(rawContent, meta);
+
+  // 2) Prepend front matter only when there's something to add
+  const fm = buildFrontMatter(meta);
+  let content = fm ? `${fm}${body}` : body;
+
+  // 3) Rewrite links
+  content = rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath);
+
+  return content;
+}
+
+module.exports = {
+  buildFrontMatter,
+  stripTopH1WhenFrontMatterTitle,
+  resolveCanonicalTargetPath,
+  rewriteMarkdownLinks,
+  transformImportedContent,
+};
