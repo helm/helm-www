@@ -39,6 +39,12 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "/helm/v2"
   status = 200
 
+# Redirect docs/community to community section
+[[redirects]]
+  from = "/docs/community/*"
+  to = "/community/:splat"
+  status = 302
+
 # custom external redirects
 [[redirects]]
   from = "/calendar/release"
