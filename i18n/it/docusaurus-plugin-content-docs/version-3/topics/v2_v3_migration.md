@@ -8,8 +8,7 @@ Questa guida mostra come migrare Helm da v2 a v3. Helm v2 deve essere installato
 
 ## Panoramica dei cambiamenti di Helm 3
 
-L'elenco completo dei cambiamenti da Helm 2 a 3 è documentato nella sezione [FAQ
-(https://v3.helm.sh/docs/faq/#changes-since-helm-2). Di seguito è riportato un estratto
+L'elenco completo dei cambiamenti da Helm 2 a 3 è documentato nella sezione [FAQ](https://v3.helm.sh/docs/faq/#changes-since-helm-2). Di seguito è riportato un estratto
 di alcuni di questi cambiamenti che l'utente dovrebbe conoscere prima e durante la migrazione:
 
 1. Rimozione di Tiller:
