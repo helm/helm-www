@@ -121,20 +121,51 @@ const customFields = {
     // Exceptions for specific files/links → force target href
     // Keys are source filenames; inner keys are original hrefs; values are desired hrefs
     linkExceptions: {
+      "README.md": {
+        "https://github.com/helm/community/tree/main/art": "/community/art",
+      },
       "governance/README.md": {
         "governance.md": "/community/governance/governance",
         "../MAINTAINERS.md": "/community/MAINTAINERS",
+      },
+      "hips/hip-0005.md": {
+        "https://github.com/helm/community/blob/master/governance/governance.md":
+          "/community/governance/governance",
+      },
+      "hips/hip-0007.md": {
+        "https://github.com/helm/community/blob/master/governance/governance.md":
+          "/community/governance/governance",
+      },
+      "hips/hip-0012.md": {
+        "https://github.com/helm/community/blob/main/user-profiles.md":
+          "/community/user-profiles",
+      },
+      "hips/hip-0014.md": {
+        "https://github.com/helm/community/tree/main/governance":
+          "/community/governance/governance",
+        // To-do: is there a way to import maintainer-groups.yaml into docusaurus?
+        "https://github.com/helm/community/blob/main/Teams.md":
+          "https://github.com/helm/community/blob/main/maintainer-groups.yaml",
+      },
+      "hips/hip-0025.md": {
+        "https://github.com/helm/community/blob/main/user-profiles.md":
+          "/community/user-profiles",
+      },
+      "hips/hip-0026.md": {
+        "https://github.com/helm/community/blob/main/hips/hip-0012.md":
+          "/community/hips/hip-0012",
+        "https://github.com/helm/community/blob/main/hips/archives/helm/distributed-search.md":
+          "/community/hips/archives/helm/distributed-search",
+      },
+      "hips/archives/monocular/1.0-improvements.md": {
+        "https://github.com/helm/community/blob/master/proposals/distributed-search.md":
+          "/community/hips/archives/helm/distributed-search",
       },
       // To-do: fix these broken links upstream
       "SECURITY.md": {
         // Anchors present in source links (eg, #how-can-i-help) will be appended automatically
         "README.md": "/community",
       },
-      // To-do: consider importing art and slides into website?
-      // "README.md": {
-      //   "https://github.com/helm/community/tree/main/art": "/community/art",
-      //   "https://github.com/helm/community/tree/main/sides": "/community/sides",
-      // },
     },
   },
 };

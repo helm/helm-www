@@ -68,12 +68,8 @@ function resolveCanonicalTargetPath(currentFilePath, hrefPath) {
 
 // Helper to process a link href (used by both inline and reference links)
 function processLinkHref(filename, href, linkExceptions, slugByPath) {
-  // Skip external links, anchors, and mailto
-  if (
-    /^([a-z]+:)?\/\//i.test(href) ||
-    href.startsWith("#") ||
-    href.startsWith("mailto:")
-  ) {
+  // Don't process anchors or mailto
+  if (href.startsWith("#") || href.startsWith("mailto:")) {
     return href;
   }
 
@@ -81,7 +77,7 @@ function processLinkHref(filename, href, linkExceptions, slugByPath) {
   if (!m) return href;
   const [, pathPart, queryPart = "", hashPart = ""] = m;
 
-  // 1) File-specific exceptions
+  // 1) Check file-specific exceptions first (works for both absolute and relative URLs)
   const fileExceptions = linkExceptions[filename];
   if (
     fileExceptions &&
@@ -91,7 +87,12 @@ function processLinkHref(filename, href, linkExceptions, slugByPath) {
     return `${forced}${queryPart}${hashPart}`;
   }
 
-  // 2) Default: strip extension
+  // 2) For external links without exceptions, return as-is
+  if (/^([a-z]+:)?\/\//i.test(href)) {
+    return href;
+  }
+
+  // 3) For relative links: strip extension
   // Note: We don't apply slug mappings here because slugs change the page's own URL,
   // not how other pages link to it. Docusaurus handles the slug routing internally.
   const stripped = pathPart.replace(/\.(md|mdx)$/i, "");
@@ -119,12 +120,37 @@ function rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath) {
     return `[${text}](${processedHref})`;
   });
 
+  // Handle angle-bracket links: <http://example.com>
+  const angleBracketLinkRe = /<(https?:\/\/[^>]+)>/g;
+
+  content = content.replace(angleBracketLinkRe, (full, url) => {
+    const processedUrl = processLinkHref(filename, url, linkExceptions, slugByPath);
+    // If the URL was transformed, convert to markdown link format
+    if (processedUrl !== url && !processedUrl.startsWith('http')) {
+      return `[${processedUrl}](${processedUrl})`;
+    }
+    return `<${processedUrl}>`;
+  });
+
   // Then, handle reference link definitions: [ref]: url
   const refLinkDefRe = /^\[([^\]]+)\]:\s*(.+)$/gm;
 
   content = content.replace(refLinkDefRe, (full, ref, url) => {
-    // Process the URL part
-    const processedUrl = processLinkHref(filename, url.trim(), linkExceptions, slugByPath);
+    // Process the URL part (handle angle brackets in reference definitions too)
+    let cleanUrl = url.trim();
+    let isAngleBracket = false;
+
+    if (cleanUrl.startsWith('<') && cleanUrl.endsWith('>')) {
+      cleanUrl = cleanUrl.slice(1, -1);
+      isAngleBracket = true;
+    }
+
+    const processedUrl = processLinkHref(filename, cleanUrl, linkExceptions, slugByPath);
+
+    // Preserve angle brackets if they were there and URL wasn't transformed to internal link
+    if (isAngleBracket && processedUrl.startsWith('http')) {
+      return `[${ref}]: <${processedUrl}>`;
+    }
     return `[${ref}]: ${processedUrl}`;
   });
 
