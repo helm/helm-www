@@ -77,7 +77,7 @@ function processLinkHref(filename, href, linkExceptions, slugByPath) {
   if (!m) return href;
   const [, pathPart, queryPart = "", hashPart = ""] = m;
 
-  // 1) Check file-specific exceptions first (works for both absolute and relative URLs)
+  // Check file-specific exceptions (works for both absolute and relative URLs)
   const fileExceptions = linkExceptions[filename];
   if (
     fileExceptions &&
@@ -87,16 +87,9 @@ function processLinkHref(filename, href, linkExceptions, slugByPath) {
     return `${forced}${queryPart}${hashPart}`;
   }
 
-  // 2) For external links without exceptions, return as-is
-  if (/^([a-z]+:)?\/\//i.test(href)) {
-    return href;
-  }
-
-  // 3) For relative links: strip extension
-  // Note: We don't apply slug mappings here because slugs change the page's own URL,
-  // not how other pages link to it. Docusaurus handles the slug routing internally.
-  const stripped = pathPart.replace(/\.(md|mdx)$/i, "");
-  return `${stripped}${queryPart}${hashPart}`;
+  // Otherwise, return the link as-is (don't strip .md or transform paths)
+  // Since we're keeping the same file structure, internal links should just work
+  return href;
 }
 
 // Rewrite relative markdown links using exceptions/slug when available, otherwise strip .md/.mdx
