@@ -13,7 +13,7 @@ riutilizzabili tra i vari chart, evitando ripetizioni e mantenendo i chart
 
 Il library chart è stato introdotto in Helm 3 per riconoscere formalmente i chart comuni o
  di aiuto che sono stati utilizzati dai manutentori dei chart a partire da Helm 2. Includendolo come
- tipo di chartrafico, fornisce:
+ tipo di chart, fornisce:
 - un mezzo per distinguere esplicitamente tra chart comuni e chart applicativi
 - Una logica per impedire l'installazione di un chart comune
 - Nessun rendering di template in un chart comune, che potrebbe contenere artefatti di rilascio.
