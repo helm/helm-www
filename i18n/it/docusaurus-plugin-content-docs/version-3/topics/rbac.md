@@ -62,7 +62,7 @@ Questi sono alcuni ClusterRoles disponibili di default in Kubernetes. Sono
 | `cluster-admin`     | `system:masters` group     | Consente l'accesso al superutente per eseguire qualsiasi azione su qualsiasi risorsa. Se usato in un ClusterRoleBinding, dà il pieno controllo su ogni risorsa del cluster e su tutti i namespace. Se usato in un RoleBinding, dà il pieno controllo su ogni risorsa nel namespace del rolebinding, compreso namespace stesso.
 | `admin`             | Nessuno                       | Consente l'accesso come amministratore, da concedere all'interno di un namespace utilizzando un RoleBinding. Se usato in un RoleBinding, consente l'accesso in lettura/scrittura alla maggior parte delle risorse di un namespace, compresa la possibilità di creare ruoli e rolebindings all'interno del namespace. Non consente l'accesso in scrittura alla quota di risorse o al namespace stesso.
 | `edit`              | Nessuno                       | Consente l'accesso in lettura/scrittura alla maggior parte degli oggetti di un namespace. Non consente di visualizzare o modificare i ruoli o i rolebindings.
-| `view`              | Nesuno                       | Consente l'accesso in sola lettura alla maggior parte degli oggetti di un namespace. Non consente di visualizzare i ruoli o i rolebindings. Non consente di visualizzare i secret, poiché questi sono a valore elevato.
+| `view`              | Nessuno                       | Consente l'accesso in sola lettura alla maggior parte degli oggetti di un namespace. Non consente di visualizzare i ruoli o i rolebindings. Non consente di visualizzare i secret, poiché questi sono a valore elevato.
 
 ## Limitare l'accesso di un account utente utilizzando RBAC
 
