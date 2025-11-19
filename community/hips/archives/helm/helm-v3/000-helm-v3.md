@@ -30,8 +30,8 @@ without major change.
 
 ## Purpose
 
-The design presented herein is intended to begin with the [user profiles](../../../user-profiles)
-identified for helm and match as many of the [user stories](./011-user_stories)
+The design presented herein is intended to begin with the [user profiles](../../../../user-profiles.md)
+identified for helm and match as many of the [user stories](./011-user_stories.md)
 as could be accommodated
 
 ## The Basic Architecture
@@ -85,14 +85,14 @@ Other changes to commands are described in their relevant sections within this d
 
 ## Table of Contents
 
-1.  [Charts](./001-charts)
-2.  [Event System](./002-events)
-3.  [State Storage](./003-state)
-4.  [Hooks](./004-hooks)
-5.  [Plugins](./005-plugins)
-6.  [Repositories](./006-repositories)
-7.  [Security Considerations](./007-security)
-8.  [Appendix A: A Helm Controller](./008-controller)
-9.  [Appendix B: What Is A Package Manager](./009-package_manager)
-10. [Appendix C: Removed Sections](010-removed)
-11. [Appendix D: User Stories](011-user_stories)
+1.  [Charts](./001-charts.md)
+2.  [Event System](./002-events.md)
+3.  [State Storage](./003-state.md)
+4.  [Hooks](./004-hooks.md)
+5.  [Plugins](./005-plugins.md)
+6.  [Repositories](./006-repositories.md)
+7.  [Security Considerations](./007-security.md)
+8.  [Appendix A: A Helm Controller](./008-controller.md)
+9.  [Appendix B: What Is A Package Manager](./009-package_manager.md)
+10. [Appendix C: Removed Sections](010-removed.md)
+11. [Appendix D: User Stories](011-user_stories.md)

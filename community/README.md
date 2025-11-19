@@ -19,7 +19,7 @@ This is the starting point for becoming a contributor to the Helm project - impr
 
 ## Communicating
 
-The [communication](communication) page lists communication channels like chat,
+The [communication](communication.md) page lists communication channels like chat,
 issues, mailing lists, meetings, conferences, etc.
 
 ## Assets
@@ -33,10 +33,10 @@ issues, mailing lists, meetings, conferences, etc.
 
 #### First, you should join our communication forums:
 
-- Follow us on [Twitter](communication#social-media)
-- Join us on [Slack](communication#slack)
-- Subscribe to our [mailing lists](communication#mailing-lists)
-- Join the [weekly meeting](communication#meetings)
+- Follow us on [Twitter](communication.md#social-media)
+- Join us on [Slack](communication.md#slack)
+- Subscribe to our [mailing lists](communication.md#mailing-lists)
+- Join the [weekly meeting](communication.md#meetings)
 
 #### Next, get set-up with the basics (if not already done so):
 
@@ -63,7 +63,7 @@ Areas you can start working on:
 - Just ask an [owner] for suggestions.
 
 #### Last but not least, we'd love to know what you want to see on the [Helm Blog](https://helm.sh/blog).
-Feel free to submit a blog post topic [here](blog-topics).
+Feel free to submit a blog post topic [here](blog-topics.md).
 
 ## Your First Contribution
 

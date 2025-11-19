@@ -29,7 +29,7 @@ and are of the form "As a _ROLE_ I want _TASK_ so that _GOAL_.
 
 ## Extensions/Lua
 
-These all assume a Lua engine, and describe things to be done in Lua scripts. See the current [events](002-events) and [chart structure](001-charts) proposals
+These all assume a Lua engine, and describe things to be done in Lua scripts. See the current [events](002-events.md) and [chart structure](001-charts.md) proposals
 
 ### Values
 
