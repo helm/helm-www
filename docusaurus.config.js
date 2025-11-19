@@ -77,6 +77,8 @@ const customFields = {
           "hips/archives/helm/helm-v3/research/package-manager-ux.md",
       },
 
+      { origFilename: "art/readme.md", meta: { title: "Styleguide" } },
+
       // Changes to imported files
       {
         origFilename: "README.md",
