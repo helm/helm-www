@@ -135,6 +135,12 @@ const customFields = {
       "hips/hip-0007.md": {
         "https://github.com/helm/community/blob/master/governance/governance.md":
           "/community/governance/governance",
+        // To-do: is there a way to import maintainer-groups.yaml into docusaurus?
+        "../maintainer-groups.yaml":
+          "https://github.com/helm/community/blob/main/maintainer-groups.yaml",
+      },
+      "hips/hip-0009.md": {
+        "../security.md": "../SECURITY.md",
       },
       "hips/hip-0012.md": {
         "https://github.com/helm/community/blob/main/user-profiles.md":
@@ -165,6 +171,12 @@ const customFields = {
       "SECURITY.md": {
         // Anchors present in source links (eg, #how-can-i-help) will be appended automatically
         "README.md": "/community",
+      },
+      "hips/archives/helm/helm-v3/000-helm-v3.md": {
+        "../../../user-profiles.md": "../../../../user-profiles.md",
+      },
+      "hips/archives/helm/helm-v3/011-user_stories.md": {
+        "../user-profiles.md": "../../../../user-profiles.md",
       },
     },
   },
