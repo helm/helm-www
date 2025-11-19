@@ -138,7 +138,9 @@ const customFields = {
 };
 
 // Derive helpers from community docs configuration
-const { remoteDocPaths, metaByPath, slugByPath } = deriveHelpers(customFields.communityDocs.remoteDocs);
+const { remoteDocPaths, metaByPath, slugByPath } = deriveHelpers(
+  customFields.communityDocs.remoteDocs
+);
 const linkExceptions = customFields.communityDocs.linkExceptions;
 
 /** @type {import('@docusaurus/types').Config} */
@@ -292,7 +294,15 @@ const config = {
         documents: remoteDocPaths,
         noRuntimeDownloads: false,
         modifyContent(filename, content) {
-          return { content: transformImportedContent(filename, content, metaByPath, slugByPath, linkExceptions) };
+          return {
+            content: transformImportedContent(
+              filename,
+              content,
+              metaByPath,
+              slugByPath,
+              linkExceptions
+            ),
+          };
         },
       },
     ],
