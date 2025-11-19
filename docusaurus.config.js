@@ -241,7 +241,7 @@ const config = {
           "https://raw.githubusercontent.com/helm/community/refs/heads/main/",
         outDir: "community",
         documents: remoteDocPaths,
-        noRuntimeDownloads: true,
+        noRuntimeDownloads: false,
         modifyContent(filename, content) {
           return { content: transformImportedContent(filename, content, metaByPath, slugByPath, linkExceptions) };
         },
