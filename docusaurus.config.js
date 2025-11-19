@@ -25,8 +25,11 @@ const customFields = {
     remoteDocs: [
       // No changes
       { origFilename: "blog-topics.md" },
+      { origFilename: "code-of-conduct.md" },
       { origFilename: "communication.md" },
       { origFilename: "MAINTAINERS.md" },
+      { origFilename: "incubator.md" },
+      { origFilename: "stable-repo-charts-new-locations.md" },
       { origFilename: "user-profiles.md" },
 
       { origFilename: "hips/README.md" },
