@@ -340,61 +340,49 @@ Remove them only after:
 
 ### Helm-Specific Requirement
 
-The Helm project maintains community governance documents in a [separate repository](https://github.com/helm/community) that need to be included in the website as an unversioned documentation section.
+The Helm project maintains community governance documents in a [separate repository](https://github.com/helm/community) that need to be included in the website as an unversioned documentation section with proper Docusaurus integration.
 
 ### Solution
 
 Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-plugin-remote-content) to import and transform content at build time.
 
 **Architecture:**
-- **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`
-- **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle frontmatter injection and link rewriting
-- **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs` for maintainability
+- **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`, creating `/community/*` URLs
+- **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle all content processing
+- **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs`
 
-### Key Design Decisions
+### Content Transformation Features
 
-**Why remote content instead of git submodule:**
-- Allows selective import of specific files
-- Enables content transformation during import (frontmatter, link fixing)
-- Simpler for contributors who don't need to understand submodule workflows
+**Import notice headers:** Every imported file gets a warning header indicating it shouldn't be edited directly, with a link to the source file in the helm/community repository.
 
-**Why transformation functions are needed:**
-- **Frontmatter injection:** Community repo files lack Docusaurus-required metadata (sidebar position, labels)
-- **H1 stripping:** When adding `title` frontmatter, the markdown H1 would override it. Stripping H1 allows the frontmatter title to control the page title
-- **Link rewriting:** Relative markdown links from source repo must map to website URL structure
+**HIP (Helm Improvement Proposal) formatting:** HIP documents get special treatment:
+- Metadata fields (hip, authors, created, status, etc.) displayed as a markdown table
+- Sidebar labels include HIP number for easy navigation (e.g., "0023: Utilize Server Side Apply")
+- Frontmatter cleaned to remove duplicate metadata
 
-### Configuration Structure
+**Plain text file handling:** `.txt` files (like meeting notes) are automatically:
+- Converted to `.md` files during import
+- Title extracted from content headers
+- Content wrapped in code blocks to preserve formatting
 
-```javascript
-customFields: {
-  communityDocs: {
-    remoteDocs: [/* file list with optional metadata */],
-    linkExceptions: {/* manual link overrides */}
-  }
-}
-```
-
-The configuration is defined as a `customFields` constant before the main config object, allowing derived values to be calculated upfront. Helper functions in `src/utils/communityDocsConfig.js` derive paths and create the edit URL function. The plugins can then be defined inside the config object using these pre-calculated values, resulting in a cleaner structure.
+**Link transformations:** Only applied for configured exceptions - most links work as-is since the file structure mirrors the source repository.
 
 ### Commands
 
-- `yarn download-remote-community` - Fetch and transform latest content
-- `yarn clear-remote-community` - Remove imported files (useful before re-import)
-
-### Edit URL Handling
-
-The plugin configuration includes custom `editUrl` logic that:
-1. Points imported files back to the helm/community repository
-2. Points locally-created files to helm-www repository
-3. Preserves correct paths for both scenarios
+- `yarn download-remote-community` - Fetch and transform latest content via GitHub API
+- `yarn clear-remote-community` - Remove imported files before re-import
 
 ### For Contributors
 
 To add new community documents:
 1. Add entry to `customFields.communityDocs.remoteDocs` in `docusaurus.config.js`
-2. Include any necessary frontmatter in the `meta` field
-3. Add link exceptions if the document has special link requirements
-4. Run `yarn download-remote-community` to import
+2. Include optional `meta` field for frontmatter overrides
+3. Add link exceptions only if specific links need custom mapping
+4. Run `yarn download-remote-community` to test import locally
+
+To modify transformation logic:
+1. Edit `src/utils/communityDocsTransforms.js` for content processing
+2. Test changes with `yarn download-remote-community`
 
 ## Netlify Build Caching
 
