@@ -1,20 +1,63 @@
 const path = require("path");
+const yaml = require("js-yaml");
 
-// Build front matter from any meta keys; emit nothing if meta is empty
-function buildFrontMatter(meta) {
-  if (!meta) return "";
-  const entries = Object.entries(meta).filter(
-    ([, value]) => value != null && value !== ""
-  );
-  if (entries.length === 0) return "";
-  const body = entries.map(([key, value]) => `${key}: ${value}`).join("\n");
-  return `---\n${body}\n---\n\n`;
+// Parse existing frontmatter and content
+function parseFrontMatterAndContent(rawContent) {
+  const frontMatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
+  const match = rawContent.match(frontMatterRegex);
+
+  if (match) {
+    const frontMatterStr = match[1];
+    const content = match[2];
+
+    try {
+      // Use js-yaml to parse frontmatter properly
+      const frontMatter = yaml.load(frontMatterStr) || {};
+      return { frontMatter, content };
+    } catch (e) {
+      console.warn(`Failed to parse frontmatter YAML: ${e.message}`);
+      return { frontMatter: {}, content: rawContent };
+    }
+  }
+
+  return { frontMatter: {}, content: rawContent };
 }
 
-// Strip a single top-level H1 only when meta.title exists
-function stripTopH1WhenFrontMatterTitle(rawBody, meta) {
-  if (!meta?.title) return rawBody;
-  return rawBody.replace(/^\s*#\s+[^\n]+\n/, "");
+// Extract H1 title from content
+function extractH1Title(content) {
+  const h1Match = content.match(/^\s*#\s+([^\n]+)\n/);
+  return h1Match ? h1Match[1].trim() : null;
+}
+
+// Remove H1 from content (including the newline)
+function stripH1(content) {
+  // This removes the H1 and its trailing newline, but preserves any blank lines after it
+  return content.replace(/^\s*#\s+[^\n]+\n/, "");
+}
+
+// Build front matter from merged meta
+function buildFrontMatter(meta) {
+  if (!meta || Object.keys(meta).length === 0) return "";
+
+  // Filter out null/empty values
+  const cleanMeta = {};
+  for (const [key, value] of Object.entries(meta)) {
+    if (value != null && value !== "") {
+      cleanMeta[key] = value;
+    }
+  }
+
+  if (Object.keys(cleanMeta).length === 0) return "";
+
+  // Use js-yaml to properly dump the frontmatter
+  // This handles special characters, arrays, etc. correctly
+  const yamlStr = yaml.dump(cleanMeta, {
+    lineWidth: -1, // Don't wrap long lines
+    quotingType: '"', // Use double quotes when needed
+    forceQuotes: false, // Only quote when necessary
+  });
+
+  return `---\n${yamlStr}---\n\n`;
 }
 
 // Resolve relative link target against current file
@@ -82,33 +125,163 @@ TO MAKE CHANGES:
 
 Last import: ${timestamp}
 -->
+`;  // Removed extra newline here
+}
 
-`;
+// Format HIP sidebar_label with number prefix
+function formatHipSidebarLabel(meta, originalFrontmatter, filename) {
+  // Check if this is a HIP file (has hip field in original frontmatter)
+  const isHip = filename.startsWith('hips/') && originalFrontmatter && originalFrontmatter.hip;
+
+  if (isHip && originalFrontmatter.hip && meta.title) {
+    // Format hip number with leading zeros (4 digits)
+    const hipNum = String(originalFrontmatter.hip).padStart(4, '0');
+    // Add sidebar_label with HIP number prefix
+    meta.sidebar_label = `${hipNum}: ${meta.title}`;
+  }
+
+  return meta;
+}
+
+// Create markdown table from HIP frontmatter
+function createHipFrontmatterTable(originalFrontmatter, filename) {
+  // Only create table for HIP files
+  if (!filename.startsWith('hips/') || !originalFrontmatter.hip) {
+    return '';
+  }
+
+  // Define which fields to show and their display names
+  // Order matches HIP-0001 specification
+  const hipFields = [
+    { key: 'hip', label: 'HIP' },
+    { key: 'title', label: 'Title' },
+    { key: 'authors', label: 'Author(s)' },
+    { key: 'created', label: 'Created' },
+    { key: 'type', label: 'Type' },
+    { key: 'status', label: 'Status' },
+    { key: 'helm-version', label: 'Helm Version' },  // optional
+    { key: 'requires', label: 'Requires' },  // optional
+    { key: 'replaces', label: 'Replaces' },  // optional
+    { key: 'superseded-by', label: 'Superseded by' },  // optional
+  ];
+
+  // Collect fields that have values
+  const fieldsWithValues = [];
+  const values = [];
+
+  for (const field of hipFields) {
+    const value = originalFrontmatter[field.key];
+    if (value !== undefined && value !== null && value !== '') {
+      fieldsWithValues.push(field);
+
+      let displayValue;
+      // Handle arrays (like authors)
+      if (Array.isArray(value)) {
+        displayValue = value.join(', ');
+      } else {
+        displayValue = String(value);
+      }
+
+      // Escape pipe characters in values
+      displayValue = displayValue.replace(/\|/g, '\\|');
+      values.push(displayValue);
+    }
+  }
+
+  if (fieldsWithValues.length === 0) {
+    return '';
+  }
+
+  // Build header row with field names
+  const headerRow = '| ' + fieldsWithValues.map(f => `**${f.label}**`).join(' | ') + ' |';
+
+  // Build separator row with correct number of columns
+  const separatorRow = '|' + fieldsWithValues.map(() => '---').join('|') + '|';
+
+  // Build data row with values
+  const dataRow = '| ' + values.join(' | ') + ' |';
+
+  return '\n' + headerRow + '\n' + separatorRow + '\n' + dataRow + '\n\n';
 }
 
 // Compose transforms per file
 function transformImportedContent(filename, rawContent, metaByPath, slugByPath, linkExceptions) {
-  const meta = metaByPath[filename] || null;
+  // 1) Parse existing frontmatter and content
+  const { frontMatter: existingFrontMatter, content: bodyWithH1 } = parseFrontMatterAndContent(rawContent);
 
-  // 1) Strip H1 when meta.title exists
-  let body = stripTopH1WhenFrontMatterTitle(rawContent, meta);
+  // Keep original frontmatter for HIP table
+  const originalFrontmatter = { ...existingFrontMatter };
 
-  // 2) Prepend front matter only when there's something to add
-  const fm = buildFrontMatter(meta);
+  // 2) Extract H1 title and remove it from content
+  const h1Title = extractH1Title(bodyWithH1);
+  const bodyWithoutH1 = stripH1(bodyWithH1);
 
-  // 3) Add import notice after frontmatter but before content
+  // 3) For HIPs, remove HIP-specific fields from merged frontmatter (they'll go in the table)
+  const hipSpecificFields = [
+    'hip',
+    'authors',
+    'created',
+    'type',
+    'status',
+    'helm-version',
+    'requires',
+    'replaces',
+    'superseded-by'
+  ];
+  const isHip = filename.startsWith('hips/') && existingFrontMatter.hip;
+
+  let mergedMeta;
+  if (isHip) {
+    // For HIPs, filter out HIP-specific fields from frontmatter
+    const filteredExisting = {};
+    for (const [key, value] of Object.entries(existingFrontMatter)) {
+      if (!hipSpecificFields.includes(key)) {
+        filteredExisting[key] = value;
+      }
+    }
+    mergedMeta = {
+      ...filteredExisting,
+      ...metaByPath[filename] || {}
+    };
+  } else {
+    // For non-HIPs, keep everything
+    mergedMeta = {
+      ...existingFrontMatter,
+      ...metaByPath[filename] || {}
+    };
+  }
+
+  // Add extracted H1 as title if no title is specified
+  if (h1Title && !mergedMeta.title) {
+    mergedMeta.title = h1Title;
+  }
+
+  // 4) Apply HIP-specific sidebar_label formatting
+  formatHipSidebarLabel(mergedMeta, originalFrontmatter, filename);
+
+  // 5) Build frontmatter (will always exist since we extract H1 or have config)
+  const fm = buildFrontMatter(mergedMeta);
+
+  // 6) Add import notice after frontmatter
   const importNotice = addImportNotice(filename);
-  let content = fm ? `${fm}${importNotice}${body}` : `${importNotice}${body}`;
 
-  // 4) Rewrite links
+  // 7) Create HIP frontmatter table if applicable
+  const hipTable = createHipFrontmatterTable(originalFrontmatter, filename);
+
+  // 8) Compose final content: frontmatter + import notice + HIP table + body
+  let content = `${fm}${importNotice}${hipTable}${bodyWithoutH1}`;
+
+  // 9) Rewrite links
   content = rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath);
 
   return content;
 }
 
 module.exports = {
+  parseFrontMatterAndContent,
+  extractH1Title,
+  stripH1,
   buildFrontMatter,
-  stripTopH1WhenFrontMatterTitle,
   resolveCanonicalTargetPath,
   rewriteMarkdownLinks,
   transformImportedContent,
