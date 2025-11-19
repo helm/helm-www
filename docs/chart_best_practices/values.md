@@ -75,7 +75,7 @@ non-optional, nested values may be used to improve readability.
 
 ## Make Types Clear
 
-YAML's type coercion rules are sometimes counterintuitive. For example, `foo:
+YAML's type conversion rules are sometimes counterintuitive. For example, `foo:
 false` is not the same as `foo: "false"`. Large integers like `foo: 12345678`
 will get converted to scientific notation in some cases.
 
