@@ -82,6 +82,12 @@ const customFields = {
 
       { origFilename: "art/readme.md", meta: { title: "Styleguide" } },
 
+      { origFilename: "meeting-notes/2017.txt" },
+      { origFilename: "meeting-notes/2018.txt" },
+      { origFilename: "meeting-notes/2019.txt" },
+      { origFilename: "meeting-notes/2020.txt" },
+      { origFilename: "meeting-notes/2021.txt" },
+
       // Changes to imported files
       {
         origFilename: "README.md",
@@ -342,15 +348,16 @@ const config = {
         documents: remoteDocPaths,
         noRuntimeDownloads: false,
         modifyContent(filename, content) {
-          return {
-            content: transformImportedContent(
-              filename,
-              content,
-              metaByPath,
-              slugByPath,
-              linkExceptions
-            ),
-          };
+          const transformed = transformImportedContent(
+            filename,
+            content,
+            metaByPath,
+            slugByPath,
+            linkExceptions
+          );
+
+          // transformImportedContent now returns an object with content and optionally filename
+          return transformed;
         },
       },
     ],

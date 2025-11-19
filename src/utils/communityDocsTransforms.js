@@ -243,8 +243,57 @@ function createHipFrontmatterTable(originalFrontmatter, filename) {
   return '\n' + headerRow + '\n' + separatorRow + '\n' + dataRow + '\n\n';
 }
 
+// Extract title from .txt file (handles both Markdown and underline-style headers)
+function extractTxtTitle(content) {
+  // First try markdown-style H1
+  const h1Match = content.match(/^\s*#\s+([^\n]+)\n/);
+  if (h1Match) return { title: h1Match[1].trim(), contentWithoutTitle: content.replace(/^\s*#\s+[^\n]+\n/, "") };
+
+  // Then try underline-style header (text followed by ===)
+  const underlineMatch = content.match(/^\s*([^\n]+)\n=+\n/);
+  if (underlineMatch) {
+    return {
+      title: underlineMatch[1].trim(),
+      contentWithoutTitle: content.replace(/^\s*[^\n]+\n=+\n/, "")
+    };
+  }
+
+  return { title: null, contentWithoutTitle: content };
+}
+
 // Compose transforms per file
 function transformImportedContent(filename, rawContent, metaByPath, slugByPath, linkExceptions) {
+  // Check if this is a .txt file
+  const isTxtFile = filename.endsWith('.txt');
+
+  // For .txt files, handle them specially
+  if (isTxtFile) {
+    // Extract title from the content
+    const { title, contentWithoutTitle } = extractTxtTitle(rawContent);
+
+    // Build metadata
+    const meta = {
+      ...(metaByPath[filename] || {}),
+      ...(title ? { title } : {})
+    };
+
+    // Build frontmatter
+    const fm = buildFrontMatter(meta);
+
+    // Add import notice
+    const importNotice = addImportNotice(filename);
+
+    // Wrap the content in a code block
+    const wrappedContent = `\`\`\`txt\n${contentWithoutTitle.trim()}\n\`\`\`\n`;
+
+    // Return transformed content with new filename
+    return {
+      content: `${fm}${importNotice}\n${wrappedContent}`,
+      filename: filename.replace(/\.txt$/, '.md')
+    };
+  }
+
+  // Original logic for non-.txt files
   // 1) Parse existing frontmatter and content
   const { frontMatter: existingFrontMatter, content: bodyWithH1 } = parseFrontMatterAndContent(rawContent);
 
@@ -313,7 +362,8 @@ function transformImportedContent(filename, rawContent, metaByPath, slugByPath, 
   // 9) Rewrite links
   content = rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath);
 
-  return content;
+  // Return as object for consistency (even for non-.txt files)
+  return { content };
 }
 
 module.exports = {
