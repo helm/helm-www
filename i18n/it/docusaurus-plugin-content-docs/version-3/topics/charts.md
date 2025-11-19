@@ -30,7 +30,7 @@ All'interno di questa directory, Helm si aspetta una struttura che corrisponde a
 
 ```text
 wordpress/
-  Chart.yaml          # Un file YAML contenente informazioni sul chartt
+  Chart.yaml          # Un file YAML contenente informazioni sul chart
   LICENSE             # OPZIONALE: un file di testo semplice contenente la licenza per il chart.
   README.md           # OPZIONALE: un file README human-readable
   values.yaml         # I valori di configurazione predefiniti per questo chart
