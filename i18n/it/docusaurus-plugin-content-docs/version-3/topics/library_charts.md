@@ -98,7 +98,7 @@ This takes an array of three values:
 
 Questo è importante quando un chart vuole utilizzare codice comune che deve essere personalizzato con la sua configurazione.
 
-Infine, cambiamo il tipo di grafico in `library`. Questo richiede la modifica di
+Infine, cambiamo il tipo di chart in `library`. Questo richiede la modifica di
 `mylibchart/Chart.yaml` come segue:
 
 ```yaml
