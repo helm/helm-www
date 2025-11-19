@@ -47,7 +47,7 @@ dove tutti i CRD in essa definiti saranno installati prima di qualsiasi renderin
        - fetch --> pull
        - home (rimosso)
        - init (rimosso)
-       - install: richiede il nome dela release o l'argomento `--generate-name`.
+       - install: richiede il nome della release o l'argomento `--generate-name`.
        - inspect --> show
        - reset (rimosso)
        - serve (rimosso)
