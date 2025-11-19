@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"log"
 
-	"helm.sh/helm/v3/pkg/action"
-	"helm.sh/helm/v3/pkg/chart/loader"
-	"helm.sh/helm/v3/pkg/cli"
-	"helm.sh/helm/v3/pkg/downloader"
-	"helm.sh/helm/v3/pkg/getter"
+	"helm.sh/helm/v4/pkg/action"
+	"helm.sh/helm/v4/pkg/chart"
+	"helm.sh/helm/v4/pkg/chart/loader"
+	"helm.sh/helm/v4/pkg/cli"
+	"helm.sh/helm/v4/pkg/downloader"
+	"helm.sh/helm/v4/pkg/getter"
 )
 
 func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettings, releaseName string, chartRef string, chartVersion string, releaseValues map[string]interface{}) error {
@@ -21,12 +22,12 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 	upgradeClient := action.NewUpgrade(actionConfig)
 
 	upgradeClient.Namespace = settings.Namespace()
-	upgradeClient.DryRunOption = "none"
+	upgradeClient.DryRunStrategy = "none"
 	upgradeClient.Version = chartVersion
+	upgradeClient.WaitStrategy = "watcher"
 
-	registryClient, err := newRegistryClientTLS(
+	registryClient, err := newRegistryClient(
 		settings,
-		logger,
 		upgradeClient.CertFile,
 		upgradeClient.KeyFile,
 		upgradeClient.CaFile,
@@ -45,12 +46,18 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 	providers := getter.All(settings)
 
 	// Check chart dependencies to make sure all are present in /charts
-	chart, err := loader.Load(chartPath)
+	charter, err := loader.Load(chartPath)
 	if err != nil {
 		return fmt.Errorf("failed to load chart: %w", err)
 	}
-	if req := chart.Metadata.Dependencies; req != nil {
-		if err := action.CheckDependencies(chart, req); err != nil {
+
+	chartAccessor, err := chart.NewDefaultAccessor(charter)
+	if err != nil {
+		return fmt.Errorf("error creating chart accessor: %w", err)
+	}
+
+	if chartDependencies := chartAccessor.MetaDependencies(); chartDependencies != nil {
+		if err := action.CheckDependencies(charter, chartDependencies); err != nil {
 			err = fmt.Errorf("failed to check chart dependencies: %w", err)
 			if !upgradeClient.DependencyUpdate {
 				return err
@@ -70,13 +77,13 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 				return err
 			}
 			// Reload the chart with the updated Chart.lock file.
-			if chart, err = loader.Load(chartPath); err != nil {
+			if charter, err = loader.Load(chartPath); err != nil {
 				return fmt.Errorf("failed to reload chart after repo update: %w", err)
 			}
 		}
 	}
 
-	release, err := upgradeClient.RunWithContext(ctx, releaseName, chart, releaseValues)
+	release, err := upgradeClient.RunWithContext(ctx, releaseName, charter, releaseValues)
 	if err != nil {
 		return fmt.Errorf("failed to run upgrade action: %w", err)
 	}
