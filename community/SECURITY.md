@@ -70,7 +70,7 @@ The security team is made up of a subset of the Helm project maintainers who are
 
 ### Responsibilities
 
-* Members MUST be active project maintainers on active (non-deprecated) Helm projects as defined in [the governance](governance)
+* Members MUST be active project maintainers on active (non-deprecated) Helm projects as defined in [the governance](governance/governance)
 * Members SHOULD engage in each reported vulnerability, at a minimum to make sure it is being handled
 * Members MUST keep the vulnerability details private and only share on a need to know basis
 

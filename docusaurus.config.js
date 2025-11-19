@@ -56,6 +56,27 @@ const customFields = {
       { origFilename: "hips/hip-0025.md" },
       { origFilename: "hips/hip-0026.md" },
 
+      { origFilename: "hips/archives/README.md" },
+      { origFilename: "hips/archives/monocular/1.0-improvements.md" },
+      { origFilename: "hips/archives/helm/distributed-search.md" },
+      { origFilename: "hips/archives/helm/helm-v3/000-helm-v3.md" },
+      { origFilename: "hips/archives/helm/helm-v3/001-charts.md" },
+      { origFilename: "hips/archives/helm/helm-v3/002-events.md" },
+      { origFilename: "hips/archives/helm/helm-v3/003-state.md" },
+      { origFilename: "hips/archives/helm/helm-v3/004-hooks.md" },
+      { origFilename: "hips/archives/helm/helm-v3/005-plugins.md" },
+      { origFilename: "hips/archives/helm/helm-v3/006-repositories.md" },
+      { origFilename: "hips/archives/helm/helm-v3/007-security.md" },
+      { origFilename: "hips/archives/helm/helm-v3/008-controller.md" },
+      { origFilename: "hips/archives/helm/helm-v3/009-package_manager.md" },
+      { origFilename: "hips/archives/helm/helm-v3/010-removed.md" },
+      { origFilename: "hips/archives/helm/helm-v3/011-user_stories.md" },
+      { origFilename: "hips/archives/helm/helm-v3/012-chart-dev-stories.md" },
+      {
+        origFilename:
+          "hips/archives/helm/helm-v3/research/package-manager-ux.md",
+      },
+
       // Changes to imported files
       {
         origFilename: "README.md",
@@ -258,6 +279,7 @@ const config = {
         sidebarPath: "./sidebars_community.js",
         editLocalizedFiles: true,
         editUrl: createCommunityEditUrl(remoteDocPaths),
+        numberPrefixParser: false,
       },
     ],
     [

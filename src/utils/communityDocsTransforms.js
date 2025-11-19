@@ -66,49 +66,69 @@ function resolveCanonicalTargetPath(currentFilePath, hrefPath) {
   return path.posix.normalize(path.posix.join(currentDir, hrefPath));
 }
 
+// Helper to process a link href (used by both inline and reference links)
+function processLinkHref(filename, href, linkExceptions, slugByPath) {
+  // Skip external links, anchors, and mailto
+  if (
+    /^([a-z]+:)?\/\//i.test(href) ||
+    href.startsWith("#") ||
+    href.startsWith("mailto:")
+  ) {
+    return href;
+  }
+
+  const m = href.match(/^([^?#]+)(\?[^#]*)?(#.*)?$/);
+  if (!m) return href;
+  const [, pathPart, queryPart = "", hashPart = ""] = m;
+
+  // 1) File-specific exceptions
+  const fileExceptions = linkExceptions[filename];
+  if (
+    fileExceptions &&
+    Object.prototype.hasOwnProperty.call(fileExceptions, pathPart)
+  ) {
+    const forced = fileExceptions[pathPart];
+    return `${forced}${queryPart}${hashPart}`;
+  }
+
+  // 2) Default: strip extension
+  // Note: We don't apply slug mappings here because slugs change the page's own URL,
+  // not how other pages link to it. Docusaurus handles the slug routing internally.
+  const stripped = pathPart.replace(/\.(md|mdx)$/i, "");
+  return `${stripped}${queryPart}${hashPart}`;
+}
+
 // Rewrite relative markdown links using exceptions/slug when available, otherwise strip .md/.mdx
 function rewriteMarkdownLinks(filename, content, linkExceptions, slugByPath) {
-  const linkRe = /!?\[([^\]]+)\]\(([^)\s]+(?:\s+"[^"]*")?)\)/g;
+  // First, handle inline links: [text](url)
+  const inlineLinkRe = /!?\[([^\]]+)\]\(([^)\s]+(?:\s+"[^"]*")?)\)/g;
 
-  return content.replace(linkRe, (full, text, hrefRaw) => {
+  content = content.replace(inlineLinkRe, (full, text, hrefRaw) => {
     if (full.startsWith("!")) return full; // image
 
     const mTitle = hrefRaw.match(/^([^\s]+)(?:\s+"[^"]*")?$/);
     const href = mTitle ? mTitle[1] : hrefRaw;
 
-    if (
-      /^([a-z]+:)?\/\//i.test(href) ||
-      href.startsWith("#") ||
-      href.startsWith("mailto:")
-    ) {
-      return full;
+    const processedHref = processLinkHref(filename, href, linkExceptions, slugByPath);
+
+    // Reconstruct with title if present
+    if (mTitle && mTitle[0] !== mTitle[1]) {
+      const title = mTitle[0].substring(mTitle[1].length);
+      return `[${text}](${processedHref}${title})`;
     }
-
-    const m = href.match(/^([^?#]+)(\?[^#]*)?(#.*)?$/);
-    if (!m) return full;
-    const [, pathPart, queryPart = "", hashPart = ""] = m;
-
-    // 1) File-specific exceptions
-    const fileExceptions = linkExceptions[filename];
-    if (
-      fileExceptions &&
-      Object.prototype.hasOwnProperty.call(fileExceptions, pathPart)
-    ) {
-      const forced = fileExceptions[pathPart];
-      return `[${text}](${forced}${queryPart}${hashPart})`;
-    }
-
-    // 2) Canonical target relative to current file (for slug lookup)
-    const canonicalTarget = resolveCanonicalTargetPath(filename, pathPart);
-    const slug = slugByPath[canonicalTarget];
-    if (slug) {
-      return `[${text}](${slug}${queryPart}${hashPart})`;
-    }
-
-    // 3) Default: strip extension
-    const stripped = pathPart.replace(/\.(md|mdx)$/i, "");
-    return `[${text}](${stripped}${queryPart}${hashPart})`;
+    return `[${text}](${processedHref})`;
   });
+
+  // Then, handle reference link definitions: [ref]: url
+  const refLinkDefRe = /^\[([^\]]+)\]:\s*(.+)$/gm;
+
+  content = content.replace(refLinkDefRe, (full, ref, url) => {
+    // Process the URL part
+    const processedUrl = processLinkHref(filename, url.trim(), linkExceptions, slugByPath);
+    return `[${ref}]: ${processedUrl}`;
+  });
+
+  return content;
 }
 
 // Add import notice header
