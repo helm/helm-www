@@ -346,6 +346,9 @@ const config = {
           "https://raw.githubusercontent.com/helm/community/refs/heads/main/",
         outDir: "community",
         documents: remoteDocPaths,
+        // Must use false due to plugin bug with i18n builds - files are deleted
+        // after first locale build, breaking subsequent locale builds
+        // See: https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98
         noRuntimeDownloads: false,
         modifyContent(filename, content) {
           const transformed = transformImportedContent(

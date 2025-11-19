@@ -350,6 +350,7 @@ Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-pl
 - **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`, creating `/community/*` URLs
 - **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle all content processing
 - **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs`
+- **Runtime downloads:** Must use `noRuntimeDownloads: false` due to [plugin bug #98](https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98) with i18n builds
 
 ### Content Transformation Features
 
