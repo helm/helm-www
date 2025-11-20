@@ -168,7 +168,13 @@ and proceed to step 6 to [Finalize the Release](#6-finalize-the-release).
 ## 2. Major/Minor releases: Change the Version Number in Git
 
 When doing a major or minor release, make sure to update
-`internal/version/version.go` with the new release version.
+`internal/version/version.go` with the next release version on the main branch.
+
+```shell
+git checkout main
+git checkout -b bump-version-<next_release_version>
+```
+
 
 ```shell
 $ git diff internal/version/version.go
@@ -180,8 +186,8 @@ index 712aae64..c1ed191e 100644
         // Increment major number for new feature additions and behavioral changes.
         // Increment minor number for bug fixes and performance enhancements.
         // Increment patch number for critical fixes to existing releases.
--       version = "v3.3"
-+       version = "v3.4"
+-       version = "v4.0"
++       version = "v4.1"
 
         // metadata is extra build time data
         metadata = ""
@@ -190,37 +196,23 @@ index 712aae64..c1ed191e 100644
 In addition to updating the version within the `version.go` file, you will also
 need to update corresponding tests that are using that version number.
 
-* `cmd/helm/testdata/output/version.txt`
-* `cmd/helm/testdata/output/version-client.txt`
-* `cmd/helm/testdata/output/version-client-shorthand.txt`
-* `cmd/helm/testdata/output/version-short.txt`
-* `cmd/helm/testdata/output/version-template.txt`
-* `pkg/chartutil/capabilities_test.go`
+* `pkg/cmd/helm/testdata/output/version.txt`
+* `pkg/cmd/helm/testdata/output/version-short.txt`
+* `pkg/cmd/helm/testdata/output/version-template.txt`
+* `pkg/chart/common/capabilities_test.go`
 
 ```shell
 git add .
-git commit -m "bump version to $RELEASE_NAME"
+git commit -m "bump version to <next_release_version>"
+git push origin bump-version-<next_release-version>
 ```
 
-This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
-pull this change into the main branch for when the next release is being
-created, as in [this example of 3.2 to
-3.3](https://github.com/helm/helm/pull/8411/files), and add it to the milestone
-for the next release.
+This needs to be merged prior to the next release branch being created.
+
+Switch back to the release branch before continuing.
 
 ```shell
-# get the last commit id i.e. commit to bump the version
-git log --format="%H" -n 1
-
-# create new branch off main
-git checkout main
-git checkout -b bump-version-<release_version>
-
-# cherry pick the commit using id from first command
-git cherry-pick -x <commit-id>
-
-# commit the change
-git push origin bump-version-<release-version>
+git checkout $RELEASE_BRANCH_NAME
 ```
 
 ## 3. Major/Minor releases: Commit and Push the Release Branch
