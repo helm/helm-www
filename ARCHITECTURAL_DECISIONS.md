@@ -350,7 +350,8 @@ Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-pl
 - **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`, creating `/community/*` URLs
 - **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle all content processing
 - **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs`
-- **Runtime downloads:** Must use `noRuntimeDownloads: false` due to [plugin bug #98](https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98) with i18n builds
+- **Files committed to Git:** Imported files are tracked in version control to maintain clean git status and avoid complex .gitignore management
+- **Build settings:** Uses `performCleanup: false` to prevent file deletion during i18n builds (workaround for [plugin issue #98](https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98))
 
 ### Content Transformation Features
 
@@ -368,10 +369,21 @@ Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-pl
 
 **Link transformations:** Only applied for configured exceptions - most links work as-is since the file structure mirrors the source repository.
 
+### Why imported files are committed to Git
+
+The `/community` directory mixes imported files from helm/community with locally-maintained community docs. Committing imported files to Git:
+
+1. **Avoids complex .gitignore patterns** - No need to maintain a parallel list of which specific files to ignore
+2. **Provides clean git status** - Contributors don't see dozens of untracked files during development
+3. **Enables offline development** - With `noRuntimeDownloads: true`, `yarn start` works without network access
+4. **Simplifies mental model** - All files in `/community` are tracked, regardless of source
+
+The tradeoff of content duplication is acceptable since these files rarely change structure and the import notices clearly indicate they shouldn't be edited locally.
+
 ### Commands
 
-- `yarn download-remote-community` - Fetch and transform latest content via GitHub API
-- `yarn clear-remote-community` - Remove imported files before re-import
+- `yarn download-remote-community` - Fetch and transform latest content from helm/community repository
+- `yarn clear-remote-community` - Remove imported files (useful for testing)
 
 ### For Contributors
 
