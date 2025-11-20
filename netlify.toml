@@ -50,6 +50,12 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "https://docs.google.com/document/d/10cyzggPiLeLz169cDF1UaUMmM4uZx6rO3Bw9rRQRjJA/edit?usp=sharing"
   status = 302
 
+# RSS feed alias
+[[redirects]]
+  from = "/blog/index.xml"
+  to = "/blog/rss.xml"
+  status = 200
+
 # docs.helm.sh to current domain
 [[redirects]]
   from = "https://docs.helm.sh/*"
