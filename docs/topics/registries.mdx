@@ -8,42 +8,7 @@ import Helm4 from "../_v4-in-progress.mdx"
 
 <Helm4/>
 
-Beginning in Helm 3, you can use container registries with [OCI](https://www.opencontainers.org/) support to store and share chart packages. Beginning in Helm v3.8.0, OCI support is enabled by default. 
-
-
-## OCI support prior to v3.8.0
-
-OCI support graduated from experimental to general availability with Helm v3.8.0. In prior versions of Helm, OCI support behaved differently. If you were using OCI support prior to Helm v3.8.0, its important to understand what has changed with different versions of Helm.
-
-### Enabling OCI support prior to v3.8.0
-
-Prior to Helm v3.8.0, OCI support is *experimental* and must be enabled.
-
-To enable OCI experimental support for Helm versions prior to v3.8.0, set `HELM_EXPERIMENTAL_OCI` in your environment. For example:
-
-```console
-export HELM_EXPERIMENTAL_OCI=1
-```
-
-### OCI feature deprecation and behavior changes with v3.8.0
-
-The release of [Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0), the following features and behaviors are different from previous versions of Helm:
-
-- When setting a chart in the dependencies as OCI, the version can be set to a range like other dependencies.
-- SemVer tags that include build information can be pushed and used. OCI registries don't support `+` as a tag character. Helm translates the `+` to `_` when stored as a tag.
-- The `helm registry login` command now follows the same structure as the Docker CLI for storing credentials. The same location for registry configuration can be passed to both Helm and the Docker CLI.
-
-### OCI feature deprecation and behavior changes with v3.7.0
-
-The release of [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) included the implementation of [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md) for OCI support. As a result, the following features and behaviors are different from previous versions of Helm:
-
-- The `helm chart` subcommand has been removed.
-- The chart cache has been removed (no `helm chart list` etc.).
-- OCI registry references are now always prefixed with `oci://`.
-- The basename of the registry reference must *always* match the chart's name.
-- The tag of the registry reference must *always* match the chart's semantic version (i.e. no `latest` tags).
-- The chart layer media type was switched from `application/tar+gzip` to `application/vnd.cncf.helm.chart.content.v1.tar+gzip`.
-
+It is recommended to use container registries with [OCI](https://www.opencontainers.org/) support to store and share chart packages.
 
 ## Using an OCI-based registry
 
