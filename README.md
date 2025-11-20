@@ -190,7 +190,7 @@ For more information about cutting new docs versions, see [Versioning](https://d
 
 **We welcome content translations** to our site and our docs, to help expand access to Helm around the world.
 
-Helm.sh supports multiple languages. Please refer to the [Localizing Helm Documentation](https://helm.sh/docs/community/localization/) for a guide on translating and configuring content for international users.
+Helm.sh supports multiple languages. Please refer to the [Localizing Helm Documentation](/community/localization) for a guide on translating and configuring content for international users.
 
 ---
 
