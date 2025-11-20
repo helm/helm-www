@@ -385,6 +385,16 @@ The tradeoff of content duplication is acceptable since these files rarely chang
 - `yarn download-remote-community` - Fetch and transform latest content from helm/community repository
 - `yarn clear-remote-community` - Remove imported files (useful for testing)
 
+### Automated Updates
+
+A GitHub Action (`.github/workflows/update-community-docs.yml`) runs weekly to:
+1. Check for updates in helm/community repository
+2. Apply transformations and import changes
+3. Create or update a PR if there are changes
+4. Skip if an identical PR already exists
+
+The workflow can also be triggered manually through GitHub Actions UI.
+
 ### For Contributors
 
 To add new community documents:
