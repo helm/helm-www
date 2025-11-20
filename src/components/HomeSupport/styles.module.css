@@ -1,0 +1,82 @@
+/* Component has no specific styles - uses shared home module styles */
+
+/* Maintainers text styling */
+.maintainersText {
+  font-size: 1.25rem;
+}
+
+/* Logo wall styling using flexbox with viewport-based sizing */
+.logoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: max(1vw, 0.75rem);
+  margin: 2rem 0;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: max(12vw, 120px);
+  width: max(18vw, 200px);
+  min-width: 200px;
+  flex: 0 0 max(18vw, 200px);
+  transition: transform 0.2s ease;
+}
+
+.logoItem:hover {
+  transform: scale(1.15);
+  z-index: 1;
+}
+
+.logoImage {
+  max-height: max(12vw, 120px);
+  max-width: max(18vw, 200px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Large desktop optimization */
+@media (min-width: 1400px) {
+  .logoGrid {
+    max-width: 1400px;
+    margin: 2rem auto;
+  }
+
+  .logoItem {
+    height: 160px;
+    width: 280px;
+    flex: 0 0 280px;
+  }
+
+  .logoImage {
+    max-height: 160px;
+    max-width: 280px;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .logoGrid {
+    gap: max(2vw, 0.5rem);
+  }
+
+  .logoItem {
+    height: max(15vw, 100px);
+    width: max(40vw, 150px);
+    min-width: 150px;
+    flex: 0 0 max(40vw, 150px);
+  }
+
+  .logoItem:hover {
+    transform: scale(1.1);
+  }
+
+  .logoImage {
+    max-height: max(15vw, 100px);
+    max-width: max(40vw, 150px);
+  }
+}

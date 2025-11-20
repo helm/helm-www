@@ -1,0 +1,45 @@
+.navbar--fixed-top {
+  /* Restore background image so content flows "beneath" it */
+  background-image: url("/img/topography.png");
+  background-repeat: repeat;
+  /* To get -8px we have to use calc, because -var(--name) doesn't work */
+  background-position: calc(-1 * var(--helm-body-border)) calc(-1 * var(--helm-body-border));
+  margin-top: calc(-1 * var(--helm-body-border));
+  border-top: var(--helm-body-border) solid var(--navy);
+}
+
+/* logo */
+.navbar__logo {
+  height: 3.5rem;
+}
+
+.navbar__logo img {
+  transition: transform var(--ifm-transition-slow) ease-in-out;
+}
+
+.navbar__logo:hover img {
+  transform: rotateZ(180deg);
+}
+
+/* logo fix on iphone. otherwise stuck upside down on click */
+@media (hover: none) {
+  .navbar__logo:hover img {
+    /* stays upright */
+    transform: rotateZ(0deg);
+    /* avoid accidental sticky states */
+    transition: none;
+  }
+}
+
+/* hide title */
+/* TODO is there a better way to hide this? */
+.navbar__title {
+  display: none;
+}
+
+/* links */
+.navbar__link {
+  --ifm-navbar-link-color: var(--navy);
+  font-family: var(--ifm-heading-font-family);
+  font-weight: var(--ifm-heading-font-weight);
+}

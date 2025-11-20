@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "2.17.0",
+    "description": "The label for version 2"
+  },
+  "sidebar.tutorialSidebar.category.Using Helm": {
+    "message": "Використання Helm",
+    "description": "The label for category Using Helm in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Helm Commands": {
+    "message": "Команди Helm",
+    "description": "The label for category Helm Commands in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Charts": {
+    "message": "Чарти",
+    "description": "The label for category Charts in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Developing Templates": {
+    "message": "Розробка шаблонів",
+    "description": "The label for category Developing Templates in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Best Practices": {
+    "message": "Найкращі практики",
+    "description": "The label for category Best Practices in sidebar tutorialSidebar"
+  }
+}

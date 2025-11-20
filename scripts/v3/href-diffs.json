@@ -1,0 +1,277 @@
+[
+  {
+    "fileName": "index.mdx",
+    "before": "topics",
+    "after": "topics/index.mdx"
+  },
+  {
+    "fileName": "index.mdx",
+    "before": "/docs/howto/charts_tips_and_tricks/_index.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "index.mdx",
+    "before": "community",
+    "after": "community/index.mdx"
+  },
+  {
+    "fileName": "index.mdx",
+    "before": "howto",
+    "after": "howto/index.mdx"
+  },
+  {
+    "fileName": "index.mdx",
+    "before": "../",
+    "after": "https://helm.sh/"
+  },
+  {
+    "fileName": "index.mdx",
+    "before": "- [开发案例](example) 如果您期望使用SDK做集成开发，这里有一些帮助案例。",
+    "after": ""
+  },
+  {
+    "fileName": "chart_best_practices/dependencies.md",
+    "before": "../topics/plugins#downloader-plugins",
+    "after": "../topics/plugins.md#downloader-plugins"
+  },
+  {
+    "fileName": "chart_template_guide/accessing_files.md",
+    "before": "/docs/chart_template_guide/subcharts_and_globals.md",
+    "after": "subcharts_and_globals.md"
+  },
+  {
+    "fileName": "chart_template_guide/builtin_objects.md",
+    "before": "/docs/topics/charts.md#the-chartyaml-file",
+    "after": "../topics/charts.md#the-chartyaml-file"
+  },
+  {
+    "fileName": "chart_template_guide/builtin_objects.md",
+    "before": "/docs/chart_template_guide/accessing_files.md",
+    "after": "accessing_files.md"
+  },
+  {
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "../../topics/charts",
+    "after": "../topics/charts"
+  },
+  {
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "_index.md",
+    "after": "index.mdx"
+  },
+  {
+    "fileName": "chart_template_guide/getting_started.md",
+    "before": "./",
+    "after": "index.mdx"
+  },
+  {
+    "fileName": "chart_template_guide/subcharts_and_globals.md",
+    "before": "/docs/topics/library_charts.md",
+    "after": "../topics/library_charts.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../topics/charts/",
+    "after": "../topics/charts.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../topics/charts_hooks/",
+    "after": "../topics/charts_hooks.md"
+  },
+  {
+    "fileName": "chart_template_guide/wrapping_up.md",
+    "before": "../../howto/charts_tips_and_tricks/",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "chart_template_guide/function_list.md",
+    "before": "functions_and_pipelines.md/#using-the-lookup-function",
+    "after": "functions_and_pipelines.md#using-the-lookup-function"
+  },
+  {
+    "fileName": "howto/chart_repository_sync_example.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "fileName": "howto/chart_repository_sync_example.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "fileName": "howto/index.mdx",
+    "before": "../topics",
+    "after": "../topics/index.mdx"
+  },
+  {
+    "fileName": "intro/using_helm.md",
+    "before": "/docs/howto/charts_tips_and_tricks/_index.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "intro/using_helm.md",
+    "before": "/docs/topics/chart_repository.md",
+    "after": "../topics/chart_repository.md"
+  },
+  {
+    "fileName": "intro/using_helm.md",
+    "before": "/docs/chart_template_guide/values_files/_index.md",
+    "after": "../chart_template_guide/values_files.md"
+  },
+  {
+    "fileName": "topics/advanced.md",
+    "before": "/docs/permissions_sql_storage_backend/",
+    "after": "permissions_sql_storage_backend.md"
+  },
+  {
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/topics/registries.md",
+    "after": "registries.md"
+  },
+  {
+    "fileName": "topics/chart_repository.md",
+    "before": "quickstart.md",
+    "after": "../intro/quickstart.md"
+  },
+  {
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/howto/chart_releaser_action.md",
+    "after": "../howto/chart_releaser_action.md"
+  },
+  {
+    "fileName": "topics/chart_repository.md",
+    "before": "/docs/howto/chart_repository_sync_example.md",
+    "after": "../howto/chart_repository_sync_example.md"
+  },
+  {
+    "fileName": "topics/chart_tests.md",
+    "before": "/commands/helm_create.md",
+    "after": "../helm/helm_create.md"
+  },
+  {
+    "fileName": "topics/chart_tests.md",
+    "before": "/docs/helm/helm_create",
+    "after": "../helm/helm_create.md"
+  },
+  {
+    "fileName": "topics/chart_tests.md",
+    "before": "/docs/charts_hooks/",
+    "after": "charts_hooks.md"
+  },
+  {
+    "fileName": "topics/charts.md",
+    "before": "/docs/topics/library_charts.md",
+    "after": "library_charts.md"
+  },
+  {
+    "fileName": "topics/charts.md",
+    "before": "/docs/howto/charts_tips_and_tricks.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "topics/charts.md",
+    "before": "/docs/howto/charts_tips_and_tricks.md",
+    "after": "../howto/charts_tips_and_tricks.md"
+  },
+  {
+    "fileName": "topics/charts_hooks.md",
+    "before": "/docs/chart_tests/",
+    "after": "chart_tests.md"
+  },
+  {
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/topics/charts.md",
+    "after": "charts.md"
+  },
+  {
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/chart_template_guide/named_templates.md",
+    "after": "../chart_template_guide/named_templates.md"
+  },
+  {
+    "fileName": "topics/library_charts.md",
+    "before": "/docs/chart_template_guide/subcharts_and_globals.md",
+    "after": "../chart_template_guide/subcharts_and_globals.md"
+  },
+  {
+    "fileName": "topics/plugins.md",
+    "before": "related.md#helm-plugins",
+    "after": "../community/related.md#helm-plugins"
+  },
+  {
+    "fileName": "community/localization.md",
+    "before": "./localization/#two-letter-language-code",
+    "after": "#two-letter-language-code"
+  },
+  {
+    "fileName": "community/release_checklist.md",
+    "before": "https://docs.helm.sh/using_helm/#quickstart-guide",
+    "after": "../intro/quickstart.md"
+  },
+  {
+    "fileName": "community/release_checklist.md",
+    "before": "https://docs.helm.sh/using_helm/#installing-helm",
+    "after": "../intro/install.md"
+  },
+  {
+    "fileName": "community/release_checklist.md",
+    "before": "/docs",
+    "after": "../index.mdx"
+  },
+  {
+    "fileName": "faq/changes_since_helm2.md",
+    "before": "/docs/topics/advanced/#storage-backends",
+    "after": "../topics/advanced.md#storage-backends"
+  },
+  {
+    "fileName": "faq/troubleshooting.md",
+    "before": "https://helm.sh/docs/topics/v2_v3_migration/#helm",
+    "after": "../topics/v2_v3_migration.md"
+  },
+  {
+    "fileName": "intro/install.md",
+    "before": "https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository",
+    "after": "quickstart.md#initialize-a-helm-chart-repository"
+  },
+  {
+    "fileName": "topics/v2_v3_migration.md",
+    "before": "https://v3.helm.sh/docs/faq/#changes-since-helm-2",
+    "after": "../faq/changes_since_helm2.md"
+  },
+  {
+    "fileName": "community/developers.md",
+    "before": "https://helm.sh/docs/helm/",
+    "after": "/helm/index.mdx"
+  },
+  {
+    "fileName": "community/developers.md",
+    "before": "/commands/index.mdx",
+    "after": "../helm/index.mdx"
+  },
+  {
+    "fileName": "helm/helm_install.md",
+    "before": "docs/glossary/_index.md#chart-archive",
+    "after": "../glossary/index.mdx#chart-archive"
+  },
+  {
+    "fileName": "helm/helm_install.md",
+    "before": "docs/glossary/_index.md#linhagem-arquivo-de-linhagem",
+    "after": "../glossary/index.mdx#linhagem-arquivo-de-linhagem"
+  },
+  {
+    "fileName": "faq/index.mdx",
+    "before": "<https://storage.googleapis.com/kubernetes-helm/>",
+    "after": "[https://storage.googleapis.com/kubernetes-helm/](https://storage.googleapis.com/kubernetes-helm/)"
+  }
+]

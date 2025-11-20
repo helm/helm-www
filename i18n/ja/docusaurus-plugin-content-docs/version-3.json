@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "3.19.0",
+    "description": "The label for version 3"
+  },
+  "sidebar.tutorialSidebar.category.Introduction": {
+    "message": "はじめに",
+    "description": "The label for category Introduction in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.How-to": {
+    "message": "ハウツー",
+    "description": "The label for category How-to in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Topics": {
+    "message": "トピック",
+    "description": "The label for category Topics in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Best Practices": {
+    "message": "ベストプラクティス",
+    "description": "The label for category Best Practices in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Chart Template Guide": {
+    "message": "チャートテンプレートガイド",
+    "description": "The label for category Chart Template Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Helm Commands": {
+    "message": "Helmコマンド",
+    "description": "The label for category Helm Commands in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Go SDK": {
+    "message": "Go SDK",
+    "description": "The label for category Go SDK in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Community": {
+    "message": "コミュニティ",
+    "description": "The label for category Community in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Frequently Asked Questions": {
+    "message": "よくある質問",
+    "description": "The label for category Frequently Asked Questions in sidebar tutorialSidebar"
+  }
+}

@@ -1,0 +1,27 @@
+/* Card styles shared by multiple home module components */
+
+/* Card column styling */
+.col {
+  margin-bottom: var(--ifm-card-vertical-spacing);
+}
+
+/* Card base styling */
+.card {
+  height: 100%;
+}
+
+/* Card header styling */
+.card__header {
+  text-align: center;
+}
+
+.card__header h3 {
+  font-size: 1.5rem;
+}
+
+/* Card images */
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--ifm-global-radius);
+}
