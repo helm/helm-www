@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"log"
 
-	"helm.sh/helm/v3/pkg/action"
-	"helm.sh/helm/v3/pkg/chart/loader"
-	"helm.sh/helm/v3/pkg/cli"
-	"helm.sh/helm/v3/pkg/downloader"
-	"helm.sh/helm/v3/pkg/getter"
+	"helm.sh/helm/v4/pkg/action"
+	"helm.sh/helm/v4/pkg/chart"
+	"helm.sh/helm/v4/pkg/chart/loader"
+	"helm.sh/helm/v4/pkg/cli"
+	"helm.sh/helm/v4/pkg/downloader"
+	"helm.sh/helm/v4/pkg/getter"
 )
 
 func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettings, releaseName string, chartRef string, chartVersion string, releaseValues map[string]interface{}) error {
@@ -21,14 +22,14 @@ func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 
 	installClient := action.NewInstall(actionConfig)
 
-	installClient.DryRunOption = "none"
+	installClient.DryRunStrategy = "none"
+	installClient.WaitStrategy = "watcher"
 	installClient.ReleaseName = releaseName
 	installClient.Namespace = settings.Namespace()
 	installClient.Version = chartVersion
 
-	registryClient, err := newRegistryClientTLS(
+	registryClient, err := newRegistryClient(
 		settings,
-		logger,
 		installClient.CertFile,
 		installClient.KeyFile,
 		installClient.CaFile,
@@ -46,14 +47,19 @@ func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 
 	providers := getter.All(settings)
 
-	chart, err := loader.Load(chartPath)
+	charter, err := loader.Load(chartPath)
 	if err != nil {
 		return err
 	}
 
+	chartAccessor, err := chart.NewDefaultAccessor(charter)
+	if err != nil {
+		return fmt.Errorf("error creating chart accessor: %w", err)
+	}
+
 	// Check chart dependencies to make sure all are present in /charts
-	if chartDependencies := chart.Metadata.Dependencies; chartDependencies != nil {
-		if err := action.CheckDependencies(chart, chartDependencies); err != nil {
+	if chartDependencies := chartAccessor.MetaDependencies(); chartDependencies != nil {
+		if err := action.CheckDependencies(charter, chartDependencies); err != nil {
 			err = fmt.Errorf("failed to check chart dependencies: %w", err)
 			if !installClient.DependencyUpdate {
 				return err
@@ -74,18 +80,18 @@ func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 				return err
 			}
 			// Reload the chart with the updated Chart.lock file.
-			if chart, err = loader.Load(chartPath); err != nil {
+			if charter, err = loader.Load(chartPath); err != nil {
 				return fmt.Errorf("failed to reload chart after repo update: %w", err)
 			}
 		}
 	}
 
-	release, err := installClient.RunWithContext(ctx, chart, releaseValues)
+	_, err = installClient.RunWithContext(ctx, charter, releaseValues)
 	if err != nil {
 		return fmt.Errorf("failed to run install: %w", err)
 	}
 
-	logger.Printf("release created:\n%+v", *release)
+	logger.Printf("release created")
 
 	return nil
 }

@@ -18,7 +18,7 @@ helm template [NAME] [CHART] [flags]
 
 ```
   -a, --api-versions strings                       Versions de l'API Kubernetes utilisées pour la Capabilities.APIVersions
-      --atomic                                     Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
+      --rollback-on-failure                        Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --rollback-on-failure est utilisé
       --ca-file string                             Vérifie les certificats des serveurs compatibles HTTPS à l'aide de ce bundle CA
       --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --create-namespace                           Créer le namespace de release s'il n'est pas présent

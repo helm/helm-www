@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"helm.sh/helm/v3/pkg/action"
-	"helm.sh/helm/v3/pkg/cli"
+	"helm.sh/helm/v4/pkg/action"
+	"helm.sh/helm/v4/pkg/cli"
 )
 
 func runPull(logger *log.Logger, settings *cli.EnvSettings, chartRef, chartVersion string) error {
@@ -15,18 +15,23 @@ func runPull(logger *log.Logger, settings *cli.EnvSettings, chartRef, chartVersi
 		return fmt.Errorf("failed to init action config: %w", err)
 	}
 
-	registryClient, err := newRegistryClient(settings, false)
-	if err != nil {
-		return fmt.Errorf("failed to created registry client: %w", err)
-	}
-	actionConfig.RegistryClient = registryClient
-
-	pullClient := action.NewPullWithOpts(
-		action.WithConfig(actionConfig))
+	pullClient := action.NewPull(action.WithConfig(actionConfig))
 	// client.RepoURL = ""
 	pullClient.DestDir = "./"
 	pullClient.Settings = settings
 	pullClient.Version = chartVersion
+
+	registryClient, err := newRegistryClient(
+		settings,
+		pullClient.CertFile,
+		pullClient.KeyFile,
+		pullClient.CaFile,
+		pullClient.InsecureSkipTLSverify,
+		pullClient.PlainHTTP)
+	if err != nil {
+		return fmt.Errorf("failed to created registry client: %w", err)
+	}
+	actionConfig.RegistryClient = registryClient
 
 	result, err := pullClient.Run(chartRef)
 	if err != nil {
