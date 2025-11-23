@@ -1,0 +1,61 @@
+name: Update Community Documentation
+
+on:
+  schedule:
+    # Run weekly on Mondays at 3 AM UTC
+    # Adjust frequency as needed - could be nightly: '0 3 * * *'
+    - cron: '0 3 * * 1'
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-community-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Update community docs
+        run: yarn download-remote-community
+
+      - name: Create or Update Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(community): update docs from upstream'
+          signoff: true
+          title: 'chore(community): update docs from helm/community'
+          body: |
+            ## 🔄 Automated Community Documentation Update
+
+            Updates community documentation from [helm/community](https://github.com/helm/community) repository.
+
+            ### What this does:
+            - Downloads latest docs from helm/community
+            - Applies transformations (frontmatter, links, etc.)
+            - Creates PR if there are changes
+
+            ### Review checklist:
+            - [ ] Verify docs render correctly with `yarn start`
+            - [ ] Check that no local files were overwritten
+
+            ---
+            *This is an automated PR. See `.github/workflows/update-community-docs.yml` for details.*
+          branch: upstream-community-changes
+          delete-branch: true
+          labels: |
+            docs
+            community
