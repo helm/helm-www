@@ -56,15 +56,18 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "https://helm.sh/docs/:splat"
 
 # v3 redirects
-# TODO: Uncomment after v4 release
 
-# [[redirects]]
-#   from = "/docs/topics/v2_v3_migration"
-#   to = "/docs/v3/topics/v2_v3_migration"
+[[redirects]]
+  from = "/docs/topics/v2_v3_migration"
+  to = "/docs/v3/topics/v2_v3_migration"
 
-# [[redirects]]
-#   from = "/docs/faq/changes_since_helm2"
-#   to = "/docs/v3/faq/changes_since_helm2"
+[[redirects]]
+  from = "/docs/faq/changes_since_helm2"
+  to = "/docs/v3/faq/changes_since_helm2"
+
+[[redirects]]
+  from = "/docs/faq/troubleshooting"
+  to = "/docs/v3/faq/troubleshooting"
 
 # v2.helm.sh redirects
 # TODO: Change status codes below from 302 to 301 after Docusaurus cutover verification
