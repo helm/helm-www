@@ -1,0 +1,139 @@
+---
+title: "Tutorial: Build a CLI Plugin"
+sidebar_label: Build a CLI Plugin
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+import CodeBlock from "@theme/CodeBlock";
+
+Build a `helm system-info` command that displays system information.
+
+## Subprocess Runtime
+
+Let's start by building a CLI Plugin with the Subprocess runtime.
+
+### Prerequisites
+
+1. Install the latest Helm 4 release: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. In your terminal session, alias `helm` to the release you downloaded. `helm version --short` should now show the correct Helm version in this terminal session.
+
+### 1. Create Plugin Directory
+
+You can create this anywhere on your filesystem. For example:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/system-info
+cd $HOME/code/helm/plugins/system-info
+```
+
+### 2. Create plugin manifest
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: cli/v1
+name: "system-info"
+version: "0.1.0"
+runtime: subprocess
+config:
+  usage: system-info
+  shortHelp: Display system and Helm information
+  longHelp: Shows OS info, Helm version, and environment details
+runtimeConfig:
+  platformCommand:
+    - command: ${HELM_PLUGIN_DIR}/system-info.sh
+```
+
+### 3. Create Script
+
+```bash title="system-info.sh" showLineNumbers
+#!/bin/bash
+
+echo "=== System Information ==="
+echo "OS: $(uname -s)"
+echo "Architecture: $(uname -m)"
+
+echo ""
+echo "=== Helm Information ==="
+echo "Plugin Dir: $HELM_PLUGIN_DIR"
+echo "Arguments: $*"
+
+echo ""
+echo "System info complete!"
+```
+
+Make it executable:
+
+```bash
+chmod +x system-info.sh
+```
+
+### 4. Install in Dev Mode and Test
+
+Installing a plugin from your filesystem installs in local dev mode. This bypasses checking or verifying provenance:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/system-info
+Installing plugin from local directory (development mode)
+Installed plugin: system-info
+```
+
+Local dev mode installation creates a symlink from your source directory to the plugins directory, so you can continue to develop in your preferred location. You can see the symlink by listing the directory location using the internal HELM_PLUGINS env variable:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 3 r6by  staff    96B Nov 10 02:18 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+You can see your plugin details in the `helm plugin list` of installed plugins:
+
+```bash
+% helm plugin list
+NAME       	VERSION	TYPE  	APIVERSION	PROVENANCE	SOURCE
+system-info	0.1.0  	cli/v1	v1        	local dev 	unknown
+```
+
+You can also now see your plugin in the list of available commands with `helm help`, and see it's own generated help message you defined in your `plugin.yaml`:
+
+```bash
+% helm help | grep system-info
+  system-info Display system and Helm information
+
+% helm help system-info
+Shows OS info, Helm version, and environment details
+
+Usage:
+  helm system-info [flags]
+```
+
+Let's try running the CLI subcommand:
+
+```bash
+% helm system-info
+=== System Information ===
+OS: Darwin
+Architecture: arm64
+
+=== Helm Information ===
+Plugin Dir: /Users/r6by/Library/helm/plugins/system-info
+Arguments:
+
+System info complete!
+```
+
+What you built: A CLI plugin using the Subprocess runtime!
+
+Now let's do it again, this time using Wasm runtime…
+
+## Wasm Runtime
+
+### Prerequisites
+
+- Prerequisites from [Subprocess Runtime](#subprocess-runtime)
+- Go 1.25 installed
+
+:::warning
+To-do: add this section
+:::

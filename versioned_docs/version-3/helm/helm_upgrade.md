@@ -51,7 +51,7 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     if set, upgrade process rolls back changes made in case of failed upgrade. The --wait flag will be set automatically if --atomic is used
+      --rollback-on-failure                        if set, upgrade process rolls back changes made in case of failed upgrade. The --wait flag will be set automatically if --rollback-on-failure is used
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
       --cleanup-on-fail                            allow deletion of new resources created in this upgrade when upgrade fails

@@ -98,15 +98,15 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 
 第一步是**create your GCS bucket**。我们会调用`fantastic-charts`。
 
-![Create a GCS Bucket](https://helm.sh/img/create-a-bucket.png)
+![Create a GCS Bucket](/img/helm2/create-a-bucket.png)
 
 然后使用**editing the bucket permissions**保证你的bucket是公开的。
 
-![Edit Permissions](https://helm.sh/img/edit-permissions.png)
+![Edit Permissions](/img/helm2/edit-permissions.png)
 
 插入这一行 **保证你的bucket是公开的**:
 
-![Make Bucket Public](https://helm.sh/img/make-bucket-public.png)
+![Make Bucket Public](/img/helm2/make-bucket-public.png)
 
 恭喜，您现在准备好了一个提供chart的空GCS bucket！
 
@@ -142,11 +142,11 @@ $ git checkout -b gh-pages
 
 或者在你的GitHub仓库通过web页面使用 **Branch** 按钮：
 
-![Create GitHub Pages branch](https://helm.sh/img/create-a-gh-page-button.png)
+![Create GitHub Pages branch](/img/helm2/create-a-gh-page-button.png)
 
 然后，你要保证你的**gh-pages branch**设置为GitHub页面，点击你仓库的**Settings**并相信找到**GitHub pages**部分并设置如下：
 
-![Create GitHub Pages branch](https://helm.sh/img/set-a-gh-page.png)
+![Create GitHub Pages branch](/img/helm2/set-a-gh-page.png)
 
 默认**Source**一般设置为**gh-pages branch**。如果不是默认，把它选上。
 
