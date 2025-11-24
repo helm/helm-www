@@ -41,5 +41,4 @@ _After November 13, 2020, you will see these changes:_
 
 The community has found Helm v3 to be a vastly improved experience, and community resources like the [helm-2to3 plugin](https://github.com/helm/helm-2to3) are available to assist you in your essential migration. Please ensure that you migrate to Helm v3 before the November 13th deadline, as operating software which no longer receives security patches is a risk best avoided.
 
-We want to take this moment to thank everyone in the community who has used Helm or contributed an issue or pull request to help improve it. Many great ideas that don’t fit into Helm itself have much success as [related ecosystem projects](https://helm.sh/docs/community/related/). Every time you submit updates to the docs, you’re helping others get started and be more effective with Helm. Thank you all!
-
+We want to take this moment to thank everyone in the community who has used Helm or contributed an issue or pull request to help improve it. Many great ideas that don’t fit into Helm itself have much success as [related ecosystem projects](/community/related). Every time you submit updates to the docs, you’re helping others get started and be more effective with Helm. Thank you all!
