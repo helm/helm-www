@@ -11,7 +11,7 @@ If you have anything you'd like to add to this list, please open an
 [issue](https://github.com/helm/helm-www/issues) or [pull
 request](https://github.com/helm/helm-www/pulls).
 
-## Helm Plugins
+## Helm Plugins {#helm-plugins}
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - A helm v3 plugin to adopt
   existing k8s resources into a new generated helm chart.
