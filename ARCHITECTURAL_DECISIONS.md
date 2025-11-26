@@ -336,6 +336,77 @@ Remove them only after:
 2. All redirects are tested and working
 3. No rollback scenarios require Hugo functionality
 
+## Community Documentation Import
+
+### Helm-Specific Requirement
+
+The Helm project maintains community governance documents in a [separate repository](https://github.com/helm/community) that need to be included in the website as an unversioned documentation section with proper Docusaurus integration.
+
+### Solution
+
+Uses [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-plugin-remote-content) to import and transform content at build time.
+
+**Architecture:**
+- **Multi-instance docs:** Community docs are a separate Docusaurus docs plugin instance with `id: "community"`, creating `/community/*` URLs
+- **Content transformation:** Custom functions in `src/utils/communityDocsTransforms.js` handle all content processing
+- **Configuration:** Centralized in `docusaurus.config.js` under `customFields.communityDocs`
+- **Files committed to Git:** Imported files are tracked in version control to maintain clean git status and avoid complex .gitignore management
+- **Build settings:** Uses `performCleanup: false` to prevent file deletion during i18n builds (workaround for [plugin issue #98](https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98))
+
+### Content Transformation Features
+
+**Import notice headers:** Every imported file gets a warning header indicating it shouldn't be edited directly, with a link to the source file in the helm/community repository.
+
+**HIP (Helm Improvement Proposal) formatting:** HIP documents get special treatment:
+- Metadata fields (hip, authors, created, status, etc.) displayed as a markdown table
+- Sidebar labels include HIP number for easy navigation (e.g., "0023: Utilize Server Side Apply")
+- Frontmatter cleaned to remove duplicate metadata
+
+**Plain text file handling:** `.txt` files (like meeting notes) are automatically:
+- Converted to `.md` files during import
+- Title extracted from content headers
+- Content wrapped in code blocks to preserve formatting
+
+**Link transformations:** Only applied for configured exceptions - most links work as-is since the file structure mirrors the source repository.
+
+### Why imported files are committed to Git
+
+The `/community` directory mixes imported files from helm/community with locally-maintained community docs. Committing imported files to Git:
+
+1. **Avoids complex .gitignore patterns** - No need to maintain a parallel list of which specific files to ignore
+2. **Provides clean git status** - Contributors don't see dozens of untracked files during development
+3. **Enables offline development** - With `noRuntimeDownloads: true`, `yarn start` works without network access
+4. **Simplifies mental model** - All files in `/community` are tracked, regardless of source
+
+The tradeoff of content duplication is acceptable since these files rarely change structure and the import notices clearly indicate they shouldn't be edited locally.
+
+### Commands
+
+- `yarn download-remote-community` - Fetch and transform latest content from helm/community repository
+- `yarn clear-remote-community` - Remove imported files (useful for testing)
+
+### Automated Updates
+
+A GitHub Action (`.github/workflows/update-community-docs.yml`) runs weekly to:
+1. Check for updates in helm/community repository
+2. Apply transformations and import changes
+3. Create or update a PR if there are changes
+4. Skip if an identical PR already exists
+
+The workflow can also be triggered manually through GitHub Actions UI.
+
+### For Contributors
+
+To add new community documents:
+1. Add entry to `customFields.communityDocs.remoteDocs` in `docusaurus.config.js`
+2. Include optional `meta` field for frontmatter overrides
+3. Add link exceptions only if specific links need custom mapping
+4. Run `yarn download-remote-community` to test import locally
+
+To modify transformation logic:
+1. Edit `src/utils/communityDocsTransforms.js` for content processing
+2. Test changes with `yarn download-remote-community`
+
 ## Netlify Build Caching
 
 ### Problem

@@ -31,20 +31,20 @@ function addNetlifyRedirects() {
   // Define the redirects we need to add
   const redirectsToAdd = [
     {
-      from: '/docs/developers/',
-      to: '/docs/community/developers/',
+      from: "/docs/developers/",
+      to: "/community/developers/",
       status: 302,
       comment: 'Additional redirects for Hugo frontmatter aliases removed during v3 migration'
     },
     {
-      from: '/docs/history/',
-      to: '/docs/community/history/',
-      status: 302
+      from: "/docs/history/",
+      to: "/community/history/",
+      status: 302,
     },
     {
-      from: '/docs/related/',
-      to: '/docs/community/related/',
-      status: 302
+      from: "/docs/related/",
+      to: "/community/related/",
+      status: 302,
     },
     {
       from: '/docs/faq/',

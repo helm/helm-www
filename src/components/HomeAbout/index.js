@@ -35,10 +35,13 @@ function About() {
               <a href="https://www.cncf.io">CNCF</a>
             ),
             helmCommunityLink: (
-              <a href="https://github.com/helm/community/blob/main/governance/governance.md"><Translate
-                id="home.about.cncf.helmCommunityLink" description="Helm community link">
-                Helm community
-              </Translate>
+              <a href="/community/governance/governance">
+                <Translate
+                  id="home.about.cncf.helmCommunityLink"
+                  description="Helm community link"
+                >
+                  Helm community
+                </Translate>
               </a>
             ),
           }}>
