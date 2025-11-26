@@ -706,7 +706,7 @@ The following type conversion functions are provided by Helm:
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 - `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
-- `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
+- `toToml` (`mustToToml`): Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
 - `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
@@ -875,6 +875,18 @@ greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
 {{ end }}
 ```
+
+### toToml, mustToToml
+
+The `toToml` function encodes an item into a TOML string. If the item cannot be
+converted to TOML the function will return an empty string. `mustToToml` will
+return an error in case the item cannot be encoded in TOML.
+
+```
+toToml .Item
+```
+
+The above returns TOML string representation of `.Item`.
 
 
 ## Regular Expressions
