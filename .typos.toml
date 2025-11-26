@@ -37,4 +37,9 @@ extend-exclude = [
   "docs/changelog.md",
   # v2 docs
   "versioned_docs/version-2/*",
+  # Ignore typos on files imported from remote repos (fix upstream instead)
+  # See docusaurus.config.js customFields.communityDocs.remoteDocs[] for full list
+  "community/art/",
+  "community/hips/",
+  "community/meeting-notes/",
 ]

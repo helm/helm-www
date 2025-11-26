@@ -15,6 +15,24 @@ const normalizedBaseUrl =
     ? rawBaseUrl
     : rawBaseUrl + "/";
 
+// Community documentation configuration
+const communityConfig = require("./remote-content_community");
+const {
+  processConfig,
+  createEditUrlFunction,
+} = require("./src/utils/communityDocsHelpers");
+const {
+  transformImportedContent,
+} = require("./src/utils/communityDocsTransforms");
+
+// Process the community docs configuration
+const {
+  documents: remoteDocPaths,
+  metaByPath,
+  slugByPath,
+  linkExceptions,
+} = processConfig(communityConfig);
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Helm",
@@ -139,6 +157,80 @@ const config = {
     ],
   ],
 
+  // Note @docusaurus/preset-classic already includes a docs plugin instance for us under "presets"
+  // See https://docusaurus.io/docs/docs-multi-instance#versioned-and-unversioned-doc
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        sidebarPath: "./sidebars_community.js",
+        editLocalizedFiles: true,
+        editUrl: createEditUrlFunction(communityConfig.sourceRepo),
+        numberPrefixParser: false,
+      },
+    ],
+    [
+      "docusaurus-plugin-remote-content",
+      {
+        name: "community",
+        sourceBaseUrl: communityConfig.sourceBaseUrl,
+        outDir: "community",
+        documents: remoteDocPaths,
+        // Set to true since we commit files to Git and performCleanup: false prevents deletion
+        noRuntimeDownloads: true,
+        // Must be false to prevent files being deleted between i18n locale builds
+        // See: https://github.com/rdilweb/docusaurus-plugin-remote-content/issues/98
+        performCleanup: false,
+        /**
+         * @param {string} filename - The filename being processed
+         * @param {string} content - The file content
+         * @returns {{content: string, filename?: string}} Transformed content
+         */
+        modifyContent(filename, content) {
+          const transformed = transformImportedContent(
+            filename,
+            content,
+            metaByPath,
+            slugByPath,
+            linkExceptions
+          );
+
+          // transformImportedContent now returns an object with content and optionally filename
+          return transformed;
+        },
+      },
+    ],
+    [
+      "docusaurus-plugin-remote-content",
+      {
+        name: "community-images",
+        sourceBaseUrl: communityConfig.sourceBaseUrl,
+        outDir: "community",
+        documents: [
+          "art/images/Backgrounds-Pattern-Dark.png",
+          "art/images/Backgrounds-Pattern.png",
+          "art/images/Example-Icon-Illustrations.png",
+          "art/images/Helm-3-Color-Palettes-Dark.png",
+          "art/images/Helm-3-Color-Palettes-Light.png",
+          "art/images/Helm-Summit.png",
+          "art/images/Logo-Tweak-Dark.png",
+          "art/images/Logo-Tweak-Light.png",
+          "art/images/Typography.png",
+          "art/images/Website-Exmple.png",
+          "art/images/Website-Sample.png",
+          "art/images/helm-3.png",
+          "art/images/type-notes.png",
+        ],
+        requestConfig: { responseType: "arraybuffer" },
+        noRuntimeDownloads: true,
+        performCleanup: false,
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -177,15 +269,11 @@ const config = {
         },
         items: [
           { to: "docs", label: "Docs", position: "left" },
+          { to: "community", label: "Community", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           {
             href: "https://artifacthub.io/",
             label: "Charts",
-            position: "left",
-          },
-          { to: "blog", label: "Blog", position: "left" },
-          {
-            href: "https://github.com/helm/community/",
-            label: "Community",
             position: "left",
           },
           {

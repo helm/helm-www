@@ -95,7 +95,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 # v2.helm.sh categories with new corresponding v3 paths
 [[redirects]]
   from = "/docs/related/"
-  to = "/docs/community/related/"
+  to = "/community/related/"
   status = 302
 
 [[redirects]]
@@ -105,12 +105,12 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "/docs/developers/"
-  to = "/docs/community/developers/"
+  to = "/community/developers/"
   status = 302
 
 [[redirects]]
   from = "/docs/history/"
-  to = "/docs/community/history/"
+  to = "/community/history/"
   status = 302
 
 # START - Hugo frontmatter aliases redirects, removed during Docusaurus migration
@@ -161,7 +161,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "/docs/localization/"
-  to = "/docs/community/localization/"
+  to = "/community/localization/"
   status = 302
 
 [[redirects]]
@@ -266,17 +266,17 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 # Additional redirects for Hugo frontmatter aliases removed during v3 migration
 [[redirects]]
   from = "/docs/developers/"
-  to = "/docs/community/developers/"
+  to = "/community/developers/"
   status = 302
 
 [[redirects]]
   from = "/docs/history/"
-  to = "/docs/community/history/"
+  to = "/community/history/"
   status = 302
 
 [[redirects]]
   from = "/docs/related/"
-  to = "/docs/community/related/"
+  to = "/community/related/"
   status = 302
 
 [[redirects]]
@@ -305,3 +305,8 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   status = 302
 
 # END - Hugo frontmatter aliases redirects
+
+[[redirects]]
+  from = "/docs/community/*"
+  to = "/community/:splat"
+  status = 302

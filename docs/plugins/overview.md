@@ -28,7 +28,7 @@ The main reason is plugins that add `helm` CLI sub-commands can leverage Helm-sp
 
 Helm has build-in support for working with [Charts](/glossary/index.mdx#chart) and Plugins on your local filesystem or stored as artifacts in [OCI Registries](/topics/registries.mdx). Charts can additionally be stored in [HTTP repositories](/topics/chart_repository.md), and plugins can additionally be stored in VCS repositories like Git.
 
-Helm Getter plugins allow you to extend this storage and download behavior to support other storage locations. There are community Getter plugins for storing Charts and Plugins in [s3 buckets](/community/related.md#helm-plugins), and elsewhere. You will want to use getter plugins if you need additional storage options for your Helm workflows.
+Helm Getter plugins allow you to extend this storage and download behavior to support other storage locations. There are community Getter plugins for storing Charts and Plugins in [s3 buckets](/community/related#helm-plugins), and elsewhere. You will want to use getter plugins if you need additional storage options for your Helm workflows.
 
 ### PostRenderer plugins
 
