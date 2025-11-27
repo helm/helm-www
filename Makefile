@@ -1,5 +1,5 @@
-SITE_URL := http://localhost:3000
-BASE_URL := /
+SITE_URL ?= http://localhost:3000
+BASE_URL ?= /
 
 clean:
 	rm -rf node_modules/ build/ .docusaurus .cache-loader
