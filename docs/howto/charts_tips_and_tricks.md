@@ -18,18 +18,56 @@ library](https://masterminds.github.io/sprig/), except `env` and `expandenv`, fo
 
 We also added two special template functions: `include` and `required`. The
 `include` function allows you to bring in another template, and then pass the
-results to other template functions.
+results to other template functions. The `required` function allows you to declare
+a particular values entry as required for template rendering. If the value is empty,
+the template rendering will fail with a user submitted error message.
 
-For example, this template snippet includes a template called `mytpl`, then
+### Using the 'include' Function
+
+Go provides a way of including one template in another using a built-in
+`template` directive. However, the built-in function cannot be used in Go
+template pipelines.
+
+To make it possible to include a template, and then perform an operation on that
+template's output, Helm has a special `include` function:
+
+```
+{{ include "toYaml" $value | indent 2 }}
+```
+
+The above includes a template called `toYaml`, passes it `$value`, and then
+passes the output of that template to the `indent` function.
+
+Because YAML ascribes significance to indentation levels and whitespace, this is
+one great way to include snippets of code, but handle indentation in a relevant
+context.
+
+This template snippet includes a template called `mytpl`, then
 lowercases the result, then wraps that in double quotes.
 
 ```yaml
 value: {{ include "mytpl" . | lower | quote }}
 ```
 
-The `required` function allows you to declare a particular values entry as
-required for template rendering.  If the value is empty, the template rendering
-will fail with a user submitted error message.
+### Using the 'required' function
+
+Go provides a `missingkey` template option to control behavior when a map is indexed
+with a key that's not present in the map. There may be situations where a chart
+developer wants to enforce this behavior for select values in the `values.yaml` file.
+
+The `required` function gives developers the ability to declare a value entry as
+required for template rendering. If the entry is empty in `values.yaml`, the
+template will not render and will return an error message supplied by the
+developer.
+
+For example:
+
+```
+{{ required "A valid foo is required!" .Values.foo }}
+```
+
+The above will render the template when `.Values.foo` is defined, but will fail
+to render and exit when `.Values.foo` is undefined.
 
 The following example of the `required` function declares an entry for
 `.Values.who` is required, and will print an error message when that entry is
@@ -65,50 +103,6 @@ env:
   - name: PORT
     value: "1234"
 ```
-
-## Using the 'include' Function
-
-Go provides a way of including one template in another using a built-in
-`template` directive. However, the built-in function cannot be used in Go
-template pipelines.
-
-To make it possible to include a template, and then perform an operation on that
-template's output, Helm has a special `include` function:
-
-```
-{{ include "toYaml" $value | indent 2 }}
-```
-
-The above includes a template called `toYaml`, passes it `$value`, and then
-passes the output of that template to the `indent` function.
-
-Because YAML ascribes significance to indentation levels and whitespace, this is
-one great way to include snippets of code, but handle indentation in a relevant
-context.
-
-## Using the 'required' function
-
-Go provides a way for setting template options to control behavior when a map is
-indexed with a key that's not present in the map. This is typically set with
-`template.Options("missingkey=option")`, where `option` can be `default`,
-`zero`, or `error`. While setting this option to error will stop execution with
-an error, this would apply to every missing key in the map. There may be
-situations where a chart developer wants to enforce this behavior for select
-values in the `values.yaml` file.
-
-The `required` function gives developers the ability to declare a value entry as
-required for template rendering. If the entry is empty in `values.yaml`, the
-template will not render and will return an error message supplied by the
-developer.
-
-For example:
-
-```
-{{ required "A valid foo is required!" .Values.foo }}
-```
-
-The above will render the template when `.Values.foo` is defined, but will fail
-to render and exit when `.Values.foo` is undefined.
 
 ## Using the 'tpl' Function
 
