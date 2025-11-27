@@ -128,7 +128,7 @@ const config = {
             // and v5 will then live in /docs
             // Be sure to update each locale's docusaurus-plugin-content-docs/current.json to match the current label
             // To-do: add this snippet to automation for bumping the version for each new release:
-            // `for f in i18n/*/docusaurus-plugin-content-docs/current.json; do jq '."version.label".message = "4.0.0"' "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done`
+            // `for f in i18n/*/docusaurus-plugin-content-docs/current.json; do jq '."version.label".message = "4.0.1"' "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done`
             current: { label: "4.0.1" },
             3: { label: "3.19.2", path: "v3" },
             2: { label: "2.17.0", path: "v2" },
