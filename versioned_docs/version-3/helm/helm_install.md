@@ -97,7 +97,7 @@ helm install [NAME] [CHART] [flags]
 ### Options
 
 ```
-      --rollback-on-failure                        if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --rollback-on-failure is used
+      --atomic                                     If set, installation process purges chart on fail, also sets --wait flag
       --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
       --cert-file string                           identify HTTPS client using this SSL certificate file
       --create-namespace                           create the release namespace if not present
