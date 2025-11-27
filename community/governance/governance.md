@@ -1,6 +1,6 @@
 ---
-sidebar_label: Rules
 title: Governance Rules
+sidebar_label: Rules
 slug: governance
 ---
 

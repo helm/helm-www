@@ -1,6 +1,6 @@
 ---
-sidebar_label: Helm Security
 title: Helm Security Process and Policy
+sidebar_label: Helm Security
 ---
 
 <!--
