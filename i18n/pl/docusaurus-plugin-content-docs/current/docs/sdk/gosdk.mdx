@@ -1,0 +1,84 @@
+---
+title: Wprowadzenie
+description: Wprowadzenie do Go SDK Helma
+sidebar_position: 1
+---
+
+Go SDK Helma umożliwia niestandardowemu oprogramowaniu korzystanie z chartów Helma i jego funkcjonalności do zarządzania
+wdrożeniami oprogramowania Kubernetesa (W rzeczywistości, interfejs wiersza poleceń Helma jest w istocie tylko jednym z takich narzędzi!)
+
+Obecnie, SDK zostało funkcjonalnie oddzielone od CLI Helma. SDK może (i jest)
+używane przez samodzielne narzędzia. Projekt Helma zobowiązał się do utrzymania
+stabilności API dla SDK. Jako ostrzeżenie, SDK ma pewne niedopracowane elementy pozostałe po
+początkowej pracy nad oddzieleniem CLI i SDK. Helm zamierza je stopniowo poprawiać z czasem.
+
+Pełną dokumentację API można znaleźć na stronie [https://pkg.go.dev/helm.sh/helm/v4](https://pkg.go.dev/helm.sh/helm/v4).
+
+Poniżej znajduje się krótki przegląd niektórych głównych typów pakietów oraz prosty przykład.
+Zobacz sekcję [przykłady](/sdk/examples.mdx) po więcej przykładów i bardziej rozbudowany 'sterownik'.
+
+## Omówienie głównego pakietu {#main-package-overview}
+
+- [pkg/action](https://pkg.go.dev/helm.sh/helm/v4/pkg/action): Zawiera
+  głównego "klienta" do wykonywania operacji Helma. To ten sam pakiet, który jest
+  używany przez CLI od strony wewnętrznej. Jeżeli potrzebujesz wykonać
+  podstawowe polecenia Helma z innego programu napisanego w Go, ten pakiet jest dla Ciebie.
+- [pkg/chart](https://pkg.go.dev/helm.sh/helm/v4/pkg/chart),
+  [pkg/chartutil](https://pkg.go.dev/helm.sh/helm/v4/pkg/chart/v2/util): Metody i pomocnicze funkcje wykorzystywane do ładowania i manipulacji chartami
+- [pkg/cli](https://pkg.go.dev/helm.sh/helm/v4/pkg/cli) i jego subpakiety: Zawiera wszystkie obsługiwane
+  elementy standardowych zmiennych środowiskowych Helma, a jego pakiety zawierają obsługę wyjścia oraz plików wartości.
+- [pkg/release](https://pkg.go.dev/helm.sh/helm/v4/pkg/release):
+  Określa obiekt `Release` oraz statusy
+
+Istnieje wiele więcej pakietów oprócz tych, więc sprawdź dokumentację, aby uzyskać więcej informacji!
+
+### Prosty przykład {#simple-example}
+Jest to prosty przykład użycia `helm list` z wykorzystaniem Go SDK. Zobacz sekcję
+[Przykłady](/sdk/examples.mdx) dla bardziej rozbudowanych przykładów.
+
+```go
+package main
+
+import (
+    "log"
+    "os"
+
+    "helm.sh/helm/v4/pkg/action"
+    "helm.sh/helm/v4/pkg/cli"
+)
+
+func main() {
+    settings := cli.New()
+
+    actionConfig := new(action.Configuration)
+    // You can pass an empty string instead of settings.Namespace() to list
+    // all namespaces
+    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
+        log.Printf("%+v", err)
+        os.Exit(1)
+    }
+
+    client := action.NewList(actionConfig)
+    // Only list deployed
+    client.Deployed = true
+    results, err := client.Run()
+    if err != nil {
+        log.Printf("%+v", err)
+        os.Exit(1)
+    }
+
+    for _, rel := range results {
+        log.Printf("%+v", rel)
+    }
+}
+
+```
+
+
+## Zgodność {#compatibility}
+
+SDK Helma w sposób jednoznaczny przestrzega gwarancji kompatybilności wstecznej:
+
+https://github.com/helm/community/blob/main/hips/hip-0004.md
+
+Oznacza to, że niekompatybilne zmiany będą wprowadzane jedynie przy dużych (major) wydaniach lub kiedy wymagają tego poprawki bezpieczeństwa.
