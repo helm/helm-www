@@ -1,0 +1,43 @@
+---
+title: Instalacja
+sidebar_position: 2
+---
+
+import Helm4 from "/docs/_v4-in-progress.mdx"
+
+<Helm4/>
+
+## Instalacja {#installing}
+
+### Dlaczego nie ma natywnych pakietów Helma dla Fedory i innych dystrybucji Linuxa? {#why-arent-there-native-packages-of-helm-for-fedora-and-other-linux-distros}
+
+Projekt Helm nie utrzymuje pakietów dla systemów operacyjnych i
+środowisk. Społeczność Helma może dostarczać natywne pakiety i
+jeśli zostaniemy o nich poinformowani to zostaną one wymienione. W
+ten sposób została rozpoczęta i wymieniona formuła Homebrew. Jeśli jesteś
+zainteresowany utrzymaniem pakietu, będziemy z tego zadowoleni.
+
+### Dlaczego udostępniacie skrypt `curl ...|bash`? {#why-do-you-provide-a-curl-bash-script}
+
+W naszym repozytorium znajduje się skrypt (`scripts/get-helm-3`), który można uruchomić
+jako `curl ..|bash`. Wszystkie pobrania odbywają się przez HTTPS, a
+skrypt dodatkowo weryfikuje ściągane pakiety. Mimo to wiąże
+się on z typowymi zagrożeniami, jakie niesie każdy skrypt powłoki.
+
+Udostępniamy ten skrypt, bo może się przydać, choć rekomendujemy
+użytkownikom, by wcześniej sami go przeanalizowali. Docelowo chcielibyśmy
+jednak, aby pojawiły się porządnie przygotowane paczki instalacyjne Helma.
+
+### Jak umieścić pliki klienta Helma w innym miejscu niż domyślne? {#how-do-i-put-the-helm-client-files-somewhere-other-than-their-defaults}
+
+Helm używa struktury XDG do przechowywania plików. Istnieją
+zmienne środowiskowe, których można użyć do zastąpienia tych lokalizacji:
+
+- `$XDG_CACHE_HOME`: ustawia lokalizację do przechowywania plików z pamięci podręcznej.
+- `$XDG_CONFIG_HOME`: ustawia
+  lokalizację do przechowywania konfiguracji Helma.
+- `$XDG_DATA_HOME`: ustaw lokalizację do przechowywania danych Helma.
+
+Zwróć uwagę, że jeśli masz istniejące repozytoria,
+będziesz musiał dodać je ponownie za pomocą `helm repo add...`.
+
