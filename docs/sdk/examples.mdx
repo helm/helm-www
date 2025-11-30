@@ -36,24 +36,24 @@ This example upgrades the given release, with the given chart, version and value
 
 ### Uninstall Action
 
-This example uninstalls the given release
+This example uninstalls the given release:
 
 <CodeBlock language="go" title="sdkexamples/uninstall.go" showLineNumbers>{UninstallExampleGo}</CodeBlock>
 
 ### List Action
 
-This example lists all released charts (in the currently configured namespace)
+This example lists all released charts (in the currently configured namespace):
 
 <CodeBlock language="go" title="sdkexamples/list.go" showLineNumbers>{ListExampleGo}</CodeBlock>
 
 ### Pull Action
 
-This example pulls a chart from an OCI repository
+This example pulls a chart from an OCI repository:
 
 <CodeBlock language="go" title="sdkexamples/pull.go" showLineNumbers>{PullExampleGo}</CodeBlock>
 
 ## Driver
 
-The driver here shows the necessary auxiliary functions needed for the Helm SDK actions to function. And shows the above examples in action, to pull, install, update, and uninstall the 'podinfo' chart from an OCI repository.
+The driver here shows the necessary auxiliary functions needed for the Helm SDK actions to function. And shows the above examples in action, to pull, install, update, and uninstall the 'podinfo' chart from an OCI repository:
 
 <CodeBlock language="go" title="sdkexamples/main.go" showLineNumbers>{MainExampleGo}</CodeBlock>
