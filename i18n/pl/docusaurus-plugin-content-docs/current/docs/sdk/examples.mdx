@@ -1,0 +1,59 @@
+---
+title: Przykłady
+description: Przykłady różnych funkcji SDK Helma
+sidebar_position: 2
+---
+import CodeBlock from '@theme/CodeBlock';
+
+import MainExampleGo from '!!raw-loader!/sdkexamples/main.go';
+import InstallExampleGo from '!!raw-loader!/sdkexamples/install.go';
+import ListExampleGo from '!!raw-loader!/sdkexamples/list.go';
+import PullExampleGo from '!!raw-loader!/sdkexamples/pull.go';
+import UninstallExampleGo from '!!raw-loader!/sdkexamples/uninstall.go';
+import UpgradeExampleGo from '!!raw-loader!/sdkexamples/upgrade.go';
+
+Ten dokument zawiera serię przykładów użycia SDK
+Helma. Ma na celu udokumentowanie różnych funkcjonalności SDK.
+
+Ostatni przykład pokazuje sterownik `main.go` ([link](#driver)). Uruchamia on poniższe akcje i zawiera niezbędne funkcje pomocnicze.
+
+Kod dla tych przykładów znajduje się w katalogu
+[helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples) i został przygotowany tak, aby był w pełni funkcjonalny.
+
+## Akcje {#actions}
+
+### Instalacja wydania {#install-action}
+
+Ten przykład instaluje podany chart/release, dla podanej wersji i wartości:
+
+<CodeBlock language="go" title="sdkexamples/install.go" showLineNumbers>{InstallExampleGo}</CodeBlock>
+
+### Aktualizacja wydania {#upgrade-action}
+
+Ten przykład aktualizuje podaną wersję z użyciem podanego chartu, wersji oraz wartości:
+
+<CodeBlock language="go" title="sdkexamples/upgrade.go" showLineNumbers>{UpgradeExampleGo}</CodeBlock>
+
+### Odinstalowanie wydania {#uninstall-action}
+
+Ten przykład odinstalowuje wskazane wydanie
+
+<CodeBlock language="go" title="sdkexamples/uninstall.go" showLineNumbers>{UninstallExampleGo}</CodeBlock>
+
+### Lista chartów {#list-action}
+
+Ten przykład wyświetla listę wszystkich opublikowanych chartów (w obecnie skonfigurowanej przestrzeni nazw)
+
+<CodeBlock language="go" title="sdkexamples/list.go" showLineNumbers>{ListExampleGo}</CodeBlock>
+
+### Pobranie chartu {#pull-action}
+
+Ten przykład pobiera chart z repozytorium OCI.
+
+<CodeBlock language="go" title="sdkexamples/pull.go" showLineNumbers>{PullExampleGo}</CodeBlock>
+
+## Sterownik {#driver}
+
+Ten driver zawiera wszystkie potrzebne funkcje pomocnicze, które umożliwiają wykonywanie akcji SDK Helma. Demonstruje on również przedstawione wyżej operacje: pobranie, instalację, uaktualnienie i usunięcie chartu "podinfo" z repozytorium OCI.
+
+<CodeBlock language="go" title="sdkexamples/main.go" showLineNumbers>{MainExampleGo}</CodeBlock>
