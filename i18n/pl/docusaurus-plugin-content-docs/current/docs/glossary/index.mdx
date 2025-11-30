@@ -1,0 +1,173 @@
+---
+title: Słownik pojęć
+description: Pojęcia używane do opisywania komponentów architektury Helma.
+sidebar_position: 10
+---
+
+# Słownik pojęć {#glossary}
+
+importuj Helm4 z "/docs/_v4-in-progress.mdx"
+
+<Helm4/>
+
+## Chart {#chart}
+
+Pakiet Helma zawierający informacje wystarczające do zainstalowania
+zestawu zasobów Kubernetesa w klastrze.
+
+W chartach znajdują się plik `Chart.yaml`, a także
+szablony, wartości domyślne (`values.yaml`) oraz zależności.
+
+Charty są opracowywane w dobrze zdefiniowanej strukturze
+katalogów, a następnie pakowane w formacie archiwum zwanym _archiwum chartu_.
+
+## Archiwum chartu {#chart-archive}
+
+_Archiwum chartu_ to zarchiwizowany chart w formatach tar i gzip (opcjonalnie podpisany).
+
+## Zależności chartu (ang. Subcharts) {#chart-dependency-subcharts}
+
+Charty mogą zależeć od innych chartów. Istnieją dwa sposoby wystąpienia zależności:
+
+- Miękka zależność: Chart może po prostu nie działać bez
+  zainstalowania innego chartu w klastrze. Helm nie oferuje narzędzi do obsługi
+  tego przypadku. W takim przypadku zależności mogą być zarządzane oddzielnie.
+- Twarda zależność: Chart może zawierać (w swoim katalogu
+  `charts/`) inny chart, od którego zależy. W takim przypadku
+  instalacja chartu zainstaluje wszystkie jego zależności. W
+  tym przypadku chart i jego zależności są zarządzane jako kolekcja.
+
+Gdy chart jest pakowany (przez `helm package`),
+wszystkie jego bezpośrednie zależności są dołączane do niego.
+
+## Wersja chartu {#chart-version}
+
+Charty są wersjonowane zgodnie ze
+[specyfikacją SemVer 2](https://semver.org). Każdy chart musi mieć przypisany numer wersji.
+
+## Chart.yaml {#chartyaml}
+
+Informacje o chartach są przechowywane w specjalnym
+pliku o nazwie `Chart.yaml`. Każdy chart musi mieć ten plik.
+
+## Helm (i helm) {#helm-and-helm}
+
+Helm jest menedżerem pakietów dla Kubernetesa. Podobnie jak menedżer
+pakietów systemu operacyjnego ułatwia instalację narzędzi w systemie
+operacyjnym, tak Helm ułatwia instalację aplikacji i zasobów w klastrach Kubernetesa.
+
+Podczas gdy _Helm_ to nazwa projektu, klient linii poleceń również
+nazywa się `helm`. Zgodnie z konwencją, gdy mówimy o projekcie, _Helm_
+piszemy wielką literą. Gdy mówimy o kliencie, _helm_ jest pisane małą literą.
+
+## Pliki konfiguracyjne Helma (XDG) {#helm-configuration-files-xdg}
+
+Helm przechowuje swoje pliki konfiguracyjne w katalogach
+XDG. Te katalogi są tworzone przy pierwszym uruchomieniu `helm`.
+
+## Konfiguracja Kube (KUBECONFIG) {#kube-config-kubeconfig}
+
+Klient Helma zdobywa informacje o klastrach Kubernetesa, korzystając z plików
+w formacie pliku _Kube config_. Domyślnie Helm próbuje znaleźć ten
+plik w miejscu, w którym `kubectl` go tworzy (`$HOME/.kube/config`).
+
+## Lint (Linting) {#lint-linting}
+
+Lintowanie chartu to walidacja, czy jest on zgodny z
+konwencjami i wymaganiami standardu chartów Helma. Helm
+udostępnia narzędzia do tego celu, w szczególności polecenie `helm lint`.
+
+## Pochodzenie (Plik pochodzenia) {#provenance-provenance-file}
+
+Chartom Helma może towarzyszyć _plik pochodzenia_, który
+dostarcza informacji o źródle pochodzenia chartu i jego zawartości.
+
+Pliki pochodzenia są częścią historii bezpieczeństwa Helma.
+Pochodzenie zawiera kryptograficzny hash pliku archiwum chart, dane
+z pliku Chart.yaml oraz blok podpisu (blok "clearsign" OpenPGP). W
+połączeniu z kluczem, zapewnia to użytkownikom chartów możliwość:
+
+- Zweryfikowania, czy chart został podpisany przez zaufaną stronę
+- Sprawdzenia, czy plik chartu nie został naruszony
+- Zweryfikowania zawartość metadanych chartu (`Chart.yaml`)
+- Szybkiego dopasowania chartu do jego danych pochodzenia (ang. provenance data)
+
+Pliki pochodzenia mają rozszerzenie `.prov` i mogą być udostępniane
+zarówno przez serwer repozytorium chartów, jak i przez dowolny serwer HTTP.
+
+## Wydanie {#release}
+
+Kiedy chart jest instalowany, biblioteka
+Helm tworzy _release_, aby śledzić tę instalację.
+
+Pojedynczy chart może być zainstalowany wiele razy w tym samym klastrze,
+tworząc wiele różnych wydań. Na przykład można zainstalować trzy bazy
+danych PostgreSQL, uruchamiając `helm install` trzy razy z różną nazwą wydania.
+
+## Numer wydania (Wersja wydania) {#release-number-release-version}
+
+Pojedyncze wydanie może być aktualizowane wiele razy. Wykorzystywany
+jest licznik sekwencyjny do śledzenia zmian wydań. Po pierwszym
+`helm install`, wydanie będzie miało _numer wydania_ 1. Za każdym razem, gdy
+wydanie jest aktualizowane lub wycofywane, numer wydania zostanie zwiększony.
+
+## Wycofanie zmian {#rollback}
+
+Wydanie może zostać zaktualizowane do nowszego chartu lub konfiguracji. Jednak ponieważ
+historia wydania jest przechowywana, można również _cofnąć_ wydanie
+do poprzedniego numeru wydania. Odbywa się to za pomocą polecenia `helm rollback`.
+
+Co istotne, przywrócone wydanie otrzyma nowy numer wersji.
+
+| Operacja   | Numer wydania                                        |
+|------------|------------------------------------------------------|
+| install    | 1                                                    |
+| upgrade    | 2                                                    |
+| upgrade    | 3                                                    |
+| rollback 1 | 4 (ale z tą samą konfiguracją co wydanie 1)          |
+
+Powyższa tabela ilustruje, jak numery wydań zwiększają
+się podczas instalacji, aktualizacji i wycofywania wersji.
+
+## Biblioteka Helma (lub SDK) {#helm-library-or-sdk}
+
+Biblioteka Helma (lub SDK) odnosi się do kodu Go, który bezpośrednio
+współpracuje z serwerem API Kubernetesa w celu instalacji,
+aktualizacji, zapytań i usuwania zasobów Kubernetesa. Może być importowana do
+projektu w celu wykorzystania Helma jako biblioteki klienckiej zamiast CLI.
+
+## Repozytorium (Repo, Repozytorium chartów) {#repository-repo-chart-repository}
+
+Charty Helma mogą być przechowywane na dedykowanych serwerach HTTP,
+zwanych _repozytoriami chartów_ (_repozytoria_, lub po prostu _repo_).
+
+Serwer repozytorium chartów to prosty serwer HTTP, który może
+obsługiwać plik `index.yaml`, opisujący zbiór chartów i
+dostarczający informacji o tym, skąd można pobrać każdy chart. (Wiele
+repozytoriów chartów obsługuje zarówno same charty, jak i plik `index.yaml`.)
+
+Klient Helma może wskazywać na zero lub więcej repozytoriów chartów.
+Domyślnie, klienci Helma nie mają skonfigurowanych żadnych repozytoriów chartów.
+Repozytoria chartów można dodać w dowolnym momencie za pomocą polecenia `helm repo add`.
+
+## Repozytorium chartów (Repozytorium oparte na OCI) {#chart-registry-oci-based-registry}
+
+Rejestr chartów Helma to system przechowywania i dystrybucji oparty na [OCI](https://opencontainers.org/about/overview/), który jest wykorzystywany do hostowania i udostępniania pakietów chartów Helma. Więcej informacji można znaleźć w [dokumentacji Helma dotyczącej rejestrów](https://helm.sh/docs/topics/registries/).
+
+## Wartości (Pliki wartości, values.yaml) {#values-values-files-valuesyaml}
+
+Wartości umożliwiają nadpisanie domyślnych ustawień szablonu własnymi danymi.
+
+Charty Helma są "parametryzowane", co oznacza, że twórca chartu może udostępnić
+konfigurację, którą można nadpisać w momencie instalacji. Na przykład, chart może
+udostępnić pole `username`, które pozwala na ustawienie nazwy użytkownika dla usługi.
+
+Takie wystawione zmienne określa się w Helmie _wartosciami_ (ang. _values_).
+
+Wartości mogą być ustawione podczas operacji `helm install` i `helm upgrade`,
+zarówno poprzez bezpośrednie przekazanie, jak i przez użycie pliku `values.yaml`.
+
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
