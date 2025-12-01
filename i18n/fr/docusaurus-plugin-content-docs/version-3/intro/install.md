@@ -31,9 +31,9 @@ Helm a maintenant un script d'installation qui récupérera automatiquement la d
 Vous pouvez récupérer ce script, puis l'exécuter localement. Il est bien documenté donc que vous pouvez le lire et comprendre ce qu'il fait avant de l'exécuter.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Oui, vous pouvez également `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
