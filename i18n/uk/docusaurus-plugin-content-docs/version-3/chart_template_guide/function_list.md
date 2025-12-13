@@ -1261,7 +1261,7 @@ merge a b c | dig "one" "two" "three" "<missing>"
 Наприклад:
 
 ```yaml
-dst:
+dest:
   default: default
   overwrite: me
   key: true
@@ -1299,7 +1299,7 @@ deepCopy $source | merge $dest
 Наприклад:
 
 ```yaml
-dst:
+dest:
   default: default
   overwrite: me
   key: true

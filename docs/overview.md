@@ -16,14 +16,14 @@ This section provides an overview of what's new in Helm 4, including breaking ch
 ### Summary
 
 - **New features**: Wasm-based plugins, kstatus watcher, OCI digest support, multi-doc values, JSON arguments
-- **Architecture changes**: Plugin system completely redesigned, package restructuring, CLI flag renaming Move to versioned packages, chart v3 support, content-based caching
+- **Architecture changes**: Plugin system completely redesigned, package restructuring, CLI flag renaming, move to versioned packages, chart v3 support, content-based caching
 - **Modernization**: slog migration, Go 1.24 update, dependency cleanup
 - **Security**: Enhanced OCI/registry support, TLS improvements
 
 ### Breaking Changes
 
 #### Post-renderers implemented as plugins
-Post-renderers are implemented as plugins. With this change, it is no longer possible to pass an executable directly to `helm render --post-renderer`, but a plugin name must be passed. This might require updates to existing any post-renderer workflows.
+Post-renderers are implemented as plugins. With this change, it is no longer possible to pass an executable directly to `helm render --post-renderer`, but a plugin name must be passed. This might require updates to any existing post-renderer workflows.
 
 #### Registry login does not accept full URLs
 The `helm registry login` command must be done with the domain name only in v4.
