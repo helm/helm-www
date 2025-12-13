@@ -1441,7 +1441,7 @@ dictionary:
 Given:
 
 ```
-dst:
+dest:
   default: default
   overwrite: me
   key: true
@@ -1482,7 +1482,7 @@ left**, effectively overwriting values in the dest dictionary:
 Given:
 
 ```
-dst:
+dest:
   default: default
   overwrite: me
   key: true

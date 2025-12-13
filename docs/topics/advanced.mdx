@@ -4,7 +4,7 @@ description: Explains various advanced features for Helm power users
 sidebar_position: 9
 ---
 
-import Helm4 from "../_v4-in-progress.mdx" 
+import Helm4 from "/docs/_v4-in-progress.mdx"
 
 <Helm4/>
 
@@ -36,7 +36,7 @@ non-0 exit code in the event of a failure. This is the only "API" between the
 two components. It allows for great flexibility in what you can do with your
 post-render process.
 
-A post renderer can be used with `install`, `upgrade`, and `template`. To use a
+A post-renderer can be used with `install`, `upgrade`, and `template`. To use a
 post-renderer, use the `--post-renderer` flag with a path to the renderer
 executable you wish to use:
 
@@ -51,8 +51,18 @@ If you wish to use multiple post-renderers, call all of them in a script or
 together in whatever binary tool you have built. In bash, this would be as
 simple as `renderer1 | renderer2 | renderer3`.
 
-You can see an example of using `kustomize` as a post renderer
+You can see an example of using `kustomize` as a post-renderer
 [here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
+
+#### Filenames
+Each manifest passed to the post-renderer includes a temporary annotation:
+```yaml
+metadata:
+  annotations:
+    postrenderer.helm.sh/postrender-filename: <original-template-filename>
+```
+
+Helm uses this annotation when reading back the post-renderer’s output to determine which filename to associate with each manifest for further processing. If the annotation is missing, Helm auto-generates a filename in the format `generated-by-postrender-<id>.yaml`. Finally, Helm removes the annotation before sending the manifests to Kubernetes.
 
 ### Caveats
 When using post renderers, there are several important things to keep in mind.
