@@ -29,9 +29,9 @@ sidebar_position: 2
 Ви можете завантажити цей скрипт, а потім виконати його локально. Він добре задокументований, щоб ви могли ознайомитися з ним і зрозуміти, що він робить перед його запуском.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Так, ви можете виконати `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`, якщо хочете жити на межі.
