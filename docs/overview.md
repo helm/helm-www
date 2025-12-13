@@ -49,7 +49,7 @@ Better conflict resolution when multiple tools manage the same resources. Test i
 Helm 4 will default to server-side apply when installing a new Chart release.
 
 When upgrading (or rolling back), Helm will by default follow the previous apply method of the release.
-This latching behavior is done to ensure continuality of operation for existing releases that used client-side apply.
+This latching behavior is done to ensure continuity of operation for existing releases that used client-side apply.
 The behavior can be overridden by setting the `--server-side` flag explicitly.
 
 As such, all releases created by Helm 3 will default to using client-side apply after upgrading to Helm 4.
