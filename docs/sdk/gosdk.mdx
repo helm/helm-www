@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 Helm's Go SDK enables custom software to leverage Helm charts and Helm's functionality for managing Kubernetes software deployment
-(In fact, the Helm CLI is effectively just one such tool!)
+(In fact, the Helm CLI is effectively just one such tool!).
 
 Currently, the SDK has been functionally separated from the Helm CLI.
 And the SDK can (and is) used by standalone tooling.
@@ -22,13 +22,13 @@ See the [Examples](/sdk/examples.mdx) section for more examples and a more full 
 - [pkg/action](https://pkg.go.dev/helm.sh/helm/v4/pkg/action):
   Contains the main “client” for performing Helm actions.
   This is the same package that the CLI is using underneath the hood.
-  If you just need to perform basic Helm commands from another Go program, this package is for you
+  If you just need to perform basic Helm commands from another Go program, this package is for you.
 - [pkg/chart](https://pkg.go.dev/helm.sh/helm/v4/pkg/chart), [pkg/chartutil](https://pkg.go.dev/helm.sh/helm/v4/pkg/chart/v2/util):
-  Methods and helpers used for loading and manipulating charts
+  Methods and helpers used for loading and manipulating charts.
 - [pkg/cli](https://pkg.go.dev/helm.sh/helm/v4/pkg/cli) and its subpackages:
-  Contains all the handlers for the standard Helm environment variables and its subpackages contain output and values file handling
+  Contains all the handlers for the standard Helm environment variables and its subpackages contain output and values file handling.
 - [pkg/release](https://pkg.go.dev/helm.sh/helm/v4/pkg/release):
-  Defines the `Release` object and statuses
+  Defines the `Release` object and statuses.
 
 There are many more packages besides these, so go check out the documentation for more information!
 
