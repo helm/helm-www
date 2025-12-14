@@ -1244,7 +1244,7 @@ merge a b c | dig "one" "two" "three" "<missing>"
 给出：
 
 ```yaml
-dst:
+dest:
   default: default
   overwrite: me
   key: true
@@ -1283,7 +1283,7 @@ deepCopy $source | merge $dest
 给定的：
 
 ```yaml
-dst:
+dest:
   default: default
   overwrite: me
   key: true
