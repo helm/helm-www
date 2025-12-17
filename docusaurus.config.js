@@ -75,7 +75,7 @@ const config = {
       },
       ar:{
         label: "العربية (Arabic)",
-          direction: 'rtl', 
+
       },
       de: {
         label: "Deutsch (German)",
