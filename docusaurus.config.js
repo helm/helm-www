@@ -75,7 +75,8 @@ const config = {
         label: "English",
       },
       ar: {
- 	 label: "العربية (Arabic)"
+          htmlLang: "ar",
+ 	         label: "العربية (Arabic)"
 	},
       de: {
         label: "Deutsch (German)",
