@@ -5,16 +5,16 @@ sidebar_position: 2
 ---
 
 :::note
-Цей приклад для хмарного сховища Google (Google Cloud Storage, GCS), кошик якого використовужться як репозиторій чартів.
+Цей приклад для хмарного сховища Google (Google Cloud Storage, GCS), кошик якого використовується як репозиторій чартів.
 :::
 
 ## Попередні умови {#prerequisites}
 
 * Встановіть [gsutil](https://cloud.google.com/storage/docs/gsutil). *Ми значною мірою покладаємося на використання gsutil rsync.*
 * Переконайтеся, що у вас є доступ до бінарного файлу Helm.
-* _Опціонально: Мирекомендуємо увімкнути [версіювання обʼєктів](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page) у вашому сховищі GCS, на випадок, якщо ви випадково щось видалите._
+* _Опціонально: Ми рекомендуємо увімкнути [версіювання обʼєктів](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page) у вашому сховищі GCS, на випадок, якщо ви випадково щось видалите._
 
-## Set up a local chart repository directory
+## Налаштування локальної теки репозиторію чартів {#set-up-a-local-chart-repository-directory
 
 Створіть локальну теку, як ми це робили в [керівництві з репозиторію чартів](/topics/chart_repository.md), і помістіть ваші упаковані чарти в цю теку.
 
@@ -84,7 +84,7 @@ Copying gs://bucket-name/index.yaml...
 Downloading file://local-dir/index.yaml:                              346 B/346 B
 ```
 
-Helpful Links:
+Корисні посилання:
 
 * Документація [gsutil rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
 * [Керівництво репозиторію чартів](/topics/chart_repository.md)
