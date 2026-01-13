@@ -1,12 +1,12 @@
 ---
 title: Посібник для розробників
 description: Інструкції щодо налаштування середовища для розробки Helm.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Цей посібник пояснює, як налаштувати ваше середовище для розробки на Helm.
 
-## Передумови {#prerequisites}
+## Попередні умови {#prerequisites}
 
 - Остання версія Go
 - Кластер Kubernetes з kubectl (необовʼязково)
@@ -52,7 +52,7 @@ export PATH="<path to your binary folder>:$PATH"
 
 Код проєкту Helm організовано наступним чином:
 
-- Самостійні програми знаходяться в `cmd/`. Код всередині `cmd/` не призначений для повторного використання як бібліотеки.
+- Окремі програми знаходяться в `cmd/`. Код всередині `cmd/` не призначений для повторного використання у вигляді бібліотек.
 - Спільні бібліотеки зберігаються в `pkg/`.
 - Тека `scripts/` містить кілька скриптів утиліт. Більшість з них використовується конвеєром CI/CD.
 
@@ -60,24 +60,24 @@ export PATH="<path to your binary folder>:$PATH"
 
 ### Написання документації {#writing-documentation}
 
-З Helm 3 документація була перенесена в окремий репозиторій. При написанні нових функцій, будь ласка, напишіть супутню документацію та надішліть її до репозиторію [helm-www](https://github.com/helm/helm-www).
+З Helm 3 документація була перенесена в окремий репозиторій. При створені нових функцій, будь ласка, зробіть супутню документацію та надішліть її до репозиторію [helm-www](https://github.com/helm/helm-www).
 
-Єдине виключення: [вивід CLI Helm (англійською)](/docs/helm) генеруються безпосередньо з бінарного файлу `helm`. Дивіться [Оновлення довідкових документів CLI Helm](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs) для інструкцій, як згенерувати цей вивід. Після перекладу, вивід CLI не генерується і може бути знайдений у `/content/<lang>/docs/helm`.
+Єдине виключення: [вивід CLI Helm (англійською)](/docs/helm) генерується безпосередньо з бінарного файлу `helm`. Дивіться [Оновлення довідкових документів CLI Helm](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs) для інструкцій, як згенерувати цей вивід. Після перекладу, вивід CLI не генерується і може бути знайдений у `/content/<lang>/docs/helm`.
 
 ### Домовленості Git {#git-conventions}
 
-Ми використовуємо Git як нашу систему контролю версій. Гілка `main` є домом для поточного кандидата на розробку. Релізи позначаються теґами.
+Ми використовуємо Git як нашу систему контролю версій. Гілка `main` є домом для поточного кандидата в розробці. Релізи позначаються теґами.
 
-Ми приймаємо зміни до коду через Pull Requests (PRs) на GitHub. Один з робочих процесів для цього виглядає наступним чином:
+Ми приймаємо зміни до коду через Pull Requests (PRs) на GitHub. Робочий процес виглядає наступним чином:
 
-1. Форкніть репозиторій `github.com/helm/helm` у ваш обліковий запис GitHub
-2. Зробіть `git clone` цього форку у бажану теку
+1. Зробіть форк репозиторія `github.com/helm/helm` у ваш обліковий запис GitHub
+2. Зробіть `git clone` цього форку у бажану локальну теку
 3. Створіть нову робочу гілку (`git checkout -b feat/my-feature`) і працюйте з цією гілкою.
-4. Коли ви будете готові до перегляду, залийте вашу гілку на GitHub, а потім відкрийте новий pull request у нас.
+4. Коли ви будете готові до рецензування, залийте вашу гілку на GitHub, а потім відкрийте новий pull request в нашому репо.
 
-Для повідомлень комітів Git ми дотримуємося [Semantic Commit Messages](https://karma-runner.github.io/0.13/dev/git-commit-msg.html):
+Для опису змін в комітах Git ми дотримуємося [Semantic Commit Messages](https://karma-runner.github.io/0.13/dev/git-commit-msg.html):
 
-```
+```commit
 fix(helm): add --foo flag to 'helm install'
 
 When 'helm install --foo bar' is run, this will print "foo" in the
@@ -88,11 +88,11 @@ Closes #1234
 
 Звичайні типи комітів:
 
-- fix: Виправити проблему або помилку
-- feat: Додати нову функцію
-- docs: Змінити документацію
-- test: Покращити тестування
-- ref: рефакторинг поточного коду
+- fix: Fix a bug or error
+- feat: Add a new feature
+- docs: Change documentation
+- test: Improve testing
+- ref: refactor existing code
 
 Звичайні області:
 
@@ -102,14 +102,14 @@ Closes #1234
 
 Дізнатись більше:
 
-- [Deis Guidelines](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md) були натхненням для цього розділу.
+- [Deis Guidelines](https://github.com/deis/workflow/blob/master/src/contributing/submitting-a-pull-request.md) були прикладом для цього розділу.
 - Karma Runner [визначає](https://karma-runner.github.io/0.13/dev/git-commit-msg.html) ідею семантичного повідомлення коміту.
 
 ### Домовленості Go {#go-conventions}
 
 Ми дуже уважно дотримуємося стандартів стилю кодування Go. Зазвичай запуск `go fmt` зробить ваш код красивим для вас.
 
-Ми також зазвичай дотримуємося конвенцій, рекомендованих `go lint` і `gometalinter`. Запустіть `make test-style`, щоб перевірити відповідність стилю.
+Ми також зазвичай дотримуємося рекомендацій `go lint` та `gometalinter`. Запустіть `make test-style`, щоб переконатися у відповідності стилю.
 
 Дізнатись більше:
 
@@ -117,3 +117,9 @@ Closes #1234
 - Wiki Go має чудову статтю про [форматування](https://github.com/golang/go/wiki/CodeReviewComments).
 
 Якщо ви запускаєте `make test`, будуть виконані не тільки юніт-тести, а й тести стилю. Якщо `make test` не пройде, навіть з причин стилю, ваш PR не буде вважатися готовим до злиття.
+
+## Усунення несправностей {#troubleshooting}
+
+Щоб усунути несправності та отримати допомогу від спільноти, знайдіть своє запитання у списку питань із позначкою [`question/support`](https://github.com/helm/helm/issues?q=is%3Aissue%20state%3Aopen%20label%3Aquestion%2Fsupport) у репозиторії Helm.
+
+Якщо ви не можете знайти тікет, який відповідає вашому запитанню, створіть новий тікет або додайте коментар до відповідного тікету, щоб поділитися своїм досвідом. Для отримання додаткової інформації про участь та пошук тікетів у репозиторії helm див. розділ [Issues](https://github.com/helm/helm/blob/main/CONTRIBUTING.md#issues) у _Настановах щодо участі_.

@@ -1,7 +1,7 @@
 ---
 title: Повʼязані проєкти та документація
 description: сторонні інструменти, втулки та документація, надані спільнотою!
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 Спільнота Helm розробила безліч додаткових інструментів, втулків та документації про Helm. Нам завжди цікаво дізнатися про ці проєкти.
@@ -11,9 +11,10 @@ sidebar_position: 3
 ## Втулки Helm {#helm-plugins}
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) — Втулок Helm v3 для включення поточних ресурсів k8s у нові згенеровані Helm чарти.
+- [helm-cel](https://github.com/idsulik/helm-cel) — Втулок, який використовує Common Expression Language (CEL) для перевірки значень.
 - [helm-chartsnap](https://github.com/jlandowner/helm-chartsnap) — Втулок для тестування знімків для Helm чартів.
 - [Helm Diff](https://github.com/databus23/helm-diff) — Попередній перегляд `helm upgrade` у вигляді кольорового diff.
-- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) — Втулок, який допомагає розподілити Helm чарти між OCI реєстрами та в умовах Air gap.
+- [Helm Dt](https://github.com/vmware-labs/distribution-tooling-for-helm) — Втулок, який допомагає розподілити Helm чарти між OCI реєстрами та в середовищах Air gap.
 - [Helm Dashboard](https://github.com/komodorio/helm-dashboard) — GUI для Helm, візуалізація релізів та репозиторіїв, відмінності у маніфестах.
 - [helm-gcs](https://github.com/hayorov/helm-gcs) — Втулок для керування репозиторіями на Google Cloud Storage.
 - [helm-git](https://github.com/aslafy-z/helm-git) — Встановлює чарти та отримує файли значень з ваших Git репозиторіїв.
@@ -27,11 +28,12 @@ sidebar_position: 3
 - [helm-sigstore](https://github.com/sigstore/helm-sigstore) — Втулок для Helm для інтеграції з екосистемою [sigstore](https://sigstore.dev/). Пошук, завантаження та перевірка підписаних Helm чартів.
 - [helm-tanka](https://github.com/Duologic/helm-tanka) — Втулок Helm для рендерингу Tanka/Jsonnet всередині Helm чартів.
 - [hc-unit](https://github.com/xchapter7x/hcunit) — Втулок для юніт-тестування чартів локально за допомогою OPA (Open Policy Agent) & Rego.
-- [helm-unittest](https://github.com/helm-unittest/helm-unittest) — Втулок для юніт-тестування чартів локально з YAML.
+- [helm-unittest](https://github.com/helm-unittest/helm-unittest)— Втулок для юніт-тестування чартів локально з YAML.
 - [helm-val](https://github.com/HamzaZo/helm-val) — Втулок для отримання значень з попереднього релізу.
 - [helm-external-val](https://github.com/kuuji/helm-external-val) — Втулок, який отримує значення helm з зовнішніх джерел (configMaps, Secrets тощо).
 - [helm-images](https://github.com/nikhilsbhat/helm-images) — Втулок Helm для отримання всіх можливих зображень з чарту перед розгортанням або з розгорнутого релізу.
 - [helm-drift](https://github.com/nikhilsbhat/helm-drift) — Втулок Helm, який виявляє конфігурацію, яка відрізняється від Helm чарту.
+- [helm-tui](https://github.com/pidanou/helm-tui) — Легкий інтерфейс для управління вашими ресурсами Helm без виходу з терміналу
 
 Ми також заохочуємо авторів на GitHub використовувати теґ [helm-plugin](https://github.com/search?q=topic%3Ahelm-plugin&type=Repositories) у своїх репозиторіях втулків.
 
@@ -54,6 +56,7 @@ sidebar_position: 3
 - [Helmper](https://github.com/ChristofferNissen/helmper) — Helmper допомагає імплементувати Helm чарти, включаючи всі OCI артефакти (образи) у ваші OCI реєстри. Helmper також полегшує сканування безпеки та застосування патчів до OCI образів. Helmper використовує Helm, Oras, Trivy, Copacetic та Buildkitd.
 - [Helmsman](https://github.com/Praqma/helmsman) — Helmsman, це інструмент helm-charts-as-code, який дозволяє встановлювати/оновлювати/захищати/переміщувати/видаляти релізи з версійно контрольованих файлів стану (описаних у простому форматі TOML).
 - [HULL](https://github.com/vidispine/hull) — Ця бібліотека чартів надає готовий інтерфейс для специфікації всіх обʼєктів Kubernetes безпосередньо у `values.yaml`. Вона усуває необхідність писати будь-які шаблони для ваших чартів і має багато додаткових функцій для спрощення створення та використання Helm чартів.
+- [K8Studio](https://k8studio.io) — Інтерфейс користувача для десктопів для управління кластерами Kubernetes з інтегрованим менеджером Helm.
 - [Konveyor Move2Kube](https://konveyor.io/move2kube/) — Генерація Helm чартів для ваших поточних проєктів.
 - [Landscaper](https://github.com/Eneco/landscaper/) — "Landscaper бере набір посилань на Helm Chart зі значеннями (бажаний стан) і реалізує їх в кластері Kubernetes."
 - [Monocular](https://github.com/helm/monocular) — Веб UI для репозиторіїв Helm Chart.
