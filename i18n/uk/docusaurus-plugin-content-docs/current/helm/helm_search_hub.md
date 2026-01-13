@@ -45,7 +45,7 @@ helm search hub [KEYWORD] [flags]
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
       --kube-token string               токен на предʼявника, який використовується для автентифікації
-      --kubeconfig string               шлях до файлу kubeconfigpath to the kubeconfig file
+      --kubeconfig string               шлях до файлу kubeconfig
   -n, --namespace string                простір імен для цього запиту
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
