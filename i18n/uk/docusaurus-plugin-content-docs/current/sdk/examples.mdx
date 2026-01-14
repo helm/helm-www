@@ -1,0 +1,59 @@
+---
+title: Приклади
+description: Приклади різних функцій Helm SDK
+sidebar_position: 2
+---
+import CodeBlock from '@theme/CodeBlock';
+
+import MainExampleGo from '!!raw-loader!/sdkexamples/main.go';
+import InstallExampleGo from '!!raw-loader!/sdkexamples/install.go';
+import ListExampleGo from '!!raw-loader!/sdkexamples/list.go';
+import PullExampleGo from '!!raw-loader!/sdkexamples/pull.go';
+import UninstallExampleGo from '!!raw-loader!/sdkexamples/uninstall.go';
+import UpgradeExampleGo from '!!raw-loader!/sdkexamples/upgrade.go';
+
+Цей документ містить низку прикладів використання Helm SDK.
+Призначений для документування різних функціональних можливостей SDK.
+
+Останній приклад показує драйвер `main.go` ([посилання](#driver)). Він виконує наведені нижче дії та містить необхідні допоміжні функції.
+
+Код для прикладів знаходиться в теці [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples).
+Він є повністю функціональним.
+
+## Actions
+
+### Install Action
+
+Цей приклад встановлює вказаний чарт/реліз для вказаної версії та значень:
+
+<CodeBlock language="go" title="sdkexamples/install.go" showLineNumbers>{InstallExampleGo}</CodeBlock>
+
+### Upgrade Action
+
+У цьому прикладі оновлюється вказана версія з вказаним чартом, версією та значеннями:
+
+<CodeBlock language="go" title="sdkexamples/upgrade.go" showLineNumbers>{UpgradeExampleGo}</CodeBlock>
+
+### Uninstall Action
+
+Цей приклад видаляє вказану версію:
+
+<CodeBlock language="go" title="sdkexamples/uninstall.go" showLineNumbers>{UninstallExampleGo}</CodeBlock>
+
+### List Action
+
+У цьому прикладі перелічено всі опубліковані чарти (у поточному просторі імен):
+
+<CodeBlock language="go" title="sdkexamples/list.go" showLineNumbers>{ListExampleGo}</CodeBlock>
+
+### Pull Action
+
+Цей приклад витягує чарт з репозиторію OCI:
+
+<CodeBlock language="go" title="sdkexamples/pull.go" showLineNumbers>{PullExampleGo}</CodeBlock>
+
+## Driver
+
+Драйвер тут показує необхідні допоміжні функції, потрібні для роботи Helm SDK. А також демонструє на практиці наведені вище приклади, щоб витягнути, встановити, оновити та видалити чарт 'podinfo' з репозиторію OCI:
+
+<CodeBlock language="go" title="sdkexamples/main.go" showLineNumbers>{MainExampleGo}</CodeBlock>
