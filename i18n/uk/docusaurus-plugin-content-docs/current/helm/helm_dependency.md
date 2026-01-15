@@ -8,9 +8,9 @@ title: helm dependency
 
 Керуйте залежностями чарту.
 
-Helm charts store their dependencies in 'charts/'. For chart developers, it is
-often easier to manage dependencies in 'Chart.yaml' which declares all
-dependencies.
+Чарти Helm зберігають свої залежності в теці `charts/`. Розробникам чартів
+часто простіше керувати залежностями у файлі `Chart.yaml`, який декларує всі
+залежності.
 
 Команди `dependency` працюють з цим файлом, полегшуючи синхронізацію між бажаними залежностями та фактичними залежностями, збереженими в теці `charts/`.
 
