@@ -2,7 +2,7 @@
 title: helm dependency update
 ---
 
-Щновлення charts/ на основі вмісту Chart.yaml
+Оновлення charts/ на основі вмісту Chart.yaml
 
 ### Опис {#synopsis}
 
