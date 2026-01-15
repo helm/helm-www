@@ -36,7 +36,7 @@ helm version [flags]
 
 ```none
   -h, --help              довідка version
-      --short             print the version number
+      --short             вивести номер версії
       --template string   шаблон для формату рядка версії
 ```
 

@@ -41,7 +41,7 @@ title: helm show
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
 * [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
-* [helm show all](/helm/helm_show_all.md) — оказати всю інформацію про чарт
+* [helm show all](/helm/helm_show_all.md) — показати всю інформацію про чарт
 * [helm show chart](/helm/helm_show_chart.md) — показати визначення чарту
 * [helm show crds](/helm/helm_show_crds.md) — показати CRDs чарту
 * [helm show readme](/helm/helm_show_readme.md) — показати README чарту
