@@ -312,7 +312,19 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 # END - Hugo frontmatter aliases redirects
 
+
+# Moved to community section
 [[redirects]]
   from = "/docs/community/*"
   to = "/community/:splat"
+  status = 302
+
+[[redirects]]
+  from = '/docs/topics/release_policy'
+  to = '/community/release_policy'
+  status = 302
+
+[[redirects]]
+  from = '/docs/v3/topics/release_policy'
+  to = '/community/release_policy'
   status = 302
