@@ -319,6 +319,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   to = "/community/:splat"
   status = 302
 
+# Community release policy
 [[redirects]]
   from = '/docs/topics/release_policy'
   to = '/community/release_policy'
@@ -327,4 +328,27 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 [[redirects]]
   from = '/docs/v3/topics/release_policy'
   to = '/community/release_policy'
+  status = 302
+
+# Community release policy (i18n/ko)
+[[redirects]]
+  from = '/ko/docs/v3/topics/release_policy'
+  to = '/ko/community/release_policy'
+  status = 302
+
+# Community release policy (i18n/uk)
+[[redirects]]
+  from = '/uk/docs/topics/release_policy'
+  to = '/uk/community/release_policy'
+  status = 302
+
+[[redirects]]
+  from = '/uk/docs/v3/topics/release_policy'
+  to = '/uk/community/release_policy'
+  status = 302
+
+# Community release policy (i18n/zh)
+[[redirects]]
+  from = '/zh/docs/v3/topics/release_policy'
+  to = '/zh/community/release_policy'
   status = 302
