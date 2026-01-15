@@ -123,7 +123,7 @@ protocols: Список схем з URL-адреси чартів, які під
 
 ### Конфігурація середовища виконання {#runtime-configuration}
 
-Поле `runtimeConfig` у файлі [plugin.yaml](#pluginyaml) має різні опції для кожного [середовища виконання плагіна](#plugin-runtimes). Середовище виконання втулка визначається полем `runtime`.
+Поле `runtimeConfig` у файлі [plugin.yaml](#pluginyaml) має різні опції для кожного [середовища виконання втулка](#plugin-runtimes). Середовище виконання втулка визначається полем `runtime`.
 
 #### Конфігурація runtime Subprocess  {#subprocess-runtime-configuration}
 
