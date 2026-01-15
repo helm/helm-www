@@ -30,7 +30,7 @@ helm package [CHART_PATH] [...] [flags]
       --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакета CA
       --cert-file string           ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
   -u, --dependency-update          оновити залежності з "Chart.yaml" в теці "charts/" перед упаковкою
-  -d, --destination string         місце для збереження чарту. (стандатно ".")
+  -d, --destination string         місце для збереження чарту. (стандартно ".")
   -h, --help                       довідка package
       --insecure-skip-tls-verify   пропустити перевірку сертифіката TLS для завантаження чарта
       --key string                 імʼя ключа для використання під час підписання. Використовується, якщо `--sign` є true
