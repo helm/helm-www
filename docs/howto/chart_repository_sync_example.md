@@ -8,11 +8,11 @@ sidebar_position: 2
 which serves a chart repository.*
 
 ## Prerequisites
-* Install the [gsutil](https://cloud.google.com/storage/docs/gsutil) tool. *We
-  rely heavily on the gsutil rsync functionality*
+* Install the [gcloud CLI](https://docs.cloud.google.com/sdk/docs/install-sdk). *We
+  rely heavily on the gcloud storage rsync functionality*
 * Be sure to have access to the Helm binary
 * _Optional: We recommend you set [object
-  versioning](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page)
+  versioning](https://cloud.google.com/storage/docs/object-versioning)
   on your GCS bucket in case you accidentally delete something._
 
 ## Set up a local chart repository directory
@@ -36,23 +36,21 @@ This will generate an updated index.yaml file and place it in the
 `fantastic-charts/` directory.
 
 ## Sync your local and remote chart repositories
-Upload the contents of the directory to your GCS bucket by running
-`scripts/sync-repo.sh` and pass in the local directory name and the GCS bucket
-name.
+Upload the contents of the directory to your GCS bucket by running the
+[sync-repo.sh](https://github.com/helm/helm-www/blob/main/scriptexamples/sync-repo.sh) script and pass in the local
+directory name and the GCS bucket name.
 
 For example:
 ```console
-$ pwd
-/Users/me/code/go/src/helm.sh/helm
-$ scripts/sync-repo.sh fantastic-charts/ fantastic-charts
+$ ./sync-repo.sh fantastic-charts/ fantastic-charts
 Getting ready to sync your local directory (fantastic-charts/) to a remote repository at gs://fantastic-charts
 Verifying Prerequisites....
-Thumbs up! Looks like you have gsutil. Let's continue.
+Thumbs up! Looks like you have gcloud. Let's continue.
 Building synchronization state...
 Starting synchronization
 Would copy file://fantastic-charts/alpine-0.1.0.tgz to gs://fantastic-charts/alpine-0.1.0.tgz
 Would copy file://fantastic-charts/index.yaml to gs://fantastic-charts/index.yaml
-Are you sure you would like to continue with these changes?? [y/N]} y
+Are you sure you would like to continue with these changes? [y/N] y
 Building synchronization state...
 Starting synchronization
 Copying file://fantastic-charts/alpine-0.1.0.tgz [Content-Type=application/x-tar]...
@@ -63,18 +61,18 @@ Congratulations your remote chart repository now matches the contents of fantast
 ```
 ## Updating your chart repository
 You'll want to keep a local copy of the contents of your chart repository or use
-`gsutil rsync` to copy the contents of your remote chart repository to a local
+`gcloud storage rsync` to copy the contents of your remote chart repository to a local
 directory.
 
 For example:
 ```console
-$ gsutil rsync -d -n gs://bucket-name local-dir/    # the -n flag does a dry run
+$ gcloud storage rsync --delete-unmatched-destination-objects --dry-run gs://bucket-name local-dir/
 Building synchronization state...
 Starting synchronization
 Would copy gs://bucket-name/alpine-0.1.0.tgz to file://local-dir/alpine-0.1.0.tgz
 Would copy gs://bucket-name/index.yaml to file://local-dir/index.yaml
 
-$ gsutil rsync -d gs://bucket-name local-dir/       # performs the copy actions
+$ gcloud storage rsync --delete-unmatched-destination-objects gs://bucket-name local-dir/
 Building synchronization state...
 Starting synchronization
 Copying gs://bucket-name/alpine-0.1.0.tgz...
@@ -84,9 +82,8 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 ```
 
 Helpful Links:
-* Documentation on [gsutil
-  rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
+* Documentation on [gcloud storage
+  rsync](https://cloud.google.com/sdk/gcloud/reference/storage/rsync)
 * [The Chart Repository Guide](/topics/chart_repository.md)
-* Documentation on [object versioning and concurrency
-  control](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)
+* Documentation on [object versioning](https://cloud.google.com/storage/docs/object-versioning)
   in Google Cloud Storage
