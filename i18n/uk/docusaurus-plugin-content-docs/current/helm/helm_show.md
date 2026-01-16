@@ -47,4 +47,4 @@ title: helm show
 * [helm show readme](/helm/helm_show_readme.md) — показати README чарту
 * [helm show values](/helm/helm_show_values.md) — показати значення чарту
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року

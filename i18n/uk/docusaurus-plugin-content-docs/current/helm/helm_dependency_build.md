@@ -60,4 +60,4 @@ helm dependency build CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керування залежностями чарта
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
