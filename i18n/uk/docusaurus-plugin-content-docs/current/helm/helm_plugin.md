@@ -48,4 +48,4 @@ title: helm plugin
 * [helm plugin update](/helm/helm_plugin_update.md) — оновлення одного чи кількох втулків Helm
 * [helm plugin verify](/helm/helm_plugin_verify.md) — перевірка, що втулок за вказаним шляхом має підпис і є дійсним
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року

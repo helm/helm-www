@@ -72,4 +72,4 @@ helm package [CHART_PATH] [...] [flags]
 
 * [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
