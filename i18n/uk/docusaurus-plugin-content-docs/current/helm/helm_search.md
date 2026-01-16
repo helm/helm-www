@@ -44,4 +44,4 @@ title: helm search
 * [helm search hub](/helm/helm_search_hub.md) — шукати чарти в Artifact Hub або у власному екземплярі хабу
 * [helm search repo](/helm/helm_search_repo.md) — шукати репозиторії за ключовим словом у чартах
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року

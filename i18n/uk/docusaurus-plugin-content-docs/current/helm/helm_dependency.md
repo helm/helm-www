@@ -86,4 +86,4 @@ dependencies:
 * [helm dependency list](/helm/helm_dependency_list.md) — перелік залежностей для даного чарта
 * [helm dependency update](/helm/helm_dependency_update.md) — оновлення charts/ на основі вмісту Chart.yaml
 
-###### Автоматично згенеровано spf13/cobra 6 листопада 2025 року
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
