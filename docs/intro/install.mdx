@@ -149,7 +149,7 @@ Helm.
 `main` branch. They are not official releases, and may not be stable. However,
 they offer the opportunity to test the cutting edge features.
 
-Canary Helm binaries are stored at [get.helm.sh](https://get.helm.sh). Here are
+Canary Helm binaries are stored at `get.helm.sh`. Here are
 links to the common builds:
 
 - [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
