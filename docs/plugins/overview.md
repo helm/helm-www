@@ -111,7 +111,7 @@ ignoreFlags: Ignores any flags passed in from Helm
 
 #### Getter Plugin Configuration
 
-If `type` field is `getter/v1`, it is a [Getter Plugin type](#cli-plugins), and the following plugin type configurations are allowed:
+If `type` field is `getter/v1`, it is a [Getter Plugin type](#getter-plugins), and the following plugin type configurations are allowed:
 
 ```yaml
 protocols: The list of schemes from the charts URL that this plugin supports.
