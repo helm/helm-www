@@ -11,7 +11,7 @@ Helm的版本用 `x.y.z` 描述，`x`是主版本，`y`是次版本，`z`是补�
 [语义化版本](https://semver.org/spec/v2.0.0.html) 术语。
 
 Helm项目维护了一个针对最近次要版本的发布分支。适当的修复，包括安全修复、从发布分支中的cherry-pick，
-视严重程度而定。更多细节请查看[Helm版本策略](https://helm.sh/zh/docs/topics/release_policy)。
+视严重程度而定。更多细节请查看[Helm版本策略](/community/release_policy)。
 
 ## 可支持的版本偏差
 
