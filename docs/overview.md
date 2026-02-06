@@ -61,7 +61,27 @@ API breaking changes are now complete. Test it, break it, give us feedback! The 
 
 #### Charts v3
 
-Coming soon. v2 charts continue to work unchanged.
+Charts v3 is in early development and available for experimentation. v2 charts continue to work unchanged.
+
+##### Trying Experimental Charts v3
+
+Set the `HELM_EXPERIMENTAL_CHART_V3` environment variable:
+
+```shell
+export HELM_EXPERIMENTAL_CHART_V3=1
+```
+
+Then create a new chart using the v3 API version:
+
+```shell
+helm create --chart-api-version=v3 mychart
+```
+
+The `--chart-api-version` flag accepts `v2` (default) or `v3`. The flag is hidden unless the experimental environment variable is set.
+
+:::warning
+Charts v3 is experimental. Features may change or be removed before the final release. Use for testing and feedback only.
+:::
 
 ### Improvements
 
