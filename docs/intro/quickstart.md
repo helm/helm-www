@@ -33,49 +33,42 @@ For more details, or for other options, see [the installation guide](/intro/inst
 
 ## Initialize a Helm Chart Repository
 
-Once you have Helm ready, you can add a chart repository. Check [Artifact
+Once you have Helm ready, you typically add a chart repository. Check [Artifact
 Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart
 repositories.
 
-```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-```
-
-Once this is installed, you will be able to list the charts you can install:
-
-```console
-$ helm search repo bitnami
-NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
-bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
-bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
-bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
-bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
-# ... and many more
-```
+> **Note:** Popular repositories include Bitnami and other third-party providers. While these are excellent sources for production-ready charts, this guide will focus on creating a local chart or using an OCI-based chart to ensure a stable, self-contained quickstart experience.
 
 ## Install an Example Chart
 
 To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use the `bitnami`
-charts.
+ways to find and install a chart, including directly from OCI registries or local files.
+
+For this guide, we will generate a simple chart using `helm create`, which produces a basic NGINX chart:
 
 ```console
-$ helm repo update              # Make sure we get the latest list of charts
-$ helm install bitnami/mysql --generate-name
-NAME: mysql-1612624192
-LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+$ helm create hello-world
+Creating hello-world
+```
+
+Now, install the chart:
+
+```console
+$ helm install my-nginx ./hello-world
+NAME: my-nginx
+LAST DEPLOYED: Tue Jan 13 15:07:42 2026
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
+DESCRIPTION: Install complete
 NOTES: ...
 ```
 
-In the example above, the `bitnami/mysql` chart was released, and the name of
-our new release is `mysql-1612624192`.
+In the example above, the `hello-world` chart was installed, and the name of
+our new release is `my-nginx`.
 
-You get a simple idea of the features of this MySQL chart by running `helm show
-chart bitnami/mysql`. Or you could run `helm show all bitnami/mysql` to get all
+You get a simple idea of the features of this chart by running `helm show
+chart ./hello-world`. Or you could run `helm show all ./hello-world` to get all
 information about the chart.
 
 Whenever you install a chart, a new release is created. So one chart can be
@@ -91,8 +84,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
-mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
+NAME    	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART            	APP VERSION
+my-nginx	default  	1       	2026-01-13 15:07:42.283059 +0100 CET	deployed	hello-world-0.1.0	1.16.0
 ```
 
 The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
@@ -102,18 +95,18 @@ The `helm list` (or `helm ls`) function will show you a list of all deployed rel
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall mysql-1612624192
-release "mysql-1612624192" uninstalled
+$ helm uninstall my-nginx
+release "my-nginx" uninstalled
 ```
 
-This will uninstall `mysql-1612624192` from Kubernetes, which will remove all
+This will uninstall `my-nginx` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
 If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status mysql-1612624192
+$ helm status my-nginx
 Status: UNINSTALLED
 ...
 ```
