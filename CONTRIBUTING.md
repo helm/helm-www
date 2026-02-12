@@ -202,7 +202,7 @@ Like any good open source project, we use Pull Requests (PRs) to track code chan
 
 Documentation PRs will follow the same lifecycle as other PRs. They will also be labeled with the
 `docs` label. For documentation, special attention will be paid to spelling, grammar, and clarity
-(whereas those things don't matter *as* much for comments in code).
+(whereas those things don't matter *as* much for comments in code). For additional style guidelines, see [Documentation Style Guide](style-guide.md).
 
 ## The Triager
 
