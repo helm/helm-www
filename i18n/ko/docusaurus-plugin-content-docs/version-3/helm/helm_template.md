@@ -8,8 +8,8 @@ title: helm template
 
 차트 템플릿을 로컬에서 렌더링하고 그 결과를 표시한다.
 
-일반적으로 클러스터 내에서 조회되거나 검색되는 모든 값은 로컬에서 즉흥적으로 사용(faked)된다. 
-또한 차트 유효성에 대한 서버 측 테스트 (예 : API 지원 여부)가 수행되지는 
+일반적으로 클러스터 내에서 조회되거나 검색되는 모든 값은 로컬에서 즉흥적으로 사용(faked)된다.
+또한 차트 유효성에 대한 서버 측 테스트 (예 : API 지원 여부)가 수행되지는
 않는다.
 
 
@@ -21,7 +21,7 @@ helm template [NAME] [CHART] [flags]
 
 ```
   -a, --api-versions stringArray     Capabilities.APIVersions에 사용되는 쿠버네티스 API 버전
-      --atomic                       설정된 경우, 설치 프로세스는 실패할 경우에 대하여 설치본을 삭제. --atomic 을 사용하면 --wait 플래그도 자동으로 설정
+      --rollback-on-failure          설정된 경우, 설치 프로세스는 실패할 경우에 대하여 설치본을 삭제. --rollback-on-failure 을 사용하면 --wait 플래그도 자동으로 설정
       --ca-file string               이 CA 번들을 사용하여 HTTPS 사용 서버의 인증서를 확인
       --cert-file string             이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
       --create-namespace             릴리스 네임스페이스가 없는 경우 생성

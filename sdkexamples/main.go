@@ -5,11 +5,12 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 
-	"helm.sh/helm/v3/pkg/action"
-	"helm.sh/helm/v3/pkg/cli"
-	"helm.sh/helm/v3/pkg/registry"
+	"helm.sh/helm/v4/pkg/action"
+	"helm.sh/helm/v4/pkg/cli"
+	"helm.sh/helm/v4/pkg/registry"
 )
 
 var helmDriver string = os.Getenv("HELM_DRIVER")
@@ -34,53 +35,50 @@ func initActionConfigList(settings *cli.EnvSettings, logger *log.Logger, allName
 	if err := actionConfig.Init(
 		settings.RESTClientGetter(),
 		namespace,
-		helmDriver,
-		logger.Printf); err != nil {
+		helmDriver); err != nil {
 		return nil, err
 	}
 
 	return actionConfig, nil
 }
 
-func newRegistryClient(settings *cli.EnvSettings, plainHTTP bool) (*registry.Client, error) {
+func newRegistryClient(settings *cli.EnvSettings, certFile, keyFile, caFile string, insecureSkipTLSVerify, plainHTTP bool) (*registry.Client, error) {
+
 	opts := []registry.ClientOption{
 		registry.ClientOptDebug(settings.Debug),
 		registry.ClientOptEnableCache(true),
 		registry.ClientOptWriter(os.Stderr),
 		registry.ClientOptCredentialsFile(settings.RegistryConfig),
 	}
+
 	if plainHTTP {
 		opts = append(opts, registry.ClientOptPlainHTTP())
+	}
+
+	if certFile != "" && keyFile != "" || caFile != "" || insecureSkipTLSVerify {
+		tlsConf, err := NewTLSConfig(
+			WithInsecureSkipVerify(insecureSkipTLSVerify),
+			WithCertKeyPairFiles(certFile, keyFile),
+			WithCAFile(caFile),
+		)
+		if err != nil {
+			return nil, fmt.Errorf("failed to load client TLS certs: %w", err)
+		}
+
+		opts = append(opts, registry.ClientOptHTTPClient(&http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: tlsConf,
+				Proxy:           http.ProxyFromEnvironment,
+			},
+		}))
 	}
 
 	// Create a new registry client
 	registryClient, err := registry.NewClient(opts...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to initialize registry client: %w", err)
 	}
-	return registryClient, nil
-}
 
-func newRegistryClientTLS(settings *cli.EnvSettings, logger *log.Logger, certFile, keyFile, caFile string, insecureSkipTLSverify, plainHTTP bool) (*registry.Client, error) {
-	if certFile != "" && keyFile != "" || caFile != "" || insecureSkipTLSverify {
-		registryClient, err := registry.NewRegistryClientWithTLS(
-			logger.Writer(),
-			certFile,
-			keyFile,
-			caFile,
-			insecureSkipTLSverify,
-			settings.RegistryConfig,
-			settings.Debug)
-
-		if err != nil {
-			return nil, err
-		}
-		return registryClient, nil
-	}
-	registryClient, err := newRegistryClient(settings, plainHTTP)
-	if err != nil {
-		return nil, err
-	}
 	return registryClient, nil
 }
 

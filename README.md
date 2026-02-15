@@ -36,6 +36,24 @@ Helm v3 documentation is located under `versioned-docs/version-3`. The sidebar f
 
 For earlier versions, see the dev-v2 branch of the main Helm repo [here](https://github.com/helm/helm/tree/dev-v2/docs).
 
+### Community Documentation
+
+The Community section imports content from the [helm/community](https://github.com/helm/community) repository. To manage these imported docs:
+
+#### Download/Update Community Docs
+```bash
+yarn download-remote-community
+```
+This command fetches the latest community documentation from the helm/community repository and applies transformations for proper integration.
+
+#### Clear Community Docs
+```bash
+yarn clear-remote-community
+```
+This removes the imported community documentation files (useful before re-importing or for troubleshooting).
+
+The imported docs configuration is defined in `docusaurus.config.js` under `customFields.communityDocs`. See `ARCHITECTURAL_DECISIONS.md` for details on the implementation.
+
 ### Updating the Helm CLI Reference Docs
 
 The documentation for the list of Helm CLI Commands are [exported](https://github.com/helm/helm/blob/a6b2c9e2126753f6f94df231e89b2153c2862764/cmd/helm/root.go#L169) from the main helm project repo and rendered [here on the website](https://helm.sh/docs/helm) as a reference.

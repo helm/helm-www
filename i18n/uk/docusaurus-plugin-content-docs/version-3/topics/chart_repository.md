@@ -93,15 +93,15 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 
 Першим кроком є **створення кошика GCS**. Назвемо його `fantastic-charts`.
 
-![Створення кошика GCS](https://helm.sh/img/create-a-bucket.png)
+![Створення кошика GCS](/img/helm2/create-a-bucket.png)
 
 Далі, зробіть свій кошик публічним, **редагувавши дозволи кошику**.
 
-![Редагування дозволів](https://helm.sh/img/edit-permissions.png)
+![Редагування дозволів](/img/helm2/edit-permissions.png)
 
 Додайте цей пункт, щоб **зробити кошик публічним**:
 
-![Зробити кошик публічним](https://helm.sh/img/make-bucket-public.png)
+![Зробити кошик публічним](/img/helm2/make-bucket-public.png)
 
 Вітаємо, тепер у вас є порожній кошик GCS, готовий для обслуговування чартів!
 
@@ -134,11 +134,11 @@ $ git checkout -b gh-pages
 
 Або через веббраузер, використовуючи кнопку **Branch** у вашому репозиторії GitHub:
 
-![Створення гілки GitHub Pages](https://helm.sh/img/create-a-gh-page-button.png)
+![Створення гілки GitHub Pages](/img/helm2/create-a-gh-page-button.png)
 
 Далі потрібно переконатися, що ваша **гілка gh-pages** налаштована як GitHub Pages. Для цього натисніть у вашому репо кнопку **Settings** і прокрутіть до розділу **GitHub pages** і налаштуйте його, як показано нижче:
 
-![Налаштування гілки GitHub Pages](https://helm.sh/img/set-a-gh-page.png)
+![Налаштування гілки GitHub Pages](/img/helm2/set-a-gh-page.png)
 
 Стандартно **Source** зазвичай встановлюється на **gh-pages branch**. Якщо це не встановлено, виберіть його.
 

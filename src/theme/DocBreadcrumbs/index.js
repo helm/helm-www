@@ -44,6 +44,11 @@ export default function DocBreadcrumbs() {
   const versionMainDoc = currentVersion?.docs.find((doc) => doc.id === currentVersion.mainDocId);
   const docsPath = versionMainDoc?.path || '/docs';
 
+  // Determine if we're in the community section and set the label/path accordingly
+  const isCommunitySection = docsVersion.pluginId === 'community';
+  const sectionLabel = isCommunitySection ? 'Community' : 'Docs';
+  const sectionPath = isCommunitySection ? '/community' : docsPath;
+
   if (!breadcrumbs) {
     return null;
   }
@@ -64,8 +69,8 @@ export default function DocBreadcrumbs() {
           {homePageRoute && <HomeBreadcrumbItem />}
           {homePageRoute && (
             <BreadcrumbsItem>
-              <BreadcrumbsItemLink href={docsPath} isLast={false}>
-                Docs
+              <BreadcrumbsItemLink href={sectionPath} isLast={false}>
+                {sectionLabel}
               </BreadcrumbsItemLink>
             </BreadcrumbsItem>
           )}

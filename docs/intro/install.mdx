@@ -4,10 +4,6 @@ description: Learn how to install and get running with Helm.
 sidebar_position: 2
 ---
 
-import Helm4 from "../_v4-in-progress.mdx" 
-
-<Helm4/>
-
 This guide shows how to install the Helm CLI. Helm can be installed either from
 source, or from pre-built binary releases.
 
@@ -25,7 +21,7 @@ releases for a variety of OSes. These binary versions can be manually downloaded
 and installed.
 
 1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (`tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`)
+2. Unpack it (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
 3. Find the `helm` binary in the unpacked directory, and move it to its desired
    destination (`mv linux-amd64/helm /usr/local/bin/helm`)
 
@@ -41,19 +37,19 @@ the community requesting Helm for the OS in question.
 
 Helm now has an installer script that will automatically grab the latest version
 of Helm and [install it
-locally](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3).
+locally](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4).
 
 You can fetch that script, and then execute it locally. It's well documented so
 that you can read through it and understand what it is doing before you run it.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Yes, you can `curl
-https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` if
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash` if
 you want to live on the edge.
 
 ## Through Package Managers
@@ -153,7 +149,7 @@ Helm.
 `main` branch. They are not official releases, and may not be stable. However,
 they offer the opportunity to test the cutting edge features.
 
-Canary Helm binaries are stored at [get.helm.sh](https://get.helm.sh). Here are
+Canary Helm binaries are stored at `get.helm.sh`. Here are
 links to the common builds:
 
 - [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
@@ -164,14 +160,14 @@ links to the common builds:
 ### From Source (Linux, macOS)
 
 Building Helm from source is slightly more work, but is the best way to go if
-you want to test the latest (pre-release) Helm version.
+you want to test the latest Helm version.
 
 You must have a working Go environment.
 
 ```console
-$ git clone https://github.com/helm/helm.git
-$ cd helm
-$ make
+git clone https://github.com/helm/helm.git
+cd helm
+make
 ```
 
 If required, it will fetch the dependencies and cache them, and validate
