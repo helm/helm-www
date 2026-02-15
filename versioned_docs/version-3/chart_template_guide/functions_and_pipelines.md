@@ -231,7 +231,7 @@ list via the `items` field:
 
 ```go
 {{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
-    {{/* do something with each service */}}
+    {{-/* do something with each service */-}}
 {{ end }}
 ```
 

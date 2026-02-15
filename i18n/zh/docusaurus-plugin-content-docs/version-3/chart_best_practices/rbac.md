@@ -60,9 +60,9 @@ anotherComponent:
 以下辅助模板应用于ServiceAccount。
 
 ```yaml
-{{/*
+{{-/*
 Create the name of the service account to use
-*/}}
+*/-}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "mychart.fullname" .) .Values.serviceAccount.name }}

@@ -89,7 +89,7 @@ This takes an array of three values:
 - the top context
 - the template name of the overrides (destination)
 - the template name of the base (source)
-*/}}
+*/-}}
 {{- define "mylibchart.util.merge" -}}
 {{- $top := first . -}}
 {{- $overrides := fromYaml (include (index . 1) $top) | default (dict ) -}}
