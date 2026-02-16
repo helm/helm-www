@@ -28,6 +28,10 @@ Anyone can submit a PR to edit Helm.sh. We require commits be signed - please re
 
 Pull requests require [maintainer](https://github.com/helm/helm-www/blob/main/OWNERS) approval before merge.
 
+### Style Guide
+
+For Helm documentation style guidelines, see [Documentation Style Guide](style-guide.md).
+
 ### How to Edit The Helm Docs
 
 Helm v4 documentation is located in this repo under `/docs/`. The sidebar for the Helm v4 docs is located at `sidebars.js`.
