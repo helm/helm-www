@@ -89,6 +89,7 @@ helm repo remove <repo_name>      # Remove one or more chart repositories
 helm repo index <DIR>             # Read the current directory and generate an index file based on the charts found.
 helm repo index <DIR> --merge     # Merge the generated index with an existing index file
 helm search repo <keyword>        # Search repositories for a keyword in charts
+helm search repo oci://<registry>/<chart> --versions  # Search for chart versions in an OCI registry
 helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------

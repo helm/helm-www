@@ -103,6 +103,7 @@ Here is a complete list:
 
 - `helm pull`
 - `helm push`
+- `helm search repo`
 - `helm show `
 - `helm template`
 - `helm install`
@@ -153,6 +154,56 @@ REVISION: 2
 NOTES:
 ...
 ```
+
+### Search OCI Registries
+
+Use `helm search repo` with an `oci://` reference to search for chart versions in an OCI registry. This queries the registry directly, so no local index file is needed.
+
+Helm fetches only the config layer (not the full chart tarball) for each semver-valid tag, making this operation lightweight and fast.
+
+#### Basic Usage
+
+Provide an `oci://` reference to `helm search repo`:
+
+```console
+$ helm search repo oci://ghcr.io/org/charts/mychart --versions
+NAME                                    CHART VERSION   APP VERSION   DESCRIPTION
+oci://ghcr.io/org/charts/mychart        1.2.0           2.0.0         My Helm chart
+oci://ghcr.io/org/charts/mychart        1.1.0           1.9.0         My Helm chart
+oci://ghcr.io/org/charts/mychart        1.0.0           1.0.0         My Helm chart
+```
+
+Without `--versions`, only the latest stable version is returned:
+
+```console
+$ helm search repo oci://ghcr.io/org/charts/mychart
+NAME                                    CHART VERSION   APP VERSION   DESCRIPTION
+oci://ghcr.io/org/charts/mychart        1.2.0           2.0.0         My Helm chart
+```
+
+#### Filter by Version
+
+Use `--version` to filter results by a semver constraint:
+
+```console
+$ helm search repo oci://ghcr.io/org/charts/mychart --version '^1.0.0' --versions
+```
+
+Use `--devel` to include pre-release versions (alpha, beta, release candidates):
+
+```console
+$ helm search repo oci://ghcr.io/org/charts/mychart --devel --versions
+```
+
+#### Authenticate to Private Registries
+
+For private registries, use the `--username` and `--password` flags:
+
+```console
+$ helm search repo oci://ghcr.io/org/charts/mychart --username myuser --password mypass --versions
+```
+
+Alternatively, log in first using `helm registry login`, and subsequent commands will use the stored credentials.
 
 ## Specifying dependencies
 
