@@ -52,7 +52,7 @@
     "description": "The label of footer link with label=Slack (#helm-dev) linking to https://kubernetes.slack.com/messages/C51E88VDG"
   },
   "link.item.label.Contribution Guide": {
-    "message": "Посібник з внеску",
+    "message": "Як взяти участь",
     "description": "The label of footer link with label=Contribution Guide linking to https://github.com/helm/helm/blob/main/CONTRIBUTING.md"
   },
   "link.item.label.Maintainers": {
@@ -80,7 +80,7 @@
     "description": "The label of footer link with label=X linking to https://x.com/helmpack"
   },
   "copyright": {
-    "message": "<a href=\"https://www.cncf.io/\">Ми є випускним проєктом Cloud Native Computing Foundation.</a><br/>© Автори Helm 2025. Документація поширюється за ліцензією <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Усі права захищені. The Linux Foundation має зареєстровані торгові марки та використовує торгові марки. Щоб переглянути список торгових марок The Linux Foundation, відвідайте нашу <a href=\"https://www.linuxfoundation.org/trademark-usage/\">сторінку використання торгових марок</a>.",
+    "message": "Ми є дипломованим проєктом <a href=\"https://www.cncf.io/\">Cloud Native Computing Foundation.</a><br/>© Автори Helm 2025. Документація поширюється на умовах ліцензії <a href=\"https://creativecommons.org/licenses/by/4.0/deed.uk\">CC-BY-4.0.</a><br/>© 2025 The Linux Foundation. Усі права застережено. The Linux Foundation має та використовує зареєстровані торгові марки. Для ознайомлення з переліком торгових марок The Linux Foundation, відвідайте <a href=\"https://www.linuxfoundation.org/trademark-usage/\">сторінку використання торгових марок</a>.",
     "description": "The footer copyright"
   },
   "logo.alt": {
