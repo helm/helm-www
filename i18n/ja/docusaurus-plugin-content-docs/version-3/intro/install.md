@@ -41,9 +41,9 @@ Helm に、最新バージョンの Helm を自動的に取得して
 十分に文書化されているため、実行する前にそれを読んで何が行われているかを理解できます。
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 もちろん、
