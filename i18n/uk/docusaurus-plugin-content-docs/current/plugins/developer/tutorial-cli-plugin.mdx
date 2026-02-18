@@ -1,0 +1,139 @@
+---
+title: "Посібник: Створення втулків CLI"
+sidebar_label: Створення втулків CLI
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+import CodeBlock from "@theme/CodeBlock";
+
+Створіть команду `helm system-info`, яка виводить інформацію про систему.
+
+## Subprocess Runtime
+
+Почнемо з створення втулка CLI з середовищем виконання Subprocess.
+
+### Передумови {#prerequisites}
+
+1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. У терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
+
+### 1. Створіть теку для втулка {#1-create-plugin-directory}
+
+Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/system-info
+cd $HOME/code/helm/plugins/system-info
+```
+
+### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: cli/v1
+name: "system-info"
+version: "0.1.0"
+runtime: subprocess
+config:
+  usage: system-info
+  shortHelp: Показує системну інформацію та інформацію Helm
+  longHelp: Показує інформацію про ОС, версію Helm та деталі середовища
+runtimeConfig:
+  platformCommand:
+    - command: ${HELM_PLUGIN_DIR}/system-info.sh
+```
+
+### 3. Створіть скрипт {#3-create-script}
+
+```bash title="system-info.sh" showLineNumbers
+#!/bin/bash
+
+echo "=== System Information ==="
+echo "OS: $(uname -s)"
+echo "Architecture: $(uname -m)"
+
+echo ""
+echo "=== Helm Information ==="
+echo "Plugin Dir: $HELM_PLUGIN_DIR"
+echo "Arguments: $*"
+
+echo ""
+echo "System info complete!"
+```
+
+Зробіть його виконуваним:
+
+```bash
+chmod +x system-info.sh
+```
+
+### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+
+Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/system-info
+Installing plugin from local directory (development mode)
+Installed plugin: system-info
+```
+
+Встановлення в локальному режимі розробки створює символічне посилання з вашого теки джерел до теки втулків, тому ви можете продовжувати розробку в бажаному місці. Ви можете побачити символічне посилання, переглянувши розташування теки за допомогою внутрішньої змінної середовища HELM_PLUGINS:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 3 r6by  staff    96B Nov 10 02:18 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+Ви можете переглянути детальну інформацію про втулок у списку встановлених втулків `helm plugin list`:
+
+```bash
+% helm plugin list
+NAME       	VERSION	TYPE  	APIVERSION	PROVENANCE	SOURCE
+system-info	0.1.0  	cli/v1	v1        	local dev 	unknown
+```
+
+Тепер ви також можете побачити свій втулок у списку доступних команд за допомогою команди `helm help` і переглянути власне повідомлення довідки, яке ви визначили у файлі `plugin.yaml`:
+
+```bash
+% helm help | grep system-info
+  system-info Показує системну інформацію та інформацію Helm
+
+% helm help system-info
+Показує інформацію про ОС, версію Helm та деталі середовища
+
+Usage:
+  helm system-info [flags]
+```
+
+Спробуємо запустити команду CLI:
+
+```bash
+% helm system-info
+=== System Information ===
+OS: Darwin
+Architecture: arm64
+
+=== Helm Information ===
+Plugin Dir: /Users/r6by/Library/helm/plugins/system-info
+Arguments:
+
+System info complete!
+```
+
+Що ви створили: втулок CLI з використанням середовища виконання Subprocess!
+
+Тепер давайте зробимо це ще раз, але цього разу з використанням середовища виконання Wasm…
+
+## Wasm Runtime
+
+### Передумови {#prerequisites-1}
+
+- Передумови з [Subprocess Runtime](#subprocess-runtime)
+- Встановлений Go 1.25
+
+:::warning
+To-do: додати цей розділ
+:::
