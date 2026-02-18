@@ -15,6 +15,10 @@
     "message": "Календар релізів",
     "description": "Release Calendar link"
   },
+  "home.community.events": {
+    "message": "Події",
+    "description": "Events section title"
+  },
   "home.community.upcomingEvents": {
     "message": "Майбутні події",
     "description": "Upcoming Events section title"
@@ -28,15 +32,15 @@
     "description": "Past Events subtitle"
   },
   "home.community.sigApps": {
-    "message": "SIG Apps",
+    "message": "Робоча група SIG Apps",
     "description": "SIG Apps section title"
   },
   "home.community.sigApps.description": {
-    "message": "Вони {meetLink}, щоб демонструвати та обговорювати інструменти та проєкти. Зустрічі спільноти записуються та {youtubeLink}.",
+    "message": "Зустрічі робочої групи проходять {meetLink}. На зустрічах відбуваються обговорення та демонстрації інструментів та проєктів. Зустрічі спільноти записуються та {youtubeLink}.",
     "description": "SIG Apps meeting description"
   },
   "home.community.sigApps.meetLink": {
-    "message": "зустрічаються щотижня",
+    "message": "щотижня",
     "description": "Link to SIG Apps meetings"
   },
   "home.community.sigApps.youtubeLink": {
@@ -44,14 +48,14 @@
     "description": "Link to YouTube recordings"
   },
   "home.community.developerStandups": {
-    "message": "Стендапи розробників"
+    "message": "Зустрічі розробників"
   },
   "home.community.developerStandups.time": {
     "message": "Четвер 9:30-10am (PT)",
     "description": "Developer Standups day and time"
   },
   "home.community.developerStandups.description": {
-    "message": "Ці зустрічі відкриті для всіх. Перегляньте {communityRepoLink} для нотаток та деталей.",
+    "message": "Ці зустрічі відкриті для всіх. Перегляньте {communityRepoLink} для ознайомалення з нотатками зустрічей та отримання докладних відомостей.",
     "description": "Developer Standups description with community repo link"
   },
   "home.community.developerStandups.communityRepoLink": {
@@ -67,23 +71,23 @@
     "description": "helm-dev slack channel description"
   },
   "home.community.slack.charts.description": {
-    "message": "Обговорення для користувачів та контриб'юторів Helm Charts.",
+    "message": "Обговорення для користувачів та контрибʼюторів чартів Helm.",
     "description": "charts slack channel description"
   },
   "home.community.slack.join": {
-    "message": "{slackLink}, щоб приєднатися до команди Kubernetes Slack.",
+    "message": "{slackLink}, щоб приєднатися до команди в Slack Kubernetes.",
     "description": "How to join the Kubernetes Slack team with slack link"
   },
   "home.community.slack.join.slackLink": {
-    "message": "Запитайте доступ тут",
+    "message": "Отримайте доступ тут",
     "description": "Request access to slack link"
   },
   "home.community.contributing": {
-    "message": "Внесок у проєкт",
+    "message": "Участь в проєкті",
     "description": "Contributing section title"
   },
   "home.community.contributing.description": {
-    "message": "Helm завжди вітає нові внески в проєкт!",
+    "message": "Helm завжди радий вашій допомозі!",
     "description": "Contributing section description"
   },
   "home.community.contributing.whereToBegin": {
@@ -91,15 +95,15 @@
     "description": "Where to begin? section title"
   },
   "home.community.contributing.whereToBegin.description": {
-    "message": "Helm — це великий проєкт з багатьма користувачами та контриб'юторами. Це може бути складно для сприйняття!",
+    "message": "Helm — це великий проєкт з багатьма користувачами та учасниками. Тут багато чого можна дізнатися!",
     "description": "Where to begin? section description"
   },
   "home.community.contributing.whereToBegin.goodFirstIssues": {
-    "message": "У нас є список {goodFirstIssuesLink}, якщо ви хочете допомогти, але не знаєте, з чого почати.",
+    "message": "У нас є список {goodFirstIssuesLink}, якщо ви хочете допомогти, але не знаєте, з чого розпочати.",
     "description": "Good first issues sentence with link"
   },
   "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
-    "message": "хороших перших завдань",
+    "message": "перших завдань",
     "description": "Good first issues link"
   },
   "home.community.contributing.whatDoIDo": {
@@ -107,11 +111,11 @@
     "description": "What do I do? section title"
   },
   "home.community.contributing.whatDoIDo.contributionGuide": {
-    "message": "Перш ніж писати код, будь ласка, прочитайте наш {contributionGuideLink}. Він описує процеси створення та перегляду пул-реквестів.",
+    "message": "Перш ніж писати код, будь ласка, прочитайте наші {contributionGuideLink}. Вони описують процеси створення та рецензування пул-реквестів.",
     "description": "What do I do? contribution guide description"
   },
   "home.community.contributing.whatDoIDo.contributionGuideLink": {
-    "message": "Посібник з внеску",
+    "message": "Настанови щодо участі",
     "description": "Contribution Guide link"
   },
   "home.community.contributing.whatDoIDo.signYourCommits": {
@@ -131,15 +135,15 @@
     "description": "Join the Community subtitle"
   },
   "home.about.whatIsHelm": {
-    "message": "Helm допомагає керувати застосунками Kubernetes — Helm Charts допомагають визначати, встановлювати та оновлювати навіть найскладніші застосунки Kubernetes.",
+    "message": "Helm допомагає керувати застосунками Kubernetes — чарти Helm допомагають визначати, встановлювати та оновлювати навіть найскладніші застосунки Kubernetes.",
     "description": "What is Helm? first paragraph"
   },
   "home.about.chartsDescription": {
-    "message": "Чарти легко створювати, версіонувати, ділитися ними та публікувати — тому почніть використовувати Helm і припиніть копіювати-вставляти.",
+    "message": "Чарти легко створювати, версіонувати, ділитися ними та публікувати — тому почніть використовувати Helm і перестаньте займатися копіюванням та вставкою.",
     "description": "What is Helm? charts paragraph"
   },
   "home.about.cncf": {
-    "message": "Helm — це випускний проєкт в {cncfLink}, який підтримується {helmCommunityLink}.",
+    "message": "Helm є дипломованим проєктом {cncfLink}, який підтримується {helmCommunityLink}.",
     "description": "What is Helm? CNCF Graduated Project paragraph"
   },
   "home.about.cncf.helmCommunityLink": {
@@ -171,15 +175,15 @@
     "description": "Manage Complexity section title"
   },
   "home.features.manageComplexity.description": {
-    "message": "Чарти описують навіть найскладніші застосунки, забезпечують повторювану установку застосунків і служать єдиним джерелом істини.",
+    "message": "Чарти описують навіть найскладніші застосунки, забезпечують повторюваність встановлення застосунків і слугують єдиним авторитетним джерелом інформації.",
     "description": "Manage Complexity section description"
   },
   "home.features.easyUpdates": {
-    "message": "Легкі оновлення",
+    "message": "Прості оновлення",
     "description": "Easy Updates section title"
   },
   "home.features.easyUpdates.description": {
-    "message": "Позбавтеся болю від оновлень завдяки оновленням на місці та користувацьким хукам.",
+    "message": "Позбудьтеся складнощів оновлення за допомогою оновлень на місці та використання власних хуків.",
     "description": "Easy Updates section description"
   },
   "home.features.simpleSharing": {
@@ -207,7 +211,7 @@
     "description": "Helm tagline"
   },
   "home.header.subtitle": {
-    "message": "Helm — найкращий спосіб знайти, поділитися та використовувати програмне забезпечення, створене для",
+    "message": "Helm — найкращий спосіб знайти, поділитися та використовувати програмне забезпечення, створене для",
     "description": "Home page header subtitle"
   },
   "home.gettingStarted.title": {
@@ -227,11 +231,11 @@
     "description": "Download a binary link"
   },
   "home.gettingStarted.postInstall.instructions": {
-    "message": "Після встановлення розпакуйте бінарний файл helm, додайте його до вашого PATH — і все готово! Перевірте {docsLink} для детальної інформації про {installationLink} та {usageLink}.",
+    "message": "Після встановлення розпакуйте бінарний файл helm, додайте його до вашого PATH — і все готово! Ознайомтесь з {docsLink} для отримання детальної інформації про {installationLink} та {usageLink}.",
     "description": "Instructions after installing Helm"
   },
   "home.gettingStarted.postInstall.docsLink": {
-    "message": "документацію",
+    "message": "документацією",
     "description": "Link to installation docs"
   },
   "home.gettingStarted.postInstall.installationLink": {
@@ -239,7 +243,7 @@
     "description": "Link to installation instructions"
   },
   "home.gettingStarted.postInstall.usageLink": {
-    "message": "інструкції з використання",
+    "message": "інструкціями з використання",
     "description": "Link to usage instructions"
   },
   "home.gettingStarted.getChartsTitle": {
@@ -253,6 +257,22 @@
   "home.gettingStarted.artifactHub.helmChartsLink": {
     "message": "чартами Helm",
     "description": "Helm charts link"
+  },
+  "home.support.title": {
+    "message": "Нас підтримують",
+    "description": "Community support section title"
+  },
+  "home.support.subtitle": {
+    "message": "Helm підтримується та розвивається спільнотою, що налічує понад 400 розробників.",
+    "description": "Community support section subtitle"
+  },
+  "home.support.maintainers": {
+    "message": "...та {maintainersLink}.",
+    "description": "Link to core maintainers"
+  },
+  "home.support.maintainersLink": {
+    "message": "багато інших чудових розробників ядра Helm",
+    "description": "Core maintainers link text"
   },
   "theme.ErrorPageContent.title": {
     "message": "На сторінці стався збій.",
@@ -275,11 +295,11 @@
     "description": "The ARIA label for the blog pagination"
   },
   "theme.blog.paginator.newerEntries": {
-    "message": "Наступні записи",
+    "message": "Наступні дописи",
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
-    "message": "Попередні записи",
+    "message": "Попередні дописи",
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
@@ -295,7 +315,7 @@
     "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.tags.tagsPageLink": {
-    "message": "Переглянути всі теги",
+    "message": "Переглянути всі теґи",
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
@@ -339,7 +359,7 @@
     "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.tagDocListPageTitle": {
-    "message": "{nDocsTagged} з тегом \"{tagName}\"",
+    "message": "{nDocsTagged} з теґом \"{tagName}\"",
     "description": "The title of the page for a docs tag"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
@@ -355,14 +375,14 @@
     "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
-    "message": "остання версія",
+    "message": "останньої версії",
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.docs.versionBadge.label": {
     "message": "Версія: {versionLabel}"
   },
   "theme.common.editThisPage": {
-    "message": "Відредагувати цю сторінку",
+    "message": "Редагувати цю сторінку",
     "description": "The link label to edit the current page"
   },
   "theme.lastUpdated.atDate": {
@@ -390,7 +410,7 @@
     "description": "The label for the navbar versions dropdown on mobile view"
   },
   "theme.tags.tagsListLabel": {
-    "message": "Теги:",
+    "message": "Теґи:",
     "description": "The label alongside a tag list"
   },
   "theme.admonition.caution": {
@@ -426,15 +446,15 @@
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Розгорнути категорію в сайдбарі '{label}'",
+    "message": "Розгорнути категорію в панелі '{label}'",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Згорнути категорію в сайдбарі '{label}'",
+    "message": "Згорнути категорію в панелі '{label}'",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "(відкриється в новій вкладці)",
     "description": "The ARIA label for the external link icon"
   },
   "theme.NavBar.navAriaLabel": {
@@ -446,7 +466,7 @@
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "Будь ласка, зверніться до власника сайту, з якого ви перейшли на це посилання, щоб повідомити, що посилання не працює.",
+    "message": "Будь ласка, зверніться до власника сайту, з якого ви перейшли за цим посиланням, щоб повідомити, що воно не працює.",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.navbar.mobileLanguageDropdown.label": {
@@ -482,7 +502,7 @@
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
-    "message": "Перемикання обведення слів",
+    "message": "Перенос рядків",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
@@ -490,23 +510,23 @@
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
-    "message": "Згорнути сайдбар",
+    "message": "Згорнути панель",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "Згорнути сайдбар",
+    "message": "Згорнути панель",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "Сайдбар документації",
+    "message": "Панель документації",
     "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-    "message": "Закрити сайдбар",
+    "message": "Закрити панель",
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "Перемкнути сайдбар",
+    "message": "Показати/сховати панель",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
@@ -522,11 +542,11 @@
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
-    "message": "Розгорнути сайдбар",
+    "message": "Розгорнути панель",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "Розгорнути сайдбар",
+    "message": "Розгорнути панель",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.blog.post.plurals": {
@@ -534,7 +554,7 @@
     "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.tagTitle": {
-    "message": "{nPosts} з тегом \"{tagName}\"",
+    "message": "{nPosts} з теґом \"{tagName}\"",
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
@@ -578,7 +598,7 @@
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {
-    "message": "Теги",
+    "message": "Теґи",
     "description": "The title of the tag list page"
   }
 }
