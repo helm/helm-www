@@ -1,110 +1,93 @@
 ---
 title: "弃用的 Kubernetes API"
-description: "解释Helm不推荐使用的Kubernetes API"
+description: "介绍 Helm 中与 Kubernetes API 弃用相关的问题"
 ---
 
-Kubernetes是一个API驱动系统，且API会随着时间的推移而变化，以反映对问题理解的不断推移。这是系统及API的普遍做法。
-API推移的一个重要部分时良好的弃用策略和通知用户更改API是如何实现的。换句话说，你的API使用者需要提前知道要发布的API
-删除或更改了什么。这消除了重大改变对用户造成的恐惧。
+Kubernetes 是一个 API 驱动的系统，API 会随着时间推移而不断演进，以反映对问题理解的深入。这是系统及其 API 的常见做法。API 演进的一个重要组成部分是完善的弃用策略和通知机制，用于告知用户 API 的变更。换句话说，API 使用者需要提前知道在哪个版本中某个 API 会被移除或变更。这可以避免意外的破坏性变更对使用者造成影响。
 
-[Kubernetes弃用策略](https://kubernetes.io/docs/reference/using-api/deprecation-policy/)
-文档描述了如何处理API版本的变化。弃用策略声明了在弃用声明之后支持的API版本的时间范围。因此关注弃用声明并知道API何时被移除很重要。
-有助于将影响降到最低。
+[Kubernetes 弃用策略](https://kubernetes.io/docs/reference/using-api/deprecation-policy/)文档描述了 Kubernetes 如何处理 API 版本的变化。弃用策略规定了在发布弃用公告后，API 版本将被支持的时间范围。因此，关注弃用公告并了解 API 何时被移除非常重要，有助于将影响降到最低。
 
-这是一个声明示例， [针对Kubernetes 1.6弃用的API版本](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/)，
-而且是在版本发布的几个月之前公布。在这之前，这些API版本可能已经宣布不再使用了。这表明一个好的策略可以通知用户API的版本支持。
+以下是一个公告示例：[Kubernetes 1.16 中弃用的 API 版本](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/)，在该版本发布的几个月之前就已公布。在此之前，这些 API 版本可能已经被标记为弃用。这说明 Kubernetes 有一套良好的策略来通知使用者 API 版本的支持情况。
 
-Helm模板定义Kubernetes对象时指定了一个 [Kubernetes
-API组](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups)，类似于Kubernetes的manifest文件。
-在模板的`apiVersion`字段指定并标识了Kubernetes对象的API版本。这意味着Helm用户和chart维护者需要关注Kubernetes的API版本
-何时会被弃用且在哪个Kubernetes版本中被移除。
+Helm 模板在定义 Kubernetes 对象时需要指定一个 [Kubernetes API 组](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups)，与 Kubernetes manifest 文件类似。API 版本在模板的 `apiVersion` 字段中指定，用于标识 Kubernetes 对象的 API 版本。这意味着 Helm 用户和 chart 维护者需要关注 Kubernetes API 版本的弃用时间，以及会在哪个 Kubernetes 版本中被移除。
 
-## Chart Maintainers
+## Chart 维护者
 
-你应该审核chart，检查Kubernetes中已弃用或已删除的Kubernetes API版本。如果API版本不再被支持，应该更新为支持版本并发布新的
-chart版本。API版本由`kind`和`apiVersion`字段定义。比如，Kubernetes 1.16 中有个被移除的`Deployment`对象API版本：
+你应该审核 chart，检查是否使用了已弃用或已移除的 Kubernetes API 版本。如果发现不再支持的 API 版本，应更新为受支持的版本并发布新的 chart 版本。API 版本由 `kind` 和 `apiVersion` 字段定义。例如，以下是 Kubernetes 1.16 中被移除的 `Deployment` 对象 API 版本：
 
 ```yaml
 apiVersion: apps/v1beta1
 kind: Deployment
 ```
 
-## Helm用户
+## Helm 用户
 
-你应该审核你使用的chart(类似于[chart维护者](#chart-maintainers))，并识别所有的chart中Kubernetes版本弃用或移除的API版本。
-针对确定的chart，需要检查（有支持的API版本的）chart最新的版本，或者手动更新。
+你应该审核所使用的 chart（类似于 [chart 维护者](#chart-维护者)的做法），识别其中使用了已弃用或已移除 API 版本的 chart。对于这些 chart，需要检查是否有使用受支持 API 版本的新版本，或者自行更新。
 
-另外，你还需要审核已经部署的chart（即Helm版本）还有没有弃用或移除的API版本。可以使用`helm get manifest`获取详细信息。
+此外，你还需要审核已部署的 chart（即 Helm release），检查是否存在已弃用或已移除的 API 版本。可以使用 `helm get manifest` 命令获取 release 的详细信息。
 
-将Helm更新为支持的API取决于你通过以下方式找到的：
+将 Helm release 更新为受支持的 API 版本，具体操作取决于你的发现：
 
-1. 如果你只找到弃用的API版本，则：
+1. 如果只发现弃用（但尚未移除）的 API 版本：
+    - 执行 `helm upgrade`，使用包含受支持 Kubernetes API 版本的 chart
+    - 在升级描述中添加说明，提示不要回滚到此版本之前的 Helm release
 
-    - 执行`helm upgrade`升级Kubernetes API版本支持的chart版本
-    - 在升级中添加一个描述，在当前版本之前不执行Helm版本回滚
+2. 如果发现在某个 Kubernetes 版本中已被移除的 API 版本：
+    - 如果你运行的 Kubernetes 版本中该 API 版本仍然可用（例如，你当前使用 Kubernetes 1.15，但发现使用的 API 将在 1.16 中被移除）：
+      - 按照步骤 1 的流程操作
+    - 否则（例如，你当前运行的 Kubernetes 版本中，`helm get manifest` 显示的某些 API 版本已不可用）：
+      - 需要编辑存储在集群中的 release manifest，将 API 版本更新为受支持的版本。详见[更新 release manifest 的 API 版本](#更新-release-manifest-的-api-版本)
 
-2. 如果你发现了在Kubernetes版本中被移除的API版本，则：
+> 注意：在所有将 Helm release 更新为受支持 API 的场景中，都不应该将 release 回滚到包含受支持 API 版本的 release 之前的版本。
 
-    - 如果你运行的Kubernetes版本中API版本依然可用（比如，你在Kubernetes 1.15 且你发现使用的API会在1.16中移除）：
-      - 遵循第1步的步骤
-    - 否则（比如，你运行的Kubernetes 版本中某些API版本通过`helm get manifest`显示不可用）：
-      - 需要编辑存储在集群中的版本清单，更新API版本到支持的API。查看[更新版本清单的API版本](#updating-api-versions-of-a-release-manifest)
+> 建议：最佳实践是在升级到移除这些 API 的 Kubernetes 集群版本之前，先将使用弃用 API 版本的 release 升级为受支持的 API 版本。
 
-> 注意：在所有使用支持的API更新Helm版本的场景中，决不应该将发布版本回滚到API版本支持的之前的版本
+如果没有按照上述建议更新 release，在 API 版本已被移除的 Kubernetes 版本中尝试升级 release 时，会出现类似以下的错误：
 
-> 建议：最佳实践是将正在使用的弃用版本升级到支持的API版本，在升级Kubernetes 集群之前删除这些API版本。
-
-如果你没有按照之前的建议更新版本， 当升级的Kubernetes版本中API的版本已经移除，会出现类似下面的错误：
-
-```console
+```
 Error: UPGRADE FAILED: current release manifest contains removed kubernetes api(s)
 for this kubernetes version and it is therefore unable to build the kubernetes
 objects for performing the diff. error from kubernetes: unable to recognize "":
 no matches for kind "Deployment" in version "apps/v1beta1"
 ```
 
-Helm在这个情况中会失败，因为试图它在当前部署的和你传了更新/支持的API版本的chart之间创建一个diff补丁（包含在这个Kubernetes
-版本中删除的Kubernetes API）。失败的根本原因是，当Kubernetes删除了一个API版本时，Kubernetes的Go客户端库不再解析弃用的对象，
-所以Helm调用库时会失败。不幸的是，Helm无法从这种情况下恢复，且无法再管理这样的版本。查看
-[升级发布清单的API版本](#updating-api-versions-of-a-release-manifest) 获取更多如何从这种情况恢复的细节信息。
+Helm 在这种情况下会失败，因为它尝试在当前已部署的 release（包含在此 Kubernetes 版本中已移除的 API）与你传入的使用更新/受支持 API 版本的 chart 之间创建差异补丁。失败的根本原因是：当 Kubernetes 移除某个 API 版本后，Kubernetes Go 客户端库将无法解析使用弃用 API 的对象，因此 Helm 在调用该库时会失败。不幸的是，Helm 无法从这种情况中恢复，也无法继续管理这样的 release。有关如何从这种情况中恢复的详细信息，请参阅[更新 release manifest 的 API 版本](#更新-release-manifest-的-api-版本)。
 
-## Updating API Versions of a Release Manifest
+## 更新 release manifest 的 API 版本
 
-清单manifest是Helm发布对象的一个特性，存储在集群中的密钥（默认）或配置映射的数据字段中。数据字段包含了一个base64编码的gzip压缩的对象
-（对于密钥是一个额外的base 64 编码）。在版本的命名空间中每个版本或修订都对应一个密钥或配置映射。
+manifest 是 Helm release 对象的一个属性，存储在集群中 Secret（默认）或 ConfigMap 的 data 字段中。data 字段包含一个经过 gzip 压缩并使用 base64 编码的对象（如果是 Secret，还会有额外的一层 base64 编码）。在 release 所在的命名空间中，每个 release 版本/修订都对应一个 Secret 或 ConfigMap。
 
-可以使用Helm [mapkubeapis](https://github.com/helm/helm-mapkubeapis) 插件对支持API执行版本升级。查看readme获取更多信息。
+你可以使用 Helm [mapkubeapis](https://github.com/helm/helm-mapkubeapis) 插件来将 release 更新为受支持的 API。详情请查看该插件的 readme 文档。
 
-或者，可以按照这些步骤手动执行发布清单的API版本升级。根据你的配置，应该遵循密钥或配置映射的后台步骤。
+或者，你可以按照以下手动步骤更新 release manifest 的 API 版本。根据你的配置，选择 Secret 或 ConfigMap 后端对应的步骤。
 
-- 获取最近部署的版本的密钥或配置映射：
-  - Secrets后台： `kubectl get secret -l
+- 获取与最新部署的 release 关联的 Secret 或 ConfigMap 名称：
+  - Secret 后端：`kubectl get secret -l
     owner=helm,status=deployed,name=<release_name> --namespace
     <release_namespace> | awk '{print $1}' | grep -v NAME`
-  - ConfigMap后台：  `kubectl get configmap -l
+  - ConfigMap 后端：`kubectl get configmap -l
     owner=helm,status=deployed,name=<release_name> --namespace
     <release_namespace> | awk '{print $1}' | grep -v NAME`
-- 获取最新部署版本细节：
-  - Secrets后台： `kubectl get secret <release_secret_name> -n
+- 获取最新部署 release 的详细信息：
+  - Secret 后端：`kubectl get secret <release_secret_name> -n
     <release_namespace> -o yaml > release.yaml`
-  - ConfigMap后台： `kubectl get configmap <release_configmap_name> -n
+  - ConfigMap 后端：`kubectl get configmap <release_configmap_name> -n
     <release_namespace> -o yaml > release.yaml`
-- 备份版本以便出错时恢复：
+- 备份 release 以便出错时恢复：
   - `cp release.yaml release.bak`
-  - 在紧急情况下恢复： `kubectl apply -f release.bak -n
+  - 紧急情况下恢复：`kubectl apply -f release.bak -n
     <release_namespace>`
-- 解码发布版本对象：
-  - Secrets后台： `cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d
+- 解码 release 对象：
+  - Secret 后端：`cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d
     | base64 -d | gzip -d > release.data.decoded`
-  - ConfigMap后台： `cat release.yaml | grep -oP '(?<=release: ).*' | base64
+  - ConfigMap 后端：`cat release.yaml | grep -oP '(?<=release: ).*' | base64
     -d | gzip -d > release.data.decoded`
-- 修改清单的API版本。可以使用任意工具（如编辑器）修改。在你解码的发布对象的`manifest`字段。
-  (`release.data.decoded`)
-- 编码发布对象：
-  - Secrets 后台： `cat release.data.decoded | gzip | base64 | base64`
-  - ConfigMap 后台： `cat release.data.decoded | gzip | base64`
-- 用新编码的发布对象替换部署的发布文件(`release.yaml`)中`data.release`的值
-- 将文件部署到命名空间： `kubectl apply -f release.yaml -n
+- 修改 manifest 中的 API 版本。可以使用任意工具（如编辑器）进行修改。API 版本位于解码后的 release 对象 (`release.data.decoded`) 的 `manifest` 字段中
+- 编码 release 对象：
+  - Secret 后端：`cat release.data.decoded | gzip | base64 | base64`
+  - ConfigMap 后端：`cat release.data.decoded | gzip | base64`
+- 用新编码的 release 对象替换部署文件 (`release.yaml`) 中 `data.release` 属性的值
+- 将文件应用到命名空间：`kubectl apply -f release.yaml -n
   <release_namespace>`
-- 用支持Kubernetes API版本的chart执行 `helm upgrade`
-- 在升级中添加一个描述，不要执行回滚到当前版本之前的版本
+- 使用包含受支持 Kubernetes API 版本的 chart 执行 `helm upgrade`
+- 在升级描述中添加说明，提示不要回滚到此版本之前的版本

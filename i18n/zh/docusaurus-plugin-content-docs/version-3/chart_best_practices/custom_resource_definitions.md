@@ -1,47 +1,38 @@
 ---
-title: 自定义资源
-description: 如何创建和使用CRD
+title: 自定义资源定义
+description: 如何创建和使用 CRD。
 sidebar_position: 7
 ---
 
-最佳实践的这部分处理创建和使用自定义资源。
+最佳实践指南的这部分介绍如何创建和使用自定义资源定义（CRD）对象。
 
-当使用自定义资源时(CRD)，区分两个不同的部分很重要：
+使用自定义资源定义（CRD）时，需要区分两个不同的部分：
 
-- CRD的声明。是一个具有`CustomResourceDefinition`类型的yaml文件。
-- 有些资源 _使用_ CRD. 假设CRD定义了`foo.example.com/v1`。任何有`apiVersion: example.com/v1`和
-  `Foo`类的资源都可以使用CRD。
+- CRD 的声明。这是一个 kind 为 `CustomResourceDefinition` 的 YAML 文件。
+- 使用 CRD 的资源。假设 CRD 定义了 `foo.example.com/v1`，那么任何 `apiVersion: example.com/v1` 且 kind 为 `Foo` 的资源都是使用该 CRD 的资源。
 
-## 使用资源之前安装CRD声明
+## 在使用资源之前安装 CRD 声明
 
-Helm被优化为尽可能快地将尽可能多的资源加载到Kubernetes中。按照设计，Kubernetes可以获取一整套清单并将其全部上线
-（称之为协调循环）。
+Helm 被优化为尽可能快地将尽可能多的资源加载到 Kubernetes 中。按照设计，Kubernetes 可以获取一整套清单并将其全部上线（这称为协调循环）。
 
-但CRD与此不同。
+但 CRD 有所不同。
 
-对于CRD来说，声明必须在所有的CRD类型资源使用之前被注册。注册过程可能需要几秒钟。
+对于 CRD，声明必须在使用该 CRD 类型的任何资源之前完成注册。而注册过程有时需要几秒钟。
 
-### 方法1: 使用 `helm`
+### 方法1：让 `helm` 帮你完成
 
-随着Helm 3的到来，我们去掉了旧的`crd-install`钩子以便获取更简单的方法。现在可以在chart中创建一个名为`crds`的特殊目录来保存CRD。
-这些CRD没有模板化，但是运行`helm install`时可以为chart默认安装。如果CRD已经存在，会显示警告并跳过。如果希望跳过CRD安装步骤，
-可以使用`--skip-crds`参数。
+随着 Helm 3 的到来，我们移除了旧的 `crd-install` 钩子，采用了更简单的方法。现在可以在 chart 中创建一个名为 `crds` 的特殊目录来存放 CRD。这些 CRD 不会被模板化，但在运行 `helm install` 时会默认安装。如果 CRD 已存在，会显示警告并跳过。如果希望跳过 CRD 安装步骤，可以使用 `--skip-crds` 参数。
 
 #### 注意事项（和说明）
 
-目前不支持使用Helm升级或删除CRD。由于数据意外丢失的风险，这是经过多次社区讨论后作出的明确决定。对于如何处理CRD及其生命周期，
-目前社区还未达成共识。随着过程的发展，Helm会逐渐支持这些场景。
+目前不支持使用 Helm 升级或删除 CRD。由于存在意外数据丢失的风险，这是经过多次社区讨论后做出的明确决定。目前社区对于如何处理 CRD 及其生命周期还没有达成共识。随着这一过程的演进，Helm 将逐步支持这些用例。
 
-执行`helm install` 和 `helm upgrade`时的`--dry-run`参数目前不支持CRD。“模拟运行”的目的是检测chart的输出是否在发送到服务器时实际有效。
-但是CRD是对服务器行为的修改。Helm无法在模拟运行时安装CRD，因此客户端无法知道自定义资源(CR)，验证就会失败。
-你可以将CRD移动到自己的chart中或者使用`helm template`代替。
+`helm install` 和 `helm upgrade` 的 `--dry-run` 参数目前不支持 CRD。"模拟运行"的目的是验证 chart 输出在发送到服务器时是否真正有效。但 CRD 会修改服务器的行为。Helm 无法在模拟运行时安装 CRD，因此 discovery 客户端无法识别该自定义资源（CR），导致验证失败。你可以将 CRD 移动到单独的 chart 中，或者使用 `helm template` 代替。
 
-在讨论CRD支持时需要考虑的另一个重要点是如何处理模板的渲染。Helm 2中使用`crd-install`的一个明显缺点是，
-由于API可用性的变化导致无法有效验证chart（CRD实际上是向Kubernetes集群添加了另一个可用API）。 如果chart安装了CRD，
-`helm`不再有一组有效的API版本可供使用。这也是从CRD删除模板支持的原因。有了CRD安装的新方法`crds`，我们现在可以确保`helm`拥有当前集群状态的完全有效的信息。
+在讨论 CRD 支持时，另一个需要考虑的重要问题是模板渲染的处理方式。Helm 2 中使用 `crd-install` 方法的一个明显缺点是，由于 API 可用性的变化，无法正确验证 chart（CRD 实际上是向 Kubernetes 集群添加了另一个可用的 API）。如果 chart 安装了 CRD，`helm` 就不再拥有一组有效的 API 版本可供使用。这也是从 CRD 移除模板支持的原因。通过新的 `crds` 目录安装 CRD 的方法，我们现在可以确保 `helm` 拥有关于集群当前状态的完全有效的信息。
 
-### 方法2： 分隔chart
+### 方法2：独立 chart
 
-另一个方法是将CRD定义放入chart中，然后将所有使用该CRD的资源放到 _另一个_ chart中。
+另一种方法是将 CRD 定义放在一个 chart 中，然后将使用该 CRD 的所有资源放在 _另一个_ chart 中。
 
-这个方法要将每个chart分开安装，但对于具有集群管理员访问权限的操作员，这种工作流可能更有用。
+这种方法需要分别安装每个 chart。但是，对于拥有集群管理员访问权限的集群运维人员来说，这种工作流可能更有用。
