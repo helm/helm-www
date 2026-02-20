@@ -55,9 +55,9 @@ anotherComponent:
 Для ServiceAccount слід використовувати наступний допоміжний шаблон.
 
 ```yaml
-{{/*
+{{-/*
 Створіть імʼя ServiceAccount для використання
-*/}}
+*/-}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "mychart.fullname" .) .Values.serviceAccount.name }}

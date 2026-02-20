@@ -26,7 +26,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "nginx.fullname" }}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 
@@ -34,7 +34,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "fullname" -}}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 
@@ -148,7 +148,7 @@ type: sprocket
 ```yaml
 {{- /*
 This is a comment.
-*/}}
+*/-}}
 type: frobnitz
 ```
 
@@ -157,7 +157,7 @@ type: frobnitz
 ```yaml
 {{- /*
 mychart.shortname provides a 6 char truncated version of the release name.
-*/}}
+*/-}}
 {{ define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end -}}
@@ -171,7 +171,7 @@ mychart.shortname provides a 6 char truncated version of the release name.
 memory: {{ .Values.maxMem | quote }}
 ```
 
-以上注释在用户执行`helm install --debug`时是可见的，而在`{{- /* */}}`部分指定注释不会显示。
+以上注释在用户执行`helm install --debug`时是可见的，而在`{{- /* */-}}`部分指定注释不会显示。
 
 ## 在模板和模板输出中使用JSON
 

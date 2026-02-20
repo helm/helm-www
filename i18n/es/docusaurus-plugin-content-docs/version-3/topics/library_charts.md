@@ -92,7 +92,7 @@ Esto toma un arreglo de tres valores:
 - el contexto superior
 - el nombre de la plantilla de las anulaciones (destino)
 - el nombre de la plantilla de la base (fuente)
-*/}}
+*/-}}
 {{- define "mylibchart.util.merge" -}}
 {{- $top := first . -}}
 {{- $overrides := fromYaml (include (index . 1) $top) | default (dict ) -}}

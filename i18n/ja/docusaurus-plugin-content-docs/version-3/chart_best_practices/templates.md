@@ -30,7 +30,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "nginx.fullname" }}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 
@@ -38,7 +38,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "fullname" -}}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 新しいチャートは常に、自動的にテンプレート名をベストプラクティスに応じて定義するため、
@@ -151,7 +151,7 @@ type: sprocket
 ```yaml
 {{- /*
 This is a comment.
-*/}}
+*/-}}
 type: frobnitz
 ```
 
@@ -161,7 +161,7 @@ type: frobnitz
 ```yaml
 {{- /*
 mychart.shortname provides a 6 char truncated version of the release name.
-*/}}
+*/-}}
 {{ define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end -}}
@@ -177,7 +177,7 @@ memory: {{ .Values.maxMem | quote }}
 ```
 
 上のコメントは、ユーザーが`helm install --debug`を実行した時に見ることができますが、
-一方、`{{- /* */}}`の中のコメントは見ることができません。
+一方、`{{- /* */-}}`の中のコメントは見ることができません。
 
 ## テンプレートとテンプレートの出力でのJSONの使用
 
