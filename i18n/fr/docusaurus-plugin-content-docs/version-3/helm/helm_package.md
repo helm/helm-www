@@ -25,14 +25,21 @@ helm package [CHART_PATH] [...] [flags]
 
 ```
       --app-version string       Définit l'appVersion du chart pour cette version
+      --ca-file string             Vérifie les certificats des serveurs compatibles HTTPS à l'aide de ce bundle CA
+      --cert-file string           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
   -u, --dependency-update        Met à jour les dépendances depuis le fichier "Chart.yaml" vers le dossier "charts/" avant de l'emballer
   -d, --destination string       Emplacement pour écrire le chart. (par défaut ".")
   -h, --help                     Aide pour la commande package
+      --insecure-skip-tls-verify   Ignore les vérifications du certificat TLS pour le téléchargement du chart
       --key string               Nom de la clé à utiliser lors de la signature. Utilisé si '--sign' est vrai
-      --keyring string           Emplacement du porte clé public (par défaut "~/.gnupg/pubring.gpg")
-      --passphrase-file string   Emplacement du fichier qui contient la passphrase utilisée lors de la signature. Utilisez "-" pour lire depuis stdin
+      --key-file string            Identifie le client HTTPS à l'aide de ce fichier de clé SSL
+      --keyring string             Emplacement du trousseau de clés public (par défaut "~/.gnupg/pubring.gpg")
+      --passphrase-file string     Emplacement du fichier qui contient la passphrase pour la clé de signature. Utilisez "-" pour lire depuis stdin.
+      --password string            Mot de passe du dépôt de charts où se trouve le chart demandé
+      --plain-http                 Utilise une connexion HTTP non sécurisée pour le téléchargement du chart
       --sign                     Utilise une clé privée PGP pour signer ce paquet
-      --version string           Définit la version de ce chart (semver version)
+      --username string            Nom d'utilisateur du dépôt de charts où se trouve le chart demandé
+      --version string             Définit la version de ce chart (version semver)
 ```
 
 ### Options héritées des commandes parents
@@ -59,3 +66,5 @@ helm package [CHART_PATH] [...] [flags]
 ### Voir également
 
 * [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes.
+
+###### Auto généré par spf13/cobra le 14-Jan-2026
