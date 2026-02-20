@@ -8,11 +8,11 @@ sidebar_position: 9
 _命名模板_，并在其他地方使用。_命名模板_ (有时称作一个 _部分_ 或一个
 _子模板_)仅仅是在文件内部定义的模板，并使用了一个名字。有两种创建方式和几种不同的使用方法。
 
-在[流控制](https://helm.sh/zh/docs/chart_template_guide/control_structures)部分，
+在[流控制](./control_structures.md)部分，
 我们介绍了三种声明和管理模板的方法：`define`，`template`，和`block`。在这部分，我们将使用这三种操作并介绍一种特殊用途的
 `include`方法，类似于`template`操作。
 
-命名模板时要记住一个重要细节：**模板名称是全局的**。如果您想声明两个相同名称的模板，哪个最后加载就使用哪个。
+命名模板时要记住一个重要细节：**模板名称是全局的**。如果你声明了两个相同名称的模板，哪个最后加载就使用哪个。
 因为在子chart中的模板和顶层模板一起编译，命名时要注意 _chart特定名称_。
 
 一个常见的命名惯例是用chart名称作为模板前缀：`{{ define "mychart.labels" }}`。使用特定chart名称作为前缀可以避免可能因为
@@ -182,7 +182,7 @@ metadata:
   {{- template "mychart.labels" . }}
 ```
 
-注意这个在`template`调用末尾传入的`.`，我们可以简单传入`.Values`或`.Values.favorite`或其他需要的范围。但一定要是顶层范围。
+注意这个在`template`调用末尾传入的`.`，我们可以简单传入`.Values`或`.Values.favorite`或其他需要的范围。但我们需要的是顶层范围。在命名模板的上下文中，`$` 会引用你传入的范围，而不是某个全局范围。
 
 现在我们可以用`helm install --dry-run --debug plinking-anaco ./mychart`执行模板，然后得到：
 
@@ -238,7 +238,7 @@ Error: unable to build kubernetes objects from release manifest: error validatin
 
 要查看渲染了什么，可以用`--disable-openapi-validation`参数重新执行：
 `helm install --dry-run --disable-openapi-validation measly-whippet ./mychart`。
-输入不是我们想要的：
+输出不是我们想要的：
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -298,7 +298,7 @@ data:
   app_version: "0.1.0"
 ```
 
-> 相较于使用`template`，在helm中使用`include`被认为是更好的方式
+> 相较于使用`template`，在 Helm 中使用`include`被认为是更好的方式，
 > 只是为了更好地处理YAML文档的输出格式
 
 有时我们需要导入内容，但不是作为模板，也就是按字面意义导入文件内容，可以通过使用`.Files`对象访问文件来实现，

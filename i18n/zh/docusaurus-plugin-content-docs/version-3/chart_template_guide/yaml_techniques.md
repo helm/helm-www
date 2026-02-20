@@ -1,17 +1,16 @@
 ---
-title: 附录： YAML技术
-description: 详细描述了YAML规范以及如何应用于Helm。
-sidebar_position: 16
+title: "附录：YAML 技术"
+description: 深入了解 YAML 规范及其在 Helm 中的应用。
+sidebar_position: 15
 ---
 
-本指南大部分都聚焦于编写模板语言。这里，我们要看看YAML格式。作为模板作者，YAML有一些有用的特性
-使我们的模板不易出错，更易阅读。
+本指南大部分内容聚焦于模板语言的编写。这里我们来看看 YAML 格式。YAML 有一些实用的特性，作为模板作者，可以利用这些特性让模板更不易出错、更易阅读。
 
 ## 标量和集合
 
-根据 [YAML 规范](https://yaml.org/spec/1.2/spec.html)，有两种集合类型和很多标量类型。
+根据 [YAML 规范](https://yaml.org/spec/1.2/spec.html)，有两种集合类型和多种标量类型。
 
-两种集合类型是map和sequence：
+两种集合类型分别是映射（map）和序列（sequence）：
 
 ```yaml
 map:
@@ -25,39 +24,38 @@ sequence:
   - three
 ```
 
-标量值是单个值，（与集合相反）
+标量值是单个值（与集合相对）。
 
-### YAML中的标量类型
+### YAML 中的标量类型
 
-在Helm内部的YAML语言中，一个标量值的数据类型是由一组复杂的规则决定的，包含了资源定义的Kubernetes模式。
-但在推断类型时，以下规则往往是正确的。
+在 Helm 使用的 YAML 方言中，值的标量数据类型由一组复杂规则决定，包括 Kubernetes 资源定义的 schema。但在类型推断时，以下规则通常成立。
 
-如果整型或浮点型数字没有引号，通常被视为数字类型：
+如果整数或浮点数是不带引号的裸字，通常会被视为数字类型：
 
 ```yaml
 count: 1
 size: 2.34
 ```
 
-但是如果被引号引起来，会被当做字符串：
+但如果用引号括起来，则会被视为字符串：
 
 ```yaml
 count: "1" # <-- string, not int
 size: '2.34' # <-- string, not float
 ```
 
-布尔函数也是如此：
+布尔值也是如此：
 
 ```yaml
 isGood: true   # bool
 answer: "true" # string
 ```
 
-空字符串是 `null` （不是 `nil`）。
+空值的关键字是 `null`（不是 `nil`）。
 
-注意 `port: "80"`是合法的YAML，可以通过模板引擎和YAML解释器传值，但是如果Kubernetes希望`port`是整型，就会失败。
+注意 `port: "80"` 是合法的 YAML，可以通过模板引擎和 YAML 解析器，但如果 Kubernetes 期望 `port` 是整数，则会失败。
 
-在一些场景中，可以使用YAML节点标签强制推断特定类型：
+在某些场景中，可以使用 YAML 节点标签强制指定类型：
 
 ```yaml
 coffee: "yes, please"
@@ -65,13 +63,13 @@ age: !!str 21
 port: !!int "80"
 ```
 
-如上所示，`!!str`告诉解释器`age`是一个字符串，即使它看起来像是整型。即使`port`被引号括起来，也会被视为int。
+上例中，`!!str` 告诉解析器 `age` 是字符串，即使它看起来像整数。而 `port` 虽然用引号括起来，也会被视为整数。
 
-## YAML中的字符串
+## YAML 中的字符串
 
-YAML中的大多数数据都是字符串。YAML有多种表示字符串的方法。本节解释这些方法并演示如何使用其中一些方法。
+YAML 文档中的大部分数据都是字符串。YAML 有多种表示字符串的方式。本节介绍这些方式并演示其中一些的用法。
 
-有三种单行方式声明一个字符串：
+有三种"内联"方式声明字符串：
 
 ```yaml
 way1: bare words
@@ -79,13 +77,13 @@ way2: "double-quoted strings"
 way3: 'single-quoted strings'
 ```
 
-单行样式必须在一行：
+所有内联样式必须在一行内。
 
-- 裸字没有引号，也没有转义，因此，必须小心使用字符。
-- 双引号字符串可以使用`\`转义指定字符。比如，`"\"Hello\", she said"`。可以使用`\n`转义换行。
-- 单引号字符串是字面意义的字符串，不用`\`转义，只有单引号`''`需要转义，转成单个`'`。
+- 裸字不带引号，也不进行转义。因此，使用时需要注意字符的选择。
+- 双引号字符串可以使用 `\` 转义特定字符。例如 `"\"Hello\", she said"`。可以用 `\n` 转义换行。
+- 单引号字符串是"字面"字符串，不使用 `\` 转义字符。唯一的转义序列是 `''`，表示单个 `'`。
 
-除了单行字符串，可以声明多行字符串：
+除了单行字符串，还可以声明多行字符串：
 
 ```yaml
 coffee: |
@@ -94,9 +92,9 @@ coffee: |
   Espresso
 ```
 
-上述会被当作`coffee`的字符串值，等同于`Latte\nCappuccino\nEspresso\n`。
+上例会将 `coffee` 的值视为单个字符串，等同于 `Latte\nCappuccino\nEspresso\n`。
 
-注意在第一行`|`后面必须正确缩进。可以这样破坏上述示例：
+注意 `|` 后的第一行必须正确缩进。如果这样写就会破坏上面的示例：
 
 ```yaml
 coffee: |
@@ -106,13 +104,13 @@ coffee: |
 
 ```
 
-由于`Latte`没有正确缩进，会遇到这样的错误：
+由于 `Latte` 缩进不正确，会遇到这样的错误：
 
-```shell
+```
 Error parsing file: error converting YAML to JSON: yaml: line 7: did not find expected key
 ```
 
-模板中，有时候为了避免上述错误，在多行文本中添加一个假的“第一行”会更加安全：
+在模板中，为了避免上述错误，在多行文档中添加一个虚拟的"第一行"内容会更安全：
 
 ```yaml
 coffee: |
@@ -123,12 +121,11 @@ coffee: |
 
 ```
 
-注意无论第一行是什么，都会保存在字符串的输出中。比如你要这样把文件内容注入到配置映射中，注释应该是读取该条目需要的类型。
+注意无论第一行是什么，都会保留在字符串输出中。因此，如果你用这种技术将文件内容注入到 ConfigMap 中，注释应该是读取该条目的程序所期望的类型。
 
 ### 控制多行字符串中的空格
 
-在上述示例中，使用了 `|` 来表示多行字符串。但是注意字符串后面有一个尾随的`\n`。如果需要YAML处理器去掉末尾的换行符，在`|`
-后面添加`-`：
+在上面的示例中，我们用 `|` 表示多行字符串。但注意字符串内容后面有一个尾随的 `\n`。如果希望 YAML 处理器去掉尾随换行符，可以在 `|` 后添加 `-`：
 
 ```yaml
 coffee: |-
@@ -137,9 +134,9 @@ coffee: |-
   Espresso
 ```
 
-现在 `coffee`的值变成了： `Latte\nCappuccino\nEspresso` (没有末尾的`\n`)。
+现在 `coffee` 的值是：`Latte\nCappuccino\nEspresso`（没有尾随的 `\n`）。
 
-其他时候，可能希望保留尾随空格。可以使用 `|+`符号：
+有时我们希望保留所有尾随空白。可以使用 `|+` 符号：
 
 ```yaml
 coffee: |+
@@ -151,9 +148,9 @@ coffee: |+
 another: value
 ```
 
-现在`coffee`的值是 `Latte\nCappuccino\nEspresso\n\n\n`。
+现在 `coffee` 的值是 `Latte\nCappuccino\nEspresso\n\n\n`。
 
-文本块中的缩进会被保留，也会保留换行符：
+文本块内的缩进会被保留，换行符也会保留：
 
 ```yaml
 coffee: |-
@@ -164,28 +161,27 @@ coffee: |-
   Espresso
 ```
 
-上述示例中，`coffee`会变成 `Latte\n  12 oz\n  16 oz\nCappuccino\nEspresso`。
+上例中，`coffee` 的值是 `Latte\n  12 oz\n  16 oz\nCappuccino\nEspresso`。
 
 ### 缩进和模板
 
-编写模板时，你可能会想将文件内容插入到模板中。正如在之前的章节中看到的，有两种方法处理：
+编写模板时，你可能想将文件内容注入到模板中。如前面章节所述，有两种方法：
 
-- 使用 `{{ .Files.Get "FILENAME" }}` 获取chart中的文件内容。
-- 使用 `{{ include "TEMPLATE" . }}` 渲染模板并将其放到chart中。
+- 使用 `{{ .Files.Get "FILENAME" }}` 获取 chart 中的文件内容。
+- 使用 `{{ include "TEMPLATE" . }}` 渲染模板并将其内容放入 chart。
 
-把文件插入到YAML时，就很好理解上面的多行规则了。通常，插入一个静态文件最简单的方式是像这样：
+将文件插入 YAML 时，理解上面的多行规则很重要。通常，插入静态文件最简单的方式是这样：
 
 ```yaml
 myfile: |
 {{ .Files.Get "myfile.txt" | indent 2 }}
 ```
 
-注意上面是怎么做缩进的： `indent 2` 告诉模板引擎在文件"myfile.txt"中每行缩进两个空格。注意我们没有缩进模板的行。
-因为如果缩进了，文件内容的第一行会缩进两次。
+注意上面的缩进方式：`indent 2` 告诉模板引擎将 "myfile.txt" 的每一行缩进两个空格。注意模板行本身没有缩进。因为如果缩进了，文件内容的第一行会被缩进两次。
 
 ### 折叠多行字符串
 
-有时您想在 YAML 中用多行表示一个字符串，但希望在解释时将其视为一个长行。这被称为"折叠"。要声明一个折叠块，使用 `>` 代替 `|`：
+有时你想在 YAML 中用多行表示一个字符串，但希望解析时将其视为一个长行。这称为"折叠"。要声明折叠块，使用 `>` 代替 `|`：
 
 ```yaml
 coffee: >
@@ -196,10 +192,9 @@ coffee: >
 
 ```
 
-上面`coffee`的值是： `Latte Cappuccino Espresso\n`。 注意，除了最后一个换行符之外，所有的换行符都将转换成空格。
-可以组合空格控制符和折叠字符标记 `>-` 来替换或取消所有的新行。
+上例中 `coffee` 的值是：`Latte Cappuccino Espresso\n`。注意除了最后一个换行符外，所有换行符都会转换为空格。可以将空白控制符与折叠文本标记组合使用，`>-` 会替换或去除所有换行符。
 
-注意在折叠语法中，缩进文本将导致保留行。
+注意在折叠语法中，缩进的文本会保留行。
 
 ```yaml
 coffee: >-
@@ -210,33 +205,33 @@ coffee: >-
   Espresso
 ```
 
-上述结果为：`Latte\n  12 oz\n  16 oz\nCappuccino Espresso`。注意空格和换行都保存下来了。
+上例的结果是 `Latte\n  12 oz\n  16 oz\nCappuccino Espresso`。注意空格和换行符都保留了。
 
 ## 在一个文件中嵌入多个文档
 
-可以将多个YAML文档放在单个文件中。 文档前使用 `---`，文档后使用 `...`
+可以将多个 YAML 文档放在单个文件中。方法是在新文档前加 `---`，在文档结尾加 `...`：
 
 ```yaml
 
 ---
-document:1
+document: 1
 ...
 ---
 document: 2
 ...
 ```
 
-很多情况下，可以省略`---`或者`...`。
+很多情况下，`---` 或 `...` 可以省略。
 
-Helm中的有些文件无法包含多个文档。比如，如果`values.yaml`文件提供了多个文档，只会使用第一个。
+Helm 中有些文件不能包含多个文档。例如，如果 `values.yaml` 文件中提供了多个文档，只会使用第一个。
 
-但是模板文件可以有多个文档。这种情况下，文件会被当做一个对象进行渲染。但是将结果YAML提供给Kubernetes时，会被分成多个文档。
+但模板文件可以有多个文档。这种情况下，文件（及其所有文档）在模板渲染时被视为一个对象。但生成的 YAML 在传给 Kubernetes 之前会被拆分成多个文档。
 
-我们建议在确实需要时才将多个文档写入单个文件。单个文件中的多个文档会变得很难调试。
+我们建议只在确实需要时才在单个文件中使用多个文档。单个文件中有多个文档会难以调试。
 
-## YAML是JSON的超集
+## YAML 是 JSON 的超集
 
-由于YAML是一个JSON的超集，任何合法的JSON文档 _都应该_ 是合法的YAML。
+由于 YAML 是 JSON 的超集，任何合法的 JSON 文档 _都应该_ 是合法的 YAML。
 
 ```json
 {
@@ -247,7 +242,7 @@ Helm中的有些文件无法包含多个文档。比如，如果`values.yaml`文
 }
 ```
 
-上述json的另一种表述方式是：
+上面是以下内容的另一种表示方式：
 
 ```yaml
 coffee: yes, please
@@ -257,20 +252,20 @@ coffees:
 - Espresso
 ```
 
-而且两种可以混合（要小心）：
+两者也可以混合使用（但要小心）：
 
 ```yaml
 coffee: "yes, please"
 coffees: [ "Latte", "Cappuccino", "Espresso"]
 ```
 
-所有这三个都应该解析为相同的内部表示形式。
+这三种写法都会解析为相同的内部表示。
 
-这意味着类似 `values.yaml` 可能包含JSON数据，Helm将`.json`后缀文件视为不合法的文件。
+虽然这意味着 `values.yaml` 等文件可以包含 JSON 数据，但 Helm 不会将 `.json` 后缀的文件视为有效文件。
 
 ## YAML 锚点
 
-YAML规范存储了一种引用值的方法，然后通过引用指向该值。YAML称之为“锚定”：
+YAML 规范提供了一种存储值引用、然后通过引用使用该值的方式。YAML 将此称为"锚定"：
 
 ```yaml
 coffee: "yes, please"
@@ -281,12 +276,11 @@ coffees:
   - Espresso
 ```
 
-上面示例中，`&favoriteCoffee` 设置成了`Cappuccino`的引用。之后，通过`*favoriteCoffee`使用引用。
-这样`coffees` 就变成了 `Latte, Cappuccino, Espresso`。
+上例中，`&favoriteCoffee` 设置了对 `Cappuccino` 的引用。之后通过 `*favoriteCoffee` 使用该引用。这样 `coffees` 就变成了 `Latte, Cappuccino, Espresso`。
 
-锚点在一些场景中很有用，但另一方面，锚点可能会引起细微的错误：第一次使用YAML时，将展开引用，然后将其丢弃。
+锚点在某些场景中很有用，但有一个方面可能会导致微妙的 bug：第一次解析 YAML 时，引用会被展开然后丢弃。
 
-因此，如果我们解码再重新编码上述示例，产生的YAML就会是这样：
+因此，如果我们解码再重新编码上面的示例，生成的 YAML 会是这样：
 
 ```yaml
 coffee: yes, please
@@ -297,4 +291,4 @@ coffees:
 - Espresso
 ```
 
-因为Helm和Kubernetes经常读取，修改和重写YAML文件，锚点会丢失。
+由于 Helm 和 Kubernetes 经常读取、修改然后重写 YAML 文件，锚点会丢失。

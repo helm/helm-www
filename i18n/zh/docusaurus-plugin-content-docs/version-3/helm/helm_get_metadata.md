@@ -1,24 +1,24 @@
 ---
-title: helm get all
+title: helm get metadata
 ---
 
-下载指定 release 的所有信息
+获取指定 release 的元数据
 
 ### 简介
 
-该命令打印指定 release 的可读信息集合，包括说明信息、hook、提供的 values 以及生成的清单文件。
+该命令用于获取指定 release 的元数据信息。
 
 
 ```
-helm get all RELEASE_NAME [flags]
+helm get metadata RELEASE_NAME [flags]
 ```
 
 ### 可选项
 
 ```
-  -h, --help              all 的帮助信息
-      --revision int      获取指定 release 的某个修订版本
-      --template string   用于格式化输出的 Go 模板，例如：{{.Release.Name}}
+  -h, --help            metadata 的帮助信息
+  -o, --output format   以指定格式打印输出。允许的值：table、json、yaml（默认 table）
+      --revision int    指定 release 的修订版本
 ```
 
 ### 从父命令继承的选项

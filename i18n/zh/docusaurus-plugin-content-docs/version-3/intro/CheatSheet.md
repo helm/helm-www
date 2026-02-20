@@ -1,40 +1,37 @@
-# 速查表 - HELM
-
-Helm 速查表包含了通过 Helm 管理应用的所有必需命令。
-
+---
+title: 速查表
+description: Helm 速查表
+sidebar_position: 4
 ---
 
-## 基本方法/上下文
+Helm 速查表包含了通过 Helm 管理应用所需的所有命令。
 
-Chart:
+-----------------------------------------------------------------------------------------------------------------------------------------------
+### 基本概念说明
 
-- chart 名称，防止被拉取和标记。
-- <repo_name>/<chart_name> 防止已添加但未被拉取的库。
-- chart 使用 URL 绝对路径。
+Chart：
+- 如果 chart 已被拉取并解压，则为 chart 目录名称。
+- 如果仓库已添加但 chart 未被拉取，则为 <repo_name>/<chart_name>。
+- 也可以是指向 chart 的 URL 或绝对路径。
 
-Name:
+Name：
+- 为本次 chart 安装指定的名称。
 
-- 当前安装的 helm chart 的名称。
+Release：
+- 分配给某次安装实例的名称。
 
-Release:
+Revision：
+- Helm history 命令返回的版本号。
 
-- 赋予安装实例的名称。
+Repo-name：
+- 仓库名称。
 
-Revision:
+DIR：
+- 目录名称或路径。
 
-- Helm 历史命令的值
+------------------------------------------------------------------------------------------------------------------------------------------------
 
-Repo-name:
-
-- 仓库名称
-
-DIR:
-
-- 目录 name/path
-
----
-
-## Chart 管理
+### Chart 管理
 
 ```bash
 helm create <name>                      # Creates a chart directory along with the common files and directories used in a chart.
@@ -46,12 +43,11 @@ helm pull <chart>                       # Download/pull chart
 helm pull <chart> --untar=true          # If set to true, will untar the chart after downloading it
 helm pull <chart> --verify              # Verify the package before using it
 helm pull <chart> --version <number>    # Default-latest is used, specify a version constraint for the chart version to use
-helm dependency list <chart>            # Display a list of a chart’s dependencies:
+helm dependency list <chart>            # Display a list of a chart's dependencies:
 ```
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
----
-
-## 安装和卸载应用
+### 安装和卸载应用
 
 ```bash
 helm install <name> <chart>                           # Install the chart with a name
@@ -61,16 +57,15 @@ helm install <name> <chart> --values <yaml-file/url>  # Install the chart with y
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
 helm install <name> <chart> --verify                  # Verify the package before using it
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
-helm uninstall <name>                                 # Uninstall a release
+helm uninstall <name>                                 # Uninstalls a release from the current (default) namespace
+helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
-
----
-
-## 应用升级和回滚
+------------------------------------------------------------------------------------------------------------------------------------------------
+### 应用升级和回滚
 
 ```bash
 helm upgrade <release> <chart>                            # Upgrade a release
-helm upgrade <release> <chart> --atomic                   # If set, upgrade process rolls back changes made in case of failed upgrade.
+helm upgrade <release> <chart> --rollback-on-failure      # If set, upgrade process rolls back changes made in case of failed upgrade.
 helm upgrade <release> <chart> --dependency-update        # update dependencies if they are missing before installing the chart
 helm upgrade <release> <chart> --version <version_number> # specify a version constraint for the chart version to use
 helm upgrade <release> <chart> --values                   # specify values in a YAML file or a URL (can specify multiple)
@@ -79,10 +74,8 @@ helm upgrade <release> <chart> --force                    # Force resource updat
 helm rollback <release> <revision>                        # Roll back a release to a specific revision
 helm rollback <release> <revision>  --cleanup-on-fail     # Allow deletion of new resources created in this rollback when rollback fails
 ```
-
----
-
-## 列出，添加，移除和升级仓库
+------------------------------------------------------------------------------------------------------------------------------------------------
+### 列出、添加、移除和更新仓库
 
 ```bash
 helm repo add <repo-name> <url>   # Add a repository from the internet:
@@ -94,10 +87,8 @@ helm repo index <DIR> --merge     # Merge the generated index with an existing i
 helm search repo <keyword>        # Search repositories for a keyword in charts
 helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
 ```
-
----
-
-## Helm 发布检测
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### Helm Release 监控
 
 ```bash
 helm list                       # Lists all of the releases for a specified namespace, uses current namespace context if namespace not specified
@@ -116,10 +107,8 @@ helm status <release> --revision <number>   # if set, display the status of the 
 helm history <release>          # Historical revisions for a given release.
 helm env                        # Env prints out all the environment information in use by Helm.
 ```
-
----
-
-## 下载发布信息
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### 下载 Release 信息
 
 ```bash
 helm get all <release>      # A human readable collection of information about the notes, hooks, supplied values, and generated manifest file of the given release.
@@ -128,10 +117,8 @@ helm get manifest <release> # A manifest is a YAML-encoded representation of the
 helm get notes <release>    # Shows notes provided by the chart of a named release.
 helm get values <release>   # Downloads a values file for a given release. use -o to format output
 ```
-
----
-
-## 插件管理
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### 插件管理
 
 ```bash
 helm plugin install <path/url>      # Install plugins
@@ -139,5 +126,4 @@ helm plugin list                    # View a list of all installed plugins
 helm plugin update <plugin>         # Update plugins
 helm plugin uninstall <plugin>      # Uninstall a plugin
 ```
-
----
+-------------------------------------------------------------------------------------------------------------------------------------------------
