@@ -5,7 +5,7 @@ sidebar_position: 3
 
 ## Deinstallieren
 
-### I möchte mein lokales Helm deinstallieren. Wo sind alle Dateien?
+### Ich möchte mein lokales Helm deinstallieren. Wo sind alle Dateien?
 
 Neben dem eigentlichen `helm` Programm speichert Helm Dateien an folgenden
 Orten:
