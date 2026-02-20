@@ -1,5 +1,5 @@
 ---
-title: Values
+title: Valores
 description: Se enfoca en cómo debe estructurar y usar sus values.
 sidebar_position: 2
 ---
