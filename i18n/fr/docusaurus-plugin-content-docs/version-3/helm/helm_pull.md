@@ -1,16 +1,15 @@
 ---
 title: helm pull
 ---
-Télécharge un chart depuis un répertoire et (optionnellement) le décompresser dans un répertoire local.
+Télécharge un chart depuis un dépôt et (optionnellement) le décompresse dans un répertoire local.
 
 ### Synopsis
 
-Récupère un package depuis un répertoire de packages et le télécharge localement.
+Récupère un package depuis un dépôt de packages et le télécharge localement.
 
 Cela est utile pour récupérer des packages pour les inspecter, modifier ou pour les repackager. Cette commande peut également être utilisée pour effectuer une vérification cryptographique d'un chart sans l'installer.
 
-Il y a une option pour décompresser le chart après l'avoir téléchargé. 
-There are options for unpacking the chart after download. Cela créera un répertoire pour le chart et le décompressera dans ce répertoire.
+Des options permettent de décompresser le chart après le téléchargement. Cela créera un répertoire pour le chart et le décompressera dans ce répertoire.
 
 Si l'argument `--verify` est spécifié, le chart demandé DOIT avoir un fichier de provenance et DOIT passer le processus de vérification. Un échec dans n’importe quelle partie entraînera une erreur et le chart ne sera pas enregistré localement.
 
@@ -24,12 +23,12 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 ```
       --ca-file string             Vérifie les certificats des serveurs compatibles HTTPS à l'aide de ce bundle CA
       --cert-file string           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
-  -d, --destination string         Emplacement pour écrire le chart (par défaut ".")
+  -d, --destination string         Emplacement pour écrire le chart. Si cette option et untardir sont spécifiées, untardir est ajouté à ce chemin (par défaut ".")
       --devel                      Utilise les versions de développement également. Équivalent à version '>0.0.0-0'. Si --version est fixé, cela sera ignoré
   -h, --help                       Aide pour la commande pull
-      --insecure-skip-tls-verify   Passe les vérification du certificat TLS pour le téléchargement du chart
+      --insecure-skip-tls-verify   Ignore les vérifications du certificat TLS pour le téléchargement du chart
       --key-file string            Identifie le client HTTPS à l'aide de ce fichier de clé SSL
-      --keyring string             Emplacement des clés public utilisées pour la vérification (par défaut "~/.gnupg/pubring.gpg")
+      --keyring string             Emplacement des clés publiques utilisées pour la vérification (par défaut "~/.gnupg/pubring.gpg")
       --pass-credentials           Transmettre les informations d'identification à tous les domaines
       --password string            Mot de passe du répertoire de chart
       --plain-http                 Utilise une connexion HTTP non-sécurisée pour le téléchargement du chart
@@ -56,7 +55,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
@@ -65,4 +64,6 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 
 ### Voir également
 
-* [helm](/helm/helm.md) -  Le gestionnaire de package Helm pour Kubernetes
+* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes.
+
+###### Généré automatiquement par spf13/cobra le 14-Jan-2026

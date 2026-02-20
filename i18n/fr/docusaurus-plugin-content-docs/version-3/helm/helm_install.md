@@ -48,6 +48,8 @@ Et dans l'exemple suivant, 'foo' est défini sur '{"key1":"value1","key2":"bar"}
 
 Pour vérifier les manifestes générés d'une version sans installer le chart, les arguments `--debug` et `--dry-run` peuvent être combinés.
 
+L'argument `--dry-run` affichera tous les manifestes générés du chart, y compris les Secrets qui peuvent contenir des valeurs sensibles. Pour masquer les Secrets Kubernetes, utilisez l'argument `--hide-secret`. Veuillez considérer attentivement comment et quand utiliser ces arguments.
+
 Si l'argument `--verify` est fixé, le chart DOIT avoir un fichier de provenance, et le fichier de provenance DOIT passer toutes les étapes de vérification.
 
 Il y a six manières différentes d'exprimer le chart que vous souhaitez installer :
@@ -75,7 +77,7 @@ helm install [NAME] [CHART] [flags]
 ### Options
 
 ```
-      --rollback-on-failure                        Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --rollback-on-failure est utilisé
+      --atomic                                     Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
       --ca-file string                             Vérifie les certificats des serveurs ayant activé HTTPS en utilisant ce fichier de certificat racine (CA bundle)
       --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --create-namespace                           Créer le namespace de la version s'il n'est pas présent
@@ -88,6 +90,8 @@ helm install [NAME] [CHART] [flags]
       --force                                      Force les mise à jour des ressources en utilisant une stratègie de remplacement
   -g, --generate-name                              Génère le nom (et omet le paramètre NAME)
   -h, --help                                       Aide pour la commande install
+      --hide-notes                                 Si défini, n'affiche pas les notes dans la sortie d'installation. N'affecte pas la présence dans les métadonnées du chart
+      --hide-secret                                Masque les Secrets Kubernetes lors de l'utilisation de l'argument --dry-run
       --insecure-skip-tls-verify                   Ignore les vérifications de certificat TLS lors du téléchargement du chart
       --key-file string                            Identifie le client HTTPS en utilisant ce fichier de clé SSL
       --keyring string                             Emplacement des clés publiques utilisées pour la vérification (par defaut "~/.gnupg/pubring.gpg")
@@ -109,6 +113,8 @@ helm install [NAME] [CHART] [flags]
       --set-literal stringArray                    Défini une valeur littérale de type STRING en ligne de commande
       --set-string stringArray                     Défini des valeurs de type STRING en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
       --skip-crds                                  Si défini, aucun CRD ne sera installé. Par défaut, les CRD sont installés s'ils ne sont pas déjà présents
+      --skip-schema-validation                     Si défini, désactive la validation du schéma JSON
+      --take-ownership                             Si défini, l'installation ignorera la vérification des annotations Helm et prendra possession des ressources existantes
       --timeout duration                           Temps d'attente pour chaque opération Kubernetes (comme les Jobs pour les hooks) (par défaut 5m0s)
       --username string                            Nom d'utilisateur du dépôt de chart où est localisé le chart demandé
   -f, --values strings                             Spécifie les valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
