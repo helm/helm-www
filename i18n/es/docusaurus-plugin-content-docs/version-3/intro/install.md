@@ -26,12 +26,12 @@ binarias se pueden descargar e instalar manualmente.
 3. Encuentra el binario `helm` en el directorio desempaquetado, y muévelo a su
 destino deseado (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-De ahí, debes ser capaz de correr el cliente y
-[agregar repos estables](/intro/quickstart.md#initialize-a-helm-chart-repository):
+De ahí, debes poder ejecutar el cliente y
+[agregar el repositorio de charts estable](/intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 
 **Nota:** Las pruebas automatizadas de Helm se realizan para Linux AMD64 solo durante
-las compilaciones y lanzamientes de GitHub Actions. Las pruebas de otros sistemas operativos
+las compilaciones y lanzamientos de GitHub Actions. Las pruebas de otros sistemas operativos
 son responsabilidad de la comunidad que solicita Helm para el sistema operativo
 en cuestión.
 
@@ -79,6 +79,15 @@ Los miembros de la comunidad Helm han contribuido con un
 choco install kubernetes-helm
 ```
 
+### Desde Scoop (Windows)
+
+Los miembros de la comunidad Helm han contribuido con un
+[paquete Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) construido para [Scoop](https://scoop.sh). Este paquete generalmente está actualizado.
+
+```console
+scoop install helm
+```
+
 ### Desde Winget (Windows)
 
 Los miembros de la comunidad Helm han contribuido con un
@@ -91,16 +100,24 @@ winget install Helm.Helm
 
 ### Desde Apt (Debian/Ubuntu)
 
-Los miembros de la comunidad Helm han contribuido con un
-[paquete Helm](https://helm.baltorepo.com/stable/debian/) para Apt.
-Este paquete generalmente está actualizado.
+Los miembros de la comunidad Helm han contribuido con un paquete Apt para Debian/Ubuntu.
+Este paquete generalmente está actualizado. Gracias a [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por alojar el repositorio.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
+```
+
+### Desde dnf/yum (fedora)
+
+Desde Fedora 35, Helm está disponible en el repositorio oficial.
+Puede instalar Helm ejecutando:
+
+```console
+sudo dnf install helm
 ```
 
 ### Desde Snap
@@ -116,7 +133,8 @@ sudo snap install helm --classic
 
 Los miembros de la comunidad FreeBSD han contribuido con una compilación de
 [paquete Helm](https://www.freshports.org/sysutils/helm) a la
-[Colección de Ports de FreeBSD](https://man.freebsd.org/ports)
+[Colección de Ports de FreeBSD](https://man.freebsd.org/ports).
+Este paquete generalmente está actualizado.
 
 ```console
 pkg install helm
@@ -129,7 +147,7 @@ Helm.
 
 ### Desde Canary Builds
 
-Los "Canary" builds son versiones del software Helm que se crean a partir lo último
+Los "Canary" builds son versiones del software Helm que se crean a partir de lo último
 de la rama main. No son lanzamientos oficiales y pueden no ser estables. Sin embargo,
 ofrecen la oportunidad de probar las funciones de vanguardia.
 
@@ -163,5 +181,5 @@ En la mayoría de los casos, la instalación es tan simple como obtener un binar
 desean hacer cosas más sofisticadas con Helm.
 
 Una vez que tenga el cliente de Helm instalado correctamente, puede continuar con
-el uso de Helm para administrar Charts y[agregar el repositorio
+el uso de Helm para administrar charts y [agregar el repositorio de charts
 estable](/intro/quickstart.md#initialize-a-helm-chart-repository).
