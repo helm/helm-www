@@ -32,7 +32,7 @@ Von dort aus sollten Sie in der Lage sein, das Programm aufzurufen und ein
 `helm help`.
 
 **Hinweis:** In den automatisierten Tests von Helm wird nur die Version von
-Linux AMD64 beim Bau durch GitHub Actions berücksichtig. Das Testen von anderen
+Linux AMD64 beim Bau durch GitHub Actions berücksichtigt. Das Testen von anderen
 Betriebssystemen liegt in der Zuständigkeit der Gemeinschaft.
 
 ### Von einem Script
@@ -50,14 +50,14 @@ $ ./get_helm.sh
 ```
 
 Ja, Sie können auch `curl
-https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` if
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
 aufrufen, wenn Sie am Rande des Abgrunds leben.
 
 ## Durch einen Paket Manager
 
-Die Helm Gemeinschaft stellt auch die Möglichkeit der Installation durch einen
-Paket Managers des Betriebssystems zur Verfügung. Diese werden vom Helm Projekt
-nicht unterstützt und haben den Status einer dritten Partei (3rd party software).
+Die Helm Gemeinschaft stellt auch die Möglichkeit der Installation durch
+Paketmanager des Betriebssystems zur Verfügung. Diese werden vom Helm Projekt
+nicht unterstützt und gelten als nicht vertrauenswürdige Drittanbieter.
 
 ### Von Homebrew (macOS)
 
@@ -73,18 +73,26 @@ brew install helm
 ### Von Chocolatey (Windows)
 
 Mitglieder der Helm Gemeinschaft haben ein [Helm
-Paket](https://chocolatey.org/packages/kubernetes-helm) gebaut mit
+Paket](https://chocolatey.org/packages/kubernetes-helm) für
 [Chocolatey](https://chocolatey.org/) beigetragen. Dieses Paket ist generell aktuell.
 
 ```console
 choco install kubernetes-helm
 ```
 
+### Von Scoop (Windows)
+
+Mitglieder der Helm Gemeinschaft haben ein [Helm
+Paket](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) für [Scoop](https://scoop.sh) beigetragen. Dieses Paket ist generell aktuell.
+
+```console
+scoop install helm
+```
+
 ### Von Winget (Windows)
 
 Mitglieder der Helm Gemeinschaft haben ein [Helm
-Paket](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) gebaut mit
-[Winget](https://learn.microsoft.com/en-us/windows/package-manager/) beigetragen. Dieses Paket ist generell aktuell.
+Paket](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) für [Winget](https://learn.microsoft.com/en-us/windows/package-manager/) beigetragen. Dieses Paket ist generell aktuell.
 
 ```console
 winget install Helm.Helm
@@ -92,16 +100,23 @@ winget install Helm.Helm
 
 ### Von Apt (Debian/Ubuntu)
 
-Mitglieder der Helm Gemeinschaft haben ein [Helm
-Paket](https://helm.baltorepo.com/stable/debian/) for Apt beigetragen. Dieses Paket
-ist generell aktuell.
+Mitglieder der Helm Gemeinschaft haben ein Apt-Paket für Debian/Ubuntu beigetragen. Dieses Paket ist generell aktuell. Vielen Dank an [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) für das Hosten des Repositorys.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
+```
+
+### Von dnf/yum (Fedora)
+
+Seit Fedora 35 ist Helm im offiziellen Repository verfügbar.
+Sie können Helm mit folgendem Befehl installieren:
+
+```console
+sudo dnf install helm
 ```
 
 ### Von Snap
@@ -115,8 +130,8 @@ sudo snap install helm --classic
 
 ### Von pkg (FreeBSD)
 
-Mitglieder der Helm Gemeinschaft haben ein [Helm
-Paket](https://www.freshports.org/sysutils/helm) gebaut für
+Mitglieder der FreeBSD-Gemeinschaft haben ein [Helm
+Paket](https://www.freshports.org/sysutils/helm) für die
 [FreeBSD Ports Collection](https://man.freebsd.org/ports) beigetragen.
 Dieses Paket ist generell aktuell.
 
@@ -131,11 +146,11 @@ werden.
 
 ### Von Canary Builds
 
-"Canary" Builds sind Versionen der Helm Software gebaut vom letzten Master Zweig.
-Das sind keine offizielle Versionen und sind möglichweise nicht stabil. Sie bieten
+"Canary" Builds sind Versionen der Helm Software, die aus dem aktuellen `main`-Branch gebaut werden.
+Das sind keine offiziellen Versionen und sind möglicherweise nicht stabil. Sie bieten
 die Möglichkeit, die neuesten Funktionen zu testen.
 
-Canary Helm Binaries sind gespeichert auf [get.helm.sh](https://get.helm.sh). Hier
+Canary Helm Binaries sind unter `get.helm.sh` verfügbar. Hier
 sind die Links zu den üblichen Builds:
 
 - [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
@@ -145,8 +160,8 @@ sind die Links zu den üblichen Builds:
 
 ### Vom Quellcode (Linux, macOS)
 
-Das Bauen von Helm vom Quellcode ist ein bischen komplizierter, aber es ist
-die beste Möglichkeit, die letzte (vor-veröffentlichte) Version von Helm
+Das Bauen von Helm vom Quellcode ist etwas aufwändiger, aber es ist
+die beste Möglichkeit, die neueste (noch nicht veröffentlichte) Version von Helm
 zu testen.
 
 Sie brauchen eine Go Arbeitsumgebung.
@@ -158,7 +173,7 @@ $ make
 ```
 
 Wenn erforderlich, werden die Abhängigkeiten heruntergeladen und zwischengespeichert.
-Die Konfuguration wird validiert und Helm kompiliert nach `bin/helm`.
+Die Konfiguration wird validiert und Helm nach `bin/helm` kompiliert.
 
 ## Zusammenfassung
 

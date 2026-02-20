@@ -14,15 +14,15 @@ spielte eine wichtige Rolle für Teams in einem geteilten Cluster - es war
 für mehrere unterschiedliche Operatoren möglich, mit demselben Set an Versionen
 zu interagieren.
 
-Mit rollenbasierter Zugriffskontrolle (RBAC), standardmässig aktiviert in Kubernetes 1.6,
+Mit rollenbasierter Zugriffskontrolle (RBAC), standardmäßig aktiviert in Kubernetes 1.6,
 sperrte Tiller immer mehr in Produktionsumgebungen aus, da die Verwaltung schwieriger
-wurde. Durch die riesigen Änderungen der Sicherheitsregeln, war es unser Fokus,
+wurde. Durch die vielen möglichen Sicherheitsrichtlinien war es unser Fokus,
 eine permissive Standardkonfiguration zu liefern. Das erlaubte es Neulingen in Helm
-und Kubernetes, schnell zu starten, ohne sich allzuviuel über Sicherheitskontrollen den
+und Kubernetes, schnell zu starten, ohne sich allzuviel über Sicherheitskontrollen den
 Kopf zu zerbrechen. Unglücklicherweise konnte diese permissive Konfiguration ein
 breites Spektrum an Berechtigungen öffnen, ohne dass der Nutzer dies erwartete.
-DevOps und SREs hatten zusätzliche Betriebsschritte zu lernen, um Tiller in einer
-multi-mandant Cluster zu betreiben.
+DevOps und SREs hatten zusätzliche Betriebsschritte zu lernen, um Tiller in einem
+Multi-Mandanten-Cluster zu betreiben.
 
 Nachdem wir von Gemeinschaftsmitgliedern gehört haben, wie sie Helm benutzen, fanden
 wir, dass Tillers Versionsverwaltung nicht zum Clusterbetrieb oder als zentraler
@@ -34,24 +34,24 @@ Tillers primäre Ziel konnte ohne Tiller erreicht werden, so war es eine der ers
 Entscheidungen, die für Helm 3 getroffen wurden, Tiller komplett zu entfernen.
 
 Ohne Tiller hat sich das Sicherheitsmodell von Helm radikal vereinfacht. Helm 3
-unterstützt jetzt moderne Funktionen von Kubernetes zu Sicherheits, Identität und Authorisierung.
-Helms Zugriffsrechte werden durch Evaluierung der [kubeconfig
-Datei](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) getroffen.
-Cluster Administratoren können Zugriffsrechte granular restriktieren.
+unterstützt jetzt alle modernen Sicherheits-, Identitäts- und Autorisierungsfunktionen von Kubernetes.
+Helms Zugriffsrechte werden anhand Ihrer [kubeconfig-Datei](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) ausgewertet.
+Cluster-Administratoren können Benutzerrechte so granular einschränken, wie sie es für nötig halten.
 Versionen werden weiter im Cluster gespeichert und die restliche Funktionalität
 von Helm bleibt erhalten.
 
 ### Verbesserte Aktualisierungsstrategie: 3-Wege Vereinigung
 
-Helm 2 hat eine 2-Wege Vereinigungsstrategie beutzt. Während der Aktualisierung
-verglich es die letzten Chart Manifeste gegen das vorgeschlagene Chart Manifest
-(welches zur Aktualisierung vorgeschlagen wurde). Es verglich die Unterschiede
-zwischen den zwei Charts, um herauszufinden, welche Änderunen notwendig sind und
-welche Resourcen im Kubernetescluster übertragen werden müssen.
-Wenn Änderungen ausserhalb von Helm gemacht wurden (etwa mit `kubectl edit`),
-waren diese Änderungen verloren. Das resultierte in Resourcen, die nicht zurückgerollt
-werden konnten: weil Helm nur die letzte installierte Version kannte und wenn
-es keine Änderungen im Chart Status gegeben hat, blieb der Livestatus unverändert.
+Helm 2 hat eine 2-Wege Vereinigungsstrategie benutzt. Während der Aktualisierung
+verglich es das letzte Chart-Manifest gegen das vorgeschlagene Chart-Manifest
+(welches bei `helm upgrade` übergeben wurde). Es verglich die Unterschiede
+zwischen den zwei Charts, um herauszufinden, welche Änderungen an den Ressourcen
+im Kubernetes-Cluster notwendig sind.
+Wenn Änderungen außerhalb von Helm gemacht wurden (etwa mit `kubectl edit`),
+wurden diese Änderungen nicht berücksichtigt. Das resultierte in Ressourcen, die nicht
+zurückgerollt werden konnten: Weil Helm nur das letzte angewandte Chart-Manifest als
+aktuellen Status betrachtete, blieb der Live-Status unverändert, wenn es keine
+Änderungen im Chart-Status gab.
 
 In Helm 3 benutzen wir jetzt eine 3-Wege Vereinigungsstrategie. Helm beachtet das
 alte Manifest, den Livestatus und das neue Manifest, um einen Patch zu generieren.
@@ -122,8 +122,8 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-Jetzt möchten Sie den `nginx` Image Tag aktualisieren zu `2.1.0`. Um das
-zu erreichen, akualisieren Sie das Chart mit diesem Manifest:
+Jetzt möchten Sie den `nginx` Image Tag auf `2.1.0` aktualisieren. Dazu
+aktualisieren Sie das Chart mit diesem Manifest:
 
 ```yaml
 containers:
@@ -145,11 +145,11 @@ containers:
   image: nginx:2.1.0
 ```
 
-Der Sidcar Pod ist vom Livestatus gelöscht. Mehr Panik bricht aus.
+Der Sidecar-Pod ist aus dem Live-Status gelöscht. Mehr Panik bricht aus.
 
 In Helm 3 generiert Helm einen Patch des `containers` Objekts zwischen dem
-alten Manifest, dem Livestatus und dem neuen Manifest. Es bemerkt, dass das
-neue Manifest den Image Tag zu `2.1.0` ändern möchte, aber der Livestatus
+alten Manifest, dem Live-Status und dem neuen Manifest. Es bemerkt, dass das
+neue Manifest den Image Tag auf `2.1.0` ändern möchte, aber der Live-Status
 einen Sidecar Container beinhaltet.
 
 Der Cluster Livestatus wird in folgender Weise geändert:
@@ -171,13 +171,13 @@ keine andere Version konnte denselben Namen benutzen, auch wenn es in
 unterschiedlichen Namespace installiert war.
 
 In Helm 3 werden die Informationen über eine Version im selben Namespace
-gespeichert, in dem die Version selber installiert ist. Das bedeutet, dass 
-Benutzer jetzt `helm install wordpress stable/wordpress` in zwei Namespaces
-benutzen könnnen und jedes wird bei `helm list` im Kontext des zugehörigen
-Namespace angezeigt (z.B `helm list --namespace foo`).
+gespeichert, in dem die Version selbst installiert ist. Das bedeutet, dass
+Benutzer jetzt `helm install wordpress stable/wordpress` in zwei separaten
+Namespaces ausführen können und jede Version mit `helm list` im Kontext des
+jeweiligen Namespace angezeigt wird (z.B. `helm list --namespace foo`).
 
-Mit der grösseren Ausrichtung auf nativen Cluster Namespaces, listet das Kommando
-`helm list` nicht länger alle Versionen standardmässig auf. Stattdessen listet
+Mit dieser besseren Ausrichtung auf native Cluster-Namespaces listet das Kommando
+`helm list` nicht mehr standardmäßig alle Versionen auf. Stattdessen listet es
 es nur die Versionen im derzeitigen Kubernetes Kontext auf (z.B. den Namespace
 wenn Sie `kubectl config view --minify` eingeben). Das bedeutet also, dass Sie
 die Option `--all-namespaces` zu `helm list` eingeben müssen, wie bei Helm 2.
@@ -229,11 +229,10 @@ mehr Informationen.
 
 ### Konsolidierung von `requirements.yaml` in `Chart.yaml`
 
-Das Chart Abhängigkeitssystem schwenkte von requirements.yaml und
+Das Chart-Abhängigkeitssystem wechselte von requirements.yaml und
 requirements.lock zu Chart.yaml und Chart.lock. Wir empfehlen, dass neue
-Charts für Helm 3 dem neuen Format folgen. Trotzdem versteht Helm 3
-weiterhin die Chart APO Version 1 (`v1`) und wird vorhandene
-`requirements.yaml` Dateien laden.
+Charts für Helm 3 das neue Format verwenden. Helm 3 versteht jedoch weiterhin
+die Chart API Version 1 (`v1`) und lädt vorhandene `requirements.yaml` Dateien.
 
 In Helm 2 sah eine `requirements.yaml` so aus:
 
@@ -363,19 +362,18 @@ Paketformat parsen sollen.
 ist ein portabler Standard, der Konfigurationen, Daten und Zwischenspeicherdateien
 definiert und wie sie im Dateisystem gespeichert werden sollen.
 
-In Helm 2 speicherte Helm all diese Information in `~/.helm` (auch bekannt als
-`helm home`), was mit der Umgebungsvariable `$HELM_HOME` geändert werden konnte,
-oder auch durch die globale Funktion `--home`.
+In Helm 2 speicherte Helm all diese Informationen in `~/.helm` (auch bekannt als
+`helm home`), was mit der Umgebungsvariable `$HELM_HOME` geändert werden konnte
+oder auch durch die globale Option `--home`.
 
-In Helm 3 respektiert Helm jetzt die folgenden Umgebungsvariablen nach der
-XDG Basnow respects the following environment variables as per the XDG
-Basis Verzeichnissupport Spezifikation:
+In Helm 3 respektiert Helm jetzt die folgenden Umgebungsvariablen gemäß der
+XDG-Basisverzeichnis-Spezifikation:
 
 - `$XDG_CACHE_HOME`
 - `$XDG_CONFIG_HOME`
 - `$XDG_DATA_HOME`
 
-Helm Plugins beachten weiterhin für Abwärtskompatibiltät`$HELM_HOME` als Alias
+Helm Plugins beachten weiterhin für Abwärtskompatibilität `$HELM_HOME` als Alias
 für `$XDG_DATA_HOME`.
 
 Verschiedene neue Umgebungsvariablen werden ebenfalls als Variablen des Plugins
@@ -388,16 +386,15 @@ eingeführt:
 Helm Plugins, die Helm 3 unterstützen, sollten diese neuen Umgebungsvariablen
 nutzen.
 
-### Umbenennung von Kommandozeilenbefehle
+### Umbenennung von CLI-Kommandos
 
-Um sich in der Erwartungen zu anderen Paketmanagern anzupassen, wurde
-`helm delete` umbenannt zu `helm uninstall`. `helm delete` funktioniert
-weiterhin als ALias für `helm uninstall` und kann weiter verwendet werden.
+Um sich an die Terminologie anderer Paketmanager anzupassen, wurde
+`helm delete` in `helm uninstall` umbenannt. `helm delete` funktioniert
+weiterhin als Alias für `helm uninstall` und kann weiter verwendet werden.
 
-In Helm 2 wurde die Option `--purge` bereitgestellt, um den Overhead von
-Versionsinformationen aufzuräumen. Diese Funktion ist jetzt standardmässig
-eingeschaltet. Um sie zu deaktivieren, gibt es die Option
-`helm uninstall --keep-history`.
+In Helm 2 musste die Option `--purge` angegeben werden, um den Release-Verlauf
+zu bereinigen. Diese Funktion ist jetzt standardmäßig aktiviert. Um das vorherige
+Verhalten beizubehalten, verwenden Sie `helm uninstall --keep-history`.
 
 Zusätzlich wurden verschiedene andere Kommandos in ähnlicher Konvention
 umbenannt:
@@ -416,11 +413,11 @@ Kubernetes Werkzeugen und gibt eine Fehlermeldung zurück, wenn der Namespace
 nicht existiert. Helm 3 wird den Namespace mit der expliziten Option
 `--create-namespace` anlegen.
 
-### Was passierte mit .Chart.ApiVersion?
+### Was ist mit .Chart.ApiVersion passiert?
 
-Helm folgt den typischen Konventionen des sogenannten `CamelCasing`,
-also dem Grossschreiben von Akronymen. Wir hatten das irgendwo im Code,
-wie mit `.Capabilities.APIVersions.Has`. In Helm v3 haben wir das
-korrigiert zu `.Chart.ApiVersion`, um der Konvention zu folgen und
-`.Chart.APIVersion` umzubenennen.
+Helm folgt der üblichen Konvention für CamelCasing, bei der Akronyme
+großgeschrieben werden. Wir haben das bereits an anderen Stellen im Code
+so umgesetzt, wie z.B. bei `.Capabilities.APIVersions.Has`. In Helm v3
+haben wir `.Chart.ApiVersion` korrigiert und in `.Chart.APIVersion`
+umbenannt, um dieser Konvention zu folgen.
 
