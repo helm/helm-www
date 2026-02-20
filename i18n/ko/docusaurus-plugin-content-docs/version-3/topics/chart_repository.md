@@ -11,13 +11,13 @@ sidebar_position: 6
 분산 커뮤니티 Helm 차트 저장소는 [Artifact Hub](https://artifacthub.io/packages/search?kind=0)에
 있으며 참여를 환영한다. 하지만 Helm도 자신만의 차트 저장소를
 만들고 운영할 수 있게 해준다. 이 가이드에서는 그렇게 하는 방법을 설명한다.
-차트 저장소를 만들려고 한다면 대신 [OCI 레지스트리](/ko/topics/registries.md)
+차트 저장소를 만들려고 한다면 대신 [OCI 레지스트리](/topics/registries.md)
 사용을 고려해 볼 수도 있다.
 
 ## 전제 조건
 
-* [빠른 시작](/ko/intro/quickstart.md) 가이드 살펴보기
-* [차트](/ko/topics/charts.md) 문서 읽기
+* [빠른 시작](/intro/quickstart.md) 가이드 살펴보기
+* [차트](/topics/charts.md) 문서 읽기
 
 ## 차트 저장소 생성
 
@@ -38,7 +38,7 @@ GET 요청에 응답할 수 있는 모든 HTTP 서버가 될 수 있기 때문�
 
 차트 저장소는 패키지형 차트와 저장소에 있는 모든 차트의 인덱스를 가진 `index.yaml` 이라는
 특수 파일로 구성된다. 종종 `index.yaml` 에 기술된 차트도
-[출처 파일](/ko/topics/provenance.md)처럼 동일한 서버에서
+[출처 파일](/topics/provenance.md)처럼 동일한 서버에서
 호스팅된다.
 
 예를 들어, 저장소 `https://example.com/charts` 의 레이아웃은
@@ -188,7 +188,7 @@ GitHub 저장소의 **Branch** 버튼을 눌러 웹 브라우저를 통해 만�
 접근할 수 있다.
 
 GitHub Pages를 사용하여 차트 저장소를 호스팅하기로 결정했다면
-[Chart Releaser Action](/ko/howto/chart_releaser_action.md)을 확인하자.
+[Chart Releaser Action](/howto/chart_releaser_action.md)을 확인하자.
 Chart Releaser Action은 [helm/chart-releaser](https://github.com/helm/chart-releaser)
 CLI 도구를 사용하여 GitHub 프로젝트를 자체 호스팅 Helm 차트 저장소로 전환하는
 GitHub Action 워크플로우다.
@@ -266,7 +266,7 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 
 이제 동기화 도구를 사용하거나 수동으로 차트 저장소에
 차트 및 인덱스 파일을 업로드할 수 있다. Google Cloud Storage를
-사용하는 경우 gsutil 클라이언트를 사용하는 이 [예제 워크플로우](/ko/howto/chart_repository_sync_example.md)를
+사용하는 경우 gsutil 클라이언트를 사용하는 이 [예제 워크플로우](/howto/chart_repository_sync_example.md)를
 확인하자. GitHub의 경우 해당 목적지 브랜치에 차트를 간단히 넣을 수 있다.
 
 ### 기존 저장소에 새로운 차트 추가
