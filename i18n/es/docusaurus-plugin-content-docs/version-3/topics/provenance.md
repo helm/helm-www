@@ -258,7 +258,7 @@ sin configuración o acción adicional del usuario.
 
 ### Firmas en registros basados en OCI
 
-Al publicar charts en un [registro basado en OCI](/es/topics/registries.md), se puede
+Al publicar charts en un [registro basado en OCI](/topics/registries.md), se puede
 utilizar el [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/) para
 publicar la procedencia en [sigstore](https://sigstore.dev/). [Como se describe en la
 documentación](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), el

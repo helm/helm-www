@@ -13,12 +13,12 @@ El repositorio comunitario distribuido de charts de Helm está ubicado en
 participación. Pero Helm también permite crear y ejecutar su propio repositorio
 de charts. Esta guía explica cómo hacerlo. Si está considerando crear un
 repositorio de charts, puede considerar usar un
-[registro OCI](/es/topics/registries.md) en su lugar.
+[registro OCI](/topics/registries.md) en su lugar.
 
 ## Prerrequisitos
 
-* Completar la guía de [Inicio Rápido](/es/intro/quickstart.md)
-* Leer el documento de [Charts](/es/topics/charts.md)
+* Completar la guía de [Inicio Rápido](/intro/quickstart.md)
+* Leer el documento de [Charts](/topics/charts.md)
 
 ## Crear un repositorio de charts
 
@@ -42,7 +42,7 @@ Un repositorio de charts consiste en charts empaquetados y un archivo especial
 llamado `index.yaml` que contiene un índice de todos los charts en el
 repositorio. Frecuentemente, los charts que `index.yaml` describe también están
 alojados en el mismo servidor, al igual que los
-[archivos de procedencia](/es/topics/provenance.md).
+[archivos de procedencia](/topics/provenance.md).
 
 Por ejemplo, el diseño del repositorio `https://example.com/charts` podría verse
 así:
@@ -194,7 +194,7 @@ Charts](https://github.com/technosophos/tscharts) está accesible en
 `https://technosophos.github.io/tscharts/`.
 
 Si ha decidido usar GitHub Pages para alojar el repositorio de charts, consulte
-[Chart Releaser Action](/es/howto/chart_releaser_action.md). Chart Releaser
+[Chart Releaser Action](/howto/chart_releaser_action.md). Chart Releaser
 Action es un flujo de trabajo de GitHub Action para convertir un proyecto de
 GitHub en un repositorio de charts de Helm autoalojado, usando la herramienta
 CLI [helm/chart-releaser](https://github.com/helm/chart-releaser).
@@ -272,7 +272,7 @@ la ruta del directorio dado.
 Ahora puede subir el chart y el archivo de índice a su repositorio de charts
 usando una herramienta de sincronización o manualmente. Si está usando Google
 Cloud Storage, consulte este
-[flujo de trabajo de ejemplo](/es/howto/chart_repository_sync_example.md) usando
+[flujo de trabajo de ejemplo](/howto/chart_repository_sync_example.md) usando
 el cliente gsutil. Para GitHub, simplemente puede poner los charts en la rama de
 destino apropiada.
 
