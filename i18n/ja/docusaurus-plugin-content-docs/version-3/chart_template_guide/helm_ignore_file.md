@@ -1,6 +1,6 @@
 ---
 title: .helmignore ファイル
-description: `.helmignore` ファイルは、Helm chart に含めたくないファイルを指定するために使用します。
+description: "`.helmignore` ファイルは、Helm chart に含めたくないファイルを指定するために使用します。"
 sidebar_position: 12
 ---
 
