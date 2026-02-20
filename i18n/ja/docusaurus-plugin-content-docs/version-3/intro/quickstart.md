@@ -1,125 +1,112 @@
 ---
 title: クイックスタートガイド
-description: ディストリビューション、FAQ、プラグインの手順を含む、Helm のインストール方法と使用方法。
+description: Helm をインストールして使い始めるためのガイドです。
 sidebar_position: 1
 ---
 
-このガイドでは、Helm をすぐに使い始める方法について説明します。
+このガイドでは、Helm をすぐに使い始める方法を説明します。
 
 ## 前提条件
 
-Helm を正しく安全に使用するには、
-次の前提条件が必要です。
+Helm を正しく安全に使用するには、以下の前提条件が必要です。
 
 1. Kubernetes クラスター
-2. インストールに適用するセキュリティ構成がある場合は、それを決定する
-3. Helm のインストールと構成
+2. インストールに適用するセキュリティ構成の決定（必要な場合）
+3. Helm のインストールと設定
 
 ### Kubernetes をインストールするか、クラスターにアクセスする
 
-- Kubernetes がインストールされている必要があります。
-  Helm の最新リリースには、Kubernetesの最新の安定リリースをお勧めします。
-  これは、ほとんどの場合、2番目に新しいマイナーリリースです。
-- ローカルに設定された `kubectl` のコピーも必要です。
+- Kubernetes がインストールされている必要があります。Helm の最新リリースには、Kubernetes の最新の安定リリースを推奨します。ほとんどの場合、これは2番目に新しいマイナーリリースです。
+- ローカルに設定された `kubectl` も必要です。
 
-注: 1.6 より前のバージョンの Kubernetes では、ロールベースのアクセス制御 (RBAC) のサポートが制限されているか、
-サポートされていません。
+Helm と Kubernetes 間でサポートされる最大バージョン差については、[Helm バージョンサポートポリシー](https://helm.sh/docs/topics/version_skew/)を参照してください。
 
 ## Helm のインストール
 
-Helm クライアントのバイナリリリースをダウンロードします。`homebrew` のようなツールを使うか、
-[公式リリースページ](https://github.com/helm/helm/releases) を見ることができます。
+Helm クライアントのバイナリリリースをダウンロードします。`homebrew` などのツールを使用するか、[公式リリースページ](https://github.com/helm/helm/releases)を参照してください。
 
-詳細またはその他のオプションについては、
-[インストールガイド](/intro/install.md) を参照してください。
+詳細やその他のオプションについては、[インストールガイド](/intro/install.md)を参照してください。
 
-## Helm チャートリポジトリを初期化する {#initialize-a-helm-chart-repository}
+## Helm chart リポジトリを初期化する
 
-Helm の準備ができたら、チャートリポジトリを追加できます。
-ポピュラーな開始場所の1つは、公式の Helm Stable チャートです。
+Helm の準備ができたら、chart リポジトリを追加できます。利用可能な Helm chart リポジトリについては、[Artifact Hub](https://artifacthub.io/packages/search?kind=0) を確認してください。
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-これがインストールされると、インストールできるチャートを一覧表示できるようになります。
+リポジトリを追加すると、インストールできる chart を一覧表示できます。
 
 ```console
-helm search repo stable
-NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
-stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
-stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
-stable/airflow                          4.1.0           1.10.4                          Airflow is a platform to programmatically autho...
-stable/ambassador                       4.1.0           0.81.0                          A Helm chart for Datawire Ambassador
+$ helm search repo bitnami
+NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
+bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
+bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
+bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
+bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
 # ... and many more
 ```
 
-## サンプルチャートをインストールする
+## サンプル chart をインストールする
 
-チャートをインストールするには、`helm install` コマンドを実行します。
-Helm には、チャートを見つけてインストールする方法がいくつかありますが、最も簡単なのは、
-公式の `stable` チャートの1つを使用することです。
+chart をインストールするには、`helm install` コマンドを実行します。Helm には chart を見つけてインストールする方法がいくつかありますが、最も簡単なのは `bitnami` chart を使用する方法です。
 
 ```console
-$ helm repo update              # チャートの最新のリストを取得していることを確認してください
-$ helm install stable/mysql --generate-name
-Released smiling-penguin
+$ helm repo update              # Make sure we get the latest list of charts
+$ helm install bitnami/mysql --generate-name
+NAME: mysql-1612624192
+LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES: ...
 ```
 
-上記の例では、`stable/mysql` チャートがリリースされており、
-新しいリリースの名前は `smiling-penguin` です。
+上記の例では、`bitnami/mysql` chart がリリースされ、新しい release の名前は `mysql-1612624192` です。
 
-`helm show chart stable/mysql` を実行すると、この MySQL チャートの機能の簡単なアイデアが得られます。
-または `helm show all stable/mysql` を実行して、
-チャートに関するすべての情報を取得することもできます。
+`helm show chart bitnami/mysql` を実行すると、この MySQL chart の機能の概要を確認できます。`helm show all bitnami/mysql` を実行すると、chart に関するすべての情報を取得できます。
 
-チャートをインストールするたびに、新しいリリースが作成されます。
-したがって、1つのチャートを同じクラスターに複数回インストールできます。
-また、それぞれを個別に管理およびアップグレードできます。
+chart をインストールするたびに、新しい release が作成されます。そのため、1つの chart を同じクラスターに複数回インストールできます。各 release は個別に管理およびアップグレードできます。
 
-`helm install` コマンドは、多くの機能を備えた非常に強力なコマンドです。
-詳細については、[Helm の使用ガイド](/intro/using_helm.md) をご覧ください。
+`helm install` コマンドは多くの機能を備えた強力なコマンドです。詳細については、[Helm の使い方ガイド](/intro/using_helm.md)を参照してください。
 
-## リリースについて学ぶ
+## release について学ぶ
 
-Helm を使用してリリースされた内容を簡単に確認できます。
+Helm を使用してリリースした内容は簡単に確認できます。
 
 ```console
-$ helm ls
-NAME             VERSION   UPDATED                   STATUS    CHART
-smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+$ helm list
+NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
+mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-`helm list` 機能は、デプロイされたすべてのリリースのリストを表示します。
+`helm list`（または `helm ls`）を実行すると、デプロイ済みのすべての release の一覧が表示されます。
 
-## リリースをアンインストールする
+## release をアンインストールする
 
-リリースをアンインストールするには、`helm uninstall` コマンドを使用します。
+release をアンインストールするには、`helm uninstall` コマンドを使用します。
 
 ```console
-$ helm uninstall smiling-penguin
-Removed smiling-penguin
+$ helm uninstall mysql-1612624192
+release "mysql-1612624192" uninstalled
 ```
 
-これにより、Kubernetes から `smiling-penguin` がアンインストールされ、
-リリースに関連するすべてのリソースとリリース履歴が削除されます。
+これにより、Kubernetes から `mysql-1612624192` がアンインストールされ、release に関連するすべてのリソースと release 履歴が削除されます。
 
-`--keep-history` フラグを指定すると、リリース履歴が保持されます。
-そのリリースに関する情報をリクエストできます。
+`--keep-history` フラグを指定すると、release 履歴が保持されます。その release に関する情報を取得できます。
 
 ```console
-$ helm status smiling-penguin
+$ helm status mysql-1612624192
 Status: UNINSTALLED
 ...
 ```
 
-Helm はリリースをアンインストールした後でもリリースを追跡するため、クラスターの履歴を監査したり、
-(`helm rollback` を使用して) リリースを元に戻したりすることができます。
+Helm はアンインストール後も release を追跡するため、クラスターの履歴を監査したり、`helm rollback` で release を復元したりできます。
 
 ## ヘルプテキストを読む
 
-使用可能な Helm コマンドの詳細については、`helm help` を使用するか、
-コマンドに続けて `-h` フラグを入力してください。
+利用可能な Helm コマンドの詳細については、`helm help` を使用するか、コマンドに `-h` フラグを付けて実行してください。
 
 ```console
 $ helm get -h
