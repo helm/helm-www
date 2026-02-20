@@ -1,5 +1,5 @@
 ---
-title: Instalando o  Helm
+title: Instalando o Helm
 description: Aprenda como instalar e rodar o Helm.
 sidebar_position: 2
 ---
@@ -79,6 +79,14 @@ para o [Chocolatey](https://chocolatey.org/). Esse pacote geralmente está atual
 choco install kubernetes-helm
 ```
 
+### Scoop (Windows)
+
+Membros da comunidade Helm contribuíram com um build do [pacote Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) para o [Scoop](https://scoop.sh). Esse pacote geralmente está atualizado.
+
+```console
+scoop install helm
+```
+
 ### Winget (Windows)
 
 Membros da comunidade Helm contribuíram com um build do [pacote Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm)
@@ -90,15 +98,22 @@ winget install Helm.Helm
 
 ### Apt (Debian/Ubuntu)
 
-Membros da comunidade Helm contribuíram com um [pacote do Helm](https://helm.baltorepo.com/stable/debian/)
-para o Apt. Esse pacote geralmente está atualizado.
+Membros da comunidade Helm contribuíram com um pacote Apt para Debian/Ubuntu. Esse pacote geralmente está atualizado. Agradecimentos ao [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por hospedar o repositório.
 
 ```console
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get install curl gpg apt-transport-https --yes
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
+```
+
+### dnf/yum (fedora)
+
+A partir do Fedora 35, o Helm está disponível no repositório oficial. Você pode instalar o Helm executando:
+
+```console
+sudo dnf install helm
 ```
 
 ### Snap
@@ -122,13 +137,13 @@ pkg install helm
 
 ### _Builds_ de Desenvolvimento
 
-Além das releases estáveis é possíbel baixar e instalar versões de desenvolvimento
+Além das releases estáveis, é possível baixar e instalar versões de desenvolvimento
 do Helm.
 
 ### _Canary Builds_
 
 _Builds "Canary"_ são versões do Helm construídas a partir das últimas atualizações
-da _brach master_. Eles não são releases oficiais e podem não ser estáveis!
+da branch `main`. Eles não são releases oficiais e podem não ser estáveis!
 Contudo, oferecem a oportunidade de testar as funcionalidades mais recentes do Helm.
 
 Os binários _Canary_ do Helm são armazenados em [get.helm.sh](https://get.helm.sh).
@@ -157,9 +172,9 @@ e validará a configuração. Irá compilar o `helm` e o mover para `bin/helm` t
 
 ## Conclusão
 
-Na maioria dos casos a instalação é simples como baixar um binário pré-buildado
+Na maioria dos casos, a instalação é simples como baixar um binário pré-buildado
 do `helm`. Este documento cobre casos de pessoas que querem executar cargas de
 trabalho mais sofisticadas com o Helm.
 
-Uma vez instalado com sucesso o cliente Helm você pode seguir com o uso do Helm
-para o gerenciamento de charts [adição de um repositório estável](/intro/quickstart.md#initialize-a-helm-chart-repository).
+Uma vez instalado com sucesso o cliente Helm, você pode seguir com o uso do Helm
+para o gerenciamento de charts e [adicionar um repositório estável](/intro/quickstart.md#initialize-a-helm-chart-repository).
