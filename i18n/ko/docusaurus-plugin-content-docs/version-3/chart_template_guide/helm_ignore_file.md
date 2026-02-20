@@ -20,9 +20,9 @@ sidebar_position: 12
 ```
 # comment
 .git
-*/temp*
-*/*/temp*
-temp?
+*/draft*
+*/*/draft*
+draft?
 ```
 
 이 문서를 개선하기 위해 **당신의 도움을 필요합니다.**
