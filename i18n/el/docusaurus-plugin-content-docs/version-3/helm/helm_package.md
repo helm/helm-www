@@ -4,7 +4,7 @@ title: helm package
 
 πακετάρισμα καταλόγου chart σε αρχείο chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Αυτή η εντολή πακετάρει ένα chart σε αρχείο chart με έκδοση. Αν δοθεί μια
@@ -26,7 +26,7 @@ keyring εκτός αν το περιβάλλον σας έχει ρυθμιστ
 helm package [CHART_PATH] [...] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --app-version string         set the appVersion on the chart to this version
@@ -47,7 +47,7 @@ helm package [CHART_PATH] [...] [flags]
       --version string             set the version on the chart to this semver version
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -68,8 +68,8 @@ helm package [CHART_PATH] [...] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

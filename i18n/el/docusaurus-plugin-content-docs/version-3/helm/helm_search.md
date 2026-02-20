@@ -4,7 +4,7 @@ title: helm search
 
 αναζητά μια λέξη-κλειδί σε charts
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Η εντολή search παρέχει τη δυνατότητα αναζήτησης Helm charts στα διάφορα μέρη
 όπου μπορούν να αποθηκευτούν, συμπεριλαμβανομένου του Artifact Hub και των
@@ -12,13 +12,13 @@ title: helm search
 αναζήτηση σε διαφορετικές τοποθεσίες.
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for search
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -39,10 +39,10 @@ title: helm search
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για το Kubernetes.
 * [helm search hub](/helm/helm_search_hub.md)	 - αναζητά charts στο Artifact Hub ή στη δική σας hub instance
 * [helm search repo](/helm/helm_search_repo.md)	 - αναζητά charts στα αποθετήρια με βάση μια λέξη-κλειδί
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

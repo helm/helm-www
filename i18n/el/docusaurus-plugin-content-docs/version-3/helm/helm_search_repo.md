@@ -4,7 +4,7 @@ title: helm search repo
 
 αναζητά charts στα αποθετήρια με βάση μια λέξη-κλειδί
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Η εντολή search διαβάζει όλα τα αποθετήρια που έχουν ρυθμιστεί στο σύστημα και
 αναζητά αντιστοιχίες. Η αναζήτηση σε αυτά τα αποθετήρια χρησιμοποιεί τα μεταδεδομένα
@@ -32,7 +32,7 @@ title: helm search repo
 helm search repo [keyword] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --devel                use development versions (alpha, beta, and release candidate releases), too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
@@ -45,7 +45,7 @@ helm search repo [keyword] [flags]
   -l, --versions             show the long listing, with each version of each chart on its own line, for repositories you have added
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -66,8 +66,8 @@ helm search repo [keyword] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm search](/helm/helm_search.md)	 - αναζητά μια λέξη-κλειδί σε charts
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

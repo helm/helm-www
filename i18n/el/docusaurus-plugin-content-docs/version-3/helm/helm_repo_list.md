@@ -8,14 +8,14 @@ title: helm repo list
 helm repo list [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help            help for list
   -o, --output format   prints the output in the specified format. Allowed values: table, json, yaml (default table)
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -36,8 +36,8 @@ helm repo list [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm repo](/helm/helm_repo.md)	 - προσθέτει, εμφανίζει, αφαιρεί, ενημερώνει και δημιουργεί ευρετήριο για αποθετήρια chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

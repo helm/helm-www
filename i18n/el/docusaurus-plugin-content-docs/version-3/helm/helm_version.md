@@ -4,7 +4,7 @@ title: helm version
 
 εμφανίζει την έκδοση του client
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Εμφανίζει την έκδοση του Helm.
 
@@ -34,7 +34,7 @@ version.BuildInfo{Version:"v3.2.1", GitCommit:"fe51cd1e31e6a202cba7dead9552a6d41
 helm version [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help              help for version
@@ -42,7 +42,7 @@ helm version [flags]
       --template string   template for version string format
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -63,8 +63,8 @@ helm version [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

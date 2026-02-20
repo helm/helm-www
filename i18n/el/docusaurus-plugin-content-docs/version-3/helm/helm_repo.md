@@ -4,20 +4,20 @@ title: helm repo
 
 προσθέτει, εμφανίζει, αφαιρεί, ενημερώνει και δημιουργεί ευρετήριο για αποθετήρια chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Η εντολή αποτελείται από πολλές υποεντολές για διαχείριση αποθετηρίων chart.
 
 Χρησιμοποιήστε την για να προσθέσετε, αφαιρέσετε, εμφανίσετε και δημιουργήσετε ευρετήριο αποθετηρίων chart.
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for repo
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -38,7 +38,7 @@ title: helm repo
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 * [helm repo add](/helm/helm_repo_add.md)	 - προσθέτει ένα αποθετήριο chart
@@ -47,4 +47,4 @@ title: helm repo
 * [helm repo remove](/helm/helm_repo_remove.md)	 - αφαιρεί ένα ή περισσότερα αποθετήρια chart
 * [helm repo update](/helm/helm_repo_update.md)	 - ενημερώνει τοπικά τις πληροφορίες για διαθέσιμα charts από τα αποθετήρια chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

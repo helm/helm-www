@@ -4,7 +4,7 @@ title: helm dependency
 
 διαχείριση εξαρτήσεων ενός chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Διαχείριση των εξαρτήσεων ενός chart.
@@ -55,13 +55,13 @@ title: helm dependency
 υποστηρίζεται και σε αυτήν την περίπτωση.
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for dependency
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -82,11 +82,11 @@ title: helm dependency
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](./helm.md)	 - Ο διαχειριστής πακέτων Helm για το Kubernetes.
 * [helm dependency build](./helm_dependency_build.md)	 - ανακατασκευή του καταλόγου charts/ με βάση το αρχείο Chart.lock
 * [helm dependency list](./helm_dependency_list.md)	 - εμφάνιση των εξαρτήσεων για ένα συγκεκριμένο chart
 * [helm dependency update](./helm_dependency_update.md)	 - ενημέρωση του καταλόγου charts/ με βάση τα περιεχόμενα του Chart.yaml
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

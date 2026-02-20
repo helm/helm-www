@@ -4,7 +4,7 @@ title: helm list
 
 λίστα release
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Αυτή η εντολή εμφανίζει όλα τα release για ένα συγκεκριμένο namespace (χρησιμοποιεί
@@ -39,7 +39,7 @@ title: helm list
 helm list [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -a, --all                  show all releases without any filter applied
@@ -63,7 +63,7 @@ helm list [flags]
       --uninstalling         show releases that are currently being uninstalled
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -84,8 +84,8 @@ helm list [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

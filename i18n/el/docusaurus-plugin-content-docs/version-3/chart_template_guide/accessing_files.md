@@ -31,16 +31,16 @@ sidebar_position: 10
 
 <!-- toc -->
 
-- [Βασικό παράδειγμα](#βασικό-παράδειγμα)
-- [Βοηθητικές συναρτήσεις διαδρομής](#βοηθητικές-συναρτήσεις-διαδρομής)
-- [Μοτίβα glob](#μοτίβα-glob)
-- [Βοηθητικές συναρτήσεις ConfigMap και Secrets](#βοηθητικές-συναρτήσεις-configmap-και-secrets)
-- [Κωδικοποίηση](#κωδικοποίηση)
-- [Γραμμές](#γραμμές)
+- [Βασικό παράδειγμα](#basic-example)
+- [Βοηθητικές συναρτήσεις διαδρομής](#path-helpers)
+- [Μοτίβα glob](#glob-patterns)
+- [Βοηθητικές συναρτήσεις ConfigMap και Secrets](#configmap-and-secrets-utility-functions)
+- [Κωδικοποίηση](#encoding)
+- [Γραμμές](#lines)
 
 <!-- tocstop -->
 
-## Βασικό παράδειγμα
+## Βασικό παράδειγμα {#basic-example}
 
 Με αυτά υπόψη, ας γράψουμε ένα template που διαβάζει τρία
 αρχεία στο ConfigMap μας. Για να ξεκινήσουμε, θα προσθέσουμε τρία αρχεία στο
@@ -93,7 +93,7 @@ data:
 και των τριών αρχείων:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -109,7 +109,7 @@ data:
     message = "Goodbye from config 3"
 ```
 
-## Βοηθητικές συναρτήσεις διαδρομής
+## Βοηθητικές συναρτήσεις διαδρομής {#path-helpers}
 
 Όταν εργάζεστε με αρχεία, μπορεί να είναι πολύ χρήσιμο να εκτελείτε ορισμένες
 τυπικές λειτουργίες στις ίδιες τις διαδρομές των αρχείων. Για να βοηθήσει σε
@@ -125,7 +125,7 @@ data:
 - IsAbs
 - Clean
 
-## Μοτίβα glob
+## Μοτίβα glob {#glob-patterns}
 
 Καθώς το chart σας μεγαλώνει, μπορεί να διαπιστώσετε ότι χρειάζεστε καλύτερη
 οργάνωση των αρχείων σας, και γι' αυτό παρέχουμε μια μέθοδο
@@ -165,7 +165,7 @@ bar/:
 {{ end }}
 ```
 
-## Βοηθητικές συναρτήσεις ConfigMap και Secrets
+## Βοηθητικές συναρτήσεις ConfigMap και Secrets {#configmap-and-secrets-utility-functions}
 
 (Διαθέσιμο από Helm 2.0.2 και μετά)
 
@@ -177,7 +177,7 @@ ConfigMaps όσο και σε Secrets, για προσάρτηση στα pods �
 Για καλύτερη οργάνωση, είναι ιδιαίτερα χρήσιμο να χρησιμοποιείτε αυτές τις
 μεθόδους σε συνδυασμό με τη μέθοδο `Glob`.
 
-Δεδομένης της δομής καταλόγου από το παράδειγμα [Glob](#μοτίβα-glob) παραπάνω:
+Δεδομένης της δομής καταλόγου από το παράδειγμα [Glob](#glob-patterns) παραπάνω:
 
 ```yaml
 ---
@@ -197,7 +197,7 @@ data:
 {{ (.Files.Glob "bar/*").AsSecrets | indent 2 }}
 ```
 
-## Κωδικοποίηση
+## Κωδικοποίηση {#encoding}
 
 Μπορείτε να εισάγετε ένα αρχείο και να το κωδικοποιήσετε σε base-64 από το
 template για να εξασφαλίσετε τη σωστή μεταφορά:
@@ -217,7 +217,7 @@ data:
 και θα το κωδικοποιήσει:
 
 ```yaml
-# Source: mychart/templates/secret.yaml
+# Source: mychart/templates/secret.yaml {#source-mycharttemplatessecretyaml}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -228,7 +228,7 @@ data:
     bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
-## Γραμμές
+## Γραμμές {#lines}
 
 Μερικές φορές είναι επιθυμητό να προσπελάσετε κάθε γραμμή ενός αρχείου στο
 template σας. Παρέχουμε μια βολική μέθοδο `Lines` για αυτό.

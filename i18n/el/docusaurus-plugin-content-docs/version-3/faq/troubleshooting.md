@@ -3,9 +3,9 @@ title: Αντιμετώπιση Προβλημάτων
 sidebar_position: 4
 ---
 
-## Αντιμετώπιση Προβλημάτων
+## Αντιμετώπιση Προβλημάτων {#troubleshooting}
 
-### Λαμβάνω μια προειδοποίηση σχετικά με "Unable to get an update from the "stable" chart repository"
+### Λαμβάνω μια προειδοποίηση σχετικά με "Unable to get an update from the "stable" chart repository" {#i-am-getting-a-warning-about-unable-to-get-an-update-from-the-stable-chart-repository}
 
 Εκτελέστε `helm repo list`. Αν το αποθετήριο `stable` χρησιμοποιεί URL από το `storage.googleapis.com`, θα πρέπει να το ενημερώσετε. Στις 13 Νοεμβρίου 2020, το αποθετήριο Helm Charts [έπαψε να υποστηρίζεται](https://github.com/helm/charts#deprecation-timeline) μετά από μια περίοδο κατάργησης ενός έτους. Ένα αρχείο είναι διαθέσιμο στο `https://charts.helm.sh/stable` αλλά δεν θα λαμβάνει πλέον ενημερώσεις.
 
@@ -21,7 +21,7 @@ $ helm repo add stable https://charts.helm.sh/stable --force-update
 $ helm repo add incubator https://charts.helm.sh/incubator --force-update  
 ```
 
-### Λαμβάνω την προειδοποίηση 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'
+### Λαμβάνω την προειδοποίηση 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.' {#i-am-getting-the-warning-warning-kubernetes-chartsstoragegoogleapiscom-is-deprecated-for-stable-and-will-be-deleted-nov-13-2020}
 
 Το παλιό αποθετήριο chart της Google έχει αντικατασταθεί από ένα νέο αποθετήριο Helm chart.
 
@@ -37,11 +37,11 @@ $ helm repo add stable https://charts.helm.sh/stable --force-update
 $ helm repo add incubator https://charts.helm.sh/incubator --force-update  
 ```
 
-### Όταν προσθέτω ένα Helm repo, λαμβάνω το σφάλμα 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'
+### Όταν προσθέτω ένα Helm repo, λαμβάνω το σφάλμα 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available' {#when-i-add-a-helm-repo-i-get-the-error-error-repo-httpskubernetes-chartsstoragegoogleapiscom-is-no-longer-available}
 
 Τα αποθετήρια Helm Chart δεν υποστηρίζονται πλέον μετά από [μια περίοδο κατάργησης ενός έτους](https://github.com/helm/charts#deprecation-timeline). Τα αρχεία για αυτά τα αποθετήρια είναι διαθέσιμα στο `https://charts.helm.sh/stable` και `https://charts.helm.sh/incubator`, ωστόσο δεν θα λαμβάνουν πλέον ενημερώσεις. Η εντολή `helm repo add` δεν θα σας επιτρέψει να προσθέσετε τα παλιά URLs εκτός αν καθορίσετε `--use-deprecated-repos`.
 
-### Στο GKE (Google Container Engine) λαμβάνω "No SSH tunnels currently open"
+### Στο GKE (Google Container Engine) λαμβάνω "No SSH tunnels currently open" {#on-gke-google-container-engine-i-get-no-ssh-tunnels-currently-open}
 
 ```
 Error: Error forwarding ports: error upgrading connection: No SSH tunnels currently open. Were the targets able to accept an ssh-key for user "gke-[redacted]"?
@@ -58,7 +58,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 
 Όταν δημιουργείτε ένα cluster στο GKE, θα λάβετε credentials, συμπεριλαμβανομένων πιστοποιητικών SSL και αρχών πιστοποίησης. Αυτά πρέπει να αποθηκευτούν σε ένα αρχείο ρυθμίσεων Kubernetes (Προεπιλογή: `~/.kube/config`) ώστε οι `kubectl` και `helm` να έχουν πρόσβαση σε αυτά.
 
-### Μετά τη μετάβαση από το Helm 2, το `helm list` εμφανίζει μόνο μερικά (ή κανένα) από τα releases μου
+### Μετά τη μετάβαση από το Helm 2, το `helm list` εμφανίζει μόνο μερικά (ή κανένα) από τα releases μου {#after-migration-from-helm-2-helm-list-shows-only-some-or-none-of-my-releases}
 
 Πιθανώς δεν έχετε λάβει υπόψη ότι το Helm 3 χρησιμοποιεί πλέον τα namespaces του cluster για τον περιορισμό των releases. Αυτό σημαίνει ότι για όλες τις εντολές που αναφέρονται σε ένα release πρέπει είτε:
 
@@ -69,7 +69,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 Αυτό ισχύει για τα `helm ls`, `helm uninstall`, και όλες τις άλλες εντολές `helm` που αναφέρονται σε ένα release.
 
 
-### Σε macOS, γίνεται πρόσβαση στο αρχείο `/etc/.mdns_debug`. Γιατί;
+### Σε macOS, γίνεται πρόσβαση στο αρχείο `/etc/.mdns_debug`. Γιατί; {#on-macos-the-file-etcmdns_debug-is-accessed-why}
 
 Γνωρίζουμε μια περίπτωση σε macOS όπου το Helm προσπαθεί να αποκτήσει πρόσβαση σε ένα αρχείο με όνομα `/etc/.mdns_debug`. Αν το αρχείο υπάρχει, το Helm κρατά το file handle ανοιχτό κατά την εκτέλεση.
 
@@ -79,7 +79,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 
 Αυτό το ζήτημα αρχικά επισημάνθηκε ως πιθανό πρόβλημα ασφάλειας. Ωστόσο, έχει διαπιστωθεί ότι δεν υπάρχει κανένα ελάττωμα ή ευπάθεια που προκαλείται από αυτή τη συμπεριφορά.
 
-### Το helm repo add αποτυγχάνει ενώ λειτουργούσε παλιότερα
+### Το helm repo add αποτυγχάνει ενώ λειτουργούσε παλιότερα {#helm-repo-add-fails-when-it-used-to-work}
 
 Στο helm 3.3.1 και παλαιότερα, η εντολή `helm repo add <reponame> <url>` δεν έδινε καμία έξοδο αν προσπαθούσατε να προσθέσετε ένα αποθετήριο που υπήρχε ήδη. Το flag `--no-update` θα προκαλούσε σφάλμα αν το αποθετήριο ήταν ήδη καταχωρημένο.
 
@@ -91,7 +91,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 
 Αυτό οφείλεται σε μια breaking change για διόρθωση ασφαλείας, όπως εξηγείται στις [σημειώσεις έκδοσης του Helm 3.3.2](https://github.com/helm/helm/releases/tag/v3.3.2).
 
-### Ενεργοποίηση της καταγραφής του Kubernetes client
+### Ενεργοποίηση της καταγραφής του Kubernetes client {#enabling-kubernetes-client-logging}
 
 Η εκτύπωση μηνυμάτων καταγραφής για τον εντοπισμό σφαλμάτων του Kubernetes client μπορεί να ενεργοποιηθεί χρησιμοποιώντας τα flags του [klog](https://pkg.go.dev/k8s.io/klog). Η χρήση του flag `-v` για να ορίσετε το επίπεδο λεπτομέρειας θα είναι αρκετή για τις περισσότερες περιπτώσεις.
 
@@ -101,7 +101,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 helm list -v 6
 ```
 
-### Οι εγκαταστάσεις Tiller σταμάτησαν να λειτουργούν και η πρόσβαση απορρίπτεται
+### Οι εγκαταστάσεις Tiller σταμάτησαν να λειτουργούν και η πρόσβαση απορρίπτεται {#tiller-installations-stopped-working-and-access-is-denied}
 
 Τα releases του Helm ήταν διαθέσιμα από το <https://storage.googleapis.com/kubernetes-helm/>. Όπως εξηγείται στο ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), η επίσημη τοποθεσία άλλαξε τον Ιούνιο του 2019. Το [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) διαθέτει όλα τα παλιά Tiller images.
 

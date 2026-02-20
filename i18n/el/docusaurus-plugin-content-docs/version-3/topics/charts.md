@@ -19,7 +19,7 @@ caches κ.λπ.
 Αυτό το έγγραφο εξηγεί τη μορφή των charts και παρέχει βασικές οδηγίες για
 τη δημιουργία charts με το Helm.
 
-## Η Δομή Αρχείων του Chart
+## Η Δομή Αρχείων του Chart {#the-chart-file-structure}
 
 Ένα chart είναι οργανωμένο ως μια συλλογή αρχείων μέσα σε έναν κατάλογο. Το
 όνομα του καταλόγου είναι το όνομα του chart (χωρίς πληροφορίες έκδοσης). Έτσι,
@@ -44,7 +44,7 @@ wordpress/
 Το Helm δεσμεύει τη χρήση των καταλόγων `charts/`, `crds/` και `templates/`, καθώς
 και των αρχείων με τα παραπάνω ονόματα. Τα υπόλοιπα αρχεία θα παραμείνουν ως έχουν.
 
-## Το Αρχείο Chart.yaml
+## Το Αρχείο Chart.yaml {#the-chartyaml-file}
 
 Το αρχείο `Chart.yaml` είναι απαραίτητο για ένα chart. Περιέχει τα εξής πεδία:
 
@@ -85,7 +85,7 @@ annotations:
 επιτρέπονται επιπλέον πεδία. Η προτεινόμενη προσέγγιση είναι να προσθέσετε
 προσαρμοσμένα metadata στο πεδίο `annotations`.
 
-### Charts και Εκδοσιοποίηση
+### Charts και Εκδοσιοποίηση {#charts-and-versioning}
 
 Κάθε chart πρέπει να έχει έναν αριθμό έκδοσης. Μια έκδοση πρέπει να ακολουθεί
 το πρότυπο [SemVer 2](https://semver.org/spec/v2.0.0.html), αλλά δεν επιβάλλεται
@@ -119,7 +119,7 @@ nginx-1.2.3.tgz
 ταιριάζει με τον αριθμό έκδοσης στο `Chart.yaml`. Η αποτυχία ικανοποίησης αυτής
 της υπόθεσης θα προκαλέσει σφάλμα.
 
-### Το Πεδίο `apiVersion`
+### Το Πεδίο `apiVersion` {#the-apiversion-field}
 
 Το πεδίο `apiVersion` πρέπει να είναι `v2` για Helm charts που απαιτούν
 τουλάχιστον Helm 3. Τα charts που υποστηρίζουν προηγούμενες εκδόσεις του Helm
@@ -130,11 +130,11 @@ nginx-1.2.3.tgz
 
 - Ένα πεδίο `dependencies` που ορίζει τις εξαρτήσεις του chart, οι οποίες
   βρίσκονταν σε ξεχωριστό αρχείο `requirements.yaml` για τα `v1` charts
-  (δείτε [Εξαρτήσεις Chart](#εξαρτήσεις-chart)).
+  (δείτε [Εξαρτήσεις Chart](#chart-dependencies)).
 - Το πεδίο `type`, που διακρίνει τα application και library charts (δείτε
-  [Τύποι Chart](#τύποι-chart)).
+  [Τύποι Chart](#chart-types)).
 
-### Το Πεδίο `appVersion`
+### Το Πεδίο `appVersion` {#the-appversion-field}
 
 Σημειώστε ότι το πεδίο `appVersion` δεν σχετίζεται με το πεδίο `version`. Είναι
 ένας τρόπος να προσδιορίσετε την έκδοση της εφαρμογής. Για παράδειγμα, το chart
@@ -150,7 +150,7 @@ git commit SHA όπως `1234e10` ως επιστημονική σημειογρ
 Από το Helm v3.5.0, η εντολή `helm create` περικλείει το προεπιλεγμένο πεδίο
 `appVersion` σε εισαγωγικά.
 
-### Το Πεδίο `kubeVersion`
+### Το Πεδίο `kubeVersion` {#the-kubeversion-field}
 
 Το προαιρετικό πεδίο `kubeVersion` μπορεί να ορίσει semver περιορισμούς για τις
 υποστηριζόμενες εκδόσεις Kubernetes. Το Helm θα επικυρώσει τους περιορισμούς
@@ -185,7 +185,7 @@ git commit SHA όπως `1234e10` ως επιστημονική σημειογρ
 Για λεπτομερή εξήγηση των υποστηριζόμενων semver περιορισμών, δείτε το
 [Masterminds/semver](https://github.com/Masterminds/semver).
 
-### Απόσυρση Charts
+### Απόσυρση Charts {#deprecating-charts}
 
 Κατά τη διαχείριση charts σε ένα Chart Repository, μερικές φορές είναι απαραίτητο
 να αποσύρετε ένα chart. Το προαιρετικό πεδίο `deprecated` στο `Chart.yaml`
@@ -200,7 +200,7 @@ git commit SHA όπως `1234e10` ως επιστημονική σημειογρ
 2. Δημοσιεύστε τη νέα έκδοση chart στο Chart Repository
 3. Αφαιρέστε το chart από το source repository (π.χ. git)
 
-### Τύποι Chart
+### Τύποι Chart {#chart-types}
 
 Το πεδίο `type` ορίζει τον τύπο του chart. Υπάρχουν δύο τύποι: `application`
 και `library`. Ο application είναι ο προεπιλεγμένος τύπος και είναι το τυπικό
@@ -214,7 +214,7 @@ chart που μπορεί να λειτουργήσει πλήρως. Το [libr
 ως library chart όπου όλα τα εργαλεία και οι συναρτήσεις μπορούν να αξιοποιηθούν.
 Όλα τα αντικείμενα πόρων του chart δεν θα αποδοθούν.
 
-## Chart LICENSE, README και NOTES
+## Chart LICENSE, README και NOTES {#chart-license-readme-and-notes}
 
 Τα charts μπορούν επίσης να περιέχουν αρχεία που περιγράφουν την εγκατάσταση,
 τη διαμόρφωση, τη χρήση και την άδεια ενός chart.
@@ -241,7 +241,7 @@ chart που μπορεί να λειτουργήσει πλήρως. Το [libr
 Το chart μπορεί επίσης να περιέχει ένα σύντομο αρχείο κειμένου
 `templates/NOTES.txt` που θα εκτυπώνεται μετά την εγκατάσταση και κατά την
 προβολή της κατάστασης ενός release. Αυτό το αρχείο αξιολογείται ως
-[template](#templates-και-values) και μπορεί να χρησιμοποιηθεί για να εμφανίσει
+[template](#templates-and-values) και μπορεί να χρησιμοποιηθεί για να εμφανίσει
 σημειώσεις χρήσης, επόμενα βήματα, ή οποιαδήποτε άλλη πληροφορία σχετική με
 ένα release του chart. Για παράδειγμα, θα μπορούσαν να παρασχεθούν οδηγίες
 για σύνδεση σε μια βάση δεδομένων ή πρόσβαση σε ένα web UI. Δεδομένου ότι αυτό
@@ -249,14 +249,14 @@ chart που μπορεί να λειτουργήσει πλήρως. Το [libr
 συνιστάται να διατηρείτε το περιεχόμενο σύντομο και να παραπέμπετε στο README
 για περισσότερες λεπτομέρειες.
 
-## Εξαρτήσεις Chart
+## Εξαρτήσεις Chart {#chart-dependencies}
 
 Στο Helm, ένα chart μπορεί να εξαρτάται από οποιονδήποτε αριθμό άλλων charts.
 Αυτές οι εξαρτήσεις μπορούν να συνδεθούν δυναμικά χρησιμοποιώντας το πεδίο
 `dependencies` στο `Chart.yaml` ή να εισαχθούν στον κατάλογο `charts/` και
 να διαχειριστούν χειροκίνητα.
 
-### Διαχείριση Εξαρτήσεων με το Πεδίο `dependencies`
+### Διαχείριση Εξαρτήσεων με το Πεδίο `dependencies` {#managing-dependencies-with-the-dependencies-field}
 
 Τα charts που απαιτούνται από το τρέχον chart ορίζονται ως λίστα στο πεδίο
 `dependencies`.
@@ -316,7 +316,7 @@ charts/
   mysql-3.2.1.tgz
 ```
 
-#### Πεδίο Alias στις Εξαρτήσεις
+#### Πεδίο Alias στις Εξαρτήσεις {#alias-field-in-dependencies}
 
 Επιπλέον των άλλων πεδίων παραπάνω, κάθε εγγραφή εξαρτήσεων μπορεί να περιέχει
 το προαιρετικό πεδίο `alias`.
@@ -328,7 +328,7 @@ charts/
 προσπελάσετε ένα chart με άλλο όνομα(τα).
 
 ```yaml
-# parentchart/Chart.yaml
+# parentchart/Chart.yaml {#parentchartchartyaml} {#parentchartchartyaml}
 
 dependencies:
   - name: subchart
@@ -355,7 +355,7 @@ new-subchart-2
 Ο χειροκίνητος τρόπος για να επιτευχθεί αυτό είναι με copy/paste του ίδιου
 chart στον κατάλογο `charts/` πολλές φορές με διαφορετικά ονόματα.
 
-#### Πεδία Tags και Condition στις Εξαρτήσεις
+#### Πεδία Tags και Condition στις Εξαρτήσεις {#tags-and-condition-fields-in-dependencies}
 
 Επιπλέον των άλλων πεδίων παραπάνω, κάθε εγγραφή εξαρτήσεων μπορεί να περιέχει
 τα προαιρετικά πεδία `tags` και `condition`.
@@ -396,7 +396,7 @@ dependencies:
 ```
 
 ```yaml
-# parentchart/values.yaml
+# parentchart/values.yaml {#parentchartvaluesyaml}
 
 subchart1:
   enabled: true
@@ -415,7 +415,7 @@ tags:
 το `subchart2` έχει καθορισμένη condition, δεν υπάρχει αντίστοιχη διαδρομή
 και τιμή στα values του γονικού, οπότε αυτή η condition δεν έχει αποτέλεσμα.
 
-##### Χρήση του CLI με Tags και Conditions
+##### Χρήση του CLI με Tags και Conditions {#using-the-cli-with-tags-and-conditions}
 
 Η παράμετρος `--set` μπορεί να χρησιμοποιηθεί όπως συνήθως για να αλλάξει
 τις τιμές tag και condition.
@@ -424,7 +424,7 @@ tags:
 helm install --set tags.front-end=true --set subchart2.enabled=false
 ```
 
-##### Επίλυση Tags και Conditions
+##### Επίλυση Tags και Conditions {#tags-and-condition-resolution}
 
 - **Οι conditions (όταν ορίζονται στα values) υπερισχύουν πάντα των tags.**
   Η πρώτη διαδρομή condition που υπάρχει κερδίζει και οι επόμενες για αυτό
@@ -436,7 +436,7 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
 - Το κλειδί `tags:` στα values πρέπει να είναι κλειδί ανώτατου επιπέδου.
   Τα globals και εμφωλευμένοι πίνακες `tags:` δεν υποστηρίζονται προς το παρόν.
 
-#### Εισαγωγή Τιμών Θυγατρικών μέσω Εξαρτήσεων
+#### Εισαγωγή Τιμών Θυγατρικών μέσω Εξαρτήσεων {#importing-child-values-via-dependencies}
 
 Σε ορισμένες περιπτώσεις είναι επιθυμητό να επιτρέπεται στις τιμές ενός
 θυγατρικού chart να διαδοθούν στο γονικό chart και να μοιραστούν ως κοινές
@@ -450,17 +450,17 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
 το πεδίο `exports` του θυγατρικού chart.
 
 Για να εισάγετε τιμές που δεν περιέχονται στο κλειδί `exports`, χρησιμοποιήστε
-τη μορφή [child-parent](#χρήση-της-μορφής-child-parent). Παραδείγματα και
+τη μορφή [child-parent](#using-the-child-parent-format). Παραδείγματα και
 των δύο μορφών περιγράφονται παρακάτω.
 
-##### Χρήση της Μορφής Exports
+##### Χρήση της Μορφής Exports {#using-the-exports-format}
 
 Αν το αρχείο `values.yaml` ενός θυγατρικού chart περιέχει ένα πεδίο `exports`
 στη ρίζα, τα περιεχόμενά του μπορούν να εισαχθούν απευθείας στα values του
 γονικού καθορίζοντας τα κλειδιά προς εισαγωγή όπως στο παρακάτω παράδειγμα:
 
 ```yaml
-# parent's Chart.yaml file
+# parent's Chart.yaml file {#parents-chartyaml-file} {#parents-chartyaml-file}
 
 dependencies:
   - name: subchart
@@ -471,7 +471,7 @@ dependencies:
 ```
 
 ```yaml
-# child's values.yaml file
+# child's values.yaml file {#childs-valuesyaml-file}
 
 exports:
   data:
@@ -485,7 +485,7 @@ exports:
 Τα τελικά values του γονικού θα περιέχουν το εξαγόμενο πεδίο:
 
 ```yaml
-# parent's values
+# parent's values {#parents-values}
 
 myint: 99
 ```
@@ -494,7 +494,7 @@ myint: 99
 γονικού. Αν χρειάζεστε να καθορίσετε το γονικό κλειδί, χρησιμοποιήστε τη
 μορφή 'child-parent'.
 
-##### Χρήση της Μορφής Child-Parent
+##### Χρήση της Μορφής Child-Parent {#using-the-child-parent-format}
 
 Για να προσπελάσετε τιμές που δεν περιέχονται στο κλειδί `exports` των values
 του θυγατρικού chart, θα πρέπει να καθορίσετε το κλειδί πηγή των τιμών
@@ -523,7 +523,7 @@ dependencies:
 chart όπως περιγράφεται παρακάτω:
 
 ```yaml
-# parent's values.yaml file
+# parent's values.yaml file {#parents-valuesyaml-file}
 
 myimports:
   myint: 0
@@ -532,7 +532,7 @@ myimports:
 ```
 
 ```yaml
-# subchart1's values.yaml file
+# subchart1's values.yaml file {#subchart1s-valuesyaml-file}
 
 default:
   data:
@@ -543,7 +543,7 @@ default:
 Τα τελικά values του γονικού chart θα είναι:
 
 ```yaml
-# parent's final values
+# parent's final values {#parents-final-values}
 
 myimports:
   myint: 999
@@ -554,7 +554,7 @@ myimports:
 Τα τελικά values του γονικού περιέχουν τώρα τα πεδία `myint` και `mybool`
 που εισήχθησαν από το subchart1.
 
-### Χειροκίνητη Διαχείριση Εξαρτήσεων μέσω του Καταλόγου `charts/`
+### Χειροκίνητη Διαχείριση Εξαρτήσεων μέσω του Καταλόγου `charts/` {#managing-dependencies-manually-via-the-charts-directory}
 
 Αν επιθυμείται περισσότερος έλεγχος στις εξαρτήσεις, αυτές οι εξαρτήσεις
 μπορούν να εκφραστούν ρητά αντιγράφοντας τα charts εξαρτήσεων στον κατάλογο
@@ -588,7 +588,7 @@ wordpress:
 **ΣΥΜΒΟΥΛΗ:** _Για να τοποθετήσετε μια εξάρτηση στον κατάλογο `charts/`,
 χρησιμοποιήστε την εντολή `helm pull`_
 
-### Λειτουργικές Πτυχές της Χρήσης Εξαρτήσεων
+### Λειτουργικές Πτυχές της Χρήσης Εξαρτήσεων {#operational-aspects-of-using-dependencies}
 
 Οι παραπάνω ενότητες εξηγούν πώς να καθορίσετε εξαρτήσεις chart, αλλά πώς
 επηρεάζει αυτό την εγκατάσταση chart χρησιμοποιώντας `helm install` και
@@ -630,7 +630,7 @@ Kubernetes από τα charts και όλες τις εξαρτήσεις του
 Η σειρά εγκατάστασης των τύπων Kubernetes δίνεται από την απαρίθμηση InstallOrder
 στο kind_sorter.go (δείτε [τον πηγαίο κώδικα του Helm](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go)).
 
-## Templates και Values
+## Templates και Values {#templates-and-values}
 
 Τα Helm Chart templates γράφονται στη [γλώσσα template της Go](https://golang.org/pkg/text/template/), με την προσθήκη 50 και πλέον
 συναρτήσεων template [από τη βιβλιοθήκη Sprig](https://github.com/Masterminds/sprig) και μερικές άλλες [εξειδικευμένες συναρτήσεις](/howto/charts_tips_and_tricks.md).
@@ -649,7 +649,7 @@ Kubernetes από τα charts και όλες τις εξαρτήσεις του
 Όταν ένας χρήστης παρέχει προσαρμοσμένες τιμές, αυτές οι τιμές θα υπερισχύσουν
 των τιμών στο αρχείο `values.yaml` του chart.
 
-### Αρχεία Template
+### Αρχεία Template {#template-files}
 
 Τα αρχεία template ακολουθούν τις τυπικές συμβάσεις για τη σύνταξη Go templates
 (δείτε την [τεκμηρίωση του πακέτου text/template της Go](https://golang.org/pkg/text/template/)
@@ -699,7 +699,7 @@ template για έναν Kubernetes replication controller. Μπορεί να χ
 
 Για να δείτε πολλά λειτουργικά charts, δείτε το [Artifact Hub](https://artifacthub.io/packages/search?kind=0) του CNCF.
 
-### Προκαθορισμένες Τιμές
+### Προκαθορισμένες Τιμές {#predefined-values}
 
 Οι τιμές που παρέχονται μέσω ενός αρχείου `values.yaml` (ή μέσω της σημαίας
 `--set`) είναι προσβάσιμες από το αντικείμενο `.Values` σε ένα template.
@@ -736,7 +736,7 @@ _case sensitive_.
 δεν μπορεί να χρησιμοποιηθεί για να περάσετε αυθαίρετα δομημένα δεδομένα
 στο template. Το αρχείο values όμως μπορεί να χρησιμοποιηθεί για αυτό.
 
-### Αρχεία Values
+### Αρχεία Values {#values-files}
 
 Λαμβάνοντας υπόψη το template στην προηγούμενη ενότητα, ένα αρχείο `values.yaml`
 που παρέχει τις απαραίτητες τιμές θα έμοιαζε έτσι:
@@ -820,7 +820,7 @@ spec:
               value: {{ default "minio" .Values.storage }}
 ```
 
-### Εμβέλεια, Εξαρτήσεις και Values
+### Εμβέλεια, Εξαρτήσεις και Values {#scope-dependencies-and-values}
 
 Τα αρχεία values μπορούν να δηλώσουν τιμές για το chart ανώτατου επιπέδου,
 καθώς και για οποιοδήποτε από τα charts που περιλαμβάνονται στον κατάλογο
@@ -854,7 +854,7 @@ WordPress chart, μπορεί να προσπελάσει το πεδίο κωδ
 έχει μειωθεί και το πρόθεμα namespace έχει αφαιρεθεί, οπότε θα δει το πεδίο
 κωδικού απλά ως `.Values.password`.
 
-#### Global Values
+#### Global Values {#global-values}
 
 Από την έκδοση 2.0.0-Alpha.2, το Helm υποστηρίζει ειδικές "global" τιμές.
 Θεωρήστε αυτή την τροποποιημένη έκδοση του προηγούμενου παραδείγματος:
@@ -910,7 +910,7 @@ _προς τα κάτω_ (στα subcharts του subchart), αλλά όχι _π
 Επίσης, οι global μεταβλητές των γονικών charts υπερισχύουν των global
 μεταβλητών από τα subcharts.
 
-### Αρχεία Schema
+### Αρχεία Schema {#schema-files}
 
 Μερικές φορές, ένας συντηρητής chart μπορεί να θέλει να ορίσει μια δομή
 για τα values του. Αυτό μπορεί να γίνει ορίζοντας ένα schema στο αρχείο
@@ -1000,7 +1000,7 @@ JSON Schema ενός chart περιέχει απομακρυσμένες ανα�
 helm install --skip-schema-validation
 ```
 
-### Αναφορές
+### Αναφορές {#references}
 
 Όσον αφορά τη σύνταξη templates, values και αρχείων schema, υπάρχουν αρκετές
 τυπικές αναφορές που θα σας βοηθήσουν.
@@ -1010,7 +1010,7 @@ helm install --skip-schema-validation
 - [Η μορφή YAML](https://yaml.org/spec/)
 - [JSON Schema](https://json-schema.org/)
 
-## Custom Resource Definitions (CRDs)
+## Custom Resource Definitions (CRDs) {#custom-resource-definitions-crds}
 
 Το Kubernetes παρέχει έναν μηχανισμό για τη δήλωση νέων τύπων αντικειμένων
 Kubernetes. Χρησιμοποιώντας CustomResourceDefinitions (CRDs), οι προγραμματιστές
@@ -1083,7 +1083,7 @@ spec:
 διαθέσιμο από τον Kubernetes API server πριν προχωρήσει στην εγκατάσταση
 των πραγμάτων στο `templates/`.
 
-### Περιορισμοί στα CRDs
+### Περιορισμοί στα CRDs {#limitations-on-crds}
 
 Σε αντίθεση με τα περισσότερα αντικείμενα στο Kubernetes, τα CRDs εγκαθίστανται
 globally. Για αυτό τον λόγο, το Helm ακολουθεί μια πολύ προσεκτική προσέγγιση
@@ -1101,7 +1101,7 @@ globally. Για αυτό τον λόγο, το Helm ακολουθεί μια �
 Οι διαχειριστές που θέλουν να αναβαθμίσουν ή να διαγράψουν CRDs ενθαρρύνονται
 να το κάνουν χειροκίνητα και με μεγάλη προσοχή.
 
-## Χρήση του Helm για Διαχείριση Charts
+## Χρήση του Helm για Διαχείριση Charts {#using-helm-to-manage-charts}
 
 Το εργαλείο `helm` έχει αρκετές εντολές για εργασία με charts.
 
@@ -1128,7 +1128,7 @@ $ helm lint mychart
 No issues found
 ```
 
-## Chart Repositories
+## Chart Repositories {#chart-repositories}
 
 Ένα _chart repository_ είναι ένας HTTP server που φιλοξενεί ένα ή περισσότερα
 πακεταρισμένα charts. Ενώ το `helm` μπορεί να χρησιμοποιηθεί για τη διαχείριση
@@ -1152,7 +1152,7 @@ S3 με ενεργοποιημένη τη λειτουργία website.
 θα πρόσθετε σημαντικές απαιτήσεις σε έναν server υλοποίησης, και επομένως
 θα αύξανε το εμπόδιο για τη δημιουργία ενός repository.
 
-## Chart Starter Packs
+## Chart Starter Packs {#chart-starter-packs}
 
 Η εντολή `helm create` δέχεται μια προαιρετική επιλογή `--starter` που σας
 επιτρέπει να καθορίσετε ένα "starter chart". Επίσης, η επιλογή starter έχει

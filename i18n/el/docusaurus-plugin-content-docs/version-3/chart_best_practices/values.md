@@ -6,7 +6,7 @@ sidebar_position: 2
 
 Αυτό το μέρος του Οδηγού Βέλτιστων Πρακτικών καλύπτει τη χρήση των values. Σε αυτόν τον τομέα του οδηγού, παρέχουμε συστάσεις σχετικά με τον τρόπο που θα πρέπει να δομείτε και να χρησιμοποιείτε τα values, με έμφαση στο σχεδιασμό του αρχείου `values.yaml` ενός chart.
 
-## Συμβάσεις Ονομασίας
+## Συμβάσεις Ονομασίας {#naming-conventions}
 
 Τα ονόματα των μεταβλητών θα πρέπει να ξεκινούν με πεζό γράμμα, και οι λέξεις θα πρέπει να διαχωρίζονται με camelcase:
 
@@ -26,7 +26,7 @@ chicken-noodle-soup: true # do not use hyphens in the name
 
 Σημειώστε ότι όλες οι ενσωματωμένες μεταβλητές του Helm ξεκινούν με κεφαλαίο γράμμα για να διακρίνονται εύκολα από τα values που ορίζει ο χρήστης: `.Release.Name`, `.Capabilities.KubeVersion`.
 
-## Επίπεδα ή Ένθετα Values
+## Επίπεδα ή Ένθετα Values {#flat-or-nested-values}
 
 Το YAML είναι μια ευέλικτη μορφή, και τα values μπορούν να είναι βαθιά ένθετα ή επίπεδα.
 
@@ -63,7 +63,7 @@ serverPort: 80
 
 Όταν υπάρχει μεγάλος αριθμός σχετικών μεταβλητών, και τουλάχιστον μία από αυτές είναι υποχρεωτική, μπορούν να χρησιμοποιηθούν ένθετα values για βελτίωση της αναγνωσιμότητας.
 
-## Διευκρινίστε τους Τύπους
+## Διευκρινίστε τους Τύπους {#make-types-clear}
 
 Οι κανόνες μετατροπής τύπων του YAML είναι μερικές φορές απροσδόκητοι. Για παράδειγμα, το `foo: false` δεν είναι το ίδιο με το `foo: "false"`. Μεγάλοι ακέραιοι αριθμοί όπως το `foo: 12345678` μπορεί να μετατραπούν σε επιστημονική σημειογραφία σε ορισμένες περιπτώσεις.
 
@@ -73,7 +73,7 @@ serverPort: 80
 
 Στις περισσότερες περιπτώσεις, οι ρητές ετικέτες τύπων αναγνωρίζονται σωστά, οπότε το `foo: !!string 1234` θα αντιμετωπίσει το `1234` ως string. _Ωστόσο_, ο YAML parser καταναλώνει τις ετικέτες, οπότε οι πληροφορίες τύπου χάνονται μετά από μία ανάλυση.
 
-## Σκεφτείτε πώς θα Χρησιμοποιήσουν οι Χρήστες τα Values
+## Σκεφτείτε πώς θα Χρησιμοποιήσουν οι Χρήστες τα Values {#consider-how-users-will-use-your-values}
 
 Υπάρχουν τρεις πιθανές πηγές για τα values:
 
@@ -111,14 +111,14 @@ servers:
 
 Η πρόσβαση στο port του foo είναι πολύ πιο προφανής: `--set servers.foo.port=80`.
 
-## Τεκμηρίωση του `values.yaml`
+## Τεκμηρίωση του `values.yaml` {#document-valuesyaml}
 
 Κάθε ορισμένη ιδιότητα στο `values.yaml` θα πρέπει να τεκμηριώνεται. Το σχόλιο τεκμηρίωσης θα πρέπει να ξεκινά με το όνομα της ιδιότητας που περιγράφει και στη συνέχεια να δίνει τουλάχιστον μια πρόταση περιγραφής.
 
 Λάθος:
 
 ```yaml
-# the host name for the webserver
+# the host name for the webserver {#the-host-name-for-the-webserver}
 serverHost: example
 serverPort: 9191
 ```
@@ -126,9 +126,9 @@ serverPort: 9191
 Σωστό:
 
 ```yaml
-# serverHost is the host name for the webserver
+# serverHost is the host name for the webserver {#serverhost-is-the-host-name-for-the-webserver}
 serverHost: example
-# serverPort is the HTTP listener port for the webserver
+# serverPort is the HTTP listener port for the webserver {#serverport-is-the-http-listener-port-for-the-webserver}
 serverPort: 9191
 ```
 

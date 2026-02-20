@@ -24,7 +24,7 @@ templates σε άλλα charts. Αυτό επιτρέπει τον διαμοι�
 οι ορισμοί σε ένα application chart μπορούν να διαμοιραστούν αλλάζοντας
 τον τύπο του chart.
 
-## Δημιουργία Απλού Library Chart
+## Δημιουργία Απλού Library Chart {#create-a-simple-library-chart}
 
 Όπως αναφέρθηκε προηγουμένως, ένα library chart είναι ένας τύπος [Helm chart](/topics/charts.md). Μπορείτε λοιπόν να ξεκινήσετε δημιουργώντας ένα
 αρχικό chart:
@@ -110,23 +110,21 @@ apiVersion: v2
 name: mylibchart
 description: A Helm chart for Kubernetes
 
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
-# type: application
+# A chart can be either an 'application' or a 'library' chart. {#a-chart-can-be-either-an-application-or-a-library-chart}
+# # Application charts are a collection of templates that can be packaged into versioned archives {#application-charts-are-a-collection-of-templates-that-can-be-packaged-into-versioned-archives}
+# to be deployed. {#to-be-deployed}
+# # Library charts provide useful utilities or functions for the chart developer. They're included as {#library-charts-provide-useful-utilities-or-functions-for-the-chart-developer-theyre-included-as}
+# a dependency of application charts to inject those utilities and functions into the rendering {#a-dependency-of-application-charts-to-inject-those-utilities-and-functions-into-the-rendering}
+# pipeline. Library charts do not define any templates and therefore cannot be deployed. {#pipeline-library-charts-do-not-define-any-templates-and-therefore-cannot-be-deployed}
+# type: application {#type-application}
 type: library
 
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
+# This is the chart version. This version number should be incremented each time you make changes {#this-is-the-chart-version-this-version-number-should-be-incremented-each-time-you-make-changes}
+# to the chart and its templates, including the app version. {#to-the-chart-and-its-templates-including-the-app-version}
 version: 0.1.0
 
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application and it is recommended to use it with quotes.
+# This is the version number of the application being deployed. This version number should be {#this-is-the-version-number-of-the-application-being-deployed-this-version-number-should-be}
+# incremented each time you make changes to the application and it is recommended to use it with quotes. {#incremented-each-time-you-make-changes-to-the-application-and-it-is-recommended-to-use-it-with-quotes}
 appVersion: "1.16.0"
 ```
 
@@ -141,7 +139,7 @@ $ helm install mylibchart mylibchart/
 Error: library charts are not installable
 ```
 
-## Χρήση του Απλού Library Chart
+## Χρήση του Απλού Library Chart {#use-the-simple-library-chart}
 
 Τώρα μπορούμε να χρησιμοποιήσουμε το library chart. Δημιουργήστε ξανά ένα αρχικό chart:
 
@@ -191,7 +189,7 @@ template προσθέτουμε τη διαμόρφωση, σε αυτή την 
 Προσθέστε τα ακόλουθα στο τέλος του αρχείου `mychart/Chart.yaml`:
 
 ```yaml
-# My common code in my library chart
+# My common code in my library chart {#my-common-code-in-my-library-chart}
 dependencies:
 - name: mylibchart
   version: 0.1.0
@@ -263,7 +261,7 @@ tolerations: []
 HOOKS:
 MANIFEST:
 ---
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 data:
   myvalue: Hello World
@@ -307,14 +305,14 @@ metadata:
   name: mychart-mydemo
   ```
 
-## Πλεονεκτήματα Library Chart
+## Πλεονεκτήματα Library Chart {#library-chart-benefits}
 
 Επειδή τα library charts δεν μπορούν να λειτουργήσουν ως αυτόνομα charts, μπορούν να αξιοποιήσουν την ακόλουθη λειτουργικότητα:
 - Το αντικείμενο `.Files` αναφέρεται στις διαδρομές αρχείων του γονικού chart, αντί της τοπικής διαδρομής του library chart
 - Το αντικείμενο `.Values` είναι το ίδιο με αυτό του γονικού chart, σε αντίθεση με τα application [subcharts](/chart_template_guide/subcharts_and_globals.md) που λαμβάνουν την ενότητα values που έχει διαμορφωθεί κάτω από την επικεφαλίδα τους στο γονικό
 
 
-## The Common Helm Helper Chart
+## The Common Helm Helper Chart {#the-common-helm-helper-chart}
 
 ```markdown
 Note: The Common Helm Helper Chart repo on Github is no longer actively maintained, and the repo has been deprecated and archived.
@@ -341,7 +339,7 @@ Creating demo
 ```yaml
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
-## Define overrides for your Deployment resource here, e.g.
+## Define overrides for your Deployment resource here, e.g. {#define-overrides-for-your-deployment-resource-here-eg}
 apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -361,13 +359,13 @@ spec:
 ```yaml
 {{- template "common.service" (list . "demo.service") -}}
 {{- define "demo.service" -}}
-## Define overrides for your Service resource here, e.g.
-# metadata:
-#   labels:
-#     custom: label
-# spec:
-#   ports:
-#   - port: 8080
+## Define overrides for your Service resource here, e.g. {#define-overrides-for-your-service-resource-here-eg}
+# metadata: {#metadata}
+# labels: {#labels}
+# custom: label {#custom-label}
+# spec: {#spec}
+# ports: {#ports}
+# - port: 8080 {#port-8080}
 {{- end -}}
 ```
 

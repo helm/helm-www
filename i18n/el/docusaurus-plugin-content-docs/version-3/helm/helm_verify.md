@@ -4,7 +4,7 @@ title: helm verify
 
 επαληθεύει ότι ένα chart στη δεδομένη διαδρομή έχει υπογραφεί και είναι έγκυρο
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Επαληθεύει ότι το δεδομένο chart έχει έγκυρο αρχείο provenance.
 
@@ -21,14 +21,14 @@ title: helm verify
 helm verify PATH [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help             help for verify
       --keyring string   keyring containing public keys (default "~/.gnupg/pubring.gpg")
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -49,8 +49,8 @@ helm verify PATH [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

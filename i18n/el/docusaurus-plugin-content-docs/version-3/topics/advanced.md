@@ -11,7 +11,7 @@ sidebar_position: 9
 προειδοποιήσεις, επομένως καθεμία πρέπει να χρησιμοποιείται προσεκτικά και με βαθιά
 γνώση του Helm. Ή με άλλα λόγια, να θυμάστε την [αρχή του Peter Parker](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility)
 
-## Post Rendering
+## Post Rendering {#post-rendering}
 
 Το Post rendering δίνει στους χρήστες που εγκαθιστούν charts τη δυνατότητα να χειριστούν
 χειροκίνητα, να ρυθμίσουν ή/και να επαληθεύσουν τα παραγόμενα manifests πριν εγκατασταθούν
@@ -22,10 +22,10 @@ sidebar_position: 9
 χρήσης για την ένεση κοινών εργαλείων και sidecars σε εταιρικά περιβάλλοντα ή για την
 ανάλυση των manifests πριν από το deployment.
 
-### Προαπαιτούμενα
+### Προαπαιτούμενα {#prerequisites}
 - Helm 3.1+
 
-### Χρήση
+### Χρήση {#usage}
 Ένας post-renderer μπορεί να είναι οποιοδήποτε εκτελέσιμο αρχείο που δέχεται παραγόμενα
 Kubernetes manifests στο STDIN και επιστρέφει έγκυρα Kubernetes manifests στο STDOUT.
 Θα πρέπει να επιστρέφει έναν μη-μηδενικό κωδικό εξόδου σε περίπτωση αποτυχίας. Αυτό είναι
@@ -50,7 +50,7 @@ script ή μαζί σε οποιοδήποτε binary εργαλείο έχετ�
 Μπορείτε να δείτε ένα παράδειγμα χρήσης του `kustomize` ως post renderer
 [εδώ](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
 
-### Προειδοποιήσεις
+### Προειδοποιήσεις {#caveats}
 Όταν χρησιμοποιείτε post renderers, υπάρχουν αρκετά σημαντικά πράγματα που πρέπει να
 έχετε υπόψη σας. Το πιο σημαντικό από αυτά είναι ότι όταν χρησιμοποιείτε έναν
 post-renderer, όλα τα άτομα που τροποποιούν αυτό το release **ΠΡΕΠΕΙ** να
@@ -66,7 +66,7 @@ post-renderer, όλα τα άτομα που τροποποιούν αυτό τ�
 renderers ΔΕΝ συνιστάται καθώς έχουν πλήρη πρόσβαση στα παραγόμενα templates, τα
 οποία συχνά περιέχουν ευαίσθητα δεδομένα.
 
-### Προσαρμοσμένοι Post Renderers
+### Προσαρμοσμένοι Post Renderers {#custom-post-renderers}
 Το βήμα post render προσφέρει ακόμη περισσότερη ευελιξία όταν χρησιμοποιείται με
 το Go SDK. Οποιοσδήποτε post renderer χρειάζεται μόνο να υλοποιήσει το ακόλουθο
 Go interface:
@@ -82,12 +82,12 @@ type PostRenderer interface {
 
 Για περισσότερες πληροφορίες σχετικά με τη χρήση του Go SDK, δείτε την [ενότητα Go SDK](#go-sdk)
 
-## Go SDK
+## Go SDK {#go-sdk}
 Το Helm 3 παρουσίασε ένα πλήρως αναδιαρθρωμένο Go SDK για καλύτερη εμπειρία κατά τη
 δημιουργία λογισμικού και εργαλείων που αξιοποιούν το Helm. Η πλήρης τεκμηρίωση
 βρίσκεται στην [Ενότητα Go SDK](/sdk/gosdk.md).
 
-## Backends αποθήκευσης
+## Backends αποθήκευσης {#storage-backends}
 
 Το Helm 3 άλλαξε την προεπιλεγμένη αποθήκευση πληροφοριών release σε Secrets μέσα
 στο namespace του release. Το Helm 2 εξ ορισμού αποθηκεύει πληροφορίες release ως
@@ -96,7 +96,7 @@ ConfigMaps στο namespace της instance του Tiller. Οι ακόλουθε
 περιβάλλοντος `HELM_DRIVER`. Μπορεί να οριστεί σε μία από τις τιμές:
 `[configmap, secret, sql]`.
 
-### Backend αποθήκευσης ConfigMap
+### Backend αποθήκευσης ConfigMap {#configmap-storage-backend}
 
 Για να ενεργοποιήσετε το ConfigMap backend, θα πρέπει να ορίσετε τη μεταβλητή
 περιβάλλοντος `HELM_DRIVER` σε `configmap`.
@@ -128,7 +128,7 @@ Kubernetes, για παράδειγμα με το
 Παρακαλούμε να το έχετε αυτό υπόψη σας αν αποφασίσετε να αλλάξετε στο ConfigMap
 backend, καθώς θα μπορούσε να εκθέσει τα ευαίσθητα δεδομένα της εφαρμογής σας.
 
-### Backend αποθήκευσης SQL
+### Backend αποθήκευσης SQL {#sql-storage-backend}
 
 Υπάρχει ένα ***beta*** SQL backend αποθήκευσης που αποθηκεύει πληροφορίες release
 σε μια βάση δεδομένων SQL.

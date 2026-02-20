@@ -7,7 +7,7 @@ sidebar_position: 4
 Φύλλο αναφοράς Helm με όλες τις απαραίτητες εντολές για τη διαχείριση μιας εφαρμογής μέσω του Helm.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
-### Βασικές έννοιες
+### Βασικές έννοιες {#basic-interpretationscontext}
 
 Chart:
 - Είναι το όνομα του chart σας σε περίπτωση που έχει γίνει pull και αποσυμπίεση.
@@ -31,7 +31,7 @@ DIR:
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Διαχείριση Chart
+### Διαχείριση Chart {#chart-management}
 
 ```bash
 helm create <name>                      # Creates a chart directory along with the common files and directories used in a chart.
@@ -47,7 +47,7 @@ helm dependency list <chart>            # Display a list of a chart's dependenci
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Εγκατάσταση και Απεγκατάσταση Εφαρμογών
+### Εγκατάσταση και Απεγκατάσταση Εφαρμογών {#install-and-uninstall-apps}
 
 ```bash
 helm install <name> <chart>                           # Install the chart with a name
@@ -61,7 +61,7 @@ helm uninstall <name>                                 # Uninstalls a release fro
 helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
-### Αναβάθμιση και Επαναφορά Εφαρμογών
+### Αναβάθμιση και Επαναφορά Εφαρμογών {#perform-app-upgrade-and-rollback}
 
 ```bash
 helm upgrade <release> <chart>                            # Upgrade a release
@@ -75,7 +75,7 @@ helm rollback <release> <revision>                        # Roll back a release 
 helm rollback <release> <revision>  --cleanup-on-fail     # Allow deletion of new resources created in this rollback when rollback fails
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------
-### Λίστα, Προσθήκη, Αφαίρεση και Ενημέρωση Repositories
+### Λίστα, Προσθήκη, Αφαίρεση και Ενημέρωση Repositories {#list-add-remove-and-update-repositories}
 
 ```bash
 helm repo add <repo-name> <url>   # Add a repository from the internet:
@@ -88,7 +88,7 @@ helm search repo <keyword>        # Search repositories for a keyword in charts
 helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Παρακολούθηση Helm Release
+### Παρακολούθηση Helm Release {#helm-release-monitoring}
 
 ```bash
 helm list                       # Lists all of the releases for a specified namespace, uses current namespace context if namespace not specified
@@ -108,7 +108,7 @@ helm history <release>          # Historical revisions for a given release.
 helm env                        # Env prints out all the environment information in use by Helm.
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Λήψη Πληροφοριών Release
+### Λήψη Πληροφοριών Release {#download-release-information}
 
 ```bash
 helm get all <release>      # A human readable collection of information about the notes, hooks, supplied values, and generated manifest file of the given release.
@@ -118,7 +118,7 @@ helm get notes <release>    # Shows notes provided by the chart of a named relea
 helm get values <release>   # Downloads a values file for a given release. use -o to format output
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
-### Διαχείριση Plugin
+### Διαχείριση Plugin {#plugin-management}
 
 ```bash
 helm plugin install <path/url>      # Install plugins

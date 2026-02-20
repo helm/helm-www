@@ -4,7 +4,7 @@ title: helm dependency list
 
 εμφάνιση των εξαρτήσεων για ένα δεδομένο chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Εμφανίζει όλες τις εξαρτήσεις που έχουν δηλωθεί σε ένα chart.
@@ -19,14 +19,14 @@ title: helm dependency list
 helm dependency list CHART [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help                 help for list
       --max-col-width uint   maximum column width for output table (default 80)
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -47,8 +47,8 @@ helm dependency list CHART [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm dependency](./helm_dependency.md)	 - διαχείριση εξαρτήσεων ενός chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

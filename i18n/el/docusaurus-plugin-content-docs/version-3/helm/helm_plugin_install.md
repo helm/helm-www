@@ -4,7 +4,7 @@ title: helm plugin install
 
 εγκαθιστά ένα Helm plugin
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Με αυτή την εντολή μπορείτε να εγκαταστήσετε ένα plugin από ένα URL προς αποθετήριο VCS ή από τοπική διαδρομή.
 
@@ -13,14 +13,14 @@ title: helm plugin install
 helm plugin install [options] <path|url> [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help             help for install
       --version string   specify a version constraint. If this is not specified, the latest version is installed
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -41,8 +41,8 @@ helm plugin install [options] <path|url> [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm plugin](/helm/helm_plugin.md)	 - εγκαθιστά, εμφανίζει ή απεγκαθιστά Helm plugins
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

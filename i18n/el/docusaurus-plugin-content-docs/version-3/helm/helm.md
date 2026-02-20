@@ -5,7 +5,7 @@ slug: helm
 
 Ο διαχειριστής πακέτων Helm για το Kubernetes.
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Ο διαχειριστής πακέτων του Kubernetes
 
@@ -60,7 +60,7 @@ slug: helm
 | Windows             | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm            |
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -82,7 +82,7 @@ slug: helm
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm completion](./helm_completion.md)	 - δημιουργία scripts αυτόματης συμπλήρωσης για το καθορισμένο shell
 * [helm create](./helm_create.md)	 - δημιουργία νέου chart με το δοσμένο όνομα
@@ -110,4 +110,4 @@ slug: helm
 * [helm verify](./helm_verify.md)	 - επαλήθευση ότι ένα chart στη δοσμένη διαδρομή έχει υπογραφεί και είναι έγκυρο
 * [helm version](./helm_version.md)	 - εκτύπωση πληροφοριών έκδοσης του client
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

@@ -27,7 +27,7 @@ Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#servic
 Αυτός ο οδηγός είναι για διαχειριστές που θέλουν να περιορίσουν το πεδίο
 αλληλεπίδρασης ενός χρήστη με το Kubernetes API.
 
-## Διαχείριση λογαριασμών χρηστών
+## Διαχείριση λογαριασμών χρηστών {#managing-user-accounts}
 
 Όλα τα clusters του Kubernetes έχουν δύο κατηγορίες χρηστών: service accounts που
 διαχειρίζεται το Kubernetes και κανονικούς χρήστες.
@@ -54,7 +54,7 @@ account, ή αντιμετωπίζονται ως ανώνυμα αιτήματ�
 plane, πρέπει να πιστοποιηθεί όταν κάνει αιτήματα στον API server, ή θα
 αντιμετωπιστεί ως ανώνυμος χρήστης.
 
-## Roles, ClusterRoles, RoleBindings και ClusterRoleBindings
+## Roles, ClusterRoles, RoleBindings και ClusterRoleBindings {#roles-clusterroles-rolebindings-and-clusterrolebindings}
 
 Στο Kubernetes, οι λογαριασμοί χρηστών και τα service accounts μπορούν να βλέπουν
 και να επεξεργάζονται μόνο πόρους στους οποίους τους έχει εκχωρηθεί πρόσβαση.
@@ -83,12 +83,12 @@ plane, πρέπει να πιστοποιηθεί όταν κάνει αιτήμ
 | `edit`                    | Κανένα                           | Επιτρέπει πρόσβαση ανάγνωσης/εγγραφής στους περισσότερους πόρους ενός namespace. Δεν επιτρέπει την προβολή ή τροποποίηση roles ή rolebindings.
 | `view`                    | Κανένα                           | Επιτρέπει πρόσβαση μόνο για ανάγνωση στους περισσότερους πόρους ενός namespace. Δεν επιτρέπει την προβολή roles ή rolebindings. Δεν επιτρέπει την προβολή secrets, καθώς αυτό θα αποτελούσε κλιμάκωση δικαιωμάτων.
 
-## Περιορισμός πρόσβασης λογαριασμού χρήστη με χρήση RBAC
+## Περιορισμός πρόσβασης λογαριασμού χρήστη με χρήση RBAC {#restricting-a-user-accounts-access-using-rbac}
 
 Τώρα που κατανοούμε τα βασικά του Ελέγχου Πρόσβασης Βασισμένου σε Ρόλους, ας
 δούμε πώς ένας διαχειριστής μπορεί να περιορίσει το πεδίο πρόσβασης ενός χρήστη.
 
-### Παράδειγμα: Εκχώρηση πρόσβασης ανάγνωσης/εγγραφής σε ένα συγκεκριμένο namespace
+### Παράδειγμα: Εκχώρηση πρόσβασης ανάγνωσης/εγγραφής σε ένα συγκεκριμένο namespace {#example-grant-a-user-readwrite-access-to-a-particular-namespace}
 
 Για να περιορίσετε την πρόσβαση ενός χρήστη σε ένα συγκεκριμένο namespace,
 μπορείτε να χρησιμοποιήσετε είτε τον ρόλο `edit` είτε τον ρόλο `admin`. Αν τα
@@ -117,7 +117,7 @@ $ kubectl create rolebinding sam-edit
     --namespace foo
 ```
 
-### Παράδειγμα: Εκχώρηση πρόσβασης ανάγνωσης/εγγραφής σε επίπεδο cluster
+### Παράδειγμα: Εκχώρηση πρόσβασης ανάγνωσης/εγγραφής σε επίπεδο cluster {#example-grant-a-user-readwrite-access-at-the-cluster-scope}
 
 Αν ένας χρήστης επιθυμεί να εγκαταστήσει ένα chart που εγκαθιστά πόρους σε
 επίπεδο cluster (namespaces, roles, custom resource definitions, κ.λπ.), θα
@@ -141,7 +141,7 @@ $ kubectl create clusterrolebinding sam-secret-reader
     --user sam
 ```
 
-### Παράδειγμα: Εκχώρηση πρόσβασης μόνο για ανάγνωση σε ένα συγκεκριμένο namespace
+### Παράδειγμα: Εκχώρηση πρόσβασης μόνο για ανάγνωση σε ένα συγκεκριμένο namespace {#example-grant-a-user-read-only-access-to-a-particular-namespace}
 
 Μπορεί να έχετε παρατηρήσει ότι δεν υπάρχει διαθέσιμο ClusterRole για την προβολή
 secrets. Το ClusterRole `view` δεν παρέχει στον χρήστη πρόσβαση ανάγνωσης στα
@@ -190,7 +190,7 @@ $ kubectl create rolebinding sam-secret-reader
     --namespace foo
 ```
 
-### Παράδειγμα: Εκχώρηση πρόσβασης μόνο για ανάγνωση σε επίπεδο cluster
+### Παράδειγμα: Εκχώρηση πρόσβασης μόνο για ανάγνωση σε επίπεδο cluster {#example-grant-a-user-read-only-access-at-the-cluster-scope}
 
 Σε ορισμένα σενάρια, μπορεί να είναι ωφέλιμο να εκχωρηθεί σε έναν χρήστη πρόσβαση
 σε επίπεδο cluster. Για παράδειγμα, αν ένας χρήστης θέλει να εκτελέσει την εντολή
@@ -210,7 +210,7 @@ $ kubectl create clusterrolebinding sam-secret-reader
     --user sam
 ```
 
-## Επιπλέον Σκέψεις
+## Επιπλέον Σκέψεις {#additional-thoughts}
 
 Τα παραπάνω παραδείγματα χρησιμοποιούν τα προεπιλεγμένα ClusterRoles που παρέχει
 το Kubernetes. Για πιο λεπτομερή έλεγχο των πόρων στους οποίους οι χρήστες έχουν

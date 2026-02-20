@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Αυτός ο οδηγός καλύπτει πώς μπορείτε να ξεκινήσετε γρήγορα με το Helm.
 
-## Προαπαιτούμενα
+## Προαπαιτούμενα {#prerequisites}
 
 Τα ακόλουθα προαπαιτούμενα είναι απαραίτητα για μια επιτυχημένη και ασφαλή
 χρήση του Helm:
@@ -15,7 +15,7 @@ sidebar_position: 1
 2. Επιλογή ρυθμίσεων ασφαλείας για την εγκατάσταση, αν απαιτούνται
 3. Εγκατάσταση και ρύθμιση του Helm
 
-### Εγκαταστήστε το Kubernetes ή αποκτήστε πρόσβαση σε cluster
+### Εγκαταστήστε το Kubernetes ή αποκτήστε πρόσβαση σε cluster {#install-kubernetes-or-have-access-to-a-cluster}
 
 - Πρέπει να έχετε εγκατεστημένο το Kubernetes. Για την τελευταία έκδοση του Helm,
   προτείνουμε την πιο πρόσφατη σταθερή έκδοση του Kubernetes, η οποία στις
@@ -24,14 +24,14 @@ sidebar_position: 1
 
 Δείτε την [Πολιτική Υποστήριξης Εκδόσεων του Helm](https://helm.sh/docs/topics/version_skew/) για τη μέγιστη υποστηριζόμενη απόκλιση εκδόσεων μεταξύ Helm και Kubernetes.
 
-## Εγκατάσταση του Helm
+## Εγκατάσταση του Helm {#install-helm}
 
 Κατεβάστε μια binary έκδοση του Helm client. Μπορείτε να χρησιμοποιήσετε εργαλεία
 όπως το `homebrew`, ή να δείτε [την επίσημη σελίδα εκδόσεων](https://github.com/helm/helm/releases).
 
 Για περισσότερες λεπτομέρειες, ή για άλλες επιλογές, δείτε [τον οδηγό εγκατάστασης](/intro/install.md).
 
-## Αρχικοποίηση ενός Helm Chart Repository
+## Αρχικοποίηση ενός Helm Chart Repository {#initialize-a-helm-chart-repository}
 
 Μόλις έχετε έτοιμο το Helm, μπορείτε να προσθέσετε ένα chart repository. Ελέγξτε
 το [Artifact Hub](https://artifacthub.io/packages/search?kind=0) για διαθέσιμα
@@ -50,10 +50,10 @@ bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart w
 bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
 bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
 bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
-# ... και πολλά άλλα
+# ... και πολλά άλλα {#and-many-more}
 ```
 
-## Εγκατάσταση ενός Παραδείγματος Chart
+## Εγκατάσταση ενός Παραδείγματος Chart {#install-an-example-chart}
 
 Για να εγκαταστήσετε ένα chart, μπορείτε να εκτελέσετε την εντολή `helm install`.
 Το Helm προσφέρει διάφορους τρόπους για να βρείτε και να εγκαταστήσετε ένα chart,
@@ -85,7 +85,7 @@ chart μπορεί να εγκατασταθεί πολλές φορές στο 
 Η εντολή `helm install` είναι μια πολύ ισχυρή εντολή με πολλές δυνατότητες. Για
 να μάθετε περισσότερα, δείτε τον [Οδηγό Χρήσης του Helm](/intro/using_helm.md).
 
-## Μάθετε για τα Releases
+## Μάθετε για τα Releases {#learn-about-releases}
 
 Είναι εύκολο να δείτε τι έχει εγκατασταθεί με το Helm:
 
@@ -97,7 +97,7 @@ mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deploye
 
 Η εντολή `helm list` (ή `helm ls`) θα σας δείξει τη λίστα με όλα τα deployed releases.
 
-## Απεγκατάσταση ενός Release
+## Απεγκατάσταση ενός Release {#uninstall-a-release}
 
 Για να απεγκαταστήσετε ένα release, χρησιμοποιήστε την εντολή `helm uninstall`:
 
@@ -122,7 +122,7 @@ Status: UNINSTALLED
 τους, μπορείτε να ελέγξετε το ιστορικό ενός cluster και ακόμα να επαναφέρετε
 ένα release (με την εντολή `helm rollback`).
 
-## Ανάγνωση του Κειμένου Βοήθειας
+## Ανάγνωση του Κειμένου Βοήθειας {#reading-the-help-text}
 
 Για να μάθετε περισσότερα για τις διαθέσιμες εντολές του Helm, χρησιμοποιήστε
 `helm help` ή πληκτρολογήστε μια εντολή ακολουθούμενη από τη flag `-h`:

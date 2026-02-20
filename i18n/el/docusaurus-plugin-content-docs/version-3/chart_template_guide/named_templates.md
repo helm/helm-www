@@ -37,7 +37,7 @@ template το όνομα του chart: `{{ define "mychart.labels" }}`. Χρησ
 πρόβλημα προσθέτοντας επίσης μια έκδοση στο όνομα του chart:
 `{{ define "mychart.v1.labels" }}` και `{{ define "mychart.v2.labels" }}`.
 
-## Partials και αρχεία `_`
+## Partials και αρχεία `_` {#partials-and-_-files}
 
 Μέχρι στιγμής έχουμε χρησιμοποιήσει ένα αρχείο, και αυτό το αρχείο περιέχει ένα
 μόνο template. Όμως η γλώσσα template του Helm σας επιτρέπει να δημιουργείτε
@@ -60,7 +60,7 @@ template το όνομα του chart: `{{ define "mychart.labels" }}`. Χρησ
 αρχείο με το όνομα `_helpers.tpl`. Αυτό το αρχείο είναι η προεπιλεγμένη
 τοποθεσία για τα template partials.
 
-## Δήλωση και χρήση templates με `define` και `template`
+## Δήλωση και χρήση templates με `define` και `template` {#declaring-and-using-templates-with-define-and-template}
 
 Η ενέργεια `define` μας επιτρέπει να δημιουργούμε ένα ονομασμένο template μέσα
 σε ένα αρχείο template. Η σύνταξή της είναι η εξής:
@@ -108,7 +108,7 @@ data:
 αποδώσει αυτό το template στη θέση του. Επομένως το αποτέλεσμα θα είναι:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -164,7 +164,7 @@ templates σας με _ονόματα ειδικά για το chart_. Μια δ
 είναι να προσθέτετε ως πρόθεμα σε κάθε ορισμένο template το όνομα του chart:
 `{{ define "mychart.labels" }}`.
 
-## Ορισμός του εύρους (scope) ενός template
+## Ορισμός του εύρους (scope) ενός template {#setting-the-scope-of-a-template}
 
 Στο template που ορίσαμε παραπάνω, δεν χρησιμοποιήσαμε κανένα αντικείμενο.
 Χρησιμοποιήσαμε μόνο συναρτήσεις. Ας τροποποιήσουμε το ορισμένο template ώστε
@@ -251,7 +251,7 @@ metadata:
 Τώρα το `{{ .Chart.Name }}` επιλύεται σε `mychart` και το `{{ .Chart.Version }}`
 επιλύεται σε `0.1.0`.
 
-## Η συνάρτηση `include`
+## Η συνάρτηση `include` {#the-include-function}
 
 Ας πούμε ότι έχουμε ορίσει ένα απλό template που μοιάζει με αυτό:
 

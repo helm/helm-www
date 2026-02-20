@@ -40,7 +40,7 @@ template](https://masterminds.github.io/sprig/). Θα δούμε πολλές α
 > συγκεκριμένων αντικειμένων στα templates. Πολλοί πόροι για τα Go templates
 > μπορεί να είναι χρήσιμοι καθώς μαθαίνετε για τη δημιουργία templates.
 
-## Pipelines
+## Pipelines {#pipelines}
 
 Ένα από τα ισχυρά χαρακτηριστικά της γλώσσας template είναι η έννοια των
 _pipelines_. Βασιζόμενοι σε μια ιδέα από το UNIX, τα pipelines είναι ένα
@@ -82,7 +82,7 @@ data:
 Όταν αξιολογηθεί, αυτό το template θα παράγει:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -126,7 +126,7 @@ data:
   food: "PIZZA"
 ```
 
-## Χρήση της συνάρτησης `default`
+## Χρήση της συνάρτησης `default` {#using-the-default-function}
 
 Μια συνάρτηση που χρησιμοποιείται συχνά στα templates είναι η `default`:
 `default DEFAULT_VALUE GIVEN_VALUE`. Αυτή η συνάρτηση σας επιτρέπει να ορίσετε
@@ -193,7 +193,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 λίγο πιο εξελιγμένη από την απλή εισαγωγή ενός string. Στην επόμενη ενότητα θα
 εξετάσουμε τις δομές ελέγχου που παρέχει η γλώσσα template.
 
-## Χρήση της συνάρτησης `lookup`
+## Χρήση της συνάρτησης `lookup` {#using-the-lookup-function}
 
 Η συνάρτηση `lookup` μπορεί να χρησιμοποιηθεί για να _αναζητήσει_ resources σε
 ένα cluster που εκτελείται. Η σύνοψη της συνάρτησης lookup είναι
@@ -255,7 +255,7 @@ Server κατά τη διάρκεια μιας λειτουργίας
 `helm template|install|upgrade|delete|rollback --dry-run=server` για να
 επιτρέψετε τη σύνδεση με το cluster.
 
-## Οι τελεστές είναι συναρτήσεις
+## Οι τελεστές είναι συναρτήσεις {#operators-are-functions}
 
 Για τα templates, οι τελεστές (`eq`, `ne`, `lt`, `gt`, `and`, `or` κ.λπ.)
 υλοποιούνται όλοι ως συναρτήσεις. Στα pipelines, οι πράξεις μπορούν να

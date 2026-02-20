@@ -8,7 +8,7 @@ sidebar_position: 1
 οι προγραμματιστές charts του Helm κατά τη δημιουργία charts για παραγωγικά
 περιβάλλοντα.
 
-## Γνωρίστε τις Συναρτήσεις Template
+## Γνωρίστε τις Συναρτήσεις Template {#know-your-template-functions}
 
 Το Helm χρησιμοποιεί [Go templates](https://godoc.org/text/template) για τη
 δημιουργία templates στα αρχεία πόρων σας. Αν και η Go παρέχει αρκετές ενσωματωμένες
@@ -41,7 +41,7 @@ values ως υποχρεωτική για την απόδοση του template.
 value: {{ required "A valid .Values.who entry required!" .Values.who }}
 ```
 
-## Χρησιμοποιήστε Εισαγωγικά για Strings, Όχι για Ακέραιους
+## Χρησιμοποιήστε Εισαγωγικά για Strings, Όχι για Ακέραιους {#quote-strings-dont-quote-integers}
 
 Όταν εργάζεστε με δεδομένα τύπου string, είναι πάντα ασφαλέστερο να χρησιμοποιείτε
 εισαγωγικά αντί να τα αφήνετε χωρίς:
@@ -68,7 +68,7 @@ env:
     value: "1234"
 ```
 
-## Χρήση της Συνάρτησης 'include'
+## Χρήση της Συνάρτησης 'include' {#using-the-include-function}
 
 Η Go παρέχει έναν τρόπο να συμπεριλάβετε ένα template μέσα σε ένα άλλο
 χρησιμοποιώντας την ενσωματωμένη οδηγία `template`. Ωστόσο, η ενσωματωμένη
@@ -88,7 +88,7 @@ env:
 εξαιρετικός τρόπος για να συμπεριλαμβάνετε αποσπάσματα κώδικα, χειριζόμενοι
 την εσοχή στο κατάλληλο πλαίσιο.
 
-## Χρήση της Συνάρτησης 'required'
+## Χρήση της Συνάρτησης 'required' {#using-the-required-function}
 
 Η Go παρέχει έναν τρόπο για να ορίσετε επιλογές template που ελέγχουν τη
 συμπεριφορά όταν γίνεται αναζήτηση σε ένα map με κλειδί που δεν υπάρχει.
@@ -114,7 +114,7 @@ env:
 αλλά θα αποτύχει να το αποδώσει και θα τερματίσει όταν το `.Values.foo`
 δεν είναι ορισμένο.
 
-## Χρήση της Συνάρτησης 'tpl'
+## Χρήση της Συνάρτησης 'tpl' {#using-the-tpl-function}
 
 Η συνάρτηση `tpl` επιτρέπει στους προγραμματιστές να αξιολογούν strings
 ως templates μέσα σε ένα template. Αυτό είναι χρήσιμο για τη μετάδοση ενός
@@ -124,21 +124,21 @@ template string ως τιμή σε ένα chart ή για την απόδοση 
 Παραδείγματα:
 
 ```yaml
-# values
+# values {#values} {#values}
 template: "{{ .Values.name }}"
 name: "Tom"
 
-# template
+# template {#template} {#template}
 {{ tpl .Values.template . }}
 
-# output
+# output {#output} {#output}
 Tom
 ```
 
 Απόδοση εξωτερικού αρχείου ρυθμίσεων:
 
 ```yaml
-# external configuration file conf/app.conf
+# external configuration file conf/app.conf {#external-configuration-file-confappconf}
 firstName={{ .Values.firstName }}
 lastName={{ .Values.lastName }}
 
@@ -154,7 +154,7 @@ firstName=Peter
 lastName=Parker
 ```
 
-## Δημιουργία Image Pull Secrets
+## Δημιουργία Image Pull Secrets {#creating-image-pull-secrets}
 
 Τα image pull secrets είναι ουσιαστικά ένας συνδυασμός _registry_, _username_
 και _password_. Μπορεί να τα χρειαστείτε σε μια εφαρμογή που αναπτύσσετε,
@@ -192,7 +192,7 @@ data:
   .dockerconfigjson: {{ template "imagePullSecret" . }}
 ```
 
-## Αυτόματη Επανεκκίνηση Deployments
+## Αυτόματη Επανεκκίνηση Deployments {#automatically-roll-deployments}
 
 Συχνά τα ConfigMaps ή τα Secrets εισάγονται ως αρχεία ρυθμίσεων σε containers
 ή υπάρχουν άλλες αλλαγές εξωτερικών εξαρτήσεων που απαιτούν επανεκκίνηση των
@@ -244,7 +244,7 @@ spec:
 εναλλακτική. Αυτή η επιλογή έχει επισημανθεί ως deprecated στο Helm 3 υπέρ
 της πιο δηλωτικής μεθόδου που περιγράφεται παραπάνω.
 
-## Αποτροπή Απεγκατάστασης Πόρου από το Helm
+## Αποτροπή Απεγκατάστασης Πόρου από το Helm {#tell-helm-not-to-uninstall-a-resource}
 
 Μερικές φορές υπάρχουν πόροι που δεν πρέπει να απεγκατασταθούν όταν το Helm
 εκτελεί `helm uninstall`. Οι προγραμματιστές charts μπορούν να προσθέσουν
@@ -266,7 +266,7 @@ metadata:
 προβλήματα αν χρησιμοποιείτε `helm install --replace` σε ένα release που
 έχει ήδη απεγκατασταθεί, αλλά έχει διατηρήσει πόρους.
 
-## Χρήση "Partials" και Συμπερίληψη Templates
+## Χρήση "Partials" και Συμπερίληψη Templates {#using-partials-and-template-includes}
 
 Μερικές φορές θέλετε να δημιουργήσετε ορισμένα επαναχρησιμοποιήσιμα μέρη
 στο chart σας, είτε είναι blocks είτε template partials. Και συχνά, είναι
@@ -276,7 +276,7 @@ metadata:
 δεν αναμένεται να παράγει ένα αρχείο manifest Kubernetes. Έτσι, κατά σύμβαση,
 τα βοηθητικά templates και τα partials τοποθετούνται σε ένα αρχείο `_helpers.tpl`.
 
-## Σύνθετα Charts με Πολλές Εξαρτήσεις
+## Σύνθετα Charts με Πολλές Εξαρτήσεις {#complex-charts-with-many-dependencies}
 
 Πολλά από τα charts στο CNCF [Artifact Hub](https://artifacthub.io/packages/search?kind=0)
 είναι "δομικά στοιχεία" για τη δημιουργία πιο προηγμένων εφαρμογών. Αλλά τα
@@ -290,7 +290,7 @@ chart μπορεί να έχει πολλαπλά subcharts, καθένα από
 εκθέτει τις καθολικές ρυθμίσεις και στη συνέχεια να χρησιμοποιήσετε τον
 υποκατάλογο `charts/` για να ενσωματώσετε κάθε ένα από τα components.
 
-## Το YAML είναι Υπερσύνολο του JSON
+## Το YAML είναι Υπερσύνολο του JSON {#yaml-is-a-superset-of-json}
 
 Σύμφωνα με την προδιαγραφή YAML, το YAML είναι υπερσύνολο του JSON. Αυτό
 σημαίνει ότι οποιαδήποτε έγκυρη δομή JSON θα πρέπει να είναι έγκυρη και
@@ -304,7 +304,7 @@ chart μπορεί να έχει πολλαπλά subcharts, καθένα από
 YAML _εκτός αν_ η σύνταξη JSON μειώνει σημαντικά τον κίνδυνο προβλήματος
 μορφοποίησης.
 
-## Προσοχή κατά τη Δημιουργία Τυχαίων Τιμών
+## Προσοχή κατά τη Δημιουργία Τυχαίων Τιμών {#be-careful-with-generating-random-values}
 
 Υπάρχουν συναρτήσεις στο Helm που σας επιτρέπουν να δημιουργείτε τυχαία
 δεδομένα, κρυπτογραφικά κλειδιά και ούτω καθεξής. Αυτές είναι καλές για
@@ -313,7 +313,7 @@ YAML _εκτός αν_ η σύνταξη JSON μειώνει σημαντικά 
 διαφέρουν από την τελευταία εκτέλεση, αυτό θα ενεργοποιήσει μια
 ενημέρωση αυτού του πόρου.
 
-## Εγκατάσταση ή Αναβάθμιση Release με Μία Εντολή
+## Εγκατάσταση ή Αναβάθμιση Release με Μία Εντολή {#install-or-upgrade-a-release-with-one-command}
 
 Το Helm παρέχει έναν τρόπο να εκτελέσετε εγκατάσταση ή αναβάθμιση ως μία
 εντολή. Χρησιμοποιήστε `helm upgrade` με την επιλογή `--install`. Αυτό θα

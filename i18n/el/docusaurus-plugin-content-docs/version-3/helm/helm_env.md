@@ -4,7 +4,7 @@ title: helm env
 
 εμφανίζει τις πληροφορίες περιβάλλοντος του Helm client
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Εκτυπώνει όλες τις πληροφορίες περιβάλλοντος που χρησιμοποιεί το Helm.
 
@@ -13,13 +13,13 @@ title: helm env
 helm env [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for env
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -40,8 +40,8 @@ helm env [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](./helm.md)	 - Ο διαχειριστής πακέτων Helm για το Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

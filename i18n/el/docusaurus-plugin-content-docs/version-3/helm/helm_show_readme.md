@@ -4,7 +4,7 @@ title: helm show readme
 
 εμφανίζει το README του chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αυτή η εντολή επιθεωρεί ένα chart (κατάλογο, αρχείο ή URL) και εμφανίζει τα περιεχόμενα
 του αρχείου README
@@ -14,7 +14,7 @@ title: helm show readme
 helm show readme [CHART] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
@@ -33,7 +33,7 @@ helm show readme [CHART] [flags]
       --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -54,8 +54,8 @@ helm show readme [CHART] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm show](/helm/helm_show.md)	 - εμφανίζει πληροφορίες για ένα chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

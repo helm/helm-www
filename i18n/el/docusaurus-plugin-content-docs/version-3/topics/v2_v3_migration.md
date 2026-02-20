@@ -7,7 +7,7 @@ sidebar_position: 13
 Αυτός ο οδηγός δείχνει πώς να μεταβείτε από το Helm v2 στο v3. Το Helm v2 πρέπει να
 είναι εγκατεστημένο και να διαχειρίζεται releases σε ένα ή περισσότερα clusters.
 
-## Επισκόπηση Αλλαγών στο Helm 3
+## Επισκόπηση Αλλαγών στο Helm 3 {#overview-of-helm-3-changes}
 
 Η πλήρης λίστα αλλαγών από το Helm 2 στο 3 είναι τεκμηριωμένη στην ενότητα
 [FAQ](/faq/changes_since_helm2.md). Ακολουθεί μια σύνοψη κάποιων
@@ -66,7 +66,7 @@ sidebar_position: 13
      τη βιβλιοθήκη του Helm 2
    - Τα release binaries φιλοξενούνται πλέον στο `get.helm.sh`
 
-## Περιπτώσεις Χρήσης Μετάβασης
+## Περιπτώσεις Χρήσης Μετάβασης {#migration-use-cases}
 
 Οι περιπτώσεις χρήσης για τη μετάβαση είναι οι εξής:
 
@@ -122,7 +122,7 @@ sidebar_position: 13
    - Η διαδικασία μετάβασης είναι αυτοματοποιημένη από το plugin
      [2to3](https://github.com/helm/helm-2to3) του Helm v3
 
-## Αναφορές
+## Αναφορές {#reference}
 
    - Plugin [2to3](https://github.com/helm/helm-2to3) του Helm v3
    - [Άρθρο](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) στο blog

@@ -52,7 +52,7 @@ data:
 Η εκτέλεση αυτού θα παράγει:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:

@@ -68,7 +68,7 @@ favoriteDrink: coffee
 HOOKS:
 MANIFEST:
 ---
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -143,7 +143,7 @@ data:
 εξετάσουμε την ανάθεση τιμών σε subcharts, θα δούμε πώς οι τιμές
 ονομάζονται χρησιμοποιώντας μια ιεραρχική δομή.
 
-## Διαγραφή ενός προεπιλεγμένου κλειδιού
+## Διαγραφή ενός προεπιλεγμένου κλειδιού {#deleting-a-default-key}
 
 Εάν χρειάζεται να διαγράψετε ένα κλειδί από τις προεπιλεγμένες τιμές, μπορείτε
 να θέσετε την τιμή του κλειδιού σε `null`, οπότε το Helm θα αφαιρέσει το κλειδί

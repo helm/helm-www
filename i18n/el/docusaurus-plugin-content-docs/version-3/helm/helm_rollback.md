@@ -4,7 +4,7 @@ title: helm rollback
 
 επαναφέρει ένα release σε προηγούμενη αναθεώρηση
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αυτή η εντολή επαναφέρει ένα release σε μια προηγούμενη αναθεώρηση.
 
@@ -19,7 +19,7 @@ title: helm rollback
 helm rollback <RELEASE> [REVISION] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --cleanup-on-fail    allow deletion of new resources created in this rollback when rollback fails
@@ -34,7 +34,7 @@ helm rollback <RELEASE> [REVISION] [flags]
       --wait-for-jobs      if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -55,8 +55,8 @@ helm rollback <RELEASE> [REVISION] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

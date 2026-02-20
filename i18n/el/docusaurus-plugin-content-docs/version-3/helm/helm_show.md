@@ -4,18 +4,18 @@ title: helm show
 
 εμφανίζει πληροφορίες για ένα chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αυτή η εντολή αποτελείται από πολλαπλές υποεντολές για την εμφάνιση πληροφοριών σχετικά με ένα chart
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for show
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -36,7 +36,7 @@ title: helm show
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για το Kubernetes.
 * [helm show all](/helm/helm_show_all.md)	 - εμφανίζει όλες τις πληροφορίες του chart
@@ -45,4 +45,4 @@ title: helm show
 * [helm show readme](/helm/helm_show_readme.md)	 - εμφανίζει το README του chart
 * [helm show values](/helm/helm_show_values.md)	 - εμφανίζει τα values του chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

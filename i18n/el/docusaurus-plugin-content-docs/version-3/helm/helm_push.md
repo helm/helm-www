@@ -4,7 +4,7 @@ title: helm push
 
 αποστολή chart σε απομακρυσμένο registry
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Ανεβάζει ένα chart σε registry.
@@ -17,7 +17,7 @@ title: helm push
 helm push [chart] [remote] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
@@ -30,7 +30,7 @@ helm push [chart] [remote] [flags]
       --username string            chart repository username where to locate the requested chart
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -51,8 +51,8 @@ helm push [chart] [remote] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}
