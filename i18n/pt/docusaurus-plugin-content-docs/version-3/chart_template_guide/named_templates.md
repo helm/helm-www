@@ -10,7 +10,7 @@ lugares. Um _template nomeado_ (às vezes chamado de _partial_ ou _subtemplate_)
 é simplesmente um template definido dentro de um arquivo, que recebe um nome.
 Veremos duas formas de criá-los e algumas formas diferentes de usá-los.
 
-Na seção [Estruturas de Controle](/pt/chart_template_guide/control_structures.md) introduzimos três ações
+Na seção [Estruturas de Controle](/chart_template_guide/control_structures.md) introduzimos três ações
 para declarar e gerenciar templates: `define`, `template` e `block`. Nesta
 seção, abordaremos essas três ações e também apresentaremos uma função especial
 chamada `include`, que funciona de forma semelhante à ação `template`.

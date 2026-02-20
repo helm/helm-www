@@ -269,6 +269,6 @@ Usar `--dry-run` facilitará o teste do seu código, mas não garantirá que o
 Kubernetes em si aceitará os templates que você gerar. É melhor não presumir que
 seu chart será instalado só porque `--dry-run` funciona.
 
-No [Guia de Templates de Chart](./index.md), pegamos o chart básico que definimos
+No [Guia de Templates de Chart](/chart_template_guide/index.mdx), pegamos o chart básico que definimos
 aqui e exploramos a linguagem de templates do Helm em detalhes. E começaremos com
 os objetos embutidos.

@@ -16,7 +16,7 @@ que hospeda um repositório de charts.*
   no seu bucket do GCS para o caso de excluir algo acidentalmente._
 
 ## Configure um diretório de repositório de charts local
-Crie um diretório local como fizemos no [guia do repositório de charts](/pt/topics/chart_repository.md), e coloque seus charts empacotados nesse
+Crie um diretório local como fizemos no [guia do repositório de charts](/topics/chart_repository.md), e coloque seus charts empacotados nesse
 diretório.
 
 Por exemplo:
@@ -86,7 +86,7 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 Links Úteis:
 * Documentação sobre o [gsutil
   rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [O Guia do Repositório de Charts](/pt/topics/chart_repository.md)
+* [O Guia do Repositório de Charts](/topics/chart_repository.md)
 * Documentação sobre [versionamento de objetos e controle de
   concorrência](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)
   no Google Cloud Storage
