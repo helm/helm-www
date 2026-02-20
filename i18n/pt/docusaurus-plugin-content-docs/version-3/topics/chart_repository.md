@@ -13,12 +13,12 @@ O repositório comunitário distribuído de charts do Helm está localizado no
 participação. Mas o Helm também permite criar e executar seu próprio repositório
 de charts. Este guia explica como fazer isso. Se você está considerando criar um
 repositório de charts, pode ser interessante considerar o uso de um
-[registry OCI](/topics/registries.mdx) como alternativa.
+[registry OCI](./registries.md) como alternativa.
 
 ## Pré-requisitos
 
 * Consulte o guia de [Início Rápido](/intro/quickstart.md)
-* Leia o documento sobre [Charts](/topics/charts.mdx)
+* Leia o documento sobre [Charts](./charts.md)
 
 ## Criar um repositório de charts
 
@@ -42,7 +42,7 @@ até mesmo criar seu próprio servidor web.
 Um repositório de charts consiste em charts empacotados e um arquivo especial
 chamado `index.yaml` que contém um índice de todos os charts no repositório.
 Frequentemente, os charts que o `index.yaml` descreve também são hospedados no
-mesmo servidor, assim como os [arquivos de proveniência](/topics/provenance.mdx).
+mesmo servidor, assim como os [arquivos de proveniência](./provenance.md).
 
 Por exemplo, o layout do repositório `https://example.com/charts` pode ser assim:
 
