@@ -17,6 +17,6 @@ La siguiente tabla muestra la carpeta predeterminada para cada una de estas, seg
 
 | Sistema Operativo | Ruta de Caché               | Ruta de Configuración            | Ruta de Datos             |
 |-------------------|-----------------------------|----------------------------------|---------------------------|
-| Linux             | `$HOME/.cache/helm `        | `$HOME/.config/helm `            | `$HOME/.local/share/helm` |
-| macOS             | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm `     |
-| Windows           | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
+| Linux             | `$HOME/.cache/helm`        | `$HOME/.config/helm`            | `$HOME/.local/share/helm` |
+| macOS             | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm`     |
+| Windows           | `%TEMP%\helm`             | `%APPDATA%\helm`                | `%APPDATA%\helm`          |
