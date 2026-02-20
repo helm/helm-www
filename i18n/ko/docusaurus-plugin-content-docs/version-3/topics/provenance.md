@@ -60,6 +60,7 @@ $ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychar
 다음 명령어를 사용하여 키링을 레거시 gpg 형식으로 변환한다.
 
 ```console
+$ gpg --export >~/.gnupg/pubring.gpg
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
@@ -257,6 +258,15 @@ YAML 섹션에는 (`...\n` 로 구분되는) 두 개의 문서가 포함되어 �
 추가 사용자 구성이나 작업없이 차트와 출처 파일을 모두
 다운로드해야 한다.
 
+### OCI 기반 레지스트리에서의 서명
+
+차트를 [OCI 기반 레지스트리](./registries.md)에 게시할 때,
+[`helm-sigstore` 플러그인](https://github.com/sigstore/helm-sigstore/)을 사용하여
+[sigstore](https://sigstore.dev/)에 출처를 게시할 수 있다.
+[문서에 설명된 바와 같이](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md),
+출처를 생성하고 GPG 키로 서명하는 과정은 동일하지만,
+`helm sigstore upload` 명령어를 사용하여 출처를 불변의 투명성 로그에 게시할 수 있다.
+
 ## 권한 및 인증 확립하기
 
 신뢰 체인 시스템을 다룰 때는 서명자의 권한을 수립할 수 있게
@@ -281,13 +291,8 @@ OpenPGP를 기반 기술로 선택한 이유 중 하나이다.
   - Keybase 에는 사용 가능한 훌륭한 문서도 존재한다.
   - 테스트되진 않았지만, Keybase 의 "보안 웹사이트" 기능을 사용하여
     헬름 차트를 제공할 수도 있다.
-- [공식 헬름 차트 프로젝트](https://github.com/helm/charts) 는 공식 차트 저장소를 위해
-  이 문제를 해결하기 위해 노력하고 있다.
-  - [현재의 생각을 자세히 설명하는](https://github.com/helm/charts/issues/23)
-    긴 이슈가 존재한다.
   - 기본 아이디어는 공식 "차트 리뷰어"가 자신의 키로 차트에 서명하고
-    생성된 출처 파일을 차트 저장소에
-	  업로드하는 것이다.
+    생성된 출처 파일을 차트 저장소에 업로드하는 것이다.
   - 저장소의 `index.yaml` 파일에 유효한 서명 키 목록이 포함될 수 있다는 
     아이디어에 대한 몇 가지 작업이 있었다.
 

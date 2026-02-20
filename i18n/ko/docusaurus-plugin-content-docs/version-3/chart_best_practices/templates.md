@@ -183,6 +183,26 @@ memory: {{ .Values.maxMem | quote }}
 위의 주석은 사용자가 `helm install --debug` 를 실행할 때 표시되는데,
 `{{-/ * * /-}}` 섹션에 지정된 주석은 표시되지 않는다.
 
+특정 템플릿 함수에서 필수로 요구될 수 있는 Helm 값이 포함된 템플릿 섹션에 `#` YAML 주석을 추가할 때 주의해야 한다.
+
+예를 들어, 위 예시에 `required` 함수가 추가되고 `maxMem`이 설정되지 않은 경우, `#` YAML 주석은 렌더링 오류를 발생시킨다.
+
+올바른 경우: `helm template`이 이 블록을 렌더링하지 않는다
+```yaml
+{{- /*
+# This may cause problems if the value is more than 100Gi
+memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
+*/ -}}
+```
+
+잘못된 경우: `helm template`이 `Error: execution error at (templates/test.yaml:2:13): maxMem must be set` 오류를 반환한다
+```yaml
+# This may cause problems if the value is more than 100Gi
+# memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
+```
+
+YAML 주석이 그대로 유지되는 동작에 대한 다른 예시는 [템플릿 디버깅](./debugging.md)을 참고한다.
+
 ## 템플릿과 템플릿 출력에서 JSON 사용하기
 
 YAML은 JSON의 상위집합이다. 경우에 따라서는, JSON 구문을 사용하는 것이

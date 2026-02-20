@@ -26,10 +26,10 @@ sidebar_position: 2
    (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 설치가 완료되면 헬름 클라이언트를 실행하고 [stable 저장소를
-추가](/intro/quickstart.md#initialize-a-helm-chart-repository)할 수 있습니다.:
+추가](/intro/quickstart.md#initialize-a-helm-chart-repository)할 수 있습니다:
 `helm help`.
 
-**참고:** 헬름 자동화 테스트는 GitHub Actions 빌드와 릴리스 사이에, 리눅스 AMD64에서만 수행됩니다. 다른 OS들에 대한 테스트는, 대상 OS에 대한 헬름을 요청한 커뮤니티에서 진행합니다.
+**참고:** 헬름 자동화 테스트는 GitHub Actions 빌드 및 릴리스 과정에서 리눅스 AMD64에서만 수행됩니다. 다른 OS에 대한 테스트는 해당 OS의 헬름 지원을 요청한 커뮤니티에서 담당합니다.
 
 ### 설치 스크립트로
 
@@ -62,7 +62,7 @@ https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
 brew install helm
 ```
 
-(참고: emacs-helm는 다른 프로젝트입니다.)
+(참고: emacs-helm이라는 포뮬러도 있지만, 이는 다른 프로젝트입니다.)
 
 ### Chocolatey로 (윈도우)
 
