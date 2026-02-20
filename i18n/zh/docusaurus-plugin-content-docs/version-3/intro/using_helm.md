@@ -4,10 +4,9 @@ description: 解释 Helm 的基础知识。
 sidebar_position: 3
 ---
 
-本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。在这之前，假定您已经
-[安装](https://helm.sh/zh/docs/intro/install)了 Helm 客户端。
+本指南介绍了使用 Helm 来管理 Kubernetes 集群上的软件包的基础知识。本指南假定你已经[安装](./install.md)了 Helm 客户端。
 
-如果您仅对运行一些快速命令感兴趣，则不妨从[快速入门指南](https://helm.sh/zh/docs/intro/quickstart)开始。本章包含了
+如果你仅对运行一些快速命令感兴趣，则不妨从[快速入门指南](./quickstart.md)开始。本章包含了
 Helm 命令的详细说明，并解释如何使用 Helm。
 
 ## 三大概念
@@ -48,6 +47,8 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A 
 上述命令从 Artifact Hub 中搜索所有的 `wordpress` charts。
 
 如果不进行过滤，`helm search hub` 命令会展示所有可用的 charts。
+
+`helm search hub` 命令输出的 URL 指向 [artifacthub.io](https://artifacthub.io/) 上的页面位置，而非实际的 Helm 仓库地址。使用 `helm search hub --list-repo-url` 可以获取实际的 Helm 仓库 URL，这在你需要添加新仓库时非常有用：`helm repo add [NAME] [URL]`。
 
 使用 `helm search repo` 命令，你可以从你所添加的仓库中查找chart的名字。
 
@@ -153,6 +154,8 @@ Helm按照以下顺序安装资源：
 - CronJob
 - Ingress
 - APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
 
 Helm 客户端不会等到所有资源都运行才退出。许多 charts 需要大小超过 600M 的 Docker 镜像，可能需要很长时间才能安装到集群中。
 
@@ -236,7 +239,7 @@ $ helm install -f values.yaml bitnami/wordpress --generate-name
 - `--set`：通过命令行的方式对指定项进行覆盖。
 
 如果同时使用两种方式，则 `--set` 中的值会被合并到 `--values` 中，但是 `--set` 中的值优先级更高。在`--set`
-中覆盖的内容会被被保存在 ConfigMap 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
+中覆盖的内容会被保存在 Secret 中。可以通过 `helm get values <release-name>` 来查看指定 release 中
 `--set` 设置的值。也可以通过运行 `helm upgrade` 并指定 `--reset-values` 字段来清除 `--set` 中设置的值。
 
 #### `--set` 的格式和限制
@@ -317,7 +320,7 @@ nodeSelector:
 ```
 
 深层嵌套的数据结构可能会很难用 `--set` 表达。我们希望 Chart 的设计者们在设计 `values.yaml` 文件的格式时，考虑到 `--set`
-的使用。（更多内容请查看 [Values 文件](https://helm.sh/docs/chart_template_guide/values_files/)）
+的使用。（更多内容请查看 [Values 文件](/chart_template_guide/values_files.md)）
 
 ### 更多安装方法
 
@@ -441,7 +444,7 @@ $ helm repo add dev https://example.com/dev-charts
 
 ## 创建你自己的 charts
 
-[chart 开发指南](https://helm.sh/zh/docs/topics/charts) 介绍了如何开发你自己的chart。 但是你也可以通过使用
+[chart 开发指南](/topics/charts.md)介绍了如何开发你自己的 chart。但是你也可以通过使用
 `helm create` 命令来快速开始：
 
 ```console
@@ -467,7 +470,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-打包好的 chart 可以上传到 chart 仓库中。查看[Helm chart 仓库](https://helm.sh/zh/docs/topics/chart_repository)获取更多信息。
+打包好的 chart 可以上传到 chart 仓库中。查看 [Helm chart 仓库](/topics/chart_repository.md)获取更多信息。
 
 ## 总结
 
@@ -476,4 +479,4 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 
 有关这些命令的更多信息，请查看 Helm 的内置帮助命令：`helm help`。
 
-在下一章中，我们来看一下如何开发 charts。
+在[下一章](/howto/charts_tips_and_tricks.md)中，我们来看一下如何开发 charts。
