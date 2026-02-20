@@ -201,7 +201,7 @@ memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 # memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
 ```
 
-YAML 주석이 그대로 유지되는 동작에 대한 다른 예시는 [템플릿 디버깅](./debugging.md)을 참고한다.
+YAML 주석이 그대로 유지되는 동작에 대한 다른 예시는 [템플릿 디버깅](../chart_template_guide/debugging.md)을 참고한다.
 
 ## 템플릿과 템플릿 출력에서 JSON 사용하기
 
