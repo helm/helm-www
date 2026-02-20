@@ -10,7 +10,7 @@ sidebar_position: 2
 
 Για να ξεκινήσουμε, ας ρίξουμε μια σύντομη ματιά σε ένα Helm chart.
 
-## Charts
+## Charts {#charts}
 
 Όπως περιγράφεται στον [Οδηγό Charts](/topics/charts.md), τα Helm charts έχουν
 την εξής δομή:
@@ -41,7 +41,7 @@ templates και τα στέλνει στο Kubernetes.
 _subcharts_). Αργότερα σε αυτόν τον οδηγό θα δούμε πώς λειτουργούν αυτά κατά
 την απόδοση των templates.
 
-## Ένα Αρχικό Chart
+## Ένα Αρχικό Chart {#a-starter-chart}
 
 Για αυτόν τον οδηγό, θα δημιουργήσουμε ένα απλό chart με το όνομα `mychart`,
 και στη συνέχεια θα δημιουργήσουμε μερικά templates μέσα σε αυτό.
@@ -51,7 +51,7 @@ $ helm create mychart
 Creating mychart
 ```
 
-### Μια Γρήγορη Ματιά στο `mychart/templates/`
+### Μια Γρήγορη Ματιά στο `mychart/templates/` {#a-quick-glimpse-of-mycharttemplates}
 
 Αν ρίξετε μια ματιά στον κατάλογο `mychart/templates/`, θα παρατηρήσετε ότι
 υπάρχουν ήδη μερικά αρχεία.
@@ -77,7 +77,7 @@ $ rm -rf mychart/templates/*
 μπορεί να είναι πραγματικά χρήσιμη. Επομένως, στην καθημερινή δημιουργία charts,
 πιθανότατα δεν θα θέλετε να τα διαγράψετε.
 
-## Ένα Πρώτο Template
+## Ένα Πρώτο Template {#a-first-template}
 
 Το πρώτο template που θα δημιουργήσουμε θα είναι ένα `ConfigMap`. Στο
 Kubernetes, ένα ConfigMap είναι απλά ένα αντικείμενο για την αποθήκευση
@@ -131,7 +131,7 @@ TEST SUITE: None
 $ helm get manifest full-coral
 
 ---
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -151,7 +151,7 @@ data:
 
 Τώρα μπορούμε να απεγκαταστήσουμε το release: `helm uninstall full-coral`.
 
-### Προσθήκη μιας Απλής Κλήσης Template
+### Προσθήκη μιας Απλής Κλήσης Template {#adding-a-simple-template-call}
 
 Η σκληρή κωδικοποίηση του `name:` σε έναν πόρο θεωρείται γενικά κακή πρακτική.
 Τα ονόματα πρέπει να είναι μοναδικά για κάθε release. Επομένως, μπορεί να

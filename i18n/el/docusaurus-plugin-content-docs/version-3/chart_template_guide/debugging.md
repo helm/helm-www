@@ -28,8 +28,8 @@ sidebar_position: 13
 
 ```yaml
 apiVersion: v2
-# some: problem section
-# {{ .Values.foo | quote }}
+# some: problem section {#some-problem-section} {#some-problem-section} {#some-problem-section}
+# {{ .Values.foo | quote }} {#valuesfoo-quote}
 ```
 
 Το παραπάνω θα αποδοθεί και θα επιστραφεί με τα σχόλια ανέπαφα:
@@ -37,7 +37,7 @@ apiVersion: v2
 ```yaml
 apiVersion: v2
 # some: problem section
-#  "bar"
+# "bar" {#bar}
 ```
 
 Αυτό παρέχει έναν γρήγορο τρόπο προβολής του παραγόμενου περιεχομένου, χωρίς

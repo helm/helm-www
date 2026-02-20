@@ -7,11 +7,11 @@ sidebar_position: 7
 Από το Helm 3, μπορείτε να χρησιμοποιείτε container registries με υποστήριξη [OCI](https://www.opencontainers.org/) για την αποθήκευση και διαμοιρασμό πακέτων chart. Από το Helm v3.8.0, η υποστήριξη OCI είναι ενεργοποιημένη από προεπιλογή.
 
 
-## Υποστήριξη OCI πριν από την v3.8.0
+## Υποστήριξη OCI πριν από την v3.8.0 {#oci-support-prior-to-v380}
 
 Η υποστήριξη OCI πέρασε από πειραματικό σε γενικά διαθέσιμο στάδιο με το Helm v3.8.0. Σε προηγούμενες εκδόσεις του Helm, η υποστήριξη OCI λειτουργούσε διαφορετικά. Αν χρησιμοποιούσατε υποστήριξη OCI πριν από το Helm v3.8.0, είναι σημαντικό να κατανοήσετε τι έχει αλλάξει στις διάφορες εκδόσεις του Helm.
 
-### Ενεργοποίηση υποστήριξης OCI πριν από την v3.8.0
+### Ενεργοποίηση υποστήριξης OCI πριν από την v3.8.0 {#enabling-oci-support-prior-to-v380}
 
 Πριν από το Helm v3.8.0, η υποστήριξη OCI είναι *πειραματική* και πρέπει να ενεργοποιηθεί χειροκίνητα.
 
@@ -21,7 +21,7 @@ sidebar_position: 7
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-### Απόσυρση λειτουργιών και αλλαγές συμπεριφοράς στην v3.8.0
+### Απόσυρση λειτουργιών και αλλαγές συμπεριφοράς στην v3.8.0 {#oci-feature-deprecation-and-behavior-changes-with-v380}
 
 Με την κυκλοφορία του [Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0), οι ακόλουθες λειτουργίες και συμπεριφορές διαφέρουν από προηγούμενες εκδόσεις του Helm:
 
@@ -29,7 +29,7 @@ export HELM_EXPERIMENTAL_OCI=1
 - Μπορείτε πλέον να αποστέλλετε και να χρησιμοποιείτε SemVer tags που περιλαμβάνουν πληροφορίες build. Τα OCI registries δεν υποστηρίζουν τον χαρακτήρα `+` στα tags. Το Helm μετατρέπει το `+` σε `_` κατά την αποθήκευση ως tag.
 - Η εντολή `helm registry login` ακολουθεί πλέον την ίδια δομή με το Docker CLI για την αποθήκευση διαπιστευτηρίων. Μπορείτε να χρησιμοποιήσετε την ίδια τοποθεσία διαμόρφωσης registry τόσο για το Helm όσο και για το Docker CLI.
 
-### Απόσυρση λειτουργιών και αλλαγές συμπεριφοράς στην v3.7.0
+### Απόσυρση λειτουργιών και αλλαγές συμπεριφοράς στην v3.7.0 {#oci-feature-deprecation-and-behavior-changes-with-v370}
 
 Με την κυκλοφορία του [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) υλοποιήθηκε το [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md) για την υποστήριξη OCI. Ως αποτέλεσμα, οι ακόλουθες λειτουργίες και συμπεριφορές διαφέρουν από προηγούμενες εκδόσεις του Helm:
 
@@ -41,13 +41,13 @@ export HELM_EXPERIMENTAL_OCI=1
 - Ο media type του επιπέδου chart άλλαξε από `application/tar+gzip` σε `application/vnd.cncf.helm.chart.content.v1.tar+gzip`.
 
 
-## Χρήση Μητρώου OCI
+## Χρήση Μητρώου OCI {#using-an-oci-based-registry}
 
-### Αποθετήρια Helm σε Μητρώα OCI
+### Αποθετήρια Helm σε Μητρώα OCI {#helm-repositories-in-oci-based-registries}
 
 Ένα [αποθετήριο Helm](/topics/chart_repository.md) είναι ένας τρόπος φιλοξενίας και διανομής πακέτων Helm charts. Ένα μητρώο OCI μπορεί να περιέχει μηδέν ή περισσότερα αποθετήρια Helm, και κάθε αποθετήριο μπορεί να περιέχει μηδέν ή περισσότερα πακέτα Helm charts.
 
-### Χρήση Φιλοξενούμενων Μητρώων
+### Χρήση Φιλοξενούμενων Μητρώων {#use-hosted-registries}
 
 Υπάρχουν αρκετά φιλοξενούμενα container registries με υποστήριξη OCI που μπορείτε να χρησιμοποιήσετε για τα Helm charts σας. Για παράδειγμα:
 
@@ -66,17 +66,17 @@ export HELM_EXPERIMENTAL_OCI=1
 
 **Σημείωση:** Μπορείτε να εκτελέσετε τοπικά το [Docker Registry](https://docs.docker.com/registry/deploying/) ή το [`zot`](https://github.com/project-zot/zot), που είναι μητρώα OCI, στον υπολογιστή ανάπτυξής σας. Η τοπική εκτέλεση μητρώου OCI πρέπει να χρησιμοποιείται μόνο για δοκιμές.
 
-### Χρήση sigstore για Υπογραφή Charts OCI
+### Χρήση sigstore για Υπογραφή Charts OCI {#using-sigstore-to-sign-oci-based-charts}
 
 Το plugin [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) επιτρέπει τη χρήση του [Sigstore](https://sigstore.dev/) για την υπογραφή Helm charts με τα ίδια εργαλεία που χρησιμοποιούνται για την υπογραφή container images. Αυτό αποτελεί εναλλακτική στην [προέλευση βασισμένη σε GPG](/topics/provenance.md) που υποστηρίζουν τα κλασικά [αποθετήρια chart](/topics/chart_repository.md).
 
 Για περισσότερες λεπτομέρειες σχετικά με τη χρήση του plugin `helm sigstore`, ανατρέξτε στην [τεκμηρίωση του έργου](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
-## Εντολές για Εργασία με Μητρώα
+## Εντολές για Εργασία με Μητρώα {#commands-for-working-with-registries}
 
-### Η Υποεντολή `registry`
+### Η Υποεντολή `registry` {#the-registry-subcommand}
 
-#### `login`
+#### `login` {#login}
 
 Σύνδεση σε registry (με χειροκίνητη εισαγωγή κωδικού):
 
@@ -86,7 +86,7 @@ Password:
 Login succeeded
 ```
 
-#### `logout`
+#### `logout` {#logout}
 
 Αποσύνδεση από registry:
 
@@ -95,7 +95,7 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### Η Υποεντολή `push`
+### Η Υποεντολή `push` {#the-push-subcommand}
 
 Αποστολή chart σε μητρώο OCI:
 
@@ -113,11 +113,11 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 
 Ορισμένα registries απαιτούν το repository ή/και το namespace (αν υπάρχει) να δημιουργηθεί εκ των προτέρων. Διαφορετικά, θα εμφανιστεί σφάλμα κατά την εκτέλεση του `helm push`.
 
-Αν έχετε δημιουργήσει [αρχείο προέλευσης](/topics/provenance.md) (`.prov`) και βρίσκεται δίπλα στο αρχείο `.tgz` του chart, θα αποσταλεί αυτόματα στο registry κατά το `push`. Αυτό προσθέτει ένα επιπλέον επίπεδο στο [manifest του Helm chart](#manifest-helm-chart).
+Αν έχετε δημιουργήσει [αρχείο προέλευσης](/topics/provenance.md) (`.prov`) και βρίσκεται δίπλα στο αρχείο `.tgz` του chart, θα αποσταλεί αυτόματα στο registry κατά το `push`. Αυτό προσθέτει ένα επιπλέον επίπεδο στο [manifest του Helm chart](#helm-chart-manifest).
 
 Οι χρήστες του [plugin helm-push](https://github.com/chartmuseum/helm-push) (για αποστολή charts στο [ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server)) μπορεί να αντιμετωπίσουν προβλήματα, καθώς το plugin συγκρούεται με τη νέα ενσωματωμένη εντολή `push`. Από την έκδοση v0.10.0, το plugin μετονομάστηκε σε `cm-push`.
 
-### Άλλες Υποεντολές
+### Άλλες Υποεντολές {#other-subcommands}
 
 Η υποστήριξη για το πρωτόκολλο `oci://` είναι διαθέσιμη και σε άλλες υποεντολές. Ακολουθεί η πλήρης λίστα:
 
@@ -146,7 +146,7 @@ name: mychart
 
 $ helm template myrelease oci://localhost:5000/helm-charts/mychart --version 0.1.0
 ---
-# Source: mychart/templates/serviceaccount.yaml
+# Source: mychart/templates/serviceaccount.yaml {#source-mycharttemplatesserviceaccountyaml}
 apiVersion: v1
 kind: ServiceAccount
 ...
@@ -171,7 +171,7 @@ NOTES:
 ...
 ```
 
-## Εγκατάσταση Charts με Digest
+## Εγκατάσταση Charts με Digest {#installing-charts-with-digest}
 
 Η εγκατάσταση chart με digest είναι πιο ασφαλής από τη χρήση tag, επειδή τα digests είναι αμετάβλητα. Το digest καθορίζεται στο URI του chart:
 
@@ -186,7 +186,7 @@ NOTES:
 ...
 ```
 
-## Καθορισμός Εξαρτήσεων
+## Καθορισμός Εξαρτήσεων {#specifying-dependencies}
 
 Μπορείτε να λάβετε εξαρτήσεις ενός chart από registry χρησιμοποιώντας την υποεντολή `dependency update`.
 
@@ -200,7 +200,7 @@ dependencies:
 ```
 Αυτό θα ανακτήσει το `oci://localhost:5000/myrepo/mychart:2.7.0` κατά την εκτέλεση του `dependency update`.
 
-## Manifest Helm Chart
+## Manifest Helm Chart {#helm-chart-manifest}
 
 Παράδειγμα manifest Helm chart όπως αναπαρίσταται σε registry
 (σημειώστε τα πεδία `mediaType`):
@@ -248,7 +248,7 @@ dependencies:
 }
 ```
 
-## Μετάβαση από Αποθετήρια Chart
+## Μετάβαση από Αποθετήρια Chart {#migrating-from-chart-repos}
 
 Η μετάβαση από κλασικά [αποθετήρια chart](/topics/chart_repository.md)
 (αποθετήρια με index.yaml) είναι απλή: χρησιμοποιήστε το `helm pull` για λήψη και στη συνέχεια το `helm push` για αποστολή των αρχείων `.tgz` σε ένα registry.

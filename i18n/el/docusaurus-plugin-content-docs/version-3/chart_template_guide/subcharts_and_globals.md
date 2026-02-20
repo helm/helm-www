@@ -25,7 +25,7 @@ values και templates. Σε αυτή την ενότητα θα δημιουρ
 Καθώς προχωράμε στα παραδείγματα αυτής της ενότητας, πολλές από αυτές τις
 έννοιες θα γίνουν πιο ξεκάθαρες.
 
-## Δημιουργία Subchart
+## Δημιουργία Subchart {#creating-a-subchart}
 
 Για αυτές τις ασκήσεις, θα ξεκινήσουμε με το chart `mychart/` που δημιουργήσαμε
 στην αρχή αυτού του οδηγού και θα προσθέσουμε ένα νέο chart μέσα σε αυτό.
@@ -43,7 +43,7 @@ $ rm -rf mysubchart/templates/*
 [Οδηγός Charts](/topics/charts.md) περιέχει περισσότερες πληροφορίες σχετικά με
 τον τρόπο λειτουργίας των subcharts.
 
-## Προσθήκη Values και Template στο Subchart
+## Προσθήκη Values και Template στο Subchart {#adding-values-and-a-template-to-the-subchart}
 
 Στη συνέχεια, ας δημιουργήσουμε ένα απλό template και αρχείο values για το
 chart `mysubchart`. Θα πρέπει να υπάρχει ήδη ένα `values.yaml` στο
@@ -77,7 +77,7 @@ TARGET NAMESPACE:   default
 CHART:  mysubchart 0.1.0
 MANIFEST:
 ---
-# Source: mysubchart/templates/configmap.yaml
+# Source: mysubchart/templates/configmap.yaml {#source-mysubcharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -86,7 +86,7 @@ data:
   dessert: cake
 ```
 
-## Παράκαμψη Values από Γονικό Chart
+## Παράκαμψη Values από Γονικό Chart {#overriding-values-from-a-parent-chart}
 
 Το αρχικό μας chart, `mychart`, είναι τώρα το _γονικό chart_ του `mysubchart`.
 Αυτή η σχέση βασίζεται αποκλειστικά στο γεγονός ότι το `mysubchart` βρίσκεται
@@ -116,7 +116,7 @@ mysubchart:
 που θα δούμε είναι το ConfigMap του `mysubchart`:
 
 ```yaml
-# Source: mychart/charts/mysubchart/templates/configmap.yaml
+# Source: mychart/charts/mysubchart/templates/configmap.yaml {#source-mychartchartsmysubcharttemplatesconfigmapyaml} {#source-mychartchartsmysubcharttemplatesconfigmapyaml} {#source-mychartchartsmysubcharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -138,7 +138,7 @@ templates του `mysubchart`, μόνο τα values που προορίζοντ�
 Μερικές φορές, όμως, θέλετε ορισμένα values να είναι διαθέσιμα σε όλα τα
 templates. Αυτό επιτυγχάνεται με τα global chart values.
 
-## Global Chart Values
+## Global Chart Values {#global-chart-values}
 
 Τα global values είναι τιμές που είναι προσβάσιμες από οποιοδήποτε chart ή
 subchart με ακριβώς το ίδιο όνομα. Τα globals απαιτούν ρητή δήλωση. Δεν μπορείτε
@@ -197,7 +197,7 @@ data:
 εξόδους:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -220,7 +220,7 @@ data:
 κάποιος σχεδιασμός για να βεβαιωθείτε ότι τα σωστά templates είναι ρυθμισμένα
 να χρησιμοποιούν globals.
 
-## Κοινή Χρήση Templates με Subcharts
+## Κοινή Χρήση Templates με Subcharts {#sharing-templates-with-subcharts}
 
 Τα γονικά charts και τα subcharts μπορούν να μοιράζονται templates. Οποιοδήποτε
 block ορίζεται σε οποιοδήποτε chart είναι διαθέσιμο σε άλλα charts.
@@ -245,7 +245,7 @@ templates:
 Το παραπάνω θα αποαναφέρει (dereference) τη μεταβλητή `$mytemplate`. Η συνάρτηση
 `template`, αντίθετα, δέχεται μόνο string literal.
 
-## Αποφύγετε τη Χρήση Blocks
+## Αποφύγετε τη Χρήση Blocks {#avoid-using-blocks}
 
 Η γλώσσα Go template παρέχει τη λέξη-κλειδί `block` που επιτρέπει στους
 developers να παρέχουν μια προεπιλεγμένη υλοποίηση η οποία μπορεί να

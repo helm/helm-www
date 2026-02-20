@@ -4,7 +4,7 @@ title: helm repo index
 
 δημιουργεί ένα αρχείο ευρετηρίου για έναν κατάλογο που περιέχει πακεταρισμένα charts
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Διαβάζει τον τρέχοντα κατάλογο, δημιουργεί ένα αρχείο ευρετηρίου βασισμένο στα charts
 που βρέθηκαν και γράφει το αποτέλεσμα στο 'index.yaml' στον τρέχοντα κατάλογο.
@@ -23,7 +23,7 @@ title: helm repo index
 helm repo index [DIR] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help           help for index
@@ -32,7 +32,7 @@ helm repo index [DIR] [flags]
       --url string     url of chart repository
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -53,8 +53,8 @@ helm repo index [DIR] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm repo](/helm/helm_repo.md)	 - προσθέτει, εμφανίζει, αφαιρεί, ενημερώνει και δημιουργεί ευρετήριο για αποθετήρια chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

@@ -4,19 +4,19 @@ title: helm registry
 
 σύνδεση ή αποσύνδεση από ένα registry
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Αυτή η εντολή αποτελείται από πολλές υποεντολές για αλληλεπίδραση με registries.
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for registry
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -37,10 +37,10 @@ title: helm registry
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 * [helm registry login](/helm/helm_registry_login.md)	 - σύνδεση σε ένα registry
 * [helm registry logout](/helm/helm_registry_logout.md)	 - αποσύνδεση από ένα registry
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

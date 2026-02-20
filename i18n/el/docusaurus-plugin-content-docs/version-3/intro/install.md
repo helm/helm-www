@@ -7,7 +7,7 @@ sidebar_position: 2
 Αυτός ο οδηγός δείχνει πώς να εγκαταστήσετε το Helm CLI. Το Helm μπορεί να
 εγκατασταθεί είτε από τον πηγαίο κώδικα είτε από έτοιμα binary releases.
 
-## Από το Helm Project
+## Από το Helm Project {#from-the-helm-project}
 
 Το Helm project παρέχει δύο τρόπους για λήψη και εγκατάσταση του Helm. Αυτές
 είναι οι επίσημες μέθοδοι για απόκτηση εκδόσεων του Helm. Επιπλέον, η κοινότητα
@@ -15,7 +15,7 @@ sidebar_position: 2
 Η εγκατάσταση μέσω αυτών των μεθόδων περιγράφεται παρακάτω, μετά τις επίσημες
 μεθόδους.
 
-### Από τα Binary Releases
+### Από τα Binary Releases {#from-the-binary-releases}
 
 Κάθε [release](https://github.com/helm/helm/releases) του Helm παρέχει binary
 releases για διάφορα λειτουργικά συστήματα. Αυτές οι binary εκδόσεις μπορούν
@@ -35,7 +35,7 @@ stable chart repository](/intro/quickstart.md#initialize-a-helm-chart-repository
 λειτουργικών συστημάτων είναι ευθύνη της κοινότητας που ζητά το Helm για το
 συγκεκριμένο λειτουργικό σύστημα.
 
-### Από Script
+### Από Script {#from-script}
 
 Το Helm έχει πλέον ένα script εγκατάστασης που κατεβάζει αυτόματα την τελευταία
 έκδοση του Helm και την [εγκαθιστά
@@ -55,13 +55,13 @@ $ ./get_helm.sh
 https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` αν
 θέλετε να ζήσετε επικίνδυνα.
 
-## Μέσω Διαχειριστών Πακέτων
+## Μέσω Διαχειριστών Πακέτων {#through-package-managers}
 
 Η κοινότητα του Helm παρέχει τη δυνατότητα εγκατάστασης του Helm μέσω
 πακέτων λειτουργικών συστημάτων. Αυτοί δεν υποστηρίζονται από το Helm project
 διαχειριστών πακέτων λειτουργικών συστημάτων. Αυτοί δεν υποστηρίζονται από το
 
-### Από το Homebrew (macOS)
+### Από το Homebrew (macOS) {#from-homebrew-macos}
 
 Μέλη της κοινότητας του Helm έχουν συνεισφέρει ένα Helm formula στο Homebrew.
 Αυτό το formula είναι γενικά ενημερωμένο.
@@ -72,7 +72,7 @@ brew install helm
 
 (Σημείωση: Υπάρχει επίσης ένα formula για το emacs-helm, που είναι διαφορετικό project.)
 
-### Από το Chocolatey (Windows)
+### Από το Chocolatey (Windows) {#from-chocolatey-windows}
 
 Μέλη της κοινότητας του Helm έχουν συνεισφέρει ένα [Helm
 package](https://chocolatey.org/packages/kubernetes-helm) στο
@@ -82,7 +82,7 @@ package](https://chocolatey.org/packages/kubernetes-helm) στο
 choco install kubernetes-helm
 ```
 
-### Από το Scoop (Windows)
+### Από το Scoop (Windows) {#from-scoop-windows}
 
 Μέλη της κοινότητας του Helm έχουν συνεισφέρει ένα [Helm
 package](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) στο [Scoop](https://scoop.sh). Αυτό το package είναι γενικά ενημερωμένο.
@@ -91,7 +91,7 @@ package](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) σ
 scoop install helm
 ```
 
-### Από το Winget (Windows)
+### Από το Winget (Windows) {#from-winget-windows}
 
 Μέλη της κοινότητας του Helm έχουν συνεισφέρει ένα [Helm
 package](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) στο [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Αυτό το package είναι γενικά ενημερωμένο.
@@ -100,7 +100,7 @@ package](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/H
 winget install Helm.Helm
 ```
 
-### Από το Apt (Debian/Ubuntu)
+### Από το Apt (Debian/Ubuntu) {#from-apt-debianubuntu}
 
 Μέλη της κοινότητας του Helm έχουν συνεισφέρει ένα Apt package για Debian/Ubuntu.
 Αυτό το package είναι γενικά ενημερωμένο. Ευχαριστούμε το [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) για τη φιλοξενία του repository.
@@ -113,7 +113,7 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### Από το dnf/yum (Fedora)
+### Από το dnf/yum (Fedora) {#from-dnfyum-fedora}
 
 Από το Fedora 35, το Helm είναι διαθέσιμο στο επίσημο repository.
 Μπορείτε να εγκαταστήσετε το Helm εκτελώντας:
@@ -122,7 +122,7 @@ sudo apt-get install helm
 sudo dnf install helm
 ```
 
-### Από το Snap
+### Από το Snap {#from-snap}
 
 Η κοινότητα [Snapcrafters](https://github.com/snapcrafters) συντηρεί την Snap
 έκδοση του [Helm package](https://snapcraft.io/helm):
@@ -131,7 +131,7 @@ sudo dnf install helm
 sudo snap install helm --classic
 ```
 
-### Από το pkg (FreeBSD)
+### Από το pkg (FreeBSD) {#from-pkg-freebsd}
 
 Μέλη της κοινότητας FreeBSD έχουν συνεισφέρει ένα [Helm
 package](https://www.freshports.org/sysutils/helm) στη
@@ -142,12 +142,12 @@ package](https://www.freshports.org/sysutils/helm) στη
 pkg install helm
 ```
 
-### Development Builds
+### Development Builds {#development-builds}
 
 Εκτός από τα releases, μπορείτε να κατεβάσετε ή να εγκαταστήσετε development
 snapshots του Helm.
 
-### Από Canary Builds
+### Από Canary Builds {#from-canary-builds}
 
 Τα "Canary" builds είναι εκδόσεις του λογισμικού Helm που δημιουργούνται από τον
 τελευταίο `main` branch. Δεν είναι επίσημα releases και μπορεί να μην είναι
@@ -162,7 +162,7 @@ snapshots του Helm.
 - [Experimental Windows
   AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### Από τον Πηγαίο Κώδικα (Linux, macOS)
+### Από τον Πηγαίο Κώδικα (Linux, macOS) {#from-source-linux-macos}
 
 Η μεταγλώττιση του Helm από τον πηγαίο κώδικα απαιτεί λίγο περισσότερη δουλειά,
 αλλά είναι ο καλύτερος τρόπος αν θέλετε να δοκιμάσετε την τελευταία (pre-release)
@@ -180,7 +180,7 @@ $ make
 θα επικυρώσει τη ρύθμιση. Στη συνέχεια θα μεταγλωττίσει το `helm` και θα το
 τοποθετήσει στο `bin/helm`.
 
-## Συμπέρασμα
+## Συμπέρασμα {#conclusion}
 
 Στις περισσότερες περιπτώσεις, η εγκατάσταση είναι τόσο απλή όσο η λήψη ενός
 έτοιμου `helm` binary. Αυτό το έγγραφο καλύπτει πρόσθετες περιπτώσεις για

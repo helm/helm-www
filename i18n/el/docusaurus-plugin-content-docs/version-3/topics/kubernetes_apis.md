@@ -35,7 +35,7 @@ Kubernetes. Καθορίζεται στο πεδίο `apiVersion` του templat
 οι συντηρητές chart πρέπει να γνωρίζουν πότε οι εκδόσεις API του Kubernetes έχουν
 αποσυρθεί και σε ποια έκδοση Kubernetes θα αφαιρεθούν.
 
-## Συντηρητές Chart
+## Συντηρητές Chart {#chart-maintainers}
 
 Θα πρέπει να ελέγξετε τα chart σας για εκδόσεις API του Kubernetes που έχουν
 αποσυρθεί ή αφαιρεθεί σε κάποια έκδοση Kubernetes. Οι εκδόσεις API που
@@ -49,10 +49,10 @@ apiVersion: apps/v1beta1
 kind: Deployment
 ```
 
-## Χρήστες του Helm
+## Χρήστες του Helm {#helm-users}
 
 Θα πρέπει να ελέγξετε τα chart που χρησιμοποιείτε (παρόμοια με τους [συντηρητές
-chart](#συντηρητές-chart)) και να εντοπίσετε τυχόν chart με εκδόσεις API που
+chart](#chart-maintainers)) και να εντοπίσετε τυχόν chart με εκδόσεις API που
 έχουν αποσυρθεί ή αφαιρεθεί σε κάποια έκδοση Kubernetes. Για τα chart που
 εντοπίζετε, πρέπει να ελέγξετε για την τελευταία έκδοση του chart (που έχει
 υποστηριζόμενες εκδόσεις API) ή να ενημερώσετε το chart μόνοι σας.
@@ -82,7 +82,7 @@ manifest`.
     - Πρέπει να επεξεργαστείτε το manifest του release που είναι αποθηκευμένο
       στο cluster για να ενημερώσετε τις εκδόσεις API σε υποστηριζόμενα API.
       Δείτε [Ενημέρωση Εκδόσεων API ενός Release
-      Manifest](#ενημέρωση-εκδόσεων-api-ενός-release-manifest) για
+      Manifest](#updating-api-versions-of-a-release-manifest) για
       περισσότερες λεπτομέρειες
 
 > Σημείωση: Σε όλες τις περιπτώσεις ενημέρωσης ενός Helm release με
@@ -113,10 +113,10 @@ Go client του Kubernetes δεν μπορεί πλέον να αναλύσει
 και επομένως το Helm αποτυγχάνει κατά την κλήση της βιβλιοθήκης. Δυστυχώς, το
 Helm δεν μπορεί να ανακτήσει από αυτή την κατάσταση και δεν είναι πλέον σε θέση
 να διαχειριστεί ένα τέτοιο release. Δείτε [Ενημέρωση Εκδόσεων API ενός Release
-Manifest](#ενημέρωση-εκδόσεων-api-ενός-release-manifest) για περισσότερες
+Manifest](#updating-api-versions-of-a-release-manifest) για περισσότερες
 λεπτομέρειες σχετικά με τον τρόπο ανάκτησης από αυτό το σενάριο.
 
-## Ενημέρωση Εκδόσεων API ενός Release Manifest
+## Ενημέρωση Εκδόσεων API ενός Release Manifest {#updating-api-versions-of-a-release-manifest}
 
 Το manifest είναι μια ιδιότητα του αντικειμένου Helm release που αποθηκεύεται
 στο πεδίο data ενός Secret (προεπιλογή) ή ConfigMap στο cluster. Το πεδίο data

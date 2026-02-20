@@ -4,7 +4,7 @@ title: helm repo update
 
 ενημερώνει τοπικά τις πληροφορίες για διαθέσιμα charts από τα αποθετήρια chart
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Η εντολή update ανακτά τις πιο πρόσφατες πληροφορίες για charts από τα αντίστοιχα
 αποθετήρια chart. Οι πληροφορίες αποθηκεύονται τοπικά στην προσωρινή μνήμη (cache),
@@ -19,7 +19,7 @@ title: helm repo update
 helm repo update [REPO1 [REPO2 ...]] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --fail-on-repo-update-fail   update fails if any of the repository updates fail
@@ -27,7 +27,7 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
       --timeout duration           time to wait for the index file download to complete (default 2m0s)
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -48,8 +48,8 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm repo](/helm/helm_repo.md)	 - προσθέτει, εμφανίζει, αφαιρεί, ενημερώνει και δημιουργεί ευρετήριο για αποθετήρια chart
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

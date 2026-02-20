@@ -15,12 +15,12 @@ sidebar_position: 6
 αποθετήριο chart, ίσως θέλετε να εξετάσετε τη χρήση ενός
 [μητρώου OCI](/topics/registries.md) ως εναλλακτική.
 
-## Προαπαιτούμενα
+## Προαπαιτούμενα {#prerequisites}
 
 * Ολοκληρώστε τον οδηγό [Γρήγορης Εκκίνησης](/intro/quickstart.md)
 * Διαβάστε το έγγραφο [Charts](/topics/charts.md)
 
-## Δημιουργία αποθετηρίου chart
+## Δημιουργία αποθετηρίου chart {#create-a-chart-repository}
 
 Ένα _αποθετήριο chart_ είναι ένας διακομιστής HTTP που φιλοξενεί ένα αρχείο `index.yaml`
 και προαιρετικά κάποια πακεταρισμένα charts. Όταν είστε έτοιμοι να διαμοιραστείτε τα
@@ -35,7 +35,7 @@ charts σας, ο προτιμώμενος τρόπος είναι να τα α�
 να χρησιμοποιήσετε ένα Google Cloud Storage (GCS) bucket, Amazon S3 bucket,
 GitHub Pages, ή ακόμα να δημιουργήσετε τον δικό σας διακομιστή ιστού.
 
-### Η δομή του αποθετηρίου chart
+### Η δομή του αποθετηρίου chart {#the-chart-repository-structure}
 
 Ένα αποθετήριο chart αποτελείται από πακεταρισμένα charts και ένα ειδικό αρχείο που
 ονομάζεται `index.yaml`, το οποίο περιέχει ένα ευρετήριο όλων των charts στο αποθετήριο.
@@ -62,7 +62,7 @@ charts/
 Δεν είναι απαραίτητο το πακέτο chart να βρίσκεται στον ίδιο διακομιστή με το αρχείο
 `index.yaml`. Ωστόσο, αυτό είναι συνήθως η ευκολότερη λύση.
 
-### Το αρχείο ευρετηρίου
+### Το αρχείο ευρετηρίου {#the-index-file}
 
 Το αρχείο ευρετηρίου είναι ένα αρχείο yaml που ονομάζεται `index.yaml`. Περιέχει κάποια
 μεταδεδομένα για το πακέτο, συμπεριλαμβανομένων των περιεχομένων του αρχείου
@@ -111,11 +111,11 @@ entries:
 generated: 2016-10-06T16:23:20.499029981-06:00
 ```
 
-## Φιλοξενία Αποθετηρίων Chart
+## Φιλοξενία Αποθετηρίων Chart {#hosting-chart-repositories}
 
 Αυτό το μέρος παρουσιάζει διάφορους τρόπους εξυπηρέτησης ενός αποθετηρίου chart.
 
-### Google Cloud Storage
+### Google Cloud Storage {#google-cloud-storage}
 
 Το πρώτο βήμα είναι να **δημιουργήσετε το GCS bucket σας**. Θα ονομάσουμε το δικό μας
 `fantastic-charts`.
@@ -136,19 +136,19 @@ generated: 2016-10-06T16:23:20.499029981-06:00
 εντολών Google Cloud Storage ή τη διεπαφή ιστού GCS. Ένα δημόσιο GCS bucket μπορεί
 να προσπελαστεί μέσω απλού HTTPS στη διεύθυνση: `https://bucket-name.storage.googleapis.com/`.
 
-### Cloudsmith
+### Cloudsmith {#cloudsmith}
 
 Μπορείτε επίσης να δημιουργήσετε αποθετήρια chart χρησιμοποιώντας το Cloudsmith.
 Διαβάστε περισσότερα για τα αποθετήρια chart με Cloudsmith
 [εδώ](https://help.cloudsmith.io/docs/helm-chart-repository).
 
-### JFrog Artifactory
+### JFrog Artifactory {#jfrog-artifactory}
 
 Παρομοίως, μπορείτε να δημιουργήσετε αποθετήρια chart χρησιμοποιώντας το JFrog Artifactory.
 Διαβάστε περισσότερα για τα αποθετήρια chart με JFrog Artifactory
 [εδώ](https://www.jfrog.com/confluence/display/RTF/Helm+Chart+Repositories).
 
-### Παράδειγμα με GitHub Pages
+### Παράδειγμα με GitHub Pages {#github-pages-example}
 
 Με παρόμοιο τρόπο μπορείτε να δημιουργήσετε αποθετήριο charts χρησιμοποιώντας GitHub Pages.
 
@@ -196,7 +196,7 @@ chart, δείτε το [Chart Releaser Action](/howto/chart_releaser_action.md).
 GitHub project σε αυτο-φιλοξενούμενο αποθετήριο Helm chart, χρησιμοποιώντας το
 εργαλείο CLI [helm/chart-releaser](https://github.com/helm/chart-releaser).
 
-### Απλοί διακομιστές ιστού
+### Απλοί διακομιστές ιστού {#ordinary-web-servers}
 
 Για να διαμορφώσετε έναν απλό διακομιστή ιστού να εξυπηρετεί Helm charts, χρειάζεται
 απλώς να κάνετε τα εξής:
@@ -212,7 +212,7 @@ GitHub project σε αυτο-φιλοξενούμενο αποθετήριο Hel
 βεβαιωθείτε ότι υπάρχει ένας κατάλογος `charts/` στο web root σας, και τοποθετήστε
 το αρχείο ευρετηρίου και τα charts μέσα σε αυτόν τον φάκελο.
 
-### Διακομιστής Αποθετηρίου ChartMuseum
+### Διακομιστής Αποθετηρίου ChartMuseum {#chartmuseum-repository-server}
 
 Το ChartMuseum είναι ένας ανοιχτού κώδικα διακομιστής αποθετηρίου Helm Chart
 γραμμένος σε Go (Golang), με υποστήριξη για backends αποθήκευσης cloud,
@@ -231,18 +231,18 @@ GitHub project σε αυτο-φιλοξενούμενο αποθετήριο Hel
 [ChartMuseum](https://chartmuseum.com/docs/#using-with-local-filesystem-storage)
 για να φιλοξενήσετε ένα αποθετήριο chart από ένα τοπικό σύστημα αρχείων.
 
-### Μητρώο Πακέτων GitLab
+### Μητρώο Πακέτων GitLab {#gitlab-package-registry}
 
 Με το GitLab μπορείτε να δημοσιεύσετε Helm charts στο Package Registry του
 project σας. Διαβάστε περισσότερα για τη ρύθμιση ενός αποθετηρίου Helm πακέτων
 με GitLab [εδώ](https://docs.gitlab.com/ee/user/packages/helm_repository/).
 
-## Διαχείριση Αποθετηρίων Chart
+## Διαχείριση Αποθετηρίων Chart {#managing-chart-repositories}
 
 Τώρα που έχετε ένα αποθετήριο chart, το τελευταίο μέρος αυτού του οδηγού εξηγεί
 πώς να διατηρείτε τα charts σε αυτό το αποθετήριο.
 
-### Αποθήκευση charts στο αποθετήριο chart σας
+### Αποθήκευση charts στο αποθετήριο chart σας {#store-charts-in-your-chart-repository}
 
 Τώρα που έχετε ένα αποθετήριο chart, ας ανεβάσουμε ένα chart και ένα αρχείο
 ευρετηρίου στο αποθετήριο. Τα charts σε ένα αποθετήριο chart πρέπει να είναι
@@ -274,7 +274,7 @@ Cloud Storage, δείτε αυτό το
 χρησιμοποιώντας τον gsutil client. Για GitHub, μπορείτε απλά να τοποθετήσετε τα
 charts στο κατάλληλο branch προορισμού.
 
-### Προσθήκη νέων charts σε υπάρχον αποθετήριο
+### Προσθήκη νέων charts σε υπάρχον αποθετήριο {#add-new-charts-to-an-existing-repository}
 
 Κάθε φορά που θέλετε να προσθέσετε ένα νέο chart στο αποθετήριό σας, πρέπει να
 αναδημιουργήσετε το ευρετήριο. Η εντολή `helm repo index` θα ξαναχτίσει πλήρως
@@ -289,7 +289,7 @@ charts στο κατάλληλο branch προορισμού.
 Βεβαιωθείτε ότι ανεβάζετε τόσο το αναθεωρημένο αρχείο `index.yaml` όσο και το
 chart. Και αν δημιουργήσατε αρχείο προέλευσης, ανεβάστε και αυτό.
 
-### Διαμοιρασμός των charts σας με άλλους
+### Διαμοιρασμός των charts σας με άλλους {#share-your-charts-with-others}
 
 Όταν είστε έτοιμοι να διαμοιραστείτε τα charts σας, απλά ενημερώστε κάποιον ποια
 είναι η διεύθυνση URL του αποθετηρίου σας.

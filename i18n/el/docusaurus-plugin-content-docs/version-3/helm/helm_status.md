@@ -4,7 +4,7 @@ title: helm status
 
 εμφανίζει την κατάσταση ενός συγκεκριμένου release
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αυτή η εντολή εμφανίζει πληροφορίες κατάστασης για ένα release με βάση το όνομά του.
 Η κατάσταση περιλαμβάνει:
@@ -22,7 +22,7 @@ title: helm status
 helm status RELEASE_NAME [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help             help for status
@@ -32,7 +32,7 @@ helm status RELEASE_NAME [flags]
       --show-resources   if set, display the resources of the named release
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -53,8 +53,8 @@ helm status RELEASE_NAME [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

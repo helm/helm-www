@@ -11,7 +11,7 @@ Action](https://github.com/marketplace/actions/helm-chart-releaser) για τη�
 αυτοφιλοξενούμενο αποθετήριο Helm chart, χρησιμοποιώντας το εργαλείο CLI
 [helm/chart-releaser](https://github.com/helm/chart-releaser).
 
-## Αλλαγές στο Αποθετήριο
+## Αλλαγές στο Αποθετήριο {#repository-changes}
 
 Δημιουργήστε ένα Git αποθετήριο στον οργανισμό σας στο GitHub. Μπορείτε να
 ονομάσετε το αποθετήριο `helm-charts`, αν και άλλα ονόματα είναι επίσης
@@ -29,7 +29,7 @@ Chart Releaser Action που περιγράφεται εδώ. Ωστόσο, μπ
 εξής (αντικαταστήστε τα `<alias>`, `<orgname>` και `<chart-name>`):
 
 ```
-## Usage
+## Usage {#usage}
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
 Helm's [documentation](https://helm.sh/docs) to get started.
@@ -55,7 +55,7 @@ To uninstall the chart:
 
     https://<orgname>.github.io/helm-charts
 
-## GitHub Actions Workflow
+## GitHub Actions Workflow {#github-actions-workflow}
 
 Δημιουργήστε ένα αρχείο GitHub Actions workflow στον κλάδο `main` στη διαδρομή
 `.github/workflows/release.yml`

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Αυτό το μέρος του Οδηγού Βέλτιστων Πρακτικών εστιάζει στα templates.
 
-## Δομή του `templates/`
+## Δομή του `templates/` {#structure-of-templates}
 
 Ο φάκελος `templates/` θα πρέπει να είναι δομημένος ως εξής:
 
@@ -19,7 +19,7 @@ sidebar_position: 3
 - Τα ονόματα των αρχείων template θα πρέπει να αντικατοπτρίζουν τον τύπο του πόρου, π.χ.
   `foo-pod.yaml`, `bar-svc.yaml`
 
-## Ονόματα Καθορισμένων Templates
+## Ονόματα Καθορισμένων Templates {#names-of-defined-templates}
 
 Τα καθορισμένα templates (templates που δημιουργούνται μέσα σε μια οδηγία `{{ define }}`) είναι
 προσβάσιμα από οπουδήποτε. Αυτό σημαίνει ότι ένα chart και όλα τα subcharts του θα έχουν
@@ -45,7 +45,7 @@ sidebar_position: 3
 Συνιστάται ιδιαίτερα να δημιουργούνται νέα charts μέσω της εντολής `helm create`,
 καθώς τα ονόματα των templates ορίζονται αυτόματα σύμφωνα με αυτή τη βέλτιστη πρακτική.
 
-## Μορφοποίηση Templates
+## Μορφοποίηση Templates {#formatting-templates}
 
 Τα templates θα πρέπει να έχουν εσοχή με _δύο κενά_ (ποτέ tabs).
 
@@ -87,7 +87,7 @@ foo:
 Ωστόσο, δεδομένου ότι το YAML είναι μια γλώσσα που βασίζεται στα κενά, συχνά δεν είναι δυνατό
 η εσοχή του κώδικα να ακολουθεί αυτή τη σύμβαση.
 
-## Κενά στα Παραγόμενα Templates
+## Κενά στα Παραγόμενα Templates {#whitespace-in-generated-templates}
 
 Είναι προτιμότερο να κρατάτε τον αριθμό των κενών στα παραγόμενα templates στο
 ελάχιστο. Ειδικότερα, δεν θα πρέπει να εμφανίζονται πολλές κενές γραμμές διαδοχικά.
@@ -140,13 +140,13 @@ metadata:
 
 ```
 
-## Σχόλια (Σχόλια YAML έναντι Σχολίων Template)
+## Σχόλια (Σχόλια YAML έναντι Σχολίων Template) {#comments-yaml-comments-vs-template-comments}
 
 Τόσο το YAML όσο και τα Helm Templates έχουν δείκτες σχολίων.
 
 Σχόλια YAML:
 ```yaml
-# This is a comment
+# This is a comment {#this-is-a-comment}
 type: sprocket
 ```
 
@@ -175,7 +175,7 @@ mychart.shortname provides a 6 char truncated version of the release name.
 χρήστες του Helm να (πιθανώς) δουν τα σχόλια κατά την αποσφαλμάτωση.
 
 ```yaml
-# This may cause problems if the value is more than 100Gi
+# This may cause problems if the value is more than 100Gi {#this-may-cause-problems-if-the-value-is-more-than-100gi} {#this-may-cause-problems-if-the-value-is-more-than-100gi} {#this-may-cause-problems-if-the-value-is-more-than-100gi} {#this-may-cause-problems-if-the-value-is-more-than-100gi} {#this-may-cause-problems-if-the-value-is-more-than-100gi}
 memory: {{ .Values.maxMem | quote }}
 ```
 
@@ -197,12 +197,12 @@ memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 Λάθος: το `helm template` επιστρέφει `Error: execution error at (templates/test.yaml:2:13): maxMem must be set`
 ```yaml
 # This may cause problems if the value is more than 100Gi
-# memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
+# memory: {{ required .Values.maxMem "maxMem must be set" | quote }} {#memory-required-valuesmaxmem-maxmem-must-be-set-quote}
 ```
 
 Δείτε το [Αποσφαλμάτωση Templates](../chart_template_guide/debugging.md) για ένα ακόμη παράδειγμα αυτής της συμπεριφοράς όπου τα σχόλια YAML παραμένουν άθικτα.
 
-## Χρήση JSON σε Templates και Έξοδο Template
+## Χρήση JSON σε Templates και Έξοδο Template {#use-of-json-in-templates-and-template-output}
 
 Το YAML είναι ένα υπερσύνολο του JSON. Σε ορισμένες περιπτώσεις, η χρήση σύνταξης JSON μπορεί να είναι
 πιο ευανάγνωστη από άλλες αναπαραστάσεις YAML.

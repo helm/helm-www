@@ -21,30 +21,30 @@ sidebar_position: 12
 Ακολουθεί ένα παράδειγμα αρχείου `.helmignore`:
 
 ```
-# comment
+# comment {#comment}
 
-# Match any file or path named .helmignore
+# Match any file or path named .helmignore {#match-any-file-or-path-named-helmignore}
 .helmignore
 
-# Match any file or path named .git
+# Match any file or path named .git {#match-any-file-or-path-named-git}
 .git
 
-# Match any text file
+# Match any text file {#match-any-text-file}
 *.txt
 
-# Match only directories named mydir
+# Match only directories named mydir {#match-only-directories-named-mydir}
 mydir/
 
-# Match only text files in the top-level directory
+# Match only text files in the top-level directory {#match-only-text-files-in-the-top-level-directory}
 /*.txt
 
-# Match only the file foo.txt in the top-level directory
+# Match only the file foo.txt in the top-level directory {#match-only-the-file-footxt-in-the-top-level-directory}
 /foo.txt
 
-# Match any file named ab.txt, ac.txt, or ad.txt
+# Match any file named ab.txt, ac.txt, or ad.txt {#match-any-file-named-abtxt-actxt-or-adtxt}
 a[b-d].txt
 
-# Match any file under subdir matching temp*
+# Match any file under subdir matching temp* {#match-any-file-under-subdir-matching-temp}
 */temp*
 
 */*/temp*

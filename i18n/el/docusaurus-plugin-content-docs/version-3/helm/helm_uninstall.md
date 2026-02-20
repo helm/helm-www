@@ -4,7 +4,7 @@ title: helm uninstall
 
 απεγκαθιστά ένα release
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αυτή η εντολή δέχεται το όνομα ενός release και το απεγκαθιστά.
 
@@ -19,7 +19,7 @@ title: helm uninstall
 helm uninstall RELEASE_NAME [...] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --cascade string       Must be "background", "orphan", or "foreground". Selects the deletion cascading strategy for the dependents. Defaults to background. (default "background")
@@ -33,7 +33,7 @@ helm uninstall RELEASE_NAME [...] [flags]
       --wait                 if set, will wait until all the resources are deleted before returning. It will wait for as long as --timeout
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -54,8 +54,8 @@ helm uninstall RELEASE_NAME [...] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

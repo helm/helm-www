@@ -14,7 +14,7 @@ sidebar_position: 6
 - DaemonSet
 - StatefulSet
 
-## Images
+## Images {#images}
 
 Ένα container image θα πρέπει να χρησιμοποιεί ένα σταθερό tag ή το SHA του image. Δεν θα πρέπει να χρησιμοποιεί τα tags `latest`, `head`, `canary`, ή άλλα tags που είναι σχεδιασμένα να είναι "floating" (μεταβαλλόμενα).
 
@@ -30,7 +30,7 @@ image: {{ .Values.redisImage | quote }}
 image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 ```
 
-## ImagePullPolicy
+## ImagePullPolicy {#imagepullpolicy}
 
 Η εντολή `helm create` ορίζει το `imagePullPolicy` σε `IfNotPresent` από προεπιλογή με τις ακόλουθες ρυθμίσεις στο `deployment.yaml`:
 
@@ -47,7 +47,7 @@ image:
 
 Ομοίως, το Kubernetes ορίζει το `imagePullPolicy` σε `IfNotPresent` από προεπιλογή, αν δεν έχει οριστεί καθόλου. Αν θέλετε μια διαφορετική τιμή από το `IfNotPresent`, απλά ενημερώστε την τιμή στο `values.yaml` με την επιθυμητή τιμή.
 
-## Τα PodTemplates Θα Πρέπει να Δηλώνουν Selectors
+## Τα PodTemplates Θα Πρέπει να Δηλώνουν Selectors {#podtemplates-should-declare-selectors}
 
 Όλα τα τμήματα PodTemplate θα πρέπει να καθορίζουν έναν selector. Για παράδειγμα:
 

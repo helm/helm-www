@@ -3,11 +3,11 @@ title: Αλλαγές από το Helm 2
 sidebar_position: 1
 ---
 
-## Αλλαγές από το Helm 2
+## Αλλαγές από το Helm 2 {#changes-since-helm-2}
 
 Ακολουθεί μια ολοκληρωμένη λίστα με όλες τις σημαντικές αλλαγές που εισήχθησαν στο Helm 3.
 
-### Κατάργηση του Tiller
+### Κατάργηση του Tiller {#removal-of-tiller}
 
 Κατά τη διάρκεια του κύκλου ανάπτυξης του Helm 2, εισαγάγαμε τον Tiller. Ο Tiller
 διαδραμάτισε σημαντικό ρόλο για ομάδες που εργάζονται σε ένα κοινόχρηστο cluster —
@@ -42,7 +42,7 @@ Helm 3 υποστηρίζει πλέον όλες τις σύγχρονες δυ
 με όποια λεπτομέρεια επιθυμούν. Τα releases εξακολουθούν να καταγράφονται εντός
 του cluster και η υπόλοιπη λειτουργικότητα του Helm παραμένει αμετάβλητη.
 
-### Βελτιωμένη Στρατηγική Αναβάθμισης: 3-way Strategic Merge Patches
+### Βελτιωμένη Στρατηγική Αναβάθμισης: 3-way Strategic Merge Patches {#improved-upgrade-strategy-3-way-strategic-merge-patches}
 
 Το Helm 2 χρησιμοποιούσε ένα two-way strategic merge patch. Κατά τη διάρκεια μιας
 αναβάθμισης, συνέκρινε το manifest του πιο πρόσφατου chart με το προτεινόμενο
@@ -59,11 +59,11 @@ manifest του chart (αυτό που παρέχεται κατά το `helm up
 λαμβάνει υπόψη το παλιό manifest, τη live κατάστασή του και το νέο manifest κατά
 τη δημιουργία ενός patch.
 
-#### Παραδείγματα
+#### Παραδείγματα {#examples}
 
 Ας δούμε μερικά συνηθισμένα παραδείγματα για το πώς επηρεάζει αυτή η αλλαγή.
 
-##### Επαναφορά όταν η live κατάσταση έχει αλλάξει
+##### Επαναφορά όταν η live κατάσταση έχει αλλάξει {#rolling-back-where-live-state-has-changed}
 
 Η ομάδα σας μόλις έκανε deploy την εφαρμογή της στο production στο Kubernetes
 χρησιμοποιώντας το Helm. Το chart περιέχει ένα αντικείμενο Deployment όπου ο
@@ -103,7 +103,7 @@ manifest. Επειδή πρόκειται για rollback, είναι το ίδ�
 τρία, η live κατάσταση είναι μηδέν και το νέο manifest επιθυμεί να το αλλάξει
 πίσω σε τρία, οπότε δημιουργεί ένα patch για να επαναφέρει την κατάσταση σε τρία.
 
-##### Αναβαθμίσεις όταν η live κατάσταση έχει αλλάξει
+##### Αναβαθμίσεις όταν η live κατάσταση έχει αλλάξει {#upgrades-where-live-state-has-changed}
 
 Πολλά service meshes και άλλες εφαρμογές που βασίζονται σε controllers εισάγουν
 δεδομένα σε αντικείμενα Kubernetes. Αυτό μπορεί να είναι κάτι σαν sidecar, labels
@@ -166,7 +166,7 @@ containers:
   image: my-cool-mesh:1.0.0
 ```
 
-### Τα ονόματα Release περιορίζονται πλέον στο Namespace
+### Τα ονόματα Release περιορίζονται πλέον στο Namespace {#release-names-are-now-scoped-to-the-namespace}
 
 Με την κατάργηση του Tiller, οι πληροφορίες για κάθε release έπρεπε να αποθηκευτούν
 κάπου. Στο Helm 2, αυτές αποθηκεύονταν στο ίδιο namespace με τον Tiller. Στην
@@ -187,7 +187,7 @@ deploy σε διαφορετικό namespace.
 Αυτό σημαίνει επίσης ότι πρέπει να παρέχετε τη σημαία `--all-namespaces` στην
 εντολή `helm list` για να έχετε συμπεριφορά παρόμοια με το Helm 2.
 
-### Τα Secrets ως προεπιλεγμένος storage driver
+### Τα Secrets ως προεπιλεγμένος storage driver {#secrets-as-the-default-storage-driver}
 
 Στο Helm 3, τα Secrets χρησιμοποιούνται πλέον ως [προεπιλεγμένος storage
 driver](/topics/advanced.md#storage-backends). Το Helm 2 χρησιμοποιούσε ConfigMaps
@@ -205,20 +205,20 @@ Kubernetes 1.13. Αυτό επιτρέπει στους χρήστες να κρ
 release του Helm σε κατάσταση ηρεμίας, και αποτελεί ένα καλό σημείο εκκίνησης
 που μπορεί να επεκταθεί αργότερα για χρήση κάποιου εργαλείου όπως το Vault.
 
-### Αλλαγές στο Go import path
+### Αλλαγές στο Go import path {#go-import-path-changes}
 
 Στο Helm 3, το Helm άλλαξε το Go import path από `k8s.io/helm` σε
 `helm.sh/helm/v3`. Αν σκοπεύετε να αναβαθμίσετε στις Go client libraries του
 Helm 3, φροντίστε να αλλάξετε τα import paths σας.
 
-### Capabilities
+### Capabilities {#capabilities}
 
 Το ενσωματωμένο αντικείμενο `.Capabilities` που είναι διαθέσιμο κατά τη φάση του
 rendering έχει απλοποιηθεί.
 
 [Ενσωματωμένα Αντικείμενα](/chart_template_guide/builtin_objects.md)
 
-### Επικύρωση Chart Values με JSONSchema
+### Επικύρωση Chart Values με JSONSchema {#validating-chart-values-with-jsonschema}
 
 Ένα JSON Schema μπορεί πλέον να επιβληθεί στα values ενός chart. Αυτό διασφαλίζει
 ότι τα values που παρέχει ο χρήστης ακολουθούν το schema που έχει ορίσει ο
@@ -235,7 +235,7 @@ rendering έχει απλοποιηθεί.
 Δείτε την τεκμηρίωση για τα [Schema files](/topics/charts.md#schema-files) για
 περισσότερες πληροφορίες.
 
-### Ενοποίηση του `requirements.yaml` στο `Chart.yaml`
+### Ενοποίηση του `requirements.yaml` στο `Chart.yaml` {#consolidation-of-requirementsyaml-into-chartyaml}
 
 Το σύστημα διαχείρισης εξαρτήσεων Chart μεταφέρθηκε από τα requirements.yaml και
 requirements.lock στα Chart.yaml και Chart.lock. Συνιστούμε τα νέα charts που
@@ -272,7 +272,7 @@ dependencies:
 οπότε τα subcharts που έχουν ενσωματωθεί στον κατάλογο `charts/` θα συνεχίσουν να
 λειτουργούν χωρίς τροποποίηση.
 
-### Το Name (ή --generate-name) απαιτείται πλέον κατά την εγκατάσταση
+### Το Name (ή --generate-name) απαιτείται πλέον κατά την εγκατάσταση {#name-or-generate-name-is-now-required-on-install}
 
 Στο Helm 2, αν δεν παρεχόταν όνομα, θα δινόταν ένα αυτόματα παραγόμενο όνομα.
 Στην παραγωγή, αυτό αποδείχτηκε περισσότερο ενόχληση παρά χρήσιμη δυνατότητα.
@@ -281,7 +281,7 @@ dependencies:
 Για όσους εξακολουθούν να θέλουν να δημιουργείται αυτόματα ένα όνομα, μπορείτε να
 χρησιμοποιήσετε τη σημαία `--generate-name` για να δημιουργηθεί ένα.
 
-### Αποστολή Charts σε OCI Registries
+### Αποστολή Charts σε OCI Registries {#pushing-charts-to-oci-registries}
 
 Αυτή είναι μια πειραματική δυνατότητα που εισήχθη στο Helm 3. Για να τη
 χρησιμοποιήσετε, ορίστε τη μεταβλητή περιβάλλοντος `HELM_EXPERIMENTAL_OCI=1`.
@@ -322,7 +322,7 @@ Helm Charts σε ένα Chart Repository. Με απλά λόγια, ένα Chart
 
 Για περισσότερες πληροφορίες, δείτε [αυτή τη σελίδα](/topics/registries.md).
 
-### Κατάργηση του `helm serve`
+### Κατάργηση του `helm serve` {#removal-of-helm-serve}
 
 Η εντολή `helm serve` εκτελούσε ένα τοπικό Chart Repository στον υπολογιστή σας
 για σκοπούς ανάπτυξης. Ωστόσο, δεν είχε μεγάλη υιοθέτηση ως εργαλείο ανάπτυξης
@@ -334,7 +334,7 @@ Helm Charts σε ένα Chart Repository. Με απλά λόγια, ένα Chart
 και το [plugin servecm](https://github.com/jdolitsky/helm-servecm).
 
 
-### Υποστήριξη library chart
+### Υποστήριξη library chart {#library-chart-support}
 
 Το Helm 3 υποστηρίζει μια κατηγορία chart που ονομάζεται "library chart". Αυτό
 είναι ένα chart που διαμοιράζεται από άλλα charts, αλλά δεν δημιουργεί δικά του
@@ -358,7 +358,7 @@ dependencies:
 ανοίγει για τους developers chart, καθώς και τις βέλτιστες πρακτικές που
 προκύπτουν από τη χρήση library charts.
 
-### Αναβάθμιση του apiVersion στο Chart.yaml
+### Αναβάθμιση του apiVersion στο Chart.yaml {#chartyaml-apiversion-bump}
 
 Με την εισαγωγή της υποστήριξης library chart και την ενοποίηση του
 requirements.yaml στο Chart.yaml, τα clients που κατανοούσαν τη μορφή πακέτου
@@ -372,7 +372,7 @@ apiVersion στο Chart.yaml από `v1` σε `v2`.
 πρέπει να ελέγχουν το πεδίο `apiVersion` στο Chart.yaml για να κατανοήσουν πώς
 να αναλύσουν τη μορφή του πακέτου.
 
-### Υποστήριξη XDG Base Directory
+### Υποστήριξη XDG Base Directory {#xdg-base-directory-support}
 
 Η [Προδιαγραφή XDG Base Directory](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
 είναι ένα φορητό πρότυπο που ορίζει πού θα πρέπει να αποθηκεύονται τα αρχεία
@@ -403,7 +403,7 @@ plugin για να υποστηρίξουν αυτή την αλλαγή:
 Τα Helm plugins που επιθυμούν να υποστηρίξουν το Helm 3 θα πρέπει να εξετάσουν
 τη χρήση αυτών των νέων μεταβλητών περιβάλλοντος αντί αυτών.
 
-### Μετονομασίες εντολών CLI
+### Μετονομασίες εντολών CLI {#cli-command-renames}
 
 Για καλύτερη ευθυγράμμιση της ορολογίας με άλλους package managers, η εντολή
 `helm delete` μετονομάστηκε σε `helm uninstall`. Η `helm delete` διατηρείται
@@ -424,14 +424,14 @@ plugin για να υποστηρίξουν αυτή την αλλαγή:
 Αυτές οι εντολές έχουν επίσης διατηρήσει τα παλαιότερα ρήματα ως aliases, οπότε
 μπορείτε να συνεχίσετε να τις χρησιμοποιείτε σε οποιαδήποτε μορφή.
 
-### Αυτόματη δημιουργία namespaces
+### Αυτόματη δημιουργία namespaces {#automatically-creating-namespaces}
 
 Κατά τη δημιουργία ενός release σε ένα namespace που δεν υπάρχει, το Helm 2
 δημιουργούσε το namespace. Το Helm 3 ακολουθεί τη συμπεριφορά άλλων εργαλείων
 Kubernetes και επιστρέφει σφάλμα αν το namespace δεν υπάρχει. Το Helm 3 θα
 δημιουργήσει το namespace αν ορίσετε ρητά τη σημαία `--create-namespace`.
 
-### Τι συνέβη με το .Chart.ApiVersion;
+### Τι συνέβη με το .Chart.ApiVersion; {#what-happened-to-chartapiversion}
 
 Το Helm ακολουθεί τη συνηθισμένη σύμβαση CamelCasing που είναι να γράφονται τα
 αρκτικόλεξα με κεφαλαία. Το έχουμε κάνει αυτό αλλού στον κώδικα, όπως με το

@@ -4,7 +4,7 @@ title: helm test
 
 εκτελεί τα tests για ένα release
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Η εντολή test εκτελεί τα tests για ένα release.
 
@@ -16,7 +16,7 @@ title: helm test
 helm test [RELEASE] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --filter strings     specify tests by attribute (currently "name") using attribute=value syntax or '!attribute=value' to exclude a test (can specify multiple or separate values with commas: name=test1,name=test2)
@@ -26,7 +26,7 @@ helm test [RELEASE] [flags]
       --timeout duration   time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -47,8 +47,8 @@ helm test [RELEASE] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

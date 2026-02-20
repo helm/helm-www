@@ -7,14 +7,14 @@ sidebar_position: 2
 *Σημείωση: Αυτό το παράδειγμα αφορά συγκεκριμένα ένα bucket Google Cloud Storage (GCS)
 που εξυπηρετεί ένα αποθετήριο chart.*
 
-## Προαπαιτούμενα
+## Προαπαιτούμενα {#prerequisites}
 * Εγκαταστήστε το εργαλείο [gsutil](https://cloud.google.com/storage/docs/gsutil). *Βασιζόμαστε
   σε μεγάλο βαθμό στη λειτουργικότητα rsync του gsutil*
 * Βεβαιωθείτε ότι έχετε πρόσβαση στο εκτελέσιμο του Helm
 * _Προαιρετικό: Συνιστούμε να ενεργοποιήσετε την [εκδοσιοποίηση αντικειμένων](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page)
   στο GCS bucket σας, σε περίπτωση που διαγράψετε κατά λάθος κάτι._
 
-## Δημιουργία τοπικού καταλόγου αποθετηρίου chart
+## Δημιουργία τοπικού καταλόγου αποθετηρίου chart {#set-up-a-local-chart-repository-directory}
 Δημιουργήστε έναν τοπικό κατάλογο όπως κάναμε στον [οδηγό αποθετηρίου chart](/topics/chart_repository.md), και τοποθετήστε τα πακεταρισμένα charts σας σε αυτόν τον κατάλογο.
 
 Για παράδειγμα:
@@ -23,7 +23,7 @@ $ mkdir fantastic-charts
 $ mv alpine-0.1.0.tgz fantastic-charts/
 ```
 
-## Δημιουργία ενημερωμένου index.yaml
+## Δημιουργία ενημερωμένου index.yaml {#generate-an-updated-indexyaml}
 Χρησιμοποιήστε το Helm για να δημιουργήσετε ένα ενημερωμένο αρχείο index.yaml, περνώντας τη διαδρομή
 του καταλόγου και το URL του απομακρυσμένου αποθετηρίου στην εντολή `helm repo index`, ως εξής:
 
@@ -33,7 +33,7 @@ $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googl
 Αυτό θα δημιουργήσει ένα ενημερωμένο αρχείο index.yaml και θα το τοποθετήσει στον
 κατάλογο `fantastic-charts/`.
 
-## Συγχρονισμός τοπικού και απομακρυσμένου αποθετηρίου chart
+## Συγχρονισμός τοπικού και απομακρυσμένου αποθετηρίου chart {#sync-your-local-and-remote-chart-repositories}
 Ανεβάστε τα περιεχόμενα του καταλόγου στο GCS bucket σας εκτελώντας
 `scripts/sync-repo.sh` και περνώντας το όνομα του τοπικού καταλόγου και το όνομα του GCS bucket.
 
@@ -58,7 +58,7 @@ Copying file://fantastic-charts/index.yaml [Content-Type=application/octet-strea
 Uploading   gs://fantastic-charts/index.yaml:                    347 B/347 B
 Congratulations your remote chart repository now matches the contents of fantastic-charts/
 ```
-## Ενημέρωση του αποθετηρίου chart
+## Ενημέρωση του αποθετηρίου chart {#updating-your-chart-repository}
 Καλό είναι να διατηρείτε ένα τοπικό αντίγραφο των περιεχομένων του αποθετηρίου chart σας ή να
 χρησιμοποιείτε το `gsutil rsync` για να αντιγράψετε τα περιεχόμενα του απομακρυσμένου αποθετηρίου
 chart σε έναν τοπικό κατάλογο.

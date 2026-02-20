@@ -4,18 +4,18 @@ title: helm plugin
 
 εγκαθιστά, εμφανίζει ή απεγκαθιστά Helm plugins
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Διαχειρίζεται τα client-side Helm plugins.
 
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for plugin
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -36,7 +36,7 @@ title: helm plugin
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 * [helm plugin install](/helm/helm_plugin_install.md)	 - εγκαθιστά ένα Helm plugin
@@ -44,4 +44,4 @@ title: helm plugin
 * [helm plugin uninstall](/helm/helm_plugin_uninstall.md)	 - απεγκαθιστά ένα ή περισσότερα Helm plugins
 * [helm plugin update](/helm/helm_plugin_update.md)	 - ενημερώνει ένα ή περισσότερα Helm plugins
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

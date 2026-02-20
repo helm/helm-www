@@ -4,7 +4,7 @@ title: helm lint
 
 εξέταση ενός chart για πιθανά προβλήματα
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Αυτή η εντολή δέχεται μια διαδρομή προς ένα chart και εκτελεί μια σειρά δοκιμών για να
@@ -19,7 +19,7 @@ title: helm lint
 helm lint PATH [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help                      help for lint
@@ -36,7 +36,7 @@ helm lint PATH [flags]
       --with-subcharts            lint dependent charts
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -57,8 +57,8 @@ helm lint PATH [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

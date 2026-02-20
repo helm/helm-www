@@ -4,7 +4,7 @@ title: helm pull
 
 λήψη chart από αποθετήριο με προαιρετική τοπική αποσυμπίεση
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 
 Ανακτά ένα πακέτο από αποθετήριο πακέτων και το κατεβάζει τοπικά.
@@ -24,7 +24,7 @@ provenance και ΠΡΕΠΕΙ να περάσει τη διαδικασία ε�
 helm pull [chart URL | repo/chartname] [...] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
       --ca-file string             verify certificates of HTTPS-enabled servers using this CA bundle
@@ -47,7 +47,7 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --version string             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -68,8 +68,8 @@ helm pull [chart URL | repo/chartname] [...] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm](/helm/helm.md)	 - Ο διαχειριστής πακέτων Helm για Kubernetes.
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

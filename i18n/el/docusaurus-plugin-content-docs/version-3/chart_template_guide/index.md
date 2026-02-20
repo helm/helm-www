@@ -3,7 +3,7 @@ title: Οδηγός Chart Template
 sidebar_position: 5
 ---
 
-# Ο Οδηγός Ανάπτυξης Chart Template
+# Ο Οδηγός Ανάπτυξης Chart Template {#the-chart-template-developers-guide}
 
 Αυτός ο οδηγός παρέχει μια εισαγωγή στα templates των charts του Helm, με έμφαση
 στη γλώσσα template.

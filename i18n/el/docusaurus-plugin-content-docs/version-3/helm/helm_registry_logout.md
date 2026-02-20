@@ -4,7 +4,7 @@ title: helm registry logout
 
 αποσύνδεση από ένα registry
 
-### Σύνοψη
+### Σύνοψη {#synopsis}
 
 Αφαιρεί τα διαπιστευτήρια που είναι αποθηκευμένα για ένα απομακρυσμένο registry.
 
@@ -13,13 +13,13 @@ title: helm registry logout
 helm registry logout [host] [flags]
 ```
 
-### Επιλογές
+### Επιλογές {#options}
 
 ```
   -h, --help   help for logout
 ```
 
-### Επιλογές που κληρονομούνται από γονικές εντολές
+### Επιλογές που κληρονομούνται από γονικές εντολές {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 client-side default throttling limit (default 100)
@@ -40,8 +40,8 @@ helm registry logout [host] [flags]
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
-### ΔΕΙΤΕ ΕΠΙΣΗΣ
+### ΔΕΙΤΕ ΕΠΙΣΗΣ {#see-also}
 
 * [helm registry](/helm/helm_registry.md)	 - σύνδεση ή αποσύνδεση από ένα registry
 
-###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026
+###### Δημιουργήθηκε αυτόματα από spf13/cobra στις 14-Jan-2026 {#auto-generated-by-spf13cobra-on-14-jan-2026}

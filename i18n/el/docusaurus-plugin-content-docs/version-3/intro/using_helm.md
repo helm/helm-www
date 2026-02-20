@@ -11,7 +11,7 @@ sidebar_position: 3
 με τον [Οδηγό Γρήγορης Εκκίνησης](/intro/quickstart.md). Αυτό το κεφάλαιο
 καλύπτει τις λεπτομέρειες των εντολών του Helm και εξηγεί πώς να το χρησιμοποιείτε.
 
-## Τρεις Βασικές Έννοιες
+## Τρεις Βασικές Έννοιες {#three-big-concepts}
 
 Ένα *Chart* είναι ένα πακέτο Helm. Περιέχει όλους τους ορισμούς πόρων
 που απαιτούνται για την εκτέλεση μιας εφαρμογής, εργαλείου ή υπηρεσίας μέσα σε
@@ -36,7 +36,7 @@ MySQL chart. Αν θέλετε δύο βάσεις δεδομένων στο clu
 κάθε εγκατάσταση. Και για να βρείτε νέα charts, μπορείτε να αναζητήσετε σε
 _repositories_ charts του Helm.
 
-## 'helm search': Εύρεση Charts
+## 'helm search': Εύρεση Charts {#helm-search-finding-charts}
 
 Το Helm διαθέτει μια ισχυρή εντολή αναζήτησης. Μπορεί να χρησιμοποιηθεί για
 αναζήτηση σε δύο διαφορετικούς τύπους πηγών:
@@ -92,7 +92,7 @@ brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ένα πακέτο που θέλετε να εγκαταστήσετε, μπορείτε να χρησιμοποιήσετε την
 `helm install` για να το εγκαταστήσετε.
 
-## 'helm install': Εγκατάσταση Πακέτου
+## 'helm install': Εγκατάσταση Πακέτου {#helm-install-installing-a-package}
 
 Για να εγκαταστήσετε ένα νέο πακέτο, χρησιμοποιήστε την εντολή `helm install`.
 Στην απλούστερη μορφή της, δέχεται δύο ορίσματα: Ένα release name της επιλογής
@@ -221,7 +221,7 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 Τα παραπάνω δείχνουν την τρέχουσα κατάσταση του release σας.
 
-### Προσαρμογή του Chart Πριν την Εγκατάσταση
+### Προσαρμογή του Chart Πριν την Εγκατάσταση {#customizing-the-chart-before-installing}
 
 Η εγκατάσταση με τον τρόπο που δείξαμε θα χρησιμοποιήσει μόνο τις προεπιλεγμένες
 επιλογές ρύθμισης παραμέτρων για αυτό το chart. Πολλές φορές θα θέλετε να
@@ -232,20 +232,18 @@ To access your WordPress site from outside the cluster follow the steps below:
 
 ```console
 $ helm show values bitnami/wordpress
-## Global Docker image parameters
-## Please, note that this will override the image parameters, including dependencies, configured to use the global value
-## Current available global Docker image parameters: imageRegistry and imagePullSecrets
-##
-# global:
-#   imageRegistry: myRegistryName
-#   imagePullSecrets:
-#     - myRegistryKeySecretName
-#   storageClass: myStorageClass
+## Global Docker image parameters {#global-docker-image-parameters}
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value {#please-note-that-this-will-override-the-image-parameters-including-dependencies-configured-to-use-the-global-value}
+## Current available global Docker image parameters: imageRegistry and imagePullSecrets {#current-available-global-docker-image-parameters-imageregistry-and-imagepullsecrets}
+## # global: {#global}
+# imageRegistry: myRegistryName {#imageregistry-myregistryname}
+# imagePullSecrets: {#imagepullsecrets}
+# - myRegistryKeySecretName {#myregistrykeysecretname}
+# storageClass: myStorageClass {#storageclass-mystorageclass}
 
-## Bitnami WordPress image version
-## ref: https://hub.docker.com/r/bitnami/wordpress/tags/
-##
-image:
+## Bitnami WordPress image version {#bitnami-wordpress-image-version}
+## ref: https://hub.docker.com/r/bitnami/wordpress/tags/ {#ref-httpshubdockercomrbitnamiwordpresstags}
+## image: {#image}
   registry: docker.io
   repository: bitnami/wordpress
   tag: 5.6.0-debian-10-r35
@@ -279,7 +277,7 @@ $ helm install -f values.yaml bitnami/wordpress --generate-name
 Οι τιμές που έχουν οριστεί με `--set` μπορούν να διαγραφούν εκτελώντας
 `helm upgrade` με την επιλογή `--reset-values`.
 
-#### Η Μορφή και οι Περιορισμοί του `--set`
+#### Η Μορφή και οι Περιορισμοί του `--set` {#the-format-and-limitations-of-set}
 
 Η επιλογή `--set` δέχεται μηδέν ή περισσότερα ζεύγη ονόματος/τιμής. Στην
 απλούστερη μορφή της, χρησιμοποιείται ως εξής: `--set name=value`. Το
@@ -371,7 +369,7 @@ nodeSelector:
 `--set` κατά τον σχεδιασμό της μορφής ενός αρχείου `values.yaml` (διαβάστε
 περισσότερα για τα [Αρχεία Values](/chart_template_guide/values_files.md)).
 
-### Περισσότεροι Τρόποι Εγκατάστασης
+### Περισσότεροι Τρόποι Εγκατάστασης {#more-installation-methods}
 
 Η εντολή `helm install` μπορεί να εγκαταστήσει από διάφορες πηγές:
 
@@ -380,7 +378,7 @@ nodeSelector:
 - Έναν αποσυμπιεσμένο φάκελο chart (`helm install foo path/to/foo`)
 - Μια πλήρη διεύθυνση URL (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
-## 'helm upgrade' και 'helm rollback': Αναβάθμιση Release και Ανάκτηση από Αποτυχία
+## 'helm upgrade' και 'helm rollback': Αναβάθμιση Release και Ανάκτηση από Αποτυχία {#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure}
 
 Όταν κυκλοφορεί μια νέα έκδοση ενός chart, ή όταν θέλετε να αλλάξετε τη ρύθμιση
 παραμέτρων του release σας, μπορείτε να χρησιμοποιήσετε την εντολή `helm upgrade`.
@@ -429,7 +427,7 @@ $ helm rollback happy-panda 1
 αναθεώρησης είναι πάντα 1. Και μπορούμε να χρησιμοποιήσουμε την `helm history [RELEASE]`
 για να δούμε τους αριθμούς αναθεώρησης για ένα συγκεκριμένο release.
 
-## Χρήσιμες Επιλογές για Install/Upgrade/Rollback
+## Χρήσιμες Επιλογές για Install/Upgrade/Rollback {#helpful-options-for-installupgraderollback}
 
 Υπάρχουν αρκετές άλλες χρήσιμες επιλογές που μπορείτε να καθορίσετε για την
 προσαρμογή της συμπεριφοράς του Helm κατά τη διάρκεια μιας εγκατάστασης/αναβάθμισης/rollback.
@@ -452,7 +450,7 @@ $ helm rollback happy-panda 1
   θα προκαλέσει την αναδημιουργία όλων των pods (με εξαίρεση τα pods που ανήκουν
   σε deployments). (ΚΑΤΑΡΓΗΜΕΝΟ στο Helm 3)
 
-## 'helm uninstall': Απεγκατάσταση ενός Release
+## 'helm uninstall': Απεγκατάσταση ενός Release {#helm-uninstall-uninstalling-a-release}
 
 Όταν έρθει η ώρα να απεγκαταστήσετε ένα release από το cluster, χρησιμοποιήστε
 την εντολή `helm uninstall`:
@@ -494,7 +492,7 @@ kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0
 Σημειώστε ότι επειδή τα releases πλέον διαγράφονται από προεπιλογή, δεν είναι
 πλέον δυνατό να κάνετε rollback σε έναν απεγκατεστημένο πόρο.
 
-## 'helm repo': Εργασία με Repositories
+## 'helm repo': Εργασία με Repositories {#helm-repo-working-with-repositories}
 
 Το Helm 3 δεν αποστέλλεται πλέον με ένα προεπιλεγμένο chart repository. Η ομάδα
 εντολών `helm repo` παρέχει εντολές για προσθήκη, εμφάνιση λίστας και αφαίρεση
@@ -520,7 +518,7 @@ $ helm repo add dev https://example.com/dev-charts
 
 Τα repositories μπορούν να αφαιρεθούν με την `helm repo remove`.
 
-## Δημιουργία των Δικών σας Charts
+## Δημιουργία των Δικών σας Charts {#creating-your-own-charts}
 
 Ο [Οδηγός Ανάπτυξης Chart](/topics/charts.md) εξηγεί πώς
 να αναπτύξετε τα δικά σας charts. Αλλά μπορείτε να ξεκινήσετε γρήγορα
@@ -556,7 +554,7 @@ $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 τεκμηρίωση για τα [chart repositories του Helm](/topics/chart_repository.md)
 για περισσότερες λεπτομέρειες.
 
-## Συμπέρασμα
+## Συμπέρασμα {#conclusion}
 
 Αυτό το κεφάλαιο κάλυψε τα βασικά μοτίβα χρήσης του `helm` client,
 συμπεριλαμβανομένης της αναζήτησης, εγκατάστασης, αναβάθμισης και απεγκατάστασης.

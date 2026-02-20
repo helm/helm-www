@@ -22,7 +22,7 @@ template του Helm παρέχει τις ακόλουθες δομές ελέ�
 Σε αυτήν την ενότητα, θα μιλήσουμε για τα `if`, `with` και `range`. Τα υπόλοιπα
 καλύπτονται στην ενότητα «Ονομασμένα Templates» αργότερα σε αυτόν τον οδηγό.
 
-## If/Else
+## If/Else {#ifelse}
 
 Η πρώτη δομή ελέγχου που θα εξετάσουμε είναι για τη συμπερίληψη blocks κειμένου
 υπό συνθήκη σε ένα template. Πρόκειται για το block `if`/`else`.
@@ -74,7 +74,7 @@ data:
 με αυτό:
 
 ```yaml
-# Source: mychart/templates/configmap.yaml
+# Source: mychart/templates/configmap.yaml {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml} {#source-mycharttemplatesconfigmapyaml}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -86,7 +86,7 @@ data:
   mug: "true"
 ```
 
-## Έλεγχος Κενών Χαρακτήρων
+## Έλεγχος Κενών Χαρακτήρων {#controlling-whitespace}
 
 Ενώ εξετάζουμε τις συνθήκες, ας δούμε γρήγορα πώς ελέγχονται οι κενοί
 χαρακτήρες (whitespace) στα templates. Ας πάρουμε το προηγούμενο παράδειγμα
@@ -260,7 +260,7 @@ data:
 οδηγιών template. Για αυτόν τον λόγο, μπορεί να βρείτε χρήσιμο να
 χρησιμοποιήσετε τη συνάρτηση `indent` (`{{ indent 2 "mug:true" }}`).
 
-## Τροποποίηση εύρους με το `with`
+## Τροποποίηση εύρους με το `with` {#modifying-scope-using-with}
 
 Η επόμενη δομή ελέγχου που θα εξετάσουμε είναι η ενέργεια `with`. Αυτή
 ελέγχει το εύρος (scoping) των μεταβλητών. Θυμηθείτε ότι η `.` είναι μια
@@ -342,7 +342,7 @@ data:
 Αφού δούμε το `range`, θα ρίξουμε μια ματιά στις μεταβλητές template, που
 προσφέρουν μια λύση στο πρόβλημα εύρους παραπάνω.
 
-## Βρόχοι με την ενέργεια `range`
+## Βρόχοι με την ενέργεια `range` {#looping-with-the-range-action}
 
 Πολλές γλώσσες προγραμματισμού υποστηρίζουν βρόχους με `for` loops, `foreach`
 loops ή παρόμοιους μηχανισμούς. Στη γλώσσα template του Helm, ο τρόπος για να
