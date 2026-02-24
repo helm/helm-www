@@ -26,7 +26,7 @@ binarias se pueden descargar e instalar manualmente.
 3. Encuentra el binario `helm` en el directorio desempaquetado, y muévelo a su
 destino deseado (`mv linux-amd64/helm /usr/local/bin/helm`)
 
-De ahí, debes poder ejecutar el cliente y
+De ahí, debe poder ejecutar el cliente y
 [agregar el repositorio de charts estable](/intro/quickstart.md#initialize-a-helm-chart-repository):
 `helm help`.
 

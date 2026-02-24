@@ -31,7 +31,7 @@ Descargue una versión binaria del cliente Helm. Puede usar herramientas como
 
 Para más detalles u otras opciones, consulte [la guía de instalación](/intro/install.md).
 
-## Inicializar un Repositorio de Charts de Helm
+## Inicializar un Repositorio de Charts de Helm {#initialize-a-helm-chart-repository}
 
 Una vez que tenga Helm listo, puede agregar un repositorio de charts. Consulte
 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) para ver los

@@ -16,7 +16,7 @@ Genera scripts de autocompletado de Helm para el shell especificado.
   -h, --help   ayuda para completion
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
       --burst-limit int                 límite de limitación predeterminado del lado del cliente (predeterminado 100)

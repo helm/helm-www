@@ -2318,7 +2318,7 @@ Helm incluye funciones para trabajar con Kubernetes incluyendo
 comando `helm template` siempre devuelve una respuesta vacía.
 
 Puede encontrar más detalles en la [documentación sobre la función
-lookup](./functions_and_pipelines.md#usando-la-función-lookup).
+lookup](./functions_and_pipelines.md#uso-de-la-función-lookup).
 
 ### .Capabilities.APIVersions.Has
 

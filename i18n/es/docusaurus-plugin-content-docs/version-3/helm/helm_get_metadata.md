@@ -4,6 +4,10 @@ title: helm get metadata
 
 Este comando obtiene los metadatos de un release especificado
 
+### Sinopsis
+
+Este comando obtiene los metadatos de un release especificado.
+
 ```
 helm get metadata RELEASE_NAME [flags]
 ```

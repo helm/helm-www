@@ -24,29 +24,29 @@ helm completion zsh [flags]
 ### Opciones
 
 ```
-  -h, --help              help for zsh
-      --no-descriptions   disable completion descriptions
+  -h, --help              ayuda para zsh
+      --no-descriptions   deshabilitar descripciones de autocompletado
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the directory containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 límite de limitación predeterminado del lado del cliente (predeterminado 100)
+      --debug                           habilitar salida detallada
+      --kube-apiserver string           la dirección y el puerto del servidor de API de Kubernetes
+      --kube-as-group stringArray       grupo a suplantar para la operación, esta bandera puede repetirse para especificar múltiples grupos.
+      --kube-as-user string             nombre de usuario a suplantar para la operación
+      --kube-ca-file string             el archivo de autoridad de certificación para la conexión del servidor de API de Kubernetes
+      --kube-context string             nombre del contexto de kubeconfig a usar
+      --kube-insecure-skip-tls-verify   si es verdadero, el certificado del servidor de API de Kubernetes no será verificado. Esto hará que sus conexiones HTTPS sean inseguras
+      --kube-tls-server-name string     nombre del servidor a usar para la validación del certificado del servidor de API de Kubernetes. Si no se proporciona, se usa el nombre de host usado para contactar al servidor
+      --kube-token string               token bearer usado para autenticación
+      --kubeconfig string               ruta al archivo kubeconfig
+  -n, --namespace string                ámbito del namespace para esta solicitud
+      --qps float32                     consultas por segundo usadas al comunicarse con la API de Kubernetes, sin incluir ráfagas
+      --registry-config string          ruta al archivo de configuración del registro (predeterminado "~/.config/helm/registry/config.json")
+      --repository-cache string         ruta al directorio que contiene los índices de repositorios en caché (predeterminado "~/.cache/helm/repository")
+      --repository-config string        ruta al archivo que contiene los nombres y URLs de repositorios (predeterminado "~/.config/helm/repositories.yaml")
 ```
 
 ### VEA TAMBIÉN
