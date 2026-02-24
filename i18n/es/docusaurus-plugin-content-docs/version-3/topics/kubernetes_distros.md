@@ -25,9 +25,9 @@ Helm funciona con Amazon Elastic Kubernetes Service (Amazon EKS): [Uso de Helm c
 
 Se sabe que la plataforma Kubernetes alojada en GKE de Google funciona con Helm, y no requiere ninguna configuración adicional.
 
-## `scripts/local-cluster` and Hyperkube    
+## `scripts/local-cluster` e Hyperkube
 
-Se sabe que Hyperkube configurado a través de `scripts/local-cluster.sh` funciona. Para raw Hyperkube es posible que tenga que hacer alguna configuración manual.
+Se sabe que Hyperkube configurado a través de `scripts/local-cluster.sh` funciona. Para Hyperkube puro es posible que tenga que hacer alguna configuración manual.
 
 ## IKS
 
@@ -52,7 +52,7 @@ Helm puede ser habilitado en [MicroK8s](https://microk8s.io) usando el comando: 
 
 ## Minikube
 
-Helm está probado y se sabe que funciona con [Minikube](https://github.com/kubernetes/minikube). No requiere configuración configuración adicional.
+Helm está probado y se sabe que funciona con [Minikube](https://github.com/kubernetes/minikube). No requiere configuración adicional.
 
 ## Openshift
 
@@ -60,7 +60,7 @@ Helm funciona sin problemas en OpenShift Online, OpenShift Dedicated, OpenShift 
 
 ## Platform9
 
-Helm está preinstalado con [Platform9 Managed Kubernetes](https://platform9.com/managed-kubernetes/?utm_source=helm_distro_notes). Platform9 proporciona acceso a todas las Charts oficiales de Helm a través de la App Catalog UI y la CLI nativa de Kubernetes. Se pueden añadir manualmente repositorios adicionales. Encontrará más detalles en este  [artículo de Platform9 App Catalog](https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes).
+Helm está preinstalado con [Platform9 Managed Kubernetes](https://platform9.com/managed-kubernetes/?utm_source=helm_distro_notes). Platform9 proporciona acceso a todos los charts oficiales de Helm a través de la App Catalog UI y la CLI nativa de Kubernetes. Se pueden añadir manualmente repositorios adicionales. Encontrará más detalles en este [artículo de Platform9 App Catalog](https://platform9.com/support/deploying-kubernetes-apps-platform9-managed-kubernetes/?utm_source=helm_distro_notes).
 
 ## Ubuntu con `kubeadm`
 
