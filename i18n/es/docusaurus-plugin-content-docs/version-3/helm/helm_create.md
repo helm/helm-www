@@ -32,7 +32,7 @@ helm create NAME [flags]
   -p, --starter string   el nombre o ruta absoluta al scaffold de inicio de Helm
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
       --burst-limit int                 límite de limitación predeterminado del lado del cliente (predeterminado 100)

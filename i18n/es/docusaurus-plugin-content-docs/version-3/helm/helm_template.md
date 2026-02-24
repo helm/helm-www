@@ -66,7 +66,7 @@ helm template [NAME] [CHART] [flags]
       --take-ownership                             si se establece, install ignorará la verificación de anotaciones de helm y tomará posesión de los recursos existentes
       --timeout duration                           tiempo de espera para cualquier operación individual de Kubernetes (como Jobs para hooks) (por defecto 5m0s)
       --username string                            nombre de usuario del repositorio de charts donde localizar el chart solicitado
-      --validate                                   valida tus manifiestos contra el clúster de Kubernetes al que estás apuntando actualmente. Esta es la misma validación que se realiza en una instalación
+      --validate                                   valida sus manifiestos contra el clúster de Kubernetes al que está apuntando actualmente. Esta es la misma validación que se realiza en una instalación
   -f, --values strings                             especifica valores en un archivo YAML o una URL (puede especificar múltiples)
       --verify                                     verifica el paquete antes de usarlo
       --version string                             especifica una restricción de versión para la versión del chart a usar. Esta restricción puede ser una etiqueta específica (ej. 1.1.1) o puede referenciar un rango válido (ej. ^2.0.0). Si no se especifica, se usa la última versión
@@ -74,7 +74,7 @@ helm template [NAME] [CHART] [flags]
       --wait-for-jobs                              si se establece y --wait está habilitado, esperará hasta que todos los Jobs se hayan completado antes de marcar el release como exitoso. Esperará tanto como --timeout
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
       --burst-limit int                 límite de throttling del lado del cliente (por defecto 100)
@@ -89,13 +89,13 @@ helm template [NAME] [CHART] [flags]
       --kube-token string               token bearer utilizado para la autenticación
       --kubeconfig string               ruta al archivo kubeconfig
   -n, --namespace string                ámbito del namespace para esta solicitud
-      --qps float32                     consultas por segundo utilizadas al comunicarse con la API de Kubernetes, sin incluir bursting
+      --qps float32                     consultas por segundo utilizadas al comunicarse con la API de Kubernetes, sin incluir ráfagas
       --registry-config string          ruta al archivo de configuración del registro (por defecto "~/.config/helm/registry/config.json")
       --repository-cache string         ruta al directorio que contiene los índices de repositorios en caché (por defecto "~/.cache/helm/repository")
       --repository-config string        ruta al archivo que contiene los nombres y URLs de los repositorios (por defecto "~/.config/helm/repositories.yaml")
 ```
 
-### VER TAMBIÉN
+### VEA TAMBIÉN
 
 * [helm](./helm.md)	 - El gestor de paquetes Helm para Kubernetes.
 

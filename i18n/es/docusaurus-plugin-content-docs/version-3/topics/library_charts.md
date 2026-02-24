@@ -88,11 +88,11 @@ y sobrescribe cualquier parte común en ambas:
 
 ```yaml
 {{- /*
-mylibchart.util.merge will merge two YAML templates and output the result.
-This takes an array of three values:
-- the top context
-- the template name of the overrides (destination)
-- the template name of the base (source)
+mylibchart.util.merge fusionará dos plantillas YAML y generará el resultado.
+Esto toma un array de tres valores:
+- el contexto superior
+- el nombre de la plantilla de las anulaciones (destino)
+- el nombre de la plantilla base (fuente)
 */}}
 {{- define "mylibchart.util.merge" -}}
 {{- $top := first . -}}
@@ -351,7 +351,7 @@ Usemos el código común del chart auxiliar. Primero, edite el deployment
 ```yaml
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
-## Define overrides for your Deployment resource here, e.g.
+## Defina anulaciones para su recurso Deployment aquí, por ejemplo
 apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -371,7 +371,7 @@ Y ahora el archivo de servicio, `demo/templates/service.yaml` como sigue:
 ```yaml
 {{- template "common.service" (list . "demo.service") -}}
 {{- define "demo.service" -}}
-## Define overrides for your Service resource here, e.g.
+## Defina anulaciones para su recurso Service aquí, por ejemplo
 # metadata:
 #   labels:
 #     custom: label

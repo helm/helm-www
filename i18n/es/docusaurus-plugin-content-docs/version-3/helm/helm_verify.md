@@ -24,7 +24,7 @@ helm verify PATH [flags]
       --keyring string   llavero que contiene las claves públicas (por defecto "~/.gnupg/pubring.gpg")
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
       --burst-limit int                 límite de throttling del lado del cliente (por defecto 100)
@@ -39,13 +39,13 @@ helm verify PATH [flags]
       --kube-token string               token bearer utilizado para la autenticación
       --kubeconfig string               ruta al archivo kubeconfig
   -n, --namespace string                ámbito del namespace para esta solicitud
-      --qps float32                     consultas por segundo utilizadas al comunicarse con la API de Kubernetes, sin incluir bursting
+      --qps float32                     consultas por segundo utilizadas al comunicarse con la API de Kubernetes, sin incluir ráfagas
       --registry-config string          ruta al archivo de configuración del registro (por defecto "~/.config/helm/registry/config.json")
       --repository-cache string         ruta al directorio que contiene los índices de repositorios en caché (por defecto "~/.cache/helm/repository")
       --repository-config string        ruta al archivo que contiene los nombres y URLs de los repositorios (por defecto "~/.config/helm/repositories.yaml")
 ```
 
-### VER TAMBIÉN
+### VEA TAMBIÉN
 
 * [helm](./helm.md)	 - El gestor de paquetes Helm para Kubernetes.
 

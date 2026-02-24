@@ -125,7 +125,7 @@ helm install [NAME] [CHART] [flags]
       --wait-for-jobs                              si se establece y --wait está habilitado, esperará hasta que todos los Jobs se hayan completado antes de marcar el release como exitoso. Esperará tanto tiempo como --timeout
 ```
 
-### Opciones heredadas de los comandos padre
+### Opciones heredadas de comandos padre
 
 ```
       --burst-limit int                 límite de throttling del lado del cliente (por defecto 100)
@@ -146,7 +146,7 @@ helm install [NAME] [CHART] [flags]
       --repository-config string        ruta al archivo que contiene los nombres y URLs de repositorios (por defecto "~/.config/helm/repositories.yaml")
 ```
 
-### VER TAMBIÉN
+### VEA TAMBIÉN
 
 * [helm](./helm.md)	 - El gestor de paquetes Helm para Kubernetes.
 

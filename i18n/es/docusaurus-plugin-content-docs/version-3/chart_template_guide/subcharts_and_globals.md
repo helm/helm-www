@@ -19,7 +19,7 @@ sobre los subcharts de aplicaciones.
 4. Helm tiene un concepto de _valores globales_ que pueden ser accedidos por
    todos los charts.
 
-> Estas limitaciones no necesariamente aplican a los [library charts](/topics/library_charts.md), que están diseñados para proporcionar funcionalidad auxiliar estandarizada.
+> Estas limitaciones no necesariamente aplican a los [charts de biblioteca](/topics/library_charts.md), que están diseñados para proporcionar funcionalidad auxiliar estandarizada.
 
 A medida que recorramos los ejemplos en esta sección, muchos de estos conceptos
 quedarán más claros.
