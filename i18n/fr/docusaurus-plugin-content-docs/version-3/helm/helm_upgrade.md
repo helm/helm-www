@@ -34,79 +34,79 @@ helm upgrade [RELEASE] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     si défini, le processus de mise à niveau annule les modifications effectuées en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
-      --ca-file string                             vérifie les certificats des serveurs HTTPS en utilisant ce fichier de certificat racine (CA bundle)
-      --cert-file string                           identifie le client HTTPS à l'aide de ce fichier de certificat SSL
-      --cleanup-on-fail                            autorise la suppression des nouvelles ressources créées lors de cette mise à niveau en cas d'échec
-      --create-namespace                           si --install est défini, crée le namespace de la release s'il n'est pas présent
-      --dependency-update                          met à jour les dépendances si elles sont manquantes avant l'installation du chart
-      --description string                         ajoute une description personnalisée
-      --devel                                      utilise également les versions de développement. Équivalent à version '>0.0.0-0'. Si --version est défini, ceci est ignoré
-      --disable-openapi-validation                 si défini, le processus de mise à niveau ne validera pas les templates générés par rapport au schéma OpenAPI de Kubernetes
-      --dry-run string[="client"]                  simule une installation. Si '--dry-run' est défini sans option ou comme '--dry-run=client', aucune tentative de connexion au cluster ne sera effectuée. En définissant '--dry-run=server', des tentatives de connexion au cluster seront autorisées
-      --enable-dns                                 active les recherches DNS lors du rendu des templates
-      --force                                      force les mises à jour des ressources en utilisant une stratégie de remplacement
-  -h, --help                                       aide pour upgrade
-      --hide-notes                                 si défini, n'affiche pas les notes dans la sortie de mise à niveau. N'affecte pas la présence dans les métadonnées du chart
-      --hide-secret                                masque les Secrets Kubernetes lors de l'utilisation de l'argument --dry-run
-      --history-max int                            limite le nombre maximum de révisions sauvegardées par release. Utilisez 0 pour ne pas avoir de limite (par défaut 10)
-      --insecure-skip-tls-verify                   ignore les vérifications de certificat TLS lors du téléchargement du chart
-  -i, --install                                    si une release avec ce nom n'existe pas, lance une installation
-      --key-file string                            identifie le client HTTPS en utilisant ce fichier de clé SSL
-      --keyring string                             emplacement des clés publiques utilisées pour la vérification (par défaut "~/.gnupg/pubring.gpg")
+      --atomic                                     Si défini, le processus de mise à niveau annule les modifications effectuées en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
+      --ca-file string                             Vérifie les certificats des serveurs HTTPS en utilisant ce fichier de certificat racine (CA bundle)
+      --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
+      --cleanup-on-fail                            Autorise la suppression des nouvelles ressources créées lors de cette mise à niveau en cas d'échec
+      --create-namespace                           Si --install est défini, crée le namespace de la release s'il n'est pas présent
+      --dependency-update                          Met à jour les dépendances si elles sont manquantes avant l'installation du chart
+      --description string                         Ajoute une description personnalisée
+      --devel                                      Utilise également les versions de développement. Équivalent à version '>0.0.0-0'. Si --version est défini, ceci est ignoré
+      --disable-openapi-validation                 Si défini, le processus de mise à niveau ne validera pas les templates générés par rapport au schéma OpenAPI de Kubernetes
+      --dry-run string[="client"]                  Simule une installation. Si '--dry-run' est défini sans option ou comme '--dry-run=client', aucune tentative de connexion au cluster ne sera effectuée. En définissant '--dry-run=server', des tentatives de connexion au cluster seront autorisées
+      --enable-dns                                 Active les recherches DNS lors du rendu des templates
+      --force                                      Force les mises à jour des ressources en utilisant une stratégie de remplacement
+  -h, --help                                       Aide pour upgrade
+      --hide-notes                                 Si défini, n'affiche pas les notes dans la sortie de mise à niveau. N'affecte pas la présence dans les métadonnées du chart
+      --hide-secret                                Masque les Secrets Kubernetes lors de l'utilisation de l'argument --dry-run
+      --history-max int                            Limite le nombre maximum de révisions sauvegardées par release. Utilisez 0 pour ne pas avoir de limite (par défaut 10)
+      --insecure-skip-tls-verify                   Ignore les vérifications de certificat TLS lors du téléchargement du chart
+  -i, --install                                    Si une release avec ce nom n'existe pas, lance une installation
+      --key-file string                            Identifie le client HTTPS en utilisant ce fichier de clé SSL
+      --keyring string                             Emplacement des clés publiques utilisées pour la vérification (par défaut "~/.gnupg/pubring.gpg")
   -l, --labels stringToString                      étiquettes qui seront ajoutées aux métadonnées de la release. Doivent être séparées par des virgules. Les étiquettes de la release originale seront fusionnées avec les étiquettes de mise à niveau. Vous pouvez supprimer une étiquette en utilisant null. (par défaut [])
-      --no-hooks                                   désactive les hooks pre/post mise à niveau
-  -o, --output format                              affiche la sortie dans le format spécifié. Valeurs autorisées : table, json, yaml (par défaut table)
-      --pass-credentials                           transmet les identifiants à tous les domaines
-      --password string                            mot de passe du dépôt de charts où se trouve le chart demandé
-      --plain-http                                 utilise des connexions HTTP non sécurisées pour le téléchargement du chart
-      --post-renderer postRendererString           chemin vers un exécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié
-      --post-renderer-args postRendererArgsSlice   un argument pour le post-renderer (peut être spécifié plusieurs fois) (par défaut [])
-      --render-subchart-notes                      si défini, génère les notes des sous-charts avec le chart parent
+      --no-hooks                                   Désactive les hooks pre/post mise à niveau
+  -o, --output format                              Affiche la sortie dans le format spécifié. Valeurs autorisées : table, json, yaml (par défaut table)
+      --pass-credentials                           Transmet les identifiants à tous les domaines
+      --password string                            Mot de passe du dépôt de charts où se trouve le chart demandé
+      --plain-http                                 Utilise des connexions HTTP non sécurisées pour le téléchargement du chart
+      --post-renderer postRendererString           Chemin vers un exécutable à utiliser pour le post-rendu. S'il existe dans $PATH, le binaire sera utilisé, sinon il essaiera de rechercher l'exécutable au chemin spécifié
+      --post-renderer-args postRendererArgsSlice   Un argument pour le post-renderer (peut être spécifié plusieurs fois) (par défaut [])
+      --render-subchart-notes                      Si défini, génère les notes des sous-charts avec le chart parent
       --repo string                                URL du dépôt de charts où se trouve le chart demandé
-      --reset-then-reuse-values                    lors de la mise à niveau, réinitialise les valeurs sur celles intégrées au chart, applique les valeurs de la dernière release et fusionne toutes les valeurs à partir de la ligne de commande via --set et -f. Si '--reset-values' ou '--reuse-values' est spécifié, ceci sera ignoré
-      --reset-values                               lors de la mise à niveau, réinitialise les valeurs à celles intégrées au chart
-      --reuse-values                               lors de la mise à niveau, réutilise les valeurs de la dernière release et fusionne toutes les valeurs depuis la ligne de commande via '--set' et '-f'. Si '--reset-values' est spécifié, ceci sera ignoré
-      --set stringArray                            définit des valeurs en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
-      --set-file stringArray                       définit des valeurs depuis un fichier spécifié en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=path1,key2=path2)
-      --set-json stringArray                       définit des valeurs JSON en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=jsonval1,key2=jsonval2)
-      --set-literal stringArray                    définit une valeur littérale de type STRING en ligne de commande
-      --set-string stringArray                     définit des valeurs de type STRING en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
-      --skip-crds                                  si défini, aucun CRD ne sera installé lors d'une mise à niveau avec l'option install activée. Par défaut, les CRD sont installés s'ils ne sont pas déjà présents
-      --skip-schema-validation                     si défini, désactive la validation du schéma JSON
-      --take-ownership                             si défini, la mise à niveau ignorera la vérification des annotations helm et prendra possession des ressources existantes
-      --timeout duration                           temps d'attente pour chaque opération Kubernetes (comme les Jobs pour les hooks) (par défaut 5m0s)
-      --username string                            nom d'utilisateur du dépôt de charts où se trouve le chart demandé
-  -f, --values strings                             spécifie les valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
-      --verify                                     vérifie le paquet avant de l'utiliser
-      --version string                             spécifie une contrainte de version pour la version du chart à utiliser. Cette contrainte peut être un tag spécifique (par exemple 1.1.1) ou elle peut faire référence à une plage valide (par exemple ^2.0.0). Si cela n'est pas spécifié, la dernière version est utilisée
-      --wait                                       si défini, attend que tous les Pods, PVCs, Services, et le nombre minimum de Pods d'un Deployment, StatefulSet ou ReplicaSet soient dans un état prêt avant de marquer la release comme réussie. Attend aussi longtemps que spécifié par '--timeout'
-      --wait-for-jobs                              si défini et que '--wait' est activé, attend que tous les Jobs soient terminés avant de marquer la release comme réussie. Attend aussi longtemps que spécifié par '--timeout'
+      --reset-then-reuse-values                    Lors de la mise à niveau, réinitialise les valeurs sur celles intégrées au chart, applique les valeurs de la dernière release et fusionne toutes les valeurs à partir de la ligne de commande via --set et -f. Si '--reset-values' ou '--reuse-values' est spécifié, ceci sera ignoré
+      --reset-values                               Lors de la mise à niveau, réinitialise les valeurs à celles intégrées au chart
+      --reuse-values                               Lors de la mise à niveau, réutilise les valeurs de la dernière release et fusionne toutes les valeurs depuis la ligne de commande via '--set' et '-f'. Si '--reset-values' est spécifié, ceci sera ignoré
+      --set stringArray                            Définit des valeurs en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
+      --set-file stringArray                       Définit des valeurs depuis un fichier spécifié en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=path1,key2=path2)
+      --set-json stringArray                       Définit des valeurs JSON en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=jsonval1,key2=jsonval2)
+      --set-literal stringArray                    Définit une valeur littérale de type STRING en ligne de commande
+      --set-string stringArray                     Définit des valeurs de type STRING en ligne de commande (vous pouvez en spécifier plusieurs ou séparer les valeurs par des virgules : key1=val1,key2=val2)
+      --skip-crds                                  Si défini, aucun CRD ne sera installé lors d'une mise à niveau avec l'option install activée. Par défaut, les CRD sont installés s'ils ne sont pas déjà présents
+      --skip-schema-validation                     Si défini, désactive la validation du schéma JSON
+      --take-ownership                             Si défini, la mise à niveau ignorera la vérification des annotations helm et prendra possession des ressources existantes
+      --timeout duration                           Temps d'attente pour chaque opération Kubernetes (comme les Jobs pour les hooks) (par défaut 5m0s)
+      --username string                            Nom d'utilisateur du dépôt de charts où se trouve le chart demandé
+  -f, --values strings                             Spécifie les valeurs dans un fichier YAML ou une URL (vous pouvez en spécifier plusieurs)
+      --verify                                     Vérifie le paquet avant de l'utiliser
+      --version string                             Spécifie une contrainte de version pour la version du chart à utiliser. Cette contrainte peut être un tag spécifique (par exemple 1.1.1) ou elle peut faire référence à une plage valide (par exemple ^2.0.0). Si cela n'est pas spécifié, la dernière version est utilisée
+      --wait                                       Si défini, attend que tous les Pods, PVCs, Services, et le nombre minimum de Pods d'un Deployment, StatefulSet ou ReplicaSet soient dans un état prêt avant de marquer la release comme réussie. Attend aussi longtemps que spécifié par '--timeout'
+      --wait-for-jobs                              Si défini et que '--wait' est activé, attend que tous les Jobs soient terminés avant de marquer la release comme réussie. Attend aussi longtemps que spécifié par '--timeout'
 ```
 
 ### Options héritées des commandes parentes
 
 ```
-      --burst-limit int                 limite de régulation côté client (par défaut 100)
-      --debug                           active la sortie détaillée
-      --kube-apiserver string           adresse et port du serveur API Kubernetes
-      --kube-as-group stringArray       groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
-      --kube-as-user string             nom d'utilisateur à utiliser pour l'opération
-      --kube-ca-file string             fichier de l'autorité de certification pour la connexion au serveur API Kubernetes
-      --kube-context string             nom du contexte kubeconfig à utiliser
-      --kube-insecure-skip-tls-verify   si true, le certificat du serveur API Kubernetes ne sera pas vérifié. Cela rendra vos connexions HTTPS non sécurisées
-      --kube-tls-server-name string     nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom d'hôte utilisé pour contacter le serveur sera utilisé
-      --kube-token string               jeton bearer utilisé pour l'authentification
-      --kubeconfig string               chemin vers le fichier de configuration kubeconfig
-  -n, --namespace string                namespace à utiliser pour la requête
-      --qps float32                     requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
-      --registry-config string          chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
-      --repository-cache string         chemin vers le répertoire contenant les index de dépôts mis en cache (par défaut "~/.cache/helm/repository")
-      --repository-config string        chemin vers le fichier contenant les noms et URLs des dépôts (par défaut "~/.config/helm/repositories.yaml")
+      --burst-limit int                 Limite de régulation côté client (par défaut 100)
+      --debug                           Active la sortie détaillée
+      --kube-apiserver string           Adresse et port du serveur API Kubernetes
+      --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
+      --kube-as-user string             Nom d'utilisateur à utiliser pour l'opération
+      --kube-ca-file string             Fichier de l'autorité de certification pour la connexion au serveur API Kubernetes
+      --kube-context string             Nom du contexte kubeconfig à utiliser
+      --kube-insecure-skip-tls-verify   Si true, le certificat du serveur API Kubernetes ne sera pas vérifié. Cela rendra vos connexions HTTPS non sécurisées
+      --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom d'hôte utilisé pour contacter le serveur sera utilisé
+      --kube-token string               Jeton bearer utilisé pour l'authentification
+      --kubeconfig string               Chemin vers le fichier de configuration kubeconfig
+  -n, --namespace string                Namespace à utiliser pour la requête
+      --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
+      --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
+      --repository-cache string         Chemin vers le répertoire contenant les index de dépôts mis en cache (par défaut "~/.cache/helm/repository")
+      --repository-config string        Chemin vers le fichier contenant les noms et URLs des dépôts (par défaut "~/.config/helm/repositories.yaml")
 ```
 
 ### Voir également
 
 * [helm](./helm.md)	 - Le gestionnaire de paquets Helm pour Kubernetes.
 
-###### Auto generated by spf13/cobra on 14-Jan-2026
+###### Auto généré par spf13/cobra le 14-Jan-2026
