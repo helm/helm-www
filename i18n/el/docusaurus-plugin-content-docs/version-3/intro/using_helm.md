@@ -23,7 +23,7 @@ Homebrew formula, ένα Apt dpkg ή ένα Yum RPM αρχείο.
 [Βάση Δεδομένων Πακέτων Fedora](https://src.fedoraproject.org/), αλλά για
 πακέτα Kubernetes.
 
-Ένα *Release* είναι μια instance ενός chart που εκτελείται σε ένα Kubernetes
+Ένα *Release* είναι μια υπόσταση ενός chart που εκτελείται σε ένα Kubernetes
 cluster. Ένα chart μπορεί συχνά να εγκατασταθεί πολλές φορές στο ίδιο cluster.
 Και κάθε φορά που εγκαθίσταται, δημιουργείται ένα νέο _release_. Σκεφτείτε ένα
 MySQL chart. Αν θέλετε δύο βάσεις δεδομένων στο cluster σας, μπορείτε να
@@ -42,7 +42,7 @@ _repositories_ charts του Helm.
 αναζήτηση σε δύο διαφορετικούς τύπους πηγών:
 
 - Η `helm search hub` αναζητά στο [Artifact Hub](https://artifacthub.io), το
-  οποίο περιέχει helm charts από δεκάδες διαφορετικά repositories.
+  οποίο παραθέτει helm charts από δεκάδες διαφορετικά repositories.
 - Η `helm search repo` αναζητά στα repositories που έχετε προσθέσει στον τοπικό
   σας helm client (με την εντολή `helm repo add`). Αυτή η αναζήτηση γίνεται σε
   τοπικά δεδομένα και δεν απαιτείται σύνδεση δημόσιου δικτύου.
