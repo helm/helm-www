@@ -65,6 +65,6 @@ helm package [CHART_PATH] [...] [flags]
 
 ### Voir également
 
-* [helm](/helm/helm.md) - Le gestionnaire de package Helm pour Kubernetes.
+* [helm](./helm.md) - Le gestionnaire de package Helm pour Kubernetes.
 
 ###### Auto généré par spf13/cobra le 14-Jan-2026

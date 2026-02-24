@@ -132,7 +132,7 @@ Changements de `v1` à `v2` :
 
 - Un champ `dependencies` définissant les dépendances du chart, qui étaient
   situées dans un fichier séparé `requirements.yaml` pour les charts `v1`
-  (voir [Dépendances des charts](#dépendances-des-charts)).
+  (voir [Dépendances des charts](#dependances-des-charts)).
 - Le champ `type`, distinguant les charts d'application et les charts de type
   library (voir [Types de charts](#types-de-charts)).
 
