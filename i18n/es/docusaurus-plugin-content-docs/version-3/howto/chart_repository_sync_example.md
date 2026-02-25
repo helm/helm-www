@@ -1,6 +1,6 @@
 ---
-title: "Sincronizar tu Repositorio de Charts"
-description: "Describe cómo sincronizar tus repositorios de charts locales y remotos."
+title: "Sincronizar su Repositorio de Charts"
+description: "Describe cómo sincronizar sus repositorios de charts locales y remotos."
 sidebar_position: 2
 ---
 
@@ -39,11 +39,11 @@ $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googl
 ```
 
 Esto generará un archivo index.yaml actualizado y lo colocará en el directorio
-`fantastic-charts /`.
+`fantastic-charts/`.
 
 ## Sincronice sus repositorios de charts locales y remotos
 
-Sube el contenido del directorio a tu bucket de GCS ejecutando `scripts/sync-repo.sh`
+Suba el contenido del directorio a su bucket de GCS ejecutando `scripts/sync-repo.sh`
 y pase el nombre del directorio local y el nombre del bucket de GCS.
 
 Por ejemplo:
@@ -69,10 +69,10 @@ Uploading   gs://fantastic-charts/index.yaml:                    347 B/347 B
 Congratulations your remote chart repository now matches the contents of fantastic-charts/
 ```
 
-## Actualizar su repositorio de chart
+## Actualizar su repositorio de charts
 
-Querrá mantener una copia local del contenido de su repositorio de chart o usar
-`gsutil rsync` para copiar el contenido de su repositorio de chart remoto a un
+Querrá mantener una copia local del contenido de su repositorio de charts o usar
+`gsutil rsync` para copiar el contenido de su repositorio de charts remoto a un
 directorio local.
 
 Por ejemplo:
