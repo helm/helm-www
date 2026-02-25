@@ -5,7 +5,7 @@ télécharger les informations détaillées d'une version donnée
 
 ### Synopsis
 
-Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilisées pour obtenir des informations détaillées sur la version, cela inclus :
+Cette commande se compose de plusieurs sous-commandes qui peuvent être utilisées pour obtenir des informations détaillées sur la version, cela inclut :
 
 - Les valeurs utilisées pour générer la version
 - Le fichier manifeste généré
@@ -23,18 +23,18 @@ Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilis�
 ### Options héritées des commandes parents
 
 ```
-      --burst-limit int                 Limite coté client de la bande passante (par défaut 100)
+      --burst-limit int                 Limite côté client de la bande passante (par défaut 100)
       --debug                           Active la sortie détaillée
       --kube-apiserver string           L'adresse et le port API du serveur Kubernetes
       --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
-      --kube-as-user string             Nom d'utilisateur à utiliser pour l'operation
+      --kube-as-user string             Nom d'utilisateur à utiliser pour l'opération
       --kube-ca-file string             Le fichier de l'autorité de certification pour la connexion à l'API Kubernetes
       --kube-context string             Nom du contexte kubeconfig à utiliser
       --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela fera les connexions HTTPS non sûres
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
@@ -48,5 +48,5 @@ Cette commandes se compose de plusieurs sous-commandes qui peuvent être utilis�
 * [helm get hooks](/helm/helm_get_hooks.md) - Télécharge tous les hooks pour une version donnée
 * [helm get manifest](/helm/helm_get_manifest.md) - Télécharge le manifeste d'une version donnée
 * [helm get metadata](/helm/helm_get_metadata.md) - Cette commande récupère les métadonnées d'une version donnée
-* [helm get notes](/helm/helm_get_notes.md) -Télécharge les notes d'une version donnée
+* [helm get notes](/helm/helm_get_notes.md) - Télécharge les notes d'une version donnée
 * [helm get values](/helm/helm_get_values.md) - Télécharge le fichier valeurs d'une version donnée
