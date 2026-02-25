@@ -30,7 +30,7 @@ Requisitos previos:
 - Un par de claves PGP válido en formato binario (no blindado ASCII)
 - La herramienta de línea de comandos `helm`
 - Herramientas de línea de comandos de GnuPG (opcional)
-- Herramientas de línea de comando de base de claves (opcional)
+- Herramientas de línea de comandos de Keybase (opcional)
 
 **NOTA:** Si su clave privada PGP tiene una frase de contraseña, se le pedirá que
 ingrese esa frase de contraseña para cualquier comando que admita la opción `--sign`.
@@ -55,7 +55,7 @@ clave deseada (en la salida de `gpg --list-keys`), por ejemplo, el nombre o el
 correo electrónico. **La huella _no_ se puede utilizar.**
 
 **SUGERENCIA:** para los usuarios de GnuPG, su anillo de claves secreto está en
-`~ /.gnupg /secring.gpg`. Puede usar `gpg --list-secret-keys` para enumerar las
+`~/.gnupg/secring.gpg`. Puede usar `gpg --list-secret-keys` para enumerar las
 claves que tiene.
 
 **Advertencia:** GnuPG v2 almacena su llavero secreto usando un nuevo formato
@@ -63,6 +63,7 @@ claves que tiene.
 comando para convertir su llavero al formato gpg heredado:
 
 ```console
+$ gpg --export >~/.gnupg/pubring.gpg
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
@@ -108,8 +109,8 @@ Requisitos previos:
 
 #### Firma de paquetes
 
-El primer paso es importar las claves de la base de claves a su anillo de
-claves GnuPG local:
+El primer paso es importar sus claves de Keybase a su anillo de claves
+GnuPG local:
 
 ```console
 $ keybase pgp export -s | gpg --import
@@ -237,7 +238,7 @@ comprobación, un mapa de nombres de archivo a resúmenes SHA-256 del contenido 
 ese archivo en el momento del empaquetado.
 
 El bloque de firma es una firma PGP estándar, que proporciona [resistencia a la
-manipulación(https://www.rossde.com/PGP/pgp_signatures.html).
+manipulación](https://www.rossde.com/PGP/pgp_signatures.html).
 
 ## Repositorios de Charts
 
@@ -254,6 +255,16 @@ si existe, DEBE ser accesible en `https://example.com/charts/mychart-1.2.3.tgz.p
 Desde la perspectiva del usuario final, `helm install --verify myrepo/mychart-1.2.3`
 debería resultar en la descarga tanto del chart como del archivo de procedencia
 sin configuración o acción adicional del usuario.
+
+### Firmas en registros basados en OCI
+
+Al publicar charts en un [registro basado en OCI](/topics/registries.md), se puede
+utilizar el [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/) para
+publicar la procedencia en [sigstore](https://sigstore.dev/). [Como se describe en la
+documentación](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md), el
+proceso de crear la procedencia y firmar con una clave GPG es común, pero el comando
+`helm sigstore upload` se puede utilizar para publicar la procedencia en un registro
+de transparencia inmutable.
 
 ## Establecimiento de Autoridad y Autenticidad
 
