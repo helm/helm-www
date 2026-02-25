@@ -11,8 +11,7 @@ sidebar_position: 5
 ## 개요
 
 무결성은 차트를 출처기록과 비교하여 설정된다. 출처 레코드는 
-패키지 차트와 함께 저장되는 _출처 파일_에 저장되며 패키지 
-차트와 함께 저장된다. 예를 들어 차트 이름이 `myapp-1.2.3.tgz` 인 경우 
+패키지된 차트와 함께 저장되는 _출처 파일_에 저장된다. 예를 들어 차트 이름이 `myapp-1.2.3.tgz` 인 경우 
 출처 파일은 `myapp-1.2.3.tgz.prov` 이 된다.
 
 출처 파일은 패키징 시 (`helm package --sign ...`) 에 생성되며, 여러 가지 명령어로
@@ -26,7 +25,7 @@ sidebar_position: 5
 전제 조건:
 
 - (ASCII-armored가 아닌) 바이너리 형식의 유효한 PGP 키페어
-- `헬름` 명령줄 도구
+- `helm` 명령줄 도구
 - GnuPG 명령줄 도구 (선택사항)
 - 키베이스(Keybase) 명령줄 도구 (선택사항)
 
@@ -88,7 +87,7 @@ $ helm install --generate-name --verify mychart-0.1.0.tgz
 ```
 
 서명된 차트와 연결된 공개키와 포함된 키링이 기본 위치에 없으면 
-`helm pakcage` 예제에서와 같이 사용자가 `--keyring PATH`로
+`helm package` 예제에서와 같이 사용자가 `--keyring PATH`로
 키링의 위치를 지정해야 할 수 있다.
 
 검증에 실패하면 차트가 렌더링되기 전에 설치가 
