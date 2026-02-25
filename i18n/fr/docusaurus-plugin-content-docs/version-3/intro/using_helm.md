@@ -10,24 +10,24 @@ Si vous souhaitez simplement exécuter quelques commandes rapides, vous pouvez c
 
 ## Trois grands concepts
 
-Un *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule pour Homebrew, d'un dpkg pour Apt , ou d'un fichier RPM pour Yum.
+Un *Chart* est un package Helm. Il contient toutes les définitions des ressources nécessaires pour exécuter une application, un outil ou un service à l'intérieur d'un cluster Kubernetes. Voyez cela comme l'équivalent Kubernetes d'une formule Homebrew, d'un paquet dpkg Apt, ou d'un fichier RPM Yum.
 
-Un *Dépot* est le lieu où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de données de packages Fedora](https://src.fedoraproject.org/), mais pour les packages de Kubernetes.
+Un *Dépôt* est l'endroit où les charts peuvent être collectés et partagés. C'est comme les [archives CPAN de Perl](https://www.cpan.org) ou la [base de données de paquets Fedora](https://src.fedoraproject.org/), mais pour les packages Kubernetes.
 
 Une *Release* est une instance d'un chart s'exécutant dans un cluster Kubernetes. Un chart peut être installé plusieurs fois dans le même cluster. Et à chaque fois qu'il est à nouveau installé, une nouvelle _release_ est créé. Prenons un chart MySQL, si vous voulez deux bases de données s'exécutant dans votre cluster, vous pouvez installer ce chart deux fois. Chacune aura sa propre _release_, qui à son tour aura son propre _release name_.
 
 Maintenant que vous maîtrisez ces concepts, nous pouvons aborder Helm de la manière suivante :
 
-Helm installe des _charts_ dans Kubernetes, créant une nouvelle _release_ pour chaque installation. Et pour trouver de nouveaux charts, vous pouvez rechercher des _repositories_ (dépots) de charts Helm.
+Helm installe des _charts_ dans Kubernetes, créant une nouvelle _release_ pour chaque installation. Et pour trouver de nouveaux charts, vous pouvez rechercher des _repositories_ (dépôts) de charts Helm.
 
 ## 'helm search': La recherche de charts
 
 Helm est livré avec une puissante commande de recherche. Elle peut être utilisée pour rechercher deux différents types de ressources :
 
-- `helm search hub` recherche sur le [Artifact Hub](https://artifacthub.io), qui liste les charts Helm depuis une douzaines de dépôts.
-- `helm search repo` recherche sur les dépots que vous avez ajouté a votre config (via `helm repo add`). Cette recherche est faite sur le réseau privé et ne nécessite pas de connexion à internet.
+- `helm search hub` recherche sur [Artifact Hub](https://artifacthub.io), qui liste les charts Helm provenant de dizaines de dépôts différents.
+- `helm search repo` recherche dans les dépôts que vous avez ajoutés à votre configuration locale (via `helm repo add`). Cette recherche s'effectue localement et ne nécessite pas de connexion internet.
 
-Vous pouvez trouver un chart sur les dépôts publique avec la commande `helm search hub`:
+Vous pouvez trouver des charts publiquement disponibles avec la commande `helm search hub` :
 
 ```console
 $ helm search hub wordpress
@@ -39,7 +39,11 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A 
 
 La commande ci-dessus recherche toutes les charts `wordpress` sur Artifact Hub.
 
-En utilisant `helm search repo`, vous pouvez trouver les noms des charts dans les dépots que vous avez ajouté manuellement :
+Sans filtre, `helm search hub` affiche tous les charts disponibles.
+
+`helm search hub` expose l'URL vers l'emplacement sur [artifacthub.io](https://artifacthub.io/) mais pas l'URL réelle du dépôt Helm. `helm search hub --list-repo-url` expose l'URL réelle du dépôt Helm, ce qui est pratique lorsque vous souhaitez ajouter un nouveau dépôt : `helm repo add [NOM] [URL]`.
+
+En utilisant `helm search repo`, vous pouvez trouver les noms des charts dans les dépôts que vous avez ajoutés manuellement :
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -54,7 +58,7 @@ brigade/brigade-project       1.0.0         v1.0.0      Create a Brigade project
 brigade/kashti                0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-La commande de recherche de Helm utilise un algorithme de correspondance de chaîne de charactères, vous pouvez donc saisir des mots ou une partie de phrase :
+La commande de recherche de Helm utilise un algorithme de correspondance de chaîne de caractères, vous pouvez donc saisir des mots ou des parties de mots :
 
 ```console
 $ helm search repo kash
@@ -106,7 +110,46 @@ Le chart `wordpress` est maintenant installé. Notez que l'installation d'un cha
 
 Lors de l'installation, le client `helm` affichera des informations utiles sur les ressources qui ont été créées, l'état de la version et si il y a des étapes de configurations supplémentaires que vous pouvez ou devez suivre.
 
-Helm n'attend pas que toutes les ressources soient en cours d'exécution avant de quitter. De nombreuses charts nécessitent des images Docker de plus de 600 Mo et peuvent prendre du temps à s'installer dans le cluster.
+Helm installe les ressources dans l'ordre suivant :
+
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
+
+Helm n'attend pas que toutes les ressources soient en cours d'exécution avant de quitter. De nombreux charts nécessitent des images Docker de plus de 600 Mo et peuvent prendre du temps à s'installer dans le cluster.
 
 Pour suivre l'état d'une release ou pour relire les informations de configuration, vous pouvez utiliser `helm status`:
 
@@ -147,8 +190,7 @@ La commande ci-dessus montre l'état actuel de votre release.
 
 ### Personnalisation d'un chart avant son installation
 
-L'installation comme nous l'avons fait ici n'utilisera que les options de configuration par défaut. Il peut arriver que vous souhaitiez personnaliser le chart pour utiliser une
-configuration personalisée.
+L'installation comme nous l'avons fait ici n'utilisera que les options de configuration par défaut. Il peut arriver que vous souhaitiez personnaliser le chart pour utiliser une configuration personnalisée.
 
 Pour voir quelles options sont configurables sur un chart, utilisez `helm show values`:
 ```console
@@ -187,9 +229,9 @@ Il existe deux façons de transmettre les données de configuration lors de l'in
 - `--values` (ou `-f`): Spécifie un fichier YAML personnalisé. Vous pouvez spécifier plusieurs fichiers, celui le plus à droite prévaudra.
 - `--set`: Spécifie une valeur personnalisée en ligne de commande.
 
-Si les deux paramètes sont utilisés, les valeurs de `--set` sont fusionnés dans ` --values` avec une priorité plus élevée. Les remplacements spécifiés avec `--set` sont conservés dans un fichier ConfigMap.
-Les valeurs qui ont été `--set` peuvent être visualisées pour une release donnée avec ` helm get values <nom-de-release> `. 
-Les valeurs qui ont été `--set` peuvent être effacées en exécutant `helm upgrade` avec ` --reset-values` spécifié.
+Si les deux sont utilisés, les valeurs de `--set` sont fusionnées dans `--values` avec une priorité plus élevée. Les remplacements spécifiés avec `--set` sont conservés dans un Secret.
+Les valeurs définies avec `--set` peuvent être visualisées pour une release donnée avec `helm get values <nom-de-release>`.
+Les valeurs définies avec `--set` peuvent être effacées en exécutant `helm upgrade` avec `--reset-values` spécifié.
 
 #### Le format et les limites de `--set`
 
@@ -223,6 +265,23 @@ name:
   - c
 ```
 
+Certaines clés peuvent être définies à `null` ou à un tableau vide `[]`. Par exemple, `--set name=[],a=null` transforme :
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+en :
+
+```yaml
+name: []
+a: null
+```
+
 Depuis Helm 2.5.0, il est possible d'accéder aux éléments d'une liste en utilisant l'index du tableau.  
 Exemple : `--set servers[0].port=80` correspond à :
 
@@ -231,7 +290,7 @@ servers:
   - port: 80
 ```
 
-Plusieurs valeurs peuvent être définit de cette manière.  
+Plusieurs valeurs peuvent être définies de cette manière.
 La ligne suivante `--set servers[0].port=80,servers[0].host=example` devient:
 
 ```yaml
@@ -257,12 +316,12 @@ nodeSelector:
 
 Les structures de données profondément imbriquées peuvent être difficiles à exprimer en utilisant `--set`. Les concepteurs de charts sont encouragés à utiliser un fichier de valeurs au format YAML : ` values.yaml` lorsqu'il y a beaucoup de valeurs à configurer (en savoir plus sur [les fichiers de valeurs](/chart_template_guide/values_files.md)).
 
-### Autres methodes d'installations
+### Autres méthodes d'installation
 
 La commande `helm install` peut installer un package depuis différentes sources:
 
-- Un dépot de charts (Comme vu précédemment)
-- Une archive local d'un chart (`helm install foo foo-0.1.1.tgz`)
+- Un dépôt de charts (comme vu précédemment)
+- Une archive locale d'un chart (`helm install foo foo-0.1.1.tgz`)
 - Un dossier contenant un chart décompressé (`helm install foo path/to/foo`)
 - Une URL pointant vers un chart (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
@@ -363,7 +422,7 @@ Vous pouvez bien entendu ajouter de nouveaux dépôts avec `helm repo add`:
 $ helm repo add dev https://example.com/dev-charts
 ```
 
-Étant donné que les dépôts de charts changent fréquemment, vous pouvez à tout moment vous assurer que dépot Helm est à jour en exécutant `helm repo update`.
+Étant donné que les dépôts de charts changent fréquemment, vous pouvez à tout moment vous assurer que votre client Helm est à jour en exécutant `helm repo update`.
 
 Les dépôts peuvent être supprimés avec `helm repo remove`.
 
@@ -376,9 +435,9 @@ $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-Il y a maintenant un chart dans `./deis-workflow`. Vous pouvez le modifier et créer vôtre modèles personalisé.
+Il y a maintenant un chart dans `./deis-workflow`. Vous pouvez le modifier et créer vos propres templates.
 
-Lorsque vous modifiez votre chart, vous pouvez vérifier la syntaxe en exécutant `helm lint`.
+Lorsque vous modifiez votre chart, vous pouvez valider sa syntaxe en exécutant `helm lint`.
 
 Quand vous aurez besoin de packager le chart pour la distribution, vous pourrez exécuter `helm package`:
 
