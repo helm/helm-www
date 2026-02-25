@@ -7,7 +7,7 @@ gestion des dépendances d'un chart
 
 Gère les dépendances d'un chart.
 
-Les charts Helm stockent leurs dépendances dans le dossier `charts/`. Pour les développeurs de chart, Il est souvent plus facile de gérer les dépendances dans le fichier `Chart.yaml` qui déclare toutes les dépendances.
+Les charts Helm stockent leurs dépendances dans le dossier `charts/`. Pour les développeurs de chart, il est souvent plus facile de gérer les dépendances dans le fichier `Chart.yaml` qui déclare toutes les dépendances.
 
 Les commandes de dépendance fonctionnent sur ce fichier, ce qui facilite la synchronisation  entre les dépendances souhaitées et les dépendances réelles stockées dans le répertoire `charts/`.
 
@@ -23,9 +23,9 @@ Par exemple, ce fichier Chart.yaml déclare deux dépendances :
       repository: "https://another.example.com/charts"
 
 
-Le 'name' doit être le nom d'un chart, où ce nom doit correspondre au nom dans le fichier `Chart.yaml` de ce chart.
+Le champ `name` doit correspondre au nom du chart tel qu'indiqué dans le fichier `Chart.yaml` de ce chart.
 
-Le champ 'version'  doit contenir une version sémantique ou une plage de version. 
+Le champ `version` doit contenir une version sémantique ou une plage de versions.
 
 L'URL du 'repository' doit pointer vers un dépôt de Chart. Helm s'attend à ce qu'en ajoutant `/index.yaml` à l'URL, il puisse récupérer l'index du dépôt de chart. Note : 'repository' peut être un alias. L'alias doit commencer par `alias:` ou `@`.
 
@@ -48,18 +48,18 @@ Si le chart dépendant est récupéré localement, il n'est pas nécessaire d'aj
 ### Options héritées des commandes parents
 
 ```
-      --burst-limit int                 Limite coté client de la bande passante (par défaut 100)
+      --burst-limit int                 Limite côté client de la bande passante (par défaut 100)
       --debug                           Active la sortie détaillée
       --kube-apiserver string           L'adresse et le port API du serveur Kubernetes
       --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
-      --kube-as-user string             Nom d'utilisateur à utiliser pour l'operation
+      --kube-as-user string             Nom d'utilisateur à utiliser pour l'opération
       --kube-ca-file string             Le fichier de l'autorité de certification pour la connexion à l'API Kubernetes
       --kube-context string             Nom du contexte kubeconfig à utiliser
-      --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela fera les connexions HTTPS non sûres
+      --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela rendra les connexions HTTPS non sécurisées
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
