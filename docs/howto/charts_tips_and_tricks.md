@@ -305,3 +305,18 @@ existing release will be upgraded.
 ```console
 $ helm upgrade --install <release name> --values <values file> <chart directory>
 ```
+
+## Create Reproducible Chart Builds
+
+Set the `SOURCE_DATE_EPOCH` environment variable to a Unix timestamp before
+running `helm package` to create reproducible chart archives. The archive uses
+that timestamp for file modification times instead of the current time, so
+packaging the same chart multiple times produces identical archives with the
+same checksum.
+
+```console
+$ SOURCE_DATE_EPOCH=$(date +%s) helm package mychart
+```
+
+For more information about `SOURCE_DATE_EPOCH` and reproducible builds, see
+[reproducible-builds.org](https://reproducible-builds.org/docs/source-date-epoch/).
