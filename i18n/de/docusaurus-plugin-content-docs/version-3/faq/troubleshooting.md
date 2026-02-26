@@ -7,21 +7,15 @@ sidebar_position: 4
 
 ### Ich bekomme eine Warnung "Unable to get an update from the "stable" chart repository"
 
-Starten Sie `helm repo list`. Wenn Ihr `stable` Repository zu `storage.googleapis.com` zeigt,
-benötigen Sie eine Aktualisierung. Am 13.11.2020 wurde das Helm Chart Verzeichnis
-[unsupported](https://github.com/helm/charts#deprecation-timeline), nachdem es ein Jahr lang
-als veraltet gekennzeichnet wurde. Ein Archiv ist verfügbar auf
-`https://charts.helm.sh/stable`, aber es bekommt keine Aktualisierungen mehr.
+Führen Sie `helm repo list` aus. Wenn Ihr `stable` Repository auf eine `storage.googleapis.com` URL zeigt, müssen Sie dieses Repository aktualisieren. Am 13.11.2020 wurde das Helm Charts Repository [nicht mehr unterstützt](https://github.com/helm/charts#deprecation-timeline), nachdem es ein Jahr lang als veraltet gekennzeichnet war. Ein Archiv ist verfügbar unter `https://charts.helm.sh/stable`, erhält aber keine Aktualisierungen mehr.
 
-Sie können folgendes tun, um Ihr Repository zu reparieren:
+Mit folgendem Befehl können Sie Ihr Repository reparieren:
 
 ```console
 $ helm repo add stable https://charts.helm.sh/stable --force-update  
 ```
 
-Dasselbe gilt für das `incubator` Repository, dessen Archiv verfügbar ist bei
-https://charts.helm.sh/incubator.
-Zur Reparatur können Sie folgendes Kommando verwenden:
+Dasselbe gilt für das `incubator` Repository, dessen Archiv unter https://charts.helm.sh/incubator verfügbar ist. Zur Reparatur können Sie folgenden Befehl verwenden:
 
 ```console
 $ helm repo add incubator https://charts.helm.sh/incubator --force-update  
@@ -29,15 +23,15 @@ $ helm repo add incubator https://charts.helm.sh/incubator --force-update
 
 ### Ich bekomme die Warnung 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'
 
-Das alte Google Helm Chart Repository wurde ersetzt durch ein neues.
+Das alte Google Helm Chart Repository wurde durch ein neues Helm Chart Repository ersetzt.
 
-Starten Sie folgendes Kommando, um das dauerhaft zu beheben:
+Führen Sie folgenden Befehl aus, um das dauerhaft zu beheben:
 
 ```console
 $ helm repo add stable https://charts.helm.sh/stable --force-update  
 ```
 
-Wenn Sie einen ähnlichen Fehler für `incubator` bekommen, machen Sie folgendes:
+Wenn Sie einen ähnlichen Fehler für `incubator` bekommen, führen Sie diesen Befehl aus:
 
 ```console
 $ helm repo add incubator https://charts.helm.sh/incubator --force-update  
@@ -45,12 +39,7 @@ $ helm repo add incubator https://charts.helm.sh/incubator --force-update
 
 ### Wenn ich ein Helm Repo hinzufüge, bekomme ich den Fehler 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'
 
-Das Helm Chart Repository wird nach [einem Jahr Abschaltperiode](https://github.com/helm/charts#deprecation-timeline)
-nicht mehr unterstützt.
-Archive für diese Verzeichnisse sind verfügbar unter `https://charts.helm.sh/stable`
-und `https://charts.helm.sh/incubator`, aber es werden keine Aktualisierungen mehr
-hinzugefügt. Das Kommando `helm repo add` wird das Hinzufügen der alten URLs nicht
-erlauben, ausser man verwendet die Option `--use-deprecated-repos`.
+Die Helm Chart Repositories werden nach [einer einjährigen Übergangsphase](https://github.com/helm/charts#deprecation-timeline) nicht mehr unterstützt. Archive für diese Repositories sind unter `https://charts.helm.sh/stable` und `https://charts.helm.sh/incubator` verfügbar, erhalten jedoch keine Aktualisierungen mehr. Der Befehl `helm repo add` erlaubt das Hinzufügen der alten URLs nicht, außer Sie verwenden die Option `--use-deprecated-repos`.
 
 ### Auf GKE (Google Container Engine) bekomme ich "No SSH tunnels currently open"
 
@@ -58,82 +47,86 @@ erlauben, ausser man verwendet die Option `--use-deprecated-repos`.
 Error: Error forwarding ports: error upgrading connection: No SSH tunnels currently open. Were the targets able to accept an ssh-key for user "gke-[redacted]"?
 ```
 
-Eine andere Variante des Fehler ist:
+Eine andere Variante dieser Fehlermeldung ist:
 
 ```
 Unable to connect to the server: x509: certificate signed by unknown authority
 ```
 
-Das Problem ist, dass Ihre lokale Kubernetes Konfigurationsdatei die richtigen
-Anmeldeinformationen beinhalten muss.
+Das Problem ist, dass Ihre lokale Kubernetes Konfigurationsdatei die richtigen Anmeldeinformationen enthalten muss.
 
-Wenn Sie in GKE einen Cluster erstellen, werden Sie die Anmeldeinformation incl.
-SSL Zertifikate bekommen. Diese müssen in einer Kubernetes Konfigurationsdatei
-gespeichert werden (Default: `~/.kube/config`), sodass `kubectl` und `helm`
-darauf zugreifen können.
+Wenn Sie in GKE einen Cluster erstellen, erhalten Sie Anmeldeinformationen, einschließlich SSL-Zertifikate und Zertifizierungsstellen. Diese müssen in einer Kubernetes Konfigurationsdatei (Standard: `~/.kube/config`) gespeichert werden, damit `kubectl` und `helm` darauf zugreifen können.
 
-### Nach der Migration von Helm 2 zeigt `helm list` nur sehr wenige oder gar keine Versionen an
+### Nach der Migration von Helm 2 zeigt `helm list` nur wenige oder gar keine Releases an
 
-Es scheint so, dass Sie einige Fakten übersehen haben, dass Helm 3
-nur Versionen im Skope des Cluster Namespaces anzeigt. Das heisst, dass
-Sie an allen Kommandos, die eine Version betreffen, diese Optionen
-hinzufügen müssen:
+Wahrscheinlich haben Sie übersehen, dass Helm 3 nun Cluster-Namespaces verwendet, um Releases zu gruppieren. Das bedeutet, dass Sie bei allen Befehlen, die sich auf ein Release beziehen, eine der folgenden Optionen verwenden müssen:
 
-* im derzeitigen Namespace mit aktivem Kontext bleiben (wie beschrieben im
-  Kommando `kubectl config view --minify`),
-* den richtigen Namespace angeben mit der Option `--namespace`/`-n` oder
-* für das `helm list` Kommando die Option `--all-namespaces`/`-A` angeben
+* den aktuellen Namespace im aktiven Kubernetes-Kontext verwenden (wie vom Befehl `kubectl config view --minify` beschrieben),
+* den korrekten Namespace mit der Option `--namespace`/`-n` angeben, oder
+* beim `helm list` Befehl die Option `--all-namespaces`/`-A` verwenden
 
-Dies wird zu allen Kommandos wie `helm ls`, `helm uninstall` und allen anderen
-`helm` Befehlen referenziert zu einer Version hinzugefügt.
+Dies gilt für `helm ls`, `helm uninstall` und alle anderen `helm` Befehle, die sich auf ein Release beziehen.
 
-### In macOS kann man auf die Dateie `/etc/.mdns_debug` zugreifen. Warum?
+### In macOS wird auf die Datei `/etc/.mdns_debug` zugegriffen. Warum?
 
-Wir wissen davon, dass Helm auf macOS versucht, auf eine Datei namens
-`/etc/.mdns_debug` zuzugreifen. Wenn die Datei existiert, hält Helm
-ein Dateihandle offen, während es ausgeführt wird.
+Wir wissen, dass Helm auf macOS versucht, auf eine Datei namens `/etc/.mdns_debug` zuzugreifen. Wenn die Datei existiert, hält Helm ein Dateihandle offen, während es ausgeführt wird.
 
-Das wird durch die macOS MDNS Bibliothek verursacht. Es erwartet, dass die
-Datei zur Fehlersuche geladen wird (wenn verfügbar). Das Dateihandle sollte
-nicht offen gehalten werden und der Fehler wurde bei Apple gemeldet.
-Der Fehler liegt an macOS und nicht Helm.
+Dies wird durch die macOS MDNS-Bibliothek verursacht. Sie versucht, diese Datei zu laden, um Debug-Einstellungen zu lesen (falls aktiviert). Das Dateihandle sollte eigentlich nicht offen gehalten werden, und dieses Problem wurde an Apple gemeldet. Es ist jedoch macOS und nicht Helm, das dieses Verhalten verursacht.
 
-Wenn Sie nicht möchten, dass Helm die Datei lädt, könnten Sie Helm selber
-übersetzen als statische Bibliothek, dass das Hostnetzwerk nicht benutzt.
-Wenn Sie das tun, wird sich die Dateigrösse von Helm stark vergrössern, aber
-Sie sind das Problem los.
+Wenn Sie nicht möchten, dass Helm diese Datei lädt, können Sie Helm möglicherweise selbst als statische Bibliothek kompilieren, die den Host-Netzwerkstack nicht verwendet. Dadurch wird die Binärgröße von Helm zunehmen, aber die Datei wird nicht mehr geöffnet.
 
-Der Fehler war ursächlich als Sicherheitsproblem gemeldet. Aber es hat sich
-mittlerweile herausgestellt, dass es kein Problem darstellt.
+Dieses Problem wurde ursprünglich als potenzielles Sicherheitsproblem gemeldet. Es wurde jedoch festgestellt, dass dieses Verhalten keine Schwachstelle oder Sicherheitslücke darstellt.
 
-### helm repo add schlägt fehl, wenn es schon mal benutzt war
+### helm repo add schlägt fehl, obwohl es früher funktioniert hat
 
-In Helm 3.3.1 und davor gab das Kommando `helm repo add <reponame> <url>`
-keine Ausgabe, wenn Sie versucht haben, dass Verzeichnis hinzuzufügen,
-wenn es schon vorhanden war. Die Option
-`--no-update` würde eine Fehlermeldung ausgeben, wenn das Verzeichnis
-schon registriert war.
+In Helm 3.3.1 und früher gab der Befehl `helm repo add <reponame> <url>` keine Ausgabe, wenn Sie versuchten, ein bereits existierendes Repository hinzuzufügen. Die Option `--no-update` hätte einen Fehler ausgelöst, wenn das Repository bereits registriert war.
 
-In Helm 3.3.2 und davor gibt es beim Versuch das Verzeichnis hinzuzufügen einen
-Fehler:
+In Helm 3.3.2 und später führt der Versuch, ein existierendes Repository hinzuzufügen, zu einem Fehler:
 
 `Error: repository name (reponame) already exists, please specify a different name`
 
-Das Standardverhalten ist jetzt umgekehrt. `--no-update` wird jetzt ignoriert,
-wenn Sie ein existierendes Verzeichnis ersetzen (überschreiben) wollen.
-Sie können die Option `--force-update` verwenden.
+Das Standardverhalten ist nun umgekehrt. `--no-update` wird jetzt ignoriert. Wenn Sie ein existierendes Repository ersetzen (überschreiben) möchten, können Sie die Option `--force-update` verwenden.
 
-Das ist wegen einer unterbrochenden Änerung für ein Sicherheitsupdate wie
-erklärt ist in [Helm 3.3.2 release notes](https://github.com/helm/helm/releases/tag/v3.3.2).
+Dies ist auf eine Breaking Change für ein Sicherheitsupdate zurückzuführen, wie in den [Helm 3.3.2 Release Notes](https://github.com/helm/helm/releases/tag/v3.3.2) erklärt wird.
 
-### Kubernetes Programmprotokoll aktivieren
+### Kubernetes-Client-Protokollierung aktivieren
 
-Die Ausgabe von Protokollmeldungen zur Fehlersuche können durch die
-[klog](https://pkg.go.dev/k8s.io/klog) Option aktiviert werden.
-Verwenden Sie die Option `-v` zur Stärke der Ausgabe.
+Die Ausgabe von Protokollmeldungen zur Fehlersuche im Kubernetes-Client kann mit den [klog](https://pkg.go.dev/k8s.io/klog)-Flags aktiviert werden. Die Verwendung der `-v` Option zum Festlegen der Ausführlichkeit ist für die meisten Fälle ausreichend.
 
 Zum Beispiel:
 
 ```
 helm list -v 6
 ```
+
+### Tiller-Installationen funktionieren nicht mehr und der Zugriff wird verweigert
+
+Helm-Releases waren früher unter <https://storage.googleapis.com/kubernetes-helm/> verfügbar. Wie in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/) erklärt, wurde der offizielle Speicherort im Juni 2019 geändert. Die [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) stellt alle alten Tiller-Images zur Verfügung.
+
+Wenn Sie versuchen, ältere Versionen von Helm aus dem Storage Bucket herunterzuladen, den Sie früher verwendet haben, stellen Sie möglicherweise fest, dass diese fehlen:
+
+```
+<Error>
+    <Code>AccessDenied</Code>
+    <Message>Access denied.</Message>
+    <Details>Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object.</Details>
+</Error>
+```
+
+Der [ursprüngliche Tiller-Image-Speicherort](https://gcr.io/kubernetes-helm/tiller) begann im August 2021 mit der Entfernung von Images. Wir haben diese Images in der [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) zur Verfügung gestellt. Um beispielsweise Version v2.17.0 herunterzuladen, ersetzen Sie:
+
+`https://storage.googleapis.com/kubernetes-helm/helm-v2.17.0-linux-amd64.tar.gz`
+
+durch:
+
+`https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.gz`
+
+Um mit Helm v2.17.0 zu initialisieren:
+
+`helm init —upgrade`
+
+Oder wenn eine andere Version benötigt wird, verwenden Sie die --tiller-image Option, um den Standardspeicherort zu überschreiben und eine bestimmte Helm v2-Version zu installieren:
+
+`helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
+
+**Hinweis:** Die Helm-Maintainer empfehlen die Migration zu einer aktuell unterstützten Version von Helm. Helm v2.17.0 war die letzte Version von Helm v2; Helm v2 wird seit November 2020 nicht mehr unterstützt, wie in [Helm 2 and the Charts Project Are Now Unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/) beschrieben. Seit dieser Zeit wurden viele CVEs gegen Helm gemeldet, und diese Exploits sind in Helm v3 behoben, werden aber niemals in Helm v2 behoben werden. Sehen Sie sich die [aktuelle Liste der veröffentlichten Helm-Sicherheitshinweise](https://github.com/helm/helm/security/advisories?state=published) an und planen Sie noch heute die [Migration zu Helm v3](/topics/v2_v3_migration.md).

@@ -25,7 +25,7 @@ $ mv alpine-0.1.0.tgz fantastic-charts/
 
 ## Generieren einer aktualisierten index.yaml
 Benutzen Sie Helm zum Generieren einer aktualisierten index.yaml Datei durch Aufruf des
-Verzeichnisses und der URL des entfernten Repositorry durch das `helm repo index` Kommando wie:
+Verzeichnisses und der URL des entfernten Repository durch das `helm repo index` Kommando wie:
 
 ```console
 $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googleapis.com
@@ -85,4 +85,4 @@ Hilfreiche Links:
 * Dokumentation von [gsutil
   rsync](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
 * [Das Chart Repository Handbuch](/topics/chart_repository.md)
-* Documentation von [Objekt Versionierung und parallele Zugriffe](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview) in Google Cloud Storage
+* Dokumentation von [Objektversionierung und parallele Zugriffe](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview) in Google Cloud Storage
