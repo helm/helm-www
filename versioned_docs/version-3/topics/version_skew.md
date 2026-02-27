@@ -15,7 +15,7 @@ Versioning](https://semver.org/spec/v2.0.0.html) terminology.
 The Helm project maintains a release branch for the most recent minor release.
 Applicable fixes, including security fixes, are cherry-picked into the release
 branch, depending on severity and feasibility. More details can be found in
-[Helm's release policy](/topics/release_policy.md).
+[Helm's release policy](/community/release_policy).
 
 ## Supported Version Skew
 
