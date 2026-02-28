@@ -187,6 +187,49 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 In some places, an `if` conditional guard may be better suited than `default`.
 We'll see those in the next section.
 
+## Using the `join` function
+
+The `join` function can be used to join a list of strings into a single string
+with a separator. This is particularly useful when you have a list of values
+that need to be formatted as a comma-separated list or similar. The function
+signature is `join SEPARATOR LIST`.
+
+For example, if you have a list of items in your `values.yaml`:
+
+```yaml
+favorite:
+  drinks:
+    - coffee
+    - tea
+    - water
+```
+
+You can join them into a single string using the `join` function:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  drinks: {{ .Values.favorite.drinks | join ", " | quote }}
+```
+
+This will produce:
+
+```yaml
+# Source: mychart/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wise-elk-configmap
+data:
+  drinks: "coffee, tea, water"
+```
+
+The `join` function is the inverse of the `split` function, which splits a string
+into a list based on a separator.
+
 Template functions and pipelines are a powerful way to transform information and
 then insert it into your YAML. But sometimes it's necessary to add some template
 logic that is a little more sophisticated than just inserting a string. In the
