@@ -39,6 +39,32 @@ missing:
 value: {{ required "A valid .Values.who entry required!" .Values.who }}
 ```
 
+## Accessing Values with Special Characters in Keys
+
+In Go templates, you can access map values using dot notation (e.g., `.Values.mykey`).
+However, this approach doesn't work when the key contains characters that are
+not valid in Go identifiers, such as dashes (`-`). For example, if you have a
+chart dependency named `gitlab-runner`, you cannot access its values with
+`.Values.gitlab-runner.checkInterval` because Go will interpret the dash as a
+subtraction operator.
+
+To access values with keys containing special characters, use the `index` function:
+
+```yaml
+{{ index .Values "gitlab-runner" "checkInterval" }}
+```
+
+The `index` function allows you to access map keys by their string names,
+bypassing Go's identifier restrictions. You can also chain multiple keys:
+
+```yaml
+{{ index .Values "my-chart" "nested" "value" }}
+```
+
+This is particularly useful when working with subcharts that have dashes in
+their names, or when defining values that use naming conventions from external
+systems that may include special characters.
+
 ## Quote Strings, Don't Quote Integers
 
 When you are working with string data, you are always safer quoting the strings
