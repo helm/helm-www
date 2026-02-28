@@ -957,6 +957,40 @@ parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
 
+#### Using Schema References
+
+You can use JSON Schema `$ref` to split your schema into multiple files for better organization and reuse.
+
+For example, define a base schema in `base.schema.json`:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": ["name"]
+}
+```
+
+Then reference it from `values.schema.json`:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "user": { "$ref": "./base.schema.json" }
+  }
+}
+```
+
+Relative references are resolved from the chart directory.
+You can reference files in the same directory (`"$ref": "./other.schema.json"`) or in parent directories (`"$ref": "../shared.schema.json"`).
+
 Schema validation can be disabled by setting the option shown below.
 This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
 ```console
