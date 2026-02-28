@@ -51,7 +51,7 @@ Notice on the last line we access `favoriteDrink` as an attribute of `Values`:
 Let's see how this renders.
 
 ```console
-$ helm install geared-marsupi ./mychart --dry-run --debug
+$ helm install geared-marsupi ./mychart --dry-run=client --debug
 install.go:158: [debug] Original chart version: ""
 install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
 
@@ -85,7 +85,7 @@ that's the value displayed in the template. We can easily override that by
 adding a `--set` flag in our call to `helm install`:
 
 ```console
-$ helm install solid-vulture ./mychart --dry-run --debug --set favoriteDrink=slurm
+$ helm install solid-vulture ./mychart --dry-run=client --debug --set favoriteDrink=slurm
 install.go:158: [debug] Original chart version: ""
 install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
 
