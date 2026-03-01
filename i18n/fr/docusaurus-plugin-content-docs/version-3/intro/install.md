@@ -29,9 +29,9 @@ Helm dispose maintenant d'un script d'installation qui récupère automatiquemen
 Vous pouvez récupérer ce script, puis l'exécuter localement. Il est bien documenté, ce qui vous permet de le lire et comprendre ce qu'il fait avant de l'exécuter.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Oui, vous pouvez également exécuter `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
