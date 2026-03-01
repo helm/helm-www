@@ -1,45 +1,36 @@
 ---
 title: ラベルとアノテーション
-description: チャートの中でラベルとアノテーションを使用するためのベストプラクティスを解説します。
+description: chart でラベルとアノテーションを使用するためのベストプラクティスを解説します。
 sidebar_position: 5
 ---
 
-ベストプラクティスのこの部分では、チャートの中でラベルとアノテーションを使用する際の
-ベストプラクティスについて議論します。
+ベストプラクティスガイドのこの部分では、chart でのラベルとアノテーションの使い方を説明します。
 
 ## ラベルかアノテーションか？
 
-メタデータの項目は以下の条件でラベルにすべきです:
+メタデータの項目は、以下の条件に該当する場合はラベルにしてください:
 
-- リソースを特定するためにKubernetesによって使用される場合
-- システムに問い合わせをする目的でオペレータに公開すると便利な場合
+- Kubernetes がリソースを識別するために使用する
+- システムへのクエリ目的でオペレータに公開すると便利である
 
-例えば、オペレータが特定のチャートの全てのインスタンスを便利に見つけられるように、
-ラベルとして`helm.sh/chart: NAME-VERSION`を使うことを推奨します。
+例えば、オペレータが特定の chart のすべてのインスタンスを簡単に検索できるように、`helm.sh/chart: NAME-VERSION` をラベルとして使用することを推奨します。
 
-メタデータの項目が問い合わせの目的で使用されない場合、代わりにアノテーションを
-使うべきでしょう。
+メタデータの項目がクエリ目的で使用されない場合は、代わりにアノテーションを使用してください。
 
-Helmフックは常にアノテーションです。
+Helm hook は常にアノテーションです。
 
-## 標準的なラベル
+## 標準ラベル
 
-次のテーブルはHelmチャートが使う、共通のラベルを定義しています。Helmそれ自体は
-特定のラベルが存在することを必要としません。RECとマークされたラベルは使用を推奨され、
-グローバルな一貫性のためにチャートに記述される _べき_ です。
-OPTとマークされた項目は任意です。これらは慣用句として、あるいは一般的に使用されているもの
-ではありますが、業務上頻繁に使用されるものではありません。
+以下の表は、Helm chart が使用する一般的なラベルを定義しています。Helm 自体は特定のラベルの存在を必須としていません。REC とマークされたラベルは推奨であり、一貫性のために chart に含める**べき**です。OPT とマークされたラベルは任意です。これらは慣用的に使用されていますが、運用上必須ではありません。
 
-名前|ステータス|説明
------|------|----------
-`app.kubernetes.io/name` | REC | これはアプリ全体を反映した名前であるべきです。一般的には`{{ template "name" . }}`がこのために使われるでしょう。これは多くのKubernetesマニフェストで使用されるものであり、Helm特有のものではありません。
-`helm.sh/chart` | REC | これはチャート名とバージョンにすべきです: `{{ .Chart.Name }}-{{ .Chart.Version \| replace "+" "_" }}`.
-`app.kubernetes.io/managed-by` | REC | これは常に`{{ .Release.Service }}`に設定するべきです。Helmで管理されているものを全て見つけるために使用されます。
-`app.kubernetes.io/instance` | REC | これは`{{ .Release.Name }}`にすべきです。 これは、同じアプリケーションの異なるインスタンスを区別するのに役立ちます。
-`app.kubernetes.io/version` | OPT | アプリのバージョンで、`{{ .Chart.AppVersion }}`に設定できます。
-`app.kubernetes.io/component` | OPT | これはアプリケーション内の違った役割示す共通のラベルです。例、 `app.kubernetes.io/component: frontend`
-`app.kubernetes.io/part-of` | OPT |　複数のチャートとソフトウェアが一体となって一つのアプリケーションを構成している場合のラベル。例えば、ウェブサイトを生成するデータベースとアプリケーションソフトウェアなど。これは、対応するトップレベルのアプリケーションにも設定することができます。
+| 名前 | ステータス | 説明 |
+|------|---------|------|
+| `app.kubernetes.io/name` | REC | アプリ全体を反映する名前です。通常は `{{ template "name" . }}` を使用します。多くの Kubernetes マニフェストで使用されており、Helm 固有ではありません。 |
+| `helm.sh/chart` | REC | chart 名とバージョンを設定します: `{{ .Chart.Name }}-{{ .Chart.Version \| replace "+" "_" }}` |
+| `app.kubernetes.io/managed-by` | REC | 常に `{{ .Release.Service }}` に設定します。Helm が管理するリソースの検索に使用されます。 |
+| `app.kubernetes.io/instance` | REC | `{{ .Release.Name }}` を設定します。同じアプリケーションの異なるインスタンスを区別するのに役立ちます。 |
+| `app.kubernetes.io/version` | OPT | アプリのバージョンです。`{{ .Chart.AppVersion }}` を設定できます。 |
+| `app.kubernetes.io/component` | OPT | アプリケーション内の役割を示す一般的なラベルです。例: `app.kubernetes.io/component: frontend` |
+| `app.kubernetes.io/part-of` | OPT | 複数の chart やソフトウェアが連携して 1 つのアプリケーションを構成する場合に使用します。例: Web サイトを構成するアプリケーションとデータベース。サポートするトップレベルのアプリケーションを設定できます。 |
 
-Kubernetesの`app.kubernetes.io`プレフィックスが付いたラベルについて、
-[Kubernetes
-documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)でより詳細な情報を見つけることができます。
+`app.kubernetes.io` プレフィックスが付いた Kubernetes ラベルの詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)を参照してください。
