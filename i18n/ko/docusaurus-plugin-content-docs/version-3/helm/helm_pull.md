@@ -1,22 +1,23 @@
 ---
 title: helm pull
 ---
+
 저장소에서 차트를 다운로드하고 (선택적으로) 로컬 디렉터리에 압축 해제
 
 ### 개요
 
 
-패키지 저장소에서 패키지를 검색하고 로컬로 다운로드 한다.
+패키지 저장소에서 패키지를 검색하고 로컬로 다운로드한다.
 
 이는 검사, 수정 또는 리패키지를 위하여 패키지를 가져올 때 유용하다. 또한
-설치하지 않고 차트의 암호화 검증을 수행하는 데 사용할 
+설치하지 않고 차트의 암호화 검증을 수행하는 데 사용할
 수도 있다.
 
 다운로드 후 차트를 풀 수 있는 옵션이 있다. 그러면 차트에 대한
 디렉터리가 생성되고 해당 디렉터리에 압축이 해제된다.
 
---verify 플래그가 지정된 경우, 요청된 차트에는 출처 파일이 있어야 하며 확인 프로세스를 
-통과해야 한다. 프로세스 중 어느 부분에서라도 실패할 경우 오류가 발생할 수 있으며,
+--verify 플래그가 지정된 경우, 요청된 차트에는 출처 파일이 있어야 하며 확인 프로세스를
+통과해야 한다. 프로세스 중 어느 부분에서라도 실패할 경우 오류가 발생하며,
 차트가 로컬에 저장되지 않는다.
 
 
@@ -27,52 +28,49 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 ### 옵션
 
 ```
-      --ca-file string       이 CA 번들을 사용하여 HTTPS 활성화된 서버의 인증서를 확인
-      --cert-file string     이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
-  -d, --destination string   차트를 작성할 위치. 이 옵션과 'tardir' 가 지정되면 'tardir' 이 여기에 추가된다. (기본값 ".")
-      --devel                개발용 버전으로도 사용가능. 버전 '>0.0.0-0' 과 동일하다. 만약 --version 플래그가 설정되면, 이 옵션은 무시된다.
-  -h, --help                 pull 에 대한 도움말
-      --insecure-skip-tls-verify   차트 다운로드에 tls 인증서 확인 생략  
+      --ca-file string             이 CA 번들을 사용하여 HTTPS 지원 서버의 인증서를 확인
+      --cert-file string           이 SSL 인증서 파일을 사용하여 HTTPS 클라이언트 식별
+  -d, --destination string         차트를 저장할 위치. 이 옵션과 untardir이 지정되면 untardir이 여기에 추가된다. (기본값 ".")
+      --devel                      개발용 버전으로도 사용 가능. 버전 '>0.0.0-0'과 동일하다. --version 플래그가 설정되면 이 옵션은 무시된다.
+  -h, --help                       pull에 대한 도움말
+      --insecure-skip-tls-verify   차트 다운로드 시 TLS 인증서 확인 생략
       --key-file string            이 SSL 키 파일을 사용하여 HTTPS 클라이언트 식별
       --keyring string             확인에 사용되는 공개 키의 위치 (기본값 "~/.gnupg/pubring.gpg")
+      --pass-credentials           모든 도메인에 자격 증명 전달
       --password string            요청된 차트를 찾을 수 있는 차트 저장소 비밀번호
-      --prov                       출처 파일을 가져 오기만 하고, 확인은 수행하지 않음
+      --plain-http                 차트 다운로드에 비보안 HTTP 연결 사용
+      --prov                       출처 파일을 가져오기만 하고 확인은 수행하지 않음
       --repo string                요청된 차트를 찾을 수 있는 차트 저장소 URL
-      --untar                      이 옵션을 'true'로 설정하면, 차트를 다운로드 한 후 압축을 해제
-      --untardir string            'untar' 플래그가 'true'로 지정된 경우, 이 플래그를 통해 차트가 확장되는 디렉터리의 이름을 지정 (기본값 ".")
+      --untar                      true로 설정하면 차트를 다운로드한 후 압축을 해제
+      --untardir string            untar가 지정된 경우 차트가 확장되는 디렉터리의 이름을 지정 (기본값 ".")
       --username string            요청된 차트를 찾을 수 있는 차트 저장소 사용자 이름
       --verify                     사용하기 전에 패키지 확인
-      --version string             사용할 정확한 차트 버전 지정. 지정하지 않을 경우 최신버전으로 사용
+      --version string             사용할 차트 버전 제약 조건을 지정. 특정 태그(예: 1.1.1) 또는 유효한 범위(예: ^2.0.0)를 참조할 수 있다. 지정하지 않으면 최신 버전이 사용된다.
 ```
 
 ### 부모 명령어에서 상속된 옵션들
 
 ```
-      --add-dir-header                   이 값이 참이면, 헤더에 파일 디렉터리를 추가
-      --alsologtostderr                  로그를 표준 오류 및 파일로 표시
-      --debug                            장황한(verbose) 출력 활성화
-      --kube-apiserver string            쿠버네티스 API 서버의 주소 및 포트
-      --kube-context string              사용할 kubeconfig 컨텍스트 이름
-      --kube-token string                인증에 사용될 베어러(bearer) 토큰
-      --kubeconfig string                kubeconfig 파일 경로
-      --log-backtrace-at traceLocation   로깅 시 N 행에 걸친 스택 추적 내용을 표시 (기본값 :0)
-      --log-dir string                   값을 지정하면, 지정한 디렉터리에 로그 파일 기록
-      --log-file string                  값을 지정하면, 지정한 로그 파일 사용
-      --log-file-max-size uint           로그파일이 증가할 수 있는 최대 크기 지정. 단위는 메가바이트이다. 값이 0이면, 최대 파일크기는 무제한. (기본값 1800)
-      --logtostderr                      로그를 파일이 아닌 표준 오류로 표시 (기본값 true)
-  -n, --namespace string                 요청에 대한 네임스페이스 지정
-      --registry-config string           레지스트리 구성 파일에 대한 경로 (기본값 "~/.config/helm/registry.json")
-      --repository-cache string          캐시된 저장소 색인이 포함된 파일의 경로 (기본값 "~/.cache/helm/repository")
-      --repository-config string         저장소 이름 및 URL 을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
-      --skip-headers                     이 값이 true이면, 로그파일에서 헤더 접두어를 미사용
-      --skip-log-headers                 이 값이 true이면, 로그파일을 열 때 헤더 제외
-      --stderrthreshold severity         stderr로 로그가 변경될 수 있는 최저 임계점 (기본값 2)
-  -v, --v Level                          로그 수준 상세표시 레벨
-      --vmodule moduleSpec               파일로 필터링된 로깅을 위한 패턴=N 설정의 쉼표로 구분된 리스트
+      --burst-limit int                 클라이언트 측 기본 스로틀링 제한 (기본값 100)
+      --debug                           장황한(verbose) 출력 활성화
+      --kube-apiserver string           쿠버네티스 API 서버의 주소 및 포트
+      --kube-as-group stringArray       작업을 가장할 그룹. 여러 그룹을 지정하려면 이 플래그를 반복할 수 있다.
+      --kube-as-user string             작업을 가장할 사용자 이름
+      --kube-ca-file string             쿠버네티스 API 서버 연결을 위한 인증 기관 파일
+      --kube-context string             사용할 kubeconfig 컨텍스트 이름
+      --kube-insecure-skip-tls-verify   true이면 쿠버네티스 API 서버의 인증서 유효성을 검사하지 않는다. 이렇게 하면 HTTPS 연결이 안전하지 않게 된다.
+      --kube-tls-server-name string     쿠버네티스 API 서버 인증서 유효성 검사에 사용할 서버 이름. 제공되지 않으면 서버에 연결하는 데 사용된 호스트 이름이 사용된다.
+      --kube-token string               인증에 사용될 베어러(bearer) 토큰
+      --kubeconfig string               kubeconfig 파일 경로
+  -n, --namespace string                요청에 대한 네임스페이스 범위
+      --qps float32                     쿠버네티스 API와 통신할 때 사용되는 초당 쿼리 수 (버스트 제외)
+      --registry-config string          레지스트리 구성 파일 경로 (기본값 "~/.config/helm/registry/config.json")
+      --repository-cache string         캐시된 저장소 인덱스가 포함된 디렉터리 경로 (기본값 "~/.cache/helm/repository")
+      --repository-config string        저장소 이름 및 URL을 포함하는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
 ```
 
 ### 참조
 
-* [helm](/helm/index.mdx)	 - 쿠버네티스에 대한 헬름 패키지 매니저.
+* [helm](./helm.md)	 - 쿠버네티스를 위한 Helm 패키지 매니저
 
-###### Auto generated by spf13/cobra on 14-Sep-2020
+###### Auto generated by spf13/cobra on 14-Jan-2026

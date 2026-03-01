@@ -4,44 +4,42 @@ description: 템플릿 안에 있는 파일에 접근하는 방법
 sidebar_position: 10
 ---
 
-이전 항목에서 지명 템플릿을 만들고 액세스하는 몇 가지 방법을 살펴보았다.
-이런 방법으로 다른 템플릿에서 필요한 템플릿을 쉽게 가져올 수 있다.
+이전 섹션에서 명명된 템플릿을 만들고 접근하는 몇 가지 방법을 살펴보았다.
+이를 통해 다른 템플릿에서 필요한 템플릿을 쉽게 가져올 수 있다.
 하지만 때로는 _템플릿이 아닌 파일_ 을 가져와서
-그 내용을 템플릿 렌더러(renderer)로 보내지 않고 직접 주입(inject)하려고 하는 경우가
-있을 수 있다.
+그 내용을 템플릿 렌더러를 거치지 않고 직접 주입하고 싶을 때가 있다.
 
-헬름은 `.Files` 객체를 통해 파일에 액세스할 수 있게 해준다. 템플릿 예제를 확인하기 전에
-어떻게 작동하는지 살펴보자.
+Helm은 `.Files` 객체를 통해 파일에 접근할 수 있게 해 준다. 템플릿 예제를 살펴보기 전에
+이 기능이 어떻게 작동하는지 알아야 할 몇 가지가 있다:
 
-- 헬름 차트에 파일을 추가해도 된다. 추가된 파일들은 하나로 묶인다.
-  다만, 쿠버네티스 객체 저장소에는 제한이 있어
-  차트는 1M 보다 작아야 한다.
-- 어떤 파일은 `.Files` 객체를 통해 액세스할 수 없는데,
-  주로 보안 상의 이유 때문이다.
-  - `templates/`에 있는 파일은 액세스할 수 없다.
-  - `.helmignore`를 사용하여 제외된 파일은 액세스할 수 없다.
-- 차트는 UNIX 모드 정보를 보존해주지 않으므로
-  `.Files` 객체에서 온 파일의 경우, 파일 수준의 권한(permission)은
-  파일의 가용성에 영향을 미치지 않는다.
+- Helm 차트에 추가 파일을 넣어도 된다. 이 파일들은 함께 번들로 묶인다.
+  하지만 주의가 필요하다. Kubernetes 객체의 저장 제한 때문에
+  차트는 1M보다 작아야 한다.
+- 일부 파일은 `.Files` 객체를 통해 접근할 수 없는데,
+  주로 보안상의 이유 때문이다.
+  - `templates/` 안에 있는 파일은 접근할 수 없다.
+  - `.helmignore`를 사용하여 제외된 파일은 접근할 수 없다.
+  - 부모 차트를 포함하여, Helm 애플리케이션 [하위 차트](./subcharts_and_globals.md) 외부에 있는 파일은 접근할 수 없다.
+- 차트는 UNIX 모드 정보를 보존하지 않으므로, `.Files` 객체에 관해서는
+  파일 수준 권한이 파일 가용성에 영향을 미치지 않는다.
 
 <!-- (see https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
 
-- [기본-예제](#기본-예제)
-- [경로-헬퍼](#경로-헬퍼)
-- [글롭glob-패턴](#글롭glob-패턴)
-- [컨피그맵configmap과-시크릿secret-도구-함수](#컨피그맵configmap과-시크릿secret-도구-함수)
+- [기본 예제](#기본-예제)
+- [경로 헬퍼](#경로-헬퍼)
+- [글롭(Glob) 패턴](#글롭glob-패턴)
+- [ConfigMap과 Secret 유틸리티 함수](#configmap과-secret-유틸리티-함수)
 - [인코딩](#인코딩)
-- [lines-메소드](#lines-메소드)
+- [Lines](#lines)
 
 <!-- tocstop -->
 
 ## 기본 예제
 
-With those caveats behind, let's write a template that reads three files into
-our ConfigMap. To get started, we will add three files to the chart, putting all
-three directly inside of the `mychart/` directory.
+위의 주의 사항을 알았으니, 이제 세 개의 파일을 읽어서 ConfigMap에 넣는 템플릿을 작성해 보자.
+시작하기 위해 차트에 세 개의 파일을 추가하고, 세 파일 모두 `mychart/` 디렉토리 안에 직접 넣는다.
 
 `config1.toml`:
 
@@ -61,9 +59,9 @@ message = "This is config 2"
 message = "Goodbye from config 3"
 ```
 
-Each of these is a simple TOML file (think old-school Windows INI files). We
-know the names of these files, so we can use a `range` function to loop through
-them and inject their contents into our ConfigMap.
+이 파일들은 각각 간단한 TOML 파일이다(옛날 Windows INI 파일을 생각하면 된다).
+파일 이름을 알고 있으므로 `range` 함수를 사용하여 파일들을 순회하며
+그 내용을 ConfigMap에 주입할 수 있다.
 
 ```yaml
 apiVersion: v1
@@ -78,14 +76,12 @@ data:
   {{- end }}
 ```
 
-This config map uses several of the techniques discussed in previous sections.
-For example, we create a `$files` variable to hold a reference to the `.Files`
-object. We also use the `tuple` function to create a list of files that we loop
-through. Then we print each file name (`{{ . }}: |-`) followed by the contents
-of the file `{{ $files.Get . }}`.
+이 ConfigMap은 이전 섹션에서 논의한 여러 기법을 사용한다.
+예를 들어, `.Files` 객체에 대한 참조를 담기 위해 `$files` 변수를 만든다.
+또한 `tuple` 함수를 사용하여 순회할 파일 목록을 만든다.
+그런 다음 각 파일 이름(`{{ . }}: |-`)을 출력하고 그 뒤에 파일 내용(`{{ $files.Get . }}`)을 출력한다.
 
-Running this template will produce a single ConfigMap with the contents of all
-three files:
+이 템플릿을 실행하면 세 파일의 내용이 모두 포함된 단일 ConfigMap이 생성된다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -106,30 +102,27 @@ data:
 
 ## 경로 헬퍼
 
-When working with files, it can be very useful to perform some standard
-operations on the file paths themselves. To help with this, Helm imports many of
-the functions from Go's [path](https://golang.org/pkg/path/) package for your
-use. They are all accessible with the same names as in the Go package, but with
-a lowercase first letter. For example, `Base` becomes `base`, etc.
+파일을 다룰 때, 파일 경로 자체에 대한 표준 작업을 수행하는 것이 매우 유용할 수 있다.
+이를 돕기 위해 Helm은 Go의 [path](https://golang.org/pkg/path/) 패키지에서
+많은 함수를 가져와 사용할 수 있게 해 준다. 이 함수들은 Go 패키지와 같은 이름으로 접근할 수 있지만,
+첫 글자가 소문자이다. 예를 들어, `Base`는 `base`가 된다.
 
-The imported functions are:
+가져온 함수들은 다음과 같다:
 - Base
 - Dir
 - Ext
 - IsAbs
 - Clean
 
-## 글롭(glob) 패턴
+## 글롭(Glob) 패턴
 
-As your chart grows, you may find you have a greater need to organize your files
-more, and so we provide a `Files.Glob(pattern string)` method to assist in
-extracting certain files with all the flexibility of [glob
-patterns](https://godoc.org/github.com/gobwas/glob).
+차트가 커지면서 파일을 더 체계적으로 정리해야 할 필요가 생길 수 있다.
+이를 위해 [글롭 패턴](https://godoc.org/github.com/gobwas/glob)의 모든 유연성을 활용하여
+특정 파일을 추출하는 데 도움이 되는 `Files.Glob(pattern string)` 메서드를 제공한다.
 
-`.Glob` returns a `Files` type, so you may call any of the `Files` methods on
-the returned object.
+`.Glob`은 `Files` 타입을 반환하므로, 반환된 객체에서 `Files`의 모든 메서드를 호출할 수 있다.
 
-For example, imagine the directory structure:
+예를 들어, 다음과 같은 디렉토리 구조를 상상해 보자:
 
 ```
 foo/:
@@ -139,8 +132,7 @@ bar/:
   bar.go bar.conf baz.yaml
 ```
 
-You have multiple options with Globs:
-
+Glob을 사용하는 여러 방법이 있다:
 
 ```yaml
 {{ $currentScope := .}}
@@ -151,7 +143,7 @@ You have multiple options with Globs:
 {{ end }}
 ```
 
-Or
+또는
 
 ```yaml
 {{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
@@ -159,18 +151,16 @@ Or
 {{ end }}
 ```
 
-## 컨피그맵(ConfigMap)과 시크릿(Secret) 도구 함수
+## ConfigMap과 Secret 유틸리티 함수
 
-(Helm 2.0.2부터 사용가능)
+(Helm 2.0.2 이후 사용 가능)
 
-It is very common to want to place file content into both ConfigMaps and
-Secrets, for mounting into your pods at run time. To help with this, we provide
-a couple utility methods on the `Files` type.
+파일 내용을 ConfigMap과 Secret에 넣어서 런타임에 파드에 마운트하는 것은 매우 일반적인 작업이다.
+이를 돕기 위해 `Files` 타입에 몇 가지 유틸리티 메서드를 제공한다.
 
-For further organization, it is especially useful to use these methods in
-conjunction with the `Glob` method.
+파일을 더 체계적으로 정리하려면 이러한 메서드를 `Glob` 메서드와 함께 사용하는 것이 특히 유용하다.
 
-Given the directory structure from the [글롭glob-패턴](#글롭glob-패턴) example above:
+위의 [글롭(Glob) 패턴](#글롭glob-패턴) 예제에서 나온 디렉토리 구조를 가정하면:
 
 ```yaml
 apiVersion: v1
@@ -191,8 +181,8 @@ data:
 
 ## 인코딩
 
-You can import a file and have the template base-64 encode it to ensure
-successful transmission:
+파일을 가져와서 템플릿이 base-64로 인코딩하도록 하여
+안전한 전송을 보장할 수 있다:
 
 ```yaml
 apiVersion: v1
@@ -205,7 +195,7 @@ data:
     {{ .Files.Get "config1.toml" | b64enc }}
 ```
 
-The above will take the same `config1.toml` file we used before and encode it:
+위 코드는 이전에 사용했던 동일한 `config1.toml` 파일을 가져와서 인코딩한다:
 
 ```yaml
 # Source: mychart/templates/secret.yaml
@@ -219,12 +209,12 @@ data:
     bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
-## Lines 메소드
+## Lines
 
-Sometimes it is desirable to access each line of a file in your template. We
-provide a convenient `Lines` method for this.
+때로는 템플릿에서 파일의 각 줄에 접근하는 것이 필요할 수 있다.
+이를 위해 편리한 `Lines` 메서드를 제공한다.
 
-You can loop through `Lines` using a `range` function:
+`range` 함수를 사용하여 `Lines`를 순회할 수 있다:
 
 ```yaml
 data:
@@ -232,11 +222,10 @@ data:
     {{ . }}{{ end }}
 ```
 
-There is no way to pass files external to the chart during `helm
-install`. So if you are asking users to supply data, it must be loaded using
-`helm install -f` or `helm install --set`.
+`helm install` 중에 차트 외부의 파일을 전달할 방법은 없다.
+따라서 사용자에게 데이터를 제공받으려면 `helm install -f` 또는
+`helm install --set`을 사용하여 로드해야 한다.
 
-This discussion wraps up our dive into the tools and techniques for writing Helm
-templates. In the next section we will see how you can use one special file,
-`templates/NOTES.txt`, to send post-installation instructions to the users of
-your chart.
+이것으로 Helm 템플릿 작성을 위한 도구와 기법에 대한 심층 탐구를 마친다.
+다음 섹션에서는 특별한 파일인 `templates/NOTES.txt`를 사용하여
+차트 사용자에게 설치 후 지침을 보내는 방법을 살펴볼 것이다.
