@@ -67,7 +67,7 @@ const config = {
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "de", "el", "es", "fr", "ja", "ko", "pt", "ru", "uk", "zh"],
+    locales: ["en", "de", "el", "es", "fr", "it", "ja", "ko", "pt", "ru", "uk", "zh"],
     localeConfigs: {
       en: {
         htmlLang: "en-us",
@@ -81,6 +81,9 @@ const config = {
       },
       fr: {
         label: "Français (French)",
+      },
+      it: {
+        label: "Italiano (Italian)",
       },
       el: {
         label: "Ελληνικά (Greek)",

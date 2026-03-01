@@ -1,0 +1,90 @@
+{
+  "link.title.Helm Project": {
+    "message": "Helm Project",
+    "description": "The title of the footer links column with title=Helm Project in the footer"
+  },
+  "link.title.Charts": {
+    "message": "Charts",
+    "description": "The title of the footer links column with title=Charts in the footer"
+  },
+  "link.title.Development": {
+    "message": "Sviluppo",
+    "description": "The title of the footer links column with title=Development in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.item.label.Source code": {
+    "message": "Codice sorgente",
+    "description": "The label of footer link with label=Source code linking to https://github.com/helm/helm"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Blog linking to blog"
+  },
+  "link.item.label.Events": {
+    "message": "Eventi",
+    "description": "The label of footer link with label=Events linking to https://www.cncf.io/community/kubecon-cloudnativecon-events/"
+  },
+  "link.item.label.Code of Conduct": {
+    "message": "Codice di condotta",
+    "description": "The label of footer link with label=Code of Conduct linking to https://github.com/cncf/foundation/blob/master/code-of-conduct.md"
+  },
+  "link.item.label.Introduction": {
+    "message": "Introduzione",
+    "description": "The label of footer link with label=Introduction linking to docs/intro"
+  },
+  "link.item.label.Chart tips & tricks": {
+    "message": "Chart tips & tricks",
+    "description": "The label of footer link with label=Chart tips & tricks linking to #"
+  },
+  "link.item.label.Developing Charts": {
+    "message": "Sviluppo Charts",
+    "description": "The label of footer link with label=Developing Charts linking to #"
+  },
+  "link.item.label.Search 800+ Charts": {
+    "message": "Cerca 800+ Charts",
+    "description": "The label of footer link with label=Search 800+ Charts linking to https://artifacthub.io/"
+  },
+  "link.item.label.Slack (#helm-dev)": {
+    "message": "Slack (#helm-dev)",
+    "description": "The label of footer link with label=Slack (#helm-dev) linking to https://kubernetes.slack.com/messages/C51E88VDG"
+  },
+  "link.item.label.Contribution Guide": {
+    "message": "Guida alla contribuzione",
+    "description": "The label of footer link with label=Contribution Guide linking to https://github.com/helm/helm/blob/main/CONTRIBUTING.md"
+  },
+  "link.item.label.Maintainers": {
+    "message": "Maintainers",
+    "description": "The label of footer link with label=Maintainers linking to https://github.com/helm/helm/blob/main/OWNERS"
+  },
+  "link.item.label.Weekly Meetings": {
+    "message": "Riunioni settimanali",
+    "description": "The label of footer link with label=Weekly Meetings linking to https://github.com/helm/community/blob/main/communication.md#meetings"
+  },
+  "link.item.label.GitHub Community": {
+    "message": "GitHub Community",
+    "description": "The label of footer link with label=GitHub Community linking to https://github.com/helm/community"
+  },
+  "link.item.label.Slack (#helm-users)": {
+    "message": "Slack (#helm-users)",
+    "description": "The label of footer link with label=Slack (#helm-users) linking to https://kubernetes.slack.com/"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/kubernetes-helm"
+  },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "The label of footer link with label=X linking to https://x.com/helmpack"
+  },
+  "copyright": {
+    "message": "<p>Siamo un progetto graduated della <a href=\"https://www.cncf.io/\">Cloud Native Computing Foundation</a>.</p><p>© Helm Authors 2025. Documentazione distribuita sotto licenza <a href=\"https://creativecommons.org/licenses/by/4.0\">CC-BY-4.0.</a></p><p>© 2025 The Linux Foundation. Tutti i diritti riservati. The Linux Foundation ha registrato marchi commerciali e utilizza marchi commerciali. Per una lista dei marchi commerciali de The Linux Foundation, per favore visita la nostra  <a href=\"https://www.linuxfoundation.org/trademark-usage/\">pagina Uso Marchi Commerciali</a>.</p>",
+    "description": "The footer copyright"
+  },
+  "logo.alt": {
+    "message": "CNCF Logo",
+    "description": "The alt text of footer logo"
+  }
+}
