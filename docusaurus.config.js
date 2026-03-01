@@ -67,11 +67,15 @@ const config = {
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "de", "el", "es", "fr", "ja", "ko", "pt", "ru", "uk", "zh"],
+    locales: ["en", "ar","de", "el", "es", "fr", "ja", "ko", "pt", "ru", "uk", "zh"],
     localeConfigs: {
       en: {
         htmlLang: "en-us",
         label: "English",
+      },
+      ar:{
+        label: "العربية (Arabic)",
+
       },
       de: {
         label: "Deutsch (German)",
