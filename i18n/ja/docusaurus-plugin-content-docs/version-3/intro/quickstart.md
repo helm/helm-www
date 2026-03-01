@@ -27,7 +27,7 @@ Helm クライアントのバイナリリリースをダウンロードします
 
 詳細やその他のオプションについては、[インストールガイド](/intro/install.md)を参照してください。
 
-## Helm chart リポジトリを初期化する
+## Helm chart リポジトリを初期化する {#initialize-a-helm-chart-repository}
 
 Helm の準備ができたら、chart リポジトリを追加できます。利用可能な Helm chart リポジトリについては、[Artifact Hub](https://artifacthub.io/packages/search?kind=0) を確認してください。
 

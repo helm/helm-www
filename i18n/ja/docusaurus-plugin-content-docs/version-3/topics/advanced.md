@@ -55,7 +55,7 @@ Go SDK の使用方法の詳細については、[Go SDK セクション](#go-sd
 
 Helm 3 では、Helm を活用したソフトウェアやツールを構築する際の体験を向上させるため、完全に再構築された Go SDK が導入されました。詳細なドキュメントは [Go SDK セクション](/sdk/gosdk.md)を参照してください。
 
-## ストレージバックエンド
+## ストレージバックエンド {#storage-backends}
 
 Helm 3 では、デフォルトの release 情報ストレージが release の namespace 内の Secret に変更されました。Helm 2 では、デフォルトで release 情報を Tiller インスタンスの namespace 内の ConfigMap として保存していました。以下のサブセクションでは、異なるバックエンドの設定方法を示します。この設定は環境変数 `HELM_DRIVER` に基づいています。`[configmap, secret, sql]` のいずれかの値を設定できます。
 
