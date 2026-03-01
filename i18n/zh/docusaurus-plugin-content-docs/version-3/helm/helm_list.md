@@ -1,78 +1,79 @@
 ---
 title: helm list
 ---
-列举发布版本
+
+列举 release
 
 ### 简介
 
-该命令会列举出指定命名空间的所有发布版本，(如果没有指定命名空间，会使用当前命名空间)。
+该命令列举指定 namespace 的所有 release（如果未指定 namespace，则使用当前 namespace 上下文）。
 
-默认情况下，只会列举出部署的或者失败的发布，像'--uninstalled'或者'--all'会修改默认行为。这些参数可以组合使用：'--uninstalled
---failed'。
+默认情况下，只列举已部署或失败的 release。使用 `--uninstalled` 和 `--all` 等参数可以更改此行为。这些参数可以组合使用：`--uninstalled --failed`。
 
-默认情况下，列表按字母排序。使用'-d'参数按照日期排序。
+默认情况下，列表按字母顺序排序。使用 `-d` 参数按发布日期排序。
 
-如果使用--filter参数，会作为一个过滤器。过滤器是应用于发布列表的正则表达式(兼容Perl)。只有过滤器匹配的才会返回。
+如果使用 `--filter` 参数，它将被作为过滤器使用。过滤器是应用于 release 列表的正则表达式（Perl 兼容）。只有匹配过滤器的项目会被返回。
 
-```shell
-$ helm list --filter 'ara[a-z]+'
-NAME                UPDATED                                  CHART
-maudlin-arachnid    2020-06-18 14:17:46.125134977 +0000 UTC  alpine-0.1.0
+    $ helm list --filter 'ara[a-z]+'
+    NAME                UPDATED                                  CHART
+    maudlin-arachnid    2020-06-18 14:17:46.125134977 +0000 UTC  alpine-0.1.0
+
+如果未找到结果，`helm list` 将返回退出码 0，但没有输出（或者在没有使用 `-q` 参数的情况下，只显示表头）。
+
+默认情况下，最多返回 256 项。使用 `--max` 参数限制数量。将 `--max` 设置为 0 不会返回所有结果，而是返回服务器默认值，可能比 256 更多。配合使用 `--max` 和 `--offset` 参数可以翻页显示结果。
+
+
 ```
-
-如果未找到结果，'helm list'会退出，但是没有输出(或者使用'-q'，只返回头部）。
-
-默认情况下，最多返回256项，使用'--max'限制数量，'--max'设置为0不会返回所有结果，而是返回服务器默认值，可能要比256更多。
-同时使用'--max'和'--offset'参数可以翻页显示。
-
-```shell
 helm list [flags]
 ```
 
 ### 可选项
 
-```shell
-  -a, --all                  show all releases without any filter applied
-  -A, --all-namespaces       list releases across all namespaces
-  -d, --date                 sort by release date
-      --deployed             show deployed releases. If no other is specified, this will be automatically enabled
-      --failed               show failed releases
-  -f, --filter string        a regular expression (Perl compatible). Any releases that match the expression will be included in the results
-  -h, --help                 help for list
-  -m, --max int              maximum number of releases to fetch (default 256)
-      --no-headers           don't print headers when using the default output format
-      --offset int           next release index in the list, used to offset from start value
-  -o, --output format        prints the output in the specified format. Allowed values: table, json, yaml (default table)
-      --pending              show pending releases
-  -r, --reverse              reverse the sort order
-  -l, --selector string      Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2). Works only for secret(default) and configmap storage backends.
-  -q, --short                output short (quiet) listing format
-      --superseded           show superseded releases
-      --time-format string   format time using golang time formatter. Example: --time-format "2006-01-02 15:04:05Z0700"
-      --uninstalled          show uninstalled releases (if 'helm uninstall --keep-history' was used)
-      --uninstalling         show releases that are currently being uninstalled
+```
+  -a, --all                  显示所有 release，不应用任何过滤器
+  -A, --all-namespaces       列举所有 namespace 中的 release
+  -d, --date                 按发布日期排序
+      --deployed             显示已部署的 release。如果未指定其他参数，此选项会自动启用
+      --failed               显示失败的 release
+  -f, --filter string        正则表达式（Perl 兼容）。匹配该表达式的 release 将包含在结果中
+  -h, --help                 list 的帮助信息
+  -m, --max int              获取的最大 release 数量（默认 256）
+      --no-headers           使用默认输出格式时不打印表头
+      --offset int           列表中下一个 release 的索引，用于从起始值偏移
+  -o, --output format        以指定格式打印输出。允许的值：table、json、yaml（默认 table）
+      --pending              显示待处理的 release
+  -r, --reverse              反转排序顺序
+  -l, --selector string      用于过滤的选择器（标签查询），支持 '='、'==' 和 '!='（例如 -l key1=value1,key2=value2）。仅适用于 secret（默认）和 configmap 存储后端
+  -q, --short                输出简短（静默）列表格式
+      --superseded           显示已被取代的 release
+      --time-format string   使用 golang 时间格式化程序格式化时间。示例：--time-format "2006-01-02 15:04:05Z0700"
+      --uninstalled          显示已卸载的 release（如果使用了 'helm uninstall --keep-history'）
+      --uninstalling         显示正在卸载中的 release
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的选项
 
-```shell
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+```
+      --burst-limit int                 客户端默认限流值（默认 100）
+      --debug                           启用详细输出
+      --kube-apiserver string           Kubernetes API 服务器的地址和端口
+      --kube-as-group stringArray       模拟操作的组，此参数可以重复指定多个组
+      --kube-as-user string             模拟操作的用户名
+      --kube-ca-file string             Kubernetes API 服务器连接的证书颁发机构文件
+      --kube-context string             要使用的 kubeconfig 上下文名称
+      --kube-insecure-skip-tls-verify   如果为 true，将不检查 Kubernetes API 服务器证书的有效性。这会使你的 HTTPS 连接不安全
+      --kube-tls-server-name string     用于 Kubernetes API 服务器证书验证的服务器名称。如果未提供，则使用联系服务器的主机名
+      --kube-token string               用于身份验证的 bearer token
+      --kubeconfig string               kubeconfig 文件的路径
+  -n, --namespace string                此请求的 namespace 范围
+      --qps float32                     与 Kubernetes API 通信时使用的每秒查询数，不包括突发
+      --registry-config string          registry 配置文件的路径（默认 "~/.config/helm/registry/config.json"）
+      --repository-cache string         包含缓存仓库索引的目录路径（默认 "~/.cache/helm/repository"）
+      --repository-config string        包含仓库名称和 URL 的文件路径（默认 "~/.config/helm/repositories.yaml"）
 ```
 
 ### 请参阅
 
-* [helm](/helm/helm.md) - 针对Kubernetes的Helm包管理器
+- [helm](/helm/helm.md) - 针对 Kubernetes 的 Helm 包管理器
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

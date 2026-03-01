@@ -1,25 +1,20 @@
 ---
-title: Chart发布操作用以自动化GitHub的页面Chart
-description: 描述如何使用Chart发布操作通过GitHub页面自动发布chart。
+title: 使用 Chart Releaser Action 自动发布 GitHub Pages Chart
+description: 介绍如何使用 Chart Releaser Action 通过 GitHub Pages 自动发布 chart。
 sidebar_position: 3
 ---
 
-该指南描述了如何使用[Chart发布操作](https://github.com/marketplace/actions/helm-chart-releaser)
-通过GitHub页面自动发布chart。Chart发布操作是一个将GitHub项目转换成自托管Helm chart仓库的GitHub操作流。使用了
-[helm/chart-releaser](https://github.com/helm/chart-releaser) CLI 工具。
+本指南介绍如何使用 [Chart Releaser Action](https://github.com/marketplace/actions/helm-chart-releaser) 通过 GitHub Pages 自动发布 chart。Chart Releaser Action 是一个 GitHub Action 工作流，可将 GitHub 项目转换为自托管的 Helm chart 仓库，基于 [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI 工具。
 
-## 仓库变化
+## 仓库配置
 
-在你的GitHub组织下创建一个Git仓库。可以将其命名为`helm-charts`，当然其他名称也可以接受。所有chart的资源都可以放在主分支。
-chart应该放在根目录下的`/charts`目录中。
+在你的 GitHub 组织下创建一个 Git 仓库。可以将仓库命名为 `helm-charts`，当然其他名称也可以。所有 chart 的源代码都放在 `main` 分支，chart 应该位于根目录下的 `/charts` 目录中。
 
-还应该有另一个分支 `gh-pages` 用于发布chart。这个分支的更改会通过Chart发布操作自动创建。同时可以创建一个
-`gh-branch`分支并添加`README.md`文件，其对访问该页面的用户是可见的。
+还需要另一个名为 `gh-pages` 的分支来发布 chart。该分支的内容会由 Chart Releaser Action 自动创建和更新。你也可以手动创建 `gh-pages` 分支并添加 `README.md` 文件，该文件会对访问页面的用户可见。
 
-你可以在`README.md`中为chart的安装添加说明，像这样：
-（替换 `<alias>`， `<orgname>` 和 `<chart-name>`）:
+你可以在 `README.md` 中添加 chart 的安装说明，例如（将 `<alias>`、`<orgname>` 和 `<chart-name>` 替换为实际值）：
 
-```text
+```
 ## Usage
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
@@ -42,15 +37,15 @@ To uninstall the chart:
     helm uninstall my-<chart-name>
 ```
 
-发布后的chart的url类似这样：
+发布后的 chart 会托管在如下 URL：
 
-`https://<orgname>.github.io/helm-charts`
+    https://<orgname>.github.io/helm-charts
 
-## GitHub 操作流
+## GitHub Actions 工作流
 
-在主分支创建一个GitHub操作流文件 `.github/workflows/release.yml`
+在 `main` 分支创建 GitHub Actions 工作流文件 `.github/workflows/release.yml`：
 
-```text
+```
 name: Release Charts
 
 on:
@@ -80,12 +75,8 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
-上述配置使用了[@helm/chart-releaser-action](https://github.com/helm/chart-releaser-action)
-将GitHub项目转换成自托管的Helm chart仓库。在每次想主分支推送后会通过检查项目中的每个chart来执行次操作，
-且每当有新的chart版本时，会创建一个与chart版本对应的GitHub版本，添加Helm chart组件到这个版本中，
-并用该版本的元数据创建或更新一个`index.yaml`文件，然后托管在GitHub页面上。
+上述配置使用 [@helm/chart-releaser-action](https://github.com/helm/chart-releaser-action) 将 GitHub 项目转换为自托管的 Helm chart 仓库。每次向 `main` 分支推送时，它会检查项目中的每个 chart，当发现新的 chart 版本时，会创建一个以该版本命名的 GitHub Release，将 Helm chart 制品添加到该 Release 中，并创建或更新 `index.yaml` 文件（包含这些 Release 的元数据），然后托管在 GitHub Pages 上。
 
-上述Chart发布操作示例使用的版本号是`v1.6.0`。你可以将其改成[最新可用版本](https://github.com/helm/chart-releaser-action/releases)。
+上述示例使用的 Chart Releaser Action 版本号是 `v1.6.0`。你可以将其更改为[最新可用版本](https://github.com/helm/chart-releaser-action/releases)。
 
-注意：Chart发布操作程序几乎总是和 [Helm测试操作Action](https://github.com/marketplace/actions/helm-chart-testing)
-以及[Kind操作](https://github.com/marketplace/actions/kind-cluster)。
+注意：Chart Releaser Action 几乎总是与 [Helm Testing Action](https://github.com/marketplace/actions/helm-chart-testing) 和 [Kind Action](https://github.com/marketplace/actions/kind-cluster) 配合使用。
