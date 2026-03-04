@@ -95,6 +95,6 @@ helm template [NAME] [CHART] [flags]
 
 ### SIEHE AUCH
 
-* [helm](./helm.md)	 - Der Helm-Paketmanager für Kubernetes.
+* [helm](/helm/helm.md)	 - Der Helm-Paketmanager für Kubernetes.
 
 ###### Automatisch generiert von spf13/cobra am 14-Jan-2026

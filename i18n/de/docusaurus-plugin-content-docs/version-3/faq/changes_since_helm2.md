@@ -18,7 +18,7 @@ Mit rollenbasierter Zugriffskontrolle (RBAC), standardmäßig aktiviert in Kuber
 sperrte Tiller immer mehr in Produktionsumgebungen aus, da die Verwaltung schwieriger
 wurde. Durch die vielen möglichen Sicherheitsrichtlinien war es unser Fokus,
 eine permissive Standardkonfiguration zu liefern. Das erlaubte es Neulingen in Helm
-und Kubernetes, schnell zu starten, ohne sich allzuviel über Sicherheitskontrollen den
+und Kubernetes, schnell zu starten, ohne sich allzu viel über Sicherheitskontrollen den
 Kopf zu zerbrechen. Unglücklicherweise konnte diese permissive Konfiguration ein
 breites Spektrum an Berechtigungen öffnen, ohne dass der Nutzer dies erwartete.
 DevOps und SREs hatten zusätzliche Betriebsschritte zu lernen, um Tiller in einem

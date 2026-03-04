@@ -87,7 +87,7 @@ In Helm 3.3.2 und später führt der Versuch, ein existierendes Repository hinzu
 
 Das Standardverhalten ist nun umgekehrt. `--no-update` wird jetzt ignoriert. Wenn Sie ein existierendes Repository ersetzen (überschreiben) möchten, können Sie die Option `--force-update` verwenden.
 
-Dies ist auf eine Breaking Change für ein Sicherheitsupdate zurückzuführen, wie in den [Helm 3.3.2 Release Notes](https://github.com/helm/helm/releases/tag/v3.3.2) erklärt wird.
+Dies ist auf einen Breaking Change für ein Sicherheitsupdate zurückzuführen, wie in den [Helm 3.3.2 Release Notes](https://github.com/helm/helm/releases/tag/v3.3.2) erklärt wird.
 
 ### Kubernetes-Client-Protokollierung aktivieren
 

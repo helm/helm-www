@@ -57,7 +57,7 @@ aufrufen, wenn Sie am Rande des Abgrunds leben.
 
 Die Helm Gemeinschaft stellt auch die Möglichkeit der Installation durch
 Paketmanager des Betriebssystems zur Verfügung. Diese werden vom Helm Projekt
-nicht unterstützt und gelten als nicht vertrauenswürdige Drittanbieter.
+nicht unterstützt und gelten nicht als vertrauenswürdige Drittanbieter.
 
 ### Von Homebrew (macOS)
 
