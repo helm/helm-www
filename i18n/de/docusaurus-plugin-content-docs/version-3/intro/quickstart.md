@@ -83,7 +83,7 @@ Wennimmer Sie ein Chart installieren, wird eine neue Version erstellt. So kann
 ein Chart beliebig oft im selben Cluster installiert und unabhängig verwaltet und
 aktualisiert werden.
 
-Das `helm install` Kommando ist ein sehr mächtiges Kommand mit vielen Möglichkeiten.
+Das `helm install` Kommando ist ein sehr mächtiges Kommando mit vielen Möglichkeiten.
 Um mehr darüber zu lernen, schauen Sie ins [Helm Benutzerhandbuch](/intro/using_helm.md)
 
 ## Mehr über Versionen lernen
@@ -96,7 +96,7 @@ NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS 
 mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-Die `helm list` Funktion wird Ihnen eine Liste auf alle installierten Versionen zeigen.
+Die `helm list` (oder `helm ls`) Funktion zeigt Ihnen eine Liste aller installierten Versionen.
 
 ## Eine Version deinstallieren
 
@@ -119,8 +119,8 @@ Status: UNINSTALLED
 ...
 ```
 
-Weil Helm Ihre Versionen nachverfolgt, nachdem Sie es deinstalliert hat, können Sie
-die Historie des Clusters auditieren und immer eine gelöschte Version zurückholen
+Weil Helm Ihre Versionen nachverfolgt, auch nachdem Sie sie deinstalliert haben, können Sie
+die Historie des Clusters auditieren und eine gelöschte Version wiederherstellen
 (mit `helm rollback`).
 
 ## Die Hilfe lesen
