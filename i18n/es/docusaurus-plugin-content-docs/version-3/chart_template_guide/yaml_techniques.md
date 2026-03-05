@@ -210,13 +210,13 @@ hacer algo como esto:
 
 ```yaml
 myfile: |
-{{ .Files.Get "myfile.txt" | indent 2 }}
+  {{- .Files.Get "myfile.txt" | nindent 2 }}
 ```
 
-Observe cómo hacemos la indentación anterior: `indent 2` le dice al motor de
-plantillas que indente cada línea en "myfile.txt" con dos espacios. Tenga en
-cuenta que no indentamos esa línea de plantilla. Eso es porque si lo hiciéramos,
-el contenido del archivo de la primera línea estaría indentado dos veces.
+Observe cómo hacemos la indentación anterior: `nindent 2` le dice al motor de
+plantillas que añada un salto de línea e indente cada línea en "myfile.txt" con
+dos espacios. El `{{-` elimina el espacio en blanco a la izquierda, y `nindent`
+re-añade el salto de línea con la indentación correcta.
 
 ### Cadenas Multilínea Plegadas (Folded)
 

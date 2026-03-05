@@ -247,7 +247,7 @@ app_version: "0.1.0"
 
 Щоб обійти цю проблему, Helm надає альтернативу `template`, яка імплементує вміст шаблону в поточний конвеєр, де він може бути переданий іншим функціям у конвеєрі.
 
-Ось приклад вище, виправлений з використанням `indent`, щоб правильно відступити шаблон `mychart.app`:
+Ось приклад вище, виправлений з використанням `nindent`, щоб правильно відступити шаблон `mychart.app`:
 
 ```go
 apiVersion: v1
@@ -255,13 +255,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Тепер створений YAML має вірний відступ для кожного розділу:

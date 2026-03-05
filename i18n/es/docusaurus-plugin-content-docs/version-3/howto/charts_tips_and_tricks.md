@@ -77,7 +77,7 @@ Para que sea posible incluir una plantilla y luego realizar una operación en la
 salida de esa plantilla, Helm tiene una función `include` especial:
 
 ```
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
 Lo anterior incluye una plantilla llamada `toYaml`, le pasa `$value` y luego pasa

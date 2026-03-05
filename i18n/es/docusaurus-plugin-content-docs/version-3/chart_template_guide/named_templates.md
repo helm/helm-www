@@ -323,13 +323,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Ahora el YAML producido está correctamente indentado para cada sección:

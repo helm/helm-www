@@ -209,13 +209,13 @@ comme ceci :
 
 ```yaml
 myfile: |
-{{ .Files.Get "myfile.txt" | indent 2 }}
+  {{- .Files.Get "myfile.txt" | nindent 2 }}
 ```
 
-Notez comment nous faisons l'indentation ci-dessus : `indent 2` indique au moteur de template d'indenter
-chaque ligne de « myfile.txt » avec deux espaces. Notez que nous n'indentons pas
-cette ligne de template. C'est parce que si nous le faisions, le contenu du fichier de la première ligne
-serait indenté deux fois.
+Notez comment nous faisons l'indentation ci-dessus : `nindent 2` indique au moteur de template d'ajouter
+un saut de ligne et d'indenter chaque ligne de « myfile.txt » avec deux espaces. Le `{{-`
+supprime l'espace blanc à gauche, et `nindent` ré-ajoute le saut de ligne avec
+l'indentation correcte.
 
 ### Chaînes multi-lignes repliées
 
