@@ -307,7 +307,7 @@ To work around this case, Helm provides an alternative to `template` that will
 import the contents of a template into the present pipeline where it can be
 passed along to other functions in the pipeline.
 
-Here's the example above, corrected to use `indent` to indent the `mychart.app`
+Here's the example above, corrected to use `nindent` to indent the `mychart.app`
 template correctly:
 
 ```yaml
@@ -316,13 +316,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Now the produced YAML is correctly indented for each section:

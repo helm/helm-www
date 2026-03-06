@@ -73,11 +73,11 @@ Um das zu ermöglichen, eine Vorlage zu inkludieren und die Vorlagenausgabe weit
 zu bearbeiten, hat Helm eine spezielle `include` Funktion:
 
 ```
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
 Dies inkludiert eine Vorlage namens `toYaml`, gibt das `$value` mit und
-gibt dann die Ausgabe der Vorlage an die `indent` Funktion weiter.
+gibt dann die Ausgabe der Vorlage an die `nindent` Funktion weiter.
 
 Da YAML Einrückungen und Leerzeichen viel Bedeutung zumisst, ist das ein
 grossartiger Weg um Codeschnippsel zu inkludieren, aber die Einrückungen

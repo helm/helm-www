@@ -177,11 +177,11 @@ coffee: |-
 
 ```yaml
 myfile: |
-{{ .Files.Get "myfile.txt" | indent 2 }}
+  {{- .Files.Get "myfile.txt" | nindent 2 }}
 ```
 
-注意上面是怎么做缩进的： `indent 2` 告诉模板引擎在文件"myfile.txt"中每行缩进两个空格。注意我们没有缩进模板的行。
-因为如果缩进了，文件内容的第一行会缩进两次。
+注意上面是怎么做缩进的： `nindent 2` 告诉模板引擎添加一个换行符并在文件"myfile.txt"中每行缩进两个空格。
+`{{-` 去除左边的空白，而 `nindent` 重新添加带有正确缩进的换行符。
 
 ### 折叠多行字符串
 
