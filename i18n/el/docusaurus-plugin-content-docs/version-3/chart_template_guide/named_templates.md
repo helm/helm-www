@@ -318,7 +318,7 @@ app_version: "0.1.0"
 `template` που θα εισάγει τα περιεχόμενα ενός template στο τρέχον pipeline όπου
 μπορούν να μεταβιβαστούν σε άλλες συναρτήσεις στο pipeline.
 
-Ακολουθεί το παράδειγμα παραπάνω, διορθωμένο ώστε να χρησιμοποιεί το `indent`
+Ακολουθεί το παράδειγμα παραπάνω, διορθωμένο ώστε να χρησιμοποιεί το `nindent`
 για να εσοχοποιεί το template `mychart.app` σωστά:
 
 ```yaml
@@ -327,13 +327,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Τώρα το παραγόμενο YAML είναι σωστά εσοχοποιημένο για κάθε ενότητα:
