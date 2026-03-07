@@ -1,61 +1,59 @@
 ---
 title: 라이브러리 차트
-description: Explains library charts and examples of usage
+description: 라이브러리 차트의 개념과 사용 예제를 설명합니다
 sidebar_position: 4
 ---
 
-A library chart is a type of [Helm chart](/topics/charts.md)
-that defines chart primitives or definitions which can be shared by Helm
-templates in other charts. This allows users to share snippets of code that can
-be re-used across charts, avoiding repetition and keeping charts
-[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+라이브러리 차트는 [Helm 차트](/topics/charts.md)의 한 유형으로,
+다른 차트의 Helm 템플릿에서 공유할 수 있는 차트 기본 요소나 정의를 제공합니다.
+이를 통해 사용자는 여러 차트에서 재사용할 수 있는 코드 조각을 공유하고,
+반복을 피하며 차트를 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)하게
+유지할 수 있습니다.
 
-The library chart was introduced in Helm 3 to formally recognize common or
-helper charts that have been used by chart maintainers since Helm 2. By
-including it as a chart type, it provides:
-- A means to explicitly distinguish between common and application charts 
-- Logic to prevent installation of a common chart
-- No rendering of templates in a common chart which may contain release
-  artifacts 
+라이브러리 차트는 Helm 2부터 차트 관리자들이 사용해온 공용 또는 헬퍼 차트를
+공식적으로 인정하기 위해 Helm 3에서 도입되었습니다.
+차트 유형으로 포함함으로써 다음과 같은 기능을 제공합니다:
+- 공용 차트와 애플리케이션 차트를 명확하게 구분하는 수단
+- 공용 차트의 설치를 방지하는 로직
+- 릴리스 아티팩트를 포함할 수 있는 공용 차트의 템플릿 렌더링 방지
+- 의존하는 차트가 가져오는 쪽의 컨텍스트를 사용할 수 있도록 허용
 
-A chart maintainer can define a common chart as a library chart and now be
-confident that Helm will handle the chart in a standard consistent fashion. It
-also means that definitions in an application chart can be shared by changing
-the chart type.
+차트 관리자는 공용 차트를 라이브러리 차트로 정의하면
+Helm이 표준화되고 일관된 방식으로 해당 차트를 처리할 것이라고 확신할 수 있습니다.
+또한 차트 유형을 변경하여 애플리케이션 차트의 정의를 공유할 수 있습니다.
 
 ## 간단한 라이브러리 차트 만들기
 
-As mentioned previously, a library chart is a type of [Helm chart](/topics/charts.md). This means that you can start off by creating a
-scaffold chart:
+앞서 언급했듯이, 라이브러리 차트는 [Helm 차트](/topics/charts.md)의 한 유형입니다.
+따라서 스캐폴드 차트를 생성하는 것부터 시작할 수 있습니다:
 
 ```console
 $ helm create mylibchart
 Creating mylibchart
 ```
 
-You will first remove all the files in `templates` directory as we will create
-our own templates definitions in this example.
+먼저 `templates` 디렉토리의 모든 파일을 삭제합니다.
+이 예제에서는 직접 템플릿 정의를 만들 것입니다.
 
 ```console
 $ rm -rf mylibchart/templates/*
 ```
 
-The values file will not be required either.
+values 파일도 필요하지 않습니다.
 
 ```console
-$ rm -f mylibchart/values.yaml 
+$ rm -f mylibchart/values.yaml
 ```
 
-Before we jump into creating common code, lets do a quick review of some
-relevant Helm concepts. A [named template](/chart_template_guide/named_templates.md) (sometimes called a partial
-or a subtemplate) is simply a template defined inside of a file, and given a
-name.  In the `templates/` directory, any file that begins with an underscore(_)
-is not expected to output a Kubernetes manifest file. So by convention, helper
-templates and partials are placed in a `_*.tpl` or `_*.yaml` files. 
+공용 코드를 작성하기 전에, 관련된 Helm 개념을 간단히 살펴보겠습니다.
+[이름이 지정된 템플릿](/chart_template_guide/named_templates.md)(partial 또는
+subtemplate이라고도 함)은 파일 내에 정의되고 이름이 부여된 템플릿입니다.
+`templates/` 디렉토리에서 밑줄(_)로 시작하는 파일은 Kubernetes 매니페스트 파일을
+출력하지 않습니다. 따라서 관례적으로 헬퍼 템플릿과 partial은
+`_*.tpl` 또는 `_*.yaml` 파일에 배치합니다.
 
-In this example, we will code a common ConfigMap which creates an empty
-ConfigMap resource. We will define the common ConfigMap in file
-`mylibchart/templates/_configmap.yaml` as follows:
+이 예제에서는 빈 ConfigMap 리소스를 생성하는 공용 ConfigMap을 작성합니다.
+공용 ConfigMap은 `mylibchart/templates/_configmap.yaml` 파일에 다음과 같이 정의합니다:
 
 ```yaml
 {{- define "mylibchart.configmap.tpl" -}}
@@ -70,17 +68,16 @@ data: {}
 {{- end -}}
 ```
 
-The ConfigMap construct is defined in named template `mylibchart.configmap.tpl`.
-It is a simple ConfigMap with an empty resource, `data`. Within this file there
-is another named template called `mylibchart.configmap`. This named template
-includes another named template `mylibchart.util.merge` which will take 2 named
-templates as arguments, the template calling `mylibchart.configmap` and
-`mylibchart.configmap.tpl`.
+ConfigMap 구조는 `mylibchart.configmap.tpl`이라는 이름이 지정된 템플릿에 정의됩니다.
+빈 리소스 `data`를 가진 간단한 ConfigMap입니다. 이 파일에는
+`mylibchart.configmap`이라는 또 다른 이름이 지정된 템플릿이 있습니다.
+이 템플릿은 `mylibchart.util.merge`라는 또 다른 이름이 지정된 템플릿을 포함하며,
+`mylibchart.configmap`을 호출하는 템플릿과 `mylibchart.configmap.tpl`이라는
+두 개의 이름이 지정된 템플릿을 인수로 받습니다.
 
-The helper function `mylibchart.util.merge` is a named template in
-`mylibchart/templates/_util.yaml`. It is a handy util from [The Common Helm
-Helper Chart](#공용-헬름-헬퍼-차트) because it merges the 2 templates
-and overrides any common parts in both:
+헬퍼 함수 `mylibchart.util.merge`는 `mylibchart/templates/_util.yaml`에 있는
+이름이 지정된 템플릿입니다. 이것은 [공용 Helm 헬퍼 차트](#공용-helm-헬퍼-차트)에서
+가져온 유용한 유틸리티로, 두 템플릿을 병합하고 공통 부분을 덮어씁니다:
 
 ```yaml
 {{- /*
@@ -98,11 +95,10 @@ This takes an array of three values:
 {{- end -}}
 ```
 
-This is important when a chart wants to use common code that it needs to
-customize with its configuration.
+차트가 자체 설정으로 사용자 정의해야 하는 공용 코드를 사용하려는 경우에 이것이 중요합니다.
 
-Finally, lets change the chart type to `library`. This requires editing
-`mylibchart/Chart.yaml` as follows:
+마지막으로 차트 유형을 `library`로 변경합니다.
+`mylibchart/Chart.yaml`을 다음과 같이 편집합니다:
 
 ```yaml
 apiVersion: v2
@@ -125,15 +121,13 @@ type: library
 version: 0.1.0
 
 # This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application.
-appVersion: 1.16.0
+# incremented each time you make changes to the application and it is recommended to use it with quotes.
+appVersion: "1.16.0"
 ```
 
-The library chart is now ready to be shared and its ConfigMap definition to be
-re-used.
+이제 라이브러리 차트를 공유할 준비가 되었으며, ConfigMap 정의를 재사용할 수 있습니다.
 
-Before moving on, it is worth checking if Helm recognizes the chart as a library
-chart:
+계속 진행하기 전에, Helm이 해당 차트를 라이브러리 차트로 인식하는지 확인해 볼 가치가 있습니다:
 
 ```console
 $ helm install mylibchart mylibchart/
@@ -142,21 +136,20 @@ Error: library charts are not installable
 
 ## 간단한 라이브러리 차트 사용하기
 
-It is time to use the library chart. This means creating a scaffold chart again:
+이제 라이브러리 차트를 사용할 차례입니다. 다시 스캐폴드 차트를 생성합니다:
 
 ```console
 $ helm create mychart
 Creating mychart
 ```
 
-Lets clean out the template files again as we want to create a ConfigMap only:
+ConfigMap만 생성할 것이므로 템플릿 파일들을 다시 정리합니다:
 
 ```console
 $ rm -rf mychart/templates/*
 ```
 
-When we want to create a simple ConfigMap in a Helm template, it could look
-similar to the following:
+Helm 템플릿에서 간단한 ConfigMap을 생성하려면 다음과 비슷한 형태가 됩니다:
 
 ```yaml
 apiVersion: v1
@@ -167,9 +160,8 @@ data:
   myvalue: "Hello World"
 ```
 
-We are however going to re-use the common code already created in `mylibchart`.
-The ConfigMap can be created in the file `mychart/templates/configmap.yaml` as
-follows:
+그러나 우리는 `mylibchart`에 이미 작성된 공용 코드를 재사용할 것입니다.
+ConfigMap은 `mychart/templates/configmap.yaml` 파일에 다음과 같이 생성할 수 있습니다:
 
 ```yaml
 {{- include "mylibchart.configmap" (list . "mychart.configmap") -}}
@@ -179,15 +171,13 @@ data:
 {{- end -}}
 ```
 
-You can see that it simplifies the work we have to do by inheriting the common
-ConfigMap definition which adds standard properties for ConfigMap. In our
-template we add the configuration, in this case the data key `myvalue` and its
-value. The configuration override the empty resource of the common ConfigMap.
-This is feasible because of the helper function `mylibchart.util.merge` we
-mentioned in the previous section.
+ConfigMap의 표준 속성을 추가하는 공용 ConfigMap 정의를 상속받아
+작업을 단순화한 것을 볼 수 있습니다. 우리의 템플릿에서는 설정만 추가합니다.
+이 경우 데이터 키 `myvalue`와 그 값입니다. 이 설정은 공용 ConfigMap의 빈 리소스를
+덮어씁니다. 이것은 이전 섹션에서 언급한 헬퍼 함수 `mylibchart.util.merge` 덕분에 가능합니다.
 
-To be able to use the common code, we need to add `mylibchart` as a dependency.
-Add the following to the end of the file `mychart/Chart.yaml`:
+공용 코드를 사용하려면 `mylibchart`를 의존성으로 추가해야 합니다.
+`mychart/Chart.yaml` 파일 끝에 다음을 추가합니다:
 
 ```yaml
 # My common code in my library chart
@@ -197,10 +187,10 @@ dependencies:
   repository: file://../mylibchart
 ```
 
-This includes the library chart as a dynamic dependency from the filesystem
-which is at the same parent path as our application chart. As we are including
-the library chart as a dynamic dependency, we need to run `helm dependency
-update`. It will copy the library chart into your `charts/` directory.
+이것은 애플리케이션 차트와 동일한 상위 경로에 있는 파일 시스템에서
+라이브러리 차트를 동적 의존성으로 포함합니다. 라이브러리 차트를 동적 의존성으로 포함하므로
+`helm dependency update`를 실행해야 합니다. 이 명령은 라이브러리 차트를
+`charts/` 디렉토리로 복사합니다.
 
 ```console
 $ helm dependency update mychart/
@@ -211,8 +201,7 @@ Saving 1 charts
 Deleting outdated charts
 ```
 
-We are now ready to deploy our chart. Before installing, it is worth checking
-the rendered template first.
+이제 차트를 배포할 준비가 되었습니다. 설치하기 전에 먼저 렌더링된 템플릿을 확인해 보는 것이 좋습니다.
 
 ```console
 $ helm install mydemo mychart/ --debug --dry-run
@@ -275,8 +264,7 @@ metadata:
   name: mychart-mydemo
 ```
 
-This looks like the ConfigMap we want with data override of `myvalue: Hello
-World`. Lets install it:
+원하는 대로 `myvalue: Hello World` 데이터가 덮어씌워진 ConfigMap처럼 보입니다. 설치해 봅시다:
 
 ```console
 $ helm install mydemo mychart/
@@ -288,7 +276,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-We can retrieve the release and see that the actual template was loaded.
+릴리스를 조회하여 실제 템플릿이 로드되었는지 확인할 수 있습니다.
 
 ```console
 $ helm get manifest mydemo
@@ -306,37 +294,57 @@ metadata:
   name: mychart-mydemo
   ```
 
-## 공용 헬름 헬퍼 차트
+## 라이브러리 차트의 장점
 
-Bit of a mouth full of a title but this
-[chart](https://github.com/helm/charts/tree/master/incubator/common) is the
-original pattern for common charts. It provides utilities that reflect best
-practices of Kubernetes chart development. Best of all it can be used off the
-bat by you when developing your charts to give you handy shared code.
+라이브러리 차트는 독립 실행형 차트로 동작할 수 없기 때문에 다음과 같은 기능을 활용할 수 있습니다:
+- `.Files` 객체는 라이브러리 차트의 로컬 경로가 아닌 부모 차트의 파일 경로를 참조합니다
+- `.Values` 객체는 부모 차트와 동일합니다. 이는 부모의 헤더 아래에 설정된
+  값 섹션을 받는 애플리케이션 [서브차트](/chart_template_guide/subcharts_and_globals.md)와 대조됩니다
 
-Here is a quick way to use it. For more details, have a look at the
-[README](https://github.com/helm/charts/blob/master/incubator/common/README.md).
 
-Create a scaffold chart again:
+## 공용 Helm 헬퍼 차트
+
+```markdown
+참고: GitHub의 공용 Helm 헬퍼 차트 리포지토리는 더 이상 적극적으로 유지 관리되지 않으며, 해당 리포지토리는 더 이상 사용되지 않고 보관되었습니다.
+```
+
+이 [차트](https://github.com/helm/charts/tree/master/incubator/common)는
+공용 차트의 원래 패턴이었습니다. Kubernetes 차트 개발의 모범 사례를 반영하는
+유틸리티를 제공합니다. 무엇보다도 차트를 개발할 때 바로 사용하여 편리한 공유 코드를
+활용할 수 있습니다.
+
+다음은 이를 사용하는 빠른 방법입니다. 자세한 내용은
+[README](https://github.com/helm/charts/blob/master/incubator/common/README.md)를 참조하세요.
+
+다시 스캐폴드 차트를 생성합니다:
 
 ```console
 $ helm create demo
 Creating demo
 ```
 
-Lets use the common code from the helper chart. First, edit deployment
-`demo/templates/deployment.yaml` as follows:
+헬퍼 차트의 공용 코드를 사용해 봅시다. 먼저 deployment
+`demo/templates/deployment.yaml`을 다음과 같이 편집합니다:
 
 ```yaml
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
 ## Define overrides for your Deployment resource here, e.g.
+apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "demo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo.selectorLabels" . | nindent 8 }}
+
 {{- end -}}
 ```
 
-And now the service file, `demo/templates/service.yaml` as follows:
+그리고 service 파일 `demo/templates/service.yaml`을 다음과 같이 편집합니다:
 
 ```yaml
 {{- template "common.service" (list . "demo.service") -}}
@@ -351,33 +359,33 @@ And now the service file, `demo/templates/service.yaml` as follows:
 {{- end -}}
 ```
 
-These templates show how inheriting the common code from the helper chart
-simplifies your coding down to your configuration or customization of the
-resources.
+이 템플릿들은 헬퍼 차트의 공용 코드를 상속받아
+리소스의 설정 또는 사용자 정의만으로 코딩을 단순화하는 방법을 보여줍니다.
 
-To be able to use the common code, we need to add `common` as a dependency. Add
-the following to the end of the file `demo/Chart.yaml`:
+공용 코드를 사용하려면 `common`을 의존성으로 추가해야 합니다.
+`demo/Chart.yaml` 파일 끝에 다음을 추가합니다:
 
 ```yaml
 dependencies:
 - name: common
   version: "^0.0.5"
-  repository: "https://charts.helm.sh/incubator"
+  repository: "https://charts.helm.sh/incubator/"
 ```
 
-Note: You will need to add the `incubator` repo to the Helm repository list
+참고: Helm 리포지토리 목록에 `incubator` 리포지토리를 추가해야 합니다
 (`helm repo add`).
 
-As we are including the chart as a dynamic dependency, we need to run `helm
-dependency update`. It will copy the helper chart into your `charts/` directory.
+차트를 동적 의존성으로 포함하므로 `helm dependency update`를 실행해야 합니다.
+이 명령은 헬퍼 차트를 `charts/` 디렉토리로 복사합니다.
 
-As helper chart is using some Helm 2 constructs, you will need to add the
-following to `demo/values.yaml` to enable the `nginx` image to be loaded as this
-was updated in Helm 3 scaffold chart:
+헬퍼 차트가 일부 Helm 2 구조를 사용하므로, Helm 3 스캐폴드 차트에서 업데이트된
+`nginx` 이미지를 로드하려면 `demo/values.yaml`에 다음을 추가해야 합니다:
 
 ```yaml
 image:
   tag: 1.16.0
 ```
 
-It is good to go now, so deploy away!
+`helm lint`와 `helm template` 명령을 사용하여 배포 전에 차트 템플릿이 올바른지 테스트할 수 있습니다.
+
+문제가 없다면 `helm install`을 사용하여 배포하세요!
