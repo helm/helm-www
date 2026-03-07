@@ -1,13 +1,12 @@
 ---
-title: PodとPodテンプレート
-description: チャートマニフェストの、PodとPodテンプレート部分のフォーマットについて説明します。
+title: Pod と PodTemplate
+description: chart マニフェストにおける Pod と PodTemplate 部分のフォーマットについて説明します。
 sidebar_position: 6
 ---
 
-ベストプラクティスのこの部分では、チャートマニフェストの、PodとPodテンプレート部分の
-フォーマットについて説明します。
+ベストプラクティスガイドのこの部分では、chart マニフェストにおける Pod と PodTemplate 部分のフォーマットについて説明します。
 
-以下のリソースのリスト（非網羅的）がPodテンプレートを使用します:
+以下のリソース（網羅的ではありません）が PodTemplate を使用します:
 
 - Deployment
 - ReplicationController
@@ -17,18 +16,15 @@ sidebar_position: 6
 
 ## イメージ
 
-コンテナイメージは固定されたタグ、もしくはイメージのSHAを使用するべきです。イメージは`latest`,
-`head`,`canary`タグや、その他"浮いている"タグは使用するべきではありません。
+コンテナイメージには固定されたタグ、またはイメージの SHA を使用してください。`latest`、`head`、`canary` など、常に最新を指すフローティングタグは使用しないでください。
 
-
-イメージは、簡単に入れ替えられるように、`values.yaml`に定義しても _良い_
-でしょう。
+イメージを `values.yaml` ファイルに定義しておくと、簡単に差し替えられます。
 
 ```yaml
 image: {{ .Values.redisImage | quote }}
 ```
 
-イメージとタグは、それぞれ別のフィールドとして`values.yaml`に定義しても _良い_ でしょう:
+イメージとタグを `values.yaml` で別々のフィールドとして定義することもできます:
 
 ```yaml
 image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
@@ -36,27 +32,24 @@ image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 
 ## ImagePullPolicy
 
-`helm create`はデフォルトで以下のようにして、`deployment.yaml`の
-`imagePullPolicy`を`IfNotPresent`に設定します:
+`helm create` は、`deployment.yaml` で以下のように記述することで、`imagePullPolicy` をデフォルトで `IfNotPresent` に設定します:
 
 ```yaml
 imagePullPolicy: {{ .Values.image.pullPolicy }}
 ```
 
-そして、`values.yaml`:
+`values.yaml`:
 
 ```yaml
 image:
   pullPolicy: IfNotPresent
 ```
 
-同様に、Kubernetesは`imagePullPolicy`が定義されていない場合、デフォルトで`IfNotPresent`に
-設定します。`IfNotPresent`以外の値が必要な場合、単純に`values.yaml`の値を必要な値に更新
-してください。
+同様に、Kubernetes も `imagePullPolicy` が定義されていない場合、デフォルトで `IfNotPresent` を使用します。`IfNotPresent` 以外の値が必要な場合は、`values.yaml` の値を希望する値に更新してください。
 
-## Podテンプレートはselectorを宣言するべき
+## PodTemplate には selector を宣言する
 
-全てのPodテンプレートセクションはselectorを指定するべきです。例えば:
+すべての PodTemplate セクションで selector を指定してください。例:
 
 ```yaml
 selector:
@@ -68,8 +61,6 @@ template:
       app.kubernetes.io/name: MyName
 ```
 
-これはセットとPodの関係を作るため、良い慣習です。
+selector を指定することで、ワークロードリソースと Pod の関係が明確になり、推奨されるプラクティスです。
 
-しかし、Deploymentのようなセットでは、これはさらに重要になります。これがないと、
-_全ての_ ラベルのセットが一致するPodを選択するために使用され、もし、バージョンやリリース日のように、
-変化するラベルを使用していた場合、これが壊れることになります。
+Deployment などのワークロードリソースでは、これは特に重要です。selector を指定しないと、**すべての**ラベルが一致する Pod の選択に使用されます。バージョンやリリース日など変化するラベルを使用している場合、意図しない動作を引き起こす可能性があります。
