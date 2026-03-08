@@ -15,6 +15,7 @@ They are listed here and broken down by the following categories:
 * [Date](#date-functions)
 * [Dictionaries](#dictionaries-and-dict-functions)
 * [Encoding](#encoding-functions)
+* [Compression](#compression-functions)
 * [File Path](#file-path-functions)
 * [Kubernetes and Chart](#kubernetes-and-chart-functions)
 * [Logic and Flow Control](#logic-and-flow-control-functions)
@@ -1607,6 +1608,119 @@ Helm has the following encoding and decoding functions:
 
 - `b64enc`/`b64dec`: Encode or decode with Base64
 - `b32enc`/`b32dec`: Encode or decode with Base32
+
+## Compression Functions
+
+Helm has the following compression and decompression functions:
+
+- `gzip`/`ungzip`: Compress or decompress with Gzip
+- `zstd`/`unzstd`: Compress or decompress with Zstd
+- `lz4`/`unlz4`: Compress or decompress with LZ4
+- `snappy`/`unsnappy`: Compress or decompress with Snappy
+- `brotli`/`unbrotli`: Compress or decompress with Brotli
+
+All compression functions return a Base64 encoded string. All decompression functions accept a Base64 encoded string.
+
+### gzip
+
+The `gzip` function compresses a string using Gzip and returns a Base64 encoded result.
+
+```
+gzip "Hello world!"
+```
+
+It enforces a size limit of 1MB on the output to prevent creating objects too large for Kubernetes Secrets/ConfigMap.
+
+### ungzip
+
+The `ungzip` function decodes a Base64 encoded string and then decompresses it using Gzip.
+
+```
+"H4sIAAAAAAAA/8pIzcnJVyjPL8pJAQQAAP//hRFKDQsAAAA=" | ungzip
+```
+
+It enforces a size limit of 1MB on the input string to prevent creating objects too large for Kubernetes Secrets. It also enforces a size limit of 1MB on the decompressed output and verifies that the content is valid UTF-8 text.
+
+### zstd
+
+The `zstd` function compresses a string using Zstd and returns a Base64 encoded result.
+
+```
+zstd "Hello world!"
+```
+
+It enforces a size limit of 1MB on the output to prevent creating objects too large for Kubernetes Secrets/ConfigMap.
+
+### unzstd
+
+The `unzstd` function decodes a Base64 encoded string and then decompresses it using Zstd.
+
+```
+"KLUv/QQAYQAASGVsbG8gd29ybGQhsn39fw==" | unzstd
+```
+
+It enforces a size limit of 1MB on the input string to prevent creating objects too large for Kubernetes Secrets. It also enforces a size limit of 1MB on the decompressed output and verifies that the content is valid UTF-8 text.
+
+### lz4
+
+The `lz4` function compresses a string using LZ4 and returns a Base64 encoded result.
+
+```
+lz4 "Hello world!"
+```
+
+It enforces a size limit of 1MB on the output to prevent creating objects too large for Kubernetes Secrets/ConfigMap.
+
+### unlz4
+
+The `unlz4` function decodes a Base64 encoded string and then decompresses it using LZ4.
+
+```
+"BCJNGGRwuQwAAIBIZWxsbyB3b3JsZCEAAAAAcXerxA==" | unlz4
+```
+
+It enforces a size limit of 1MB on the input string to prevent creating objects too large for Kubernetes Secrets. It also enforces a size limit of 1MB on the decompressed output and verifies that the content is valid UTF-8 text.
+
+### snappy
+
+The `snappy` function compresses a string using Snappy and returns a Base64 encoded result.
+
+```
+snappy "Hello world!"
+```
+
+It enforces a size limit of 1MB on the output to prevent creating objects too large for Kubernetes Secrets/ConfigMap.
+
+### unsnappy
+
+The `unsnappy` function decodes a Base64 encoded string and then decompresses it using Snappy.
+
+```
+"DCxIZWxsbyB3b3JsZCE=" | unsnappy
+```
+
+It enforces a size limit of 1MB on the input string to prevent creating objects too large for Kubernetes Secrets. It also enforces a size limit of 1MB on the decompressed output and verifies that the content is valid UTF-8 text.
+
+### brotli
+
+The `brotli` function compresses a string using Brotli and returns a Base64 encoded result.
+
+```
+brotli "Hello world!"
+```
+
+It enforces a size limit of 1MB on the output to prevent creating objects too large for Kubernetes Secrets/ConfigMap.
+
+### unbrotli
+
+The `unbrotli` function decodes a Base64 encoded string and then decompresses it using Brotli.
+
+```
+"GwsAACRBQpBKkUVq+pw1CQ==" | unbrotli
+```
+
+It enforces a size limit of 1MB on the input string to prevent creating objects too large for Kubernetes Secrets. It also enforces a size limit of 1MB on the decompressed output and verifies that the content is valid UTF-8 text.
+
 
 ## Lists and List Functions
 
