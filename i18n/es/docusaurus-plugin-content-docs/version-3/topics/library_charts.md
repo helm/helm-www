@@ -1,6 +1,6 @@
 ---
-title: "Charts de Bibliotecas"
-description: "Explica los Charts de biblioteca y ejemplos de uso."
+title: "Charts de Biblioteca"
+description: "Explica los charts de biblioteca y ejemplos de uso."
 sidebar_position: 4
 ---
 
@@ -14,21 +14,22 @@ El chart de biblioteca se introdujo en Helm 3 para reconocer formalmente
 los charts comunes o auxiliares que han sido utilizados por los mantenedores
 de charts desde Helm 2. Al incluirlo como un tipo de chart, proporciona:
 
-- Un medio para distinguir explícitamente entre charts comunes y de aplicación.
+- Un medio para distinguir explícitamente entre charts comunes y de aplicación
 - Lógica para evitar la instalación de un chart común
-- No se renderizan las plantillas en un chart común que puede contener un
-  artefacto de un release
+- No se renderizan las plantillas en un chart común que puede contener artefactos
+  de un release
+- Permite que los charts dependientes utilicen el contexto del chart que los importa
 
 Un mantenedor de charts puede definir un chart común como un chart de biblioteca
-y ahora estar seguro de que Helm manejará el chart de una manera estándar
-consistente. También significa que las definiciones en un chart deaplicación
+y ahora estar seguro de que Helm manejará el chart de una manera estándar y
+consistente. También significa que las definiciones en un chart de aplicación
 se pueden compartir cambiando el tipo de chart.
 
 ## Crear un Chart de Biblioteca Simple
 
 Como se mencionó anteriormente, un chart de biblioteca es un tipo de [chart de
 Helm](/topics/charts.md). Esto significa que puede comenzar
-creando un chart de estantería:
+creando un chart base:
 
 ```console
 $ helm create mylibchart
@@ -45,13 +46,13 @@ $ rm -rf mylibchart/templates/*
 El archivo values tampoco será necesario.
 
 ```console
-$ rm -f mylibchart/values.yaml 
+$ rm -f mylibchart/values.yaml
 ```
 
 Antes de pasar a la creación de código común, hagamos una revisión rápida de algunos
-conceptos relevantes de Helm. Una [plantilla con nombre](/chart_template_guide/named_templates.md) 
+conceptos relevantes de Helm. Una [plantilla con nombre](/chart_template_guide/named_templates.md)
 (a veces llamada parcial o subplantilla) es simplemente una plantilla definida
-dentro de un archivo, y se le dio un nombre. En el directorio `templates/`, no se
+dentro de un archivo, y se le da un nombre. En el directorio `templates/`, no se
 espera que ningún archivo que comience con un guión bajo (_) genere un archivo de
 manifiesto de Kubernetes. Entonces, por convención, las plantillas auxiliares y
 los parciales se colocan en archivos `_*.tpl` o `_*.yaml`.
@@ -83,15 +84,15 @@ y `mylibchart.configmap.tpl`.
 La función auxiliar `mylibchart.util.merge` es una plantilla con nombre en
 `mylibchart/templates/_util.yaml`. Es una utilidad útil de [El Chart de Utilidad
 Común de Helm](#el-chart-de-utilidad-común-de-helm) porque combina las 2 plantillas
-y sobreescribe cualquier parte común en ambas:
+y sobrescribe cualquier parte común en ambas:
 
 ```yaml
 {{- /*
-mylibchart.util.merge convinará dos plantillas YAML y generará el resultado.
-Esto toma un arreglo de tres valores:
+mylibchart.util.merge fusionará dos plantillas YAML y generará el resultado.
+Esto toma un array de tres valores:
 - el contexto superior
 - el nombre de la plantilla de las anulaciones (destino)
-- el nombre de la plantilla de la base (fuente)
+- el nombre de la plantilla base (fuente)
 */}}
 {{- define "mylibchart.util.merge" -}}
 {{- $top := first . -}}
@@ -104,7 +105,7 @@ Esto toma un arreglo de tres valores:
 Esto es importante cuando un chart desea utilizar un código común que necesita
 personalizar con su configuración.
 
-Finalmente, cambiemos el tipo de chart a "biblioteca". Esto requiere editar
+Finalmente, cambiemos el tipo de chart a `library`. Esto requiere editar
 `mylibchart/Chart.yaml` de la siguiente manera:
 
 ```yaml
@@ -146,7 +147,7 @@ Error: library charts are not installable
 ## Utilice el Chart de Biblioteca Simple
 
 Es hora de usar el chart de biblioteca. Esto significa volver a crear un chart
-de estantería:
+base:
 
 ```console
 $ helm create mychart
@@ -186,7 +187,7 @@ data:
 Puede ver que simplifica el trabajo que tenemos que hacer al heredar la definición
 común de ConfigMap que agrega propiedades estándar para ConfigMap. En nuestra
 plantilla agregamos la configuración, en este caso la clave de datos `myvalue`
-y su valor. La configuración sobreescribe el recurso vacío del ConfigMap común.
+y su valor. La configuración sobrescribe el recurso vacío del ConfigMap común.
 Esto es factible debido a la función auxiliar `mylibchart.util.merge` que
 mencionamos en la sección anterior.
 
@@ -194,7 +195,7 @@ Para poder usar el código común, necesitamos agregar `mylibchart` como depende
 Agregue lo siguiente al final del archivo `mychart/Chart.yaml`:
 
 ```yaml
-# Mi código común en el chart de mi biblioteca
+# My common code in my library chart
 dependencies:
 - name: mylibchart
   version: 0.1.0
@@ -203,9 +204,9 @@ dependencies:
 
 Esto incluye el chart de biblioteca como una dependencia dinámica del
 sistema de archivos que se encuentra en la misma ruta principal que nuestro
-chart de la aplicación. Como estamos incluyendo el chart de biblioteca como
-una dependencia dinámica, necesitamos ejecutar la actualización de la dependencia
-de helm. Helm copiará el chart de biblioteca en su directorio `charts/`.
+chart de aplicación. Como estamos incluyendo el chart de biblioteca como
+una dependencia dinámica, necesitamos ejecutar `helm dependency update`.
+Helm copiará el chart de biblioteca en su directorio `charts/`.
 
 ```console
 $ helm dependency update mychart/
@@ -280,7 +281,7 @@ metadata:
   name: mychart-mydemo
 ```
 
-Esto se parece al ConfigMap que queremos con la sobre escritura de datos de
+Esto se parece al ConfigMap que queremos con la sobrescritura de datos de
 `myvalue: Hello World`. Vamos a instalarlo:
 
 ```console
@@ -309,9 +310,24 @@ metadata:
     chart: mychart-0.1.0
     release: mydemo
   name: mychart-mydemo
-  ```
+```
+
+## Beneficios del Chart de Biblioteca
+
+Debido a su incapacidad para actuar como charts independientes, los charts de
+biblioteca pueden aprovechar la siguiente funcionalidad:
+
+- El objeto `.Files` hace referencia a las rutas de archivo del chart padre,
+  en lugar de la ruta local del chart de biblioteca
+- El objeto `.Values` es el mismo que el del chart padre, a diferencia de los
+  [subcharts](/chart_template_guide/subcharts_and_globals.md) de aplicación
+  que reciben la sección de valores configurada bajo su encabezado en el padre
 
 ## El Chart de Utilidad Común de Helm
+
+```markdown
+Nota: El repositorio del Chart de Utilidad Común de Helm en GitHub ya no se mantiene activamente, y el repositorio ha sido marcado como obsoleto y archivado.
+```
 
 Este [chart](https://github.com/helm/charts/tree/master/incubator/common) fue
 el patrón original para los charts comunes. Proporciona utilidades que reflejan
@@ -319,25 +335,34 @@ las mejores prácticas del desarrollo de charts de Kubernetes. Lo mejor de todo
 es que puede usarlo de inmediato cuando desarrolle sus charts para brindarle un
 código compartido útil.
 
-Aquí hay una forma rápida de usarlo. Para más detalles, eche un vistazo al
+Aquí hay una forma rápida de usarlo. Para más detalles, consulte el
 [README](https://github.com/helm/charts/blob/master/incubator/common/README.md).
 
-Vuelva a crear un chart de estantería:
+Vuelva a crear un chart base:
 
 ```console
 $ helm create demo
 Creating demo
 ```
 
-Usemos el código común del chart de ayuda. Primero, edite el deployment
+Usemos el código común del chart auxiliar. Primero, edite el deployment
 `demo/templates/deployment.yaml` de la siguiente manera:
 
 ```yaml
 {{- template "common.deployment" (list . "demo.deployment") -}}
 {{- define "demo.deployment" -}}
-## Defina anulaciones para su deployment aquí, p. Ej.
+## Defina anulaciones para su recurso Deployment aquí, por ejemplo
+apiVersion: apps/v1
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "demo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo.selectorLabels" . | nindent 8 }}
+
 {{- end -}}
 ```
 
@@ -346,7 +371,7 @@ Y ahora el archivo de servicio, `demo/templates/service.yaml` como sigue:
 ```yaml
 {{- template "common.service" (list . "demo.service") -}}
 {{- define "demo.service" -}}
-## Defina aquí anulaciones para su Service, p. Ej.
+## Defina anulaciones para su recurso Service aquí, por ejemplo
 # metadata:
 #   labels:
 #     custom: label
@@ -376,13 +401,16 @@ Como estamos incluyendo el chart como una dependencia dinámica, necesitamos
 ejecutar `helm dependency update`. Helm copiará el chart auxiliar en su directorio
 `charts/`.
 
-Como el chart auxiliar está usando algunas construcciones de Helm 2, deberá agregar
+Como el chart auxiliar usa algunas construcciones de Helm 2, deberá agregar
 lo siguiente a `demo/values.yaml` para permitir que se cargue la imagen `nginx`
-ya que se actualizó en el chart de estantería de Helm 3:
+ya que se actualizó en el chart base de Helm 3:
 
 ```yaml
 image:
   tag: 1.16.0
 ```
 
-Ahora está listo, ¡así que a desplegarlo!
+Puede verificar que las plantillas del chart son correctas antes de desplegarlo
+usando los comandos `helm lint` y `helm template`.
+
+¡Si todo está bien, proceda a desplegarlo con `helm install`!
