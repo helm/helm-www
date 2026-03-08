@@ -67,7 +67,7 @@ ciclo de vida se modifica así:
    por tipo de recurso y finalmente por nombre en orden ascendente.
 7. Luego, la biblioteca carga primero el gancho con el peso más bajo (negativo a
    positivo)
-8. La biblioteca espera hasta que el enlace esté "Listo" (excepto para los CRD).
+8. La biblioteca espera hasta que el gancho esté "Listo" (excepto para los CRD).
 9. La biblioteca carga los recursos resultantes en Kubernetes. Tenga en cuenta
    que si la bandera `--wait` está configurada, la biblioteca esperará hasta que
    todos los recursos estén en un estado "Listo" y no ejecutará el gancho `post-install`
@@ -111,7 +111,7 @@ de un recurso Job](https://kubernetes.io/docs/concepts/workloads/controllers/ttl
 
 ## Escribir un Gancho
 
-Los enganches son solo archivos de manifiesto de Kubernetes con anotaciones
+Los ganchos son solo archivos de manifiesto de Kubernetes con anotaciones
 especiales en la sección `metadata`. Debido a que son archivos de plantilla,
 puede utilizar todas las funciones normales de la plantilla, incluida la lectura
 de `.Values`, `.Release` y `.Template`.

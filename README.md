@@ -28,6 +28,10 @@ Anyone can submit a PR to edit Helm.sh. We require commits be signed - please re
 
 Pull requests require [maintainer](https://github.com/helm/helm-www/blob/main/OWNERS) approval before merge.
 
+### Style Guide
+
+For Helm documentation style guidelines, see [Documentation Style Guide](style-guide.md).
+
 ### How to Edit The Helm Docs
 
 Helm v4 documentation is located in this repo under `/docs/`. The sidebar for the Helm v4 docs is located at `sidebars.js`.
@@ -35,6 +39,24 @@ Helm v4 documentation is located in this repo under `/docs/`. The sidebar for th
 Helm v3 documentation is located under `versioned-docs/version-3`. The sidebar for the Helm v3 docs is located at `versioned-sidebars/sidebars-version-2.js`
 
 For earlier versions, see the dev-v2 branch of the main Helm repo [here](https://github.com/helm/helm/tree/dev-v2/docs).
+
+### Community Documentation
+
+The Community section imports content from the [helm/community](https://github.com/helm/community) repository. To manage these imported docs:
+
+#### Download/Update Community Docs
+```bash
+yarn download-remote-community
+```
+This command fetches the latest community documentation from the helm/community repository and applies transformations for proper integration.
+
+#### Clear Community Docs
+```bash
+yarn clear-remote-community
+```
+This removes the imported community documentation files (useful before re-importing or for troubleshooting).
+
+The imported docs configuration is defined in `docusaurus.config.js` under `customFields.communityDocs`. See `ARCHITECTURAL_DECISIONS.md` for details on the implementation.
 
 ### Updating the Helm CLI Reference Docs
 

@@ -1,0 +1,63 @@
+---
+title: helm plugin verify
+---
+
+Перевірити, чи втулок за вказаним шляхом має підпис і є дійсним
+
+### Опис {#synopsis}
+
+Ця команда перевіряє, чи має втулок Helm дійсний файл походження і чи підписаний цей файл походження надійним ключем PGP.
+
+Вона підтримує обидва типи:
+
+- Архіви втулків (файли .tgz або .tar.gz)
+- Теки встановлених втулків
+
+Для встановлених втулків використовуйте шлях, показаний командою `helm env HELM_PLUGINS`, а потім вкажіть назву втулка. Наприклад:
+
+```shell
+helm plugin verify ~/.local/share/helm/plugins/example-cli
+```
+
+Щоб створити підписаний втулок, використовуйте команду `helm plugin package --sign`.
+
+```shell
+helm plugin verify [PATH] [flags]
+```
+
+### Параметри {#options}
+
+```none
+  -h, --help             довідка verify
+      --keyring string   вʼязка ключів, що містить відкриті ключі ( стандартно "~/.gnupg/pubring.gpg")
+```
+
+### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
+
+```none
+      --burst-limit int                 стандартні обмеження на стороні клієнта (стандартно 100)
+      --color string                    використовувати кольоровий вивід (never, auto, always) (стандартно "auto")
+      --colour string                   використовувати кольоровий вивід (never, auto, always) (стандартно "auto")
+      --content-cache string            шлях до теки, що містить кешований вміст (наприклад, чарти) (стандартно "~/.cache/helm/content")
+      --debug                           вмикає розширений вивід
+      --kube-apiserver string           адреса і порт сервера API Kubernetes
+      --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
+      --kube-as-user string             імʼя користувача для імперсонації під час операції
+      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-context string             імʼя контексту kubeconfig для використання
+      --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
+      --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
+      --kube-token string               токен на предʼявника, який використовується для автентифікації
+      --kubeconfig string               шлях до файлу kubeconfig
+  -n, --namespace string                простір імен для цього запиту
+      --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
+      --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
+      --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
+      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+```
+
+### ДИВИТИСЯ ТАКОЖ {#see-also}
+
+* [helm plugin](/helm/helm_plugin.md) — встановити, переглянути або видалити втулки Helm
+
+###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
