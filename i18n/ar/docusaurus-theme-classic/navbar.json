@@ -1,0 +1,27 @@
+{
+  "title": {
+    "message": "Helm",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "شعار Helm",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Docs": {
+    "message": "التوثيق",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Charts": {
+    "message": "الـ Charts",
+    "description": "Navbar item with label Charts"
+  },
+  "item.label.Blog": {
+    "message": "المدونة",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Community": {
+    "message": "المجتمع",
+    "description": "Navbar item with label Community"
+  }
+}
+
