@@ -858,18 +858,22 @@ The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, 
 The `toToml` function encodes an item into a TOML string. If the item cannot be
 converted to TOML, the function will return an error.
 
-```
-toToml .Item
+```yaml
+config: {{ toToml .Values.config | nindent 2 }}
 ```
 
-The above returns a TOML string representation of `.Item`.
+The above returns a TOML string representation of `.Values.config`.
+
+> Note: TOML does not support `nil` values. Passing a map or struct that
+> contains nil fields will cause `toToml` to return an error.
 
 ### fromToml
 
 The `fromToml` function takes a TOML string and returns an object that can be
-used in templates.
+used in templates. If the input is not valid TOML, the function will return an
+error.
 
-`File at: tomls/person.toml`
+Given a file `tomls/person.toml` with the following content:
 
 ```toml
 name = "Bob"
