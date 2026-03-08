@@ -19,6 +19,7 @@ helm test [RELEASE] [flags]
 ```
       --filter strings     Spécifier les tests par attribut (actuellement "name") en utilisant la syntaxe attribut=valeur ou '!attribut=valeur' ​​pour exclure un test (vous pouvez spécifier plusieurs valeurs ou des valeurs distinctes avec des virgules : name=test1, name=test2)
   -h, --help               Aide pour la commande test
+      --hide-notes         Si défini, ne pas afficher les notes dans la sortie des tests. N'affecte pas leur présence dans les métadonnées du chart
       --logs               Récupère les logs du pod de test (cela s'exécutera une fois tous les tests terminés, mais avant de tout nettoyer)
       --timeout duration   Temps d'attente pour chaque opération Kubernetes (comme les Jobs pour les hooks) (par défaut 5m0s)
 ```

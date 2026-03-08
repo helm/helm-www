@@ -73,11 +73,11 @@ const BlockList = [
               id="home.community.nextFeatureRelease.version"
               description="Next Feature Release version"
             >
-              v4.0.0
+              v4.2.0
             </Translate>
           </dt>
           <dd>
-            <em><CustomDate dateString="2025-11-01" formatType="month" /></em>
+            <em><CustomDate dateString="2026-05-13" formatType="month" /></em>
           </dd>
 
           <dt>
