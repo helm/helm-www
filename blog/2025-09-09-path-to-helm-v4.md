@@ -23,7 +23,7 @@ The beta period starts in October. At this point the focus is on stability in pr
 
 Testers should file bugs as they encounter any issues.
 
-Per [release schedule policy](https://helm.sh/docs/topics/release_policy/#major-releases), once the first beta version is available, the final 4.0.0 release date will be chosen and announced.
+Per [release schedule policy](/community/release_policy#major-releases), once the first beta version is available, the final 4.0.0 release date will be chosen and announced.
 
 ## Release Candidates
 

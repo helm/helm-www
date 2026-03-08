@@ -1,0 +1,117 @@
+---
+title: "Посібник: Створення втулків Postrenderer"
+sidebar_label: Створення втулків Postrenderer
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+import CodeBlock from "@theme/CodeBlock";
+
+Створіть втулок, який додає власні мітки до всіх ресурсів Kubernetes.
+
+## Subprocess Runtime
+
+Створімо втулок Postrenderer, який виконується в Subprocess.
+
+### Передумови {#prerequisites}
+
+1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. В терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
+3. Встановіть `mikefarah/yq`: https://github.com/mikefarah/yq/#install
+
+### 1. Створіть теку для втулка {#1-create-plugin-directory}
+
+Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/label-injector
+cd $HOME/code/helm/plugins/label-injector
+```
+
+### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: postrenderer/v1
+name: label-injector
+version: 0.1.0
+runtime: subprocess
+runtimeConfig:
+  platformCommand:
+    - command: ${HELM_PLUGIN_DIR}/inject-labels.sh
+```
+
+### 3. Створіть скрипт {#3-create-script}
+
+```bash title="inject-labels.sh" showLineNumbers
+#!/usr/bin/env sh
+# set -e
+cat <&0 | yq '.metadata.labels.postrendered-by = "helm-label-injector-plugin"'
+```
+
+Зробіть його виконуваним:
+
+```bash
+chmod +x inject-labels.sh
+```
+
+### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+
+Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/label-injector
+Installing plugin from local directory (development mode)
+Installed plugin: label-injector
+```
+
+Як ми бачили в [посібнику з втулків CLI](/plugins/developer/tutorial-cli-plugin.mdx) та [Getter](/plugins/developer/tutorial-getter-plugin.mdx), встановлення в локальному режимі розробки створює символічне посилання з теки джерел вашого втулка до теки втулків. Тепер у вас встановлено три втулки:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 5 r6by  staff   160B Nov 10 04:04 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 04:04 demo-getter -> /Users/r6by/code/helm/plugins/demo-getter
+lrwxr-xr-x  1 r6by  staff    44B Nov 10 03:02 label-injector -> /Users/r6by/code/helm/plugins/label-injector
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+Тепер ви можете переглянути детальну інформацію про встановлений втулок Postrenderer, а також про встановлені втулки CLI та Getter, використовуючи команду `helm plugin list`:
+
+```bash
+% helm plugin list
+NAME          	VERSION	TYPE           	APIVERSION	PROVENANCE	SOURCE
+demo-getter   	0.1.0  	getter/v1      	v1        	local dev 	unknown
+label-injector	0.1.0  	postrenderer/v1	v1        	local dev 	unknown
+system-info   	0.1.0  	cli/v1         	v1        	local dev 	unknown
+```
+
+Давайте спробуємо:
+
+```bash
+% helm create ../mychart
+% helm template ../mychart --post-renderer label-injector
+```
+
+У вихідних даних ви повинні побачити такі мітки:
+
+```yaml
+metadata:
+  labels:
+    postrendered-by: helm-label-injector-plugin
+```
+
+Що ви створили: втулок Postrenderer, що використовує середовище виконання Subprocess!
+
+Далі створімо версію в середовищі виконання Wasm…
+
+## Wasm Runtime
+
+### Передумови {#prerequisites-1}
+
+- Вимоги з [Subprocess Runtime](#subprocess-runtime)
+- Встановлений Go 1.25
+
+:::warning
+To-do: додати цей розділ
+:::

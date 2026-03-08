@@ -11,7 +11,7 @@ Par défaut, cela liste uniquement les publications qui sont déployées ou éch
 
 Par défaut, les éléments sont triés par ordre alphabétique. Vous pouvez utiliser l'option '-d' pour trier par date de publication.
 
-Si l'option '--filter' est renseigné, il sera traité comme un filtre. Les filtres sont des expressions régulières (regEx) (compatibles avec Perl) qui sont appliquées à la liste des publications. Seuls les éléments qui correspondent au filtre seront renvoyées. 
+Si l'option '--filter' est renseignée, elle sera traitée comme un filtre. Les filtres sont des expressions régulières (compatibles avec Perl) qui sont appliquées à la liste des publications. Seuls les éléments qui correspondent au filtre seront renvoyés.
 
     $ helm list --filter 'ara[a-z]+'
     NAME                UPDATED                                  CHART
@@ -30,10 +30,10 @@ helm list [flags]
 ### Options
 
 ```
-  -a, --all                  Affiche toutes les publications sans filtre d'appliqué
-  -A, --all-namespaces       Liste les publications à travers tous les namespace
+  -a, --all                  Affiche toutes les publications sans aucun filtre appliqué
+  -A, --all-namespaces       Liste les publications à travers tous les namespaces
   -d, --date                 Trie par date de publication
-      --deployed             Affiche les publications déployées. Si aucun autre n'est spécifié, celle-ci sera automatiquement activé
+      --deployed             Affiche les publications déployées. Si aucune autre option n'est spécifiée, celle-ci sera automatiquement activée
       --failed               Affiche les publications échouées
   -f, --filter string        Une expression régulière (compatible Perl). Toutes les publications correspondant à l'expression régulières seront incluses dans les résultats
   -h, --help                 Aide pour la commande list
@@ -58,14 +58,14 @@ helm list [flags]
       --debug                           Active la sortie détaillée
       --kube-apiserver string           L'adresse et le port API du serveur Kubernetes
       --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
-      --kube-as-user string             Nom d'utilisateur à utiliser pour l'operation
+      --kube-as-user string             Nom d'utilisateur à utiliser pour l'opération
       --kube-ca-file string             Le fichier de l'autorité de certification pour la connexion à l'API Kubernetes
       --kube-context string             Nom du contexte kubeconfig à utiliser
       --kube-insecure-skip-tls-verify   Si true, la validité du certificat du serveur API Kubernetes ne sera pas vérifiée. Cela fera les connexions HTTPS non sûres
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
