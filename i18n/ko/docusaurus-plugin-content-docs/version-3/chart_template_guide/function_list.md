@@ -1284,7 +1284,7 @@ deepCopy $source | merge $dest
 아래의 경우
 
 ```
-dst:
+dest:
   default: default
   overwrite: me
   key: true

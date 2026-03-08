@@ -1,0 +1,219 @@
+---
+title: "Посібник: Створення втулків Getter"
+sidebar_label: Створення втулків Getter
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+
+Створіть команду `helm system-info`, яка виводить інформацію про систему.
+
+## Subprocess Runtime
+
+Створімо втулок Getter, який виконується в Subprocess.
+
+### Передумови {#prerequisites}
+
+1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. У терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
+
+### 1. Створіть теку для втулка {#1-create-plugin-directory}
+
+Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/demo-getter
+cd $HOME/code/helm/plugins/demo-getter
+```
+
+### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: getter/v1
+name: demo-getter
+version: 0.1.0
+runtime: subprocess
+config:
+  protocols: ["demo"]
+runtimeConfig:
+  protocolCommands:
+    - protocols:
+        - demo
+      platformCommand:
+        - command: get-demo.sh
+```
+
+### 3. Створіть скрипт {#3-create-script}
+
+Втулки Getter відповідають за отримання/завантаження упакованого артефакту, в даному випадку чарта, та повернення шляху до завантаженого пакета. Для демонстрації скористаймося утилітою вашої системи, щоб створити тимчасову теку (вона автоматично очищатиметься з часом), а також командами `helm create` та `helm package`, щоб створити демонстраційний пакет чарта в тимчасовій теці та повернути шлях до пакета:
+
+```bash title="get-demo.sh" showLineNumbers
+#!/usr/bin/env sh
+set -e
+
+URI=$@
+TMPDIR="$(mktemp -d)"
+
+# створення фальшивого чарта для тестування з переданим базовим імʼям URL
+FILENAME=$(basename -- $URI)
+helm create $TMPDIR/$FILENAME 1>/dev/null
+helm package $TMPDIR/$FILENAME -d $TMPDIR 1>/dev/null
+# cat $FILENAME-0.1.0.tgz
+# щоб не потрібно було знати версію чарта
+rm -r $TMPDIR/$FILENAME 1>/dev/null
+cat $TMPDIR/$FILENAME-*
+```
+
+Зробіть його виконуваним:
+
+```bash
+chmod +x get-demo.sh
+```
+
+### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+
+Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/demo-getter
+Installing plugin from local directory (development mode)
+Installed plugin: demo-getter
+```
+
+Як ми бачили в [посібнику з втулків CLI](/plugins/developer/tutorial-cli-plugin.mdx), встановлення в локальному режимі розробки створює символічне посилання з теки джерел вашого втулка до теки втулків. Тепер у вас встановлено два втулки:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 4 r6by  staff   160B Nov 10 04:04 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 04:04 demo-getter -> /Users/r6by/code/helm/plugins/demo-getter
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+На відміну від посібника втулків CLI, ви не побачите цей втулок у списку доступних команд за допомогою команди `helm help`. У списку команд CLI `helm` відображаються лише типи втулків CLI.
+
+Але, як і для всіх типів втулків, ви можете переглянути детальну інформацію про встановлений втулок Getter за допомогою команди `helm plugin list`:
+
+```bash
+% helm plugin list
+NAME          	VERSION	TYPE           	APIVERSION	PROVENANCE	SOURCE
+demo-getter   	0.1.0  	getter/v1      	v1        	local dev 	unknown
+system-info   	0.1.0  	cli/v1         	v1        	local dev 	unknown
+```
+
+Спробуймо. Маємо отримати шаблон YAML для чарту з назвою «example»:
+
+```bash
+% helm template example demo://does-not-matter/example
+LOTS OF YAML, INCLUDING:
+---
+# Source: example/templates/tests/test-connection.yaml
+```
+
+Що ви створили: демо-втулок Getter, що використовує середовище виконання Subprocess!
+
+Далі створімо версію в середовищі виконання Wasm…
+
+## Wasm Runtime
+
+### Передумови {#prerequisites-1}
+
+- Вимоги з [Subprocess Runtime](#subprocess-runtime)
+- Встановлений Go 1.25
+
+Створіть власний протокол getter, який перетворює URL-адреси `demo://` на `https://`.
+
+### 1. Налаштування репозиторію {#1-set-up-repository}
+
+Створіть новий репозиторій на основі шаблону (або просто клонуйте): https://github.com/gjenkins8/helm-extism-plugin-template
+
+### 2. Оновлення маніфесту втулка {#2-update-plugin-manifest}
+
+Аналогічно до того ж кроку для Subprocess Getter, за винятком того, що ви будете робити це у власному клонованому репозиторії Git.
+
+Зверніть увагу, що значення полів `runtime` та `runtimeConfig` зміняться для Wasm:
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: getter/v1
+name: demo-getter
+version: 0.1.0
+runtime: extism/v1
+config:
+  protocols: ["demo"]
+runtimeConfig:
+  memory:
+    maxPages: 16
+  timeout: 30000
+```
+
+### 3. Update `main.go` {#3-update-maingo}
+
+Визначте вхідні/вихідні повідомлення втулків:
+
+```go title="main.go" showLineNumbers
+package main
+
+...
+
+type InputMessage struct {
+	URL      string `json:"url"`
+	Protocol string `json:"protocol"`
+}
+
+type OutputMessage struct {
+	Data []byte `json:"data"`
+}
+```
+
+Замініть функцію `replaceMeImplementationGoesHere` фактичною логікою:
+
+```go
+...
+
+// Видаліть функцію `replaceMeImplementationGoesHere`.
+
+func demoDownloader(input InputMessage) (*OutputMessage, error) {
+
+	// Перетворення demo:// на https://
+	downloadURL := strings.Replace(input.URL, "demo://", "https://", 1)
+	pdk.Log(pdk.LogLevelInfo, fmt.Sprintf("Converted %s to %s", input.URL, downloadURL))
+
+	// Завантаження вмісту
+	resp, err := http.Get(downloadURL)
+	if err != nil {
+		return nil, fmt.Errorf("failed to download: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// Читання та виведення вмісту
+	data, _ := io.ReadAll(resp.Body)
+	output := OutputMessage{Data: data}
+	return &output, nil
+}
+
+```
+
+Оновіть функцію runPlugin, щоб замість цього викликати `demoDownloader`:
+
+```go
+func runPlugin() error {
+	...
+	// Вилучим: output, err := replaceMeImplementationGoesHere(input)
+	output, err := demoDownloader(input)
+```
+
+### 4. Збирання WebAssembly {#4-build-webassembly}
+
+```bash
+$ make build
+$ ls -la plugin.wasm
+```
+
+### 5. Встановлення в режимі розробки та тестування {#5-install-in-dev-mode-and-test}
+
+Те саме, що і крок Втулок CLI у Subprocess.
+
+Що ви створили: втулок WebAssembly із виконанням у пісочниці та структурованою комунікацією через Extism PDK!
+
