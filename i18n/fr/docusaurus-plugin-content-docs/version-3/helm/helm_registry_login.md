@@ -21,15 +21,16 @@ helm registry login [host] [flags]
   -h, --help               Aide pour la commande login
       --insecure           Autorise la connexion TLS au registre sans certificat
       --key-file string    identifie le client de registre à l'aide de ce fichier de clé SSL
-  -p, --password string    Mot de passe du regitre ou jeton d'identification
+  -p, --password string    Mot de passe du registre ou jeton d'identification
       --password-stdin     Lire le mot de passe ou le token d'identification depuis stdin
+      --plain-http         Utilise des connexions HTTP non sécurisées pour le téléversement du chart
   -u, --username string    Nom d'utilisateur du registre
 ```
 
 ### Options héritées des commandes parents
 
 ```
-      --burst-limit int                 Limite coté client de la bande passante (par défaut 100)
+      --burst-limit int                 Limite côté client de la bande passante (par défaut 100)
       --debug                           Active la sortie détaillée
       --kube-apiserver string           L'adresse et le port API du serveur Kubernetes
       --kube-as-group stringArray       Groupe à utiliser pour l'opération, cet argument peut être répété pour spécifier plusieurs groupes
@@ -40,7 +41,7 @@ helm registry login [host] [flags]
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
@@ -50,3 +51,5 @@ helm registry login [host] [flags]
 ### Voir également
 
 * [helm registry](/helm/helm_registry.md) - Se connecter et se déconnecter d'un registre
+
+###### Généré automatiquement par spf13/cobra le 14-Jan-2026
