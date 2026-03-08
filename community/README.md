@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
 title: Helm Community
+sidebar_position: 1
 ---
 
 <!--

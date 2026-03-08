@@ -1,6 +1,6 @@
 ---
-sidebar_label: Governance
 title: Governance Introduction
+sidebar_label: Governance
 id: helm-governance
 sidebar_position: 9
 ---
