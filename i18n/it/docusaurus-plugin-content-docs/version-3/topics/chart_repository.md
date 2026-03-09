@@ -15,7 +15,7 @@ partecipazione. Ma Helm permette anche di creare e gestire un proprio repository
 ## Prerequisiti
 
 * Leggere la guida [Quickstart](/intro/quickstart.md)
-* Leggere il documento [Charts](/topics/charts.mdx)
+* Leggere il documento [Charts](/topics/charts.md)
 
 ## Creare un chart repository
 
