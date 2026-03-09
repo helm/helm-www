@@ -27,7 +27,7 @@ Téléchargez le binaire de la release de Helm. Vous pouvez utiliser des outils 
 
 Pour plus de détails ou d'autres options, consultez [le guide d'installation](/intro/install.md).
 
-## Initialiser un dépot de charts Helm {#initialize-a-helm-chart-repository}
+## Initialiser un dépôt de charts Helm
 
 Une fois Helm prêt, vous pouvez ajouter un dépôt de charts. Consultez [Artifact Hub](https://artifacthub.io/packages/search?kind=0) pour voir les dépôts de charts Helm disponibles.
 
