@@ -1,7 +1,6 @@
 ---
 title: "Utilizzare registry OCI-based"
 description: "Descrive come utilizzare OCI per la distribuzione dei chart."
-aliases: ["/docs/registries/"]
 weight: 7
 ---
 
