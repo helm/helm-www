@@ -13,8 +13,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 Il progetto Helm mantiene un branch di rilascio per la versione minore più recente.
 Le correzioni applicabili, comprese quelle per la sicurezza, vengono raccolte nel ramo di rilascio, 
-a seconda della gravità e della fattibilità. Maggiori dettagli si trovano in 
-[Politica di rilascio di Helm](/release_policy.md).
+a seconda della gravità e della fattibilità.
 
 ## Sfasamento della versione supportata
 
