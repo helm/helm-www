@@ -1,10 +1,6 @@
 ---
 title: "Charts"
 description: "Spiega il formato dei chart e fornisce indicazioni di base per la creazione di chart con Helm."
-aliases: [
-  "docs/developing_charts/",
-  "developing_charts"
-]
 weight: 1
 ---
 
