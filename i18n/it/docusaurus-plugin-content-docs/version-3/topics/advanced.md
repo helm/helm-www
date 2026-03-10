@@ -1,7 +1,6 @@
 ---
 title: "Tecniche Avanzate di Helm"
 description: "Spiega varie funzioni avanzate per i power user di Helm"
-aliases: ["/docs/advanced_helm_techniques"]
 weight: 9
 ---
 
