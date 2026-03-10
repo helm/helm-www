@@ -59,10 +59,10 @@ Go fournit un moyen d'inclure un template dans un autre en utilisant une directi
 Pour permettre d'inclure un template, puis d'effectuer une opération sur la sortie de ce template, Helm dispose d'une fonction spéciale `include` :
 
 ```
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
-Ce qui précède inclut un template appelé `toYaml`, lui passe `$value`, puis passe la sortie de ce template à la fonction `indent`.
+Ce qui précède inclut un template appelé `toYaml`, lui passe `$value`, puis passe la sortie de ce template à la fonction `nindent`.
 
 Parce que YAML accorde de l'importance aux niveaux d'indentation et aux espaces blancs, c'est un excellent moyen d'inclure des fragments de code, tout en gérant l'indentation dans un contexte approprié.
 

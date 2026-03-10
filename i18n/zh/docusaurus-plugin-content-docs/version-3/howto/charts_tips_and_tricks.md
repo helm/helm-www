@@ -60,10 +60,10 @@ Go提供了一种使用内置模板将一个模板包含在另一个模板中的
 为使包含模板成为可能，然后对该模板的输出执行操作，Helm有一个特殊的`include`方法：
 
 ```yaml
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
-上面这个包含的模板称为`toYaml`，传值给`$value`，然后将这个模板的输出传给`indent`方法。
+上面这个包含的模板称为`toYaml`，传值给`$value`，然后将这个模板的输出传给`nindent`方法。
 
 由于YAML将重要性归因于缩进级别和空白，使其在包含代码片段时变成了一种好方法。但是在相关的上下文中要处理缩进。
 
