@@ -1,7 +1,6 @@
 ---
 title: "Provenienza e integrità di Helm"
 description: "Descrive come verificare l'integrità e l'origine di un chart."
-aliases: ["/docs/provenance/"]
 weight: 5
 ---
 
