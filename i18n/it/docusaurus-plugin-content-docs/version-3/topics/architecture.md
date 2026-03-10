@@ -1,7 +1,6 @@
 ---
 title: "Architettura di Helm"
 description: "Descrive l'architettura di Helm ad alto livello."
-aliases: ["/docs/architecture/"]
 weight: 8
 ---
 
