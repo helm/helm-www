@@ -1,7 +1,6 @@
 ---
 title: "Testare i Chart"
 description: "Descrive come eseguire e testare i chart."
-aliases: ["/docs/chart_tests/"]
 weight: 3
 ---
 
