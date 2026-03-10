@@ -1,7 +1,6 @@
 ---
 title: "Guida ai plugin di Helm"
 description: "Introduce all'uso e alla creazione di plugin per estendere le funzionalità di Helm."
-aliases: ["/docs/plugins/"]
 weight: 12
 ---
 
