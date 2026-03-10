@@ -1,7 +1,6 @@
 ---
 title: "Gestione delle autorizzazioni per SQL storage backend"
 description: "Scoprite come impostare le autorizzazioni quando si utilizza SQL storage backend."
-aliases: ["/docs/permissions_sql_storage_backend/"]
 ---
 
 Questo documento ha lo scopo di fornire agli utenti una guida per l'impostazione e la gestione dei permessi nell'utilizzo del SQL storage backend.
