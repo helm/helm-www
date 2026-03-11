@@ -98,7 +98,7 @@ data:
 按照惯例，Helm chart将这些模板放置在局部文件中，一般是`_helpers.tpl`。把这个方法移到那里：
 
 ```yaml
-{{/* Generate basic labels */}}
+{{-/* Generate basic labels */-}}
 {{- define "mychart.labels" }}
   labels:
     generator: helm
@@ -106,7 +106,7 @@ data:
 {{- end }}
 ```
 
-按照惯例`define`方法会有个简单的文档块(`{{/* ... */}}`)来描述要做的事。
+按照惯例`define`方法会有个简单的文档块(`{{-/* ... */-}}`)来描述要做的事。
 
 尽管这个定义是在`_helpers.tpl`中，但它仍能访问`configmap.yaml`：
 
@@ -131,7 +131,7 @@ data:
 在上面定义的模板中，我们没有使用任何对象，仅仅使用了方法。修改定义好的模板让其包含chart名称和版本号：
 
 ```yaml
-{{/* Generate basic labels */}}
+{{-/* Generate basic labels */-}}
 {{- define "mychart.labels" }}
   labels:
     generator: helm

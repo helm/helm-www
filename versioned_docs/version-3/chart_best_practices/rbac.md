@@ -69,9 +69,9 @@ ServiceAccount is used.
 The following helper template should be used for the ServiceAccount.
 
 ```yaml
-{{/*
+{{-/*
 Create the name of the service account to use
-*/}}
+*/-}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "mychart.fullname" .) .Values.serviceAccount.name }}

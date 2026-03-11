@@ -31,7 +31,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "nginx.fullname" }}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 
@@ -39,7 +39,7 @@ sidebar_position: 3
 
 ```yaml
 {{- define "fullname" -}}
-{{/* ... */}}
+{{-/* ... */-}}
 {{ end -}}
 ```
 이 모범 사례에 따라 템플릿 이름이 자동으로 정의되므로,
@@ -155,7 +155,7 @@ type: sprocket
 ```yaml
 {{- /*
 This is a comment.
-*/}}
+*/-}}
 type: frobnitz
 ```
 
@@ -165,7 +165,7 @@ type: frobnitz
 ```yaml
 {{- /*
 mychart.shortname 은 릴리스 이름에서 6자만 자른 것을 제공한다.
-*/}}
+*/-}}
 {{ define "mychart.shortname" -}}
 {{ .Release.Name | trunc 6 }}
 {{- end -}}

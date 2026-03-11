@@ -119,7 +119,7 @@ Conventionally, Helm charts put these templates inside of a partials file,
 usually `_helpers.tpl`. Let's move this function there:
 
 ```yaml
-{{/* Generate basic labels */}}
+{{-/* Generate basic labels */-}}
 {{- define "mychart.labels" }}
   labels:
     generator: helm
@@ -128,7 +128,7 @@ usually `_helpers.tpl`. Let's move this function there:
 ```
 
 By convention, `define` functions should have a simple documentation block
-(`{{/* ... */}}`) describing what they do.
+(`{{-/* ... */-}}`) describing what they do.
 
 Even though this definition is in `_helpers.tpl`, it can still be accessed in
 `configmap.yaml`:
@@ -160,7 +160,7 @@ functions. Let's modify our defined template to include the chart name and chart
 version:
 
 ```yaml
-{{/* Generate basic labels */}}
+{{-/* Generate basic labels */-}}
 {{- define "mychart.labels" }}
   labels:
     generator: helm

@@ -66,9 +66,9 @@ ServiceAccount 이름으로 설정해야 한다.
 서비스어카운트에 다음 헬퍼 템플릿을 사용해야 한다.
 
 ```yaml
-{{/*
+{{-/*
 사용할 서비스어카운트 이름 생성
-*/}}
+*/-}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "mychart.fullname" .) .Values.serviceAccount.name }}

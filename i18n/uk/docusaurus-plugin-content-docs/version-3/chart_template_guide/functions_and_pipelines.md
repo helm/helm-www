@@ -189,7 +189,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 
 ```go
 {{ range $index, $service := (lookup "v1" "Service" "mynamespace" "").items }}
-    {{/* робимо щось з кожним сервісом */}}
+    {{-/* робимо щось з кожним сервісом */-}}
 {{ end }}
 ```
 

@@ -55,9 +55,9 @@ anotherComponent:
 Для ServiceAccount слід використовувати наступний допоміжний шаблон.
 
 ```go
-{{/*
+{{-/*
 Створення імені службового облікового запису, який буде використовуватися
-*/}}
+*/-}}
 {{- define "mychart.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
     {{ default (include "mychart.fullname" .) .Values.serviceAccount.name }}
