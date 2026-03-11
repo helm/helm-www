@@ -1435,43 +1435,39 @@ merge a b c | dig "one" "two" "three" "<missing>"
 
 ### merge, mustMerge
 
-Merge two or more dictionaries into one, giving precedence to the dest
-dictionary:
-
-Given:
-
+Merge two or more dictionaries into one. Earlier arguments have higher
+precedence. For the data:
 ```
-dest:
-  default: default
-  overwrite: me
-  key: true
+source3:
+  field1: source3
+  field2: source3
+  field3: source3
 
-src:
-  overwrite: overwritten
-  key: false
-```
+source2:
+  field1: source2
+  field2: source2
 
-will result in:
-
+source1:
+  field1: source1
 ```
-newdict:
-  default: default
-  overwrite: me
-  key: true
+the template:
 ```
+$output := merge $source1 $source2 $source3
 ```
-$newdict := merge $dest $source1 $source2
+will result in the output:
 ```
-
+output:
+  field1: source1
+  field2: source2
+  field3: source3
+```
 This is a deep merge operation but not a deep copy operation. Nested objects
 that are merged are the same instance on both dicts. If you want a deep copy
 along with the merge, then use the `deepCopy` function along with merging. For
-example,
-
+example:
 ```
 deepCopy $source | merge $dest
 ```
-
 `mustMerge` will return an error in case of unsuccessful merge.
 
 ### mergeOverwrite, mustMergeOverwrite
