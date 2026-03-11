@@ -991,6 +991,11 @@ Then reference it from `values.schema.json`:
 Relative references are resolved from the chart directory.
 You can reference files in the same directory (`"$ref": "./other.schema.json"`) or in parent directories (`"$ref": "../shared.schema.json"`).
 
+:::note
+Schema `$ref` resolution only works for unpacked chart directories.
+For archived charts (`.tgz` files), references cannot be resolved because the chart is loaded into memory without filesystem extraction.
+:::
+
 Schema validation can be disabled by setting the option shown below.
 This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
 ```console
