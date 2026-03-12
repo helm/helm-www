@@ -9,7 +9,7 @@ Helm社区已经创建了很多针对Helm的额外工具，插件和文档。我
 如果你有什么需要补充到这里的话，请创建一个 [issue](https://github.com/helm/helm-www/issues) 或者
 [pull request](https://github.com/helm/helm-www/pulls)。
 
-## Helm 插件
+## Helm 插件 {#helm-plugins}
 
 - [helm-adopt](https://github.com/HamzaZo/helm-adopt) - 将现有k8s资源转换成新生成的helm
 chart的helm v3插件。

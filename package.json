@@ -31,7 +31,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "simple-git": "^3.30.0"
+    "simple-git": "^3.32.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",

@@ -15,7 +15,7 @@ de [Versionado Semántico](https://semver.org/spec/v2.0.0.html).
 El proyecto Helm mantiene una rama de release para la versión menor más reciente.
 Las correcciones aplicables, incluyendo correcciones de seguridad, se incorporan
 a la rama de release, dependiendo de la severidad y la viabilidad. Para más
-detalles, consulte la [política de releases de Helm](/topics/release_policy.md).
+detalles, consulte la [política de releases de Helm](/community/release_policy).
 
 ## Diferencia de Versiones Soportada
 
