@@ -1,21 +1,23 @@
 ---
 title: helm install
 ---
-Instala um Chart
+
+Instala um chart
 
 ### Sinopse
 
-Esse comando instala um [_Chart Archive_](/glossary/index.mdx#chart-archive).
 
-O argumento de instalação deve ser uma referência a um Chart, ou um caminho para
-um Chart empacotado, ou um caminho para um Chart descompactado ou uma URL.
+Esse comando instala um chart archive.
 
-Para sobrescrever os valores em um Chart use tanto o argumento `--values` indicando
-um arquivo `yaml` para os valores ou o argumento `--set` passando os valores através
-da linha de comando. Para forçar um valor passado no formato string use o argumento
-`--set-string`. No caso de valores grandes considere utilizar o argumento `--set-file`
-ao invés de `--values` ou `--set`, para ler um único grande valor a partir de um
-arquivo.
+O argumento de instalação deve ser uma referência a um chart, um caminho para
+um chart empacotado, um caminho para um diretório de chart descompactado ou uma URL.
+
+Para sobrescrever valores em um chart, use o argumento `--values` indicando um arquivo
+ou use o argumento `--set` passando configurações pela linha de comando. Para forçar
+um valor no formato string use `--set-string`. Você pode usar `--set-file` para definir
+valores individuais a partir de um arquivo quando o valor é muito longo para a linha
+de comando ou é gerado dinamicamente. Você também pode usar `--set-json` para definir
+valores JSON (valores escalares, objetos ou arrays) pela linha de comando.
 
     $ helm install -f myvalues.yaml myredis ./redis
 
@@ -31,110 +33,141 @@ ou
 
     $ helm install --set-file my_script=dothings.sh myredis ./redis
 
-É possível especificar o argumento `--values` / `-f` diversas vezes. A prioridade
-será concedida para o último (mais a direita) arquivo passado. Por exemplo. se ambos
-`myvalues.yaml` e `override.yaml` contém uma chave `Test`, o valor configurado em
-`override.yaml` terá precedência:
+ou
+
+    $ helm install --set-json 'master.sidecars=[{"name":"sidecar","image":"myImage","imagePullPolicy":"Always","ports":[{"name":"portname","containerPort":1234}]}]' myredis ./redis
+
+
+Você pode especificar o argumento `--values`/`-f` várias vezes. A prioridade será dada ao
+último arquivo especificado (mais à direita). Por exemplo, se tanto myvalues.yaml quanto override.yaml
+contêm uma chave chamada 'Test', o valor definido em override.yaml terá precedência:
 
     $ helm install -f myvalues.yaml -f override.yaml  myredis ./redis
 
-É possível especificar o argumento `--set` diversas vezes. A prioridade será concedida
-para o último (mais a direita) argumento passado. Por exemplo. se ambos os valores
-`bar` and `newbar` são configurados para uma chave `foo`, o valor `newbar`
-terá precedência:
+Você pode especificar o argumento `--set` várias vezes. A prioridade será dada ao
+último valor especificado (mais à direita). Por exemplo, se ambos os valores 'bar' e 'newbar' são
+definidos para uma chave chamada 'foo', o valor 'newbar' terá precedência:
 
     $ helm install --set foo=bar --set foo=newbar  myredis ./redis
 
-Os argumentos `--debug` e `--dry-run` podem ser combinados com o comando `helm install`
-para verificar os manifestos gerados de uma release sem instalar o Chart.
+Da mesma forma, no exemplo a seguir 'foo' é definido como '["four"]':
 
-Se o argumento `--verify` for utilizado, o Chart **DEVE** ter um arquivo de [linhagem](/glossary/index.mdx#linhagem-arquivo-de-linhagem),
-e este arquivo **DEVE** passar em todas as etapas de verificação.
+    $ helm install --set-json='foo=["one", "two", "three"]' --set-json='foo=["four"]' myredis ./redis
 
-Há cinco maneiras diferentes de se instalar um Chart:
+E no exemplo a seguir, 'foo' é definido como '{"key1":"value1","key2":"bar"}':
 
-1. Pela referência do Chart: `helm install mymaria example/mariadb`
-2. Pelo caminho para um Chart empacotado: `helm install mynginx ./nginx-1.2.3.tgz`
-3. Pelo caminho para um diretório do Chart descompactado: `helm install mynginx ./nginx`
-4. Por uma URL absoluta: `helm install mynginx https://example.com/charts/nginx-1.2.3.tgz`
-5. Pela referência do Chart e URL do repositório: `helm install --repo https://example.com/charts/ mynginx nginx`
+    $ helm install --set-json='foo={"key1":"value1","key2":"value2"}' --set-json='foo.key2="bar"' myredis ./redis
 
-#### Referências do Chart
+Para verificar os manifestos gerados de uma release sem instalar o chart,
+os argumentos --debug e --dry-run podem ser combinados.
 
-Uma referência de um Chart é uma forma conveniente de apontar um Chart em um repositório
-de Charts.
+O argumento --dry-run exibirá todos os manifestos gerados do chart, incluindo Secrets
+que podem conter valores sensíveis. Para ocultar Secrets do Kubernetes use o
+argumento --hide-secret. Por favor, considere cuidadosamente como e quando usar esses argumentos.
 
-Quando você utiliza uma referência a um Chart junto com o prefixo do repositório
-(`exemplo/mariadb`), o Helm procurará nas configurações locais  pelo repositório
-`exemplo`, e dentro dele irá procurar pelo Chart `mariadb`. Assim, o Helm instalará
-a última versão estável do Chart, a menos que seja passado o argumento `--devel`
-a fim de considerar também versões de desenvolvimento (alfa, beta, e _release candidates_),
-ou passando um número da versão de uma _release_ através do argumento `--version`.
+Se --verify for definido, o chart DEVE ter um arquivo de proveniência, e o arquivo
+de proveniência DEVE passar em todas as etapas de verificação.
 
-Para exibir uma lista de Charts contidos em um repositório use `helm repo list`.
-Para pesquisar Charts específicos em um repositório use `helm search`.
+Há seis maneiras diferentes de expressar o chart que você deseja instalar:
+
+1. Por referência do chart: helm install mymaria example/mariadb
+2. Por caminho para um chart empacotado: helm install mynginx ./nginx-1.2.3.tgz
+3. Por caminho para um diretório de chart descompactado: helm install mynginx ./nginx
+4. Por URL absoluta: helm install mynginx https://example.com/charts/nginx-1.2.3.tgz
+5. Por referência do chart e URL do repositório: helm install --repo https://example.com/charts/ mynginx nginx
+6. Por registries OCI: helm install mynginx --version 1.2.3 oci://example.com/charts/nginx
+
+REFERÊNCIAS DE CHART
+
+Uma referência de chart é uma forma conveniente de referenciar um chart em um repositório de charts.
+
+Quando você usa uma referência de chart com um prefixo de repositório ('example/mariadb'), o Helm procurará na
+configuração local por um repositório de charts chamado 'example', e então procurará um
+chart nesse repositório cujo nome é 'mariadb'. Ele instalará a última versão estável desse chart
+até que você especifique o argumento '--devel' para também incluir versões de desenvolvimento (releases alfa, beta e candidatas), ou
+forneça um número de versão com o argumento '--version'.
+
+Para ver a lista de repositórios de charts, use 'helm repo list'. Para pesquisar
+charts em um repositório, use 'helm search'.
+
 
 ```
-helm install [NOME_DA_SUA_RELEASE] [CHART] [argumentos]
+helm install [NAME] [CHART] [flags]
 ```
 
 ### Opções
 
 ```
-      --rollback-on-failure          os manifestos já aplicados serão deletados caso haja uma falha durante a instalação. O argumento --wait será configurado nesse caso
-      --ca-file string               verifica os certificados dos servidores HTTPS utilizando o pacote CA especificado
-      --cert-file string             identifica o cliente HTTPS utilizando o certificado SSL especificado
-      --create-namespace             cria um namespace para a release caso ainda não exista
-      --dependency-update            executa o comando "helm dependency update" antes da instalação do Chart
-      --description string           adiciona uma descrição para a release
-      --devel                        também considera versões de desenvolvimento. Equivalente a versão '>0.0.0-0'. É ignorado caso o argumento --version seja passado
-      --disable-openapi-validation   o processo de instalação não validará os templates renderizados com os valores contra o Kubernetes OpenAPI Schema
-      --dry-run                      simula uma instalação
-  -g, --generate-name                gera um novo nome de release (e omite o parâmetro NOME_DA_SUA_RELEASE)
-  -h, --help                         exibe ajuda para a instalação da release
-      --insecure-skip-tls-verify     ignora a verificação do certificado tls para o download do Chart
-      --key-file string              identifica o cliente HTTPS com a chave SSL passada
-      --keyring string               caminho das chaves públicas para verificação (padrão "~/.gnupg/pubring.gpg")
-      --name-template string         especifica o template usado para nomear a release
-      --no-hooks                     evita que hooks sejam executados durante a instalação
-  -o, --output format                exibe a saída da release instalada em um formato específico. Valores permitidos: table, json, yaml (padrão table)
-      --pass-credentials             passa as credentiais para todos os domínios
-      --password string              senha do repositório de Chart necessária para localizar o Chart em questão
-      --post-renderer postrenderer   caminho para um executável a ser rodado após as renderização do template. Se o caminho existir em $PATH, o binário será executado, senão ele tentará buscar no caminho especificado (padrão exec)
-      --render-subchart-notes        se configurado, renderizará notas de um subchart juntamente com o Chart principal
-      --replace                      reaproveita o nome da release, somente se o nome da release deletada ainda estiver no histórico. Essa operação não é segura em produção
-      --repo string                  endereço URL do repositório de Charts que contém o Chart a ser instalado
-      --set stringArray              configura os valores a serem usados nos templates dos manifestos via linha de comando (pode-se configurar múltiplos valores separados por vírgula: key1=val1,key2=val2)
-      --set-file stringArray         configura os valores a partir de arquivos especificados via linha de comando (pode-se configurar múltiplos valores separados por vírgula: key1=path1,key2=path2)
-      --set-string stringArray       configura os valores no formato STRING via linha de comando (pode-se configurar múltiplos valores separados por vírgula: key1=val1,key2=val2)
-      --skip-crds                    se configurado nenhum CRDs será instalado. Por padrão os CRDs são instalados se já não estiverem presentes no cluster
-      --timeout duration             timeout para qualquer operação individual do Kubernetes (como Jobs para hooks) (padrão 5m0s)
-      --username string              usuário do repositório de Chart onde localizará o Chart
-  -f, --values strings               especifica os valores atráves de um arquivo YAML file ou uma URL (pode especificar vários arquivos YAML)
-      --verify                       verifica o pacote antes de utilizá-lo
-      --version string               especifica os limites de versão para um Chart utilizar. Pode ser um limite específico (ex: 1.1.1) ou uma referência para um intervalo de versões (ex: ^2.0.0). A versão mais recente será utilizada caso a versão não seja especificada
-      --wait                         se configurado, esperará até todos os Pods, PVCs, Services, e um número mínimo dos Pods de um Deployment, StatefulSet, ou ReplicaSet estejam disponíveis e prontos (ready) antes de marcar a release como pronta. Esperará até o --timeout
-      --wait-for-jobs                se configurado e o argumento --wait for passado, esperará até todos os Jobs serem completados antes de marcar a release como pronta. Esperará até o --timeout
+      --atomic                                     se definido, o processo de instalação exclui a instalação em caso de falha. O argumento --wait será definido automaticamente se --atomic for usado
+      --ca-file string                             verifica certificados de servidores habilitados para HTTPS usando este pacote CA
+      --cert-file string                           identifica cliente HTTPS usando este arquivo de certificado SSL
+      --create-namespace                           cria o namespace da release se não estiver presente
+      --dependency-update                          atualiza dependências se estiverem faltando antes de instalar o chart
+      --description string                         adiciona uma descrição personalizada
+      --devel                                      usa versões de desenvolvimento também. Equivalente a version '>0.0.0-0'. Se --version for definido, isso é ignorado
+      --disable-openapi-validation                 se definido, o processo de instalação não validará templates renderizados contra o Kubernetes OpenAPI Schema
+      --dry-run string[="client"]                  simula uma instalação. Se --dry-run for definido sem opção especificada ou como '--dry-run=client', não tentará conexões com o cluster. Definir '--dry-run=server' permite tentar conexões com o cluster.
+      --enable-dns                                 habilita pesquisas DNS ao renderizar templates
+      --force                                      força atualizações de recursos através de uma estratégia de substituição
+  -g, --generate-name                              gera o nome (e omite o parâmetro NAME)
+  -h, --help                                       ajuda para install
+      --hide-notes                                 se definido, não mostra notas na saída de instalação. Não afeta a presença nos metadados do chart
+      --hide-secret                                oculta Secrets do Kubernetes quando também estiver usando o argumento --dry-run
+      --insecure-skip-tls-verify                   ignora verificações de certificado tls para o download do chart
+      --key-file string                            identifica cliente HTTPS usando este arquivo de chave SSL
+      --keyring string                             localização das chaves públicas usadas para verificação (padrão "~/.gnupg/pubring.gpg")
+  -l, --labels stringToString                      Labels que seriam adicionados aos metadados da release. Devem ser separados por vírgula. (padrão [])
+      --name-template string                       especifica template usado para nomear a release
+      --no-hooks                                   impede que hooks sejam executados durante a instalação
+  -o, --output format                              imprime a saída no formato especificado. Valores permitidos: table, json, yaml (padrão table)
+      --pass-credentials                           passa credenciais para todos os domínios
+      --password string                            senha do repositório de charts onde localizar o chart solicitado
+      --plain-http                                 usa conexões HTTP inseguras para o download do chart
+      --post-renderer postRendererString           o caminho para um executável a ser usado para pós-renderização. Se existir em $PATH, o binário será usado, caso contrário tentará procurar o executável no caminho fornecido
+      --post-renderer-args postRendererArgsSlice   um argumento para o post-renderer (pode especificar múltiplos) (padrão [])
+      --render-subchart-notes                      se definido, renderiza notas de subcharts junto com o principal
+      --replace                                    reutiliza o nome fornecido, apenas se esse nome for uma release excluída que permanece no histórico. Isso não é seguro em produção
+      --repo string                                URL do repositório de charts onde localizar o chart solicitado
+      --set stringArray                            define valores na linha de comando (pode especificar múltiplos ou separar valores com vírgulas: key1=val1,key2=val2)
+      --set-file stringArray                       define valores a partir dos respectivos arquivos especificados via linha de comando (pode especificar múltiplos ou separar valores com vírgulas: key1=path1,key2=path2)
+      --set-json stringArray                       define valores JSON na linha de comando (pode especificar múltiplos ou separar valores com vírgulas: key1=jsonval1,key2=jsonval2)
+      --set-literal stringArray                    define um valor STRING literal na linha de comando
+      --set-string stringArray                     define valores STRING na linha de comando (pode especificar múltiplos ou separar valores com vírgulas: key1=val1,key2=val2)
+      --skip-crds                                  se definido, nenhum CRD será instalado. Por padrão, CRDs são instalados se ainda não estiverem presentes
+      --skip-schema-validation                     se definido, desabilita a validação de JSON schema
+      --take-ownership                             se definido, install ignorará a verificação de anotações helm e assumirá a propriedade dos recursos existentes
+      --timeout duration                           tempo de espera para qualquer operação individual do Kubernetes (como Jobs para hooks) (padrão 5m0s)
+      --username string                            nome de usuário do repositório de charts onde localizar o chart solicitado
+  -f, --values strings                             especifica valores em um arquivo YAML ou uma URL (pode especificar múltiplos)
+      --verify                                     verifica o pacote antes de usá-lo
+      --version string                             especifica uma restrição de versão para a versão do chart a usar. Esta restrição pode ser uma tag específica (ex: 1.1.1) ou pode referenciar um intervalo válido (ex: ^2.0.0). Se não especificado, a última versão é usada
+      --wait                                       se definido, esperará até que todos os Pods, PVCs, Services e número mínimo de Pods de um Deployment, StatefulSet ou ReplicaSet estejam em estado pronto antes de marcar a release como bem-sucedida. Esperará pelo tempo definido em --timeout
+      --wait-for-jobs                              se definido e --wait habilitado, esperará até que todos os Jobs sejam completados antes de marcar a release como bem-sucedida. Esperará pelo tempo definido em --timeout
 ```
 
-### Opções gerais
+### Opções herdadas dos comandos superiores
 
 ```
-      --debug                       exibe uma saída verbosa
-  -h, --help                        exibe ajuda para um comando do helm
-      --kube-apiserver string       o endereço e porta do Kubernetes API server
-      --kube-as-group stringArray   o grupo que representará essa operação, esse argumento pode ser repetido para indicar múltiplos grupos
-      --kube-as-user string         o usuário que representará essa operação
-      --kube-ca-file string         caminho para o certificado para conexão com o Kubernetes API server
-      --kube-context string         nome do contexto do kubeconfig a ser usado
-      --kube-token string           bearer token usado para autenticação
-      --kubeconfig string           caminho para o arquivo kubeconfig
-  -n, --namespace string            namespace para essa requisição
-      --registry-config string      caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry.json")
-      --repository-cache string     caminho para os índices "cacheados" no repositório (padrão "~/.cache/helm/repository")
-      --repository-config string    caminho para o arquivo path to the file containing repository names and URLs (padrão "~/.config/helm/repositories.yaml")
+      --burst-limit int                 limite de throttling padrão do lado do cliente (padrão 100)
+      --debug                           habilita saída detalhada
+      --kube-apiserver string           o endereço e a porta do Kubernetes API server
+      --kube-as-group stringArray       grupo a representar para a operação, este argumento pode ser repetido para especificar múltiplos grupos.
+      --kube-as-user string             nome de usuário a representar para a operação
+      --kube-ca-file string             o arquivo de autoridade de certificação para a conexão com o Kubernetes API server
+      --kube-context string             nome do contexto kubeconfig a usar
+      --kube-insecure-skip-tls-verify   se verdadeiro, o certificado do Kubernetes API server não será verificado quanto à validade. Isso tornará suas conexões HTTPS inseguras
+      --kube-tls-server-name string     nome do servidor a usar para validação de certificado do Kubernetes API server. Se não fornecido, o hostname usado para contatar o servidor é usado
+      --kube-token string               bearer token usado para autenticação
+      --kubeconfig string               caminho para o arquivo kubeconfig
+  -n, --namespace string                escopo de namespace para esta requisição
+      --qps float32                     consultas por segundo usadas ao comunicar com a API do Kubernetes, não incluindo bursting
+      --registry-config string          caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry/config.json")
+      --repository-cache string         caminho para o diretório contendo índices de repositório em cache (padrão "~/.cache/helm/repository")
+      --repository-config string        caminho para o arquivo contendo nomes e URLs de repositórios (padrão "~/.config/helm/repositories.yaml")
 ```
 
-### Veja Também
+### Veja também
 
-* [helm](/helm/helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm](/helm/helm.md)	 - O gerenciador de pacotes Helm para Kubernetes.
+
+###### Gerado automaticamente por spf13/cobra em 14-Jan-2026
