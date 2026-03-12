@@ -12,13 +12,13 @@ sidebar_position: 4
 Вы можете выполнить следующую команду для исправления репозитория:
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 То же самое относится к репозиторию `incubator`, архив которого доступен по адресу https://charts.helm.sh/incubator. Вы можете выполнить следующую команду для его исправления:
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### Я получаю предупреждение 'WARNING: "kubernetes-charts.storage.googleapis.com" is deprecated for "stable" and will be deleted Nov. 13, 2020.'
@@ -28,13 +28,13 @@ $ helm repo add incubator https://charts.helm.sh/incubator --force-update
 Выполните следующую команду для окончательного решения этой проблемы:
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable --force-update  
+$ helm repo add stable https://charts.helm.sh/stable --force-update
 ```
 
 Если вы получаете аналогичную ошибку для `incubator`, выполните эту команду:
 
 ```console
-$ helm repo add incubator https://charts.helm.sh/incubator --force-update  
+$ helm repo add incubator https://charts.helm.sh/incubator --force-update
 ```
 
 ### При добавлении репозитория Helm я получаю ошибку 'Error: Repo "https://kubernetes-charts.storage.googleapis.com" is no longer available'

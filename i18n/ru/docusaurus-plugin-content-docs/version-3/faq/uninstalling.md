@@ -17,6 +17,6 @@ sidebar_position: 3
 
 | Операционная система | Путь к кэшу                 | Путь к конфигурации              | Путь к данным             |
 |----------------------|-----------------------------|----------------------------------|---------------------------|
-| Linux                | `$HOME/.cache/helm `        | `$HOME/.config/helm `            | `$HOME/.local/share/helm` |
-| macOS                | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm `     |
-| Windows              | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
+| Linux                | `$HOME/.cache/helm`         | `$HOME/.config/helm`             | `$HOME/.local/share/helm` |
+| macOS                | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm`      |
+| Windows              | `%TEMP%\helm`               | `%APPDATA%\helm`                 | `%APPDATA%\helm`          |
