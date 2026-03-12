@@ -1,98 +1,86 @@
 ---
-title: チャートのテスト
-description: チャートを実行およびテストする方法について説明します。
+title: chart のテスト
+description: chart のテスト方法について説明します。
 sidebar_position: 3
 ---
 
-チャートには、連携して動作するいくつかの Kubernetes リソースとコンポーネントが含まれています。
-チャートの作成者は、チャートがインストールされたときにチャートが期待どおりに機能することを検証するテストを作成することができます。
-これらのテストは、
-チャートの利用者がチャートで何をするかを理解するのにも役立ちます。
+chart には、連携して動作する多くの Kubernetes リソースとコンポーネントが含まれています。chart 作成者は、chart がインストールされたときに期待どおりに動作することを検証するテストを作成できます。これらのテストは、chart 利用者が chart の目的を理解するのにも役立ちます。
 
-Helm チャートの **テスト** は、`templates/` ディレクトリの下にあり、
-実行する特定のコマンドを含むコンテナーを指定するジョブ定義です。
-テストが成功したと見なされるには、コンテナが正常に終了 (exit 0) する必要があります。
-ジョブ定義には、helm テストフックアノテーション `helm.sh/hook: test` が含まれている必要があります。
+Helm chart における**テスト**は、`templates/` ディレクトリに配置され、特定のコマンドを実行するコンテナを指定する Job 定義です。テストが成功と判定されるには、コンテナが正常に終了（exit 0）する必要があります。Job 定義には、Helm テスト hook アノテーション `helm.sh/hook: test` を含める必要があります。
+
+Helm v3 より前は、Job 定義に `helm.sh/hook: test-success` または `helm.sh/hook: test-failure` のいずれかの Helm テスト hook アノテーションが必要でした。`helm.sh/hook: test-success` は、`helm.sh/hook: test` の後方互換として引き続き使用できます。
 
 テストの例:
 
-- values.yaml ファイルの構成が適切に挿入されたことを確認する
-  - 正しいユーザー名とパスワードが機能することを確認する
-  - 正しくないユーザー名とパスワードが機能しないことを確認する
-- サービスが稼働しており、正しく負荷分散されていることを確認する
+- `values.yaml` ファイルの設定が正しく注入されたことを検証する
+  - ユーザー名とパスワードが正しく機能することを確認する
+  - 不正なユーザー名とパスワードが機能しないことを確認する
+- サービスが稼働しており、正しくロードバランシングされていることを確認する
 - など
 
-コマンド `helm test <リリース名>` を使用して、リリースの Helm で事前定義されたテストを実行できます。チャートの利用者にとって、これはチャート (またはアプリケーション) のリリースが期待どおりに機能することを正常性チェックする優れた方法です。
+`helm test <RELEASE_NAME>` コマンドを使用して、release に対して Helm で事前定義されたテストを実行できます。chart 利用者にとって、これは chart（またはアプリケーション）の release が期待どおりに動作することを確認する優れた方法です。
 
 ## テストの例
 
-以下は、mariadb チャートの例における Helm テストポッド定義の例です。
+[helm create](/helm/helm_create.md) コマンドは、いくつかのフォルダとファイルを自動的に作成します。Helm テスト機能を試すには、まずデモ用の Helm chart を作成します。
+
+```console
+$ helm create demo
+```
+
+作成された demo chart の構造は以下のとおりです。
 
 ```
-mariadb/
+demo/
   Chart.yaml
-  README.md
   values.yaml
   charts/
   templates/
-  templates/tests/test-mariadb-connection.yaml
+  templates/tests/test-connection.yaml
 ```
 
-`wordpress/templates/tests/test-mariadb-connection.yaml` の内容
+`demo/templates/tests/test-connection.yaml` にテストが含まれています。Helm テスト Pod 定義は以下のとおりです:
 
 ```yaml
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  name: "{{ .Release.Name }}-credentials-test"
+  name: "{{ include "demo.fullname" . }}-test-connection"
+  labels:
+    {{- include "demo.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
-  template:
-    spec:
-      containers:
-      - name: main
-        image: {{ .Values.image }}
-        env:
-        - name: MARIADB_HOST
-          value: {{ template "mariadb.fullname" . }}
-        - name: MARIADB_PORT
-          value: "3306"
-        - name: WORDPRESS_DATABASE_NAME
-          value: {{ default "" .Values.mariadb.mariadbDatabase | quote }}
-        - name: WORDPRESS_DATABASE_USER
-          value: {{ default "" .Values.mariadb.mariadbUser | quote }}
-        - name: WORDPRESS_DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "mariadb.fullname" . }}
-              key: mariadb-password
-        command: ["sh", "-c", "mysql --host=$MARIADB_HOST --port=$MARIADB_PORT --user=$WORDPRESS_DATABASE_USER --password=$WORDPRESS_DATABASE_PASSWORD"]
-      restartPolicy: Never
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "demo.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
+
 ```
 
-## リリースでテストスイートを実行する手順
+## release でテストスイートを実行する手順
 
-1. `$ helm install quirky-walrus mariadb --namespace default`
-2. `$ helm test quirky-walrus`
+まず、クラスターに chart をインストールして release を作成します。すべての Pod がアクティブになるまで待つ必要がある場合があります。インストール直後にテストを実行すると、一時的な失敗が発生する可能性があるため、再テストが必要になることがあります。
 
-```cli
-NAME: quirky-walrus
-LAST DEPLOYED: Mon Feb 13 13:50:43 2019
+```console
+$ helm install demo demo --namespace default
+$ helm test demo
+NAME: demo
+LAST DEPLOYED: Mon Feb 14 20:03:16 2022
 NAMESPACE: default
 STATUS: deployed
-REVISION: 0
-TEST SUITE:     quirky-walrus-credentials-test
-Last Started:   Mon Feb 13 13:51:07 2019
-Last Completed: Mon Feb 13 13:51:18 2019
+REVISION: 1
+TEST SUITE:     demo-test-connection
+Last Started:   Mon Feb 14 20:35:19 2022
+Last Completed: Mon Feb 14 20:35:23 2022
 Phase:          Succeeded
+[...]
 ```
 
-## メモ
+## 備考
 
-- 単一の yaml ファイルで必要なだけテストを定義するか、
-  `templates/` ディレクトリ内の複数の yaml ファイルに分散することができます
-- より分離するために、テストスイートを `<chart-name>/templates/tests/` のような 
-  `tests/` ディレクトリの下にネストすることができます
-- テストは [Helm フック](/topics/charts_hooks.md)であるため、
-  `helm.sh/hook-weight` や `helm.sh/hook-delete-policy` などのアノテーションをテストリソースで使用できます
+- 単一の yaml ファイルで複数のテストを定義することも、`templates/` ディレクトリ内の複数の yaml ファイルに分散させることもできます。
+- テストスイートをより分離するために、`<chart-name>/templates/tests/` のように `tests/` ディレクトリの下にネストすることもできます。
+- テストは [Helm hook](/topics/charts_hooks.md) であるため、`helm.sh/hook-weight` や `helm.sh/hook-delete-policy` などのアノテーションをテストリソースで使用できます。
