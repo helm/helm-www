@@ -300,6 +300,37 @@ charts/
   mysql-3.2.1.tgz
 ```
 
+#### Extracting Dependencies as Directories
+
+By default, `helm dependency update` stores dependencies as compressed archives
+(`.tgz` files). To extract them as chart directories instead, use the `--untar`
+flag:
+
+```console
+$ helm dependency update --untar ./mychart
+```
+
+With `--untar`:
+- Dependencies are extracted into directories named after the chart (or its
+  alias if specified)
+- The original `.tgz` archives are removed after extraction
+- Re-running the command replaces existing directories, making the operation
+  idempotent
+
+To specify a different extraction directory, use `--untardir`:
+
+```console
+$ helm dependency update --untar --untardir vendor/charts ./mychart
+```
+
+The `--untardir` path must be relative to the chart root and cannot escape the
+chart directory through path traversal or symlinks. When using a custom
+`--untardir`, the archives in `charts/` are preserved and stale charts in the
+custom directory are not cleaned up.
+
+**NOTE:** The `--untar` and `--untardir` flags are only available for `helm
+dependency update`, not `helm dependency build`.
+
 #### Alias field in dependencies
 
 In addition to the other fields above, each requirements entry may contain the
