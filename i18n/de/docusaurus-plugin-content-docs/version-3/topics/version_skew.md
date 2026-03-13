@@ -15,7 +15,7 @@ Versionierung](https://semver.org/spec/v2.0.0.html).
 Das Helm-Projekt pflegt einen Release-Branch für die jeweils aktuellste Nebenversion.
 Relevante Korrekturen, einschließlich Sicherheitskorrekturen, werden je nach Schweregrad
 und Machbarkeit in den Release-Branch übernommen. Weitere Details finden Sie in
-[Helms Release-Richtlinie](/topics/release_policy.md).
+[Helms Release-Richtlinie](/community/release_policy).
 
 ## Unterstützte Versionsabweichung
 
