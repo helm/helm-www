@@ -920,6 +920,27 @@ something like this:
 }
 ```
 
+JSON Schema supports the `format` keyword for validating string formats like
+email addresses, IP addresses, and URIs. For example:
+
+```json
+{
+  "properties": {
+    "serverIP": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "contactEmail": {
+      "type": "string",
+      "format": "email"
+    }
+  }
+}
+```
+
+Common format keywords include `ipv4`, `ipv6`, `email`, `uri`, `hostname`, and
+`date-time`. Validation fails if a value doesn't match the specified format.
+
 This schema will be applied to the values to validate it. Validation occurs when
 any of the following commands are invoked:
 
