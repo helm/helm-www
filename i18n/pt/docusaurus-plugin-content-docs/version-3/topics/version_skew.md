@@ -15,7 +15,7 @@ seguindo a terminologia de [Versionamento Semântico](https://semver.org/spec/v2
 O projeto Helm mantém um branch de release para a versão secundária mais recente.
 Correções aplicáveis, incluindo correções de segurança, são incorporadas ao branch
 de release, dependendo da severidade e viabilidade. Mais detalhes podem ser
-encontrados na [política de releases do Helm](/topics/release_policy.md).
+encontrados na [política de releases do Helm](/community/release_policy).
 
 ## Diferença de Versão Suportada
 
