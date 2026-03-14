@@ -10,7 +10,7 @@ description: "描述Helm的补丁发布策略，以及Helm和Kubernetes之间支
 Helm的版本用 `x.y.z` 描述，`x`是主版本，`y`是次版本，`z`是补丁版本，遵循
 [语义化版本](https://semver.org/spec/v2.0.0.html) 术语。
 
-Helm项目维护了一个针对最近次要版本的发布分支。适当的修复（包括安全修复）会根据严重程度和可行性被cherry-pick到发布分支。更多细节请查看 [Helm 发布策略](./release_policy.md)。
+Helm项目维护了一个针对最近次要版本的发布分支。适当的修复（包括安全修复）会根据严重程度和可行性被cherry-pick到发布分支。更多细节请查看 [Helm 发布策略](/community/release_policy)。
 
 ## 可支持的版本偏差
 
