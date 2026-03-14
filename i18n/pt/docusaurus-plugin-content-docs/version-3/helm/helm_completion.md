@@ -1,39 +1,47 @@
 ---
 title: helm completion
 ---
-Gera scripts de preenchimento automático para um shell específico
 
-### Synopsis
+Gera scripts de preenchimento automático para o shell especificado
 
-Gera scripts de preenchimento automático do Helm para um shell específico.
+### Sinopse
 
-### Options
+Gera scripts de preenchimento automático do Helm para o shell especificado.
 
-```
-  -h, --help   ajuda para o preenchimento automático
-```
 
-### Opções gerais
+### Opções
 
 ```
-      --debug                       exibe uma saída verbosa
-  -h, --help                        exibe ajuda para um comando do helm
-      --kube-apiserver string       o endereço e porta do Kubernetes API server
-      --kube-as-group stringArray   o grupo que representará essa operação, esse argumento pode ser repetido para indicar múltiplos grupos
-      --kube-as-user string         o usuário que representará essa operação
-      --kube-ca-file string         caminho para o certificado para conexão com o Kubernetes API server
-      --kube-context string         nome do contexto do kubeconfig a ser usado
-      --kube-token string           bearer token usado para autenticação
-      --kubeconfig string           caminho para o arquivo kubeconfig
-  -n, --namespace string            namespace para essa requisição
-      --registry-config string      caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry.json")
-      --repository-cache string     caminho para os índices "cacheados" no repositório (padrão "~/.cache/helm/repository")
-      --repository-config string    caminho para o arquivo path to the file containing repository names and URLs (padrão "~/.config/helm/repositories.yaml")
+  -h, --help   ajuda para o completion
 ```
 
-### Veja Também
+### Opções herdadas dos comandos superiores
 
-* [helm](/helm/helm.md) - Helm, o gerenciador de pacotes para o Kubernetes.
-* [helm completion bash](/helm/helm_completion_bash.md) - gera o script de preenchimento automático para o bash
-* [helm completion fish](/helm/helm_completion_fish.md) - gera o script de preenchimento automático para o fish
-* [helm completion zsh](/helm/helm_completion_zsh.md) - gera o script de preenchimento automático para o zsh
+```
+      --burst-limit int                 limite de throttling padrão do lado do cliente (padrão 100)
+      --debug                           habilita saída detalhada
+      --kube-apiserver string           o endereço e a porta do Kubernetes API server
+      --kube-as-group stringArray       grupo a ser representado para a operação, esse argumento pode ser repetido para especificar múltiplos grupos
+      --kube-as-user string             usuário a ser representado para a operação
+      --kube-ca-file string             o arquivo de autoridade de certificação para conexão com o Kubernetes API server
+      --kube-context string             nome do contexto do kubeconfig a ser usado
+      --kube-insecure-skip-tls-verify   se verdadeiro, o certificado do Kubernetes API server não será verificado. Isso tornará suas conexões HTTPS inseguras
+      --kube-tls-server-name string     nome do servidor a ser usado para validação do certificado do Kubernetes API server. Se não for fornecido, o hostname usado para contatar o servidor será usado
+      --kube-token string               bearer token usado para autenticação
+      --kubeconfig string               caminho para o arquivo kubeconfig
+  -n, --namespace string                escopo do namespace para essa requisição
+      --qps float32                     consultas por segundo usadas na comunicação com a API do Kubernetes, não incluindo bursting
+      --registry-config string          caminho para o arquivo de configuração do registry (padrão "~/.config/helm/registry/config.json")
+      --repository-cache string         caminho para o diretório contendo os índices do repositório em cache (padrão "~/.cache/helm/repository")
+      --repository-config string        caminho para o arquivo contendo nomes e URLs dos repositórios (padrão "~/.config/helm/repositories.yaml")
+```
+
+### Veja também
+
+* [helm](helm.md)	 - Helm, o gerenciador de pacotes para o Kubernetes.
+* [helm completion bash](helm_completion_bash.md)	 - gera o script de preenchimento automático para o bash
+* [helm completion fish](helm_completion_fish.md)	 - gera o script de preenchimento automático para o fish
+* [helm completion powershell](helm_completion_powershell.md)	 - gera o script de preenchimento automático para o powershell
+* [helm completion zsh](helm_completion_zsh.md)	 - gera o script de preenchimento automático para o zsh
+
+###### Gerado automaticamente por spf13/cobra em 14-Jan-2026
