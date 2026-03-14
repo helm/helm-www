@@ -1,36 +1,36 @@
 ---
-title: values
-description: 聚焦于如何构建和使用你的values。
+title: Values
+description: 聚焦于如何构建和使用你的 values。
 sidebar_position: 2
 ---
 
-最佳实践的该部分包括了values的使用。这部分指南中，我们提供了关于你如何构建和使用values的建议，以及专注于设计chart的 `values.yaml`文件。
+最佳实践指南的这部分介绍 values 的使用。本节提供关于如何构建和使用 values 的建议，重点讨论 chart 的 `values.yaml` 文件设计。
 
 ## 命名规范
 
-变量名称以小写字母开头，单词按驼峰区分：
+变量名称应以小写字母开头，单词之间使用驼峰命名法：
 
-正确的：
+正确：
 
 ```yaml
 chicken: true
 chickenNoodleSoup: true
 ```
 
-错误的：
+错误：
 
 ```yaml
 Chicken: true  # initial caps may conflict with built-ins
 chicken-noodle-soup: true # do not use hyphens in the name
 ```
 
-注意所有的Helm内置变量以大写字母开头，以便与用户定义的value进行区分：`.Release.Name`，`.Capabilities.KubeVersion`。
+注意 Helm 的所有内置变量都以大写字母开头，以便与用户定义的 values 区分：`.Release.Name`、`.Capabilities.KubeVersion`。
 
-## 扁平或嵌套的Value
+## 扁平或嵌套的 Values
 
-YAML是一种灵活格式，值可以嵌套得很深，也可以是扁平的。
+YAML 是一种灵活的格式，值可以嵌套很深，也可以是扁平的。
 
-嵌套的：
+嵌套：
 
 ```yaml
 server:
@@ -38,16 +38,16 @@ server:
   port: 80
 ```
 
-扁平的
+扁平：
 
 ```yaml
 serverName: nginx
 serverPort: 80
 ```
 
-大多数场景中，扁平的优于嵌套的。因为对模板开发者和用户来说更加简单。
+大多数情况下，扁平结构优于嵌套结构。原因是对模板开发者和用户来说更简单。
 
-为了最佳的安全性，嵌套值的每一层都必须检查：
+为了保证安全性，嵌套值的每一层都必须检查：
 
 ```yaml
 {{ if .Values.server }}
@@ -55,41 +55,39 @@ serverPort: 80
 {{ end }}
 ```
 
-对于每个嵌套层，都必须进行存在性检查。但对于扁平的配置，使得模板更易于阅读和使用，这个检查可以跳过。
+每一层嵌套都必须进行存在性检查。但扁平配置可以跳过这些检查，使模板更易于阅读和使用。
 
 ```yaml
 {{ default "none" .Values.serverName }}
 ```
 
-当有大量的相关变量时，其中至少有一个是非选择性的，嵌套的值可以改善可读性。
+当存在大量相关变量，且其中至少有一个是必填的时，可以使用嵌套值来提高可读性。
 
-## 搞清楚类型
+## 明确类型
 
-YAML的类型强制规则有时候是很反常的。比如，`foo: false` 和 `foo: "false"` 是不一样的。大整型数如：`foo: 12345678`
-有时会被转换成科学计数法。
+YAML 的类型强制转换规则有时不太直观。例如，`foo: false` 和 `foo: "false"` 是不同的。大整数如 `foo: 12345678` 在某些情况下会被转换成科学计数法。
 
-避免类型强制规则错误最简单的方式是字符串明确定义，其他都是不明确的。或者，简单来讲， _给所有字符串打引号_。
+避免类型转换错误最简单的方法是：字符串显式声明，其他类型隐式声明。简而言之，_给所有字符串加引号_。
 
-通常，为了避免整数转换问题，将整型存储为字符串更好，并用 `{{ int $value }}` 在模板中将字符串转回整型。
+通常，为了避免整数转换问题，将整数也存储为字符串是个好做法，然后在模板中使用 `{{ int $value }}` 将字符串转回整数。
 
-在大多数场景中，显式的类型标记更好，所以 `foo: !!string 1234` 会将`1234`作为字符串对待。
-_但是_，YAML解析器会消耗标记，因此类型数据在一次解析后会丢失。
+大多数情况下，显式类型标记会被正确识别，因此 `foo: !!string 1234` 会将 `1234` 当作字符串处理。_但是_，YAML 解析器会消耗这些标记，因此类型数据在一次解析后会丢失。
 
-## 考虑用户如何使用你的value
+## 考虑用户如何使用 Values
 
-有三种潜在的value来源:
+values 有三种潜在来源：
 
-- chart的`values.yaml`文件
-- 由`helm install -f` 或 `helm upgrade -f`提供的values文件
-- 在执行`helm install` 或 `helm upgrade` 时传递给`--set` 或 `--set-string` 参数的values
+- chart 的 `values.yaml` 文件
+- 由 `helm install -f` 或 `helm upgrade -f` 提供的 values 文件
+- 执行 `helm install` 或 `helm upgrade` 时通过 `--set` 或 `--set-string` 参数传递的值
 
-当设计values的结构时，记得你的chart用户可能会通过`-f` 参数或`--set`选项覆盖他们。
+设计 values 结构时，要记住 chart 用户可能会通过 `-f` 参数或 `--set` 选项覆盖它们。
 
-由于`--set`在表现上更有限，编写你`values.yaml`文件的第一指导原则是 _确保它容易被`--set`覆盖_。
+由于 `--set` 的表达能力更有限，编写 `values.yaml` 文件的第一条准则是 _确保它易于被 `--set` 覆盖_。
 
-因此使用map构建values文件更好。
+因此，使用 map 来构建 values 文件通常更好。
 
-很难与`--set`一起使用：
+难以配合 `--set` 使用：
 
 ```yaml
 servers:
@@ -99,8 +97,7 @@ servers:
     port: 81
 ```
 
-上述在Helm `<=2.4`的版本中无法和`--set`一起表达。在Helm 2.5中，访问foo上的端口是
-`--set servers[0].port=80`。用户不仅更难理解，而且以后更改`servers`顺序之后更易出错。
+上述结构在 Helm `<=2.4` 中无法配合 `--set` 表达。在 Helm 2.5 中，访问 foo 的端口是 `--set servers[0].port=80`。这不仅让用户更难理解，而且如果以后 `servers` 的顺序发生变化，很容易出错。
 
 易于使用：
 
@@ -112,13 +109,13 @@ servers:
     port: 81
 ```
 
-这样访问foo的port更加明显： `--set servers.foo.port=80`。
+这样访问 foo 的端口就很明显：`--set servers.foo.port=80`。
 
-## 给`values.yaml`写文档
+## 给 `values.yaml` 写文档
 
-`values.yaml`中每个定义的属性都应该文档化。文档字符串应该以它要描述的属性开头，并至少给出一句描述。
+`values.yaml` 中定义的每个属性都应该有文档说明。文档字符串应该以它描述的属性名称开头，然后至少给出一句描述。
 
-不正确的：
+错误：
 
 ```yaml
 # the host name for the webserver
@@ -126,7 +123,7 @@ serverHost: example
 serverPort: 9191
 ```
 
-正确的：
+正确：
 
 ```yaml
 # serverHost is the host name for the webserver
@@ -135,4 +132,4 @@ serverHost: example
 serverPort: 9191
 ```
 
-以它描述的参数名称开始每个注释可以很容易整理文档，并使文档工具能可靠地将文档字符串与其描述的参数关联起来。
+在注释开头写上参数名称，便于整理文档，也能让文档工具可靠地将文档字符串与其描述的参数关联起来。

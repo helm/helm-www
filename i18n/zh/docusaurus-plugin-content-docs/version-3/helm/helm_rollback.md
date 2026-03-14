@@ -1,55 +1,59 @@
 ---
 title: helm rollback
 ---
-回滚发布到上一个版本
+
+将 release 回滚到之前的修订版本
 
 ### 简介
 
-该命令回滚发布到上一个版本
+该命令将 release 回滚到之前的修订版本。
 
-回滚命令的第一个参数是发布的名称，第二是修订（版本）号，如果省略此参数，会回滚到上一个版本。
+回滚命令的第一个参数是 release 的名称，第二个参数是修订（版本）号。如果省略此参数或设置为 0，将回滚到上一个修订版本。
 
-要查看修订号，执行'helm history RELEASE'。
+要查看修订号，运行 'helm history RELEASE'。
 
-```shell
+```
 helm rollback <RELEASE> [REVISION] [flags]
 ```
 
 ### 可选项
 
-```shell
-      --cleanup-on-fail    allow deletion of new resources created in this rollback when rollback fails
-      --dry-run            simulate a rollback
-      --force              force resource update through delete/recreate if needed
-  -h, --help               help for rollback
-      --history-max int    limit the maximum number of revisions saved per release. Use 0 for no limit (default 10)
-      --no-hooks           prevent hooks from running during rollback
-      --recreate-pods      performs pods restart for the resource if applicable
-      --timeout duration   time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
-      --wait               if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
-      --wait-for-jobs      if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
+```
+      --cleanup-on-fail    允许在回滚失败时删除此次回滚中创建的新资源
+      --dry-run            模拟回滚
+      --force              如有需要，通过删除/重建策略强制更新资源
+  -h, --help               rollback 的帮助信息
+      --history-max int    限制每个 release 保存的最大修订版本数。使用 0 表示无限制（默认 10）
+      --no-hooks           阻止回滚期间运行钩子
+      --recreate-pods      如果适用，对资源执行 Pod 重启
+      --timeout duration   等待任何单个 Kubernetes 操作的时间（如钩子的 Jobs）（默认 5m0s）
+      --wait               如果设置，将等待所有 Pod、PVC、Service 以及 Deployment、StatefulSet 或 ReplicaSet 的最小 Pod 数处于就绪状态后才将 release 标记为成功。等待时间与 --timeout 一致
+      --wait-for-jobs      如果设置且启用了 --wait，将等待所有 Job 完成后才将 release 标记为成功。等待时间与 --timeout 一致
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的选项
 
-```shell
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+```
+      --burst-limit int                 客户端默认限流值（默认 100）
+      --debug                           启用详细输出
+      --kube-apiserver string           Kubernetes API 服务器的地址和端口
+      --kube-as-group stringArray       模拟操作的组，此参数可以重复指定多个组
+      --kube-as-user string             模拟操作的用户名
+      --kube-ca-file string             Kubernetes API 服务器连接的证书颁发机构文件
+      --kube-context string             要使用的 kubeconfig 上下文名称
+      --kube-insecure-skip-tls-verify   如果为 true，将不检查 Kubernetes API 服务器证书的有效性。这会使你的 HTTPS 连接不安全
+      --kube-tls-server-name string     用于 Kubernetes API 服务器证书验证的服务器名称。如果未提供，则使用联系服务器的主机名
+      --kube-token string               用于身份验证的 bearer token
+      --kubeconfig string               kubeconfig 文件的路径
+  -n, --namespace string                此请求的 namespace 范围
+      --qps float32                     与 Kubernetes API 通信时使用的每秒查询数，不包括突发流量
+      --registry-config string          registry 配置文件的路径（默认 "~/.config/helm/registry/config.json"）
+      --repository-cache string         包含缓存的仓库索引的目录路径（默认 "~/.cache/helm/repository"）
+      --repository-config string        包含仓库名称和 URL 的文件路径（默认 "~/.config/helm/repositories.yaml"）
 ```
 
 ### 请参阅
 
-* [helm](/helm/helm.md) - 针对Kubernetes的Helm包管理器
+* [helm](helm.md) - Kubernetes 的 Helm 包管理器
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

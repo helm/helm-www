@@ -4,56 +4,53 @@ description: 如何从模板中访问文件
 sidebar_position: 10
 ---
 
+在上一节中，我们介绍了创建和访问命名模板的几种方法。这使得在模板之间相互导入变得很容易。但有时你需要导入的是一个**非模板文件**，并直接注入其内容，而不经过模板渲染引擎处理。
 
-在上一节中，我们研究了几种创建和访问模板的方法。这样可以很容易从一个模板导入到另一个模板中。
-但有时想导入的是不是模板的文件并注入其内容，而无需通过模板渲染发送内容。
+Helm 通过 `.Files` 对象提供对文件的访问。不过在使用模板示例之前，有几点需要注意：
 
-Helm 提供了通过`.Files`对象访问文件的方法。不过，在我们使用模板示例之前，有些事情需要注意：
-
-- 可以添加额外的文件到chart中。虽然这些文件会被绑定。但是要小心，由于Kubernetes对象的限制，Chart必须小于1M。
-- 通常处于安全考虑，一些文件无法通过`.Files`对象访问：
-  - 无法访问`templates/`中的文件
-  - 无法访问使用`.helmignore`排除的文件
-  - helm应用[subchart](https://helm.sh/zh/docs/chart_template_guide/subcharts_and_globals)之外的文件，包括父级中的，不能被访问的
-- Chart不能保留UNIX模式信息，因此当文件涉及到`.Files`对象时，文件级权限不会影响文件的可用性。
+- 可以在 chart 中添加额外的文件，这些文件会被一起打包。但要注意，由于 Kubernetes 对象的存储限制，chart 大小必须小于 1M。
+- 出于安全考虑，某些文件无法通过 `.Files` 对象访问：
+  - 无法访问 `templates/` 目录中的文件。
+  - 无法访问被 `.helmignore` 排除的文件。
+  - 无法访问 Helm 应用 [子 chart](./subcharts_and_globals.md) 之外的文件，包括父 chart 中的文件。
+- chart 不保留 UNIX 模式信息，因此文件级权限不会影响 `.Files` 对象对文件的可用性。
 
 <!-- (see https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
 
-- [基本示例](#basic-example)
-- [Path辅助对象](#path-helpers)
-- [全局模式](#glob-patterns)
-- [ConfigMap和密钥的实用功能](#configmap-and-secrets-utility-functions)
-- [编码](#encoding)
-- [文件行](#lines)
+- [基本示例](#基本示例)
+- [路径辅助函数](#路径辅助函数)
+- [Glob 模式](#glob-模式)
+- [ConfigMap 和 Secret 实用函数](#configmap-和-secret-实用函数)
+- [编码](#编码)
+- [逐行读取](#逐行读取)
 
 <!-- tocstop -->
 
-## Basic example
+## 基本示例
 
-先不管警告，我们来写一个读取三个文件到配置映射ConfigMap的模板。开始之前，我们会在chart中添加三个文件，
-直接放到`mychart/`目录中。
+了解了这些注意事项后，让我们编写一个模板，将三个文件读取到 ConfigMap 中。首先，在 chart 中添加三个文件，直接放在 `mychart/` 目录下。
 
-`config1.toml`:
+`config1.toml`：
 
 ```toml
 message = "Hello from config 1"
 ```
 
-`config2.toml`:
+`config2.toml`：
 
 ```toml
 message = "This is config 2"
 ```
 
-`config3.toml`:
+`config3.toml`：
 
 ```toml
 message = "Goodbye from config 3"
 ```
 
-每个都是简单的TOML文件（类似于windows老式的INI文件）。我们知道这些文件的名称，因此我们使用`range`功能遍历它们并将它们的内容注入到我们的ConfigMap中。
+每个文件都是简单的 TOML 文件（类似于早期 Windows 的 INI 文件）。我们知道这些文件的名称，因此可以使用 `range` 函数遍历它们，并将内容注入到 ConfigMap 中。
 
 ```yaml
 apiVersion: v1
@@ -68,10 +65,9 @@ data:
   {{- end }}
 ```
 
-这个配置映射使用了之前章节讨论过的技术。比如，我们创建了一个`$files`变量来引用`.Files`对象。我们也使用了`tuple`方法创建了一个可遍历的文件列表。
-然后我们打印每个文件的名字(`{{ . }}: |-`)，然后通过`{{ $files.Get . }}`打印文件内容。
+这个 ConfigMap 使用了前面章节讨论过的技术。例如，我们创建了一个 `$files` 变量来保存对 `.Files` 对象的引用，并使用 `tuple` 函数创建了要遍历的文件列表。然后打印每个文件名（`{{ . }}: |-`），接着通过 `{{ $files.Get . }}` 打印文件内容。
 
-执行这个模板会生成包含了三个文件所有内容的单个配置映射：
+执行这个模板会生成一个包含所有三个文件内容的 ConfigMap：
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -90,26 +86,24 @@ data:
     message = "Goodbye from config 3"
 ```
 
-## Path helpers
+## 路径辅助函数
 
-使用文件时，对文件路径本身执行一些标准操作会很有用。为了实现这些，Helm从Go的[path](https://golang.org/pkg/path/)包中导入了一些功能。
-都使用了与Go包中一样的名称就可以访问。但是第一个字符使用了小写，比如`Base`变成了`base`等等。
+处理文件时，对文件路径执行一些标准操作会很有用。为此，Helm 从 Go 的 [path](https://golang.org/pkg/path/) 包中导入了一些函数供你使用。这些函数使用与 Go 包相同的名称，但首字母小写。例如 `Base` 变成 `base`，以此类推。
 
-导入的功能包括：
+导入的函数包括：
 - Base
 - Dir
 - Ext
 - IsAbs
 - Clean
 
-## Glob patterns
+## Glob 模式
 
-当你的chart不断变大时，你会发现你强烈需要组织你的文件，所以我们提供了一个
-`Files.Glob(pattern string)`方法来使用[全局模式](https://godoc.org/github.com/gobwas/glob)的灵活性读取特定文件。
+随着 chart 规模增长，你可能需要更好地组织文件。为此我们提供了 `Files.Glob(pattern string)` 方法，它支持使用 [glob 模式](https://godoc.org/github.com/gobwas/glob) 灵活地提取特定文件。
 
-`.Glob`返回一个`Files`类型，因此你可以在返回对象上调用任意的`Files`方法。
+`.Glob` 返回一个 `Files` 类型，因此你可以在返回的对象上调用任何 `Files` 方法。
 
-比如，假设有这样的目录结构：
+例如，假设有以下目录结构：
 
 ```
 foo/:
@@ -119,8 +113,7 @@ bar/:
   bar.go bar.conf baz.yaml
 ```
 
-全局模式下您有多种选择：
-
+使用 Glob 有多种方式：
 
 ```yaml
 {{ $currentScope := .}}
@@ -131,7 +124,7 @@ bar/:
 {{ end }}
 ```
 
-Or
+或者
 
 ```yaml
 {{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
@@ -139,17 +132,18 @@ Or
 {{ end }}
 ```
 
-## ConfigMap and Secrets utility functions
+## ConfigMap 和 Secret 实用函数
 
-（在Helm 2.0.2及后续版本可用）
+（Helm 2.0.2 及更高版本可用）
 
-把文件内容放入配置映射和密钥是很普遍的功能，为了运行时挂载到你的pod上。为了实现它，我们提供了一些基于`Files`类型的实用方法。
+将文件内容放入 ConfigMap 和 Secret 以便在运行时挂载到 Pod 是很常见的需求。为此，我们在 `Files` 类型上提供了一些实用方法。
 
-为了进一步组织文件，这些方法结合`Glob`方法使用时尤其有用。
+结合 `Glob` 方法使用这些方法可以更好地组织文件。
 
-上面的文件结构使用[Glob](#glob-patterns)时的示例如下：
+使用上面 [Glob 模式](#glob-模式) 示例中的目录结构：
 
 ```yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -166,9 +160,9 @@ data:
 {{ (.Files.Glob "bar/*").AsSecrets | indent 2 }}
 ```
 
-## Encoding
+## 编码
 
-您可以导入一个文件并使用模板的base-64方式对其进行编码来保证成功传输：
+你可以导入文件并使用 base64 编码，以确保传输成功：
 
 ```yaml
 apiVersion: v1
@@ -181,7 +175,7 @@ data:
     {{ .Files.Get "config1.toml" | b64enc }}
 ```
 
-上面的内容使用我们之前使用的相同的`config1.toml`文件进行编码：
+上面的模板使用之前的 `config1.toml` 文件并对其进行编码：
 
 ```yaml
 # Source: mychart/templates/secret.yaml
@@ -195,11 +189,11 @@ data:
     bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
-## Lines
+## 逐行读取
 
-有时需要访问模板中的文件的每一行。我们提供了一个方便的`Lines`方法。
+有时需要在模板中逐行访问文件内容。我们为此提供了便捷的 `Lines` 方法。
 
-你可以使用`range`方法遍历`Lines`：
+你可以使用 `range` 函数遍历 `Lines`：
 
 ```yaml
 data:
@@ -207,7 +201,6 @@ data:
     {{ . }}{{ end }}
 ```
 
-在`helm install`过程中无法将文件传递到chart外。因此如果你想请求用户提供数据，必须使用`helm install -f`或`helm install --set`加载。
+在 `helm install` 过程中无法将 chart 外部的文件传入。因此，如果需要用户提供数据，必须使用 `helm install -f` 或 `helm install --set` 加载。
 
-该部分讨论整合了我们对编写Helm模板的工具和技术的深入研究。下个章节我们会看到如何使用特殊文件`templates/NOTES.txt`，
-向chart的用户发送安装后的说明。
+本节总结了编写 Helm 模板所需工具和技术的深入讨论。下一节我们将介绍如何使用特殊文件 `templates/NOTES.txt` 向 chart 用户发送安装后说明。
