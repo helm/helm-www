@@ -12,9 +12,11 @@ sidebar_position: 13
 
 - `helm lint` 는 내 차트가 모범 사례에 맞는지 검증하는 믿을만한
   도구이다.
-- `helm install --dry-run --debug` 혹은 `helm template --debug`: 앞에서 설명한 적이 있는
-  방법이다. 서버가 템플릿을 렌더링한 결과물을 매니페스트 파일로 돌려받아 볼 수 있는
-  매우 유용한 방법이다.
+- `helm template --debug` 는 차트 템플릿을 로컬에서 테스트 렌더링한다.
+- `helm install --dry-run --debug` 도 차트를 로컬에서 렌더링하지만, 실제로 설치하지는 
+  않는다. 클러스터에서 충돌하는 리소스가 이미 실행 중인지도 확인한다.
+  `--dry-run=server`를 설정하면 차트의 `lookup` 함수도 서버를 대상으로
+  실행한다.
 - `helm get manifest`: 서버에 어떤 템플릿들이 설치되어 있는지 알아 볼 수 있는 유용한 
   방법이다.
 
