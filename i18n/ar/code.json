@@ -1,0 +1,585 @@
+{
+  "home.about.whatIsHelm": {
+    "message": "Helm يساعدك على إدارة تطبيقات Kubernetes — وتساعدك مخططات Helm على تعريف وتثبيت وتحديث حتى أكثر تطبيقات Kubernetes تعقيدًا.",
+    "description": "What is Helm? first paragraph"
+  },
+  "home.about.chartsDescription": {
+    "message": "المخططات سهلة الإنشاء، الإصدار، المشاركة والنشر — لذا ابدأ باستخدام Helm وتوقف عن النسخ واللصق.",
+    "description": "What is Helm? charts paragraph"
+  },
+  "home.about.cncf": {
+    "message": "Helm هو مشروع متخرج من {cncfLink} ويتم الحفاظ عليه من قبل {helmCommunityLink}.",
+    "description": "What is Helm? CNCF Graduated Project paragraph"
+  },
+  "home.about.cncf.helmCommunityLink": {
+    "message": "مجتمع Helm",
+    "description": "Helm community link"
+  },
+  "home.about.learnMore": {
+    "message": "تعرف على المزيد:",
+    "description": "Learn more label"
+  },
+  "home.about.learnMore.helmArchitectureLink": {
+    "message": "معمارية Helm",
+    "description": "Helm Architecture link"
+  },
+  "home.about.learnMore.quickStartGuideLink": {
+    "message": "دليل البدء السريع",
+    "description": "Quick Start Guide link"
+  },
+  "home.about.learnMore.videoLink": {
+    "message": "فيديو: مقدمة إلى Helm",
+    "description": "Video: An Introduction to Helm link"
+  },
+  "home.about.title": {
+    "message": "ما هو Helm؟",
+    "description": "What is Helm? title"
+  },
+  "home.community.nextFeatureRelease": {
+    "message": "الإصدار القادم",
+    "description": "Next Feature Release section title"
+  },
+  "home.community.nextFeatureRelease.version": {
+    "message": "الإصدار:",
+    "description": "Version label"
+  },
+  "home.community.nextFeatureRelease.date": {
+    "message": "التاريخ:",
+    "description": "Date label"
+  },
+  "home.community.nextFeatureRelease.calendar": {
+    "message": "تقويم الإصدارات",
+    "description": "Release Calendar link"
+  },
+  "home.community.upcomingEvents": {
+    "message": "الفعاليات القادمة",
+    "description": "Upcoming Events section title"
+  },
+  "home.community.upcomingEventsSubtitle": {
+    "message": "الفعاليات القادمة",
+    "description": "Upcoming Events subtitle"
+  },
+  "home.community.pastEventsSubtitle": {
+    "message": "الفعاليات السابقة",
+    "description": "Past Events subtitle"
+  },
+  "home.community.sigApps": {
+    "message": "SIG Apps",
+    "description": "SIG Apps section title"
+  },
+  "home.community.sigApps.description": {
+    "message": "{meetLink} لإجراء العروض ومناقشة الأدوات والمشاريع. يتم تسجيل اجتماعات المجتمع ويتم {youtubeLink}.",
+    "description": "SIG Apps meeting description"
+  },
+  "home.community.sigApps.meetLink": {
+    "message": "يجتمعون أسبوعيًا",
+    "description": "Link to SIG Apps meetings"
+  },
+  "home.community.sigApps.youtubeLink": {
+    "message": "مشاركتها على YouTube",
+    "description": "Link to YouTube recordings"
+  },
+  "home.community.developerStandups": {
+    "message": "لقاءات المطورين"
+  },
+  "home.community.developerStandups.time": {
+    "message": "الخميس 9:30–10 صباحًا (PT)",
+    "description": "Developer Standups day and time"
+  },
+  "home.community.developerStandups.description": {
+    "message": "هذه الاجتماعات مفتوحة للجميع. راجع {communityRepoLink} للحصول على الملاحظات والتفاصيل.",
+    "description": "Developer Standups description with community repo link"
+  },
+  "home.community.developerStandups.communityRepoLink": {
+    "message": "مستودع المجتمع",
+    "description": "Community repo link"
+  },
+  "home.community.slack.helmUsers.description": {
+    "message": "مناقشة حول استخدام Helm، العمل مع المخططات وحل الأخطاء الشائعة.",
+    "description": "helm-users slack channel description"
+  },
+  "home.community.slack.helmDevelopment.description": {
+    "message": "مواضيع تتعلق بتطوير Helm، طلبات السحب الجارية، الإصدارات، إلخ.",
+    "description": "helm-dev slack channel description"
+  },
+  "home.community.slack.charts.description": {
+    "message": "نقاش للمستخدمين والمساهمين في Helm Charts.",
+    "description": "charts slack channel description"
+  },
+  "home.community.slack.join": {
+    "message": "{slackLink} للانضمام إلى فريق Kubernetes Slack.",
+    "description": "How to join the Kubernetes Slack team with slack link"
+  },
+  "home.community.slack.join.slackLink": {
+    "message": "اطلب الوصول من هنا",
+    "description": "Request access to slack link"
+  },
+  "home.community.contributing": {
+    "message": "المساهمة",
+    "description": "Contributing section title"
+  },
+  "home.community.contributing.description": {
+    "message": "Helm يرحب دائمًا بالمساهمين!",
+    "description": "Contributing section description"
+  },
+  "home.community.contributing.whereToBegin": {
+    "message": "من أين أبدأ؟",
+    "description": "Where to begin? section title"
+  },
+  "home.community.contributing.whereToBegin.description": {
+    "message": "Helm مشروع كبير به العديد من المستخدمين والمساهمين. قد يبدو الأمر كثيرًا في البداية!",
+    "description": "Where to begin? section description"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssues": {
+    "message": "لدينا قائمة من {goodFirstIssuesLink} إذا كنت ترغب بالمساعدة ولكن لا تعرف من أين تبدأ.",
+    "description": "Good first issues sentence with link"
+  },
+  "home.community.contributing.whereToBegin.goodFirstIssuesLink": {
+    "message": "مهام أولية جيدة",
+    "description": "Good first issues link"
+  },
+  "home.community.contributing.whatDoIDo": {
+    "message": "ماذا أفعل؟",
+    "description": "What do I do? section title"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuide": {
+    "message": "قبل المساهمة بالكود، يرجى قراءة {contributionGuideLink}. فهو يشرح عملية إنشاء ومراجعة طلبات السحب.",
+    "description": "What do I do? contribution guide description"
+  },
+  "home.community.contributing.whatDoIDo.contributionGuideLink": {
+    "message": "دليل المساهمة",
+    "description": "Contribution Guide link"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommits": {
+    "message": "بعد كتابة الكود، يرجى {signYourCommitsLink} لضمان أن Helm يلتزم باتفاقية {dcoLink} المستخدمة من قبل {cncfLink}.",
+    "description": "What do I do? sign your commits description"
+  },
+  "home.community.contributing.whatDoIDo.signYourCommitsLink": {
+    "message": "توقيع التزاماتك",
+    "description": "Sign your commits link"
+  },
+  "home.community.title": {
+    "message": "انضم إلى المجتمع!",
+    "description": "Join the Community title"
+  },
+  "home.community.subtitle": {
+    "message": "مزيد من المعلومات حول مشروع Helm وكيفية المساهمة.",
+    "description": "Join the Community subtitle"
+  },
+  "home.header.tagline": {
+    "message": "مدير الحزم لـ Kubernetes",
+    "description": "Helm tagline"
+  },
+  "home.header.subtitle": {
+    "message": "Helm هو أفضل طريقة للعثور على البرامج المصممة لـ",
+    "description": "Home page header subtitle"
+  },
+  "home.gettingStarted.title": {
+    "message": "ابدأ",
+    "description": "Getting started section title"
+  },
+  "home.gettingStarted.getHelmTitle": {
+    "message": "احصل على Helm!",
+    "description": "Get Helm section title"
+  },
+  "home.gettingStarted.installHelm": {
+    "message": "ثبّت Helm باستخدام مدير حزم، أو {downloadLink}.",
+    "description": "Getting started install with package manager sentence with download link"
+  },
+  "home.gettingStarted.installHelm.downloadLink": {
+    "message": "قم بتنزيل ملف تنفيذي",
+    "description": "Download a binary link"
+  },
+  "home.gettingStarted.postInstall.instructions": {
+    "message": "بعد التثبيت، فك ضغط ملف helm وأضفه إلى PATH الخاص بك وستكون جاهزًا! راجع {docsLink} لمزيد من المعلومات حول {installationLink} و{usageLink}.",
+    "description": "Instructions after installing Helm"
+  },
+  "home.gettingStarted.postInstall.docsLink": {
+    "message": "التوثيق",
+    "description": "Link to installation docs"
+  },
+  "home.gettingStarted.postInstall.installationLink": {
+    "message": "التثبيت",
+    "description": "Link to installation instructions"
+  },
+  "home.gettingStarted.postInstall.usageLink": {
+    "message": "تعليمات الاستخدام",
+    "description": "Link to usage instructions"
+  },
+  "home.gettingStarted.getChartsTitle": {
+    "message": "تنزيل المخططات",
+    "description": "Getting started get charts title"
+  },
+  "home.gettingStarted.artifactHub": {
+    "message": "قم بزيارة {artifactHubLink} لاستكشاف {helmChartsLink} من العديد من المستودعات العامة.",
+    "description": "Artifact Hub link"
+  },
+  "home.gettingStarted.artifactHub.helmChartsLink": {
+    "message": "مخططات Helm",
+    "description": "Helm charts link"
+  },
+  "home.features.manageComplexity": {
+    "message": "إدارة التعقيد",
+    "description": "Manage Complexity section title"
+  },
+  "home.features.manageComplexity.description": {
+    "message": "تصف المخططات حتى أكثر التطبيقات تعقيدًا، وتوفر تثبيتًا قابلاً للتكرار، وتعمل كنقطة موحدة للمرجعية.",
+    "description": "Manage Complexity section description"
+  },
+  "home.features.easyUpdates": {
+    "message": "تحديثات سهلة",
+    "description": "Easy Updates section title"
+  },
+  "home.features.easyUpdates.description": {
+    "message": "تخلص من عناء التحديثات باستخدام ترقية في المكان وخطافات مخصصة.",
+    "description": "Easy Updates section description"
+  },
+  "home.features.simpleSharing": {
+    "message": "مشاركة بسيطة",
+    "description": "Simple Sharing section title"
+  },
+  "home.features.simpleSharing.description": {
+    "message": "المخططات سهلة الإصدار والمشاركة والاستضافة على خوادم عامة أو خاصة.",
+    "description": "Simple Sharing section description"
+  },
+  "home.features.rollbacks": {
+    "message": "استرجاع الإصدارات",
+    "description": "Rollbacks section title"
+  },
+  "home.features.rollbacks.description": {
+    "message": "استخدم {helmRollback} للعودة بسهولة إلى إصدار سابق.",
+    "description": "Rollbacks section description"
+  },
+  "home.features.title": {
+    "message": "الميزات",
+    "description": "Features section title"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "حدث خلل في هذه الصفحة.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "الرجوع إلى أعلى الصفحة",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "الأرشيف",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "الأرشيف",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "ترقيم صفحات قائمة مقالات المدونة",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "مقالات أحدث",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "مقالات أقدم",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "ترقيم صفحات مقالات المدونة",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "مقال أحدث",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "مقال أقدم",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "عرض جميع الوسوم",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "وضع النظام",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "الوضع الفاتح",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "الوضع الداكن",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "التبديل بين الوضع الفاتح والداكن (الوضع الحالي {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "مسار التنقل",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "عنصر واحد|{count} عناصر",
+    "description": "Plural description for category card"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "صفحات التوثيق",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "السابق",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "التالي",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "مستند واحد مُوسوم|{count} مستندات مُوسومة",
+    "description": "Pluralized label for docs tagged"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} بالوسم \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "هذه هي توثيق النسخة القادمة {versionLabel} من {siteTitle}.",
+    "description": "Unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "هذه توثيق {siteTitle} {versionLabel}، التي لم تعد مدعومة.",
+    "description": "Unmaintained version doc"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "للحصول على توثيق محدث، راجع {latestVersionLink} ({versionLabel}).",
+    "description": "Latest version suggestion"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "أحدث نسخة",
+    "description": "Latest version link label"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "الإصدار: {versionLabel}"
+  },
+  "theme.common.editThisPage": {
+    "message": "تحرير هذه الصفحة",
+    "description": "Edit this page label"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "رابط مباشر إلى {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " في {date}",
+    "description": "Date last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " بواسطة {user}",
+    "description": "User who last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "آخر تحديث{atDate}{byUser}",
+    "description": "Full last updated sentence"
+  },
+  "theme.NotFound.title": {
+    "message": "الصفحة غير موجودة",
+    "description": "404 title"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "الإصدارات",
+    "description": "Navbar versions dropdown"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "الوسوم:",
+    "description": "Tag list label"
+  },
+  "theme.admonition.caution": {
+    "message": "تنبيه",
+    "description": "Caution admonition"
+  },
+  "theme.admonition.danger": {
+    "message": "خطر",
+    "description": "Danger admonition"
+  },
+  "theme.admonition.info": {
+    "message": "معلومة",
+    "description": "Info admonition"
+  },
+  "theme.admonition.note": {
+    "message": "ملاحظة",
+    "description": "Note admonition"
+  },
+  "theme.admonition.tip": {
+    "message": "نصيحة",
+    "description": "Tip admonition"
+  },
+  "theme.admonition.warning": {
+    "message": "تحذير",
+    "description": "Warning admonition"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "إغلاق",
+    "description": "Announcement bar close button"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "قائمة مقالات المدونة الحديثة",
+    "description": "Recent blog posts in sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "توسيع فئة '{label}' في الشريط الجانبي",
+    "description": "Expand sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "تصغير فئة '{label}' في الشريط الجانبي",
+    "description": "Collapse sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(يُفتح في علامة تبويب جديدة)",
+    "description": "External link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "الرئيسي",
+    "description": "Main navigation"
+  },
+  "theme.NotFound.p1": {
+    "message": "لم نعثر على ما تبحث عنه.",
+    "description": "404 paragraph 1"
+  },
+  "theme.NotFound.p2": {
+    "message": "يرجى التواصل مع مالك الموقع الذي أحالك إلى الرابط الأصلي وإبلاغه بأن الرابط مكسور.",
+    "description": "404 paragraph 2"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "اللغات",
+    "description": "Mobile language dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "في هذه الصفحة",
+    "description": "Collapsible TOC label"
+  },
+  "theme.blog.post.readMore": {
+    "message": "اقرأ المزيد",
+    "description": "Read more button"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "اقرأ المزيد عن {title}",
+    "description": "Read more ARIA label"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "دقيقة قراءة واحدة|{readingTime} دقائق قراءة",
+    "description": "Reading time plural"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "نسخ",
+    "description": "Copy button"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "تم النسخ",
+    "description": "Copied button"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "نسخ الشيفرة",
+    "description": "Copy code aria"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "تفعيل/تعطيل التفاف السطور",
+    "description": "Word wrap toggle"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "الصفحة الرئيسية",
+    "description": "Breadcrumb home"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "شريط التوثيق الجانبي",
+    "description": "Sidebar nav aria"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "تصغير القائمة الجانبية",
+    "description": "Collapse button"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "تصغير القائمة الجانبية",
+    "description": "Collapse button aria"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "إغلاق شريط التنقل",
+    "description": "Close sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← الرجوع إلى القائمة الرئيسية",
+    "description": "Back button"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "فتح/إغلاق شريط التنقل",
+    "description": "Hamburger menu"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "توسيع القائمة المنسدلة",
+    "description": "Expand dropdown"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "تصغير القائمة المنسدلة",
+    "description": "Collapse dropdown"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "توسيع القائمة الجانبية",
+    "description": "Expand sidebar title"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "توسيع القائمة الجانبية",
+    "description": "Expand sidebar aria"
+  },
+  "theme.blog.post.plurals": {
+    "message": "مقال واحد|{count} مقالات",
+    "description": "Blog posts plural"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} مُوسومة بـ «{tagName}»",
+    "description": "Blog tag title"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "Blog author page title"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "الكتّاب",
+    "description": "Authors list title"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "عرض جميع الكتّاب",
+    "description": "View all authors"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "هذا الكاتب لم ينشر أي مقالات بعد.",
+    "description": "Author with no posts"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "صفحة غير مدرجة",
+    "description": "Unlisted banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "هذه الصفحة غير مدرجة. محركات البحث لن تفهرسها، ولا يمكن الوصول إليها إلا للمستخدمين الذين لديهم رابط مباشر.",
+    "description": "Unlisted banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "صفحة مسودة",
+    "description": "Draft banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "هذه الصفحة مسودة. ستكون مرئية فقط في وضع التطوير وسيتم استبعادها من إصدار الإنتاج.",
+    "description": "Draft banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "حاول مرة أخرى",
+    "description": "Try again button"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "الانتقال إلى المحتوى الرئيسي",
+    "description": "Skip to main content"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "الوسوم",
+    "description": "Tags page title"
+  }
+}
+
