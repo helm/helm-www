@@ -92,7 +92,6 @@ YAML 의 유형에 대한 강제적인 규칙은 때때로 직관적이지 못�
 ## 사용자가 값을 어떻게 사용할지를 고려하자
 
 값에는 다음과 같은 세 가지 출처가 있다.
-There are three potential sources of values:
 
 - 차트의 `values.yaml` 파일
 - `helm install -f` 또는 `helm upgrade -f` 에서 제공하는 값 파일
