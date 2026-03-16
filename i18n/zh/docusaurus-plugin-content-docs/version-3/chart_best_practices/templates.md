@@ -193,7 +193,7 @@ memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 # memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
 ```
 
-查看[调试模板](./debugging.md)了解更多关于 YAML 注释如何被保留的示例。
+查看[调试模板](/chart_template_guide/debugging.md)了解更多关于 YAML 注释如何被保留的示例。
 
 ## 在模板和模板输出中使用JSON
 

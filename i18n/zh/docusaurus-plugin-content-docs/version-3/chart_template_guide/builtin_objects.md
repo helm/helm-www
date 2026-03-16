@@ -19,7 +19,7 @@ sidebar_position: 3
   - `Release.Service`：渲染当前模板的服务名称，在 Helm 中始终是 `Helm`
 - `Values`：从 `values.yaml` 文件和用户提供的文件传入模板的值，默认为空。
 - `Chart`：`Chart.yaml` 文件的内容。该文件中的所有数据都可以访问。例如 `{{ .Chart.Name }}-{{ .Chart.Version }}` 会输出 `mychart-0.1.0`
-  - 在 [Chart 指南](/docs/topics/charts.md#the-chartyaml-file) 中列出了可用属性
+  - 在 [Chart 指南](/topics/charts.md#the-chartyaml-file) 中列出了可用属性
 - `Subcharts`：提供对子 chart 作用域（.Values、.Charts、.Releases 等）的访问。例如 `.Subcharts.mySubChart.myValue` 可以访问 `mySubChart` chart 中的 `myValue`。
 - `Files`：在 chart 中提供访问所有非特殊文件的对象。你不能使用它访问模板，只能访问其他文件。请查看 [文件访问](./accessing_files.md) 部分了解更多信息。
   - `Files.Get` 通过文件名获取文件的方法（`.Files.Get config.ini`）
