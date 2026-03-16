@@ -10,7 +10,7 @@ sidebar_position: 2
 
 ## Charts
 
-如 [Charts 指南](/docs/topics/charts.md)所述，Helm chart 的结构如下：
+如 [Charts 指南](/topics/charts.md)所述，Helm chart 的结构如下：
 
 ```
 mychart/

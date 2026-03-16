@@ -11,9 +11,9 @@ sidebar_position: 14
 - CNCF 的 [Artifact Hub](https://artifacthub.io/packages/search?kind=0) 是查找 chart 的首选资源。
 - Kubernetes [文档](https://kubernetes.io/docs/home/)提供了各种资源类型的详细示例，
   从 ConfigMaps 和 Secrets 到 DaemonSets 和 Deployments。
-- Helm [Charts 指南](/docs/topics/charts.md)介绍了使用 chart 的工作流。
-- Helm [Chart 钩子指南](/docs/topics/charts_hooks.md)说明了如何创建生命周期钩子。
-- Helm [Chart 提示与技巧](/docs/howto/charts_tips_and_tricks.md)提供了编写 chart 时的实用技巧。
+- Helm [Charts 指南](/topics/charts.md)介绍了使用 chart 的工作流。
+- Helm [Chart 钩子指南](/topics/charts_hooks.md)说明了如何创建生命周期钩子。
+- Helm [Chart 提示与技巧](/howto/charts_tips_and_tricks.md)提供了编写 chart 时的实用技巧。
 - [Sprig 文档](https://github.com/Masterminds/sprig)介绍了超过 60 个模板函数。
 - [Go 模板文档](https://godoc.org/text/template)详细说明了模板语法。
 - [Schelm 工具](https://github.com/databus23/schelm)是调试 chart 的实用工具。
