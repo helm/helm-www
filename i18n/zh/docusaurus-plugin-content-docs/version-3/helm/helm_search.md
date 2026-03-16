@@ -37,8 +37,8 @@ title: helm search
 
 ### 请参阅
 
-* [helm](/helm/helm.md)	 - Kubernetes 的 Helm 包管理器
-* [helm search hub](/helm/helm_search_hub.md)	 - 在 Artifact Hub 或你自己的 hub 实例中搜索 chart
-* [helm search repo](/helm/helm_search_repo.md)	 - 使用关键字搜索仓库中的 chart
+* [helm](/helm/helm.md) - Kubernetes 的 Helm 包管理器
+* [helm search hub](/helm/helm_search_hub.md) - 在 Artifact Hub 或你自己的 hub 实例中搜索 chart
+* [helm search repo](/helm/helm_search_repo.md) - 使用关键字搜索仓库中的 chart
 
 ###### 由 spf13/cobra 于 2026-01-14 自动生成
