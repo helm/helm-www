@@ -17,6 +17,6 @@ sidebar_position: 3
 
 | 操作系统 | 缓存路径                    | 配置路径                          | 数据路径                  |
 |----------|-----------------------------|---------------------------------|---------------------------|
-| Linux    | `$HOME/.cache/helm `        | `$HOME/.config/helm `            | `$HOME/.local/share/helm` |
-| macOS    | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm `     |
-| Windows  | `%TEMP%\helm  `             | `%APPDATA%\helm `                | `%APPDATA%\helm`          |
+| Linux    | `$HOME/.cache/helm`         | `$HOME/.config/helm`             | `$HOME/.local/share/helm` |
+| macOS    | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm`      |
+| Windows  | `%TEMP%\helm`               | `%APPDATA%\helm`                 | `%APPDATA%\helm`          |

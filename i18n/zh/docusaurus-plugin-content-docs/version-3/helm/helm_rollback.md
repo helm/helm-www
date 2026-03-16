@@ -54,6 +54,6 @@ helm rollback <RELEASE> [REVISION] [flags]
 
 ### 请参阅
 
-* [helm](helm.md) - Kubernetes 的 Helm 包管理器
+* [helm](/helm/helm.md) - Kubernetes 的 Helm 包管理器
 
 ###### 由 spf13/cobra 于 2026-01-14 自动生成
