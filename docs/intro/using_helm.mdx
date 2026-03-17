@@ -383,10 +383,12 @@ information you provide. Because Kubernetes charts can be large and complex,
 Helm tries to perform the least invasive upgrade. It will only update things
 that have changed since the last release.
 
+Create a new override file and upgrade the release using it:
+
 ```console
+$ echo "mariadb.auth.username: user1" > panda.yaml
 $ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
 ```
-
 In the above case, the `happy-panda` release is upgraded with the same chart,
 but with a new YAML file:
 
