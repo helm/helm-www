@@ -4,10 +4,6 @@ description: Provides a high-level overview of the project's history.
 sidebar_position: 5
 ---
 
-import Helm4 from "/docs/_v4-in-progress.mdx"
-
-<Helm4/>
-
 Helm is a [graduated](https://helm.sh/blog/celebrating-helms-cncf-graduation/)
 [CNCF project](https://www.cncf.io/projects/).
 
@@ -28,11 +24,23 @@ subsumed under the Helm project, including Monocular, the Helm Chart Repo, Chart
 Museum, and later the Helm Hub.
 
 When the Helm 3 development cycle began, Tiller was removed, bringing Helm
-closer to its original vision of being a client tool. But Helm 3 continues to
-track releases inside of the Kubernetes cluster, making it possible for teams to
-work together on a common set of Helm releases. Helm 3 was released in November 2019.
+closer to its original vision of being a client tool. Helm 3 was released in
+November 2019.
 
 Helm [graduated as a CNCF project in April 2020](https://www.cncf.io/announcement/2020/04/30/cloud-native-computing-foundation-announces-helm-graduation/).
 
 The CNCF [Artifact Hub](https://artifacthub.io) replaced the [Helm Hub](https://hub.helm.sh)
 in October 2020.
+
+In 2025, the Helm project [celebrated its 10th anniversary](https://helm.sh/blog/helm-turns-ten/).
+
+[Helm v4.0.0](https://github.com/helm/helm/releases/tag/v4.0.0) was
+[released](https://helm.sh/blog/helm-4-released/) on November 12, 2025 at
+KubeCon + CloudNativeCon North America — the first new major version in six
+years. The release was driven by the need for architectural changes that could
+not be made without breaking the public SDK API.  Key additions include a
+redesigned plugin system with WebAssembly support, Server-Side Apply,
+kstatus-based resource watching, content-based caching, reproducible chart
+builds, and an updated SDK API with support for multiple chart API versions. 
+Existing charts remained backwards compatible. See the
+[Helm 4 Overview](/docs/overview) for more details.
