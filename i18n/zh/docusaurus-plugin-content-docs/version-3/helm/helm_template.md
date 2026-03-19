@@ -1,90 +1,99 @@
 ---
 title: helm template
 ---
+
 本地渲染模板
 
 ### 简介
 
-本地渲染模板并显示输出
+本地渲染 chart 模板并显示输出。
 
-通常在集群中查找或检索到的任何值都可以在本地伪造。另外，没有对chart有效性进行服务端测试。
+通常在集群中查找或检索到的任何值都会在本地模拟。另外，不会执行任何服务端对 chart 的有效性验证（例如检查某个 API 是否支持）。
 
-```shell
+```
 helm template [NAME] [CHART] [flags]
 ```
 
 ### 可选项
 
-```shell
-  -a, --api-versions strings                       Kubernetes api versions used for Capabilities.APIVersions
-      --rollback-on-failure                        if set, the installation process deletes the installation on failure. The --wait flag will be set automatically if --rollback-on-failure is used
-      --ca-file string                             verify certificates of HTTPS-enabled servers using this CA bundle
-      --cert-file string                           identify HTTPS client using this SSL certificate file
-      --create-namespace                           create the release namespace if not present
-      --dependency-update                          update dependencies if they are missing before installing the chart
-      --description string                         add a custom description
-      --devel                                      use development versions, too. Equivalent to version '>0.0.0-0'. If --version is set, this is ignored
-      --disable-openapi-validation                 if set, the installation process will not validate rendered templates against the Kubernetes OpenAPI Schema
-      --dry-run                                    simulate an install
-      --enable-dns                                 enable DNS lookups when rendering templates
-      --force                                      force resource updates through a replacement strategy
-  -g, --generate-name                              generate the name (and omit the NAME parameter)
-  -h, --help                                       help for template
-      --include-crds                               include CRDs in the templated output
-      --insecure-skip-tls-verify                   skip tls certificate checks for the chart download
-      --is-upgrade                                 set .Release.IsUpgrade instead of .Release.IsInstall
-      --key-file string                            identify HTTPS client using this SSL key file
-      --keyring string                             location of public keys used for verification (default "~/.gnupg/pubring.gpg")
-      --kube-version string                        Kubernetes version used for Capabilities.KubeVersion
-      --name-template string                       specify template used to name the release
-      --no-hooks                                   prevent hooks from running during install
-      --output-dir string                          writes the executed templates to files in output-dir instead of stdout
-      --pass-credentials                           pass credentials to all domains
-      --password string                            chart repository password where to locate the requested chart
-      --post-renderer postRendererString           the path to an executable to be used for post rendering. If it exists in $PATH, the binary will be used, otherwise it will try to look for the executable at the given path
-      --post-renderer-args postRendererArgsSlice   an argument to the post-renderer (can specify multiple) (default [])
-      --release-name                               use release name in the output-dir path.
-      --render-subchart-notes                      if set, render subchart notes along with the parent
-      --replace                                    re-use the given name, only if that name is a deleted release which remains in the history. This is unsafe in production
-      --repo string                                chart repository url where to locate the requested chart
-      --set stringArray                            set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
-      --set-file stringArray                       set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)
-      --set-json stringArray                       set JSON values on the command line (can specify multiple or separate values with commas: key1=jsonval1,key2=jsonval2)
-      --set-literal stringArray                    set a literal STRING value on the command line
-      --set-string stringArray                     set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)
-  -s, --show-only stringArray                      only show manifests rendered from the given templates
-      --skip-crds                                  if set, no CRDs will be installed. By default, CRDs are installed if not already present
-      --skip-tests                                 skip tests from templated output
-      --timeout duration                           time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
-      --username string                            chart repository username where to locate the requested chart
-      --validate                                   validate your manifests against the Kubernetes cluster you are currently pointing at. This is the same validation performed on an install
-  -f, --values strings                             specify values in a YAML file or a URL (can specify multiple)
-      --verify                                     verify the package before using it
-      --version string                             specify a version constraint for the chart version to use. This constraint can be a specific tag (e.g. 1.1.1) or it may reference a valid range (e.g. ^2.0.0). If this is not specified, the latest version is used
-      --wait                                       if set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment, StatefulSet, or ReplicaSet are in a ready state before marking the release as successful. It will wait for as long as --timeout
-      --wait-for-jobs                              if set and --wait enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as --timeout
+```
+  -a, --api-versions strings                       用于 Capabilities.APIVersions 的 Kubernetes api 版本
+      --atomic                                     如果设置，安装过程在失败时删除已安装的内容。使用 --atomic 时会自动设置 --wait 参数
+      --ca-file string                             使用此 CA 包验证启用 HTTPS 的服务器的证书
+      --cert-file string                           使用此 SSL 证书文件标识 HTTPS 客户端
+      --create-namespace                           如果 release namespace 不存在则创建
+      --dependency-update                          如果缺少依赖项，在安装 chart 之前更新依赖项
+      --description string                         添加自定义描述
+      --devel                                      同时使用开发版本。等同于 version '>0.0.0-0'。如果设置了 --version，则忽略此项
+      --disable-openapi-validation                 如果设置，安装过程不会根据 Kubernetes OpenAPI Schema 验证渲染的模板
+      --dry-run string[="client"]                  模拟安装。如果设置 --dry-run 时未指定选项或指定为 '--dry-run=client'，则不会尝试连接集群。设置 '--dry-run=server' 允许尝试连接集群。
+      --enable-dns                                 在渲染模板时启用 DNS 查询
+      --force                                      通过替换策略强制更新资源
+  -g, --generate-name                              生成名称（并省略 NAME 参数）
+  -h, --help                                       template 的帮助信息
+      --hide-notes                                 如果设置，不在安装输出中显示 notes。不影响 chart 元数据中的存在
+      --include-crds                               在模板输出中包含 CRD
+      --insecure-skip-tls-verify                   跳过 chart 下载的 TLS 证书检查
+      --is-upgrade                                 设置 .Release.IsUpgrade 而不是 .Release.IsInstall
+      --key-file string                            使用此 SSL 密钥文件标识 HTTPS 客户端
+      --keyring string                             用于验证的公钥位置（默认 "~/.gnupg/pubring.gpg"）
+      --kube-version string                        用于 Capabilities.KubeVersion 的 Kubernetes 版本
+  -l, --labels stringToString                      将添加到 release 元数据的标签。应以逗号分隔。（默认 []）
+      --name-template string                       指定用于命名 release 的模板
+      --no-hooks                                   阻止在安装过程中运行 hook
+      --output-dir string                          将执行的模板写入 output-dir 中的文件，而不是 stdout
+      --pass-credentials                           将凭据传递给所有域
+      --password string                            chart 仓库密码
+      --plain-http                                 使用不安全的 HTTP 连接下载 chart
+      --post-renderer postRendererString           用于后渲染的可执行文件路径。如果存在于 $PATH 中，将使用该二进制文件，否则将尝试在给定路径查找可执行文件
+      --post-renderer-args postRendererArgsSlice   后渲染器的参数（可多次指定）（默认 []）
+      --release-name                               在 output-dir 路径中使用 release 名称
+      --render-subchart-notes                      如果设置，与父级一起渲染子 chart 的 notes
+      --replace                                    重复使用给定名称，仅当该名称是仍保留在历史记录中的已删除 release 时。这在生产环境中不安全
+      --repo string                                chart 仓库 URL
+      --set stringArray                            在命令行上设置值（可以多次指定或用逗号分隔值：key1=val1,key2=val2）
+      --set-file stringArray                       通过命令行从相应文件设置值（可以多次指定或用逗号分隔值：key1=path1,key2=path2）
+      --set-json stringArray                       在命令行上设置 JSON 值（可以多次指定或用逗号分隔值：key1=jsonval1,key2=jsonval2）
+      --set-literal stringArray                    在命令行上设置字面 STRING 值
+      --set-string stringArray                     在命令行上设置 STRING 值（可以多次指定或用逗号分隔值：key1=val1,key2=val2）
+  -s, --show-only stringArray                      仅显示从给定模板渲染的清单
+      --skip-crds                                  如果设置，不会安装 CRD。默认情况下，如果 CRD 不存在则会安装
+      --skip-schema-validation                     如果设置，禁用 JSON schema 验证
+      --skip-tests                                 从模板输出中跳过测试
+      --take-ownership                             如果设置，安装将忽略 helm 注解检查并接管现有资源的所有权
+      --timeout duration                           等待任何单个 Kubernetes 操作（如 hook 的 Job）的时间（默认 5m0s）
+      --username string                            chart 仓库用户名
+      --validate                                   根据当前指向的 Kubernetes 集群验证清单。这与安装时执行的验证相同
+  -f, --values strings                             在 YAML 文件或 URL 中指定值（可多次指定）
+      --verify                                     使用前验证包
+      --version string                             指定要使用的 chart 版本约束。可以是特定标签（如 1.1.1）或有效范围（如 ^2.0.0）。如果未指定，使用最新版本
+      --wait                                       如果设置，将等待所有 Pod、PVC、Service 以及 Deployment、StatefulSet 或 ReplicaSet 的最小 Pod 数处于就绪状态，然后才将 release 标记为成功。等待时间与 --timeout 相同
+      --wait-for-jobs                              如果设置且启用了 --wait，将等待所有 Job 完成后才将 release 标记为成功。等待时间与 --timeout 相同
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的选项
 
-```shell
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+```
+      --burst-limit int                 客户端默认节流限制（默认 100）
+      --debug                           启用详细输出
+      --kube-apiserver string           Kubernetes API 服务器的地址和端口
+      --kube-as-group stringArray       模拟操作的组，此参数可重复指定多个组
+      --kube-as-user string             模拟操作的用户名
+      --kube-ca-file string             Kubernetes API 服务器连接的证书颁发机构文件
+      --kube-context string             要使用的 kubeconfig 上下文名称
+      --kube-insecure-skip-tls-verify   如果为 true，则不会验证 Kubernetes API 服务器的证书有效性。这将使 HTTPS 连接不安全
+      --kube-tls-server-name string     用于 Kubernetes API 服务器证书验证的服务器名称。如果未提供，则使用联系服务器的主机名
+      --kube-token string               用于身份验证的 bearer token
+      --kubeconfig string               kubeconfig 文件的路径
+  -n, --namespace string                此请求的命名空间范围
+      --qps float32                     与 Kubernetes API 通信时使用的每秒查询数，不包括突发
+      --registry-config string          registry 配置文件的路径（默认 "~/.config/helm/registry/config.json"）
+      --repository-cache string         包含缓存仓库索引的目录路径（默认 "~/.cache/helm/repository"）
+      --repository-config string        包含仓库名称和 URL 的文件路径（默认 "~/.config/helm/repositories.yaml"）
 ```
 
 ### 请参阅
 
-* [helm](/helm/helm.md) - 针对Kubernetes的Helm包管理器
+* [helm](./helm.md) - Kubernetes 的 Helm 包管理器
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

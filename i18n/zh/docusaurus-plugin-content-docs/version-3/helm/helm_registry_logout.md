@@ -32,11 +32,14 @@ helm registry logout [host] [flags]
       --kube-token string               bearer token used for authentication
       --kubeconfig string               path to the kubeconfig file
   -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
       --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
+      --repository-cache string         path to the directory containing cached repository indexes (default "~/.cache/helm/repository")
       --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
 ```
 
 ### 请参阅
 
 * [helm registry](/helm/helm_registry.md) - 登录或登出注册表
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

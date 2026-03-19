@@ -1,87 +1,77 @@
 ---
-title: Chart Hook
-description: 详述如何使用chart hook
+title: Chart 钩子
+description: 描述如何使用 chart 钩子。
 sidebar_position: 2
 ---
 
-Helm 提供了一个 _hook_ 机制允许chart开发者在发布生命周期的某些点进行干预。比如你可以使用hook用于：
+Helm 提供了钩子（hook）机制，允许 chart 开发者在 release 生命周期的特定节点进行干预。例如，你可以使用钩子来：
 
-- 安装时在加载其他chart之前加载配置映射或密钥
-- 安装新chart之前执行备份数据库的任务，然后在升级之后执行第二个任务用于存储数据。
-- 在删除发布之前执行一个任务以便在删除服务之前退出滚动。
+- 在安装过程中，于其他 chart 加载之前先加载一个 ConfigMap 或 Secret。
+- 在安装新 chart 之前执行一个 Job 来备份数据库，然后在升级完成后执行另一个 Job 来恢复数据。
+- 在删除 release 之前执行一个 Job，以便优雅地将服务从轮转中移除。
 
-钩子的工作方式与常规模板类似，但因为Helm对其不同的使用方式，会有一些特殊的注释。这部分会讲述钩子的基本使用模式。
+钩子的工作方式与普通模板类似，但它们带有特殊的注解，使 Helm 以不同方式处理它们。本节介绍钩子的基本使用模式。
 
 ## 可用的钩子
 
 定义了以下钩子：
 
-| 注释值            | 描述                                                                                                  |
-| ---------------- | ----------------------------------------------------------------------------------------------------- |
-| `pre-install`    | 在模板渲染之后，Kubernetes资源创建之前执行                                                               |
-| `post-install`   | 在所有资源加载到Kubernetes之后执行                                                                      |
-| `pre-delete`     | 在Kubernetes删除之前，执行删除请求                                                                      |
-| `post-delete`    | 在所有的版本资源删除之后执行删除请求                                                                     |
-| `pre-upgrade`    | 在模板渲染之后，资源更新之前执行一个升级请求                                                              |
-| `post-upgrade`   | 所有资源升级之后执行一个升级请求                                                                         |
-| `pre-rollback`   | 在模板渲染之后，资源回滚之前，执行一个回滚请求                                                            |
-| `post-rollback`  | 在所有资源被修改之后执行一个回滚请求                                                                     |
-| `test`           | 调用Helm test子命令时执行 ([test文档](https://helm.sh/zh/docs/topics/chart_tests/))                     |
+| 注解值           | 描述                                                                                            |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `pre-install`    | 在模板渲染后、Kubernetes 中创建任何资源之前执行                                                   |
+| `post-install`   | 在所有资源加载到 Kubernetes 后执行                                                               |
+| `pre-delete`     | 在删除请求时、从 Kubernetes 删除任何资源之前执行                                                  |
+| `post-delete`    | 在删除请求时、release 的所有资源已删除后执行                                                      |
+| `pre-upgrade`    | 在升级请求时、模板渲染后、任何资源更新之前执行                                                     |
+| `post-upgrade`   | 在升级请求时、所有资源升级完成后执行                                                              |
+| `pre-rollback`   | 在回滚请求时、模板渲染后、任何资源回滚之前执行                                                     |
+| `post-rollback`  | 在回滚请求时、所有资源修改完成后执行                                                              |
+| `test`           | 在调用 Helm test 子命令时执行（[查看 test 文档](/zh/docs/topics/chart_tests/)）                   |
 
-_注意`crd-install`钩子已被移除以支持Helm 3的`crds/`目录。_
+_注意：`crd-install` 钩子已在 Helm 3 中移除，改用 `crds/` 目录。_
 
-## 钩子和发布生命周期
+## 钩子和 Release 生命周期
 
-钩子允许你在发布生命周期的关键节点上有机会执行操作。比如，考虑`helm install`的生命周期。默认的，生命周期看起来是这样：
+钩子允许 chart 开发者在 release 生命周期的关键节点执行操作。例如，考虑 `helm install` 的生命周期。默认情况下，生命周期如下：
 
-1. 用户执行`helm install foo`
-2. Helm库调用安装API
-3. 在一些验证之后，库会渲染`foo`模板
-4. 库会加载结果资源到Kubernetes
-5. 库会返回发布对象（和其他数据）给客户端
+1. 用户运行 `helm install foo`
+2. 调用 Helm 库的安装 API
+3. 经过一些验证后，库渲染 `foo` 的模板
+4. 库将生成的资源加载到 Kubernetes
+5. 库将 release 对象（和其他数据）返回给客户端
 6. 客户端退出
 
-Helm 为`install`周期定义了两个钩子：`pre-install`和`post-install`。如果`foo` chart的开发者两个钩子都执行，
-周期会被修改为这样：
+Helm 为 `install` 生命周期定义了两个钩子：`pre-install` 和 `post-install`。如果 `foo` chart 的开发者实现了这两个钩子，生命周期会变成这样：
 
-1. 用户返回 `helm install foo`
-2. Helm库调用安装API
-3. 在 `crds/`目录中的CRD会被安装
-4. 在一些验证之后，库会渲染`foo`模板
-5. 库准备执行`pre-install`钩子(将hook资源加载到Kubernetes中)
-6. 库按照权重对钩子排序(默认将权重指定为0)，然后在资源种类排序，最后按名称正序排列。
-7. 库先加载最小权重的钩子(从负到正)
-8. 库会等到钩子是 "Ready"状态(CRD除外)
-9. 库将生成的资源加载到Kubernetes中。注意如果设置了`--wait`参数，库会等所有资源是ready状态，
-   且所有资源准备就绪后才会执行`post-install`钩子。
-10. 库执行`post-install`钩子(加载钩子资源)。
-11. 库会等到钩子是"Ready"状态
-12. 库会返回发布对象(和其他数据)给客户端
+1. 用户运行 `helm install foo`
+2. 调用 Helm 库的安装 API
+3. 安装 `crds/` 目录中的 CRD
+4. 经过一些验证后，库渲染 `foo` 的模板
+5. 库准备执行 `pre-install` 钩子（将钩子资源加载到 Kubernetes）
+6. 库按权重对钩子排序（默认权重为 0），然后按资源类型排序，最后按名称升序排列
+7. 库先加载权重最小的钩子（从负到正）
+8. 库等待钩子进入 "Ready" 状态（CRD 除外）
+9. 库将生成的资源加载到 Kubernetes。注意，如果设置了 `--wait` 参数，库会等待所有资源进入就绪状态，并且在资源就绪之前不会执行 `post-install` 钩子。
+10. 库执行 `post-install` 钩子（加载钩子资源）
+11. 库等待钩子进入 "Ready" 状态
+12. 库将 release 对象（和其他数据）返回给客户端
 13. 客户端退出
 
-&emsp;&emsp;等钩子准备好是什么意思？ 这取决于钩子声明的资源。如果资源是 `Job` 或 `Pod`类型，Helm会等到直到他成功运行完成。
-如果钩子失败，发布就会失败。这是一个 _阻塞操作_,所以Helm客户端会在这个任务执行时暂停。
+等待钩子就绪是什么意思？这取决于钩子中声明的资源类型。如果资源是 `Job` 或 `Pod` 类型，Helm 会等待它成功运行完成。如果钩子失败，release 也会失败。这是一个*阻塞操作*，因此 Helm 客户端会在 Job 运行期间暂停。
 
-&emsp;&emsp;针对其他种类，一旦Kubernetes将资源标记为已加载(已添加或已更新)，资源会被认为是"Ready"。 当一个钩子中声明了很多资源时，
-资源会串行执行。如果有钩子权重，会按照权重顺序执行。从Helm 3.2.0开始，具有相同权重的钩子资源会和普通非钩子资源以相同的顺序安装。
-否则，顺序就无法保证。（Helm 2.3.0及之后，它们按照字母排序。不过该行为并不会绑定，将来可能会改变。）增加钩子权重被认为是很好的做法，
-如果权重不重要，可以设置为`0`。
+对于其他类型的资源，一旦 Kubernetes 将资源标记为已加载（已添加或已更新），该资源就被视为 "Ready"。当一个钩子中声明了多个资源时，这些资源会串行执行。如果它们有钩子权重（见下文），则按权重顺序执行。从 Helm 3.2.0 开始，具有相同权重的钩子资源会按照与普通非钩子资源相同的顺序安装。否则，执行顺序不做保证。（在 Helm 2.3.0 及之后版本中，它们按字母顺序排序。但这一行为并非强制绑定，未来可能会改变。）最佳实践是添加钩子权重，如果权重不重要则设为 `0`。
 
-### 钩子资源不使用对应版本管理
+### 钩子资源不随对应 release 管理
 
-钩子创建的资源无法作为发布的一部分进行跟踪和管理。一旦Helm验证hook达到ready状态，将不使用钩子资源。
-当对应发布删除后，钩子资源的垃圾回收会在将来添加到Helm 3中，因此不能被删除的钩子资源应该添加注释：
-`helm.sh/resource-policy: keep`。
+钩子创建的资源目前不作为 release 的一部分进行跟踪或管理。一旦 Helm 确认钩子已达到就绪状态，就不再管理该钩子资源。在未来的 Helm 3 版本中可能会添加删除对应 release 时的钩子资源垃圾回收功能，因此任何不能被删除的钩子资源都应该添加注解 `helm.sh/resource-policy: keep`。
 
-实际上，如果你在钩子中创建了资源，不能依靠`helm uninstall`去删除资源。要删除这些资源，要么在钩子模板文件中[添加一个自定义的`helm.sh/hook-delete-policy`
-注释](#hook-deletion-policies)，要么[设置任务资源的生存时间（TTL）字段](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)。
+实际上，这意味着如果你在钩子中创建了资源，就不能依赖 `helm uninstall` 来删除这些资源。要销毁这些资源，你需要在钩子模板文件中[添加自定义的 `helm.sh/hook-delete-policy` 注解](#钩子删除策略)，或者[设置 Job 资源的生存时间（TTL）字段](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)。
 
-## 编写一个钩子
+## 编写钩子
 
-钩子就是在`metadata`部分指定了特殊注释的Kubernetes清单文件。因为是模板文件，你可以使用所有的普通模板特性，包括读取 `.Values`，
-`.Release`，和 `.Template`。
+钩子就是在 `metadata` 部分带有特殊注解的 Kubernetes 清单文件。由于它们是模板文件，你可以使用所有常规的模板功能，包括读取 `.Values`、`.Release` 和 `.Template`。
 
-比如这个模板，存储在`templates/post-install-job.yaml`，声明了一个要运行在`post-install`上的任务：
+例如，下面这个存储在 `templates/post-install-job.yaml` 中的模板，声明了一个在 `post-install` 时运行的 Job：
 
 ```yaml
 apiVersion: batch/v1
@@ -116,7 +106,7 @@ spec:
 
 ```
 
-使模板称为钩子的是注释：
+使这个模板成为钩子的是以下注解：
 
 ```yaml
 annotations:
@@ -130,34 +120,34 @@ annotations:
   "helm.sh/hook": post-install,post-upgrade
 ```
 
-类似的，执行一个给定钩子的不同资源的数量也没有限制。比如，一个pre-install钩子可以同时声明密钥和配置映射。
+同样，实现某个钩子的资源数量也没有限制。例如，可以同时将一个 Secret 和一个 ConfigMap 声明为 pre-install 钩子。
 
-当子chart声明钩子时，这些也会被评估。顶级chart无法禁用子chart声明的钩子。
+当子 chart 声明钩子时，这些钩子也会被执行。顶级 chart 无法禁用子 chart 声明的钩子。
 
-可以为钩子定义权重，这有助于建立一个确定性的执行顺序。权重使用以下注释定义：
+可以为钩子定义权重，以帮助建立确定性的执行顺序。权重使用以下注解定义：
 
 ```yaml
 annotations:
   "helm.sh/hook-weight": "5"
 ```
 
-钩子权重可以正数也可以是负数，但一定要是字符串。Helm开始执行特定种类的钩子时，会正序排列这些钩子。
+钩子权重可以是正数或负数，但必须以字符串形式表示。当 Helm 开始执行特定类型的钩子时，会按升序对这些钩子进行排序。
 
-### Hook deletion policies
+### 钩子删除策略
 
-可以定义策略来决定何时删除对应的钩子资源。钩子的删除策略使用以下注释定义：
+可以定义策略来决定何时删除对应的钩子资源。钩子删除策略使用以下注解定义：
 
 ```yaml
 annotations:
   "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 ```
 
-可以选择一个或多个定义的注释值：
+你可以选择一个或多个已定义的注解值：
 
-| 注释值                 | 描述                                                                  |
-| ---------------------- | -------------------------------------------------------------------- |
-| `before-hook-creation` | 新钩子启动前删除之前的资源 (默认)                                       |
-| `hook-succeeded`       | 钩子成功执行之后删除资源                                               |
-| `hook-failed`          | 如果钩子执行失败，删除资源                                             |
+| 注解值                 | 描述                                            |
+| ---------------------- | ----------------------------------------------- |
+| `before-hook-creation` | 在启动新钩子之前删除之前的资源（默认）             |
+| `hook-succeeded`       | 在钩子成功执行后删除资源                          |
+| `hook-failed`          | 如果钩子执行失败，删除资源                        |
 
-如果没有指定钩子删除策略的注释，默认使用`before-hook-creation`。
+如果未指定钩子删除策略注解，则默认使用 `before-hook-creation` 行为。

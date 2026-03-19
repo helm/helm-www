@@ -4,7 +4,7 @@ description: 模板中流结构的快速概述
 sidebar_position: 7
 ---
 
-控制结构(在模板语言中称为"actions")提供给你和模板作者控制模板迭代流的能力。
+控制结构（在模板语言中称为"actions"）为模板作者提供了控制模板生成流程的能力。
 Helm的模板语言提供了以下控制结构：
 
 - `if`/`else`， 用来创建条件语句
@@ -17,7 +17,7 @@ Helm的模板语言提供了以下控制结构：
 - `template` 导入一个命名模板
 - `block` 声明一种特殊的可填充的模板块
 
-该部分，我们会讨论关于`if`，`with`，和 `range`。其他部分会在该指南的“命名模板”部分说明。
+本节我们会讨论 `if`、`with` 和 `range`。其他内容会在本指南的“命名模板”部分说明。
 
 ## If/Else
 
@@ -25,7 +25,7 @@ Helm的模板语言提供了以下控制结构：
 
 基本的条件结构看起来像这样：
 
-```yaml
+```
 {{ if PIPELINE }}
   # Do something
 {{ else if OTHER PIPELINE }}
@@ -47,7 +47,7 @@ Helm的模板语言提供了以下控制结构：
 
 在所有其他条件下，条件都为true。
 
-让我们先在配置映射中添加一个简单的条件。如果饮品是coffee会添加另一个配置：
+让我们先在ConfigMap 中添加一个简单的条件。如果饮品是coffee会添加另一个配置：
 
 ```yaml
 apiVersion: v1
@@ -157,7 +157,7 @@ data:
 YAML认为空白是有意义的，因此管理空白变得很重要。幸运的是，Helm模板有些工具可以处理此类问题。
 
 首先，模板声明的大括号语法可以通过特殊的字符修改，并通知模板引擎取消空白。`{{- `(包括添加的横杠和空格)表示向左删除空白，
-而` -}}`表示右边的空格应该被去掉。 _一定注意空格就是换行_
+而` -}}`表示右边的空格应该被去掉。 _注意！换行符也是空白字符！_
 
 > 要确保`-`和其他命令之间有一个空格。
 > `{{- 3 }}` 表示“删除左边空格并打印3”，而`{{-3 }}`表示“打印-3”。
@@ -225,24 +225,24 @@ data:
 
 > 关于模板中的空白控制，请查看[官方Go模板文档](https://godoc.org/text/template)
 
-最终，有时这更容易告诉模板系统如何缩进，而不是试图控制模板指令间的间距。因此，您有时会发现使用`indent`方法(`{{ indent 2
-"mug:true" }}`)会很有用。
+最终，有时候告诉模板系统如何缩进会更容易，而不是试图控制模板指令间的间距。因此，你有时会发现使用 `indent` 函数（`{{ indent 2
+"mug:true" }}`）会很有用。
 
-## 修改使用`with`的范围
+## 使用 `with` 修改作用域
 
 下一个控制结构是`with`操作。这个用来控制变量范围。回想一下，`.`是对 _当前作用域_ 的引用。因此
 `.Values`就是告诉模板在当前作用域查找`Values`对象。
 
 `with`的语法与`if`语句类似：
 
-```yaml
+```
 {{ with PIPELINE }}
   # restricted scope
 {{ end }}
 ```
 
 作用域可以被改变。`with`允许你为特定对象设定当前作用域(`.`)。比如，我们已经在使用`.Values.favorite`。
-修改配置映射中的`.`的作用域指向`.Values.favorite`：
+修改ConfigMap 中的`.`的作用域指向`.Values.favorite`：
 
 ```yaml
 apiVersion: v1
@@ -312,9 +312,10 @@ pizzaToppings:
   - cheese
   - peppers
   - onions
+  - pineapple
 ```
 
-现在我们有了一个`pizzaToppings`列表（模板中称为切片）。修改模板把这个列表打印到配置映射中：
+现在我们有了一个 `pizzaToppings` 列表（模板中称为切片）。修改模板把这个列表打印到 ConfigMap 中：
 
 ```yaml
 apiVersion: v1
@@ -334,7 +335,7 @@ data:
 
 ```
 
-我可以使用`$`从父作用域访问`Values.pizzaToppings`列表。当模板开始执行后`$`会被映射到根作用域，
+我们可以使用`$`从父作用域访问`Values.pizzaToppings`列表。当模板开始执行后`$`会被映射到根作用域，
 且执行过程中不会更改。下面这种方式也可以正常工作：
 
 ```yaml
@@ -376,11 +377,12 @@ data:
     - "Cheese"
     - "Peppers"
     - "Onions"
+    - "Pineapple"
 ```
 
 现在，我们已经处理了一些棘手的事情。`toppings: |-`行是声明的多行字符串。所以这个配料列表实际上不是YAML列表，
-是个大字符串。为什么要这样做？因为在配置映射`data`中的数据是由键值对组成，key和value都是简单的字符串。
-要理解这个示例，请查看[Kubernetes ConfigMap 文档](https://kubernetes.io/docs/user-guide/configmap/)。
+而是一个大字符串。为什么要这样做？因为 ConfigMap 的 `data` 中的数据是由键值对组成，key 和 value 都是简单的字符串。
+要理解这个示例，请查看 [Kubernetes ConfigMap 文档](https://kubernetes.io/docs/concepts/configuration/configmap/)。
 但对于我们来说，这个细节并不重要。
 
 > 正如例子中所示，`|-`标识在YAML中是指多行字符串。这在清单列表中嵌入大块数据是很有用的技术。
