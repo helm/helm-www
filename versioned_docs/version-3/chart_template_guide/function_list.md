@@ -875,8 +875,9 @@ greeting: |
 ### toToml, mustToToml
 
 The `toToml` function encodes an item into a TOML string. If the item cannot be
-converted to TOML the function will return an empty string. `mustToToml` will
-return an error in case the item cannot be encoded in TOML.
+converted to TOML, `toToml` returns the error message as a string. `mustToToml`
+will return an error to the template engine if the item cannot be encoded in
+TOML.
 
 ```
 toToml .Item
