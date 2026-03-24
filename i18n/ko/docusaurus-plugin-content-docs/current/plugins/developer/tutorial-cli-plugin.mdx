@@ -1,6 +1,5 @@
 ---
 title: "튜토리얼: CLI 플러그인 빌드하기"
-sidebar_label: CLi 플러그인 빌드하기
 ---
 
 import GetVersion from "@site/src/components/GetVersion";
@@ -8,16 +7,16 @@ import CodeBlock from "@theme/CodeBlock";
 
 시스템 정보를 표시하는 `helm system-info` 명령어를 만들어봅시다.
 
-## 서브프로세스 런타임
+## 서브프로세스 런타임 {#subprocess-runtime}
 
 서브프로세스 런타임으로 CLI 플러그인을 만드는데서 시작합니다.
 
-### 사전 요구 사항
+### 사전 요구 사항 {#prerequisites}
 
 1. 최신 헬름4 릴리즈를 설치하세요: **<GetVersion majorVersion="4" label={false} link={true} />**
 2. 터미널 세션에서 다운로드한 릴리즈에 관해서 `helm`을 별칭으로 설정하세요. 이제 `helm version --short`를 실행하면 해당 터미널 세션에서 올바른 Helm 버전이 표시됩니다.
 
-### 1. 플러그인 디렉터리 생성
+### 1. 플러그인 디렉터리 생성 {#1-create-plugin-directory}
 
 파일 시스템의 어디에서나 생성할 수 있습니다. 예를 들어:
 
@@ -26,7 +25,7 @@ mkdir -p $HOME/code/helm/plugins/system-info
 cd $HOME/code/helm/plugins/system-info
 ```
 
-### 2. 플러그인 매니페스트 생성
+### 2. 플러그인 매니페스트 생성 {#2-create-plugin-manifest}
 
 ```yaml title="plugin.yaml" showLineNumbers
 apiVersion: v1
@@ -43,7 +42,7 @@ runtimeConfig:
     - command: ${HELM_PLUGIN_DIR}/system-info.sh
 ```
 
-### 3. 스크립트 생성
+### 3. 스크립트 생성 {#3-create-script}
 
 ```bash title="system-info.sh" showLineNumbers
 #!/bin/bash
@@ -67,7 +66,7 @@ echo "System info complete!"
 chmod +x system-info.sh
 ```
 
-### 4. 개발 모드로 설치 및 테스트
+### 4. 개발 모드로 설치 및 테스트 {#4-install-in-dev-mode-and-test}
 
 파일 시스템에서 플러그인을 설치하면 로컬 개발 모드로 설치됩니다. 이 경우 출처 확인 및 검증을 건너뜁니다:
 
@@ -127,9 +126,9 @@ System info complete!
 
 다시 한 번 해봅시다. 이번에는 WASM 런타임으로...
 
-## WASM 런타임
+## WASM 런타임 {#wasm-runtime}
 
-### 사전 요구 사항
+### 사전 요구 사항 {#prerequisites}
 
 - [서브프로세스 런타임](#subprocess-runtime)의 사전 요구 사항
 - Go 1.25 설치

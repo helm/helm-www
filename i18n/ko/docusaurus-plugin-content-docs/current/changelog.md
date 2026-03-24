@@ -10,7 +10,7 @@ sidebar_label: 전체 체인지로그
 
 이들 변경 사항에 대한 실질적 요약은 [개요](/overview.md)에서 확인하세요.
 
-## 새로운 기능
+## 새로운 기능 {#new-features}
 
 v3로 백포트되지 않은 헬름4의 새로운 기능
 
@@ -63,7 +63,7 @@ v3로 백포트되지 않은 헬름4의 새로운 기능
 | #13538 | 2025-01-17 | godhanipayal | Add Contextual Error Messages to RunWithContext |
 | #12588 | 2024-11-22 | rynowak | Make the authorizer and registry authorizer configurable |
 
-## 버그 수정
+## 버그 수정 {#bug-fixes}
 
 v3로 백포트되지 않은 헬름4의 버그 수정
 
@@ -136,7 +136,7 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #13633 | 2025-01-17 | mattfarina | Ensuring the file paths are clean prior to passing to securejoin |
 | #13425 | 2024-11-15 | MathieuCesbron | Fix typo "re-use" to "reuse" |
 
-## 리팩터링/정리
+## 리팩터링/정리 {#refactorcleanup}
 
 코드 품질 개선 및 현대화
 
@@ -253,7 +253,7 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #13573 | 2024-12-27 | mattfarina | <span class="breaking">BREAKING CHANGE:</span> Updating to helm.sh/helm/v4 |
 | #13444 | 2024-12-07 | justenstall | refactor(status): remove --show-desc and --show-resources flags |
 
-## 기타
+## 기타 {#other}
 
 인프라 및 프로젝트 관리 개선
 
@@ -295,11 +295,11 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #13465 | 2024-11-20 | banjoh | Add precommit config to .gitignore |
 | #13443 | 2024-11-15 | mattfarina | Updating docs around v3 and v4 |
 
-## v3로도 백포트된 v4 변경 사항
+## v3로도 백포트된 v4 변경 사항 {#v4-changes-also-backported-to-v3}
 
 이 PR들은 v4에 포함됐지만 v3 릴리즈에도 백포트되었습니다.
 
-### (백포트된) 새로운 기능
+### (백포트된) 새로운 기능 {#new-features-backported}
 
 | PR | Date | Author | Title |
 |---|---|---|---|
@@ -312,7 +312,7 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #12962 | 2024-12-04 | stevehipwell | feat: Added multi-platform plugin hook support |
 | #13343 | 2024-11-19 | niladrih | Add annotations and dependencies to get metadata output |
 
-### (백포트된) 버그 수정
+### (백포트된) 버그 수정 {#bug-fixes-backported}
 
 | PR | Date | Author | Title |
 |---|---|---|---|
@@ -334,7 +334,7 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #30701 | 2025-04-11 | zanuka | updates mutate and validate web hook configs |
 | #13583 | 2025-01-15 | jiashengz | fix: check group for resource info match |
 
-### (백포트된) 리팩토링/정리
+### (백포트된) 리팩토링/정리 {#refactorcleanup-backported}
 
 | PR | Date | Author | Title |
 |---|---|---|---|
@@ -344,7 +344,7 @@ v3로 백포트되지 않은 헬름4의 버그 수정
 | #13546 | 2024-12-19 | mattfarina | Update to Go 1.23 |
 | #13499 | 2024-12-06 | gjenkins8 | Shadow ORAS remote.Client interface |
 
-### (백포트된 기타)
+### (백포트된 기타) {#other-backported}
 
 | PR | Date | Author | Title |
 |---|---|---|---|
