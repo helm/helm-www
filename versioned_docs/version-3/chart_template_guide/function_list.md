@@ -694,7 +694,7 @@ The following type conversion functions are provided by Helm:
 - `toStrings`: Convert a list, slice, or array to a list of strings.
 - `toJson` (`mustToJson`): Convert list, slice, array, dict, or object to JSON.
 - `toPrettyJson` (`mustToPrettyJson`): Convert list, slice, array, dict, or
-  object to indented JSON.
+  object to indented JSON with HTML characters unescaped.
 - `toRawJson` (`mustToRawJson`): Convert list, slice, array, dict, or object to
   JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
@@ -745,7 +745,9 @@ The above returns JSON string representation of `.Item`.
 ### toPrettyJson, mustToPrettyJson
 
 The `toPrettyJson` function encodes an item into a pretty (indented) JSON
-string.
+string with HTML characters (`&`, `<`, `>`) preserved. This means URLs and
+other strings containing these characters will render correctly without
+escaping them to `\u0026`, `\u003c`, `\u003e`.
 
 ```
 toPrettyJson .Item
