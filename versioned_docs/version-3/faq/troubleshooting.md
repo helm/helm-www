@@ -128,6 +128,27 @@ For example:
 helm list -v 6
 ```
 
+### Rollback fails with "no [Resource] with the name '[name]' found"
+
+When running `helm rollback`, you may see an error like:
+
+```
+Error: no ConfigMap with the name "myconfig" found
+```
+
+Similar errors can appear for other resource types (Pod, Secret, etc.).
+
+This can happen in the following scenario:
+
+1. You install a release (revision 1) that creates a resource
+2. You upgrade to a new chart version (revision 2) that removes that resource, but the upgrade fails partway through
+3. The resource still exists on the cluster because the failed upgrade didn't complete cleanup
+4. You attempt to roll back to revision 1
+
+In older Helm versions, the rollback fails because Helm expects the resource metadata from the original release but cannot find it in the release history since the resource was removed in revision 2.
+
+This issue is fixed in newer Helm 3 releases. Helm now detects when a resource exists on the cluster but is missing from the original release metadata, and uses the current cluster state as the baseline for the rollback.
+
 ### Tiller installations stopped working and access is denied
 
 Helm releases used to be available from <https://storage.googleapis.com/kubernetes-helm/>. As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
