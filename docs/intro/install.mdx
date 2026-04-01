@@ -33,6 +33,55 @@ chart repository](/intro/quickstart.md#initialize-a-helm-chart-repository):
 GitHub Actions builds and releases. Testing of other OSes are the responsibility of
 the community requesting Helm for the OS in question.
 
+### Verifying Binary Releases
+
+Verify the authenticity of Helm binaries before installing them. This protects against supply chain attacks. Each release includes cryptographic signatures that confirm the binary was built and signed by Helm maintainers.
+
+#### What You Need
+
+To verify a Helm binary, you need three things:
+
+1. The binary archive (e.g., `helm-v4.0.0-linux-amd64.tar.gz`)
+2. The corresponding signature file (e.g., `helm-v4.0.0-linux-amd64.tar.gz.asc`)
+3. The Helm maintainers' public PGP keys
+
+#### Verification Steps
+
+First, verify the SHA256 checksum to confirm the download wasn't corrupted:
+
+```console
+$ sha256sum -c helm-v4.0.0-linux-amd64.tar.gz.sha256sum
+helm-v4.0.0-linux-amd64.tar.gz: OK
+```
+
+Next, import the Helm maintainers' public keys:
+
+```console
+$ curl https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import
+```
+
+Finally, verify the binary's signature:
+
+```console
+$ gpg --verify helm-v4.0.0-linux-amd64.tar.gz.asc helm-v4.0.0-linux-amd64.tar.gz
+gpg: Signature made [date] using RSA key ID [key-id]
+gpg: Good signature from "Helm Maintainer <maintainer@example.com>"
+```
+
+A "Good signature" message confirms the binary is authentic and hasn't been tampered with.
+
+#### Managing PGP Keys Securely
+
+For stronger security, avoid fetching keys from the Helm repository every time you verify. Instead, import the keys once and store them in a secure location you control. This protects you if the repository is ever compromised and keys are swapped—your local copy lets you detect the tampering.
+
+You can also cross-check maintainer keys on [Keybase](https://keybase.io), where Helm maintainers have profiles linking their identities to their PGP keys.
+
+#### Why Verification Matters
+
+If both the binary and signature come from the same source, you might wonder whether a compromised source could provide matching fake files. The answer is no—signature files are safe to pull from upstream as long as you have trusted copies of the public keys. An attacker cannot forge a valid signature without the private key, which only the legitimate maintainer has.
+
+Published release assets on `get.helm.sh` (served via CDN) generally cannot be altered after a GitHub release is published. However, the supply chain involves multiple components (CDN, hosting infrastructure, etc.), so signature verification remains an important safeguard even for older or pinned versions.
+
 ### From Script
 
 Helm now has an installer script that will automatically grab the latest version
