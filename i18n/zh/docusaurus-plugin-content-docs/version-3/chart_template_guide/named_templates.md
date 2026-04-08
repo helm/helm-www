@@ -262,7 +262,7 @@ app_version: "0.1.0"
 
 为了处理这个问题，Helm提供了一个`template`的可选项，可以将模板内容导入当前管道，然后传递给管道中的其他方法。
 
-下面这个示例，使用`indent`正确地缩进了`mychart.app`模板：
+下面这个示例，使用`nindent`正确地缩进了`mychart.app`模板：
 
 ```yaml
 apiVersion: v1
@@ -270,13 +270,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 现在生成的YAML每一部分都可以正确缩进了：
