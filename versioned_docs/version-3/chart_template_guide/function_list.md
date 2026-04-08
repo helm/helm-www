@@ -703,6 +703,7 @@ The following type conversion functions are provided by Helm:
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 - `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
 - `toToml`: Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
+- `fromToml`: Convert a TOML string to an object.
 - `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
@@ -807,7 +808,6 @@ greeting: |
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
 
-
 ### fromJsonArray
 
 The `fromJsonArray` function takes a JSON Array and returns a list that can be used in templates.
@@ -853,6 +853,41 @@ The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, 
     - cooking
 ```
 
+### toToml
+
+The `toToml` function encodes an item into a TOML string. If the item cannot be
+converted to TOML, the function will return an error.
+
+```yaml
+config: {{ toToml .Values.config | nindent 2 }}
+```
+
+The above returns a TOML string representation of `.Values.config`.
+
+> Note: TOML does not support `nil` values. Passing a map or struct that
+> contains nil fields will cause `toToml` to return an error.
+
+### fromToml
+
+The `fromToml` function takes a TOML string and returns an object that can be
+used in templates. If the input is not valid TOML, the function will return an
+error.
+
+Given a file `tomls/person.toml` with the following content:
+
+```toml
+name = "Bob"
+age = 25
+hobbies = [ "hiking", "fishing", "cooking" ]
+```
+
+```yaml
+{{- $person := .Files.Get "tomls/person.toml" | fromToml }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
+```
+
 ### fromYamlArray
 
 The `fromYamlArray` function takes a YAML Array and returns a list that can be used in templates.
@@ -871,7 +906,6 @@ greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
 {{ end }}
 ```
-
 
 ## Regular Expressions
 
