@@ -173,3 +173,18 @@ with the following command:
 ```shell
 kubectl get secret --all-namespaces -l "owner=helm"
 ```
+
+## HTTP Request Tracing
+
+Helm includes a `helm-session` HTTP header in all outgoing HTTP requests to chart repositories and OCI registries.
+This header contains a unique session ID (UUID) that stays the same for all requests during a single Helm command execution.
+
+You can use this header to correlate HTTP requests from the same Helm operation.
+This is useful for:
+
+- **Auditing**: Track which requests belong to a single command execution
+- **Debugging**: Identify all network calls made during a failed operation
+- **Observability**: Group requests in logging and monitoring systems
+
+Repository servers and proxies ignore unknown headers, so this feature requires no server-side changes.
+The session ID is generated when Helm creates an HTTP client and persists for the lifetime of that client instance.
