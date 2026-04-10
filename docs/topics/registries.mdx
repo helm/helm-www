@@ -55,6 +55,15 @@ Password:
 Login succeeded
 ```
 
+The host must be only the registry hostname, optionally with a port. Do not include a URL scheme or path:
+
+| Example | Valid |
+|---------|-------|
+| `ghcr.io` | Yes |
+| `localhost:5000` | Yes |
+| `https://ghcr.io` | No - scheme not allowed |
+| `ghcr.io/myrepo` | No - path not allowed |
+
 #### `logout`
 
 logout from a registry

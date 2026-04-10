@@ -37,9 +37,12 @@ sidebar_position: 3
   `mychart-0.1.0` 를 출력한다.
   - 사용가능한 필드는 [차트 가이드](/topics/charts.md#the-chartyaml-file)
     에 나열되어 있다.
+- `Subcharts`: 부모 차트에서 서브차트의 스코프(.Values, .Charts, .Releases 등)에 
+  접근할 수 있게 해준다. 예를 들어 `.Subcharts.mySubChart.myValue` 로 
+  `mySubChart` 차트의 `myValue` 에 접근할 수 있다.
 - `Files`: 차트 내의 모든 특수하지 않은(non-special) 파일에 대한 접근을 제공한다.
   템플릿에 접근하는 데에는 사용할 수 없지만, 차트 내의 다른 파일에 접근하는 데에는 사용할 수 있다.
-  자세한 내용은 _Accessing Files_ 섹션을 참고하자.
+  자세한 내용은 [파일 접근하기](./accessing_files.md) 섹션을 참고하자.
   - `Files.Get` 은 이름으로 파일을 가지고 오는 함수이다. (`.Files.Get
     config.ini`)
   - `Files.GetBytes` 는 파일의 내용을 문자열이 아닌 
@@ -61,6 +64,11 @@ sidebar_position: 3
   - `Capabilities.KubeVersion` 과 `Capabilities.KubeVersion.Version` 는 쿠버네티스 버전이다.
   - `Capabilities.KubeVersion.Major` 는 쿠버네티스 메이저 버전이다.
   - `Capabilities.KubeVersion.Minor` 는 쿠버네티스 마이너 버전이다.
+  - `Capabilities.HelmVersion` 는 Helm 버전 정보를 담고 있는 객체이며, `helm version` 의 출력과 동일하다.
+  - `Capabilities.HelmVersion.Version` 는 semver 형식의 현재 Helm 버전이다.
+  - `Capabilities.HelmVersion.GitCommit` 는 Helm git sha1 이다.
+  - `Capabilities.HelmVersion.GitTreeState` 는 Helm git 트리의 상태이다.
+  - `Capabilities.HelmVersion.GoVersion` 는 사용된 Go 컴파일러의 버전이다.
 - `Template`: 실행 중인 현재 템플릿에 대한 정보를
   포함한다.
   - `Name`: 현재 템플릿에 대한 네임스페이스 파일 경로 (예:
@@ -69,8 +77,8 @@ sidebar_position: 3
     (예: `mychart/templates`).
 
 빌트인 값은 항상 대문자로 시작한다. 이것은 Go의 명명 규칙을 
-따르고 있다. 사용자는 자신만의 이름의 만들때, 팀에 적합한 
-규칙을 자유롭게 사용할 수 있다. [쿠버네티스 차트](https://github.com/helm/charts) 
-팀과 같은 일부 팀에서는 로컬 이름과 빌트인 이름을 구분하기 위해 
-첫 글자로 소문자만 사용하도록 선택한다. 이 가이드에서는 
+따르고 있다. 사용자는 자신만의 이름을 만들 때, 팀에 적합한 
+규칙을 자유롭게 사용할 수 있다. [Artifact Hub](https://artifacthub.io/packages/search?kind=0)에서 
+볼 수 있는 많은 차트를 만든 팀들처럼, 일부 팀에서는 로컬 이름과 빌트인 이름을 
+구분하기 위해 첫 글자로 소문자만 사용하도록 선택한다. 이 가이드에서는 
 해당 규칙을 따른다.

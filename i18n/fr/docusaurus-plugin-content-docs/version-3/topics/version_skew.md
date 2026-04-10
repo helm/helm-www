@@ -15,7 +15,7 @@ la terminologie du [Versionnement Sémantique](https://semver.org/spec/v2.0.0.ht
 Le projet Helm maintient une branche de release pour la version mineure la plus
 récente. Les correctifs applicables, y compris les correctifs de sécurité, sont
 intégrés à la branche de release, en fonction de la gravité et de la faisabilité.
-Plus de détails sont disponibles dans la [politique de publication de Helm](/topics/release_policy.md).
+Plus de détails sont disponibles dans la [politique de publication de Helm](/community/release_policy).
 
 ## Décalage de Version Pris en Charge
 

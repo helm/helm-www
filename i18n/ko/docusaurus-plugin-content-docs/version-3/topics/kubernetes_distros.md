@@ -94,3 +94,9 @@ article](https://platform9.com/support/deploying-kubernetes-apps-platform9-manag
 
 헬름 일부 버전(v2.0.0-beta2)은 `export KUBECONFIG=/etc/kubernetes/admin.conf` 를 수행하거나
 `~/.kube/config` 를 생성해야 한다.
+
+## VMware Tanzu Kubernetes Grid
+
+헬름은 VMware Tanzu Kubernetes Grid(TKG)에서 추가 구성 변경 없이 동작한다.
+Tanzu CLI는 [helm-controller](https://fluxcd.io/flux/components/helm/) 패키지 설치를 관리할 수 있다. 이를 통해 헬름 차트 릴리스를 선언적으로 관리할 수 있다.
+자세한 내용은 TKG 문서의 [CLI 관리 패키지](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5)를 참조하자.

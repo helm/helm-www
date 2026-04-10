@@ -77,7 +77,7 @@ helm install [NAME] [CHART] [flags]
 ### Options
 
 ```
-      --atomic                                     Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --atomic est utilisé
+      --rollback-on-failure                        Si fixé, le processus d'installation supprimera l'installation en cas d'échec. L'argument --wait sera défini automatiquement si --rollback-on-failure est utilisé
       --ca-file string                             Vérifie les certificats des serveurs ayant activé HTTPS en utilisant ce fichier de certificat racine (CA bundle)
       --cert-file string                           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --create-namespace                           Créer le namespace de la version s'il n'est pas présent
