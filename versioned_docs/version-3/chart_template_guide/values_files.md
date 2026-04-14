@@ -179,6 +179,25 @@ livenessProbe handler. To overcome this, you may instruct Helm to delete the
 helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
 ```
 
+This same approach works with values files passed via `-f` or `--values`. To remove
+a parent chart's default values for a subchart, set them to `null` in your
+override file:
+
+```yaml
+# override-values.yaml
+mysubchart:
+  unwantedKey: null
+```
+
+Then apply it:
+
+```sh
+helm install myrelease ./mychart -f override-values.yaml
+```
+
+This removes `unwantedKey` from the subchart's values, letting the subchart use
+its own defaults or omit the value entirely.
+
 At this point, we've seen several built-in objects, and used them to inject
 information into a template. Now we will take a look at another aspect of the
 template engine: functions and pipelines.
