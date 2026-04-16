@@ -64,6 +64,12 @@ metadata:
 
 Helm uses this annotation when reading back the post-renderer’s output to determine which filename to associate with each manifest for further processing. If the annotation is missing, Helm auto-generates a filename in the format `generated-by-postrender-<id>.yaml`. Finally, Helm removes the annotation before sending the manifests to Kubernetes.
 
+#### Hooks
+
+In Helm 4, [chart hooks](/topics/charts_hooks.md) are also processed by post-renderers. Helm sends hooks and regular templates as separate streams, so the same resource can appear in both without conflict.
+
+For example, a chart can declare a ServiceAccount as a `pre-install` hook (for setup tasks) and as a regular template (for ongoing use). Tools like Kustomize that reject duplicate resources receive each stream independently and process them without errors.
+
 ### Caveats
 When using post renderers, there are several important things to keep in mind.
 The most important of these is that when using a post-renderer, all people
