@@ -1,0 +1,115 @@
+---
+title: "튜토리얼: 포스트렌더러 플러그인 만들기"
+---
+
+import GetVersion from "@site/src/components/GetVersion";
+import CodeBlock from "@theme/CodeBlock";
+
+모든 쿠버네티스 리소스에 커스텀 라벨을 추가하는 플러그인을 만들어봅시다.
+
+## 서브프로세스 런타임 {#subprocess-runtime}
+
+서브프로세스 런타임으로 포스트 렌더러 플러그인을 만들어봅시다.
+
+### 사전 요구 사항 {#prerequisites}
+
+1. 최신 헬름4 릴리즈를 설치하세요: **<GetVersion majorVersion="4" label={false} link={true} />**
+2. 터미널 세션에서 다운로드한 릴리즈에 관해서 `helm`을 별칭으로 설정하세요. 이제 `helm version --short`를 실행하면 해당 터미널 세션에서 올바른 Helm 버전이 표시됩니다.
+3. `mikefarah/yq`를 설치하세요: https://github.com/mikefarah/yq/#install
+
+### 1. 플러그인 디렉터리 생성 {#1-create-plugin-directory}
+
+파일 시스템의 어디에서나 생성할 수 있습니다. 예를 들어:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/label-injector
+cd $HOME/code/helm/plugins/label-injector
+```
+
+### 2. 플러그인 매니페스트 생성 {#2-create-plugin-manifest}
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: postrenderer/v1
+name: label-injector
+version: 0.1.0
+runtime: subprocess
+runtimeConfig:
+  platformCommand:
+    - command: ${HELM_PLUGIN_DIR}/inject-labels.sh
+```
+
+### 3. 스크립트 생성 {#3-create-script}
+
+```bash title="inject-labels.sh" showLineNumbers
+#!/usr/bin/env sh
+# set -e
+cat <&0 | yq '.metadata.labels.postrendered-by = "helm-label-injector-plugin"'
+```
+
+실행 가능하도록 설정합니다:
+
+```bash
+chmod +x inject-labels.sh
+```
+
+### 4. 개발 모드로 설치 및 테스트 {#4-install-in-dev-mode-and-test}
+
+파일 시스템에서 플러그인을 설치하면 로컬 개발 모드로 설치됩니다. 이 경우 출처 확인 및 검증을 건너뜁니다:
+
+```bash
+% helm plugin install $HOME/code/helm/plugins/label-injector
+Installing plugin from local directory (development mode)
+Installed plugin: label-injector
+```
+
+[CLI 플러그인](/plugins/developer/tutorial-cli-plugin.mdx) 및 [Getter 플러그인](/plugins/developer/tutorial-getter-plugin.mdx) 튜토리얼에서 살펴봤듯이 로컬 개발 모드 설치는 플러그인 소스 디렉터리에서 플러그인 디렉터리로 심볼릭 링크를 생성합니다. 이제 세 개의 플러그인이 설치되었습니다:
+
+```bash
+% ls -lah $(helm env HELM_PLUGINS)
+total 0
+drwxr-xr-x@ 5 r6by  staff   160B Nov 10 04:04 .
+drwxr-xr-x@ 3 r6by  staff    96B Jan 21  2025 ..
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 04:04 demo-getter -> /Users/r6by/code/helm/plugins/demo-getter
+lrwxr-xr-x  1 r6by  staff    44B Nov 10 03:02 label-injector -> /Users/r6by/code/helm/plugins/label-injector
+lrwxr-xr-x  1 r6by  staff    41B Nov 10 02:18 system-info -> /Users/r6by/code/helm/plugins/system-info
+```
+
+`helm plugin list`를 사용하여 설치된 CLI 및 Getter 플러그인과 함께 설치된 포스트 렌더러 플러그인 세부 정보를 확인할 수 있습니다:
+
+```bash
+% helm plugin list
+NAME          	VERSION	TYPE           	APIVERSION	PROVENANCE	SOURCE
+demo-getter   	0.1.0  	getter/v1      	v1        	local dev 	unknown
+label-injector	0.1.0  	postrenderer/v1	v1        	local dev 	unknown
+system-info   	0.1.0  	cli/v1         	v1        	local dev 	unknown
+```
+
+실행해봅시다:
+
+```bash
+% helm create ../mychart
+% helm template ../mychart --post-renderer label-injector
+```
+
+출력에서 다음과 같은 레이블을 확인할 수 있습니다:
+
+```yaml
+metadata:
+  labels:
+    postrendered-by: helm-label-injector-plugin
+```
+
+만들었습니다. 서브프로세스 런타임을 사용한 포스트렌더러 플러그인을! 
+이번에는 Wasm 런타임으로도 만들어봅시다…
+
+## Wasm 런타임 {#wasm-runtime}
+
+### 사전 요구 사항 {#prerequisites}
+
+- [서브프로세스 런타임](#subprocess-runtime)의 사전 요구 사항
+- Go 1.25 설치
+
+:::warning
+To-do: 섹션 추가 필요
+:::
