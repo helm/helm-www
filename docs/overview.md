@@ -41,6 +41,15 @@ Existing plugins work as before. The new WebAssembly runtime is optional but rec
 #### Better resource monitoring
 New kstatus integration shows detailed status of your deployments. Test with complex applications to see if it catches issues better.
 
+When you use `--wait` with `helm install` or `helm upgrade`, Helm displays progress messages by default:
+
+```
+level=INFO msg="waiting for resources" count=6 timeout=5m0s
+level=INFO msg="all resources achieved desired status" desiredStatus=Current resourceCount=6
+```
+
+To see detailed per-resource status updates (such as "StatefulSet is not ready: 1 out of 2 pods scheduled"), add the `--debug` flag.
+
 #### Enhanced OCI Support
 Install charts by digest for better supply chain security. For example, `helm install myapp oci://registry.example.com/charts/app@sha256:abc123...`. Charts with non-matching digests are not installed.
 

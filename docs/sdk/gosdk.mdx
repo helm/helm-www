@@ -74,6 +74,47 @@ func main() {
 
 ```
 
+## Logging
+
+Helm uses Go's `log/slog` package for structured logging. By default, the SDK logs at Info level, including wait progress messages when using `WaitStrategy`. To customize logging, call `actionConfig.SetLogger()` with your own slog handler:
+
+```go
+package main
+
+import (
+    "log/slog"
+    "os"
+
+    "helm.sh/helm/v4/pkg/action"
+    "helm.sh/helm/v4/pkg/cli"
+)
+
+func main() {
+    // Create a custom logger with Debug level to see detailed output
+    logger := slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{
+        Level: slog.LevelDebug,
+    }))
+
+    settings := cli.New()
+    actionConfig := action.NewConfiguration()
+    actionConfig.SetLogger(logger.Handler())
+
+    if err := actionConfig.Init(
+        settings.RESTClientGetter(),
+        settings.Namespace(),
+        os.Getenv("HELM_DRIVER"),
+    ); err != nil {
+        logger.Error("Failed to initialize", "error", err)
+        os.Exit(1)
+    }
+
+    // ... perform actions
+}
+```
+
+**Log levels:**
+- **Info**: Wait progress messages ("waiting for resources", "all resources achieved desired status")
+- **Debug**: Detailed per-resource status and internal operations
 
 ## Compatibility
 
