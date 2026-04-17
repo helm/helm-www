@@ -209,13 +209,13 @@ like this:
 
 ```yaml
 myfile: |
-{{ .Files.Get "myfile.txt" | indent 2 }}
+  {{- .Files.Get "myfile.txt" | nindent 2 }}
 ```
 
-Note how we do the indentation above: `indent 2` tells the template engine to
-indent every line in "myfile.txt" with two spaces. Note that we do not indent
-that template line. That's because if we did, the file content of the first line
-would be indented twice.
+Note how we do the indentation above: `nindent 2` tells the template engine to
+add a newline and indent every line in "myfile.txt" with two spaces. The `{{-`
+trims the whitespace to the left, and `nindent` re-adds the newline with the
+correct indentation.
 
 ### Folded Multi-line Strings
 
