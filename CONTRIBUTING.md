@@ -107,9 +107,9 @@ There are 5 types of issues (each with their own corresponding [label](#labels))
 future reference. Generally these are questions that are too complex or large to store in the
 Slack channel or have particular interest to the community as a whole. Depending on the discussion,
 these can turn into `feature` or `bug` issues.
-- `proposal`: Used for items (like this one) that propose a new ideas or functionality that require
+- `proposal`: Used for items (like this one) that propose new ideas or functionality that require
 a larger community discussion. This allows for feedback from others in the community before a
-feature is actually  developed. This is not needed for small additions. Final word on whether or
+feature is actually developed. This is not needed for small additions. Final word on whether or
 not a feature needs a proposal is up to the core maintainers. All issues that are proposals should
 both have a label and an issue title of "Proposal: [the rest of the title]." A proposal can become
 a `feature` and does not require a milestone.
