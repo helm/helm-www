@@ -7,6 +7,10 @@ sidebar_position: 12
 The `.helmignore` file is used to specify files you don't want to include in
 your helm chart.
 
+The `.helmignore` file must be placed in the chart's root directory, alongside
+the `Chart.yaml` file. It is not read from the current working directory or any
+other location.
+
 If this file exists, the `helm package` command will ignore all the files that
 match the pattern specified in the `.helmignore` file while packaging your
 application.
