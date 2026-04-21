@@ -32,9 +32,10 @@ They are listed here and broken down by the following categories:
 
 ## Logic and Flow Control Functions
 
-Helm includes numerous logic and control flow functions including [and](#and),
-[coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
-[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
+Helm includes numerous logic and control flow functions including
+[all](#all), [and](#and), [any](#any), [coalesce](#coalesce),
+[default](#default), [empty](#empty), [eq](#eq), [fail](#fail),
+[ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
 [not](#not), [or](#or), and [required](#required).
 
 ### and
@@ -53,6 +54,24 @@ Returns the boolean OR of two or more arguments
 
 ```
 or .Arg1 .Arg2
+```
+
+### all
+
+Returns `true` if all of the given values are non-empty
+(by the same definition of empty used in [empty](#empty)).
+
+```
+all .Arg1 .Arg2 .Arg3
+```
+
+### any
+
+Returns `true` if any of the given values are non-empty
+(by the same definition of empty used in [empty](#empty)).
+
+```
+any .Arg1 .Arg2 .Arg3
 ```
 
 ### not
@@ -998,8 +1017,8 @@ Helm provides some advanced cryptographic functions. They include
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
 [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
-[htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), and
-[sha256sum](#sha256sum).
+[htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum),
+[sha256sum](#sha256sum), and [sha512sum](#sha512sum).
 
 ### sha1sum
 
@@ -1019,6 +1038,14 @@ sha256sum "Hello world!"
 
 The above will compute the SHA 256 sum in an "ASCII armored" format that is safe
 to print.
+
+### sha512sum
+
+The `sha512sum` function receives a string, and computes its SHA512 digest.
+
+```
+sha512sum "Hello world!"
+```
 
 ### adler32sum
 
@@ -1856,7 +1883,8 @@ All math functions operate on `int64` values unless specified otherwise.
 
 The following math functions are available: [add](#add), [add1](#add1),
 [ceil](#ceil), [div](#div), [floor](#floor), [len](#len), [max](#max),
-[min](#min), [mod](#mod), [mul](#mul), [round](#round), and [sub](#sub).
+[min](#min), [mod](#mod), [mul](#mul), [randInt](#randint), [round](#round),
+and [sub](#sub).
 
 ### add
 
@@ -1913,6 +1941,16 @@ Returns the length of the argument as an integer.
 ```
 len .Arg
 ```
+
+### randInt
+
+Returns a random integer value from `min` (inclusive) to `max` (exclusive).
+
+```
+randInt 12 30
+```
+
+The above will return a random integer between 12 and 29.
 
 ## Float Math Functions
 
