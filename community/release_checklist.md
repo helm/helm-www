@@ -27,6 +27,12 @@ process for three different kinds of releases:
 * Minor Releases - released every 3 to 4 months - no breaking changes
 * Patch Releases - released monthly - do not require all steps in this guide
 
+Helm v4 development happens on the `main` branch.
+Helm v3 maintenance happens on the `dev-v3` branch.
+While Helm v3 remains supported, fixes should land on `main` first and then be
+backported to `dev-v3`.
+Helm v3 is maintenance-only and does not accept net-new features.
+
 [Initial Configuration](#initial-configuration)
 
 1. [Create the Release Branch](#1-create-the-release-branch)
@@ -107,9 +113,11 @@ Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to
 ### Major/Minor Releases
 
 Major releases are for new feature additions and behavioral changes *that break
-backwards compatibility*. Minor releases are for new feature additions that do
-not break backwards compatibility. To create a major or minor release, start by
-creating a `release-X.Y` branch from main.
+backwards compatibility*.
+Minor releases are for new feature additions that do not break backwards
+compatibility.
+To create a Helm v4 major or minor release, start by creating a
+`release-X.Y` branch from `main`.
 
 ```shell
 git fetch upstream
@@ -130,6 +138,9 @@ the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-g
 ### Patch releases
 
 Patch releases are a few critical cherry-picked fixes to existing releases.
+For Helm v4 patch releases, cherry-pick fixes from `main`.
+For Helm v3 patch releases, backport the fixes to `dev-v3` first and then
+cherry-pick them from `dev-v3` into the `release-X.Y` branch.
 Start by creating a `release-X.Y` branch:
 
 ```shell
