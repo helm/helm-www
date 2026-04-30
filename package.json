@@ -36,6 +36,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "baseline-browser-mapping": "^2.10.21",
     "jsdom": "^27.0.1"
   },
   "browserslist": {
@@ -52,5 +53,12 @@
   },
   "engines": {
     "node": ">=20.0"
+  },
+  "resolutions": {
+    "gray-matter/js-yaml": "3.14.2",
+    "serialize-javascript": ">=7.0.5",
+    "path-to-regexp": "0.1.13",
+    "minimatch": ">=3.1.3",
+    "browserslist": "^4.28.1"
   }
 }

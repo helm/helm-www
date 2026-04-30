@@ -31,7 +31,7 @@ The `helm plugin list` command also includes high-level provenance information a
 
 ## Installing Plugins
 
-Helm has a build-in command to install plugins that defaults to secure installation. However, be sure to read [Plugin Security](#plugin-security) to understand what to check before installing.
+Helm has a built-in command to install plugins that defaults to secure installation. However, be sure to read [Plugin Security](#plugin-security) to understand what to check before installing.
 
 See `helm plugin install --help` for more information.
 
