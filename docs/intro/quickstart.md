@@ -31,59 +31,71 @@ or look at [the official releases page](https://github.com/helm/helm/releases).
 
 For more details, or for other options, see [the installation guide](/intro/install.mdx).
 
-## Initialize a Helm Chart Repository
+## Create Your First Chart
 
-Once you have Helm ready, you can add a chart repository. Check [Artifact
-Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart
-repositories.
+A quick way to get started with Helm is to create your own chart. The `helm create` command scaffolds a chart structure with templates for a basic web application:
 
 ```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm create hello-world
+Creating hello-world
 ```
 
-Once this is installed, you will be able to list the charts you can install:
+This creates a `hello-world` directory containing a chart that deploys an nginx container. The chart includes templates for a Deployment, Service, ServiceAccount, and optional Ingress.
+
+You can see what's in the chart:
 
 ```console
-$ helm search repo bitnami
-NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
-bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
-bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
-bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
-bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
-# ... and many more
+$ ls hello-world/
+Chart.yaml  charts  templates  values.yaml
 ```
 
-## Install an Example Chart
+## Install Your Chart
 
-To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use the `bitnami`
-charts.
+To install your chart, use the `helm install` command with the chart directory:
 
 ```console
-$ helm repo update              # Make sure we get the latest list of charts
-$ helm install bitnami/mysql --generate-name
-NAME: mysql-1612624192
-LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+$ helm install my-release ./hello-world
+NAME: my-release
+LAST DEPLOYED: Sat May  3 12:00:00 2026
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
 NOTES: ...
 ```
 
-In the example above, the `bitnami/mysql` chart was released, and the name of
-our new release is `mysql-1612624192`.
+Your chart is now installed with the release name `my-release`. Helm tracks this installation so you can upgrade, rollback, or uninstall it later.
 
-You get a simple idea of the features of this MySQL chart by running `helm show
-chart bitnami/mysql`. Or you could run `helm show all bitnami/mysql` to get all
-information about the chart.
+Whenever you install a chart, a new release is created. The same chart can be
+installed multiple times into the same cluster, and each installation is
+independently managed.
 
-Whenever you install a chart, a new release is created. So one chart can be
-installed multiple times into the same cluster. And each can be independently
-managed and upgraded.
+The `helm install` command is powerful and flexible. To
+learn more about it, check out the [Using Helm Guide](/intro/using_helm.mdx).
 
-The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide](/intro/using_helm.mdx)
+## Install a Chart from an OCI Registry
+
+Helm can install charts directly from OCI-compliant container registries. This approach doesn't require adding a repository first.
+
+To install a chart from an OCI registry, use the `oci://` prefix:
+
+```console
+$ helm install my-nginx oci://ghcr.io/nginxinc/charts/nginx-ingress --version 2.0.1
+Pulled: ghcr.io/nginxinc/charts/nginx-ingress:2.0.1
+NAME: my-nginx
+LAST DEPLOYED: Sat May  3 12:05:00 2026
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES: ...
+```
+
+You can preview what a chart contains before installing:
+
+```console
+$ helm show chart oci://ghcr.io/nginxinc/charts/nginx-ingress --version 2.0.1
+```
+
+For more details on working with OCI registries, see [Use OCI-based registries](/topics/registries.md).
 
 ## Learn About Releases
 
@@ -91,8 +103,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
-mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
+NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART            	APP VERSION
+my-release 	default  	1       	2026-05-03 12:00:00.000000 +0000 UTC	deployed	hello-world-0.1.0	1.16.0
 ```
 
 The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
@@ -102,24 +114,41 @@ The `helm list` (or `helm ls`) function will show you a list of all deployed rel
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall mysql-1612624192
-release "mysql-1612624192" uninstalled
+$ helm uninstall my-release
+release "my-release" uninstalled
 ```
 
-This will uninstall `mysql-1612624192` from Kubernetes, which will remove all
+This will uninstall `my-release` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
 If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status mysql-1612624192
+$ helm status my-release
 Status: UNINSTALLED
 ...
 ```
 
 Because Helm tracks your releases even after you've uninstalled them, you can
 audit a cluster's history, and even undelete a release (with `helm rollback`).
+
+## Find Charts to Install
+
+[Artifact Hub](https://artifacthub.io/packages/search?kind=0) is the best place to discover Helm charts. It aggregates charts from hundreds of repositories and provides search, metadata, and security information.
+
+Popular chart sources include:
+
+- **OCI registries**: Many organizations publish charts to container registries like GitHub Container Registry, Docker Hub, or cloud provider registries. You can install these directly with the `oci://` prefix.
+- **Chart repositories**: Traditional Helm repositories can be added with `helm repo add` and searched with `helm search repo`.
+
+To search Artifact Hub from the command line:
+
+```console
+$ helm search hub wordpress
+URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
+https://artifacthub.io/packages/helm/bitnami/...  	15.2.5       	6.1.1      	WordPress is the world's most popular blogging ...
+```
 
 ## Reading the Help Text
 
