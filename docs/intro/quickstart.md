@@ -95,7 +95,7 @@ You can preview what a chart contains before installing:
 $ helm show chart oci://ghcr.io/nginxinc/charts/nginx-ingress --version 2.0.1
 ```
 
-For more details on working with OCI registries, see [Use OCI-based registries](/topics/registries.md).
+For more details on working with OCI registries, see [Use OCI-based registries](/docs/topics/registries).
 
 ## Learn About Releases
 
