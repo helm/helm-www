@@ -43,9 +43,9 @@ Popular chart sources include:
 To search Artifact Hub from the command line:
 
 ```console
-$ helm search hub wordpress
-URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
-https://artifacthub.io/packages/helm/bitnami/...  	15.2.5       	6.1.1      	WordPress is the world's most popular blogging ...
+$ helm search hub podinfo
+URL                                                 CHART VERSION  APP VERSION  DESCRIPTION
+https://artifacthub.io/packages/helm/podinfo/po...  6.11.2         6.11.2       Podinfo Helm chart for Kubernetes
 ```
 
 ## Install a Chart from an OCI Registry
