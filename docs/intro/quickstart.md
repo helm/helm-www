@@ -55,9 +55,9 @@ Helm can install charts directly from OCI-compliant container registries. This a
 To install a chart from an OCI registry, use the `oci://` prefix:
 
 ```console
-$ helm install my-nginx oci://ghcr.io/nginxinc/charts/nginx-ingress --version 2.0.1
-Pulled: ghcr.io/nginxinc/charts/nginx-ingress:2.0.1
-NAME: my-nginx
+$ helm install my-podinfo oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
+Pulled: ghcr.io/stefanprodan/charts/podinfo:6.11.2
+NAME: my-podinfo
 LAST DEPLOYED: Sat May  3 12:05:00 2026
 NAMESPACE: default
 STATUS: deployed
@@ -65,10 +65,25 @@ REVISION: 1
 NOTES: ...
 ```
 
+To verify the installation works, forward the service port and test the endpoint:
+
+```console
+$ kubectl port-forward svc/my-podinfo 9898:9898 &
+$ curl http://localhost:9898
+{
+  "hostname": "podinfo-6f89b4c6b5-xvwtb",
+  "version": "6.7.1",
+  "message": "greetings from podinfo v6.7.1",
+  "goos": "linux",
+  "goarch": "amd64",
+  ...
+}
+```
+
 You can preview what a chart contains before installing:
 
 ```console
-$ helm show chart oci://ghcr.io/nginxinc/charts/nginx-ingress --version 2.0.1
+$ helm show chart oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
 ```
 
 For more details on working with OCI registries, see [Use OCI-based registries](/docs/topics/registries).
@@ -79,8 +94,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME     	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART               	APP VERSION
-my-nginx 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	nginx-ingress-2.0.1 	3.7.1
+NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION
+my-podinfo 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	podinfo-6.11.2	6.7.1
 ```
 
 The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
@@ -90,18 +105,18 @@ The `helm list` (or `helm ls`) function will show you a list of all deployed rel
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall my-nginx
-release "my-nginx" uninstalled
+$ helm uninstall my-podinfo
+release "my-podinfo" uninstalled
 ```
 
-This will uninstall `my-nginx` from Kubernetes, which will remove all
+This will uninstall `my-podinfo` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
 If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status my-nginx
+$ helm status my-podinfo
 Status: UNINSTALLED
 ...
 ```
