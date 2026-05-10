@@ -72,6 +72,23 @@ independently managed.
 The `helm install` command is powerful and flexible. To
 learn more about it, check out the [Using Helm Guide](/intro/using_helm.mdx).
 
+## Find Charts to Install
+
+[Artifact Hub](https://artifacthub.io/packages/search?kind=0) is the best place to discover Helm charts. It aggregates charts from hundreds of repositories and provides search, metadata, and security information.
+
+Popular chart sources include:
+
+- **OCI registries**: Many organizations publish charts to container registries like GitHub Container Registry, Docker Hub, or cloud provider registries. You can install these directly with the `oci://` prefix.
+- **Chart repositories**: Traditional Helm repositories can be added with `helm repo add` and searched with `helm search repo`.
+
+To search Artifact Hub from the command line:
+
+```console
+$ helm search hub wordpress
+URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
+https://artifacthub.io/packages/helm/bitnami/...  	15.2.5       	6.1.1      	WordPress is the world's most popular blogging ...
+```
+
 ## Install a Chart from an OCI Registry
 
 Helm can install charts directly from OCI-compliant container registries. This approach doesn't require adding a repository first.
@@ -132,23 +149,6 @@ Status: UNINSTALLED
 
 Because Helm tracks your releases even after you've uninstalled them, you can
 audit a cluster's history, and even undelete a release (with `helm rollback`).
-
-## Find Charts to Install
-
-[Artifact Hub](https://artifacthub.io/packages/search?kind=0) is the best place to discover Helm charts. It aggregates charts from hundreds of repositories and provides search, metadata, and security information.
-
-Popular chart sources include:
-
-- **OCI registries**: Many organizations publish charts to container registries like GitHub Container Registry, Docker Hub, or cloud provider registries. You can install these directly with the `oci://` prefix.
-- **Chart repositories**: Traditional Helm repositories can be added with `helm repo add` and searched with `helm search repo`.
-
-To search Artifact Hub from the command line:
-
-```console
-$ helm search hub wordpress
-URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
-https://artifacthub.io/packages/helm/bitnami/...  	15.2.5       	6.1.1      	WordPress is the world's most popular blogging ...
-```
 
 ## Reading the Help Text
 
