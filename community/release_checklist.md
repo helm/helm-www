@@ -70,7 +70,11 @@ following:
 export RELEASE_NAME=vX.Y.0
 export RELEASE_BRANCH_NAME="release-X.Y"
 export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
+export DEVELOPMENT_BRANCH=main
 ```
+
+Use `main` for Helm 4 and later releases. Use `dev-v3` when releasing from the
+Helm 3 development branch.
 
 If you are creating a patch release, use the following instead:
 
@@ -109,11 +113,11 @@ Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to
 Major releases are for new feature additions and behavioral changes *that break
 backwards compatibility*. Minor releases are for new feature additions that do
 not break backwards compatibility. To create a major or minor release, start by
-creating a `release-X.Y` branch from main.
+creating a `release-X.Y` branch from the development branch.
 
 ```shell
 git fetch upstream
-git checkout upstream/main
+git checkout upstream/$DEVELOPMENT_BRANCH
 git checkout -b $RELEASE_BRANCH_NAME
 ```
 
@@ -202,7 +206,7 @@ git commit -m "bump version to $RELEASE_NAME"
 ```
 
 This will update it for the $RELEASE_BRANCH_NAME only. You will also need to
-pull this change into the main branch for when the next release is being
+pull this change into the development branch for when the next release is being
 created, as in [this example of 3.2 to
 3.3](https://github.com/helm/helm/pull/8411/files), and add it to the milestone
 for the next release.
@@ -211,8 +215,8 @@ for the next release.
 # get the last commit id i.e. commit to bump the version
 git log --format="%H" -n 1
 
-# create new branch off main
-git checkout main
+# create new branch off the development branch
+git checkout $DEVELOPMENT_BRANCH
 git checkout -b bump-version-<release_version>
 
 # cherry pick the commit using id from first command
@@ -293,7 +297,7 @@ speaking, it is better to let a release roll over the deadline than to ship a
 broken release.
 
 Each time you'll want to produce a new release candidate, you will start by
-adding commits to the branch by cherry-picking from main:
+adding commits to the branch by cherry-picking from the development branch:
 
 ```shell
 git cherry-pick -x <commit_id>
