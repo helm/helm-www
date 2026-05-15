@@ -40,3 +40,24 @@ apiVersion: v2
 
 This provides a quick way of viewing the generated content without YAML parse
 errors blocking.
+
+## Debugging the `lookup` function
+
+The [`lookup` function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be tricky to figure out why. To see diagnostic messages, enable debug mode:
+
+```bash
+helm install --debug myrelease ./mychart
+```
+
+With debug logging enabled, Helm will tell you why `lookup` returned empty:
+
+- **"lookup returned no object"** — The specific resource was not found in the cluster (for single-object lookups like `lookup "v1" "ConfigMap" "default" "my-config"`)
+- **"lookup returned no objects"** — No resources matched the query (for list lookups like `lookup "v1" "ConfigMap" "default" ""`)
+- **"lookup skipped: no Kubernetes client available"** — No cluster connection exists, such as when running `helm template` without `--dry-run=server`
+
+There are several common reasons why `lookup` might return empty:
+
+- The resource does not exist
+- RBAC permissions prevent access to the resource
+- Running `helm template` without cluster access (use `--dry-run=server` to connect)
+- Incorrect apiVersion, kind, namespace, or name parameters
