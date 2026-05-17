@@ -119,3 +119,5 @@ POD LOGS: demo-test-connection (wget)
 POD LOGS: demo-test-connection (istio-proxy)
 ...
 ```
+
+The `--logs` flag only retrieves logs from Pod resources. If your test hooks include non-Pod resources like ConfigMaps or Secrets (used to provision test data), they are automatically skipped when fetching logs.
