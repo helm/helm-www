@@ -1,5 +1,8 @@
 # Dependencies
 /node_modules
+.yarn/
+.pnp.loader.mjs
+.pnp.cjs
 
 # Production
 /build
