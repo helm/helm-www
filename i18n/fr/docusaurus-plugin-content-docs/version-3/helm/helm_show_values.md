@@ -5,7 +5,7 @@ Affiche les values du chart
 
 ### Synopsis
 
-Cette commande inspect un chart (dossier, fichier ou URL) et affiche le contenu du fichier values.yaml.
+Cette commande inspecte un chart (dossier, fichier ou URL) et affiche le contenu du fichier values.yaml.
 
 
 ```
@@ -18,8 +18,8 @@ helm show values [CHART] [flags]
       --ca-file string             Vérifie les certificats des serveurs compatibles HTTPS à l'aide de ce bundle CA
       --cert-file string           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --devel                      Utiliser également les version de développement (alpha, beta, et versions candidates). Équivalent à version '>0.0.0-0'. Si --version est fixé, cela sera ignoré
-  -h, --help                       Aide pour la commande all
-      --insecure-skip-tls-verify   Passe les vérification du certificat TLS pour le transfer du chart
+  -h, --help                       Aide pour la commande values
+      --insecure-skip-tls-verify   Passe les vérifications du certificat TLS pour le transfert du chart
       --jsonpath string            fournir une expression JSONPath pour filtrer la sortie
       --key-file string            Identifie le client HTTPS à l'aide de ce fichier de clé SSL
       --keyring string             Emplacement des clés publiques utilisé pour la vérification (par défaut "~/.gnupg/pubring.gpg")
@@ -46,8 +46,8 @@ helm show values [CHART] [flags]
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
-	  --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
+  -n, --namespace string                Namespace à utiliser pour la requête
+      --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
       --repository-config string        Chemin vers le fichier contenant les noms et URLs des répertoires (par défaut "~/.config/helm/repositories.yaml")

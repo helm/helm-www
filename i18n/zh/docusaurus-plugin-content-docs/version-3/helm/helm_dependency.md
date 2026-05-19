@@ -1,17 +1,18 @@
 ---
 title: helm dependency
 ---
-管理chart依赖
+
+管理 chart 依赖
 
 ### 简介
 
-管理chart依赖
+管理 chart 依赖。
 
-Helm chart将依赖存储在'charts/'。对于chart开发者，管理依赖比声明了所有依赖的'Chart.yaml'文件更容易。
+Helm chart 将依赖存储在 'charts/' 目录中。对于 chart 开发者，在 'Chart.yaml' 中声明所有依赖通常更方便管理。
 
-依赖命令对该文件进行操作，使得存储在'charts/'目录的需要的依赖和实际依赖之间同步变得很容易。
+依赖命令针对该文件进行操作，使得 'charts/' 目录中声明的依赖和实际存储的依赖之间轻松保持同步。
 
-比如Chart.yaml声明了两个依赖：
+例如，以下 Chart.yaml 声明了两个依赖：
 
 ```yaml
 # Chart.yaml
@@ -24,14 +25,13 @@ dependencies:
   repository: "https://another.example.com/charts"
 ```
 
-'name'是chart名称，必须匹配'Chart.yaml'文件中名称。
+'name' 是 chart 名称，必须与该 chart 的 'Chart.yaml' 文件中的名称相匹配。
 
-'version'字段应该包含一个语义化的版本或版本范围。
+'version' 字段应包含语义化版本号或版本范围。
 
-'repository'的URL应该指向Chart仓库。Helm希望通过附加'/index.yaml'到URL，应该能检索chart库索引。
-注意：'repository'不能是别名。别名必须以'alias:'或'@'开头。
+'repository' URL 应指向 Chart 仓库。Helm 会在 URL 后附加 '/index.yaml' 来获取 chart 仓库索引。注意：'repository' 可以是别名。别名必须以 'alias:' 或 '@' 开头。
 
-从2.2.0开始，仓库可以被定义为本地存储的依赖chart的目录路径。路径应该以"file://"前缀开头，比如：
+从 2.2.0 开始，仓库可以定义为本地存储的依赖 chart 的目录路径。路径需以 "file://" 开头，例如：
 
 ```yaml
 # Chart.yaml
@@ -41,37 +41,40 @@ dependencies:
   repository: "file://../dependency_chart/nginx"
 ```
 
-如果在本地检索依赖chart，不需要使用"helm add repo"将仓库加入到helm。该示例中也支持版本匹配。
+如果依赖 chart 从本地获取，则不需要通过 "helm add repo" 将仓库添加到 helm 中。此场景也支持版本匹配。
 
 ### 可选项
 
 ```shell
-  -h, --help   help for dependency
+  -h, --help   dependency 命令帮助
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的选项
 
 ```shell
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --burst-limit int                 客户端默认限流值（默认 100）
+      --debug                           启用详细输出
+      --kube-apiserver string           Kubernetes API 服务器的地址和端口
+      --kube-as-group stringArray       操作时模拟的用户组，可重复使用此参数指定多个组
+      --kube-as-user string             操作时模拟的用户名
+      --kube-ca-file string             Kubernetes API 服务器连接使用的证书颁发机构文件
+      --kube-context string             使用的 kubeconfig 上下文名称
+      --kube-insecure-skip-tls-verify   如果为 true，将不会验证 Kubernetes API 服务器的证书有效性，这会使 HTTPS 连接不安全
+      --kube-tls-server-name string     用于 Kubernetes API 服务器证书验证的服务器名称，如果未提供，则使用连接服务器时的主机名
+      --kube-token string               用于身份验证的 bearer 令牌
+      --kubeconfig string               kubeconfig 文件路径
+  -n, --namespace string                此请求的命名空间范围
+      --qps float32                     与 Kubernetes API 通信时使用的每秒查询数，不包括突发请求
+      --registry-config string          registry 配置文件路径（默认 "~/.config/helm/registry/config.json"）
+      --repository-cache string         包含已缓存仓库索引的目录路径（默认 "~/.cache/helm/repository"）
+      --repository-config string        包含仓库名称和 URL 的文件路径（默认 "~/.config/helm/repositories.yaml"）
 ```
 
 ### 请参阅
 
-* [helm](/helm/helm.md) - 针对Kubernetes的Helm包管理器
-* [helm dependency build](/helm/helm_dependency_build.md) - 基于Chart.lock文件重新构建charts/目录
-* [helm dependency list](/helm/helm_dependency_list.md) - 列出给定chart的依赖
-* [helm dependency update](/helm/helm_dependency_update.md) - 基于Chart.yaml内容升级charts/
+* [helm](/helm/helm.md) - Kubernetes 的 Helm 包管理器
+* [helm dependency build](/helm/helm_dependency_build.md) - 根据 Chart.lock 文件重新构建 charts/ 目录
+* [helm dependency list](/helm/helm_dependency_list.md) - 列出指定 chart 的依赖
+* [helm dependency update](/helm/helm_dependency_update.md) - 根据 Chart.yaml 内容更新 charts/ 目录
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

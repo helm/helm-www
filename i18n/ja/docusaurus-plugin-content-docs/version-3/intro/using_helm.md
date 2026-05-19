@@ -4,289 +4,255 @@ description: Helm の基本について説明します。
 sidebar_position: 3
 ---
 
-このガイドでは、Helm を使用して Kubernetes クラスタ上のパッケージを管理する基本について説明します。
-Helm クライアントが既に [インストール済み](/intro/install.md) であると
-想定しています。
+このガイドでは、Helm を使用して Kubernetes クラスター上のパッケージを管理する基本について説明します。Helm クライアントが既に[インストール済み](/intro/install.md)であることを前提としています。
 
-いくつかのクイックコマンドを実行したいだけの場合は、
-[クイックスタートガイド](/intro/quickstart.md) から始めてください。
-この章では、Helm コマンドの詳細について説明し、Helm の使用方法を説明します。
+コマンドをいくつか素早く試したい場合は、[クイックスタートガイド](/intro/quickstart.md)から始めてください。この章では Helm コマンドの詳細を説明し、Helm の使用方法を解説します。
 
-## 3つの大きな概念
+## 3つの重要な概念
 
-*チャート* は Helm パッケージです。
-これには、Kubernetes クラスタ内でアプリケーション、ツール、またはサービスを実行するために必要なすべてのリソース定義が含まれています。
-Kubernetes に置ける Homebrew の式、Apt dpkg、
-または Yum RPM ファイルに相当するようなものと考えてください。
+*chart* は Helm パッケージです。Kubernetes クラスター内でアプリケーション、ツール、またはサービスを実行するために必要なすべてのリソース定義が含まれています。Homebrew の formula、Apt の dpkg、Yum の RPM ファイルに相当する Kubernetes 版と考えてください。
 
-*リポジトリ* は、チャートを収集して共有できる場所です。
-Perl の [CPAN アーカイブ](https://www.cpan.org) や [Fedora パッケージデータベース](https://src.fedoraproject.org/)に似ていますが、
-Kubernetes パッケージが対象です。
+*repository* は chart を収集して共有できる場所です。Perl の [CPAN アーカイブ](https://www.cpan.org)や [Fedora Package Database](https://src.fedoraproject.org/) に似ていますが、Kubernetes パッケージを対象としています。
 
-*リリース* は、Kubernetes クラスタで実行されているチャートのインスタンスです。
-多くの場合、1つのチャートを同じクラスターに何度もインストールできます。
-そして、それがインストールされるたびに、新しい _リリース_ が作成されます。
-MySQL チャートを考えてみましょう。クラスターで2つのデータベースを実行する場合は、そのチャートを2回インストールできます。
-それぞれに独自の _リリース_ があり、次に独自の _リリース名_ が付けられます。
+*release* は Kubernetes クラスターで実行されている chart のインスタンスです。1つの chart を同じクラスターに何度もインストールできます。インストールするたびに新しい _release_ が作成されます。たとえば MySQL chart を考えてみます。クラスターで2つのデータベースを実行したい場合、その chart を2回インストールできます。それぞれに独自の _release_ があり、独自の _release 名_ が付けられます。
 
-これらの概念を念頭に置いて、Helm を次のように説明できます。
+これらの概念を踏まえると、Helm を次のように説明できます。
 
-Helm は _チャート_ を Kubernetes にインストールし、インストールごとに新しい _リリース_ を作成します。
-また、新しいチャートを見つけるには、Helm チャート _リポジトリ_ を検索できます。
+Helm は _chart_ を Kubernetes にインストールし、インストールごとに新しい _release_ を作成します。新しい chart を見つけるには、Helm chart _repository_ を検索します。
 
-## 'helm search': チャートを見つける
+## 'helm search': chart を見つける
 
-Helm には強力な検索コマンドが付属しています。
-2つの異なるタイプのソースの検索に使用できます。
+Helm には強力な検索コマンドがあります。2種類のソースを検索できます。
 
-- `helm search hub` は、[Helm Hub](https://hub.helm.sh) を検索します。
-  これは、多数の異なるリポジトリの Helm チャートで構成されています。
-- `helm search repo` は、(`helm repo add` で) ローカルの helm クライアントに追加したリポジトリを検索します。
-  この検索はローカルデータ上で行われ、
-  パブリックネットワーク接続は必要ありません。
+- `helm search hub` は [Artifact Hub](https://artifacthub.io) を検索します。Artifact Hub には多数のリポジトリから Helm chart が集められています。
+- `helm search repo` は (`helm repo add` で) ローカルの Helm クライアントに追加したリポジトリを検索します。この検索はローカルデータに対して行われるため、パブリックネットワーク接続は不要です。
 
-`helm search hub` を実行すると、公開されているチャートを見つけることができます。
+`helm search hub` を実行すると、公開されている chart を見つけることができます。
 
 ```console
 $ helm search hub wordpress
-URL                                               	CHART VERSION	APP VERSION	DESCRIPTION
-https://hub.helm.sh/charts/bitnami/wordpress      	7.6.7        	5.2.4      	Web publishing platform for building blogs and ...
-https://hub.helm.sh/charts/presslabs/wordpress-...	v0.6.3       	v0.6.3     	Presslabs WordPress Operator Helm Chart
-https://hub.helm.sh/charts/presslabs/wordpress-...	v0.7.1       	v0.7.1     	A Helm chart for deploying a WordPress site on ...
+URL                                                 CHART VERSION APP VERSION DESCRIPTION
+https://hub.helm.sh/charts/bitnami/wordpress        7.6.7         5.2.4       Web publishing platform for building blogs and ...
+https://hub.helm.sh/charts/presslabs/wordpress-...  v0.6.3        v0.6.3      Presslabs WordPress Operator Helm Chart
+https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A Helm chart for deploying a WordPress site on ...
 ```
 
-上記は Helm Hub 上のすべての `wordpress` チャートを検索します。
+上記は Artifact Hub 上のすべての `wordpress` chart を検索しています。
 
-フィルターなしの場合、`helm search hub` は利用可能なすべてのチャートを表示します。
+フィルターを指定しない場合、`helm search hub` は利用可能なすべての chart を表示します。
 
-`helm search repo` を使用すると、すでに追加したリポジトリでチャートの名前を見つけることができます。
+`helm search hub` は [artifacthub.io](https://artifacthub.io/) 上の URL を表示しますが、実際の Helm リポジトリは表示しません。`helm search hub --list-repo-url` を使用すると、実際の Helm リポジトリ URL が表示されます。これは新しいリポジトリを追加する際に便利です: `helm repo add [NAME] [URL]`。
+
+`helm search repo` を使用すると、既に追加したリポジトリ内の chart 名を検索できます。
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
 "brigade" has been added to your repositories
 $ helm search repo brigade
-NAME                        	CHART VERSION	APP VERSION	DESCRIPTION
-brigade/brigade             	1.3.2        	v1.2.1     	Brigade provides event-driven scripting of Kube...
-brigade/brigade-github-app  	0.4.1        	v0.2.1     	The Brigade GitHub App, an advanced gateway for...
-brigade/brigade-github-oauth	0.2.0        	v0.20.0    	The legacy OAuth GitHub Gateway for Brigade
-brigade/brigade-k8s-gateway 	0.1.0        	           	A Helm chart for Kubernetes
-brigade/brigade-project     	1.0.0        	v1.0.0     	Create a Brigade project
-brigade/kashti              	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
+NAME                          CHART VERSION APP VERSION DESCRIPTION
+brigade/brigade               1.3.2         v1.2.1      Brigade provides event-driven scripting of Kube...
+brigade/brigade-github-app    0.4.1         v0.2.1      The Brigade GitHub App, an advanced gateway for...
+brigade/brigade-github-oauth  0.2.0         v0.20.0     The legacy OAuth GitHub Gateway for Brigade
+brigade/brigade-k8s-gateway   0.1.0                     A Helm chart for Kubernetes
+brigade/brigade-project       1.0.0         v1.0.0      Create a Brigade project
+brigade/kashti                0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
 Helm の検索はあいまい文字列マッチングアルゴリズムを使用するため、単語やフレーズの一部を入力できます。
 
 ```console
 $ helm search repo kash
-NAME          	CHART VERSION	APP VERSION	DESCRIPTION
-brigade/kashti	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
+NAME            CHART VERSION APP VERSION DESCRIPTION
+brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-検索は、利用可能なパッケージを見つけるための良い方法です。
-インストールするパッケージが見つかったら、`helm install` を使用してインストールできます。
+検索は利用可能なパッケージを見つける良い方法です。インストールしたいパッケージが見つかったら、`helm install` でインストールできます。
 
-## 'helm install': パッケージのインストール
+## 'helm install': パッケージをインストールする
 
-新しいパッケージをインストールするには、`helm install` コマンドを使用します。
-簡単に言うと、2つの引数を取ります。選択するリリース名と、インストールするチャートの名前です。
+新しいパッケージをインストールするには、`helm install` コマンドを使用します。最もシンプルな形式では、2つの引数を取ります。任意の release 名と、インストールする chart の名前です。
 
 ```console
-$ helm install happy-panda stable/mariadb
-WARNING: This chart is deprecated
+$ helm install happy-panda bitnami/wordpress
 NAME: happy-panda
-LAST DEPLOYED: Fri May  8 17:46:49 2020
+LAST DEPLOYED: Tue Jan 26 10:27:17 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 NOTES:
-This Helm chart is deprecated
+** Please be patient while the chart is being deployed **
 
-...
+Your WordPress site can be accessed through the following DNS name from within your cluster:
 
-Services:
+    happy-panda-wordpress.default.svc.cluster.local (port 80)
 
-  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
-  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
+To access your WordPress site from outside the cluster follow the steps below:
 
-Administrator credentials:
+1. Get the WordPress URL by running these commands:
 
-  Username: root
-  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc --namespace default -w happy-panda-wordpress'
 
-To connect to your database:
+   export SERVICE_IP=$(kubectl get svc --namespace default happy-panda-wordpress --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
+   echo "WordPress URL: http://$SERVICE_IP/"
+   echo "WordPress Admin URL: http://$SERVICE_IP/admin"
 
-  1. Run a pod that you can use as a client:
+2. Open a browser and access WordPress using the obtained URL.
 
-      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+3. Login with the following credentials below to see your blog:
 
-  2. To connect to master service (read/write):
-
-      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
-
-  3. To connect to slave service (read-only):
-
-      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
-
-To upgrade this helm chart:
-
-  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
-
-      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
-      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
-
+  echo Username: user
+  echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-これで `mariadb` チャートがインストールされました。
-チャートをインストールすると、新しい _release_ オブジェクトが作成されることに注意してください。上記のリリースは `happy-panda` という名前です。
-(Helm で名前を生成する場合は、リリース名を省略して `--generate-name` を使用します。)
+これで `wordpress` chart がインストールされました。chart をインストールすると新しい _release_ オブジェクトが作成されます。上記の release は `happy-panda` という名前です。(Helm に名前を自動生成させたい場合は、release 名を省略して `--generate-name` を使用してください。)
 
-インストール中に、`helm` クライアントは、作成されたリソース、リリースの状態、
-さらに実行できる、または実行すべき追加の構成手順があるかどうかに関する
-有用な情報を出力します。
+インストール中、`helm` クライアントは作成されたリソース、release の状態、追加の設定手順など、有用な情報を出力します。
 
-Helm は、終了する前にすべてのリソースが実行されるまで待機しません。
-多くのチャートには 600M を超えるサイズの Docker イメージが必要であり、
-クラスターへのインストールに長い時間がかかる場合があります。
+Helm は以下の順序でリソースをインストールします。
 
-リリースの状態を追跡したり、設定情報を再度読み取るには、
-`helm status` を使用できます。
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
+
+Helm はすべてのリソースが実行状態になるまで待機してから終了するわけではありません。多くの chart は 600MB を超える Docker イメージを必要とし、クラスターへのインストールに時間がかかる場合があります。
+
+release の状態を追跡したり、設定情報を再度確認するには、`helm status` を使用します。
 
 ```console
-$ helm status happy-panda                
+$ helm status happy-panda
 NAME: happy-panda
-LAST DEPLOYED: Fri May  8 17:46:49 2020
+LAST DEPLOYED: Tue Jan 26 10:27:17 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 NOTES:
-This Helm chart is deprecated
+** Please be patient while the chart is being deployed **
 
-...
+Your WordPress site can be accessed through the following DNS name from within your cluster:
 
-Services:
+    happy-panda-wordpress.default.svc.cluster.local (port 80)
 
-  echo Master: happy-panda-mariadb.default.svc.cluster.local:3306
-  echo Slave:  happy-panda-mariadb-slave.default.svc.cluster.local:3306
+To access your WordPress site from outside the cluster follow the steps below:
 
-Administrator credentials:
+1. Get the WordPress URL by running these commands:
 
-  Username: root
-  Password : $(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc --namespace default -w happy-panda-wordpress'
 
-To connect to your database:
+   export SERVICE_IP=$(kubectl get svc --namespace default happy-panda-wordpress --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
+   echo "WordPress URL: http://$SERVICE_IP/"
+   echo "WordPress Admin URL: http://$SERVICE_IP/admin"
 
-  1. Run a pod that you can use as a client:
+2. Open a browser and access WordPress using the obtained URL.
 
-      kubectl run happy-panda-mariadb-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mariadb:10.3.22-debian-10-r27 --namespace default --command -- bash
+3. Login with the following credentials below to see your blog:
 
-  2. To connect to master service (read/write):
-
-      mysql -h happy-panda-mariadb.default.svc.cluster.local -uroot -p my_database
-
-  3. To connect to slave service (read-only):
-
-      mysql -h happy-panda-mariadb-slave.default.svc.cluster.local -uroot -p my_database
-
-To upgrade this helm chart:
-
-  1. Obtain the password as described on the 'Administrator credentials' section and set the 'rootUser.password' parameter as shown below:
-
-      ROOT_PASSWORD=$(kubectl get secret --namespace default happy-panda-mariadb -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
-      helm upgrade happy-panda stable/mariadb --set rootUser.password=$ROOT_PASSWORD
+  echo Username: user
+  echo Password: $(kubectl get secret --namespace default happy-panda-wordpress -o jsonpath="{.data.wordpress-password}" | base64 --decode)
 ```
 
-上記はリリースの現在の状態を示しています。
+上記は release の現在の状態を表示しています。
 
-### インストール前のチャートのカスタマイズ
+### インストール前に chart をカスタマイズする
 
-ここにある方法でインストールすると、
-このチャートのデフォルトの構成オプションのみが使用されます。
-多くの場合、好みの構成を使用するようにチャートをカスタマイズする必要があります。
+ここで説明した方法でインストールすると、その chart のデフォルト設定オプションのみが使用されます。多くの場合、好みの設定を使用するように chart をカスタマイズしたいでしょう。
 
-チャートで設定可能なオプションを確認するには、`helm show values` を使用します。
+chart で設定可能なオプションを確認するには、`helm show values` を使用します。
 
 ```console
-$ helm show values stable/mariadb
-Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
-## Bitnami MariaDB image version
-## ref: https://hub.docker.com/r/bitnami/mariadb/tags/
+$ helm show values bitnami/wordpress
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry and imagePullSecrets
 ##
-## Default: none
-imageTag: 10.1.14-r3
+# global:
+#   imageRegistry: myRegistryName
+#   imagePullSecrets:
+#     - myRegistryKeySecretName
+#   storageClass: myStorageClass
 
-## Specify a imagePullPolicy
-## Default to 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
-## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+## Bitnami WordPress image version
+## ref: https://hub.docker.com/r/bitnami/wordpress/tags/
 ##
-# imagePullPolicy:
-
-## Specify password for root user
-## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
-##
-# mariadbRootPassword:
-
-## Create a database user
-## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
-##
-# mariadbUser:
-# mariadbPassword:
-
-## Create a database
-## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
-##
-# mariadbDatabase:
-# ...
+image:
+  registry: docker.io
+  repository: bitnami/wordpress
+  tag: 5.6.0-debian-10-r35
+  [..]
 ```
 
-次に、YAML 形式のファイルでこれらの設定を上書きし、
-インストール中にそのファイルを渡すことができます。
+YAML 形式のファイルでこれらの設定を上書きし、インストール時にそのファイルを渡すことができます。
 
 ```console
-$ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
-$ helm install -f config.yaml stable/mariadb --generate-name
+$ echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values.yaml
+$ helm install -f values.yaml bitnami/wordpress --generate-name
 ```
 
-上記は `user0` という名前のデフォルトの MariaDB ユーザーを作成し、
-このユーザーに新しく作成された `user0db` データベースへのアクセスを許可しますが、
-そのチャートの残りのデフォルトはすべて受け入れます。
+上記は `user0` という名前のデフォルト MariaDB ユーザーを作成し、新しく作成された `user0db` データベースへのアクセスを許可しますが、その chart の他のデフォルト設定はすべてそのまま使用します。
 
-インストール中に構成データを渡す方法は2つあります。
+インストール時に設定データを渡す方法は2つあります。
 
-- `--values` (または `-f`): 上書きする YAML ファイルを指定します。
-  これは複数回指定でき、一番右のファイルが優先されます
-- `--set`: コマンドラインで上書きする値を指定します
+- `--values` (または `-f`): 上書きする値を指定した YAML ファイルを指定します。複数回指定でき、最も右のファイルが優先されます。
+- `--set`: コマンドラインで上書きする値を指定します。
 
-両方が使用される場合、`--set` 値はより高い優先度で `--values` にマージされます。
-`--set` で指定されたオーバーライドは ConfigMap に永続化されます。
-`--set` されている値は、`helm get values <リリース名>`を使用して、
-特定のリリースで表示できます。
-`--set` になっている値は、`--reset-values` を指定して `helm upgrade` を実行することでクリアできます。
+両方を使用した場合、`--set` の値は `--values` にマージされ、`--set` が優先されます。`--set` で指定された上書きは Secret に永続化されます。`--set` された値は `helm get values <release-name>` で特定の release について確認できます。`--set` された値は `--reset-values` を指定して `helm upgrade` を実行することでクリアできます。
 
 #### `--set` の形式と制限
 
-`--set` オプションは0個以上の名前と値のペアを取ります。
-簡単に言うと、`--set name=value` のように使用されます。これに相当する YAML は次のとおりです。
+`--set` オプションは0個以上の名前/値ペアを取ります。最もシンプルな形式は `--set name=value` です。これに相当する YAML は次のとおりです。
 
 ```yaml
 name: value
 ```
 
-複数の値は、`,` 文字で区切られます。したがって、`--set a=b,c=d` は次のようになります。
+複数の値は `,` 文字で区切ります。`--set a=b,c=d` は次のようになります。
 
 ```yaml
 a: b
 c: d
 ```
 
-より複雑な式がサポートされています。
-たとえば、`--set outer.inner=value` は次のように変換されます。
+より複雑な式もサポートされています。たとえば、`--set outer.inner=value` は次のように変換されます。
 ```yaml
 outer:
   inner: value
 ```
 
-リストは、`{` と `}` で値を囲むことで表現できます。
-たとえば、`--set name={a, b, c}` は次のように変換されます。
+リストは値を `{` と `}` で囲んで表現できます。たとえば、`--set name={a, b, c}` は次のように変換されます。
 
 ```yaml
 name:
@@ -295,16 +261,33 @@ name:
   - c
 ```
 
-Helm 2.5.0 以降では、配列インデックス構文を使用してリストアイテムにアクセスできます。
-たとえば、`--set servers[0].port=80` は次のようになります。
+特定の名前/キーを `null` または空の配列 `[]` に設定できます。たとえば、`--set name=[],a=null` は次のように変換されます。
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+を
+
+```yaml
+name: []
+a: null
+```
+
+に変換します。
+
+Helm 2.5.0 以降、配列インデックス構文を使用してリストアイテムにアクセスできます。たとえば、`--set servers[0].port=80` は次のようになります。
 
 ```yaml
 servers:
   - port: 80
 ```
 
-この方法で複数の値を設定できます。
-`--set servers[0].port=80,servers[0].host=example` という行は次のようになります：
+この方法で複数の値を設定できます。`--set servers[0].port=80,servers[0].host=example` は次のようになります。
 
 ```yaml
 servers:
@@ -312,120 +295,83 @@ servers:
     host: example
 ```
 
-`--set` 行で特殊文字を使用する必要がある場合があります。バックスラッシュを使用して文字をエスケープできます。
-`--set name=value1\,value2` は次のようになります。
+`--set` 行で特殊文字を使用する必要がある場合があります。バックスラッシュを使用して文字をエスケープできます。`--set name=value1\,value2` は次のようになります。
 
 ```yaml
 name: "value1,value2"
 ```
 
-同様に、ドットシーケンスをエスケープすることもできます。
-これは、チャートが `toYaml` 関数を使用して
-注釈、ラベル、ノードセレクターを解析するときに役立つ場合があります。
-`--set nodeSelector."kubernetes\.io/role"=master` の構文は次のようになります。
+同様に、ドットシーケンスもエスケープできます。これは chart が `toYaml` 関数を使用してアノテーション、ラベル、ノードセレクターを解析する場合に便利です。`--set nodeSelector."kubernetes\.io/role"=master` の構文は次のようになります。
 
 ```yaml
 nodeSelector:
   kubernetes.io/role: master
 ```
 
-深くネストされたデータ構造は、`--set` を使用して表現するのが難しい場合があります。
-チャートの設計者は、`values.yaml` ファイルのフォーマットを設計するときに、
-`--set` の使用法を検討することをお勧めします。
+深くネストされたデータ構造は `--set` で表現するのが難しい場合があります。chart の設計者は `values.yaml` ファイルの形式を設計する際に `--set` の使用を考慮することをお勧めします (詳細は [Values ファイル](/chart_template_guide/values_files.md)を参照してください)。
 
 ### その他のインストール方法
 
-`helm install` コマンドはいくつかのソースからインストールできます。
+`helm install` コマンドは複数のソースからインストールできます。
 
-- チャートリポジトリ (上記で見たように)
-- ローカルチャートアーカイブ (`helm install foo foo-0.1.1.tgz`)
-- 展開されたチャートディレクトリ (`helm install foo path/to/foo`)
+- chart repository (上記で見たとおり)
+- ローカルの chart アーカイブ (`helm install foo foo-0.1.1.tgz`)
+- 展開済みの chart ディレクトリ (`helm install foo path/to/foo`)
 - 完全な URL (`helm install foo https://example.com/charts/foo-1.2.3.tgz`)
 
-## 'helm upgrade' と 'helm rollback': リリースのアップグレードと障害時の回復
+## 'helm upgrade' と 'helm rollback': release のアップグレードと障害からの回復
 
-チャートの新しいバージョンがリリースされたとき、またはリリースの構成を変更したいときは、
-`helm upgrade` コマンドを使用できます。
+chart の新しいバージョンがリリースされたとき、または release の設定を変更したいときは、`helm upgrade` コマンドを使用します。
 
-アップグレードでは、既存のリリースを取得し、提供された情報に従ってアップグレードします。
-Kubernetes チャートは大きく複雑になる可能性があるため、
-Helm は最も侵襲性の低いアップグレードを実行しようとします。
-最後のリリース以降に変更されたもののみを更新します。
+アップグレードは既存の release を取得し、指定した情報に従ってアップグレードします。Kubernetes chart は大きく複雑になる可能性があるため、Helm は最も影響の少ないアップグレードを実行しようとします。前回の release 以降に変更されたものだけを更新します。
 
 ```console
-$ helm upgrade -f panda.yaml happy-panda stable/mariadb
-Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
-happy-panda has been upgraded. Happy Helming!
-Last Deployed: Wed Sep 28 12:47:54 2016
-Namespace: default
-Status: DEPLOYED
-...
+$ helm upgrade -f panda.yaml happy-panda bitnami/wordpress
 ```
 
-上記の場合、`happy-panda` リリースは同じチャートでアップグレードされますが、
-新しい YAML ファイルが使用されます。
+上記の場合、`happy-panda` release は同じ chart でアップグレードされますが、新しい YAML ファイルが使用されます。
 
 ```yaml
-mariadbUser: user1
+mariadb.auth.username: user1
 ```
 
 `helm get values` を使用して、新しい設定が有効になったかどうかを確認できます。
 
 ```console
 $ helm get values happy-panda
-mariadbUser: user1
+mariadb:
+  auth:
+    username: user1
 ```
 
-`helm get` コマンドは、クラスター内のリリースを確認するのに役立つツールです。
-上記のように、`panda.yaml` からの新しい値が
-クラスターにデプロイされたことを示しています。
+`helm get` コマンドはクラスター内の release を確認するのに役立つツールです。上記のように、`panda.yaml` の新しい値がクラスターにデプロイされたことがわかります。
 
-さて、リリース中に何かが計画どおりに進まなかった場合、
-`helm rollback [RELEASE] [REVISION]` を使用して前のリリースに簡単にロールバックできます。
+release 中に何か予定どおりにいかなかった場合、`helm rollback [RELEASE] [REVISION]` を使用して以前の release に簡単にロールバックできます。
 
 ```console
 $ helm rollback happy-panda 1
 ```
 
-上記は、happy-panda を最初のリリースバージョンにロールバックします。
-リリースバージョンは増分リビジョンです。
-インストール、アップグレード、またはロールバックが発生するたびに、リビジョン番号は1ずつ増加します。
-最初のリビジョン番号は常に1です。
-また、`helm history [RELEASE]` を使用して、特定のリリースのリビジョン番号を確認できます。
+上記は happy-panda を最初の release バージョンにロールバックします。release バージョンは増分リビジョンです。インストール、アップグレード、またはロールバックが発生するたびに、リビジョン番号が1ずつ増加します。最初のリビジョン番号は常に1です。`helm history [RELEASE]` を使用して、特定の release のリビジョン番号を確認できます。
 
-## インストール/アップグレード/ロールバックに役立つオプション
+## install/upgrade/rollback に役立つオプション
 
-インストール/アップグレード/ロールバック中の Helm の動作をカスタマイズするために指定できる
-他の便利なオプションがいくつかあります。
-これは cli フラグの完全なリストではないことに注意してください。
-すべてのフラグの説明を表示するには、`helm <command> --help` を実行します。
+install/upgrade/rollback 時の Helm の動作をカスタマイズするために指定できる便利なオプションがいくつかあります。これは CLI フラグの完全なリストではありません。すべてのフラグの説明を見るには、`helm <command> --help` を実行してください。
 
-- `--timeout`: Kubernetes コマンドが完了するまで待機する秒単位の値
-  デフォルトは `5m0s` です
-- `--wait`: リリースが成功したとマークする前に、すべてのポッドが準備完了状態になり、
-  PVC がバインドされ、デプロイメントには準備ができた状態の最小 (`Desired` - `maxUnavailable`) ポッドがあり、
-  サービスに IP アドレス (および `LoadBalancer` の場合は Ingress) があるまで待ちます。
-  `--timeout` 値が出るまで待機します。
-  タイムアウトに達すると、リリースは `FAILED` としてマークされます。
-  注: Deployment のローリング更新戦略の一環として、Deployment の `replicas` が 1 に設定され、
-  `maxUnavailable` が 0 に設定されていない場合、
-  `--wait` は、準備完了状態の最小ポッドを満たしているため、準備完了として戻ります。
-- `--no-hooks`: これは、コマンドの実行中のフックをスキップします
-- `--recreate-pods` (`upgrade` と `rollback` でのみ使用可能): このフラグにより、すべてのポッドが再作成されます 
-  (デプロイメントに属するポッドを除く)。
-  (Helm 3 では非推奨)
+- `--timeout`: Kubernetes コマンドが完了するまで待機する [Go duration](https://golang.org/pkg/time/#ParseDuration) 値。デフォルトは `5m0s` です。
+- `--wait`: すべての Pod が準備完了状態になり、PVC がバインドされ、Deployment が準備完了状態の最小 Pod 数 (`Desired` - `maxUnavailable`) を持ち、Service が IP アドレス (および `LoadBalancer` の場合は Ingress) を持つまで待機してから、release を成功とマークします。`--timeout` 値まで待機します。タイムアウトに達すると、release は `FAILED` としてマークされます。注: ローリング更新戦略の一部として Deployment の `replicas` が 1 に設定され、`maxUnavailable` が 0 に設定されていない場合、`--wait` は準備完了状態の最小 Pod 条件を満たしているため、準備完了として返します。
+- `--no-hooks`: コマンドの hook の実行をスキップします。
+- `--recreate-pods` (`upgrade` と `rollback` でのみ使用可能): このフラグはすべての Pod を再作成します (Deployment に属する Pod を除く)。(Helm 3 では非推奨)
 
-## 'helm uninstall': リリースのアンインストール
+## 'helm uninstall': release をアンインストールする
 
-クラスターからリリースをアンインストールするときは、
-`helm uninstall` コマンドを使用します。
+クラスターから release をアンインストールするときは、`helm uninstall` コマンドを使用します。
 
 ```console
 $ helm uninstall happy-panda
 ```
 
-これにより、リリースがクラスターから削除されます。
-`helm list` コマンドを使用すると、現在デプロイされているすべてのリリースを確認できます。
+これにより、release がクラスターから削除されます。`helm list` コマンドで現在デプロイされているすべての release を確認できます。
 
 ```console
 $ helm list
@@ -433,35 +379,27 @@ NAME            VERSION UPDATED                         STATUS          CHART
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 ```
 
-上記の出力から、`happy-panda` リリースが
-アンインストールされたことがわかります。
+上記の出力から、`happy-panda` release がアンインストールされたことがわかります。
 
-Helm の以前のバージョンでは、リリースが削除されると、その削除の記録が残りました。 
-Helm 3 では、削除によりリリースレコードも削除されます。
-削除リリースレコードを保持する場合は、`helm uninstall --keep-history` を使用します。
-`helm list --uninstalled` を使用すると、
-`--keep-history` フラグでアンインストールされたリリースのみが表示されます。
+以前のバージョンの Helm では、release が削除されると削除の記録が残りました。Helm 3 では、削除により release レコードも削除されます。削除された release のレコードを保持したい場合は、`helm uninstall --keep-history` を使用してください。`helm list --uninstalled` を使用すると、`--keep-history` フラグでアンインストールされた release のみが表示されます。
 
-`helm list --all` フラグは、Helm が保持しているすべてのリリースレコードを表示します。
-これには、失敗したアイテムや削除されたアイテムのレコードも含まれます (`--keep-history` が指定されている場合)。
+`helm list --all` フラグは、失敗したアイテムや削除されたアイテム (`--keep-history` が指定されている場合) のレコードを含む、Helm が保持しているすべての release レコードを表示します。
 
 ```console
 $  helm list --all
 NAME            VERSION UPDATED                         STATUS          CHART
-happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     mariadb-0.3.0
+happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     wordpress-10.4.5.6.0
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
 ```
 
-リリースはデフォルトで削除されるようになったため、
-アンインストールされたリソースをロールバックすることはできなくなりました。
+release がデフォルトで削除されるようになったため、アンインストールされたリソースをロールバックすることはできなくなりました。
 
-## 'helm repo': リポジトリの操作
+## 'helm repo': repository を操作する
 
-Helm 3 には、デフォルトのチャートリポジトリが付属しなくなりました。
-`helm repo` コマンドグループは、リポジトリを追加、一覧表示、削除するコマンドを提供します。
+Helm 3 にはデフォルトの chart repository が付属しなくなりました。`helm repo` コマンドグループは、repository を追加、一覧表示、削除するコマンドを提供します。
 
-`helm repo list` を使用して、設定されているリポジトリを確認できます。
+`helm repo list` で設定されている repository を確認できます。
 
 ```console
 $ helm repo list
@@ -470,62 +408,49 @@ stable          https://charts.helm.sh/stable
 mumoshu         https://mumoshu.github.io/charts
 ```
 
-そして、新しいリポジトリは `helm repo add` で追加できます。
+新しい repository は `helm repo add [NAME] [URL]` で追加できます。
 
 ```console
 $ helm repo add dev https://example.com/dev-charts
 ```
 
-チャートリポジトリは頻繁に変更されるため、
-`helm repo update` を実行することで、いつでも Helm クライアントが最新であることを確認できます。
+chart repository は頻繁に変更されるため、`helm repo update` を実行して Helm クライアントを最新の状態に保つことができます。
 
-リポジトリは `helm repo remove` で削除できます。
+repository は `helm repo remove` で削除できます。
 
-## 独自のチャートを作成する
+## 独自の chart を作成する
 
-[チャート開発ガイド](/topics/charts.md) は、独自のチャートを開発する方法を説明しています。
-ただし、`helm create` コマンドを使用すると、すぐに開始できます。
+[Chart 開発ガイド](/topics/charts.md)で独自の chart を開発する方法を説明しています。`helm create` コマンドを使用すると、すぐに始めることができます。
 
 ```console
 $ helm create deis-workflow
 Creating deis-workflow
 ```
 
-今、`./deis-workflow` にチャートがあるとします。
-それを編集して、独自のテンプレートを作成できます。
+これで `./deis-workflow` に chart ができました。編集して独自のテンプレートを作成できます。
 
-チャートを編集するとき、`helm lint` を実行することにより、
-チャートが整形式であることを検証できます。
+chart を編集する際に、`helm lint` を実行してフォーマットが正しいかどうかを検証できます。
 
-チャートを配布用にパッケージ化するときは、
-`helm package` コマンドを実行できます。
+chart を配布用にパッケージ化するときは、`helm package` コマンドを実行します。
 
 ```console
 $ helm package deis-workflow
 deis-workflow-0.1.0.tgz
 ```
 
-そして、そのチャートは `helm install` によって簡単にインストールできます。
+そして、その chart は `helm install` で簡単にインストールできます。
 
 ```console
 $ helm install deis-workflow ./deis-workflow-0.1.0.tgz
 ...
 ```
 
-パッケージ化されたチャートは、チャートリポジトリにロードできます。
-アップロード方法については、チャートリポジトリサーバーのドキュメントをご覧ください。
-
-注: `stable` リポジトリは [Kubernetes Charts GitHub リポジトリ](https://github.com/helm/charts) で管理されています。
-そのプロジェクトは、チャートのソースコードを受け入れ、
-(監査後に) それらをパッケージ化します。
+パッケージ化された chart は chart repository にロードできます。詳細は [Helm chart repository](/topics/chart_repository.md) のドキュメントを参照してください。
 
 ## まとめ
 
-この章では、検索、インストール、アップグレード、アンインストールなど、
-`helm` クライアントの基本的な使用パターンについて説明しました。
-また、`helm status`、`helm get`、`helm repo` などの便利なユーティリティコマンドについても説明しています。
+この章では、検索、インストール、アップグレード、アンインストールなど、`helm` クライアントの基本的な使用パターンについて説明しました。`helm status`、`helm get`、`helm repo` などの便利なユーティリティコマンドについても説明しました。
 
-これらのコマンドの詳細については、
-Helm の組み込みヘルプである `helm help` をご覧ください。
+これらのコマンドの詳細については、Helm の組み込みヘルプ `helm help` を参照してください。
 
-次の章では、チャートを作成するプロセスについて説明します。
+[次の章](/howto/charts_tips_and_tricks.md)では、chart を開発するプロセスについて説明します。

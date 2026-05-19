@@ -1,71 +1,66 @@
 ---
-title: 지명 템플릿
-description: 지명 템플릿을 정의하는 방법
-sidebar_position: 8
+title: 네임드 템플릿
+description: 네임드 템플릿을 정의하는 방법
+sidebar_position: 9
 ---
 
-It is time to move beyond one template, and begin to create others. In this
-section, we will see how to define _named templates_ in one file, and then use
-them elsewhere. A _named template_ (sometimes called a _partial_ or a
-_subtemplate_) is simply a template defined inside of a file, and given a name.
-We'll see two ways to create them, and a few different ways to use them.
+이제 하나의 템플릿을 넘어 여러 템플릿을 만들어 볼 차례이다. 이 섹션에서는
+한 파일에서 _네임드 템플릿_을 정의하고 다른 곳에서 사용하는 방법을 알아본다.
+_네임드 템플릿_(때때로 _partial_ 또는 _subtemplate_이라고도 함)은 단순히
+파일 내에 정의되어 이름이 부여된 템플릿이다.
+템플릿을 만드는 두 가지 방법과 사용하는 여러 방법을 살펴보겠다.
 
-In the [Flow Control](/chart_template_guide/control_structures.md) section we introduced three actions
-for declaring and managing templates: `define`, `template`, and `block`. In this
-section, we'll cover those three actions, and also introduce a special-purpose
-`include` function that works similarly to the `template` action.
+[흐름 제어](./control_structures.md) 섹션에서 템플릿을 선언하고 관리하기
+위한 세 가지 액션 `define`, `template`, `block`을 소개했다. 이 섹션에서는
+이 세 가지 액션을 다루고, `template` 액션과 유사하게 작동하는 특수 목적의
+`include` 함수도 소개한다.
 
-An important detail to keep in mind when naming templates: **template names are
-global**. If you declare two templates with the same name, whichever one is
-loaded last will be the one used. Because templates in subcharts are compiled
-together with top-level templates, you should be careful to name your templates
-with _chart-specific names_.
+템플릿 이름을 지정할 때 염두에 두어야 할 중요한 사항: **템플릿 이름은
+전역적이다**. 동일한 이름으로 두 개의 템플릿을 선언하면 마지막에 로드된
+것이 사용된다. 서브차트의 템플릿은 최상위 템플릿과 함께 컴파일되므로
+_차트별 고유 이름_으로 템플릿 이름을 지정해야 한다.
 
-One popular naming convention is to prefix each defined template with the name
-of the chart: `{{ define "mychart.labels" }}`. By using the specific chart name
-as a prefix we can avoid any conflicts that may arise due to two different
-charts that implement templates of the same name.
+일반적인 명명 규칙은 정의된 각 템플릿 앞에 차트 이름을 접두사로 붙이는 것이다:
+`{{ define "mychart.labels" }}`. 특정 차트 이름을 접두사로 사용하면
+동일한 이름의 템플릿을 구현하는 서로 다른 두 차트로 인해 발생할 수 있는
+충돌을 피할 수 있다.
 
-This behavior also applies to different versions of a chart. If you have
-`mychart` version `1.0.0` that defines a template one way, and a `mychart`
-version `2.0.0` that modifies the existing named template, it will use the one
-that was loaded last. You can work around this issue by also adding a version
-in the name of the chart: `{{ define "mychart.v1.labels" }}` and
+이 동작은 차트의 다른 버전에도 적용된다. 한 가지 방식으로 템플릿을 정의한
+`mychart` 버전 `1.0.0`이 있고, 기존 네임드 템플릿을 수정하는 `mychart`
+버전 `2.0.0`이 있다면 마지막에 로드된 것이 사용된다. 차트 이름에 버전을
+추가하여 이 문제를 해결할 수 있다: `{{ define "mychart.v1.labels" }}`와
 `{{ define "mychart.v2.labels" }}`.
 
-## 단편(partial)과 `_` 파일
+## Partial과 `_` 파일
 
-So far, we've used one file, and that one file has contained a single template.
-But Helm's template language allows you to create named embedded templates, that
-can be accessed by name elsewhere.
+지금까지 하나의 파일을 사용했고, 그 파일에는 단일 템플릿이 포함되어 있었다.
+하지만 Helm의 템플릿 언어를 사용하면 다른 곳에서 이름으로 접근할 수 있는
+네임드 임베디드 템플릿을 만들 수 있다.
 
-Before we get to the nuts-and-bolts of writing those templates, there is file
-naming convention that deserves mention:
+템플릿 작성의 핵심에 들어가기 전에, 언급할 가치가 있는 파일 명명 규칙이 있다:
 
-* Most files in `templates/` are treated as if they contain Kubernetes manifests
-* The `NOTES.txt` is one exception
-* But files whose name begins with an underscore (`_`) are assumed to _not_ have
-  a manifest inside. These files are not rendered to Kubernetes object
-  definitions, but are available everywhere within other chart templates for
-  use.
+* `templates/`에 있는 대부분의 파일은 Kubernetes 매니페스트를 포함하는 것으로 취급된다
+* `NOTES.txt`는 예외이다
+* 그러나 이름이 밑줄(`_`)로 시작하는 파일은 내부에 매니페스트가 _없는_ 것으로
+  간주된다. 이 파일들은 Kubernetes 오브젝트 정의로 렌더링되지 않지만,
+  다른 차트 템플릿 어디서나 사용할 수 있다.
 
-These files are used to store partials and helpers. In fact, when we first
-created `mychart`, we saw a file called `_helpers.tpl`. That file is the default
-location for template partials.
+이 파일들은 partial과 helper를 저장하는 데 사용된다. 실제로 처음
+`mychart`를 만들 때 `_helpers.tpl`이라는 파일을 보았다. 이 파일은
+템플릿 partial의 기본 위치이다.
 
-## `define`과 `template`으로 템플릿을 선언하고 사용하기
+## `define`과 `template`으로 템플릿 선언 및 사용하기
 
-The `define` action allows us to create a named template inside of a template
-file. Its syntax goes like this:
+`define` 액션을 사용하면 템플릿 파일 내에 네임드 템플릿을 만들 수 있다.
+문법은 다음과 같다:
 
 ```yaml
-{{ define "MY.NAME" }}
+{{- define "MY.NAME" }}
   # body of template here
-{{ end }}
+{{- end }}
 ```
 
-For example, we can define a template to encapsulate a Kubernetes block of
-labels:
+예를 들어, Kubernetes 레이블 블록을 캡슐화하는 템플릿을 정의할 수 있다:
 
 ```yaml
 {{- define "mychart.labels" }}
@@ -75,8 +70,8 @@ labels:
 {{- end }}
 ```
 
-Now we can embed this template inside of our existing ConfigMap, and then
-include it with the `template` action:
+이제 이 템플릿을 기존 ConfigMap에 포함시키고 `template` 액션으로
+포함할 수 있다:
 
 ```yaml
 {{- define "mychart.labels" }}
@@ -96,9 +91,9 @@ data:
   {{- end }}
 ```
 
-When the template engine reads this file, it will store away the reference to
-`mychart.labels` until `template "mychart.labels"` is called. Then it will
-render that template inline. So the result will look like this:
+템플릿 엔진이 이 파일을 읽으면 `template "mychart.labels"`가 호출될 때까지
+`mychart.labels` 참조를 저장한다. 그런 다음 해당 템플릿을 인라인으로
+렌더링한다. 결과는 다음과 같다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -115,8 +110,10 @@ data:
   food: "pizza"
 ```
 
-Conventionally, Helm charts put these templates inside of a partials file,
-usually `_helpers.tpl`. Let's move this function there:
+참고: `define`은 이 예제처럼 template으로 호출되지 않으면 출력을 생성하지 않는다.
+
+일반적으로 Helm 차트는 이러한 템플릿을 partial 파일, 보통 `_helpers.tpl`에 넣는다.
+이 함수를 그곳으로 옮겨 보자:
 
 ```yaml
 {{/* Generate basic labels */}}
@@ -127,11 +124,11 @@ usually `_helpers.tpl`. Let's move this function there:
 {{- end }}
 ```
 
-By convention, `define` functions should have a simple documentation block
-(`{{/* ... */}}`) describing what they do.
+관례상, `define` 함수에는 기능을 설명하는 간단한 문서화 블록
+(`{{/* ... */}}`)이 있어야 한다.
 
-Even though this definition is in `_helpers.tpl`, it can still be accessed in
-`configmap.yaml`:
+이 정의가 `_helpers.tpl`에 있더라도 `configmap.yaml`에서 여전히
+접근할 수 있다:
 
 ```yaml
 apiVersion: v1
@@ -146,18 +143,17 @@ data:
   {{- end }}
 ```
 
-As mentioned above, **template names are global**. As a result of this, if two
-templates are declared with the same name the last occurrence will be the one
-that is used. Since templates in subcharts are compiled together with top-level
-templates, it is best to name your templates with _chart specific names_. A
-popular naming convention is to prefix each defined template with the name of
-the chart: `{{ define "mychart.labels" }}`.
+위에서 언급했듯이, **템플릿 이름은 전역적이다**. 결과적으로 동일한 이름으로
+두 개의 템플릿이 선언되면 마지막 것이 사용된다. 서브차트의 템플릿은
+최상위 템플릿과 함께 컴파일되므로 _차트별 고유 이름_으로 템플릿 이름을
+지정하는 것이 좋다. 일반적인 명명 규칙은 정의된 각 템플릿 앞에 차트
+이름을 접두사로 붙이는 것이다: `{{ define "mychart.labels" }}`.
 
-## 템플릿의 스코프(scope) 지정하기
+## 템플릿 스코프 설정하기
 
-In the template we defined above, we did not use any objects. We just used
-functions. Let's modify our defined template to include the chart name and chart
-version:
+위에서 정의한 템플릿에서는 어떤 오브젝트도 사용하지 않았다.
+함수만 사용했다. 차트 이름과 차트 버전을 포함하도록 정의된 템플릿을
+수정해 보자:
 
 ```yaml
 {{/* Generate basic labels */}}
@@ -170,7 +166,16 @@ version:
 {{- end }}
 ```
 
-If we render this, the result will not be what we expect:
+이것을 렌더링하면 다음과 같은 오류가 발생한다:
+
+```console
+$ helm install --dry-run moldy-jaguar ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [unknown object type "nil" in ConfigMap.metadata.labels.chart, unknown object type "nil" in ConfigMap.metadata.labels.version]
+```
+
+렌더링 결과를 보려면 `--disable-openapi-validation`과 함께 다시 실행한다:
+`helm install --dry-run --disable-openapi-validation moldy-jaguar ./mychart`.
+결과는 예상한 것과 다르다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -180,22 +185,22 @@ metadata:
   name: moldy-jaguar-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart:
     version:
 ```
 
-What happened to the name and version? They weren't in the scope for our defined
-template. When a named template (created with `define`) is rendered, it will
-receive the scope passed in by the `template` call. In our example, we included
-the template like this:
+이름과 버전은 어떻게 되었을까? 정의된 템플릿의 스코프에 포함되지
+않았다. 네임드 템플릿(`define`으로 생성된)이 렌더링될 때,
+`template` 호출에서 전달된 스코프를 받는다. 예제에서는
+다음과 같이 템플릿을 포함했다:
 
 ```yaml
 {{- template "mychart.labels" }}
 ```
 
-No scope was passed in, so within the template we cannot access anything in `.`.
-This is easy enough to fix, though. We simply pass a scope to the template:
+스코프가 전달되지 않았으므로 템플릿 내에서 `.`의 어떤 것도 접근할 수 없다.
+하지만 이것은 쉽게 수정할 수 있다. 템플릿에 스코프를 전달하면 된다:
 
 ```yaml
 apiVersion: v1
@@ -205,11 +210,13 @@ metadata:
   {{- template "mychart.labels" . }}
 ```
 
-Note that we pass `.` at the end of the `template` call. We could just as easily
-pass `.Values` or `.Values.favorite` or whatever scope we want. But what we want
-is the top-level scope.
+`template` 호출 끝에 `.`를 전달했다. `.Values`나 `.Values.favorite` 또는
+원하는 스코프를 쉽게 전달할 수 있다. 하지만 우리가 원하는 것은
+최상위 스코프이다. 네임드 템플릿의 컨텍스트에서 `$`는 전역 스코프가
+아니라 전달한 스코프를 참조한다.
 
-Now when we execute this template with `helm install --dry-run --debug plinking-anaco ./mychart`, we get this:
+이제 `helm install --dry-run --debug plinking-anaco ./mychart`로
+이 템플릿을 실행하면 다음을 얻는다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -219,17 +226,17 @@ metadata:
   name: plinking-anaco-configmap
   labels:
     generator: helm
-    date: 2016-11-02
+    date: 2021-03-06
     chart: mychart
     version: 0.1.0
 ```
 
-Now `{{ .Chart.Name }}` resolves to `mychart`, and `{{ .Chart.Version }}`
-resolves to `0.1.0`.
+이제 `{{ .Chart.Name }}`은 `mychart`로, `{{ .Chart.Version }}`은
+`0.1.0`으로 해석된다.
 
 ## `include` 함수
 
-Say we've defined a simple template that looks like this:
+다음과 같은 간단한 템플릿을 정의했다고 가정해 보자:
 
 ```yaml
 {{- define "mychart.app" -}}
@@ -238,8 +245,8 @@ app_version: "{{ .Chart.Version }}"
 {{- end -}}
 ```
 
-Now say I want to insert this both into the `labels:` section of my template,
-and also the `data:` section:
+이제 이것을 템플릿의 `labels:` 섹션과 `data:` 섹션 모두에
+삽입하고 싶다고 가정해 보자:
 
 ```yaml
 apiVersion: v1
@@ -256,7 +263,16 @@ data:
 {{ template "mychart.app" . }}
 ```
 
-The output will not be what we expect:
+이것을 렌더링하면 다음과 같은 오류가 발생한다:
+
+```console
+$ helm install --dry-run measly-whippet ./mychart
+Error: unable to build kubernetes objects from release manifest: error validating "": error validating data: [ValidationError(ConfigMap): unknown field "app_name" in io.k8s.api.core.v1.ConfigMap, ValidationError(ConfigMap): unknown field "app_version" in io.k8s.api.core.v1.ConfigMap]
+```
+
+렌더링 결과를 보려면 `--disable-openapi-validation`과 함께 다시 실행한다:
+`helm install --dry-run --disable-openapi-validation measly-whippet ./mychart`.
+출력은 예상한 것과 다르다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -266,26 +282,26 @@ metadata:
   name: measly-whippet-configmap
   labels:
     app_name: mychart
-app_version: "0.1.0+1478129847"
+app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
-  app_name: mychart
-app_version: "0.1.0+1478129847"
+app_name: mychart
+app_version: "0.1.0"
 ```
 
-Note that the indentation on `app_version` is wrong in both places. Why? Because
-the template that is substituted in has the text aligned to the right. Because
-`template` is an action, and not a function, there is no way to pass the output
-of a `template` call to other functions; the data is simply inserted inline.
+`app_version`의 들여쓰기가 두 곳 모두에서 잘못되어 있다. 왜일까?
+대체되는 템플릿의 텍스트가 왼쪽 정렬되어 있기 때문이다. `template`은
+액션이며 함수가 아니기 때문에 `template` 호출의 출력을 다른 함수에
+전달할 방법이 없다. 데이터는 단순히 인라인으로 삽입된다.
 
-To work around this case, Helm provides an alternative to `template` that will
-import the contents of a template into the present pipeline where it can be
-passed along to other functions in the pipeline.
+이 경우를 해결하기 위해, Helm은 `template`의 대안으로 템플릿의 내용을
+현재 파이프라인으로 가져와서 파이프라인의 다른 함수에 전달할 수 있게
+해주는 `include`를 제공한다.
 
-Here's the example above, corrected to use `indent` to indent the `mychart_app`
-template correctly:
+다음은 위의 예제를 `indent`를 사용하여 `mychart.app` 템플릿을
+올바르게 들여쓰기하도록 수정한 것이다:
 
 ```yaml
 apiVersion: v1
@@ -302,7 +318,7 @@ data:
 {{ include "mychart.app" . | indent 2 }}
 ```
 
-Now the produced YAML is correctly indented for each section:
+이제 생성된 YAML은 각 섹션에 대해 올바르게 들여쓰기된다:
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -312,18 +328,18 @@ metadata:
   name: edgy-mole-configmap
   labels:
     app_name: mychart
-    app_version: "0.1.0+1478129987"
+    app_version: "0.1.0"
 data:
   myvalue: "Hello World"
   drink: "coffee"
   food: "pizza"
   app_name: mychart
-  app_version: "0.1.0+1478129987"
+  app_version: "0.1.0"
 ```
 
-> It is considered preferable to use `include` over `template` in Helm templates
-> simply so that the output formatting can be handled better for YAML documents.
+> Helm 템플릿에서 `template`보다 `include`를 사용하는 것이 선호된다.
+> 단순히 YAML 문서에 대한 출력 포맷팅을 더 잘 처리할 수 있기 때문이다.
 
-Sometimes we want to import content, but not as templates. That is, we want to
-import files verbatim. We can achieve this by accessing files through the
-`.Files` object described in the next section.
+때로는 컨텐츠를 템플릿이 아닌 그대로 가져오고 싶을 때가 있다.
+즉, 파일을 있는 그대로 가져오고 싶은 경우이다. 다음 섹션에서 설명하는
+`.Files` 오브젝트를 통해 파일에 접근하면 이를 달성할 수 있다.

@@ -85,7 +85,7 @@ annotations:
 nginx-1.2.3.tgz
 ```
 
-更多复杂的语义化版本2 都是支持的，比如 `version: 1.2.3-alpha.1+ef365`。 但系统明确禁止非语义化版本名称。
+更多复杂的语义化版本 2 名称也是支持的，比如 `version: 1.2.3-alpha.1+ef365`。但系统明确禁止非语义化版本名称。例外情况是格式为 `x` 或 `x.y` 的版本。例如，如果版本号带有前导 v 或者没有完整的三部分（如 v1.2），系统会尝试将其转换为有效的语义化版本（如 v1.2.0）。
 
 **注意：** 鉴于经典Helm和部署管理器在使用chart时都非常倾向于GitHub，Helm v2 和后续版本不再依赖或需要GitHub甚至是Git。
 因此，它完全不使用Git SHA进行版本控制。
@@ -382,11 +382,11 @@ myint: 99
 
 注意父级键 `data` 没有包含在父级最终的value中，如果想指定这个父级键，要使用'子-父' 格式。
 
-##### Using the child-parent format
+##### 使用子-父格式 {#using-the-child-parent-format}
 
-要访问子chart中未包含的 `exports` 键的值，你需要指定要导入的值的源键(`child`)和父chart(`parent`)中值的目标路径。
+要访问子 chart 中未包含的 `exports` 键的值，你需要指定要导入的值的源键（`child`）和父 chart 中值的目标路径（`parent`）。
 
-下面示例中的`import-values` 指示Helm去拿到能再`child:`路径中找到的任何值，并拷贝到`parent:`的指定路径。
+下面示例中的`import-values` 指示Helm去拿到能在`child:`路径中找到的任何值，并拷贝到`parent:`的指定路径。
 
 ```yaml
 # parent's Chart.yaml file
@@ -561,7 +561,7 @@ spec:
 Values通过模板中`.Values`对象可访问的`values.yaml`文件（或者通过 `--set` 参数)提供，
 但可以模板中访问其他预定义的数据片段。
 
-以下值是预定义的，对每个模板都有效，并且可以被覆盖。和所有值一样，名称 _区分大小写_。
+以下值是预定义的，对每个模板都有效，并且无法被覆盖。和所有值一样，名称 _区分大小写_。
 
 - `Release.Name`: 版本名称(非chart的)
 - `Release.Namespace`: 发布的chart版本的命名空间
@@ -570,10 +570,10 @@ Values通过模板中`.Values`对象可访问的`values.yaml`文件（或者通�
 - `Release.IsInstall`: 如果当前操作是安装，设置为true
 - `Chart`: `Chart.yaml`的内容。因此，chart的版本可以从 `Chart.Version` 获得，
   并且维护者在`Chart.Maintainers`里。
-- `Files`: chart中的包含了非特殊文件的类图对象。这将不允许您访问模板，
+- `Files`: chart中的包含了非特殊文件的类图对象。这将不允许你访问模板，
   但是可以访问现有的其他文件（除非被`.helmignore`排除在外）。
   使用`{{ index .Files "file.name" }}`可以访问文件或者使用`{{.Files.Get name }}`功能。
-  您也可以使用`{{ .Files.GetBytes }}`作为`[]byte`访问文件内容。
+  你也可以使用`{{ .Files.GetBytes }}`作为`[]byte`访问文件内容。
 - `Capabilities`: 包含了Kubernetes版本信息的类图对象。(`{{ .Capabilities.KubeVersion }}`)
   和支持的Kubernetes API 版本(`{{ .Capabilities.APIVersions.Has "batch/v1" }}`)
 
@@ -796,11 +796,17 @@ helm install --set port=443
 ```
 
 此外，最终的`.Values`对象是根据*所有的*子chart架构检查。 这意味着父chart无法规避子chart的限制。
-这也是逆向的 - 如果子chart的`values.yaml`文件无法满足需求，父chart*必须* 满足这些限制才能有效。
+这也是逆向的——如果子 chart 的 `values.yaml` 文件无法满足需求，父 chart *必须*满足这些限制才能有效。
+
+可以通过以下选项禁用架构验证。这在离线环境中特别有用，尤其是当 chart 的 JSON Schema 文件包含远程引用时。
+
+```console
+helm install --skip-schema-validation
+```
 
 ### 参考
 
-在编写模板，值和架构文件时，有几个标准的参考可以帮助您。
+在编写模板，值和架构文件时，有几个标准的参考可以帮助你。
 
 - [Go templates](https://godoc.org/text/template)
 - [Extra template functions](https://godoc.org/github.com/Masterminds/sprig)
@@ -823,7 +829,7 @@ CRD 文件 _无法模板化_，必须是普通的YAML文档。
 渲染chart其他部分，并上传到Kubernetes。因为这个顺序，CRD信息会在Helm模板中的
 `.Capabilities`对象中生效，并且Helm模板会创建在CRD中声明的新的实例对象。
 
-比如，如果您的chart在`crds/`目录中有针对于`CronTab`的CRD，您可以在`templates/`目录中创建`CronTab`类型实例：
+比如，如果你的chart在`crds/`目录中有针对于`CronTab`的CRD，你可以在`templates/`目录中创建`CronTab`类型实例：
 
 ```text
 crontabs/
@@ -881,21 +887,21 @@ CRD受到以下限制：
 
 `helm`工具有一些命令用来处理chart。
 
-它可以为您创建一个新chart：
+它可以为你创建一个新chart：
 
 ```console
 $ helm create mychart
 Created mychart/
 ```
 
-编辑了chart之后，`helm`能为您把它打包成一个chart存档：
+编辑了chart之后，`helm`能为你把它打包成一个chart存档：
 
 ```console
 $ helm package mychart
 Archived mychart-0.1.-.tgz
 ```
 
-您也可以使用`helm` 帮您找到chart的格式或信息的问题：
+你也可以使用`helm` 帮你找到chart的格式或信息的问题：
 
 ```console
 $ helm lint mychart
@@ -918,13 +924,20 @@ Helm 团队已经测试了一些服务器，包括激活websit模组的Google Cl
 
 ## Chart Starter 包
 
-`helm create`命令可以附带一个可选的 `--starter` 选项让您指定一个 "starter chart"。
+`helm create` 命令可以附带一个可选的 `--starter` 选项让你指定一个 "starter chart"。此外，starter 选项还有一个短别名 `-p`。
 
-Starter就只是普通chart，但是被放置在`$XDG_DATA_HOME/helm/starters`。作为一个chart开发者，
-您可以编写被特别设计用来作为启动的chart。设计此类chart应注意以下考虑因素：
+用法示例：
+
+```console
+helm create my-chart --starter starter-name
+helm create my-chart -p starter-name
+helm create my-chart -p /absolute/path/to/starter-name
+```
+
+Starter 就只是普通 chart，但是被放置在 `$XDG_DATA_HOME/helm/starters`。作为一个 chart 开发者，你可以编写专门设计用作 starter 的 chart。设计此类 chart 应注意以下考虑因素：
 
 - `Chart.yaml`会被生成器覆盖。
 - 用户将希望修改此类chart的内容，所以文档应该说明用户如果做到这一点。
-- 所有出现的`<CHARTNAME>`都会被替换为指定为chart名称，以便chart可以作为模板使用。
+- 所有出现的 `<CHARTNAME>` 都会被替换为指定的 chart 名称，以便 starter chart 可以作为模板使用，但某些变量文件除外。例如，如果你在 `vars` 目录中使用自定义文件或某些 `README.md` 文件，`<CHARTNAME>` 将不会在其中被替换。此外，chart 描述不会被继承。
 
-当前增加一个chart的唯一方式就是拷贝chart到`$XDG_DATA_HOME/helm/starters`。在您的chart文档中，您可能需要解释这个过程。
+当前增加一个 chart 到 `$XDG_DATA_HOME/helm/starters` 的唯一方式就是手动复制到该目录。在你的 chart 文档中，你可能需要解释这个过程。

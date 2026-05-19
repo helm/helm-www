@@ -4,18 +4,18 @@ description: "Erklärt die Grundsätze zu Helm."
 sidebar_position: 3
 ---
 
-Diese Anleiting erklärt die Grundsätze zu Helm, um Pakete in Ihrem Kubernetes
-Cluster zu verwalten. Es wird erwartet, dass Sie das Helm Programm bereits
+Diese Anleitung erklärt die Grundlagen zur Benutzung von Helm, um Pakete in Ihrem Kubernetes
+Cluster zu verwalten. Es wird vorausgesetzt, dass Sie den Helm Client bereits
 [installiert](/intro/install.md) haben.
 
-Wenn Sie nur daran interessiert, ein paar einfache Kommandos schnell zu lernen,
+Wenn Sie nur daran interessiert sind, ein paar einfache Kommandos schnell zu lernen,
 beginnen Sie mit der [Schnellstartanleitung](/intro/quickstart.md). 
 Dieses Kapitel erklärt die speziellen Helm Kommandos und erklärt, wie 
 Helm zu benutzen ist.
 
-## Drei grosse Konzepte
+## Drei große Konzepte
 
-Ein *Chart* ist ein Helm Paket. Es beinhaltet alle Resourcedefinitionen, die zur
+Ein *Chart* ist ein Helm Paket. Es beinhaltet alle Ressourcendefinitionen, die zur
 Ausführung einer Applikation, eines Werkzeugs oder Dienstes im Kubernetes
 Cluster erforderlich sind. Denken Sie an etwas wie ein Homebrew Formular für
 Kubernetes, ein Apt dpkg oder eine Yum RPM Datei.
@@ -43,9 +43,9 @@ Helm kommt mit einem mächtigen Suchkommando. Es kann zwei verschiedene Quelltyp
 
 - `helm search hub` sucht [den Artifact Hub](https://artifacthub.io), welches
   Helm Charts von dutzenden unterschiedlichen Repositories listet.
-- `helm search repo` sucht das Repositorie, welches Sie lokal in Ihrem Helm
-  Programm hinzugefügt haben (mit `helm repo add`). Diese Suche wird über lokale Daten
-  durchgeführt, ohne das eine öffentliche Netzwerkverbindung notwendig ist.
+- `helm search repo` sucht die Repositories, die Sie lokal in Ihrem Helm
+  Client hinzugefügt haben (mit `helm repo add`). Diese Suche wird über lokale Daten
+  durchgeführt, ohne dass eine öffentliche Netzwerkverbindung notwendig ist.
 
 Sie können öffentlich verfügbare Charts finden mit dem Kommando `helm search hub`:
 
@@ -61,8 +61,10 @@ Die obige Suche nach allen `wordpress` Charts auf Artifact Hub.
 
 Ohne Filter zeigt `helm search hub` alle verfügbaren Charts.
 
+`helm search hub` zeigt die URL zum Standort auf [artifacthub.io](https://artifacthub.io/), aber nicht das eigentliche Helm Repository. Mit `helm search hub --list-repo-url` können Sie die tatsächliche Helm Repository-URL anzeigen lassen, was praktisch ist, wenn Sie ein neues Repository hinzufügen möchten: `helm repo add [NAME] [URL]`.
+
 Wenn Sie `helm search repo` benutzen, können Sie alle Namen von Charts
-in Repositories finden, die Sie schon hinzugefügt haben:
+in Repositories finden, die Sie bereits hinzugefügt haben:
 
 ```console
 $ helm repo add brigade https://brigadecore.github.io/charts
@@ -86,7 +88,7 @@ NAME            CHART VERSION APP VERSION DESCRIPTION
 brigade/kashti  0.4.0         v0.4.0      A Helm chart for Kubernetes
 ```
 
-Sie Suche ist ein guter Weg, um alle verfügbaren Pakete zu finden. Wennimmer
+Die Suche ist ein guter Weg, um verfügbare Pakete zu finden. Sobald
 Sie ein Paket gefunden haben, können Sie es mit `helm install` installieren.
 
 ## 'helm install': Ein Paket installieren
@@ -133,11 +135,50 @@ eines Charts ein neues _release_ Objekt erstellt. Die Version oben hat den Namen
 `happy-panda`. (Wenn Sie möchten, dass Helm einen Namen für Sie generiert, lassen
 Sie den Versionsnamen offen und geben den Parameter `--generate-name` an.)
 
-Währen der Installation gibt das `helm` Programm nützzliche Informationen aus wie
-die erstellten Resourcen, der Status der Version und falls vorhanden zusätzliche
+Während der Installation gibt das `helm` Programm nützliche Informationen aus wie
+die erstellten Ressourcen, den Status des Release und falls vorhanden zusätzliche
 Konfigurationsschritte, die Sie durchführen können.
 
-Helm wartet nicht, bis alle Resourcen laufen. Viele Charts brauchen Docker Images
+Helm installiert Ressourcen in der folgenden Reihenfolge:
+
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
+
+Helm wartet nicht, bis alle Ressourcen laufen. Viele Charts benötigen Docker Images
 mit einer Grösse von 600 MB und brauchen länger, um im Cluster installiert zu
 werden.
 
@@ -267,6 +308,23 @@ name:
   - c
 ```
 
+Bestimmte Namen/Schlüssel können auf `null` oder ein leeres Array `[]` gesetzt werden. Zum Beispiel übersetzt `--set name=[],a=null`
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+in
+
+```yaml
+name: []
+a: null
+```
+
 Mit Helm 2.5.0 ist es möglich, Listenwerte in einer Arrayindex-Syntax
 anzugeben, Zum Beispiel `--set servers[0].port=80` wird:
 
@@ -291,8 +349,8 @@ Backslash zum Verstecken des Zeichens benutzen: `--set name=value1\,value2` wird
 name: "value1,value2"
 ```
 
-Genauso können Sie Punktsequenzen verstecken, die möglicherweise beim Parsen von Charts
-in Annotations, Labels und Node Selectors mit der `toYaml` Funktion problematisc
+Genauso können Sie Punktsequenzen maskieren, die möglicherweise beim Parsen von Charts
+in Annotations, Labels und Node Selectors mit der `toYaml` Funktion problematisch
 werden könnten. Die Syntax für `--set nodeSelector."kubernetes\.io/role"=master`
 wird:
 
@@ -413,7 +471,7 @@ Wenn Sie diese Löscheinträge behalten wollen, benutzen Sie beim Deinstallieren
 zeigen, die mit der Option `--keep-history` gelöscht wurden.
 
 Die Option `helm list --all` zeigt alle Versionseinträge, die Helm aufgehoben hat,
-incl. fehlerhafte und gelöschte Werte (wenn `--keep-history` verwendet wurde):
+inkl. fehlerhafte und gelöschte Einträge (wenn `--keep-history` verwendet wurde):
 
 ```console
 $  helm list --all
@@ -489,8 +547,8 @@ die Dokumentation für [Helm Chart Repositories](/topics/chart_repository.md) f�
 
 ## Zusammenfassung
 
-Dieses Kapitel behandelte die Verwendung des Basismodels vom `helm` Programm,
-incl. Suchen, Installieren, Aktualisieren und Uninstallieren. Es wurden auch
+Dieses Kapitel behandelte die grundlegende Verwendung des `helm` Clients,
+inkl. Suchen, Installieren, Aktualisieren und Deinstallieren. Es wurden auch
 hilfreiche Zusatzkommandos besprochen wie `helm status`, `helm get` und `helm repo`.
 
 Für mehr Informationen zu diesen Kommandos, schauen Sie in die eingebaute Hilfe:

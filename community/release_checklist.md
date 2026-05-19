@@ -1,7 +1,6 @@
 ---
 title: Maintainer Release Checklist
 description: Checklist for maintainers when releasing the next version of Helm.
-sidebar_position: 3
 ---
 
 # A Maintainer's Guide to Releasing Helm
@@ -380,7 +379,7 @@ Download Helm X.Y. The common platform binaries are here:
 - [Linux s390x](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz) ([checksum](https://get.helm.sh/helm-vX.Y.Z-linux-s390x.tar.gz.sha256sum) / CHECKSUM_VAL)
 - [Windows amd64](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip) ([checksum](https://get.helm.sh/helm-vX.Y.Z-windows-amd64.zip.sha256sum) / CHECKSUM_VAL)
 
-The [Quickstart Guide](/intro/quickstart.md) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](/intro/install.mdx). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3) on any system with `bash`.
+The [Quickstart Guide](/intro/quickstart.md) will get you going from there. For **upgrade instructions** or detailed installation notes, check the [install guide](/intro/install.mdx). You can also use a [script to install](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4) on any system with `bash`.
 
 ## What's Next
 

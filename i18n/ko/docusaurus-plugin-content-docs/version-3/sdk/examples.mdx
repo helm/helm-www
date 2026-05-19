@@ -1,0 +1,58 @@
+---
+title: 예제
+description: Helm SDK의 다양한 기능 예제
+sidebar_position: 2
+---
+import Install from './_install.mdx'
+import List from './_list.mdx'
+import Main from './_main.mdx'
+import Pull from './_pull.mdx'
+import Uninstall from './_uninstall.mdx'
+import Upgrade from './_upgrade.mdx'
+
+이 문서에서는 Helm SDK 사용 예제를 다룬다.
+다양한 SDK 기능을 문서화하기 위한 것이다.
+
+마지막 예제는 `main.go` 드라이버([링크](#driver))를 보여준다. 이 드라이버는 아래 작업들을 실행하며 필요한 헬퍼 함수들을 포함한다.
+
+예제 코드는 [helm/helm-www/sdkexamples/](https://github.com/helm/helm-www/tree/main/sdkexamples) 디렉토리에 있다.
+완전히 동작하는 코드이다.
+
+## 작업 {#actions}
+
+
+### Install 작업 {#install-action}
+
+이 예제는 지정된 차트/릴리스를 주어진 버전과 values로 설치한다:
+
+<Install />
+
+### Upgrade 작업 {#upgrade-action}
+
+이 예제는 지정된 릴리스를 주어진 차트, 버전, values로 업그레이드한다:
+
+<Upgrade />
+
+### Uninstall 작업 {#uninstall-action}
+
+이 예제는 지정된 릴리스를 삭제한다
+
+<Uninstall />
+
+### List 작업 {#list-action}
+
+이 예제는 현재 설정된 네임스페이스의 모든 릴리스된 차트를 나열한다
+
+<List />
+
+### Pull 작업 {#pull-action}
+
+이 예제는 OCI 저장소에서 차트를 가져온다
+
+<Pull />
+
+## 드라이버 {#driver}
+
+여기서 드라이버는 Helm SDK 작업이 동작하는 데 필요한 보조 함수들을 보여준다. 그리고 위의 예제들을 실제로 실행하여 OCI 저장소에서 'podinfo' 차트를 가져오고, 설치하고, 업데이트하고, 삭제한다.
+
+<Main />

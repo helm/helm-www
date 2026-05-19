@@ -8,7 +8,7 @@ sidebar_position: 2
 *Google Cloud Storage (GCS) 버킷에 맞게 작성되었다.*
 
 ## 전제 조건
-* [gsutil](https://cloud.google.com/storage/docs/gsutil) 툴을 설치해야 한다. *gsutill rsync 기능이 필요하다.*
+* [gsutil](https://cloud.google.com/storage/docs/gsutil) 툴을 설치해야 한다. *gsutil rsync 기능이 필요하다.*
 * 헬름 바이너리에 대한 접근 권한이 있어야 한다.
 * _선택 사항: 실수로 파일을 삭제할 경우를 대비하여 GCS 버킷에 [오브젝트 버전 관리](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page)를 설정하는 것을 추천한다._
 
@@ -29,7 +29,7 @@ $ mv alpine-0.1.0.tgz fantastic-charts/
 $ helm repo index fantastic-charts/ --url https://fantastic-charts.storage.googleapis.com
 ```
 그러면 업데이트된 index.yaml 파일이 생성되고 
-`fantastic-charts/` 디렉토리에 위치하게 된다.
+`fantastic-charts/` 디렉터리에 위치하게 된다.
 
 ## 로컬 및 원격 차트 리포지토리 동기화
 `scripts/sync-repo.sh` 명령어에 로컬 디렉터리명과 
@@ -58,7 +58,7 @@ Congratulations your remote chart repository now matches the contents of fantast
 ```
 ## 차트 리포지토리 업데이트
 필요시 차트 리포지토리 컨텐츠의 로컬 복사본을 따로 보관하거나
-`gsutil rsync` 를 사용하여 원격 차트 리파지토리 컨텐츠를 로컬 디렉토리에 
+`gsutil rsync` 를 사용하여 원격 차트 리포지토리 컨텐츠를 로컬 디렉터리에 
 복사해 둘 수 있다.
 
 예제:

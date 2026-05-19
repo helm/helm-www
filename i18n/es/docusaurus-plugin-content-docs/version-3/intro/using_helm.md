@@ -1,6 +1,6 @@
 ---
 title: Uso de Helm
-description: Explica los conceptos básicos de Helm..
+description: Explica los conceptos básicos de Helm.
 sidebar_position: 3
 ---
 
@@ -60,6 +60,8 @@ https://hub.helm.sh/charts/presslabs/wordpress-...  v0.7.1        v0.7.1      A 
 Lo anterior busca todos los charts de `wordpress` en Artifact Hub.
 
 Sin filtro, `helm search hub` muestra todos los charts disponibles.
+
+`helm search hub` muestra la URL de la ubicación en [artifacthub.io](https://artifacthub.io/) pero no la URL real del repositorio de Helm. `helm search hub --list-repo-url` muestra la URL real del repositorio de Helm, lo cual es útil cuando desea agregar un nuevo repositorio: `helm repo add [NAME] [URL]`.
 
 Usando `helm search repo`, puede encontrar los nombres de los charts en los
 repositorios que ya has agregado:
@@ -136,6 +138,45 @@ use `--generate-name`).
 Durante la instalación, el cliente `helm` imprimirá información útil sobre qué
 recursos se crearon, cuál es el estado del release y también si hay pasos de
 configuración adicionales que puede o debe tomar.
+
+Helm instala los recursos en el siguiente orden:
+
+- Namespace
+- NetworkPolicy
+- ResourceQuota
+- LimitRange
+- PodSecurityPolicy
+- PodDisruptionBudget
+- ServiceAccount
+- Secret
+- SecretList
+- ConfigMap
+- StorageClass
+- PersistentVolume
+- PersistentVolumeClaim
+- CustomResourceDefinition
+- ClusterRole
+- ClusterRoleList
+- ClusterRoleBinding
+- ClusterRoleBindingList
+- Role
+- RoleList
+- RoleBinding
+- RoleBindingList
+- Service
+- DaemonSet
+- Pod
+- ReplicationController
+- ReplicaSet
+- Deployment
+- HorizontalPodAutoscaler
+- StatefulSet
+- Job
+- CronJob
+- Ingress
+- APIService
+- MutatingWebhookConfiguration
+- ValidatingWebhookConfiguration
 
 Helm no espera hasta que todos los recursos se estén ejecutando antes de salir.
 Muchos charts requieren imágenes de Docker que tienen un tamaño superior a 600M
@@ -229,7 +270,7 @@ Hay dos formas de pasar los datos de configuración durante la instalación:
 
 Si se utilizan ambos, los valores pasados en `--set` se fusionan con los pasados
 en `--values` con mayor precedencia. Las sobreescrituras especificadas con `--set`
-se guardan en un ConfigMap. Los valores que han sido pasados con `--set` se pueden
+se guardan en un Secret. Los valores que han sido pasados con `--set` se pueden
 ver para un release determinado con `helm get values <release-name>`. Los valores
 que han sido pasados con `--set` se pueden borrar ejecutando `helm upgrade`
 especificando `--reset-values`.
@@ -259,7 +300,6 @@ outer:
   inner: value
 ```
 
-Las lista pueden ser expresadas
 Las listas se pueden expresar encerrando valores en `{` y `}`. Por ejemplo,
 `--set name={a, b, c}` se traduce a:
 
@@ -268,6 +308,24 @@ name:
   - a
   - b
   - c
+```
+
+Ciertos nombres/claves se pueden establecer como `null` o como un array vacío `[]`.
+Por ejemplo, `--set name=[],a=null` traduce
+
+```yaml
+name:
+  - a
+  - b
+  - c
+a: b
+```
+
+a
+
+```yaml
+name: []
+a: null
 ```
 
 A partir de Helm 2.5.0, es posible acceder a los elementos de la lista utilizando
@@ -297,7 +355,7 @@ name: "value1,value2"
 ```
 
 De manera similar, también puede escapar de las secuencias de puntos, lo que
-puede resultar útil cuando los chats usan la función `toYaml` para analizar
+puede resultar útil cuando los charts usan la función `toYaml` para analizar
 anotaciones, etiquetas y selectores de nodos. La sintaxis para
 `--set nodeSelector."kubernetes\.io/role"=master` se convertirá en:
 
