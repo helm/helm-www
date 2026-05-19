@@ -92,6 +92,15 @@ The existing flags remain, but emit a deprecated warning:
 
 Update any automation that uses these renamed CLI flags.
 
+#### CLI Flags deprecated
+
+The following flags for `helm template` are deprecated and will be removed in Helm 5:
+
+- `--hide-notes`
+- `--render-subchart-notes`
+
+These flags have no effect because template output never includes notes. They remain in Helm 4 for backwards compatibility but are hidden from help output.
+
 ## Upgrading to Helm 4
 
 While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. To that end, before upgrading, we've added some tips below for specific things to look out for when testing Helm 4 with your existing workflows. As always, we welcome all feedback about what works, what breaks, and what could be better.

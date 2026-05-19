@@ -22,6 +22,11 @@ Our static site generator, Docusaurus, has various built-in Markdown features th
 
 For more information about how to format these and other elements, see [Markdown Features](https://docusaurus.io/docs/markdown-features) in the Docusaurus documentation.
 
+## Using Markdown and MDX
+
+This site uses Docusaurus with `markdown.format: "detect"`. Files with the `.md` extension are parsed as CommonMark, but `.mdx`
+files are parsed as MDX and require escaping characters like `{` and `<` (e.g., `\{`, `\<`). See the Docusaurus guide on [Markdown and JSX interoperability](https://docusaurus.io/docs/markdown-features/react#markdown-and-jsx-interoperability) for details.
+
 ## Word Choice, Tone, and Voice
 
 - Use active voice
