@@ -31,59 +31,62 @@ or look at [the official releases page](https://github.com/helm/helm/releases).
 
 For more details, or for other options, see [the installation guide](/intro/install.mdx).
 
-## Initialize a Helm Chart Repository
+## Find Charts to Install
 
-Once you have Helm ready, you can add a chart repository. Check [Artifact
-Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart
-repositories.
+[Artifact Hub](https://artifacthub.io/packages/search?kind=0) is the best place to discover Helm charts. It aggregates charts from hundreds of repositories and provides search, metadata, and security information.
+
+Popular chart sources include:
+
+- **OCI registries**: Many organizations publish charts to container registries like GitHub Container Registry, Docker Hub, or cloud provider registries. You can install these directly with the `oci://` prefix.
+- **Chart repositories**: Traditional Helm repositories can be added with `helm repo add` and searched with `helm search repo`.
+
+To search Artifact Hub from the command line:
 
 ```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm search hub podinfo
+URL                                                 CHART VERSION  APP VERSION  DESCRIPTION
+https://artifacthub.io/packages/helm/podinfo/po...  6.11.2         6.11.2       Podinfo Helm chart for Kubernetes
 ```
 
-Once this is installed, you will be able to list the charts you can install:
+## Install a Chart from an OCI Registry
+
+Helm can install charts directly from OCI-compliant container registries. This approach doesn't require adding a repository first.
+
+To install a chart from an OCI registry, use the `oci://` prefix:
 
 ```console
-$ helm search repo bitnami
-NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
-bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
-bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
-bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
-bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
-# ... and many more
-```
-
-## Install an Example Chart
-
-To install a chart, you can run the `helm install` command. Helm has several
-ways to find and install a chart, but the easiest is to use the `bitnami`
-charts.
-
-```console
-$ helm repo update              # Make sure we get the latest list of charts
-$ helm install bitnami/mysql --generate-name
-NAME: mysql-1612624192
-LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+$ helm install my-podinfo oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
+Pulled: ghcr.io/stefanprodan/charts/podinfo:6.11.2
+NAME: my-podinfo
+LAST DEPLOYED: Sat May  3 12:05:00 2026
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
 NOTES: ...
 ```
 
-In the example above, the `bitnami/mysql` chart was released, and the name of
-our new release is `mysql-1612624192`.
+To verify the installation works, forward the service port and test the endpoint:
 
-You get a simple idea of the features of this MySQL chart by running `helm show
-chart bitnami/mysql`. Or you could run `helm show all bitnami/mysql` to get all
-information about the chart.
+```console
+$ kubectl port-forward svc/my-podinfo 9898:9898 &
+$ curl http://localhost:9898
+{
+  "hostname": "podinfo-6f89b4c6b5-xvwtb",
+  "version": "6.7.1",
+  "message": "greetings from podinfo v6.7.1",
+  "goos": "linux",
+  "goarch": "amd64",
+  ...
+}
+```
 
-Whenever you install a chart, a new release is created. So one chart can be
-installed multiple times into the same cluster. And each can be independently
-managed and upgraded.
+You can preview what a chart contains before installing:
 
-The `helm install` command is a very powerful command with many capabilities. To
-learn more about it, check out the [Using Helm Guide](/intro/using_helm.mdx)
+```console
+$ helm show chart oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
+```
+
+For more details on working with OCI registries, see [Use OCI-based registries](/docs/topics/registries).
 
 ## Learn About Releases
 
@@ -91,8 +94,8 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
-mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
+NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION
+my-podinfo 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	podinfo-6.11.2	6.7.1
 ```
 
 The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
@@ -102,18 +105,18 @@ The `helm list` (or `helm ls`) function will show you a list of all deployed rel
 To uninstall a release, use the `helm uninstall` command:
 
 ```console
-$ helm uninstall mysql-1612624192
-release "mysql-1612624192" uninstalled
+$ helm uninstall my-podinfo
+release "my-podinfo" uninstalled
 ```
 
-This will uninstall `mysql-1612624192` from Kubernetes, which will remove all
+This will uninstall `my-podinfo` from Kubernetes, which will remove all
 resources associated with the release as well as the release history.
 
 If the flag `--keep-history` is provided, release history will be kept. You will
 be able to request information about that release:
 
 ```console
-$ helm status mysql-1612624192
+$ helm status my-podinfo
 Status: UNINSTALLED
 ...
 ```
