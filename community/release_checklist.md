@@ -457,14 +457,18 @@ release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 The [Helm website docs section](https://helm.sh/docs) lists the current Helm
 version in the docs version dropdown and must be updated for every release.
 From a checkout of the [helm-www repository](https://github.com/helm/helm-www),
-run:
+run the script matching the version being released:
 
 ```shell
+# For a Helm 4 release
 node scripts/v4/bump-version.mjs
+
+# For a Helm 3 release
+node scripts/v3/bump-version.mjs
 ```
 
-This updates the version label in `docusaurus.config.js` and all locale
-translation files, regenerates the CLI reference under `docs/helm/`, and
+Both scripts update the version label in `docusaurus.config.js` and all locale
+translation files, and regenerate the CLI reference docs. The v4 script also
 regenerates `docs/changelog.md`. Review the diff, then open a pull request.
 
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
