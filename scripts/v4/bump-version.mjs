@@ -47,13 +47,16 @@ Examples:
 
 async function getHelmLatest() {
   const response = await fetch(
-    "https://api.github.com/repos/helm/helm/releases/latest",
+    "https://api.github.com/repos/helm/helm/releases?per_page=20",
     { headers: { Accept: "application/vnd.github+json" } }
   );
   if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
-  const data = await response.json();
-  if (!data.tag_name) throw new Error("tag_name missing from GitHub API response");
-  return data.tag_name;
+  const releases = await response.json();
+  const release = releases.find(
+    (r) => !r.prerelease && !r.draft && r.tag_name.startsWith("v4.")
+  );
+  if (!release) throw new Error("No stable v4 release found in the last 20 releases");
+  return release.tag_name;
 }
 
 function parseChangelogBase() {
