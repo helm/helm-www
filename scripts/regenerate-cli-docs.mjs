@@ -20,17 +20,18 @@ function getMajorVersion(version) {
 }
 
 /**
- * Get latest Helm version from get.helm.sh script
+ * Get latest Helm version from the GitHub releases API
  */
 async function getHelmLatest() {
   try {
-    const response = await fetch('https://get.helm.sh');
-    const text = await response.text();
-    const match = text.match(/v\d+\.\d+\.\d+/);
-    if (match) {
-      return match[0];
-    }
-    throw new Error('No version found in get.helm.sh script');
+    const response = await fetch(
+      'https://api.github.com/repos/helm/helm/releases/latest',
+      { headers: { Accept: 'application/vnd.github+json' } }
+    );
+    if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
+    const data = await response.json();
+    if (!data.tag_name) throw new Error('tag_name missing from GitHub API response');
+    return data.tag_name;
   } catch (error) {
     console.error('Error fetching latest Helm version:', error.message);
     process.exit(1);

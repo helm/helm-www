@@ -26,6 +26,7 @@
     "docusaurus-plugin-remote-content": "^4.0.0",
     "js-yaml": "^4.1.1",
     "ora": "^9.0.0",
+    "p-limit": "^7.3.0",
     "prism-react-renderer": "^2.3.0",
     "raw-loader": "^4.0.2",
     "react": "^19.0.0",
@@ -51,6 +52,7 @@
       "last 5 safari version"
     ]
   },
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=20.0"
   },
