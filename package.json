@@ -35,10 +35,15 @@
     "simple-git": "^3.36.0"
   },
   "devDependencies": {
+    "@algolia/client-search": "^5.0.0",
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.10.21",
-    "jsdom": "^27.0.1"
+    "jsdom": "^27.0.1",
+    "postcss": "^8.4",
+    "search-insights": "^2.0.0",
+    "webpack": "^5.0.0"
   },
   "browserslist": {
     "production": [
