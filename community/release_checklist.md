@@ -454,16 +454,22 @@ release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 
 ## 10. Update Docs
 
-The [Helm website docs section](https://helm.sh/docs) lists the Helm versions
-for the docs. Major, minor, and patch versions need to be updated on the site.
-The date for the next minor release is also published on the site and must be
-updated.
-To do that create a pull request against the [helm-www
-repository](https://github.com/helm/helm-www). In the `config.toml` file find
-the proper `params.versions` section and update the Helm version, like in this
-example of [updating the current
-version](https://github.com/helm/helm-www/pull/676/files).  In the same
-`config.toml` file, update the `params.nextversion` section.
+The [Helm website docs section](https://helm.sh/docs) lists the current Helm
+version in the docs version dropdown and must be updated for every release.
+From a checkout of the [helm-www repository](https://github.com/helm/helm-www),
+run the script matching the version being released:
+
+```shell
+# For a Helm 4 release
+node scripts/v4/bump-version.mjs
+
+# For a Helm 3 release
+node scripts/v3/bump-version.mjs
+```
+
+Both scripts update the version label in `docusaurus.config.js` and all locale
+translation files, and regenerate the CLI reference docs. The v4 script also
+regenerates `docs/changelog.md`. Review the diff, then open a pull request.
 
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
