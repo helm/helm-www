@@ -128,7 +128,6 @@ For example:
 helm list -v 6
 ```
 
-<<<<<<< HEAD
 ### Debugging HTTP requests when pulling charts
 
 To troubleshoot HTTP issues with `helm pull`, use the `--debug` flag. This outputs the URL being fetched and the response status, helping you diagnose connectivity problems, authentication failures, or incorrect repository URLs.
@@ -139,8 +138,6 @@ For example:
 $ helm pull myrepo/mychart --debug
 ```
 
-||||||| 05ef2deb
-=======
 ### Rollback fails with "no [Resource] with the name '[name]' found"
 
 When running `helm rollback`, you may see an error like:
@@ -162,7 +159,6 @@ In older Helm versions, the rollback fails because Helm expects the resource met
 
 This issue is fixed in newer Helm 3 releases. Helm now detects when a resource exists on the cluster but is missing from the original release metadata, and uses the current cluster state as the baseline for the rollback.
 
->>>>>>> main
 ### Tiller installations stopped working and access is denied
 
 Helm releases used to be available from <https://storage.googleapis.com/kubernetes-helm/>. As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
