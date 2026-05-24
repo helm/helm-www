@@ -26,18 +26,24 @@
     "docusaurus-plugin-remote-content": "^4.0.0",
     "js-yaml": "^4.1.1",
     "ora": "^9.0.0",
+    "p-limit": "^7.3.0",
     "prism-react-renderer": "^2.3.0",
     "raw-loader": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "simple-git": "^3.32.3"
+    "simple-git": "^3.36.0"
   },
   "devDependencies": {
+    "@algolia/client-search": "^5.0.0",
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.10.21",
-    "jsdom": "^27.0.1"
+    "jsdom": "^27.0.1",
+    "postcss": "^8.4",
+    "search-insights": "^2.0.0",
+    "webpack": "^5.0.0"
   },
   "browserslist": {
     "production": [
@@ -51,6 +57,7 @@
       "last 5 safari version"
     ]
   },
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=20.0"
   },
