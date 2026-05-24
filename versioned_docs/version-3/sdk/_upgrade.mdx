@@ -28,6 +28,7 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 	registryClient, err := newRegistryClientTLS(
 		settings,
 		logger,
+		nil,
 		upgradeClient.CertFile,
 		upgradeClient.KeyFile,
 		upgradeClient.CaFile,

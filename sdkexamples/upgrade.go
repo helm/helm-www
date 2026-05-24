@@ -32,7 +32,8 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 		upgradeClient.KeyFile,
 		upgradeClient.CaFile,
 		upgradeClient.InsecureSkipTLSVerify,
-		upgradeClient.PlainHTTP)
+		upgradeClient.PlainHTTP,
+		nil)
 	if err != nil {
 		return fmt.Errorf("missing registry client: %w", err)
 	}
