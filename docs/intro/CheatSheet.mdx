@@ -60,7 +60,7 @@ helm install <name> <chart> --set key1=val1,key2=val2 # Set values on the comman
 helm install <name> <chart> --values <yaml-file/url>  # Install the chart with your specified values
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
 helm install <name> <chart> --verify                  # Verify the package before using it
-helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
+helm install <name> <chart> --dependency-update       # update dependencies if they are missing or don't satisfy version constraints
 helm uninstall <name>                                 # Uninstalls a release from the current (default) namespace
 helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
@@ -70,7 +70,7 @@ helm uninstall <release-name> --namespace <namespace> # Uninstalls a release fro
 ```bash
 helm upgrade <release> <chart>                            # Upgrade a release
 helm upgrade <release> <chart> --rollback-on-failure      # If set, upgrade process rolls back changes made in case of failed upgrade.
-helm upgrade <release> <chart> --dependency-update        # update dependencies if they are missing before installing the chart
+helm upgrade <release> <chart> --dependency-update        # update dependencies if they are missing or don't satisfy version constraints
 helm upgrade <release> <chart> --version <version_number> # specify a version constraint for the chart version to use
 helm upgrade <release> <chart> --values                   # specify values in a YAML file or a URL (can specify multiple)
 helm upgrade <release> <chart> --set key1=val1,key2=val2  # Set values on the command line (can specify multiple or separate valuese)
