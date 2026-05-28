@@ -249,7 +249,7 @@ Notez que l'indentation de `app_version` est incorrecte aux deux endroits. Pourq
 
 Pour contourner ce cas, Helm fournit une alternative à `template` qui importera le contenu d'un template dans le pipeline actuel où il peut être passé à d'autres fonctions dans le pipeline.
 
-Voici l'exemple ci-dessus, corrigé pour utiliser `indent` afin d'indenter correctement le template `mychart.app` :
+Voici l'exemple ci-dessus, corrigé pour utiliser `nindent` afin d'indenter correctement le template `mychart.app` :
 
 ```yaml
 apiVersion: v1
@@ -257,13 +257,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Maintenant le YAML produit est correctement indenté pour chaque section :
