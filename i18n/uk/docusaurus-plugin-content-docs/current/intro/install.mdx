@@ -6,11 +6,11 @@ sidebar_position: 2
 
 Цей посібник показує, як встановити Helm CLI. Helm можна встановити або з вихідного коду, або з попередньо скомпільованих бінарних випусків.
 
-## Від проєкту Helm {#from-the-helm-project}
+## Від проєкту Helm {/* #from-the-helm-project */}
 
 Проєкт Helm пропонує два способи завантаження та встановлення Helm. Це офіційні методи отримання випусків Helm. Крім того, спільнота Helm пропонує методи встановлення Helm за допомогою різних менеджерів пакетів. Інформацію про встановлення за допомогою цих методів можна знайти нижче за офіційними методами.
 
-### З бінарних випусків {#from-the-binary-releases}
+### З бінарних випусків {/* #from-the-binary-releases */}
 
 Кожен [випуск](https://github.com/helm/helm/releases) Helm надає бінарні випуски для різних операційних систем. Ці бінарні версії можна завантажити та встановити вручну.
 
@@ -22,7 +22,7 @@ sidebar_position: 2
 
 **Примітка:** Автоматизовані тести Helm виконуються лише для Linux AMD64 під час GitHub Actions збірок та випусків. Тестування інших операційних систем є відповідальністю спільноти, якій потрібен Helm для цієї операційної системи.
 
-### Зі скрипту {#from-script}
+### Зі скрипту {/* #from-script */}
 
 Helm має скрипт встановлення, який автоматично завантажує останню версію Helm і [встановлює її локально](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4).
 
@@ -36,11 +36,11 @@ $ ./get_helm.sh
 
 Так, ви можете виконати команду `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash`, якщо хочете ризикнути.
 
-## Через менеджери пакетів {#through-package-managers}
+## Через менеджери пакетів {/* #through-package-managers */}
 
 Спільнота Helm надає можливість встановлювати Helm через менеджери пакетів операційної системи. Вони не підтримуються проєктом Helm і не вважаються надійними постачальниками.
 
-### За допомогою Homebrew (macOS) {#from-homebrew-macos}
+### За допомогою Homebrew (macOS) {/* #from-homebrew-macos */}
 
 Члени спільноти Helm зробили свій внесок у створення формули Helm для Homebrew. Ця формула, як правило, є актуальною.
 
@@ -50,7 +50,7 @@ brew install helm
 
 (Примітка: Існує також формула для emacs-helm, який є іншим проєктом.)
 
-### За допомогою Chocolatey (Windows) {#from-chocolatey-windows}
+### За допомогою Chocolatey (Windows) {/* #from-chocolatey-windows */}
 
 Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://chocolatey.org/packages/kubernetes-helm) для [Chocolatey](https://chocolatey.org/). Цей пакет, як правило, є актуальним.
 
@@ -58,7 +58,7 @@ brew install helm
 choco install kubernetes-helm
 ```
 
-### За допомогою Scoop (Windows) {#from-scoop-windows}
+### За допомогою Scoop (Windows) {/* #from-scoop-windows */}
 
 Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) для [Scoop](https://scoop.sh). Цей пакет, як правило, є актуальним.
 
@@ -66,7 +66,7 @@ choco install kubernetes-helm
 scoop install helm
 ```
 
-### За допомогою Winget (Windows) {#from-winget-windows}
+### За допомогою Winget (Windows) {/* #from-winget-windows */}
 
 Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) для [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Цей пакет, як правило, є актуальним.
 
@@ -74,7 +74,7 @@ scoop install helm
 winget install Helm.Helm
 ```
 
-### За допомогою Apt (Debian/Ubuntu) {#from-apt-debianubuntu}
+### За допомогою Apt (Debian/Ubuntu) {/* #from-apt-debianubuntu */}
 
 Члени спільноти Helm зробили свій внесок у створення пакета Apt для Debian/Ubuntu. Цей пакет, як правило, є актуальним. Дякуємо [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) за підтримку репозиторію.
 
@@ -86,7 +86,7 @@ sudo apt-get update
 sudo apt-get install helm
 ```
 
-### За допомогою dnf/yum (fedora) {#from-dnfyum-fedora}
+### За допомогою dnf/yum (fedora) {/* #from-dnfyum-fedora */}
 
 З Fedora 35 Helm доступний у офіційному репозиторії. Ви можете встановити Helm, виконавши:
 
@@ -94,7 +94,7 @@ sudo apt-get install helm
 sudo dnf install helm
 ```
 
-### За допомогою Snap {#from-snap}
+### За допомогою Snap {/* #from-snap */}
 
 Спільнота [Snapcrafters](https://github.com/snapcrafters) підтримує версію Snap пакета [Helm](https://snapcraft.io/helm):
 
@@ -102,7 +102,7 @@ sudo dnf install helm
 sudo snap install helm --classic
 ```
 
-### За допомогою pkg (FreeBSD) {#from-pkg-freebsd}
+### За допомогою pkg (FreeBSD) {/* #from-pkg-freebsd */}
 
 Члени спільноти FreeBSD зробили свій внесок у створення пакета [Helm](https://www.freshports.org/sysutils/helm) для [FreeBSD Ports Collection](https://man.freebsd.org/ports). Цей пакет, як правило, є актуальним.
 
@@ -110,11 +110,11 @@ sudo snap install helm --classic
 pkg install helm
 ```
 
-### Збірки для розробки {#development-builds}
+### Збірки для розробки {/* #development-builds */}
 
 Окрім випусків, ви можете завантажити або встановити зліпки Helm для розробки.
 
-### Збірки Canary {#from-canary-builds}
+### Збірки Canary {/* #from-canary-builds */}
 
 «Canary» — це версії програмного забезпечення Helm, створені на основі останньої гілки «main». Вони не є офіційними релізами і можуть бути нестабільними. Однак вони дають можливість протестувати найновіші функції.
 
@@ -124,7 +124,7 @@ pkg install helm
 - [macOS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
 - [Experimental Windows AMD64](https://get.helm.sh/helm-canary-windows-amd64.zip)
 
-### Збірки з сирців (Linux, macOS) {#from-source-linux-macos}
+### Збірки з сирців (Linux, macOS) {/* #from-source-linux-macos */}
 
 Створення Helm з сирців вимагає трохи більше зусиль, але це найкращий спосіб, якщо ви хочете протестувати останню версію Helm.
 
@@ -138,7 +138,7 @@ $ make
 
 За необхідності, буде отримано залежності та збережено їх у кеші, а також перевірено конфігурацію. Потім буде скомпільовано `helm` та розміщено його у `bin/helm`.
 
-## Підсумки {#conclusion}
+## Підсумки {/* #conclusion */}
 
 У більшості випадків встановлення є таким же простим, як отримання готового бінарного файлу `helm`. Цей документ охоплює додаткові випадки для тих, хто хоче робити складніші речі з Helm.
 

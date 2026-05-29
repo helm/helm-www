@@ -149,7 +149,7 @@ kind: ConfigMap
 metadata:
   name: conf
 data:
-{{ (.Files.Glob "foo/*").AsConfig | indent 2 }}
+  {{- (.Files.Glob "foo/*").AsConfig | nindent 2 }}
 ---
 apiVersion: v1
 kind: Secret
@@ -157,7 +157,7 @@ metadata:
   name: very-secret
 type: Opaque
 data:
-{{ (.Files.Glob "bar/*").AsSecrets | indent 2 }}
+  {{- (.Files.Glob "bar/*").AsSecrets | nindent 2 }}
 ```
 
 ## 编码
