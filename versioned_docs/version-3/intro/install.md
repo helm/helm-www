@@ -102,13 +102,14 @@ winget install Helm.Helm
 Members of the Helm community have contributed an Apt package for Debian/Ubuntu. This package is
 generally up to date. Thanks to [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) for hosting the repo.
 
-```console
+```shell
 HELM_BUILDKITE_APT_KEY_ID="DDF78C3E6EBB2D2CC223C95C62BA89D07698DBC6"
 
 sudo apt-get install curl gpg apt-transport-https --yes
 
 curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey > "${TMPDIR:-/tmp}/helm.gpg"
 
+# Ensure that the key ID matches to prevent a repository compromise from establishing an attacker controlled key
 if [ "$(gpg --show-keys --with-colons "${TMPDIR:-/tmp}/helm.gpg" | awk -F: '$1 == "fpr" {print $10}' | head -n 1)" != "${HELM_BUILDKITE_APT_KEY_ID}" ]; then echo "ERROR: Invalid Helm APT key ID"; exit 1; fi
 
 gpg --dearmor "${TMPDIR:-/tmp}/helm.gpg" | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
