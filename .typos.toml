@@ -27,8 +27,6 @@ fpr = "fpr"  # GnuPG abbreviation for 'fingerprint'
 # German words in translations
 Paket = "Paket"  # German for "package"
 
-
-
 [files]
 extend-exclude = [
   # Internationalization files (Docusaurus i18n directory)
