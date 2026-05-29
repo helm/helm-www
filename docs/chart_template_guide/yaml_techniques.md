@@ -355,7 +355,8 @@ Because Helm and Kubernetes often read, modify, and then rewrite YAML files, the
 anchors will be lost.
 
 :::info
-Reaching for anchors as a DRY mechanism? For sharing snippets across charts,
-prefer [library charts](/topics/library_charts.md) — they are designed for
-reuse and aren't affected by the round-trip pitfall described above.
+For sharing snippets across charts,
+use [library charts](/topics/library_charts.md) instead of YAML anchors.
+Library charts are designed for reuse,
+and aren't subject to the round-trip pitfall described above.
 :::
