@@ -1,17 +1,17 @@
 ---
-title: "Security Notice: Statement Regarding Former Helm APT Mirror Domain `baltocdn.com`"
+title: "Security Notice: Former Helm APT Mirror Domain `baltocdn.com` Statement"
 slug: "security-notice-baltocdn"
 authors: ["georgejenkins", "andrewblock"]
 date: "2026-05-29"
 ---
 
-The Helm Security Team has received third-party reports that the ownership on the former community-maintained Debian/Ubuntu APT mirror domain, [baltocdn.com](http://baltocdn.com), has changed after `baltocdn.com`'s original registration lapsed.
+The Helm Security Team has received third-party reports that the ownership on the former community-maintained Debian/Ubuntu APT mirror domain, `baltocdn.com`, has changed after `baltocdn.com`'s original registration lapsed.
 And as a result, the new owners may be using the domain to serve malicious content.
+
+<!-- truncate -->
 
 We are publishing this notice to raise awareness for Helm users who may still have the configuration of their APT package manager referencing `baltocdn.com`.
 `baltocdn.com` was previously used as the APT mirror for Helm distribution for many years, but it is no longer a Helm APT mirror, and must not be used to manage Helm.
-
-<!-- truncate -->
 
 ## Summary
 
@@ -24,7 +24,7 @@ At this time, the Helm Security Team has received third-party reports that the d
 
 ## Affected users
 
-You may be affected if any Debian or Ubuntu based systems, CI jobs, container images, installation scripts, bootstrap scripts, configuration management templates, or internal documentation still reference:
+You may be affected if any Debian or Ubuntu based systems, APT repositories, CI jobs, container images, installation scripts, bootstrap scripts, configuration management templates, or internal documentation still reference:
 
 `baltocdn.com`
 
