@@ -20,26 +20,13 @@ should be made to respect the announced date.  Furthermore, when starting
 the release process, the date for the next release should have been selected
 as it will be used in the release process.
 
-These directions will cover initial configuration followed by the release
-process for three different kinds of releases:
+This guide covers two independent workflows:
 
-* Major Releases - released less frequently - have breaking changes
-* Minor Releases - released every 3 to 4 months - no breaking changes
-* Patch Releases - released monthly - do not require all steps in this guide
+* [**Minor/Major Release Checklist**](#minormajor-release-checklist) — for new feature releases (every 3 to 4 months) or breaking changes
+* [**Patch Release Checklist**](#patch-release-checklist) — for cherry-picked bug fixes (released monthly)
 
-[Initial Configuration](#initial-configuration)
-
-1. [Create the Release Branch](#1-create-the-release-branch)
-2. [Major/Minor releases: Change the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-git)
-3. [Major/Minor releases: Commit and Push the Release Branch](#3-majorminor-releases-commit-and-push-the-release-branch)
-4. [Major/Minor releases: Create a Release Candidate](#4-majorminor-releases-create-a-release-candidate)
-5. [Major/Minor releases: Iterate on Successive Release Candidates](#5-majorminor-releases-iterate-on-successive-release-candidates)
-6. [Finalize the Release](#6-finalize-the-release)
-7. [Write the Release Notes](#7-write-the-release-notes)
-8. [PGP Sign the downloads](#8-pgp-sign-the-downloads)
-9. [Publish Release](#9-publish-release)
-10. [Update Docs](#10-update-docs)
-11. [Tell the Community](#11-tell-the-community)
+Both workflows share the [Initial Configuration](#initial-configuration) and
+[Post-Release](#post-release) sections.
 
 ## Initial Configuration
 
@@ -58,26 +45,6 @@ remote](https://docs.github.com/en/github/collaborating-with-issues-and-pull-req
 
 ```shell
 git remote add upstream git@github.com:helm/helm.git
-```
-
-### Set Up Environment Variables
-
-In this doc, we are going to reference a few environment variables as well,
-which you may want to set for convenience. For major/minor releases, use the
-following:
-
-```shell
-export RELEASE_NAME=vX.Y.0
-export RELEASE_BRANCH_NAME="release-X.Y"
-export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
-```
-
-If you are creating a patch release, use the following instead:
-
-```shell
-export PREVIOUS_PATCH_RELEASE=vX.Y.Z
-export RELEASE_NAME=vX.Y.Z+1
-export RELEASE_BRANCH_NAME="release-X.Y"
 ```
 
 ### Set Up Signing Key
@@ -102,14 +69,41 @@ If you have not done so already, you need to add your public key to the
 keyserver network. If you use GnuPG you can follow the [instructions provided by
 Debian](https://debian-administration.org/article/451/Submitting_your_GPG_key_to_a_keyserver).
 
-## 1. Create the Release Branch
+---
 
-### Major/Minor Releases
+## Minor/Major Release Checklist
 
 Major releases are for new feature additions and behavioral changes *that break
 backwards compatibility*. Minor releases are for new feature additions that do
-not break backwards compatibility. To create a major or minor release, start by
-creating a `release-X.Y` branch from main.
+not break backwards compatibility.
+
+**Note:** Major releases require many additional workitems e.g. creating the previous major release dev branch e.g. `dev-v4`, updating Github actions, creating new docs, etc.
+This checklist only covers the release process itself, assuming these tasks for a major release have already been done.
+
+1. [Set Up Environment Variables](#set-up-environment-variables)
+2. [Create the Release Branch](#1-create-the-release-branch)
+3. [Change the Version Number in Git](#2-change-the-version-number-in-git)
+4. [Commit and Push the Release Branch](#3-commit-and-push-the-release-branch)
+5. [Create a Release Candidate](#4-create-a-release-candidate)
+6. [Iterate on Successive Release Candidates](#5-iterate-on-successive-release-candidates)
+7. [Finalize the Release](#6-finalize-the-release)
+8. [Write the Release Notes](#7-write-the-release-notes)
+9. [PGP Sign the Downloads](#8-pgp-sign-the-downloads)
+10. [Publish Release](#9-publish-release)
+
+Then continue to [Post-Release](#post-release).
+
+### Set Up Environment Variables
+
+```shell
+export RELEASE_NAME=vX.Y.0
+export RELEASE_BRANCH_NAME="release-X.Y"
+export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
+```
+
+### 1. Create the Release Branch
+
+Start by creating a `release-X.Y` branch from main.
 
 ```shell
 git fetch upstream
@@ -124,50 +118,9 @@ Verify that a [helm/helm milestone](https://github.com/helm/helm/milestones)
 for the release exists on GitHub (creating it if necessary). Make sure PRs and
 issues for this release are in this milestone.
 
-For major & minor releases, move on to step 2: [Major/Minor releases: Change
-the Version Number in Git](#2-majorminor-releases-change-the-version-number-in-git).
+### 2. Change the Version Number in Git
 
-### Patch releases
-
-Patch releases are a few critical cherry-picked fixes to existing releases.
-Start by creating a `release-X.Y` branch:
-
-```shell
-git fetch upstream
-git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
-```
-
-From here, we can cherry-pick the commits we want to bring into the patch
-release:
-
-```shell
-# get the commits ids we want to cherry-pick
-git log --oneline
-# cherry-pick the commits starting from the oldest one, without including merge commits
-git cherry-pick -x <commit-id>
-```
-
-After the commits have been cherry picked the release branch needs to be pushed.
-
-```shell
-git push upstream $RELEASE_BRANCH_NAME
-```
-
-Pushing the branch will cause the tests to run. Make sure they pass prior to
-creating the tag. This new tag is going to be the base for the patch release.
-
-Creating a [helm/helm
-milestone](https://github.com/helm/helm/milestones) is optional for patch
-releases.
-
-Make sure to check [GitHub Actions](https://github.com/helm/helm/actions) to see
-that the release passed CI before proceeding. Patch releases can skip steps 2-5
-and proceed to step 6 to [Finalize the Release](#6-finalize-the-release).
-
-## 2. Major/Minor releases: Change the Version Number in Git
-
-When doing a major or minor release, make sure to update
-`internal/version/version.go` with the new release version.
+Make sure to update `internal/version/version.go` with the new release version.
 
 ```shell
 $ git diff internal/version/version.go
@@ -222,7 +175,7 @@ git cherry-pick -x <commit-id>
 git push origin bump-version-<release-version>
 ```
 
-## 3. Major/Minor releases: Commit and Push the Release Branch
+### 3. Commit and Push the Release Branch
 
 In order for others to start testing, we can now push the release branch
 upstream and start the test process.
@@ -238,7 +191,7 @@ If anyone is available, let others peer-review the branch before continuing to
 ensure that all the proper changes have been made and all of the commits for the
 release are there.
 
-## 4. Major/Minor releases: Create a Release Candidate
+### 4. Create a Release Candidate
 
 Now that the release branch is out and ready, it is time to start creating and
 iterating on release candidates.
@@ -276,7 +229,7 @@ Then, unpack and move the binary to somewhere on your $PATH, or move it
 somewhere and add it to your $PATH (e.g. /usr/local/bin/helm for linux/macOS,
 C:\Program Files\helm\helm.exe for Windows).
 
-## 5. Major/Minor releases: Iterate on Successive Release Candidates
+### 5. Iterate on Successive Release Candidates
 
 Spend several days explicitly investing time and resources to try and break helm
 in every possible way, documenting any findings pertinent to the release. This
@@ -315,7 +268,7 @@ From here on just repeat this process, continuously testing until you're happy
 with the release candidate. For a release candidate, we don't write the full notes,
 but you can scaffold out some [release notes](#7-write-the-release-notes).
 
-## 6. Finalize the Release
+### 6. Finalize the Release
 
 When you're finally happy with the quality of a release candidate, you can move
 on and create the real thing. Double-check one last time to make sure everything
@@ -334,15 +287,14 @@ release and push the release again.
 As the CI job will take some time to run, you can move on to writing release
 notes while you wait for it to complete.
 
-## 7. Write the Release Notes
+### 7. Write the Release Notes
 
 We will auto-generate a changelog based on the commits that occurred during a
 release cycle, but it is usually more beneficial to the end-user if the release
 notes are hand-written by a human being/marketing team/dog.
 
-If you're releasing a major/minor release, listing notable user-facing features
-is usually sufficient. For patch releases, do the same, but make note of the
-symptoms and who is affected.
+For a major/minor release, listing notable user-facing features is usually
+sufficient.
 
 The release notes should include the version and planned date of the next release.
 
@@ -422,7 +374,7 @@ the release is published. Send a request out to
 [#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for review. It is
 always beneficial as it can be easy to miss something.
 
-## 8. PGP Sign the downloads
+### 8. PGP Sign the Downloads
 
 While hashes provide a signature that the content of the downloads is what it
 was generated, signed packages provide traceability of where the package came
@@ -443,7 +395,7 @@ CI.
 All of the signature files (`*.asc`) need to be uploaded to the release on
 GitHub (attach binaries).
 
-## 9. Publish Release
+### 9. Publish Release
 
 Time to make the release official!
 
@@ -452,7 +404,161 @@ you've added the signature files to the release, you can hit "Publish" on
 the release. This publishes the release, listing it as "latest", and shows this
 release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 
-## 10. Update Docs
+---
+
+## Patch Release Checklist
+
+Patch releases are a few critical cherry-picked fixes to existing releases.
+They are released monthly and do not require the release candidate cycle used
+for minor/major releases.
+
+1. [Set Up Environment Variables](#set-up-environment-variables-1)
+2. [Create the Release Branch](#1-create-the-release-branch-1)
+3. [Finalize the Release](#2-finalize-the-release)
+4. [Write the Release Notes](#3-write-the-release-notes)
+5. [PGP Sign the Downloads](#4-pgp-sign-the-downloads)
+6. [Publish Release](#5-publish-release)
+
+Then continue to [Post-Release](#post-release).
+
+### Set Up Environment Variables {#set-up-environment-variables-1}
+
+```shell
+export PREVIOUS_PATCH_RELEASE=vX.Y.Z
+export RELEASE_NAME=vX.Y.Z+1
+export RELEASE_BRANCH_NAME="release-X.Y"
+```
+
+### 1. Create the Release Branch {#1-create-the-release-branch-1}
+
+Start by checking out the existing `release-X.Y` branch:
+
+```shell
+git fetch upstream
+git checkout -b $RELEASE_BRANCH_NAME upstream/$RELEASE_BRANCH_NAME
+```
+
+From here, cherry-pick the commits to bring into the patch release:
+
+```shell
+# get the commits ids we want to cherry-pick
+git log --oneline
+# cherry-pick the commits starting from the oldest one, without including merge commits
+git cherry-pick -x <commit-id>
+```
+
+After the commits have been cherry picked the release branch needs to be pushed.
+
+```shell
+git push upstream $RELEASE_BRANCH_NAME
+```
+
+Pushing the branch will cause the tests to run. Make sure they pass prior to
+creating the tag. This new tag is going to be the base for the patch release.
+
+Creating a [helm/helm
+milestone](https://github.com/helm/helm/milestones) is optional for patch
+releases.
+
+Make sure to check [GitHub Actions](https://github.com/helm/helm/actions) to see
+that the release passed CI before proceeding.
+
+### 2. Finalize the Release
+
+Double-check one last time to make sure everything is in order, then push the
+release tag.
+
+```shell
+git checkout $RELEASE_BRANCH_NAME
+git tag --sign --annotate "${RELEASE_NAME}" --message "Helm release ${RELEASE_NAME}"
+git push upstream $RELEASE_NAME
+```
+
+Verify that the release succeeded in
+[GitHub Actions](https://github.com/helm/helm/actions). If not, you will need to fix the
+release and push the release again.
+
+As the CI job will take some time to run, you can move on to writing release
+notes while you wait for it to complete.
+
+### 3. Write the Release Notes
+
+We will auto-generate a changelog based on the commits that occurred during a
+release cycle, but it is usually more beneficial to the end-user if the release
+notes are hand-written by a human being/marketing team/dog.
+
+For patch releases, list the fixes and make note of the symptoms and who is
+affected.
+
+The release notes should include the version and planned date of the next release.
+
+A partially completed set of release notes including the changelog can be
+created by running the following command:
+
+```shell
+export VERSION="$RELEASE_NAME"
+export PREVIOUS_RELEASE=$PREVIOUS_PATCH_RELEASE
+make clean
+make fetch-dist
+make release-notes
+```
+
+This will create a good baseline set of release notes to which you should just
+need to fill out the **Notable Changes** and **What's next** sections.
+
+Feel free to add your voice to the release notes; it's nice for people to think
+we're not all robots.
+
+You should also double check the URLs and checksums are correct in the
+auto-generated release notes.
+
+Once finished, go into GitHub to [helm/helm
+releases](https://github.com/helm/helm/releases) and edit the release notes for
+the tagged release with the notes written here.
+For target branch, set to $RELEASE_BRANCH_NAME.
+
+It is now worth getting other people to take a look at the release notes before
+the release is published. Send a request out to
+[#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG) for review. It is
+always beneficial as it can be easy to miss something.
+
+### 4. PGP Sign the Downloads
+
+While hashes provide a signature that the content of the downloads is what it
+was generated, signed packages provide traceability of where the package came
+from.
+
+To do this, run the following `make` commands:
+
+```shell
+export VERSION="$RELEASE_NAME"
+make clean		# if not already run
+make fetch-dist	# if not already run
+make sign
+```
+
+This will generate ascii armored signature files for each of the files pushed by
+CI.
+
+All of the signature files (`*.asc`) need to be uploaded to the release on
+GitHub (attach binaries).
+
+### 5. Publish Release
+
+Time to make the release official!
+
+After the release notes are saved on GitHub, the CI build is completed, and
+you've added the signature files to the release, you can hit "Publish" on
+the release. This publishes the release, listing it as "latest", and shows this
+release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
+
+---
+
+## Post-Release
+
+These steps apply to all release types (major, minor, and patch).
+
+### Update Docs
 
 The [Helm website docs section](https://helm.sh/docs) lists the current Helm
 version in the docs version dropdown and must be updated for every release.
@@ -474,15 +580,16 @@ regenerates `docs/changelog.md`. Review the diff, then open a pull request.
 Close the [helm/helm milestone](https://github.com/helm/helm/milestones) for
 the release, if applicable.
 
-Update the [version
-skew](https://github.com/helm/helm-www/blob/main/docs/topics/version_skew.mdx)
-for major and minor releases.
+For major and minor releases, also:
 
-Update the release calendar [here](https://helm.sh/calendar/release):
-* create an entry for the next minor release with a reminder for that day at 5pm GMT
-* create an entry for the RC1 of the next minor release on the Monday of the week before the planned release, with a reminder for that day at 5pm GMT
+* Update the [version
+  skew](https://github.com/helm/helm-www/blob/main/docs/topics/version_skew.mdx)
+  for the release.
+* Update the release calendar [here](https://helm.sh/calendar/release):
+  * create an entry for the next minor release with a reminder for that day at 5pm GMT
+  * create an entry for the RC1 of the next minor release on the Monday of the week before the planned release, with a reminder for that day at 5pm GMT
 
-## 11. Tell the Community
+### Tell the Community
 
 Congratulations! You're done. Go grab yourself a $DRINK_OF_CHOICE. You've earned
 it.
