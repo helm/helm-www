@@ -1185,7 +1185,13 @@ algorithm and returns the decoded text.
 Helm includes the following date functions you can use in templates:
 [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
 (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
-[durationRound](#durationround), [htmlDate](#htmldate),
+[durationRound](#durationround), [mustToDuration](#mustToDuration),
+[durationSeconds](#durationSeconds), [durationMilliseconds](#durationMilliseconds),
+[durationMicroseconds](#durationMicroseconds), [durationNanoseconds](#durationNanoseconds),
+[durationMinutes](#durationMinutes), [durationHours](#durationHours),
+[durationDays](#durationDays), [durationWeeks](#durationWeeks),
+[durationRoundTo](#durationRoundTo), [durationTruncateTo](#durationTruncateTo),
+[htmlDate](#htmldate),
 [htmlDateInZone](#htmldateinzone), [now](#now), [toDate
 (mustToDate)](#todate-musttodate), and [unixEpoch](#unixepoch).
 
@@ -1263,6 +1269,126 @@ This returns 3mo
 
 ```
 durationRound "2400h10m5s"
+```
+
+### mustToDuration
+
+`mustToDuration` parses a duration-like value into a `time.Duration` and panics on error.
+
+**Go equivalent:** `time.ParseDuration`, `time.Duration` construction
+
+Supported inputs include Go duration strings (e.g. `"2h30m"`), numeric strings treated as seconds (e.g. `"1.5"`), and numeric values treated as seconds.
+
+```
+mustToDuration "2h30m"
+```
+
+```
+mustToDuration "1.5"
+```
+
+### durationSeconds
+
+Converts a duration to seconds as a floating-point number.
+
+**Go equivalent:** `time.Duration.Seconds()`
+
+```
+mustToDuration "1m30s" | durationSeconds
+```
+
+### durationMilliseconds
+
+Converts a duration to milliseconds as an integer.
+
+**Go equivalent:** `time.Duration.Milliseconds()`
+
+```
+mustToDuration "1s" | durationMilliseconds
+```
+
+### durationMicroseconds
+
+Converts a duration to microseconds as an integer.
+
+**Go equivalent:** `time.Duration.Microseconds()`
+
+```
+mustToDuration "1s" | durationMicroseconds
+```
+
+### durationNanoseconds
+
+Converts a duration to nanoseconds as an integer.
+
+**Go equivalent:** `time.Duration.Nanoseconds()`
+
+```
+mustToDuration "1ms" | durationNanoseconds
+```
+
+### durationMinutes
+
+Converts a duration to minutes as a floating-point number.
+
+**Go equivalent:** `time.Duration.Minutes()`
+
+```
+mustToDuration "90s" | durationMinutes
+```
+
+### durationHours
+
+Converts a duration to hours as a floating-point number.
+
+**Go equivalent:** `time.Duration.Hours()`
+
+```
+mustToDuration "90m" | durationHours
+```
+
+### durationDays
+
+Converts a duration to days as a floating-point number.
+
+```
+mustToDuration "36h" | durationDays
+```
+
+### durationWeeks
+
+Converts a duration to weeks as a floating-point number.
+
+```
+mustToDuration "336h" | durationWeeks
+```
+
+### durationRoundTo
+
+Rounds a duration to the nearest multiple of another duration.
+
+**Go equivalent:** `time.Duration.Round()`
+
+```
+mustToDuration "1h15m30s" | durationRoundTo "10m"
+```
+
+```
+mustToDuration "2h29m" | durationRoundTo "1h"
+```
+
+### durationTruncateTo
+
+Truncates a duration toward zero to a multiple of another duration.
+
+**Go equivalent:** `time.Duration.Truncate()`
+
+```
+mustToDuration "1h15m30s" | durationTruncateTo "10m"
+```
+
+```
+mustToDuration "2h59m" | durationTruncateTo "1h"
 ```
 
 ### unixEpoch
