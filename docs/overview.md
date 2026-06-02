@@ -125,7 +125,7 @@ While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. 
 
 ## How to Give Feedback
 
-Find issues? Have suggestions? We want to hear from you before the November release:
+Find issues? Have suggestions? We want to hear from you:
 
 ### GitHub Issues
 
