@@ -42,6 +42,7 @@ const config = {
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    faster: true, // Enable @docusaurus/faster build optimizations (Rspack, SWC, Lightning CSS)
   },
 
   // Opt-in to less strict, standard CommonMark support with options
