@@ -66,4 +66,4 @@ Each chart is processed according to its own `apiVersion`. A v2 subchart include
 ## Related Resources
 
 - [helm/helm#32036](https://github.com/helm/helm/issues/32036) - Original issue tracking this change
-- [helm/helm#32062](https://github.com/helm/helm/pull/32062) - Implementation PR
+- [helm/helm#32185](https://github.com/helm/helm/pull/32185) - Implementation PR
