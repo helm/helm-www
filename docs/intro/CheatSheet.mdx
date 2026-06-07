@@ -106,6 +106,9 @@ helm list --failed              # Show failed releases
 helm list --uninstalled         # Show uninstalled releases (if 'helm uninstall --keep-history' was used)
 helm list --superseded          # Show superseded releases
 helm list -o yaml               # Prints the output in the specified format. Allowed values: table, json, yaml (default table)
+helm list --max <number>        # Limit the number of releases returned (default 256)
+helm list --max 0               # Remove the limit to show all releases
+helm list --offset <number>     # Skip the first N releases (for pagination)
 helm status <release>           # This command shows the status of a named release.
 helm status <release> --revision <number>   # if set, display the status of the named release with revision
 helm history <release>          # Historical revisions for a given release.
