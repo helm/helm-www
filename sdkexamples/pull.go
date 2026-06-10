@@ -27,7 +27,8 @@ func runPull(logger *log.Logger, settings *cli.EnvSettings, chartRef, chartVersi
 		pullClient.KeyFile,
 		pullClient.CaFile,
 		pullClient.InsecureSkipTLSVerify,
-		pullClient.PlainHTTP)
+		pullClient.PlainHTTP,
+		nil)
 	if err != nil {
 		return fmt.Errorf("failed to created registry client: %w", err)
 	}

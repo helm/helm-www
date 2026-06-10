@@ -34,7 +34,8 @@ func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 		installClient.KeyFile,
 		installClient.CaFile,
 		installClient.InsecureSkipTLSVerify,
-		installClient.PlainHTTP)
+		installClient.PlainHTTP,
+		nil)
 	if err != nil {
 		return fmt.Errorf("failed to created registry client: %w", err)
 	}

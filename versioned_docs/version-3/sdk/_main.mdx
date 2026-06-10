@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"log/slog"
 	"os"
 
 	"helm.sh/helm/v3/pkg/action"
@@ -43,7 +44,7 @@ func initActionConfigList(settings *cli.EnvSettings, logger *log.Logger, allName
 	return actionConfig, nil
 }
 
-func newRegistryClient(settings *cli.EnvSettings, plainHTTP bool) (*registry.Client, error) {
+func newRegistryClient(settings *cli.EnvSettings, plainHTTP bool, logger *slog.Logger) (*registry.Client, error) {
 	opts := []registry.ClientOption{
 		registry.ClientOptDebug(settings.Debug),
 		registry.ClientOptEnableCache(true),
@@ -52,6 +53,12 @@ func newRegistryClient(settings *cli.EnvSettings, plainHTTP bool) (*registry.Cli
 	}
 	if plainHTTP {
 		opts = append(opts, registry.ClientOptPlainHTTP())
+	}
+	// Inject a custom structured logger for diagnostic messages.
+	// This prevents Helm from mutating global process state, which is
+	// important when embedding Helm as a library.
+	if logger != nil {
+		opts = append(opts, registry.ClientOptLogger(logger))
 	}
 
 	// Create a new registry client
@@ -62,7 +69,7 @@ func newRegistryClient(settings *cli.EnvSettings, plainHTTP bool) (*registry.Cli
 	return registryClient, nil
 }
 
-func newRegistryClientTLS(settings *cli.EnvSettings, logger *log.Logger, certFile, keyFile, caFile string, insecureSkipTLSverify, plainHTTP bool) (*registry.Client, error) {
+func newRegistryClientTLS(settings *cli.EnvSettings, logger *log.Logger, slogger *slog.Logger, certFile, keyFile, caFile string, insecureSkipTLSverify, plainHTTP bool) (*registry.Client, error) {
 	if certFile != "" && keyFile != "" || caFile != "" || insecureSkipTLSverify {
 		registryClient, err := registry.NewRegistryClientWithTLS(
 			logger.Writer(),
@@ -78,7 +85,7 @@ func newRegistryClientTLS(settings *cli.EnvSettings, logger *log.Logger, certFil
 		}
 		return registryClient, nil
 	}
-	registryClient, err := newRegistryClient(settings, plainHTTP)
+	registryClient, err := newRegistryClient(settings, plainHTTP, slogger)
 	if err != nil {
 		return nil, err
 	}

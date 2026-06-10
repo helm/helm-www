@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"log/slog"
 	"net/http"
 	"os"
 
@@ -42,7 +43,7 @@ func initActionConfigList(settings *cli.EnvSettings, logger *log.Logger, allName
 	return actionConfig, nil
 }
 
-func newRegistryClient(settings *cli.EnvSettings, certFile, keyFile, caFile string, insecureSkipTLSVerify, plainHTTP bool) (*registry.Client, error) {
+func newRegistryClient(settings *cli.EnvSettings, certFile, keyFile, caFile string, insecureSkipTLSVerify, plainHTTP bool, logger *slog.Logger) (*registry.Client, error) {
 
 	opts := []registry.ClientOption{
 		registry.ClientOptDebug(settings.Debug),
@@ -53,6 +54,13 @@ func newRegistryClient(settings *cli.EnvSettings, certFile, keyFile, caFile stri
 
 	if plainHTTP {
 		opts = append(opts, registry.ClientOptPlainHTTP())
+	}
+
+	// Inject a custom structured logger for diagnostic messages.
+	// This prevents Helm from mutating global process state, which is
+	// important when embedding Helm as a library.
+	if logger != nil {
+		opts = append(opts, registry.ClientOptLogger(logger))
 	}
 
 	if certFile != "" && keyFile != "" || caFile != "" || insecureSkipTLSVerify {
