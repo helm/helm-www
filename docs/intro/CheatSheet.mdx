@@ -127,7 +127,8 @@ helm get values <release>   # Downloads a values file for a given release. use -
 ```bash
 helm plugin install <path/url>      # Install plugins
 helm plugin list                    # View a list of all installed plugins
-helm plugin update <plugin>         # Update plugins
+helm plugin update <plugin>         # Update plugins to latest version
+helm plugin update <plugin>@<version> # Update plugin to a specific version
 helm plugin uninstall <plugin>      # Uninstall a plugin
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------
