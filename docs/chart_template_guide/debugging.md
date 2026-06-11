@@ -43,7 +43,7 @@ errors blocking.
 
 ## Debugging the `lookup` function
 
-The [`lookup` function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be difficult to determine why. To see diagnostic messages, enable debug mode:
+The [`lookup` function](/chart_template_guide/functions_and_pipelines.mdx#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be difficult to determine why. To see diagnostic messages, enable debug mode:
 
 ```bash
 helm install --debug myrelease ./mychart
