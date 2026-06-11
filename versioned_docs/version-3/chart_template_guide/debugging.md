@@ -43,21 +43,20 @@ errors blocking.
 
 ## Debugging the `lookup` function
 
-The [`lookup` function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be tricky to figure out why. To see diagnostic messages, enable debug mode:
+The [`lookup` function](/chart_template_guide/functions_and_pipelines.md#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be difficult to determine why. To see diagnostic messages, enable debug mode:
 
 ```bash
 helm install --debug myrelease ./mychart
 ```
 
-With debug logging enabled, Helm will tell you why `lookup` returned empty:
+With debug logging enabled, Helm logs the apiVersion, kind, namespace, and name when a lookup returns empty:
 
-- **"lookup returned no object"** — The specific resource was not found in the cluster (for single-object lookups like `lookup "v1" "ConfigMap" "default" "my-config"`)
-- **"lookup returned no objects"** — No resources matched the query (for list lookups like `lookup "v1" "ConfigMap" "default" ""`)
-- **"lookup skipped: no Kubernetes client available"** — No cluster connection exists, such as when running `helm template` without `--dry-run=server`
+- **"lookup: resource not found"** — The specific resource was not found in the cluster (for single-object lookups like `lookup "v1" "ConfigMap" "default" "my-config"`)
+- **"lookup: resource list not found"** — No resources matched the query (for list lookups like `lookup "v1" "ConfigMap" "default" ""`)
 
-There are several common reasons why `lookup` might return empty:
+Common reasons why `lookup` might return empty:
 
-- The resource does not exist
+- The resource does not exist in the cluster
 - RBAC permissions prevent access to the resource
 - Running `helm template` without cluster access (use `--dry-run=server` to connect)
 - Incorrect apiVersion, kind, namespace, or name parameters
