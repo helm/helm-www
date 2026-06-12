@@ -35,13 +35,17 @@ wordpress/
   values.schema.json  # OPTIONAL: A JSON Schema for imposing a structure on the values.yaml file
   charts/             # A directory containing any charts upon which this chart depends.
   crds/               # Custom Resource Definitions
-  templates/          # A directory of templates that, when combined with values,
+  templates/          # OPTIONAL: A directory of templates that, when combined with values,
                       # will generate valid Kubernetes manifest files.
   templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
 ```
 
 Helm reserves use of the `charts/`, `crds/`, and `templates/` directories, and
 of the listed file names. Other files will be left as they are.
+
+The `templates/` directory is optional. Umbrella charts that only aggregate
+subcharts typically omit it. Such charts pass `helm lint --strict` without
+issue.
 
 ## The Chart.yaml File
 
