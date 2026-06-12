@@ -82,7 +82,7 @@ const BlockList = [
 
           <dt>
             <MdCalendarMonth className={styles.icon} />
-            <a href="calendar/release">
+            <a href="/calendar/release">
               <Translate
                 id="home.community.nextFeatureRelease.calendar"
                 description="Release Calendar link"
@@ -409,7 +409,7 @@ const BlockList = [
             description="What do I do? sign your commits description"
             values={{
               signYourCommitsLink: (
-                <a href="blog/helm-dco">
+                <a href="/blog/helm-dco">
                   <Translate
                     id="home.community.contributing.whatDoIDo.signYourCommitsLink"
                     description="Sign your commits link"
