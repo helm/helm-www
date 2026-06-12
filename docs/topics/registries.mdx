@@ -185,13 +185,33 @@ Dependencies of a chart can be pulled from a registry using the `dependency upda
 
 The `repository` for a given entry in `Chart.yaml` is specified as the registry reference without the basename:
 
-```
+```yaml
 dependencies:
   - name: mychart
     version: "2.7.0"
     repository: "oci://localhost:5000/myrepo"
 ```
 This will fetch `oci://localhost:5000/myrepo/mychart:2.7.0` when `dependency update` is executed.
+
+### Specifying dependencies with digest
+
+You can specify a SHA256 digest instead of relying on version tags. Digests are immutable, so they provide stronger guarantees that you get the exact chart artifact you expect. When a `digest` is specified, Helm fetches the dependency using the digest rather than the version tag:
+
+```yaml
+dependencies:
+  - name: mychart
+    version: "2.7.0"
+    repository: "oci://localhost:5000/myrepo"
+    digest: "sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723"
+```
+
+This will fetch `oci://localhost:5000/myrepo/mychart@sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723` when `dependency update` is executed.
+
+Because digests are immutable, they are useful for:
+
+- **Reproducible builds**: The same dependency content is used across different environments
+- **Supply chain security**: Version tags cannot be overwritten to point to different content
+- **Audit compliance**: An exact record of which artifacts were deployed
 
 ## Helm chart manifest
 
