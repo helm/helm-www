@@ -8,8 +8,9 @@ This part of the Best Practices Guide explains general conventions.
 
 ## Chart Names
 
-Chart names must contain only lowercase letters, numbers, and dashes. Names must
-start and end with a lowercase letter or number:
+Chart names must follow DNS-1123 label conventions: only lowercase letters,
+numbers, and dashes are allowed, names must start and end with a lowercase
+letter or number, and names cannot exceed 63 characters:
 
 Examples:
 
@@ -25,6 +26,7 @@ Invalid chart names include:
 - Names with dots (e.g., `my.chart`)
 - Names starting with a dash (e.g., `-mychart`)
 - Names ending with a dash (e.g., `mychart-`)
+- Names longer than 63 characters
 
 The `helm lint` command validates chart names against these rules.
 
