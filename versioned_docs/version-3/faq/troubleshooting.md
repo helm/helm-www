@@ -216,3 +216,34 @@ $ helm uninstall my-release --dry-run --debug
 ```
 
 If you need to delete a resource that Helm is skipping, remove it manually using `kubectl delete`.
+
+### Values type mismatch warnings during install or upgrade
+
+When running `helm install` or `helm upgrade`, you may see warnings about value type mismatches:
+
+```
+warning: skipped value for myapp.config.setting: not a YAML mapping (a map or object). Chart default is a scalar value but your values provide a nested mapping under this key.
+```
+
+Or:
+
+```
+warning: cannot overwrite value at myapp.config.setting: chart default is a YAML mapping (a map or object), but user-provided value is not.
+```
+
+These warnings appear when your values file structure does not match the chart's expected structure. YAML distinguishes between:
+
+- **Scalar values**: Simple values like strings, numbers, or booleans (`setting: "value"`)
+- **Mappings**: Nested key-value structures (`setting:\n  key: value`)
+
+Common causes:
+
+1. **Your values provide a mapping where the chart expects a scalar** - The chart's default `values.yaml` defines a key as a simple value, but your values file provides nested keys under it.
+2. **Your values provide a scalar where the chart expects a mapping** - The chart expects nested configuration, but your values file provides a simple value.
+
+To fix this, compare your values file against the chart's default `values.yaml` to ensure the structure matches. Use `helm show values <chart>` to view the chart's defaults, or use `--debug` during install to see the computed values:
+
+```console
+$ helm show values bitnami/nginx
+$ helm install myrelease bitnami/nginx -f myvalues.yaml --debug --dry-run
+```
