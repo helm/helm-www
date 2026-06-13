@@ -44,3 +44,39 @@ Name|Status|Description
 You can find more information on the Kubernetes labels, prefixed with
 `app.kubernetes.io`, in the [Kubernetes
 documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
+
+## Helm Ownership Labels and Annotations
+
+During `install`, `upgrade`, and `rollback`, Helm automatically sets the
+following label and annotations on every resource in the release. These are not
+set in chart templates — Helm adds them at deploy time.
+
+Name|Kind|Description
+-----|------|----------
+`app.kubernetes.io/managed-by` | Label | Set to `Helm`. Identifies that the resource is managed by Helm.
+`meta.helm.sh/release-name` | Annotation | Set to the name of the release that owns the resource.
+`meta.helm.sh/release-namespace` | Annotation | Set to the namespace of the release that owns the resource.
+
+Together, these three metadata fields form the **ownership record** for a
+resource. Helm checks them when installing or upgrading a release to detect
+conflicts: if a resource already exists in the cluster but its ownership
+metadata points to a different release, Helm will refuse the operation to
+prevent one release from overwriting another's resources.
+
+A resource passes the ownership check only when all three values match the
+current release:
+
+```yaml
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: default
+```
+
+If you need to adopt a pre-existing resource into a Helm release (for example,
+a resource that was created manually or by another tool), you can pass
+`--take-ownership` to `helm install` or `helm upgrade`. This skips the
+ownership check and overwrites the ownership metadata so that Helm manages the
+resource going forward.
