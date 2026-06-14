@@ -4,10 +4,10 @@ description: 使用函数和管道
 sidebar_position: 5
 ---
 
-到目前为止，我们已经知道了如何将信息传到模板中。 但是传入的信息并不能被修改。
+到目前为止，我们已经知道了如何将信息传到模板中。 但这些信息会原样放入模板中。
 有时我们希望以一种更有用的方式来转换所提供的数据。
 
-让我们从一个最佳实践开始：可以通过调用模板指令中的`quote`函数把`.Values`对象中的字符串属性用引号引起来，然后放到模板中。
+让我们从一个最佳实践开始：当把 `.Values` 对象中的字符串注入到模板时，我们应该给这些字符串加上引号。可以通过在模板指令中调用 `quote` 函数来实现：
 
 ```yaml
 apiVersion: v1
@@ -24,12 +24,11 @@ data:
 
 Helm 有超过60个可用函数。其中有些通过[Go模板语言](https://godoc.org/text/template)本身定义。其他大部分都是[Sprig 模板库](https://masterminds.github.io/sprig/)。我们可以在示例看到其中很多函数。
 
-> 当我们讨论"Helm模板语言"时，感觉它是Helm专属的，实际上他是Go模板语言、一些额外的函数和用于
-向模板暴露某些对象的装饰器组合而成的。很多Go模板的资料也有助于你学习模板。
+> 当我们讨论"Helm模板语言"时，感觉它是Helm专属的，实际上它是Go模板语言、一些额外的函数和用于向模板暴露某些对象的装饰器组合而成的。很多Go模板的资料也有助于你学习模板。
 
 ## 管道符
 
-模板语言其中一个强大功能是 **管道** 概念。借鉴UNIX中的概念，管道符是将一系列的模板语言紧凑地将多个流式处理结果合并的工具。换句话说，管道符是按顺序完成一系列任务的方式。
+模板语言的一个强大功能是**管道**概念。借鉴 UNIX 的设计理念，管道是一种将多个模板命令紧凑串联起来的工具，用于表达一系列转换操作。换句话说，管道是按顺序完成一系列任务的高效方式。
 现在用管道符重写上述示例：
 
 ```yaml
@@ -73,7 +72,9 @@ data:
   food: "PIZZA"
 ```
 
-注意原有的`pizza`现在已经被转换成了`"PIZZA"`。当管道符参数类似这样的时候，第一个表达式的结果(`.Values.favorite.drink | upper` 的结果) 作为了`quote`的最后一个参数。也可以修改上述示例，用两个参数的函数来阐述： `repeat COUNT STRING`:
+注意原有的`pizza`现在已经被转换成了`"PIZZA"`。
+
+当使用管道符传递参数时，第一个求值结果（`.Values.favorite.drink`）会作为函数的 _最后一个参数_ 传入。我们可以用一个接收两个参数的函数 `repeat COUNT STRING` 来修改上面的 drink 示例：
 
 ```yaml
 apiVersion: v1
@@ -86,7 +87,7 @@ data:
   food: {{ .Values.favorite.food | upper | quote }}
 ```
 
-`repeat`函数会返回给定参数特定的次数，则可以得到以下结果：
+`repeat` 函数会将给定字符串重复指定次数，因此输出如下：
 
 ```yaml
 # Source: mychart/templates/configmap.yaml
@@ -168,7 +169,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 | namespace  | string |
 | name       | string |
 
-`name` 和 `namespace` 都是选填的，且可以传空字符串(`""`)作为空。
+`name` 和 `namespace` 都是选填的，且可以传空字符串(`""`)作为空。但如果你操作的是 namespace 作用域的资源，则 `name` 和 `namespace` 必须同时指定。
 
 以下是可能的参数组合：
 
@@ -180,7 +181,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 | `kubectl get namespace mynamespace`    | `lookup "v1" "Namespace" "" "mynamespace"` |
 | `kubectl get namespaces`               | `lookup "v1" "Namespace" "" ""`            |
 
-当`lookup`返回一个对象，它会返回一个字典。这个字典可以进一步被引导以获取特定值。
+当 `lookup` 返回一个对象时，它会返回一个字典。可以进一步导航这个字典来提取特定值。
 
 下面的例子将返回`mynamespace`对象的annotations属性：
 
@@ -198,11 +199,10 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 
 当对象未找到时，会返回空值。可以用来检测对象是否存在。
 
-`lookup`函数使用Helm已有的Kubernetes连接配置查询Kubernetes。当与调用API服务交互时返回了错误
-（比如缺少资源访问的权限），helm 的模板操作会失败。
+`lookup` 函数使用 Helm 已有的 Kubernetes 连接配置查询 Kubernetes。当与 API 服务器交互时返回错误
+（比如缺少资源访问权限），Helm 的模板操作会失败。
 
-请记住，Helm在`helm template`或者`helm install|upgrade|delete|rollback --dry-run`时，
-不应该请求Kubernetes API服务。由此，`lookup`函数在该案例中会返回空列表（即字典）。
+请记住，在执行 `helm template|install|upgrade|delete|rollback --dry-run` 操作时，Helm 不会连接 Kubernetes API 服务器。如果需要针对运行中的集群测试 `lookup`，应使用 `helm template|install|upgrade|delete|rollback --dry-run=server` 来允许集群连接。
 
 ## 运算符也是函数
 

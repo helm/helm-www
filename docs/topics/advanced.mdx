@@ -64,6 +64,20 @@ metadata:
 
 Helm uses this annotation when reading back the post-renderer’s output to determine which filename to associate with each manifest for further processing. If the annotation is missing, Helm auto-generates a filename in the format `generated-by-postrender-<id>.yaml`. Finally, Helm removes the annotation before sending the manifests to Kubernetes.
 
+#### Hooks and Post-Render Strategy
+
+In Helm 4, [chart hooks](/topics/charts_hooks.md) are processed by post-renderers along with regular templates. By default, hooks and templates are sent together in a single stream (the `combined` strategy). This is a change from Helm 3, which never sent hooks to post-renderers.
+
+You can control this behavior via the Go SDK using the `PostRenderStrategy` option:
+
+| Strategy | Behavior |
+|----------|----------|
+| `combined` | Sends hooks and templates together as one stream. This is the default in Helm 4. |
+| `separate` | Sends hooks and templates as independent invocations to the post-renderer. Useful when the same resource (like a ServiceAccount) appears in both a hook and a template. |
+| `nohooks` | Sends only templates to the post-renderer; hooks are left untouched. Matches Helm 3 behavior. |
+
+**For Kustomize users**: If your Kustomize configuration includes patches that target resources only present in templates (not hooks), use `nohooks`. The `separate` strategy invokes the post-renderer twice—once for hooks and once for templates—and Kustomize patches targeting template-only resources will fail when run against the hook stream. Flux helm-controller defaults to `nohooks` for this reason.
+
 ### Caveats
 When using post renderers, there are several important things to keep in mind.
 The most important of these is that when using a post-renderer, all people

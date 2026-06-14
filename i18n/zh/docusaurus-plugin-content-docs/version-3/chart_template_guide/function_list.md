@@ -27,13 +27,13 @@ Helm 包含了很多可以在模板中利用的模板函数。以下列出了具
 
 ## Logic and Flow Control Functions
 
-Helm 包括了需要逻辑和流控制函数，包括[and](#and),[coalesce](#coalesce), [default](#default),
-[empty](#empty), [eq](#eq),[fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt),
-[ne](#ne), [not](#not), and [or](#or)。
+Helm 包括了许多逻辑和流控制函数，包括[and](#and)、[coalesce](#coalesce)、[default](#default)、
+[empty](#empty)、[eq](#eq)、[fail](#fail)、[ge](#ge)、[gt](#gt)、[le](#le)、[lt](#lt)、
+[ne](#ne)、[not](#not)、[or](#or)和[required](#required)。
 
 ### and
 
-返回两个参数的and布尔值。
+返回两个或多个参数的布尔AND值（返回第一个空参数，或最后一个参数）。
 
 ```yaml
 and .Arg1 .Arg2
@@ -124,6 +124,16 @@ default "foo" .Bar
 
 对于结构体，没有空的定义，所以结构体从来不会返回默认值。
 
+### required
+
+使用 `required` 指定必须设置的值：
+
+```
+required "A valid foo is required!" .Bar
+```
+
+如果 `.Bar` 为空或未定义（参阅 [default](#default) 了解如何判断空值），模板将不会渲染，而是返回所提供的错误信息。
+
 ### empty
 
 如果给定的值被认为是空的，则`empty`函数返回`true`，否则返回`false`。空值列举在`default`部分。
@@ -196,7 +206,7 @@ false | ternary "foo" "bar"
 
 ## String Functions
 
-Helm 包含了一下字符串函数： [abbrev](#abbrev),
+Helm 包含了以下字符串函数： [abbrev](#abbrev),
 [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
 [contains](#contains), [hasPrefix](#hasprefix-and-hassuffix),
 [hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials),
@@ -286,7 +296,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 
 ### trim
 
-`trim`行数移除字符串两边的空格：
+`trim`函数移除字符串两边的空格：
 
 ```yaml
 trim "   hello    "
@@ -749,6 +759,70 @@ greeting: |
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
 
+### fromJsonArray
+
+`fromJsonArray` 函数接受一个 JSON 数组并返回一个可在模板中使用的列表。
+
+`文件位置: jsons/people.json`
+```json
+[
+ { "name": "Bob","age": 25 },
+ { "name": "Ram","age": 16 }
+]
+```
+```yaml
+{{- $people := .Files.Get "jsons/people.json" | fromJsonArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
+### toYaml, toYamlPretty
+
+`toYaml` 和 `toYamlPretty` 函数将对象（列表、切片、数组、字典或对象）编码为缩进的 YAML 字符串。
+
+> 注意：`toYamlPretty` 功能相同，但会为列表元素添加额外的缩进
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
+```
+
+### fromYamlArray
+
+`fromYamlArray` 函数接受一个 YAML 数组并返回一个可在模板中使用的列表。
+
+`文件位置: yamls/people.yml`
+```yaml
+- name: Bob
+  age: 25
+- name: Ram
+  age: 16
+```
+```yaml
+{{- $people := .Files.Get "yamls/people.yml" | fromYamlArray }}
+{{- range $person := $people }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+{{ end }}
+```
+
 ## Regular Expressions
 
 Helm 包含以下正则表达式函数 [regexFind(mustRegexFind)](#regexfindall-mustregexfindall),
@@ -796,7 +870,7 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 
 ### regexReplaceAll, mustRegexReplaceAll
 
-返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。在替换字符串里面， $ 标志被解释为扩展，因此对于实例来说 $1 表示第一个子匹配的文本
+返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。在替换字符串里面，$ 标志被解释为扩展，因此对于实例来说 $1 表示第一个子匹配的文本。第一个参数是`<pattern>`，第二个是`<input>`，第三个是`<replacement>`。
 
 ```yaml
 regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
@@ -808,7 +882,7 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
-返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。匹配字符串直接替换而不是扩展。
+返回输入字符串的拷贝，用替换字符串替换Regexp的匹配项。匹配字符串直接替换而不是扩展。第一个参数是`<pattern>`，第二个是`<input>`，第三个是`<replacement>`。
 
 ```yaml
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -835,7 +909,7 @@ regexSplit "z+" "pizza" -1
 Helm提供了一些高级的加密函数。包括了 [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),[encryptAES](#encryptaes),
 [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert),
-[genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [sha1sum](#sha1sum)， 以及 [sha256sum](#sha256sum)。
+[genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum)，以及 [sha256sum](#sha256sum)。
 
 ### sha1sum
 
@@ -873,6 +947,14 @@ htpasswd "myUser" "myPassword"
 ```
 
 注意，将密码直接存储在模板中并不安全。
+
+### randBytes
+
+`randBytes` 函数接受一个数量 N，生成一个加密安全的（使用 crypto/rand）N 字节随机序列。返回值为 base64 编码的字符串。
+
+```
+randBytes 24
+```
 
 ### derivePassword
 
@@ -1592,6 +1674,16 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
+### chunk
+
+使用 `chunk size list` 将列表拆分为指定大小的块。这对于分页很有用。
+
+```
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+上述语句会生成一个列表的列表 `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`。
+
 ## Math Functions
 
 除非另外指定，否则所有的math函数都是操作 `int64` 的值。
@@ -1918,11 +2010,9 @@ alpha版、beta版，和rc版本。稳定版`1.2.3`的预发布版本可能是`1
 
 使用不带预发布版本比较器约束的语义版本的比较会跳过预发布版本。比如 `>=1.2.3` 会跳过预发布而`>=1.2.3-0`会计算并查找预发布版本。
 
-按照规范，上例中的`0`作为预发布的版本是因为预发布版本只能包含ASCII字母数字和连字符（以及`.`分隔符），
-with `.` separators)，另外排序按照ASCII排序顺序。在ASCII排序中，最小的字符是`0`(查看[ASCII表](http://www.asciitable.com/))。
+按照规范，上例中的`0`作为预发布的版本是因为预发布版本只能包含ASCII字母数字和连字符（以及`.`分隔符），并且排序按照ASCII排序顺序。在ASCII排序中，最小的字符是`0`(查看[ASCII表](http://www.asciitable.com/))。
 
-理解ASCII排序顺序很重要因为A-Z是在a-z之前，这意味着`>=1.2.3-BETA` 会返回 `1.2.3-alpha`。这里并不适合大小写敏感，
-因为是按照ASCII排序规范指定顺序。
+理解ASCII排序顺序很重要因为A-Z是在a-z之前，这意味着`>=1.2.3-BETA` 会返回 `1.2.3-alpha`。这里并不适合大小写敏感，因为是按照ASCII排序规范指定顺序。
 
 ### 连字符范围比较
 
@@ -2032,7 +2122,7 @@ Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has]
 
 `lookup` 用于在正在运行的集群中查找资源。当和`helm template`命令一起使用时会返回一个空响应。
 
-可以在 [lookup函数文档](https://helm.sh/zh/docs/chart_template_guide/#using-the-lookup-function)查看更多细节。
+可以在 [lookup函数文档](./functions_and_pipelines.md#using-the-lookup-function)查看更多细节。
 
 ### .Capabilities.APIVersions.Has
 
@@ -2043,10 +2133,10 @@ Helm 包含了用于 Kubernetes的函数，包括[.Capabilities.APIVersions.Has]
 .Capabilities.APIVersions.Has "apps/v1/Deployment"
 ```
 
-更多信息可查看 [内置对象文档](https://helm.sh/zh/docs/chart_template_guide/builtin_objects)。
+更多信息可查看 [内置对象文档](./builtin_objects.md)。
 
 ### File Functions
 
-有几个函数能使您能够访问chart中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](https://helm.sh/zh/docs/chart_template_guide/accessing_files)。
+有几个函数能使您能够访问chart中的非特殊文件。比如访问应用配置文件。请查看[模板中访问文件](./accessing_files.md)。
 
 _注意，这里很多函数的文档是来自[Sprig](https://github.com/Masterminds/sprig)。Sprig是一个适用于Go应用的函数模板库。_

@@ -76,11 +76,11 @@ Go は、組み込みの `template` ディレクティブを使って、
 Helm には特別な `include` 関数があります。
 
 ```
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
 上記には `toYaml` というテンプレートが含まれており、それに `$value` を渡し、
-そのテンプレートの出力を `indent` 関数に渡しています。
+そのテンプレートの出力を `nindent` 関数に渡しています。
 
 YAML はインデントレベルと空白に意味を与えるので、
 これはコードのスニペットをインクルードし、

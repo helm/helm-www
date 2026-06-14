@@ -29,9 +29,9 @@ Helm dispose maintenant d'un script d'installation qui récupère automatiquemen
 Vous pouvez récupérer ce script, puis l'exécuter localement. Il est bien documenté, ce qui vous permet de le lire et comprendre ce qu'il fait avant de l'exécuter.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Oui, vous pouvez également exécuter `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash` si vous aimez vivre dangereusement.
@@ -76,7 +76,8 @@ winget install Helm.Helm
 
 ### Depuis Apt (Debian/Ubuntu)
 
-Les membres de la communauté Helm ont contribué à la création d'un package Apt pour Debian/Ubuntu. Ce package est généralement à jour. Merci à [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) pour l'hébergement du dépôt.
+Les membres de la communauté Helm ont contribué à la création d'un package Apt pour Debian/Ubuntu. Ce package est
+généralement à jour. Merci à [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) pour l'hébergement du dépôt.
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes

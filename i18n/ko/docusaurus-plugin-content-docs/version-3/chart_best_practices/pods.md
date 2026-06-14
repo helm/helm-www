@@ -34,22 +34,20 @@ image: "{{ .Values.redisImage }}:{{ .Values.redisTag }}"
 
 ## ImagePullPolicy
 
-`deployment.yaml`는
+`helm create`는 `deployment.yaml` 파일에서 다음과 같이 설정하여 기본적으로 `imagePullPolicy`를 `IfNotPresent`로 설정한다.
 
 ```yaml
 imagePullPolicy: {{ .Values.image.pullPolicy }}
 ```
 
-`values.yaml`는
+그리고 `values.yaml`에서는 다음과 같이 설정한다.
 
 ```yaml
 image:
   pullPolicy: IfNotPresent
 ```
 
-라고 하면 그에 따라 `helm create`는 `imagePullPolicy` 기본값으로 `IfNotPresent`을 설정하게 된다.
-
-비슷하게, 쿠버네티스에서도 따로 정의하지 않더라도 `imagePullPolicy`의 기본값은 `IfNotPresent`이 된다.
+마찬가지로, Kubernetes에서도 `imagePullPolicy`가 정의되지 않은 경우 기본값은 `IfNotPresent`이다.
 `IfNotPresent` 외에 다른 값을 사용하려면, `values.yaml`에 있는 값을 원하는 값으로 바꾸면 된다.
 
 
@@ -67,8 +65,8 @@ template:
       app.kubernetes.io/name: MyName
 ```
 
-위의 것은 잘된 사례인데, 셋(set)과 파드 사이에 관계가 맺어졌기 때문이다.
+이것은 리소스와 파드 간의 관계를 명확히 해주므로 좋은 사례이다.
 
-이것은 디플로이먼트와 같은 셋(set)의 경우에 더욱 중요하다.
-관계가 맺어져 있지 않다면, _모든_ 레이블들이 매칭되는 파드 선택에 사용되며,
+Deployment와 같은 리소스의 경우 이것이 더욱 중요하다.
+셀렉터를 지정하지 않으면 _모든_ 레이블이 매칭되는 파드를 선택하는 데 사용되며,
 버전이나 릴리스 날짜와 같이 변경되는 레이블을 사용하는 경우 깨질 수 있다.
