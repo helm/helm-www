@@ -6,7 +6,8 @@
 module.exports = {
   // Source repository information
   sourceRepo: "https://github.com/helm/community",
-  sourceBaseUrl: "https://raw.githubusercontent.com/helm/community/refs/heads/main/",
+  sourceBaseUrl:
+    "https://raw.githubusercontent.com/helm/community/refs/heads/main/",
 
   // Files to import with their transformations
   files: {
@@ -15,10 +16,28 @@ module.exports = {
     "code-of-conduct.md": {},
     "communication.md": {},
     "incubator.md": {},
+    "MAINTAINERS.md": {},
     "stable-repo-charts-new-locations.md": {},
     "user-profiles.md": {},
 
     // Files with modifications
+    "helm-maintainers-onboarding-guide.md": {
+      meta: {
+        sidebar_label: "Maintainer Onboarding Guide",
+      },
+      links: {
+        "https://github.com/helm/community/blob/main/hips/hip-0002.md":
+          "hips/hip-0002.md",
+        "https://helm.sh/docs/topics/registries/": "/docs/topics/registries",
+        "https://helm.sh/docs/topics/version_skew/":
+          "/docs/topics/version_skew",
+        "https://github.com/helm/community/blob/main/hips/hip-0001.md":
+          "hips/hip-0001.md",
+        "https://github.com/helm/community/blob/main/hips/hip-0012.md":
+          "hips/hip-0012.md",
+      },
+    },
+
     "README.md": {
       meta: {
         sidebar_position: 1,
@@ -28,7 +47,11 @@ module.exports = {
       },
     },
 
-    "MAINTAINERS.md": {},
+    "maintainer-groups.yaml": {
+      meta: {
+        title: "Maintainer Groups",
+      },
+    },
 
     "SECURITY.md": {
       meta: {
@@ -82,14 +105,16 @@ module.exports = {
     "hips/hip-0004.md": {},
     "hips/hip-0005.md": {
       links: {
-        "https://github.com/helm/community/blob/master/governance/governance.md": "/community/governance/governance",
+        "https://github.com/helm/community/blob/master/governance/governance.md":
+          "/community/governance/governance",
       },
     },
     "hips/hip-0006.md": {},
     "hips/hip-0007.md": {
       links: {
-        "https://github.com/helm/community/blob/master/governance/governance.md": "/community/governance/governance",
-        "../maintainer-groups.yaml": "https://github.com/helm/community/blob/main/maintainer-groups.yaml",
+        "https://github.com/helm/community/blob/master/governance/governance.md":
+          "/community/governance/governance",
+        "../maintainer-groups.yaml": "maintainer-groups.md",
       },
     },
     "hips/hip-0008.md": {},
@@ -102,13 +127,16 @@ module.exports = {
     "hips/hip-0011.md": {},
     "hips/hip-0012.md": {
       links: {
-        "https://github.com/helm/community/blob/main/user-profiles.md": "/community/user-profiles",
+        "https://github.com/helm/community/blob/main/user-profiles.md":
+          "/community/user-profiles",
       },
     },
     "hips/hip-0014.md": {
       links: {
-        "https://github.com/helm/community/tree/main/governance": "/community/governance/governance",
-        "https://github.com/helm/community/blob/main/Teams.md": "https://github.com/helm/community/blob/main/maintainer-groups.yaml",
+        "https://github.com/helm/community/tree/main/governance":
+          "/community/governance/governance",
+        "https://github.com/helm/community/blob/main/Teams.md":
+          "https://github.com/helm/community/blob/main/maintainer-groups.yaml",
       },
     },
     "hips/hip-0015.md": {},
@@ -123,13 +151,16 @@ module.exports = {
     "hips/hip-0024.md": {},
     "hips/hip-0025.md": {
       links: {
-        "https://github.com/helm/community/blob/main/user-profiles.md": "/community/user-profiles",
+        "https://github.com/helm/community/blob/main/user-profiles.md":
+          "/community/user-profiles",
       },
     },
     "hips/hip-0026.md": {
       links: {
-        "https://github.com/helm/community/blob/main/hips/hip-0012.md": "/community/hips/hip-0012",
-        "https://github.com/helm/community/blob/main/hips/archives/helm/distributed-search.md": "/community/hips/archives/helm/distributed-search",
+        "https://github.com/helm/community/blob/main/hips/hip-0012.md":
+          "/community/hips/hip-0012",
+        "https://github.com/helm/community/blob/main/hips/archives/helm/distributed-search.md":
+          "/community/hips/archives/helm/distributed-search",
       },
     },
 
@@ -137,7 +168,8 @@ module.exports = {
     "hips/archives/README.md": {},
     "hips/archives/monocular/1.0-improvements.md": {
       links: {
-        "https://github.com/helm/community/blob/master/proposals/distributed-search.md": "/community/hips/archives/helm/distributed-search",
+        "https://github.com/helm/community/blob/master/proposals/distributed-search.md":
+          "/community/hips/archives/helm/distributed-search",
       },
     },
     "hips/archives/helm/distributed-search.md": {},
