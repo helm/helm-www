@@ -1,123 +1,112 @@
 ---
-title: Краткое Руководство
-description: How to install and get started with Helm including instructions for distros, FAQs, and plugins.
+title: Краткое руководство
+description: Как установить и начать работу с Helm, включая инструкции для дистрибутивов, FAQ и плагины.
 sidebar_position: 1
 ---
 
-Это руководство описывает, как вы можете быстро начать использовать Helm.
+Это руководство описывает, как быстро начать использовать Helm.
 
-## Необходимые компоненты
+## Предварительные требования
 
-Для успешного и надежного использования Helm необходимо
+Для успешного и безопасного использования Helm необходимо:
 
-1. Kubernetes кластер
-2. Принятие решения о том, какие конфигурации безопасности должны применяться к вашей установке, если таковые имеются.
+1. Кластер Kubernetes
+2. Определение настроек безопасности для вашей установки (если требуется)
 3. Установка и настройка Helm
 
 ### Установите Kubernetes или получите доступ к кластеру
 
-- У вас должен быть установлен Kubernetes. Для последней версии Helm мы
-  рекомендуем последнюю стабильную версию Kubernetes, которая в большинстве случаев является
-  второй последней минорной версией.
-- Вы также должны иметь локально настроенную копию `kubectl`.
+- У вас должен быть установлен Kubernetes. Для последней версии Helm мы рекомендуем последнюю стабильную версию Kubernetes, которая в большинстве случаев является предпоследней минорной версией.
+- Также у вас должна быть локально настроенная копия `kubectl`.
 
-Смотрите [Политику поддержки версий Helm](https://helm.sh/docs/topics/version_skew/) для того, что бы понимать максимальную версию поддержки между Helm и Kubernetes.
+Смотрите [Политику поддержки версий Helm](https://helm.sh/docs/topics/version_skew/), чтобы узнать максимально допустимое расхождение версий между Helm и Kubernetes.
 
 ## Установка Helm
 
-Загрузите binary релиз клиента Helm. Вы можете использовать такие инструменты, как `homebrew`,
-или посмотрите на [официальную страницу релизов](https://github.com/helm/helm/releases).
+Загрузите бинарный релиз клиента Helm. Вы можете использовать такие инструменты, как `homebrew`, или посмотреть [официальную страницу релизов](https://github.com/helm/helm/releases).
 
 Для получения более подробной информации или других вариантов смотрите [руководство по установке](/intro/install.md).
 
-## Инициализация Helm Chart Repository {#initialize-a-helm-chart-repository}
+## Инициализация репозитория чартов Helm
 
-Как только у вас будет готов Helm, вы можете добавить chart репозиторий. Смотрите [Artifact
-Hub](https://artifacthub.io/packages/search?kind=0) для проверки доступности Helm chart
-репозиториев.
+После установки Helm вы можете добавить репозиторий чартов. Смотрите [Artifact Hub](https://artifacthub.io/packages/search?kind=0) для поиска доступных репозиториев чартов Helm.
 
 ```console
-$ helm repo add stable https://charts.helm.sh/stable
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
-После установки, вы сможете посмотреть charts, которые вы можете установить:
+После этого вы сможете посмотреть список чартов, которые можно установить:
 
 ```console
-$ helm search repo stable
-NAME                                    CHART VERSION   APP VERSION                     DESCRIPTION
-stable/acs-engine-autoscaler            2.2.2           2.1.1                           DEPRECATED Scales worker nodes within agent pools
-stable/aerospike                        0.2.8           v4.5.0.5                        A Helm chart for Aerospike in Kubernetes
-stable/airflow                          4.1.0           1.10.4                          Airflow is a platform to programmatically autho...
-stable/ambassador                       4.1.0           0.81.0                          A Helm chart for Datawire Ambassador
+$ helm search repo bitnami
+NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
+bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
+bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
+bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
+bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
 # ... and many more
 ```
 
-## Пример Установки Chart
+## Пример установки чарта
 
-Чтобы установить chart, вы необходимо использовать команду `helm install`.
-У Helm есть несколько способов найти и установить chart, но самый простой – это использовать один из официальных `stable` chart-ов.
+Чтобы установить чарт, используйте команду `helm install`. У Helm есть несколько способов найти и установить чарт, но самый простой — использовать чарты `bitnami`.
 
 ```console
-$ helm repo update              # Убедитесь, что мы получили последний список chart-ов
-$ helm install stable/mysql --generate-name
-Released smiling-penguin
+$ helm repo update              # Make sure we get the latest list of charts
+$ helm install bitnami/mysql --generate-name
+NAME: mysql-1612624192
+LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES: ...
 ```
 
-В приведенном выше примере был выпущен `stable/mysql` chart, а имя нашего нового релиза: `smiling-penguin`.
+В приведённом выше примере был установлен чарт `bitnami/mysql`, а имя нашего нового релиза — `mysql-1612624192`.
 
-Вы получите простое представление о возможностях этого MySQL chart-а, запустив `helm show
-chart stable/mysql`.
-Или вы можете запустить `helm show all stable/mysql` чтобы получить всю информацию о chart-е.
+Чтобы получить представление о возможностях этого чарта MySQL, выполните команду `helm show chart bitnami/mysql`. Или выполните `helm show all bitnami/mysql`, чтобы получить всю информацию о чарте.
 
-Всякий раз, когда вы устанавливаете chart, создается новая версия. 
-Таким образом, один chart можно установить несколько раз в один и тот же кластер. 
-И каждый из них может управляться и обновляться независимо.
+При каждой установке чарта создаётся новый релиз. Таким образом, один чарт можно установить несколько раз в один и тот же кластер. И каждый из них может управляться и обновляться независимо.
 
-`helm install` очень мощная команда со многими возможностями.
-Узнать больше можно в [Руководстве по эксплуатации Helm](/intro/using_helm.md)
+Команда `helm install` очень мощная и имеет множество возможностей. Чтобы узнать больше, смотрите [Руководство по использованию Helm](/intro/using_helm.md).
 
-## Подробнее О Релизах
+## Информация о релизах
 
-Всегда с легкостью можно увидеть, что было выпущено с помощью Helm:
+С помощью Helm легко увидеть, что было развёрнуто:
 
 ```console
-$ helm ls
-NAME             VERSION   UPDATED                   STATUS    CHART
-smiling-penguin  1         Wed Sep 28 12:59:46 2016  DEPLOYED  mysql-0.1.0
+$ helm list
+NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
+mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
 ```
 
-Функция `helm list` покажет вам список всех развернутых релизов.
+Функция `helm list` (или `helm ls`) покажет вам список всех развёрнутых релизов.
 
-## Удаление Релиза
+## Удаление релиза
 
-Чтобы деинсталлировать релиз, используйте команду `helm uninstall`:
+Чтобы удалить релиз, используйте команду `helm uninstall`:
 
 ```console
-$ helm uninstall smiling-penguin
-Removed smiling-penguin
+$ helm uninstall mysql-1612624192
+release "mysql-1612624192" uninstalled
 ```
 
-В данном случае, это удалит `smiling-penguin` из Kubernetes, 
-а так же удалит все ресурсы, связанные с этим релизом и саму историю релизов.
+Эта команда удалит `mysql-1612624192` из Kubernetes, а также удалит все ресурсы, связанные с этим релизом, и историю релизов.
 
-If the flag `--keep-history` is provided, release history will be kept. You will
-be able to request information about that release:
-Если использовать флаг `--keep-history`, то история релизов будет сохранена.
-В этом случае, у Вас остается возможность запросить информацию о удаленном ранее релизе.
+Если указать флаг `--keep-history`, история релизов будет сохранена. В этом случае вы сможете запросить информацию об этом релизе:
 
 ```console
-$ helm status smiling-penguin
+$ helm status mysql-1612624192
 Status: UNINSTALLED
-... 
+...
 ```
 
-Так как Helm отслеживает ваши релизы даже после того, как вы их деинсталлировали, 
-вы можете проверить историю кластера и даже восстановить релиз используя `helm rollback`.
+Поскольку Helm отслеживает ваши релизы даже после их удаления, вы можете проверить историю кластера и даже восстановить релиз с помощью команды `helm rollback`.
 
-## Чтение Текста Справки
+## Чтение справки
 
-Чтобы узнать больше о доступных Helm командах, используйте `helm help` или введите
-команду за которой следует флаг `-h`:
+Чтобы узнать больше о доступных командах Helm, используйте `helm help` или введите команду с флагом `-h`:
 
 ```console
 $ helm get -h

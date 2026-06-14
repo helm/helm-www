@@ -5,7 +5,7 @@ Affiche les CRDs du chart
 
 ### Synopsis
 
-Cette commande inspect un chart (dossier, fichier ou URL) et affiche le contenu des fichiers des CustomResourceDefinition.
+Cette commande inspecte un chart (dossier, fichier ou URL) et affiche le contenu des fichiers des CustomResourceDefinition.
 
 
 ```
@@ -18,7 +18,7 @@ helm show crds [CHART] [flags]
       --ca-file string             Vérifie les certificats des serveurs compatibles HTTPS à l'aide de ce bundle CA
       --cert-file string           Identifie le client HTTPS à l'aide de ce fichier de certificat SSL
       --devel                      Utiliser également les version de développement (alpha, beta, et versions candidates). Équivalent à version '>0.0.0-0'. Si --version est fixé, cela sera ignoré
-  -h, --help                       Aide pour la commande all
+  -h, --help                       Aide pour la commande crds
       --insecure-skip-tls-verify   Passe les vérification du certificat TLS pour le transfer du chart
       --key-file string            Identifie le client HTTPS à l'aide de ce fichier de clé SSL
       --keyring string             Emplacement des clés publiques utilisé pour la vérification (par défaut "~/.gnupg/pubring.gpg")
@@ -46,7 +46,7 @@ helm show crds [CHART] [flags]
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
   -n, --namespace string                Namespace à utilisé pour la requête
-	  --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
+      --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
       --repository-config string        Chemin vers le fichier contenant les noms et URLs des répertoires (par défaut "~/.config/helm/repositories.yaml")

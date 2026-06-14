@@ -8,8 +8,9 @@ This part of the Best Practices Guide explains general conventions.
 
 ## Chart Names
 
-Chart names must be lower case letters and numbers. Words _may_ be separated
-with dashes (-):
+Chart names must follow DNS-1123 label conventions: only lowercase letters,
+numbers, and dashes are allowed, names must start and end with a lowercase
+letter or number, and names cannot exceed 63 characters:
 
 Examples:
 
@@ -19,8 +20,15 @@ nginx-lego
 aws-cluster-autoscaler
 ```
 
-Neither uppercase letters nor underscores can be used in chart names. Dots
-should not be used in chart names.
+Invalid chart names include:
+- Names with uppercase letters (e.g., `MyChart`)
+- Names with underscores (e.g., `my_chart`)
+- Names with dots (e.g., `my.chart`)
+- Names starting with a dash (e.g., `-mychart`)
+- Names ending with a dash (e.g., `mychart-`)
+- Names longer than 63 characters
+
+The `helm lint` command validates chart names against these rules.
 
 ## Version Numbers
 
@@ -47,3 +55,12 @@ There are a few conventions for using the words _Helm_ and _helm_.
   case sensitive
 
 When in doubt, use _Helm_ (with an uppercase 'H').
+
+## Chart templates and namespaces
+
+Avoid defining the `namespace` property in the `metadata` section of your chart
+templates. The namespace to apply rendered templates to should be
+specified in the call to a Kubernetes client via the flag like `--namespace`.
+Helm is rendering your templates as-is and sending them off to the
+Kubernetes client, whether it be Helm itself or another
+program (kubectl, flux, spinnaker, etc).

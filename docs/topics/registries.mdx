@@ -21,7 +21,7 @@ A [Helm repository](/topics/chart_repository.md) is a way to house and distribut
 There are several hosted container registries with OCI support that you can use for your Helm charts. For example:
 
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
 - [Cloudsmith](https://help.cloudsmith.io/docs/oci-repository)
 - [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
@@ -54,6 +54,15 @@ $ helm registry login -u myuser localhost:5000
 Password:
 Login succeeded
 ```
+
+The host must be only the registry hostname, optionally with a port. Do not include a URL scheme or path:
+
+| Example | Valid |
+|---------|-------|
+| `ghcr.io` | Yes |
+| `localhost:5000` | Yes |
+| `https://ghcr.io` | No - scheme not allowed |
+| `ghcr.io/myrepo` | No - path not allowed |
 
 #### `logout`
 
@@ -154,6 +163,22 @@ NOTES:
 ...
 ```
 
+## Installing charts with digest
+
+Installing a chart with a digest is more secure than a tag because digests are immutable.
+The digest is specified in the chart URI:
+
+```
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart@sha256:52ccaee6d4dd272e54bfccda77738b42e1edf0e4a20c27e23f0b6c15d01aef79
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+...
+```
+
 ## Specifying dependencies
 
 Dependencies of a chart can be pulled from a registry using the `dependency update` subcommand.
@@ -221,5 +246,4 @@ The following example contains a
 
 Migrating from classic [chart repositories](/topics/chart_repository.md)
 (index.yaml-based repos) is as simple using `helm pull`, then using `helm push` to upload the resulting `.tgz` files to a registry.
-
 

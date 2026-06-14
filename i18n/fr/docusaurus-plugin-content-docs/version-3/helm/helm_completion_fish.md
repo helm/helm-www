@@ -11,7 +11,7 @@ Pour charger les complétions dans votre session shell courante :
 
     helm completion fish | source
 
-Pour charger les complétion pour chaque nouvelles session, exécutez une fois :
+Pour charger les complétions pour chaque nouvelle session, exécutez une fois :
 
     helm completion fish > ~/.config/fish/completions/helm.fish
 
@@ -43,7 +43,7 @@ helm completion fish [flags]
       --kube-tls-server-name string     Nom du serveur utilisé pour la validation du certificat du serveur API Kubernetes. S'il n'est pas fourni, le nom de la machine cliente utilisée pour contacter le serveur sera utilisé
       --kube-token string               Jeton utilisé pour l'authentification
       --kubeconfig string               Chemin du fichier de configuration kubeconfig
-  -n, --namespace string                Namespace à utilisé pour la requête
+  -n, --namespace string                Namespace à utiliser pour la requête
       --qps float32                     Requêtes par seconde utilisées lors de la communication avec l'API Kubernetes, sans compter le bursting
       --registry-config string          Chemin vers le fichier de configuration du registre (par défaut "~/.config/helm/registry/config.json")
       --repository-cache string         Chemin vers le fichier contenant les index du répertoire mis en cache (par défaut "~/.cache/helm/repository")
@@ -53,3 +53,5 @@ helm completion fish [flags]
 ### Voir également
 
 * [helm completion](/helm/helm_completion.md) - Générer des scripts d'auto-complétion pour le shell spécifié
+
+###### Généré automatiquement par spf13/cobra le 14-Jan-2026

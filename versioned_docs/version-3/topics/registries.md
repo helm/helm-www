@@ -185,6 +185,22 @@ NOTES:
 ...
 ```
 
+## Installing charts with digest
+
+Installing a chart with a digest is more secure than a tag because digests are immutable.
+The digest is specified in the chart URI:
+
+```
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart@sha256:52ccaee6d4dd272e54bfccda77738b42e1edf0e4a20c27e23f0b6c15d01aef79
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+...
+```
+
 ## Specifying dependencies
 
 Dependencies of a chart can be pulled from a registry using the `dependency update` subcommand.

@@ -87,7 +87,7 @@ Chart pode ser instalado diversas vezes em um mesmo cluster. Assim cada Chart po
 ser gerenciado e atualizado de forma independente.
 
 O comando `helm install` é bem poderoso e com muitas funcionalidades. Para saber
-mais acesse o [Guia de Utilização do Helm](/intro/using_helm.md)
+mais acesse o [Guia de Utilização do Helm](/intro/using_helm.md).
 
 ## Saiba mais sobre _Releases_
 
@@ -129,7 +129,7 @@ sendo até mesmo capaz de recuperar a _release_ (com o comando `helm rollback`).
 
 ## Ajuda no Cliente Helm
 
-Use `helm help`ou digite um comando seguido pelo argumento `-h`
+Use `helm help` ou digite um comando seguido pelo argumento `-h`
 para saber mais sobre os comandos disponíveis no cliente Helm:
 
 ```console

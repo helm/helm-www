@@ -81,7 +81,9 @@ annotations:
   example: Una lista de anotaciones codificadas por nombre (opcional).
 ```
 
-Otros campos se ignorarán silenciosamente.
+A partir de [v3.3.2](https://github.com/helm/helm/releases/tag/v3.3.2), no se
+permiten campos adicionales. El enfoque recomendado es agregar metadatos
+personalizados en `annotations`.
 
 ### Charts y Versionado
 
@@ -98,7 +100,10 @@ nginx-1.2.3.tgz
 ```
 
 También se admiten nombres SemVer 2 más complejos, como `versión: 1.2.3-alpha.1+ef365`.
-Pero el sistema rechaza explícitamente los nombres que no son SemVer.
+Pero el sistema rechaza explícitamente los nombres que no son SemVer. Se exceptúan
+las versiones en formato `x` o `x.y`. Por ejemplo, si hay una v al principio o una
+versión sin las 3 partes (por ejemplo, v1.2), se intentará convertirla en una
+versión semántica válida (por ejemplo, v1.2.0).
 
 **NOTA:** Mientras que Helm Classic y Deployment Manager estaban muy orientados
 a GitHub cuando se trataba de charts, Helm v2 y versiones posteriores no dependen
@@ -556,9 +561,8 @@ Si se desea más control sobre las dependencias, estas dependencias se pueden
 expresar explícitamente copiando los charts de dependencias en el directorio
 `charts/`.
 
-Una dependencia puede ser un archivo de chart (`foo-1.2.3.tgz`) o un directorio
-de chart descomprimido. Pero su nombre no puede comenzar con `_` o `.`. El cargador
-de chart ignora estos archivos.
+Una dependencia debe ser un directorio de chart desempaquetado, pero su nombre no
+puede comenzar con `_` o `.`. El cargador de charts ignora esos archivos.
 
 Por ejemplo, si el chart de WordPress depende del chart de Apache, el chart de Apache
 (de la versión correcta) se proporciona en el directorio `charts/` del chart de WordPress:
@@ -979,6 +983,13 @@ Esto también funciona al revés: si un subchart tiene un requisito que no se cu
 en el archivo `values.yaml` del subchart, el chart padre *debe* satisfacer esas
 restricciones para ser válido.
 
+La validación del esquema se puede deshabilitar con la siguiente opción.
+Esto es particularmente útil en entornos aislados (air-gapped) cuando el archivo
+JSON Schema de un chart contiene referencias remotas.
+```console
+helm install --skip-schema-validation
+```
+
 ### Referencias
 
 Cuando se trata de escribir plantillas, valores y archivos de esquema, existen
@@ -1133,7 +1144,15 @@ para configurar un repositorio.
 ## Paquetes de Inicio de Charts
 
 El comando `helm create` toma una opción opcional `--starter` que le permite
-especificar un "chart de inicio".
+especificar un "chart de inicio". Además, la opción starter tiene un alias corto `-p`.
+
+Ejemplos de uso:
+
+```console
+helm create my-chart --starter starter-name
+helm create my-chart -p starter-name
+helm create my-chart -p /absolute/path/to/starter-name
+```
 
 Los paquetes de inicio son charts regulares, pero se encuentran en
 `$XDG_DATA_HOME/helm/starters`. Como desarrollador de charts, puede crear charts
@@ -1144,7 +1163,10 @@ deben diseñarse teniendo en cuenta las siguientes consideraciones:
 - Los usuarios esperarán modificar el contenido de dicho chart, por lo que la
   documentación debe indicar cómo pueden hacerlo los usuarios.
 - Todas las apariciones de `<CHARTNAME>` serán reemplazadas con el nombre de chart
-  especificado para que los charts de inicio se puedan usar como plantillas.
+  especificado para que los charts de inicio se puedan usar como plantillas, excepto
+  para algunos archivos variables. Por ejemplo, si usa archivos personalizados en el
+  directorio `vars` o ciertos archivos `README.md`, `<CHARTNAME>` NO se reemplazará
+  dentro de ellos. Además, la descripción del chart no se hereda.
 
 Actualmente, la única forma de agregar un chart a `$XDG_DATA_HOME/helm/starters`
 es copiarlo manualmente allí. En la documentación de su chart, es posible que
