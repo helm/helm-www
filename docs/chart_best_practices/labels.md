@@ -44,3 +44,23 @@ Name|Status|Description
 You can find more information on the Kubernetes labels, prefixed with
 `app.kubernetes.io`, in the [Kubernetes
 documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
+
+## Helm Ownership Annotations
+
+Along with the labels above, Helm adds two annotations to every resource it
+manages. Together with the `app.kubernetes.io/managed-by=Helm` label, Helm uses
+these annotations to record which release owns a resource and to confirm that
+ownership before upgrading or uninstalling it.
+
+Name|Description
+-----|----------
+`meta.helm.sh/release-name` | The name of the release that owns the resource.
+`meta.helm.sh/release-namespace` | The namespace of the release that owns the resource.
+
+Helm sets these annotations for you, so there is no need to add them to your
+chart templates. If you install or upgrade a release and Helm encounters a
+pre-existing resource that lacks these annotations (for example, one created
+with `kubectl apply`), the operation fails because the resource is not owned by
+the release. To skip the ownership check, pass the `--take-ownership` flag to
+`helm install` or `helm upgrade`. Helm then adds these annotations and adopts
+the existing resource into the release.
