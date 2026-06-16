@@ -50,6 +50,31 @@ simple as `renderer1 | renderer2 | renderer3`.
 You can see an example of using `kustomize` as a post renderer
 [here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
 
+#### Filenames
+Before passing manifests to the post-renderer, Helm merges them into a single
+stream and adds a temporary annotation to each document recording the original
+template filename:
+
+```yaml
+metadata:
+  annotations:
+    postrenderer.helm.sh/postrender-filename: <original-template-filename>
+```
+
+When reading the post-renderer's output back, Helm uses this annotation to
+determine which filename to associate with each manifest for further processing.
+If the annotation is missing, Helm generates a filename in the format
+`generated-by-postrender-<id>.yaml`. Helm removes the annotation before sending
+the manifests to Kubernetes.
+
+#### Hooks
+As of Helm 3.21, [chart hooks](/topics/charts_hooks.md) are sent to the
+post-renderer along with regular templates. In earlier 3.x releases, hooks were
+rendered but never passed to the post-renderer, so the post-renderer only saw
+non-hook manifests. If your post-renderer applies broad transformations, such as
+injecting labels or sidecars, keep in mind that it now receives hook manifests as
+well.
+
 ### Caveats
 When using post renderers, there are several important things to keep in mind.
 The most important of these is that when using a post-renderer, all people
