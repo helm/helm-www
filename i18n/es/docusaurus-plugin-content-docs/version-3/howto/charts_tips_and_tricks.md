@@ -77,11 +77,11 @@ Para que sea posible incluir una plantilla y luego realizar una operación en la
 salida de esa plantilla, Helm tiene una función `include` especial:
 
 ```
-{{ include "toYaml" $value | indent 2 }}
+{{- include "toYaml" $value | nindent 2 }}
 ```
 
 Lo anterior incluye una plantilla llamada `toYaml`, le pasa `$value` y luego pasa
-la salida de esa plantilla a la función `indent`.
+la salida de esa plantilla a la función `nindent`.
 
 Debido a que YAML atribuye importancia a los niveles de sangría y los espacios
 en blanco, esta es una excelente manera de incluir fragmentos de código, pero

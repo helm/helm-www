@@ -336,6 +336,7 @@ Infrastructure and project management improvements
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32153 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 for GO-2026-5026 |
 | #32098 | 2026-05-04 | scottrigby | build: Clean up Goreleaser change |
 | #31343 | 2026-05-03 | TerryHowe | chore: replace mitchellh/gox with goreleaser |
 | #31970 | 2026-05-03 | isumitsolanki | refactor(cli): decouple EnvSettings from pkg/kube to avoid import cycles |
@@ -501,6 +502,7 @@ These PRs were included in v4 but were also backported to v3 releases
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32152 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 for GO-2026-5026 [dev-v3] |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
 | #13581 | 2024-12-31 | ldlb9527 | Upgrade golang.org/x/net to v0.33.0 to address CVE-2024-45338 |

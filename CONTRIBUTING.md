@@ -4,7 +4,7 @@ This is the contribution guide for the helm.sh website and documentation. Go to 
 
 ---
 
-Helm accepts contributions via GitHub pull requests. This document outlines the process to help get your contribution accepted.
+Helm accepts contributions via GitHub pull requests. This document outlines the process to help you get your contribution accepted.
 
 ## Reporting a Security Issue
 
@@ -93,7 +93,7 @@ Whether you are a user or contributor, official support channels include:
   - User: [#helm-users](https://kubernetes.slack.com/messages/C0NH30761/details/)
   - Contributor: [#helm-dev](https://kubernetes.slack.com/messages/C51E88VDG/)
 
-Before opening a new issue or submitting a new pull request, it's helpful to search the project - it's likely that another user has already reported the issue you're facing, or it's a known issue that we're already aware of. It is also worth asking on the Slack channels.
+Before opening a new issue or submitting a new pull request, it helps to search the project first. Another user may have already reported the issue you are facing, or it may already be a known issue. It is also worth asking on the Slack channels.
 
 ## Issues
 

@@ -11,13 +11,13 @@ import Helm4 from "../_v4-in-progress.mdx"
 Рекомендується використовувати реєстри контейнерів з підтримкою [OCI](https://www.opencontainers.org/) для зберігання та обміну пакетами чартів.
 
 
-## Використання OCI-реєстрів {#using-an-oci-based-registry}
+## Використання OCI-реєстрів {/* #using-an-oci-based-registry */}
 
-### Репозиторії Helm в OCI-реєстрах {#helm-repositories-in-oci-based-registries}
+### Репозиторії Helm в OCI-реєстрах {/* #helm-repositories-in-oci-based-registries */}
 
 [Репозиторій Helm](/topics/chart_repository.md) — це спосіб зберігання та розповсюдження пакетів чартів Helm. OCI-реєстр може містити нуль або більше репозиторіїв Helm, а кожен з цих репозиторіїв може містити нуль або більше пакетів чартів Helm.
 
-### Використання послуг реєстрів {#use-hosted-registries}
+### Використання послуг реєстрів {/* #use-hosted-registries */}
 
 Існує кілька реєстрів контейнерів з підтримкою OCI, які ви можете використовувати для ваших чартів Helm. Наприклад:
 
@@ -37,15 +37,15 @@ import Helm4 from "../_v4-in-progress.mdx"
 Ви можете використовувати [Docker Registry](https://docs.docker.com/registry/deploying/) або [`zot`](https://github.com/project-zot/zot), які є реєстрами з підтримкою OCI, на вашому компʼютері для розробки. Запуск реєстру з підтримкою OCI на вашому компʼютері, де відбувається розробка, слід використовувати лише для тестування.
 :::
 
-### Використання sigstore для підписування чартів з підтримкою OCI{#using-sigstore-to-sign-oci-based-charts}
+### Використання sigstore для підписування чартів з підтримкою OCI {/* #using-sigstore-to-sign-oci-based-charts */}
 
 Втулок [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) дозволяє використовувати [Sigstore](https://sigstore.dev/) для підписування чартів Helm тими ж інструментами, що й для підписування образів контейнерів.  Це є альтернативою [перевірки походження на основі GPG](/topics/provenance.mdx), що підтримуються класичними [репозиторіями чартів](/topics/chart_repository.md).
 
 Детальнішу інформацію про використання втулка `helm sigstore` дивіться в [документації проєкту Sigstore](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
-## Команди для роботи з реєстрами {#commands-for-working-with-registries}
+## Команди для роботи з реєстрами {/* #commands-for-working-with-registries */}
 
-### Команда `registry` {#the-registry-subcommand}
+### Команда `registry` {/* #the-registry-subcommand */}
 
 #### `login`
 
@@ -66,7 +66,7 @@ $ helm registry logout localhost:5000
 Logout succeeded
 ```
 
-### Команда `push` {#the-push-subcommand}
+### Команда `push` {/* #the-push-subcommand */}
 
 Завантажити чарт до реєстру на основі OCI:
 
@@ -88,7 +88,7 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 
 Користувачі втулка [helm-push](https://github.com/chartmuseum/helm-push) (для завантаження чартів до [ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server)) можуть зіткнутися з проблемами, оскільки втулок конфліктує з новою вбудованою функцією `push`. Починаючи з версії v0.10.0, втулок було перейменовано на `cm-push`.
 
-### Інші команди {#other-subcommands}
+### Інші команди {/* #other-subcommands */}
 
 Підтримка протоколу `oci://` також доступна в різних інших командах. Ось повний список:
 
@@ -142,7 +142,7 @@ NOTES:
 ...
 ```
 
-## Вказання залежностей {#specifying-dependencies}
+## Вказання залежностей {/* #specifying-dependencies */}
 
 Залежності чарту можна витягнути з реєстру за допомогою команди `dependency update`.
 
@@ -157,7 +157,7 @@ dependencies:
 
 Це завантажить `oci://localhost:5000/myrepo/mychart:2.7.0`, коли виконується `dependency update`.
 
-## Маніфест Helm чарту {#helm-chart-manifest}
+## Маніфест Helm чарту {/* #helm-chart-manifest */}
 
 Приклад маніфесту Helm чарту, представленого в реєстрі (зверніть увагу на поля `mediaType`):
 
@@ -204,6 +204,6 @@ dependencies:
 }
 ```
 
-## Міграція з репозиторіїв чартів {#migrating-from-chart-repos}
+## Міграція з репозиторіїв чартів {/* #migrating-from-chart-repos */}
 
 Міграція з класичних [репозиторіїв чартів](/topics/chart_repository.md) (репозиторіїв на основі index.yaml) є простим процесом: використовуйте `helm pull`, а потім `helm push`, щоб завантажити отримані файли `.tgz` до реєстру.

@@ -22,27 +22,9 @@ sidebar_position: 12
 
 # .git이라는 이름의 파일 또는 경로와 매칭
 .git
-
-# 모든 텍스트 파일과 매칭
-*.txt
-
-# mydir이라는 이름의 디렉토리만 매칭
-mydir/
-
-# 최상위 디렉토리의 텍스트 파일만 매칭
-/*.txt
-
-# 최상위 디렉토리의 foo.txt 파일만 매칭
-/foo.txt
-
-# ab.txt, ac.txt, ad.txt 파일과 매칭
-a[b-d].txt
-
-# subdir 하위의 temp*와 매칭되는 모든 파일과 매칭
-*/temp*
-
-*/*/temp*
-temp?
+*/draft*
+*/*/draft*
+draft?
 ```
 
 .gitignore와의 주목할 만한 차이점:
