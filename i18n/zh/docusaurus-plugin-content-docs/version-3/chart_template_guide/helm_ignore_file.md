@@ -38,11 +38,12 @@ mydir/
 # Match any file named ab.txt, ac.txt, or ad.txt
 a[b-d].txt
 
-# Match any file under subdir matching temp*
-*/temp*
+# Match any file under subdir matching draft*
+*/draft*
 
-*/*/temp*
-temp?
+# Match draft files two levels deep (e.g., foo/bar/draft123)
+*/*/draft*
+draft?
 ```
 
 与 `.gitignore` 的一些显著差异：

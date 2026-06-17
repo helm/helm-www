@@ -98,7 +98,8 @@ winget install Helm.Helm
 
 ### Apt (Debian/Ubuntu)
 
-Membros da comunidade Helm contribuíram com um pacote Apt para Debian/Ubuntu. Esse pacote geralmente está atualizado. Agradecimentos ao [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por hospedar o repositório.
+Membros da comunidade Helm contribuíram com um pacote Apt para Debian/Ubuntu. Esse pacote
+geralmente está atualizado. Agradecimentos ao [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por hospedar o repositório.
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes
