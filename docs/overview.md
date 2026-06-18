@@ -50,6 +50,14 @@ Split complex values across multiple YAML files. Perfect for testing different e
 #### Server-Side Apply
 Better conflict resolution when multiple tools manage the same resources. Test in environments with operators or other controllers.
 
+Helm 4 will default to server-side apply when installing a new Chart release.
+
+When upgrading (or rolling back), Helm will by default follow the previous apply method of the release.
+This latching behavior is done to ensure continuity of operation for existing releases that used client-side apply.
+The behavior can be overridden by setting the `--server-side` flag explicitly.
+
+As such, all releases created by Helm 3 will default to using client-side apply after upgrading to Helm 4.
+
 #### Custom Template Functions
 Extend Helm's templating with your own functions through plugins. Great for organization-specific templating needs.
 
@@ -84,6 +92,15 @@ The existing flags remain, but emit a deprecated warning:
 
 Update any automation that uses these renamed CLI flags.
 
+#### CLI Flags deprecated
+
+The following flags for `helm template` are deprecated and will be removed in Helm 5:
+
+- `--hide-notes`
+- `--render-subchart-notes`
+
+These flags have no effect because template output never includes notes. They remain in Helm 4 for backwards compatibility but are hidden from help output.
+
 ## Upgrading to Helm 4
 
 While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. To that end, before upgrading, we've added some tips below for specific things to look out for when testing Helm 4 with your existing workflows. As always, we welcome all feedback about what works, what breaks, and what could be better.
@@ -108,7 +125,7 @@ While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. 
 
 ## How to Give Feedback
 
-Find issues? Have suggestions? We want to hear from you before the November release:
+Find issues? Have suggestions? We want to hear from you:
 
 ### GitHub Issues
 

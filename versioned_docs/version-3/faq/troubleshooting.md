@@ -128,6 +128,27 @@ For example:
 helm list -v 6
 ```
 
+### Rollback fails with "no [Resource] with the name '[name]' found"
+
+When running `helm rollback`, you may see an error like:
+
+```
+Error: no ConfigMap with the name "myconfig" found
+```
+
+Similar errors can appear for other resource types (Pod, Secret, etc.).
+
+This can happen in the following scenario:
+
+1. You install a release (revision 1) that creates a resource
+2. You upgrade to a new chart version (revision 2) that removes that resource, but the upgrade fails partway through
+3. The resource still exists on the cluster because the failed upgrade didn't complete cleanup
+4. You attempt to roll back to revision 1
+
+In older Helm versions, the rollback fails because Helm expects the resource metadata from the original release but cannot find it in the release history since the resource was removed in revision 2.
+
+This issue is fixed in newer Helm 3 releases. Helm now detects when a resource exists on the cluster but is missing from the original release metadata, and uses the current cluster state as the baseline for the rollback.
+
 ### Tiller installations stopped working and access is denied
 
 Helm releases used to be available from <https://storage.googleapis.com/kubernetes-helm/>. As explained in ["Announcing get.helm.sh"](https://helm.sh/blog/get-helm-sh/), the official location changed in June 2019. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) makes all the old Tiller images available.
@@ -160,3 +181,38 @@ Or if a different version is needed, use the --tiller-image flag to override the
 `helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
 
 **Note:** The Helm maintainers recommend migration to a currently-supported version of Helm. Helm v2.17.0 was the final release of Helm v2; Helm v2 is unsupported since November 2020, as detailed in [Helm 2 and the Charts Project Are Now Unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/). Many CVEs have been flagged against Helm since then, and those exploits are patched in Helm v3 but will never be patched in Helm v2. See the [current list of published Helm advisories](https://github.com/helm/helm/security/advisories?state=published) and make a plan to [migrate to Helm v3](/topics/v2_v3_migration.md) today.
+
+### Uninstall skips some resources with "not owned by this release" warning
+
+When running `helm uninstall`, you may see warnings like:
+
+```
+WARN skipping delete of resource not owned by this release kind=ConfigMap name=myconfig namespace=default release=my-release
+```
+
+Or in the output:
+
+```
+N resource(s) were not deleted because they are not owned by this release:
+[ConfigMap] myconfig
+```
+
+Helm verifies resource ownership before deletion to prevent accidentally removing resources that belong to a different release. Helm checks these metadata fields:
+
+- Label: `app.kubernetes.io/managed-by=Helm`
+- Annotation: `meta.helm.sh/release-name=<release-name>`
+- Annotation: `meta.helm.sh/release-namespace=<release-namespace>`
+
+Resources are skipped during uninstall when:
+
+1. **The resource belongs to another release** - The resource was previously managed by a different Helm release. This can happen if a resource without a templated name was manually deleted, then recreated by a different release.
+2. **The resource lacks ownership metadata** - The resource exists but does not have Helm's ownership labels and annotations. This can happen with resources created outside of Helm.
+3. **Ownership cannot be verified** - Helm could not fetch the resource from the cluster (for example, due to RBAC restrictions or network issues).
+
+To preview which resources would be deleted versus skipped, use `--dry-run` with `--debug`:
+
+```console
+$ helm uninstall my-release --dry-run --debug
+```
+
+If you need to delete a resource that Helm is skipping, remove it manually using `kubectl delete`.

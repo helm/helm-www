@@ -1,53 +1,58 @@
 ---
 title: helm uninstall
 ---
-卸载版本
+
+卸载 release
 
 ### 简介
 
-该命令使用版本名称卸载版本
+该命令使用 release 名称卸载 release。
 
-会删除与最新版本chart相关的所有资源以及发布历史，释放以供将来使用
+会删除与该 release 最后一次部署的 chart 相关的所有资源，以及发布历史，释放以供将来使用。
 
-使用'--dry-run'参数查看哪些版本将在不实际卸载的情况下能够被卸载
+使用 `--dry-run` 参数查看哪些 release 将被卸载，而不实际执行卸载操作。
 
-```shell
+```
 helm uninstall RELEASE_NAME [...] [flags]
 ```
 
 ### 可选项
 
-```shell
-      --cascade string       Must be "background", "orphan", or "foreground". Selects the deletion cascading strategy for the dependents. Defaults to background. (default "background")
-      --description string   add a custom description
-      --dry-run              simulate a uninstall
-  -h, --help                 help for uninstall
-      --keep-history         remove all associated resources and mark the release as deleted, but retain the release history
-      --no-hooks             prevent hooks from running during uninstallation
-      --timeout duration     time to wait for any individual Kubernetes operation (like Jobs for hooks) (default 5m0s)
-      --wait                 if set, will wait until all the resources are deleted before returning. It will wait for as long as --timeout
+```
+      --cascade string       必须是 "background"、"orphan" 或 "foreground"。选择依赖资源的级联删除策略。默认是 background。
+      --description string   添加自定义描述
+      --dry-run              模拟卸载
+  -h, --help                 uninstall 的帮助信息
+      --ignore-not-found     将 "release not found" 视为卸载成功
+      --keep-history         删除所有关联资源并将 release 标记为已删除，但保留发布历史
+      --no-hooks             卸载时禁止钩子运行
+      --timeout duration     等待任何单个 Kubernetes 操作的时间（如钩子的 Jobs）（默认 5m0s）
+      --wait                 如果设置，将等待所有资源删除后再返回。等待时间与 --timeout 一致
 ```
 
-### 从父命令继承的命令
+### 从父命令继承的选项
 
-```shell
-      --burst-limit int                 client-side default throttling limit (default 100)
-      --debug                           enable verbose output
-      --kube-apiserver string           the address and the port for the Kubernetes API server
-      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --kube-as-user string             username to impersonate for the operation
-      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
-      --kube-context string             name of the kubeconfig context to use
-      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
-      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
-      --kube-token string               bearer token used for authentication
-      --kubeconfig string               path to the kubeconfig file
-  -n, --namespace string                namespace scope for this request
-      --registry-config string          path to the registry config file (default "~/.config/helm/registry/config.json")
-      --repository-cache string         path to the file containing cached repository indexes (default "~/.cache/helm/repository")
-      --repository-config string        path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+```
+      --burst-limit int                 客户端默认限流值（默认 100）
+      --debug                           启用详细输出
+      --kube-apiserver string           Kubernetes API 服务器的地址和端口
+      --kube-as-group stringArray       模拟操作的组，此参数可以重复指定多个组
+      --kube-as-user string             模拟操作的用户名
+      --kube-ca-file string             Kubernetes API 服务器连接的证书颁发机构文件
+      --kube-context string             要使用的 kubeconfig 上下文名称
+      --kube-insecure-skip-tls-verify   如果为 true，将不检查 Kubernetes API 服务器证书的有效性。这会使你的 HTTPS 连接不安全
+      --kube-tls-server-name string     用于 Kubernetes API 服务器证书验证的服务器名称。如果未提供，则使用联系服务器的主机名
+      --kube-token string               用于身份验证的 bearer token
+      --kubeconfig string               kubeconfig 文件的路径
+  -n, --namespace string                此请求的命名空间范围
+      --qps float32                     与 Kubernetes API 通信时使用的每秒查询数，不包括突发
+      --registry-config string          registry 配置文件的路径（默认 "~/.config/helm/registry/config.json"）
+      --repository-cache string         包含缓存仓库索引的目录路径（默认 "~/.cache/helm/repository"）
+      --repository-config string        包含仓库名称和 URL 的文件路径（默认 "~/.config/helm/repositories.yaml"）
 ```
 
 ### 请参阅
 
-* [helm](/helm/helm.md) - 针对Kubernetes的Helm包管理器
+* [helm](./helm.md) - Kubernetes 的 Helm 包管理器
+
+###### 由 spf13/cobra 于 2026-01-14 自动生成

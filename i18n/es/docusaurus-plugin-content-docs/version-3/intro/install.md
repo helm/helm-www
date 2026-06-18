@@ -44,9 +44,9 @@ Puede recuperar ese script y luego ejecutarlo localmente. Está bien documentado
 que puedas leerlo y comprender lo que está haciendo antes de ejecutarlo.
 
 ```console
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-$ chmod 700 get_helm.sh
-$ ./get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
 ```
 
 Sí, puedes `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`si
@@ -100,8 +100,8 @@ winget install Helm.Helm
 
 ### Desde Apt (Debian/Ubuntu)
 
-Los miembros de la comunidad Helm han contribuido con un paquete Apt para Debian/Ubuntu.
-Este paquete generalmente está actualizado. Gracias a [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por alojar el repositorio.
+Los miembros de la comunidad Helm han contribuido con un paquete Apt para Debian/Ubuntu. Este paquete
+generalmente está actualizado. Gracias a [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) por alojar el repositorio.
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes

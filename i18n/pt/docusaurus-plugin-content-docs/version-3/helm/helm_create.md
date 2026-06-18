@@ -35,19 +35,22 @@ helm create NOME [argumentos]
 ### Opções gerais
 
 ```
+      --burst-limit int                 limite de requisições do lado do cliente (default 100)
       --debug                       exibe uma saída verbosa
-  -h, --help                        exibe ajuda para um comando do helm
       --kube-apiserver string       o endereço e porta do Kubernetes API server
       --kube-as-group stringArray   o grupo que representará essa operação, esse argumento pode ser repetido para indicar múltiplos grupos
       --kube-as-user string         o usuário que representará essa operação
       --kube-ca-file string         caminho para o certificado para conexão com o Kubernetes API server
       --kube-context string         nome do contexto do kubeconfig a ser usado
+      --kube-insecure-skip-tls-verify   se verdadeiro, o certificado do Kubernetes API server não será verificado. Isso tornará suas conexões HTTPS inseguras
+      --kube-tls-server-name string     nome do servidor usado para validação do certificado do Kubernetes API server. Se não fornecido, será usado o hostname usado para contactar o servidor
       --kube-token string           bearer token usado para autenticação
       --kubeconfig string           caminho para o arquivo kubeconfig
   -n, --namespace string            namespace para essa requisição
-      --registry-config string      caminho para o arquivo de configuração do registry (default "~/.config/helm/registry.json")
+      --qps float32                     consultas por segundo usadas na comunicação com a Kubernetes API, não incluindo bursting
+      --registry-config string          caminho para o arquivo de configuração do registry (default "~/.config/helm/registry/config.json")
       --repository-cache string     caminho para os índices "cacheados" no repositório (default "~/.cache/helm/repository")
-      --repository-config string    caminho para o arquivo path to the file containing repository names and URLs (default "~/.config/helm/repositories.yaml")
+      --repository-config string        caminho para o arquivo contendo nomes e URLs dos repositórios (default "~/.config/helm/repositories.yaml")
 ```
 
 ### Veja Também

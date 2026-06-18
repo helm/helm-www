@@ -4,8 +4,6 @@
   command = "make netlify-build"
   publish = "build"
 
-[build.environment]
-  NODE_VERSION = "20"
 
 # Cache Docusaurus internal cache (.docusaurus) with optional CACHE_VERSION per environment
 [[plugins]]

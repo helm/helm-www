@@ -44,11 +44,12 @@ mydir/
 # Match any file named ab.txt, ac.txt, or ad.txt
 a[b-d].txt
 
-# Match any file under subdir matching temp*
-*/temp*
+# Match any file under subdir matching draft*
+*/draft*
 
-*/*/temp*
-temp?
+# Match draft files two levels deep (e.g., foo/bar/draft123)
+*/*/draft*
+draft?
 ```
 
 Some notable differences from .gitignore:
