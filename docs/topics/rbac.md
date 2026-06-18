@@ -160,7 +160,7 @@ rules:​
 Then, create the ClusterRole using
 
 ```console
-$ kubectl create -f clusterrole-secret-reader.yaml​
+$ kubectl create -f cluster-role-secret-reader.yaml​
 ```
 
 Once that's done, we can grant a user read access to most resources, and then
