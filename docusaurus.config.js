@@ -275,7 +275,7 @@ const config = {
           { to: "community", label: "Community", position: "left" },
           { to: "blog", label: "Blog", position: "left" },
           {
-            href: "https://artifacthub.io/",
+            href: "https://artifacthub.io/packages/search?kind=0",
             label: "Charts",
             position: "left",
           },
