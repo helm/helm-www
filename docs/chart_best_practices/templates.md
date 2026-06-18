@@ -198,7 +198,7 @@ memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 Incorrect: `helm template` returns `Error: execution error at (templates/test.yaml:2:13): maxMem must be set`
 ```yaml
 # This may cause problems if the value is more than 100Gi
-# memory: {{ required .Values.maxMem "maxMem must be set" | quote }}
+# memory: {{ required "maxMem must be set" .Values.maxMem | quote }}
 ```
 
 Review [Debugging Templates](/chart_template_guide/debugging.md) for another example of this behavior of how YAML comments are left intact.
