@@ -249,7 +249,7 @@ const config = {
         // Change id to show again for users who have already closed it
         id: "helm4_ga",
         content:
-          '🎉 Helm v4.0.0 is out! See the <a href="/docs/overview">Helm 4 Overview</a> for details!',
+          '🎉 Helm 4 is out! See the <a href="/docs/overview">Helm 4 Overview</a> for details!',
         isCloseable: true,
       },
       // Replace with your project's social card
