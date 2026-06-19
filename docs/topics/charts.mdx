@@ -300,6 +300,69 @@ charts/
   mysql-3.2.1.tgz
 ```
 
+#### The Chart.lock file and content digests
+
+When `helm dependency update` resolves and downloads your dependencies, it
+records the result in a `Chart.lock` file alongside `Chart.yaml`. The lock file
+pins the exact name, version, and repository of every resolved dependency, so
+that later builds reproduce the same set of charts.
+
+Each dependency entry in `Chart.lock` also includes a `digest` field, which is
+the `sha256:` hash of the downloaded chart archive's bytes.
+
+```yaml
+dependencies:
+- name: apache
+  version: 1.2.3
+  repository: https://example.com/charts
+  digest: sha256:1b5fa1...
+- name: mysql
+  version: 3.2.1
+  repository: https://another.example.com/charts
+  digest: sha256:9a0c4e...
+digest: sha256:abc...
+generated: "2026-06-19T00:00:00Z"
+```
+
+There are two distinct digests, and they track different things:
+
+- The top-level `digest` hashes the dependency constraints in `Chart.yaml`
+  together with the resolved metadata (name, version, and repository). It
+  detects drift between `Chart.yaml` and `Chart.lock`, for example when you
+  change a version constraint but do not re-run `helm dependency update`.
+- The per-dependency `digest` records the exact tarball content that was
+  downloaded. It is written only to `Chart.lock`, and is omitted from the
+  dependency entries in `Chart.yaml`.
+
+When you run `helm dependency build`, Helm rebuilds the `charts/` directory from
+`Chart.lock` and checks each dependency against its recorded per-dependency
+`digest`. If a chart repository republishes the same version with different
+archive bytes, the content no longer matches the recorded digest and `helm
+dependency build` fails:
+
+```text
+chart.lock digest mismatch for apache-1.2.3: expected sha256:..., got sha256:...
+```
+
+Because the per-dependency content digest is tracked separately from the
+top-level digest, republishing an identical version with different bytes changes
+only the per-dependency digest and leaves the top-level digest untouched. To
+re-lock against the new content, run `helm dependency update` again.
+
+A `Chart.lock` written by an older version of Helm that does not record
+per-dependency digests still builds without error. The digests are added the
+next time you run `helm dependency update`.
+
+Separately, while downloading any dependency, Helm compares the digest
+advertised in the chart repository's index against the bytes it actually
+downloaded. If the two do not match, Helm prints a warning to standard error:
+
+```text
+WARNING: digest mismatch for <chart>: repository index has sha256:..., downloaded content has sha256:...
+```
+
+This warning is informational and does not stop the operation.
+
 #### Alias field in dependencies
 
 In addition to the other fields above, each requirements entry may contain the
