@@ -420,6 +420,10 @@ rollback happens, the revision number is incremented by 1. The first revision
 number is always 1. And we can use `helm history [RELEASE]` to see revision
 numbers for a certain release.
 
+If a release was created by a rollback, pass `--show-rollback-revision` to
+`helm history` to add a `ROLLBACK` column to the output. This column shows which
+revision each rollback targeted.
+
 ## Helpful Options for Install/Upgrade/Rollback
 
 There are several other helpful options you can specify for customizing the
