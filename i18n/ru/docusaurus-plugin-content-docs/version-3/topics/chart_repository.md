@@ -160,7 +160,7 @@ $ git checkout -b gh-pages
 
 Например, если вы хотите обслуживать чарты из `$WEBROOT/charts`, создайте каталог `charts/` в корне веб-сервера и поместите индексный файл и чарты в эту папку.
 
-### Сервер репозитория ChartMuseum
+### Сервер репозитория ChartMuseum {#chartmuseum-repository-server}
 
 ChartMuseum — это сервер репозитория чартов Helm с открытым исходным кодом, написанный на Go (Golang), с поддержкой облачных хранилищ, включая [Google Cloud Storage](https://cloud.google.com/storage/), [Amazon S3](https://aws.amazon.com/s3/), [Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), [Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss), [Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/), [Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage), [Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html), [Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos), [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), [Minio](https://min.io/) и [etcd](https://etcd.io/).
 
