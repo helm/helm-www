@@ -72,6 +72,47 @@ The [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) plugin allows u
 
 For more details on using the `helm sigstore` plugin, see [that project's documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
+## Container ecosystem configuration
+
+Helm uses the standard container ecosystem configuration stack, so it can share credentials and settings with tools like Docker, Podman, and Buildah.
+
+### Credential discovery
+
+When authenticating to a registry, Helm checks multiple credential sources in order:
+
+1. Helm's own credentials file (`~/.config/helm/registry/config.json`)
+2. Docker config.json (`~/.docker/config.json`)
+3. Containers auth.json (`${XDG_RUNTIME_DIR}/containers/auth.json`)
+
+If you've already authenticated to a registry using Docker or Podman, Helm will use those credentials automatically. You don't need a separate `helm registry login`.
+
+### Configuration files
+
+Helm loads the following container ecosystem configuration files when present. Missing files are silently skipped.
+
+| File | Purpose |
+|------|---------|
+| `~/.docker/config.json` | Docker credentials and credential helper configuration |
+| `${XDG_RUNTIME_DIR}/containers/auth.json` | Podman/Buildah credentials |
+| `/etc/containers/registries.conf` | Registry mirrors, blocked registries, insecure flags, location rewrites |
+| `/etc/containers/certs.d/` | Per-registry CA and client certificates |
+| `/etc/containers/policy.json` | Image acceptance policies |
+| `/etc/containers/registries.d/` | Signature lookaside storage configuration |
+
+### CLI flag precedence
+
+Command-line flags always override settings from configuration files. The following flags take precedence when specified:
+
+- `--plain-http` overrides transport settings
+- `--insecure` overrides TLS verification settings
+- `--cert-file` and `--key-file` override client certificate settings
+- `--ca-file` overrides CA certificate settings
+- `--username` and `--password` override stored credentials
+
+### Registry location rewrites
+
+When using `helm registry login`, Helm applies location rewrites defined in `registries.conf`. If a registry alias has a `location` directive, credentials are stored under the canonical registry name rather than the alias. This ensures credentials work correctly when you access the registry through different aliases.
+
 ## Commands for working with registries
 
 ### The `registry` subcommand
