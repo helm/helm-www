@@ -125,6 +125,10 @@ The `apiVersion` field should be `v2` for Helm charts that require at least Helm
 3. Charts supporting previous Helm versions have an `apiVersion` set to `v1` and
 are still installable by Helm 3.
 
+Helm 4 introduces `apiVersion: v3` for new charts. Charts with `apiVersion: v2`
+continue to work unchanged. For migration guidance, see [Migrating Charts from
+v2 to v3](/topics/chart_v2_v3_migration.md).
+
 Changes from `v1` to `v2`:
 
 - A `dependencies` field defining chart dependencies, which were located in a
