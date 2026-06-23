@@ -63,7 +63,7 @@ dependencies: # A list of the chart requirements (optional)
   - name: The name of the chart (nginx)
     version: The version of the chart ("1.2.3")
     repository: (optional) The repository URL ("https://example.com/charts") or alias ("@repo-name")
-    condition: (optional) A yaml path that resolves to a boolean, used for enabling/disabling charts (e.g. subchart1.enabled )
+    condition: (optional) A yaml path or boolean expression that resolves to a boolean, used for enabling/disabling charts (e.g. subchart1.enabled or (subchart1.enabled && !subchart2.enabled))
     tags: # (optional)
       - Tags can be used to group charts for enabling/disabling together
     import-values: # (optional)
@@ -344,11 +344,28 @@ All charts are loaded by default. If `tags` or `condition` fields are present,
 they will be evaluated and used to control loading for the chart(s) they are
 applied to.
 
-Condition - The condition field holds one or more YAML paths (delimited by
-commas). If this path exists in the top parent's values and resolves to a
-boolean value, the chart will be enabled or disabled based on that boolean
-value.  Only the first valid path found in the list is evaluated and if no paths
-exist then the condition has no effect.
+Condition - The condition field supports two syntaxes for controlling whether a
+dependency is enabled:
+
+**Path list syntax (legacy):** One or more YAML paths delimited by commas. If a
+path exists in the top parent's values and resolves to a boolean value, the
+chart will be enabled or disabled based on that boolean value. Only the first
+valid path found in the list is evaluated and if no paths exist then the
+condition has no effect.
+
+**Boolean expression syntax:** Wrap the condition in parentheses to evaluate it
+as a boolean expression. This allows combining multiple paths with logical
+operators:
+
+- `&&` - logical AND
+- `||` - logical OR
+- `!` - logical NOT (prefix)
+- `()` - grouping for complex expressions
+
+Paths in expressions use dot notation (e.g., `subchart1.enabled`,
+`global.flag`). If a path does not exist or resolves to a non-boolean value, it
+evaluates to `false`. Parse errors produce a warning and preserve the
+dependency's current enabled state.
 
 Tags - The tags field is a YAML list of labels to associate with this chart. In
 the top parent's values, all charts with tags can be enabled or disabled by
@@ -392,6 +409,50 @@ Since `subchart2` is tagged with `back-end` and that tag evaluates to `true`,
 `subchart2` will be enabled. Also note that although `subchart2` has a condition
 specified, there is no corresponding path and value in the parent's values so
 that condition has no effect.
+
+##### Boolean Expression Example
+
+Boolean expressions are useful for mutually exclusive dependencies, where you
+want to enable exactly one of several alternatives based on a single
+configuration value.
+
+```yaml
+# parentchart/Chart.yaml
+
+dependencies:
+  - name: mysql
+    repository: https://charts.example.com
+    version: 1.0.0
+    condition: (!highAvailability)
+  - name: mysql-cluster
+    repository: https://charts.example.com
+    version: 1.0.0
+    condition: (highAvailability)
+```
+
+```yaml
+# parentchart/values.yaml
+
+highAvailability: false
+```
+
+In this example, setting `highAvailability: true` enables `mysql-cluster` and
+disables `mysql`, while `highAvailability: false` does the opposite. This lets
+users switch between a standalone database and a clustered database with a
+single configuration change.
+
+More complex expressions can combine multiple conditions using grouping:
+
+```yaml
+dependencies:
+  - name: subchart1
+    repository: https://charts.example.com
+    version: 1.0.0
+    condition: (subchart1.enabled && (!subchart2.enabled || global.override))
+```
+
+This enables `subchart1` only when `subchart1.enabled` is true AND either
+`subchart2.enabled` is false OR `global.override` is true.
 
 ##### Using the CLI with Tags and Conditions
 
