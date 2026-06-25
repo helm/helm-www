@@ -31,6 +31,42 @@ Template functions follow the syntax `functionName arg1 arg2...`. In the snippet
 above, `quote .Values.favorite.drink` calls the `quote` function and passes it a
 single argument.
 
+## Avoid YAML injection
+
+Values may come from users or other untrusted sources. Rendering an untrusted
+string directly into a template can allow the string to change the structure of
+the generated YAML. For example, this template renders a scalar value without
+quoting it:
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink }}
+```
+
+A value containing YAML syntax, such as a newline followed by another key, may
+then add unexpected data to the rendered manifest. Quote string values so that
+YAML treats the result as a scalar:
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink | quote }}
+```
+
+When a value is intentionally structured data, serialize the complete value
+with `toYaml` and indent it for its location in the manifest:
+
+```yaml
+metadata:
+  annotations:
+    {{- .Values.podAnnotations | toYaml | nindent 4 }}
+```
+
+Using `toYaml` with the correct indentation preserves the intended YAML
+structure, but it does not make arbitrary content safe or validate that the
+result is appropriate for a particular Kubernetes field. Chart authors should
+validate and constrain accepted values when they may come from untrusted
+sources.
+
 Helm has over 60 available functions. Some of them are defined by the [Go
 template language](https://godoc.org/text/template) itself. Most of the others
 are part of the [Sprig template library](https://masterminds.github.io/sprig/).
