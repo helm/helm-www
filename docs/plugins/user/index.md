@@ -41,6 +41,38 @@ The command to list plugins includes the plugin's name, version, type, API versi
 
 See `helm plugin list --help` for more information.
 
+## Updating Plugins
+
+Helm has a built-in command to update one or more installed plugins.
+By default, Helm updates each plugin to its latest version:
+
+```bash
+helm plugin update <plugin>
+```
+
+To update several plugins at once, list their names:
+
+```bash
+helm plugin update <plugin> <other-plugin>
+```
+
+To update a plugin to a specific version, pin the version with the `@<version>` syntax.
+This produces a deterministic, reproducible update to a known version:
+
+```bash
+helm plugin update <plugin>@<version>
+```
+
+Helm accepts only an exact semver version, for example `1.2.3`.
+The `v` prefix and semver range constraints such as `~1.2`, `^1.0.0`, and `>=1.0.0` are not supported for updates.
+When you list multiple plugins, you can pin a version for each one independently:
+
+```bash
+helm plugin update myplugin@1.2.3 otherplugin@2.0.0
+```
+
+See `helm plugin update --help` for more information.
+
 ## Uninstalling Plugins
 
 Uninstalling plugins is intended to be straightforward and easy. However, be sure to read [Plugin Security](#plugin-security) to understand the risks of uninstalling as well.
