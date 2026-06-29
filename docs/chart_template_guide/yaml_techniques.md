@@ -9,74 +9,9 @@ we'll look at the YAML format. YAML has some useful features that we, as
 template authors, can use to make our templates less error prone and easier to
 read.
 
-## Scalars and Collections
+The [YAML specification](https://yaml.org/spec/1.2/spec.html) distinguishes between two kinds of data types: *scalar* types, which represent individual values such as *strings*, *numbers*, *booleans*, and *null*; and *collection* types, which group values together as either *maps* (key–value pairs) or *sequences* (ordered lists). The following sections cover each of these in more depth.
 
-According to the [YAML spec](https://yaml.org/spec/1.2/spec.html), there are two
-types of collections, and many scalar types.
-
-The two types of collections are maps and sequences:
-
-```yaml
-map:
-  one: 1
-  two: 2
-  three: 3
-
-sequence:
-  - one
-  - two
-  - three
-```
-
-Scalar values are individual values (as opposed to collections)
-
-### Scalar Types in YAML
-
-In Helm's dialect of YAML, the scalar data type of a value is determined by a
-complex set of rules, including the Kubernetes schema for resource definitions.
-But when inferring types, the following rules tend to hold true.
-
-If an integer or float is an unquoted bare word, it is typically treated as a
-numeric type:
-
-```yaml
-count: 1
-size: 2.34
-```
-
-But if they are quoted, they are treated as strings:
-
-```yaml
-count: "1" # <-- string, not int
-size: '2.34' # <-- string, not float
-```
-
-The same is true of booleans:
-
-```yaml
-isGood: true   # bool
-answer: "true" # string
-```
-
-The word for an empty value is `null` (not `nil`).
-
-Note that `port: "80"` is valid YAML, and will pass through both the template
-engine and the YAML parser, but will fail if Kubernetes expects `port` to be an
-integer.
-
-In some cases, you can force a particular type inference using YAML node tags:
-
-```yaml
-coffee: "yes, please"
-age: !!str 21
-port: !!int "80"
-```
-
-In the above, `!!str` tells the parser that `age` is a string, even if it looks
-like an int. And `port` is treated as an int, even though it is quoted.
-
-
-## Strings in YAML
+## YAML Strings
 
 Much of the data that we place in YAML documents are strings. YAML has more than
 one way to represent a string. This section explains the ways and demonstrates
@@ -251,6 +186,68 @@ coffee: >-
 The above will produce `Latte\n  12 oz\n  16 oz\nCappuccino Espresso`. Note that
 both the spacing and the newlines are still there.
 
+## Other YAML Scalars
+
+Scalar values are individual values (as opposed to collections). In Helm's
+dialect of YAML, the scalar data type of a value is determined by a complex set
+of rules, including the Kubernetes schema for resource definitions. But when
+inferring types, the following rules tend to hold true.
+
+If an integer or float is an unquoted bare word, it is typically treated as a
+numeric type:
+
+```yaml
+count: 1
+size: 2.34
+```
+
+But if they are quoted, they are treated as strings:
+
+```yaml
+count: "1" # <-- string, not int
+size: '2.34' # <-- string, not float
+```
+
+The same is true of booleans:
+
+```yaml
+isGood: true   # bool
+answer: "true" # string
+```
+
+The word for an empty value is `null` (not `nil`).
+
+Note that `port: "80"` is valid YAML, and will pass through both the template
+engine and the YAML parser, but will fail if Kubernetes expects `port` to be an
+integer.
+
+In some cases, you can force a particular type inference using YAML node tags:
+
+```yaml
+coffee: "yes, please"
+age: !!str 21
+port: !!int "80"
+```
+
+In the above, `!!str` tells the parser that `age` is a string, even if it looks
+like an int. And `port` is treated as an int, even though it is quoted.
+
+## YAML Collections
+
+YAML collection types can be used for composing data from other YAML types, be it scalar types or other collections. There are two types of collections: *maps* (key–value pairs) and *sequences* (ordered lists):
+
+```yaml
+map:
+  one: 1
+  two: 2
+  three: 3
+
+sequence:
+  - one
+  - two
+  - three
+```
+
 ## Embedding Multiple Documents in One File
 
 It is possible to place more than one YAML document into a single file. This is
@@ -309,7 +306,7 @@ And the two can be mixed (with care):
 
 ```yaml
 coffee: "yes, please"
-coffees: [ "Latte", "Cappuccino", "Espresso"]
+coffees: [ "Latte", "Cappuccino", "Espresso" ]
 ```
 
 All three of these should parse into the same internal representation.
