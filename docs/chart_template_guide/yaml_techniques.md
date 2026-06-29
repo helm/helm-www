@@ -9,7 +9,12 @@ we'll look at the YAML format. YAML has some useful features that we, as
 template authors, can use to make our templates less error prone and easier to
 read.
 
-The [YAML specification](https://yaml.org/spec/1.2/spec.html) distinguishes between two kinds of data types: *scalar* types, which represent individual values such as *strings*, *numbers*, *booleans*, and *null*; and *collection* types, which group values together as either *maps* (key–value pairs) or *sequences* (ordered lists). The following sections cover each of these in more depth.
+The [YAML specification](https://yaml.org/spec/1.2/spec.html) distinguishes
+between two kinds of data types: *scalar* types, which represent individual
+values such as *strings*, *numbers*, *booleans*, and *null*; and *collection*
+types, which group values together as either *maps* (key–value pairs) or
+*sequences* (ordered lists). The following sections cover each of these in
+more depth.
 
 ## YAML Strings
 
@@ -164,25 +169,36 @@ both the spacing and the newlines are still there.
 
 ### Generating Strings in Templates
 
-So far, this section has covered static YAML strings. That is, YAML strings that are copied from the template to the resulting YAML file verbatim.
+So far, this section has covered static YAML strings. That is, YAML strings
+that are copied from the template to the resulting YAML file verbatim.
 
-Things get more complicated, when templates generate YAML strings based on [dynamic values](/chart_template_guide/values_files.mdx). These values could contain YAML special characters (including line-breaks and indent), so the following naive approach could break the YAML structure that we intend:
+Things get more complicated, when templates generate YAML strings based on
+[dynamic values](/chart_template_guide/values_files.mdx). These values could
+contain YAML special characters (including line-breaks and indent), so the
+following naive approach could break the YAML structure that we intend:
 
 ```yaml
 data:
   drink: {{ .Values.favorite.drink }}
 ```
 
-To address this problem, we can encode values as double-quoted YAML strings using the [`quote`](/chart_template_guide/function_list.mdx#quote-and-squote) function:
+To address this problem, we can encode values as double-quoted YAML strings
+using the [`quote`](/chart_template_guide/function_list.mdx#quote-and-squote)
+function:
 
 ```yaml
 data:
   drink: {{ .Values.favorite.drink | quote }}
 ```
 
-The `quote` function both wraps the input value in quotes and escapes control characters that have a special meaning within double-quoted YAML strings. This means that we must **not** add our own quotes around the outputs of the `quote` function.
+The `quote` function both wraps the input value in quotes and escapes control
+characters that have a special meaning within double-quoted YAML strings.
+This means that we must **not** add our own quotes around the outputs of the
+`quote` function.
 
-This also means, that constructing a YAML string from multiple values is slightly more complicated. We can do so, by concatenating the values (using functions such as `print` or `printf`) and then piping the result to `quote`:
+This also means, that constructing a YAML string from multiple values is
+slightly more complicated. We can do so, by concatenating the values (using
+functions such as `print` or `printf`) and then piping the result to `quote`:
 
 ```
 data:
@@ -190,7 +206,13 @@ data:
   disclaimer: {{ printf "This endorsement is paid for by the %s industry." .Values.favorite.drink | quote }}
 ```
 
-As the YAML spec says, double-quoted strings are "the only style capable of expressing arbitrary strings". However, double-quoted strings can be hard to read, in particular, when they are long and contain line-breaks. In these situations, we can use multi-line strings in flow syntax, as described above. When generating multi-line YAML strings from dynamic values, it is important to get the indent right. For this, we can use the `nindent` function in our template:
+As the YAML spec says, double-quoted strings are "the only style capable of
+expressing arbitrary strings". However, double-quoted strings can be hard to
+read, in particular, when they are long and contain line-breaks. In these
+situations, we can use multi-line strings in flow syntax, as described above.
+When generating multi-line YAML strings from dynamic values, it is important
+to get the indent right. For this, we can use the `nindent` function in our
+template:
 
 ```yaml
 myLongText: |
@@ -198,12 +220,15 @@ myLongText: |
 ```
 
 Note how we do the indentation above: `nindent 2` tells the template engine to
-add a newline and indent every line in `stringWithLongText` with two spaces. The `{{-`
-trims the whitespace to the left, and `nindent` re-adds the newline with the
+add a newline and indent every line in `stringWithLongText` with two spaces.
+The `{{-` trims the whitespace to the left, and `nindent` re-adds the newline
 correct indentation.
 
-As noted above, there is one caveat to this approach. If the first non-blank line of the value contains leading white-space this breaks our indent.
-The YAML parser will report this as an error and Helm will abort the install or update. When this happens we should adjust our template and generate the YAML string for this value using the  `quote` function instead.
+As noted above, there is one caveat to this approach. If the first non-blank
+line of the value contains leading white-space this breaks our indent.
+The YAML parser will report this as an error and Helm will abort the install
+or update. When this happens we should adjust our template and generate the
+YAML string for this value using the `quote` function instead.
 
 ### Importing Files into Strings in Templates
 
@@ -215,8 +240,8 @@ doing this:
 - Use `{{ include "TEMPLATE" . }}` to render a template and then place its
   contents into the chart.
 
-When inserting files into YAML strings, it's good to understand the encoding rules
-above. We can use either the `quote` approach or the `nindent` approach:
+When inserting files into YAML strings, it's good to understand the encoding
+rules above. We can use either the `quote` approach or the `nindent` approach:
 
 ```yaml
 myfile:
@@ -225,7 +250,8 @@ mytemplate: |
   {{- include "mytemplate.txt" . | nindent 2 }}
 ```
 
-Obviously this also works the other way round, using `.Files.Get` with `nindent` and using `include` with `quote`. 
+Obviously this also works the other way round, using `.Files.Get` with
+`nindent` and using `include` with `quote`.
 
 ## Other YAML Scalars
 
@@ -279,7 +305,9 @@ TODO
 
 ## YAML Collections
 
-YAML collection types can be used for composing data from other YAML types, be it scalar types or other collections. There are two types of collections: *maps* (key–value pairs) and *sequences* (ordered lists):
+YAML collection types can be used for composing data from other YAML types,
+be it scalar types or other collections. There are two types of collections:
+*maps* (key–value pairs) and *sequences* (ordered lists):
 
 ```yaml
 map:
