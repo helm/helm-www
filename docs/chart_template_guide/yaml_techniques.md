@@ -128,30 +128,6 @@ coffee: |-
 In the above case, `coffee` will be `Latte\n  12 oz\n  16
 oz\nCappuccino\nEspresso`.
 
-### Indenting and Templates
-
-When writing templates, you may find yourself wanting to inject the contents of
-a file into the template. As we saw in previous chapters, there are two ways of
-doing this:
-
-- Use `{{ .Files.Get "FILENAME" }}` to get the contents of a file in the chart.
-- Use `{{ include "TEMPLATE" . }}` to render a template and then place its
-  contents into the chart.
-
-When inserting files into YAML, it's good to understand the multi-line rules
-above. Often times, the easiest way to insert a static file is to do something
-like this:
-
-```yaml
-myfile: |
-  {{- .Files.Get "myfile.txt" | nindent 2 }}
-```
-
-Note how we do the indentation above: `nindent 2` tells the template engine to
-add a newline and indent every line in "myfile.txt" with two spaces. The `{{-`
-trims the whitespace to the left, and `nindent` re-adds the newline with the
-correct indentation.
-
 ### Folded Multi-line Strings
 
 Sometimes you want to represent a string in your YAML with multiple lines, but
@@ -185,6 +161,71 @@ coffee: >-
 
 The above will produce `Latte\n  12 oz\n  16 oz\nCappuccino Espresso`. Note that
 both the spacing and the newlines are still there.
+
+### Generating Strings in Templates
+
+So far, this section has covered static YAML strings. That is, YAML strings that are copied from the template to the resulting YAML file verbatim.
+
+Things get more complicated, when templates generate YAML strings based on [dynamic values](/chart_template_guide/values_files.mdx). These values could contain YAML special characters (including line-breaks and indent), so the following naive approach could break the YAML structure that we intend:
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink }}
+```
+
+To address this problem, we can encode values as double-quoted YAML strings using the [`quote`](/chart_template_guide/function_list.mdx#quote-and-squote) function:
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink | quote }}
+```
+
+The `quote` function both wraps the input value in quotes and escapes control characters that have a special meaning within double-quoted YAML strings. This means that we must **not** add our own quotes around the outputs of the `quote` function.
+
+This also means, that constructing a YAML string from multiple values is slightly more complicated. We can do so, by concatenating the values (using functions such as `print` or `printf`) and then piping the result to `quote`:
+
+```
+data:
+  endorsement: {{ print "The " .Release.Name " release loves " .Values.favorite.drink "!" | quote }}
+  disclaimer: {{ printf "This endorsement is paid for by the %s industry." .Values.favorite.drink | quote }}
+```
+
+As the YAML spec says, double-quoted strings are "the only style capable of expressing arbitrary strings". However, double-quoted strings can be hard to read, in particular, when they are long and contain line-breaks. In these situations, we can use multi-line strings in flow syntax, as described above. When generating multi-line YAML strings from dynamic values, it is important to get the indent right. For this, we can use the `nindent` function in our template:
+
+```yaml
+myLongText: |
+  {{- .Values.stringWithLongText | nindent 2 }}
+```
+
+Note how we do the indentation above: `nindent 2` tells the template engine to
+add a newline and indent every line in `stringWithLongText` with two spaces. The `{{-`
+trims the whitespace to the left, and `nindent` re-adds the newline with the
+correct indentation.
+
+As noted above, there is one caveat to this approach. If the first non-blank line of the value contains leading white-space this breaks our indent.
+The YAML parser will report this as an error and Helm will abort the install or update. When this happens we should adjust our template and generate the YAML string for this value using the  `quote` function instead.
+
+### Importing Files into Strings in Templates
+
+When writing templates, you may find yourself wanting to inject the contents of
+a file into the template. As we saw in previous chapters, there are two ways of
+doing this:
+
+- Use `{{ .Files.Get "FILENAME" }}` to get the contents of a file in the chart.
+- Use `{{ include "TEMPLATE" . }}` to render a template and then place its
+  contents into the chart.
+
+When inserting files into YAML strings, it's good to understand the encoding rules
+above. We can use either the `quote` approach or the `nindent` approach:
+
+```yaml
+myfile:
+  {{ .Files.Get "myfile.txt" | quote }}
+mytemplate: |
+  {{- include "mytemplate.txt" . | nindent 2 }}
+```
+
+Obviously this also works the other way round, using `.Files.Get` with `nindent` and using `include` with `quote`. 
 
 ## Other YAML Scalars
 
@@ -232,6 +273,10 @@ port: !!int "80"
 In the above, `!!str` tells the parser that `age` is a string, even if it looks
 like an int. And `port` is treated as an int, even though it is quoted.
 
+### Generating Scalars in Templates
+
+TODO
+
 ## YAML Collections
 
 YAML collection types can be used for composing data from other YAML types, be it scalar types or other collections. There are two types of collections: *maps* (key–value pairs) and *sequences* (ordered lists):
@@ -247,6 +292,10 @@ sequence:
   - two
   - three
 ```
+
+### Generating Collections in Templates
+
+TODO
 
 ## Embedding Multiple Documents in One File
 
@@ -350,3 +399,7 @@ coffees:
 
 Because Helm and Kubernetes often read, modify, and then rewrite YAML files, the
 anchors will be lost.
+
+## Security Considerations
+
+TODO
