@@ -8,9 +8,12 @@ This part of the Best Practices Guide explains general conventions.
 
 ## Chart Names
 
-Chart names must follow DNS-1123 label conventions: only lowercase letters,
-numbers, and dashes are allowed, names must start and end with a lowercase
-letter or number, and names cannot exceed 63 characters:
+Chart names are used as a prefix for the resources a chart creates, so they must
+be valid Kubernetes resource names. Names must follow DNS-1123 subdomain
+conventions: only lowercase letters, numbers, dashes, and dots are allowed;
+names must start and end with a lowercase letter or number; each dot-separated
+segment must also start and end with a lowercase letter or number; and names
+cannot exceed 253 characters:
 
 Examples:
 
@@ -18,15 +21,17 @@ Examples:
 drupal
 nginx-lego
 aws-cluster-autoscaler
+my.chart
 ```
 
 Invalid chart names include:
 - Names with uppercase letters (e.g., `MyChart`)
 - Names with underscores (e.g., `my_chart`)
-- Names with dots (e.g., `my.chart`)
+- Names with spaces (e.g., `my chart`)
 - Names starting with a dash (e.g., `-mychart`)
 - Names ending with a dash (e.g., `mychart-`)
-- Names longer than 63 characters
+- Names containing path separators (e.g., `../mychart`)
+- Names longer than 253 characters
 
 The `helm lint` command validates chart names against these rules.
 
