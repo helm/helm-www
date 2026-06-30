@@ -1,6 +1,7 @@
 ---
 title: "Release-Zeitplan-Richtlinie"
 description: "Beschreibt Helms Release-Zeitplan-Richtlinie."
+default_lang_commit: cd5ad1e1593c50677909d7c618cf31cd4036fac7
 ---
 
 Helm gibt Veröffentlichungstermine im Voraus bekannt, damit Anwender besser planen
@@ -27,10 +28,11 @@ einmal im Monat am zweiten Mittwoch jedes Monats veröffentlicht.
 Ein Patch-Release zur Behebung einer kritischen Regression oder eines
 Sicherheitsproblems kann jederzeit bei Bedarf erfolgen.
 
-Ein Patch-Release wird aus einem der folgenden Gründe abgesagt:
+Ein geplanter Patch-Release wird aus einem der folgenden Gründe abgesagt:
 - wenn seit dem letzten Release kein neuer Inhalt hinzugekommen ist
 - wenn das Patch-Release-Datum innerhalb einer Woche vor dem ersten Release Candidate (RC1) einer anstehenden Nebenversion liegt
 - wenn das Patch-Release-Datum innerhalb von vier Wochen nach einer Nebenversion liegt
+- wenn für denselben Monat ein Major- oder Minor-Release geplant ist
 
 ## Nebenversionen
 
