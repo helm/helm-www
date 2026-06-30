@@ -2,6 +2,7 @@
 title: Der Helm Plugins Leitfaden
 description: Erklärt, wie Sie Plugins verwenden und erstellen können, um die Funktionalität von Helm zu erweitern.
 sidebar_position: 12
+default_lang_commit: 9f8c5e5d797d2c708ffc948c00f56aead761013a
 ---
 
 Ein Helm Plugin ist ein Werkzeug, das über die `helm` CLI aufgerufen werden kann,

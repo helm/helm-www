@@ -2,6 +2,7 @@
 title: Chart Hooks
 description: Beschreibt die Arbeit mit Chart Hooks.
 sidebar_position: 2
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Helm bietet einen _Hook_-Mechanismus, der es Chart-Entwicklern ermöglicht, an
