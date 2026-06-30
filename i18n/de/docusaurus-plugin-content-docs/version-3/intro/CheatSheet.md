@@ -2,6 +2,7 @@
 title: Spickzettel
 description: Helm Spickzettel
 sidebar_position: 4
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieser Helm Spickzettel enthält alle notwendigen Befehle, die Sie zur Verwaltung einer Anwendung mit Helm benötigen.

@@ -2,6 +2,7 @@
 title: Zugriff auf Dateien innerhalb von Templates
 description: Wie Sie auf Dateien innerhalb eines Templates zugreifen können.
 sidebar_position: 10
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Im vorherigen Abschnitt haben wir mehrere Möglichkeiten kennengelernt, benannte

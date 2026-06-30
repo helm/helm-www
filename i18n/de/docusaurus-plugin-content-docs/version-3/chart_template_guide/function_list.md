@@ -2,6 +2,7 @@
 title: Liste der Template-Funktionen
 description: Eine Liste der in Helm verfügbaren Template-Funktionen
 sidebar_position: 6
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm enthält viele Template-Funktionen, die Sie in Templates nutzen können.

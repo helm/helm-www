@@ -2,6 +2,7 @@
 title: Chart Tests
 description: Beschreibt, wie Sie Ihre Charts ausführen und testen können.
 sidebar_position: 3
+default_lang_commit: 81fa9227414a9c99d74705bdc159c4c21c9aac7c
 ---
 
 Ein Chart enthält eine Reihe von Kubernetes-Ressourcen und Komponenten, die zusammenarbeiten. Als Chart-Autor möchten Sie möglicherweise Tests schreiben, die überprüfen, ob Ihr Chart bei der Installation wie erwartet funktioniert. Diese Tests helfen auch dem Chart-Benutzer zu verstehen, was Ihr Chart tun soll.

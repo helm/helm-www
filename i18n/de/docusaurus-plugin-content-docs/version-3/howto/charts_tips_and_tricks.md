@@ -2,6 +2,7 @@
 title: "Chart Entwicklung Tipps und Tricks"
 description: "Bespricht Tipps und Tricks,die Helm Chart Entwickler bei der Entwicklung von produktionsreifer Charts gelernt haben."
 sidebar_position: 1
+default_lang_commit: dab98b270b8063741fb595e80f706fa0b867a8be
 ---
 
 Dieses Handbuch bespricht Tipps und Tricks, die Helm Chart Entwickler bei der Entwicklung von produktionsreifen Charts gelernt haben.

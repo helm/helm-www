@@ -2,6 +2,7 @@
 title: "Anhang: Go-Datentypen und Templates"
 description: Ein kurzer Überblick über Variablen in Templates.
 sidebar_position: 16
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Die Helm-Template-Sprache ist in der stark typisierten Programmiersprache Go
