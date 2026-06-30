@@ -255,9 +255,10 @@ Obviously this also works the other way round, using `.Files.Get` with
 
 ## Other YAML Scalars
 
-Scalar values are individual values (as opposed to collections). In Helm's
-dialect of YAML, the scalar data type of a value is determined by a complex set
-of rules, including the Kubernetes schema for resource definitions. But when
+Strings are a common type of YAML scalars, but not the only one. Other scalar
+types include *integers*, *floats*, *booleans*, and *null*. In Helm's dialect
+of YAML, the scalar data type of a value is determined by a complex set of
+rules, including the Kubernetes schema for resource definitions. But when
 inferring types, the following rules tend to hold true.
 
 If an integer or float is an unquoted bare word, it is typically treated as a
@@ -293,7 +294,10 @@ In some cases, you can force a particular type inference using YAML node tags:
 ```yaml
 coffee: "yes, please"
 age: !!str 21
+pi: !!float "3.14"
 port: !!int "80"
+enable: !!bool "false"
+extras: !!null "null"
 ```
 
 In the above, `!!str` tells the parser that `age` is a string, even if it looks
@@ -301,7 +305,42 @@ like an int. And `port` is treated as an int, even though it is quoted.
 
 ### Generating Scalars in Templates
 
-TODO
+So far, we have covered static YAML scalars. That is, YAML scalars
+that are copied from the template to the resulting YAML file verbatim.
+
+In an ideal case, generating non-string YAML scalars based on
+[dynamic values](/chart_template_guide/values_files.mdx) does not require
+special attention. Templates serialize
+[Go Data Types](/chart_template_guide/data_types.mdx) in a manner that is
+compatible with YAML. A string value that holds the representation of a number,
+boolean, or null can also be emitted into a YAML file verbatim. No extra
+quoting or escaping is needed in any of these situations.
+
+However, there is a catch: as Helm template authors we can never be certain
+about the dynamic values that users will pass to our Helm chart. Therefore, it
+is preferable to add explicit type constraints whenever emitting dynamic values
+as non-string scalars. As seen in the previous sub-section, we can use YAML
+node tags to achieve this:
+
+```yaml
+pi: !!float {{ .Values.constants.pi | quote }}
+port: !!int {{ .Values.service.port | quote }}
+enable: !!bool {{ .Values.service.enable | quote }}
+```
+
+In the above, the Go template code treats all scalars as it would treat
+strings: it wraps them in double-quotes and escapes special characters. Then,
+the YAML node tags tell the YAML parser to convert this string scalar to the
+desired YAML type (e.g. a floating point number, an integer number, or a
+boolean).
+
+If the string contents do not match the expected YAML scalar type, Helm's YAML
+parser will report an error even before Helm even passes the YAML data to
+Kubernetes. This fail-fast approach can make debugging much easier, when users
+pass an unexpected value to the Helm chart. E.g. when a dynamic value is not
+the expected integer, but a string containing YAML special characters (such as
+quotation marks, colons, brackets, curly braces, line-breaks, etc.) this can
+prevent debugging nightmares.
 
 ## YAML Collections
 
