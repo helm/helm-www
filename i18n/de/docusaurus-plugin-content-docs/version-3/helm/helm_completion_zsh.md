@@ -1,5 +1,6 @@
 ---
 title: helm completion zsh
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Generiert das Autovervollständigungsskript für zsh

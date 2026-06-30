@@ -2,6 +2,7 @@
 title: "Helm installieren"
 description: "Lernen Sie wie man Helm installiert und zum Laufen kriegt."
 sidebar_position: 2
+default_lang_commit: 042b2178fb9384a9d4fe774f210d6db402f3da02
 ---
 
 Diese Anleitung zeigt, wie Helm CLI zu installieren ist. Helm kann sowohl

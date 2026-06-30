@@ -2,6 +2,7 @@
 title: "Schnellstartanleitung"
 description: "Wie mit Helm anfangen, incl. Anleitungen für Distributionen, FAQs und Plugins."
 sidebar_position: 1
+default_lang_commit: e5a8a262fa2a2852a8f3dc0c83260363fff4dced
 ---
 
 Mit dieser Anleitung können Sie schnell mit Helm starten.
