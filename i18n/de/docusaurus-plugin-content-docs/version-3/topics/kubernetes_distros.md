@@ -2,6 +2,7 @@
 title: Leitfaden für Kubernetes-Distributionen
 description: Enthält Informationen zur Verwendung von Helm in bestimmten Kubernetes-Umgebungen.
 sidebar_position: 10
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Helm sollte mit jeder [konformen Version von

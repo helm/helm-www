@@ -2,6 +2,7 @@
 title: Abhängigkeiten
 description: Behandelt Best Practices für Chart-Abhängigkeiten.
 sidebar_position: 4
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Dieser Teil des Best-Practices-Leitfadens behandelt die in `Chart.yaml` deklarierten `dependencies`.

@@ -1,5 +1,6 @@
 ---
 title: helm repo
+default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 ---
 
 Chart Repositories hinzufügen, auflisten, entfernen, aktualisieren und indizieren

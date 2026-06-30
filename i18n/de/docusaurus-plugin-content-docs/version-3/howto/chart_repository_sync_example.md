@@ -2,6 +2,7 @@
 title: "Synchronisieren Ihres Chart Repository"
 description: "Beschreibt wie Sie lokale und entfernte Chart Repositories synchronisieren."
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 *Hinweis: Dieses Beispiel richtet sich an einen Google Cloud Storage (GCS) Bucket,

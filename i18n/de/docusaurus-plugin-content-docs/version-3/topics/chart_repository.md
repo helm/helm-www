@@ -2,6 +2,7 @@
 title: Leitfaden für Chart Repositories
 description: So erstellen und arbeiten Sie mit Helm Chart Repositories.
 sidebar_position: 6
+default_lang_commit: 944aeaca4df514e7c5ba091995fcbbc08e505f65
 ---
 
 Dieser Abschnitt erklärt, wie Sie Chart Repositories erstellen und damit arbeiten.

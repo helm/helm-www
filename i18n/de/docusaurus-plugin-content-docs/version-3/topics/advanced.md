@@ -2,6 +2,7 @@
 title: Fortgeschrittene Helm-Techniken
 description: Erläutert verschiedene fortgeschrittene Funktionen für erfahrene Helm-Benutzer
 sidebar_position: 9
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Dieser Abschnitt erläutert verschiedene fortgeschrittene Funktionen und Techniken für die Verwendung von Helm.
