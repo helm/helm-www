@@ -2,6 +2,7 @@
 title: OCI-basierte Registries verwenden
 description: Beschreibt die Verwendung von OCI für die Chart-Verteilung.
 sidebar_position: 7
+default_lang_commit: 2e15490c82d246093e11e418a7c23907a4afa89e
 ---
 
 Seit Helm 3 können Sie Container-Registries mit [OCI](https://www.opencontainers.org/)-Unterstützung verwenden, um Chart-Pakete zu speichern und zu teilen. Ab Helm v3.8.0 ist die OCI-Unterstützung standardmäßig aktiviert.

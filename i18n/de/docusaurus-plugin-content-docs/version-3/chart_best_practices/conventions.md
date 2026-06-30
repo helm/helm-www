@@ -2,6 +2,7 @@
 title: Allgemeine Konventionen
 description: Allgemeine Konventionen für Charts.
 sidebar_position: 1
+default_lang_commit: cd6112565cf10522d4f1bd0928165cb5a91922c5
 ---
 
 Dieser Teil des Best-Practices-Leitfadens erklärt allgemeine Konventionen.
