@@ -1,0 +1,5 @@
+DirectoryPath: build
+IgnoreDirectoryMissingTrailingSlash: true
+CheckInternalHash: false
+IgnoreURLs:
+  - "^(/[a-z]+)?/404$"

@@ -2,6 +2,7 @@
 title: Charts
 description: Erklärt das Chart-Format und bietet grundlegende Anleitungen zum Erstellen von Charts mit Helm.
 sidebar_position: 1
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm verwendet ein Paketformat namens _Charts_. Ein Chart ist eine Sammlung von Dateien, die zusammengehörige Kubernetes-Ressourcen beschreiben. Mit einem einzelnen Chart lässt sich etwas Einfaches wie ein Memcached-Pod bereitstellen, aber auch etwas Komplexes wie ein vollständiger Web-App-Stack mit HTTP-Servern, Datenbanken, Caches usw.

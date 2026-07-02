@@ -7,6 +7,10 @@ sidebar_position: 12
 The `.helmignore` file is used to specify files you don't want to include in
 your helm chart.
 
+The `.helmignore` file must be placed in the chart's root directory, alongside
+the `Chart.yaml` file. It is not read from the current working directory or any
+other location.
+
 If this file exists, the `helm package` command will ignore all the files that
 match the pattern specified in the `.helmignore` file while packaging your
 application.
@@ -44,11 +48,12 @@ mydir/
 # Match any file named ab.txt, ac.txt, or ad.txt
 a[b-d].txt
 
-# Match any file under subdir matching temp*
-*/temp*
+# Match any file under subdir matching draft*
+*/draft*
 
-*/*/temp*
-temp?
+# Match draft files two levels deep (e.g., foo/bar/draft123)
+*/*/draft*
+draft?
 ```
 
 Some notable differences from .gitignore:

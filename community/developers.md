@@ -29,10 +29,20 @@ To run Helm locally, you can run `bin/helm`.
 
 ## Running tests
 
-To run all the tests, run `make test`.
-As a pre-requisite, you would need to have
-[golangci-lint](https://golangci-lint.run)
-installed.
+To run all tests, run `make test`. You need
+[golangci-lint](https://golangci-lint.run) installed.
+
+The Makefile targets (`make test`, `make test-unit`, `make test-coverage`)
+automatically include the `helmtest` build tag, which is required for tests to
+run correctly. If you run tests outside the Makefile (IDE test runners, `go
+test` directly, or custom CI), pass `-tags helmtest`:
+
+```console
+$ go test -tags helmtest ./...
+```
+
+Without this tag, tests fail during package initialization because test
+binaries lack module version information that the production code paths expect.
 
 ## Running Locally
 

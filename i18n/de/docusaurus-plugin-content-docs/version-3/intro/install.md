@@ -2,6 +2,7 @@
 title: "Helm installieren"
 description: "Lernen Sie wie man Helm installiert und zum Laufen kriegt."
 sidebar_position: 2
+default_lang_commit: 042b2178fb9384a9d4fe774f210d6db402f3da02
 ---
 
 Diese Anleitung zeigt, wie Helm CLI zu installieren ist. Helm kann sowohl
@@ -100,7 +101,8 @@ winget install Helm.Helm
 
 ### Von Apt (Debian/Ubuntu)
 
-Mitglieder der Helm Gemeinschaft haben ein Apt-Paket für Debian/Ubuntu beigetragen. Dieses Paket ist generell aktuell. Vielen Dank an [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) für das Hosten des Repositorys.
+Mitglieder der Helm Gemeinschaft haben ein Apt-Paket für Debian/Ubuntu beigetragen. Dieses Paket
+ist generell aktuell. Danke an [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) für das Hosting des Repos.
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes

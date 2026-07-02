@@ -105,6 +105,7 @@ helm list -o yaml               # Prints the output in the specified format. All
 helm status <release>           # This command shows the status of a named release.
 helm status <release> --revision <number>   # if set, display the status of the named release with revision
 helm history <release>          # Historical revisions for a given release.
+helm history <release> --show-rollback-revision # Add a ROLLBACK column showing which revision each rollback targeted
 helm env                        # Env prints out all the environment information in use by Helm.
 ```
 -------------------------------------------------------------------------------------------------------------------------------------------------

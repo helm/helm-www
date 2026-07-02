@@ -1,5 +1,6 @@
 ---
 title: helm package
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Ein Chart-Verzeichnis in ein Chart-Archiv paketieren

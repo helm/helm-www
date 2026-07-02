@@ -2,6 +2,7 @@
 title: Die .helmignore-Datei
 description: Die `.helmignore`-Datei wird verwendet, um Dateien anzugeben, die Sie nicht in Ihr Helm Chart aufnehmen möchten.
 sidebar_position: 12
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Die `.helmignore`-Datei wird verwendet, um Dateien anzugeben, die Sie nicht in

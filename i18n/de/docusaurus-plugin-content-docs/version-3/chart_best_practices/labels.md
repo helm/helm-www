@@ -2,6 +2,7 @@
 title: Labels und Annotationen
 description: Behandelt Best Practices für die Verwendung von Labels und Annotationen in Ihrem Chart.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieser Teil des Best-Practices-Leitfadens behandelt Best Practices für die Verwendung von Labels und Annotationen in Ihrem Chart.

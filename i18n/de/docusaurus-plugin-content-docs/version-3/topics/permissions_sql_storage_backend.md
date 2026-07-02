@@ -1,6 +1,7 @@
 ---
 title: Berechtigungsverwaltung für das SQL-Speicher-Backend
 description: Erfahren Sie, wie Sie Berechtigungen bei Verwendung des SQL-Speicher-Backends einrichten.
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieses Dokument bietet eine Anleitung zur Einrichtung und Verwaltung von

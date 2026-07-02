@@ -73,16 +73,16 @@ const BlockList = [
               id="home.community.nextFeatureRelease.version"
               description="Next Feature Release version"
             >
-              v4.2.0
+              v4.3.0
             </Translate>
           </dt>
           <dd>
-            <em><CustomDate dateString="2026-05-13" formatType="month" /></em>
+            <em><CustomDate dateString="2026-09-09" formatType="month" /></em>
           </dd>
 
           <dt>
             <MdCalendarMonth className={styles.icon} />
-            <a href="calendar/release">
+            <a href="/calendar/release">
               <Translate
                 id="home.community.nextFeatureRelease.calendar"
                 description="Release Calendar link"
@@ -409,7 +409,7 @@ const BlockList = [
             description="What do I do? sign your commits description"
             values={{
               signYourCommitsLink: (
-                <a href="blog/helm-dco">
+                <a href="/blog/helm-dco">
                   <Translate
                     id="home.community.contributing.whatDoIDo.signYourCommitsLink"
                     description="Sign your commits link"

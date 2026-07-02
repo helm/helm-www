@@ -150,6 +150,38 @@ translating the most current version of the docs, not an outdated fork.
 `aliases: ["/docs/using_helm/"]` does not belong in the translations. Those
 are redirections for old links which don't exist for new pages.
 * Add anchor IDs to any headings using the format `## Example Heading {#example-anchor-id}`. The anchor IDs must be English language and match the anchor IDs of the corresponding heading in the English doc page. For example, `## 后端存储 {#storage-backends}` matches `## Storage backends {#storage-backends}`. This ensures that any anchor links to the headings still work in the translated version of the page. For more information, see [Anchor links to headings](https://github.com/helm/helm-www/blob/main/ARCHITECTURAL_DECISIONS.md#anchor-links-to-headings) in `ARCHITECTURAL_DECISIONS.md`.
+* Add `default_lang_commit` to the front matter of translated Markdown files when
+  you translate or update them. Set it to the latest commit that changed the
+  corresponding English source file. For example:
+
+  ```yaml
+  ---
+  title: "Translated page title"
+  default_lang_commit: 0123456789abcdef0123456789abcdef01234567
+  ---
+  ```
+
+  To find the value for a translated docs page, run:
+
+  ```sh
+  git log -n 1 --format=%H -- docs/path/to/source.md
+  ```
+
+  Use the matching English source path for the translated file. For example,
+  `i18n/ko/docusaurus-plugin-content-docs/version-3/topics/charts.md` maps to
+  `versioned_docs/version-3/topics/charts.md`.
+* Check for translated pages whose English source has changed since the tracked
+  commit:
+
+  ```sh
+  yarn check:i18n-drift
+  ```
+
+  To see translated files that do not yet have `default_lang_commit`, run:
+
+  ```sh
+  yarn check:i18n-drift -- --list-untracked
+  ```
 
 To translate docs and blog content:
 1. Make sure that target locale exists in the `i18n` directory. If it doesn't, see _Starting a New Language_ above.
