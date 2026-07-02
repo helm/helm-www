@@ -516,6 +516,110 @@ anchors will be lost.
 
 ## Security Considerations
 
-TODO why it matters
-TODO get the indent right!
-TODO validation schemas and validation in the template are complementary measures.
+The YAML techniques presented in this page, help Helm Chart authors in writing
+reliable YAML templates. By applying apropriate encoding techniques when
+generating YAML based on dynamic values, template authors can ensure that the
+resulting YAML is correct and has the desired structure regardless of what
+values users pass to the Helm chart. This ensures functional correctness in all
+corner-cases and prevents errors that might be hard to debug.
+
+However, comprehensive YAML encoding also prevents vulnerabilities that YAML
+templates might introduce otherwise.
+
+### Preventing YAML Injection
+
+An [injection flaw](https://owasp.org/www-community/Injection_Flaws) is a
+vulnerability that allows attackers to inject malicious data or code into a
+system. Thus, a YAML injection vulnerabilities allows attackers to inject
+malicious data into the YAML file that a template generates.
+
+YAML code is hardly malicious in itself, but in the context of Helm charts,
+YAML is used to control Kubernetes resources. Therefore, attackers could
+exploit a YAML injection vulnerability to deploy malicious Kubernetes resources
+into your cluster. For example, attackers could:
+
+* Create pods based on attacker-controlled container images.
+* Inject secrets into such containers and leak them over the network.
+* Run attacker-controlled commands in existing containers.
+* Create new Service Accounts, (Cluster)Roles, and (Cluster)RoleBindings to escalate their privileges.
+
+In order to run a YAML injection attack, an attacker would first need to pass
+their own [values](/chart_template_guide/values_files) to your Helm chart. This
+seems unlikely, and in fact it may never happen when you're using your own Helm
+charts. Even when consuming Helm charts from other authors, Helm users will
+often have full control of the values that they use.
+
+However, in some *Infrastructure-as-Code* scenarios, users will not pass values
+to a Helm chart manually through CLI arguments or value files. Instead, users
+may use some orchestration tool (e.g. a CI/CD pipeline) to install Helm charts
+and pass values to them. In some scenarios, such orchestration tools may draw
+values from additional data-sources that might contain all sorts of data. And
+this is where things can get potentially dangerous.
+
+Here's the good news though: when following the YAML techniques that this page
+describes, you're already preventing YAML injection vulnerabilities. It takes
+nothing more than applying the described indenting, quoting, and encoding
+techniques in your template. When writing your YAML templates in this manner
+you and all consumers of your Helm chart are safe from YAML injection.
+
+### Preventing Dangerous YAML through Validation
+
+In some situations, additional validation of the dynamic values that a YAML
+template processes may be desirable. Usually, the concern here is not the
+structure of the resulting YAML, but application specific constraints on the
+resources that the Helm chart manages.
+
+For example, a config map may hold individual fields that must match a certain
+format, regardless of how their value is encoded in YAML. This could be the
+format of a domain name, an IP address, an email-address, or a URL. In the
+latter case, additional constraints regarding the URL scheme may be desirable.
+
+Helm charts offer two complementary mechanism that help imposing constraints on
+dynamic values, *Schematized Values Files* and *Validation Logic in Templates*.
+
+#### Schema Files
+
+Helm's [Schema Files](/topics/charts#schema-files) allow chart authors to
+validate values against a [JSON Schema](https://json-schema.org/)
+(`valuesschema.yaml`). If the user of a Helm chart tries passing dynamic values
+to the chart that violate the JSON Schema, Helm reports an error.
+
+This validation approach is input-centric, as the JSON Schema constrains all
+values as passed to the Helm chart. This is useful for values that appear
+inside multiple YAML templates of a Helm chart.
+
+JSON Schema is quite powerful, and can be used to impose validation constraints
+on both YAML collections and YAML scalars. For instance, JSON Schema can
+validate strings against regular expressions and validate numbers against
+ranges. However, more complex validation logic may be hard or impossible to
+express in JSON Schema.
+
+#### Validation Logic in Templates
+
+Helm chart templates are based on
+[Go Templates](https://pkg.go.dev/text/template), which is a powerful template
+language that can execute arbitrary program logic. Therefore, complex
+validation can be expressed through conditional logic in the YAML template
+itself. If validation fails, your template can call the
+[fail](/chart_template_guide/function_list#fail) function, which tells Helm to
+abort processing the chart with an error.
+
+For instance, the following YAML template snippet can be used to set a virtual
+server's domain name, only if the given value matches a DNS domain:
+
+```yaml
+{{ if not ( regexMatch "^([-a-z0-9]+[.])*([-a-z0-9]+)$" .Values.server.domain ) }}
+  {{ print "Server domain \"" .Values.server.domain "\" does not look like a valid DNS domain." | fail }}
+{{ end }}
+server:
+  port: !!int {{ .Values.server.port | quote }}
+  domain: {{ .Values.server.domain | quote }}
+```
+
+(The above is an example only, as it uses a regular expression that does not
+enforce all formal requirements for a valid DNS domain.)
+
+This validation approach is output-centric, as it applies the validation logic
+close to where the output is generated. This is useful for values that are
+dynamically derived from other values in the template itself. That said, overly
+complex processing logic should generally be avoided in templates.
