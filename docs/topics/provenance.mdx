@@ -59,12 +59,15 @@ key's `uid` (in the output of `gpg --list-keys`), for example the name or email.
 **TIP:** for GnuPG users, your secret keyring is in `~/.gnupg/secring.gpg`. You
 can use `gpg --list-secret-keys` to list the keys you have.
 
-**Warning:**  the GnuPG v2 store your secret keyring using a new format `kbx` on
-the default location  `~/.gnupg/pubring.kbx`. Please use the following command
-to convert your keyring to the legacy gpg format:
+**Note:** Since GnuPG v2.1, public keys are stored in a keybox file
+(`~/.gnupg/pubring.kbx`) rather than the legacy `~/.gnupg/pubring.gpg`. For
+verification, Helm reads the keybox format directly, along with ASCII-armored
+public keyrings (`gpg --export --armor`) and the legacy binary keyring, so no
+conversion is required. Signing a chart is different: Helm still needs the
+private key in a binary secret keyring file. If your secret key exists only in
+GnuPG's modern key store, export it first:
 
 ```console
-$ gpg --export >~/.gnupg/pubring.gpg
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
 ```
 
