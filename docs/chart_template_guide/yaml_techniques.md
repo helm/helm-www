@@ -212,7 +212,7 @@ read, in particular, when they are long and contain line breaks. In these
 situations, we can use multi-line strings in block syntax, as described above.
 When generating multi-line YAML strings from dynamic values, it is important
 to get the indent right. For this, we can use the
-[`nindent`](/chart_template_guide/function_list/#nindent) function in our
+[`nindent`](/chart_template_guide/function_list.mdx#nindent) function in our
 template:
 
 ```yaml
@@ -255,7 +255,7 @@ rules above. We can use either the `quote` approach or the `nindent` approach:
 myfile:
   {{ .Files.Get "myfile.txt" | quote }}
 mytemplate: |
-  {{- include "mytemplate.txt" . | nindent 2 }}
+  {{- include "mytemplate" . | nindent 2 }}
 ```
 
 Obviously this also works the other way around, using `.Files.Get` with
@@ -320,7 +320,7 @@ that are copied from the template to the resulting YAML file verbatim.
 In an ideal case, generating non-string YAML scalars based on
 [dynamic values](/chart_template_guide/values_files.mdx) does not require
 special attention. Templates serialize
-[Go Data Types](/chart_template_guide/data_types.mdx) in a manner that is
+[Go Data Types](/chart_template_guide/data_types.md) in a manner that is
 compatible with YAML. A string value that holds the representation of a number,
 boolean, or null can also be emitted into a YAML file verbatim. No extra
 quoting or escaping is needed in any of these situations.
@@ -373,8 +373,8 @@ sequence:
 
 Now let's look at how we can generate YAML collection types based on dynamic
 values. We can do so by combining
-[`toYaml`](/chart_template_guide/function_list/#toyaml-toyamlpretty) function
-and the [`nindent`](/chart_template_guide/function_list/#nindent) function:
+[`toYaml`](/chart_template_guide/function_list.mdx#toyaml-toyamlpretty) function
+and the [`nindent`](/chart_template_guide/function_list.mdx#nindent) function:
 
 ```yaml
 map:
@@ -391,7 +391,7 @@ newline and correct indentation.
 
 Note that in the above, the template code is identical for both the map and the
 sequence. The `toYaml` method determines the YAML type to generate by the
-[Go Data Type](/chart_template_guide/data_types.mdx) of the dynamic value.
+[Go Data Type](/chart_template_guide/data_types.md) of the dynamic value.
 
 If the dynamic value originates from a `values.yaml` file, the original YAML
 type of the value will be preserved. This also works reliably for nested YAML
@@ -545,7 +545,7 @@ into your cluster. For example, attackers could:
 * Create new Service Accounts, (Cluster)Roles, and (Cluster)RoleBindings to escalate their privileges.
 
 In order to run a YAML injection attack, an attacker would first need to pass
-their own [values](/chart_template_guide/values_files) to your Helm chart. This
+their own [values](/chart_template_guide/values_files.mdx) to your Helm chart. This
 seems unlikely, and in fact it may never happen when you're using your own Helm
 charts. Even when consuming Helm charts from other authors, Helm users will
 often have full control of the values that they use.
@@ -580,7 +580,7 @@ dynamic values, *Schema Files* and *Validation Logic in Templates*.
 
 #### Schema Files
 
-Helm's [Schema Files](/topics/charts#schema-files) allow chart authors to
+Helm's [Schema Files](/topics/charts.mdx#schema-files) allow chart authors to
 validate values against a [JSON Schema](https://json-schema.org/)
 (`values.schema.json`). If the user of a Helm chart tries to pass dynamic values
 to the chart that violate the JSON Schema, Helm reports an error.
@@ -602,7 +602,7 @@ Helm chart templates are based on
 language that can execute arbitrary program logic. Therefore, complex
 validation can be expressed through conditional logic in the YAML template
 itself. If validation fails, your template can call the
-[fail](/chart_template_guide/function_list#fail) function, which tells Helm to
+[fail](/chart_template_guide/function_list.mdx#fail) function, which tells Helm to
 abort processing the chart with an error.
 
 For instance, the following YAML template snippet can be used to set a virtual
