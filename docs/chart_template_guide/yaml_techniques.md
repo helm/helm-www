@@ -40,7 +40,7 @@ All inline styles must be on one line.
   characters. The only escape sequence is `''`, which is decoded as a single
   `'`.
 
-In addition to the one-line strings, you can declare multi-line strings:
+In addition to inline strings, you can declare multi-line strings:
 
 ```yaml
 coffee: |
@@ -172,9 +172,9 @@ both the spacing and the newlines are still there.
 So far, this section has covered static YAML strings. That is, YAML strings
 that are copied from the template to the resulting YAML file verbatim.
 
-Things get more complicated, when templates generate YAML strings based on
+Things get more complicated when templates generate YAML strings based on
 [dynamic values](/chart_template_guide/values_files.mdx). These values could
-contain YAML special characters (including line-breaks and indent), so the
+contain YAML special characters (including line breaks and indentation), so the
 following naive approach could break the YAML structure that we intend:
 
 ```yaml
@@ -196,8 +196,8 @@ characters that have a special meaning within double-quoted YAML strings.
 This means that we must **not** add our own quotes around the outputs of the
 `quote` function.
 
-This also means, that constructing a YAML string from multiple values is
-slightly more complicated. We can do so, by concatenating the values (using
+This also means that constructing a YAML string from multiple values is
+slightly more complicated. We can do so by concatenating the values (using
 functions such as `print` or `printf`) and then piping the result to `quote`:
 
 ```yaml
@@ -208,8 +208,8 @@ data:
 
 As the YAML spec says, double-quoted strings are "the only style capable of
 expressing arbitrary strings". However, double-quoted strings can be hard to
-read, in particular, when they are long and contain line-breaks. In these
-situations, we can use multi-line strings in flow syntax, as described above.
+read, in particular, when they are long and contain line breaks. In these
+situations, we can use multi-line strings in block syntax, as described above.
 When generating multi-line YAML strings from dynamic values, it is important
 to get the indent right. For this, we can use the
 [`nindent`](/chart_template_guide/function_list/#nindent) function in our
@@ -258,7 +258,7 @@ mytemplate: |
   {{- include "mytemplate.txt" . | nindent 2 }}
 ```
 
-Obviously this also works the other way round, using `.Files.Get` with
+Obviously this also works the other way around, using `.Files.Get` with
 `nindent` and using `include` with `quote`.
 
 ## Other YAML Scalars
@@ -324,10 +324,10 @@ compatible with YAML. A string value that holds the representation of a number,
 boolean, or null can also be emitted into a YAML file verbatim. No extra
 quoting or escaping is needed in any of these situations.
 
-However, there is a catch: as Helm template authors we can never be certain
+However, there is a catch: as Helm template authors, we can never be certain
 about the dynamic values that users will pass to our Helm chart. Therefore, it
 is preferable to add explicit type constraints whenever emitting dynamic values
-as non-string scalars. As seen in the previous sub-section, we can use YAML
+as non-string scalars. As seen in the previous subsection, we can use YAML
 node tags to achieve this:
 
 ```yaml
@@ -343,8 +343,8 @@ desired YAML type (e.g. a floating point number, an integer number, or a
 boolean).
 
 If the string contents do not match the expected YAML scalar type, Helm's YAML
-parser will report an error even before Helm even passes the YAML data to
-Kubernetes. This fail-fast approach can make debugging much easier, when users
+parser will report an error even before Helm passes the YAML data to
+Kubernetes. This fail-fast approach can make debugging much easier when users
 pass an unexpected value to the Helm chart. E.g. when a dynamic value is not
 the expected integer, but a string containing YAML special characters (such as
 quotation marks, colons, brackets, curly braces, line-breaks, etc.) this can
@@ -370,8 +370,8 @@ sequence:
 
 ### Generating Collections in Templates
 
-Now let's look how we can generate YAML collection types based on dynamic
-values. We can do by combining
+Now let's look at how we can generate YAML collection types based on dynamic
+values. We can do so by combining
 [`toYaml`](/chart_template_guide/function_list/#toyaml-toyamlpretty) function
 and the [`nindent`](/chart_template_guide/function_list/#nindent) function:
 
@@ -384,21 +384,21 @@ sequence:
 ```
 
 Note how we do the indentation above: `nindent 2` tells the template engine to
-add a newline and indent every line in `stringWithLongText` with two spaces.
-The `{{-` trims the whitespace to the left, and `nindent` re-adds the newline
-and correct indentation.
+add a newline and indent every line of the serialized collection with two
+spaces. The `{{-` trims the whitespace to the left, and `nindent` re-adds the
+newline and correct indentation.
 
 Note that in the above, the template code is identical for both the map and the
 sequence. The `toYaml` method determines the YAML type to generate by the
-[Go Data Type](/chart_template_guide/data_types.mdx) od the dynamic value.
+[Go Data Type](/chart_template_guide/data_types.mdx) of the dynamic value.
 
-If the dynamic value originates from a `values.yaml`  file, the original YAML
+If the dynamic value originates from a `values.yaml` file, the original YAML
 type of the value will be preserved. This also works reliably for nested YAML
 collections and YAML scalars, too. Therefore, the above is a good method for
 copying larger chunks of data from dynamic values to the YAML file generated by
 the template.
 
-Incidently, the above `toYaml`/`nindent` approach works not just for YAML
+Incidentally, the above `toYaml`/`nindent` approach works not just for YAML
 collections, but also for YAML scalars (including strings). So you can safely
 use it for dynamic values of any YAML type. This is particularly useful in
 situations where template authors do not want to restrict the YAML type of a
@@ -406,7 +406,7 @@ value that users will ultimately feed to the Helm chart. That said, dedicated
 YAML encoding techniques for scalars (as introduced further above) are often
 more concise and more readable.
 
-As always when using `nindent` to generate YAML, it is important to the the
+As always when using `nindent` to generate YAML, it is important to get the
 `nindent` value right. The `nindent` must be greater than the indent of
 surrounding YAML. When changing the indent of surrounding YAML, take care to
 adjust relevant `nindent` values accordingly!
@@ -516,21 +516,21 @@ anchors will be lost.
 
 ## Security Considerations
 
-The YAML techniques presented in this page, help Helm Chart authors in writing
-reliable YAML templates. By applying apropriate encoding techniques when
+The YAML techniques presented in this page help Helm chart authors in writing
+reliable YAML templates. By applying appropriate encoding techniques when
 generating YAML based on dynamic values, template authors can ensure that the
 resulting YAML is correct and has the desired structure regardless of what
 values users pass to the Helm chart. This ensures functional correctness in all
 corner-cases and prevents errors that might be hard to debug.
 
 However, comprehensive YAML encoding also prevents vulnerabilities that YAML
-templates might introduce otherwise.
+templates might otherwise introduce.
 
 ### Preventing YAML Injection
 
 An [injection flaw](https://owasp.org/www-community/Injection_Flaws) is a
 vulnerability that allows attackers to inject malicious data or code into a
-system. Thus, a YAML injection vulnerabilities allows attackers to inject
+system. Thus, a YAML injection vulnerability allows attackers to inject
 malicious data into the YAML file that a template generates.
 
 YAML code is hardly malicious in itself, but in the context of Helm charts,
@@ -553,7 +553,7 @@ However, in some *Infrastructure-as-Code* scenarios, users will not pass values
 to a Helm chart manually through CLI arguments or value files. Instead, users
 may use some orchestration tool (e.g. a CI/CD pipeline) to install Helm charts
 and pass values to them. In some scenarios, such orchestration tools may draw
-values from additional data-sources that might contain all sorts of data. And
+values from additional data sources that might contain all sorts of data. And
 this is where things can get potentially dangerous.
 
 Here's the good news though: when following the YAML techniques that this page
@@ -574,14 +574,14 @@ format, regardless of how their value is encoded in YAML. This could be the
 format of a domain name, an IP address, an email-address, or a URL. In the
 latter case, additional constraints regarding the URL scheme may be desirable.
 
-Helm charts offer two complementary mechanism that help imposing constraints on
-dynamic values, *Schematized Values Files* and *Validation Logic in Templates*.
+Helm charts offer two complementary mechanisms that help impose constraints on
+dynamic values, *Schema Files* and *Validation Logic in Templates*.
 
 #### Schema Files
 
 Helm's [Schema Files](/topics/charts#schema-files) allow chart authors to
 validate values against a [JSON Schema](https://json-schema.org/)
-(`valuesschema.yaml`). If the user of a Helm chart tries passing dynamic values
+(`values.schema.json`). If the user of a Helm chart tries to pass dynamic values
 to the chart that violate the JSON Schema, Helm reports an error.
 
 This validation approach is input-centric, as the JSON Schema constrains all
@@ -605,7 +605,7 @@ itself. If validation fails, your template can call the
 abort processing the chart with an error.
 
 For instance, the following YAML template snippet can be used to set a virtual
-server's domain name, only if the given value matches a DNS domain:
+server's domain name only if the given value matches a DNS domain:
 
 ```yaml
 {{ if not ( regexMatch "^([-a-z0-9]+[.])*([-a-z0-9]+)$" .Values.server.domain ) }}
