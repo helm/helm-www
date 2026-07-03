@@ -545,10 +545,10 @@ into your cluster. For example, attackers could:
 * Create new Service Accounts, (Cluster)Roles, and (Cluster)RoleBindings to escalate their privileges.
 
 In order to run a YAML injection attack, an attacker would first need to pass
-their own [values](/chart_template_guide/values_files.mdx) to your Helm chart. This
-seems unlikely, and in fact it may never happen when you're using your own Helm
-charts. Even when consuming Helm charts from other authors, Helm users will
-often have full control of the values that they use.
+their own [values](/chart_template_guide/values_files.mdx) to your Helm chart.
+This seems unlikely, and in fact it may never happen when you're using your own
+Helm charts. Even when consuming Helm charts from other authors, Helm users
+will often have full control of the values that they use.
 
 However, in some *Infrastructure-as-Code* scenarios, users will not pass values
 to a Helm chart manually through CLI arguments or value files. Instead, users
@@ -580,10 +580,11 @@ dynamic values, *Schema Files* and *Validation Logic in Templates*.
 
 #### Schema Files
 
-Helm's [Schema Files](/topics/charts.mdx#schema-files) allow chart authors to
-validate values against a [JSON Schema](https://json-schema.org/)
-(`values.schema.json`). If the user of a Helm chart tries to pass dynamic values
-to the chart that violate the JSON Schema, Helm reports an error.
+Helm's [Schema Files](/topics/charts.mdx#schema-files) (`values.schema.json`)
+allow chart authors to validate values against a
+[JSON Schema](https://json-schema.org/). If the user of a Helm chart tries to
+pass dynamic values to the chart that violate the JSON Schema, Helm reports an
+error.
 
 This validation approach is input-centric, as the JSON Schema constrains all
 values as passed to the Helm chart. This is useful for values that appear
@@ -602,8 +603,8 @@ Helm chart templates are based on
 language that can execute arbitrary program logic. Therefore, complex
 validation can be expressed through conditional logic in the YAML template
 itself. If validation fails, your template can call the
-[fail](/chart_template_guide/function_list.mdx#fail) function, which tells Helm to
-abort processing the chart with an error.
+[`fail`](/chart_template_guide/function_list.mdx#fail) function, which tells
+Helm to abort processing the chart with an error.
 
 For instance, the following YAML template snippet can be used to set a virtual
 server's domain name only if the given value matches a DNS domain:
