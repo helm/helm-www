@@ -617,10 +617,17 @@ server:
   domain: {{ .Values.server.domain | quote }}
 ```
 
-(The above is an example only, as it uses a regular expression that does not
-enforce all formal requirements for a valid DNS domain.)
+(The above is an example only, as the regular expression does not enforce all
+formal requirements for a valid DNS domain.)
 
 This validation approach is output-centric, as it applies the validation logic
-close to where the output is generated. This is useful for values that are
+close to where the YAML output is generated. This is useful for values that are
 dynamically derived from other values in the template itself. That said, overly
 complex processing logic should generally be avoided in templates.
+
+Note that the above example still encodes the `domain` value using the `quote`
+function. This is not strictly necessary here, because validation blocks all
+values that would require YAML encoding and quoting. However, the use of
+`quote` makes the template more robust with respect to future changes. It is
+also cleaner conceptually, since ensuring a valid domain and producing correct
+YAML are two separate concerns.
