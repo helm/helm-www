@@ -300,7 +300,6 @@ integer.
 In some cases, you can force a particular type inference using YAML node tags:
 
 ```yaml
-coffee: "yes, please"
 age: !!str 21
 pi: !!float "3.14"
 port: !!int "80"
@@ -308,8 +307,10 @@ enable: !!bool "false"
 extras: !!null "null"
 ```
 
-In the above, `!!str` tells the parser that `age` is a string, even if it looks
-like an int. And `port` is treated as an int, even though it is quoted.
+In the above, `!!str` tells the parser that `age` is a string, even though its
+value looks like an integer. And the tags for `pi`, `port`, `enable`, and
+`extras` tell the parser that these are float, integer, boolean, and null
+values respectively, even though they are quoted.
 
 ### Generating Scalars in Templates
 
