@@ -113,6 +113,7 @@ While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. 
 * Test your CI/CD pipelines and fix any script errors from the renamed CLI flags.
 * Test your post-renderer integrations.
 * Test registry authentication and chart installation in your OCI workflows.
+* Update scripts that capture registry command output. Success messages like "Login Succeeded", "Pushed:", "Pulled:", and "Digest:" now go to stdout instead of stderr, following standard Unix conventions. If your scripts use `2>&1` to capture these messages from stderr, switch to capturing stdout directly.
 
 ### Other
 * Test other new features, including multi-document values, digest-based installs, and custom template functions.
