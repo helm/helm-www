@@ -1,7 +1,7 @@
 ---
 title: Using Helm
 description: Explains the basics of Helm.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import Helm4 from "/docs/_v4-in-progress.mdx"
@@ -15,27 +15,9 @@ If you are simply interested in running a few quick commands, you may wish to
 begin with the [Quickstart Guide](/intro/quickstart.md). This chapter
 covers the particulars of Helm commands, and explains how to use Helm.
 
-## Three Big Concepts
-
-A *Chart* is a Helm package. It contains all of the resource definitions
-necessary to run an application, tool, or service inside of a Kubernetes
-cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, an
-Apt dpkg, or a Yum RPM file.
-
-A *Repository* is the place where charts can be collected and shared. It's like
-Perl's [CPAN archive](https://www.cpan.org) or the [Fedora Package
-Database](https://src.fedoraproject.org/), but for Kubernetes packages.
-
-A *Release* is an instance of a chart running in a Kubernetes cluster. One chart
-can often be installed many times into the same cluster. And each time it is
-installed, a new _release_ is created. Consider a MySQL chart. If you want two
-databases running in your cluster, you can install that chart twice. Each one
-will have its own _release_, which will in turn have its own _release name_.
-
-With these concepts in mind, we can now explain Helm like this:
-
-Helm installs _charts_ into Kubernetes, creating a new _release_ for each
-installation. And to find new charts, you can search Helm chart _repositories_.
+This guide assumes you are familiar with charts, repositories, and releases.
+For an introduction to these components, see
+[Introduction to Helm](/intro/introduction.md).
 
 ## 'helm search': Finding Charts
 
