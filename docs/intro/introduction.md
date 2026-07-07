@@ -19,10 +19,7 @@ which you can version, share, install, and roll back as one release.
 This lets you treat an application the way a system package manager such as
 Homebrew, apt, or yum treats software on an operating system.
 
-To read more about the concepts introduced on this page, see the
-[Glossary](/glossary/index.mdx).
-
-## Common Use Cases
+## What can Helm do?
 
 You can use Helm to:
 
@@ -40,7 +37,7 @@ You can use Helm to:
 - **Manage dependencies.** Declare the other charts your application needs, and
   let Helm install them together.
 
-## Who Helm Is For
+## Who is Helm For?
 
 A Helm user often performs one of several roles.
 One person can perform more than one of these roles, and how the roles map to
@@ -62,48 +59,11 @@ itself.
 Standing up and operating a Kubernetes cluster, including its control plane and
 nodes, is the work of a cluster operator and falls outside Helm's scope.
 
-## Architecture
-
-Helm is a command-line tool that runs on your local machine and talks to the
-[Kubernetes API server](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
-It manages Kubernetes packages called charts, and it can:
-
-- Create new charts from scratch.
-- Package charts into chart archive (`.tgz`) files.
-- Interact with chart repositories where charts are stored.
-- Install charts into a Kubernetes cluster, and uninstall them.
-- Manage the release cycle of charts that have been installed with Helm.
-
-Helm builds a release from two inputs: a _chart_ and a _configuration_.
-A chart bundles the information needed to create an instance of an application.
-A configuration holds the values merged into the chart to produce a releasable
-object.
-A _release_ is a running instance of a chart combined with a specific
-configuration.
-
-Helm is built in two distinct parts:
-
-- **The Helm client** is the command-line tool for end users.
-  It handles local chart development, manages repositories, manages releases,
-  and sends charts to the Helm library to be installed, upgraded, or
-  uninstalled.
-- **The Helm library** provides the logic that carries out Helm operations.
-  It combines a chart and a configuration into a release, and it installs,
-  upgrades, and uninstalls charts by interacting with the Kubernetes API server.
-  Because the library is standalone, other clients can reuse the same logic.
-
-The Helm client and library are written in the [Go](https://go.dev) programming
-language, and the library uses the Kubernetes client library to communicate with
-Kubernetes over REST and JSON.
-Helm stores release information in Kubernetes
-[Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) inside the
-cluster, so it does not need its own database.
-Configuration files are written in [YAML](https://yaml.org) where possible.
-
 ## Key Components
 
-Three components describe how Helm works:
-charts, repositories, and releases.
+Three components describe how Helm works: charts, repositories, and releases.
+Helm installs charts into Kubernetes, creating a new release for each
+installation, and you find new charts by searching Helm chart repositories.
 
 ### Chart
 
@@ -133,9 +93,33 @@ installation creates a new release with its own release name.
 For example, if you want two databases running in your cluster, you can install
 a MySQL chart twice, and each installation is tracked as a separate release.
 
-With these components in mind, you can describe Helm this way:
-Helm installs charts into Kubernetes, creating a new release for each
-installation, and you find new charts by searching Helm chart repositories.
+When Helm creates a release, it merges a _configuration_ into the chart:
+the set of values, typically from a `values.yaml` file.
+Supplying different values to the same chart produces different releases.
+
+## Architecture
+
+Helm is a command-line tool that runs on your local machine and talks to the
+[Kubernetes API server](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
+
+Helm is built in two distinct parts:
+
+- **The Helm client** is the command-line tool for end users.
+  It handles local chart development, manages repositories, manages releases,
+  and sends charts to the Helm library to be installed, upgraded, or
+  uninstalled.
+- **The Helm library** provides the logic that carries out Helm operations.
+  It creates releases, and it installs, upgrades, and uninstalls charts by
+  interacting with the Kubernetes API server.
+  Because the library is standalone, other clients can reuse the same logic.
+
+The Helm client and library are written in the [Go](https://go.dev) programming
+language, and the library uses the Kubernetes client library to communicate with
+Kubernetes over REST and JSON.
+Helm stores release information in Kubernetes
+[Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) inside the
+cluster, so it does not need its own database.
+Configuration files are written in [YAML](https://yaml.org) where possible.
 
 ## Next Steps
 
