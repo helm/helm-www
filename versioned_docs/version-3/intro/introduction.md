@@ -42,7 +42,7 @@ You can use Helm to:
 A Helm user often performs one of several roles.
 One person can perform more than one of these roles, and how the roles map to
 people varies between organizations.
-These roles are drawn from the Helm [User Profiles](/community/user-profiles).
+For more information, see [User Profiles](/community/user-profiles) in the Helm Community documentation.
 
 - **Application operator.** You take an application and run it inside a
   Kubernetes cluster, such as operating WordPress and its MySQL database.
@@ -93,9 +93,8 @@ installation creates a new release with its own release name.
 For example, if you want two databases running in your cluster, you can install
 a MySQL chart twice, and each installation is tracked as a separate release.
 
-When Helm creates a release, it merges a _configuration_ into the chart:
-the set of values, typically from a `values.yaml` file.
-Supplying different values to the same chart produces different releases.
+To create a release, Helm merges a packaged chart with configuration information.
+The configuration is a set of values, typically from a `values.yaml` file.
 
 ## Architecture
 
