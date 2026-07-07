@@ -1,0 +1,51 @@
+{{ define "title" }}
+Helm | Blog
+{{ end }}
+
+{{ define "main" }}
+<div id="helm" class="page-blog page-blog-list blog blog-layout page-wrapper">
+  <header>
+    {{ partial "banner.html" . }}
+    {{ partial "nav.html" . }}
+    {{ partial "nav-fixed.html" . }}
+  </header>
+
+  <div class="columns" id="helm">
+    <section class="column content-blog">
+      <article class="content-wrapper">
+        {{ .Content }}
+
+        {{ range (.Paginate .Pages).Pages }}
+        <article>
+          <header>
+            <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+            <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+          </header>
+          
+          <p>
+            {{ .Summary }}
+            {{ if .Truncated }}
+              <a href="{{ .RelPermalink }}">Read More…</a>
+            {{ end }}
+          </p>
+        </article>
+        {{ end }}
+
+        <div class="pagination">
+          {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="left arrow">&#8592;</a>
+          {{ end }}
+          {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="right arrow">&#8594;</a>
+          {{ end }}
+        
+          <span>{{ .Paginator.PageNumber }}</span>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  {{ partial "footer-links.html" . }}
+</div>
+
+{{ end }}

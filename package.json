@@ -1,0 +1,22 @@
+{
+  "name": "helm-docs",
+  "version": "0.0.1",
+  "description": "Helm Docs",
+  "main": "gulpfile.js/index.js",
+  "author": "Ronan Flynn-Curran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helm/helm-www"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.7.4",
+    "postcss-cli": "7.1.0"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
+  ]
+}

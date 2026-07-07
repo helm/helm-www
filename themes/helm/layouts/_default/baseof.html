@@ -1,0 +1,31 @@
+{{ $langCode := site.LanguageCode | default "en-us" }}
+{{ $isHome   := .IsHome }}
+{{ $lang     := .Lang }}
+{{ $home     := site.BaseURL }}
+<!DOCTYPE html>
+<html lang="{{ $langCode }}">
+  <head>
+    <title>
+      {{ block "title" . }}
+      Helm | {{ .Title }}
+      {{ end }}
+    </title>
+
+    {{ partial "header.html" . }}
+  </head>
+
+  {{ if $isHome }}
+    <body id="landing" class="home {{ $lang }}">
+  {{ else }}
+    <body id="landing" class="{{ $lang }}"></body>
+  {{ end }}
+    {{ block "main" . }}
+    {{ end }}
+
+    {{ block "footer" . }}
+    {{ end }}
+
+    {{ partial "js.html" . }}
+    {{ partial "google-analytics.html" . }}
+  </body>
+</html>
