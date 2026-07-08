@@ -207,7 +207,7 @@ const BlockList = [
       <>
         <p>
           <MdVideoCall className={styles.icon} />
-          <a href="https://zoom.us/j/696660622">
+          <a href="https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb">
             <Translate
               id="home.community.developerStandups.time"
               description="Developer Standups day and time"
