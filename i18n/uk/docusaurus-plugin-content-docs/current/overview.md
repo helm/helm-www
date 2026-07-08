@@ -137,6 +137,6 @@ Helm 4 представляє опціональну систему викона
 
 ### Щотижневі зустрічі розробників {#weekly-dev-meetings}
 
-Приєднуйтесь до живої дискусії з супровідниками щочетверга о 9:30 за тихоокеанським часом на [Zoom](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
+Приєднуйтесь до живої дискусії з супровідниками щочетверга о 9:30 за тихоокеанським часом на [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 
 Більше варіантів можна знайти в [інформації про комунікацію](https://github.com/helm/community/blob/main/communication.md) спільноти Helm.
