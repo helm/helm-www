@@ -104,7 +104,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "/docs/architecture/"
-  to = "/docs/topics/architecture/"
+  to = "/docs/intro/introduction/"
   status = 302
 
 [[redirects]]
@@ -295,7 +295,7 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [[redirects]]
   from = "/docs/architecture/"
-  to = "/docs/topics/architecture/"
+  to = "/docs/intro/introduction/"
   status = 302
 
 [[redirects]]
@@ -316,6 +316,17 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
   from = "/docs/community/*"
   to = "/community/:splat"
   status = 302
+
+# Architecture page merged into the Introduction to Helm overview
+[[redirects]]
+  from = '/docs/topics/architecture'
+  to = '/docs/intro/introduction'
+  status = 301
+
+[[redirects]]
+  from = '/docs/v3/topics/architecture'
+  to = '/docs/v3/intro/introduction'
+  status = 301
 
 # Community release policy
 [[redirects]]
