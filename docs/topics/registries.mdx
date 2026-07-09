@@ -86,6 +86,23 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 The `push` subcommand can only be used against `.tgz` files
 created ahead of time using `helm package`.
 
+#### Machine-readable output
+
+Use the `--output` flag to get push results in a structured format. Available formats are `table` (default), `json`, and `yaml`.
+
+```console
+$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json
+{"ref":"localhost:5000/helm-charts/mychart:0.1.0","digest":"sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723"}
+```
+
+This is useful for CI/CD pipelines and integration with signing tools like [cosign](https://github.com/sigstore/cosign). For example, you can capture the digest to sign the pushed artifact:
+
+```bash
+PUSH_OUTPUT=$(helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json)
+DIGEST=$(echo "$PUSH_OUTPUT" | jq -r '.digest')
+cosign sign localhost:5000/helm-charts/mychart@$DIGEST
+```
+
 When using `helm push` to upload a chart an OCI registry, the reference
 must be prefixed with `oci://` and must not contain the basename or tag.
 
