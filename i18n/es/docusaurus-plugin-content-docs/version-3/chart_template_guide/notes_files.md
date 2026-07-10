@@ -2,6 +2,7 @@
 title: Creación de un Archivo NOTES.txt
 description: Cómo proporcionar instrucciones a los usuarios de su Chart.
 sidebar_position: 10
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 En esta sección vamos a ver la herramienta de Helm para proporcionar

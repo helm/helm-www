@@ -2,6 +2,7 @@
 title: Migración de Helm v2 a v3
 description: Aprenda cómo migrar de Helm v2 a v3.
 sidebar_position: 13
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Esta guía muestra cómo migrar de Helm v2 a v3. Helm v2 debe estar instalado

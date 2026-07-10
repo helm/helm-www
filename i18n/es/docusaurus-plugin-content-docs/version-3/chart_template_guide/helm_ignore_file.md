@@ -2,6 +2,7 @@
 title: El archivo .helmignore
 description: El archivo `.helmignore` se usa para especificar archivos que no desea incluir en su chart de Helm.
 sidebar_position: 12
+default_lang_commit: c4624cd8526f3d0927fa871facd19c9a0cf5b810
 ---
 
 El archivo `.helmignore` se usa para especificar archivos que no desea incluir

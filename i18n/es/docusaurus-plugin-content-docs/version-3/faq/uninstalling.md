@@ -1,6 +1,7 @@
 ---
 title: Desinstalación
 sidebar_position: 3
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 ## Desinstalación

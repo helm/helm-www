@@ -2,6 +2,7 @@
 title: Uso de registros basados en OCI
 description: Describe cómo usar OCI para la distribución de Charts.
 sidebar_position: 7
+default_lang_commit: 2e15490c82d246093e11e418a7c23907a4afa89e
 ---
 
 A partir de Helm 3, puede usar registros de contenedores con soporte [OCI](https://www.opencontainers.org/) para almacenar y compartir paquetes de charts. A partir de Helm v3.8.0, el soporte OCI está habilitado por defecto.

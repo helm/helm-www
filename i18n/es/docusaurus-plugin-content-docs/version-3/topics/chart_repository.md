@@ -2,6 +2,7 @@
 title: Guía del Repositorio de Charts
 description: Cómo crear y trabajar con repositorios de charts de Helm.
 sidebar_position: 6
+default_lang_commit: 944aeaca4df514e7c5ba091995fcbbc08e505f65
 ---
 
 Esta sección explica cómo crear y trabajar con repositorios de charts de Helm.

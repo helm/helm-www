@@ -2,6 +2,7 @@
 title: Depuración de Plantillas
 description: Solución de problemas de charts que no se despliegan correctamente.
 sidebar_position: 13
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 La depuración de plantillas puede ser complicada porque las plantillas renderizadas
