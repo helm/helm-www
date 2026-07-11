@@ -2,6 +2,7 @@
 title: "부록: Go 자료형과 템플릿"
 description: 템플릿 변수에 관한 간단한 개요
 sidebar_position: 16
+default_lang_commit: 243c2d6ac95078256a4b2b56013aae454e67202a
 ---
 
 헬름 템플릿 언어는 강한 타입을 지원하는 Go 프로그래밍 언어로 구현되어 있습니다.
