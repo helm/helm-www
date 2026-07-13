@@ -1,12 +1,9 @@
 ---
 title: helm get metadata
+default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 ---
 
 Este comando obtiene los metadatos de un release especificado
-
-### Sinopsis
-
-Este comando obtiene los metadatos de un release especificado.
 
 ```
 helm get metadata RELEASE_NAME [flags]

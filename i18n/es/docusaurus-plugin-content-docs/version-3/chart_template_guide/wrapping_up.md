@@ -2,6 +2,7 @@
 title: Próximos Pasos
 description: Conclusión - algunos enlaces útiles a otra documentación que le será de ayuda.
 sidebar_position: 14
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Esta guía está diseñada para darle a usted, el desarrollador de charts, una

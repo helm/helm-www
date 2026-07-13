@@ -2,6 +2,7 @@
 title: Etiquetas y Anotaciones
 description: Cubre las mejores prácticas para usar etiquetas y anotaciones en su Chart.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Esta parte de la Guía de Mejores Prácticas cubre las mejores prácticas para usar

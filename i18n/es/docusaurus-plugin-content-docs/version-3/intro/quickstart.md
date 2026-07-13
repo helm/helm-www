@@ -2,6 +2,7 @@
 title: Guía de inicio rápido
 description: Cómo instalar y comenzar con Helm, incluidas instrucciones para distribuciones, preguntas frecuentes y plugins.
 sidebar_position: 1
+default_lang_commit: e5a8a262fa2a2852a8f3dc0c83260363fff4dced
 ---
 
 Esta guía explica cómo empezar a utilizar Helm rápidamente.

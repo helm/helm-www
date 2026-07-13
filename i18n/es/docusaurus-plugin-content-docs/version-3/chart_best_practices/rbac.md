@@ -2,6 +2,7 @@
 title: Control de Acceso Basado en Roles
 description: Discute la creación y formato de recursos RBAC en manifiestos de Charts.
 sidebar_position: 8
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Esta parte de la Guía de Mejores Prácticas cubre la creación y formato de

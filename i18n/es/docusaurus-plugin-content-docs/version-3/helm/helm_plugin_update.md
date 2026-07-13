@@ -1,5 +1,6 @@
 ---
 title: helm plugin update
+default_lang_commit: 1cc11e63e3925756fe4c71921fd7c854fcf23dc5
 ---
 
 actualiza uno o más plugins de Helm
