@@ -1,5 +1,6 @@
 ---
 title: helm rollback
+default_lang_commit: 1cc11e63e3925756fe4c71921fd7c854fcf23dc5
 ---
 
 revierte un release a una revisión anterior

@@ -2,6 +2,7 @@
 title: Objetos Integrados
 description: Objetos integrados disponibles para las plantillas.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 El motor de plantillas pasa los objetos a la plantilla. Su código también puede

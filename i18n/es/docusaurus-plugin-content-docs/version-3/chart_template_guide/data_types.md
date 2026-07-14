@@ -2,6 +2,7 @@
 title: "Apéndice: Tipos de datos de Go y plantillas"
 description: Un resumen rápido sobre las variables en las plantillas.
 sidebar_position: 16
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 El lenguaje de plantillas de Helm está implementado en Go, un lenguaje de

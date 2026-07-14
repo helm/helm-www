@@ -2,6 +2,7 @@
 title: Control de Flujo
 description: Una descripción rápida de la estructura de flujo dentro de las plantillas.
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Las estructuras de control (llamadas "acciones" en la terminología de plantillas)

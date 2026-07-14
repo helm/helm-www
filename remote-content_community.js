@@ -132,6 +132,8 @@ module.exports = {
         "https://github.com/helm/community/blob/main/hips/archives/helm/distributed-search.md": "/community/hips/archives/helm/distributed-search",
       },
     },
+    "hips/hip-0027.md": {},
+    "hips/hip-0029.md": {},
 
     // HIP Archives
     "hips/archives/README.md": {},

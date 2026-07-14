@@ -2,6 +2,7 @@
 title: Funciones de Plantilla y Pipelines
 description: Uso de funciones en plantillas.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Hasta ahora, hemos visto cómo colocar información en una plantilla. Pero esa
