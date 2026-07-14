@@ -2,6 +2,7 @@
 title: Guía Rápida
 description: Guía rápida de comandos de Helm
 sidebar_position: 4
+default_lang_commit: 0b2144b0b330eb7e45b1cb37342186114dd02f50
 ---
 
 Guía rápida de Helm con todos los comandos necesarios para gestionar una aplicación a través de Helm.

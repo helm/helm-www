@@ -2,6 +2,7 @@
 title: Guía de Plugins de Helm
 description: Introduce cómo usar y crear plugins para extender la funcionalidad de Helm.
 sidebar_position: 12
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Un plugin de Helm es una herramienta a la que se puede acceder a través del CLI

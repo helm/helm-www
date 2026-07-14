@@ -2,6 +2,7 @@
 title: Convenciones Generales
 description: Convenciones generales para charts.
 sidebar_position: 1
+default_lang_commit: 35e200fbcba7033358a6e2b414b6a5499da0282d
 ---
 
 Esta parte de la Guía de Mejores Prácticas explica las convenciones generales.

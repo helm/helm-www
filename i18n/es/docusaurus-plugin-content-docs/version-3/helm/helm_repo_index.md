@@ -1,5 +1,6 @@
 ---
 title: helm repo index
+default_lang_commit: 1cc11e63e3925756fe4c71921fd7c854fcf23dc5
 ---
 
 genera un archivo de índice a partir de un directorio con charts empaquetados

@@ -2,6 +2,7 @@
 title: Valores
 description: Se enfoca en cómo debe estructurar y usar sus values.
 sidebar_position: 2
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Esta parte de la guía de mejores prácticas cubre el uso de values. En esta sección,

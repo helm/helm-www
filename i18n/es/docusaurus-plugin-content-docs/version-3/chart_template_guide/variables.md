@@ -2,6 +2,7 @@
 title: Variables
 description: Uso de variables en plantillas.
 sidebar_position: 8
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Con funciones, pipelines, objetos y estructuras de control ya dominados, podemos

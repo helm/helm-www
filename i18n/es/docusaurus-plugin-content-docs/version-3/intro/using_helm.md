@@ -2,6 +2,7 @@
 title: Uso de Helm
 description: Explica los conceptos básicos de Helm.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Esta guía explica los conceptos básicos del uso de Helm para administrar paquetes

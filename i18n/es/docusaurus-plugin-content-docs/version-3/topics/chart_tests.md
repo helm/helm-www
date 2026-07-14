@@ -2,6 +2,7 @@
 title: Pruebas de Chart
 description: Describe cómo ejecutar y probar sus charts.
 sidebar_position: 3
+default_lang_commit: 81fa9227414a9c99d74705bdc159c4c21c9aac7c
 ---
 
 Un chart contiene varios recursos y componentes de Kubernetes que funcionan
