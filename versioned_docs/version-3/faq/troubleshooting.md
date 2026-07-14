@@ -128,6 +128,36 @@ For example:
 helm list -v 6
 ```
 
+### Install or upgrade fails because a resource already exists
+
+When running `helm install` or `helm upgrade`, you may see an error like:
+
+```
+Error: INSTALLATION FAILED: rendered manifests contain a resource that already exists.
+Unable to continue with install: ConfigMap "myconfig" in namespace "default" exists and
+cannot be imported into the current release
+```
+
+This happens when Helm finds a resource in the cluster that either lacks Helm's ownership metadata or belongs to a different release. Helm tracks ownership using three pieces of metadata:
+
+- Label: `app.kubernetes.io/managed-by=Helm`
+- Annotation: `meta.helm.sh/release-name=<release-name>`
+- Annotation: `meta.helm.sh/release-namespace=<release-namespace>`
+
+To have Helm adopt the existing resource and manage it as part of your release, use the `--take-ownership` flag:
+
+```console
+$ helm install my-release my-chart --take-ownership
+```
+
+Or for upgrades:
+
+```console
+$ helm upgrade my-release my-chart --take-ownership
+```
+
+This adds Helm's ownership metadata to the existing resource and manages it going forward. Use this flag when migrating resources created outside of Helm (such as with `kubectl apply`) into a Helm-managed release.
+
 ### Rollback fails with "no [Resource] with the name '[name]' found"
 
 When running `helm rollback`, you may see an error like:
