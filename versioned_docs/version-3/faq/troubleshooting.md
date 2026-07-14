@@ -128,6 +128,16 @@ For example:
 helm list -v 6
 ```
 
+### Debugging HTTP requests when pulling charts
+
+To troubleshoot HTTP issues with `helm pull`, use the `--debug` flag. This outputs the URL being fetched and the response status, helping you diagnose connectivity problems, authentication failures, or incorrect repository URLs.
+
+For example:
+
+```console
+$ helm pull myrepo/mychart --debug
+```
+
 ### Rollback fails with "no [Resource] with the name '[name]' found"
 
 When running `helm rollback`, you may see an error like:
