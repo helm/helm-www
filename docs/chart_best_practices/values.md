@@ -90,6 +90,28 @@ In most cases, explicit type tags are respected, so `foo: !!string 1234` should
 treat `1234` as a string. _However_, the YAML parser consumes tags, so the type
 data is lost after one parse.
 
+## Avoid Duplicate Keys
+
+Each key in a YAML mapping must be unique. A `values.yaml` file that defines the
+same key twice at the same level is invalid YAML, even when it looks harmless:
+
+```yaml
+replicaCount: 1
+image:
+  repository: nginx
+image:
+  tag: "1.27"
+```
+
+Here the second `image` entry overwrites the first, so `image.repository` is lost
+and only `image.tag` survives. Helm resolves duplicate keys by keeping the last
+value, so a typo like this can silently drop configuration without any warning.
+
+To catch these mistakes, `helm lint` reports duplicate keys in a chart's
+`values.yaml` as an error, surfacing the problem before you install the chart.
+Run `helm lint` as part of your development workflow to guard against
+accidentally duplicated keys.
+
 ## Consider How Users Will Use Your Values
 
 There are three potential sources of values:
