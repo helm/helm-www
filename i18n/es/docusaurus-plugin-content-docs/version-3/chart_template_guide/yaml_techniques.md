@@ -2,6 +2,7 @@
 title: "Apéndice: Técnicas de YAML"
 description: Una mirada más detallada a la especificación YAML y cómo se aplica a Helm.
 sidebar_position: 15
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 La mayor parte de esta guía se ha centrado en escribir el lenguaje de plantillas.

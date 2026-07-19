@@ -2,6 +2,7 @@
 title: Subcharts y Valores Globales
 description: Interacción con subcharts y valores globales.
 sidebar_position: 11
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Hasta este punto hemos trabajado solo con un chart. Pero los charts pueden tener

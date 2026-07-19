@@ -2,6 +2,7 @@
 title: "Guía de distribución de Kubernetes"
 description: "Captura información sobre el uso de Helm en entornos específicos de Kubernetes"
 sidebar_position: 10
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Helm debería funcionar con cualquier [versión conforme de Kubernetes](https://github.com/cncf/k8s-conformance) (ya sea [certificada](https://www.cncf.io/certification/software-conformance/) o no).

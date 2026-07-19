@@ -2,6 +2,7 @@
 title: Lista de Funciones de Plantilla
 description: Una lista de funciones de plantilla disponibles en Helm
 sidebar_position: 6
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Helm incluye muchas funciones de plantilla que puede aprovechar en sus plantillas.

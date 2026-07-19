@@ -2,6 +2,7 @@
 title: Instalar Helm
 description: Aprenda a instalar y poner Helm en funcionamiento.
 sidebar_position: 2
+default_lang_commit: 042b2178fb9384a9d4fe774f210d6db402f3da02
 ---
 
 Esta guía muestra cómo instalar Helm CLI. Helm se puede instalar desde la fuente
