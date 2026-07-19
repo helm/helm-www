@@ -94,11 +94,11 @@ It's easy to see what has been released using Helm:
 
 ```console
 $ helm list
-NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION
-my-podinfo 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	podinfo-6.11.2	6.7.1
+NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION	SOURCE
+my-podinfo 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	podinfo-6.11.2	6.7.1	oci://ghcr.io/stefanprodan/charts/podinfo
 ```
 
-The `helm list` (or `helm ls`) function will show you a list of all deployed releases.
+The `helm list` (or `helm ls`) command shows all of your deployed releases. The `SOURCE` column tells you where each chart came from. Helm records this location in the `meta.helm.sh/release-source` annotation when you install or upgrade a release. The value is the chart reference you supplied, or the repository URL when you install with `--repo`.
 
 ## Uninstall a Release
 
