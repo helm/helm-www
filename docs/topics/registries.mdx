@@ -105,6 +105,20 @@ Users of the [helm-push plugin](https://github.com/chartmuseum/helm-push) (for u
 may experience issues, since the plugin conflicts with the new, built-in `push`.
 As of version v0.10.0, the plugin has been renamed to `cm-push`.
 
+#### Publishing non-strict-semver versions
+
+Helm accepts lenient semantic versions in a chart's `version` field, such as `v1.2.3`. By default, `helm push` uses that raw string as the OCI tag. When Helm resolves versions from a registry, however, such as during `helm pull`, it ignores any tag that is not a strict semantic version. A chart pushed with the tag `v1.2.3` is uploaded successfully, but it is silently skipped when Helm later lists the available versions.
+
+To avoid this mismatch, pass the `--oci-strict-version` flag to `helm push`. When it is set, Helm derives the OCI tag from the parsed, canonical semver representation of the chart version instead of the raw string. For example, a chart whose `version` is `v1.2.3` is pushed with the tag `1.2.3`:
+
+```console
+$ helm push mychart-v1.2.3.tgz oci://localhost:5000/helm-charts --oci-strict-version
+Pushed: localhost:5000/helm-charts/mychart:1.2.3
+Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
+```
+
+The flag is opt-in and disabled by default, so existing workflows are unaffected. It applies only to OCI (`oci://`) pushes, and the push fails if the chart version cannot be parsed as a semantic version.
+
 ### Other subcommands
 
 Support for the `oci://` protocol is also available in various other subcommands.
