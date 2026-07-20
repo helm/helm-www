@@ -2,6 +2,7 @@
 title: Primeros Pasos
 description: Una guía rápida sobre plantillas de Chart.
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 En esta sección de la guía, crearemos un chart y luego agregaremos una primera

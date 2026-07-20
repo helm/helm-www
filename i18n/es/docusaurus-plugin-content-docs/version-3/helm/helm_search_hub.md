@@ -1,5 +1,6 @@
 ---
 title: helm search hub
+default_lang_commit: 1cc11e63e3925756fe4c71921fd7c854fcf23dc5
 ---
 
 busca charts en Artifact Hub o en su propia instancia de hub

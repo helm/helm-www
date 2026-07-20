@@ -1,5 +1,6 @@
 ---
 title: helm get
+default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 ---
 
 descarga información extendida de un release especificado

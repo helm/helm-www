@@ -1,6 +1,7 @@
 ---
 title: "Política de Calendario de Releases"
 description: "Describe la política de calendario de releases de Helm."
+default_lang_commit: cd5ad1e1593c50677909d7c618cf31cd4036fac7
 ---
 
 Para beneficio de sus usuarios, Helm define y anuncia las fechas de release con
@@ -33,6 +34,7 @@ Un release de parche se cancelará por cualquiera de las siguientes razones:
 - si no hay contenido nuevo desde el release anterior
 - si la fecha del release de parche cae dentro de la semana anterior al primer release candidate (RC1) de un próximo release menor
 - si la fecha del release de parche cae dentro de las cuatro semanas siguientes a un release menor
+- si un release mayor o menor está programado para el mismo mes
 
 ## Releases Menores
 
