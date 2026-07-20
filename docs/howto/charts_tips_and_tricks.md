@@ -347,6 +347,12 @@ Keep the following in mind when you use `SOURCE_DATE_EPOCH`:
 - When the variable is unset or empty,
   Helm keeps the default behavior,
   where archive entries reflect the actual file modification times.
+- When you package a chart that contains a `Chart.lock` file,
+  Helm also stamps that file's `generated:` timestamp with the `SOURCE_DATE_EPOCH` value,
+  normalized to UTC and whole seconds.
+  As a result, charts that declare dependencies produce byte-identical archives across builds and machines
+  when you use the same `SOURCE_DATE_EPOCH`,
+  because the `Chart.lock` content matches, not just the file modification times.
 - `helm install`, `helm upgrade`, `helm dependency build`, and `helm dependency update`
   also honor `SOURCE_DATE_EPOCH`,
   but only when they re-archive a dependency sourced from a local `file://` repository.
