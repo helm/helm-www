@@ -339,6 +339,25 @@ new-subchart-2
 The manual way of achieving this is by copy/pasting the same chart in the
 `charts/` directory multiple times with different names.
 
+When a dependency uses an `alias`, the alias becomes the dependency's name for
+the purposes of `condition` evaluation. The `condition` path and any enabling
+values in the top parent's values must therefore be keyed by the alias name
+rather than the original chart name. For example, with the `new-subchart-1`
+alias above you would use `condition: new-subchart-1.enabled` in `Chart.yaml`
+and set the value in the top parent's values:
+
+```yaml
+# parentchart/values.yaml
+new-subchart-1:
+  enabled: true
+```
+
+For a chart reached through an aliased dependency chain, the values path
+accumulates the alias name at each level (for example,
+`outer-alias.inner-alias.enabled`). Tags are not affected by an alias: they are
+matched by the labels listed in the dependency's `tags` field, not by the chart
+or alias name.
+
 #### Tags and Condition fields in dependencies
 
 In addition to the other fields above, each requirements entry may contain the
@@ -414,6 +433,9 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
 - Tags and conditions values must be set in the top parent's values.
 - The `tags:` key in values must be a top level key. Globals and nested `tags:`
   tables are not currently supported.
+- When a dependency uses an `alias`, its `condition` path is keyed by the alias
+  name rather than the original chart name. Tags are not affected by aliasing;
+  they are matched by the labels in the dependency's `tags` field.
 
 #### Importing Child Values via dependencies
 
