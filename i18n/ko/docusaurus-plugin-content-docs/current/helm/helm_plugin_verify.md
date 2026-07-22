@@ -5,7 +5,7 @@ default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 
 지정한 경로의 플러그인이 서명되었고 유효한지 검증합니다.
 
-### 개요
+### 개요 {#synopsis}
 
 이 명령은 Helm 플러그인에 유효한 provenance 파일이 있는지와, 해당 파일이 신뢰할 수 있는 PGP 키로 서명되었는지를 검증합니다.
 
@@ -24,14 +24,14 @@ default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 helm plugin verify [PATH] [flags]
 ```
 
-### 옵션
+### 옵션 {#options}
 
 ```
   -h, --help             verify 명령어에 대한 도움말
       --keyring string   공개 키가 들어 있는 키링 (기본값 "~/.gnupg/pubring.gpg")
 ```
 
-### 부모 명령어에서 상속된 옵션
+### 부모 명령어에서 상속된 옵션 {#options-inherited-from-parent-commands}
 
 ```
       --burst-limit int                 클라이언트 측 기본 스로틀링 제한 (기본값 100)
@@ -55,7 +55,7 @@ helm plugin verify [PATH] [flags]
       --repository-config string        저장소 이름과 URL이 있는 파일 경로 (기본값 "~/.config/helm/repositories.yaml")
 ```
 
-### 함께 보기
+### 함께 보기 {#see-also}
 
 * [helm plugin](/helm/helm_plugin.md) - Helm 플러그인을 설치, 나열 또는 제거합니다
 
