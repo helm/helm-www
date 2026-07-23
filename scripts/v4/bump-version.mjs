@@ -14,6 +14,7 @@ let targetVersion = null;
 let baseRef = null;
 let skipCliDocs = false;
 let skipChangelog = false;
+let bumpSdk = false;
 let dryRun = false;
 
 for (let i = 0; i < args.length; i++) {
@@ -21,6 +22,7 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === "--base") baseRef = args[++i];
   else if (args[i] === "--skip-cli-docs") skipCliDocs = true;
   else if (args[i] === "--skip-changelog") skipChangelog = true;
+  else if (args[i] === "--bump-sdk") bumpSdk = true;
   else if (args[i] === "--dry-run") dryRun = true;
   else if (args[i] === "--help" || args[i] === "-h") {
     console.log(`Usage: node scripts/v4/bump-version.mjs [options]
@@ -32,11 +34,13 @@ Options:
   --base vX.Y.Z         Base ref for the full changelog (default: parsed from docs/changelog.md)
   --skip-cli-docs       Skip regenerating docs/helm/ via regenerate-cli-docs.mjs
   --skip-changelog      Skip regenerating docs/changelog.md via changelog.mjs
+  --bump-sdk            Also bump sdkexamples/ via bump-sdk.mjs
   --dry-run             Print what would change without writing any files
 
 Examples:
   node scripts/v4/bump-version.mjs
   node scripts/v4/bump-version.mjs --version v4.2.0
+  node scripts/v4/bump-version.mjs --version v4.2.0 --bump-sdk
   node scripts/v4/bump-version.mjs --skip-cli-docs --skip-changelog --dry-run`);
     process.exit(0);
   } else {
@@ -154,6 +158,7 @@ async function main() {
     console.log("  i18n/*/docusaurus-plugin-content-docs/current.json  (11 locales)");
     if (!skipCliDocs) console.log("  docs/helm/*.md  (via regenerate-cli-docs.mjs)");
     if (!skipChangelog) console.log("  docs/changelog.md  (via changelog.mjs)");
+    if (bumpSdk) console.log("  sdkexamples/go.mod and go.sum  (via bump-sdk.mjs)");
     return;
   }
 
@@ -184,6 +189,14 @@ async function main() {
     });
   }
 
+  if (bumpSdk) {
+    console.log(`\nBumping SDK examples to ${targetVersion}...`);
+    execSync(`yarn node scripts/v4/bump-sdk.mjs --version ${targetVersion}`, {
+      cwd: PROJECT_ROOT,
+      stdio: "inherit",
+    });
+  }
+
   console.log("");
   console.log("✅ Done. Next steps:");
   console.log(
@@ -191,6 +204,9 @@ async function main() {
   );
   console.log(`   2. git add <files> && git commit -s -m "Bump docs to ${bareVersion}"`);
   console.log("   3. Open a draft PR against main.");
+  if (!bumpSdk) {
+    console.log("   Tip: run scripts/v4/bump-sdk.mjs to bump the SDK examples.");
+  }
 }
 
 main().catch((err) => {
