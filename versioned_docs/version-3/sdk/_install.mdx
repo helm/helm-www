@@ -30,6 +30,7 @@ func runInstall(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 	registryClient, err := newRegistryClientTLS(
 		settings,
 		logger,
+		nil,
 		installClient.CertFile,
 		installClient.KeyFile,
 		installClient.CaFile,
