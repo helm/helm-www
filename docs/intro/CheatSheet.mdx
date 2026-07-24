@@ -48,6 +48,13 @@ helm pull <chart> --untar=true          # If set to true, will untar the chart a
 helm pull <chart> --verify              # Verify the package before using it
 helm pull <chart> --version <number>    # Default-latest is used, specify a version constraint for the chart version to use
 helm dependency list <chart>            # Display a list of a chart’s dependencies:
+helm bump <chart-path>                  # Bump the version, defaulting to patch when VERSION_TYPE is omitted; rewrites Chart.yaml in place
+helm bump major <chart-path>            # Bump the major version (1.2.3 -> 2.0.0)
+helm bump minor <chart-path>            # Bump the minor version (1.2.3 -> 1.3.0)
+helm bump patch <chart-path>            # Bump the patch version (1.2.3 -> 1.2.4)
+helm bump stable <chart-path>           # Strip the pre-release suffix (1.2.3-alpha -> 1.2.3)
+helm bump alpha <chart-path>            # Add or increment a pre-release suffix (1.2.3 -> 1.2.3-alpha.1); alpha, beta, rc, post, and dev are supported
+helm bump 2.0.0 <chart-path>            # Set the chart version to an explicit semantic version
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
