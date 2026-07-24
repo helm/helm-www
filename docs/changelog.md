@@ -5,8 +5,8 @@ sidebar_label: Full Changelog
 
 # Helm 4 Full Changelog
 
-**Scope**: 442 PRs from (`v4.2.3`) compared to `v3.19.0`
-**v4-only**: 406 PRs (36 backported to v3 excluded)
+**Scope**: 449 PRs from (`v4.2.3`) compared to `v3.19.0`
+**v4-only**: 413 PRs (36 backported to v3 excluded)
 
 See the [Overview](/overview.md) for an actionable summary of these changes.
 
@@ -79,6 +79,11 @@ Fixes in Helm 4 that were not backported to v3
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #31925 | 2026-06-11 | TerryHowe | fix: protect FailingKubeClient.RecordedWaitOptions from data race |
+| #32056 | 2026-06-11 | TerryHowe | fix: route registry client output to stdout instead of stderr |
+| #31758 | 2026-06-09 | benoittgt | fix: prevent warning when using version range constraints |
+| #32081 | 2026-05-30 | TerryHowe | fix(kube): prevent spurious early exit in WaitForDelete during informer sync |
+| #32128 | 2026-05-16 | matheuscscp | fix(upstream): upgrade to cli-utils 1.2.1, controller-runtime 0.24.1 and k8s 1.36.1 |
 | #31755 | 2026-04-26 | scottrigby | fix(template): deprecate unused --hide-notes and --render-subchart-notes flags |
 | #31868 | 2026-03-09 | matheuscscp | fix: insert newline after doc separators glued to content by template trimming |
 | #31897 | 2026-03-09 | TerryHowe | fix: bump fluxcd/cli-utils to v0.37.2-flux.1 |
@@ -335,6 +340,8 @@ Infrastructure and project management improvements
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32317 | 2026-07-09 | TerryHowe | chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0 |
+| #32153 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 to address GO-2026-5026 |
 | #32098 | 2026-05-04 | scottrigby | build: Clean up Goreleaser change |
 | #31343 | 2026-05-03 | TerryHowe | chore: replace mitchellh/gox with goreleaser |
 | #31970 | 2026-05-03 | isumitsolanki | refactor(cli): decouple EnvSettings from pkg/kube to avoid import cycles |
