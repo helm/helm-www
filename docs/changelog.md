@@ -5,8 +5,8 @@ sidebar_label: Full Changelog
 
 # Helm 4 Full Changelog
 
-**Scope**: 443 PRs from (`v4.2.0`) compared to `v3.19.0`
-**v4-only**: 407 PRs (36 backported to v3 excluded)
+**Scope**: 442 PRs from (`v4.2.3`) compared to `v3.19.0`
+**v4-only**: 406 PRs (36 backported to v3 excluded)
 
 See the [Overview](/overview.md) for an actionable summary of these changes.
 
@@ -214,7 +214,6 @@ Code quality improvements and modernization
 | #31415 | 2025-12-17 | banjoh | chore: increase logging test coverage |
 | #31650 | 2025-12-15 | gjenkins8 | Fix `TestConcurrencyDownloadIndex` typo |
 | #31649 | 2025-12-15 | atombrella | Use errors.Is to check for io.EOF and gzip.ErrHeader |
-| #31207 | 2025-12-13 | zyfy29 | chore: delete unused var in installer.go |
 | #31624 | 2025-12-12 | atombrella | Enable the `sloglint` linter |
 | #11991 | 2025-12-12 | twz123 | Make test scripts run without /bin/bash |
 | #31342 | 2025-11-14 | TerryHowe | chore: replace github.com/mitchellh/copystructure |
@@ -336,7 +335,6 @@ Infrastructure and project management improvements
 
 | PR | Date | Author | Title |
 |---|---|---|---|
-| #32153 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 for GO-2026-5026 |
 | #32098 | 2026-05-04 | scottrigby | build: Clean up Goreleaser change |
 | #31343 | 2026-05-03 | TerryHowe | chore: replace mitchellh/gox with goreleaser |
 | #31970 | 2026-05-03 | isumitsolanki | refactor(cli): decouple EnvSettings from pkg/kube to avoid import cycles |
@@ -502,7 +500,6 @@ These PRs were included in v4 but were also backported to v3 releases
 
 | PR | Date | Author | Title |
 |---|---|---|---|
-| #32152 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 for GO-2026-5026 [dev-v3] |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
 | #13581 | 2024-12-31 | ldlb9527 | Upgrade golang.org/x/net to v0.33.0 to address CVE-2024-45338 |
