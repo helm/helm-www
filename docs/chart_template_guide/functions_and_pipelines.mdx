@@ -127,6 +127,27 @@ data:
   food: "PIZZA"
 ```
 
+Pipelines are also useful when working with lists. For example, the `join`
+function can combine a list of strings into a single string with a separator:
+
+```yaml
+favorite:
+  drinks:
+    - coffee
+    - tea
+    - water
+```
+
+```yaml
+drinks: {{ .Values.favorite.drinks | join ", " | quote }}
+```
+
+The above produces:
+
+```yaml
+drinks: "coffee, tea, water"
+```
+
 ## Using the `default` function
 
 One function frequently used in templates is the `default` function: `default
