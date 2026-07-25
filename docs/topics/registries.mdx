@@ -86,23 +86,6 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 The `push` subcommand can only be used against `.tgz` files
 created ahead of time using `helm package`.
 
-#### Machine-readable output
-
-Use the `--output` flag to get push results in a structured format. Available formats are `table` (default), `json`, and `yaml`.
-
-```console
-$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json
-{"ref":"localhost:5000/helm-charts/mychart:0.1.0","digest":"sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723"}
-```
-
-This is useful for CI/CD pipelines and integration with signing tools like [cosign](https://github.com/sigstore/cosign). For example, you can capture the digest to sign the pushed artifact:
-
-```bash
-PUSH_OUTPUT=$(helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json)
-DIGEST=$(echo "$PUSH_OUTPUT" | jq -r '.digest')
-cosign sign localhost:5000/helm-charts/mychart@$DIGEST
-```
-
 When using `helm push` to upload a chart an OCI registry, the reference
 must be prefixed with `oci://` and must not contain the basename or tag.
 
@@ -121,6 +104,41 @@ an extra layer on [the Helm chart manifest](#helm-chart-manifest).
 Users of the [helm-push plugin](https://github.com/chartmuseum/helm-push) (for uploading charts to [ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server))
 may experience issues, since the plugin conflicts with the new, built-in `push`.
 As of version v0.10.0, the plugin has been renamed to `cm-push`.
+
+#### Machine-readable output
+
+Use the `--output` flag (short form `-o`) to get the push results as structured output.
+Available formats are `table` (default), `json`, and `yaml`.
+The structured output contains two fields:
+
+- `ref`: the full pushed reference, including the tag.
+- `digest`: the manifest digest.
+
+```console
+$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json
+{"ref":"localhost:5000/helm-charts/mychart:0.1.0","digest":"sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723"}
+```
+
+The `yaml` format returns the same fields:
+
+```console
+$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output yaml
+digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
+ref: localhost:5000/helm-charts/mychart:0.1.0
+```
+
+In `json` and `yaml` modes, stdout contains only the structured output.
+Helm does not print the human-readable `Pushed:` and `Digest:` summary, and it suppresses any accompanying warnings.
+The `table` format prints the human-readable summary.
+
+The structured output is useful for CI/CD pipelines and integration with signing tools like [cosign](https://github.com/sigstore/cosign).
+For example, you can capture the digest to sign the pushed chart:
+
+```bash
+PUSH_OUTPUT=$(helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts --output json)
+DIGEST=$(echo "$PUSH_OUTPUT" | jq -r '.digest')
+cosign sign localhost:5000/helm-charts/mychart@$DIGEST
+```
 
 ### Other subcommands
 
