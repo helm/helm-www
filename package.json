@@ -43,7 +43,7 @@
     "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.10.21",
     "jsdom": "^27.0.1",
-    "postcss": "^8.4",
+    "postcss": "^8.5",
     "search-insights": "^2.0.0",
     "webpack": "^5.0.0"
   },
