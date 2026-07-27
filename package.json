@@ -64,7 +64,7 @@
     "node": ">=20.0"
   },
   "resolutions": {
-    "gray-matter/js-yaml": "3.14.2",
+    "gray-matter/js-yaml": "3.15.0",
     "serialize-javascript": ">=7.0.5",
     "path-to-regexp": "0.1.13",
     "minimatch": ">=3.1.3",
