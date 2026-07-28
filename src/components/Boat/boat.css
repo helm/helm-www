@@ -2,8 +2,8 @@
  * Helm boat animation styles.
  *
  * As the page scrolls the boat moves from the bottom of the hero up to a badge
- * docked under the navbar. Rather than trying to reshape one element, three
- * layers are driven independently by a single scroll progress value:
+ * docked under the navbar. Three layers are driven by a single scroll progress
+ * value:
  *
  *   .wave-wrapper — the wide hero wave, fades out
  *   .boat-ship    — travels continuously between the two positions, never fades
@@ -12,7 +12,7 @@
  * `--boat-progress` (0 -> 1) and `--boat-anchor` (the hero's bottom edge in
  * viewport coordinates) are written by the component on each scroll frame.
  * Every position below is a lerp between the two endpoints driven by them, so
- * the boat is scrubbed by the scroll rather than snapping between two states.
+ * the boat is scrubbed by the scroll.
  */
 
 /* Bobbing is transform-only so the same keyframes work at both ends of the
@@ -66,7 +66,7 @@ body .DocSearch-Container {
 
   /* Badge-state endpoints, as fractions of the circle so the whole badge scales
      from the single --boat-ring-size knob. The ratios below reproduce the
-     original badge, where the ship was 7vw wide and rested at 1.25vw from the
+     badge, where the ship is 7vw wide and rests at 1.25vw from the
      top of a 7.5vw circle. */
   --boat-ring-size: 7.5vw;
   --boat-ring-top: calc(var(--ifm-navbar-height) + 0.25rem);
@@ -253,7 +253,7 @@ body .DocSearch-Container {
 @media screen and (max-width: 768px) {
   .boat {
     --boat-ring-size: 60px;
-    --boat-ship-w: max(6.25rem, 15vw); /* 100px floor, as before */
+    --boat-ship-w: max(6.25rem, 15vw); /* 100px floor */
   }
 }
 
