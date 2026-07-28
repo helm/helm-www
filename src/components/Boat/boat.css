@@ -1,34 +1,32 @@
 /**
  * Helm boat animation styles.
+ *
+ * As the page scrolls the boat moves from the bottom of the hero up to a badge
+ * docked under the navbar. Three layers are driven by a single scroll progress
+ * value:
+ *
+ *   .wave-wrapper — the wide hero wave, fades out
+ *   .boat-ship    — travels continuously between the two positions, never fades
+ *   .boat-ring    — the circular badge and its own waves, fades in
+ *
+ * `--boat-progress` (0 -> 1) and `--boat-anchor` (the hero's bottom edge in
+ * viewport coordinates) are written by the component on each scroll frame.
+ * Every position below is a lerp between the two endpoints driven by them, so
+ * the boat is scrubbed by the scroll.
  */
 
+/* Bobbing is transform-only so the same keyframes work at both ends of the
+   journey; translateY is a percentage of the ship's own height, so the motion
+   scales with the ship instead of needing a second animation. The amplitude is
+   read from a custom property, which lets it ease from the hero's roomier bob
+   down to the tighter one that fits inside the badge. */
 @keyframes boat-bob {
-  0% {
-    bottom: max(1.5rem, 2vw);
-    transform: rotate(4deg);
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
   }
   50% {
-    bottom: max(2.1rem, 3.5vw);
-    transform: rotate(-6deg);
-  }
-  100% {
-    bottom: max(1.5rem, 2vw);
-    transform: rotate(4deg);
-  }
-}
-
-@keyframes boat-badge-bob {
-  0% {
-    top: 0.425vw;
-    transform: rotate(-4deg);
-  }
-  50% {
-    top: 0.75vw;
-    transform: rotate(2deg);
-  }
-  100% {
-    top: 0.425vw;
-    transform: rotate(-4deg);
+    transform: translateY(calc(-1 * var(--boat-bob-lift))) rotate(-6deg);
   }
 }
 
@@ -47,29 +45,157 @@ body .DocSearch-Container {
   z-index: calc(var(--ifm-z-index-fixed) + 10);
 }
 
+/*
+ * A viewport-sized layer that positions the three pieces in viewport
+ * coordinates. It is inert; only the ship takes pointer events.
+ */
 .boat {
-  width: auto;
+  /* Written by the component every scroll frame. The default anchor is what the
+     first paint uses: the hero is sized to end exactly at the bottom of the
+     viewport, so 100vh is correct before hydration. */
+  --boat-progress: 0;
+  --boat-anchor: 100vh;
+
+  /* Hero-state endpoints. */
+  --boat-wave-h: max(3rem, 6vw);
+  --boat-water-h: max(1.8rem, 3.5vw);
+  --boat-waves-h: max(1.2rem, 3vw);
+  --boat-ship-w: min(max(8rem, 15vw), 409px); /* 409px = intrinsic svg width */
+  --boat-ship-left: max(1.5rem, 3.25vw);
+  --boat-ship-bottom: max(1.5rem, 2vw);
+
+  /* Badge-state endpoints, as fractions of the circle so the whole badge scales
+     from the single --boat-ring-size knob. The ratios below reproduce the
+     badge, where the ship is 7vw wide and rests at 1.25vw from the
+     top of a 7.5vw circle. */
+  --boat-ring-size: 7.5vw;
+  --boat-ring-top: calc(var(--ifm-navbar-height) + 0.25rem);
+  --boat-ring-left: 1rem;
+  --boat-ring-ship-w: calc(var(--boat-ring-size) * 0.9333); /* 7vw of 7.5vw */
+  --boat-ring-ship-left: calc(var(--boat-ring-size) * 0.0848);
+  --boat-ring-ship-top: calc(var(--boat-ring-size) * 0.1667);
+
+  /* boat.svg is 409x316, so height is a fixed ratio of whatever width the ship
+     currently has. Needed to anchor the ship by its top in both states. */
+  --boat-ship-w-now: calc(
+    var(--boat-ship-w) + (var(--boat-ring-ship-w) - var(--boat-ship-w)) *
+      var(--boat-progress)
+  );
+  --boat-ship-h-now: calc(var(--boat-ship-w-now) * 0.7726);
+
+  /* Bob height as a share of the ship's own height: 12.9% in the hero (a 1.5vw
+     rise on an 11.6vw ship), easing to 6% in the badge (0.325vw on 5.4vw) so
+     the masts stay inside the circle. */
+  --boat-bob-lift: calc(12.9% + (6% - 12.9%) * var(--boat-progress));
+
+  --boat-ship-rest-top: calc(
+    var(--boat-anchor) - var(--boat-ship-bottom) - var(--boat-ship-h-now)
+  );
+  --boat-ship-dock-top: calc(var(--boat-ring-top) + var(--boat-ring-ship-top));
+  --boat-ship-top-now: calc(
+    var(--boat-ship-rest-top) +
+      (var(--boat-ship-dock-top) - var(--boat-ship-rest-top)) *
+      var(--boat-progress)
+  );
+  --boat-ship-left-now: calc(
+    var(--boat-ship-left) +
+      (
+        var(--boat-ring-left) + var(--boat-ring-ship-left) -
+          var(--boat-ship-left)
+      ) * var(--boat-progress)
+  );
+
+  position: fixed;
+  inset: 0;
+  /* Always below the navbar: the badge docks beneath it and the hero wave never
+     reaches it, so this never has to flip part-way through. */
+  z-index: calc(var(--ifm-z-index-fixed) - 1);
+  /* The layer covers the viewport — don't let it swallow clicks on the content
+     it floats over. */
+  pointer-events: none;
+}
+
+/* --- The wide hero wave: pinned to the hero, fades out first -------------- */
+
+.boat .wave-wrapper {
   position: absolute;
-  top: auto;
+  left: 0;
+  right: 0;
+  top: calc(var(--boat-anchor) - var(--boat-wave-h));
+  height: var(--boat-wave-h);
+  /* Gone by the time the ship is half-way up, clearing the stage for the ring.
+     Values outside 0-1 are clamped by opacity itself. */
+  opacity: calc((0.45 - var(--boat-progress)) / 0.45);
+}
+
+.boat .wave-wrapper:before {
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  min-height: 10vw;
-  z-index: calc(var(--ifm-z-index-fixed) + 5);
-  transition: all 0.5s ease-in-out;
-  /* Ensure boat is positioned relative to its parent and contained within borders */
+  content: " ";
+  height: var(--boat-water-h);
+  background: var(--blue-light);
 }
+
+.boat .wave-wrapper .waves {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--boat-waves-h);
+}
+
+/* --- The circular badge: fades in as the ship arrives --------------------- */
+
+.boat .boat-ring {
+  position: absolute;
+  top: var(--boat-ring-top);
+  left: var(--boat-ring-left);
+  width: var(--boat-ring-size);
+  height: var(--boat-ring-size);
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(219, 225, 243, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  /* Starts once the wide wave is mostly gone, full by the time the ship docks. */
+  opacity: calc((var(--boat-progress) - 0.4) / 0.6);
+}
+
+/* Waterline sits at ~70% of the circle, matching where the ship comes to rest. */
+.boat .boat-ring .waves {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc(var(--boat-ring-size) * 0.2);
+  margin-top: calc(var(--boat-ring-size) * 0.5);
+}
+
+.boat .boat-ring:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: " ";
+  height: calc(var(--boat-ring-size) * 0.3);
+  background: var(--blue-light);
+}
+
+/* --- The ship: travels the whole way, always visible ---------------------- */
 
 .boat .boat-ship {
   position: absolute;
-  margin-top: max(0.25rem, 0.5vw);
-  left: max(1.5rem, 3.25vw);
-  bottom: max(6rem, 2vw);
-  max-width: max(8rem, 15vw); /* Minimum 8rem boat, scales with viewport */
-  z-index: calc(var(--ifm-z-index-fixed) + 4);
+  top: var(--boat-ship-top-now);
+  left: var(--boat-ship-left-now);
+  width: var(--boat-ship-w-now);
+  height: auto;
+  z-index: 1;
+  pointer-events: auto;
   animation: boat-bob 7s ease-in-out infinite;
-  transition: all 0.5s ease-in-out;
+  will-change: transform;
 }
+
+/* --- Tooltip -------------------------------------------------------------- */
 
 .boat:after {
   content: "ahoy!";
@@ -79,52 +205,24 @@ body .DocSearch-Container {
   color: var(--navy);
   background: var(--salmon);
   position: absolute;
-  bottom: 8vw;
-  left: 13.5vw;
+  /* Tracks the ship rather than the viewport, since the layer is now fullscreen. */
+  top: calc(var(--boat-ship-top-now) - 2.5rem);
+  left: calc(var(--boat-ship-left-now) + var(--boat-ship-w-now) * 0.55);
   line-height: 1;
-  z-index: calc(var(--ifm-z-index-fixed) + 1);
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   border-radius: 4px;
 }
 
-.boat:hover:after {
-  opacity: 1;
-  bottom: 11vw;
+/* The layer is pointer-events: none, so hover is detected on the ship itself.
+   The tooltip fades out as the boat shrinks into the badge. */
+.boat:has(.boat-ship:hover):after {
+  opacity: calc(1 - var(--boat-progress));
+  transform: translateY(-0.5rem);
 }
 
-.boat .wave-wrapper {
-  position: absolute;
-  margin: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: max(3rem, 6vw); /* Just tall enough for waves */
-  overflow: visible;
-  z-index: calc(var(--ifm-z-index-fixed) + 2);
-  background-color: transparent;
-  transition: all 0.5s ease-in-out;
-}
-
-
-.boat .wave-wrapper:before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: " ";
-  height: max(1.8rem, 3.5vw); /* Scale down more to match boat */
-  width: 100%;
-  background: var(--blue-light);
-  transition: all 0.3s ease-in-out;
-}
-
-.boat .wave-wrapper .waves {
-  position: relative;
-  width: 100%;
-  height: max(1.2rem, 3vw); /* Scale down more to match boat */
-  transition: all 0.3s ease-in-out;
-}
+/* --- Wave parallax -------------------------------------------------------- */
 
 .boat .parallax > use {
   animation: move-forever 25s ease-in-out infinite;
@@ -150,105 +248,18 @@ body .DocSearch-Container {
   animation-duration: 20s;
 }
 
+/* --- Responsive: only the endpoints need overriding ----------------------- */
 
-/* Boat fixed nav 'badge' mode */
-.boat.boat-badge {
-  position: fixed;
-  top: calc(var(--ifm-navbar-height) + 0.25rem);
-  left: 1rem;
-  width: 7.5vw;
-  height: 7.5vw;
-  z-index: calc(
-    var(--ifm-z-index-fixed) - 1
-  ); /* Lower z-index to stay below navbar */
-  max-width: 80px;
-  max-height: 80px;
-}
-
-.boat.boat-badge .boat-ship {
-  left: 0.636vw;
-  top: 0.2vw;
-  z-index: calc(var(--ifm-z-index-fixed) + 3);
-  max-width: 7vw;
-  animation: boat-badge-bob 7s ease-in-out infinite;
-  bottom: auto;
-  right: auto;
-}
-
-.boat.boat-badge .wave-wrapper {
-  width: 7.5vw;
-  height: 7.5vw;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.05);
-  background-blend-mode: screen;
-  background: rgba(219, 225, 243, 0.5);
-  bottom: auto;
-  right: auto;
-  overflow: hidden;
-}
-
-.boat.boat-badge .wave-wrapper .waves {
-  margin-top: 3.75vw;
-  margin-bottom: -7px;
-  min-height: 0.25vw;
-  max-height: 1.5vw;
-}
-
-.boat.boat-badge .wave-wrapper:before {
-  width: 100%;
-  height: 3vw;
-  top: 5.25vw;
-  bottom: auto;
-  right: auto;
-}
-
-.boat.boat-badge:after {
-  display: none; /* Hide the tooltip in badge mode */
-}
-
-.boat.boat-badge:hover:after {
-  display: none;
-}
-
-/* Responsive adjustments for boat badge */
 @media screen and (max-width: 768px) {
-  /* Keep boat positioning absolute to stay at bottom of hero section */
   .boat {
-    position: absolute; /* Keep absolute positioning */
-    bottom: 0; /* Stay at bottom */
-    width: 100vw;
+    --boat-ring-size: 60px;
+    --boat-ship-w: max(6.25rem, 15vw); /* 100px floor */
   }
+}
 
-  .boat .boat-ship {
-    max-width: 15vw;
-    min-width: 100px; /* Add minimum size for mobile */
-  }
-
-  .boat.boat-badge {
-    width: 60px;
-    height: 60px;
-    max-width: 60px;
-    max-height: 60px;
-  }
-
-  .boat.boat-badge .boat-ship {
-    left: 0.3rem;
-    top: 0.1rem;
-    max-width: 60px;
-    min-width: 60px;
-  }
-
-  .boat.boat-badge .wave-wrapper {
-    width: 60px;
-    height: 60px;
-  }
-
-  .boat.boat-badge .wave-wrapper .waves {
-    margin-top: 30px;
-  }
-
-  .boat.boat-badge .wave-wrapper:before {
-    height: 25px;
-    top: 35px;
+@media (prefers-reduced-motion: reduce) {
+  .boat .boat-ship,
+  .boat .parallax > use {
+    animation: none;
   }
 }
