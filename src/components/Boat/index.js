@@ -1,68 +1,80 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import Waves from "./Waves";
 import "./boat.css";
 
+// Scroll window, as a fraction of the viewport height, over which the boat
+// travels from the bottom of the hero up to its docked spot under the navbar.
+const MORPH_START = 0.12;
+const MORPH_END = 0.62;
+
+// Eases both ends of the journey so it neither starts nor stops abruptly.
+const smoothstep = (t) => t * t * (3 - 2 * t);
+
+const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
+
 export default function BoatComponent() {
-  const [isBadgeMode, setIsBadgeMode] = useState(false);
+  const boatRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Switch to badge mode when scrolled down more than the viewport height
-      const scrollPosition = window.scrollY;
-      const triggerPoint = window.innerHeight * 0.7; // Trigger at 70% of viewport height
+    const boat = boatRef.current;
+    if (!boat) return undefined;
 
-      setIsBadgeMode(scrollPosition > triggerPoint);
+    const hero = boat.parentElement;
+    let frame = null;
+
+    const update = () => {
+      frame = null;
+
+      const viewport = window.innerHeight;
+      const start = viewport * MORPH_START;
+      const end = viewport * MORPH_END;
+      const progress = smoothstep(
+        clamp01((window.scrollY - start) / (end - start)),
+      );
+
+      // Bottom edge of the hero in viewport coordinates. The boat lives on a
+      // fixed layer, so this is what keeps the wave pinned to the hero while
+      // the hero is still on screen.
+      const anchor = hero ? hero.getBoundingClientRect().bottom : viewport;
+
+      boat.style.setProperty("--boat-progress", progress.toFixed(4));
+      boat.style.setProperty("--boat-anchor", `${anchor.toFixed(1)}px`);
+
+      // Kept as a styling hook only — the visuals are driven entirely by the
+      // progress value above.
+      boat.classList.toggle("boat-badge", progress > 0.5);
+      boat.classList.toggle("boat-full", progress <= 0.5);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      if (frame === null) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
-    <div className={`boat ${isBadgeMode ? "boat-badge" : "boat-full"}`}>
-      <img src="/img/boat.svg" alt="boat" className="boat-ship" />
+    <div ref={boatRef} className="boat boat-full">
+      {/* The wide hero wave — fades out as the page scrolls. */}
       <div className="wave-wrapper">
-        <svg
-          className="waves"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 24 150 28"
-          preserveAspectRatio="none"
-          shapeRendering="auto"
-        >
-          <defs>
-            <path
-              id="gentle-wave"
-              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-            />
-          </defs>
-          <g className="parallax">
-            <use
-              xlinkHref="#gentle-wave"
-              x="48"
-              y="0"
-              fill="rgba(27,83,194,0.7)"
-            />
-            <use
-              xlinkHref="#gentle-wave"
-              x="48"
-              y="3"
-              fill="rgba(27,83,194,0.5)"
-            />
-            <use
-              xlinkHref="#gentle-wave"
-              x="48"
-              y="5"
-              fill="rgba(27,83,194,0.3)"
-            />
-            <use
-              xlinkHref="#gentle-wave"
-              x="48"
-              y="7"
-              fill="rgba(27,83,194,1)"
-            />
-          </g>
-        </svg>
+        <Waves id="hero" />
       </div>
+
+      {/* The circular badge and its own waves — fade in as the ship arrives. */}
+      <div className="boat-ring">
+        <Waves id="badge" />
+      </div>
+
+      {/* The ship travels between the two, and never fades. */}
+      <img src="/img/boat.svg" alt="boat" className="boat-ship" />
     </div>
   );
 }

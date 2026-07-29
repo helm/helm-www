@@ -378,7 +378,7 @@ title "hello world"
 
 ### untitle
 
-제목의 형식을 제거한다. `untitle "Hello World"` 는 `hello world` 를 반환한다..
+제목의 형식을 제거한다. `untitle "Hello World"` 는 `hello world` 를 반환한다.
 
 ### repeat
 

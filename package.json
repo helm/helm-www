@@ -26,7 +26,7 @@
     "@octokit/rest": "^22.0.1",
     "clsx": "^2.0.0",
     "docusaurus-plugin-remote-content": "^4.0.0",
-    "js-yaml": "^4.2.0",
+    "js-yaml": "^4.3.0",
     "ora": "^9.0.0",
     "p-limit": "^7.3.0",
     "prism-react-renderer": "^2.3.0",
@@ -43,7 +43,7 @@
     "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.10.21",
     "jsdom": "^27.0.1",
-    "postcss": "^8.4",
+    "postcss": "^8.5",
     "search-insights": "^2.0.0",
     "webpack": "^5.0.0"
   },
@@ -64,7 +64,7 @@
     "node": ">=20.0"
   },
   "resolutions": {
-    "gray-matter/js-yaml": "3.14.2",
+    "gray-matter/js-yaml": "3.15.0",
     "serialize-javascript": ">=7.0.5",
     "path-to-regexp": "0.1.13",
     "minimatch": ">=3.1.3",

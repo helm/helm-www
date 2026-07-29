@@ -138,7 +138,7 @@ gzip 으로 압축된 객체가 담겨 있다. (시크릿에는 추가적인 bas
     <release_namespace> -o yaml > release.yaml`
   - 컨피그맵 백엔드: `kubectl get configmap <release_configmap_name> -n
     <release_namespace> -o yaml > release.yaml`
-- 문제가 발생하여 복원해야 하는 경우 릴리스를 백업한다.:
+- 문제가 발생하여 복원해야 하는 경우 릴리스를 백업한다:
   - `cp release.yaml release.bak`
   - 비상시에 복구해야 할 경우: `kubectl apply -f release.bak -n
     <release_namespace>`
