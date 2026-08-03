@@ -107,6 +107,31 @@ type PostRenderer interface {
 
 For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 
+## Taking ownership of existing resources
+
+By default, Helm refuses to install or upgrade a chart if a target resource already exists in the cluster and is not already owned by the release. Ownership is tracked with Helm-managed annotations (and related labels such as `app.kubernetes.io/managed-by`). That check protects you from clobbering objects that another tool or release created.
+
+Use `--take-ownership` on `helm install` or `helm upgrade` when you intentionally want Helm to adopt those existing objects into the release:
+
+```shell
+helm install my-release ./mychart --take-ownership
+helm upgrade my-release ./mychart --take-ownership
+```
+
+With the flag set, Helm skips the "resource already exists and is not owned by this release" failure, adopts the live objects, and applies the chart's desired state. Subsequent upgrades and uninstalls then treat those objects as part of the release.
+
+### When to use it
+
+- Migrating a manually applied manifest (or another deployer) to a Helm chart without deleting the live resources first
+- Recovering after annotations were removed or a release history was lost, so Helm no longer recognizes its own objects
+- Aligning a chart with cluster objects that already match the desired names/kinds
+
+### Caveats
+
+- Adoption does **not** delete extra fields that were never in the chart. Three-way strategic merge (or server-side apply, if you use it) still controls how live and chart values are combined.
+- Taking ownership of the wrong objects can surprise other operators that still expect to manage them. Prefer matching names carefully and reviewing the dry-run output first (`--dry-run`).
+- `--take-ownership` is also accepted by `helm template` for flag parity; it does not contact the cluster.
+
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found
