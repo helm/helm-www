@@ -1,12 +1,12 @@
 ---
-title: The Helm Plugins Guide
-description: Introduces how to use and create plugins to extend Helm's functionality.
+title: The Helm Plugins Guide (Legacy)
+description: Legacy plugin guide covering the subprocess runtime used in Helm 3 and still supported in Helm 4. For new plugins, see the Helm Plugins Guide.
 sidebar_position: 12
 ---
 
-import Helm4 from "/docs/_v4-in-progress.mdx"
-
-<Helm4/>
+:::note
+This page covers the **legacy subprocess plugin system** introduced in Helm 3, which continues to be supported in Helm 4. If you are building a new plugin or migrating an existing one for Helm 4, see the [Helm Plugins Guide](/plugins/index.mdx) for the full Helm 4 plugin documentation, including the new [Wasm (Extism) runtime](/plugins/developer/index.mdx).
+:::
 
 A Helm plugin is a tool that can be accessed through the `helm` CLI, but which
 is not part of the built-in Helm codebase.
