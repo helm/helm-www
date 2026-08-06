@@ -25,6 +25,12 @@ This guide covers two independent workflows:
 * [**Minor/Major Release Checklist**](#minormajor-release-checklist) — for new feature releases (every 3 to 4 months) or breaking changes
 * [**Patch Release Checklist**](#patch-release-checklist) — for cherry-picked bug fixes (released monthly)
 
+Helm v4 development happens on the `main` branch.
+Helm v3 maintenance happens on the `dev-v3` branch.
+While Helm v3 remains supported, fixes should land on `main` first and then be
+backported to `dev-v3`.
+Helm v3 is maintenance-only and does not accept net-new features.
+
 Both workflows share the [Initial Configuration](#initial-configuration) and
 [Post-Release](#post-release) sections.
 
@@ -103,7 +109,7 @@ export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 
 ### 1. Create the Release Branch
 
-Start by creating a `release-X.Y` branch from main.
+Start by creating a `release-X.Y` branch from `main`.
 
 ```shell
 git fetch upstream
@@ -411,6 +417,10 @@ release on the front page of the [helm/helm](https://github.com/helm/helm) repo.
 Patch releases are a few critical cherry-picked fixes to existing releases.
 They are released monthly and do not require the release candidate cycle used
 for minor/major releases.
+
+For Helm v4 patch releases, cherry-pick fixes from `main`.
+For Helm v3 patch releases, backport the fixes to `dev-v3` first and then
+cherry-pick them from `dev-v3` into the `release-X.Y` branch.
 
 1. [Set Up Environment Variables](#set-up-environment-variables-1)
 2. [Create the Release Branch](#1-create-the-release-branch-1)
