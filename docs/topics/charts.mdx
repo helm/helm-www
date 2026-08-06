@@ -397,6 +397,32 @@ Since `subchart2` is tagged with `back-end` and that tag evaluates to `true`,
 specified, there is no corresponding path and value in the parent's values so
 that condition has no effect.
 
+##### Validating Conditions with `helm lint`
+
+[helm lint](/helm/helm_lint.md) flags dependency conditions that do not resolve
+to a value, warning you about the "no effect" case described above. It resolves
+each condition against the chart's coalesced values. These combine the chart's
+own `values.yaml`, the default values of the subcharts vendored in `charts/`, and
+any overrides you pass to `helm lint` with `-f` or `--set`. Because a condition
+can list several comma-separated paths, `helm lint` treats the condition as
+resolved if any one of those paths resolves to a value. In the example above,
+`subchart2`'s condition (`subchart2.enabled,global.subchart2.enabled`) has no
+matching value, so `helm lint` flags it. To resolve or silence the warning,
+define one of the condition keys in `values.yaml` (or in a subchart's defaults),
+or lint with your actual install values, as shown below.
+
+For example, `helm lint` reports:
+
+```text
+[WARNING] parentchart: conditions of these dependencies do not resolve to a value and have no effect: subchart2 (condition "subchart2.enabled,global.subchart2.enabled")
+```
+
+You can silence it by linting with the values you install with:
+
+```console
+$ helm lint --set subchart2.enabled=false
+```
+
 ##### Using the CLI with Tags and Conditions
 
 The `--set` parameter can be used as usual to alter tag and condition values.
