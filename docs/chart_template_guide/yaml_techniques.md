@@ -75,6 +75,68 @@ port: !!int "80"
 In the above, `!!str` tells the parser that `age` is a string, even if it looks
 like an int. And `port` is treated as an int, even though it is quoted.
 
+### Scalar Values in Templates
+
+When values from `.Values` are inserted into a template, they are parsed as part
+of the final YAML document. If a value can come from a user or another system,
+rendering it as a bare word can allow YAML syntax in the value to change the
+generated structure.
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink }}
+```
+
+For example, a string that contains a newline followed by another key could add
+unexpected data to the rendered manifest. Quote string values so YAML treats the
+rendered value as a scalar:
+
+```yaml
+data:
+  drink: {{ .Values.favorite.drink | quote }}
+```
+
+The same rule applies after constructing a string from multiple values. For
+example, apply `quote` to the final string produced by `printf` or `print`.
+
+When a Kubernetes field expects another scalar type, use a YAML node tag
+together with `quote`. This renders the value as a YAML string first, then asks
+the YAML parser to convert it to the expected scalar type:
+
+```yaml
+spec:
+  enabled: !!bool {{ .Values.server.enabled | quote }}
+  port: !!int {{ .Values.server.port | quote }}
+```
+
+If the quoted value does not match the requested type, the YAML parser will
+report an error.
+
+### Collection Values in Templates
+
+When a value is intentionally a map or sequence, serialize the complete value and
+indent it for its location in the manifest:
+
+```yaml
+metadata:
+  annotations:
+    {{- .Values.podAnnotations | toYaml | nindent 4 }}
+```
+
+Using `toYaml` with the correct indentation preserves the intended YAML
+structure, but it does not make arbitrary content appropriate for a particular
+Kubernetes field.
+
+### Constraining Template Values
+
+Encoding values correctly keeps the rendered YAML well-formed, but chart authors
+may still need to constrain values that can come from untrusted sources. Helm can
+validate chart values with a
+[`values.schema.json`](/topics/charts.mdx#schema-files) schema, and templates can
+fail rendering with functions such as
+[`required`](/chart_template_guide/function_list.mdx#required) or
+[`fail`](/chart_template_guide/function_list.mdx#fail) for simple checks.
+
 
 ## Strings in YAML
 
@@ -99,6 +161,7 @@ All inline styles must be on one line.
 - Single-quoted strings are "literal" strings, and do not use the `\` to escape
   characters. The only escape sequence is `''`, which is decoded as a single
   `'`.
+
 
 In addition to the one-line strings, you can declare multi-line strings:
 
