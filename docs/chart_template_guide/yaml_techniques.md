@@ -9,6 +9,10 @@ we'll look at the YAML format. YAML has some useful features that we, as
 template authors, can use to make our templates less error prone and easier to
 read.
 
+When you embed chart values into manifests, also read
+[Safe embedding of values (YAML injection)](#safe-embedding-of-values-yaml-injection)
+so user-supplied strings cannot reshape the document.
+
 ## Scalars and Collections
 
 According to the [YAML spec](https://yaml.org/spec/1.2/spec.html), there are two
@@ -360,3 +364,62 @@ use [library charts](/topics/library_charts.md) instead of YAML anchors.
 Library charts are designed for reuse,
 and aren't subject to the round-trip pitfall described above.
 :::
+
+## Safe embedding of values (YAML injection)
+
+Chart values often come from untrusted or multi-tenant sources. If you splice a
+value into a template with raw `{{ .Values.foo }}`, a value that contains
+newlines, `:` mapping indicators, or list markers can change the structure of
+the rendered YAML (YAML injection). That can break installs—or worse, inject
+extra keys into a Kubernetes manifest.
+
+Prefer helpers that encode or structure the data for you:
+
+| Goal | Prefer | Avoid |
+| ---- | ------ | ----- |
+| Quote a string scalar | `{{ .Values.name | quote }}` | `{{ .Values.name }}` in a bare field |
+| Multi-line free-form string | Store structured data as a map/list and use `toYaml`, or treat the whole value as one quoted scalar with `quote` | `{{ .Values.config | nindent 4 }}` — `nindent` only indents; newline-bearing values can still inject keys |
+| Embed maps / lists | `{{ toYaml .Values.extraEnv | nindent 8 }}` | `{{ .Values.extraEnv | nindent 8 }}` without `toYaml`, or hand-rolled `key: {{ . }}` loops |
+| Labels / annotations maps | `toYaml` + `nindent` (or chart helpers) | Concatenating free-form label lines from values |
+
+`nindent` only adds indentation; it does **not** encode YAML. Pair it with `toYaml`
+for maps/lists, or use `quote` for a single scalar. Bare `nindent` on an
+untrusted string is still injectable.
+
+Example — safe nested object (map → YAML, then indent):
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mychart.fullname" . }}
+data:
+  # values.config is a map; toYaml emits nested YAML, nindent only indents it
+  config.yaml: |
+{{- toYaml .Values.config | nindent 4 }}
+```
+
+Example — unsafe patterns:
+
+```yaml
+# BAD: a value of "x\n  evil: true" becomes an extra key
+data:
+  app.conf: {{ .Values.appConf }}
+
+# BAD: nindent alone still injects — it only adds spaces
+data:
+  app.conf: |
+{{ .Values.appConf | nindent 4 }}
+```
+
+When in doubt:
+
+1. Treat every `{{ ... }}` that lands inside YAML structure as untrusted input.
+2. Use `quote`, `toYaml`, and `nindent`/`indent` together rather than string
+   concatenation.
+3. Run `helm template` (and schema validation) in CI so malformed values fail
+   before they reach the cluster.
+
+See also [Functions and Pipelines](functions_and_pipelines.mdx),
+[Indenting and Templates](#indenting-and-templates), and the
+[function list](function_list.mdx) (`toYaml`, `quote`, `nindent`).
