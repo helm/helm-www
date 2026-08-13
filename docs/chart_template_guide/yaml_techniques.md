@@ -374,7 +374,10 @@ the rendered YAML. This is called _YAML injection_.
 YAML injection can not only break installs, but can
 also inject extra keys into a Kubernetes manifest.
 
-Prefer helpers that encode or structure the data for you:
+### Best practices
+
+To avoid YAML injection when inserting Helm values,
+prefer helpers that encode or structure the data for you, as shown in the following table:
 
 | Goal | Prefer | Avoid |
 | ---- | ------ | ----- |
@@ -383,7 +386,16 @@ Prefer helpers that encode or structure the data for you:
 | Embed maps / lists | `{{ toYaml .Values.extraEnv \| nindent 8 }}`. `nindent` only adds indentation; it doesn't encode YAML. Pair it with `toYaml` for maps/lists, or use `quote` for a single scalar. Bare `nindent` on an untrusted string is still injectable. | `{{ .Values.extraEnv \| nindent 8 }}` without `toYaml`, or hand-rolled `key: {{ . }}` loops |
 | Labels / annotations maps | `toYaml` + `nindent` (or chart helpers) | Concatenating free-form label lines from values |
 
-Example — safe nested object (map → YAML, then indent):
+The following describes general best practices for preventing YAML injection when inserting values:
+
+- Treat every `{{ ... }}` expression that is rendered inside YAML as untrusted input.
+- Use `quote`, `toYaml`, and `nindent`/`indent` together to preserve YAML structure. Avoid manually constructing YAML using string concatenation.
+- Run `helm template` and schema validation in CI so malformed values fail
+  before they reach the cluster.
+
+### Examples
+
+#### Safe nested object (map to YAML, then indent)
 
 ```yaml
 apiVersion: v1
@@ -396,7 +408,7 @@ data:
 {{- toYaml .Values.config | nindent 4 }}
 ```
 
-Example — unsafe patterns:
+#### Unsafe patterns
 
 ```yaml
 # BAD: a value of "x\n  evil: true" becomes an extra key
@@ -408,14 +420,6 @@ data:
   app.conf: |
 {{ .Values.appConf | nindent 4 }}
 ```
-
-When in doubt:
-
-1. Treat every `{{ ... }}` that lands inside YAML structure as untrusted input.
-2. Use `quote`, `toYaml`, and `nindent`/`indent` together rather than string
-   concatenation.
-3. Run `helm template` (and schema validation) in CI so malformed values fail
-   before they reach the cluster.
 
 For more information, see [Template Functions and Pipelines](functions_and_pipelines.mdx),
 [Indenting and Templates](#indenting-and-templates) on this page, and the
