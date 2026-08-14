@@ -5,8 +5,8 @@ sidebar_label: Full Changelog
 
 # Helm 4 Full Changelog
 
-**Scope**: 449 PRs from (`v4.2.3`) compared to `v3.19.0`
-**v4-only**: 413 PRs (36 backported to v3 excluded)
+**Scope**: 458 PRs from (`v4.2.4`) compared to `v3.19.0`
+**v4-only**: 421 PRs (37 backported to v3 excluded)
 
 See the [Overview](/overview.md) for an actionable summary of these changes.
 
@@ -79,11 +79,19 @@ Fixes in Helm 4 that were not backported to v3
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32400 | 2026-07-22 | SetagGnaw | fix: pass registry client to downloader.Manager in upgrade |
+| #31884 | 2026-07-14 | ouillie | Properly format the extra field in gzipped packages |
+| #32088 | 2026-07-14 | Kajot-dev | Fix missing conflict retry with server-side apply |
+| #31211 | 2026-07-03 | kimsungmin1 | fix: set [pull,push] scope when helm push to a registry(use token auth) - v4 |
+| #32184 | 2026-06-18 | atkrad | fix panic on repeated IsReachable calls |
+| #32136 | 2026-06-17 | SebTardif | fix(provenance): check error return in Digest and encodeRelease |
+| #31185 | 2026-06-14 | kyokuping | fix: Improve error reporting for `helm template --debug` with `--show-only` |
 | #31925 | 2026-06-11 | TerryHowe | fix: protect FailingKubeClient.RecordedWaitOptions from data race |
 | #32056 | 2026-06-11 | TerryHowe | fix: route registry client output to stdout instead of stderr |
 | #31758 | 2026-06-09 | benoittgt | fix: prevent warning when using version range constraints |
 | #32081 | 2026-05-30 | TerryHowe | fix(kube): prevent spurious early exit in WaitForDelete during informer sync |
 | #32128 | 2026-05-16 | matheuscscp | fix(upstream): upgrade to cli-utils 1.2.1, controller-runtime 0.24.1 and k8s 1.36.1 |
+| #32099 | 2026-05-11 | SebTardif | fix: fetch logs from all containers in test pods |
 | #31755 | 2026-04-26 | scottrigby | fix(template): deprecate unused --hide-notes and --render-subchart-notes flags |
 | #31868 | 2026-03-09 | matheuscscp | fix: insert newline after doc separators glued to content by template trimming |
 | #31897 | 2026-03-09 | TerryHowe | fix: bump fluxcd/cli-utils to v0.37.2-flux.1 |
@@ -507,6 +515,7 @@ These PRs were included in v4 but were also backported to v3 releases
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32521 | 2026-08-07 | TerryHowe | fix: bump go.opentelemetry.io/otel to v1.44.0 for GO-2026-5158 |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
 | #13581 | 2024-12-31 | ldlb9527 | Upgrade golang.org/x/net to v0.33.0 to address CVE-2024-45338 |
