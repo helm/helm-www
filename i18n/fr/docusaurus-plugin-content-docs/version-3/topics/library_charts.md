@@ -2,6 +2,7 @@
 title: Charts de type Library
 description: Explique les charts de type library et fournit des exemples d'utilisation
 sidebar_position: 4
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Un chart de type library est un type de [chart Helm](/topics/charts.md)

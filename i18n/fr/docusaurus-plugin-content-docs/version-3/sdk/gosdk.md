@@ -2,6 +2,7 @@
 title: Introduction
 description: Présente le SDK Go de Helm
 sidebar_position: 1
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 Le SDK Go de Helm permet aux logiciels personnalisés d'exploiter les charts Helm et les fonctionnalités de Helm pour gérer le déploiement de logiciels sur Kubernetes.
 (En fait, la CLI Helm n'est qu'un exemple d'un tel outil !)

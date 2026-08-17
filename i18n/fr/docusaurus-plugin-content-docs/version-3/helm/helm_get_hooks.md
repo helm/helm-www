@@ -1,5 +1,6 @@
 ---
 title: helm get hooks
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 télécharge tous les hooks pour une version donnée
 

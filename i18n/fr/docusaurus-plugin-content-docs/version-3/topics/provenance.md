@@ -2,6 +2,7 @@
 title: Provenance et intégrité dans Helm
 description: Décrit comment vérifier l'intégrité et l'origine d'un Chart.
 sidebar_position: 5
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm dispose d'outils de provenance qui aident les utilisateurs de charts à

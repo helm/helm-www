@@ -2,6 +2,7 @@
 title: Trucs et astuces pour le développement de charts
 description: Présente des trucs et astuces que les développeurs de charts Helm ont appris lors de la création de charts de qualité production.
 sidebar_position: 1
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 Ce guide présente des trucs et astuces que les développeurs de charts Helm ont appris lors de la création de charts de qualité production.

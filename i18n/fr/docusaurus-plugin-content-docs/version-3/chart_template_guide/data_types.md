@@ -2,6 +2,7 @@
 title: "Annexe : Types de données Go et Templates"
 description: Un bref aperçu des variables dans les templates.
 sidebar_position: 16
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Le langage de template Helm est implémenté dans le langage de programmation Go, qui est fortement typé. Pour cette raison, les variables dans les templates sont _typées_. Généralement, les variables seront exposées comme l'un des types suivants :

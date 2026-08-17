@@ -2,6 +2,7 @@
 title: Guide des Distributions Kubernetes
 description: Fournit des informations sur l'utilisation de Helm dans des environnements Kubernetes spécifiques.
 sidebar_position: 10
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Helm devrait fonctionner avec toute [version conforme de

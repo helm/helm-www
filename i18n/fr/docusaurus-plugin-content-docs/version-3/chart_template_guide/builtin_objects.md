@@ -2,6 +2,7 @@
 title: Objets intégrés
 description: Les objets intégrés disponibles dans les templates.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Les objets sont passés dans un template par le moteur de template. Votre code peut également transmettre des objets (nous verrons des exemples lorsque nous examinerons les instructions `with` et `range`). Il existe même plusieurs façons de créer de nouveaux objets dans vos templates, comme avec la fonction `tuple` que nous verrons plus tard.

@@ -2,6 +2,7 @@
 title: Labels et annotations
 description: Couvre les bonnes pratiques pour l'utilisation des labels et annotations dans votre chart.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Cette partie du guide des bonnes pratiques traite de l'utilisation des labels et

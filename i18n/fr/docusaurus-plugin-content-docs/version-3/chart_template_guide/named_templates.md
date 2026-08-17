@@ -2,6 +2,7 @@
 title: Templates Nommés
 description: Comment définir des templates nommés.
 sidebar_position: 9
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 Il est temps d'aller au-delà d'un seul template et de commencer à en créer d'autres. Dans cette section, nous verrons comment définir des _templates nommés_ dans un fichier, puis les utiliser ailleurs. Un _template nommé_ (parfois appelé _partial_ ou _sous-template_) est simplement un template défini à l'intérieur d'un fichier et auquel on donne un nom. Nous verrons deux façons de les créer et plusieurs façons de les utiliser.

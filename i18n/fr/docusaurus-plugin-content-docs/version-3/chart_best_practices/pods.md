@@ -2,6 +2,7 @@
 title: Pods et PodTemplates
 description: Bonnes pratiques pour le formatage des sections Pod et PodTemplate dans les manifestes de chart.
 sidebar_position: 6
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Cette partie du guide des bonnes pratiques aborde le formatage des sections Pod et
