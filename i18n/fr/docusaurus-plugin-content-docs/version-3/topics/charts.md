@@ -2,6 +2,7 @@
 title: Charts
 description: Explique le format des charts et fournit des conseils de base pour créer des charts avec Helm.
 sidebar_position: 1
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm utilise un format de packaging appelé _charts_. Un chart est une collection
@@ -20,7 +21,7 @@ l'installer, vous pouvez le faire avec `helm pull chartrepo/chartname`.
 Ce document explique le format des charts et fournit des conseils de base pour
 créer des charts avec Helm.
 
-## Structure des fichiers d'un chart
+## Structure des fichiers d'un chart {#the-chart-file-structure}
 
 Un chart est organisé comme une collection de fichiers dans un répertoire. Le nom
 du répertoire est le nom du chart (sans information de version). Ainsi, un chart
@@ -46,7 +47,7 @@ Helm réserve l'utilisation des répertoires `charts/`, `crds/` et `templates/`,
 ainsi que des noms de fichiers listés ci-dessus. Les autres fichiers sont laissés
 tels quels.
 
-## Le fichier Chart.yaml
+## Le fichier Chart.yaml {#the-chartyaml-file}
 
 Le fichier `Chart.yaml` est obligatoire pour un chart. Il contient les champs
 suivants :
@@ -88,7 +89,7 @@ annotations:
 supplémentaires ne sont plus autorisés. L'approche recommandée est d'ajouter des
 métadonnées personnalisées dans `annotations`.
 
-### Charts et versioning
+### Charts et versioning {#charts-and-versioning}
 
 Chaque chart doit avoir un numéro de version. Une version doit suivre le standard
 [SemVer 2](https://semver.org/spec/v2.0.0.html), mais ce n'est pas strictement
@@ -122,7 +123,7 @@ dans le nom du paquet. Le système suppose que le numéro de version dans le nom
 du paquet de chart correspond au numéro de version dans le `Chart.yaml`. Le
 non-respect de cette hypothèse provoquera une erreur.
 
-### Le champ `apiVersion`
+### Le champ `apiVersion` {#the-apiversion-field}
 
 Le champ `apiVersion` doit être `v2` pour les charts Helm nécessitant au moins
 Helm 3. Les charts supportant les versions précédentes de Helm ont un `apiVersion`
@@ -132,11 +133,11 @@ Changements de `v1` à `v2` :
 
 - Un champ `dependencies` définissant les dépendances du chart, qui étaient
   situées dans un fichier séparé `requirements.yaml` pour les charts `v1`
-  (voir [Dépendances des charts](#dependances-des-charts)).
+  (voir [Dépendances des charts](#chart-dependencies)).
 - Le champ `type`, distinguant les charts d'application et les charts de type
-  library (voir [Types de charts](#types-de-charts)).
+  library (voir [Types de charts](#chart-types)).
 
-### Le champ `appVersion`
+### Le champ `appVersion` {#the-appversion-field}
 
 Notez que le champ `appVersion` n'est pas lié au champ `version`. C'est un moyen
 de spécifier la version de l'application. Par exemple, le chart `drupal` peut
@@ -152,7 +153,7 @@ scientifique.
 À partir de Helm v3.5.0, `helm create` entoure le champ `appVersion` par défaut
 de guillemets.
 
-### Le champ `kubeVersion`
+### Le champ `kubeVersion` {#the-kubeversion-field}
 
 Le champ optionnel `kubeVersion` peut définir des contraintes semver sur les
 versions de Kubernetes supportées. Helm validera les contraintes de version lors
@@ -187,7 +188,7 @@ En plus des contraintes de version utilisant les opérateurs `=` `!=` `>` `<`
 Pour une explication détaillée des contraintes semver supportées, consultez
 [Masterminds/semver](https://github.com/Masterminds/semver).
 
-### Déprécier des charts
+### Déprécier des charts {#deprecating-charts}
 
 Lors de la gestion de charts dans un dépôt de charts, il est parfois nécessaire
 de déprécier un chart. Le champ optionnel `deprecated` dans `Chart.yaml` peut
@@ -195,14 +196,14 @@ de déprécier un chart. Le champ optionnel `deprecated` dans `Chart.yaml` peut
 d'un chart dans le dépôt est marquée comme dépréciée, alors le chart dans son
 ensemble est considéré comme déprécié. Le nom du chart peut être réutilisé
 ultérieurement en publiant une nouvelle version qui n'est pas marquée comme
-dépréciée. Le workflow pour déprécier des charts est :
+dépréciée. Le workflow pour déprécier des charts est:
 
 1. Mettre à jour le `Chart.yaml` du chart pour le marquer comme déprécié, en
    incrémentant la version
 2. Publier la nouvelle version du chart dans le dépôt de charts
 3. Supprimer le chart du dépôt source (par ex. git)
 
-### Types de charts
+### Types de charts {#chart-types}
 
 Le champ `type` définit le type de chart. Il existe deux types : `application`
 et `library`. Application est le type par défaut et c'est le chart standard sur
@@ -216,13 +217,13 @@ Cela s'active en définissant le type à `library`. Le chart sera alors rendu
 comme un chart de type library où tous les utilitaires et fonctions peuvent être
 exploités. Tous les objets ressources du chart ne seront pas rendus.
 
-## LICENSE, README et NOTES d'un chart
+## LICENSE, README et NOTES d'un chart {#chart-license-readme-and-notes}
 
 Les charts peuvent également contenir des fichiers décrivant l'installation, la
 configuration, l'utilisation et la licence d'un chart.
 
 Une LICENSE est un fichier texte brut contenant la
-[licence](https://fr.wikipedia.org/wiki/Licence_de_logiciel) du chart. Le chart
+[licence](https://en.wikipedia.org/wiki/Software_license) du chart. Le chart
 peut contenir une licence car il peut avoir une logique de programmation dans
 les templates et ne serait donc pas uniquement de la configuration. Il peut
 également y avoir des licences séparées pour l'application installée par le
@@ -242,7 +243,7 @@ chart, ces informations sont extraites du contenu du fichier `README.md`.
 
 Le chart peut également contenir un court fichier texte `templates/NOTES.txt`
 qui sera affiché après l'installation et lors de l'affichage du statut d'une
-release. Ce fichier est évalué comme un [template](#templates-et-values), et
+release. Ce fichier est évalué comme un [template](#templates-and-values), et
 peut être utilisé pour afficher des notes d'utilisation, les prochaines étapes,
 ou toute autre information pertinente pour une release du chart. Par exemple,
 des instructions pourraient être fournies pour se connecter à une base de
@@ -250,13 +251,13 @@ données ou accéder à une interface web. Comme ce fichier est affiché sur STD
 lors de l'exécution de `helm install` ou `helm status`, il est recommandé de
 garder le contenu bref et de pointer vers le README pour plus de détails.
 
-## Dépendances des charts
+## Dépendances des charts {#chart-dependencies}
 
 Dans Helm, un chart peut dépendre de n'importe quel nombre d'autres charts. Ces
 dépendances peuvent être liées dynamiquement en utilisant le champ `dependencies`
 dans `Chart.yaml` ou importées dans le répertoire `charts/` et gérées manuellement.
 
-### Gérer les dépendances avec le champ `dependencies`
+### Gérer les dépendances avec le champ `dependencies` {#managing-dependencies-with-the-dependencies-field}
 
 Les charts requis par le chart actuel sont définis comme une liste dans le champ
 `dependencies`.
@@ -449,7 +450,7 @@ liste YAML. Chaque élément de la liste est une clé qui est importée depuis l
 champ `exports` du chart enfant.
 
 Pour importer des values non contenues dans la clé `exports`, utilisez le format
-[child-parent](#utiliser-le-format-child-parent). Des exemples des deux formats
+[child-parent](#using-the-child-parent-format). Des exemples des deux formats
 sont décrits ci-dessous.
 
 ##### Utiliser le format exports
@@ -552,7 +553,7 @@ myimports:
 Les values finales du parent contiennent maintenant les champs `myint` et
 `mybool` importés de subchart1.
 
-### Gérer les dépendances manuellement via le répertoire `charts/`
+### Gérer les dépendances manuellement via le répertoire `charts/` {#managing-dependencies-manually-via-the-charts-directory}
 
 Si plus de contrôle sur les dépendances est souhaité, ces dépendances peuvent
 être exprimées explicitement en copiant les charts de dépendance dans le
@@ -584,7 +585,7 @@ envers Apache et MySQL en incluant ces charts dans son répertoire `charts/`.
 **CONSEIL :** _Pour placer une dépendance dans votre répertoire `charts/`,
 utilisez la commande `helm pull`_
 
-### Aspects opérationnels de l'utilisation des dépendances
+### Aspects opérationnels de l'utilisation des dépendances {#operational-aspects-of-using-dependencies}
 
 Les sections ci-dessus expliquent comment spécifier les dépendances de charts,
 mais comment cela affecte-t-il l'installation de charts avec `helm install` et
@@ -626,7 +627,7 @@ ses dépendances.
 L'ordre d'installation des types Kubernetes est donné par l'énumération
 InstallOrder dans kind_sorter.go (voir [le fichier source Helm](https://github.com/helm/helm/blob/484d43913f97292648c867b56768775a55e4bba6/pkg/releaseutil/kind_sorter.go)).
 
-## Templates et Values
+## Templates et Values {#templates-and-values}
 
 Les templates de charts Helm sont écrits dans le [langage de template
 Go](https://golang.org/pkg/text/template/), avec l'ajout d'une cinquantaine de
@@ -647,7 +648,7 @@ Les values pour les templates sont fournies de deux manières :
 Lorsqu'un utilisateur fournit des values personnalisées, ces values remplaceront
 les values du fichier `values.yaml` du chart.
 
-### Fichiers de template
+### Fichiers de template {#template-files}
 
 Les fichiers de template suivent les conventions standard pour écrire des
 templates Go (voir la [documentation du package Go text/template](https://golang.org/pkg/text/template/)
@@ -698,7 +699,7 @@ dicte de paramètres.
 Pour voir de nombreux charts fonctionnels, consultez le [Artifact Hub](https://artifacthub.io/packages/search?kind=0)
 de la CNCF.
 
-### Values prédéfinies
+### Values prédéfinies {#predefined-values}
 
 Les values fournies via un fichier `values.yaml` (ou via le flag `--set`) sont
 accessibles depuis l'objet `.Values` dans un template. Mais il existe d'autres
@@ -732,7 +733,7 @@ accessible dans l'objet `Chart`. Ainsi, `Chart.yaml` ne peut pas être utilisé
 pour passer des données structurées arbitraires dans le template. Le fichier
 values peut être utilisé à cette fin.
 
-### Fichiers values
+### Fichiers values {#values-files}
 
 En considérant le template de la section précédente, un fichier `values.yaml`
 fournissant les values nécessaires ressemblerait à ceci :
@@ -815,7 +816,7 @@ spec:
               value: {{ default "minio" .Values.storage }}
 ```
 
-### Portée, dépendances et values
+### Portée, dépendances et values {#scope-dependencies-and-values}
 
 Les fichiers values peuvent déclarer des values pour le chart de niveau
 supérieur, ainsi que pour tous les charts inclus dans le répertoire `charts/`
@@ -902,7 +903,7 @@ Il n'y a aucun moyen pour un sous-chart d'influencer les values du chart parent.
 De plus, les variables globales des charts parents ont la priorité sur les
 variables globales des sous-charts.
 
-### Fichiers de schéma
+### Fichiers de schéma {#schema-files}
 
 Parfois, un mainteneur de chart peut vouloir définir une structure pour ses
 values. Cela peut être fait en définissant un schéma dans le fichier
@@ -992,7 +993,7 @@ JSON Schema d'un chart contient des références distantes.
 helm install --skip-schema-validation
 ```
 
-### Références
+### Références {#references}
 
 En ce qui concerne l'écriture de templates, values et fichiers de schéma, il
 existe plusieurs références standard qui vous aideront.
@@ -1002,7 +1003,7 @@ existe plusieurs références standard qui vous aideront.
 - [Le format YAML](https://yaml.org/spec/)
 - [JSON Schema](https://json-schema.org/)
 
-## Custom Resource Definitions (CRDs)
+## Custom Resource Definitions (CRDs) {#custom-resource-definitions-crds}
 
 Kubernetes fournit un mécanisme pour déclarer de nouveaux types d'objets
 Kubernetes. En utilisant les CustomResourceDefinitions (CRDs), les développeurs
@@ -1074,7 +1075,7 @@ Helm s'assurera que le type `CronTab` a été installé et est disponible depuis
 le serveur API Kubernetes avant de procéder à l'installation des éléments dans
 `templates/`.
 
-### Limitations des CRDs
+### Limitations des CRDs {#limitations-on-crds}
 
 Contrairement à la plupart des objets dans Kubernetes, les CRDs sont installées
 globalement. Pour cette raison, Helm adopte une approche très prudente dans la
@@ -1092,7 +1093,7 @@ gestion des CRDs. Les CRDs sont soumises aux limitations suivantes :
 Les opérateurs qui souhaitent mettre à niveau ou supprimer des CRDs sont
 encouragés à le faire manuellement et avec beaucoup de précaution.
 
-## Utiliser Helm pour gérer les charts
+## Utiliser Helm pour gérer les charts {#using-helm-to-manage-charts}
 
 L'outil `helm` dispose de plusieurs commandes pour travailler avec les charts.
 
@@ -1119,7 +1120,7 @@ $ helm lint mychart
 No issues found
 ```
 
-## Dépôts de charts
+## Dépôts de charts {#chart-repositories}
 
 Un _dépôt de charts_ est un serveur HTTP qui héberge un ou plusieurs charts
 empaquetés. Bien que `helm` puisse être utilisé pour gérer des répertoires de
@@ -1141,7 +1142,7 @@ dépôt distants. En effet, cela ajouterait des exigences substantielles à un
 serveur implémentant cette fonctionnalité, et augmenterait donc la barrière
 pour mettre en place un dépôt.
 
-## Packs de démarrage de charts
+## Packs de démarrage de charts {#chart-starter-packs}
 
 La commande `helm create` prend une option optionnelle `--starter` qui vous
 permet de spécifier un "chart de démarrage". De plus, l'option starter a un

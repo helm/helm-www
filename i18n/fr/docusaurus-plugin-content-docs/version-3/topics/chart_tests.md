@@ -2,6 +2,7 @@
 title: Tests de chart
 description: Décrit comment exécuter et tester vos charts.
 sidebar_position: 3
+default_lang_commit: 81fa9227414a9c99d74705bdc159c4c21c9aac7c
 ---
 
 Un chart contient de nombreuses ressources et composants Kubernetes qui

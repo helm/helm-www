@@ -1,6 +1,7 @@
 ---
 title: "Politique de planification des releases"
 description: "Décrit la politique de planification des releases de Helm."
+default_lang_commit: cd5ad1e1593c50677909d7c618cf31cd4036fac7
 ---
 
 Dans l'intérêt de ses utilisateurs, Helm définit et annonce les dates de release
@@ -36,6 +37,7 @@ Une release de correctif sera annulée pour l'une des raisons suivantes :
   première release candidate (RC1) d'une prochaine version mineure
 - si la date de la release de correctif tombe dans les quatre semaines suivant
   une release mineure
+- si une sortie majeure ou mineure est prévue pour le même mois  
 
 ## Releases mineures
 

@@ -2,6 +2,7 @@
 title: Variables
 description: Utilisation des variables dans les templates.
 sidebar_position: 8
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Après avoir abordé les fonctions, les pipelines, les objets et les structures de contrôle, nous pouvons nous tourner vers l'un des concepts les plus fondamentaux de nombreux langages de programmation : les variables. Dans les templates, elles sont moins fréquemment utilisées. Mais nous allons voir comment les utiliser pour simplifier le code et mieux exploiter `with` et `range`.

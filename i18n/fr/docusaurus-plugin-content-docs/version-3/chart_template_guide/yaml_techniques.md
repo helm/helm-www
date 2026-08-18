@@ -2,6 +2,7 @@
 title: "Annexe : Techniques YAML"
 description: Un examen approfondi de la spécification YAML et de son application dans Helm.
 sidebar_position: 15
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 Ce guide s'est principalement concentré sur l'écriture du langage de template. Ici,

@@ -2,6 +2,7 @@
 title: Guide des dépôts de charts
 description: Comment créer et travailler avec les dépôts de charts Helm.
 sidebar_position: 6
+default_lang_commit: 944aeaca4df514e7c5ba091995fcbbc08e505f65
 ---
 
 Cette section explique comment créer et travailler avec les dépôts de charts Helm.

@@ -2,31 +2,32 @@
 title: Liste des fonctions de template
 description: Une liste des fonctions de template disponibles dans Helm
 sidebar_position: 6
+default_lang_commit: 029d283b39851e790dd1756201af6aadb521ba2a
 ---
 
 Helm inclut de nombreuses fonctions de template que vous pouvez utiliser dans vos templates.
 Elles sont répertoriées ici et classées dans les catégories suivantes :
 
-* [Fonctions cryptographiques et de sécurité](#fonctions-cryptographiques-et-de-sécurité)
-* [Date](#fonctions-de-date)
-* [Dictionnaires](#dictionnaires-et-fonctions-dict)
-* [Encodage](#fonctions-dencodage)
-* [Chemins de fichiers](#fonctions-de-chemin-de-fichier)
-* [Kubernetes et Chart](#fonctions-kubernetes-et-chart)
-* [Logique et contrôle de flux](#fonctions-de-logique-et-de-contrôle-de-flux)
-* [Listes](#listes-et-fonctions-de-liste)
-* [Mathématiques](#fonctions-mathématiques)
-* [Mathématiques à virgule flottante](#fonctions-mathématiques-à-virgule-flottante)
-* [Réseau](#fonctions-réseau)
-* [Réflexion](#fonctions-de-réflexion)
-* [Expressions régulières](#expressions-régulières)
-* [Versions sémantiques](#fonctions-de-version-sémantique)
-* [Chaînes de caractères](#fonctions-de-chaînes-de-caractères)
-* [Conversion de types](#fonctions-de-conversion-de-types)
-* [URL](#fonctions-url)
-* [UUID](#fonctions-uuid)
+* [Cryptographic and Security](#cryptographic-and-security-functions)
+* [Date](#date-functions)
+* [Dictionaries](#dictionaries-and-dict-functions)
+* [Encoding](#encoding-functions)
+* [File Path](#file-path-functions)
+* [Kubernetes and Chart](#kubernetes-and-chart-functions)
+* [Logic and Flow Control](#logic-and-flow-control-functions)
+* [Lists](#lists-and-list-functions)
+* [Math](#math-functions)
+* [Float Math](#float-math-functions)
+* [Network](#network-functions)
+* [Reflection](#reflection-functions)
+* [Regular Expressions](#regular-expressions)
+* [Semantic Versions](#semantic-version-functions)
+* [String](#string-functions)
+* [Type Conversion](#type-conversion-functions)
+* [URL](#url-functions)
+* [UUID](#uuid-functions)
 
-## Fonctions de logique et de contrôle de flux
+## Logic and Flow Control Functions {#logic-and-flow-control-functions}
 
 Helm inclut de nombreuses fonctions de logique et de contrôle de flux, notamment [and](#and),
 [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq),
@@ -223,7 +224,7 @@ false | ternary "foo" "bar"
 
 L'exemple ci-dessus retourne `"bar"`.
 
-## Fonctions de chaînes de caractères
+## String Functions {#string-functions}
 
 Helm inclut les fonctions de chaînes suivantes : [abbrev](#abbrev),
 [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
@@ -679,7 +680,7 @@ shuffle "hello"
 
 L'exemple ci-dessus mélangera les lettres dans `hello`, produisant peut-être `oelhl`.
 
-## Fonctions de conversion de types
+## Type Conversion Functions {#type-conversion-functions}
 
 Les fonctions de conversion de types suivantes sont fournies par Helm :
 
@@ -870,7 +871,7 @@ greeting: |
 ```
 
 
-## Expressions régulières
+## Regular Expressions {#regular-expressions}
 
 Helm inclut les fonctions d'expressions régulières suivantes : [regexFind
 (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll
@@ -972,7 +973,7 @@ L'exemple ci-dessus produit `[pi a]`
 `regexSplit` provoque un panic en cas de problème et `mustRegexSplit` retourne une erreur
 au moteur de template en cas de problème.
 
-## Fonctions cryptographiques et de sécurité
+## Cryptographic and Security Functions {#cryptographic-and-security-functions}
 
 Helm fournit des fonctions cryptographiques avancées. Elles incluent
 [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
@@ -1159,7 +1160,7 @@ et retourne le texte déchiffré.
 "30tEfhuJSVRhpG97XCuWgz2okj7L8vQ1s6V9zVUPeDQ=" | decryptAES "secretkey"
 ```
 
-## Fonctions de date
+## Date Functions {#date-functions}
 
 Helm inclut les fonctions de date suivantes que vous pouvez utiliser dans les templates :
 [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
@@ -1295,7 +1296,7 @@ un pipe). L'exemple ci-dessous convertit "2017-12-31" en "31/12/2017".
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
 ```
 
-## Dictionnaires et fonctions Dict
+## Dictionaries and Dict Functions {#dictionaries-and-dict-functions}
 
 Helm fournit un type de stockage clé/valeur appelé `dict` (abréviation de « dictionary »,
 comme en Python). Un `dict` est un type _non ordonné_.
@@ -1579,14 +1580,14 @@ Un `dict` est implémenté en Go comme un `map[string]interface{}`. Les dévelop
 passer des valeurs `map[string]interface{}` dans le contexte pour les rendre disponibles aux
 templates en tant que `dict`s.
 
-## Fonctions d'encodage
+## Encoding Functions {#encoding-functions}
 
 Helm dispose des fonctions d'encodage et de décodage suivantes :
 
 - `b64enc`/`b64dec` : Encoder ou décoder avec Base64
 - `b32enc`/`b32dec` : Encoder ou décoder avec Base32
 
-## Listes et fonctions de liste
+## Lists and List Functions {#lists-and-list-functions}
 
 Helm fournit un type `list` simple qui peut contenir des listes séquentielles arbitraires
 de données. C'est similaire aux tableaux ou aux slices, mais les listes sont conçues pour être utilisées
@@ -1828,7 +1829,7 @@ chunk 3 (list 1 2 3 4 5 6 7 8)
 
 Ceci produit une liste de listes `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
-## Fonctions mathématiques
+## Math Functions {#math-functions}
 
 Toutes les fonctions mathématiques opèrent sur des valeurs `int64` sauf indication contraire.
 
@@ -1892,7 +1893,7 @@ Retourne la longueur de l'argument en tant qu'entier.
 len .Arg
 ```
 
-## Fonctions mathématiques à virgule flottante
+## Float Math Functions {#float-math-functions}
 
 Toutes les fonctions mathématiques opèrent sur des valeurs `float64`.
 
@@ -1979,7 +1980,7 @@ après la virgule décimale.
 
 `round 123.555555 3` retournera `123.556`.
 
-## Fonctions réseau
+## Network Functions {#network-functions}
 
 Helm a une seule fonction réseau, `getHostByName`.
 
@@ -1989,7 +1990,7 @@ La fonction `getHostByName` reçoit un nom de domaine et retourne l'adresse IP.
 
 Cette fonction nécessite l'option `--enable-dns` à passer sur la ligne de commande helm.
 
-## Fonctions de chemin de fichier
+## File Path Functions {#file-path-functions}
 
 Bien que les fonctions de template Helm ne donnent pas accès au système de fichiers, elles fournissent
 des fonctions pour travailler avec des chaînes qui suivent les conventions de chemins de fichiers.
@@ -2035,7 +2036,7 @@ L'exemple ci-dessus retourne `.bar`.
 
 Pour vérifier si un chemin de fichier est absolu, utilisez `isAbs`.
 
-## Fonctions de réflexion
+## Reflection Functions {#reflection-functions}
 
 Helm fournit des outils de réflexion rudimentaires. Ceux-ci aident les développeurs de templates avancés
 à comprendre les informations de type Go sous-jacentes pour une valeur particulière.
@@ -2091,7 +2092,7 @@ deepEqual (list 1 2 3) (list 1 2 3)
 
 L'exemple ci-dessus retournera `true`.
 
-## Fonctions de version sémantique
+## Semantic Version Functions {#semantic-version-functions}
 
 Certains schémas de version sont facilement analysables et comparables. Helm fournit des
 fonctions pour travailler avec les versions [SemVer 2](http://semver.org). Celles-ci incluent
@@ -2246,7 +2247,7 @@ changement majeur casse l'API. Par exemple,
 - `^0.0` est équivalent à `>=0.0.0 <0.1.0`
 - `^0` est équivalent à `>=0.0.0 <1.0.0`
 
-## Fonctions URL
+## URL Functions {#url-functions}
 
 Helm inclut les fonctions [urlParse](#urlparse), [urlJoin](#urljoin), et
 [urlquery](#urlquery) vous permettant de travailler avec les parties d'URL.
@@ -2296,7 +2297,7 @@ adaptée à l'intégration dans la partie requête d'une URL.
 $var := urlquery "string for query"
 ```
 
-## Fonctions UUID
+## UUID Functions {#uuid-functions}
 
 Helm peut générer des UUID v4 universellement uniques.
 
@@ -2306,7 +2307,7 @@ uuidv4
 
 L'exemple ci-dessus retourne un nouvel UUID de type v4 (généré aléatoirement).
 
-## Fonctions Kubernetes et Chart
+## Kubernetes and Chart Functions {#kubernetes-and-chart-functions}
 
 Helm inclut des fonctions pour travailler avec Kubernetes, notamment
 [.Capabilities.APIVersions.Has](#capabilitiesapiversionshas),

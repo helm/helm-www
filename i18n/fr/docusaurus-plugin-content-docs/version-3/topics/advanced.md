@@ -2,6 +2,7 @@
 title: Techniques Helm avancées
 description: Explique diverses fonctionnalités avancées pour les utilisateurs expérimentés de Helm
 sidebar_position: 9
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Cette section présente diverses fonctionnalités et techniques avancées pour utiliser Helm.

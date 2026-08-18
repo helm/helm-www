@@ -2,6 +2,7 @@
 title: Premiers pas
 description: Un guide rapide sur les templates de chart.
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Dans cette section du guide, nous allons créer un chart et y ajouter un premier template. Le chart créé ici sera utilisé tout au long du reste du guide.

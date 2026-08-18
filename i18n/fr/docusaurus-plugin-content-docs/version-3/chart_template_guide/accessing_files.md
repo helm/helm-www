@@ -2,6 +2,7 @@
 title: Accéder aux fichiers dans les templates
 description: Comment accéder aux fichiers depuis un template.
 sidebar_position: 10
+default_lang_commit: ba97a18c9c46b74dd1578e6c5da00754e0a4ec34
 ---
 
 Dans la section précédente, nous avons examiné plusieurs façons de créer et d'accéder à des templates nommés. Cela facilite l'importation d'un template depuis un autre template. Mais parfois, il est souhaitable d'importer un _fichier qui n'est pas un template_ et d'injecter son contenu sans le faire passer par le moteur de rendu de templates.
@@ -20,16 +21,16 @@ Helm permet d'accéder aux fichiers via l'objet `.Files`. Avant de passer aux ex
 
 <!-- toc -->
 
-- [Exemple de base](#exemple-de-base)
-- [Fonctions d'aide pour les chemins](#fonctions-daide-pour-les-chemins)
-- [Motifs glob](#motifs-glob)
-- [Fonctions utilitaires pour ConfigMap et Secrets](#fonctions-utilitaires-pour-configmap-et-secrets)
-- [Encodage](#encodage)
-- [Lignes](#lignes)
+- [Exemple de base](#basic-example)
+- [Fonctions d'aide pour les chemins](#path-helpers)
+- [Motifs glob](#glob-patterns)
+- [Fonctions utilitaires pour ConfigMap et Secrets](#configmap-and-secrets-utility-functions)
+- [Encodage](#encoding)
+- [Lignes](#lines)
 
 <!-- tocstop -->
 
-## Exemple de base
+## Exemple de base {#basic-example}
 
 Ces points clarifiés, écrivons un template qui lit trois fichiers dans notre ConfigMap. Pour commencer, nous allons ajouter trois fichiers au chart, en les plaçant tous directement dans le répertoire `mychart/`.
 
@@ -87,7 +88,7 @@ data:
     message = "Goodbye from config 3"
 ```
 
-## Fonctions d'aide pour les chemins
+## Fonctions d'aide pour les chemins {#path-helpers}
 
 Lorsque vous travaillez avec des fichiers, il peut être très utile d'effectuer des opérations standard sur les chemins de fichiers eux-mêmes. Pour vous aider, Helm importe de nombreuses fonctions du package [path](https://golang.org/pkg/path/) de Go. Elles sont toutes accessibles avec les mêmes noms que dans le package Go, mais avec une première lettre en minuscule. Par exemple, `Base` devient `base`, etc.
 
@@ -98,7 +99,7 @@ Les fonctions importées sont :
 - IsAbs
 - Clean
 
-## Motifs glob
+## Motifs glob {#glob-patterns}
 
 À mesure que votre chart grandit, vous pourriez avoir besoin d'organiser davantage vos fichiers. Nous fournissons donc une méthode `Files.Glob(pattern string)` pour vous aider à extraire certains fichiers avec toute la flexibilité des [motifs glob](https://godoc.org/github.com/gobwas/glob).
 
@@ -133,7 +134,7 @@ Ou
 {{ end }}
 ```
 
-## Fonctions utilitaires pour ConfigMap et Secrets
+## Fonctions utilitaires pour ConfigMap et Secrets {#configmap-and-secrets-utility-functions}
 
 (Disponible depuis Helm 2.0.2)
 
@@ -161,7 +162,7 @@ data:
   {{- (.Files.Glob "bar/*").AsSecrets | nindent 2 }}
 ```
 
-## Encodage
+## Encodage {#encoding}
 
 Vous pouvez importer un fichier et demander au template de l'encoder en base64 pour garantir une transmission réussie :
 
@@ -190,7 +191,7 @@ data:
     bWVzc2FnZSA9ICJIZWxsbyBmcm9tIGNvbmZpZyAxIgo=
 ```
 
-## Lignes
+## Lignes {#lines}
 
 Parfois, il est souhaitable d'accéder à chaque ligne d'un fichier dans votre template. Nous fournissons une méthode `Lines` pratique pour cela.
 

@@ -2,6 +2,7 @@
 title: Guide des plugins Helm
 description: Présente comment utiliser et créer des plugins pour étendre les fonctionnalités de Helm.
 sidebar_position: 12
+default_lang_commit: 9f8c5e5d797d2c708ffc948c00f56aead761013a
 ---
 
 Un plugin Helm est un outil accessible via la CLI `helm`, mais qui ne fait pas partie du code source intégré de Helm.
@@ -10,7 +11,7 @@ Les plugins existants peuvent être trouvés dans la section [associée](/commun
 
 Ce guide explique comment utiliser et créer des plugins.
 
-## Vue d'ensemble
+## Vue d'ensemble {#an-overview}
 
 Les plugins Helm sont des outils complémentaires qui s'intègrent parfaitement à Helm. Ils permettent d'étendre les fonctionnalités de base de Helm, sans nécessiter que chaque nouvelle fonctionnalité soit écrite en Go et ajoutée à l'outil principal.
 
@@ -24,7 +25,7 @@ Les plugins Helm résident dans `$HELM_PLUGINS`. Vous pouvez trouver la valeur a
 
 Le modèle de plugin Helm est partiellement basé sur le modèle de plugin de Git. De ce fait, vous pouvez parfois entendre `helm` désigné comme la couche _porcelaine_, et les plugins comme la _plomberie_. C'est une façon abrégée de suggérer que Helm fournit l'expérience utilisateur et la logique de traitement de haut niveau, tandis que les plugins effectuent le « travail de fond » pour réaliser une action souhaitée.
 
-## Installer un plugin
+## Installer un plugin {#installing-a-plugin}
 
 Les plugins sont installés à l'aide de la commande `$ helm plugin install <path|url>`. Vous pouvez passer un chemin vers un plugin sur votre système de fichiers local ou une URL d'un dépôt VCS distant. La commande `helm plugin install` clone ou copie le plugin situé au chemin/URL donné dans `$HELM_PLUGINS`. Si vous installez depuis un VCS, vous pouvez spécifier la version avec l'argument `--version`.
 
@@ -34,7 +35,7 @@ $ helm plugin install https://github.com/adamreese/helm-env
 
 Si vous avez une distribution tar d'un plugin, extrayez simplement le plugin dans le répertoire `$HELM_PLUGINS`. Vous pouvez également installer des plugins tarball directement depuis une URL en exécutant `helm plugin install https://domain/path/to/plugin.tar.gz`
 
-## Structure de fichiers d'un plugin
+## Structure de fichiers d'un plugin {#the-plugin-file-structure}
 
 À bien des égards, un plugin est similaire à un chart. Chaque plugin possède un répertoire de premier niveau contenant un fichier `plugin.yaml`. D'autres fichiers peuvent être présents, mais seul le fichier `plugin.yaml` est requis.
 
@@ -44,7 +45,7 @@ $HELM_PLUGINS/
       |- plugin.yaml
 ```
 
-## Le fichier plugin.yaml
+## Le fichier plugin.yaml {#the-pluginyaml-file}
 
 Le fichier plugin.yaml est requis pour un plugin. Il contient les champs suivants :
 
@@ -86,7 +87,7 @@ downloaders: # Configure downloaders capability
       - Protocol schema supported
 ```
 
-### Le champ `name`
+### Le champ `name` {#the-name-field}
 
 Le champ `name` est le nom du plugin. Lorsque Helm exécute ce plugin, c'est le nom qu'il utilisera (par exemple, `helm NAME` invoquera ce plugin).
 
@@ -97,15 +98,15 @@ Restrictions sur `name` :
 - `name` ne peut pas dupliquer l'une des commandes de premier niveau existantes de `helm`.
 - `name` doit être limité aux caractères ASCII a-z, A-Z, 0-9, `_` et `-`.
 
-### Le champ `version`
+### Le champ `version` {#the-version-field}
 
 Le champ `version` est la version SemVer 2 du plugin. `usage` et `description` sont tous deux utilisés pour générer le texte d'aide d'une commande.
 
-### Le champ `ignoreFlags`
+### Le champ `ignoreFlags` {#the-ignoreflags-field}
 
 Le paramètre `ignoreFlags` indique à Helm de _ne pas_ transmettre les flags au plugin. Ainsi, si un plugin est appelé avec `helm myplugin --foo` et que `ignoreFlags: true`, alors `--foo` est ignoré silencieusement.
 
-### Le champ `platformCommand`
+### Le champ `platformCommand` {#the-platformcommand-field}
 
 Le champ `platformCommand` configure la commande que le plugin exécutera lorsqu'il sera appelé. Vous ne pouvez pas définir à la fois `platformCommand` et `command`, cela entraînerait une erreur. Les règles suivantes s'appliquent pour déterminer quelle commande utiliser :
 
@@ -117,7 +118,7 @@ Le champ `platformCommand` configure la commande que le plugin exécutera lorsqu
 - Si `platformCommand` n'est pas présent et que la commande dépréciée `command` est présente, elle sera utilisée.
   - Si la commande est vide, Helm se terminera avec une erreur.
 
-### Le champ `platformHooks`
+### Le champ `platformHooks` {#the-platformhooks-field}
 
 Le champ `platformHooks` configure les commandes que le plugin exécutera pour les événements du cycle de vie. Vous ne pouvez pas définir à la fois `platformHooks` et `hooks`, cela entraînerait une erreur. Les règles suivantes s'appliquent pour déterminer quelle commande de hook utiliser :
 
@@ -129,7 +130,7 @@ Le champ `platformHooks` configure les commandes que le plugin exécutera pour l
 - Si `platformHooks` n'est pas présent et que le hook déprécié `hooks` est présent, la commande pour l'événement du cycle de vie sera utilisée.
   - Si la commande est vide, Helm ignorera l'événement.
 
-## Créer un plugin
+## Créer un plugin {#building-a-plugin}
 
 Voici le YAML de plugin pour un plugin simple qui aide à obtenir le nom de la dernière release :
 
@@ -192,7 +193,7 @@ platformHooks:
 
 Les variables d'environnement sont interpolées avant l'exécution du plugin. Le modèle ci-dessus illustre la méthode préférée pour indiquer où se trouve le programme du plugin.
 
-### Commandes de plugin
+### Commandes de plugin {#plugin-commands}
 
 Il existe quelques stratégies pour travailler avec les commandes de plugin :
 
@@ -203,7 +204,7 @@ Il existe quelques stratégies pour travailler avec les commandes de plugin :
 - Helm ne fait aucune supposition sur le langage du plugin. Vous pouvez l'écrire dans le langage de votre choix.
 - Les commandes sont responsables d'implémenter un texte d'aide spécifique pour `-h` et `--help`. Helm utilisera `usage` et `description` pour `helm help` et `helm help myplugin`, mais ne gérera pas `helm myplugin --help`.
 
-### Tester un plugin local
+### Tester un plugin local {#testing-a-local-plugin}
 
 Vous devez d'abord trouver votre chemin `HELM_PLUGINS`. Pour ce faire, exécutez la commande suivante :
 
@@ -219,7 +220,7 @@ Maintenant vous pouvez ajouter un lien symbolique vers la sortie de build de vot
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## Plugins téléchargeurs
+## Plugins téléchargeurs {#downloader-plugins}
 
 Par défaut, Helm est capable de télécharger des charts via HTTP/S. À partir de Helm 2.4.0, les plugins peuvent avoir une capacité spéciale pour télécharger des charts depuis des sources arbitraires.
 
@@ -239,7 +240,7 @@ La commande définie sera invoquée avec le schéma suivant : `command certFile 
 
 La commande de téléchargement supporte également les sous-commandes ou arguments, vous permettant de spécifier par exemple `bin/mydownloader subcommand -d` dans le `plugin.yaml`. Ceci est utile si vous souhaitez utiliser le même exécutable pour la commande principale du plugin et la commande de téléchargement, mais avec une sous-commande différente pour chacune.
 
-## Variables d'environnement
+## Variables d'environnement {#environment-variables}
 
 Lorsque Helm exécute un plugin, il transmet l'environnement externe au plugin et injecte également quelques variables d'environnement supplémentaires.
 
@@ -260,7 +261,7 @@ Les variables suivantes sont garanties d'être définies :
 
 De plus, si un fichier de configuration Kubernetes a été explicitement spécifié, il sera défini comme variable `KUBECONFIG`.
 
-## Note sur l'analyse des flags
+## Note sur l'analyse des flags {#a-note-on-flag-parsing}
 
 Lors de l'exécution d'un plugin, Helm analyse les flags globaux pour son propre usage. Aucun de ces flags n'est transmis au plugin.
 - `--burst-limit` : Converti en `$HELM_BURST_LIMIT`
@@ -282,11 +283,11 @@ Lors de l'exécution d'un plugin, Helm analyse les flags globaux pour son propre
 
 Les plugins _devraient_ afficher un texte d'aide et se terminer pour `-h` et `--help`. Dans tous les autres cas, les plugins peuvent utiliser les flags comme approprié.
 
-## Fournir l'auto-complétion shell
+## Fournir l'auto-complétion shell {#providing-shell-auto-completion}
 
 À partir de Helm 3.2, un plugin peut optionnellement fournir le support de l'auto-complétion shell dans le cadre du mécanisme d'auto-complétion existant de Helm.
 
-### Auto-complétion statique
+### Auto-complétion statique {#static-auto-completion}
 
 Si un plugin fournit ses propres flags et/ou sous-commandes, il peut en informer Helm via un fichier `completion.yaml` situé dans le répertoire racine du plugin. Le fichier `completion.yaml` a la forme suivante :
 
@@ -317,7 +318,7 @@ Notes :
 1. Les flags courts et longs peuvent et doivent être spécifiés. Un flag court n'a pas besoin d'être associé à sa forme longue correspondante, mais les deux formes doivent être listées.
 1. Les flags n'ont pas besoin d'être ordonnés d'une manière particulière, mais doivent être listés au bon endroit dans la hiérarchie des sous-commandes du fichier.
 1. Les flags globaux existants de Helm sont déjà gérés par le mécanisme d'auto-complétion de Helm, les plugins n'ont donc pas besoin de spécifier les flags suivants : `--debug`, `--namespace` ou `-n`, `--kube-context`, et `--kubeconfig`, ou tout autre flag global.
-1. La liste `validArgs` fournit une liste statique des complétions possibles pour le premier paramètre suivant une sous-commande. Il n'est pas toujours possible de fournir une telle liste à l'avance (voir la section [Complétion dynamique](#complétion-dynamique) ci-dessous), auquel cas la section `validArgs` peut être omise.
+1. La liste `validArgs` fournit une liste statique des complétions possibles pour le premier paramètre suivant une sous-commande. Il n'est pas toujours possible de fournir une telle liste à l'avance (voir la section [Complétion dynamique](#dynamic-completion) ci-dessous), auquel cas la section `validArgs` peut être omise.
 
 Le fichier `completion.yaml` est entièrement optionnel. S'il n'est pas fourni, Helm ne fournira simplement pas d'auto-complétion shell pour le plugin (sauf si la [Complétion dynamique](#complétion-dynamique) est supportée par le plugin). De plus, l'ajout d'un fichier `completion.yaml` est rétro-compatible et n'impactera pas le comportement du plugin lors de l'utilisation de versions plus anciennes de Helm.
 
@@ -368,7 +369,7 @@ commands:
     - dry-run
 ```
 
-### Complétion dynamique
+### Complétion dynamique {#dynamic-completion}
 
 Également à partir de Helm 3.2, les plugins peuvent fournir leur propre auto-complétion shell dynamique. L'auto-complétion shell dynamique est la complétion des valeurs de paramètres ou de flags qui ne peuvent pas être définies à l'avance. Par exemple, la complétion des noms des releases Helm actuellement disponibles sur le cluster.
 

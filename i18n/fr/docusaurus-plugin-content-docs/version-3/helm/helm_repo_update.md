@@ -1,5 +1,6 @@
 ---
 title: helm repo update
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 Met à jour les informations sur les charts disponibles localement à partir des répertoires de charts
 

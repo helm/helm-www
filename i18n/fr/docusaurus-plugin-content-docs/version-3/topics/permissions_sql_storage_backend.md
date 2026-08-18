@@ -1,6 +1,7 @@
 ---
 title: Gestion des permissions pour le backend de stockage SQL
 description: Découvrez comment configurer les permissions lors de l'utilisation du backend de stockage SQL.
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Ce document explique comment configurer et gérer les permissions lors de

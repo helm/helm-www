@@ -2,6 +2,7 @@
 title: Sous-charts et Valeurs Globales
 description: Interaction avec les valeurs d'un sous-chart et les valeurs globales.
 sidebar_position: 11
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Jusqu'à présent, nous avons travaillé uniquement avec un seul chart. Cependant, les charts peuvent avoir des dépendances, appelées _sous-charts_, qui possèdent également leurs propres valeurs et templates. Dans cette section, nous allons créer un sous-chart et découvrir les différentes façons d'accéder aux valeurs depuis les templates.

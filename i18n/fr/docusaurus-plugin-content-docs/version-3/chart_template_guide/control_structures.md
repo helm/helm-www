@@ -2,6 +2,7 @@
 title: Structures de contrôle
 description: Un aperçu rapide des structures de contrôle dans les templates.
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Les structures de contrôle (appelées « actions » dans le jargon des templates) vous permettent, en tant qu'auteur de template, de contrôler le flux de génération d'un template. Le langage de template de Helm fournit les structures de contrôle suivantes :

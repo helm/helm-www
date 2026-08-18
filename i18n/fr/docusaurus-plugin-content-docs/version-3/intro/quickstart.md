@@ -2,6 +2,7 @@
 title: Guide de démarrage rapide
 description: Comment installer et débuter avec Helm, y compris les instructions pour les distributions, FAQ et plugins.
 sidebar_position: 1
+default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
 Ce guide explique comment commencer rapidement à utiliser Helm.

@@ -2,6 +2,7 @@
 title: Définitions de ressources personnalisées
 description: Comment créer et utiliser des CRDs.
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Cette partie du guide des bonnes pratiques traite de la création et de l'utilisation
