@@ -382,9 +382,8 @@ prefer helpers that encode or structure the data for you, as shown in the follow
 | Goal | Prefer | Avoid |
 | ---- | ------ | ----- |
 | Quote a string scalar | `{{ .Values.name \| quote }}` | `{{ .Values.name }}` in a bare field |
-| Multi-line free-form string | Store structured data as a map/list and use `toYaml`, or treat the whole value as one quoted scalar with `quote` | `{{ .Values.config \| nindent 4 }}` — `nindent` only indents; newline-bearing values can still inject keys |
-| Embed maps / lists | `{{ toYaml .Values.extraEnv \| nindent 8 }}`. `nindent` only adds indentation; it doesn't encode YAML. Pair it with `toYaml` for maps/lists, or use `quote` for a single scalar. Bare `nindent` on an untrusted string is still injectable. | `{{ .Values.extraEnv \| nindent 8 }}` without `toYaml`, or hand-rolled `key: {{ . }}` loops |
-| Labels / annotations maps | `toYaml` + `nindent` (or chart helpers) | Concatenating free-form label lines from values |
+| Insert a string as one YAML scalar | `quote`, or a block scalar header (`\|` / `>`) plus `{{- .Values.config \| nindent N }}` where `N` is greater than the parent indent (usually parent + 2) | Bare `{{ .Values.config }}` or `nindent` without a block header — a newline in the value can start a new key |
+| Embed maps / lists (collections) | `{{ toYaml .Values.extraEnv \| nindent N }}` so `toYaml` emits the collection and `nindent` only shifts it | `{{ .Values.extraEnv \| nindent N }}` without `toYaml`, or hand-rolled `key: {{ . }}` loops |
 
 The following describes general best practices for preventing YAML injection when inserting values:
 
@@ -401,11 +400,20 @@ The following describes general best practices for preventing YAML injection whe
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "mychart.fullname" . }}
+  name: {{ include "mychart.fullname" . | quote }}
 data:
   # values.config is a map; toYaml emits nested YAML, nindent only indents it
   config.yaml: |
-{{- toYaml .Values.config | nindent 4 }}
+    {{- toYaml .Values.config | nindent 4 }}
+```
+
+A string under a block scalar is the same idea — keep the `{{-` so you do
+not get an extra blank line, and pick `N` larger than the parent indent:
+
+```yaml
+data:
+  app.conf: |
+    {{- .Values.appConf | nindent 4 }}
 ```
 
 #### Unsafe patterns
@@ -415,10 +423,9 @@ data:
 data:
   app.conf: {{ .Values.appConf }}
 
-# BAD: nindent alone still injects — it only adds spaces
+# BAD: nindent without a block scalar header only adds spaces
 data:
-  app.conf: |
-{{ .Values.appConf | nindent 4 }}
+  app.conf: {{ .Values.appConf | nindent 4 }}
 ```
 
 For more information, see [Template Functions and Pipelines](functions_and_pipelines.mdx),
