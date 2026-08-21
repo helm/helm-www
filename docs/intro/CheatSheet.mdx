@@ -61,6 +61,7 @@ helm install <name> <chart> --values <yaml-file/url>  # Install the chart with y
 helm install <name> <chart> --dry-run --debug         # Run a test installation to validate chart (p)
 helm install <name> <chart> --verify                  # Verify the package before using it
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
+helm install <name> <chart> --force-replace           # force resource updates by replacement
 helm uninstall <name>                                 # Uninstalls a release from the current (default) namespace
 helm uninstall <release-name> --namespace <namespace> # Uninstalls a release from the specified namespace
 ```
@@ -74,7 +75,7 @@ helm upgrade <release> <chart> --dependency-update        # update dependencies 
 helm upgrade <release> <chart> --version <version_number> # specify a version constraint for the chart version to use
 helm upgrade <release> <chart> --values                   # specify values in a YAML file or a URL (can specify multiple)
 helm upgrade <release> <chart> --set key1=val1,key2=val2  # Set values on the command line (can specify multiple or separate valuese)
-helm upgrade <release> <chart> --force                    # Force resource updates through a replacement strategy
+helm upgrade <release> <chart> --force-replace            # force resource updates by replacement
 helm rollback <release> <revision>                        # Roll back a release to a specific revision
 helm rollback <release> <revision>  --cleanup-on-fail     # Allow deletion of new resources created in this rollback when rollback fails
 ```
