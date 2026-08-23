@@ -9,6 +9,10 @@ we'll look at the YAML format. YAML has some useful features that we, as
 template authors, can use to make our templates less error prone and easier to
 read.
 
+When you insert chart values into manifests, also read
+[Prevent YAML injection when inserting Helm values](#prevent-yaml-injection-when-inserting-helm-values)
+so user-supplied strings cannot reshape the document.
+
 ## Scalars and Collections
 
 According to the [YAML spec](https://yaml.org/spec/1.2/spec.html), there are two
@@ -360,3 +364,70 @@ use [library charts](/topics/library_charts.md) instead of YAML anchors.
 Library charts are designed for reuse,
 and aren't subject to the round-trip pitfall described above.
 :::
+
+## Prevent YAML injection when inserting Helm values
+
+Chart values often come from untrusted or multi-tenant sources. If you splice a
+value into a template with raw `{{ .Values.foo }}`, a value that contains
+newlines, `:` mapping indicators, or list markers can change the structure of
+the rendered YAML. This is called _YAML injection_.
+YAML injection can not only break installs, but can
+also inject extra keys into a Kubernetes manifest.
+
+### Best practices
+
+To avoid YAML injection when inserting Helm values,
+prefer helpers that encode or structure the data for you, as shown in the following table:
+
+| Goal | Prefer | Avoid |
+| ---- | ------ | ----- |
+| Quote a string scalar | `{{ .Values.name \| quote }}` | `{{ .Values.name }}` in a bare field |
+| Insert a string as one YAML scalar | `quote`, or a block scalar header (`\|` / `>`) plus `{{- .Values.config \| nindent N }}` where `N` is greater than the parent indent (usually parent + 2) | Bare `{{ .Values.config }}` or `nindent` without a block header — a newline in the value can start a new key |
+| Embed maps / lists (collections) | `{{ toYaml .Values.extraEnv \| nindent N }}` where `N` is greater than the parent indent (usually parent + 2), so `toYaml` emits the collection and `nindent` only shifts it into place | `{{ .Values.extraEnv \| nindent N }}` without `toYaml`, an `N` that is not greater than the parent indent, or hand-rolled `key: {{ . }}` loops |
+
+The following describes general best practices for preventing YAML injection when inserting values:
+
+- Treat every `{{ ... }}` expression that is rendered inside YAML as untrusted input.
+- Use `quote`, `toYaml`, and `nindent`/`indent` together to preserve YAML structure. Avoid manually constructing YAML using string concatenation.
+- Run `helm template` and schema validation in CI so malformed values fail
+  before they reach the cluster.
+
+### Examples
+
+#### Safe nested object (map to YAML, then indent)
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mychart.fullname" . | quote }}
+data:
+  # values.config is a map; toYaml emits nested YAML, nindent only indents it
+  config.yaml: |
+    {{- toYaml .Values.config | nindent 4 }}
+```
+
+A string under a block scalar is the same idea — keep the `{{-` so you do
+not get an extra blank line, and pick `N` larger than the parent indent:
+
+```yaml
+data:
+  app.conf: |
+    {{- .Values.appConf | nindent 4 }}
+```
+
+#### Unsafe patterns
+
+```yaml
+# BAD: a value of "x\n  evil: true" becomes an extra key
+data:
+  app.conf: {{ .Values.appConf }}
+
+# BAD: nindent without a block scalar header only adds spaces
+data:
+  app.conf: {{ .Values.appConf | nindent 4 }}
+```
+
+For more information, see [Template Functions and Pipelines](functions_and_pipelines.mdx),
+[Indenting and Templates](#indenting-and-templates) on this page, and the
+[Template Function List](function_list.mdx) (`toYaml`, `quote`, `nindent`).
