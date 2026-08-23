@@ -383,7 +383,7 @@ prefer helpers that encode or structure the data for you, as shown in the follow
 | ---- | ------ | ----- |
 | Quote a string scalar | `{{ .Values.name \| quote }}` | `{{ .Values.name }}` in a bare field |
 | Insert a string as one YAML scalar | `quote`, or a block scalar header (`\|` / `>`) plus `{{- .Values.config \| nindent N }}` where `N` is greater than the parent indent (usually parent + 2) | Bare `{{ .Values.config }}` or `nindent` without a block header — a newline in the value can start a new key |
-| Embed maps / lists (collections) | `{{ toYaml .Values.extraEnv \| nindent N }}` so `toYaml` emits the collection and `nindent` only shifts it | `{{ .Values.extraEnv \| nindent N }}` without `toYaml`, or hand-rolled `key: {{ . }}` loops |
+| Embed maps / lists (collections) | `{{ toYaml .Values.extraEnv \| nindent N }}` where `N` is greater than the parent indent (usually parent + 2), so `toYaml` emits the collection and `nindent` only shifts it into place | `{{ .Values.extraEnv \| nindent N }}` without `toYaml`, an `N` that is not greater than the parent indent, or hand-rolled `key: {{ . }}` loops |
 
 The following describes general best practices for preventing YAML injection when inserting values:
 
