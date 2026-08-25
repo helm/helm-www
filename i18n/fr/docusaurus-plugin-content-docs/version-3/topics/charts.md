@@ -493,7 +493,7 @@ Veuillez noter que la clé parente `data` n'est pas contenue dans les values
 finales du parent. Si vous avez besoin de spécifier la clé parente, utilisez le
 format 'child-parent'.
 
-##### Utiliser le format child-parent
+##### Utiliser le format child-parent {#using-the-child-parent-format}
 
 Pour accéder aux values qui ne sont pas contenues dans la clé `exports` des
 values du chart enfant, vous devrez spécifier la clé source des values à

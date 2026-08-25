@@ -142,7 +142,7 @@ Il est très courant de vouloir placer le contenu de fichiers dans des ConfigMap
 
 Pour une meilleure organisation, il est particulièrement utile d'utiliser ces méthodes en conjonction avec la méthode `Glob`.
 
-Avec la structure de répertoires de l'exemple [Glob](#motifs-glob) ci-dessus :
+Avec la structure de répertoires de l'exemple [Glob](#glob-patterns) ci-dessus :
 
 ```yaml
 ---
