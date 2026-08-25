@@ -320,7 +320,7 @@ Notes :
 1. Les flags globaux existants de Helm sont déjà gérés par le mécanisme d'auto-complétion de Helm, les plugins n'ont donc pas besoin de spécifier les flags suivants : `--debug`, `--namespace` ou `-n`, `--kube-context`, et `--kubeconfig`, ou tout autre flag global.
 1. La liste `validArgs` fournit une liste statique des complétions possibles pour le premier paramètre suivant une sous-commande. Il n'est pas toujours possible de fournir une telle liste à l'avance (voir la section [Complétion dynamique](#dynamic-completion) ci-dessous), auquel cas la section `validArgs` peut être omise.
 
-Le fichier `completion.yaml` est entièrement optionnel. S'il n'est pas fourni, Helm ne fournira simplement pas d'auto-complétion shell pour le plugin (sauf si la [Complétion dynamique](#complétion-dynamique) est supportée par le plugin). De plus, l'ajout d'un fichier `completion.yaml` est rétro-compatible et n'impactera pas le comportement du plugin lors de l'utilisation de versions plus anciennes de Helm.
+Le fichier `completion.yaml` est entièrement optionnel. S'il n'est pas fourni, Helm ne fournira simplement pas d'auto-complétion shell pour le plugin (sauf si la [Complétion dynamique](#dynamic-completion) est supportée par le plugin). De plus, l'ajout d'un fichier `completion.yaml` est rétro-compatible et n'impactera pas le comportement du plugin lors de l'utilisation de versions plus anciennes de Helm.
 
 Par exemple, pour le plugin [`fullstatus`](https://github.com/marckhouzam/helm-fullstatus) qui n'a pas de sous-commandes mais accepte les mêmes flags que la commande `helm status`, le fichier `completion.yaml` est :
 
@@ -406,7 +406,7 @@ Le vrai script du plugin `fullstatus` (`status.sh`) doit alors rechercher le fla
 ### Astuces et conseils
 
 1. Le shell filtrera automatiquement les choix de complétion qui ne correspondent pas à l'entrée de l'utilisateur. Un plugin peut donc retourner toutes les complétions pertinentes sans supprimer celles qui ne correspondent pas à l'entrée de l'utilisateur. Par exemple, si la ligne de commande est `helm fullstatus ngin<TAB>`, le script `plugin.complete` peut afficher *tous* les noms de release (du namespace `default`), pas seulement ceux commençant par `ngin` ; le shell ne conservera que ceux commençant par `ngin`.
-1. Pour simplifier le support de la complétion dynamique, surtout si vous avez un plugin complexe, vous pouvez faire en sorte que votre script `plugin.complete` appelle votre script principal du plugin et demande les choix de complétion. Voir la section [Complétion dynamique](#complétion-dynamique) ci-dessus pour un exemple.
+1. Pour simplifier le support de la complétion dynamique, surtout si vous avez un plugin complexe, vous pouvez faire en sorte que votre script `plugin.complete` appelle votre script principal du plugin et demande les choix de complétion. Voir la section [Complétion dynamique](#dynamic-completion) ci-dessus pour un exemple.
 1. Pour déboguer la complétion dynamique et le fichier `plugin.complete`, vous pouvez exécuter ce qui suit pour voir les résultats de complétion :
     - `helm __complete <pluginName> <arguments to complete>`. Par exemple :
     - `helm __complete fullstatus --output js<ENTER>`,
