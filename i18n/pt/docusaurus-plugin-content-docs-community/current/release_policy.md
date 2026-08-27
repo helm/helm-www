@@ -51,7 +51,7 @@ esteja a menos de 7 dias.
 Ao mesmo tempo em que um release é publicado, a data do próximo release secundário
 será anunciada e publicada na página principal do Helm.
 
-## Releases Principais
+## Releases Principais {#major-releases}
 
 Os releases principais contêm mudanças incompatíveis. Tais releases são raros,
 mas às vezes são necessários para permitir que o Helm continue a evoluir em

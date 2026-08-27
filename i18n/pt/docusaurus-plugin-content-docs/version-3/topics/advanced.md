@@ -92,7 +92,7 @@ O Helm 3 introduziu um Go SDK completamente reestruturado para uma melhor
 experiência ao construir software e ferramentas que aproveitam o Helm.
 Documentação completa pode ser encontrada na [Seção Go SDK](/sdk/gosdk.md).
 
-## Backends de armazenamento
+## Backends de armazenamento {#storage-backends}
 
 O Helm 3 mudou o armazenamento padrão de informações de release para Secrets no
 namespace da release. O Helm 2 armazenava por padrão informações de release como
