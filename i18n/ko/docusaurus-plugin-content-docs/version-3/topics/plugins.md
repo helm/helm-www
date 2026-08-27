@@ -264,7 +264,7 @@ helm env
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## 다운로더 플러그인
+## 다운로더 플러그인 {#downloader-plugins}
 
 기본적으로 Helm은 HTTP/S를 사용하여 차트를 가져올 수 있다.
 Helm 2.4.0부터 플러그인은 임의의 소스에서 차트를 다운로드하는

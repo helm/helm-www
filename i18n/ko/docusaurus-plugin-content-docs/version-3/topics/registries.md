@@ -115,7 +115,7 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 
 [출처 파일](/topics/provenance.md) (`.prov`)을 생성했고, 이 파일이 차트 `.tgz` 파일 옆에 있으면 `push` 시 자동으로 레지스트리에 업로드된다. 이 경우 [Helm 차트 매니페스트](#helm-차트-매니페스트)에 추가 레이어가 생성된다.
 
-[helm-push 플러그인](https://github.com/chartmuseum/helm-push) (차트를 [ChartMuseum](/topics/chart_repository.md#chartmuseum-리포지토리-서버)에 업로드하기 위한) 사용자는 이 플러그인이 새로운 내장 `push`와 충돌하기 때문에 문제가 발생할 수 있다. v0.10.0 버전부터 플러그인은 `cm-push`로 이름이 변경되었다.
+[helm-push 플러그인](https://github.com/chartmuseum/helm-push) (차트를 [ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server)에 업로드하기 위한) 사용자는 이 플러그인이 새로운 내장 `push`와 충돌하기 때문에 문제가 발생할 수 있다. v0.10.0 버전부터 플러그인은 `cm-push`로 이름이 변경되었다.
 
 ### 기타 하위 명령
 

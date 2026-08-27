@@ -208,7 +208,7 @@ Helm 차트를 서비스하도록 일반 웹 서버를 설정하려면
 웹 루트에 `charts/` 디렉토리가 있는지 확인하고 인덱스 파일과
 차트를 해당 폴더 안에 넣자.
 
-### ChartMuseum 저장소 서버
+### ChartMuseum 저장소 서버 {#chartmuseum-repository-server}
 
 ChartMuseum은 Go 언어로 작성된 오픈소스 Helm 차트 저장소 서버로,
 [Google Cloud Storage](https://cloud.google.com/storage/), [Amazon
