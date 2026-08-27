@@ -71,7 +71,7 @@ example-plugin
 - [서브프로세스 런타임](#plugin-runtimes)에는 선택적으로 (노드, 파이썬, Go, 그 외 등등) 플러그인 코드가 담긴 한 가지 이상의 실행 파일을 넣을 수 있습니다. 이 런타임에서는 `plugin.yaml` [런타임 설정](#runtime-configuration)의 `platformCommand` 필드를 통해 사용자의 PATH에서 이미 사용 가능한 실행 파일을 직접 호출할 수도 있습니다.
 - [Wasm 런타임](#plugin-runtimes)의 경우 `.wasm` 파일을 포함해야 합니다. 이는 Wasm으로 컴파일된 플러그인 코드입니다(Node, Python, Go 등 가능).
 
-## Plugin.yaml {#plugin-yaml}
+## Plugin.yaml {#pluginyaml}
 
 `plugin.yaml` 파일은 플러그인에 필수 요소입니다. 이 파일은 플러그인에 관한 메타데이터와 구성을 담은 YAML 파일입니다.
 
