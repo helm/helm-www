@@ -35,6 +35,19 @@ Helm has a built-in command to install plugins that defaults to secure installat
 
 See `helm plugin install --help` for more information.
 
+### Symbolic Links in OCI Plugins
+
+When you install a plugin from an OCI registry with `helm plugin install oci://<registry>/<plugin>`, the plugin archive may contain symbolic links. Helm extracts these links subject to security validation (see [Plugin Security](#plugin-security)), which keeps a plugin from writing files outside its own installation directory:
+
+- Symbolic-link targets must be relative; absolute targets are rejected.
+- Symbolic-link targets must resolve inside the plugin's installation directory; targets that would escape the plugin directory are rejected.
+
+If a symbolic link fails these checks, the installation fails as a whole. A rejected symbolic link means the plugin archive is malformed or potentially unsafe, so obtain the plugin from a trusted source or contact its author.
+
+On Windows, creating symbolic links requires elevated privileges. Run your terminal as Administrator or [enable Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development); otherwise, installation fails.
+
+For more on OCI registries, see [OCI Registries](/topics/registries.mdx).
+
 ## Listing Installed Plugins
 
 The command to list plugins includes the plugin's name, version, type, API version, provenance, and source.
