@@ -34,6 +34,12 @@ This example upgrades the given release, with the given chart, version and value
 
 <CodeBlock language="go" title="sdkexamples/upgrade.go" showLineNumbers>{UpgradeExampleGo}</CodeBlock>
 
+`action.Upgrade` exposes an optional `FieldValidationDirective` field.
+It takes effect only when you set `ForceReplace` to `true` and set the field to a non-empty value.
+If you leave the field empty in that case, Helm keeps the default `Strict` validation.
+Valid values are the `kube.FieldValidationDirective` constants: `kube.FieldValidationDirectiveIgnore`, `kube.FieldValidationDirectiveWarn`, and `kube.FieldValidationDirectiveStrict`.
+Setting `kube.FieldValidationDirectiveWarn` makes a forced upgrade warn on unknown or deprecated fields instead of failing, which matches Helm 3 behavior.
+
 ### Uninstall Action
 
 This example uninstalls the given release:

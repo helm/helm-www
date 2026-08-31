@@ -26,6 +26,12 @@ func runUpgrade(ctx context.Context, logger *log.Logger, settings *cli.EnvSettin
 	upgradeClient.Version = chartVersion
 	upgradeClient.WaitStrategy = "watcher"
 
+	// During a force-replace upgrade (ForceReplace = true), Helm 4 defaults to Strict field validation.
+	// Setting FieldValidationDirective overrides that default.
+	// Use kube.FieldValidationDirectiveWarn to warn on unknown or deprecated fields instead of failing, matching Helm 3 behavior.
+	// upgradeClient.ForceReplace = true
+	// upgradeClient.FieldValidationDirective = kube.FieldValidationDirectiveWarn
+
 	registryClient, err := newRegistryClient(
 		settings,
 		upgradeClient.CertFile,
