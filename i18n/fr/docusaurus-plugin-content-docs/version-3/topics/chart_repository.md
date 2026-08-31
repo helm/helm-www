@@ -211,7 +211,7 @@ Par exemple, si vous voulez servir vos charts depuis `$WEBROOT/charts`, assurez-
 qu'il y a un répertoire `charts/` dans votre racine web, et placez le fichier index
 et les charts dans ce dossier.
 
-### Serveur de dépôt ChartMuseum
+### Serveur de dépôt ChartMuseum {#chartmuseum-repository-server}
 
 ChartMuseum est un serveur de dépôt de charts Helm open-source écrit en Go (Golang),
 avec support pour les backends de stockage cloud, notamment [Google Cloud
