@@ -26,7 +26,7 @@ Helm 提供了钩子（hook）机制，允许 chart 开发者在 release 生命�
 | `post-upgrade`   | 在升级请求时、所有资源升级完成后执行                                                              |
 | `pre-rollback`   | 在回滚请求时、模板渲染后、任何资源回滚之前执行                                                     |
 | `post-rollback`  | 在回滚请求时、所有资源修改完成后执行                                                              |
-| `test`           | 在调用 Helm test 子命令时执行（[查看 test 文档](/zh/docs/topics/chart_tests/)）                   |
+| `test`           | 在调用 Helm test 子命令时执行（[查看 test 文档](./chart_tests.md)）                               |
 
 _注意：`crd-install` 钩子已在 Helm 3 中移除，改用 `crds/` 目录。_
 

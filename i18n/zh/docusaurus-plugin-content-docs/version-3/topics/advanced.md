@@ -53,7 +53,7 @@ type PostRenderer interface {
 
 ## Go SDK
 
-Helm 3 引入了全新重构的 Go SDK，为构建基于 Helm 的软件和工具提供更好的体验。完整文档可在 [Go SDK 部分](/zh/docs/sdk/gosdk/)查看。
+Helm 3 引入了全新重构的 Go SDK，为构建基于 Helm 的软件和工具提供更好的体验。完整文档可在 [Go SDK 部分](../sdk/gosdk.md)查看。
 
 ## 后端存储 {#storage-backends}
 
@@ -96,7 +96,7 @@ export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?us
 
 **生产环境说明**：建议：
 - 确保数据库可用于生产环境。对于 PostgreSQL，请参阅 [Server Administration](https://www.postgresql.org/docs/12/admin.html) 文档了解更多详情
-- 启用[权限管理](/zh/docs/topics/permissions_sql_storage_backend/)，以镜像 Kubernetes RBAC 来控制 release 信息的访问权限
+- 启用[权限管理](./permissions_sql_storage_backend.md)，以镜像 Kubernetes RBAC 来控制 release 信息的访问权限
 
 如果要从默认后端切换到 SQL 后端，需要自行进行迁移。可以使用以下命令获取 release 信息：
 
