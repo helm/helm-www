@@ -52,7 +52,7 @@ de 7 días para el release anunciado.
 Al mismo tiempo que se publica un release, se anunciará la fecha del próximo
 release menor y se publicará en la página web principal de Helm.
 
-## Releases Mayores
+## Releases Mayores {#major-releases}
 
 Los releases mayores contienen cambios incompatibles. Estos releases son poco
 frecuentes, pero a veces son necesarios para permitir que Helm continúe
