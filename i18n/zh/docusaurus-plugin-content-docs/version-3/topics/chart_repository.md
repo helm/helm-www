@@ -160,7 +160,7 @@ $ git checkout -b gh-pages
 
 例如，如果你想在 `$WEBROOT/charts` 提供 chart，确保 web 根目录下有一个 `charts/` 目录，并将 index 文件和 chart 放在该目录中。
 
-### ChartMuseum 仓库服务器
+### ChartMuseum 仓库服务器 {#chartmuseum-repository-server}
 
 ChartMuseum 是一个用 Go (Golang) 编写的开源 Helm chart 仓库服务器，支持多种云存储后端，包括 [Google Cloud Storage](https://cloud.google.com/storage/)、[Amazon S3](https://aws.amazon.com/s3/)、[Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)、[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss)、[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/)、[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage)、[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html)、[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos)、[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)、[Minio](https://min.io/) 以及 [etcd](https://etcd.io/)。
 

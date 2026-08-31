@@ -34,7 +34,7 @@ wordpress/
 
 Helm保留使用 `charts/`，`crds/`， `templates/`目录，以及列举出的文件名。其他文件保持原样。
 
-## Chart.yaml 文件
+## Chart.yaml 文件 {#the-chartyaml-file}
 
 `Chart.yaml`文件是chart必需的。包含了以下字段：
 
