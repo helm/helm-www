@@ -84,7 +84,7 @@ Helm 3 führte ein komplett umstrukturiertes Go SDK ein, das eine bessere Erfahr
 Erstellen von Software und Tools bietet, die Helm nutzen. Die vollständige Dokumentation finden Sie
 im [Go SDK-Abschnitt](/sdk/gosdk.md).
 
-## Speicher-Backends
+## Speicher-Backends {#storage-backends}
 
 Helm 3 hat den Standard-Speicherort für Release-Informationen auf Secrets im
 Namespace des Releases geändert. Helm 2 speicherte Release-Informationen standardmäßig als
