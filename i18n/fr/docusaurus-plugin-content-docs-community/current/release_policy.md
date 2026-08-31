@@ -55,7 +55,7 @@ celle-ci est prévue dans moins de 7 jours.
 Au moment de la publication d'une release, la date de la prochaine release
 mineure sera annoncée et publiée sur la page principale du site web de Helm.
 
-## Releases majeures
+## Releases majeures {#major-releases}
 
 Les releases majeures contiennent des changements non rétrocompatibles. Ces
 releases sont rares mais parfois nécessaires pour permettre à Helm de continuer
