@@ -274,7 +274,7 @@ En este ejemplo lo hicimos para `mapkubeapis`.
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## Plugins de Descarga
+## Plugins de Descarga {#downloader-plugins}
 
 Por defecto, Helm puede descargar Charts usando HTTP/S. A partir de Helm 2.4.0,
 los plugins pueden tener una capacidad especial para descargar Charts desde
