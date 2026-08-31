@@ -57,7 +57,7 @@ Go依赖管理在不断变化，而且在Helm生命周期中很可能发生变�
 从Helm 3开始，文档已经移动到了它自己的仓库中。当编制新特性时，请编写随附文档并提交到
 [helm-www](https://github.com/helm/helm-www) 仓库。
 
-有个例外：[Helm CLI 输出 (英文)](../../docusaurus-plugin-content-docs/version-3/helm/helm.md) 是 `helm` 程序自己生成的。
+有个例外：[Helm CLI 输出 (英文)](/docs/v3/helm/helm) 是 `helm` 程序自己生成的。
 查看 [更新Helm CLI参考文档](https://github.com/helm/helm-www#updating-the-helm-cli-reference-docs)
 来了解如何生成该输出。翻译后，不会生成CLI输出，但可以在 `/content/<lang>/docs/helm` 中找到。
 
