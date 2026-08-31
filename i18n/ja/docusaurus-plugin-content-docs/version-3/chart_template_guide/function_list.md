@@ -26,7 +26,7 @@ Helm にはテンプレートで活用できる多くのテンプレート関数
 * [URL](#url-functions)
 * [UUID](#uuid-functions)
 
-## 論理とフロー制御関数
+## 論理とフロー制御関数 {#logic-and-flow-control-functions}
 
 Helm には多くの論理・制御フロー関数が含まれています: [and](#and)、
 [coalesce](#coalesce)、[default](#default)、[empty](#empty)、[eq](#eq)、
@@ -220,7 +220,7 @@ false | ternary "foo" "bar"
 
 上記は `"bar"` を返します。
 
-## 文字列関数
+## 文字列関数 {#string-functions}
 
 Helm には以下の文字列関数が含まれています: [abbrev](#abbrev)、
 [abbrevboth](#abbrevboth)、[camelcase](#camelcase)、[cat](#cat)、
@@ -476,7 +476,7 @@ initials "First Try"
 
 上記は `FT` を返します。
 
-### randAlphaNum、randAlpha、randNumeric、randAscii
+### randAlphaNum、randAlpha、randNumeric、randAscii {#randalphanum-randalpha-randnumeric-and-randascii}
 
 これら4つの関数は暗号学的に安全な（```crypto/rand``` を使用）
 ランダム文字列を生成しますが、基本文字セットが異なります:
@@ -525,7 +525,7 @@ contains "cat" "catch"
 
 上記は `true` を返します。`catch` には `cat` が含まれているためです。
 
-### hasPrefix と hasSuffix
+### hasPrefix と hasSuffix {#hasprefix-and-hassuffix}
 
 `hasPrefix` と `hasSuffix` 関数は、文字列が指定したプレフィックスまたは
 サフィックスを持っているかテストします:
@@ -536,7 +536,7 @@ hasPrefix "cat" "catch"
 
 上記は `true` を返します。`catch` にはプレフィックス `cat` があるためです。
 
-### quote と squote
+### quote と squote {#quote-and-squote}
 
 これらの関数は文字列をダブルクォート（`quote`）または
 シングルクォート（`squote`）で囲みます。
@@ -668,7 +668,7 @@ shuffle "hello"
 
 上記は `hello` の文字をランダムに並べ替えます。`oelhl` のような結果になる可能性があります。
 
-## 型変換関数
+## 型変換関数 {#type-conversion-functions}
 
 Helm は以下の型変換関数を提供しています:
 
@@ -855,7 +855,7 @@ greeting: |
 ```
 
 
-## 正規表現
+## 正規表現 {#regular-expressions}
 
 Helm には以下の正規表現関数が含まれています: [regexFind
 （mustRegexFind）](#regexfindall-mustregexfindall)、[regexFindAll
@@ -866,7 +866,7 @@ Helm には以下の正規表現関数が含まれています: [regexFind
 （mustRegexReplaceAllLiteral）](#regexreplaceallliteral-mustregexreplaceallliteral)、
 [regexSplit（mustRegexSplit）](#regexsplit-mustregexsplit)。
 
-### regexMatch、mustRegexMatch
+### regexMatch、mustRegexMatch {#regexmatch-mustregexmatch}
 
 入力文字列が正規表現にマッチするものを含む場合に true を返します。
 
@@ -879,7 +879,7 @@ regexMatch "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" "test@acme.com"
 `regexMatch` は問題があるとパニックし、`mustRegexMatch` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### regexFindAll、mustRegexFindAll
+### regexFindAll、mustRegexFindAll {#regexfindall-mustregexfindall}
 
 入力文字列内の正規表現のすべてのマッチのスライスを返します。
 最後のパラメータ n は返す部分文字列の数を決定し、-1 はすべてのマッチを返すことを意味します。
@@ -893,7 +893,7 @@ regexFindAll "[2,4,6,8]" "123456789" -1
 `regexFindAll` は問題があるとパニックし、`mustRegexFindAll` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### regexFind、mustRegexFind
+### regexFind、mustRegexFind {#regexfind-mustregexfind}
 
 入力文字列内の正規表現の最初の（最も左の）マッチを返します。
 
@@ -906,7 +906,7 @@ regexFind "[a-zA-Z][1-9]" "abcd1234"
 `regexFind` は問題があるとパニックし、`mustRegexFind` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### regexReplaceAll、mustRegexReplaceAll
+### regexReplaceAll、mustRegexReplaceAll {#regexreplaceall-mustregexreplaceall}
 
 入力文字列のコピーを返し、正規表現のマッチを置換文字列で置換します。
 置換文字列内では、$ 記号は Expand と同様に解釈されます。
@@ -922,7 +922,7 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 `regexReplaceAll` は問題があるとパニックし、`mustRegexReplaceAll` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### regexReplaceAllLiteral、mustRegexReplaceAllLiteral
+### regexReplaceAllLiteral、mustRegexReplaceAllLiteral {#regexreplaceallliteral-mustregexreplaceallliteral}
 
 入力文字列のコピーを返し、正規表現のマッチを置換文字列で置換します。
 置換文字列は Expand を使用せずに直接代入されます。
@@ -937,7 +937,7 @@ regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
 `regexReplaceAllLiteral` は問題があるとパニックし、
 `mustRegexReplaceAllLiteral` は問題があるとテンプレートエンジンにエラーを返します。
 
-### regexSplit、mustRegexSplit
+### regexSplit、mustRegexSplit {#regexsplit-mustregexsplit}
 
 入力文字列を正規表現で区切られた部分文字列にスライスし、
 それらの正規表現マッチ間の部分文字列のスライスを返します。
@@ -953,7 +953,7 @@ regexSplit "z+" "pizza" -1
 `regexSplit` は問題があるとパニックし、`mustRegexSplit` は問題があると
 テンプレートエンジンにエラーを返します。
 
-## 暗号化とセキュリティ関数
+## 暗号化とセキュリティ関数 {#cryptographic-and-security-functions}
 
 Helm はいくつかの高度な暗号化関数を提供しています:
 [adler32sum](#adler32sum)、[buildCustomCert](#buildcustomcert)、
@@ -1139,7 +1139,7 @@ base64 文字列を受け取り、復号されたテキストを返します。
 "30tEfhuJSVRhpG97XCuWgz2okj7L8vQ1s6V9zVUPeDQ=" | decryptAES "secretkey"
 ```
 
-## 日付関数
+## 日付関数 {#date-functions}
 
 Helm にはテンプレートで使用できる以下の日付関数が含まれています:
 [ago](#ago)、[date](#date)、[dateInZone](#dateinzone)、[dateModify
@@ -1230,7 +1230,7 @@ durationRound "2400h10m5s"
 now | unixEpoch
 ```
 
-### dateModify、mustDateModify
+### dateModify、mustDateModify {#datemodify-mustdatemodify}
 
 `dateModify` は修正と日付を受け取り、タイムスタンプを返します。
 
@@ -1260,7 +1260,7 @@ htmlDate と同じですが、タイムゾーン付きです。
 htmlDateInZone (now) "UTC"
 ```
 
-### toDate、mustToDate
+### toDate、mustToDate {#todate-musttodate}
 
 `toDate` は文字列を日付に変換します。第1引数は日付レイアウト、
 第2引数は日付文字列です。文字列を変換できない場合はゼロ値を返します。
@@ -1273,7 +1273,7 @@ htmlDateInZone (now) "UTC"
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
 ```
 
-## 辞書と Dict 関数
+## 辞書と Dict 関数 {#dictionaries-and-dict-functions}
 
 Helm は `dict`（Python の「dictionary」の略）と呼ばれるキー/値ストレージ型を
 提供しています。`dict` は _順序なし_ の型です。
@@ -1400,7 +1400,7 @@ Dig はガード句を避けたい場合に非常に便利です。特に Go の
 merge a b c | dig "one" "two" "three" "<missing>"
 ```
 
-### merge、mustMerge
+### merge、mustMerge {#merge-mustmerge}
 
 2つ以上の辞書を1つにマージし、dest 辞書を優先します:
 
@@ -1440,7 +1440,7 @@ deepCopy $source | merge $dest
 
 `mustMerge` はマージが失敗した場合にエラーを返します。
 
-### mergeOverwrite、mustMergeOverwrite
+### mergeOverwrite、mustMergeOverwrite {#mergeoverwrite-mustmergeoverwrite}
 
 2つ以上の辞書を1つにマージし、**右から左**への優先順位で、
 dest 辞書の値を上書きします:
@@ -1532,7 +1532,7 @@ $vals := values $myDict
 上記は `list["value1", "value2", "value 3"]` を返します。`values` 関数は
 結果の順序を保証しません。順序が重要な場合は `sortAlpha` を使用してください。
 
-### deepCopy、mustDeepCopy
+### deepCopy、mustDeepCopy {#deepcopy-mustdeepcopy}
 
 `deepCopy` と `mustDeepCopy` 関数は値を受け取り、その値のディープコピーを作成します。
 これには辞書やその他の構造も含まれます。`deepCopy` は問題があるとパニックし、
@@ -1548,14 +1548,14 @@ dict "a" 1 "b" 2 | deepCopy
 Go 開発者は `map[string]interface{}` 値をコンテキストに渡して、
 テンプレートで `dict` として利用可能にすることができます。
 
-## エンコーディング関数
+## エンコーディング関数 {#encoding-functions}
 
 Helm には以下のエンコードおよびデコード関数があります:
 
 - `b64enc`/`b64dec`: Base64 でエンコード/デコード
 - `b32enc`/`b32dec`: Base32 でエンコード/デコード
 
-## リストと List 関数
+## リストと List 関数 	{#lists-and-list-functions}
 
 Helm は任意のデータの連続リストを含むことができるシンプルな `list` 型を提供しています。
 これは配列やスライスに似ていますが、リストは不変のデータ型として使用されるように
@@ -1580,7 +1580,7 @@ Helm は以下のリスト関数を提供しています: [append
 （mustUniq）](#uniq-mustuniq)、[until](#until)、[untilStep](#untilstep)、
 [without（mustWithout）](#without-mustwithout)。
 
-### first、mustFirst
+### first、mustFirst {#first-mustfirst}
 
 リストの先頭項目を取得するには `first` を使用します。
 
@@ -1589,7 +1589,7 @@ Helm は以下のリスト関数を提供しています: [append
 `first` は問題があるとパニックし、`mustFirst` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### rest、mustRest
+### rest、mustRest {#rest-mustrest}
 
 リストの末尾（先頭項目以外のすべて）を取得するには `rest` を使用します。
 
@@ -1598,14 +1598,14 @@ Helm は以下のリスト関数を提供しています: [append
 `rest` は問題があるとパニックし、`mustRest` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### last、mustLast
+### last、mustLast {#last-mustlast}
 
 リストの最後の項目を取得するには `last` を使用します:
 
 `last $myList` は `5` を返します。これはリストを逆にしてから
 `first` を呼び出すのとほぼ同じです。
 
-### initial、mustInitial
+### initial、mustInitial {#initial-mustinitial}
 
 これは `last` を補完し、最後の要素 _以外_ のすべてを返します。
 `initial $myList` は `[1 2 3 4]` を返します。
@@ -1613,7 +1613,7 @@ Helm は以下のリスト関数を提供しています: [append
 `initial` は問題があるとパニックし、`mustInitial` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### append、mustAppend
+### append、mustAppend {#append-mustappend}
 
 既存のリストに新しい項目を追加し、新しいリストを作成します。
 
@@ -1626,7 +1626,7 @@ $new = append $myList 6
 `append` は問題があるとパニックし、`mustAppend` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### prepend、mustPrepend
+### prepend、mustPrepend {#prepend-mustprepend}
 
 リストの先頭に要素をプッシュし、新しいリストを作成します。
 
@@ -1649,7 +1649,7 @@ concat $myList ( list 6 7 ) ( list 8 )
 
 上記は `[1 2 3 4 5 6 7 8]` を生成します。`$myList` は変更されません。
 
-### reverse、mustReverse
+### reverse、mustReverse {#reverse-mustreverse}
 
 与えられたリストの要素を逆にした新しいリストを生成します。
 
@@ -1662,7 +1662,7 @@ reverse $myList
 `reverse` は問題があるとパニックし、`mustReverse` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### uniq、mustUniq
+### uniq、mustUniq {#uniq-mustuniq}
 
 すべての重複を削除したリストを生成します。
 
@@ -1675,7 +1675,7 @@ list 1 1 1 2 | uniq
 `uniq` は問題があるとパニックし、`mustUniq` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### without、mustWithout
+### without、mustWithout {#without-mustwithout}
 
 `without` 関数はリストから項目をフィルタリングします。
 
@@ -1696,7 +1696,7 @@ without $myList 1 3 5
 `without` は問題があるとパニックし、`mustWithout` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### has、mustHas
+### has、mustHas {#has-musthas}
 
 リストに特定の要素があるかテストします。
 
@@ -1709,7 +1709,7 @@ has 4 $myList
 `has` は問題があるとパニックし、`mustHas` は問題があると
 テンプレートエンジンにエラーを返します。
 
-### compact、mustCompact
+### compact、mustCompact {#compact-mustcompact}
 
 リストを受け取り、空の値を持つエントリを削除します。
 
@@ -1730,7 +1730,7 @@ $copy := compact $list
 - `index $myList 0` は `1` を返します。`myList[0]` と同じです。
 - `index $myList 0 1` は `myList[0][1]` と同じです。
 
-### slice、mustSlice
+### slice、mustSlice {#slice-mustslice}
 
 リストの部分要素を取得するには `slice list [n] [m]` を使用します。
 これは `list[n:m]` と同等です。
@@ -1797,7 +1797,7 @@ chunk 3 (list 1 2 3 4 5 6 7 8)
 
 これはリストのリスト `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]` を生成します。
 
-## 算術関数
+## 算術関数 {#math-functions}
 
 すべての算術関数は、特に指定がない限り `int64` 値で動作します。
 
@@ -1861,7 +1861,7 @@ max 1 2 3
 len .Arg
 ```
 
-## 浮動小数点算術関数
+## 浮動小数点算術関数 {#float-math-functions}
 
 すべての算術関数は `float64` 値で動作します。
 
@@ -1947,7 +1947,7 @@ minf 1.5 2 3
 
 `round 123.555555 3` は `123.556` を返します。
 
-## ネットワーク関数
+## ネットワーク関数 {#network-functions}
 
 Helm には1つのネットワーク関数 `getHostByName` があります。
 
@@ -1957,7 +1957,7 @@ Helm には1つのネットワーク関数 `getHostByName` があります。
 
 この関数を使用するには、helm コマンドラインで `--enable-dns` オプションを渡す必要があります。
 
-## ファイルパス関数
+## ファイルパス関数 {#file-path-functions}
 
 Helm テンプレート関数はファイルシステムへのアクセスを許可しませんが、
 ファイルパスの規則に従う文字列を扱う関数を提供しています。
@@ -2002,7 +2002,7 @@ ext "foo.bar"
 
 ファイルパスが絶対パスかどうかを確認するには `isAbs` を使用します。
 
-## リフレクション関数
+## リフレクション関数 {#reflection-functions}
 
 Helm は初歩的なリフレクションツールを提供しています。
 これらは上級テンプレート開発者が特定の値の基盤となる Go の型情報を
@@ -2017,7 +2017,7 @@ Helm は [kind 関数](#kind-functions) と [type 関数](#type-functions) を�
 それぞれに対する関数セットを提供しています。2つの値を比較するための
 [deepEqual](#deepequal) 関数も提供されています。
 
-### Kind 関数
+### Kind 関数 {#kind-functions}
 
 Kind 関数は2つあります: `kindOf` はオブジェクトの kind を返します。
 
@@ -2034,7 +2034,7 @@ kindIs "int" 123
 
 上記は `true` を返します。
 
-### Type 関数
+### Type 関数 {#type-functions}
 
 型は扱いが少し難しいため、3つの異なる関数があります:
 
@@ -2058,7 +2058,7 @@ deepEqual (list 1 2 3) (list 1 2 3)
 
 上記は `true` を返します。
 
-## セマンティックバージョン関数
+## セマンティックバージョン関数 {#semantic-version-functions}
 
 一部のバージョンスキームは簡単に解析・比較できます。Helm は [SemVer 2](http://semver.org)
 バージョンを扱うための関数を提供しています。これには [semver](#semver) と
@@ -2207,7 +2207,7 @@ API 安定性レベルとして機能します。これは API バージョン�
 - `^0.0` は `>=0.0.0 <0.1.0` と同等
 - `^0` は `>=0.0.0 <1.0.0` と同等
 
-## URL 関数
+## URL 関数 {#url-functions}
 
 Helm には [urlParse](#urlparse)、[urlJoin](#urljoin)、
 [urlquery](#urlquery) 関数が含まれており、URL の部分を扱えます。
@@ -2257,7 +2257,7 @@ URL のクエリ部分に埋め込むのに適しています。
 $var := urlquery "string for query"
 ```
 
-## UUID 関数
+## UUID 関数 {#uuid-functions}
 
 Helm は UUID v4 ユニバーサル一意識別子を生成できます。
 
@@ -2267,7 +2267,7 @@ uuidv4
 
 上記は v4（ランダム生成）タイプの新しい UUID を返します。
 
-## Kubernetes と Chart 関数
+## Kubernetes と Chart 関数 {#kubernetes-and-chart-functions}
 
 Helm には Kubernetes を扱うための関数が含まれています:
 [.Capabilities.APIVersions.Has](#capabilitiesapiversionshas)、
@@ -2293,7 +2293,7 @@ API バージョンまたはリソースがクラスターで利用可能かど�
 詳細は[組み込みオブジェクトのドキュメント](/chart_template_guide/builtin_objects.md)を
 参照してください。
 
-### File 関数
+### File 関数 {#file-functions}
 
 chart 内の特別でないファイルにアクセスできる関数がいくつかあります。
 例えば、アプリケーション設定ファイルにアクセスする場合などです。
