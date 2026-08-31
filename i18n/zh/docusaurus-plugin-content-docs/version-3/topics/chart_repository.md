@@ -6,12 +6,12 @@ sidebar_position: 6
 
 本节介绍如何创建和使用 Helm chart 仓库。从较高层面来说，chart 仓库是用来存储和共享打包好的 chart 的位置。
 
-社区的 Helm chart 仓库位于 [Artifact Hub](https://artifacthub.io/packages/search?kind=0)，欢迎参与贡献。不过 Helm 也支持创建和运行你自己的 chart 仓库。本指南将介绍如何操作。如果你正在考虑创建 chart 仓库，也可以考虑使用 [OCI 注册中心](/zh/docs/topics/registries/)作为替代方案。
+社区的 Helm chart 仓库位于 [Artifact Hub](https://artifacthub.io/packages/search?kind=0)，欢迎参与贡献。不过 Helm 也支持创建和运行你自己的 chart 仓库。本指南将介绍如何操作。如果你正在考虑创建 chart 仓库，也可以考虑使用 [OCI 注册中心](./registries.md)作为替代方案。
 
 ## 先决条件
 
-* 阅读[快速开始](/zh/docs/intro/quickstart/)指南
-* 阅读 [Charts](/zh/docs/topics/charts/) 文档
+* 阅读[快速开始](../intro/quickstart.md)指南
+* 阅读 [Charts](./charts.md) 文档
 
 ## 创建 chart 仓库
 
@@ -23,7 +23,7 @@ _chart 仓库_ 是一个配置了 `index.yaml` 文件和一些已打包 chart �
 
 ### chart 仓库结构
 
-chart 仓库由 chart 包和一个名为 `index.yaml` 的特殊文件组成，该文件包含了仓库中所有 chart 的索引。通常 `index.yaml` 所描述的 chart 也托管在同一服务器上，[来源文件](/zh/docs/topics/provenance/)也是如此。
+chart 仓库由 chart 包和一个名为 `index.yaml` 的特殊文件组成，该文件包含了仓库中所有 chart 的索引。通常 `index.yaml` 所描述的 chart 也托管在同一服务器上，[来源文件](./provenance.md)也是如此。
 
 例如，仓库 `https://example.com/charts` 的布局可能是这样的：
 
@@ -148,7 +148,7 @@ $ git checkout -b gh-pages
 
 在这种配置下，你可以使用默认分支存储 chart 代码，并使用 **gh-pages branch** 作为 chart 仓库，例如：`https://USERNAME.github.io/REPONAME`。演示仓库 [TS Charts](https://github.com/technosophos/tscharts) 可以通过 `https://technosophos.github.io/tscharts/` 访问。
 
-如果你想使用 GitHub Pages 托管 chart 仓库，请查看 [Chart Releaser Action](/zh/docs/howto/chart_releaser_action/)。Chart Releaser Action 是一个 GitHub Action 工作流，可以使用 [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI 工具将 GitHub 项目转换为自托管的 Helm chart 仓库。
+如果你想使用 GitHub Pages 托管 chart 仓库，请查看 [Chart Releaser Action](../howto/chart_releaser_action.md)。Chart Releaser Action 是一个 GitHub Action 工作流，可以使用 [helm/chart-releaser](https://github.com/helm/chart-releaser) CLI 工具将 GitHub 项目转换为自托管的 Helm chart 仓库。
 
 ### 普通 web 服务器
 
@@ -191,7 +191,7 @@ $ helm repo index fantastic-charts --url https://fantastic-charts.storage.google
 
 最后一条命令获取刚创建的本地目录路径和远程 chart 仓库的 URL，并在给定的目录路径中生成 `index.yaml` 文件。
 
-现在你可以使用同步工具或手动方式将 chart 和 index 文件上传到 chart 仓库。如果使用 Google Cloud Storage，可以使用 gsutil 客户端查看[示例工作流](/zh/docs/howto/chart_repository_sync_example/)。对于 GitHub，你可以简单地将 chart 放在合适的目标分支中。
+现在你可以使用同步工具或手动方式将 chart 和 index 文件上传到 chart 仓库。如果使用 Google Cloud Storage，可以使用 gsutil 客户端查看[示例工作流](../howto/chart_repository_sync_example.md)。对于 GitHub，你可以简单地将 chart 放在合适的目标分支中。
 
 ### 向现有仓库添加新 chart
 

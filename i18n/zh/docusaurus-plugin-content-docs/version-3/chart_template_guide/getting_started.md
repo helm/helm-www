@@ -213,4 +213,4 @@ data:
 
 使用 `--dry-run` 可以更方便地测试代码，但无法保证 Kubernetes 会接受你生成的模板。不要仅因为 `--dry-run` 正常运行就认为 chart 可以成功安装。
 
-在 [Chart 模板指南](/docs/chart_template_guide/index.mdx)中，我们会以这里定义的基础 chart 为例，详细介绍 Helm 模板语言。接下来从内置对象开始。
+在 [Chart 模板指南](./index.mdx)中，我们会以这里定义的基础 chart 为例，详细介绍 Helm 模板语言。接下来从内置对象开始。
