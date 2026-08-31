@@ -152,7 +152,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 
 テンプレート関数とパイプラインは、情報を変換して YAML に挿入する強力な方法です。しかし、単に文字列を挿入するだけでなく、より高度なテンプレートロジックが必要な場合もあります。次のセクションでは、テンプレート言語が提供する制御構造について説明します。
 
-## `lookup` 関数の使用
+## `lookup` 関数の使用 {#using-the-lookup-function}
 
 `lookup` 関数を使用すると、実行中のクラスター内のリソースを _ルックアップ_ できます。lookup 関数の構文は `lookup apiVersion, kind, namespace, name -> resource or resource list` です。
 

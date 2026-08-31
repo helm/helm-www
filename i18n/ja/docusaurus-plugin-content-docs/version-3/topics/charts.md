@@ -34,7 +34,7 @@ wordpress/
 
 Helm は `charts/`、`crds/`、`templates/` ディレクトリ、およびリストされたファイル名を予約しています。その他のファイルはそのまま残されます。
 
-## Chart.yaml ファイル
+## Chart.yaml ファイル {#the-chartyaml-file}
 
 `Chart.yaml` ファイルは chart に必須です。以下のフィールドが含まれます:
 
@@ -675,7 +675,7 @@ apache:
 
 また、親 chart のグローバル変数はサブチャートのグローバル変数よりも優先されます。
 
-### スキーマファイル
+### スキーマファイル {#schema-files}
 
 chart メンテナーは、values に構造を定義したい場合があります。これは `values.schema.json` ファイルでスキーマを定義することで実現できます。スキーマは [JSON Schema](https://json-schema.org/) として表現されます。以下のようになります:
 

@@ -185,7 +185,7 @@ dependencies:
 ```
 `dependency update` を実行すると、`oci://localhost:5000/myrepo/mychart:2.7.0` が取得されます。
 
-## Helm chart マニフェスト
+## Helm chart マニフェスト {#helm-chart-manifest}
 
 レジストリに表示される Helm chart マニフェストの例です（`mediaType` フィールドに注目してください）:
 ```json
