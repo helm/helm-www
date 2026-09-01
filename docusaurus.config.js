@@ -64,6 +64,7 @@ const config = {
   projectName: "helm-www", // Usually your repo name.
 
   onBrokenLinks: "throw",
+  onBrokenAnchors: "throw",
 
   i18n: {
     defaultLocale: "en",
