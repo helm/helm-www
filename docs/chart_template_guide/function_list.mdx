@@ -1213,13 +1213,16 @@ algorithm and returns the decoded text.
 Helm includes the following date functions you can use in templates:
 [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
 (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
-[durationRound](#durationround), [htmlDate](#htmldate),
-[htmlDateInZone](#htmldateinzone), [now](#now), [toDate
+[durationDays](#durationdays), [durationHours](#durationhours),
+[durationMicroseconds](#durationmicroseconds),
+[durationMilliseconds](#durationmilliseconds),
+[durationMinutes](#durationminutes),
+[durationNanoseconds](#durationnanoseconds), [durationRound](#durationround),
+[durationRoundTo](#durationroundto), [durationSeconds](#durationseconds),
+[durationTruncateTo](#durationtruncateto), [durationWeeks](#durationweeks),
+[htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone),
+[mustToDuration](#musttoduration), [now](#now), [toDate
 (mustToDate)](#todate-musttodate), and [unixEpoch](#unixepoch).
-
-### now
-
-The current date/time. Use this in conjunction with other date functions.
 
 ### ago
 
@@ -1265,6 +1268,19 @@ Same as `date`, but with a timezone.
 dateInZone "2006-01-02" (now) "UTC"
 ```
 
+### dateModify, mustDateModify
+
+The `dateModify` takes a modification and a date and returns the timestamp.
+
+Subtract an hour and thirty minutes from the current time:
+
+```
+now | dateModify "-1.5h"
+```
+
+If the modification format is wrong `dateModify` will return the date
+unmodified. `mustDateModify` will return an error otherwise.
+
 ### duration
 
 Formats a given amount of seconds as a `time.Duration`.
@@ -1273,6 +1289,76 @@ This returns 1m35s
 
 ```
 duration "95"
+```
+
+### durationDays
+
+Converts a duration to days as a floating-point number.
+
+This returns 1.5
+
+```
+mustToDuration "36h" | durationDays
+```
+
+### durationHours
+
+Converts a duration to hours as a floating-point number.
+
+**Go equivalent:** `time.Duration.Hours()`
+
+This returns 1.5
+
+```
+mustToDuration "90m" | durationHours
+```
+
+### durationMicroseconds
+
+Converts a duration to microseconds as an integer.
+
+**Go equivalent:** `time.Duration.Microseconds()`
+
+This returns 1000000
+
+```
+mustToDuration "1s" | durationMicroseconds
+```
+
+### durationMilliseconds
+
+Converts a duration to milliseconds as an integer.
+
+**Go equivalent:** `time.Duration.Milliseconds()`
+
+This returns 1000
+
+```
+mustToDuration "1s" | durationMilliseconds
+```
+
+### durationMinutes
+
+Converts a duration to minutes as a floating-point number.
+
+**Go equivalent:** `time.Duration.Minutes()`
+
+This returns 1.5
+
+```
+mustToDuration "90s" | durationMinutes
+```
+
+### durationNanoseconds
+
+Converts a duration to nanoseconds as an integer.
+
+**Go equivalent:** `time.Duration.Nanoseconds()`
+
+This returns 1000000
+
+```
+mustToDuration "1ms" | durationNanoseconds
 ```
 
 ### durationRound
@@ -1293,26 +1379,65 @@ This returns 3mo
 durationRound "2400h10m5s"
 ```
 
-### unixEpoch
+### durationRoundTo
 
-Returns the seconds since the unix epoch for a `time.Time`.
+Rounds a duration to the nearest multiple of another duration. The duration to
+round is the first argument and the multiple is the second.
 
-```
-now | unixEpoch
-```
+**Go equivalent:** `time.Duration.Round()`
 
-### dateModify, mustDateModify
-
-The `dateModify` takes a modification and a date and returns the timestamp.
-
-Subtract an hour and thirty minutes from the current time:
+This returns 1h20m0s
 
 ```
-now | dateModify "-1.5h"
+durationRoundTo "1h15m30s" "10m"
 ```
 
-If the modification format is wrong `dateModify` will return the date
-unmodified. `mustDateModify` will return an error otherwise.
+This returns 2h0m0s
+
+```
+durationRoundTo "2h29m" "1h"
+```
+
+### durationSeconds
+
+Converts a duration to seconds as a floating-point number.
+
+**Go equivalent:** `time.Duration.Seconds()`
+
+This returns 90
+
+```
+mustToDuration "1m30s" | durationSeconds
+```
+
+### durationTruncateTo
+
+Truncates a duration toward zero to a multiple of another duration. The duration
+to truncate is the first argument and the multiple is the second.
+
+**Go equivalent:** `time.Duration.Truncate()`
+
+This returns 1h10m0s
+
+```
+durationTruncateTo "1h15m30s" "10m"
+```
+
+This returns 2h0m0s
+
+```
+durationTruncateTo "2h59m" "1h"
+```
+
+### durationWeeks
+
+Converts a duration to weeks as a floating-point number.
+
+This returns 2
+
+```
+mustToDuration "336h" | durationWeeks
+```
 
 ### htmlDate
 
@@ -1331,6 +1456,30 @@ Same as htmlDate, but with a timezone.
 htmlDateInZone (now) "UTC"
 ```
 
+### mustToDuration
+
+`mustToDuration` parses a duration-like value into a `time.Duration` and causes a template failure on error.
+
+**Go equivalent:** `time.ParseDuration`, `time.Duration` construction
+
+Supported inputs include Go duration strings (e.g. `"2h30m"`), numeric strings treated as seconds (e.g. `"1.5"`), and numeric values treated as seconds.
+
+This returns 2h30m0s
+
+```
+mustToDuration "2h30m"
+```
+
+This returns 1.5s
+
+```
+mustToDuration "1.5"
+```
+
+### now
+
+The current date/time. Use this in conjunction with other date functions.
+
 ### toDate, mustToDate
 
 `toDate` converts a string to a date. The first argument is the date layout and
@@ -1342,6 +1491,14 @@ pipe). The example below converts "2017-12-31" to "31/12/2017".
 
 ```
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
+```
+
+### unixEpoch
+
+Returns the seconds since the unix epoch for a `time.Time`.
+
+```
+now | unixEpoch
 ```
 
 ## Dictionaries and Dict Functions
