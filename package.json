@@ -41,7 +41,7 @@
     "@docusaurus/module-type-aliases": "^3.10.1",
     "@docusaurus/types": "^3.10.1",
     "@types/react": "^19.0.0",
-    "baseline-browser-mapping": "^2.10.21",
+    "baseline-browser-mapping": "^2.11.0",
     "jsdom": "^27.0.1",
     "postcss": "^8.5",
     "search-insights": "^2.0.0",
