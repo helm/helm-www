@@ -17,8 +17,8 @@ Gérer ces fichiers à la main, d'un environnement et d'une version à l'autre, 
 source d'erreurs.
 Helm regroupe ces manifestes liés en une seule unité appelée _chart_,
 que vous pouvez versionner, partager, installer et restaurer comme une seule release.
-Vous gérez ainsi une application comme un gestionnaire de paquets système tel que
-Homebrew, apt ou yum gère les logiciels d'un système d'exploitation.
+Vous gérez ainsi une application de la même façon qu'un gestionnaire de paquets
+système tel que Homebrew, apt ou yum gère les logiciels d'un système d'exploitation.
 
 ## Que peut faire Helm ? {#what-can-helm-do}
 
@@ -54,8 +54,8 @@ Pour plus d'informations, consultez [Profils d'utilisateurs](/community/user-pro
 - **Développeur d'outils complémentaires.** Vous créez des outils qui fonctionnent avec Helm,
   comme un linter ou un plugin Helm.
 
-Helm se concentre sur l'application qui s'exécute dans le cluster plutôt qu'au cluster
-lui-même.
+Helm se concentre sur l'application qui s'exécute dans le cluster plutôt que sur le
+cluster lui-même.
 Mettre en place et exploiter un cluster Kubernetes, y compris son plan de contrôle et ses
 nœuds, relève de l'opérateur de cluster et sort du périmètre de Helm.
 
