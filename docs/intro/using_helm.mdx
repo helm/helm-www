@@ -4,10 +4,6 @@ description: Explains the basics of Helm.
 sidebar_position: 4
 ---
 
-import Helm4 from "/docs/_v4-in-progress.mdx"
-
-<Helm4/>
-
 This guide explains the basics of using Helm to manage packages on your
 Kubernetes cluster. It assumes that you have already [installed](/intro/install.mdx) the Helm client.
 
@@ -424,9 +420,6 @@ not a full list of cli flags. To see a description of all flags, just run `helm
   set to 0 as part of rolling update strategy, `--wait` will return as ready as
   it has satisfied the minimum Pod in ready condition.
 - `--no-hooks`: This skips running hooks for the command
-- `--recreate-pods` (only available for `upgrade` and `rollback`): This flag
-  will cause all pods to be recreated (with the exception of pods belonging to
-  deployments). (DEPRECATED in Helm 3)
 
 ## 'helm uninstall': Uninstalling a Release
 
@@ -438,10 +431,10 @@ $ helm uninstall happy-panda
 ```
 
 This will remove the release from the cluster. You can see all of your currently
-deployed releases with the `helm list` command:
+deployed releases with the `helm list --deployed` command:
 
 ```console
-$ helm list
+$ helm list --deployed
 NAME            VERSION UPDATED                         STATUS          CHART
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
 ```
@@ -455,12 +448,12 @@ If you wish to keep a deletion release record, use `helm uninstall
 --keep-history`. Using `helm list --uninstalled` will only show releases that
 were uninstalled with the `--keep-history` flag.
 
-The `helm list --all` flag will show you all release records that Helm has
-retained, including records for failed or deleted items (if `--keep-history` was
-specified):
+Without flags, `helm list` shows every release record that Helm has retained,
+in any status, including records for failed or deleted items (if
+`--keep-history` was specified):
 
 ```console
-$  helm list --all
+$ helm list
 NAME            VERSION UPDATED                         STATUS          CHART
 happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     wordpress-10.4.5.6.0
 inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
