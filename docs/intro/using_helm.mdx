@@ -435,8 +435,8 @@ deployed releases with the `helm list --deployed` command:
 
 ```console
 $ helm list --deployed
-NAME            VERSION UPDATED                         STATUS          CHART
-inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
+NAME            NAMESPACE       REVISION  UPDATED                                 STATUS      CHART           APP VERSION
+inky-cat        default         1         2026-09-28 12:59:46.550369 +0000 UTC    deployed    alpine-0.1.0    3.3
 ```
 
 From the output above, we can see that the `happy-panda` release was
@@ -454,10 +454,10 @@ in any status, including records for failed or deleted items (if
 
 ```console
 $ helm list
-NAME            VERSION UPDATED                         STATUS          CHART
-happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     wordpress-10.4.5.6.0
-inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
-kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
+NAME            NAMESPACE       REVISION  UPDATED                                 STATUS         CHART             APP VERSION
+happy-panda     default         2         2026-09-28 12:47:54.395651 +0000 UTC    uninstalled    wordpress-10.4.5    5.7.1
+inky-cat        default         1         2026-09-28 12:59:46.550369 +0000 UTC    deployed       alpine-0.1.0       3.3
+kindred-angelf  default         2         2026-09-27 16:16:10.766486 +0000 UTC    uninstalled    alpine-0.1.0       3.3
 ```
 
 Note that because releases are now deleted by default, it is no longer possible
