@@ -722,6 +722,7 @@ The following type conversion functions are provided by Helm:
   JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
+- `mustFromJson`: Convert a JSON string to an object, or return an error to the template engine if the string is not valid JSON.
 - `fromJsonArray`: Convert a JSON array to a list.
 - `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 - `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
@@ -831,6 +832,18 @@ greeting: |
 ```
 
 
+### mustFromJson
+
+The `mustFromJson` function takes a JSON string and returns an object (or a list,
+if the JSON is an array) that can be used in templates. Unlike `fromJson`, it
+returns an error to the template engine if the input is not valid JSON, which
+stops rendering.
+
+```yaml
+{{- $person := `{"name": "Bob", "age": 25}` | mustFromJson }}
+greeting: Hi, my name is {{ $person.name }}.
+```
+
 ### fromJsonArray
 
 The `fromJsonArray` function takes a JSON Array and returns a list that can be used in templates.
@@ -917,7 +930,8 @@ Helm includes the following regular expression functions: [regexFind
 (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall),
 [regexReplaceAllLiteral
 (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral),
-[regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit).
+[regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit), and
+[regexQuoteMeta](#regexquotemeta).
 
 ### regexMatch, mustRegexMatch
 
@@ -1010,13 +1024,33 @@ The above produces `[pi a]`
 `regexSplit` panics if there is a problem and `mustRegexSplit` returns an error
 to the template engine if there is a problem.
 
+### regexQuoteMeta
+
+Returns a string that escapes all regular expression metacharacters inside the
+argument text, so that the result matches the text literally.
+
+```
+regexQuoteMeta "1.2.3"
+```
+
+The above produces `1\.2\.3`
+
+This is useful for building a pattern from a value that may contain
+metacharacters:
+
+```
+regexMatch (printf "^%s$" (regexQuoteMeta "[foo]+bar?")) "[foo]+bar?"
+```
+
 ## Cryptographic and Security Functions
 
 Helm provides some advanced cryptographic functions. They include
 [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
-[encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey),
-[genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert),
+[encryptAES](#encryptaes), [genCA](#genca), [genCAWithKey](#gencawithkey),
+[genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert),
+[genSelfSignedCertWithKey](#genselfsignedcertwithkey),
+[genSignedCert](#gensignedcert), [genSignedCertWithKey](#gensignedcertwithkey),
 [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum),
 [sha256sum](#sha256sum), and [sha512sum](#sha512sum).
 
@@ -1148,6 +1182,29 @@ $ca := genCA "foo-ca" 365
 Note that the returned object can be passed to the `genSignedCert` function to
 sign a certificate using this CA.
 
+### genCAWithKey
+
+The `genCAWithKey` function works like `genCA`, but uses a private key you
+provide instead of generating a new one.
+
+It takes the following parameters:
+
+- Subject's common name (cn)
+- Cert validity duration in days
+- A PEM-encoded private key
+
+It returns an object with the following attributes:
+
+- `Cert`: A PEM-encoded certificate
+- `Key`: A PEM-encoded private key
+
+Example:
+
+```
+$key := genPrivateKey "ecdsa"
+$ca := genCAWithKey "foo-ca" 365 $key
+```
+
 ### genSelfSignedCert
 
 The `genSelfSignedCert` function generates a new, self-signed x509 certificate.
@@ -1170,6 +1227,31 @@ Example:
 $cert := genSelfSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365
 ```
 
+### genSelfSignedCertWithKey
+
+The `genSelfSignedCertWithKey` function works like `genSelfSignedCert`, but uses
+a private key you provide instead of generating a new one.
+
+It takes the following parameters:
+
+- Subject's common name (cn)
+- Optional list of IPs; may be nil
+- Optional list of alternate DNS names; may be nil
+- Cert validity duration in days
+- A PEM-encoded private key
+
+It returns an object with the following attributes:
+
+- `Cert`: A PEM-encoded certificate
+- `Key`: A PEM-encoded private key
+
+Example:
+
+```
+$key := genPrivateKey "ecdsa"
+$cert := genSelfSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $key
+```
+
 ### genSignedCert
 
 The `genSignedCert` function generates a new, x509 certificate signed by the
@@ -1188,6 +1270,28 @@ Example:
 ```
 $ca := genCA "foo-ca" 365
 $cert := genSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $ca
+```
+
+### genSignedCertWithKey
+
+The `genSignedCertWithKey` function works like `genSignedCert`, but uses a
+private key you provide for the new certificate instead of generating a new one.
+
+It takes the following parameters:
+
+- Subject's common name (cn)
+- Optional list of IPs; may be nil
+- Optional list of alternate DNS names; may be nil
+- Cert validity duration in days
+- CA (see `genCA`)
+- A PEM-encoded private key
+
+Example:
+
+```
+$ca := genCA "foo-ca" 365
+$key := genPrivateKey "ecdsa"
+$cert := genSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $ca $key
 ```
 
 ### encryptAES
@@ -2212,7 +2316,8 @@ This function requires the `--enable-dns` option to be passed on the helm comman
 While Helm template functions do not grant access to the filesystem, they do
 provide functions for working with strings that follow file path conventions.
 Those include [base](#base), [clean](#clean), [dir](#dir), [ext](#ext), and
-[isAbs](#isabs).
+[isAbs](#isabs), along with their OS-specific variants: [osBase, osClean,
+osDir, osExt, and osIsAbs](#osbase-osclean-osdir-osext-osisabs).
 
 ### base
 
@@ -2252,6 +2357,19 @@ The above returns `.bar`.
 ### isAbs
 
 To check whether a file path is absolute, use `isAbs`.
+
+### osBase, osClean, osDir, osExt, osIsAbs
+
+The `base`, `clean`, `dir`, `ext`, and `isAbs` functions always use forward
+slashes (`/`) as the path separator. The `osBase`, `osClean`, `osDir`, `osExt`,
+and `osIsAbs` functions behave the same way but follow the path conventions of
+the operating system that Helm is running on, such as backslashes (`\`) on Windows.
+
+```
+osBase "foo/bar/baz"
+```
+
+The above returns `baz` on Linux and macOS.
 
 ## Reflection Functions
 
