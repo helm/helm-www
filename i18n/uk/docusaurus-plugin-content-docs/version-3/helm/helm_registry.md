@@ -40,4 +40,4 @@ title: helm registry
 * [helm registry login](/helm/helm_registry_login.md) — вхід до реєстру
 * [helm registry logout](/helm/helm_registry_logout.md) — вихід з реєстру
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

@@ -94,4 +94,4 @@ helm template [NAME] [CHART] [flags]
 
 - [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

@@ -45,4 +45,4 @@ title: helm repo
 * [helm repo remove](/helm/helm_repo_remove.md) — видалити один або кілька репозиторіїв чартів
 * [helm repo update](/helm/helm_repo_update.md) — оновити інформацію про доступні чарти локально з репозиторіїв чартів
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

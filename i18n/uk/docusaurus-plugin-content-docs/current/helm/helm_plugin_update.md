@@ -42,4 +42,4 @@ helm plugin update <plugin>... [flags]
 
 * [helm plugin](/helm/helm_plugin.md) — встановити, переглянути або видалити втулки Helm
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

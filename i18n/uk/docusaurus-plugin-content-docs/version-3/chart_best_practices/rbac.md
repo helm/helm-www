@@ -50,7 +50,12 @@ anotherComponent:
 
 ## Використання ресурсів RBAC {#using-rbac-resources}
 
-`serviceAccount.name` має бути встановлено на імʼя ServiceAccount, яке буде використовуватися доступними ресурсами, створеними чартом. Якщо `serviceAccount.create` дорівнює true, то ServiceAccount з цим імʼям має бути створено. Якщо імʼя не вказано, то імʼя генерується за допомогою шаблону `fullname`. Якщо `serviceAccount.create` дорівнює false, то ServiceAccount не створюється, але він має бути асоційований з тими ж ресурсами, щоб пізніше створені вручну ресурси RBAC, що посилаються на нього, функціонували правильно. Якщо `serviceAccount.create` дорівнює false та імʼя не вказано, то використовується стандартний ServiceAccount.
+`serviceAccount.name` має бути встановлено на імʼя ServiceAccount, яке буде використовуватися доступними ресурсами, створеними чартом.
+
+- `serviceAccount.create` = true → створити ServiceAccount з цим імʼям
+- імʼя не вказано → імʼя генерується за допомогою шаблону `fullname`
+- `serviceAccount.create` = false → не створюється, але асоціюється з тими ж ресурсами
+- `serviceAccount.create` = false та імʼя не вказано → використовується стандартний ServiceAccount
 
 Для ServiceAccount слід використовувати наступний допоміжний шаблон.
 

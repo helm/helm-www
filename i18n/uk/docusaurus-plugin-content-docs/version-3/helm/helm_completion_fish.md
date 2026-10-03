@@ -57,4 +57,4 @@ helm completion fish [прапорці]
 
 * [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

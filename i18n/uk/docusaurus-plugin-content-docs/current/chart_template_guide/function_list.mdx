@@ -1068,13 +1068,21 @@ encryptAES "secretkey" "plaintext"
 
 ## Функції дати {/* #date-functions */}
 
-Helm включає наступні функції дати, які ви можете використовувати в шаблонах: [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration), [durationRound](#durationround), [htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone), [now](#now), [toDate (mustToDate)](#todate-musttodate) та [unixEpoch](#unixepoch).
+Helm включає наступні функції дати, які можна використовувати в шаблонах:
+[ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
+(mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
+[durationDays](#durationdays), [durationHours](#durationhours),
+[durationMicroseconds](#durationmicroseconds),
+[durationMilliseconds](#durationmilliseconds),
+[durationMinutes](#durationminutes),
+[durationNanoseconds](#durationnanoseconds), [durationRound](#durationround),
+[durationRoundTo](#durationroundto), [durationSeconds](#durationseconds),
+[durationTruncateTo](#durationtruncateto), [durationWeeks](#durationweeks),
+[htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone),
+[mustToDuration](#musttoduration), [now](#now), [toDate
+(mustToDate)](#todate-musttodate), та [unixEpoch](#unixepoch).
 
-### now
-
-Поточна дата/час. Використовуйте це разом з іншими функціями дати.
-
-### ago
+### ago {/* #ago */}
 
 Функція `ago` повертає тривалість від часу. Зараз у секундах.
 
@@ -1088,7 +1096,7 @@ ago .CreatedAt
 2h34m7s
 ```
 
-### date
+### date {/* #date */}
 
 Функція `date` форматує дату.
 
@@ -1106,9 +1114,9 @@ now | date "2006-01-02"
 Mon Jan 2 15:04:05 MST 2006
 ```
 
-Запишіть її у потрібному форматі. Вище, `2006-01-02` — це та ж дата, але в потрібному форматі.
+Запишіть її у потрібному форматі. Вище, `2006-01-02` — це та ж дата, але в потрібному форматі.
 
-### dateInZone
+### dateInZone {/* #dateinzone */}
 
 Те ж саме, що і `date`, але з часовою зоною.
 
@@ -1116,7 +1124,19 @@ Mon Jan 2 15:04:05 MST 2006
 dateInZone "2006-01-02" (now) "UTC"
 ```
 
-### duration
+### dateModify, mustDateModify {/* #datemodify-mustdatemodify */}
+
+Функція `dateModify` приймає модифікацію та дату і повертає часову мітку.
+
+Відніміть годину і тридцять хвилин від поточного часу:
+
+```go
+now | dateModify "-1.5h"
+```
+
+Якщо формат модифікації неправильний, `dateModify` поверне дату немодифікованою. `mustDateModify` поверне помилку в іншому випадку.
+
+### duration {/* #duration */}
 
 Форматує задану кількість секунд як `time.Duration`.
 
@@ -1126,7 +1146,77 @@ dateInZone "2006-01-02" (now) "UTC"
 duration "95"
 ```
 
-### durationRound
+### durationDays {/* #durationdays */}
+
+Перетворює тривалість на дні як число з рухомою комою.
+
+Це повертає 1.5
+
+```
+mustToDuration "36h" | durationDays
+```
+
+### durationHours {/* #durationhours */}
+
+Перетворює тривалість на години як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Hours()`
+
+Це повертає 1.5
+
+```
+mustToDuration "90m" | durationHours
+```
+
+### durationMicroseconds {/* #durationmicroseconds */}
+
+Перетворює тривалість на мікросекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Microseconds()`
+
+Це повертає 1000000
+
+```
+mustToDuration "1s" | durationMicroseconds
+```
+
+### durationMilliseconds {/* #durationmilliseconds */}
+
+Перетворює тривалість на мілісекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Milliseconds()`
+
+Це повертає 1000
+
+```
+mustToDuration "1s" | durationMilliseconds
+```
+
+### durationMinutes {/* #durationminutes */}
+
+Перетворює тривалість на хвилини як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Minutes()`
+
+Це повертає 1.5
+
+```
+mustToDuration "90s" | durationMinutes
+```
+
+### durationNanoseconds {/* #durationnanoseconds */}
+
+Перетворює тривалість на наносекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Nanoseconds()`
+
+Це повертає 1000000
+
+```
+mustToDuration "1ms" | durationNanoseconds
+```
+
+### durationRound {/* #durationround */}
 
 Округлює задану тривалість до найзначнішої одиниці. Рядки та `time.Duration` аналізуються як тривалість, тоді як `time.Time` обчислюється як тривалість з моменту.
 
@@ -1142,27 +1232,65 @@ durationRound "2h10m5s"
 durationRound "2400h10m5s"
 ```
 
-### unixEpoch
+### durationRoundTo {/* #durationroundto */}
 
-Повертає кількість секунд з unix-епохи для `time.Time`.
+Округлює тривалість до найближчого кратного іншій тривалості. Перший аргумент — тривалість, яку потрібно округлити, а другий — кратність.
 
-```go
-now | unixEpoch
+**Еквівалент у Go:** `time.Duration.Round()`
+
+Це повертає 1h20m0s
+
+```
+durationRoundTo "1h15m30s" "10m"
 ```
 
-### dateModify, mustDateModify
+Це повертає 2h0m0s
 
-Функція `dateModify` приймає модифікацію та дату і повертає часову мітку.
-
-Відніміть годину і тридцять хвилин від поточного часу:
-
-```go
-now | dateModify "-1.5h"
+```
+durationRoundTo "2h29m" "1h"
 ```
 
-Якщо формат модифікації неправильний, `dateModify` поверне дату немодифікованою. `mustDateModify` поверне помилку в іншому випадку.
+### durationSeconds {/* #durationseconds */}
 
-### htmlDate
+Перетворює тривалість на секунди як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Seconds()`
+
+Це повертає 90
+
+```
+mustToDuration "1m30s" | durationSeconds
+```
+
+### durationTruncateTo {/* #durationtruncateto */}
+
+Обрізає тривалість у бік нуля до кратного іншій тривалості. Перший аргумент — тривалість, яку потрібно обрізати, а другий — кратність.
+
+**Еквівалент у Go:** `time.Duration.Truncate()`
+
+Це повертає 1h10m0s
+
+```
+durationTruncateTo "1h15m30s" "10m"
+```
+
+Це повертає 2h0m0s
+
+```
+durationTruncateTo "2h59m" "1h"
+```
+
+### durationWeeks {/* #durationweeks */}
+
+Перетворює тривалість на тижні як число з рухомою комою.
+
+Це повертає 2
+
+```
+mustToDuration "336h" | durationWeeks
+```
+
+### htmlDate {/* #htmldate */}
 
 Функція `htmlDate` форматує дату для вставки в поле введення дати в HTML.
 
@@ -1170,7 +1298,7 @@ now | dateModify "-1.5h"
 now | htmlDate
 ```
 
-### htmlDateInZone
+### htmlDateInZone {/* #htmldateinzone */}
 
 Те ж саме, що і htmlDate, але з часовою зоною.
 
@@ -1178,7 +1306,31 @@ now | htmlDate
 htmlDateInZone (now) "UTC"
 ```
 
-### toDate, mustToDate
+### mustToDuration {/* #musttoduration */}
+
+`mustToDuration` перетворює значення, схоже на тривалість, на `time.Duration` і спричиняє помилку шаблону в разі помилки.
+
+**Еквівалент у Go:** `time.ParseDuration`, конструювання `time.Duration`
+
+Підтримувані вхідні дані включають рядки тривалості Go (наприклад, `"2h30m"`), числові рядки, які трактуються як секунди (наприклад, `"1.5"`), та числові значення, які трактуються як секунди.
+
+Це повертає 2h30m0s
+
+```
+mustToDuration "2h30m"
+```
+
+Це повертає 1.5s
+
+```
+mustToDuration "1.5"
+```
+
+### now {/* #now */}
+
+Поточна дата/час. Використовуйте це разом з іншими функціями дати.
+
+### toDate, mustToDate {/* #todate-musttodate */}
 
 Функція `toDate` перетворює рядок у дату. Перший аргумент — це макет дати, а другий — рядок дати. Якщо рядок не можна перетворити, він поверне нульове значення. `mustToDate` поверне помилку в разі, якщо рядок не можна перетворити.
 
@@ -1186,6 +1338,14 @@ htmlDateInZone (now) "UTC"
 
 ```go
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
+```
+
+### unixEpoch {/* #unixepoch */}
+
+Повертає кількість секунд з unix-епохи для `time.Time`.
+
+```go
+now | unixEpoch
 ```
 
 ## Словники та функції словників {/* #dictionaries-and-dict-functions */}
