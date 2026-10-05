@@ -1,0 +1,131 @@
+---
+title: Aide-mémoire
+description: Aide-mémoire Helm
+sidebar_position: 5
+default_lang_commit: 7819b0f360bd6067d1c09fecd6c4c96d336979e5
+---
+
+Cet aide-mémoire regroupe toutes les commandes nécessaires pour gérer une application avec Helm.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+### Notions de base {/* #basic-interpretationscontext */}
+
+Chart :
+- Nom de votre chart, s'il a été téléchargé et décompressé.
+- `<repo_name>/<chart_name>`, si le dépôt a été ajouté mais que le chart n'a pas été téléchargé.
+- URL ou chemin absolu vers le chart.
+
+Name :
+- Nom que vous voulez donner à cette installation du chart.
+
+Release :
+- Nom que vous avez attribué à une instance d'installation.
+
+Revision :
+- Valeur renvoyée par la commande `helm history`.
+
+Repo-name :
+- Nom d'un dépôt.
+
+DIR :
+- Nom ou chemin d'un répertoire.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Gestion des charts {/* #chart-management */}
+
+```bash
+helm create <name>                      # Crée un répertoire de chart avec les fichiers et répertoires habituels d'un chart.
+helm package <chart-path>               # Empaquette un chart dans une archive versionnée.
+helm lint <chart>                       # Lance des tests pour examiner un chart et repérer les problèmes éventuels.
+helm show all <chart>                   # Inspecte un chart et affiche son contenu.
+helm show values <chart>                # Affiche le contenu du fichier values.yaml.
+helm pull <chart>                       # Télécharge un chart.
+helm pull <chart> --untar=true          # Avec la valeur true, décompresse le chart après l'avoir téléchargé.
+helm pull <chart> --verify              # Vérifie le paquet avant de l'utiliser.
+helm pull <chart> --version <number>    # Contrainte sur la version du chart à utiliser (par défaut, la plus récente).
+helm dependency list <chart>            # Affiche la liste des dépendances d'un chart.
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Installer et désinstaller des applications {/* #install-and-uninstall-apps */}
+
+```bash
+helm install <name> <chart>                           # Installe le chart sous ce nom.
+helm install <name> <chart> --namespace <namespace>   # Installe le chart dans un namespace donné.
+helm install <name> <chart> --set key1=val1,key2=val2 # Définit des valeurs en ligne de commande (option répétable, ou valeurs séparées par des virgules).
+helm install <name> <chart> --values <yaml-file/url>  # Installe le chart avec les valeurs indiquées.
+helm install <name> <chart> --dry-run=client --debug  # Simule une installation pour valider le chart.
+helm install <name> <chart> --verify                  # Vérifie le paquet avant de l'utiliser.
+helm install <name> <chart> --dependency-update       # Met à jour les dépendances manquantes avant d'installer le chart.
+helm install <name> <chart> --force-replace           # Force la mise à jour des ressources par remplacement.
+helm uninstall <name>                                 # Désinstalle une release du namespace courant (par défaut).
+helm uninstall <release-name> --namespace <namespace> # Désinstalle une release du namespace indiqué.
+```
+------------------------------------------------------------------------------------------------------------------------------------------------
+### Mettre à niveau et restaurer une application {/* #perform-app-upgrade-and-rollback */}
+
+```bash
+helm upgrade <release> <chart>                            # Met à niveau une release.
+helm upgrade <release> <chart> --rollback-on-failure      # Si activé, annule les changements en cas d'échec de la mise à niveau.
+helm upgrade <release> <chart> --dependency-update        # Met à jour les dépendances manquantes avant d'installer le chart.
+helm upgrade <release> <chart> --version <version_number> # Contrainte sur la version du chart à utiliser.
+helm upgrade <release> <chart> --values                   # Valeurs dans un fichier YAML ou une URL (option répétable).
+helm upgrade <release> <chart> --set key1=val1,key2=val2  # Définit des valeurs en ligne de commande (option répétable, ou valeurs séparées par des virgules).
+helm upgrade <release> <chart> --force-replace            # Force la mise à jour des ressources par remplacement.
+helm rollback <release> <revision>                        # Restaure (rollback) une release à une révision donnée.
+helm rollback <release> <revision>  --cleanup-on-fail     # Autorise la suppression des ressources créées par cette restauration (rollback) si elle échoue.
+```
+------------------------------------------------------------------------------------------------------------------------------------------------
+### Lister, ajouter, supprimer et mettre à jour des dépôts {/* #list-add-remove-and-update-repositories */}
+
+```bash
+helm repo add <repo-name> <url>   # Ajoute un dépôt depuis Internet.
+helm repo list                    # Liste les dépôts de charts ajoutés.
+helm repo update                  # Met à jour localement les informations sur les charts disponibles dans les dépôts.
+helm repo remove <repo_name>      # Supprime un ou plusieurs dépôts de charts.
+helm repo index <DIR>             # Lit le répertoire indiqué et génère un fichier d'index à partir des charts trouvés.
+helm repo index <DIR> --merge     # Fusionne l'index généré avec un fichier d'index existant.
+helm search repo <keyword>        # Recherche un mot-clé dans les charts des dépôts.
+helm search hub <keyword>         # Recherche des charts sur Artifact Hub ou sur votre propre instance de hub.
+```
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### Suivi des releases Helm {/* #helm-release-monitoring */}
+
+```bash
+helm list                       # Liste les releases du namespace indiqué, quel que soit leur état (namespace du contexte courant par défaut).
+helm list --all-namespaces      # Liste les releases de tous les namespaces (forme courte : -A).
+helm list -l key1=value1,key2=value2 # Sélecteur (requête sur les labels) pour filtrer, accepte '=', '==' et '!='.
+helm list --date                # Trie par date de release.
+helm list --deployed            # N'affiche que les releases déployées.
+helm list --pending             # N'affiche que les releases en attente.
+helm list --failed              # N'affiche que les releases en échec.
+helm list --uninstalled         # N'affiche que les releases désinstallées (si 'helm uninstall --keep-history' a été utilisé).
+helm list --superseded          # N'affiche que les releases remplacées par une révision plus récente.
+helm list -o yaml               # Affiche la sortie dans le format indiqué. Valeurs possibles : table, json, yaml (table par défaut).
+helm status <release>           # Affiche l'état d'une release.
+helm status <release> --revision <number>   # Si indiqué, affiche l'état de la release à cette révision.
+helm history <release>          # Historique des révisions d'une release.
+helm history <release> --show-rollback-revision # Ajoute une colonne ROLLBACK qui indique la révision ciblée par chaque restauration (rollback).
+helm env                        # Affiche toutes les informations d'environnement utilisées par Helm.
+```
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### Récupérer les informations d'une release {/* #download-release-information */}
+
+```bash
+helm get all <release>      # Résumé lisible des informations d'une release : notes, hooks, valeurs fournies et manifeste généré.
+helm get hooks <release>    # Récupère les hooks d'une release. Les hooks sont au format YAML, séparés par le séparateur YAML '---\n'.
+helm get manifest <release> # Le manifeste est la représentation YAML des ressources Kubernetes générées à partir du ou des charts de cette release. Si un chart dépend d'autres charts, leurs ressources sont aussi incluses dans le manifeste.
+helm get notes <release>    # Affiche les notes fournies par le chart d'une release.
+helm get values <release>   # Récupère le fichier de valeurs d'une release. Utilisez -o pour formater la sortie.
+```
+-------------------------------------------------------------------------------------------------------------------------------------------------
+### Gestion des plugins {/* #plugin-management */}
+
+```bash
+helm plugin install <path/url>      # Installe des plugins.
+helm plugin list                    # Affiche la liste des plugins installés.
+helm plugin update <plugin>         # Met à jour des plugins.
+helm plugin uninstall <plugin>      # Désinstalle un plugin.
+```
+-------------------------------------------------------------------------------------------------------------------------------------------------
