@@ -69,6 +69,7 @@ helm install <name> <chart> --values <yaml-file/url>  # Встановлює ч�
 helm install <name> <chart> --dry-run --debug         # Запускає тестове встановлення для перевірки чарту.
 helm install <name> <chart> --verify                  # Перевіряє пакет перед використанням.
 helm install <name> <chart> --dependency-update       # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
+helm install <name> <chart> --force-replace           # Примусове оновлення ресурсів шляхом заміни
 helm uninstall <name>                                 # Видаляє реліз з поточного (default) простору імен
 helm uninstall <release-name> --namespace <namespace> # Видаляє реліз із зазначеного простору імен
 ```
@@ -84,7 +85,7 @@ helm upgrade <release> <chart> --dependency-update        # Оновлює за�
 helm upgrade <release> <chart> --version <version_number> # Вказує обмеження версії для використання чарту.
 helm upgrade <release> <chart> --values                   # Вказує значення у YAML файлі або URL (можна вказати кілька).
 helm upgrade <release> <chart> --set key1=val1,key2=val2  # Встановлює значення в командному рядку (можна вказати кілька значень).
-helm upgrade <release> <chart> --force                    # Примусове оновлення ресурсів з використанням  стратегії заміни.
+helm upgrade <release> <chart> --force-replace            # Примусове оновлення ресурсів з використанням стратегії заміни.
 helm rollback <release> <revision>                        # Повертає реліз до певної версії.
 helm rollback <release> <revision>  --cleanup-on-fail     # Дозволяє видалення нових ресурсів, створених під час цього відкату, якщо відкат не вдалося здійснити.
 ```

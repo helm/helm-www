@@ -42,4 +42,4 @@ helm registry logout [host] [flags]
 
 * [helm registry](/helm/helm_registry.md) — увійти або вийти з реєстру.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

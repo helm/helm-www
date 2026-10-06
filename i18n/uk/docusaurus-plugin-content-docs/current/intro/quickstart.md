@@ -27,6 +27,23 @@ sidebar_position: 1
 
 Більш детальну інформацію та інші варіанти дивіться в [посібнику з встановлення](/intro/install.mdx).
 
+## Знаходження чартів для встановлення {#find-charts-to-install}
+
+[Artifact Hub](https://artifacthub.io/packages/search?kind=0) — найкраще місце для пошуку Helm-чартів. Він обʼєднує чарти з сотень репозиторіїв і надає пошук, метадані та інформацію про безпеку.
+
+Популярні джерела чартів:
+
+- **OCI-реєстри**: Багато організацій публікують чарти в контейнерних реєстрах, таких як GitHub Container Registry, Docker Hub або реєстри хмарних провайдерів. Їх можна встановити безпосередньо за допомогою префікса `oci://`.
+- **Репозиторії чартів**: Традиційні Helm-репозиторії можна додати командою `helm repo add` і шукати в них за допомогою `helm search repo`.
+
+Щоб шукати Artifact Hub з командного рядка:
+
+```console
+$ helm search hub podinfo
+URL                                                 CHART VERSION  APP VERSION  DESCRIPTION
+https://artifacthub.io/packages/helm/podinfo/po...  6.11.2         6.11.2       Podinfo Helm chart for Kubernetes
+```
+
 ## Ініціалізуйте репозиторій чартів Helm {#initialize-a-helm-chart-repository}
 
 Після підготовки Helm ви можете додати репозиторій чартів. Перевірте [Artifact Hub](https://artifacthub.io/packages/search?kind=0), щоб дізнатися про доступні репозиторії чартів Helm.

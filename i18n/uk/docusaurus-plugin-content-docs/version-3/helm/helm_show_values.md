@@ -55,4 +55,4 @@ helm show values [CHART] [flags]
 
 * [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026
