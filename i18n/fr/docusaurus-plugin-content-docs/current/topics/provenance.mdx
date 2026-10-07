@@ -1,0 +1,308 @@
+---
+title: Provenance et intégrité dans Helm
+description: Décrit comment vérifier l'intégrité et l'origine d'un chart.
+sidebar_position: 5
+default_lang_commit: 9f8c5e5d797d2c708ffc948c00f56aead761013a
+---
+
+import Helm4 from "/docs/_v4-in-progress.mdx"
+
+<Helm4/>
+
+Helm dispose d'outils de provenance qui aident les utilisateurs de charts à
+vérifier l'intégrité et l'origine d'un paquet. En s'appuyant sur des outils
+standard du secteur, basés sur une PKI, GnuPG et des gestionnaires de paquets
+reconnus, Helm peut générer et vérifier des fichiers de signature.
+
+## Vue d'ensemble {/* #overview */}
+
+L'intégrité est établie en comparant un chart à un enregistrement de provenance.
+Ces enregistrements sont stockés dans des _fichiers de provenance_, placés à côté
+du chart empaqueté. Par exemple, si un chart s'appelle `myapp-1.2.3.tgz`, son
+fichier de provenance sera `myapp-1.2.3.tgz.prov`.
+
+Les fichiers de provenance sont générés au moment de l'empaquetage
+(`helm package --sign ...`), et plusieurs commandes peuvent les vérifier,
+notamment `helm install --verify`.
+
+## Le flux de travail {/* #the-workflow */}
+
+Cette section décrit un flux de travail possible pour bien utiliser les données
+de provenance.
+
+Prérequis :
+
+- Une paire de clés PGP valide au format binaire (et non en armure ASCII)
+- L'outil en ligne de commande `helm`
+- Les outils en ligne de commande GnuPG (facultatif)
+- Les outils en ligne de commande Keybase (facultatif)
+
+**REMARQUE :** si votre clé privée PGP est protégée par une phrase de passe,
+elle vous sera demandée pour toutes les commandes qui acceptent l'option `--sign`.
+
+La création d'un chart ne change pas :
+
+```console
+$ helm create mychart
+Creating mychart
+```
+
+Au moment d'empaqueter, ajoutez l'option `--sign` à `helm package`. Indiquez aussi
+le nom sous lequel la clé de signature est connue, et le trousseau qui contient
+la clé privée correspondante :
+
+```console
+$ helm package --sign --key 'John Smith' --keyring path/to/keyring.secret mychart
+```
+
+**Remarque :** la valeur de l'argument `--key` doit être une partie de l'`uid` de
+la clé voulue (tel qu'affiché par `gpg --list-keys`), par exemple le nom ou
+l'adresse e-mail. **L'empreinte _ne peut pas_ être utilisée.**
+
+**ASTUCE :** avec GnuPG, votre trousseau de clés secrètes se trouve dans
+`~/.gnupg/secring.gpg`. Utilisez `gpg --list-secret-keys` pour lister vos clés.
+
+**Attention :** GnuPG v2 stocke votre trousseau de clés secrètes dans un nouveau
+format, `kbx`, à l'emplacement par défaut `~/.gnupg/pubring.kbx`. Utilisez les
+commandes suivantes pour convertir votre trousseau dans l'ancien format gpg :
+
+```console
+$ gpg --export >~/.gnupg/pubring.gpg
+$ gpg --export-secret-keys >~/.gnupg/secring.gpg
+```
+
+Vous devriez maintenant avoir à la fois `mychart-0.1.0.tgz` et
+`mychart-0.1.0.tgz.prov`. Ces deux fichiers devront ensuite être envoyés dans le
+dépôt de charts de votre choix.
+
+Vous pouvez vérifier un chart avec `helm verify` :
+
+```console
+$ helm verify mychart-0.1.0.tgz
+```
+
+Voici à quoi ressemble une vérification qui échoue :
+
+```console
+$ helm verify topchart-0.1.0.tgz
+Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
+```
+
+Pour vérifier un chart au moment de l'installation, utilisez l'option `--verify`.
+
+```console
+$ helm install --generate-name --verify mychart-0.1.0.tgz
+```
+
+Si le trousseau qui contient la clé publique associée au chart signé n'est pas à
+l'emplacement par défaut, vous devrez peut-être l'indiquer avec `--keyring PATH`,
+comme dans l'exemple de `helm package`.
+
+Si la vérification échoue, l'installation est annulée avant même le rendu du
+chart.
+
+### Utiliser des identifiants Keybase.io {/* #using-keybaseio-credentials */}
+
+Le service [Keybase.io](https://keybase.io) permet d'établir facilement une
+chaîne de confiance pour une identité cryptographique. Vous pouvez utiliser vos
+identifiants Keybase pour signer des charts.
+
+Prérequis :
+
+- Un compte Keybase.io configuré
+- GnuPG installé en local
+- La CLI `keybase` installée en local
+
+#### Signer des paquets {/* #signing-packages */}
+
+Commencez par importer vos clés Keybase dans votre trousseau GnuPG local :
+
+```console
+$ keybase pgp export -s | gpg --import
+```
+
+Cette commande convertit votre clé Keybase au format OpenPGP, puis l'importe en
+local dans votre fichier `~/.gnupg/secring.gpg`.
+
+Vous pouvez le vérifier avec `gpg --list-secret-keys`.
+
+```console
+$ gpg --list-secret-keys
+/Users/mattbutcher/.gnupg/secring.gpg
+-------------------------------------
+sec   2048R/1FC18762 2016-07-25
+uid                  technosophos (keybase.io/technosophos) <technosophos@keybase.io>
+ssb   2048R/D125E546 2016-07-25
+```
+
+Notez que votre clé secrète a une chaîne d'identification :
+
+```
+technosophos (keybase.io/technosophos) <technosophos@keybase.io>
+```
+
+C'est le nom complet de votre clé.
+
+Vous pouvez ensuite empaqueter et signer un chart avec `helm package`. Utilisez
+au moins une partie de ce nom dans `--key`.
+
+```console
+$ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
+```
+
+La commande `package` devrait alors produire à la fois un fichier `.tgz` et un
+fichier `.tgz.prov`.
+
+#### Vérifier des paquets {/* #verifying-packages */}
+
+Vous pouvez utiliser une technique similaire pour vérifier un chart signé avec la clé
+Keybase de quelqu'un d'autre. Supposons que vous vouliez vérifier un paquet
+signé par `keybase.io/technosophos`. Utilisez pour cela l'outil `keybase` :
+
+```console
+$ keybase follow technosophos
+$ keybase pgp pull
+```
+
+La première commande suit l'utilisateur `technosophos`. Ensuite,
+`keybase pgp pull` télécharge les clés OpenPGP de tous les comptes que vous
+suivez et les ajoute à votre trousseau GnuPG (`~/.gnupg/pubring.gpg`).
+
+Vous pouvez maintenant utiliser `helm verify`, ou n'importe quelle commande qui
+accepte l'option `--verify` :
+
+```console
+$ helm verify somechart-1.2.3.tgz
+```
+
+### Pourquoi la vérification d'un chart peut échouer {/* #reasons-a-chart-may-not-verify */}
+
+Voici des causes d'échec courantes.
+
+- Le fichier `.prov` est absent ou corrompu. Cela signifie qu'il y a une erreur
+  de configuration, ou que le mainteneur d'origine n'a pas créé de fichier de
+  provenance.
+- La clé qui a servi à signer le fichier n'est pas dans votre trousseau. Cela
+  signifie que l'entité qui a signé le chart ne fait pas partie de celles que
+  vous avez déjà déclarées comme dignes de confiance.
+- La vérification du fichier `.prov` a échoué. Cela signifie qu'il y a un
+  problème avec le chart ou avec les données de provenance.
+- Les empreintes enregistrées dans le fichier de provenance ne correspondent pas
+  à celle de l'archive. Cela signifie que l'archive a été falsifiée.
+
+Si une vérification échoue, il y a lieu de se méfier du paquet.
+
+## Le fichier de provenance {/* #the-provenance-file */}
+
+Le fichier de provenance contient le fichier YAML du chart, ainsi que plusieurs
+informations de vérification. Les fichiers de provenance sont conçus pour être
+générés automatiquement.
+
+Les données de provenance suivantes y sont ajoutées :
+
+* Le fichier du chart (`Chart.yaml`) est inclus, pour que les humains comme les
+  outils voient facilement le contenu du chart.
+* La signature (SHA256, comme pour Docker) du paquet du chart (le fichier
+  `.tgz`) est incluse, et peut servir à vérifier l'intégrité du paquet.
+* L'ensemble du contenu est signé avec l'algorithme d'OpenPGP (voir
+  [Keybase.io](https://keybase.io) pour une méthode émergente qui simplifie la
+  signature et la vérification cryptographiques).
+
+Ensemble, ces éléments apportent aux utilisateurs les garanties suivantes :
+
+* Le paquet lui-même n'a pas été falsifié (somme de contrôle du paquet `.tgz`).
+* L'entité qui a publié ce paquet est connue (grâce à la signature GnuPG/PGP).
+
+Le fichier ressemble à ceci :
+
+```
+Hash: SHA512
+
+apiVersion: v2
+appVersion: "1.16.0"
+description: Sample chart
+name: mychart
+type: application
+version: 0.1.0
+
+...
+files:
+  mychart-0.1.0.tgz: sha256:d31d2f08b885ec696c37c7f7ef106709aaf5e8575b6d3dc5d52112ed29a9cb92
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJdy0ReCRCEO7+YH8GHYgAAfhUIADx3pHHLLINv0MFkiEYpX/Kd
+nvHFBNps7hXqSocsg0a9Fi1LRAc3OpVh3knjPfHNGOy8+xOdhbqpdnB+5ty8YopI
+mYMWp6cP/Mwpkt7/gP1ecWFMevicbaFH5AmJCBihBaKJE4R1IX49/wTIaLKiWkv2
+cR64bmZruQPSW83UTNULtdD7kuTZXeAdTMjAK0NECsCz9/eK5AFggP4CDf7r2zNi
+hZsNrzloIlBZlGGns6mUOTO42J/+JojnOLIhI3Psd0HBD2bTlsm/rSfty4yZUs7D
+qtgooNdohoyGSzR5oapd7fEvauRQswJxOA0m0V+u9/eyLR0+JcYB8Udi1prnWf8=
+=aHfz
+-----END PGP SIGNATURE-----
+```
+
+Notez que la partie YAML contient deux documents (séparés par `...\n`). Le
+premier est le contenu de `Chart.yaml`. Le second contient les sommes de
+contrôle : une table qui associe chaque nom de fichier à l'empreinte SHA-256 de
+son contenu au moment de l'empaquetage.
+
+Le bloc de signature est une signature PGP standard, qui offre une [protection
+contre la falsification](https://www.rossde.com/PGP/pgp_signatures.html).
+
+## Dépôts de charts {/* #chart-repositories */}
+
+Les dépôts de charts servent de collection centralisée de charts Helm.
+
+Les dépôts de charts doivent pouvoir servir les fichiers de provenance en HTTP,
+en réponse à une requête dédiée, et les rendre disponibles au même chemin d'URI que le
+chart.
+
+Par exemple, si l'URL de base d'un paquet est
+`https://example.com/charts/mychart-1.2.3.tgz`, le fichier de provenance, s'il
+existe, DOIT être accessible à l'adresse
+`https://example.com/charts/mychart-1.2.3.tgz.prov`.
+
+Du point de vue de l'utilisateur final, `helm install --verify myrepo/mychart-1.2.3`
+devrait télécharger à la fois le chart et le fichier de provenance, sans
+configuration ni action supplémentaire de sa part.
+
+### Signatures dans les registres OCI {/* #signatures-in-oci-based-registries */}
+
+Lorsque vous publiez des charts dans un [registre OCI](/topics/registries.mdx),
+vous pouvez utiliser le [plugin `helm-sigstore`](https://github.com/sigstore/helm-sigstore/)
+pour publier la provenance sur [sigstore](https://sigstore.dev/). [Comme
+l'explique sa documentation](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md),
+la création de la provenance et la signature avec une clé GPG se font de la même
+façon, mais la commande `helm sigstore upload` permet de publier la provenance
+dans un journal de transparence immuable.
+
+## Établir l'autorité et l'authenticité {/* #establishing-authority-and-authenticity */}
+
+Dans un système fondé sur une chaîne de confiance, il est important de pouvoir
+établir l'autorité d'un signataire. Autrement dit, tout le système décrit
+ci-dessus repose sur le fait que vous faites confiance à la personne qui a signé
+le chart. Et cela signifie que vous devez faire confiance à la clé publique du
+signataire.
+
+L'un des choix de conception de Helm est que le projet Helm ne s'impose pas comme
+un maillon obligatoire de la chaîne de confiance. Nous ne voulons pas être
+« l'autorité de certification » de tous les signataires de charts. Nous
+privilégions au contraire un modèle décentralisé, et c'est en partie pour cela
+que nous avons choisi OpenPGP comme technologie de base. Nous avons donc laissé
+l'étape d'établissement de l'autorité plus ou moins ouverte dans Helm 2 (un
+choix reconduit dans Helm 3).
+
+Voici toutefois quelques pistes et recommandations pour ceux qui veulent utiliser
+le système de provenance :
+
+- La plateforme [Keybase](https://keybase.io) fournit un dépôt public centralisé
+  pour les informations de confiance.
+  - Vous pouvez utiliser Keybase pour stocker vos clés ou récupérer les clés
+    publiques d'autres personnes.
+  - Keybase dispose aussi d'une excellente documentation.
+  - Nous ne l'avons pas testée, mais la fonctionnalité « site web sécurisé » de
+    Keybase pourrait servir à distribuer des charts Helm.
+  - L'idée de base est qu'un « relecteur de charts » officiel signe les charts
+    avec sa clé, puis que le fichier de provenance obtenu soit envoyé dans le
+    dépôt de charts.
+  - Des travaux ont porté sur l'idée d'inclure une liste de clés de signature
+    valides dans le fichier `index.yaml` d'un dépôt.
