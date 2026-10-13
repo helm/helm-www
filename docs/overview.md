@@ -69,7 +69,28 @@ API breaking changes are now complete. Test it, break it, give us feedback! The 
 
 #### Charts v3
 
-Coming soon. v2 charts continue to work unchanged.
+Charts v3 is in early development and available for experimentation.
+v2 charts continue to work unchanged.
+
+To use Charts v3:
+
+1. Set the `HELM_EXPERIMENTAL_CHART_V3` environment variable:
+
+   ```shell
+   export HELM_EXPERIMENTAL_CHART_V3=1
+   ```
+
+1. Create a new chart using the v3 API version:
+
+   ```shell
+   helm create --chart-api-version=v3 mychart
+   ```
+
+:::warning
+Charts v3 is experimental.
+Features might change or be removed before the final release.
+Use for testing and feedback only.
+:::
 
 ### Improvements
 
@@ -91,6 +112,15 @@ The existing flags remain, but emit a deprecated warning:
 - `--force` → `--force-replace`
 
 Update any automation that uses these renamed CLI flags.
+
+#### CLI Flags deprecated
+
+The following flags for `helm template` are deprecated and will be removed in Helm 5:
+
+- `--hide-notes`
+- `--render-subchart-notes`
+
+These flags have no effect because template output never includes notes. They remain in Helm 4 for backwards compatibility but are hidden from help output.
 
 ## Upgrading to Helm 4
 
@@ -116,7 +146,7 @@ While we work hard to make Helm 4 rock-solid for everyone, Helm 4 is brand new. 
 
 ## How to Give Feedback
 
-Find issues? Have suggestions? We want to hear from you before the November release:
+Find issues? Have suggestions? We want to hear from you:
 
 ### GitHub Issues
 
@@ -130,6 +160,6 @@ Join [Kubernetes Slack](https://slack.kubernetes.io/) channels:
 
 ### Weekly Dev Meetings
 
-Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
+Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 
 For more options, see the Helm community [communication details](https://github.com/helm/community/blob/main/communication.md).

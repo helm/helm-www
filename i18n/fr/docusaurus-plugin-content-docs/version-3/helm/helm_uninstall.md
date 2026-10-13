@@ -1,5 +1,6 @@
 ---
 title: helm uninstall
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 
 Désinstalle une release

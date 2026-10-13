@@ -1,5 +1,6 @@
 ---
 title: helm get all
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 télécharge toutes les informations pour une version donnée
 

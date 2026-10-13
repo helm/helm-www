@@ -2,6 +2,7 @@
 title: Custom Resource Definitions
 description: Erstellen und Verwenden von CRDs.
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieser Teil des Best-Practices-Leitfadens behandelt die Erstellung und Verwendung von Custom-Resource-Definition-Objekten.

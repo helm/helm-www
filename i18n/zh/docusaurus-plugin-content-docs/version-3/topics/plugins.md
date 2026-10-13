@@ -219,7 +219,7 @@ helm env
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## 下载器插件
+## 下载器插件 {#downloader-plugins}
 
 默认情况下，Helm 可以使用 HTTP/S 拉取 Chart。从 Helm 2.4.0 开始，插件有一种特殊能力可以从任意来源下载 Chart。
 

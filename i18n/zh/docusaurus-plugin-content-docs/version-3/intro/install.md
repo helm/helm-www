@@ -76,7 +76,8 @@ winget install Helm.Helm
 
 ### 使用 Apt (Debian/Ubuntu)
 
-Helm 社区成员贡献了 Debian/Ubuntu 的 Apt 包，通常会保持最新。感谢 [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) 托管此仓库。
+Helm社区成员为Debian/Ubuntu贡献了一个Apt包。该包
+通常是最新的。感谢[Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian)托管该仓库。
 
 ```console
 sudo apt-get install curl gpg apt-transport-https --yes

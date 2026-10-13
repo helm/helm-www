@@ -1,6 +1,7 @@
 ---
 title: APIs Kubernetes dépréciées
 description: Explique les APIs Kubernetes dépréciées dans Helm
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Kubernetes est un système basé sur les APIs, et l'API évolue au fil du temps
@@ -36,7 +37,7 @@ les utilisateurs de Helm et les mainteneurs de charts doivent être attentifs au
 versions d'API Kubernetes qui ont été dépréciées et dans quelle version de
 Kubernetes elles seront supprimées.
 
-## Mainteneurs de charts
+## Mainteneurs de charts {#chart-maintainers}
 
 Vous devez auditer vos charts pour vérifier les versions d'API Kubernetes qui
 sont dépréciées ou supprimées dans une version de Kubernetes. Les versions d'API
@@ -51,10 +52,10 @@ apiVersion: apps/v1beta1
 kind: Deployment
 ```
 
-## Utilisateurs de Helm
+## Utilisateurs de Helm {#helm-users}
 
 Vous devez auditer les charts que vous utilisez (de la même manière que les
-[mainteneurs de charts](#mainteneurs-de-charts)) et identifier ceux dont les
+[mainteneurs de charts](#chart-maintainers)) et identifier ceux dont les
 versions d'API sont dépréciées ou supprimées dans une version de Kubernetes.
 Pour les charts identifiés, vous devez vérifier si une version plus récente du
 chart (avec des versions d'API supportées) existe ou mettre à jour le chart
@@ -86,7 +87,7 @@ de vos constatations :
     - Vous devez modifier le manifeste de release stocké dans le cluster pour
       mettre à jour les versions d'API vers des APIs supportées. Consultez
       [Mise à jour des versions d'API d'un manifeste de
-      release](#mise-à-jour-des-versions-dapi-dun-manifeste-de-release) pour
+      release](#updating-api-versions-of-a-release-manifest) pour
       plus de détails
 
 > Remarque : Dans tous les cas de mise à jour d'une release Helm avec des APIs
@@ -118,10 +119,10 @@ Kubernetes supprime une version d'API, la bibliothèque client Go de Kubernetes
 ne peut plus parser les objets dépréciés, et Helm échoue donc lors de l'appel à
 la bibliothèque. Helm ne peut malheureusement pas récupérer de cette situation
 et n'est plus en mesure de gérer une telle release. Consultez [Mise à jour des
-versions d'API d'un manifeste de release](#mise-à-jour-des-versions-dapi-dun-manifeste-de-release)
+versions d'API d'un manifeste de release](#updating-api-versions-of-a-release-manifest)
 pour savoir comment récupérer de ce scénario.
 
-## Mise à jour des versions d'API d'un manifeste de release
+## Mise à jour des versions d'API d'un manifeste de release {#updating-api-versions-of-a-release-manifest}
 
 Le manifeste est une propriété de l'objet release Helm qui est stockée dans le
 champ data d'un Secret (par défaut) ou d'un ConfigMap dans le cluster. Le champ

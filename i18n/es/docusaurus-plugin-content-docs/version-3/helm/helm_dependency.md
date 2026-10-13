@@ -1,5 +1,6 @@
 ---
 title: helm dependency
+default_lang_commit: 5882b9b38eba10f3ecb6da25566f9809baf797f0
 ---
 
 gestiona las dependencias de un chart

@@ -2,6 +2,7 @@
 title: Fonctions de template et pipelines
 description: Utilisation des fonctions dans les templates.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Jusqu'à présent, nous avons vu comment insérer des informations dans un template. Mais ces informations sont insérées sans modification. Parfois, nous voulons transformer les données fournies de manière plus exploitable.

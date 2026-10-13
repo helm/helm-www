@@ -220,7 +220,7 @@ helm env
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## ダウンローダープラグイン
+## ダウンローダープラグイン {#downloader-plugins}
 
 デフォルトでは、Helm は HTTP/S を使用して chart を取得できます。Helm 2.4.0 以降、プラグインは任意のソースから chart をダウンロードする特別な機能を持つことができます。
 

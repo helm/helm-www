@@ -12,12 +12,12 @@ import CodeBlock from "@theme/CodeBlock";
 
 Почнемо з створення втулка CLI з середовищем виконання Subprocess.
 
-### Передумови {#prerequisites}
+### Передумови {/* #prerequisites */}
 
 1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
 2. У терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
 
-### 1. Створіть теку для втулка {#1-create-plugin-directory}
+### 1. Створіть теку для втулка {/* #1-create-plugin-directory */}
 
 Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
 
@@ -26,7 +26,7 @@ mkdir -p $HOME/code/helm/plugins/system-info
 cd $HOME/code/helm/plugins/system-info
 ```
 
-### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+### 2. Створіть маніфест втулка {/* #2-create-plugin-manifest */}
 
 ```yaml title="plugin.yaml" showLineNumbers
 apiVersion: v1
@@ -43,7 +43,7 @@ runtimeConfig:
     - command: ${HELM_PLUGIN_DIR}/system-info.sh
 ```
 
-### 3. Створіть скрипт {#3-create-script}
+### 3. Створіть скрипт {/* #3-create-script */}
 
 ```bash title="system-info.sh" showLineNumbers
 #!/bin/bash
@@ -67,7 +67,7 @@ echo "System info complete!"
 chmod +x system-info.sh
 ```
 
-### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+### 4. Встановлення в режимі розробки та тестування {/* #4-install-in-dev-mode-and-test */}
 
 Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
 
@@ -129,7 +129,7 @@ System info complete!
 
 ## Wasm Runtime
 
-### Передумови {#prerequisites-1}
+### Передумови {/* #prerequisites-1 */}
 
 - Передумови з [Subprocess Runtime](#subprocess-runtime)
 - Встановлений Go 1.25

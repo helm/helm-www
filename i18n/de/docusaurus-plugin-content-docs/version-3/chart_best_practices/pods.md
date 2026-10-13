@@ -2,6 +2,7 @@
 title: Pods und PodTemplates
 description: Behandelt die Formatierung von Pod- und PodTemplate-Bereichen in Chart-Manifesten.
 sidebar_position: 6
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieser Teil des Best-Practices-Leitfadens behandelt die Formatierung von Pod- und PodTemplate-Bereichen in Chart-Manifesten.

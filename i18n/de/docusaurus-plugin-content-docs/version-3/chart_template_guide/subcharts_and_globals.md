@@ -2,6 +2,7 @@
 title: Subcharts und globale Werte
 description: Arbeiten mit Subchart-Werten und globalen Werten.
 sidebar_position: 11
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Bis zu diesem Punkt haben wir nur mit einem einzelnen Chart gearbeitet. Aber

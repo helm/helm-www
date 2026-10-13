@@ -2,6 +2,7 @@
 title: "Charts"
 description: "Explica el formato del chart y proporciona una guía básica para crear charts con Helm."
 sidebar_position: 1
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm usa un formato de empaquetado llamado _charts_. Un chart es una colección
@@ -157,13 +158,13 @@ no compatible.
 Las restricciones de versión pueden comprender comparaciones AND separadas por
 espacios, como
 
-```text
+```
 >= 1.13.0 < 1.15.0
 ```
 
 que pueden combinarse con el operador OR `||` como en el siguiente ejemplo
 
-```text
+```
 >= 1.13.0 < 1.14.0 || >= 1.14.1 < 1.15.0
 ```
 
@@ -427,8 +428,6 @@ helm install --set tags.front-end=true --set subchart2.enabled=false
   verdadera, habilite el chart'.
 - Los valores de etiquetas y condiciones deben establecerse en los values
   del chart padre superior.
-- The `tags:` key in values must be a top level key. Globals and nested `tags:`
-  tables are not currently supported.
 - La clave `tags:` en values debe ser una clave de nivel superior. Los `tags:`
   globales y anidados no son soportados actualmente.
 
@@ -449,10 +448,6 @@ formato [hijo-padre](#usando-el-formato-padre-hijo). A continuación se describe
 ejemplos de ambos formatos.
 
 ##### Usando el formato de exportación
-
-If a child chart's `values.yaml` file contains an `exports` field at the root,
-its contents may be imported directly into the parent's values by specifying the
-keys to import as in the example below:
 
 Si el archivo `values.yaml` de un chart secundario contiene un campo de `exports`
 en la raíz, su contenido se puede importar directamente a los values del padre
@@ -497,10 +492,6 @@ final del padre. Si necesita especificar la clave principal, utilice el formato 
 Para acceder a los valores que no están contenidos en la clave `exports` del values
 del chart hijo, deberá especificar la clave de origen del values que se
 importarán (`child`) y la ruta de destino en el values del chart padre (`parent`).
-
-The `import-values` in the example below instructs Helm to take any values found
-at `child:` path and copy them to the parent's values at the path specified in
-`parent:`
 
 Los `import-values` en el siguiente ejemplo le indican a Helm que tome los valores
 encontrados en la ruta `child:` y los copie a los valores del padre en la ruta
@@ -1022,9 +1013,6 @@ renderizará el resto del chart y lo cargará en Kubernetes. Debido a este orden
 la información de CRD está disponible en el objeto `.Capabilities` en las
 plantillas de Helm, y las plantillas de Helm pueden crear nuevas instancias de
 objetos que fueron declarados en los CRD.
-
-For example, if your chart had a CRD for `CronTab` in the `crds/` directory, you
-may create instances of the `CronTab` kind in the `templates/` directory:
 
 Por ejemplo, si su chart tenía un CRD para `CronTab` en el directorio `crds/`,
 puede crear instancias del tipo `CronTab` en el directorio `templates/`:

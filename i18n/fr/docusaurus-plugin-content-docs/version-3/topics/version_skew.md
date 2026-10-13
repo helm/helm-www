@@ -1,6 +1,7 @@
 ---
 title: "Politique de Prise en Charge des Versions Helm"
 description: "Décrit la politique de publication des correctifs de Helm ainsi que le décalage de version maximal pris en charge entre Helm et Kubernetes."
+default_lang_commit: cae045901bf4c67e0bc19063ec893782f60a52ea
 ---
 
 Ce document décrit le décalage de version maximal pris en charge entre Helm et

@@ -11,12 +11,12 @@ import GetVersion from "@site/src/components/GetVersion";
 
 Створімо втулок Getter, який виконується в Subprocess.
 
-### Передумови {#prerequisites}
+### Передумови {/* #prerequisites */}
 
 1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
 2. У терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
 
-### 1. Створіть теку для втулка {#1-create-plugin-directory}
+### 1. Створіть теку для втулка {/* #1-create-plugin-directory */}
 
 Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
 
@@ -25,7 +25,7 @@ mkdir -p $HOME/code/helm/plugins/demo-getter
 cd $HOME/code/helm/plugins/demo-getter
 ```
 
-### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+### 2. Створіть маніфест втулка {/* #2-create-plugin-manifest */}
 
 ```yaml title="plugin.yaml" showLineNumbers
 apiVersion: v1
@@ -43,7 +43,7 @@ runtimeConfig:
         - command: get-demo.sh
 ```
 
-### 3. Створіть скрипт {#3-create-script}
+### 3. Створіть скрипт {/* #3-create-script */}
 
 Втулки Getter відповідають за отримання/завантаження упакованого артефакту, в даному випадку чарта, та повернення шляху до завантаженого пакета. Для демонстрації скористаймося утилітою вашої системи, щоб створити тимчасову теку (вона автоматично очищатиметься з часом), а також командами `helm create` та `helm package`, щоб створити демонстраційний пакет чарта в тимчасовій теці та повернути шлях до пакета:
 
@@ -70,7 +70,7 @@ cat $TMPDIR/$FILENAME-*
 chmod +x get-demo.sh
 ```
 
-### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+### 4. Встановлення в режимі розробки та тестування {/* #4-install-in-dev-mode-and-test */}
 
 Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
 
@@ -117,18 +117,18 @@ LOTS OF YAML, INCLUDING:
 
 ## Wasm Runtime
 
-### Передумови {#prerequisites-1}
+### Передумови {/* #prerequisites-1 */}
 
 - Вимоги з [Subprocess Runtime](#subprocess-runtime)
 - Встановлений Go 1.25
 
 Створіть власний протокол getter, який перетворює URL-адреси `demo://` на `https://`.
 
-### 1. Налаштування репозиторію {#1-set-up-repository}
+### 1. Налаштування репозиторію {/* #1-set-up-repository */}
 
 Створіть новий репозиторій на основі шаблону (або просто клонуйте): https://github.com/gjenkins8/helm-extism-plugin-template
 
-### 2. Оновлення маніфесту втулка {#2-update-plugin-manifest}
+### 2. Оновлення маніфесту втулка {/* #2-update-plugin-manifest */}
 
 Аналогічно до того ж кроку для Subprocess Getter, за винятком того, що ви будете робити це у власному клонованому репозиторії Git.
 
@@ -148,7 +148,7 @@ runtimeConfig:
   timeout: 30000
 ```
 
-### 3. Update `main.go` {#3-update-maingo}
+### 3. Update `main.go` {/* #3-update-maingo */}
 
 Визначте вхідні/вихідні повідомлення втулків:
 
@@ -204,14 +204,14 @@ func runPlugin() error {
 	output, err := demoDownloader(input)
 ```
 
-### 4. Збирання WebAssembly {#4-build-webassembly}
+### 4. Збирання WebAssembly {/* #4-build-webassembly */}
 
 ```bash
 $ make build
 $ ls -la plugin.wasm
 ```
 
-### 5. Встановлення в режимі розробки та тестування {#5-install-in-dev-mode-and-test}
+### 5. Встановлення в режимі розробки та тестування {/* #5-install-in-dev-mode-and-test */}
 
 Те саме, що і крок Втулок CLI у Subprocess.
 

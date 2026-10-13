@@ -2,6 +2,7 @@
 title: Arquitectura Helm
 description: Describe la arquitectura de Helm a alto nivel.
 sidebar_position: 8
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 # Arquitectura de Helm

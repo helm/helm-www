@@ -2,6 +2,7 @@
 title: Prochaines étapes
 description: Conclusion - quelques liens utiles vers d'autres documentations qui vous aideront.
 sidebar_position: 14
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Ce guide est destiné à vous fournir, en tant que développeur de charts, une bonne maîtrise du langage de template de Helm. Il met l'accent sur les aspects techniques du développement de templates.

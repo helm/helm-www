@@ -31,6 +31,20 @@ Note that all of Helm's built-in variables begin with an uppercase letter to
 easily distinguish them from user-defined values: `.Release.Name`,
 `.Capabilities.KubeVersion`.
 
+## Accessing Keys with Dashes
+
+Dashes in value keys (or dependency chart names) cannot be used with Go
+template dot notation, because `-` is parsed as subtraction. Prefer camelCase
+keys in your own charts. When you must read a dashed key (for example a
+dependency named `gitlab-runner`), use the `index` function:
+
+```yaml
+{{ index .Values "gitlab-runner" "checkInterval" }}
+```
+
+See [helm/helm#2192](https://github.com/helm/helm/issues/2192) for more
+discussion.
+
 ## Flat or Nested Values
 
 YAML is a flexible format, and values may be nested deeply or flattened.

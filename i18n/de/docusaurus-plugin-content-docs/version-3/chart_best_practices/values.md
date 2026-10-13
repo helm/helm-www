@@ -2,6 +2,7 @@
 title: Values
 description: Beschreibt, wie Sie Ihre Values strukturieren und verwenden sollten.
 sidebar_position: 2
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dieser Teil des Best-Practices-Leitfadens behandelt die Verwendung von Values. Hier geben wir Empfehlungen, wie Sie Ihre Values strukturieren und verwenden sollten, mit Fokus auf die Gestaltung der `values.yaml`-Datei eines Charts.

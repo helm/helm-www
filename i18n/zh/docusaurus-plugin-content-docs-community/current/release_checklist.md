@@ -295,7 +295,7 @@ The community keeps growing, and we'd love to see you there!
 - Join the discussion in [Kubernetes Slack](https://kubernetes.slack.com):
   - `#helm-users` for questions and just to hang out
   - `#helm-dev` for discussing PRs, code, and bugs
-- Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom.us/j/696660622)
+- Hang out at the Public Developer Call: Thursday, 9:30 Pacific via [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb)
 - Test, debug, and contribute charts: [Artifact Hub helm charts](https://artifacthub.io/packages/search?kind=0)
 
 ## Notable Changes

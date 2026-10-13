@@ -2,6 +2,7 @@
 title: Synchroniser votre dépôt de charts
 description: Explique comment synchroniser vos dépôts de charts locaux et distants.
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 *Remarque : cet exemple est spécifiquement conçu pour un bucket Google Cloud Storage (GCS) qui héberge un dépôt de charts.*

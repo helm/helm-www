@@ -28,6 +28,12 @@ davidkorczynski:
   socials:
     github: davidkorczynski
     linkedin: david-korczynski-875a4957
+georgejenkins:
+  name: George Jenkins
+  image_url: https://github.com/gjenkins8.png
+  page: true
+  socials:
+    github: gjenkins8
 helmmaintainers:
   name: Helm Maintainers
   image_url: https://raw.githubusercontent.com/helm/community/refs/heads/main/art/images/Logo-Tweak-Dark.png

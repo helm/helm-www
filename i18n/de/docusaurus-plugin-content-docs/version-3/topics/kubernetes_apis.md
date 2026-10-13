@@ -1,6 +1,7 @@
 ---
 title: Veraltete Kubernetes-APIs
 description: Erläutert veraltete Kubernetes-APIs im Kontext von Helm
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Kubernetes ist ein API-gesteuertes System. Die API entwickelt sich im Laufe der

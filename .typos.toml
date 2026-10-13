@@ -22,6 +22,7 @@ psuedo = "psuedo"  # Legacy typo in vendor code
 AKS = "AKS"  # Azure Kubernetes Service
 ba = "ba"
 ede = "ede"  # Git commit hash
+fpr = "fpr"  # GnuPG abbreviation for 'fingerprint'
 
 # German words in translations
 Paket = "Paket"  # German for "package"

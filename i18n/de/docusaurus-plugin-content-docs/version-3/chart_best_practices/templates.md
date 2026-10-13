@@ -2,6 +2,7 @@
 title: Templates
 description: Ein genauerer Blick auf Best Practices rund um Templates.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Dieser Teil des Best-Practices-Leitfadens konzentriert sich auf Templates.

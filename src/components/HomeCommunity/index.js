@@ -73,16 +73,16 @@ const BlockList = [
               id="home.community.nextFeatureRelease.version"
               description="Next Feature Release version"
             >
-              v4.2.0
+              v4.3.0
             </Translate>
           </dt>
           <dd>
-            <em><CustomDate dateString="2026-05-13" formatType="month" /></em>
+            <em><CustomDate dateString="2026-09-09" formatType="month" /></em>
           </dd>
 
           <dt>
             <MdCalendarMonth className={styles.icon} />
-            <a href="calendar/release">
+            <a href="/calendar/release">
               <Translate
                 id="home.community.nextFeatureRelease.calendar"
                 description="Release Calendar link"
@@ -207,7 +207,7 @@ const BlockList = [
       <>
         <p>
           <MdVideoCall className={styles.icon} />
-          <a href="https://zoom.us/j/696660622">
+          <a href="https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb">
             <Translate
               id="home.community.developerStandups.time"
               description="Developer Standups day and time"
@@ -409,7 +409,7 @@ const BlockList = [
             description="What do I do? sign your commits description"
             values={{
               signYourCommitsLink: (
-                <a href="blog/helm-dco">
+                <a href="/blog/helm-dco">
                   <Translate
                     id="home.community.contributing.whatDoIDo.signYourCommitsLink"
                     description="Sign your commits link"

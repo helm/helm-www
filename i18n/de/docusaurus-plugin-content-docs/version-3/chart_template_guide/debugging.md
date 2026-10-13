@@ -2,6 +2,7 @@
 title: Templates debuggen
 description: Fehlerbehebung bei Charts, die nicht bereitgestellt werden können.
 sidebar_position: 13
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Das Debuggen von Templates kann schwierig sein, da die gerenderten Templates an

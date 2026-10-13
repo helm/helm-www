@@ -28,7 +28,7 @@ sdkexamples:
 	make -C sdkexamples
 
 serve:
-	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run start --host 0.0.0.0
+	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run start --host 127.0.0.1
 
 IMAGE_NAME ?= helm-www
 

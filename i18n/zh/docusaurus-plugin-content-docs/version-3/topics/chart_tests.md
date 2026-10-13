@@ -22,7 +22,7 @@ Helm chart 中的**测试**位于 `templates/` 目录下，是一个 Job 定义�
 
 ## 测试示例
 
-[helm create](/zh/docs/helm/helm_create/) 命令会自动创建一些目录和文件。要尝试 Helm 测试功能，首先创建一个示例 Helm chart。
+[helm create](../helm/helm_create.md) 命令会自动创建一些目录和文件。要尝试 Helm 测试功能，首先创建一个示例 Helm chart。
 
 ```console
 $ helm create demo
@@ -83,4 +83,4 @@ Phase:          Succeeded
 
 - 可以在单个 yaml 文件中定义多个测试，也可以将测试分布在 `templates/` 目录下的多个 yaml 文件中。
 - 可以将测试套件嵌套放在 `tests/` 目录中（如 `<chart-name>/templates/tests/`）以获得更好的隔离。
-- 测试是一种 [Helm 钩子](/zh/docs/topics/charts_hooks/)，因此 `helm.sh/hook-weight` 和 `helm.sh/hook-delete-policy` 等注解也可以用于测试资源。
+- 测试是一种 [Helm 钩子](./charts_hooks.md)，因此 `helm.sh/hook-weight` 和 `helm.sh/hook-delete-policy` 等注解也可以用于测试资源。

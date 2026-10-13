@@ -2,6 +2,7 @@
 title: "Procedencia e Integridad de Helm"
 description: "Describe cómo verificar la integridad y el origen de un Chart."
 sidebar_position: 5
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm tiene herramientas de procedencia que ayudan a los usuarios de charts a

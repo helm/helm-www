@@ -2,6 +2,7 @@
 title: "Ganchos de Chart"
 description: "Describe como trabajar con ganchos de chart."
 sidebar_position: 2
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Helm proporciona un mecanismo de _gancho_ (hook) que permite a los desarrolladores

@@ -2,6 +2,7 @@
 title: Nächste Schritte
 description: Abschluss - einige nützliche Hinweise auf weitere Dokumentation, die Ihnen helfen wird.
 sidebar_position: 14
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Diese Anleitung soll Ihnen als Chart-Entwickler ein fundiertes Verständnis

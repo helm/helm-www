@@ -1,5 +1,6 @@
 ---
 title: helm get metadata
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 Cette commande récupère les métadonnées pour une version donnée
 

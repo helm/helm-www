@@ -2,6 +2,7 @@
 title: Plantillas con Nombre
 description: Cómo definir plantillas con nombre.
 sidebar_position: 9
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Ha llegado el momento de ir más allá de una sola plantilla y comenzar a crear
@@ -314,7 +315,7 @@ Para solucionar este caso, Helm proporciona una alternativa a `template` que
 importará el contenido de una plantilla al pipeline actual donde puede pasarse
 a otras funciones en el pipeline.
 
-Aquí está el ejemplo anterior, corregido para usar `indent` para indentar la
+Aquí está el ejemplo anterior, corregido para usar `nindent` para indentar la
 plantilla `mychart.app` correctamente:
 
 ```yaml
@@ -323,13 +324,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Ahora el YAML producido está correctamente indentado para cada sección:

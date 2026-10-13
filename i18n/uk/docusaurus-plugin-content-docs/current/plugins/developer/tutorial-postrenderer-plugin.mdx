@@ -12,13 +12,13 @@ import CodeBlock from "@theme/CodeBlock";
 
 Створімо втулок Postrenderer, який виконується в Subprocess.
 
-### Передумови {#prerequisites}
+### Передумови {/* #prerequisites */}
 
 1. Встановіть останню версію Helm 4: **<GetVersion majorVersion="4" label={false} link={true} />**
 2. В терміналі створіть аліас `helm` для завантаженої версії. Команда `helm version --short` повинна показати правильну версію Helm у цьому терміналі.
 3. Встановіть `mikefarah/yq`: https://github.com/mikefarah/yq/#install
 
-### 1. Створіть теку для втулка {#1-create-plugin-directory}
+### 1. Створіть теку для втулка {/* #1-create-plugin-directory */}
 
 Ви можете створити її в будь-якому місці вашої файлової системи. Наприклад:
 
@@ -27,7 +27,7 @@ mkdir -p $HOME/code/helm/plugins/label-injector
 cd $HOME/code/helm/plugins/label-injector
 ```
 
-### 2. Створіть маніфест втулка {#2-create-plugin-manifest}
+### 2. Створіть маніфест втулка {/* #2-create-plugin-manifest */}
 
 ```yaml title="plugin.yaml" showLineNumbers
 apiVersion: v1
@@ -40,7 +40,7 @@ runtimeConfig:
     - command: ${HELM_PLUGIN_DIR}/inject-labels.sh
 ```
 
-### 3. Створіть скрипт {#3-create-script}
+### 3. Створіть скрипт {/* #3-create-script */}
 
 ```bash title="inject-labels.sh" showLineNumbers
 #!/usr/bin/env sh
@@ -54,7 +54,7 @@ cat <&0 | yq '.metadata.labels.postrendered-by = "helm-label-injector-plugin"'
 chmod +x inject-labels.sh
 ```
 
-### 4. Встановлення в режимі розробки та тестування {#4-install-in-dev-mode-and-test}
+### 4. Встановлення в режимі розробки та тестування {/* #4-install-in-dev-mode-and-test */}
 
 Встановлення втулка з вашої файлової системи відбувається в локальному режимі розробки. Це дозволяє обійти перевірку або підтвердження походження:
 
@@ -107,7 +107,7 @@ metadata:
 
 ## Wasm Runtime
 
-### Передумови {#prerequisites-1}
+### Передумови {/* #prerequisites-1 */}
 
 - Вимоги з [Subprocess Runtime](#subprocess-runtime)
 - Встановлений Go 1.25
