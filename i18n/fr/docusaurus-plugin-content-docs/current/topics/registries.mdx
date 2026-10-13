@@ -1,0 +1,272 @@
+---
+title: Utiliser des registres basés sur OCI
+description: Décrit comment utiliser OCI pour distribuer des charts.
+sidebar_position: 7
+default_lang_commit: 12e1514477c5047939689bccc80cc1c66b30444f
+---
+
+import Helm4 from "/docs/_v4-in-progress.mdx"
+
+<Helm4/>
+
+Il est recommandé d'utiliser des registres de conteneurs compatibles
+[OCI](https://www.opencontainers.org/) pour stocker et partager des charts
+empaquetés.
+
+## Utiliser un registre basé sur OCI {/* #using-an-oci-based-registry */}
+
+### Dépôts Helm dans des registres basés sur OCI {/* #helm-repositories-in-oci-based-registries */}
+
+Un [dépôt Helm](/topics/chart_repository.md) permet d'héberger et de distribuer
+des charts Helm empaquetés. Un registre basé sur OCI peut contenir zéro, un ou
+plusieurs dépôts Helm, et chacun de ces dépôts peut contenir zéro, un ou
+plusieurs charts Helm empaquetés.
+
+### Utiliser des registres hébergés {/* #use-hosted-registries */}
+
+Plusieurs registres de conteneurs hébergés compatibles OCI peuvent accueillir vos
+charts Helm. Par exemple :
+
+- [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
+- [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Cloudsmith](https://help.cloudsmith.io/docs/oci-repository)
+- [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
+- [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
+- [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
+- [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
+- [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
+- [RepoFlow](https://docs.repoflow.io/PackageTypes/helm#oci-helm-support)
+
+Suivez la documentation de votre fournisseur de registre hébergé pour créer et
+configurer un registre compatible OCI.
+
+**Remarque :** vous pouvez exécuter [Docker Registry](https://docs.docker.com/registry/deploying/)
+ou [`zot`](https://github.com/project-zot/zot), qui sont des registres basés sur
+OCI, sur votre poste de développement. Un registre basé sur OCI exécuté sur votre
+poste de développement ne doit servir qu'à des tests.
+
+### Signer des charts basés sur OCI avec Sigstore {/* #using-sigstore-to-sign-oci-based-charts */}
+
+Le plugin [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) permet
+d'utiliser [Sigstore](https://sigstore.dev/) pour signer des charts Helm avec les
+mêmes outils que ceux utilisés pour signer les images de conteneurs. C'est une
+alternative à la [provenance basée sur GPG](/topics/provenance.mdx) prise en
+charge par les [dépôts de charts](/topics/chart_repository.md) classiques.
+
+Pour en savoir plus sur l'utilisation du plugin `helm sigstore`, consultez
+[la documentation de ce projet](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
+
+## Commandes pour travailler avec les registres {/* #commands-for-working-with-registries */}
+
+### La sous-commande `registry` {/* #the-registry-subcommand */}
+
+#### `login` {/* #login */}
+
+Se connecter à un registre (avec saisie manuelle du mot de passe)
+
+```console
+$ helm registry login -u myuser localhost:5000
+Password:
+Login succeeded
+```
+
+L'hôte doit se limiter au nom d'hôte du registre, éventuellement suivi d'un
+port. N'indiquez ni schéma d'URL ni chemin :
+
+| Exemple | Valide |
+|---------|--------|
+| `ghcr.io` | Oui |
+| `localhost:5000` | Oui |
+| `https://ghcr.io` | Non : schéma interdit |
+| `ghcr.io/myrepo` | Non : chemin interdit |
+
+#### `logout` {/* #logout */}
+
+Se déconnecter d'un registre
+
+```console
+$ helm registry logout localhost:5000
+Logout succeeded
+```
+
+### La sous-commande `push` {/* #the-push-subcommand */}
+
+Téléverser un chart vers un registre basé sur OCI :
+
+```console
+$ helm push mychart-0.1.0.tgz oci://localhost:5000/helm-charts
+Pushed: localhost:5000/helm-charts/mychart:0.1.0
+Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
+```
+
+La sous-commande `push` s'utilise uniquement avec des fichiers `.tgz` créés au
+préalable avec `helm package`.
+
+Quand vous téléversez un chart vers un registre OCI avec `helm push`, la
+référence doit commencer par `oci://` et ne doit contenir ni le nom de base ni le
+tag.
+
+Le nom de base de la référence au registre est déduit du nom du chart, et le tag
+de la version sémantique du chart. C'est pour l'instant une exigence stricte.
+
+Certains registres demandent de créer au préalable le dépôt, le namespace (s'il
+est indiqué), ou les deux. Sinon, l'opération `helm push` échoue avec une erreur.
+
+Si vous avez créé un [fichier de provenance](/topics/provenance.mdx) (`.prov`) et
+qu'il se trouve à côté du fichier `.tgz` du chart, il est automatiquement
+téléversé vers le registre lors du `push`. Le
+[manifeste du chart Helm](#helm-chart-manifest) contient alors une couche
+supplémentaire.
+
+Les utilisateurs du [plugin helm-push](https://github.com/chartmuseum/helm-push)
+(qui sert à téléverser des charts vers
+[ChartMuseum](/topics/chart_repository.md#chartmuseum-repository-server))
+peuvent rencontrer des problèmes, car ce plugin entre en conflit avec la nouvelle
+sous-commande `push` intégrée. Depuis la v0.10.0, le plugin a été renommé
+en `cm-push`.
+
+### Autres sous-commandes {/* #other-subcommands */}
+
+Le protocole `oci://` est aussi pris en charge par d'autres sous-commandes. En
+voici la liste complète :
+
+- `helm pull`
+- `helm push`
+- `helm show `
+- `helm template`
+- `helm install`
+- `helm upgrade`
+
+Le nom de base (le nom du chart) de la référence au registre *est* inclus pour
+toute action qui télécharge un chart (contrairement à `helm push`, où il est
+omis).
+
+Voici quelques exemples d'utilisation de ces sous-commandes avec des charts
+basés sur OCI :
+
+```
+$ helm pull oci://localhost:5000/helm-charts/mychart --version 0.1.0
+Pulled: localhost:5000/helm-charts/mychart:0.1.0
+Digest: sha256:0be7ec9fb7b962b46d81e4bb74fdcdb7089d965d3baca9f85d64948b05b402ff
+
+$ helm show all oci://localhost:5000/helm-charts/mychart --version 0.1.0
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for Kubernetes
+name: mychart
+...
+
+$ helm template myrelease oci://localhost:5000/helm-charts/mychart --version 0.1.0
+---
+# Source: mychart/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+...
+
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart --version 0.1.0
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+...
+
+$ helm upgrade myrelease oci://localhost:5000/helm-charts/mychart --version 0.2.0
+Release "myrelease" has been upgraded. Happy Helming!
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:12:05 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+NOTES:
+...
+```
+
+## Installer des charts par digest {/* #installing-charts-with-digest */}
+
+Installer un chart avec son digest est plus sûr qu'avec un tag, car un digest est
+immuable. Le digest est indiqué dans l'URI du chart :
+
+```
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart@sha256:52ccaee6d4dd272e54bfccda77738b42e1edf0e4a20c27e23f0b6c15d01aef79
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+...
+```
+
+## Déclarer des dépendances {/* #specifying-dependencies */}
+
+Les dépendances d'un chart peuvent être récupérées depuis un registre avec la
+sous-commande `dependency update`.
+
+Le champ `repository` d'une entrée de `Chart.yaml` contient la référence au
+registre, sans le nom de base :
+
+```
+dependencies:
+  - name: mychart
+    version: "2.7.0"
+    repository: "oci://localhost:5000/myrepo"
+```
+Lors de l'exécution de `dependency update`, Helm récupère
+`oci://localhost:5000/myrepo/mychart:2.7.0`.
+
+## Manifeste du chart Helm {/* #helm-chart-manifest */}
+
+Exemple de manifeste de chart Helm tel qu'il est représenté dans un registre
+(notez les champs `mediaType`) :
+```json
+{
+  "schemaVersion": 2,
+  "config": {
+    "mediaType": "application/vnd.cncf.helm.config.v1+json",
+    "digest": "sha256:8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111",
+    "size": 117
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.content.v1.tar+gzip",
+      "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
+      "size": 2487
+    }
+  ]
+}
+```
+
+L'exemple suivant contient un
+[fichier de provenance](/topics/provenance.mdx)
+(notez la couche supplémentaire) :
+
+```json
+{
+  "schemaVersion": 2,
+  "config": {
+    "mediaType": "application/vnd.cncf.helm.config.v1+json",
+    "digest": "sha256:8ec7c0f2f6860037c19b54c3cfbab48d9b4b21b485a93d87b64690fdb68c2111",
+    "size": 117
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.content.v1.tar+gzip",
+      "digest": "sha256:1b251d38cfe948dfc0a5745b7af5ca574ecb61e52aed10b19039db39af6e1617",
+      "size": 2487
+    },
+    {
+      "mediaType": "application/vnd.cncf.helm.chart.provenance.v1.prov",
+      "digest": "sha256:3e207b409db364b595ba862cdc12be96dcdad8e36c59a03b7b3b61c946a5741a",
+      "size": 643
+    }
+  ]
+}
+```
+
+## Migrer depuis des dépôts de charts {/* #migrating-from-chart-repos */}
+
+Pour migrer depuis des [dépôts de charts](/topics/chart_repository.md) classiques
+(basés sur index.yaml), il suffit d'utiliser `helm pull`, puis `helm push` pour
+téléverser les fichiers `.tgz` obtenus vers un registre.
