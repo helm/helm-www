@@ -34,7 +34,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
-    "simple-git": "^3.36.0"
+    "simple-git": "^4.0.1"
   },
   "devDependencies": {
     "@algolia/client-search": "^5.0.0",
