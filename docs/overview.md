@@ -34,6 +34,8 @@ This is so login can be scoped at different levels on a registry in the future.
 #### Plugin System Overhaul
 Helm 4 introduces an optional WebAssembly-based runtime for enhanced security and expanded capabilities. Existing plugins continue to work, but the new runtime opens up more of Helm's core behavior for plugin customization. Helm 4 launches with three plugin types: CLI plugins, getter plugins, and post-renderer plugins, plus a system that enables new plugin types for customizing additional core functionality. See [HIP-0026 plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md) and [Helm 4 example plugins](https://github.com/scottrigby/h4-example-plugins).
 
+If you maintain a Helm 3 plugin, see [Migrate v3 Plugins to Helm 4](/plugins/migrate.md).
+
 :::tip
 Existing plugins work as before. The new WebAssembly runtime is optional but recommended for enhanced security.
 :::

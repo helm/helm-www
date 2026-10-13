@@ -42,6 +42,8 @@ Starting with Helm 4, the `plugin.yaml` file included with every plugin now has 
 
 Legacy plugins (prior to API versioning) will still be supported throughout the life of Helm 4, so your existing plugins from Helm 3 will still work until Helm 5. However, you should ask authors of your favorite plugins to update their plugins to the new versioning system.
 
+To move an existing plugin to the new format, see [Migrate v3 Plugins to Helm 4](/plugins/migrate.md).
+
 If you are a plugin developer, read more about this in the [Plugins Developer Guide](/plugins/developer/index.mdx).
 
 ## Plugin Runtimes
