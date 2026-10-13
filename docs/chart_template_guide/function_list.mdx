@@ -253,7 +253,7 @@ Helm includes the following string functions: [abbrev](#abbrev),
 [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat),
 [contains](#contains), [hasPrefix](#hasprefix-and-hassuffix),
 [hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials),
-[kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent),
+[join](#join), [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent),
 [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf),
 [println](#println), [quote](#quote-and-squote),
 [randAlpha](#randalphanum-randalpha-randnumeric-and-randascii),
@@ -261,7 +261,8 @@ Helm includes the following string functions: [abbrev](#abbrev),
 [randAscii](#randalphanum-randalpha-randnumeric-and-randascii),
 [randNumeric](#randalphanum-randalpha-randnumeric-and-randascii),
 [repeat](#repeat), [replace](#replace), [shuffle](#shuffle),
-[snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr),
+[snakecase](#snakecase), [split](#split), [splitList](#splitlist),
+[splitn](#splitn), [squote](#quote-and-squote), [substr](#substr),
 [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall),
 [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc),
 [untitle](#untitle), [upper](#upper), [wrap](#wrap), and [wrapWith](#wrapwith).
@@ -703,6 +704,58 @@ shuffle "hello"
 ```
 
 The above will randomize the letters in `hello`, perhaps producing `oelhl`.
+
+### split
+
+Split a string into a dictionary of strings, using a separator. The keys of
+the dictionary are `_0`, `_1`, `_2`, and so on.
+
+```
+$parts := split "$" "foo$bar$baz"
+```
+
+The above produces `map[_0:foo _1:bar _2:baz]`. You can then read each part by
+its key:
+
+```
+$parts._0
+```
+
+The above produces `foo`.
+
+### splitList
+
+Split a string into a list of strings, using a separator.
+
+```
+splitList "$" "foo$bar$baz"
+```
+
+The above produces `[foo bar baz]`.
+
+### splitn
+
+Works the same way as [split](#split), but stops splitting after `n` parts. The
+last part holds the rest of the string.
+
+```
+splitn "$" 2 "foo$bar$baz"
+```
+
+The above produces `map[_0:foo _1:bar$baz]`.
+
+### join
+
+Join a list of strings into a single string, using a separator.
+
+```
+list "hello" "world" | join "-"
+```
+
+The above produces `hello-world`.
+
+Items that are not strings are converted to strings before they are joined, so
+`list 1 2 3 | join ","` produces `1,2,3`.
 
 ## Type Conversion Functions
 
