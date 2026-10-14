@@ -1,5 +1,6 @@
 ---
 title: helm verify
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 Vérifie que le chart à l'emplacement donné a été signé et est valide
 

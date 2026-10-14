@@ -25,6 +25,9 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
+      - name: Check community HIP allowlist is in sync with upstream
+        run: node scripts/util/check-community-hip-drift.mjs
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 

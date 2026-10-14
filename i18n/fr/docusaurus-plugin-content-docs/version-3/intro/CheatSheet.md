@@ -2,6 +2,7 @@
 title: Cheat Sheet
 description: Helm cheatsheet
 sidebar_position: 4
+default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
 La cheatsheet d'Helm contient toutes les commandes nécessaires pour gérer une application avec Helm.

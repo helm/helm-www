@@ -1,5 +1,6 @@
 ---
 title: helm create
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 créer un nouveau chart avec le nom donné
 

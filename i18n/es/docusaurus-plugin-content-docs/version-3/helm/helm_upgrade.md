@@ -1,5 +1,6 @@
 ---
 title: helm upgrade
+default_lang_commit: 0b2144b0b330eb7e45b1cb37342186114dd02f50
 ---
 
 actualiza un release a una nueva versión de un chart

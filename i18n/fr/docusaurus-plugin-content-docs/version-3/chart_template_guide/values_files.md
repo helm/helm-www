@@ -2,6 +2,7 @@
 title: Fichiers Values
 description: Instructions sur l'utilisation du flag --values.
 sidebar_position: 4
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dans la section précédente, nous avons examiné les objets intégrés que les templates Helm proposent. L'un de ces objets intégrés est `Values`. Cet objet donne accès aux valeurs passées dans le chart. Son contenu provient de plusieurs sources :

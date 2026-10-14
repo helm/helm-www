@@ -24,7 +24,7 @@ It’s often asked: “Is Helm Popular?”. Based on responses from attendees at
 For those interested in playing a role in the next version of Helm (we’d love to have you), there are several different ways to participate!
 
 1. Join the weekly Helm 4 Roadmap meeting Fridays at 19:00 UTC where members of the community share ideas, develop solutions, and collaborate surrounding the next version of Helm. 
-    1. [Zoom Meeting](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
+    1. [Zoom Meeting](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 2. Participate in discussions in the [#helm-dev](https://kubernetes.slack.com/archives/C51E88VDG) channel on the Kubernetes Slack, where members of the Helm community collaborate on Helm development efforts, including those focused on Helm version 4.
 3. Submit an [issue](https://github.com/helm/helm/issues) within the Helm [GitHub repository](https://github.com/helm/helm).
 4. Follow [@HelmPack](https://x.com/HelmPack) on Twitter/X for project updates.

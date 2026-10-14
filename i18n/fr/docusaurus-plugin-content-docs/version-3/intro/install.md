@@ -2,6 +2,7 @@
 title: Installation de Helm
 description: Apprenez à installer Helm et à le prendre en main.
 sidebar_position: 2
+default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
 Ce guide vous explique comment installer la CLI (Interface de Ligne de Commande) Helm. Helm peut être installé soit à partir des sources, soit à partir des releases binaires pré-construites.

@@ -1,5 +1,6 @@
 ---
 title: helm rollback
+default_lang_commit: aab1f270fe5c30541a77bdec647b2b3677eeea13
 ---
 Restaurer une release vers une révision précédente
 
@@ -9,7 +10,7 @@ Cette commande restaure une release vers une révision précédente.
 
 Le premier argument de cette commande est le nom de la release et le second est la révision (numéro de version). Si cet argument est omis ou défini sur 0, la release précédente sera restaurée.
 
-Pour voir les numéros de révision, lancez la commande `helm history <RELEASE>`.
+Pour voir les numéros de révision, lancez la commande `helm history RELEASE`.
 
 
 ```

@@ -2,6 +2,7 @@
 title: "Charts de Biblioteca"
 description: "Explica los charts de biblioteca y ejemplos de uso."
 sidebar_position: 4
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Un chart de biblioteca es un tipo de [chart de Helm](/topics/charts.md)

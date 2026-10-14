@@ -160,7 +160,7 @@ Helm chart を提供するために通常の Web サーバーを設定するに�
 
 たとえば、`$WEBROOT/charts` から chart を提供したい場合は、Web ルートに `charts/` ディレクトリがあることを確認し、そのフォルダ内にインデックスファイルと chart を配置します。
 
-### ChartMuseum リポジトリサーバー
+### ChartMuseum リポジトリサーバー {#chartmuseum-repository-server}
 
 ChartMuseum は Go（Golang）で書かれたオープンソースの Helm Chart リポジトリサーバーで、[Google Cloud Storage](https://cloud.google.com/storage/)、[Amazon S3](https://aws.amazon.com/s3/)、[Microsoft Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/)、[Alibaba Cloud OSS Storage](https://www.alibabacloud.com/product/oss)、[Openstack Object Storage](https://developer.openstack.org/api-ref/object-store/)、[Oracle Cloud Infrastructure Object Storage](https://cloud.oracle.com/storage)、[Baidu Cloud BOS Storage](https://cloud.baidu.com/product/bos.html)、[Tencent Cloud Object Storage](https://intl.cloud.tencent.com/product/cos)、[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/)、[Minio](https://min.io/)、[etcd](https://etcd.io/) などのクラウドストレージバックエンドをサポートしています。
 

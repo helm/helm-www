@@ -35,7 +35,7 @@ wordpress/
 
 Helm reserviert die Verwendung der Verzeichnisse `charts/`, `crds/` und `templates/` sowie der aufgelisteten Dateinamen. Andere Dateien bleiben unverändert.
 
-## Die Chart.yaml-Datei
+## Die Chart.yaml-Datei {#the-chartyaml-file}
 
 Die `Chart.yaml`-Datei ist für ein Chart erforderlich. Sie enthält die folgenden Felder:
 
@@ -675,7 +675,7 @@ Wenn ein Subchart eine globale Variable deklariert, wird diese _abwärts_ (an di
 
 Globale Variablen von übergeordneten Charts haben Vorrang vor den globalen Variablen von Subcharts.
 
-### Schema-Dateien
+### Schema-Dateien {#schema-files}
 
 Manchmal möchte ein Chart-Maintainer eine Struktur für seine Values definieren. Dies kann durch die Definition eines Schemas in der `values.schema.json`-Datei erfolgen. Ein Schema wird als [JSON Schema](https://json-schema.org/) dargestellt. Es könnte etwa so aussehen:
 

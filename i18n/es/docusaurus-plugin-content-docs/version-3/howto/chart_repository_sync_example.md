@@ -2,6 +2,7 @@
 title: "Sincronizar su Repositorio de Charts"
 description: "Describe cómo sincronizar sus repositorios de charts locales y remotos."
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 *Nota: Este ejemplo es específico para un bucket de Google Cloud Storage (GCS)

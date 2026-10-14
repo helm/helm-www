@@ -1,6 +1,7 @@
 ---
 title: APIs de Kubernetes Obsoletas
 description: Explica las APIs de Kubernetes obsoletas en Helm
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Kubernetes es un sistema basado en APIs y estas evolucionan con el tiempo para

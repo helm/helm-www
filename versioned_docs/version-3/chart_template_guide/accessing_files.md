@@ -235,6 +235,10 @@ data:
     {{ . }}{{ end }}
 ```
 
+If the file you reference is empty or does not exist, `Lines` returns an empty
+list rather than failing. The `range` loop then produces no output, so
+referencing a missing or empty file will not cause template rendering to fail.
+
 There is no way to pass files external to the chart during `helm install`. So if
 you are asking users to supply data, it must be loaded using `helm install -f`
 or `helm install --set`.

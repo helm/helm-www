@@ -49,7 +49,7 @@ das angekündigte Release liegt weniger als 7 Tage entfernt.
 Gleichzeitig mit der Veröffentlichung eines Releases wird das Datum der nächsten
 Nebenversion angekündigt und auf Helms Hauptwebseite veröffentlicht.
 
-## Hauptversionen
+## Hauptversionen {#major-releases}
 
 Hauptversionen enthalten Breaking Changes. Solche Releases sind selten, aber
 manchmal notwendig, damit sich Helm in wichtigen neuen Richtungen weiterentwickeln

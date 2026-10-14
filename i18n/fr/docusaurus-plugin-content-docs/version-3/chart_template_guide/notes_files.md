@@ -2,6 +2,7 @@
 title: Créer un fichier NOTES.txt
 description: Comment fournir des instructions aux utilisateurs de votre Chart.
 sidebar_position: 10
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Dans cette section, nous allons examiner l'outil Helm permettant de fournir des instructions aux utilisateurs de votre chart. À la fin d'un `helm install` ou d'un `helm upgrade`, Helm peut afficher un bloc d'informations utiles pour les utilisateurs. Ces informations sont entièrement personnalisables à l'aide des templates.

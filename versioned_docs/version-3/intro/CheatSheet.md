@@ -1,7 +1,7 @@
 ---
 title: Cheat Sheet
 description: Helm cheatsheet
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 Helm cheatsheet featuring all the necessary commands required to manage an application through Helm.

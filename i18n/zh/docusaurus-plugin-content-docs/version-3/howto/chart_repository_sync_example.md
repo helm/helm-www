@@ -14,7 +14,7 @@ sidebar_position: 2
 
 ## 设置本地 chart 仓库目录
 
-参考 [chart 仓库指南](/zh/docs/topics/chart_repository)创建本地目录，并将打包好的 chart 放在该目录中。
+参考 [chart 仓库指南](../topics/chart_repository.md)创建本地目录，并将打包好的 chart 放在该目录中。
 
 例如：
 
@@ -85,5 +85,5 @@ Downloading file://local-dir/index.yaml:                              346 B/346 
 相关链接：
 
 * [gsutil rsync 文档](https://cloud.google.com/storage/docs/gsutil/commands/rsync#description)
-* [Chart 仓库指南](/zh/docs/topics/chart_repository)
+* [Chart 仓库指南](../topics/chart_repository.md)
 * Google Cloud Storage 的[对象版本控制和并发控制](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#overview)

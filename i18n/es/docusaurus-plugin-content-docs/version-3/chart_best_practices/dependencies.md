@@ -2,6 +2,7 @@
 title: Dependencias
 description: Cubre las mejores prácticas para las dependencias de un Chart.
 sidebar_position: 4
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Esta sección de la guía cubre las mejores prácticas para las `dependencies` declaradas

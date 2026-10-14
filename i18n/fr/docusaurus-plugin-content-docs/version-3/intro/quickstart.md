@@ -2,6 +2,7 @@
 title: Guide de démarrage rapide
 description: Comment installer et débuter avec Helm, y compris les instructions pour les distributions, FAQ et plugins.
 sidebar_position: 1
+default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
 Ce guide explique comment commencer rapidement à utiliser Helm.
@@ -27,7 +28,7 @@ Téléchargez le binaire de la release de Helm. Vous pouvez utiliser des outils 
 
 Pour plus de détails ou d'autres options, consultez [le guide d'installation](/intro/install.md).
 
-## Initialiser un dépôt de charts Helm
+## Initialiser un dépôt de charts Helm {#initialize-a-helm-chart-repository}
 
 Une fois Helm prêt, vous pouvez ajouter un dépôt de charts. Consultez [Artifact Hub](https://artifacthub.io/packages/search?kind=0) pour voir les dépôts de charts Helm disponibles.
 

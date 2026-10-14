@@ -1,6 +1,7 @@
 ---
 title: "Política de Soporte de Versiones de Helm"
 description: "Describe la política de lanzamiento de parches de Helm, así como la diferencia máxima de versiones soportada entre Helm y Kubernetes."
+default_lang_commit: 838e8c053469d6f676d145efc305470a23765f0b
 ---
 
 Este documento describe la diferencia máxima de versiones soportada entre Helm y

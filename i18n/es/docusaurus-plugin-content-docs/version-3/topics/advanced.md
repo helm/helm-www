@@ -2,6 +2,7 @@
 title: Técnicas avanzadas de Helm
 description: Explica varias características avanzadas para usuarios avanzados de Helm
 sidebar_position: 9
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Esta sección explica varias características avanzadas y técnicas para usar Helm.
@@ -48,57 +49,7 @@ type PostRenderer interface {
 Para más información sobre el uso del Go SDK, consulte la siguiente [sección Go SDK](#go-sdk).
 
 ## Go SDK
-Helm 3 debutó con un Go SDK completamente reestructurado para una mejor experiencia cuando se construye software y herramientas que aprovechan Helm. La documentación completa se puede encontrar en la [sección Go SDK](/sdk/gosdk.md), pero a continuación se ofrece una breve descripción de algunos de los paquetes más comunes y un ejemplo sencillo.
-
-### Resumen de paquetes
-Esta es una lista de los paquetes más utilizados con una explicación sencilla sobre cada uno de ellos:
-
-- `pkg/action`: Contiene el "cliente" principal para realizar acciones de Helm. Este es el mismo paquete que usa el CLI. Si solo necesita ejecutar comandos básicos de Helm desde otro programa Go, este paquete es para usted.
-- `pkg/{chart,chartutil}`:  Métodos y ayudantes usados para cargar y manipular charts.
-- `pkg/cli` y sus subpaquetes: Contiene todos los manejadores para las variables de entorno estándar de Helm y sus subpaquetes contienen el manejo de ficheros de salida y valores.
-- `pkg/release`: Define el objeto `Release` y sus estados.
-
-Obviamente hay muchos más paquetes además de estos, ¡así que revise la documentación para más información!
-
-### Ejemplo simple
-Este es un ejemplo simple para hacer un `helm list` usando el Go SDK:
-
-```go
-package main
-
-import (
-    "log"
-    "os"
-
-    "helm.sh/helm/v3/pkg/action"
-    "helm.sh/helm/v3/pkg/cli"
-)
-
-func main() {
-    settings := cli.New()
-
-    actionConfig := new(action.Configuration)
-    // You can pass an empty string instead of settings.Namespace() to list
-    // all namespaces
-    if err := actionConfig.Init(settings.RESTClientGetter(), settings.Namespace(), os.Getenv("HELM_DRIVER"), log.Printf); err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    client := action.NewList(actionConfig)
-    // Only list deployed
-    client.Deployed = true
-    results, err := client.Run()
-    if err != nil {
-        log.Printf("%+v", err)
-        os.Exit(1)
-    }
-
-    for _, rel := range results {
-        log.Printf("%+v", rel)
-    }
-}
-```
+Helm 3 debutó con un Go SDK completamente reestructurado para una mejor experiencia cuando se construye software y herramientas que aprovechan Helm. La documentación completa se puede encontrar en la [sección Go SDK](/sdk/gosdk.md).
 
 ## Backends de almacenamiento {#storage-backends}
 Helm 3 cambió el almacenamiento por defecto de la información de la release a Secrets en el namespace de la release. Helm 2 por defecto almacena la información de la release como ConfigMaps en el namespace de la instancia de Tiller. Las subsecciones siguientes muestran cómo configurar diferentes backends. Esta configuración se basa en la variable de entorno `HELM_DRIVER`. Se puede establecer a uno de los valores:

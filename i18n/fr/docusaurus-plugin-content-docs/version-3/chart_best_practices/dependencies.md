@@ -2,6 +2,7 @@
 title: Dépendances
 description: Couvre les bonnes pratiques pour les dépendances de chart.
 sidebar_position: 4
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Cette partie du guide des bonnes pratiques couvre les `dependencies` déclarées dans
