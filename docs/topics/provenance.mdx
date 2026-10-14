@@ -61,7 +61,7 @@ can use `gpg --list-secret-keys` to list the keys you have.
 
 **Note:** Since GnuPG v2.1, public keys are stored in a keybox file
 (`~/.gnupg/pubring.kbx`) rather than the legacy `~/.gnupg/pubring.gpg`. For
-verification, Helm reads the keybox format directly, along with ASCII-armored
+verification, Helm (4.3.0+) reads keyboxes directly, along with ASCII-armored
 public keyrings (`gpg --export --armor`) and the legacy binary keyring, so no
 conversion is required. Signing a chart is different: Helm still needs the
 private key exported to a keyring file (binary or ASCII-armored). If your
