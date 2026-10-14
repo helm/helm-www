@@ -64,8 +64,8 @@ can use `gpg --list-secret-keys` to list the keys you have.
 verification, Helm reads the keybox format directly, along with ASCII-armored
 public keyrings (`gpg --export --armor`) and the legacy binary keyring, so no
 conversion is required. Signing a chart is different: Helm still needs the
-private key in a binary secret keyring file. If your secret key exists only in
-GnuPG's modern key store, export it first:
+private key exported to a keyring file (binary or ASCII-armored). If your
+secret key exists only in GnuPG's modern key store, export it first:
 
 ```console
 $ gpg --export-secret-keys >~/.gnupg/secring.gpg
