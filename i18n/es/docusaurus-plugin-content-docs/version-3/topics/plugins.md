@@ -2,6 +2,7 @@
 title: Guía de Plugins de Helm
 description: Introduce cómo usar y crear plugins para extender la funcionalidad de Helm.
 sidebar_position: 12
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Un plugin de Helm es una herramienta a la que se puede acceder a través del CLI
@@ -273,7 +274,7 @@ En este ejemplo lo hicimos para `mapkubeapis`.
 ln -s ~/GitHub/helm-mapkubeapis ./helm-mapkubeapis
 ```
 
-## Plugins de Descarga
+## Plugins de Descarga {#downloader-plugins}
 
 Por defecto, Helm puede descargar Charts usando HTTP/S. A partir de Helm 2.4.0,
 los plugins pueden tener una capacidad especial para descargar Charts desde

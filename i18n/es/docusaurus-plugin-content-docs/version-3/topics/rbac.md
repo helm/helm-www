@@ -2,6 +2,7 @@
 title: Control de Acceso Basado en Roles
 description: Explica cómo Helm interactúa con el Control de Acceso Basado en Roles (RBAC) de Kubernetes.
 sidebar_position: 11
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 En Kubernetes, otorgar roles a un usuario o a una cuenta de servicio específica

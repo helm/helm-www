@@ -2,6 +2,7 @@
 title: "Consejos y Trucos para el Desarrollo de Charts"
 description: "Cubre algunos de los consejos y trucos que los desarrolladores de charts de Helm han aprendido al crear charts con calidad de producción."
 sidebar_position: 1
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 Esta guía cubre algunos de los consejos y trucos que los desarrolladores de charts

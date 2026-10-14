@@ -2,6 +2,7 @@
 title: Utilisation de Helm
 description: Explique la base de Helm.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Ce guide explique les bases de l'utilisation de Helm pour gérer les packages sur votre cluster Kubernetes. Nous partons du principe que vous avez déjà [installé](/intro/install.md) le client Helm.

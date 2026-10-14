@@ -1,5 +1,6 @@
 ---
 title: helm completion
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Generiert Autovervollständigungsskripte für die angegebene Shell

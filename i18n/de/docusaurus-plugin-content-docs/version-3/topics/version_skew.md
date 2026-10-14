@@ -1,6 +1,7 @@
 ---
 title: "Helm Versionsunterstützung"
 description: "Beschreibt die Patch-Release-Richtlinie von Helm sowie die maximal unterstützte Versionsabweichung zwischen Helm und Kubernetes."
+default_lang_commit: d9bd24cdc719cd5ddef925552a7049cfbd6f469e
 ---
 
 Dieses Dokument beschreibt die maximal unterstützte Versionsabweichung zwischen Helm und

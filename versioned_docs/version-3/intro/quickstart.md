@@ -1,7 +1,7 @@
 ---
 title: Quickstart Guide
 description: How to install and get started with Helm including instructions for distros, FAQs, and plugins.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 This guide covers how you can quickly get started using Helm.

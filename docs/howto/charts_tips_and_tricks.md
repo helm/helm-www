@@ -309,3 +309,51 @@ existing release will be upgraded.
 ```console
 $ helm upgrade --install <release name> --values <values file> <chart directory>
 ```
+
+## Build Reproducible Chart Archives
+
+By default, the files inside a packaged chart archive (`.tgz`)
+carry the modification times of the source files on disk.
+As a result, repackaging the same chart produces archives that differ from one build to the next.
+To make chart archives reproducible,
+Helm honors the `SOURCE_DATE_EPOCH` environment variable defined by the
+[Reproducible Builds](https://reproducible-builds.org/docs/source-date-epoch/) project.
+When you set it,
+Helm stamps every file in the archive with the modification time you provide
+instead of the build time.
+
+Set `SOURCE_DATE_EPOCH` to a Unix timestamp,
+the number of whole seconds since 1970-01-01 in UTC,
+and run `helm package`:
+
+```console
+$ SOURCE_DATE_EPOCH=1609459200 helm package ./mychart
+```
+
+Helm stamps every file in the resulting archive with 2021-01-01T00:00:00Z,
+so packaging the same source again produces the same timestamps.
+To track your source history,
+derive the timestamp from your last commit:
+
+```console
+$ SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) helm package ./mychart
+```
+
+Keep the following in mind when you use `SOURCE_DATE_EPOCH`:
+
+- The value must be a non-negative integer.
+  Helm interprets it as whole seconds in UTC and does not support sub-second precision.
+  A non-numeric or negative value fails the command with an `invalid SOURCE_DATE_EPOCH` error.
+- When the variable is unset or empty,
+  Helm keeps the default behavior,
+  where archive entries reflect the actual file modification times.
+- When you package a chart that contains a `Chart.lock` file,
+  Helm also stamps that file's `generated:` timestamp with the `SOURCE_DATE_EPOCH` value,
+  normalized to UTC and whole seconds.
+  As a result, charts that declare dependencies produce byte-identical archives across builds and machines
+  when you use the same `SOURCE_DATE_EPOCH`,
+  because the `Chart.lock` content matches, not just the file modification times.
+- `helm install`, `helm upgrade`, `helm dependency build`, and `helm dependency update`
+  also honor `SOURCE_DATE_EPOCH`,
+  but only when they re-archive a dependency sourced from a local `file://` repository.
+  Helm stores remotely downloaded dependencies as it fetched them.

@@ -2,6 +2,7 @@
 title: Rollenbasierte Zugriffskontrolle
 description: Erläutert, wie Helm mit der rollenbasierten Zugriffskontrolle (RBAC) von Kubernetes interagiert.
 sidebar_position: 11
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 In Kubernetes ist es eine Best Practice, Benutzern oder anwendungsspezifischen

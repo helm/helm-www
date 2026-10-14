@@ -2,6 +2,7 @@
 title: Contrôle d'accès basé sur les rôles
 description: Traite de la création et du formatage des ressources RBAC dans les manifestes de chart.
 sidebar_position: 8
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Cette partie du guide des bonnes pratiques traite de la création et du formatage des
@@ -60,9 +61,7 @@ par les ressources soumises au contrôle d'accès créées par le chart.
 
 - Si `serviceAccount.create` est true, un ServiceAccount avec ce nom doit être créé.
 - Si le nom n'est pas défini, un nom est généré en utilisant le template `fullname`.
-- Si `serviceAccount.create` est false, le ServiceAccount ne doit pas être créé, mais il doit
-  tout de même être associé aux mêmes ressources afin que les ressources RBAC créées
-  manuellement ultérieurement fonctionnent correctement.
+- Si `serviceAccount.create` est false, le ServiceAccount ne doit pas être créé, mais il doit tout de même être associé aux mêmes ressources afin que les ressources RBAC créées manuellement ultérieurement qui le référencent fonctionnent correctement.
 - Si `serviceAccount.create` est false et que le nom n'est pas spécifié, le
   ServiceAccount par défaut est utilisé.
 

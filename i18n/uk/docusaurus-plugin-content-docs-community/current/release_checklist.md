@@ -278,7 +278,7 @@ Helm vX.Y.Z — це реліз з новими функціями. Цього 
 - Приєднуйтеся до обговорення в [Kubernetes Slack](https://kubernetes.slack.com):
   - `#helm-users` для запитань і просто для спілкування
   - `#helm-dev` для обговорення PR, коду та багів
-- Відвідайте публічну зустріч розробників: щочетверга, 9:30 за тихоокеанським часом в [Zoom](https://zoom.us/j/696660622)
+- Відвідайте публічну зустріч розробників: щочетверга, 9:30 за тихоокеанським часом в [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb)
 - Тестуйте, налагоджуйте та робіть свій внесок у чарти: [Artifact Hub helm charts](https://artifacthub.io/packages/search?kind=0)
 
 ## Важливі зміни

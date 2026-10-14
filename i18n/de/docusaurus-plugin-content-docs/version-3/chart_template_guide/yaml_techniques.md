@@ -2,6 +2,7 @@
 title: "Anhang: YAML-Techniken"
 description: Ein genauerer Blick auf die YAML-Spezifikation und wie sie auf Helm angewendet wird.
 sidebar_position: 15
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Der Großteil dieser Anleitung hat sich auf das Schreiben der Template-Sprache

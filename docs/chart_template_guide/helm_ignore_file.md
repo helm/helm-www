@@ -11,12 +11,13 @@ The `.helmignore` file must be placed in the chart's root directory, alongside
 the `Chart.yaml` file. It is not read from the current working directory or any
 other location.
 
-If this file exists, the `helm package` command will ignore all the files that
-match the pattern specified in the `.helmignore` file while packaging your
-application.
+If this file exists, Helm ignores every path that matches a pattern when it
+loads the chart. That applies to `helm package`, and also to commands that
+render or install the chart directly from a directory, such as `helm install`,
+`helm upgrade`, and `helm template`.
 
-This can help in avoiding unnecessary or sensitive files or directories from
-being added in your helm chart.
+Use `.helmignore` to keep unnecessary or sensitive files out of the packaged
+chart (and out of local install/upgrade runs from the chart directory).
 
 The `.helmignore` file supports Unix shell glob matching, relative path
 matching, and negation (prefixed with !). Only one pattern per line is

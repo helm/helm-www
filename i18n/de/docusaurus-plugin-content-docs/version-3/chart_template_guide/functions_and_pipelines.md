@@ -2,6 +2,7 @@
 title: Template-Funktionen und Pipelines
 description: Verwendung von Funktionen in Templates.
 sidebar_position: 5
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Bisher haben wir gesehen, wie man Informationen in ein Template einfügt. Aber

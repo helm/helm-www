@@ -2,6 +2,7 @@
 title: Benannte Templates
 description: Wie man benannte Templates definiert.
 sidebar_position: 9
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Nun ist es an der Zeit, über ein einzelnes Template hinauszugehen und weitere zu

@@ -107,6 +107,38 @@ type PostRenderer interface {
 
 For more information on using the Go SDK, See the [Go SDK section](#go-sdk)
 
+## Allow Helm to take ownership of existing resources
+
+By default, Helm refuses to install or upgrade a chart if a resource that is not owned by the release already exists in the cluster.
+In this case, Helm would display the following error: "resource already exists and is not owned by this release".
+
+Helm tracks resource ownership in the cluster with both Helm-managed annotations and related labels such as `app.kubernetes.io/managed-by`.
+This ownership validation process protects you from unintentionally overwriting objects that another tool or release had created.
+
+Use `--take-ownership` on `helm install` or `helm upgrade` when you intentionally want Helm to adopt those existing objects into the release:
+
+```shell
+helm install my-release ./mychart --take-ownership
+helm upgrade my-release ./mychart --take-ownership
+```
+
+With the flag set, Helm ignores the resource ownership checks and adopts the existing objects into the release.
+Subsequent upgrades and uninstalls then treat those objects as part of the release.
+
+### When to use it
+
+Common use cases for the `--take-ownership` flag include:
+
+- Migrating a manually applied manifest (or another deployer) to a Helm chart without deleting the live resources first
+- Recovering after annotations were removed or a release history was lost, so Helm no longer recognizes its own objects
+- Aligning a chart with cluster objects that already match the desired names/kinds
+
+### Limitations and best practices
+
+- Taking ownership doesn't delete extra fields that were never in the chart. Three-way strategic merge (or server-side apply, if you use it) still controls how live and chart values are combined.
+- To avoid taking ownership of objects that Helm shouldn't manage, match names carefully and review the dry-run output first (`--dry-run`).
+- `--take-ownership` is also accepted by `helm template` for flag parity; it does not contact the cluster.
+
 ## Go SDK
 Helm 3 debuted a completely restructured Go SDK for a better experience when
 building software and tools that leverage Helm. Full documentation can be found

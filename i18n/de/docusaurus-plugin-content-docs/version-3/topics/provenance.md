@@ -2,6 +2,7 @@
 title: Helm-Provenienz und -Integrität
 description: Beschreibt, wie Sie die Integrität und Herkunft eines Charts überprüfen können.
 sidebar_position: 5
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Helm verfügt über Provenienz-Werkzeuge, die Chart-Benutzern helfen, die Integrität und

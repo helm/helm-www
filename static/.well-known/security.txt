@@ -1,0 +1,5 @@
+Contact: mailto:cncf-helm-security@lists.cncf.io
+Expires: 2027-07-14T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://helm.sh/.well-known/security.txt
+Policy: https://github.com/helm/community/blob/main/SECURITY.md

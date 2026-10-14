@@ -186,7 +186,7 @@ Pesos de hook podem ser números positivos ou negativos, mas devem ser
 representados como strings. Quando o Helm inicia o ciclo de execução de hooks de
 um tipo particular, ele ordenará esses hooks em ordem crescente.
 
-### Políticas de exclusão de hook
+### Políticas de exclusão de hook {#hook-deletion-policies}
 
 É possível definir políticas que determinam quando deletar os recursos de hook
 correspondentes. Políticas de exclusão de hook são definidas usando a seguinte

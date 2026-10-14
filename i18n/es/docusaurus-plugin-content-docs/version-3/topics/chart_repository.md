@@ -2,6 +2,7 @@
 title: Guía del Repositorio de Charts
 description: Cómo crear y trabajar con repositorios de charts de Helm.
 sidebar_position: 6
+default_lang_commit: 944aeaca4df514e7c5ba091995fcbbc08e505f65
 ---
 
 Esta sección explica cómo crear y trabajar con repositorios de charts de Helm.
@@ -214,7 +215,7 @@ Por ejemplo, si desea servir sus charts desde `$WEBROOT/charts`, asegúrese de
 que haya un directorio `charts/` en su raíz web, y coloque el archivo de índice
 y los charts dentro de esa carpeta.
 
-### Servidor de Repositorio ChartMuseum
+### Servidor de Repositorio ChartMuseum {#chartmuseum-repository-server}
 
 ChartMuseum es un servidor de repositorio de charts de Helm de código abierto
 escrito en Go (Golang), con soporte para backends de almacenamiento en la nube,

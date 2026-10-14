@@ -2,6 +2,7 @@
 title: "Helm benutzen"
 description: "Erklärt die Grundsätze zu Helm."
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Diese Anleitung erklärt die Grundlagen zur Benutzung von Helm, um Pakete in Ihrem Kubernetes

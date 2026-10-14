@@ -179,17 +179,40 @@ async function checkRateLimit() {
   }
 }
 
+async function prsForSha(sha) {
+  const { data } = await octokit.request(
+    "GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls",
+    {
+      owner: "helm",
+      repo: "helm",
+      commit_sha: sha,
+    }
+  );
+  return data;
+}
+
+// Release branches are built by cherry-picking, so the tagged commit SHAs are
+// copies GitHub cannot map back to their pull requests. Follow the
+// "cherry picked from commit <sha>" trailer to the original commit, which
+// GitHub does associate with the PR.
+async function prsFromCherryPick(sha, git) {
+  const body = await git.show(["-s", "--format=%B", sha]);
+  const match = body.match(/cherry picked from commit ([0-9a-f]{7,40})/);
+  if (!match) return [];
+  try {
+    return await prsForSha(match[1]);
+  } catch {
+    return [];
+  }
+}
+
 async function fetchPRForCommit(sha, git) {
   try {
-    // Get PRs associated with this commit
-    const { data: prs } = await octokit.request(
-      "GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls",
-      {
-        owner: "helm",
-        repo: "helm",
-        commit_sha: sha,
-      }
-    );
+    let prs = await prsForSha(sha);
+
+    if (prs.length === 0) {
+      prs = await prsFromCherryPick(sha, git);
+    }
 
     if (prs.length === 0) {
       // Get commit info for commits without PRs

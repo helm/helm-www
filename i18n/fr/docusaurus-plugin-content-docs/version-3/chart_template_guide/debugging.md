@@ -2,6 +2,7 @@
 title: Débogage des templates
 description: Dépannage des charts dont le déploiement échoue.
 sidebar_position: 13
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Le débogage des templates peut être délicat, car les templates rendus sont envoyés au serveur d'API Kubernetes, qui peut rejeter les fichiers YAML pour des raisons autres que le formatage.

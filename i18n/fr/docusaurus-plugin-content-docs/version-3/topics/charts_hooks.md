@@ -2,6 +2,7 @@
 title: Hooks de chart
 description: Décrit comment utiliser les hooks de chart.
 sidebar_position: 2
+default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 ---
 
 Helm fournit un mécanisme de _hook_ permettant aux développeurs de charts

@@ -2,6 +2,7 @@
 title: Erste Schritte
 description: Eine Kurzanleitung zu Chart-Templates.
 sidebar_position: 2
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 In diesem Abschnitt der Anleitung erstellen wir ein Chart und fügen dann ein

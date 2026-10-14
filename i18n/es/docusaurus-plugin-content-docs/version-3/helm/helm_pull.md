@@ -1,5 +1,6 @@
 ---
 title: helm pull
+default_lang_commit: 1cc11e63e3925756fe4c71921fd7c854fcf23dc5
 ---
 
 descarga un chart de un repositorio y (opcionalmente) lo desempaqueta en un directorio local

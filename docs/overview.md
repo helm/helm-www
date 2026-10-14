@@ -69,7 +69,28 @@ API breaking changes are now complete. Test it, break it, give us feedback! The 
 
 #### Charts v3
 
-Coming soon. v2 charts continue to work unchanged.
+Charts v3 is in early development and available for experimentation.
+v2 charts continue to work unchanged.
+
+To use Charts v3:
+
+1. Set the `HELM_EXPERIMENTAL_CHART_V3` environment variable:
+
+   ```shell
+   export HELM_EXPERIMENTAL_CHART_V3=1
+   ```
+
+1. Create a new chart using the v3 API version:
+
+   ```shell
+   helm create --chart-api-version=v3 mychart
+   ```
+
+:::warning
+Charts v3 is experimental.
+Features might change or be removed before the final release.
+Use for testing and feedback only.
+:::
 
 ### Improvements
 
@@ -139,6 +160,6 @@ Join [Kubernetes Slack](https://slack.kubernetes.io/) channels:
 
 ### Weekly Dev Meetings
 
-Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom.us/j/696660622?pwd=MGsraXZ1UkVlTkJLc1B5U05KN053QT09).
+Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 
 For more options, see the Helm community [communication details](https://github.com/helm/community/blob/main/communication.md).

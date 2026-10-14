@@ -1,6 +1,7 @@
 ---
 title: Gestión de permisos para el backend de almacenamiento SQL
 description: Aprenda a configurar permisos cuando utilice el backend de almacenamiento SQL.
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Este documento proporciona orientación para configurar y gestionar permisos al

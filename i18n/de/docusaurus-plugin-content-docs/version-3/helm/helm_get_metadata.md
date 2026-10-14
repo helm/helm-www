@@ -1,5 +1,6 @@
 ---
 title: helm get metadata
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Ruft die Metadaten für ein bestimmtes Release ab

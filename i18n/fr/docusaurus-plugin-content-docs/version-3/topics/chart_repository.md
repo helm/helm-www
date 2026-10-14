@@ -2,6 +2,7 @@
 title: Guide des dépôts de charts
 description: Comment créer et travailler avec les dépôts de charts Helm.
 sidebar_position: 6
+default_lang_commit: 944aeaca4df514e7c5ba091995fcbbc08e505f65
 ---
 
 Cette section explique comment créer et travailler avec les dépôts de charts Helm.
@@ -210,7 +211,7 @@ Par exemple, si vous voulez servir vos charts depuis `$WEBROOT/charts`, assurez-
 qu'il y a un répertoire `charts/` dans votre racine web, et placez le fichier index
 et les charts dans ce dossier.
 
-### Serveur de dépôt ChartMuseum
+### Serveur de dépôt ChartMuseum {#chartmuseum-repository-server}
 
 ChartMuseum est un serveur de dépôt de charts Helm open-source écrit en Go (Golang),
 avec support pour les backends de stockage cloud, notamment [Google Cloud

@@ -2,6 +2,7 @@
 title: Action Chart Releaser pour automatiser les charts via GitHub Pages
 description: Décrit comment utiliser l'action Chart Releaser pour automatiser la publication de charts via GitHub Pages.
 sidebar_position: 3
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Ce guide décrit comment utiliser [Chart Releaser

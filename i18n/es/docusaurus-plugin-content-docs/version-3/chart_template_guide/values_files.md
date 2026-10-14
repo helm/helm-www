@@ -2,6 +2,7 @@
 title: Archivos Values
 description: Instrucciones sobre cómo usar la opción --values.
 sidebar_position: 4
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 En la sección anterior vimos los objetos integrados que ofrecen las plantillas

@@ -158,7 +158,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 模板函数和管道符是转换信息然后将其插入到YAML中的强有力方式。但是有些时候我们需要插入一些内容之前进行一些逻辑判断，而不仅仅是插入一个字符串。
 下一章节，我们会看到模板语言提供的控制结构。
 
-## 使用`lookup`函数
+## 使用`lookup`函数 {#using-the-lookup-function}
 
 `lookup` 函数可以用于在运行的集群中 _查找_ 资源。lookup函数简述为查找 `apiVersion, kind, namespace,name -> 资源或者资源列表`。
 

@@ -2,6 +2,7 @@
 title: Integrierte Objekte
 description: Integrierte Objekte, die in Templates verfügbar sind.
 sidebar_position: 3
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Objekte werden von der Template-Engine an ein Template übergeben. Ihr Code kann

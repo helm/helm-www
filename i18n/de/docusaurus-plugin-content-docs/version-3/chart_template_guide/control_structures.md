@@ -2,6 +2,7 @@
 title: Ablaufsteuerung
 description: Ein kurzer Überblick über die Ablaufstrukturen in Templates.
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Kontrollstrukturen (in der Template-Terminologie "Aktionen" genannt) bieten
