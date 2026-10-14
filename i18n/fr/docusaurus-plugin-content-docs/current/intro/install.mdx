@@ -1,0 +1,298 @@
+---
+title: Installation de Helm
+description: Apprenez à installer Helm et à le prendre en main.
+sidebar_position: 3
+default_lang_commit: 7ed5496a5da8d37807d06b1a5273a95f88d67d05
+---
+
+Ce guide explique comment installer la CLI Helm. Helm peut être installé soit à partir
+des sources, soit à partir de releases binaires précompilées.
+
+## Depuis le projet Helm {/* #from-the-helm-project */}
+
+Le projet Helm propose deux méthodes pour récupérer et installer Helm. Ce sont les
+méthodes officielles pour obtenir les releases de Helm. En complément, la communauté Helm
+propose des méthodes d'installation via différents gestionnaires de paquets.
+Elles sont décrites après les méthodes officielles.
+
+### À partir des releases binaires {/* #from-the-binary-releases */}
+
+Chaque [release](https://github.com/helm/helm/releases) de Helm fournit des binaires
+pour différents systèmes d'exploitation. Ces binaires peuvent être téléchargés et
+installés manuellement.
+
+1. Téléchargez la [version souhaitée](https://github.com/helm/helm/releases)
+1. Vérifiez le binaire. Consultez [Vérifier les binaires Helm](#verifying-helm-binaries) sur cette page.
+1. Décompressez l'archive (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
+1. Trouvez le binaire `helm` dans le répertoire décompressé et déplacez-le à
+   l'emplacement souhaité (`mv linux-amd64/helm /usr/local/bin/helm`)
+
+Vous devriez alors pouvoir lancer le client et [trouver des charts à installer](/intro/quickstart.md#find-charts-to-install) :
+`helm help`.
+
+**Remarque :** les tests automatisés de Helm ne sont effectués que pour Linux AMD64, lors
+des builds et des releases GitHub Actions. Les tests des autres systèmes d'exploitation
+relèvent de la communauté qui demande Helm pour le système concerné.
+
+### À partir du script {/* #from-script */}
+
+Helm dispose d'un script d'installation qui récupère automatiquement la dernière version
+de Helm et [l'installe
+localement](https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4).
+
+Vous pouvez récupérer ce script, puis l'exécuter localement. Il est bien documenté, ce qui
+vous permet de le lire et de comprendre ce qu'il fait avant de l'exécuter.
+
+```console
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+
+Oui, vous pouvez aussi exécuter `curl
+https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash` si vous
+aimez vivre dangereusement.
+
+## Via les gestionnaires de paquets {/* #through-package-managers */}
+
+La communauté Helm permet d'installer Helm via les gestionnaires de paquets des systèmes
+d'exploitation. Ces gestionnaires de paquets ne sont pas pris en charge par le projet Helm et ne sont pas
+considérés comme des tiers de confiance.
+
+### Depuis Homebrew (macOS) {/* #from-homebrew-macos */}
+
+Des membres de la communauté Helm ont ajouté une formule Helm à Homebrew.
+Cette formule est généralement à jour.
+
+```console
+brew install helm
+```
+
+(Remarque : il existe aussi une formule emacs-helm, qui correspond à un autre projet.)
+
+### Depuis Chocolatey (Windows) {/* #from-chocolatey-windows */}
+
+Des membres de la communauté Helm ont ajouté un [paquet
+Helm](https://chocolatey.org/packages/kubernetes-helm) à
+[Chocolatey](https://chocolatey.org/). Ce paquet est généralement à jour.
+
+```console
+choco install kubernetes-helm
+```
+
+### Depuis Scoop (Windows) {/* #from-scoop-windows */}
+
+Des membres de la communauté Helm ont ajouté un [paquet
+Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) à [Scoop](https://scoop.sh). Ce paquet est généralement à jour.
+
+```console
+scoop install helm
+```
+
+### Depuis Winget (Windows) {/* #from-winget-windows */}
+
+Des membres de la communauté Helm ont ajouté un [paquet
+Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) à [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Ce paquet est généralement à jour.
+
+```console
+winget install Helm.Helm
+```
+
+### Depuis Apt (Debian/Ubuntu) {/* #from-apt-debianubuntu */}
+
+Des membres de la communauté Helm ont créé un paquet Apt pour Debian/Ubuntu. Ce paquet est
+généralement à jour. Merci à [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) d'héberger le dépôt.
+
+```console
+HELM_BUILDKITE_APT_KEY_ID="DDF78C3E6EBB2D2CC223C95C62BA89D07698DBC6"
+
+sudo apt-get install curl gpg apt-transport-https --yes
+
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey > "${TMPDIR:-/tmp}/helm.gpg"
+
+# Ensure that the key ID matches to prevent a repository compromise from establishing an attacker controlled key
+if [ "$(gpg --show-keys --with-colons "${TMPDIR:-/tmp}/helm.gpg" | awk -F: '$1 == "fpr" {print $10}' | head -n 1)" != "${HELM_BUILDKITE_APT_KEY_ID}" ]; then echo "ERROR: Unexpected Helm APT key ID: potential key compromise"; exit 1; fi
+
+cat "${TMPDIR:-/tmp}/helm.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+sudo apt-get update
+sudo apt-get install helm
+```
+
+### Depuis dnf/yum (Fedora) {/* #from-dnfyum-fedora */}
+Depuis Fedora 35, Helm est disponible dans le dépôt officiel.
+Vous pouvez installer Helm avec la commande :
+
+```console
+sudo dnf install helm
+```
+
+### Depuis Snap {/* #from-snap */}
+
+La communauté [Snapcrafters](https://github.com/snapcrafters) maintient la version Snap
+du [paquet Helm](https://snapcraft.io/helm) :
+
+```console
+sudo snap install helm --classic
+```
+
+### Depuis pkg (FreeBSD) {/* #from-pkg-freebsd */}
+
+Des membres de la communauté FreeBSD ont ajouté un [paquet
+Helm](https://www.freshports.org/sysutils/helm) à la
+[collection des ports FreeBSD](https://man.freebsd.org/ports).
+Ce paquet est généralement à jour.
+
+```console
+pkg install helm
+```
+
+### Builds de développement {/* #development-builds */}
+
+En plus des releases, vous pouvez télécharger ou installer des snapshots de développement
+de Helm.
+
+### Depuis les builds Canary {/* #from-canary-builds */}
+
+Les builds « Canary » sont des versions de Helm construites à partir de la dernière
+version de la branche `main`. Ce ne sont pas des releases officielles, et elles peuvent être instables.
+Elles permettent en revanche de tester les fonctionnalités les plus récentes.
+
+Les binaires Canary de Helm sont stockés sur `get.helm.sh`. Voici les
+liens vers les builds les plus courants :
+
+- [Linux AMD64](https://get.helm.sh/helm-canary-linux-amd64.tar.gz)
+- [macOS AMD64](https://get.helm.sh/helm-canary-darwin-amd64.tar.gz)
+- [Windows AMD64 (expérimental)](https://get.helm.sh/helm-canary-windows-amd64.zip)
+
+### Depuis les sources (Linux, macOS) {/* #from-source-linux-macos */}
+
+Construire Helm à partir des sources demande un peu plus de travail, mais c'est la meilleure
+solution si vous voulez tester la toute dernière version de Helm.
+
+Vous devez disposer d'un environnement Go fonctionnel.
+
+```console
+git clone https://github.com/helm/helm.git
+cd helm
+make
+```
+
+Si nécessaire, les dépendances sont récupérées et mises en cache, et la configuration
+est validée. `helm` est ensuite compilé et placé dans `bin/helm`.
+
+## Vérifier les binaires Helm {/* #verifying-helm-binaries */}
+
+Chaque release de Helm inclut des signatures cryptographiques qui attestent que le binaire a été construit et signé par les mainteneurs de Helm.
+Pour mieux vous protéger contre les attaques de la chaîne d'approvisionnement, vérifiez toujours l'authenticité des binaires Helm avant de les installer.
+
+Les fichiers de release publiés sur `get.helm.sh` (distribués via un CDN) ne peuvent en général plus être modifiés une fois la release GitHub publiée.
+Cependant, la chaîne d'approvisionnement fait intervenir plusieurs composants (CDN, infrastructure d'hébergement, etc.),
+si bien que la vérification des signatures reste importante, même pour des versions anciennes ou épinglées.
+
+### Prérequis {/* #requirements */}
+
+Pour vérifier un binaire Helm, vous avez besoin des éléments suivants :
+
+* L'archive du binaire (par exemple, `helm-v4.0.0-linux-amd64.tar.gz`)
+* Le fichier de signature correspondant (par exemple, `helm-v4.0.0-linux-amd64.tar.gz.asc`)
+* Les clés PGP publiques des mainteneurs de Helm
+
+### Étapes de vérification {/* #verification-steps */}
+
+Pour vérifier un binaire Helm :
+
+1. Vérifiez la somme de contrôle SHA256 pour vous assurer que le téléchargement n'est pas corrompu. Par exemple :
+
+   ```console
+   $ sha256sum -c helm-v4.0.0-linux-amd64.tar.gz.sha256sum
+   helm-v4.0.0-linux-amd64.tar.gz: OK
+   ```
+
+1. Importez les clés publiques des mainteneurs de Helm :
+
+   ```console
+   $ curl https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import
+   ```
+   :::note
+   Évitez de récupérer les clés depuis le dépôt Helm à chaque vérification d'un binaire Helm.
+   Importez-les plutôt une seule fois, puis conservez-les dans un emplacement sécurisé que vous contrôlez.
+   Vous êtes ainsi protégé si le dépôt est un jour compromis et que les clés sont remplacées :
+   votre copie locale vous permet de détecter la falsification.
+
+   Vous pouvez aussi recouper les clés des mainteneurs sur [Keybase](https://keybase.io), où les mainteneurs de Helm ont des profils qui associent leur identité à leurs clés PGP.
+   :::
+
+1. Vérifiez la signature du binaire. Par exemple :
+
+   ```console
+   $ gpg --verify helm-v4.0.0-linux-amd64.tar.gz.asc helm-v4.0.0-linux-amd64.tar.gz
+   gpg: Signature made [date] using RSA key ID [key-id]
+   gpg: Good signature from "Helm Maintainer <maintainer@example.com>"
+   ```
+
+   Le message « Good signature » confirme que le binaire est authentique et n'a pas été altéré.
+
+   :::note
+   Vous pouvez récupérer les fichiers de signature depuis la source officielle sans risque, du moment que vous disposez de copies de confiance des clés publiques.
+   Un attaquant ne peut pas forger une signature valide sans la clé privée, que seul le mainteneur légitime possède.
+   :::
+
+## FAQ {/* #faq */}
+
+### Pourquoi n'existe-t-il pas de paquets natifs de Helm pour Fedora et les autres distributions Linux ? {/* #why-arent-there-native-packages-of-helm-for-fedora-and-other-linux-distros */}
+
+Le projet Helm ne maintient pas de paquets pour les systèmes d'exploitation et les
+environnements. La communauté Helm peut fournir des paquets natifs et, si le projet Helm
+en a connaissance, ils seront référencés. C'est ainsi que la formule Homebrew a été
+créée puis référencée. Si vous souhaitez maintenir un paquet, nous en serions ravis.
+
+### Pourquoi proposez-vous un script `curl ...|bash` ? {/* #why-do-you-provide-a-curl-bash-script */}
+
+Notre dépôt contient un script (`scripts/get-helm-4`) qui peut être exécuté
+comme un script `curl ..|bash`. Tous les transferts sont protégés par HTTPS, et le
+script effectue quelques vérifications sur les paquets qu'il récupère. Toutefois, le script présente
+tous les dangers habituels d'un script shell.
+
+Nous le proposons parce qu'il est utile, mais nous conseillons aux utilisateurs de lire
+attentivement le script au préalable. Ce que nous aimerions vraiment, cependant, ce sont
+de meilleures versions de Helm sous forme de paquets.
+
+### Comment placer les fichiers du client Helm ailleurs qu'à leurs emplacements par défaut ? {/* #how-do-i-put-the-helm-client-files-somewhere-other-than-their-defaults */}
+
+Helm utilise la structure XDG pour stocker ses fichiers. Des variables d'environnement
+permettent de modifier ces emplacements :
+
+- `$XDG_CACHE_HOME` : définit un autre emplacement pour les fichiers de cache.
+- `$XDG_CONFIG_HOME` : définit un autre emplacement pour la configuration de
+  Helm.
+- `$XDG_DATA_HOME` : définit un autre emplacement pour les données de Helm.
+
+Notez que si vous avez déjà des dépôts, vous devrez les ajouter de nouveau avec
+`helm repo add...`.
+
+### Je veux supprimer mon installation locale de Helm. Où sont tous ses fichiers ? {/* #i-want-to-delete-my-local-helm-where-are-all-its-files */}
+
+En plus du binaire `helm`, Helm stocke des fichiers aux emplacements suivants :
+
+- $XDG_CACHE_HOME
+- $XDG_CONFIG_HOME
+- $XDG_DATA_HOME
+
+Le tableau suivant indique le dossier par défaut de chacun d'eux, selon le système d'exploitation :
+
+| Système d'exploitation | Chemin du cache             | Chemin de configuration          | Chemin des données        |
+|------------------------|-----------------------------|----------------------------------|---------------------------|
+| Linux                  | `$HOME/.cache/helm`         | `$HOME/.config/helm`             | `$HOME/.local/share/helm` |
+| macOS                  | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm`      |
+| Windows                | `%TEMP%\helm`               | `%APPDATA%\helm`                 | `%APPDATA%\helm`          |
+
+## Conclusion {/* #conclusion */}
+
+Dans la plupart des cas, l'installation se résume à récupérer un binaire `helm` précompilé.
+Ce document couvre des cas supplémentaires, pour ceux qui veulent aller plus loin
+avec Helm.
+
+Une fois le client Helm installé, vous pouvez passer à l'utilisation de
+Helm pour gérer des charts et [trouver des charts à installer](/intro/quickstart.md#find-charts-to-install).
