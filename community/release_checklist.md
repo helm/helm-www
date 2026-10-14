@@ -109,7 +109,8 @@ export RELEASE_CANDIDATE_NAME="$RELEASE_NAME-rc.1"
 
 ### 1. Create the Release Branch
 
-Start by creating a `release-X.Y` branch from `main`.
+Start by creating a `release-X.Y` branch from `main` for Helm v4, or from
+`dev-v3` for Helm v3.
 
 ```shell
 git fetch upstream
