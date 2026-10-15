@@ -162,6 +162,6 @@ Join [Kubernetes Slack](https://slack.kubernetes.io/) channels:
 
 ### Weekly Dev Meetings
 
-Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
+Join live discussion with maintainers every Thursday 9:30am PT on [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/99213281727?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 
 For more options, see the Helm community [communication details](https://github.com/helm/community/blob/main/communication.md).

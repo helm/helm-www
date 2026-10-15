@@ -161,6 +161,6 @@ Rejoignez ces canaux du [Slack Kubernetes](https://slack.kubernetes.io/) :
 
 ### Réunions hebdomadaires des développeurs {#weekly-dev-meetings}
 
-Rejoignez la discussion en direct avec les mainteneurs chaque jeudi à 9 h 30 (heure du Pacifique) sur [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
+Rejoignez la discussion en direct avec les mainteneurs chaque jeudi à 9 h 30 (heure du Pacifique) sur [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/99213281727?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb).
 
 Pour d'autres moyens de nous contacter, consultez les [informations de communication](https://github.com/helm/community/blob/main/communication.md) de la communauté Helm.
