@@ -50,4 +50,4 @@ title: helm get
 - [helm get notes](/helm/helm_get_notes.md) — завантажити примітки для вказаного релізу
 - [helm get values](/helm/helm_get_values.md) — завантажити файл значень для вказаного релізу
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

@@ -5,8 +5,8 @@ sidebar_label: Повний список змін
 
 # Helm 4 Повний список змін
 
-**Обсяг**: 290 PR від (`v4.0.0-rc.1`) порівняно з `v3.19.0` <br/>
-**Тільки v4**: 257 PR (33, перенесені до v3, виключені)
+**Обсяг**: 568 PR від (`v4.3.0`) порівняно з `v3.19.0` <br/>
+**Тільки v4**: 531 PR (37, перенесені до v3, виключені)
 
 Дивіться [Огляд](/overview.md) для отримання детального опису цих змін.
 
@@ -16,6 +16,21 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #31580 | 2026-08-07 | biagiopietro | feat(rollback): add --description flag to provide rollback reason |
+| #32162 | 2026-07-15 | lohitkolluri | feat: honor SOURCE_DATE_EPOCH for chart archives |
+| #31859 | 2026-06-18 | biagiopietro | feat(history): add rollback revision column to helm history output |
+| #32205 | 2026-06-11 | ogulcanaydogan | feat(engine): add debug logging when lookup returns empty |
+| #31695 | 2026-05-10 | aeroyorch | feat: Add duration functions |
+| #31709 | 2026-02-13 | banjoh | feat(release): add internal/release/v2 package for chart v3 support |
+| #31592 | 2026-02-06 | banjoh | feat(create): add --chart-api-version flag (when HELM_EXPERIMENTAL_CHART_V3 env var is set) |
+| #31726 | 2026-01-14 | banjoh | chore: clarify --wait flag help text |
+| #31706 | 2026-01-12 | matheuscscp | pkg/kube: introduce support for custom kstatus readers |
+| #31296 | 2025-12-23 | gjenkins8 | build: set kube version via `debug.BuildInfo` |
+| #31448 | 2025-12-17 | laervn | feat(repo): add --no-headers option to 'helm repo list' |
+| #31491 | 2025-11-25 | benoittgt | feat: improve plugin name validation error messages and field name detection (v1) |
+| #31530 | 2025-11-20 | shuv0id | feat: add missing context to debug logs |
+| #31421 | 2025-11-15 | benoittgt | Unify --wait strategy inputs, clarify defaults and docs; avoid SDK timeout footgun |
+| #30984 | 2025-11-13 | fm1ck3y | feat(concurrency): allow concurrent dependency build with atomic file write |
 | #31435 | 2025-11-03 | matheuscscp | Introduce a context for canceling wait operations |
 | #31389 | 2025-10-30 | TerryHowe | chore: fix pkg/registry warnings to reduce noise |
 | #31338 | 2025-10-21 | yzewei | Add loongarch64 support |
@@ -57,7 +72,7 @@ sidebar_label: Повний список змін
 | #13604 | 2025-04-05 | AustinAbro321 | Introduce kstatus watcher |
 | #13617 | 2025-02-27 | AustinAbro321 | <span class="breaking">BREAKING CHANGE:</span>  Refactor cmd/helm to allow library usage |
 | #30571 | 2025-02-24 | yardenshoham | feat: error out when post-renderer produces no output |
-| #13655 | 2025-02-20 | LuBingtan | feat: support multi-document values files |
+| #13655 | 2025-02-20 | lubingtan | feat: support multi-document values files |
 | #13471 | 2025-02-19 | wangjingcun | Use a more direct and less error-prone return value |
 | #30294 | 2025-02-19 | Zhanweelee | Supports json arguments |
 | #13538 | 2025-01-17 | godhanipayal | Add Contextual Error Messages to RunWithContext |
@@ -69,6 +84,61 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32217 | 2026-08-31 | amarkdotdev | fix(template): regression - route registry messages to stderr in template and show |
+| #31748 | 2026-08-31 | benoittgt | refactor: remove per-file decompression size limit |
+| #32525 | 2026-08-18 | locker95 | fix(loader): do not drop values files ending at a 4096-byte boundary |
+| #32400 | 2026-07-22 | SetagGnaw | fix: pass registry client to downloader.Manager in upgrade |
+| #32290 | 2026-07-16 | mahesh-sadupalli | fix(engine): prevent Files.Lines panic on empty file |
+| #32327 | 2026-07-15 | matheuscscp | Fix vanishing empty lines |
+| #31884 | 2026-07-14 | ouillie | Properly format the extra field in gzipped packages |
+| #32088 | 2026-07-14 | Kajot-dev | Fix missing conflict retry with server-side apply |
+| #31211 | 2026-07-03 | kimsungmin1 | fix: set [pull,push] scope when helm push to a registry(use token auth) - v4 |
+| #32184 | 2026-06-18 | atkrad | fix panic on repeated IsReachable calls |
+| #32129 | 2026-06-18 | gregory-m | fix: skip non-Pods when fetching test logs |
+| #32230 | 2026-06-17 | gjenkins8 | Revert "fix(kube): prevent spurious early exit in WaitForDelete during informer sync" |
+| #32136 | 2026-06-17 | SebTardif | fix(provenance): check error return in Digest and encodeRelease |
+| #31185 | 2026-06-14 | kyokuping | fix: Improve error reporting for `helm template --debug` with `--show-only` |
+| #31925 | 2026-06-11 | TerryHowe | fix: protect FailingKubeClient.RecordedWaitOptions from data race |
+| #32056 | 2026-06-11 | TerryHowe | fix: route registry client output to stdout instead of stderr |
+| #31758 | 2026-06-09 | benoittgt | fix: prevent warning when using version range constraints |
+| #32081 | 2026-05-30 | TerryHowe | fix(kube): prevent spurious early exit in WaitForDelete during informer sync |
+| #32134 | 2026-05-21 | lexfrei | fix (internal/plugin): remove zero-width spaces from plugin name comment |
+| #32128 | 2026-05-16 | matheuscscp | fix(upstream): upgrade to cli-utils 1.2.1, controller-runtime 0.24.1 and k8s 1.36.1 |
+| #32099 | 2026-05-11 | SebTardif | fix: fetch logs from all containers in test pods |
+| #31755 | 2026-04-26 | scottrigby | fix(template): deprecate unused --hide-notes and --render-subchart-notes flags |
+| #31868 | 2026-03-09 | matheuscscp | fix: insert newline after doc separators glued to content by template trimming |
+| #31897 | 2026-03-09 | TerryHowe | fix: bump fluxcd/cli-utils to v0.37.2-flux.1 |
+| #31901 | 2026-03-04 | tleed5 | fix: restore (deprecated) --atomic flag on install command for backwards compatibility |
+| #31852 | 2026-02-25 | rohansood10 | fix(sdk): correct import comment in statuswait.go from v3 to v4 |
+| #31563 | 2026-02-24 | Mujib-Ahasan | fix: --dry-run=server now respect generateName |
+| #31601 | 2026-02-20 | banjoh | fix: handle OCI digest algorithm prefix in chart downloader |
+| #31566 | 2026-02-19 | TerryHowe | fix: test concurrency download index |
+| #31578 | 2026-02-11 | manute | fix(action): crd resources can be empty |
+| #31128 | 2026-02-11 | orgads | fix(downloader): prevent concurrent file access errors on Windows |
+| #31772 | 2026-01-29 | matheuscscp | Revert "Consider GroupVersionKind when matching resources" |
+| #31751 | 2026-01-28 | tamcore | fix(copystructure): handle nil elements in slice copying |
+| #31717 | 2026-01-23 | AustinAbro321 | fix: use kube logger with status waiter |
+| #31735 | 2026-01-21 | matheuscscp | fix(kstatus): fine-grained context options for waiting |
+| #31730 | 2026-01-19 | matheuscscp | bugfix(kstatus): do not wait forever on failed resources |
+| #31732 | 2026-01-17 | matheuscscp | fix(defaults): server-side apply SDK defaults should always match the CLI defaults |
+| #31412 | 2026-01-13 | fmuyassarov | Fix rollback for missing resources |
+| #31710 | 2026-01-09 | banjoh | fix(release): fix test compilation error |
+| #31427 | 2026-01-09 | tisonkun | Check plugin name is not used |
+| #31579 | 2026-01-09 | benoittgt | fix: Delay test hook deletion until after logs are retrieved with `helm test release --logs` |
+| #31613 | 2026-01-07 | aslafy-z | fix(getter): pass settings environment variables |
+| #31104 | 2025-12-25 | LinPr | fix: assign KUBECONFIG environment variable value to env.Kubeconfig |
+| #31610 | 2025-12-22 | mohsenmottaghi | fix: use namespace-scoped watching to avoid cluster-wide LIST permiss… |
+| #31635 | 2025-12-14 | banjoh | fix(upgrade): pass --server-side flag to install when using upgrade --install |
+| #12564 | 2025-12-13 | hiddeco | fix(uninstall): supersede deployed releases |
+| #31586 | 2025-12-13 | calvinbui | fix: use length check for MetaDependencies instead of nil comparison |
+| #31636 | 2025-12-11 | mattfarina | Use latest patch release of Go in releases |
+| #31560 | 2025-11-23 | mattfarina | Fix kube client logging |
+| #31518 | 2025-11-21 | gjenkins8 | fix: Use server-side apply for object create during update |
+| #31515 | 2025-11-21 | gjenkins8 | fix: Copy adopted resource info |
+| #31514 | 2025-11-19 | yxxhero | Refactor environment variable expansion in PrepareCommands and update tests |
+| #31512 | 2025-11-15 | benoittgt | fix: correct LDFLAGS path for default Kubernetes version |
+| #11739 | 2025-11-14 | Fish-pro | docs: fix syntax errors in the document |
+| #31418 | 2025-11-10 | tisonkun | chore: fix typo of public field |
 | #31323 | 2025-10-29 | mattfarina | Reproducible chart archive builds |
 | #31411 | 2025-10-29 | banjoh | fix: reinstate logger parameter to actions package |
 | #31204 | 2025-10-22 | benoittgt | Avoid panic in helm.sh/helm/v3/pkg/chartutil.ValidateAgainstSchema |
@@ -142,6 +212,108 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32596 | 2026-08-31 | gjenkins8 | chore: Fix independent-merge lint issues |
+| #32579 | 2026-08-31 | twz123 | refactor(repo): Use byte buffer to build index file |
+| #32486 | 2026-08-31 | mmorel-35 | chore: fix gofumpt extra-rules |
+| #32365 | 2026-08-31 | gjenkins8 | chore: Remove deprecated `internal/chart/v3/` code  |
+| #32328 | 2026-07-29 | nikolauspschuetz | test(action): poll for the interrupted install goroutine instead of a zero-margin sleep |
+| #32481 | 2026-07-28 | mmorel-35 | chore: fix gofumpt issues |
+| #32467 | 2026-07-24 | mmorel-35 | chore(pkg): refactor: finer tests conversions to testify part 3 |
+| #32466 | 2026-07-24 | mmorel-35 | chore(pkg): refactor: finer tests conversions to testify part 2 |
+| #32465 | 2026-07-24 | mmorel-35 | chore(internal): refactor: finer tests conversions to testify part 1 |
+| #32464 | 2026-07-24 | mmorel-35 | chore(pkg): refactor: finer tests conversions to testify part 1 |
+| #32435 | 2026-07-23 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 19 |
+| #32438 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 22 |
+| #32437 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 21 |
+| #32436 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 20 |
+| #32434 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 18 |
+| #32433 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 17 |
+| #32432 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 16 |
+| #32430 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 15 |
+| #32429 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 14 |
+| #32428 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 13 |
+| #32427 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 12 |
+| #32426 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 11 |
+| #32425 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 10 |
+| #32424 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 9 |
+| #32423 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 8 |
+| #32422 | 2026-07-22 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 7 |
+| #32439 | 2026-07-22 | TerryHowe | chore: group github-actions dependabot updates |
+| #32417 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 3 |
+| #32416 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 2 |
+| #32407 | 2026-07-21 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 3 |
+| #31907 | 2026-07-21 | LarytheLord | test(cli): make User-Agent REST config test hermetic |
+| #32406 | 2026-07-21 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 2 |
+| #32405 | 2026-07-21 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 1 |
+| #32410 | 2026-07-21 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 6 |
+| #32409 | 2026-07-21 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 5 |
+| #32415 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 1 |
+| #32420 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 6 |
+| #32419 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 5 |
+| #32418 | 2026-07-21 | mmorel-35 | chore(pkg): refactor: convert tests to testify assert/require part 4 |
+| #32408 | 2026-07-20 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 4 |
+| #32043 | 2026-07-18 | mapleeit | perf: enable concurrent status computation to prevent multi-minute delays |
+| #31933 | 2026-07-18 | abhay1999 | remove legacy import comments from remaining packages |
+| #32352 | 2026-07-18 | mmorel-35 | fix: enhance error handling and improve test assertions |
+| #32343 | 2026-07-15 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 3 |
+| #32342 | 2026-07-14 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 2 |
+| #32289 | 2026-07-14 | mmorel-35 | chore: fix elseif and ifElseChain issues from gocritic |
+| #32319 | 2026-07-14 | mmorel-35 | feat(linters): add new revive rules for better code quality |
+| #32321 | 2026-07-14 | mmorel-35 | refactor: enable several checks from gocritic |
+| #32341 | 2026-07-14 | mmorel-35 | chore(internal): refactor: convert tests to testify assert/require part 1 |
+| #32325 | 2026-07-10 | magic-peach | Fix: remove trailing whitespace in .golangci.yml |
+| #32296 | 2026-07-07 | mmorel-35 | chore: fix emptyStringTest, nestingReduce and  singleCaseSwitch checks issues from gocritic |
+| #32294 | 2026-07-07 | mmorel-35 | chore: fix several checks issues from testifylint |
+| #32293 | 2026-07-06 | mmorel-35 | chore: fix several checks issues from gocritic |
+| #32259 | 2026-06-25 | gjenkins8 | refactor(pkg/cli): convert tests to testify assert/require |
+| #32221 | 2026-06-23 | gjenkins8 | refactor(pkg): convert tests to testify assert/require |
+| #32260 | 2026-06-23 | gjenkins8 | refactor(internal): convert tests to testify assert/require |
+| #32254 | 2026-06-22 | gjenkins8 | refactor(pkg/registry): convert tests to testify assert/require |
+| #32256 | 2026-06-22 | gjenkins8 | refactor(internal): convert tests to testify assert/require |
+| #32255 | 2026-06-22 | gjenkins8 | refactor(pkg/release): convert tests to testify assert/require |
+| #32253 | 2026-06-22 | gjenkins8 | refactor(repotest): convert tests to testify assert/require |
+| #32252 | 2026-06-22 | gjenkins8 | refactor(pkg/strvals): convert tests to testify assert/require |
+| #32251 | 2026-06-22 | gjenkins8 | refactor(cmd/helm): convert tests to testify assert/require |
+| #31862 | 2026-06-20 | mmorel-35 | chore: enable contextcheck, fatcontext and noctx linters |
+| #32235 | 2026-06-18 | TerryHowe | test: use assert.Empty for zero-length assertions in validate_test |
+| #32171 | 2026-06-18 | mmorel-35 | ci: Fix empty and len testifylint violations across test files |
+| #30808 | 2026-06-13 | mmorel-35 | chore: enable errorlint |
+| #31944 | 2026-05-28 | AustinAbro321 | refactor: lower resync period from one hour to 3 minutes |
+| #32113 | 2026-05-19 | isumitsolanki | refactor(downloader): order DiskCache.Get checks for overlayfs empty dirs |
+| #32125 | 2026-05-18 | SebTardif | refactor(repo): use structured slog args in index.go |
+| #32091 | 2026-05-14 | ogulcanaydogan | refactor(registry): remove pre-Go-1.20 transport cloner fallback |
+| #31878 | 2026-03-02 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 3 |
+| #31875 | 2026-03-02 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 2 |
+| #31853 | 2026-03-02 | atombrella | refactor: Replace non-format use of t.Fatalf with t.Fatal |
+| #31879 | 2026-02-28 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 7 |
+| #31877 | 2026-02-28 | mmorel-35 | chore(internal): fix perfsprint linter issues part 3 |
+| #31876 | 2026-02-28 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 1 |
+| #31871 | 2026-02-27 | mmorel-35 | chore(internal): fix perfsprint linter issues part 1 |
+| #31870 | 2026-02-26 | mmorel-35 | chore(internal): fix perfsprint linter issues part 2 |
+| #31807 | 2026-02-25 | mmorel-35 | refactor(internal): errorlint linter |
+| #31806 | 2026-02-25 | mmorel-35 | refactor(pkg): errorlint linter |
+| #31796 | 2026-02-24 | mmorel-35 | chore(pkg): fix modernize linter |
+| #31858 | 2026-02-24 | gjenkins8 | chore: `go fix` fixes |
+| #31816 | 2026-02-18 | mmorel-35 | refactor(pkg): errorlint linter |
+| #31801 | 2026-02-11 | mmorel-35 | chore(pkg): fix modernize linter |
+| #31802 | 2026-02-11 | mmorel-35 | chore(pkg): fix modernize linter |
+| #31808 | 2026-02-10 | mmorel-35 | refactor(internal): errorlint linter |
+| #31810 | 2026-02-10 | mmorel-35 | refactor(pkg): errorlint linter |
+| #31811 | 2026-02-10 | mmorel-35 | refactor(pkg): errorlint linter |
+| #31805 | 2026-02-10 | mmorel-35 | refactor(cmd): errorlint linter |
+| #31809 | 2026-02-10 | mmorel-35 | refactor(pkg): errorlint linter |
+| #31698 | 2026-01-08 | sarfraj89 | Lint sync-repo.sh with ShellCheck |
+| #31239 | 2026-01-03 | StephanieHhnbrg | Add tests to action package to improve coverage |
+| #31684 | 2026-01-01 | Skarlso | fix: typo in the function names |
+| #31677 | 2025-12-27 | gjenkins8 | chore: Replace deprecated `NewSimpleClientset` |
+| #31669 | 2025-12-22 | brendenehlers | fix: #31665 add default cases to switch statements |
+| #31415 | 2025-12-17 | banjoh | chore: increase logging test coverage |
+| #31650 | 2025-12-15 | gjenkins8 | Fix `TestConcurrencyDownloadIndex` typo |
+| #31649 | 2025-12-15 | atombrella | Use errors.Is to check for io.EOF and gzip.ErrHeader |
+| #31624 | 2025-12-12 | atombrella | Enable the `sloglint` linter |
+| #11991 | 2025-12-12 | twz123 | Make test scripts run without /bin/bash |
+| #31342 | 2025-11-14 | TerryHowe | chore: replace github.com/mitchellh/copystructure |
+| #31469 | 2025-11-13 | saimanojk1 | Convert pkg/cmd/load_plugins.go to slog |
 | #31440 | 2025-10-29 | mattfarina | Updating Go and golangci-lint versions |
 | #31408 | 2025-10-21 | AndiDog | Improve error message when plugin source cannot be determined or a non-directory is passed |
 | #31390 | 2025-10-21 | TerryHowe | fix: improve pkg/cmd/list test coverage |
@@ -259,6 +431,108 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32605 | 2026-08-31 | scottrigby | chore: bump version to 4.3 |
+| #32577 | 2026-08-28 | mattfarina | Updating the Go version |
+| #32570 | 2026-08-25 | MsfPablo | fix: correct 'doest not match' in readiness debug logs |
+| #32281 | 2026-08-23 | ruslan-shaydullin | fix(provenance): support GnuPG keybox (pubring.kbx) keyrings |
+| #32485 | 2026-08-20 | Mentigen | fix(chart): normalize StampModTimes timestamp to UTC/truncate + Chart.lock reproducibility test |
+| #32339 | 2026-07-28 | 1solomonwakhungu | fix(scripts): add cache-busting to Helm version checks |
+| #32371 | 2026-07-19 | benoittgt | ci: auto-label PRs targeting main with v4.x |
+| #32372 | 2026-07-17 | gjenkins8 | chore: Add AI Vendor specific paths to `.gitignore` |
+| #32370 | 2026-07-16 | gjenkins8 | fix: 'gocritic: filepathJoin path seperator' lint error |
+| #32336 | 2026-07-14 | TerryHowe | ci: track GitHub Actions updates on dev-v3 via Dependabot |
+| #32320 | 2026-07-14 | mmorel-35 | fix(linters): update golangci-lint to 2.12.2 |
+| #32304 | 2026-07-11 | thc1006 | fix(ci): pin govulncheck-action to the v1.1.0 release |
+| #32324 | 2026-07-10 | magic-peach | Fix: add missing https:// to Oracle link in ADOPTERS.md |
+| #32323 | 2026-07-10 | magic-peach | fix(Makefile): update outdated .sha256 comment for Helm v4 |
+| #32317 | 2026-07-09 | TerryHowe | chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0 |
+| #32316 | 2026-07-09 | TerryHowe | chore(deps): bump github/codeql-action/analyze from 4.36.2 to 4.37.0 |
+| #32299 | 2026-07-08 | benoittgt | fix(ci): resolve Node 20 deprecation in govulncheck |
+| #32233 | 2026-06-18 | s3onghyun | docs: fix typo in helm version command description |
+| #32223 | 2026-06-17 | devShaik010 | docs: improve CONTRIBUTING.md wording |
+| #30867 | 2026-06-12 | mmorel-35 | chore: fix deprecatedComment issues from gocritic |
+| #31584 | 2026-06-12 | banjoh | feat: add ownership verification before deleting resources during uni… |
+| #31885 | 2026-05-30 | mmorel-35 | chore: fix whitespace linter |
+| #32086 | 2026-05-28 | mmorel-35 | testifylint: enable error-is-as and error-nil rules |
+| #32158 | 2026-05-28 | arnavnagzirkar | ci: enable bidichk linter to prevent invisible Unicode characters |
+| #32153 | 2026-05-27 | TerryHowe | fix(deps): bump golang.org/x/net to v0.55.0 to address GO-2026-5026 |
+| #32141 | 2026-05-22 | benoittgt | docs: update version status for v4 stable release |
+| #32122 | 2026-05-19 | quyentonndbs | docs: fix typo in deprecated API godoc |
+| #32118 | 2026-05-14 | box4wangjing | refactor: use slices.Backward to simplify the code |
+| #32102 | 2026-05-06 | gjenkins8 | Bump to version v4.2 |
+| #32098 | 2026-05-04 | scottrigby | build: Clean up Goreleaser change |
+| #31343 | 2026-05-03 | TerryHowe | chore: replace mitchellh/gox with goreleaser |
+| #31970 | 2026-05-03 | isumitsolanki | refactor(cli): decouple EnvSettings from pkg/kube to avoid import cycles |
+| #32090 | 2026-04-30 | matheuscscp | Upgrade kstatus to 1.2 and controller-runtime to 0.24 |
+| #31923 | 2026-04-29 | gaganhr94 | fix: adds topLevel permissions to improve openSSF scores |
+| #32034 | 2026-04-29 | cairon-ab | fix: add debug logging to HTTP getter for helm pull |
+| #32078 | 2026-04-26 | matheuscscp | Upgrade Go to 1.26, Kubernetes to 1.36, kstatus to 1.1 |
+| #30811 | 2026-04-25 | mmorel-35 | chore: fix bool-compare issues from testifylint |
+| #32049 | 2026-04-21 | matheuscscp | fix(templating): hooks conflicting with templates in post-renderers |
+| #31981 | 2026-04-20 | abhay1999 | fix(kube): clarify server-side apply patch errors |
+| #32008 | 2026-04-20 | rhysmcneill | fix(action): return correct error variable in prepareUpgrade |
+| #32057 | 2026-04-20 | MohitSalvi16 | docs: fix grammar and spacing in CONTRIBUTING.md |
+| #12932 | 2026-04-16 | AndiDog | Make error message instructional for the case of lock file being out of date |
+| #31952 | 2026-04-15 | matheuscscp | fix(templating): SplitManifests must preserve line endings for downstream YAML parsers |
+| #31979 | 2026-04-14 | Y0-L0 | Jlohmer/coalesce nil |
+| #32016 | 2026-04-11 | TerryHowe | test(kube): fix flaky WaitForDelete timing in status wait tests |
+| #31941 | 2026-04-10 | matheuscscp | fix(templating): fix wrong YAML separator parsing for post-renderers |
+| #32028 | 2026-04-09 | gjenkins8 | chore: Update release notes script for Helm v4 |
+| #32025 | 2026-04-09 | gjenkins8 | fix: unnecessary-format lint issues from merge |
+| #32014 | 2026-04-07 | AnmolVirdi | Minor fix (docs.go): fix import instructions to comply with canonical import paths |
+| #31974 | 2026-04-01 | TerryHowe | fix: pin codeql-action/upload-sarif to commit SHA |
+| #31973 | 2026-03-27 | Debasish-87 | docs(registry): fix incorrect and improve clarity of comments in client.go |
+| #31957 | 2026-03-24 | Mentigen | feat(engine): add mustToToml template function |
+| #31938 | 2026-03-23 | mmorel-35 | chore: enable perfsprint linter |
+| #31953 | 2026-03-23 | mmorel-35 | chore: fix unnecessary-format issues from revive |
+| #31872 | 2026-03-14 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 6 |
+| #31874 | 2026-03-14 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 4 |
+| #31873 | 2026-03-14 | mmorel-35 | chore(pkg): fix perfsprint linter issues part 5 |
+| #31932 | 2026-03-12 | TerryHowe | pkg/kube: remove legacy import comments from test files |
+| #31931 | 2026-03-12 | abhay1999 | pkg/kube: remove legacy import comments |
+| #31921 | 2026-03-11 | tsinglua | chore: fix some minor issues in the comments |
+| #31898 | 2026-03-09 | TerryHowe | fix: bump go.opentelemetry.io/otel/sdk to v1.40.0 for GO-2026-4394 |
+| #31860 | 2026-03-06 | mmorel-35 | chore: update golangci-lint to v2.10.1 and enable modernize linter |
+| #31857 | 2026-02-27 | gjenkins8 | chore: Improve `AGENTS.md` |
+| #31861 | 2026-02-25 | mmorel-35 | chore: enable nolinlint linter |
+| #31804 | 2026-02-09 | gjenkins8 | chore: new KEYS entry for George Jenkins |
+| #31795 | 2026-02-07 | mmorel-35 | chore(internal): fix modernize linter |
+| #31799 | 2026-02-07 | mmorel-35 | chore(internal): fix modernize linter |
+| #31794 | 2026-02-07 | mmorel-35 | chore(pkg): fix modernize linter |
+| #31743 | 2026-01-22 | banjoh | docs: document uninstall using cascade foreground flag |
+| #31739 | 2026-01-21 | gjenkins8 | Modernize Helm v3 CONTRIBUTING.md |
+| #31742 | 2026-01-21 | JeevanYewale | Remove legacy sync-repo.sh script |
+| #31723 | 2026-01-17 | matheuscscp | bugfix(logging): fix storage not getting logger from driver |
+| #31683 | 2026-01-04 | majiayu000 | fix: `--api-versions` is undocumented |
+| #31673 | 2026-01-04 | jylenhof | docs(README): add mise alternate installation documentation |
+| #31685 | 2026-01-02 | atombrella | Replace reflect.Ptr with reflect.Pointer |
+| #31687 | 2026-01-02 | banjoh | chore: move Evans Mungai from triage to maintainers |
+| #31680 | 2025-12-28 | mattfarina | Update cli tools and k8s 1.35 packages |
+| #31654 | 2025-12-17 | deepakchethan | fix(doc): Update default wait strategy |
+| #31565 | 2025-12-15 | gjenkins8 | Bump required go version (`go.mod` version) |
+| #31587 | 2025-12-13 | benoittgt | Inform if make test-style uses a different golangci-lint version than CI |
+| #31641 | 2025-12-12 | wangjingcun | chore: fix some comments to improve readability |
+| #31638 | 2025-12-11 | TerryHowe | feat: move TerryHowe triage to maintainers |
+| #31625 | 2025-12-09 | mattfarina | Fix govulncheck in CI |
+| #31628 | 2025-12-09 | mattfarina | Update the govulncheck.yml to run on change |
+| #31549 | 2025-12-08 | benoittgt | fix: prevent reporting fallback on version when none specified |
+| #31528 | 2025-12-08 | benoittgt | fix: preserve vendor suffixes in KubeVersion.GitVersion |
+| #31546 | 2025-12-01 | benoittgt | fix(lint): prevent segmentation violation on only comment yaml in multidoc |
+| #31562 | 2025-11-30 | atombrella | Use modernize to use newer Golang features. |
+| #31519 | 2025-11-30 | TerryHowe | chore: add warning for registry login with namespace |
+| #31577 | 2025-11-26 | megha1906 | chore: fix typo in pkg/downloader/chart_downloader.go |
+| #31561 | 2025-11-25 | atombrella | Remove two redundant if-checks. |
+| #31462 | 2025-11-20 | mattfarina | Adding a LoadArchive to common loader |
+| #31535 | 2025-11-20 | mattfarina | bump version to 4.1 |
+| #31464 | 2025-11-19 | benoittgt | Properly test error messages on pull command's test |
+| #31478 | 2025-11-16 | promalert | refactor: use strings.Builder to improve performance |
+| #31473 | 2025-11-14 | TerryHowe | fix: do not run release workflow on forks |
+| #31503 | 2025-11-14 | crenshaw-dev | docs: Fix LFX Health Score badge URL in README.md |
+| #31488 | 2025-11-12 | gjenkins8 | Publish Helm v4 -> `helm-latest-version` |
+| #31485 | 2025-11-12 | mattfarina | Adding script to download Helm v4 |
+| #31318 | 2025-11-12 | gjenkins8 | fix: Helm v4 release distribution & `get-helm-3` script |
+| #31468 | 2025-11-09 | yardenshoham | Rename copilot-instructions.md to AGENTS.md |
+| #31385 | 2025-11-05 | porridge | test: protect unknown hook delete policies |
 | #31197 | 2025-09-03 | tzchenxixi | chore: fix function name |
 | #31150 | 2025-08-18 | TerryHowe | Feature add stale pr workflow |
 | #31149 | 2025-08-18 | TerryHowe | fix: stale issue workflow |
@@ -316,6 +590,9 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #31776 | 2026-02-13 | t0rr3sp3dr0 | fix: regression when pulling charts from OCI indices |
+| #31644 | 2026-01-31 | banjoh | fix(values): preserve nil values when chart default is empty map |
+| #31240 | 2025-11-07 | benoittgt | jsonschema: warn and ignore unresolved URN $ref to match v3.18.4 |
 | #31064 | 2025-09-05 | kamilswiec | lint: throw warning when chart version is not semverv2 |
 | #31156 | 2025-08-22 | estroz | fix: set repo authorizer in registry.Client.Resolve() |
 | #30992 | 2025-08-18 | TerryHowe | fix: force bearer oauth for if registry requests bearer auth |
@@ -348,6 +625,7 @@ sidebar_label: Повний список змін
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32521 | 2026-08-07 | TerryHowe | fix: bump go.opentelemetry.io/otel to v1.44.0 for GO-2026-5158 |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
 | #13581 | 2024-12-31 | ldlb9527 | Upgrade golang.org/x/net to v0.33.0 to address CVE-2024-45338 |

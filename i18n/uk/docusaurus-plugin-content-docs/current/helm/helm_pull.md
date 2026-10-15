@@ -70,4 +70,4 @@ helm pull [chart URL | repo/chartname] [...] [flags]
 
 * [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

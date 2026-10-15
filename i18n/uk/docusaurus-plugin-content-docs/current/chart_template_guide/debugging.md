@@ -32,3 +32,23 @@ apiVersion: v2
 ```
 
 Це забезпечує швидкий спосіб перегляду згенерованого контенту без блокування помилками парсингу YAML.
+
+## Відлагодження функції `lookup` {#debugging-the-lookup-function}
+
+Функція [`lookup`](/chart_template_guide/functions_and_pipelines.mdx#using-the-lookup-function) запитує ресурси Kubernetes під час рендерингу шаблону. Коли `lookup` повертає порожній результат, буває складно зʼясувати чому. Щоб бачити діагностичні повідомлення, увімкніть режим налагодження:
+
+```bash
+helm install --debug myrelease ./mychart
+```
+
+З увімкненим журналюванням налагодження Helm записує в журнал apiVersion, kind, namespace та імʼя, коли lookup повертає порожній результат:
+
+- **"lookup: resource not found"** — Конкретний ресурс не знайдено в кластері (для пошуку одного обʼєкта, як-от `lookup "v1" "ConfigMap" "default" "my-config"`)
+- **"lookup: resource list not found"** — Жоден ресурс не відповів запиту (для пошуку списків, як-от `lookup "v1" "ConfigMap" "default" ""`)
+
+Часті причини, чому `lookup` може повертати порожній результат:
+
+- Ресурс не існує в кластері
+- Дозволи RBAC перешкоджають доступу до ресурсу
+- Запуск `helm template` без доступу до кластера (використовуйте `--dry-run=server`, щоб підключитися)
+- Невірні параметри apiVersion, kind, namespace або name
