@@ -134,6 +134,6 @@ API에 관해 호환성이 깨지는 변경 작업이 전부 완료되었습니�
 
 ### 주간 개발자 미팅 {#weekly-dev-meetings}
 
-매주 목요일 오전 9시 30분에 [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/91295593969?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb)에서 유지관리자들과 함께하는 라이브 토론에 참여하세요.
+매주 목요일 오전 9시 30분에 [Zoom](https://zoom-lfx.platform.linuxfoundation.org/meeting/99213281727?password=17825db5-c698-44cc-9f00-ef1f61f5d3fb)에서 유지관리자들과 함께하는 라이브 토론에 참여하세요.
 
 더 다양한 참여 방법은 Helm 커뮤니티의 [커뮤니케이션 안내](https://github.com/helm/community/blob/main/communication.md)를 참고하세요.
