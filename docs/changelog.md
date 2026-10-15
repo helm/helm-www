@@ -5,8 +5,8 @@ sidebar_label: Full Changelog
 
 # Helm 4 Full Changelog
 
-**Scope**: 568 PRs from (`v4.3.0`) compared to `v3.19.0`
-**v4-only**: 531 PRs (37 backported to v3 excluded)
+**Scope**: 571 PRs from (`v4.3.1`) compared to `v3.19.0`
+**v4-only**: 533 PRs (38 backported to v3 excluded)
 
 See the [Overview](/overview.md) for an actionable summary of these changes.
 
@@ -84,6 +84,7 @@ Fixes in Helm 4 that were not backported to v3
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32672 | 2026-10-06 | pujitha24 | fix(action): wait for CRD establishment under HookOnlyStrategy |
 | #32217 | 2026-08-31 | amarkdotdev | fix(template): regression - route registry messages to stderr in template and show |
 | #31748 | 2026-08-31 | benoittgt | refactor: remove per-file decompression size limit |
 | #32525 | 2026-08-18 | locker95 | fix(loader): do not drop values files ending at a 4096-byte boundary |
@@ -431,6 +432,7 @@ Infrastructure and project management improvements
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32744 | 2026-10-14 | ruslan-shaydullin | fix(linters): update golangci-lint to v2.14.0 |
 | #32605 | 2026-08-31 | scottrigby | chore: bump version to 4.3 |
 | #32577 | 2026-08-28 | mattfarina | Updating the Go version |
 | #32570 | 2026-08-25 | MsfPablo | fix: correct 'doest not match' in readiness debug logs |
@@ -625,6 +627,7 @@ These PRs were included in v4 but were also backported to v3 releases
 
 | PR | Date | Author | Title |
 |---|---|---|---|
+| #32758 | 2026-10-14 | TerryHowe | fix: bump golang.org/x/net to v0.61.0 |
 | #32521 | 2026-08-07 | TerryHowe | fix: bump go.opentelemetry.io/otel to v1.44.0 for GO-2026-5158 |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
