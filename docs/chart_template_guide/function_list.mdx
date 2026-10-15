@@ -724,9 +724,10 @@ The following type conversion functions are provided by Helm:
 - `fromJson`: Convert a JSON string to an object.
 - `mustFromJson`: Convert a JSON string to an object, or return an error to the template engine if the string is not valid JSON.
 - `fromJsonArray`: Convert a JSON array to a list.
-- `toYaml`: Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+- `toYaml` (`mustToYaml`): Convert list, slice, array, dict, or object to indented yaml, can be used to copy chunks of yaml from any source. This function is equivalent to GoLang yaml.Marshal function, see docs here: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 - `toYamlPretty`: Convert list, slice, array, dict, or object to indented yaml. Equivalent to `toYaml` but will additionally indent lists by 2 spaces.
 - `toToml` (`mustToToml`): Convert list, slice, array, dict, or object to toml, can be used to copy chunks of toml from any source.
+- `fromToml`: Convert a TOML string to an object.
 - `fromYamlArray`: Convert a YAML array to a list.
 
 Only `atoi` requires that the input be a specific type. The others will attempt
@@ -863,9 +864,9 @@ greeting: |
 {{ end }}
 ```
 
-### toYaml, toYamlPretty
+### toYaml, mustToYaml, toYamlPretty
 
-The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, dict, or object) into an indented YAML string.
+The `toYaml` and `toYamlPretty` functions encode an object (list, slice, array, dict, or object) into an indented YAML string. If the object cannot be converted to YAML, they return an empty string. `mustToYaml` works the same way as `toYaml`, but returns an error to the template engine if the object cannot be encoded.
 
 > Note that `toYamlPretty` is functionally equivalent but will output YAML with additional indents for list elements
 
@@ -919,6 +920,24 @@ toToml .Item
 ```
 
 The above returns TOML string representation of `.Item`.
+
+### fromToml
+
+The `fromToml` function takes a TOML string and returns an object that can be
+used in templates.
+
+`File at: config.toml`
+```toml
+name = "my-app"
+port = 8080
+```
+```yaml
+{{- $config := .Files.Get "config.toml" | fromToml }}
+port: {{ $config.port }}
+```
+
+If the string is not valid TOML, `fromToml` does not fail. Instead, it returns a
+map with the error message under the `Error` key.
 
 
 ## Regular Expressions
@@ -1045,7 +1064,7 @@ regexMatch (printf "^%s$" (regexQuoteMeta "[foo]+bar?")) "[foo]+bar?"
 ## Cryptographic and Security Functions
 
 Helm provides some advanced cryptographic functions. They include
-[adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert),
+[adler32sum](#adler32sum), [bcrypt](#bcrypt), [buildCustomCert](#buildcustomcert),
 [decryptAES](#decryptaes), [derivePassword](#derivepassword),
 [encryptAES](#encryptaes), [genCA](#genca), [genCAWithKey](#gencawithkey),
 [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert),
@@ -1102,6 +1121,18 @@ htpasswd "myUser" "myPassword"
 ```
 
 Note that it is insecure to store the password directly in the template.
+
+### bcrypt
+
+The `bcrypt` function generates a `bcrypt` hash of a string. It is the hash
+that [htpasswd](#htpasswd) uses, without the `username:` prefix.
+
+```
+bcrypt "myPassword"
+```
+
+The above returns a string such as `$2a$10$...`. Because each call uses a new
+random salt, the output changes every time the template is rendered.
 
 ### randBytes
 
@@ -1911,8 +1942,11 @@ $myList := list 1 2 3 4 5
 
 The above creates a list of `[1 2 3 4 5]`.
 
+`tuple` is an alias of `list` and works the same way. You will see it in many
+existing charts.
+
 Helm provides the following list functions: [append
-(mustAppend)](#append-mustappend), [chunk](#chunk), [compact
+(mustAppend)](#append-mustappend), [chunk (mustChunk)](#chunk-mustchunk), [compact
 (mustCompact)](#compact-mustcompact), [concat](#concat), [first
 (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial
 (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast),
@@ -2129,7 +2163,7 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
-### chunk
+### chunk, mustChunk
 
 To split a list into chunks of given size, use `chunk size list`. This is useful for pagination.
 
@@ -2138,6 +2172,9 @@ chunk 3 (list 1 2 3 4 5 6 7 8)
 ```
 
 This produces list of lists `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
+
+`chunk` panics if there is a problem and `mustChunk` returns an error to the
+template engine if there is a problem.
 
 ## Math Functions
 
