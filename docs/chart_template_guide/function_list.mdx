@@ -15,6 +15,7 @@ They are listed here and broken down by the following categories:
 * [Date](#date-functions)
 * [Dictionaries](#dictionaries-and-dict-functions)
 * [Encoding](#encoding-functions)
+* [Compression](#compression-functions)
 * [File Path](#file-path-functions)
 * [Kubernetes and Chart](#kubernetes-and-chart-functions)
 * [Logic and Flow Control](#logic-and-flow-control-functions)
@@ -1980,6 +1981,56 @@ Helm has the following encoding and decoding functions:
 
 - `b64enc`/`b64dec`: Encode or decode with Base64
 - `b32enc`/`b32dec`: Encode or decode with Base32
+
+## Compression Functions
+
+Helm has the following compression and decompression functions:
+
+- `compress`/`decompress`: Compress or decompress a string with the given algorithm
+
+The first argument is the compression algorithm. `gzip` is currently the only
+supported algorithm, and an unsupported algorithm causes a template failure.
+Because the data is the last argument, both functions can be used in pipelines.
+
+`compress` returns a Base64 encoded string, and `decompress` accepts a Base64
+encoded string. Both functions only accept and return valid UTF-8 text.
+
+### compress
+
+The `compress` function compresses a string with the given algorithm and returns
+a Base64 encoded result. This makes it possible to store content larger than
+1MB in a Kubernetes Secret or ConfigMap.
+
+This returns `H4sIAAAAAAAA/8pIzcnJVyjPL8pJAQQAAP//hRFKDQsAAAA=`
+
+```
+compress "gzip" "hello world"
+```
+
+A common use is compressing a file from the chart:
+
+```yaml
+binaryData:
+  dashboard.json.gz: {{ .Files.Get "files/dashboard.json" | compress "gzip" | quote }}
+```
+
+The compressed and Base64 encoded result must not exceed 1MB, the size limit of
+a Kubernetes Secret or ConfigMap. Otherwise, it causes a template failure.
+
+### decompress
+
+The `decompress` function decodes a Base64 encoded string and then decompresses
+it with the given algorithm.
+
+This returns `hello world`
+
+```
+"H4sIAAAAAAAA/8pIzcnJVyjPL8pJAQQAAP//hRFKDQsAAAA=" | decompress "gzip"
+```
+
+The input must not exceed 1MB. To protect against decompression bombs, the
+decompressed output must not exceed the maximum decompressed chart size
+(100MiB by default). Exceeding either limit causes a template failure.
 
 ## Lists and List Functions
 
