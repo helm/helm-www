@@ -35,8 +35,8 @@ They are listed here and broken down by the following categories:
 Helm includes numerous logic and control flow functions including
 [all](#all), [and](#and), [any](#any), [coalesce](#coalesce),
 [default](#default), [empty](#empty), [eq](#eq), [fail](#fail),
-[ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne),
-[not](#not), [or](#or), and [required](#required).
+[ge](#ge), [gt](#gt), [include](#include), [le](#le), [lt](#lt), [ne](#ne),
+[not](#not), [or](#or), [required](#required), and [tpl](#tpl).
 
 ### all
 
@@ -168,6 +168,31 @@ required "A valid foo is required!" .Bar
 If `.Bar` is empty or not defined (see [default](#default) on how this is 
 evaluated), the template will not render and will return the error message 
 supplied instead.
+
+For more examples, see [Using the 'required' function](/howto/charts_tips_and_tricks.md#using-the-required-function).
+
+### include
+
+Renders a named template and returns the result as a string, so you can pipe
+it to other functions:
+
+```
+include "mychart.labels" . | indent 4
+```
+
+Use `include` instead of the `template` action when you need to process the
+output. For details, see [Using the 'include' Function](/howto/charts_tips_and_tricks.md#using-the-include-function).
+
+### tpl
+
+Evaluates a string as a template inside a template. This is useful for values
+that contain template expressions:
+
+```
+tpl .Values.template .
+```
+
+For details, see [Using the 'tpl' Function](/howto/charts_tips_and_tricks.md#using-the-tpl-function).
 
 ### empty
 
@@ -1456,6 +1481,9 @@ Same as `date`, but with a timezone.
 dateInZone "2006-01-02" (now) "UTC"
 ```
 
+`date_in_zone` is a deprecated alias for `dateInZone`. It still works, but use
+`dateInZone` in new charts.
+
 ### dateModify, mustDateModify
 
 The `dateModify` takes a modification and a date and returns the timestamp.
@@ -1468,6 +1496,10 @@ now | dateModify "-1.5h"
 
 If the modification format is wrong `dateModify` will return the date
 unmodified. `mustDateModify` will return an error otherwise.
+
+`date_modify` and `must_date_modify` are deprecated aliases for `dateModify`
+and `mustDateModify`. They still work, but use the camelCase names in new
+charts.
 
 ### duration
 
@@ -2280,6 +2312,9 @@ This will return `3`:
 max 1 2 3
 ```
 
+`biggest` is a deprecated alias for `max`. It still works, but use `max` in
+new charts.
+
 ### min
 
 Return the smallest of a series of integers.
@@ -2768,3 +2803,10 @@ documented in [Accessing Files Inside Templates](/chart_template_guide/accessing
 _Note, the documentation for many of these functions come from
 [Sprig](https://github.com/Masterminds/sprig). Sprig is a template function
 library available to Go applications._
+
+:::note
+Helm intentionally removes the Sprig `env` and `expandenv` functions so that
+chart rendering does not depend on the environment of the machine running
+Helm. To pass environment-specific data into a chart, use values (for example,
+`--set` or `--values`).
+:::
