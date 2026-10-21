@@ -56,7 +56,7 @@ The code that invokes each plugin type sits with the feature that uses it:
 
 ### How the pieces fit together
 
-1. **Load.** `LoadDir` reads `plugin.yaml`. If `apiVersion` is `v1`, the file is parsed as `MetadataV1`. Otherwise it is parsed as legacy metadata, and the type is inferred: a `downloaders` key means `getter/v1`, anything else means `cli/v1`.
+1. **Load.** `LoadDir` reads `plugin.yaml`. If `apiVersion` is `v1`, the file is parsed as `MetadataV1`. If `apiVersion` is absent, it is parsed as legacy metadata, and the type is inferred: a `downloaders` key means `getter/v1`, anything else means `cli/v1`. Any other `apiVersion` is rejected.
 2. **Validate.** For `v1` plugins, the `config` section is decoded into the config type that the type registry lists for the plugin's `type` (for example, `schema.ConfigGetterV1`), and the `runtimeConfig` section is decoded into the runtime's config type (`RuntimeConfigSubprocess` or `RuntimeConfigExtismV1`). For legacy plugins, Helm builds both from the Helm 3 `plugin.yaml` fields.
 3. **Create.** The plugin manager looks up the `Runtime` registered under the plugin's `runtime` name and calls `CreatePlugin`, which returns a `Plugin`.
 4. **Invoke.** The calling feature builds an `Input` whose `Message` is the type's input message, calls `Invoke`, and type-asserts `Output.Message` to the type's output message.
