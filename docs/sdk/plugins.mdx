@@ -100,6 +100,8 @@ Wasm plugins can only reach what `runtimeConfig` allows:
 | `runtimeConfig` field | Effect |
 |---|---|
 | `memory.maxPages` | Maximum linear memory, in 64 KiB pages |
+| `memory.maxHttpResponseBytes` | Maximum size of an HTTP response the plugin can receive, in bytes |
+| `memory.maxVarBytes` | Maximum total size of Extism variables, in bytes |
 | `timeout` | Maximum execution time, in milliseconds |
 | `allowedHosts` | Hosts the plugin can send HTTP requests to through Extism. Empty by default, which blocks all hosts. |
 | `fileSystem.createTempDir` | Creates a temporary directory on the host and mounts it at `/tmp` inside the plugin |
