@@ -44,6 +44,30 @@ $ go test -tags helmtest ./...
 Without this tag, tests fail during package initialization because test
 binaries lack module version information that the production code paths expect.
 
+### End-to-End Tests
+
+The end-to-end tests run a real `helm` binary against a real OCI registry,
+and optionally against a Kubernetes cluster.
+They use the `e2e` build tag, so `make test` does not run them.
+
+To run them, set the registry to push test charts to and its credentials,
+then run `make test-e2e`:
+
+```console
+$ export HELM_E2E_REGISTRY=ghcr.io/your-org
+$ export HELM_E2E_USERNAME=your-user
+$ export HELM_E2E_PASSWORD=your-token
+$ make test-e2e
+```
+
+The suite works with any OCI registry, including a local one.
+The Kubernetes install test is off by default because it changes the cluster
+that your current kubecontext points to.
+To enable it, set `HELM_E2E_KUBERNETES`.
+
+For all configuration options, including how to run against a local registry
+or Docker Hub, see [Helm end-to-end tests](https://github.com/helm/helm/blob/main/test/e2e/README.md).
+
 ## Running Locally
 
 You can update your path and add the path of your local helm binary. In an editor
