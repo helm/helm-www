@@ -1,0 +1,255 @@
+---
+title: Techniques Helm avancées
+description: Présente diverses fonctionnalités avancées pour les utilisateurs expérimentés de Helm
+sidebar_position: 9
+default_lang_commit: fec429357937b35ef9cefe26675dfc61db4049f4
+---
+
+import Helm4 from "/docs/_v4-in-progress.mdx"
+
+<Helm4/>
+
+Cette section présente diverses fonctionnalités et techniques avancées de Helm.
+Elle s'adresse aux utilisateurs expérimentés de Helm qui souhaitent
+personnaliser et manipuler en profondeur leurs charts et leurs releases. Chacune
+de ces fonctionnalités avancées comporte ses compromis et ses mises en garde :
+utilisez-les avec précaution et en connaissant bien Helm. Autrement dit, souvenez-vous du
+[principe de Peter Parker](https://en.wikipedia.org/wiki/With_great_power_comes_great_responsibility).
+
+## Post-rendu {/* #post-rendering */}
+Le post-rendu permet à la personne qui installe un chart de manipuler, de
+configurer ou de valider à la main les manifestes rendus avant que Helm ne les
+installe. Les utilisateurs qui ont des besoins de configuration avancés peuvent
+ainsi utiliser des outils comme [`kustomize`](https://kustomize.io) pour
+modifier la configuration, sans avoir à forker un chart public ni à demander aux
+mainteneurs du chart de prévoir toutes les options de configuration d'un
+logiciel. Le post-rendu sert aussi à injecter des outils communs et des sidecars
+en entreprise, ou à analyser les manifestes avant le déploiement.
+
+### Prérequis {/* #prerequisites */}
+- Helm 3.1+
+
+### Utilisation {/* #usage */}
+Un post-renderer peut être n'importe quel exécutable qui reçoit des manifestes
+Kubernetes rendus sur STDIN et renvoie des manifestes Kubernetes valides sur
+STDOUT. En cas d'échec, il doit renvoyer un code de sortie non nul. C'est la
+seule « API » entre les deux composants, ce qui laisse une grande liberté dans
+votre processus de post-rendu.
+
+Un post-renderer peut être utilisé avec `install`, `upgrade` et `template`. Pour
+utiliser un post-renderer, passez à l'option `--post-renderer` le chemin de son
+exécutable :
+
+```shell
+$ helm install mychart stable/wordpress --post-renderer ./path/to/executable
+```
+
+Si le chemin ne contient aucun séparateur, l'exécutable est recherché dans
+$PATH. Sinon, les chemins relatifs sont convertis en chemins absolus.
+
+Pour utiliser plusieurs post-renderers, appelez-les tous dans un script ou
+ensemble dans l'outil binaire que vous avez développé. En bash, il suffit
+d'écrire `renderer1 | renderer2 | renderer3`.
+
+Vous trouverez un exemple d'utilisation de `kustomize` comme post-renderer
+[ici](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
+
+#### Noms de fichiers {/* #filenames */}
+Chaque manifeste transmis au post-renderer contient une annotation temporaire :
+```yaml
+metadata:
+  annotations:
+    postrenderer.helm.sh/postrender-filename: <original-template-filename>
+```
+
+Quand Helm relit la sortie du post-renderer, il se sert de cette annotation pour
+savoir à quel nom de fichier associer chaque manifeste pour la suite du
+traitement. Si l'annotation est absente, Helm génère automatiquement un nom de
+fichier au format `generated-by-postrender-<id>.yaml`. Enfin, Helm retire
+l'annotation avant d'envoyer les manifestes à Kubernetes.
+
+#### Hooks et stratégie de post-rendu {/* #hooks-and-post-render-strategy */}
+
+Dans Helm 4, les [hooks de chart](/topics/charts_hooks.md) passent par les
+post-renderers en même temps que les templates classiques. Par défaut, les hooks
+et les templates sont envoyés ensemble dans un seul flux (la stratégie
+`combined`). Helm 3, lui, n'envoyait jamais les hooks aux post-renderers.
+
+Vous pouvez contrôler ce comportement depuis le SDK Go avec l'option
+`PostRenderStrategy` :
+
+| Stratégie | Comportement |
+|-----------|--------------|
+| `combined` | Envoie les hooks et les templates ensemble, dans un seul flux. C'est le comportement par défaut de Helm 4. |
+| `separate` | Envoie les hooks et les templates au post-renderer dans deux appels distincts. Utile quand une même ressource (par exemple un ServiceAccount) figure à la fois dans un hook et dans un template. |
+| `nohooks` | N'envoie que les templates au post-renderer, sans toucher aux hooks. C'est le comportement de Helm 3. |
+
+**Pour les utilisateurs de Kustomize :** si votre configuration Kustomize
+contient des patchs qui ciblent des ressources présentes uniquement dans les
+templates (et pas dans les hooks), utilisez `nohooks`. La stratégie `separate`
+appelle le post-renderer deux fois, une fois pour les hooks et une fois pour les
+templates, et les patchs Kustomize qui ciblent des ressources propres aux
+templates échouent sur le flux des hooks. C'est pourquoi le helm-controller de
+Flux utilise `nohooks` par défaut.
+
+### Mises en garde {/* #caveats */}
+Gardez plusieurs points importants à l'esprit quand vous utilisez des
+post-renderers. Le plus important : avec un post-renderer, toutes les personnes
+qui modifient la release **DOIVENT** utiliser le même post-renderer pour obtenir
+des builds reproductibles. Cette fonctionnalité est volontairement conçue pour
+permettre à chacun de changer de post-renderer ou de ne plus en utiliser, mais
+faites-le en connaissance de cause pour éviter toute modification accidentelle
+ou perte de données.
+
+L'autre point important concerne la sécurité. Si vous utilisez un post-renderer,
+assurez-vous qu'il provient d'une source fiable (comme pour tout autre
+exécutable). Il est **fortement déconseillé** d'utiliser des post-renderers non
+fiables ou non vérifiés, car ils ont un accès complet aux templates rendus, qui
+contiennent souvent des données sensibles.
+
+### Post-renderers personnalisés {/* #custom-post-renderers */}
+Le post-rendu est encore plus flexible depuis le SDK Go. Un post-renderer doit
+seulement implémenter l'interface Go suivante :
+
+```go
+type PostRenderer interface {
+    // Run expects a single buffer filled with Helm rendered manifests. It
+    // expects the modified results to be returned on a separate buffer or an
+    // error if there was an issue or failure while running the post render step
+    Run(renderedManifests *bytes.Buffer) (modifiedManifests *bytes.Buffer, err error)
+}
+```
+
+Pour en savoir plus sur l'utilisation du SDK Go, consultez la
+[section SDK Go](#go-sdk).
+
+## Laisser Helm prendre possession de ressources existantes {/* #allow-helm-to-take-ownership-of-existing-resources */}
+
+Par défaut, Helm refuse d'installer ou de mettre à niveau un chart si une
+ressource qui n'appartient pas à la release existe déjà dans le cluster. Helm
+affiche alors l'erreur suivante : « resource already exists and is not owned by
+this release ».
+
+Helm garde la trace de l'appartenance des ressources dans le cluster grâce à des
+annotations qu'il gère lui-même et à des labels associés, comme
+`app.kubernetes.io/managed-by`. Ce contrôle d'appartenance vous évite d'écraser
+par erreur des objets créés par un autre outil ou une autre release.
+
+Utilisez `--take-ownership` avec `helm install` ou `helm upgrade` quand vous
+voulez délibérément que Helm intègre ces objets existants à la release :
+
+```shell
+helm install my-release ./mychart --take-ownership
+helm upgrade my-release ./mychart --take-ownership
+```
+
+Avec cette option, Helm ignore le contrôle d'appartenance et intègre les objets
+existants à la release. Les mises à niveau et désinstallations suivantes
+traitent alors ces objets comme faisant partie de la release.
+
+### Quand l'utiliser {/* #when-to-use-it */}
+
+L'option `--take-ownership` sert notamment à :
+
+- migrer vers un chart Helm un manifeste appliqué à la main (ou par un autre
+  outil de déploiement) sans supprimer d'abord les ressources en place ;
+- reprendre la main après la suppression d'annotations ou la perte de
+  l'historique d'une release, quand Helm ne reconnaît plus ses propres objets ;
+- aligner un chart sur des objets du cluster qui ont déjà les noms et les types
+  (kinds) voulus.
+
+### Limites et bonnes pratiques {/* #limitations-and-best-practices */}
+
+- Prendre possession d'un objet ne supprime pas les champs qui n'ont jamais
+  figuré dans le chart. La fusion stratégique à trois voies (three-way strategic
+  merge), ou le server-side apply si vous l'utilisez, détermine toujours
+  comment les valeurs en place et celles du chart sont combinées.
+- Pour ne pas prendre possession d'objets que Helm ne devrait pas gérer, vérifiez
+  soigneusement les noms et examinez d'abord le résultat d'une simulation
+  (`--dry-run`).
+- `helm template` accepte aussi `--take-ownership`, pour garder les mêmes options
+  que les autres commandes ; cette commande ne contacte pas le cluster.
+
+## SDK Go {/* #go-sdk */}
+Helm 3 a introduit un SDK Go entièrement restructuré, qui facilite le
+développement de logiciels et d'outils s'appuyant sur Helm. La documentation
+complète se trouve dans la [section SDK Go](/sdk/gosdk.mdx).
+
+## Backends de stockage {/* #storage-backends */}
+
+Par défaut, les informations de release sont stockées dans des Secrets, dans le
+namespace de la release. Les sous-sections suivantes expliquent comment
+configurer d'autres backends. Cette configuration repose sur la variable
+d'environnement `HELM_DRIVER`, qui accepte l'une des valeurs suivantes :
+`[configmap, secret, sql]`.
+
+### Backend de stockage ConfigMap {/* #configmap-storage-backend */}
+
+Pour activer le backend ConfigMap, définissez la variable d'environnement
+`HELM_DRIVER` sur `configmap`.
+
+Dans un shell, par exemple :
+
+```shell
+export HELM_DRIVER=configmap
+```
+
+Pour passer du backend par défaut au backend ConfigMap, vous devez faire la
+migration vous-même. Vous pouvez récupérer les informations de release avec la
+commande suivante :
+
+```shell
+kubectl get secret --all-namespaces -l "owner=helm"
+```
+
+**NOTES POUR LA PRODUCTION :** les informations de release incluent le contenu
+des charts et des fichiers de valeurs. Elles peuvent donc contenir des données
+sensibles (mots de passe, clés privées et autres identifiants) à protéger contre
+les accès non autorisés. Quand vous gérez les autorisations Kubernetes, par
+exemple avec [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/),
+vous pouvez donner un accès plus large aux ressources ConfigMap tout en
+restreignant l'accès aux ressources Secret. Par exemple, le rôle par défaut « view »,
+[destiné aux utilisateurs](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles),
+donne accès à la plupart des ressources, mais pas aux
+Secrets. De plus, les données des Secrets peuvent être configurées pour être
+[chiffrées au repos](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
+Tenez-en compte si vous décidez de passer au backend ConfigMap, car il pourrait
+exposer les données sensibles de votre application.
+
+### Backend de stockage SQL {/* #sql-storage-backend */}
+
+Un backend de stockage SQL, en ***bêta***, enregistre les informations de
+release dans une base de données SQL.
+
+Ce backend est particulièrement utile si vos informations de release dépassent
+1 Mo. Elles ne peuvent alors pas être stockées dans des ConfigMaps ou des
+Secrets, à cause des limites internes d'etcd, la base clé-valeur sur laquelle
+repose Kubernetes.
+
+Pour activer le backend SQL, déployez une base de données SQL et définissez la
+variable d'environnement `HELM_DRIVER` sur `sql`. Les informations de connexion
+à la base se définissent avec la variable d'environnement
+`HELM_DRIVER_SQL_CONNECTION_STRING`.
+
+Dans un shell, par exemple :
+
+```shell
+export HELM_DRIVER=sql
+export HELM_DRIVER_SQL_CONNECTION_STRING=postgresql://helm-postgres:5432/helm?user=helm&password=changeme
+```
+
+> Remarque : seul PostgreSQL est pris en charge pour le moment.
+
+**NOTES POUR LA PRODUCTION :** il est recommandé de :
+- préparer votre base de données pour la production. Pour PostgreSQL, consultez
+  la documentation [Server Administration](https://www.postgresql.org/docs/12/admin.html) ;
+- activer la [gestion des permissions](/topics/permissions_sql_storage_backend.md)
+  pour reproduire le RBAC Kubernetes sur les informations de release.
+
+Pour passer du backend par défaut au backend SQL, vous devez faire la migration
+vous-même. Vous pouvez récupérer les informations de release avec la commande
+suivante :
+
+```shell
+kubectl get secret --all-namespaces -l "owner=helm"
+```
