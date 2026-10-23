@@ -957,6 +957,41 @@ parent chart. This also works backwards - if a subchart has a requirement that
 is not met in the subchart's `values.yaml` file, the parent chart *must* satisfy
 those restrictions in order to be valid.
 
+A schema can be split across several files. Use a relative `$ref` to point at
+another JSON file in the chart. The path is relative to `values.schema.json`:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "port": {
+      "$ref": "schema/definitions.json#/definitions/port"
+    }
+  },
+  "type": "object"
+}
+```
+
+Here `schema/definitions.json` is a file in the chart:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "port": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  }
+}
+```
+
+Helm reads these files from the chart itself, so they also work in a packaged
+chart and do not depend on the directory you run `helm` from. A reference can't
+point outside the chart. The referenced files have to be part of the chart:
+don't list them in `.helmignore`, and don't put them under `templates/` or
+`charts/`. A subchart resolves its references from its own files.
+
 Schema validation can be disabled by setting the option shown below.
 This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
 ```console
