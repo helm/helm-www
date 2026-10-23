@@ -1,0 +1,120 @@
+---
+title: Plugin System
+description: An introduction to the Helm 4 plugin system codebase for contributors and plugin authors
+sidebar_position: 3
+---
+
+This page introduces the Helm 4 plugin system codebase. It is for Helm contributors and for plugin authors who want to understand how Helm loads and invokes plugins. To build a plugin, start with the [plugin developer tutorials](/plugins/developer/index.mdx).
+
+The design is described in [HIP-0026: H4HIP: Wasm plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md).
+
+:::note
+The plugin system lives in the `internal/plugin` package of [helm/helm](https://github.com/helm/helm). Go packages under `internal/` cannot be imported by code outside the Helm module, so this page describes how Helm works rather than an API you can call from your own Go program.
+:::
+
+## Architecture overview
+
+A Helm 4 plugin is described by three fields in its `plugin.yaml`:
+
+| Field | Purpose | Values |
+|---|---|---|
+| `apiVersion` | Version of the `plugin.yaml` format | `v1`. Files without `apiVersion` are loaded as legacy (Helm 3 style) plugins. |
+| `type` | What the plugin does, and the contract for its input and output messages | `cli/v1`, `getter/v1`, `postrenderer/v1` |
+| `runtime` | How Helm executes the plugin | `subprocess`, `extism/v1` |
+
+Each plugin type is versioned (`getter/v1`), so the message schema for a type can change in a new version without breaking existing plugins.
+
+Helm talks to every plugin the same way, whatever its type and runtime: it builds an input message, calls `Invoke`, and reads an output message. The runtime decides how that message reaches the plugin:
+
+- **Subprocess**: Helm runs an executable and passes data through command-line arguments, environment variables, and stdin/stdout. This is how Helm 3 plugins work.
+- **Extism (Wasm)**: Helm loads `plugin.wasm` with the [Extism](https://extism.org/) Go SDK, serializes the input message to JSON, calls an exported function, and deserializes the JSON output message.
+
+## Where the code lives
+
+All paths are relative to the root of [helm/helm](https://github.com/helm/helm).
+
+| Path | Responsibility |
+|---|---|
+| `internal/plugin/plugin.go` | The `Plugin` interface (`Dir`, `Metadata`, `Invoke`) and the `Input` and `Output` types |
+| `internal/plugin/loader.go` | Reads `plugin.yaml`, picks the metadata format by `apiVersion`, and creates plugins through the registered runtimes. Also `FindPlugins` and `FindPlugin`, which filter installed plugins by a `Descriptor` (for example, by type). |
+| `internal/plugin/metadata.go`, `metadata_v1.go`, `metadata_legacy.go` | The in-memory `Metadata` type, plus the `v1` and legacy `plugin.yaml` formats that are converted into it |
+| `internal/plugin/plugin_type_registry.go` | Maps each plugin type to its input, output, and config Go types |
+| `internal/plugin/schema/` | The input/output message and config types for each plugin type, for example `cli.go`, `getter.go`, and `postrenderer.go` |
+| `internal/plugin/runtime.go` | The `Runtime` and `RuntimeConfig` interfaces |
+| `internal/plugin/runtime_subprocess*.go` | The subprocess runtime |
+| `internal/plugin/runtime_extismv1.go` | The Extism (Wasm) runtime |
+| `internal/plugin/installer/` | Installing plugins from a local directory, HTTP archive, VCS repository, or OCI registry |
+| `internal/plugin/sign.go`, `verify.go` | Plugin provenance signing and verification |
+
+The code that invokes each plugin type sits with the feature that uses it:
+
+| Plugin type | Invoked from |
+|---|---|
+| `cli/v1` | `pkg/cmd/load_plugins.go` adds each CLI plugin as a `helm` subcommand |
+| `getter/v1` | `pkg/getter/plugingetter.go` uses getter plugins to download charts for custom URL schemes |
+| `postrenderer/v1` | `pkg/postrenderer/postrenderer.go` runs the plugin named by `--post-renderer` |
+
+### How the pieces fit together
+
+1. **Load.** `LoadDir` reads `plugin.yaml`. If `apiVersion` is `v1`, the file is parsed as `MetadataV1`. If `apiVersion` is absent, it is parsed as legacy metadata, and the type is inferred: a `downloaders` key means `getter/v1`, anything else means `cli/v1`. Any other `apiVersion` is rejected.
+2. **Validate.** For `v1` plugins, the `config` section is decoded into the config type that the type registry lists for the plugin's `type` (for example, `schema.ConfigGetterV1`), and the `runtimeConfig` section is decoded into the runtime's config type (`RuntimeConfigSubprocess` or `RuntimeConfigExtismV1`). For legacy plugins, Helm builds both from the Helm 3 `plugin.yaml` fields.
+3. **Create.** The plugin manager looks up the `Runtime` registered under the plugin's `runtime` name and calls `CreatePlugin`, which returns a `Plugin`.
+4. **Invoke.** The calling feature builds an `Input` whose `Message` is the type's input message, calls `Invoke`, and type-asserts `Output.Message` to the type's output message.
+
+## How Wasm plugins exchange messages with Helm
+
+For `extism/v1` plugins, `runtime_extismv1.go` does the following on every `Invoke`:
+
+1. Loads `plugin.wasm` from the plugin directory. Memory limits, timeout, allowed hosts, and plugin config come from `runtimeConfig`.
+2. Wires WASI stdin, stdout, stderr, and environment variables from the `Input`. CLI plugins use this to print directly to the terminal.
+3. Serializes `Input.Message` to JSON with `encoding/json` and passes it as the Extism input.
+4. Calls the exported function named by `runtimeConfig.entryFuncName`, which defaults to `helm_plugin_main`.
+5. Treats a non-zero return value as a failure and returns an `InvokeExecError`.
+6. Deserializes the Extism output into the output message type for the plugin's `type`. The plugin must always write a JSON output, even an empty object (`{}`).
+
+In a Go plugin built with the Extism Go PDK, the contract looks like this:
+
+```go
+//go:wasmexport helm_plugin_main
+func HelmPluginMain() uint32 {
+	var input InputMessage
+	if err := pdk.InputJSON(&input); err != nil {
+		pdk.SetError(err)
+		return 1
+	}
+	// ... plugin logic ...
+	if err := pdk.OutputJSON(output); err != nil {
+		pdk.SetError(err)
+		return 1
+	}
+	return 0
+}
+```
+
+The JSON shape of each message is defined by the `json` struct tags in `internal/plugin/schema/`. For example, a `getter/v1` plugin receives `href`, `protocol`, and `options`, and returns `data`. The [plugin template](https://github.com/gjenkins8/helm-extism-plugin-template) provides this boilerplate.
+
+### Sandbox and runtime configuration
+
+Wasm plugins can only reach what `runtimeConfig` allows:
+
+| `runtimeConfig` field | Effect |
+|---|---|
+| `memory.maxPages` | Maximum linear memory, in 64 KiB pages |
+| `memory.maxHttpResponseBytes` | Maximum size of an HTTP response the plugin can receive, in bytes |
+| `memory.maxVarBytes` | Maximum total size of Extism variables, in bytes |
+| `timeout` | Maximum execution time, in milliseconds |
+| `allowedHosts` | Hosts the plugin can send HTTP requests to through Extism. Empty by default, which blocks all hosts. |
+| `fileSystem.createTempDir` | Creates a temporary directory on the host and mounts it at `/tmp` inside the plugin |
+| `config` | Free-form key/value pairs that the plugin reads with the Extism config API |
+| `hostFunctions` | Names of Helm host functions the plugin wants to import |
+| `entryFuncName` | Exported function to call. Defaults to `helm_plugin_main`. |
+
+### Host functions
+
+Extism [host functions](https://extism.org/docs/concepts/host-functions/) let a plugin call back into Helm. The runtime supports them through `runtimeConfig.hostFunctions`, but Helm does not register any host functions yet, so invoking a plugin that requests one returns a `plugin requested host function ... not found` error. Plugins get data from their input message, WASI environment variables, `config`, and allowed HTTP hosts.
+
+## Related
+
+- [Plugin developer tutorials](/plugins/developer/index.mdx)
+- [HIP-0026: H4HIP: Wasm plugin system](https://github.com/helm/community/blob/main/hips/hip-0026.md)
+- [Extism documentation](https://extism.org/docs/overview)
