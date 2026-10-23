@@ -311,7 +311,7 @@ servers:
 name: "value1,value2"
 ```
 
-类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
+类似的，你也可以转义点序列（英文句号）。这可能会在 chart 使用 `toYaml` 函数来解析 annotations，labels，和
 node selectors 时派上用场。`--set nodeSelector."kubernetes\.io/role"=master` 语法就变成了：
 
 ```yaml
