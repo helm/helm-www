@@ -1,5 +1,6 @@
 ---
 title: helm show readme
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Показати README файл чарту

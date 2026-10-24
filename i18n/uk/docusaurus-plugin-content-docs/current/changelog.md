@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 sidebar_label: Повний список змін
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 # Helm 4 Повний список змін
@@ -629,4 +630,3 @@ sidebar_label: Повний список змін
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |
 | #13581 | 2024-12-31 | ldlb9527 | Upgrade golang.org/x/net to v0.33.0 to address CVE-2024-45338 |
-

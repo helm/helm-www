@@ -2,6 +2,7 @@
 title: Custom Resource Definitions
 description: Як створювати та використовувати CRD (Custom Resource Definitions).
 sidebar_position: 7
+default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
 Цей розділ посібника з найкращих практик розглядає створення та використання обʼєктів Custom Resource Definition (CRD).

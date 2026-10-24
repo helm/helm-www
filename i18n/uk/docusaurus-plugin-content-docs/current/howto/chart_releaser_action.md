@@ -2,6 +2,7 @@
 title: Chart Releaser Action для автоматизації публікації чартів на GitHub Pages
 description: Описує, як використовувати Chart Releaser Action для автоматизації публікації чартів за допомогою GitHub Pages.
 sidebar_position: 3
+default_lang_commit: 243c2d6ac95078256a4b2b56013aae454e67202a
 ---
 
 Цей посібник описує, як використовувати [Chart Releaser Action](https://github.com/marketplace/actions/helm-chart-releaser) для автоматизації публікації чартів за допомогою GitHub Pages. Chart Releaser Action — це GitHub Action workflow, який перетворює GitHub проєкт на репозиторій чартів Helm, використовуючи CLI-інструмент [helm/chart-releaser](https://github.com/helm/chart-releaser).

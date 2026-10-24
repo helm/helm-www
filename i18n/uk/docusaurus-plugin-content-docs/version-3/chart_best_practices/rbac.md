@@ -2,6 +2,7 @@
 title: Role-Based Access Control
 description: Обговорює створення та форматування RBAC ресурсів у маніфестах чарта.
 sidebar_position: 8
+default_lang_commit: 8078439211458b93bab8f5c285cc664133ce7c18
 ---
 
 Цей розділ посібника з найкращих практик розглядає створення та форматування ресурсів RBAC у маніфестах чарту.

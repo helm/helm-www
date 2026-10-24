@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 sidebar_label: Огляд Helm 4
+default_lang_commit: 4ade36c87e9f892bb2fa45ee3511ae133db7c478
 ---
 
 # Огляд Helm 4

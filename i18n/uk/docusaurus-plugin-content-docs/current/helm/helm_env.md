@@ -1,5 +1,6 @@
 ---
 title: helm env
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Інформація про середовище клієнта Helm

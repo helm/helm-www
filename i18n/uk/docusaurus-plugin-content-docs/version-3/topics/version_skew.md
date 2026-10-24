@@ -2,6 +2,7 @@
 title: Політика підтримки версій Helm
 description: Описує політику випуску патчів Helm, а також максимальну підтримувану різницю версій між Helm і Kubernetes.
 sidebar_position: 15
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Цей документ описує максимальну підтримувану різницю версій між Helm і Kubernetes.

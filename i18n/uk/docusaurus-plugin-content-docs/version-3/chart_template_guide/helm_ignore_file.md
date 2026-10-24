@@ -2,6 +2,7 @@
 title: Файл .helmignore
 description: Файл `.helmignore` використовується для вказівки файлів, які не слід включати у ваш Helm чарт.
 sidebar_position: 12
+default_lang_commit: c4624cd8526f3d0927fa871facd19c9a0cf5b810
 ---
 
 Файл `.helmignore` використовується для вказівки файлів, які не слід включати у ваш Helm чарт.

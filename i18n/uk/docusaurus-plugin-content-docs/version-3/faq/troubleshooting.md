@@ -1,6 +1,7 @@
 ---
 title: Усунення несправностей
 sidebar_position: 4
+default_lang_commit: fbc65567d1bdb5fd618454c232bd82358adf4ef3
 ---
 
 ## Усунення несправностей {#troubleshooting}

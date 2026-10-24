@@ -1,6 +1,7 @@
 ---
 title: Зміни з часів Helm 2
 sidebar_position: 1
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 ## Зміни з часів Helm 2 {#changes-since-helm-2}

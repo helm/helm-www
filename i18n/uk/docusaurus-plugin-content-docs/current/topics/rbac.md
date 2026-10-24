@@ -2,6 +2,7 @@
 title: Контроль доступу на основі ролей
 description: Пояснює, як Helm взаємодіє з контролем доступу на основі ролей Kubernetes.
 sidebar_position: 11
+default_lang_commit: 5e5652c910296726dd8a4d0f51899f2655c6199b
 ---
 
 У Kubernetes надання ролей користувачу або службовому обліковому запису, специфічному для застосунку, є найкращою практикою для забезпечення роботи вашого застосунку в межах, які ви визначили. Дізнайтеся більше про дозволи службових облікових записів [в офіційній документації Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions).

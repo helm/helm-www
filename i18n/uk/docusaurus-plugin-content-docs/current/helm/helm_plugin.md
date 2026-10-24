@@ -1,5 +1,6 @@
 ---
 title: helm plugin
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Встановлення, перегляд списку або видалення втулків Helm

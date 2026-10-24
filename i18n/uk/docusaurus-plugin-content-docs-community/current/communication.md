@@ -1,5 +1,6 @@
 ---
 title: Комунікація
+default_lang_commit: 34f4ff8cb523427bb8545b45d7bd2ed1bb46cf56
 ---
 
 <!--
