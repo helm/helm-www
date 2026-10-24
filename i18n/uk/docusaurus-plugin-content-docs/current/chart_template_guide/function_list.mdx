@@ -2,6 +2,7 @@
 title: Список функцій шаблонів
 description: Список функцій шаблонів, доступних у Helm
 sidebar_position: 6
+default_lang_commit: 60be2aa722383265092b73b57f59d13c432cb414
 ---
 
 import Helm4 from "../_v4-in-progress.mdx"
@@ -645,6 +646,7 @@ Helm пропонує такі функції для перетворення т
 * `toRawJson` (`mustToRawJson`): Перетворює список, зріз, масив, словник або обʼєкт на JSON з неекранованими HTML символами.
 * `fromYaml`: Перетворює YAML рядок на обʼєкт.
 * `fromJson`: Перетворює JSON рядок на обʼєкт.
+* `mustFromJson`: Перетворює рядок JSON в обʼєкт, або повертає помилку рушію шаблонів, якщо рядок не є дійсним JSON.
 * `fromJsonArray`: Перетворює JSON масив на список.
 * `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт у формат YAML з відступами, може використовуватися для копіювання фрагментів YAML з будь-якого джерела. Ця функція еквівалентна функції GoLang yaml.Marshal, див. документацію тут: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
 * `toYamlPretty`: Перетворює список, зріз, масив, словник або обʼєкт у формат YAML з відступами. Еквівалентний функції `toYaml`, але додатково робить відступи у списках на 2 пробіли.
@@ -753,6 +755,15 @@ greeting: |
   My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
 
+### mustFromJson
+
+Функція `mustFromJson` приймає JSON рядок і повертає обʼєкт (або список, якщо JSON є масивом), який можна використовувати в шаблонах. На відміну від `fromJson`, вона повертає помилку рушію шаблонів, якщо вхідний рядок не є дійсним JSON, що зупиняє рендеринг.
+
+```yaml
+{{- $person := `{"name": "Bob", "age": 25}` | mustFromJson }}
+greeting: Hi, my name is {{ $person.name }}.
+```
+
 ### fromJsonArray
 
 Функція `fromJsonArray` приймає JSON масив і повертає список, який можна використовувати в шаблонах.
@@ -823,7 +834,7 @@ greeting: |
 
 ## Регулярні Вирази {/* #regular-expressions */}
 
-Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll (mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit).
+Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll (mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit), та [regexQuoteMeta](#regexquotemeta).
 
 ### regexMatch, mustRegexMatch
 
@@ -897,9 +908,25 @@ regexSplit "z+" "pizza" -1
 
 `regexSplit` викликає паніку у разі проблеми, а `mustRegexSplit` поверне помилку у рушії шаблонів у разі проблеми.
 
+### regexQuoteMeta
+
+Повертає рядок, у якому всі метасимволи регулярних виразів у вхідному тексті екрановані так, щоб результат збігався з текстом буквально.
+
+```
+regexQuoteMeta "1.2.3"
+```
+
+Вище буде отримано `1\.2\.3`
+
+Це корисно для побудови шаблону зі значенням, яке може містити метасимволи:
+
+```
+regexMatch (printf "^%s$" (regexQuoteMeta "[foo]+bar?")) "[foo]+bar?"
+```
+
 ## Функції криптографії та безпеки {/* #cryptographic-and-security-functions */}
 
-Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum) та [sha256sum](#sha256sum).
+Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genCAWithKey](#gencawithkey), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSelfSignedCertWithKey](#genselfsignedcertwithkey), [genSignedCert](#gensignedcert), [genSignedCertWithKey](#gensignedcertwithkey), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), [sha256sum](#sha256sum), [sha512sum](#sha512sum).
 
 ### sha1sum
 
@@ -918,6 +945,14 @@ sha256sum "Hello world!"
 ```
 
 Це обчислює SHA 256 контрольну суму у форматі "ASCII armored", який є безпечним для друку.
+
+### sha512sum
+
+Функція `sha512sum` отримує рядок і обчислює його SHA512-дайджест у форматі "ASCII armored", який є безпечним для друку.
+
+```
+sha512sum "Hello world!"
+```
 
 ### adler32sum
 
@@ -1009,6 +1044,28 @@ $ca := genCA "foo-ca" 365
 
 Зверніть увагу, що повернутий обʼєкт може бути переданий до функції `genSignedCert` для підписання сертифіката за допомогою цього CA.
 
+### genCAWithKey
+
+Функція `genCAWithKey` працює як `genCA`, але використовує наданий вами приватний ключ замість генерації нового.
+
+Вона приймає такі параметри:
+
+- Загальне імʼя субʼєкта (cn)
+- Термін дії сертифіката у днях
+- Приватний ключ у форматі PEM
+
+Повертає обʼєкт із такими атрибутами:
+
+- `Cert`: Сертифікат у форматі PEM
+- `Key`: Приватний ключ у форматі PEM
+
+Приклад:
+
+```
+$key := genPrivateKey "ecdsa"
+$ca := genCAWithKey "foo-ca" 365 $key
+```
+
 ### genSelfSignedCert
 
 Функція `genSelfSignedCert` генерує новий самопідписаний сертифікат x509.
@@ -1031,6 +1088,30 @@ $ca := genCA "foo-ca" 365
 $cert := genSelfSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365
 ```
 
+### genSelfSignedCertWithKey
+
+Функція `genSelfSignedCertWithKey` працює як `genSelfSignedCert`, але використовує наданий вами приватний ключ замість генерації нового.
+
+Вона приймає такі параметри:
+
+- Загальне імʼя субʼєкта (cn)
+- Необовʼязковий список IP-адрес; може бути nil
+- Необовʼязковий список альтернативних DNS-імен; може бути nil
+- Термін дії сертифіката у днях
+- Приватний ключ у форматі PEM
+
+Повертає обʼєкт із такими атрибутами:
+
+- `Cert`: Сертифікат у форматі PEM
+- `Key`: Приватний ключ у форматі PEM
+
+Приклад:
+
+```
+$key := genPrivateKey "ecdsa"
+$cert := genSelfSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $key
+```
+
 ### genSignedCert
 
 Функція `genSignedCert` генерує новий сертифікат x509, підписаний зазначеним CA.
@@ -1048,6 +1129,27 @@ $cert := genSelfSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com
 ```go
 $ca := genCA "foo-ca" 365
 $cert := genSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $ca
+```
+
+### genSignedCertWithKey
+
+Функція `genSignedCertWithKey` працює як `genSignedCert`, але використовує наданий вами приватний ключ для нового сертифіката замість генерації нового.
+
+Вона приймає такі параметри:
+
+- Загальне імʼя субʼєкта (cn)
+- Необовʼязковий список IP-адрес; може бути nil
+- Необовʼязковий список альтернативних DNS-імен; може бути nil
+- Термін дії сертифіката у днях
+- CA (див. `genCA`)
+- Приватний ключ у форматі PEM
+
+Приклад:
+
+```
+$ca := genCA "foo-ca" 365
+$key := genPrivateKey "ecdsa"
+$cert := genSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $ca $key
 ```
 
 ### encryptAES
@@ -1068,13 +1170,21 @@ encryptAES "secretkey" "plaintext"
 
 ## Функції дати {/* #date-functions */}
 
-Helm включає наступні функції дати, які ви можете використовувати в шаблонах: [ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify (mustDateModify)](#datemodify-mustdatemodify), [duration](#duration), [durationRound](#durationround), [htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone), [now](#now), [toDate (mustToDate)](#todate-musttodate) та [unixEpoch](#unixepoch).
+Helm включає наступні функції дати, які можна використовувати в шаблонах:
+[ago](#ago), [date](#date), [dateInZone](#dateinzone), [dateModify
+(mustDateModify)](#datemodify-mustdatemodify), [duration](#duration),
+[durationDays](#durationdays), [durationHours](#durationhours),
+[durationMicroseconds](#durationmicroseconds),
+[durationMilliseconds](#durationmilliseconds),
+[durationMinutes](#durationminutes),
+[durationNanoseconds](#durationnanoseconds), [durationRound](#durationround),
+[durationRoundTo](#durationroundto), [durationSeconds](#durationseconds),
+[durationTruncateTo](#durationtruncateto), [durationWeeks](#durationweeks),
+[htmlDate](#htmldate), [htmlDateInZone](#htmldateinzone),
+[mustToDuration](#musttoduration), [now](#now), [toDate
+(mustToDate)](#todate-musttodate), та [unixEpoch](#unixepoch).
 
-### now
-
-Поточна дата/час. Використовуйте це разом з іншими функціями дати.
-
-### ago
+### ago {/* #ago */}
 
 Функція `ago` повертає тривалість від часу. Зараз у секундах.
 
@@ -1088,7 +1198,7 @@ ago .CreatedAt
 2h34m7s
 ```
 
-### date
+### date {/* #date */}
 
 Функція `date` форматує дату.
 
@@ -1106,9 +1216,9 @@ now | date "2006-01-02"
 Mon Jan 2 15:04:05 MST 2006
 ```
 
-Запишіть її у потрібному форматі. Вище, `2006-01-02` — це та ж дата, але в потрібному форматі.
+Запишіть її у потрібному форматі. Вище, `2006-01-02` — це та ж дата, але в потрібному форматі.
 
-### dateInZone
+### dateInZone {/* #dateinzone */}
 
 Те ж саме, що і `date`, але з часовою зоною.
 
@@ -1116,7 +1226,19 @@ Mon Jan 2 15:04:05 MST 2006
 dateInZone "2006-01-02" (now) "UTC"
 ```
 
-### duration
+### dateModify, mustDateModify {/* #datemodify-mustdatemodify */}
+
+Функція `dateModify` приймає модифікацію та дату і повертає часову мітку.
+
+Відніміть годину і тридцять хвилин від поточного часу:
+
+```go
+now | dateModify "-1.5h"
+```
+
+Якщо формат модифікації неправильний, `dateModify` поверне дату немодифікованою. `mustDateModify` поверне помилку в іншому випадку.
+
+### duration {/* #duration */}
 
 Форматує задану кількість секунд як `time.Duration`.
 
@@ -1126,7 +1248,77 @@ dateInZone "2006-01-02" (now) "UTC"
 duration "95"
 ```
 
-### durationRound
+### durationDays {/* #durationdays */}
+
+Перетворює тривалість на дні як число з рухомою комою.
+
+Це повертає 1.5
+
+```
+mustToDuration "36h" | durationDays
+```
+
+### durationHours {/* #durationhours */}
+
+Перетворює тривалість на години як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Hours()`
+
+Це повертає 1.5
+
+```
+mustToDuration "90m" | durationHours
+```
+
+### durationMicroseconds {/* #durationmicroseconds */}
+
+Перетворює тривалість на мікросекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Microseconds()`
+
+Це повертає 1000000
+
+```
+mustToDuration "1s" | durationMicroseconds
+```
+
+### durationMilliseconds {/* #durationmilliseconds */}
+
+Перетворює тривалість на мілісекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Milliseconds()`
+
+Це повертає 1000
+
+```
+mustToDuration "1s" | durationMilliseconds
+```
+
+### durationMinutes {/* #durationminutes */}
+
+Перетворює тривалість на хвилини як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Minutes()`
+
+Це повертає 1.5
+
+```
+mustToDuration "90s" | durationMinutes
+```
+
+### durationNanoseconds {/* #durationnanoseconds */}
+
+Перетворює тривалість на наносекунди як ціле число.
+
+**Еквівалент у Go:** `time.Duration.Nanoseconds()`
+
+Це повертає 1000000
+
+```
+mustToDuration "1ms" | durationNanoseconds
+```
+
+### durationRound {/* #durationround */}
 
 Округлює задану тривалість до найзначнішої одиниці. Рядки та `time.Duration` аналізуються як тривалість, тоді як `time.Time` обчислюється як тривалість з моменту.
 
@@ -1142,27 +1334,65 @@ durationRound "2h10m5s"
 durationRound "2400h10m5s"
 ```
 
-### unixEpoch
+### durationRoundTo {/* #durationroundto */}
 
-Повертає кількість секунд з unix-епохи для `time.Time`.
+Округлює тривалість до найближчого кратного іншій тривалості. Перший аргумент — тривалість, яку потрібно округлити, а другий — кратність.
 
-```go
-now | unixEpoch
+**Еквівалент у Go:** `time.Duration.Round()`
+
+Це повертає 1h20m0s
+
+```
+durationRoundTo "1h15m30s" "10m"
 ```
 
-### dateModify, mustDateModify
+Це повертає 2h0m0s
 
-Функція `dateModify` приймає модифікацію та дату і повертає часову мітку.
-
-Відніміть годину і тридцять хвилин від поточного часу:
-
-```go
-now | dateModify "-1.5h"
+```
+durationRoundTo "2h29m" "1h"
 ```
 
-Якщо формат модифікації неправильний, `dateModify` поверне дату немодифікованою. `mustDateModify` поверне помилку в іншому випадку.
+### durationSeconds {/* #durationseconds */}
 
-### htmlDate
+Перетворює тривалість на секунди як число з рухомою комою.
+
+**Еквівалент у Go:** `time.Duration.Seconds()`
+
+Це повертає 90
+
+```
+mustToDuration "1m30s" | durationSeconds
+```
+
+### durationTruncateTo {/* #durationtruncateto */}
+
+Обрізає тривалість у бік нуля до кратного іншій тривалості. Перший аргумент — тривалість, яку потрібно обрізати, а другий — кратність.
+
+**Еквівалент у Go:** `time.Duration.Truncate()`
+
+Це повертає 1h10m0s
+
+```
+durationTruncateTo "1h15m30s" "10m"
+```
+
+Це повертає 2h0m0s
+
+```
+durationTruncateTo "2h59m" "1h"
+```
+
+### durationWeeks {/* #durationweeks */}
+
+Перетворює тривалість на тижні як число з рухомою комою.
+
+Це повертає 2
+
+```
+mustToDuration "336h" | durationWeeks
+```
+
+### htmlDate {/* #htmldate */}
 
 Функція `htmlDate` форматує дату для вставки в поле введення дати в HTML.
 
@@ -1170,7 +1400,7 @@ now | dateModify "-1.5h"
 now | htmlDate
 ```
 
-### htmlDateInZone
+### htmlDateInZone {/* #htmldateinzone */}
 
 Те ж саме, що і htmlDate, але з часовою зоною.
 
@@ -1178,7 +1408,31 @@ now | htmlDate
 htmlDateInZone (now) "UTC"
 ```
 
-### toDate, mustToDate
+### mustToDuration {/* #musttoduration */}
+
+`mustToDuration` перетворює значення, схоже на тривалість, на `time.Duration` і спричиняє помилку шаблону в разі помилки.
+
+**Еквівалент у Go:** `time.ParseDuration`, конструювання `time.Duration`
+
+Підтримувані вхідні дані включають рядки тривалості Go (наприклад, `"2h30m"`), числові рядки, які трактуються як секунди (наприклад, `"1.5"`), та числові значення, які трактуються як секунди.
+
+Це повертає 2h30m0s
+
+```
+mustToDuration "2h30m"
+```
+
+Це повертає 1.5s
+
+```
+mustToDuration "1.5"
+```
+
+### now {/* #now */}
+
+Поточна дата/час. Використовуйте це разом з іншими функціями дати.
+
+### toDate, mustToDate {/* #todate-musttodate */}
 
 Функція `toDate` перетворює рядок у дату. Перший аргумент — це макет дати, а другий — рядок дати. Якщо рядок не можна перетворити, він поверне нульове значення. `mustToDate` поверне помилку в разі, якщо рядок не можна перетворити.
 
@@ -1186,6 +1440,14 @@ htmlDateInZone (now) "UTC"
 
 ```go
 toDate "2006-01-02" "2017-12-31" | date "02/01/2006"
+```
+
+### unixEpoch {/* #unixepoch */}
+
+Повертає кількість секунд з unix-епохи для `time.Time`.
+
+```go
+now | unixEpoch
 ```
 
 ## Словники та функції словників {/* #dictionaries-and-dict-functions */}
@@ -1811,7 +2073,7 @@ Helm має одну мережеву функцію, `getHostByName`.
 
 ## Функції роботи з шляхами до файлів {/* #file-path-functions */}
 
-Хоча функції шаблонів Helm не надають доступу до файлової системи, вони надають функції для роботи з рядками, які відповідають домовленостям щодо шляхів до файлів. До них належать: [base](#base), [clean](#clean), [dir](#dir), [ext](#ext) та [isAbs](#isabs).
+Хоча функції шаблонів Helm не надають доступу до файлової системи, вони надають функції для роботи з рядками, які відповідають домовленостям щодо шляхів до файлів. До них належать: [base](#base), [clean](#clean), [dir](#dir), [ext](#ext) та [isAbs](#isabs), а також їхні варіанти для конкретної ОС: [osBase, osClean, osDir, osExt та osIsAbs](#osbase-osclean-osdir-osext-osisabs).
 
 ### base
 
@@ -1850,6 +2112,16 @@ ext "foo.bar"
 ### isAbs
 
 Щоб перевірити, чи є шлях до файлу абсолютним, використовуйте `isAbs`.
+
+### osBase, osClean, osDir, osExt, osIsAbs
+
+Функції `base`, `clean`, `dir`, `ext` та `isAbs` завжди використовують прямі слеші (`/`) як роздільник шляхів. Функції `osBase`, `osClean`, `osDir`, `osExt` та `osIsAbs` поводяться так само, але дотримуються угод щодо шляхів операційної системи, на якій запущено Helm, наприклад зворотних слешів (`\`) у Windows.
+
+```
+osBase "foo/bar/baz"
+```
+
+Наведене вище повертає `baz` у Linux та macOS.
 
 ## Функції аналізу {/* #reflection-functions */}
 

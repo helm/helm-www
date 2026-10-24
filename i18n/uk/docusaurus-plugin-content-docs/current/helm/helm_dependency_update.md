@@ -1,5 +1,6 @@
 ---
 title: helm dependency update
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Оновлення charts/ на основі вмісту Chart.yaml
@@ -62,4 +63,4 @@ helm dependency update CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керування залежностями чарта
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

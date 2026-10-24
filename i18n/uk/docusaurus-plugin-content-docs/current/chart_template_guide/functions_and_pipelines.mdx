@@ -2,6 +2,7 @@
 title: Функції шаблонів та конвеєри
 description: Використання функцій у шаблонах.
 sidebar_position: 5
+default_lang_commit: c0b8110fb9c0356772a1901989e4d17c72e5183f
 ---
 
 import Helm4 from "../_v4-in-progress.mdx"
@@ -100,6 +101,26 @@ data:
   myvalue: "Hello World"
   drink: "coffeecoffeecoffeecoffeecoffee"
   food: "PIZZA"
+```
+
+Конвеєри також корисні під час роботи зі списками. Наприклад, функція `join` може обʼєднати список рядків в один рядок із роздільником:
+
+```yaml
+favorite:
+  drinks:
+    - coffee
+    - tea
+    - water
+```
+
+```yaml
+drinks: {{ .Values.favorite.drinks | join ", " | quote }}
+```
+
+Наведений вище приклад створює такий результат:
+
+```yaml
+drinks: "coffee, tea, water"
 ```
 
 ## Використання функції `default` {/* #using-the-default-function */}

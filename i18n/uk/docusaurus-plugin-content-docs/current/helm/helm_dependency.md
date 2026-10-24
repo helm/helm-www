@@ -1,5 +1,6 @@
 ---
 title: helm dependency
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Керування залежностями чарту
@@ -86,4 +87,4 @@ dependencies:
 * [helm dependency list](/helm/helm_dependency_list.md) — перелік залежностей для даного чарта
 * [helm dependency update](/helm/helm_dependency_update.md) — оновлення charts/ на основі вмісту Chart.yaml
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

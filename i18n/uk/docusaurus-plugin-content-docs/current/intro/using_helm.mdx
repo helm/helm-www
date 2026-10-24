@@ -2,11 +2,10 @@
 title: Використання Helm
 description: Описує основи роботи з Helm.
 sidebar_position: 3
+default_lang_commit: 623843564b02f4c56ea558e03ae7dfd9abf7bb64
 ---
 
-import Helm4 from "../_v4-in-progress.mdx"
 
-<Helm4/>
 
 Цей посібник пояснює основи використання Helm для керування пакетами у вашому кластері Kubernetes. Передбачається, що ви вже [встановили](/intro/install.mdx) клієнт Helm.
 
@@ -369,7 +368,7 @@ $ helm rollback happy-panda 1
 - `--timeout`: Значення [Go duration](https://golang.org/pkg/time/#ParseDuration), яке визначає, скільки чекати на завершення команд Kubernetes. Стандартно `5m0s`.
 - `--wait`: Очікує, доки всі Podʼи не перейдуть у стан готовності, PVC не будуть повʼязані, а Deployment не матиме мінімальну кількість Podʼів у стані готовності (`Desired` мінус `maxUnavailable`), а Services отримає IP-адресу (і Ingress, якщо це `LoadBalancer`) перед тим, як визнати реліз успішним. Чекання триватиме стільки часу, скільки вказано в опції `--timeout`. Якщо тайм-аут досягнуто, реліз буде позначено як `FAILED`. Примітка: У ситуаціях, коли Deployment має в `replicas` значення 1, а `maxUnavailable` не встановлено в 0 як частина стратегії rolling update, `--wait` поверне готовність, коли задоволено мінімальну кількість Podʼів у готовому стані.
 - `--no-hooks`: Пропускає запуск хуків для команди.
-- `--recreate-pods` (доступно лише для `upgrade` та `rollback`): Цей прапорець викличе повторне створення всіх Podʼів (за винятком Podʼів, що належать до Deployment). (Визнано застаріле в Helm 3)
+
 
 ## 'helm uninstall': Видалення релізу {/* #helm-uninstall-uninstalling-a-release */}
 
@@ -379,26 +378,26 @@ $ helm rollback happy-panda 1
 $ helm uninstall happy-panda
 ```
 
-Це видалить реліз з кластера. Ви можете переглянути всі ваші поточні розгорнуті релізи за допомогою команди `helm list`:
+Це видалить реліз з кластера. Ви можете переглянути всі ваші поточні розгорнуті релізи за допомогою команди `helm list --deployed`:
 
 ```console
-$ helm list
-NAME            VERSION UPDATED                         STATUS          CHART
-inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
+$ helm list --deployed
+NAME            NAMESPACE       REVISION  UPDATED                                 STATUS      CHART           APP VERSION
+inky-cat        default         1         2026-09-28 12:59:46.550369 +0000 UTC    deployed    alpine-0.1.0    3.3
 ```
 
 З виводу вище ми можемо побачити, що реліз `happy-panda` було видалено.
 
 У попередніх версіях Helm, коли реліз видалявся, запис про його видалення залишався. У Helm 3 видалення також видаляє запис про реліз. Якщо ви хочете зберегти запис про видалений реліз, використовуйте `helm uninstall --keep-history`. Використання `helm list --uninstalled` покаже лише ті релізи, які були видалені з прапорцем `--keep-history`.
 
-Прапорець `helm list --all` покаже вам всі записи релізів, які зберіг Helm, включаючи записи про елементи, які зазнали збою або записи ппро видалені елементів (якщо було вказано `--keep-history`):
+Без прапорців `helm list` показує всі записи релізів, які Helm зберіг, у будь-якому статусі, включаючи записи для невдалих або видалених елементів (якщо було вказано `--keep-history`):
 
 ```console
-$  helm list --all
-NAME            VERSION UPDATED                         STATUS          CHART
-happy-panda     2       Wed Sep 28 12:47:54 2016        UNINSTALLED     wordpress-10.4.5.6.0
-inky-cat        1       Wed Sep 28 12:59:46 2016        DEPLOYED        alpine-0.1.0
-kindred-angelf  2       Tue Sep 27 16:16:10 2016        UNINSTALLED     alpine-0.1.0
+$ helm list
+NAME            NAMESPACE       REVISION  UPDATED                                 STATUS         CHART               APP VERSION
+happy-panda     default         2         2026-09-28 12:47:54.395651 +0000 UTC    uninstalled    wordpress-10.4.5    5.7.1
+inky-cat        default         1         2026-09-28 12:59:46.550369 +0000 UTC    deployed       alpine-0.1.0        3.3
+kindred-angelf  default         2         2026-09-27 16:16:10.766486 +0000 UTC    uninstalled    alpine-0.1.0        3.3
 ```
 
 Зверніть увагу, що через те, що релізи тепер стандартно видаляються, більше неможливо зробити відкат до видаленого ресурсу.

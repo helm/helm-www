@@ -1,5 +1,6 @@
 ---
 title: helm search
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Пошук за ключовим словом у чартах
@@ -44,4 +45,4 @@ title: helm search
 * [helm search hub](/helm/helm_search_hub.md) — шукати чарти в Artifact Hub або у власному екземплярі хабу
 * [helm search repo](/helm/helm_search_repo.md) — шукати репозиторії за ключовим словом у чартах
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

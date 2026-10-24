@@ -2,6 +2,7 @@
 title: Перевірка випуску
 description: Чеклист для супровідників при випуску нової версії Helm.
 sidebar_position: 3
+default_lang_commit: 964ef592d093135246284a68db766cdb575736da
 ---
 
 # Посібник для супровідників щодо випуску Helm

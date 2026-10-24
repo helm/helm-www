@@ -1,5 +1,6 @@
 ---
 title: helm completion powershell
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 Генерація скрипта автодоповнення для PowerShell
 
@@ -52,4 +53,4 @@ helm completion powershell [прапорці]
 
 * [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

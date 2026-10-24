@@ -2,6 +2,7 @@
 title: Дистрибутиви Kubernetes
 description: Зберігає інформацію про використання Helm у конкретних середовищах Kubernetes.
 sidebar_position: 10
+default_lang_commit: 12e1514477c5047939689bccc80cc1c66b30444f
 ---
 
 Helm повинен працювати з будь-якою [сумісною версією Kubernetes](https://github.com/cncf/k8s-conformance) (незалежно від того, чи є вона [сертифікованою](https://www.cncf.io/certification/software-conformance/) чи ні).

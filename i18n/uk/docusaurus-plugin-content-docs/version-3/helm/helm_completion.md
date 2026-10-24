@@ -1,5 +1,6 @@
 ---
 title: helm completion
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 Генерація скриптів автодоповнення для вказаної оболонки
 
@@ -42,4 +43,4 @@ title: helm completion
 * [helm completion powershell](/helm/helm_completion_powershell.md) — генерувати скрипт автодоповнення для powershell
 * [helm completion zsh](/helm/helm_completion_zsh.md) — генерувати скрипт автодоповнення для zsh
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

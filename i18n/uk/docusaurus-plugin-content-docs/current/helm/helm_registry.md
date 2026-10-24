@@ -1,5 +1,6 @@
 ---
 title: helm registry
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Вхід до або вихід з реєстру
@@ -44,4 +45,4 @@ title: helm registry
 * [helm registry login](/helm/helm_registry_login.md) — вхід до реєстру
 * [helm registry logout](/helm/helm_registry_logout.md) — вихід з реєстру
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

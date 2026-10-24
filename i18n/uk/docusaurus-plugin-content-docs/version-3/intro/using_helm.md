@@ -2,6 +2,7 @@
 title: Використання Helm
 description: Описує основи роботи з Helm.
 sidebar_position: 3
+default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
 Цей посібник пояснює основи використання Helm для керування пакетами у вашому кластері Kubernetes. Передбачається, що ви вже [встановили](/intro/install.md) клієнт Helm.

@@ -2,6 +2,7 @@
 title: Залежності
 description: Охоплює найкращі практики для залежностей Charts.
 sidebar_position: 4
+default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
 ---
 
 Цей розділ посібника охоплює найкращі практики для `залежностей`, оголошених у `Chart.yaml`.

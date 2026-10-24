@@ -1,5 +1,6 @@
 ---
 title: helm plugin
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Встановлення, перегляд списку або видалення втулків Helm
@@ -48,4 +49,4 @@ title: helm plugin
 * [helm plugin update](/helm/helm_plugin_update.md) — оновлення одного чи кількох втулків Helm
 * [helm plugin verify](/helm/helm_plugin_verify.md) — перевірка, що втулок за вказаним шляхом має підпис і є дійсним
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

@@ -2,6 +2,7 @@
 title: Локалізація документації Helm
 description: Інструкції для локалізації документації Helm.
 sidebar_position: 6
+default_lang_commit: 05df7b1def641f6d5be271947b69f3d7a075bfe5
 ---
 
 Цей посібник пояснює, як локалізувати документацію Helm.

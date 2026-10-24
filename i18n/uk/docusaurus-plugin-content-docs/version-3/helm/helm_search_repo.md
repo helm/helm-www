@@ -1,5 +1,6 @@
 ---
 title: helm search repo
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 шукати репозиторії за ключовим словом у чартах
 
@@ -66,4 +67,4 @@ helm search repo [keyword] [flags]
 
 * [helm search](/helm/helm_search.md) — пошук ключового слова в чартах
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026

@@ -1,5 +1,6 @@
 ---
 title: helm install
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Встановлює чарт
@@ -177,4 +178,4 @@ helm install [NAME] [CHART] [flags]
 
 * [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

@@ -1,5 +1,6 @@
 ---
 title: helm history
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Отримати історію релізу
@@ -21,6 +22,17 @@ REVISION    UPDATED                     STATUS          CHART             APP VE
 4           Mon Oct 3 10:15:13 2016     deployed        alpine-0.1.0      1.0             Upgraded successfully
 ```
 
+Використовуйте `--show-rollback-revision`, щоб додати стовпець, який показує ревізію, до якої було виконано відкат:
+
+```console
+$ helm history angry-bird --show-rollback-revision
+REVISION    UPDATED                     STATUS          CHART             APP VERSION     ROLLBACK     DESCRIPTION
+1           Mon Oct 3 10:15:13 2016     superseded      alpine-0.1.0      1.0                          Initial install
+2           Mon Oct 3 10:15:13 2016     superseded      alpine-0.1.0      1.0                          Upgraded successfully
+3           Mon Oct 3 10:15:13 2016     superseded      alpine-0.1.0      1.0             2            Rolled back to 2
+4           Mon Oct 3 10:15:13 2016     deployed        alpine-0.1.0      1.0                          Upgraded successfully
+```
+
 ```shell
 helm history RELEASE_NAME [flags]
 ```
@@ -28,9 +40,10 @@ helm history RELEASE_NAME [flags]
 ### Параметри {#options}
 
 ```none
-  -h, --help            довідка history
-      --max int         максимальна кількість ревізій, включених в історію (стандартно 256)
-  -o, --output format   виводить результати у вказаному форматі. Дозволені значення: table, json, yaml (стандартно table)
+  -h, --help                     довідка history
+      --max int                  максимальна кількість ревізій, включених в історію (стандартно 256)
+  -o, --output format            виводить результати у вказаному форматі. Дозволені значення: table, json, yaml (стандартно table)
+      --show-rollback-revision   показує стовпець ревізії відкату у виводі таблиці
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -61,4 +74,4 @@ helm history RELEASE_NAME [flags]
 
 * [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 14 січня 2026 року
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року

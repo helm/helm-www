@@ -1,5 +1,6 @@
 ---
 title: helm show readme
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 показати README файл чарту
 
@@ -55,4 +56,4 @@ helm show readme [CHART] [flags]
 
 * [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 9 вересня 2026
