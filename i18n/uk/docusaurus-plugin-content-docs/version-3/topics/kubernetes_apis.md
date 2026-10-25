@@ -64,8 +64,8 @@ Helm не вдається виконати оновлення в такому �
 Альтернативно, ви можете дотримуватися цих ручних кроків для оновлення версій API маніфесту релізу. Залежно від вашої конфігурації, дотримуйтесь кроків для Secret або ConfigMap.
 
 - Отримайте імʼя Secret або ConfigMap, повʼязане з останнім розгорнутим релізом:
-  - Secret: `kubectl get secret -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk ʼ{print $1}ʼ | grep -v NAME`
-  - ConfigMap: `kubectl get configmap -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk ʼ{print $1}ʼ | grep -v NAME`
+  - Secret: `kubectl get secret -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
+  - ConfigMap: `kubectl get configmap -l owner=helm,status=deployed,name=<release_name> --namespace <release_namespace> | awk '{print $1}' | grep -v NAME`
 - Отримайте деталі останнього розгорнутого релізу:
   - Secret: `kubectl get secret <release_secret_name> -n <release_namespace> -o yaml > release.yaml`
   - ConfigMap: `kubectl get configmap <release_configmap_name> -n <release_namespace> -o yaml > release.yaml`
@@ -73,8 +73,8 @@ Helm не вдається виконати оновлення в такому �
   - `cp release.yaml release.bak`
   - У разі необхідності, відновіть: `kubectl apply -f release.bak -n <release_namespace>`
 - Розкодуйте обʼєкт релізу:
-  - Secret: `cat release.yaml | grep -oP ʼ(?<=release: ).*ʼ | base64 -d | base64 -d | gzip -d > release.data.decoded`
-  - ConfigMap: `cat release.yaml | grep -oP ʼ(?<=release: ).*ʼ | base64 -d | gzip -d > release.data.decoded`
+  - Secret: `cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d | base64 -d | gzip -d > release.data.decoded`
+  - ConfigMap: `cat release.yaml | grep -oP '(?<=release: ).*' | base64 -d | gzip -d > release.data.decoded`
 - Змініть версії API маніфестів. Ви можете використовувати будь-який інструмент (наприклад, редактор) для внесення змін. Це знаходиться у полі `manifest` вашого розкодованого обʼєкта релізу (`release.data.decoded`).
 - Закодуйте обʼєкт релізу:
   - Secret: `cat release.data.decoded | gzip | base64 | base64`

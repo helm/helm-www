@@ -1,7 +1,7 @@
 ---
 title: Швидкий старт
 description: Як встановити та почати роботу з Helm, включаючи інструкції для дистрибутивів, поширені запитання та втулки.
-sidebar_position: 1
+sidebar_position: 2
 default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 

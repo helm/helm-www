@@ -154,6 +154,8 @@ required "A valid foo is required!" .Bar
 
 Якщо `.Bar` є порожнім або не визначеним (див. [default](#default) щодо того, як це оцінюється), шаблон не буде згенерований і поверне надане повідомлення про помилку.
 
+Додаткові приклади див. у [Використання функції `required`](/howto/charts_tips_and_tricks.md#using-the-required-function).
+
 ### include
 
 Рендерить іменований шаблон і повертає результат як рядок, тож його можна передати іншим функціям:
@@ -289,7 +291,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 * `%d` десяткові, основа 10
 * `%o` вісімкові, основа 8
 * `%O` основа 8 з префіксом 0o
-* `%q` вісімкові, однорядковий літерал символу, безпечно екранований
+* `%q` літерал символу в одинарних лапках, безпечно екранований
 * `%x` шістнадцяткові, основа 16, з малими літерами для a-f
 * `%X` шістнадцяткові, основа 16, з великими літерами для A-F
 * `%U` Unicode формат: U+1234; те ж саме, що "U+%04X"
@@ -677,6 +679,12 @@ $parts := split "$" "foo$bar$baz"
 
 Результат: `map[_0:foo _1:bar _2:baz]`. Кожну частину можна отримати за її ключем:
 
+```
+$parts._0
+```
+
+Результат: `foo`.
+
 
 ### splitList
 
@@ -756,9 +764,7 @@ list 1 2 3 | toStrings
 
 ### toJson, mustToJson
 
-The `toJson` function encodes an item into a JSON string. If the item cannot be
-converted to JSON the function will return an empty string. `mustToJson` will
-return an error in case the item cannot be encoded in JSON.
+Функція `toJson` кодує елемент у рядок JSON. Якщо елемент не вдається перетворити на JSON, функція поверне порожній рядок. `mustToJson` поверне помилку, якщо елемент не вдається закодувати в JSON.
 
 ```go
 toJson .Item
@@ -778,8 +784,7 @@ toPrettyJson .Item
 
 ### toRawJson, mustToRawJson
 
-The `toRawJson` function encodes an item into JSON string with HTML characters
-unescaped.
+Функція `toRawJson` кодує елемент у рядок JSON без екранування HTML-символів.
 
 ```go
 toRawJson .Item
@@ -919,7 +924,7 @@ greeting: |
 toToml .Item
 ```
 
-The above returns TOML string representation of `.Item`.
+Наведений вище приклад повертає рядкове представлення `.Item` у форматі TOML.
 
 ### fromToml
 
@@ -1026,6 +1031,10 @@ regexQuoteMeta "1.2.3"
 Результат: `1\.2\.3`
 
 Це корисно для створення шаблону зі значення, яке може містити метасимволи:
+
+```
+regexMatch (printf "^%s$" (regexQuoteMeta "[foo]+bar?")) "[foo]+bar?"
+```
 
 
 ## Функції криптографії та безпеки {/* #cryptographic-and-security-functions */}
@@ -1618,7 +1627,7 @@ $_ := set $myDict "name4" "value4"
 $_ := unset $myDict "name4"
 ```
 
-As with `set`, this returns the dictionary.
+Як і `set`, ця функція повертає словник.
 
 Зверніть увагу, що якщо ключ не знайдено, ця операція просто виконає вивід. Помилка не буде згенерована.
 
@@ -2307,7 +2316,7 @@ deepEqual (list 1 2 3) (list 1 2 3)
 
 ## Функції семантичного версіонування {/* #semantic-version-functions */}
 
-Some version schemes are easily parseable and comparable. Helm Деякі схеми версій легко розпізнати та порівнювати. Helm надає функції для роботи з версіями [SemVer 2](https://semver.org/lang/uk/). До них відносяться [semver](#semver) і [semverCompare](#semvercompare). Нижче ви також знайдете деталі про використання діапазонів для порівнянь.
+Деякі схеми версій легко розпізнати та порівнювати. Helm надає функції для роботи з версіями [SemVer 2](https://semver.org/lang/uk/). До них відносяться [semver](#semver) і [semverCompare](#semvercompare). Нижче ви також знайдете деталі про використання діапазонів для порівнянь.
 
 ### semver
 

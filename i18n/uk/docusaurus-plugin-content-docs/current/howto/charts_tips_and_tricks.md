@@ -63,7 +63,7 @@ Go надає спосіб включати один шаблон в інший 
 {{- include "toYaml" $value | nindent 2 }}
 ```
 
-Вищезазначене включає шаблон з назвою `toYaml`, передає йому `$value`, а потім передає результат з цього шаблону у функцію `nindent`.
+Вищезазначене включає шаблон з назвою `toYaml`, передає йому `$value`, а потім передає результат з цього шаблону у функцію `nindent`. Шаблон `{{- ... | nindent _n_ }}` простіше читати в контексті, оскільки він обрізає пробіли ліворуч (включно з попереднім символом нового рядка), а `nindent` додає новий рядок і робить відступ для включеного вмісту на вказану кількість пробілів.
 
 Оскільки в YAML важливі відступи, це чудовий спосіб включати фрагменти коду, зберігаючи відступи в релевантному контексті.
 
@@ -137,7 +137,7 @@ imageCredentials:
 ```go
 {{- define "imagePullSecret" }}
 {{- with .Values.imageCredentials }}
-{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username .password .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
+{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":%s,\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username (.password | quote) .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
 {{- end }}
 {{- end }}
 ```

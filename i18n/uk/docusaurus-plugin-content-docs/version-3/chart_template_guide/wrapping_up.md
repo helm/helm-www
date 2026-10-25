@@ -12,7 +12,7 @@ default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 - CNCF [Artifact Hub](https://artifacthub.io/packages/search?kind=0) є незамінним джерелом чартів.
 - [Документація Kubernetes](https://kubernetes.io/docs/home/) надає детальні приклади різних ресурсів, які ви можете використовувати, від ConfigMaps і Secrets до DaemonSets і Deployments.
 - Посібник [Чарти Helm](/topics/charts.md) пояснює робочий процес використання чартів.
-- Посібник [Хуки чартів Helm](/topics/charts_hooks.md) пояснює, як створювати хук для життєвого циклу.
+- Посібник [Хуки чартів Helm](/topics/charts_hooks.md) пояснює, як створювати хуки життєвого циклу.
 - Стаття [Поради та підказки для розробки чартів](/howto/charts_tips_and_tricks.md) надає кілька корисних порад для написання чартів.
 - Документація [Sprig](https://github.com/Masterminds/sprig) описує більше ніж шістдесят функцій шаблонів.
 - Документація [Go templates](https://godoc.org/text/template) детально пояснює синтаксис шаблонів.
@@ -24,4 +24,4 @@ default_lang_commit: 6bf4b4cb62bb3952a17b68b3cd8b832bcede390c
 - [#helm-dev](https://kubernetes.slack.com/messages/helm-dev)
 - [#charts](https://kubernetes.slack.com/messages/charts)
 
-Нарешті, якщо ви знайдете помилки або упущення в цьому документі, хочете запропонувати новий контент або хотіли б внести свій внесок, відвідайте [The Helm Project](https://github.com/helm/helm-www).
+Нарешті, якщо ви знайдете помилки або упущення в цьому документі, хочете запропонувати новий контент або хотіли б долучитися до розробки, відвідайте [The Helm Project](https://github.com/helm/helm-www).

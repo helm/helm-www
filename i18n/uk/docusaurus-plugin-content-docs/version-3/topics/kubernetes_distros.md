@@ -5,7 +5,7 @@ sidebar_position: 10
 default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
 ---
 
-Helm повинен працювати з будь-якою [відповідною версією Kubernetes](https://github.com/cncf/k8s-conformance) (сертифікованою чи ні).
+Helm повинен працювати з будь-якою [відповідною версією Kubernetes](https://github.com/cncf/k8s-conformance) (незалежно від того, чи вона [сертифікована](https://www.cncf.io/certification/software-conformance/)).
 
 Цей документ містить інформацію про використання Helm у специфічних середовищах Kubernetes. Будь ласка, додайте більше деталей про будь-які дистрибутиви (відсортовано за алфавітом), якщо це потрібно.
 

@@ -34,7 +34,7 @@ $ helm upgrade --reuse-values --set foo=bar --set foo=newbar redis ./redis
 Прапорець `--dry-run` виведе усі згенеровані маніфести чартів, включно з секретами, які можуть містити конфіденційні значення. Для приховування секретів Kubernetes використовуйте прапорець `--hide-secret`.  Будь ласка, ретельно обміркуйте, як і коли використовувати ці прапорці.
 
 ```shell
-helm upgrade [RELEASE] [CHART] [flags]
+helm upgrade [RELEASE] [CHART] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -103,7 +103,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --kube-apiserver string           адреса і порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації (СА) для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -113,7 +113,7 @@ helm upgrade [RELEASE] [CHART] [flags]
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
       --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
-      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+      --repository-config string        шлях до файлу, що містить імена репозиторіїв та URL-адреси (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}

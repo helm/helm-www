@@ -125,7 +125,7 @@ Error: no ConfigMap with the name "myconfig" found
 
 Релізи Helm раніше були доступні за адресою <https://storage.googleapis.com/kubernetes-helm/>. Як пояснюється в ["Announcing get.helm.sh"](/blog/get-helm-sh/), офіційне місце розташування змінилося у червні 2019 року. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) робить всі старі образи Tiller доступними.
 
-Якщо ви намагаєтеся завантажити старі версії Helm з кошику зберігання, який ви використовували раніше, ви можете виявити, що вони відсутні:
+Якщо ви намагаєтеся завантажити старі версії Helm зі сховища, який ви використовували раніше, ви можете виявити, що вони відсутні:
 
 ```none
 <Error>

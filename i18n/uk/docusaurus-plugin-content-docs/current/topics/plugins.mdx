@@ -31,7 +31,7 @@ default_lang_commit: 636de3062a2f02ab78b92644cb651688cc67e09f
 
 ## Встановлення втулків {/* #installing-a-plugin */}
 
-Втулки встановлюються за допомогою команди `$ helm plugin install <path|url>`. Ви можете передати шлях до втулка у вашій локальній файловій системі або URL віддаленого репозиторію VCS. Команда `helm plugin install` клонуватиме або копіюватиме втулок за вказаним шляхом/URL у `$HELM_PLUGINS`.
+Втулки встановлюються за допомогою команди `$ helm plugin install <path|url>`. Ви можете передати шлях до втулка у вашій локальній файловій системі або URL віддаленого репозиторію VCS. Команда `helm plugin install` клонуватиме або копіюватиме втулок за вказаним шляхом/URL у `$HELM_PLUGINS`. Якщо ви встановлюєте втулок із VCS, версію можна вказати аргументом `--version`.
 
 ```shell
 $ helm plugin install https://github.com/adamreese/helm-env

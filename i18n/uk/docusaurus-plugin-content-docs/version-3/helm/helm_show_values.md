@@ -9,7 +9,7 @@ default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 Ця команда перевіряє чарт (теку, файл або URL) та показує вміст файлу values.yaml
 
 ```shell
-helm show values [CHART] [flags]
+helm show values [CHART] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -20,6 +20,7 @@ helm show values [CHART] [flags]
       --devel                      використовувати також версії в розробці. Еквівалент версії '>0.0.0-0'. Якщо вказано --version, цей параметр ігнорується.
   -h, --help                       довідка values
       --insecure-skip-tls-verify   пропустити перевірку сертифікатів TLS для завантаження чарту
+      --jsonpath string            вираз JSONPath для фільтрування виводу
       --key-file string            ідентифікувати HTTPS-клієнта за допомогою цього SSL ключового файлу
       --keyring string             розташування публічних ключів, які використовуються для перевірки (стандартно "~/.gnupg/pubring.gpg")
       --pass-credentials           передати облікові дані всім доменам
@@ -39,7 +40,7 @@ helm show values [CHART] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера

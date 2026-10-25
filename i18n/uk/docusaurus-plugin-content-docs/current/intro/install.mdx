@@ -1,7 +1,7 @@
 ---
 title: Встановлення Helm
 description: Дізнайтеся, як встановити та почати працювати з Helm.
-sidebar_position: 2
+sidebar_position: 3
 default_lang_commit: 90e2367b4ccd0f41b2d353b404b81c0901e56257
 ---
 
@@ -16,8 +16,9 @@ default_lang_commit: 90e2367b4ccd0f41b2d353b404b81c0901e56257
 Кожен [випуск](https://github.com/helm/helm/releases) Helm надає бінарні випуски для різних операційних систем. Ці бінарні версії можна завантажити та встановити вручну.
 
 1. Завантажте [бажану версію](https://github.com/helm/helm/releases)
-2. Розпакуйте її (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
-3. Знайдіть бінарний файл `helm` у розпакованій теці та перемістіть його у потрібне місце (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. Перевірте бінарний файл. Див. розділ [Перевірка бінарних файлів Helm](#verifying-helm-binaries) на цій сторінці.
+1. Розпакуйте його (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
+1. Знайдіть бінарний файл `helm` у розпакованій теці та перемістіть його у потрібне місце (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 Після цього ви зможете запустити клієнта та [знайти чарти для встановлення](/intro/quickstart.md#find-charts-to-install): `helm help`.
 

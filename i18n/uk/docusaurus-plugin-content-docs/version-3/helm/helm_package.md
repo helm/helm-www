@@ -19,20 +19,27 @@ helm package --sign ./mychart --key mykey --keyring ~/.gnupg/secring.gpg
 Якщо `--keyring` не вказано, Helm зазвичай використовує публічний ключ, якщо тільки ваше середовище не налаштоване інакше.
 
 ```shell
-helm package [CHART_PATH] [...] [flags]
+helm package [CHART_PATH] [...] [прапорці]
 ```
 
 ### Параметри {#options}
 
 ```none
       --app-version string       встановити appVersion в чарті на цю версію
+      --ca-file string           перевіряти сертифікати HTTPS-серверів за допомогою цього пакета CA
+      --cert-file string         ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
   -u, --dependency-update        оновити залежності з "Chart.yaml" в теці "charts/" перед упаковкою
   -d, --destination string       місце для запису чарту. (стандатно ".")
   -h, --help                     довідка package
+      --insecure-skip-tls-verify пропускати перевірку сертифіката TLS для завантаження чарту
       --key string               імʼя ключа для використання під час підписання. Використовується, якщо `--sign` є true
+      --key-file string          ідентифікувати клієнта HTTPS за допомогою цього файлу ключа SSL
       --keyring string           місце для публічного ключа (стандартно "~/.gnupg/pubring.gpg")
       --passphrase-file string   місце розташування файлу, що містить пароль для ключа підпису. Використовуйте "-" для читання з stdin.
+      --password string          пароль репозиторію чартів, де розташований потрібний чарт
+      --plain-http               використовувати незахищені HTTP-зʼєднання для завантаження чарту
       --sign                     використовувати приватний ключ PGP для підписання цього пакунку
+      --username string          імʼя користувача репозиторію чартів, де розташований потрібний чарт
       --version string           встановити версію чарту на цю версію semver
 ```
 
@@ -44,7 +51,7 @@ helm package [CHART_PATH] [...] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера

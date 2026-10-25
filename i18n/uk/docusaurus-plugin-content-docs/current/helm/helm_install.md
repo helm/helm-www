@@ -75,7 +75,7 @@ $ helm install --set-json='foo={"key1":"value1","key2":"value2"}' --set-json='fo
 
 Прапорець `--dry-run` виведе усі згенеровані маніфести чартів, включно з Secrets які можуть містити конфіденційні значення. Щоб приховати секрети Kubernetes, скористайтеся прапорцем `--hide-secret`. Будь ласка, ретельно обміркуйте, як і коли використовувати ці прапорці.
 
-Якщо встановлено прапорець `--verify`, чарт ПОВИНЕН мати файл автентифікації, і цей файл ПОВИНЕН пройти всі кроки перевірки.
+Якщо встановлено прапорець `--verify`, чарт ПОВИНЕН мати файл походження, і цей файл ПОВИНЕН пройти всі кроки перевірки.
 
 Є шість різних способів вказати чарт, який ви хочете встановити:
 
@@ -95,7 +95,7 @@ $ helm install --set-json='foo={"key1":"value1","key2":"value2"}' --set-json='fo
 Щоб переглянути список репозиторіїв чартів, використовуйте `helm repo list`. Щоб шукати чарти в репозиторії, використовуйте `helm search`.
 
 ```shell
-helm install [NAME] [CHART] [flags]
+helm install [NAME] [CHART] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -161,7 +161,7 @@ helm install [NAME] [CHART] [flags]
       --kube-apiserver string           адреса і порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації (СА) для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -171,7 +171,7 @@ helm install [NAME] [CHART] [flags]
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
       --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
-      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+      --repository-config string        шлях до файлу, що містить імена репозиторіїв та URL-адреси (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}

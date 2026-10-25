@@ -24,4 +24,4 @@ default_lang_commit: 5a854d17682d9512caad275c1e2db9069481aa8e
 - [#helm-dev](https://kubernetes.slack.com/messages/helm-dev)
 - [#charts](https://kubernetes.slack.com/messages/charts)
 
-Нарешті, якщо ви знайдете помилки або упущення в цьому документі, хочете запропонувати новий контент або хотіли б внести зробити внесок, відвідайте [The Helm Project](https://github.com/helm/helm-www).
+Нарешті, якщо ви знайдете помилки або упущення в цьому документі, хочете запропонувати новий контент або хотіли б зробити внесок, відвідайте [The Helm Project](https://github.com/helm/helm-www).

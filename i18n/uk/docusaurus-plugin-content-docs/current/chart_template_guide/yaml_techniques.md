@@ -9,7 +9,7 @@ default_lang_commit: ea98e4e610841fed9288f39708eb3a0778d9de1f
 
 Коли ви вставляєте значення чартів у маніфести, також прочитайте [Запобігання YAML-інʼєкціям під час вставлення значень Helm](#prevent-yaml-injection-when-inserting-helm-values), щоб рядки, надані користувачем, не могли змінити структуру документа.
 
-## Масиви та Колекції {#scalars-and-collections}
+## Скаляри та колекції {#scalars-and-collections}
 
 Згідно зі [специфікацією YAML](https://yaml.org/spec/1.2/spec.html), існують два типи колекцій та багато типів скалярів.
 

@@ -13,14 +13,14 @@ default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 Цю команду можна використовувати для перевірки локального чарту. Декілька інших команд надають прапорці '--verify', які виконують ту ж саму валідацію. Щоб згенерувати підписаний пакунок, використовуйте команду 'helm package --sign'.
 
 ```shell
-helm verify PATH [flags]
+helm verify PATH [прапорці]
 ```
 
 ### Параметри {#options}
 
 ```none
   -h, --help             довідка verify
-      --keyring string   вєящка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
+      --keyring string   звʼязка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -31,7 +31,7 @@ helm verify PATH [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера

@@ -62,7 +62,7 @@ $ helm verify mychart-0.1.0.tgz
 
 ```console
 $ helm verify topchart-0.1.0.tgz
-Error: sha256 сума не співпадає для topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
+Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
 ```
 
 Щоб перевірити під час встановлення, використовуйте прапорець `--verify`.

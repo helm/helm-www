@@ -26,7 +26,7 @@ $ helm search repo nginx-ingress --version ^1.0.0
 Репозиторії управляються командами 'helm repo'.
 
 ```shell
-helm search repo [keyword] [flags]
+helm search repo [keyword] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -50,7 +50,7 @@ helm search repo [keyword] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера

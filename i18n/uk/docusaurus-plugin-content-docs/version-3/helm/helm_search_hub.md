@@ -15,7 +15,7 @@ Artifact Hub — це вебзастосунок, що дозволяє зна�
 Попередні версії Helm використовували екземпляр Monocular як стандартне значення для 'endpoint', тому для зворотної сумісності Artifact Hub сумісний з API пошуку Monocular. Аналогічно, при встановленні прапорця 'endpoint' зазначена точка доступу також має реалізовувати API пошуку, сумісний з Monocular. Зверніть увагу, що при вказівці екземпляра Monocular як 'endpoint', розширені запити не підтримуються. Для деталей API дивіться https://github.com/helm/monocular
 
 ```shell
-helm search hub [KEYWORD] [flags]
+helm search hub [KEYWORD] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -37,7 +37,7 @@ helm search hub [KEYWORD] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера

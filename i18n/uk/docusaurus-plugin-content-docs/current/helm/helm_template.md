@@ -11,8 +11,20 @@ default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 
 Будь-які значення, які зазвичай шукалися б або отримувалися в кластері, будуть імітуватися локально. Крім того, жодна з перевірок валідності чарту на сервері (наприклад, перевірка підтримки API) не проводиться.
 
+Щоб вказати версії API Kubernetes, які використовуються для Capabilities.APIVersions, використовуйте прапорець `--api-versions`. Його можна вказати кілька разів або передати список, розділений комами:
+
 ```shell
-helm template [NAME] [CHART] [flags]
+$ helm template --api-versions networking.k8s.io/v1 --api-versions cert-manager.io/v1 mychart ./mychart
+```
+
+або
+
+```shell
+$ helm template --api-versions networking.k8s.io/v1,cert-manager.io/v1 mychart ./mychart
+```
+
+```shell
+helm template [NAME] [CHART] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -32,7 +44,6 @@ helm template [NAME] [CHART] [flags]
       --force-replace                              примусове оновлення ресурсів шляхом заміни
   -g, --generate-name                              згенерувати імʼя (та опустити параметр NAME)
   -h, --help                                       довідка template
-      --hide-notes                                 якщо встановлено, не показувати нотатки у виводі встановлення. Не впливає на присутність у метаданих чарту
       --include-crds                               включити CRDs у вивід шаблонів
       --insecure-skip-tls-verify                   пропустити перевірку сертифіката TLS для завантаження чарта
       --is-upgrade                                 встановити .Release.IsUpgrade замість .Release.IsInstall
@@ -49,7 +60,6 @@ helm template [NAME] [CHART] [flags]
       --post-renderer postRendererString           назва втулка типу postrenderer, який буде використовуватися для пострендерингу. Якщо він існує, втулок буде використовуватися
       --post-renderer-args postRendererArgsSlice   аргумент до пост-рендерера (можна вказати кілька) (стандартно [])
       --release-name                               використовувати імʼя релізу в шляху output-dir
-      --render-subchart-notes                      якщо вказано, рендерити нотатки субчартів разом з батьківським
       --replace                                    повторно використовувати задане імʼя, тільки якщо це імʼя є видаленим релізом, який залишається в історії. Це небезпечно в операційному середовищі.
       --repo string                                URL репозиторію чартів, де розташований запитуваний чарт
       --rollback-on-failure                        якщо встановлено, Helm скасує (деінсталює) встановлення у разі невдачі. Прапорець --wait буде стандартно встановлений у "watcher", якщо встановлено --rollback-on-failure.
@@ -84,7 +94,7 @@ helm template [NAME] [CHART] [flags]
       --kube-apiserver string           адреса і порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації (СА) для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -94,7 +104,7 @@ helm template [NAME] [CHART] [flags]
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
       --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
-      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+      --repository-config string        шлях до файлу, що містить імена репозиторіїв та URL-адреси (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}

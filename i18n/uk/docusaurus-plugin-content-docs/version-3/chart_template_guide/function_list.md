@@ -32,7 +32,7 @@ Helm містить численні логічні та контрольні ф
 
 ### and
 
-Повертає логічне AND для двох або більше аргументів (перший пустий аргумент або останній аргумент).
+Повертає логічне AND для двох або більше аргументів (перший порожній аргумент або останній аргумент).
 
 ```none
 and .Arg1 .Arg2
@@ -110,9 +110,9 @@ ge .Arg1 .Arg2
 default "foo" .Bar
 ```
 
-У наведеному прикладі, якщо `.Bar` має непусте значення, воно буде використане. Якщо ж воно пусте, повернеться `foo`.
+У наведеному прикладі, якщо `.Bar` має непусте значення, воно буде використане. Якщо ж воно порожнє, повернеться `foo`.
 
-Визначення "пустого" залежить від типу:
+Визначення "порожнього" залежить від типу:
 
 * Числові: 0
 * Рядок: ""
@@ -121,7 +121,7 @@ default "foo" .Bar
 * Логічний: `false`
 * І завжди `nil` (або null)
 
-Для структур немає визначення пустого значення, тому структура ніколи не поверне стандартного значення.
+Для структур немає визначення порожнього значення, тому структура ніколи не поверне стандартного значення.
 
 ### required
 
@@ -145,7 +145,7 @@ empty .Foo
 
 ### fail
 
-Безумовно повертає пустий `string` та `error` з зазначеним текстом. Це корисно в ситуаціях, коли інші умови визначили, що рендеринг шаблону повинен зазнати невдачі.
+Безумовно повертає порожній `string` та `error` з зазначеним текстом. Це корисно в ситуаціях, коли інші умови визначили, що рендеринг шаблону повинен зазнати невдачі.
 
 ```none
 fail "Please accept the end user license agreement"
@@ -167,7 +167,7 @@ coalesce 0 1 2
 coalesce .name .parent.name "Matt"
 ```
 
-Цей приклад спочатку перевірить, чи є `.name` непустим. Якщо це так, буде повернене це значення. Якщо ж воно _пусте_, `coalesce` перевірить `.parent.name` на пустоту. Нарешті, якщо обидва `.name` і `.parent.name` пусті, буде повернене `Matt`.
+Цей приклад спочатку перевірить, чи є `.name` непустим. Якщо це так, буде повернене це значення. Якщо ж воно _порожнє_, `coalesce` перевірить `.parent.name` на порожнечу. Нарешті, якщо обидва `.name` і `.parent.name` порожні, буде повернене `Matt`.
 
 ### ternary
 
@@ -248,7 +248,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 * `%d` десяткові, основа 10
 * `%o` вісімкові, основа 8
 * `%O` основа 8 з префіксом 0o
-* `%q` вісімкові, однорядковий літерал символу, безпечно екранований
+* `%q` однорядковий літерал символу в одинарних лапках, безпечно екранований
 * `%x` шістнадцяткові, основа 16, з малими літерами для a-f
 * `%X` шістнадцяткові, основа 16, з великими літерами для A-F
 * `%U` Unicode формат: U+1234; те ж саме, що "U+%04X"
@@ -643,9 +643,13 @@ Helm пропонує такі функції для перетворення т
 * `fromYaml`: Перетворює YAML рядок на обʼєкт.
 * `fromJson`: Перетворює JSON рядок на обʼєкт.
 * `fromJsonArray`: Перетворює JSON масив на список.
-* `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт на відформатований YAML.
-* `toToml`: Перетворює список, зріз, масив, словник або обʼєкт на TOML.
+* `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт на YAML з відступами; може використовуватися для копіювання фрагментів YAML з будь-якого джерела. Ця функція еквівалентна функції GoLang yaml.Marshal, документація: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
+* `toYamlPretty`: Перетворює список, зріз, масив, словник або обʼєкт на YAML з відступами. Еквівалентна `toYaml`, але додатково робить відступ у 2 пробіли для списків.
+* `toToml`: Перетворює список, зріз, масив, словник або обʼєкт на TOML; може використовуватися для копіювання фрагментів TOML з будь-якого джерела.
+* `fromToml`: Перетворює TOML рядок на обʼєкт.
 * `fromYamlArray`: Перетворює YAML масив на список.
+
+Лише `atoi` вимагає, щоб вхідні дані мали певний тип. Решта намагаються перетворити з будь-якого типу в цільовий. Наприклад, `int64` може перетворювати числа з плаваючою комою на цілі, а також рядки на цілі числа.
 
 ### toStrings
 
@@ -843,7 +847,7 @@ greeting: |
 {{ end }}
 ```
 
-## Регулярні Вирази {#regular-expressions}
+## Регулярні вирази {#regular-expressions}
 
 Helm включає такі функції для роботи з регулярними виразами: [regexMatch](#regexmatch-mustregexmatch), [regexFindAll](#regexfindall-mustregexfindall), [regexFind](#regexfind-mustregexfind), [regexReplaceAll](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit](#regexsplit-mustregexsplit).
 
@@ -897,7 +901,7 @@ regexReplaceAll "a(x*)b" "-ab-axxb-" "${1}W"
 
 ### regexReplaceAllLiteral, mustRegexReplaceAllLiteral
 
-Повертає копію вхідного рядка, замінюючи збіг регулярного виразу на рядок заміни `replacement`. Рядок заміни підставляється без використання Expand.
+Повертає копію вхідного рядка, замінюючи збіг регулярного виразу на рядок заміни `replacement`. Рядок заміни підставляється без використання Expand. Перший аргумент — `<pattern>`, другий — `<input>`, а третій — `<replacement>`.
 
 ```yaml
 regexReplaceAllLiteral "a(x*)b" "-ab-axxb-" "${1}"
@@ -921,7 +925,7 @@ regexSplit "z+" "pizza" -1
 
 ## Функції криптографії та безпеки {#cryptographic-and-security-functions}
 
-Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [sha1sum](#sha1sum), та [sha256sum](#sha256sum).
+Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSignedCert](#gensignedcert), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), та [sha256sum](#sha256sum).
 
 ### sha1sum
 
@@ -1322,32 +1326,35 @@ merge a b c | dig "one" "two" "three" "<missing>"
 
 ### merge, mustMerge
 
-Обʼєднує два або більше словників в один, надаючи перевагу словнику призначення:
-
-Наприклад:
+Обʼєднує два або більше словників в один. Попередні аргументи мають вищий пріоритет. Для даних:
 
 ```yaml
-dest:
-  default: default
-  overwrite: me
-  key: true
+source3:
+  field1: source3
+  field2: source3
+  field3: source3
 
-src:
-  overwrite: overwritten
-  key: false
+source2:
+  field1: source2
+  field2: source2
+
+source1:
+  field1: source1
 ```
 
-результатом буде:
-
-```yaml
-newdict:
-  default: default
-  overwrite: me
-  key: true
-```
+шаблон:
 
 ```none
-$newdict := merge $dest $source1 $source2
+$output := merge $source1 $source2 $source3
+```
+
+дасть такий результат:
+
+```yaml
+output:
+  field1: source1
+  field2: source2
+  field3: source3
 ```
 
 Це операція глибокого обʼєднання, але не глибокого копіювання. Вкладені обʼєкти, що обʼєднуються, є однією і тією ж сутністю в обох словниках. Якщо ви хочете глибоке копіювання разом з обʼєднанням, то використовуйте функцію `deepCopy` разом з обʼєднанням. Наприклад,
@@ -1471,7 +1478,7 @@ $myList := list 1 2 3 4 5
 
 Це створить список `[1 2 3 4 5]`.
 
-Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
+Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [chunk](#chunk), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
 
 ### first, mustFirst
 
@@ -1829,6 +1836,8 @@ Helm має одну мережеву функцію, `getHostByName`.
 
 `getHostByName "www.google.com"` поверне відповідну IP-адресу для `www.google.com`.
 
+Ця функція вимагає передачі параметра `--enable-dns` у командному рядку helm.
+
 ## Функції роботи з шляхами до файлів {#file-path-functions}
 
 Хоча функції шаблонів Helm не надають доступ до файлової системи, вони забезпечують функції для роботи з рядками, які відповідають конвенціям шляхів до файлів. До них відносяться [base](#base), [clean](#clean), [dir](#dir), [ext](#ext) та [isAbs](#isabs).
@@ -2115,6 +2124,6 @@ Helm включає функції для роботи з Kubernetes, зокре
 
 ### Функції файлів {#file-functions}
 
-Є кілька функцій, які дозволяють отримати доступ до не-спеціальних файлів всередині chart. Наприклад, для доступу до конфігураційних файлів програми. Ці функції документовані в [Доступ до файлів всередині шаблонів](/chart_template_guide/accessing_files.md).
+Є кілька функцій, які дозволяють отримати доступ до не-спеціальних файлів всередині чарту. Наприклад, для доступу до конфігураційних файлів програми. Ці функції документовані в [Доступ до файлів всередині шаблонів](/chart_template_guide/accessing_files.md).
 
 _Зверніть увагу, що документація для багатьох з цих функцій надходить з [Sprig](https://github.com/Masterminds/sprig). Sprig — це бібліотека функцій шаблонів, доступна для застосунків на Go._
