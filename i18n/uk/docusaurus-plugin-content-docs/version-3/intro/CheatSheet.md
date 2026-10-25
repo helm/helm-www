@@ -43,7 +43,7 @@ helm show all <chart>                   # Переглядає чарт та в�
 helm show values <chart>                # Показує вміст файлу values.yaml.
 helm pull <chart>                       # Завантажує/витягує чарт.
 helm pull <chart> --untar=true          # Якщо встановлено в true, розпаковує чарт після завантаження.
-helm pull <chart> --verify              # Перевіряє пакет перед використанням.
+helm pull <chart> --verify              # Перевіряє пакунок перед використанням.
 helm pull <chart> --version <number>    # СТандартно використовується остання версія, вкажіть обмеження версії для використання чарту.
 helm dependency list <chart>            # Відображає список залежностей чарту.
 ```
@@ -58,7 +58,7 @@ helm install <name> <chart> --namespace <namespace>   # Встановлює ч�
 helm install <name> <chart> --set key1=val1,key2=val2 # Встановлює значення в командному рядку (можна вказати кілька значень, розділених комами).
 helm install <name> <chart> --values <yaml-file/url>  # Встановлює чарт з вказаними вами значеннями.
 helm install <name> <chart> --dry-run --debug         # Запускає тестове встановлення для перевірки чарту.
-helm install <name> <chart> --verify                  # Перевіряє пакет перед використанням.
+helm install <name> <chart> --verify                  # Перевіряє пакунок перед використанням.
 helm install <name> <chart> --dependency-update       # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
 helm uninstall <name>                                 # Видаляє реліз.
 ```

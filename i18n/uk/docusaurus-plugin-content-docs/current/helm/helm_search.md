@@ -1,6 +1,6 @@
 ---
 title: helm search
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Пошук за ключовим словом у чартах
@@ -41,8 +41,8 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 * [helm search hub](/helm/helm_search_hub.md) — шукати чарти в Artifact Hub або у власному екземплярі хабу
 * [helm search repo](/helm/helm_search_repo.md) — шукати репозиторії за ключовим словом у чартах
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

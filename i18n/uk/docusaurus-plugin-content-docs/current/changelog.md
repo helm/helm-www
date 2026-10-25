@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
 sidebar_label: Повний список змін
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 # Helm 4 Повний список змін
 
-**Обсяг**: 568 PR від (`v4.3.0`) порівняно з `v3.19.0` <br/>
-**Тільки v4**: 531 PR (37, перенесені до v3, виключені)
+**Обсяг**: 571 PR від (`v4.3.1`) порівняно з `v3.19.0` <br/>
+**Тільки v4**: 533 PR (38, перенесені до v3, виключені)
 
 Дивіться [Огляд](/overview.md) для отримання детального опису цих змін.
 
@@ -85,6 +85,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32672 | 2026-10-06 | pujitha24 | fix(action): wait for CRD establishment under HookOnlyStrategy |
 | #32217 | 2026-08-31 | amarkdotdev | fix(template): regression - route registry messages to stderr in template and show |
 | #31748 | 2026-08-31 | benoittgt | refactor: remove per-file decompression size limit |
 | #32525 | 2026-08-18 | locker95 | fix(loader): do not drop values files ending at a 4096-byte boundary |
@@ -432,6 +433,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32744 | 2026-10-14 | ruslan-shaydullin | fix(linters): update golangci-lint to v2.14.0 |
 | #32605 | 2026-08-31 | scottrigby | chore: bump version to 4.3 |
 | #32577 | 2026-08-28 | mattfarina | Updating the Go version |
 | #32570 | 2026-08-25 | MsfPablo | fix: correct 'doest not match' in readiness debug logs |
@@ -626,6 +628,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 | PR | Дата | Автор | Назва |
 |---|---|---|---|
+| #32758 | 2026-10-14 | TerryHowe | fix: bump golang.org/x/net to v0.61.0 |
 | #32521 | 2026-08-07 | TerryHowe | fix: bump go.opentelemetry.io/otel to v1.44.0 for GO-2026-5158 |
 | #30775 | 2025-04-19 | benoittgt | Bump toml |
 | #13533 | 2025-01-24 | althmoha | fix: (toToml) renders int as float |

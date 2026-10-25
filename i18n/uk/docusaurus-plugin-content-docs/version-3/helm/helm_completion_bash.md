@@ -1,6 +1,6 @@
 ---
 title: helm completion bash
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 Генерація скрипта автодоповнення для bash
 
@@ -64,4 +64,4 @@ helm completion bash [прапорці]
 
 - [helm completion](/helm/helm_completion.md) — генерувати скрипти автодоповнення для вказаного shell
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

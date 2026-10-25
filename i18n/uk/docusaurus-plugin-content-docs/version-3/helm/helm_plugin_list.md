@@ -1,6 +1,6 @@
 ---
 title: helm plugin list
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 вивести перелік встановлених втулків Helm
 
@@ -39,4 +39,4 @@ helm plugin list [flags]
 
 * [helm plugin](/helm/helm_plugin.md) — встановити, вивести перелік або видалити втулки Helm
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

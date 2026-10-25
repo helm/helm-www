@@ -1,6 +1,6 @@
 ---
 title: helm dependency update
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 оновлення charts/ на основі вмісту Chart.yaml
 
@@ -24,7 +24,7 @@ helm dependency update CHART [flags]
   -h, --help             довідка для update
       --keyring string   вʼязка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
       --skip-refresh     не оновлювати локальний кеш репозиторіїв
-      --verify           перевірити пакети на відповідність підписам
+      --verify           перевірити пакунки на відповідність підписам
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -52,4 +52,4 @@ helm dependency update CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

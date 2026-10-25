@@ -26,7 +26,7 @@ default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
     helm repo add <alias> https://<orgname>.github.io/helm-charts
 
 Якщо ви вже додавали цей репозиторій раніше, виконайте команду `helm repo update`,
-щоб отримати останні версії пакетів. Потім ви можете виконати `helm search repo <alias>`, щоб побачити чарти.
+щоб отримати останні версії пакунків. Потім ви можете виконати `helm search repo <alias>`, щоб побачити чарти.
 
 Щоб встановити чарт `<chart-name>`:
 

@@ -1,6 +1,6 @@
 ---
 title: helm plugin package
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Упакувати теку втулка в архів втулка
@@ -56,4 +56,4 @@ helm plugin package [PATH] [flags]
 
 * [helm plugin](/helm/helm_plugin.md) — встановити, переглянути або видалити втулки Helm
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

@@ -3,6 +3,7 @@ title: "Helm на KubeCon/CloudNativeCon SLC"
 slug: "kubecon-slc"
 authors: ["mattfarina"]
 date: "2024-11-07"
+default_lang_commit: e604c56d88424167c871701dfb7c0eb7fd6f66b3
 ---
 
 ![Логотип KubeCon / CloudNativeCon](kubecon.png)
@@ -14,7 +15,7 @@ Helm буде присутній на KubeCon / CloudNativeCon North America в 
   * О 7pm MST ми плануємо наживо зробити реліз.
 * Четвер:
   * Присутність на стенді в павільйоні проєктів з 1:45pm до 5pm.
-  * Сесія: [Contribfest: Helm 4: Наступне покоління менеджера пакетів для Kubernetes](https://kccncna2024.sched.com/event/1howt)
+  * Сесія: [Contribfest: Helm 4: Наступне покоління менеджера пакунків для Kubernetes](https://kccncna2024.sched.com/event/1howt)
   * Сесія: [Шлях до Helm 4](https://kccncna2024.sched.com/event/1hoxU)
 * Пʼятниця:
   * З 12:30pm до 2:30pm у павільйоні проєктів

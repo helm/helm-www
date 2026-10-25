@@ -1,6 +1,6 @@
 ---
 title: helm search hub
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 шукати чарти в Artifact Hub або у власному екземплярі хабу
 
@@ -8,7 +8,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 Шукайте Helm чарти в Artifact Hub або у власному екземплярі хабу.
 
-Artifact Hub — це вебзастосунок, що дозволяє знаходити, встановлювати та публікувати пакети та конфігурації для проєктів CNCF, включаючи публічно доступні розподілені Helm чарти. Це проєкт Sandbox Cloud Native Computing Foundation. Ви можете переглянути хаб за адресою https://artifacthub.io/
+Artifact Hub — це вебзастосунок, що дозволяє знаходити, встановлювати та публікувати пакунки та конфігурації для проєктів CNCF, включаючи публічно доступні розподілені Helm чарти. Це проєкт Sandbox Cloud Native Computing Foundation. Ви можете переглянути хаб за адресою https://artifacthub.io/
 
 Аргумент [KEYWORD] приймає як ключове слово, так і рядок з параметрами розширеного запиту. Документацію з параметрів розширеного запиту дивіться на https://artifacthub.github.io/hub/api/?urls.primaryName=Monocular%20compatible%20search%20API#/Monocular/get_api_chartsvc_v1_charts_search
 
@@ -54,4 +54,4 @@ helm search hub [KEYWORD] [flags]
 
 * [helm search](/helm/helm_search.md) — пошук ключового слова в чартах
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

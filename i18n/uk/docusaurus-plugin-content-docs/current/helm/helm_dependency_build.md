@@ -1,6 +1,6 @@
 ---
 title: helm dependency build
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Відновлення теки charts/ на основі файлу Chart.lock
@@ -20,7 +20,7 @@ helm dependency build CHART [flags]
 ### Параметри {#options}
 
 ```none
-      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакета CA
+      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакунка CA
       --cert-file string           ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
   -h, --help                       довідка build
       --insecure-skip-tls-verify   пропустити перевірку сертифіката TLS для завантаження чарта
@@ -30,7 +30,7 @@ helm dependency build CHART [flags]
       --plain-http                 використовувати незахищені HTTP-зʼєднання для завантаження чартів
       --skip-refresh               не оновлювати кеш локального репозиторію
       --username string            імʼя користувача сховища чартів, де знаходиться запитуваний чарт
-      --verify                     перевірити пакети на відповідність підписам
+      --verify                     перевірити пакунки на відповідність підписам
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -61,4 +61,4 @@ helm dependency build CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керування залежностями чарта
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

@@ -74,4 +74,4 @@ Kubernetes, налаштований за допомогою `kubeadm`, відо
 
 ## VMware Tanzu Kubernetes Grid
 
-Helm працює на VMware Tanzu Kubernetes Grid, TKG, без необхідності змінювати конфігурацію. Tanzu CLI може управляти встановленням пакетів для [helm-controller](https://fluxcd.io/flux/components/helm/), що дозволяє декларативно управляти релізами чартів Helm. Додаткові відомості доступні в документації TKG для [CLI-управлінських пакетів](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5).
+Helm працює на VMware Tanzu Kubernetes Grid, TKG, без необхідності змінювати конфігурацію. Tanzu CLI може управляти встановленням пакунків для [helm-controller](https://fluxcd.io/flux/components/helm/), що дозволяє декларативно управляти релізами чартів Helm. Додаткові відомості доступні в документації TKG для [CLI-управлінських пакунків](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5).

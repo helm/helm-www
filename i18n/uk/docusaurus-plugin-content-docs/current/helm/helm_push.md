@@ -1,6 +1,6 @@
 ---
 title: helm push
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Завантажити чарт на віддалений сервер
@@ -18,7 +18,7 @@ helm push [chart] [remote] [flags]
 ### Параметри {#options}
 
 ```none
-      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакета CA
+      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакунка CA
       --cert-file string           ідентифікувати клієнта реєстру за допомогою цього файлу сертифіката SSL
   -h, --help                       довідка push
       --insecure-skip-tls-verify   пропустити перевірку сертифіката TLS для завантаження чарта
@@ -54,6 +54,6 @@ helm push [chart] [remote] [flags]
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

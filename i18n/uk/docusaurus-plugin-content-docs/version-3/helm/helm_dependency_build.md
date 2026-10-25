@@ -1,6 +1,6 @@
 ---
 title: helm dependency build
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 перебудувати теку charts/ на основі файлу Chart.lock
 
@@ -22,7 +22,7 @@ helm dependency build CHART [flags]
   -h, --help             довідка для build
       --keyring string   вʼязка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
       --skip-refresh     не оновлювати кеш локального репозиторію
-      --verify           перевіряти пакети за підписами
+      --verify           перевіряти пакунки за підписами
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -50,4 +50,4 @@ helm dependency build CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

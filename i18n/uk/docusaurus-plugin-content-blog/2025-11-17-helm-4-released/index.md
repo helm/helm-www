@@ -3,6 +3,7 @@ title: "Випуск Helm 4"
 slug: "helm-4-released"
 authors: ["mattfarina"]
 date: "2025-11-17"
+default_lang_commit: 06b4a700aec37b1daced12573aabcc4300f3ebed
 ---
 
 У середу, 12 листопада, під час [презентації Helm 4 на KubeCon + CloudNativeCon](https://sched.co/27Nme) було випущено [Helm v4.0.0](https://github.com/helm/helm/releases/tag/v4.0.0). Це перша нова основна версія Helm за 6 років. <!-- truncate -->

@@ -1,6 +1,6 @@
 ---
 title: helm plugin
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Встановлення, перегляд списку або видалення втулків Helm
@@ -41,7 +41,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 * [helm plugin install](/helm/helm_plugin_install.md) — встановлення втулків Helm
 * [helm plugin list](/helm/helm_plugin_list.md) — перегляд встановлених втулків Helm
 * [helm plugin package](/helm/helm_plugin_package.md) — створення пакунку з теки втулка
@@ -49,4 +49,4 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 * [helm plugin update](/helm/helm_plugin_update.md) — оновлення одного чи кількох втулків Helm
 * [helm plugin verify](/helm/helm_plugin_verify.md) — перевірка, що втулок за вказаним шляхом має підпис і є дійсним
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

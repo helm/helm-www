@@ -712,7 +712,7 @@ hobbies:
   - cooking
 ```
 
-```yaml 
+```yaml
 {{- $person := .Files.Get "yamls/person.yaml" | fromYaml }}
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
@@ -763,6 +763,63 @@ greeting: |
 greeting: |
   Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
 {{ end }}
+```
+
+### toYaml, toYamlPretty
+
+Функції `toYaml` і `toYamlPretty` кодують обʼєкт (список, зріз, масив, словник або обʼєкт) у YAML-рядок із відступами.
+
+> Функція `toYamlPretty` працює так само, але додає відступи перед елементами списків.
+
+```yaml
+# toYaml
+- name: bob
+  age: 25
+  hobbies:
+  - hiking
+  - fishing
+  - cooking
+```
+
+```yaml
+# toYamlPretty
+- name: bob
+  age: 25
+  hobbies:
+    - hiking
+    - fishing
+    - cooking
+```
+
+### toToml
+
+Функція `toToml` кодує елемент у рядок TOML. Якщо елемент неможливо перетворити на TOML, функція повертає помилку.
+
+```yaml
+config: {{ toToml .Values.config | nindent 2 }}
+```
+
+Цей шаблон повертає TOML-представлення `.Values.config`.
+
+> Примітка: TOML не підтримує значення `nil`. Якщо передати мапу або структуру з полями `nil`, `toToml` поверне помилку.
+
+### fromToml
+
+Функція `fromToml` приймає рядок TOML і повертає обʼєкт, який можна використовувати в шаблонах. Якщо вхідні дані не є коректним TOML, функція повертає помилку.
+
+Припустімо, файл `tomls/person.toml` містить такі дані:
+
+```toml
+name = "Bob"
+age = 25
+hobbies = [ "hiking", "fishing", "cooking" ]
+```
+
+```yaml
+{{- $person := .Files.Get "tomls/person.toml" | fromToml }}
+greeting: |
+  Hi, my name is {{ $person.name }} and I am {{ $person.age }} years old.
+  My hobbies are {{ range $person.hobbies }}{{ . }} {{ end }}.
 ```
 
 ### fromYamlArray
@@ -901,6 +958,14 @@ htpasswd "myUser" "myPassword"
 ```
 
 Зверніть увагу, що небезпечно зберігати пароль безпосередньо в шаблоні.
+
+### randBytes
+
+Функція `randBytes` приймає число N і генерує криптографічно стійку (за допомогою `crypto/rand`) випадкову послідовність із N байтів. Послідовність повертається як рядок у кодуванні base64.
+
+```none
+randBytes 24
+```
 
 ### derivePassword
 
@@ -1596,6 +1661,16 @@ seq 2 -2    => 2 1 0 -1 -2
 seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
+
+### chunk
+
+Щоб розбити список на частини заданого розміру, використовуйте `chunk size list`. Це зручно для розбиття на сторінки.
+
+```none
+chunk 3 (list 1 2 3 4 5 6 7 8)
+```
+
+Функція повертає список списків `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
 
 ## Математичні функції {#math-functions}
 

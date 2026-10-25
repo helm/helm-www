@@ -1,6 +1,6 @@
 ---
 title: helm registry
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 вхід до або вихід з реєстру
 
@@ -37,8 +37,8 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 * [helm registry login](/helm/helm_registry_login.md) — вхід до реєстру
 * [helm registry logout](/helm/helm_registry_logout.md) — вихід з реєстру
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

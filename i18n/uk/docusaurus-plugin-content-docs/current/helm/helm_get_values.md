@@ -1,6 +1,6 @@
 ---
 title: helm get values
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Завантажити файл значень для вказаного релізу
@@ -50,4 +50,4 @@ helm get values RELEASE_NAME [flags]
 
 * [helm get](/helm/helm_get.md) — завантаження розширеної інформації про зазначений реліз
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

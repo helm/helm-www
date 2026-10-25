@@ -1,6 +1,6 @@
 ---
 title: helm completion
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 Генерація скриптів автодоповнення для вказаної оболонки
 
@@ -37,10 +37,10 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 * [helm completion bash](/helm/helm_completion_bash.md) — генерувати скрипт автодоповнення для bash
 * [helm completion fish](/helm/helm_completion_fish.md) — генерувати скрипт автодоповнення для fish
 * [helm completion powershell](/helm/helm_completion_powershell.md) — генерувати скрипт автодоповнення для powershell
 * [helm completion zsh](/helm/helm_completion_zsh.md) — генерувати скрипт автодоповнення для zsh
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

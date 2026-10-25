@@ -1,6 +1,6 @@
 ---
 title: helm get
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 завантажити розширену інформацію про вказаний реліз
 
@@ -43,7 +43,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### Дивіться також {#see-also}
 
-- [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+- [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 - [helm get all](/helm/helm_get_all.md) — завантажити всю інформацію про вказаний реліз
 - [helm get hooks](/helm/helm_get_hooks.md) — завантажити всі хуки для вказаного релізу
 - [helm get manifest](/helm/helm_get_manifest.md) — завантажити маніфест для вказаного релізу
@@ -51,4 +51,4 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 - [helm get notes](/helm/helm_get_notes.md) — завантажити примітки для вказаного релізу
 - [helm get values](/helm/helm_get_values.md) — завантажити файл значень для вказаного релізу
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

@@ -1,6 +1,6 @@
 ---
 title: helm show
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 показати інформацію про чарт
@@ -41,11 +41,11 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 * [helm show all](/helm/helm_show_all.md) — показати всю інформацію про чарт
 * [helm show chart](/helm/helm_show_chart.md) — показати визначення чарту
 * [helm show crds](/helm/helm_show_crds.md) — показати CRDs чарту
 * [helm show readme](/helm/helm_show_readme.md) — показати README чарту
 * [helm show values](/helm/helm_show_values.md) — показати значення чарту
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

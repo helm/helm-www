@@ -2,7 +2,7 @@
 title: Посібник для розробників
 description: Інструкції щодо налаштування середовища для розробки Helm.
 sidebar_position: 2
-default_lang_commit: 3ecef453cbb09a2b616bac93c74cf083d5c660d6
+default_lang_commit: b2e8b8c24ed033460b760dba1c47db095c52b856
 ---
 
 Цей посібник пояснює, як налаштувати ваше середовище для розробки на Helm.
@@ -29,7 +29,20 @@ $ make
 
 ## Запуск тестів {#running-tests}
 
-Щоб запустити всі тести, виконайте `make test`. Перед цим вам потрібно мати встановлений [golangci-lint](https://golangci-lint.run).
+У рамках наскрізних тестів виконується реальний бінарний файл `helm` у поєднанні з реальним реєстром OCI, а також, за бажанням, із кластером Kubernetes. Вони використовують тег збірки `e2e`, тому команда `make test` їх не запускає.
+
+Щоб їх запустити, встановіть реєстр для публікації тестових чартів та його облікові дані, а потім запустіть `make test-e2e`:
+
+```console
+$ export HELM_E2E_REGISTRY=ghcr.io/your-org
+$ export HELM_E2E_USERNAME=your-user
+$ export HELM_E2E_PASSWORD=your-token
+$ make test-e2e
+```
+
+Набір тестів працює з будь-яким реєстром OCI, включаючи локальний. Тест встановлення Kubernetes зазвичай вимкнено, оскільки він змінює кластер, на який вказує ваш поточний kubecontext. Щоб увімкнути його, встановіть `HELM_E2E_KUBERNETES`.
+
+Для всіх параметрів конфігурації, включаючи те, як запускати тести проти локального реєстру або Docker Hub, дивіться [Helm end-to-end tests](https://github.com/helm/helm/blob/main/test/e2e/README.md).
 
 ## Запуск локально {#running-locally}
 

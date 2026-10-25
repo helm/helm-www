@@ -1,6 +1,6 @@
 ---
 title: helm registry login
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Вхід до реєстру
@@ -22,7 +22,7 @@ helm registry login [host] [flags]
 ### Параметри {#options}
 
 ```none
-      --ca-file string     перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакета CA
+      --ca-file string     перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакунка CA
       --cert-file string   ідентифікувати клієнта реєстру за допомогою цього файлу сертифіката SSL
   -h, --help               довідка login
       --insecure           дозволити зʼєднання з TLS-реєстром без сертифікатів
@@ -61,4 +61,4 @@ helm registry login [host] [flags]
 
 * [helm registry](/helm/helm_registry.md) — увійти або вийти з реєстру
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

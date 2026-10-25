@@ -1,6 +1,6 @@
 ---
 title: helm completion zsh
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Генерація скрипта автодоповнення для zsh
@@ -60,4 +60,4 @@ helm completion zsh [прапорці]
 
 * [helm completion](/helm/helm_completion.md) — створення скриптів автодоповнення команд для вказаної оболонки
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

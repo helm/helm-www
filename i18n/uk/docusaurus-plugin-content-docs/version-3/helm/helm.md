@@ -1,13 +1,13 @@
 ---
 title: helm
 slug: helm
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
-Менеджер пакетів Helm для Kubernetes.
+Менеджер пакунків Helm для Kubernetes.
 
 ### Опис {#synopsis}
 
-Менеджер пакетів для Kubernetes
+Менеджер пакунків для Kubernetes
 
 Загальні дії для Helm:
 
@@ -109,4 +109,4 @@ Helm зберігає кеш, конфігурацію та дані на осн
 - [helm verify](/helm/helm_verify.md) — перевірити, чи підписаний та, чи є дійсним чарт за вказаним шляхом
 - [helm version](/helm/helm_version.md) — відобразити інформацію про версію клієнта
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026
