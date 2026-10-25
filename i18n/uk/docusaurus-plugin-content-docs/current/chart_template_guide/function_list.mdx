@@ -675,7 +675,8 @@ shuffle "hello"
 $parts := split "$" "foo$bar$baz"
 ```
 
-Результат: `map[_0:foo _1:bar _2:baz]`. Доступ до `$parts._0` повертає `foo`.
+Результат: `map[_0:foo _1:bar _2:baz]`. Кожну частину можна отримати за її ключем:
+
 
 ### splitList
 
