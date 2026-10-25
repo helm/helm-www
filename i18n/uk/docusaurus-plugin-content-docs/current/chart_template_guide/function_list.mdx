@@ -940,7 +940,7 @@ port: {{ $config.port }}
 
 ## Регулярні вирази {/* #regular-expressions */}
 
-Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll (mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit) та [regexQuoteMeta](#regexquotemeta).
+Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfind-mustregexfind), [regexFindAll (mustRegexFindAll)](#regexfindall-mustregexfindall), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit) та [regexQuoteMeta](#regexquotemeta).
 
 ### regexMatch, mustRegexMatch
 
@@ -1022,7 +1022,10 @@ regexSplit "z+" "pizza" -1
 regexQuoteMeta "1.2.3"
 ```
 
-Результат: `1\.2\.3`. Це корисно для створення шаблону зі значення, яке може містити метасимволи.
+Результат: `1\.2\.3`
+
+Це корисно для створення шаблону зі значення, яке може містити метасимволи:
+
 
 ## Функції криптографії та безпеки {/* #cryptographic-and-security-functions */}
 
