@@ -104,9 +104,9 @@ $ kubectl create namespace foo
 Now, create a RoleBinding in that namespace, granting the user the `edit` role.
 
 ```console
-$ kubectl create rolebinding sam-edit
-    --clusterrole edit \​
-    --user sam \​
+$ kubectl create rolebinding sam-edit \
+    --clusterrole edit \
+    --user sam \
     --namespace foo
 ```
 
@@ -125,12 +125,12 @@ user `admin` access instead, or to create a custom ClusterRole tailored to their
 needs.
 
 ```console
-$ kubectl create clusterrolebinding sam-view
-    --clusterrole view \​
+$ kubectl create clusterrolebinding sam-view \
+    --clusterrole view \
     --user sam
 
-$ kubectl create clusterrolebinding sam-secret-reader
-    --clusterrole secret-reader \​
+$ kubectl create clusterrolebinding sam-secret-reader \
+    --clusterrole secret-reader \
     --user sam
 ```
 
@@ -147,20 +147,20 @@ Create the file `cluster-role-secret-reader.yaml` and write the following
 content into the file:
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1​
-kind: ClusterRole​
-metadata:​
-  name: secret-reader​
-rules:​
-- apiGroups: [""]​
-  resources: ["secrets"]​
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secret-reader
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
   verbs: ["get", "watch", "list"]
 ```
 
 Then, create the ClusterRole using
 
 ```console
-$ kubectl create -f cluster-role-secret-reader.yaml​
+$ kubectl create -f cluster-role-secret-reader.yaml
 ```
 
 Once that's done, we can grant a user read access to most resources, and then
@@ -169,14 +169,14 @@ grant them read access to secrets:
 ```console
 $ kubectl create namespace foo
 
-$ kubectl create rolebinding sam-view
-    --clusterrole view \​
-    --user sam \​
+$ kubectl create rolebinding sam-view \
+    --clusterrole view \
+    --user sam \
     --namespace foo
 
-$ kubectl create rolebinding sam-secret-reader
-    --clusterrole secret-reader \​
-    --user sam \​
+$ kubectl create rolebinding sam-secret-reader \
+    --clusterrole secret-reader \
+    --user sam \
     --namespace foo
 ```
 
@@ -190,12 +190,12 @@ To do that, grant the user both `view` and `secret-reader` access as described
 above, but with a ClusterRoleBinding.
 
 ```console
-$ kubectl create clusterrolebinding sam-view
-    --clusterrole view \​
+$ kubectl create clusterrolebinding sam-view \
+    --clusterrole view \
     --user sam
 
-$ kubectl create clusterrolebinding sam-secret-reader
-    --clusterrole secret-reader \​
+$ kubectl create clusterrolebinding sam-secret-reader \
+    --clusterrole secret-reader \
     --user sam
 ```
 
