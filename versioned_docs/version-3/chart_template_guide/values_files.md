@@ -157,7 +157,7 @@ livenessProbe:
 ```
 
 If you try to override the livenessProbe handler to `exec` instead of `httpGet`
-using `--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`, Helm will
+using `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`, Helm will
 coalesce the default and overridden keys together, resulting in the following
 YAML:
 ```yaml
@@ -176,7 +176,7 @@ However, Kubernetes would then fail because you can not declare more than one
 livenessProbe handler. To overcome this, you may instruct Helm to delete the
 `livenessProbe.httpGet` by setting it to null:
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
 ```
 
 At this point, we've seen several built-in objects, and used them to inject
