@@ -2,7 +2,7 @@
 title: Список функцій шаблонів
 description: Список функцій шаблонів, доступних у Helm
 sidebar_position: 6
-default_lang_commit: 60be2aa722383265092b73b57f59d13c432cb414
+default_lang_commit: 9cc276f46afb2e03b405a8ffb84528b63153dfad
 ---
 
 import Helm4 from "../_v4-in-progress.mdx"
@@ -32,7 +32,16 @@ Helm містить багато функцій шаблонів, якими в�
 
 ## Логічні функції та функції керування потоком {/* #logic-and-flow-control-functions */}
 
-Helm включає в себе численні логічні функції та функції управління потоком, включаючи [and](#and), [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq), [fail](#fail), [ge](#ge), [gt](#gt), [le](#le), [lt](#lt), [ne](#ne), [not](#not), [or](#or) та [required](#required).
+Helm включає в себе численні логічні функції та функції управління потоком, включаючи [all](#all), [and](#and), [any](#any), [coalesce](#coalesce), [default](#default), [empty](#empty), [eq](#eq), [fail](#fail), [ge](#ge), [gt](#gt), [include](#include), [le](#le), [lt](#lt), [ne](#ne), [not](#not), [or](#or), [required](#required) та [tpl](#tpl).
+
+
+### all
+
+Повертає `true`, якщо всі задані значення непорожні (за тим самим визначенням порожнього, що використовується у [empty](#empty)).
+
+```
+all .Arg1 .Arg2 .Arg3
+```
 
 ### and
 
@@ -40,6 +49,14 @@ Helm включає в себе численні логічні функції �
 
 ```go
 and .Arg1 .Arg2
+```
+
+### any
+
+Повертає `true`, якщо будь-яке з заданих значень непорожнє (за тим самим визначенням порожнього, що використовується у [empty](#empty)).
+
+```
+any .Arg1 .Arg2 .Arg3
 ```
 
 ### or
@@ -137,6 +154,28 @@ required "A valid foo is required!" .Bar
 
 Якщо `.Bar` є порожнім або не визначеним (див. [default](#default) щодо того, як це оцінюється), шаблон не буде згенерований і поверне надане повідомлення про помилку.
 
+Додаткові приклади див. у [Використання функції `required`](/howto/charts_tips_and_tricks.md#using-the-required-function).
+
+### include
+
+Рендерить іменований шаблон і повертає результат як рядок, тож його можна передати іншим функціям:
+
+```
+include "mychart.labels" . | indent 4
+```
+
+Використовуйте `include` замість дії `template`, коли потрібно обробити її результат. Докладніше див. [Використання функції include](/howto/charts_tips_and_tricks.md#using-the-include-function).
+
+### tpl
+
+Обчислює рядок як шаблон усередині шаблону. Це зручно для значень, що містять вирази шаблонів:
+
+```
+tpl .Values.template .
+```
+
+Докладніше див. [Використання функції tpl](/howto/charts_tips_and_tricks.md#using-the-tpl-function).
+
 ### empty
 
 Функція `empty` повертає `true`, якщо надане значення вважається порожнім, і `false` в іншому випадку. Пусті значення перелічені в розділі `default`.
@@ -207,7 +246,7 @@ false | ternary "foo" "bar"
 
 ## Функції для роботи з рядками {/* #string-functions */}
 
-Helm має такі функції для обробки рядків: [abbrev](#abbrev), [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat), [contains](#contains), [hasPrefix](#hasprefix-and-hassuffix), [hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials), [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent), [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf), [println](#println), [quote](#quote-and-squote), [randAlpha](#randalphanum-randalpha-randnumeric-and-randascii), [randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii), [randAscii](#randalphanum-randalpha-randnumeric-and-randascii), [randNumeric](#randalphanum-randalpha-randnumeric-and-randascii), [repeat](#repeat), [replace](#replace), [shuffle](#shuffle), [snakecase](#snakecase), [squote](#quote-and-squote), [substr](#substr), [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall), [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc), [untitle](#untitle), [upper](#upper), [wrap](#wrap) та [wrapWith](#wrapwith).
+Helm має такі функції для обробки рядків: [abbrev](#abbrev), [abbrevboth](#abbrevboth), [camelcase](#camelcase), [cat](#cat), [contains](#contains), [hasPrefix](#hasprefix-and-hassuffix), [hasSuffix](#hasprefix-and-hassuffix), [indent](#indent), [initials](#initials), [join](#join), [kebabcase](#kebabcase), [lower](#lower), [nindent](#nindent), [nospace](#nospace), [plural](#plural), [print](#print), [printf](#printf), [println](#println), [quote](#quote-and-squote), [randAlpha](#randalphanum-randalpha-randnumeric-and-randascii), [randAlphaNum](#randalphanum-randalpha-randnumeric-and-randascii), [randAscii](#randalphanum-randalpha-randnumeric-and-randascii), [randNumeric](#randalphanum-randalpha-randnumeric-and-randascii), [repeat](#repeat), [replace](#replace), [shuffle](#shuffle), [snakecase](#snakecase), [split](#split), [splitList](#splitlist), [splitn](#splitn), [squote](#quote-and-squote), [substr](#substr), [swapcase](#swapcase), [title](#title), [trim](#trim), [trimAll](#trimall), [trimPrefix](#trimprefix), [trimSuffix](#trimsuffix), [trunc](#trunc), [untitle](#untitle), [upper](#upper), [wrap](#wrap) та [wrapWith](#wrapwith).
 
 ### print
 
@@ -252,7 +291,7 @@ printf "%s has %d dogs." .Name .NumberDogs
 * `%d` десяткові, основа 10
 * `%o` вісімкові, основа 8
 * `%O` основа 8 з префіксом 0o
-* `%q` вісімкові, однорядковий літерал символу, безпечно екранований
+* `%q` літерал символу в одинарних лапках, безпечно екранований
 * `%x` шістнадцяткові, основа 16, з малими літерами для a-f
 * `%X` шістнадцяткові, основа 16, з великими літерами для A-F
 * `%U` Unicode формат: U+1234; те ж саме, що "U+%04X"
@@ -630,6 +669,53 @@ shuffle "hello"
 
 У результаті отримаємо випадковий порядок літер у `hello`, можливо, `oelhl`.
 
+### split
+
+Розділяє рядок за роздільником і повертає словник рядків із ключами `_0`, `_1`, `_2` тощо:
+
+```
+$parts := split "$" "foo$bar$baz"
+```
+
+Результат: `map[_0:foo _1:bar _2:baz]`. Кожну частину можна отримати за її ключем:
+
+```
+$parts._0
+```
+
+Результат: `foo`.
+
+
+### splitList
+
+Розділяє рядок за роздільником і повертає список рядків:
+
+```
+splitList "$" "foo$bar$baz"
+```
+
+Результат: `[foo bar baz]`.
+
+### splitn
+
+Працює як [split](#split), але припиняє розділення після `n` частин. Остання частина містить решту рядка:
+
+```
+splitn "$" 2 "foo$bar$baz"
+```
+
+Результат: `map[_0:foo _1:bar$baz]`.
+
+### join
+
+Обʼєднує список рядків в один рядок, використовуючи роздільник:
+
+```
+list "hello" "world" | join "-"
+```
+
+Результат: `hello-world`. Нерядкові елементи спочатку перетворюються на рядки, тож `list 1 2 3 | join ","` повертає `1,2,3`.
+
 ## Функції перетворення типів {/* #type-conversion-functions */}
 
 Helm пропонує такі функції для перетворення типів:
@@ -646,11 +732,12 @@ Helm пропонує такі функції для перетворення т
 * `toRawJson` (`mustToRawJson`): Перетворює список, зріз, масив, словник або обʼєкт на JSON з неекранованими HTML символами.
 * `fromYaml`: Перетворює YAML рядок на обʼєкт.
 * `fromJson`: Перетворює JSON рядок на обʼєкт.
-* `mustFromJson`: Перетворює рядок JSON в обʼєкт, або повертає помилку рушію шаблонів, якщо рядок не є дійсним JSON.
+* `mustFromJson`: Перетворює JSON-рядок на обʼєкт і повертає помилку, якщо JSON некоректний.
 * `fromJsonArray`: Перетворює JSON масив на список.
-* `toYaml`: Перетворює список, зріз, масив, словник або обʼєкт у формат YAML з відступами, може використовуватися для копіювання фрагментів YAML з будь-якого джерела. Ця функція еквівалентна функції GoLang yaml.Marshal, див. документацію тут: https://pkg.go.dev/gopkg.in/yaml.v2#Marshal
-* `toYamlPretty`: Перетворює список, зріз, масив, словник або обʼєкт у формат YAML з відступами. Еквівалентний функції `toYaml`, але додатково робить відступи у списках на 2 пробіли.
-* `toToml`: Перетворює список, зріз, масив, словник або обʼєкт у toml, може використовуватися для копіювання фрагментів toml з будь-якого джерела.
+* `toYaml` (`mustToYaml`): Перетворюють список, зріз, масив, словник або обʼєкт на YAML-рядок із відступами; `mustToYaml` повертає помилку, якщо перетворення не вдається.
+* `toYamlPretty`: Як `toYaml`, але додає відступи перед елементами списку.
+* `toToml` (`mustToToml`): Перетворюють значення на TOML-рядок; `mustToToml` повертає помилку, якщо перетворення не вдається.
+* `fromToml`: Перетворює TOML-рядок на обʼєкт.
 * `fromYamlArray`: Перетворює YAML масив на список.
 
 Тільки `atoi` вимагає, щоб вхідні дані були певного типу. Інші функції намагатимуться перетворити будь-який тип у тип призначення. Наприклад, `int64` може перетворювати числа з рухомою комою в цілі числа, а також перетворювати рядки в цілі числа.
@@ -677,9 +764,7 @@ list 1 2 3 | toStrings
 
 ### toJson, mustToJson
 
-The `toJson` function encodes an item into a JSON string. If the item cannot be
-converted to JSON the function will return an empty string. `mustToJson` will
-return an error in case the item cannot be encoded in JSON.
+Функція `toJson` кодує елемент у рядок JSON. Якщо елемент не вдається перетворити на JSON, функція поверне порожній рядок. `mustToJson` поверне помилку, якщо елемент не вдається закодувати в JSON.
 
 ```go
 toJson .Item
@@ -699,8 +784,7 @@ toPrettyJson .Item
 
 ### toRawJson, mustToRawJson
 
-The `toRawJson` function encodes an item into JSON string with HTML characters
-unescaped.
+Функція `toRawJson` кодує елемент у рядок JSON без екранування HTML-символів.
 
 ```go
 toRawJson .Item
@@ -732,7 +816,7 @@ greeting: |
 
 ### fromJson
 
-Функція `fromJson` приймає JSON рядок і повертає обʼєкт, який можна використовувати в шаблонах.
+Функція `fromJson` приймає JSON-рядок і повертає обʼєкт, який можна використовувати в шаблонах. Якщо JSON некоректний, вона повертає порожній рядок.
 
 Файл `jsons/person.json`:
 
@@ -757,7 +841,7 @@ greeting: |
 
 ### mustFromJson
 
-Функція `mustFromJson` приймає JSON рядок і повертає обʼєкт (або список, якщо JSON є масивом), який можна використовувати в шаблонах. На відміну від `fromJson`, вона повертає помилку рушію шаблонів, якщо вхідний рядок не є дійсним JSON, що зупиняє рендеринг.
+Функція `mustFromJson` приймає JSON-рядок і повертає обʼєкт (або список, якщо JSON містить масив), який можна використовувати в шаблонах. На відміну від `fromJson`, у разі некоректного JSON вона повертає помилку рушію шаблонів і зупиняє рендеринг.
 
 ```yaml
 {{- $person := `{"name": "Bob", "age": 25}` | mustFromJson }}
@@ -785,9 +869,9 @@ greeting: |
 {{ end }}
 ```
 
-### toYaml, toYamlPretty
+### toYaml, mustToYaml, toYamlPretty
 
-Функції `toYaml` та `toYamlPretty` кодують обʼєкт (список, зріз, масив, словник або обʼєкт) у формат YAML із відступами.
+Функції `toYaml` та `toYamlPretty` кодують обʼєкт (список, зріз, масив, словник або обʼєкт) у YAML-рядок із відступами. Якщо перетворення не вдається, вони повертають порожній рядок. `mustToYaml` працює так само, як `toYaml`, але повертає помилку рушію шаблонів у разі невдалого перетворення.
 
 > Зверніть увагу, що `toYamlPretty` є функціонально еквівалентним, але виведе YAML з додатковими відступами для елементів списку.
 
@@ -832,9 +916,37 @@ greeting: |
 {{ end }}
 ```
 
-## Регулярні Вирази {/* #regular-expressions */}
+### toToml, mustToToml
 
-Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfindall-mustregexfindall), [regexFindAll (mustRegexFindAll)](#regexfind-mustregexfind), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit), та [regexQuoteMeta](#regexquotemeta).
+Функція `toToml` кодує елемент у рядок TOML. Якщо елемент не можна перетворити на TOML, функція поверне порожній рядок. `mustToToml` поверне помилку у разі, якщо елемент не можна закодувати у TOML.
+
+```
+toToml .Item
+```
+
+Наведений вище приклад повертає рядкове представлення `.Item` у форматі TOML.
+
+### fromToml
+
+Функція `fromToml` приймає TOML-рядок і повертає обʼєкт, який можна використовувати в шаблонах.
+
+Файл `config.toml`:
+
+```toml
+name = "my-app"
+port = 8080
+```
+
+```yaml
+{{- $config := .Files.Get "config.toml" | fromToml }}
+port: {{ $config.port }}
+```
+
+Якщо рядок не є коректним TOML, `fromToml` не завершується помилкою, а повертає словник із повідомленням про помилку в ключі `Error`.
+
+## Регулярні вирази {/* #regular-expressions */}
+
+Helm включає такі функції для роботи з регулярними виразами: [regexFind (mustRegexFind)](#regexfind-mustregexfind), [regexFindAll (mustRegexFindAll)](#regexfindall-mustregexfindall), [regexMatch (mustRegexMatch)](#regexmatch-mustregexmatch), [regexReplaceAll (mustRegexReplaceAll)](#regexreplaceall-mustregexreplaceall), [regexReplaceAllLiteral (mustRegexReplaceAllLiteral)](#regexreplaceallliteral-mustregexreplaceallliteral), [regexSplit (mustRegexSplit)](#regexsplit-mustregexsplit) та [regexQuoteMeta](#regexquotemeta).
 
 ### regexMatch, mustRegexMatch
 
@@ -910,23 +1022,24 @@ regexSplit "z+" "pizza" -1
 
 ### regexQuoteMeta
 
-Повертає рядок, у якому всі метасимволи регулярних виразів у вхідному тексті екрановані так, щоб результат збігався з текстом буквально.
+Повертає рядок, у якому всі метасимволи регулярних виразів екрановано, щоб результат відповідав цим символам буквально:
 
 ```
 regexQuoteMeta "1.2.3"
 ```
 
-Вище буде отримано `1\.2\.3`
+Результат: `1\.2\.3`
 
-Це корисно для побудови шаблону зі значенням, яке може містити метасимволи:
+Це корисно для створення шаблону зі значення, яке може містити метасимволи:
 
 ```
 regexMatch (printf "^%s$" (regexQuoteMeta "[foo]+bar?")) "[foo]+bar?"
 ```
 
+
 ## Функції криптографії та безпеки {/* #cryptographic-and-security-functions */}
 
-Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genCAWithKey](#gencawithkey), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSelfSignedCertWithKey](#genselfsignedcertwithkey), [genSignedCert](#gensignedcert), [genSignedCertWithKey](#gensignedcertwithkey), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), [sha256sum](#sha256sum), [sha512sum](#sha512sum).
+Helm надає декілька розширених криптографічних функцій, серед яких: [adler32sum](#adler32sum), [bcrypt](#bcrypt), [buildCustomCert](#buildcustomcert), [decryptAES](#decryptaes), [derivePassword](#derivepassword), [encryptAES](#encryptaes), [genCA](#genca), [genCAWithKey](#gencawithkey), [genPrivateKey](#genprivatekey), [genSelfSignedCert](#genselfsignedcert), [genSelfSignedCertWithKey](#genselfsignedcertwithkey), [genSignedCert](#gensignedcert), [genSignedCertWithKey](#gensignedcertwithkey), [htpasswd](#htpasswd), [randBytes](#randbytes), [sha1sum](#sha1sum), [sha256sum](#sha256sum) та [sha512sum](#sha512sum).
 
 ### sha1sum
 
@@ -971,6 +1084,16 @@ htpasswd "myUser" "myPassword"
 ```
 
 Зверніть увагу, що небезпечно зберігати пароль безпосередньо в шаблоні.
+
+### bcrypt
+
+Функція `bcrypt` генерує bcrypt-хеш рядка. Вона використовує той самий алгоритм хешування, що й [htpasswd](#htpasswd), але без префікса `username:`.
+
+```
+bcrypt "myPassword"
+```
+
+Результат має вигляд `$2a$10$...`. Оскільки під час кожного виклику використовується нова випадкова сіль, результат змінюється щоразу, коли рендериться шаблон.
 
 ### randBytes
 
@@ -1046,13 +1169,13 @@ $ca := genCA "foo-ca" 365
 
 ### genCAWithKey
 
-Функція `genCAWithKey` працює як `genCA`, але використовує наданий вами приватний ключ замість генерації нового.
+Функція `genCAWithKey` працює як `genCA`, але використовує переданий приватний ключ замість створення нового.
 
-Вона приймає такі параметри:
+Вона приймає наступні параметри:
 
-- Загальне імʼя субʼєкта (cn)
-- Термін дії сертифіката у днях
-- Приватний ключ у форматі PEM
+* Загальне імʼя субʼєкта (cn)
+* Термін дії сертифіката у днях
+* Приватний ключ у форматі PEM
 
 Повертає обʼєкт із такими атрибутами:
 
@@ -1061,7 +1184,7 @@ $ca := genCA "foo-ca" 365
 
 Приклад:
 
-```
+```go
 $key := genPrivateKey "ecdsa"
 $ca := genCAWithKey "foo-ca" 365 $key
 ```
@@ -1090,15 +1213,15 @@ $cert := genSelfSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com
 
 ### genSelfSignedCertWithKey
 
-Функція `genSelfSignedCertWithKey` працює як `genSelfSignedCert`, але використовує наданий вами приватний ключ замість генерації нового.
+Функція `genSelfSignedCertWithKey` працює як `genSelfSignedCert`, але використовує переданий приватний ключ для нового сертифіката.
 
-Вона приймає такі параметри:
+Вона приймає наступні параметри:
 
-- Загальне імʼя субʼєкта (cn)
-- Необовʼязковий список IP-адрес; може бути nil
-- Необовʼязковий список альтернативних DNS-імен; може бути nil
-- Термін дії сертифіката у днях
-- Приватний ключ у форматі PEM
+* Загальне імʼя субʼєкта (cn)
+* Необовʼязковий список IP-адрес; може бути nil
+* Необовʼязковий список альтернативних DNS-імен; може бути nil
+* Термін дії сертифіката у днях
+* Приватний ключ у форматі PEM
 
 Повертає обʼєкт із такими атрибутами:
 
@@ -1107,7 +1230,7 @@ $cert := genSelfSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com
 
 Приклад:
 
-```
+```go
 $key := genPrivateKey "ecdsa"
 $cert := genSelfSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $key
 ```
@@ -1133,20 +1256,20 @@ $cert := genSignedCert "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "b
 
 ### genSignedCertWithKey
 
-Функція `genSignedCertWithKey` працює як `genSignedCert`, але використовує наданий вами приватний ключ для нового сертифіката замість генерації нового.
+Функція `genSignedCertWithKey` працює як `genSignedCert`, але використовує переданий приватний ключ для нового сертифіката замість створення нового.
 
-Вона приймає такі параметри:
+Вона приймає наступні параметри:
 
-- Загальне імʼя субʼєкта (cn)
-- Необовʼязковий список IP-адрес; може бути nil
-- Необовʼязковий список альтернативних DNS-імен; може бути nil
-- Термін дії сертифіката у днях
-- CA (див. `genCA`)
-- Приватний ключ у форматі PEM
+* Загальне імʼя субʼєкта (cn)
+* Необовʼязковий список IP-адрес; може бути nil
+* Необовʼязковий список альтернативних DNS-імен; може бути nil
+* Термін дії сертифіката у днях
+* Центр сертифікації (CA) (див. `genCA`)
+* Приватний ключ у форматі PEM
 
-Приклад:
+Наприклад:
 
-```
+```go
 $ca := genCA "foo-ca" 365
 $key := genPrivateKey "ecdsa"
 $cert := genSignedCertWithKey "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 $ca $key
@@ -1225,6 +1348,7 @@ Mon Jan 2 15:04:05 MST 2006
 ```go
 dateInZone "2006-01-02" (now) "UTC"
 ```
+`date_in_zone` є застарілим псевдонімом для `dateInZone`. Він все ще працює, але у нових чартах використовуйте `dateInZone`.
 
 ### dateModify, mustDateModify {/* #datemodify-mustdatemodify */}
 
@@ -1237,6 +1361,8 @@ now | dateModify "-1.5h"
 ```
 
 Якщо формат модифікації неправильний, `dateModify` поверне дату немодифікованою. `mustDateModify` поверне помилку в іншому випадку.
+
+`date_modify` та `must_date_modify` є застарілими псевдонімами для `dateModify` та `mustDateModify`. Вони все ще працюють, але у нових чартах використовуйте імена у camelCase.
 
 ### duration {/* #duration */}
 
@@ -1501,7 +1627,7 @@ $_ := set $myDict "name4" "value4"
 $_ := unset $myDict "name4"
 ```
 
-As with `set`, this returns the dictionary.
+Як і `set`, ця функція повертає словник.
 
 Зверніть увагу, що якщо ключ не знайдено, ця операція просто виконає вивід. Помилка не буде згенерована.
 
@@ -1553,7 +1679,7 @@ dig "user" "role" "humanName" "guest" $dict
 
 наведений вище приклад поверне `"curator"`. Якщо у словнику навіть не було поля `user`, результатом буде `"guest"`.
 
-Dig може бути дуже корисним у випадках, коли ви хочете уникнути захисних конструкцій, особливо з огляду на те, що `and` у пакеті шаблонів Go не є скороченням. Наприклад, `and a.maybeNil a.maybeNil.iNeedThis` завжди оцінюватиме `a.maybeNil.iNeedThis` і викликатиме паніку, якщо `a` не має поля `maybeNil`.
+Dig може бути дуже корисним у випадках, коли ви хочете уникнути захисних конструкцій, особливо з огляду на те, що `and` у пакунку шаблонів Go не є скороченням. Наприклад, `and a.maybeNil a.maybeNil.iNeedThis` завжди оцінюватиме `a.maybeNil.iNeedThis` і викликатиме паніку, якщо `a` не має поля `maybeNil`.
 
 `dig` приймає свій аргумент словника останнім, щоб підтримувати конвеєрну обробку. Наприклад:
 
@@ -1712,7 +1838,9 @@ $myList := list 1 2 3 4 5
 
 Це створить список `[1 2 3 4 5]`.
 
-Helm надає наступні функції для роботи зі списками:  [append (mustAppend)](#append-mustappend), [chunk](#chunk), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
+`tuple` є псевдонімом для `list` і працює так само. Ви побачите його у багатьох наявних чартах.
+
+Helm надає наступні функції для роботи зі списками: [append (mustAppend)](#append-mustappend), [chunk (mustChunk)](#chunk-mustchunk), [compact (mustCompact)](#compact-mustcompact), [concat](#concat), [first (mustFirst)](#first-mustfirst), [has (mustHas)](#has-musthas), [initial (mustInitial)](#initial-mustinitial), [last (mustLast)](#last-mustlast), [prepend (mustPrepend)](#prepend-mustprepend), [rest (mustRest)](#rest-mustrest), [reverse (mustReverse)](#reverse-mustreverse), [seq](#seq), [index](#index), [slice (mustSlice)](#slice-mustslice), [uniq (mustUniq)](#uniq-mustuniq), [until](#until), [untilStep](#untilstep) та [without (mustWithout)](#without-mustwithout).
 
 ### first, mustFirst
 
@@ -1903,7 +2031,7 @@ seq 0 2 10  => 0 2 4 6 8 10
 seq 0 -2 -5 => 0 -2 -4
 ```
 
-### chunk
+### chunk, mustChunk
 
 Щоб розділити список на частини заданого розміру, використовуйте `chunk size list`. Це корисно для розбиття на сторінки.
 
@@ -1912,6 +2040,8 @@ chunk 3 (list 1 2 3 4 5 6 7 8)
 ```
 
 Це створює список списків `[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 ] ]`.
+
+`chunk` викликає паніку в разі помилки, а `mustChunk` повертає помилку рушію шаблонів.
 
 ## Математичні функції {/* #math-functions */}
 
@@ -1960,6 +2090,7 @@ mul 1 2 3
 ```go
 max 1 2 3
 ```
+`biggest` є застарілим псевдонімом для `max`. Він все ще працює, але у нових чартах використовуйте `max`.
 
 ### min
 
@@ -1974,6 +2105,16 @@ max 1 2 3
 ```go
 len .Arg
 ```
+
+### randInt
+
+Повертає випадкове ціле число від `min` (включно) до `max` (не включно).
+
+```
+randInt 12 30
+```
+
+Вищезазначене поверне випадкове ціле число від 12 до 29.
 
 ## Математичні функції з рухомою комою {/* #float-math-functions */}
 
@@ -2115,13 +2256,13 @@ ext "foo.bar"
 
 ### osBase, osClean, osDir, osExt, osIsAbs
 
-Функції `base`, `clean`, `dir`, `ext` та `isAbs` завжди використовують прямі слеші (`/`) як роздільник шляхів. Функції `osBase`, `osClean`, `osDir`, `osExt` та `osIsAbs` поводяться так само, але дотримуються угод щодо шляхів операційної системи, на якій запущено Helm, наприклад зворотних слешів (`\`) у Windows.
+Функції `base`, `clean`, `dir`, `ext` та `isAbs` завжди використовують пряму скісну риску (`/`) як роздільник шляху. Функції `osBase`, `osClean`, `osDir`, `osExt` та `osIsAbs` працюють так само, але враховують правила операційної системи, у якій запущено Helm, наприклад зворотну скісну риску (`\`) у Windows.
 
 ```
 osBase "foo/bar/baz"
 ```
 
-Наведене вище повертає `baz` у Linux та macOS.
+У Linux і macOS це повертає `baz`.
 
 ## Функції аналізу {/* #reflection-functions */}
 
@@ -2149,7 +2290,7 @@ kindIs "int" 123
 
 Вищезазначене поверне `true`.
 
-### Type Functions
+### Функції типів {/* #type-functions */}
 
 Типи трохи складніше обробляти, тому є три різні функції:
 
@@ -2175,7 +2316,7 @@ deepEqual (list 1 2 3) (list 1 2 3)
 
 ## Функції семантичного версіонування {/* #semantic-version-functions */}
 
-Some version schemes are easily parseable and comparable. Helm Деякі схеми версій легко розпізнати та порівнювати. Helm надає функції для роботи з версіями [SemVer 2](https://semver.org/lang/uk/). До них відносяться [semver](#semver) і [semverCompare](#semvercompare). Нижче ви також знайдете деталі про використання діапазонів для порівнянь.
+Деякі схеми версій легко розпізнати та порівнювати. Helm надає функції для роботи з версіями [SemVer 2](https://semver.org/lang/uk/). До них відносяться [semver](#semver) і [semverCompare](#semvercompare). Нижче ви також знайдете деталі про використання діапазонів для порівнянь.
 
 ### semver
 
@@ -2312,7 +2453,7 @@ fragment: 'anchor'
 userinfo: 'admin:secret'
 ```
 
-Це реалізовано за допомогою пакетів URL з стандартної бібліотеки Go. Для отримання додаткової інформації перевірте https://golang.org/pkg/net/url/#URL
+Це реалізовано за допомогою пакунків URL зі стандартної бібліотеки Go. Докладніше див. https://golang.org/pkg/net/url/#URL
 
 ### urlJoin
 
@@ -2372,3 +2513,7 @@ Helm включає функції для роботи з Kubernetes, зокре
 Є кілька функцій, які дозволяють отримати доступ до не-спеціальних файлів всередині chart. Наприклад, для доступу до конфігураційних файлів програми. Ці функції документовані в [Доступ до файлів всередині шаблонів](/chart_template_guide/accessing_files.md).
 
 _Зверніть увагу, що документація для багатьох з цих функцій надходить з [Sprig](https://github.com/Masterminds/sprig). Sprig — це бібліотека функцій шаблонів, доступна для застосунків на Go._
+
+:::note
+Helm навмисно видаляє функції Sprig `env` та `expandenv`, щоб рендеринг чарта не залежав від середовища машини, на якій запускається Helm. Щоб передати специфічні для середовища дані в чарт, використовуйте значення (наприклад, `--set` або `--values`).
+:::

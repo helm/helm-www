@@ -100,11 +100,32 @@ Unable to connect to the server: x509: certificate signed by unknown authority
 helm list -v 6
 ```
 
+### Відкат не вдається з помилкою "no [Resource] with the name '[name]' found" {#rollback-fails-with-no-resource-with-the-name-name-found}
+
+Під час виконання `helm rollback` може зʼявитися така помилка:
+
+```none
+Error: no ConfigMap with the name "myconfig" found
+```
+
+Подібні помилки можуть стосуватися інших типів ресурсів, наприклад Pod або Secret.
+
+Це може статися за такого сценарію:
+
+1. Ви встановлюєте реліз (ревізія 1), який створює ресурс.
+2. Оновлюєте його до нової версії чарту (ревізія 2), у якій цей ресурс видалено, але оновлення завершується помилкою.
+3. Ресурс залишається в кластері, оскільки невдале оновлення не завершило очищення.
+4. Ви намагаєтеся повернутися до ревізії 1.
+
+У старіших версіях Helm відкат завершується помилкою, оскільки Helm очікує метадані ресурсу з початкового релізу, але не знаходить їх в історії релізу: ресурс було вилучено під час ревізії 2.
+
+Цю проблему виправлено в новіших випусках Helm 3. Тепер Helm виявляє ресурс, який є в кластері, але відсутній у метаданих початкового релізу, і використовує поточний стан кластера як основу для відкату.
+
 ### Встановлення Tiller припинило працювати і доступ заборонено {#installing-tiller-stopped-working-and-access-is-denied}
 
 Релізи Helm раніше були доступні за адресою <https://storage.googleapis.com/kubernetes-helm/>. Як пояснюється в ["Announcing get.helm.sh"](/blog/get-helm-sh/), офіційне місце розташування змінилося у червні 2019 року. [GitHub Container Registry](https://github.com/orgs/helm/packages/container/package/tiller) робить всі старі образи Tiller доступними.
 
-Якщо ви намагаєтеся завантажити старі версії Helm з кошику зберігання, який ви використовували раніше, ви можете виявити, що вони відсутні:
+Якщо ви намагаєтеся завантажити старі версії Helm зі сховища, який ви використовували раніше, ви можете виявити, що вони відсутні:
 
 ```none
 <Error>
@@ -131,3 +152,38 @@ helm list -v 6
 `helm init --tiller-image ghcr.io/helm/tiller:v2.16.9`
 
 **Примітка:** Розробники Helm рекомендують міграцію на підтримувану версію Helm. Helm v2.17.0 був останнім випуском Helm v2; Helm v2 більше не підтримується з листопада 2020 року, як детально описано в [Helm 2 та проєкт Charts більше не підтримуються](/blog/helm-2-becomes-unsupported/). Багато CVE було виявлено в Helm з того часу, і ці експлойти виправлені в Helm v3, але ніколи не будуть виправлені в Helm v2. Перегляньте [актуальний список опублікованих сповіщень Helm](https://github.com/helm/helm/security/advisories?state=published) і складіть план [міграції на Helm v3](/topics/v2_v3_migration.md) сьогодні.
+
+### Під час видалення пропущено деякі ресурси з попередженням "not owned by this release" {#uninstall-skips-some-resources-with-not-owned-by-this-release-warning}
+
+Під час виконання `helm uninstall` можуть зʼявитися такі попередження:
+
+```none
+WARN skipping delete of resource not owned by this release kind=ConfigMap name=myconfig namespace=default release=my-release
+```
+
+Або у виводі:
+
+```none
+N resource(s) were not deleted because they are not owned by this release:
+[ConfigMap] myconfig
+```
+
+Перш ніж видаляти ресурс, Helm перевіряє його належність до релізу, щоб випадково не видалити ресурси іншого релізу. Helm перевіряє такі поля метаданих:
+
+- Мітка: `app.kubernetes.io/managed-by=Helm`
+- Анотація: `meta.helm.sh/release-name=<release-name>`
+- Анотація: `meta.helm.sh/release-namespace=<release-namespace>`
+
+Під час видалення пропускаються ресурси, якщо:
+
+1. **Ресурс належить іншому релізу** — раніше ним керував інший реліз Helm. Таке може статися, якщо ресурс без шаблонізованої назви видалили вручну, а потім створили знову в іншому релізі.
+2. **У ресурсу немає метаданих належності** — ресурс існує, але не має міток і анотацій Helm. Таке можливо, якщо його створено не засобами Helm.
+3. **Неможливо перевірити належність** — Helm не зміг отримати ресурс із кластера, наприклад через обмеження RBAC або проблеми з мережею.
+
+Щоб переглянути, які ресурси буде видалено, а які пропущено, використайте `--dry-run` разом із `--debug`:
+
+```console
+$ helm uninstall my-release --dry-run --debug
+```
+
+Якщо потрібно видалити ресурс, який Helm пропускає, видаліть його вручну командою `kubectl delete`.

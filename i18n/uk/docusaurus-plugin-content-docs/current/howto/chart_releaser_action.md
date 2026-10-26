@@ -26,7 +26,7 @@ default_lang_commit: 243c2d6ac95078256a4b2b56013aae454e67202a
   helm repo add <alias> https://<orgname>.github.io/helm-charts
 
 Якщо ви вже додавали цей репозиторій раніше, виконайте команду `helm repo update`,
-щоб отримати останні версії пакетів. Потім ви можете виконати `helm search repo <alias>`, щоб побачити чарти.
+щоб отримати останні версії пакунків. Потім ви можете виконати `helm search repo <alias>`, щоб побачити чарти.
 
 Щоб встановити чарт `<chart-name>`:
 
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -70,14 +70,14 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.7.0
+        uses: helm/chart-releaser-action@v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
 Наведена конфігурація використовує [@helm/chart-releaser-action](https://github.com/helm/chart-releaser-action), щоб перетворити ваш GitHub проєкт на самостійний репозиторій чартів Helm. Вона виконує це під час кожної операції push в гілку `main` шляхом перевірки кожного чарту у вашому проєкті, і коли знаходить нову версію чарту, створює відповідний реліз GitHub, додає артефакти Helm чарту до релізу і створює або оновлює файл `index.yaml` з метаданими про ці релізи, який потім хоститься на GitHub Pages.
 
-Версія Chart Releaser Action, використана в наведеному прикладі, — `v1.7.0`. Ви можете змінити її на [останню доступну версію](https://github.com/helm/chart-releaser-action/releases).
+Версія Chart Releaser Action, використана в наведеному прикладі, — `v1.6.0`. Ви можете змінити її на [останню доступну версію](https://github.com/helm/chart-releaser-action/releases).
 
 :::note
 Chart Releaser Action майже завжди використовується в парі з [Helm Testing Action](https://github.com/marketplace/actions/helm-chart-testing) та [Kind Action](https://github.com/marketplace/actions/kind-cluster).

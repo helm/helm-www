@@ -1,6 +1,6 @@
 ---
 title: helm repo update
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 оновити інформацію про доступні чарти локально з репозиторіїв чартів
 
@@ -17,7 +17,7 @@ helm repo update <repo_name> ...
 Щоб оновити всі репозиторії, використовуйте 'helm repo update'.
 
 ```shell
-helm repo update [REPO1 [REPO2 ...]] [flags]
+helm repo update [REPO1 [REPO2 ...]] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -25,6 +25,7 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
 ```none
       --fail-on-repo-update-fail   оновлення не буде завершене, якщо будь-яке з оновлень репозиторіїв зазнає невдачі
   -h, --help                       довідка update
+      --timeout duration           час очікування завершення завантаження файлу індексу (стандартно 2m0s)
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -35,7 +36,7 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -52,4 +53,4 @@ helm repo update [REPO1 [REPO2 ...]] [flags]
 
 * [helm repo](/helm/helm_repo.md) — додавання, створення списку, видалення, оновлення та індексація репозиторіїв чартів
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

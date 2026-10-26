@@ -1,11 +1,11 @@
 ---
 title: Шпаргалка
 description: Шпаргалка Helm
-sidebar_position: 4
+sidebar_position: 5
 default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
-Підказка Helm з усіма необхідними командами для керування програмою через Helm.
+Шпаргалка Helm з усіма необхідними командами для керування програмою через Helm.
 
 ---
 
@@ -43,8 +43,8 @@ helm show all <chart>                   # Переглядає чарт та в�
 helm show values <chart>                # Показує вміст файлу values.yaml.
 helm pull <chart>                       # Завантажує/витягує чарт.
 helm pull <chart> --untar=true          # Якщо встановлено в true, розпаковує чарт після завантаження.
-helm pull <chart> --verify              # Перевіряє пакет перед використанням.
-helm pull <chart> --version <number>    # СТандартно використовується остання версія, вкажіть обмеження версії для використання чарту.
+helm pull <chart> --verify              # Перевіряє пакунок перед використанням.
+helm pull <chart> --version <number>    # Стандартно використовується остання версія, вкажіть обмеження версії для використання чарту.
 helm dependency list <chart>            # Відображає список залежностей чарту.
 ```
 
@@ -58,9 +58,10 @@ helm install <name> <chart> --namespace <namespace>   # Встановлює ч�
 helm install <name> <chart> --set key1=val1,key2=val2 # Встановлює значення в командному рядку (можна вказати кілька значень, розділених комами).
 helm install <name> <chart> --values <yaml-file/url>  # Встановлює чарт з вказаними вами значеннями.
 helm install <name> <chart> --dry-run --debug         # Запускає тестове встановлення для перевірки чарту.
-helm install <name> <chart> --verify                  # Перевіряє пакет перед використанням.
+helm install <name> <chart> --verify                  # Перевіряє пакунок перед використанням.
 helm install <name> <chart> --dependency-update       # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
-helm uninstall <name>                                 # Видаляє реліз.
+helm uninstall <name>                                 # Видаляє реліз із поточного (типового) простору імен
+helm uninstall <release-name> --namespace <namespace> # Видаляє реліз із вказаного простору імен
 ```
 
 ---
@@ -69,15 +70,15 @@ helm uninstall <name>                                 # Видаляє релі�
 
 ```bash
 helm upgrade <release> <chart>                            # Оновлює реліз.
-helm upgrade <release> <chart> --atomic                   # Якщо встановлено, процес оновлення поверне зміни в разі невдалого оновлення.
+helm upgrade <release> <chart> --rollback-on-failure      # Якщо встановлено, процес оновлення поверне зміни в разі невдалого оновлення.
 helm upgrade <release> <chart> --dependency-update        # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
 helm upgrade <release> <chart> --version <version_number> # Вказує обмеження версії для використання чарту.
 helm upgrade <release> <chart> --values                   # Вказує значення у YAML файлі або URL (можна вказати кілька).
-helm upgrade <release> <chart> --set key1=val1,key2=val2  # Встановлює значення d командному рядку (можна вказати кілька значень).
+helm upgrade <release> <chart> --set key1=val1,key2=val2  # Встановлює значення в командному рядку (можна вказати кілька значень).
 helm upgrade <release> <chart> --force                    # Примусове оновлення ресурсів через стратегію заміни.
 helm rollback <release> <revision>                        # Повертає реліз до певної версії.
 helm rollback <release> <revision>  --cleanup-on-fail     # Дозволяє видалення нових ресурсів, створених під час цього відкату, якщо відкат не вдалося здійснити.
-``` 
+```
 
 ---
 
@@ -105,7 +106,7 @@ helm list --all-namespaces      # Переглядає релізи по всі�
 helm list -l key1=value1,key2=value2 # Селектор (запит за мітками) для фільтрації, підтримує '=', '==' і '!='.
 helm list --date                # Сортує за датою релізу.
 helm list --deployed            # Показує розгорнуті релізи. Якщо не вказано інше, це буде автоматично увімкнено.
-helm list --pending             # Показує очікуючі релізи.
+helm list --pending             # Показує релізи в очікуванні.
 helm list --failed              # Показує невдалі релізи.
 helm list --uninstalled         # Показує видалені релізи (якщо використовувався 'helm uninstall --keep-history').
 helm list --superseded          # Показує замінені релізи.
@@ -133,7 +134,7 @@ helm get values <release>   # Завантажує файл значень дл�
 ### Управління втулками {#plugin-management}
 
 ```bash
-helm plugin install <path/url1>     # Встановлення втулків.
+helm plugin install <path/url>     # Встановлення втулків.
 helm plugin list                    # Перегляд списку всіх встановлених втулків.
 helm plugin update <plugin>         # Оновлення втулків.
 helm plugin uninstall <plugin>      # Видалення втулка.

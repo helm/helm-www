@@ -1,7 +1,7 @@
 ---
 title: Встановлення Helm
 description: Дізнайтеся, як встановити та розпочати роботу з Helm.
-sidebar_position: 2
+sidebar_position: 3
 default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
@@ -9,7 +9,7 @@ default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 
 ## Від проєкту Helm {#from-the-helm-project}
 
-Проєкт Helm надає два способи отримання та встановлення Helm. Це офіційні методи отримання релізів Helm. Крім того, спільнота Helm пропонує методи встановлення Helm через різні менеджери пакетів. Встановлення через ці методи можна знайти нижче офіційних методів.
+Проєкт Helm надає два способи отримання та встановлення Helm. Це офіційні методи отримання релізів Helm. Крім того, спільнота Helm пропонує методи встановлення Helm через різні менеджери пакунків. Встановлення через ці методи можна знайти нижче офіційних методів.
 
 ### З бінарних релізів {#from-the-binary-releases}
 
@@ -37,9 +37,9 @@ chmod 700 get_helm.sh
 
 Так, ви можете виконати `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`, якщо хочете жити на межі.
 
-## Через менеджери пакетів {#through-package-managers}
+## Через менеджери пакунків {#through-package-managers}
 
-Спільнота Helm надає можливість встановити Helm через менеджери пакетів операційних систем. Ці методи не підтримуються проєктом Helm і не вважаються надійними третіми сторонами.
+Спільнота Helm надає можливість встановити Helm через менеджери пакунків операційних систем. Ці методи не підтримуються проєктом Helm і не вважаються надійними третіми сторонами.
 
 ### Через Homebrew (macOS) {#from-homebrew-macos}
 
@@ -53,7 +53,7 @@ brew install helm
 
 ### Через Chocolatey (Windows) {#from-chocolatey-windows}
 
-Члени спільноти Helm додали [пакет Helm](https://chocolatey.org/packages/kubernetes-helm) до [Chocolatey](https://chocolatey.org/). Цей пакет зазвичай оновлюється.
+Члени спільноти Helm додали [пакунок Helm](https://chocolatey.org/packages/kubernetes-helm) до [Chocolatey](https://chocolatey.org/). Цей пакунок зазвичай оновлюється.
 
 ```console
 choco install kubernetes-helm
@@ -61,7 +61,7 @@ choco install kubernetes-helm
 
 ### Через Scoop (Windows) {#from-scoop-windows}
 
-Члени спільноти Helm додали [пакет Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) до [Scoop](https://scoop.sh). Цей пакет зазвичай оновлюється.
+Члени спільноти Helm додали [пакунок Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) до [Scoop](https://scoop.sh). Цей пакунок зазвичай оновлюється.
 
 ```console
 scoop install helm
@@ -69,7 +69,7 @@ scoop install helm
 
 ### Через Winget (Windows) {#from-winget-windows}
 
-Члени спільноти Helm додали [пакет Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) до [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Цей пакет зазвичай оновлюється.
+Члени спільноти Helm додали [пакунок Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) до [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Цей пакунок зазвичай оновлюється.
 
 ```console
 winget install Helm.Helm
@@ -77,13 +77,22 @@ winget install Helm.Helm
 
 ### Через Apt (Debian/Ubuntu) {#from-apt-debian-ubuntu}
 
-Члени спільноти Helm додали пакет Apt для Debian/Ubuntu. Цей пакет зазвичай
+Члени спільноти Helm додали пакунок Apt для Debian/Ubuntu. Цей пакунок зазвичай
 оновлюється. Дякуємо [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) за хостинг репозиторію.
 
 ```console
+HELM_BUILDKITE_APT_KEY_ID="DDF78C3E6EBB2D2CC223C95C62BA89D07698DBC6"
+
 sudo apt-get install curl gpg apt-transport-https --yes
-curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey > "${TMPDIR:-/tmp}/helm.gpg"
+
+# Переконайтеся, що ідентифікатор ключа збігається, щоб компрометація репозиторію не дозволила встановити ключ зловмисника
+if [ "$(gpg --show-keys --with-colons "${TMPDIR:-/tmp}/helm.gpg" | awk -F: '$1 == "fpr" {print $10}' | head -n 1)" != "${HELM_BUILDKITE_APT_KEY_ID}" ]; then echo "ERROR: Unexpected Helm APT key ID: potential key compromise"; exit 1; fi
+
+cat "${TMPDIR:-/tmp}/helm.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
 sudo apt-get update
 sudo apt-get install helm
 ```
@@ -98,7 +107,7 @@ sudo dnf install helm
 
 ### Через Snap {#from-snap}
 
-Спільнота [Snapcrafters](https://github.com/snapcrafters) підтримує версію Snap пакету [Helm](https://snapcraft.io/helm):
+Спільнота [Snapcrafters](https://github.com/snapcrafters) підтримує версію Snap пакунку [Helm](https://snapcraft.io/helm):
 
 ```console
 sudo snap install helm --classic
@@ -106,7 +115,7 @@ sudo snap install helm --classic
 
 ### Через pkg (FreeBSD) {#from-pkg-freebsd}
 
-Члени спільноти FreeBSD додали [пакет Helm](https://www.freshports.org/sysutils/helm) до [Колекції портів FreeBSD](https://man.freebsd.org/ports). Цей пакет зазвичай оновлюється.
+Члени спільноти FreeBSD додали [пакунок Helm](https://www.freshports.org/sysutils/helm) до [Колекції портів FreeBSD](https://man.freebsd.org/ports). Цей пакунок зазвичай оновлюється.
 
 ```console
 pkg install helm

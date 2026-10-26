@@ -1,6 +1,6 @@
 ---
 title: helm package
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Упакувати теку чарту в архів чартів
@@ -9,7 +9,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 Ця команда упаковує чарт в архів чартів з версією. Якщо вказано шлях, команда перевіряє цей шлях на наявність чарту (який повинен містити файл `Chart.yaml`) і потім упаковує цю теку.
 
-Архіви чартів з версією використовуються репозиторіями пакетів Helm.
+Архіви чартів з версією використовуються репозиторіями пакунків Helm.
 
 Щоб підписати чарт, використовуйте прапорець `--sign`. У більшості випадків вам також слід вказати `--keyring path/to/secret/keys` та `--key keyname`.
 
@@ -21,14 +21,14 @@ $ helm package --sign ./mychart --key mykey --keyring ~/.gnupg/secring.gpg
 
 
 ```shell
-helm package [CHART_PATH] [...] [flags]
+helm package [CHART_PATH] [...] [прапорці]
 ```
 
 ### Параметри {#options}
 
 ```none
       --app-version string         встановити appVersion в чарті на цю версію
-      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакета CA
+      --ca-file string             перевірити сертифікати серверів з підтримкою HTTPS за допомогою цього пакунка CA
       --cert-file string           ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
   -u, --dependency-update          оновити залежності з "Chart.yaml" в теці "charts/" перед упаковкою
   -d, --destination string         місце для збереження чарту. (стандартно ".")
@@ -40,7 +40,7 @@ helm package [CHART_PATH] [...] [flags]
       --passphrase-file string     місце розташування файлу, що містить пароль для ключа підпису. Використовуйте "-" для читання з stdin.
       --password string            пароль сховища чартів, де знаходиться запитуваний чарт
       --plain-http                 використовувати незахищені HTTP-зʼєднання для завантаження чартів
-      --sign                       використовувати приватний ключ PGP для підписання цього пакета
+      --sign                       використовувати приватний ключ PGP для підписання цього пакунка
       --username string            імʼя користувача сховища чартів, де знаходиться запитуваний чарт
       --version string             встановити версію чарту на цю версію semver
 ```
@@ -56,7 +56,7 @@ helm package [CHART_PATH] [...] [flags]
       --kube-apiserver string           адреса і порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації (СА) для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -66,11 +66,11 @@ helm package [CHART_PATH] [...] [flags]
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
       --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
-      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+      --repository-config string        шлях до файлу, що містить імена репозиторіїв та URL-адреси (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

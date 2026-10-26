@@ -2,7 +2,7 @@
 title: Функції шаблонів та конвеєри
 description: Використання функцій у шаблонах.
 sidebar_position: 5
-default_lang_commit: c0b8110fb9c0356772a1901989e4d17c72e5183f
+default_lang_commit: dc74ea9bf052d34f94004b30407cded73ca838f4
 ---
 
 import Helm4 from "../_v4-in-progress.mdx"
@@ -220,7 +220,7 @@ drink: {{ .Values.favorite.drink | default (printf "%s-tea" (include "fullname" 
 
 Функція `lookup` використовує поточну конфігурацію зʼєднання Kubernetes Helm для запиту до Kubernetes. Якщо при взаємодії з викликом сервера API виникає помилка (наприклад, через відсутність дозволу на доступ до ресурсу), обробка шаблонів Helm зазнає невдачі.
 
-Майте на увазі, що Helm не призначений для контакту з Kubernetes API Server під час операцій `helm template|install|upgrade|delete|rollback --dry-run`. Щоб протестувати `lookup` на працюючому кластера, слід використовувати `helm template|install|upgrade|delete|rollback --dry-run=server`, щоб дозволити з’єднання з кластером.
+Майте на увазі, що Helm не призначений для контакту з Kubernetes API Server під час операцій `helm template|install|upgrade --dry-run`. Щоб протестувати `lookup` на працюючому кластері, слід використовувати `helm template|install|upgrade --dry-run=server`, щоб дозволити з’єднання з кластером. Команди `helm uninstall` і `helm rollback` не рендерять шаблони, тому `lookup` цими командами не викликається.
 
 ## Оператори як функції {/* #operators-are-functions */}
 

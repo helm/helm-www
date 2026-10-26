@@ -5,7 +5,7 @@ sidebar_position: 7
 default_lang_commit: 2e15490c82d246093e11e418a7c23907a4afa89e
 ---
 
-Починаючи з Helm 3, ви можете використовувати реєстри контейнерів з підтримкою [OCI](https://www.opencontainers.org/) для зберігання та обміну пакетами чартів. Починаючи з Helm v3.8.0, підтримка OCI є стандартно увімкнено.
+Починаючи з Helm 3, ви можете використовувати реєстри контейнерів з підтримкою [OCI](https://www.opencontainers.org/) для зберігання та обміну пакунками чартів. Починаючи з Helm v3.8.0, підтримка OCI є стандартно увімкнено.
 
 ## Підтримка OCI до v3.8.0 {#oci-support-prior-to-v3.8.0}
 
@@ -25,7 +25,7 @@ export HELM_EXPERIMENTAL_OCI=1
 
 З виходом [Helm v3.8.0](https://github.com/helm/helm/releases/tag/v3.8.0) наступні функції та поведінка відрізняються від попередніх версій Helm:
 
-- При встановленні chart у залежностях як OCI, версію можна задати у вигляді діапазону, як і для інших залежностей.
+- При встановленні чарта в залежностях як OCI, версію можна задати у вигляді діапазону, як і для інших залежностей.
 - Теги SemVer, які містять інформацію про збірку, можна публікувати та використовувати. Реєстри OCI не підтримують `+` як символ теґу. Helm перетворює `+` на `_`, коли він зберігається як теґ.
 - Команда `helm registry login` тепер дотримується тієї ж структури, що й Docker CLI для зберігання облікових даних. Те ж місце для конфігурації реєстру може бути передане як Helm, так і Docker CLI.
 
@@ -34,7 +34,7 @@ export HELM_EXPERIMENTAL_OCI=1
 Випуск [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) включав реалізацію [HIP 6](https://github.com/helm/community/blob/main/hips/hip-0006.md) для підтримки OCI. Як результат, наступні функції та поведінка відрізняються від попередніх версій Helm:
 
 - Субкоманда `helm chart` була видалена.
-- Кеш chart був видалений (немає `helm chart list` тощо).
+- Кеш чартів був видалений (немає `helm chart list` тощо).
 - Посилання на реєстри OCI тепер завжди починаються з `oci://`.
 - Базове імʼя посилання на реєстр має *завжди* відповідати імені chart.
 - Тег посилання на реєстр має *завжди* відповідати семантичній версії chart (тобто без тегів `latest`).
@@ -52,11 +52,13 @@ export HELM_EXPERIMENTAL_OCI=1
 
 - [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 - [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-helm-repos#push-chart-to-registry-as-oci-artifact)
+- [Cloudsmith](https://help.cloudsmith.io/docs/oci-repository)
 - [Docker Hub](https://docs.docker.com/docker-hub/oci-artifacts/)
 - [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/helm/manage-charts)
 - [Harbor](https://goharbor.io/docs/main/administration/user-defined-oci-artifact/)
 - [IBM Cloud Container Registry](https://cloud.ibm.com/docs/Registry?topic=Registry-registry_helm_charts)
 - [JFrog Artifactory](https://jfrog.com/help/r/jfrog-artifactory-documentation/helm-oci-repositories)
+- [RepoFlow](https://docs.repoflow.io/PackageTypes/helm#oci-helm-support)
 
 Щоб створити та налаштувати реєстр з підтримкою OCI, дотримуйтесь документації постачальника реєстру контейнерів на хостингу.
 
@@ -64,7 +66,7 @@ export HELM_EXPERIMENTAL_OCI=1
 
 ### Використання sigstore для підписування чартів на основі OCI {#using-sigstore-to-sign-oci-charts}
 
-Втулок [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) дозволяє використовувати [Sigstore](https://sigstore.dev/) для підписування Helm чартів тими ж інструментами, які використовуються для підписування контейнерних образів. Це є альтернативою [перевірки походження](/topics/provenance.md), що використовує GPD, яке підтримується класичними [репозиторіями чартів](/topics/chart_repository.md).
+Втулок [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) дозволяє використовувати [Sigstore](https://sigstore.dev/) для підписування Helm чартів тими ж інструментами, які використовуються для підписування контейнерних образів. Це є альтернативою [підтвердженню походження на основі GPG](/topics/provenance.md), яке підтримується класичними [репозиторіями чартів](/topics/chart_repository.md).
 
 Для отримання додаткової інформації про використання втулка `helm sigstore`, дивіться [документацію цього проєкту](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
@@ -118,6 +120,7 @@ Digest: sha256:ec5f08ee7be8b557cd1fc5ae1a0ac985e8538da7c93f51a51eff4b277509a723
 Підтримка протоколу `oci://` також доступна в різних інших підкомандах. Ось повний список:
 
 - `helm pull`
+- `helm push`
 - `helm show `
 - `helm template`
 - `helm install`
@@ -162,6 +165,21 @@ LAST DEPLOYED: Wed Oct 27 15:12:05 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 2
+NOTES:
+...
+```
+
+## Встановлення чартів за дайджестом {#installing-charts-with-digest}
+
+Встановлення чарту за дайджестом безпечніше, ніж за тегом, оскільки дайджести незмінні. Дайджест вказується в URI чарту:
+
+```
+$ helm install myrelease oci://localhost:5000/helm-charts/mychart@sha256:52ccaee6d4dd272e54bfccda77738b42e1edf0e4a20c27e23f0b6c15d01aef79
+NAME: myrelease
+LAST DEPLOYED: Wed Oct 27 15:11:40 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
 NOTES:
 ...
 ```

@@ -1,6 +1,6 @@
 ---
 title: helm repo
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 додати, вивести перелік, видалити, оновити та індексувати репозиторії чартів
 
@@ -24,7 +24,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -39,11 +39,11 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 * [helm repo add](/helm/helm_repo_add.md) — додати репозиторій чартів
 * [helm repo index](/helm/helm_repo_index.md) — згенерувати файл індексу для теки, що містить упаковані чарти
 * [helm repo list](/helm/helm_repo_list.md) — вивести перелік репозиторіїв чартів
 * [helm repo remove](/helm/helm_repo_remove.md) — видалити один або кілька репозиторіїв чартів
 * [helm repo update](/helm/helm_repo_update.md) — оновити інформацію про доступні чарти локально з репозиторіїв чартів
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

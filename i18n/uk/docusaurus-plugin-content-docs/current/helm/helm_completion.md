@@ -1,6 +1,6 @@
 ---
 title: helm completion
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 
 Генерація скриптів автодоповнення для вказаної оболонки
@@ -26,7 +26,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
       --kube-apiserver string           адреса і порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапорець може бути повторений для вказання кількох груп
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці (СА) для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації (СА) для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання незахищеними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -36,15 +36,15 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
       --qps float32                     кількість запитів в секунду під час взаємодії з API Kubernetes, не включаючи сплески
       --registry-config string          шлях до файлу конфігурації реєстру (стандартно "~/.config/helm/registry/config.json")
       --repository-cache string         шлях до теки, що містить кешовані індекси репозиторіїв (стандартно "~/.cache/helm/repository")
-      --repository-config string        шлях до теки, що містить кешлях до файлу, що містить імена та URL репозиторіїв (стандартно "~/.config/helm/repositories.yaml")
+      --repository-config string        шлях до файлу, що містить імена репозиторіїв та URL-адреси (стандартно "~/.config/helm/repositories.yaml")
 ```
 
 ### ДИВИТИСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Helm, менеджер пакетів для Kubernetes.
+* [helm](/helm/helm.md) — Helm, менеджер пакунків для Kubernetes.
 * [helm completion bash](/helm/helm_completion_bash.md) — скрипт автодоповнення для bash
 * [helm completion fish](/helm/helm_completion_fish.md) — скрипт автодоповнення для fish
 * [helm completion powershell](/helm/helm_completion_powershell.md) — скрипт автодоповнення для powershell
 * [helm completion zsh](/helm/helm_completion_zsh.md) — скрипт автодоповнення для zsh
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026 року
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026 року

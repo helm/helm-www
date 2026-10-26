@@ -1,11 +1,9 @@
 ---
 title: Шпаргалка
 description: Шпаргалка Helm
-sidebar_position: 4
+sidebar_position: 5
 default_lang_commit: 5f3ab017e5a7b504ce1cc5a806af4d9e833a905a
 ---
-
-
 
 Підказки Helm з усіма необхідними командами для керування застосунками за допомогою Helm.
 
@@ -51,7 +49,7 @@ helm show all <chart>                   # Переглядає чарт та в�
 helm show values <chart>                # Показує вміст файлу values.yaml.
 helm pull <chart>                       # Завантажує/витягує чарт.
 helm pull <chart> --untar=true          # Якщо встановлено в true, розпаковує чарт після завантаження.
-helm pull <chart> --verify              # Перевіряє пакет перед використанням.
+helm pull <chart> --verify              # Перевіряє пакунок перед використанням.
 helm pull <chart> --version <number>    # Стандартно використовується остання версія, вкажіть обмеження версії для використання чарту.
 helm dependency list <chart>            # Відображає список залежностей чарту.
 ```
@@ -66,7 +64,7 @@ helm install <name> <chart> --namespace <namespace>   # Встановлює ч�
 helm install <name> <chart> --set key1=val1,key2=val2 # Встановлює значення в командному рядку (можна вказати кілька значень, розділених комами).
 helm install <name> <chart> --values <yaml-file/url>  # Встановлює чарт з вказаними вами значеннями.
 helm install <name> <chart> --dry-run=client --debug  # Запускає тестове встановлення для перевірки чарту.
-helm install <name> <chart> --verify                  # Перевіряє пакет перед використанням.
+helm install <name> <chart> --verify                  # Перевіряє пакунок перед використанням.
 helm install <name> <chart> --dependency-update       # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
 helm install <name> <chart> --force-replace           # Примусове оновлення ресурсів шляхом заміни
 helm uninstall <name>                                 # Видаляє реліз з поточного (default) простору імен
@@ -78,8 +76,8 @@ helm uninstall <release-name> --namespace <namespace> # Видаляє релі�
 ### Оновлення та відкат застосунків {/* #perform-app-upgrade-and-rollback */}
 
 ```bash
-helm upgrade <release> <chart>                            # Оновлює реліз.
-helm upgrade <release> <chart> --atomic                   # Якщо встановлено, процес оновлення поверне зміни в разі невдалого оновлення.
+helm upgrade <release> <chart>                            # Оновлює реліз
+helm upgrade <release> <chart> --rollback-on-failure      # Якщо встановлено, процес оновлення поверне зміни в разі невдалого оновлення.
 helm upgrade <release> <chart> --dependency-update        # Оновлює залежності, якщо вони відсутні, перед встановленням чарту.
 helm upgrade <release> <chart> --version <version_number> # Вказує обмеження версії для використання чарту.
 helm upgrade <release> <chart> --values <yaml-file/url>   # Вказує значення у YAML файлі або URL (можна вказати кілька).
@@ -143,7 +141,7 @@ helm get values <release>   # Завантажує файл значень дл�
 ### Управління втулками {/* #plugin-management */}
 
 ```bash
-helm plugin install <path/url1>     # Встановлення втулків.
+helm plugin install <path/url>     # Встановлення втулків.
 helm plugin list                    # Перегляд списку всіх встановлених втулків.
 helm plugin update <plugin>         # Оновлення втулків.
 helm plugin uninstall <plugin>      # Видалення втулка.

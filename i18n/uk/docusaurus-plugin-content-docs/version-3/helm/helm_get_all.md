@@ -1,6 +1,6 @@
 ---
 title: helm get all
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 завантажити всю інформацію про вказаний реліз
 
@@ -9,7 +9,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 Ця команда виводить зрозумілий для людини набір інформації про нотатки, хуки, надані значення та згенерований маніфест для вказаного релізу.
 
 ```shell
-helm get all RELEASE_NAME [flags]
+helm get all RELEASE_NAME [прапорці]
 ```
 
 ### Параметри {#options}
@@ -28,7 +28,7 @@ helm get all RELEASE_NAME [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -45,4 +45,4 @@ helm get all RELEASE_NAME [flags]
 
 * [helm get](/helm/helm_get.md) — завантажити розширену інформацію про вказаний реліз
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

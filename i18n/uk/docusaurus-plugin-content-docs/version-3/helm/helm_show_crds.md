@@ -1,6 +1,6 @@
 ---
 title: helm show crds
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 показати CRD чарту
 
@@ -10,7 +10,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 файлів CustomResourceDefinition (CRD).
 
 ```shell
-helm show crds [CHART] [flags]
+helm show crds [CHART] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -28,7 +28,7 @@ helm show crds [CHART] [flags]
       --plain-http                 використовувати небезпечні HTTP зʼєднання для завантаження чарту
       --repo string                URL репозиторію чартів, де розташований запитуваний чарт
       --username string            імʼя користувача репозиторію чартів, де розташований запитуваний чарт
-      --verify                     перевірити пакет перед використанням
+      --verify                     перевірити пакунок перед використанням
       --version string             вказати обмеження версії для версії чарту, яку потрібно використовувати. Це обмеження може бути конкретним тегом (наприклад, 1.1.1) або може посилатися на дійсний діапазон (наприклад, ^2.0.0). Якщо це не вказано, буде використовуватися остання версія
 ```
 
@@ -40,7 +40,7 @@ helm show crds [CHART] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -57,4 +57,4 @@ helm show crds [CHART] [flags]
 
 * [helm show](/helm/helm_show.md) — показати інформацію про чарт
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

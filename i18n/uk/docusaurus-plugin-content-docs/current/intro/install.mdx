@@ -1,23 +1,24 @@
 ---
 title: Встановлення Helm
 description: Дізнайтеся, як встановити та почати працювати з Helm.
-sidebar_position: 2
-default_lang_commit: 7ed5496a5da8d37807d06b1a5273a95f88d67d05
+sidebar_position: 3
+default_lang_commit: 90e2367b4ccd0f41b2d353b404b81c0901e56257
 ---
 
 Цей посібник показує, як встановити Helm CLI. Helm можна встановити або з вихідного коду, або з попередньо скомпільованих бінарних випусків.
 
 ## Від проєкту Helm {/* #from-the-helm-project */}
 
-Проєкт Helm пропонує два способи завантаження та встановлення Helm. Це офіційні методи отримання випусків Helm. Крім того, спільнота Helm пропонує методи встановлення Helm за допомогою різних менеджерів пакетів. Інформацію про встановлення за допомогою цих методів можна знайти нижче за офіційними методами.
+Проєкт Helm пропонує два способи завантаження та встановлення Helm. Це офіційні методи отримання випусків Helm. Крім того, спільнота Helm пропонує методи встановлення Helm за допомогою різних менеджерів пакунків. Інформацію про встановлення за допомогою цих методів можна знайти нижче за офіційними методами.
 
 ### З бінарних випусків {/* #from-the-binary-releases */}
 
 Кожен [випуск](https://github.com/helm/helm/releases) Helm надає бінарні випуски для різних операційних систем. Ці бінарні версії можна завантажити та встановити вручну.
 
 1. Завантажте [бажану версію](https://github.com/helm/helm/releases)
-2. Розпакуйте її (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
-3. Знайдіть бінарний файл `helm` у розпакованій теці та перемістіть його у потрібне місце (`mv linux-amd64/helm /usr/local/bin/helm`)
+1. Перевірте бінарний файл. Див. розділ [Перевірка бінарних файлів Helm](#verifying-helm-binaries) на цій сторінці.
+1. Розпакуйте його (`tar -zxvf helm-v4.0.0-linux-amd64.tar.gz`)
+1. Знайдіть бінарний файл `helm` у розпакованій теці та перемістіть його у потрібне місце (`mv linux-amd64/helm /usr/local/bin/helm`)
 
 Після цього ви зможете запустити клієнта та [знайти чарти для встановлення](/intro/quickstart.md#find-charts-to-install): `helm help`.
 
@@ -37,9 +38,9 @@ $ ./get_helm.sh
 
 Так, ви можете виконати команду `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash`, якщо хочете ризикнути.
 
-## Через менеджери пакетів {/* #through-package-managers */}
+## Через менеджери пакунків {/* #through-package-managers */}
 
-Спільнота Helm надає можливість встановлювати Helm через менеджери пакетів операційної системи. Вони не підтримуються проєктом Helm і не вважаються надійними постачальниками.
+Спільнота Helm надає можливість встановлювати Helm через менеджери пакунків операційної системи. Вони не підтримуються проєктом Helm і не вважаються надійними постачальниками.
 
 ### За допомогою Homebrew (macOS) {/* #from-homebrew-macos */}
 
@@ -53,7 +54,7 @@ brew install helm
 
 ### За допомогою Chocolatey (Windows) {/* #from-chocolatey-windows */}
 
-Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://chocolatey.org/packages/kubernetes-helm) для [Chocolatey](https://chocolatey.org/). Цей пакет, як правило, є актуальним.
+Члени спільноти Helm зробили свій внесок у створення [пакунка Helm](https://chocolatey.org/packages/kubernetes-helm) для [Chocolatey](https://chocolatey.org/). Цей пакунок, як правило, є актуальним.
 
 ```console
 choco install kubernetes-helm
@@ -61,7 +62,7 @@ choco install kubernetes-helm
 
 ### За допомогою Scoop (Windows) {/* #from-scoop-windows */}
 
-Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) для [Scoop](https://scoop.sh). Цей пакет, як правило, є актуальним.
+Члени спільноти Helm зробили свій внесок у створення [пакунка Helm](https://github.com/ScoopInstaller/Main/blob/master/bucket/helm.json) для [Scoop](https://scoop.sh). Цей пакунок, як правило, є актуальним.
 
 ```console
 scoop install helm
@@ -69,7 +70,7 @@ scoop install helm
 
 ### За допомогою Winget (Windows) {/* #from-winget-windows */}
 
-Члени спільноти Helm зробили свій внесок у створення [пакета Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) для [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Цей пакет, як правило, є актуальним.
+Члени спільноти Helm зробили свій внесок у створення [пакунка Helm](https://github.com/microsoft/winget-pkgs/tree/master/manifests/h/Helm/Helm) для [Winget](https://learn.microsoft.com/en-us/windows/package-manager/). Цей пакунок, як правило, є актуальним.
 
 ```console
 winget install Helm.Helm
@@ -77,12 +78,35 @@ winget install Helm.Helm
 
 ### За допомогою Apt (Debian/Ubuntu) {/* #from-apt-debianubuntu */}
 
-Члени спільноти Helm зробили свій внесок у створення пакета Apt для Debian/Ubuntu. Цей пакет, як правило, є актуальним. Дякуємо [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) за підтримку репозиторію.
+Члени спільноти Helm зробили свій внесок у створення пакунка Apt для Debian/Ubuntu. Цей пакунок, як правило, є актуальним. Дякуємо [Buildkite](https://buildkite.com/organizations/helm-linux/packages/registries/helm-debian) за підтримку репозиторію.
 
 ```console
-sudo apt-get install curl gpg apt-transport-https --yes
-curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+HELM_BUILDKITE_APT_KEY_ID="DDF78C3E6EBB2D2CC223C95C62BA89D07698DBC6"
+
+sudo apt-get install curl gpg --yes
+
+curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey > "${TMPDIR:-/tmp}/helm.asc"
+
+# Переконайтеся, що ідентифікатор ключа збігається, щоб запобігти компрометації репозиторію внаслідок створення ключа, контрольованого зловмисником
+if [ "$(gpg --import --import-options=show-only --with-colons "${TMPDIR:-/tmp}/helm.asc" \
+        | awk -F: '$1 == "fpr" {print $10}' | head -n 1)" != "${HELM_BUILDKITE_APT_KEY_ID}" ]; then
+    echo "ERROR: Unexpected Helm APT key ID: potential key compromise"
+    exit 1
+fi
+
+# Видаліть конфігурацію, залишену попередніми версіями цих інструкцій
+sudo rm -f /etc/apt/sources.list.d/helm-stable-debian.list /usr/share/keyrings/helm.gpg
+
+sudo install -m 0644 -Dt /etc/apt/keyrings/ "${TMPDIR:-/tmp}/helm.asc"
+
+sudo tee /etc/apt/sources.list.d/helm-stable-debian.sources > /dev/null <<EOF
+Types: deb
+URIs: https://packages.buildkite.com/helm-linux/helm-debian/any/
+Suites: any
+Components: main
+Signed-By: /etc/apt/keyrings/helm.asc
+EOF
+
 sudo apt-get update
 sudo apt-get install helm
 ```
@@ -97,7 +121,7 @@ sudo dnf install helm
 
 ### За допомогою Snap {/* #from-snap */}
 
-Спільнота [Snapcrafters](https://github.com/snapcrafters) підтримує версію Snap пакета [Helm](https://snapcraft.io/helm):
+Спільнота [Snapcrafters](https://github.com/snapcrafters) підтримує версію Snap-пакунка [Helm](https://snapcraft.io/helm):
 
 ```console
 sudo snap install helm --classic
@@ -105,7 +129,7 @@ sudo snap install helm --classic
 
 ### За допомогою pkg (FreeBSD) {/* #from-pkg-freebsd */}
 
-Члени спільноти FreeBSD зробили свій внесок у створення пакета [Helm](https://www.freshports.org/sysutils/helm) для [FreeBSD Ports Collection](https://man.freebsd.org/ports). Цей пакет, як правило, є актуальним.
+Члени спільноти FreeBSD зробили свій внесок у створення пакунка [Helm](https://www.freshports.org/sysutils/helm) для [FreeBSD Ports Collection](https://man.freebsd.org/ports). Цей пакунок, як правило, є актуальним.
 
 ```console
 pkg install helm
@@ -127,20 +151,108 @@ pkg install helm
 
 ### Збірки з сирців (Linux, macOS) {/* #from-source-linux-macos */}
 
-Створення Helm з сирців вимагає трохи більше зусиль, але це найкращий спосіб, якщо ви хочете протестувати останню версію Helm.
+Збірка Helm з сирців трохи складніша, але є найкращим варіантом, якщо ви хочете протестувати останню версію Helm.
 
-У вас повинно бути налаштоване середовище Go.
+Вам потрібно мати робоче середовище Go.
 
 ```console
-$ git clone https://github.com/helm/helm.git
-$ cd helm
-$ make
+git clone https://github.com/helm/helm.git
+cd helm
+make
 ```
 
 За необхідності, буде отримано залежності та збережено їх у кеші, а також перевірено конфігурацію. Потім буде скомпільовано `helm` та розміщено його у `bin/helm`.
 
+## Перевірка бінарних файлів Helm {/* #verifying-helm-binaries */}
+
+Кожен випуск Helm включає криптографічні підписи, які підтверджують, що бінарний файл був створений та підписаний підтримувачами Helm. Щоб захиститися від атак на ланцюг постачання, завжди перевіряйте автентичність бінарних файлів Helm перед встановленням.
+
+Опубліковані релізи на `get.helm.sh` (подаються через CDN) зазвичай не можуть бути змінені після публікації релізу на GitHub. Однак ланцюг постачання включає кілька компонентів (CDN, інфраструктура хостингу тощо), тому перевірка підпису важлива навіть для старих або зафіксованих версій.
+
+### Вимоги {/* #requirements */}
+
+Щоб перевірити бінарний файл Helm, вам потрібно мати:
+
+* Архів з бінарним файлом (наприклад, `helm-v4.0.0-linux-amd64.tar.gz`)
+* Відповідний файл підпису (наприклад, `helm-v4.0.0-linux-amd64.tar.gz.asc`)
+* Публічні PGP-ключі підтримувачів Helm
+
+### Кроки перевірки {/* #verification-steps */}
+
+Щоб перевірити бінарний файл Helm:
+
+1. Перевірте контрольну суму SHA256, щоб переконатися, що завантаження не було пошкоджене. Наприклад:
+
+   ```console
+   $ sha256sum -c helm-v4.0.0-linux-amd64.tar.gz.sha256sum
+   helm-v4.0.0-linux-amd64.tar.gz: OK
+   ```
+
+1. Імпортуйте публічні ключі підтримувачів Helm:
+
+   ```console
+   $ curl https://raw.githubusercontent.com/helm/helm/main/KEYS | gpg --import
+   ```
+   :::note
+   Уникайте отримання ключів з репозиторію Helm щоразу, коли ви перевіряєте бінарний файл Helm. Натомість імпортуйте ключі один раз і зберігайте їх у безпечному місці, яким ви керуєте. Це захищає вас у разі, якщо репозиторій буде скомпрометовано і ключі будуть замінені; ваша локальна копія дозволяє виявити підробку.
+
+   Ви також можете перевірити ключі підтримувачів на [Keybase](https://keybase.io), де підтримувачі Helm мають профілі, що повʼязують їхні особи з їхніми PGP-ключами.
+   :::
+
+1. Перевірте підпис бінарного файлу. Наприклад:
+
+   ```console
+   $ gpg --verify helm-v4.0.0-linux-amd64.tar.gz.asc helm-v4.0.0-linux-amd64.tar.gz
+   gpg: Signature made [date] using RSA key ID [key-id]
+   gpg: Good signature from "Helm Maintainer <maintainer@example.com>"
+   ```
+
+   Повідомлення "Good signature" підтверджує, що бінарний файл автентичний і не був підроблений.
+
+   :::note
+   Файли підписів безпечні для завантаження з upstream, якщо у вас є надійні копії публічних ключів. Зловмисник не зможе підробити дійсний підпис без приватного ключа, який є лише у легітимного підтримувача.
+   :::
+
+## Часті запитання (FAQ) {/* faq */}
+
+### Чому немає нативних пакунків Helm для Fedora та інших дистрибутивів Linux? {/* #why-arent-there-native-packages-of-helm-for-fedora-and-other-linux-distros */}
+
+Проєкт Helm не підтримує пакунки для операційних систем та середовищ. Спільнота Helm може надавати нативні пакунки, і якщо проєкт Helm буде про них поінформований, вони будуть зазначені. Саме так було започатковано та зазначено формулу Homebrew. Якщо ви зацікавлені у підтримці пакунка, ми будемо раді цьому.
+
+### Чому ви надаєте скрипт `curl ...|bash`? {/* #why-do-you-provide-a-curl-bash-script */}
+
+У нашому репозиторії є скрипт (`scripts/get-helm-4`), який можна виконати як скрипт `curl ..|bash`. Передача даних захищена за допомогою HTTPS, а скрипт виконує певну перевірку пакунків, які він завантажує. Однак скрипт має всі звичайні ризики будь-якого shell-скрипта.
+
+Ми надаємо його, тому що він корисний, але радимо користувачам уважно прочитати скрипт перед виконанням. Насправді ми хотіли б мати кращі упаковані релізи Helm.
+
+### Як розмістити файли клієнта Helm у місці, відмінному від стандартного? {/* #how-do-i-put-the-helm-client-files-somewhere-other-than-their-defaults */}
+
+Helm використовує структуру XDG для зберігання файлів. Існують змінні середовища, які можна використовувати для перевизначення цих розташувань:
+
+- `$XDG_CACHE_HOME`: встановлює альтернативне розташування для збереження кешованих файлів.
+- `$XDG_CONFIG_HOME`: встановлює альтернативне розташування для збереження конфігурації Helm.
+- `$XDG_DATA_HOME`: встановлює альтернативне розташування для збереження даних Helm.
+
+Зверніть увагу, що якщо у вас є наявні репозиторії, вам потрібно буде додати їх знову за допомогою `helm repo add...`.
+
+### Я хочу видалити локальний Helm. Де знаходяться всі його файли? {/* #i-want-to-delete-my-local-helm-where-are-all-its-files */}
+
+Разом із бінарним файлом `helm`, Helm зберігає деякі файли у таких місцях:
+
+- $XDG_CACHE_HOME
+- $XDG_CONFIG_HOME
+- $XDG_DATA_HOME
+
+Наведена нижче таблиця показує стандартну теку для кожного з цих розташувань залежно від операційної системи:
+
+| Операційна система | Шлях до кешу                | Шлях до конфігурації             | Шлях до даних             |
+|--------------------|-----------------------------|----------------------------------|---------------------------|
+| Linux              | `$HOME/.cache/helm`         | `$HOME/.config/helm`             | `$HOME/.local/share/helm` |
+| macOS              | `$HOME/Library/Caches/helm` | `$HOME/Library/Preferences/helm` | `$HOME/Library/helm`      |
+| Windows            | `%TEMP%\helm`               | `%APPDATA%\helm`                 | `%APPDATA%\helm`          |
+
 ## Підсумки {/* #conclusion */}
 
-У більшості випадків встановлення є таким же простим, як отримання готового бінарного файлу `helm`. Цей документ охоплює додаткові випадки для тих, хто хоче робити складніші речі з Helm.
+У більшості випадків встановлення є таким же простим, як отримання попередньо зібраного бінарного файлу `helm`. Цей документ охоплює додаткові випадки для тих, хто хоче робити більш складні речі з Helm.
 
-Після успішного встановлення клієнта Helm ви можете перейти до використання Helm для управління чартами та [знайти чарти для встановлення](/intro/quickstart.md#find-charts-to-install).
+Після успішного встановлення клієнта Helm ви можете перейти до використання Helm для керування чартами та [пошуку чартів для встановлення](/intro/quickstart.md#find-charts-to-install).

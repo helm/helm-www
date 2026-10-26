@@ -15,7 +15,7 @@ default_lang_commit: 243c2d6ac95078256a4b2b56013aae454e67202a
 * Переконайтеся, що у вас є доступ до бінарного файлу Helm.
 * _Опціонально: Ми рекомендуємо увімкнути [версіювання обʼєктів](https://cloud.google.com/storage/docs/gsutil/addlhelp/ObjectVersioningandConcurrencyControl#top_of_page) у вашому сховищі GCS, на випадок, якщо ви випадково щось видалите._
 
-## Налаштування локальної теки репозиторію чартів {#set-up-a-local-chart-repository-directory
+## Налаштування локальної теки репозиторію чартів {#set-up-a-local-chart-repository-directory}
 
 Створіть локальну теку, як ми це робили в [керівництві з репозиторію чартів](/topics/chart_repository.md), і помістіть ваші упаковані чарти в цю теку.
 

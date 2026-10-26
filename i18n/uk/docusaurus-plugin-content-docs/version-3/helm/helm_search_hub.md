@@ -1,6 +1,6 @@
 ---
 title: helm search hub
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 шукати чарти в Artifact Hub або у власному екземплярі хабу
 
@@ -8,14 +8,14 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 Шукайте Helm чарти в Artifact Hub або у власному екземплярі хабу.
 
-Artifact Hub — це вебзастосунок, що дозволяє знаходити, встановлювати та публікувати пакети та конфігурації для проєктів CNCF, включаючи публічно доступні розподілені Helm чарти. Це проєкт Sandbox Cloud Native Computing Foundation. Ви можете переглянути хаб за адресою https://artifacthub.io/
+Artifact Hub — це вебзастосунок, що дозволяє знаходити, встановлювати та публікувати пакунки та конфігурації для проєктів CNCF, включаючи публічно доступні розподілені Helm чарти. Це проєкт Sandbox Cloud Native Computing Foundation. Ви можете переглянути хаб за адресою https://artifacthub.io/
 
 Аргумент [KEYWORD] приймає як ключове слово, так і рядок з параметрами розширеного запиту. Документацію з параметрів розширеного запиту дивіться на https://artifacthub.github.io/hub/api/?urls.primaryName=Monocular%20compatible%20search%20API#/Monocular/get_api_chartsvc_v1_charts_search
 
 Попередні версії Helm використовували екземпляр Monocular як стандартне значення для 'endpoint', тому для зворотної сумісності Artifact Hub сумісний з API пошуку Monocular. Аналогічно, при встановленні прапорця 'endpoint' зазначена точка доступу також має реалізовувати API пошуку, сумісний з Monocular. Зверніть увагу, що при вказівці екземпляра Monocular як 'endpoint', розширені запити не підтримуються. Для деталей API дивіться https://github.com/helm/monocular
 
 ```shell
-helm search hub [KEYWORD] [flags]
+helm search hub [KEYWORD] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -37,7 +37,7 @@ helm search hub [KEYWORD] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -54,4 +54,4 @@ helm search hub [KEYWORD] [flags]
 
 * [helm search](/helm/helm_search.md) — пошук ключового слова в чартах
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

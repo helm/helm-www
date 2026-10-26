@@ -1,7 +1,7 @@
 ---
 title: Швидкий старт
 description: Як встановити та почати роботу з Helm, включаючи інструкції для дистрибутивів, поширені запитання та втулки.
-sidebar_position: 1
+sidebar_position: 2
 default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
@@ -27,23 +27,6 @@ default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 Завантажте бінарний реліз клієнта Helm. Ви можете використовувати такі інструменти, як `homebrew`, або перегляньте [сторінку офіційних релізів](https://github.com/helm/helm/releases).
 
 Для отримання більш детальної інформації або інших варіантів, дивіться [посібник з встановлення](/intro/install.md).
-
-## Знаходження чартів для встановлення {#find-charts-to-install}
-
-[Artifact Hub](https://artifacthub.io/packages/search?kind=0) — найкраще місце для пошуку Helm-чартів. Він обʼєднує чарти з сотень репозиторіїв і надає пошук, метадані та інформацію про безпеку.
-
-Популярні джерела чартів:
-
-- **OCI-реєстри**: Багато організацій публікують чарти в контейнерних реєстрах, таких як GitHub Container Registry, Docker Hub або реєстри хмарних провайдерів. Їх можна встановити безпосередньо за допомогою префікса `oci://`.
-- **Репозиторії чартів**: Традиційні Helm-репозиторії можна додати командою `helm repo add` і шукати в них за допомогою `helm search repo`.
-
-Щоб шукати Artifact Hub з командного рядка:
-
-```console
-$ helm search hub podinfo
-URL                                                 CHART VERSION  APP VERSION  DESCRIPTION
-https://artifacthub.io/packages/helm/podinfo/po...  6.11.2         6.11.2       Podinfo Helm chart for Kubernetes
-```
 
 ## Ініціалізація репозиторію Helm Chart {#initialize-a-helm-chart-repository}
 

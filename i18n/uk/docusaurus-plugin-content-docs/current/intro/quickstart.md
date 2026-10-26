@@ -1,7 +1,7 @@
 ---
 title: Швидкий старт
 description: Як встановити та розпочати роботу з Helm, включаючи інструкції для дистрибутивів, поширені запитання та втулки.
-sidebar_position: 1
+sidebar_position: 2
 default_lang_commit: 5b891dc41e2912a6ffed8d478a1bd371e5921d4b
 ---
 
@@ -45,49 +45,45 @@ URL                                                 CHART VERSION  APP VERSION  
 https://artifacthub.io/packages/helm/podinfo/po...  6.11.2         6.11.2       Podinfo Helm chart for Kubernetes
 ```
 
-## Ініціалізуйте репозиторій чартів Helm {#initialize-a-helm-chart-repository}
+## Встановлення чарту з OCI-реєстру {#install-a-chart-from-an-oci-registry}
 
-Після підготовки Helm ви можете додати репозиторій чартів. Перевірте [Artifact Hub](https://artifacthub.io/packages/search?kind=0), щоб дізнатися про доступні репозиторії чартів Helm.
+Helm може встановлювати чарти безпосередньо з контейнерних реєстрів, сумісних з OCI. Для цього не потрібно спочатку додавати репозиторій.
 
-```console
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-```
-
-Після встановлення ви зможете переглянути список чартів, які можна встановити:
+Щоб встановити чарт з OCI-реєстру, використовуйте префікс `oci://`:
 
 ```console
-$ helm search repo bitnami
-NAME                             	CHART VERSION	APP VERSION  	DESCRIPTION
-bitnami/bitnami-common           	0.0.9        	0.0.9        	DEPRECATED Chart with custom templates used in ...
-bitnami/airflow                  	8.0.2        	2.0.0        	Apache Airflow is a platform to programmaticall...
-bitnami/apache                   	8.2.3        	2.4.46       	Chart for Apache HTTP Server
-bitnami/aspnet-core              	1.2.3        	3.1.9        	ASP.NET Core is an open-source framework create...
-# ... and many more
-```
-
-## Встановіть демонстраційний чарт {#install-an-example-chart}
-
-Щоб встановити чарт, можна виконати команду `helm install`. Helm має кілька способів пошуку та встановлення чартів, але найпростіший — це використання чартів `bitnami`.
-
-```console
-$ helm repo update              # Make sure we get the latest list of charts
-$ helm install bitnami/mysql --generate-name
-NAME: mysql-1612624192
-LAST DEPLOYED: Sat Feb  6 16:09:56 2021
+$ helm install my-podinfo oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
+Pulled: ghcr.io/stefanprodan/charts/podinfo:6.11.2
+NAME: my-podinfo
+LAST DEPLOYED: Sat May  3 12:05:00 2026
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
 NOTES: ...
 ```
 
-У наведеному вище прикладі було встановлено чарт `bitnami/mysql`, а назва нашого нового релізу — `mysql-1612624192`.
+Щоб перевірити, чи працює встановлення, перенаправте порт сервісу й перевірте точку доступу:
 
-Ви можете отримати загальне уявлення про функції цього чарту MySQL, виконавши команду `helm show chart bitnami/mysql`. Або ви можете виконати команду `helm show all bitnami/mysql`, щоб отримати всю інформацію про чарт.
+```console
+$ kubectl port-forward svc/my-podinfo 9898:9898 &
+$ curl http://localhost:9898
+{
+  "hostname": "podinfo-6f89b4c6b5-xvwtb",
+  "version": "6.7.1",
+  "message": "greetings from podinfo v6.7.1",
+  "goos": "linux",
+  "goarch": "amd64",
+  ...
+}
+```
 
-Кожного разу, коли ви встановлюєте чарт, створюється новий реліз. Отже, один чарт можна встановити кілька разів в один і той самий кластер. І кожним з них можна керувати та оновлювати незалежно.
+Перед встановленням можна переглянути вміст чарту:
 
-Команда `helm install` — це дуже потужна команда з багатьма можливостями. Щоб дізнатися більше про неї, перегляньте [Посібник з використання Helm](/intro/using_helm.mdx).
+```console
+$ helm show chart oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
+```
+
+Докладніше про роботу з OCI-реєстрами див. у розділі [Використання реєстрів на основі OCI](/docs/topics/registries).
 
 ## Дізнайтеся про релізи {#learn-about-releases}
 
@@ -95,32 +91,32 @@ NOTES: ...
 
 ```console
 $ helm list
-NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART      	APP VERSION
-mysql-1612624192	default  	1       	2021-02-06 16:09:56.283059 +0100 CET	deployed	mysql-8.3.0	8.0.23
+NAME       	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART         	APP VERSION
+my-podinfo 	default  	1       	2026-05-03 12:05:00.000000 +0000 UTC	deployed	podinfo-6.11.2	6.7.1
 ```
 
-Функція `helm list` (або `helm ls`) покаже вам список усіх розгорнутих релізів.
+Команда `helm list` (або `helm ls`) покаже список усіх розгорнутих релізів.
 
 ## Видалення релізу {#uninstall-a-release}
 
 Щоб видалити реліз, скористайтеся командою `helm uninstall`:
 
 ```console
-$ helm uninstall mysql-1612624192
-release "mysql-1612624192" uninstalled
+$ helm uninstall my-podinfo
+release "my-podinfo" uninstalled
 ```
 
-Це видалить `mysql-1612624192` з Kubernetes, що призведе до видалення всіх ресурсів, повʼязаних з релізом, а також історії релізів.
+Це видалить `my-podinfo` з Kubernetes разом з усіма повʼязаними з релізом ресурсами та історією релізу.
 
 Якщо вказано прапорець `--keep-history`, історія релізів буде збережена. Ви зможете запитувати інформацію про цей реліз:
 
 ```console
-$ helm status mysql-1612624192
+$ helm status my-podinfo
 Status: UNINSTALLED
 ...
 ```
 
-Оскільки Helm відстежує ваші релізи навіть після їх видалення, ви можете перевіряти історію кластера і навіть відновлювати релізи (за допомогою команди `helm rollback`).
+Оскільки Helm відстежує релізи навіть після їх видалення, ви можете переглядати історію кластера й навіть відновити реліз за допомогою `helm rollback`.
 
 ## Ознайомлення з довідкою {#reading-the-help-text}
 

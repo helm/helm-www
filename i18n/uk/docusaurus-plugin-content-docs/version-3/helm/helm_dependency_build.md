@@ -1,6 +1,6 @@
 ---
 title: helm dependency build
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 перебудувати теку charts/ на основі файлу Chart.lock
 
@@ -13,16 +13,23 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 Якщо файл блокування не знайдено, `helm dependency build` дзеркально повторюватиме поведінку команди `helm dependency update`.
 
 ```none
-helm dependency build CHART [flags]
+helm dependency build CHART [прапорці]
 ```
 
 ### Параметри {#options}
 
 ```none
-  -h, --help             довідка для build
+      --ca-file string                                перевіряти сертифікати HTTPS-серверів за допомогою цього пакета CA
+      --cert-file string                              ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
+  -h, --help                                          довідка для build
+      --insecure-skip-tls-verify                      пропускати перевірку сертифіката TLS для завантаження чарту
+      --key-file string                               ідентифікувати клієнта HTTPS за допомогою цього файлу ключа SSL
       --keyring string   вʼязка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
+      --password string                               пароль репозиторію чартів, де розташований потрібний чарт
+      --plain-http                                    використовувати незахищені HTTP-зʼєднання для завантаження чарту
       --skip-refresh     не оновлювати кеш локального репозиторію
-      --verify           перевіряти пакети за підписами
+      --username string                               імʼя користувача репозиторію чартів, де розташований потрібний чарт
+      --verify           перевіряти пакунки за підписами
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -33,7 +40,7 @@ helm dependency build CHART [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -50,4 +57,4 @@ helm dependency build CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

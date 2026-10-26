@@ -1,6 +1,6 @@
 ---
 title: helm dependency update
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 оновлення charts/ на основі вмісту Chart.yaml
 
@@ -15,16 +15,23 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 Залежності не обовʼязково повинні бути представлені в `Chart.yaml`. З цієї причини команда оновлення не видалить чарти, якщо вони (а) присутні у файлі `Chart.yaml`, але (б) мають неправильну версію.
 
 ```none
-helm dependency update CHART [flags]
+helm dependency update CHART [прапорці]
 ```
 
 ### Параметри {#options}
 
 ```none
-  -h, --help             довідка для update
+      --ca-file string                                перевіряти сертифікати HTTPS-серверів за допомогою цього пакета CA
+      --cert-file string                              ідентифікувати клієнта HTTPS за допомогою цього файлу сертифіката SSL
+  -h, --help                                          довідка для update
+      --insecure-skip-tls-verify                      пропускати перевірку сертифіката TLS для завантаження чарту
+      --key-file string                               ідентифікувати клієнта HTTPS за допомогою цього файлу ключа SSL
       --keyring string   вʼязка ключів, що містить публічні ключі (стандартно "~/.gnupg/pubring.gpg")
+      --password string                               пароль репозиторію чартів, де розташований потрібний чарт
+      --plain-http                                    використовувати незахищені HTTP-зʼєднання для завантаження чарту
       --skip-refresh     не оновлювати локальний кеш репозиторіїв
-      --verify           перевірити пакети на відповідність підписам
+      --username string                               імʼя користувача репозиторію чартів, де розташований потрібний чарт
+      --verify           перевірити пакунки на відповідність підписам
 ```
 
 ### Параметри, успадковані від батьківських команд {#options-inherited-from-parent-commands}
@@ -35,7 +42,7 @@ helm dependency update CHART [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -52,4 +59,4 @@ helm dependency update CHART [flags]
 
 * [helm dependency](/helm/helm_dependency.md) — керувати залежностями чарту
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

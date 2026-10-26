@@ -1,6 +1,6 @@
 ---
 title: helm plugin
-default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 встановлення, перегляд списку або видалення втулків Helm
 
@@ -22,7 +22,7 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -37,10 +37,10 @@ default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — Менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 * [helm plugin install](/helm/helm_plugin_install.md) — встановити втулок Helm
 * [helm plugin list](/helm/helm_plugin_list.md) — переглянути встановлені втулки Helm
 * [helm plugin uninstall](/helm/helm_plugin_uninstall.md) — видалити один або кілька втулків Helm
 * [helm plugin update](/helm/helm_plugin_update.md) — оновити один або кілька втулків Helm
 
-###### Автоматично згенеровано spf13/cobra 9 вересня 2026
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026
