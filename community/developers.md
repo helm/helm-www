@@ -8,8 +8,7 @@ This guide explains how to set up your environment for developing on Helm.
 
 ## Prerequisites
 
-- Go 1.27 or later.
-  The `go` directive in Helm's [`go.mod`](https://github.com/helm/helm/blob/main/go.mod) file sets the minimum Go version for the branch you build.
+- The `go` directive in Helm's [`go.mod`](https://github.com/helm/helm/blob/main/go.mod) file sets the minimum Go version for the branch you build.
 - A Kubernetes cluster w/ kubectl (optional)
 - Git
 
