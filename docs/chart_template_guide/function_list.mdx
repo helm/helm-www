@@ -798,6 +798,8 @@ The following type conversion functions are provided by Helm:
   object to indented JSON.
 - `toRawJson` (`mustToRawJson`): Convert list, slice, array, dict, or object to
   JSON with HTML characters unescaped.
+- `toPrettyRawJson` (`mustToPrettyRawJson`): Convert list, slice, array, dict,
+  or object to indented JSON with HTML characters unescaped.
 - `fromYaml`: Convert a YAML string to an object.
 - `fromJson`: Convert a JSON string to an object.
 - `mustFromJson`: Convert a JSON string to an object, or return an error to the template engine if the string is not valid JSON.
@@ -866,6 +868,32 @@ toRawJson .Item
 ```
 
 The above returns unescaped JSON string representation of `.Item`.
+
+### toPrettyRawJson, mustToPrettyRawJson
+
+The `toPrettyRawJson` function encodes an item into a pretty (indented) JSON
+string with HTML characters unescaped. It combines the two-space indentation of
+`toPrettyJson` with the unescaped output of `toRawJson`. If the item cannot be
+converted to JSON, the function returns an empty string. `mustToPrettyRawJson`
+returns an error to the template engine in case the item cannot be encoded in
+JSON.
+
+```
+toPrettyRawJson .Item
+```
+
+The above returns an indented, unescaped JSON string representation of `.Item`.
+
+Use `toPrettyRawJson` when values contain characters such as `&`, `<`, or `>`.
+For example, `toPrettyJson` encodes the URL `https://example.com?a=1&b=2` as
+`https://example.com?a=1\u0026b=2`, while `toPrettyRawJson` keeps the `&`
+character as is. `toPrettyJson` continues to escape HTML characters for
+backward compatibility.
+
+:::note
+`toPrettyRawJson` and `mustToPrettyRawJson` are available in Helm 4.4.0 and
+later.
+:::
 
 ### fromYaml
 
