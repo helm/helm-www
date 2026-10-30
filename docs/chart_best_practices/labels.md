@@ -44,3 +44,5 @@ Name|Status|Description
 You can find more information on the Kubernetes labels, prefixed with
 `app.kubernetes.io`, in the [Kubernetes
 documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/).
+
+For Helm's ownership annotations, see [Allow Helm to take ownership of existing resources](https://helm.sh/docs/topics/advanced/#allow-helm-to-take-ownership-of-existing-resources) (in English).
