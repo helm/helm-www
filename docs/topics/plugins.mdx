@@ -52,13 +52,23 @@ path/url given into `$HELM_PLUGINS`. If you are installing from a VCS you can sp
 the version with the `--version` argument.
 
 ```console
-$ helm plugin install https://github.com/adamreese/helm-env
+$ helm plugin install https://github.com/adamreese/helm-env --verify=false
 ```
+
+Helm 4 verifies plugin signatures before installing by default.
+Plugins installed from a VCS repo can't be verified, so you must pass
+`--verify=false`, as shown above. Without it, the install fails with
+`plugin source does not support verification. Use --verify=false to skip verification`.
+Plugins installed from a local directory are not verified and don't need the flag.
+For more information about the risks of skipping verification, see [Plugin Security](/plugins/user/index.md#plugin-security).
 
 If you have a plugin tar distribution, simply untar the plugin into the
 `$HELM_PLUGINS` directory. You can also install tarball plugins
 directly from url by issuing `helm plugin install
-https://domain/path/to/plugin.tar.gz`
+https://domain/path/to/plugin.tar.gz`.
+Helm verifies a tarball against the provenance file next to it
+(for example, `plugin.tar.gz.prov`) and the public keys in your keyring.
+If there is no `.prov` file, the install fails unless you pass `--verify=false`.
 
 ## The Plugin File Structure
 
