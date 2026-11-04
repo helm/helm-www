@@ -76,30 +76,37 @@ At this point, you should see both `mychart-0.1.0.tgz` and
 `mychart-0.1.0.tgz.prov`. Both files should eventually be uploaded to your
 desired chart repository.
 
-You can verify a chart using `helm verify`. With Helm 4.3.0+ and GnuPG 2.1+,
-pass the public keybox file explicitly:
+You can verify a chart using `helm verify`:
 
 ```console
-$ helm verify mychart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
+$ helm verify mychart-0.1.0.tgz
 ```
 
 A failed verification looks like this:
 
 ```console
-$ helm verify topchart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
+$ helm verify topchart-0.1.0.tgz
 Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
 ```
 
 To verify during an install, use the `--verify` flag.
 
 ```console
-$ helm install --generate-name --verify mychart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
+$ helm install --generate-name --verify mychart-0.1.0.tgz
 ```
 
-The default `--keyring` location is `~/.gnupg/pubring.gpg`.
-Helm does not automatically select GnuPG's `pubring.kbx`, so pass its path
-with `--keyring PATH` when verifying a chart or installing with `--verify`.
-The verification keyring must contain the signer's public key.
+By default, Helm uses `$GNUPGHOME/pubring.gpg` (`~/.gnupg/pubring.gpg`) if it
+exists, otherwise `$GNUPGHOME/pubring.kbx`. If the keyring containing the
+signer's public key is elsewhere, pass it with `--keyring PATH`.
+
+GnuPG 2.4.1+ installations using keyboxd do not have a `pubring.kbx` file.
+Export the signer's public key to an ASCII-armored keyring and pass it with
+`--keyring`:
+
+```console
+$ gpg --export --armor 'John Smith' >path/to/keyring.public
+$ helm verify mychart-0.1.0.tgz --keyring path/to/keyring.public
+```
 
 If verification fails, the install will be aborted before the chart is even
 rendered.
@@ -150,8 +157,8 @@ Export the secret key to a keyring file, then package and sign a chart with
 `helm package`. Make sure you use at least part of that name string in `--key`.
 
 ```console
-$ gpg --export-secret-keys technosophos >~/.gnupg/secring.gpg
-$ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
+$ gpg --export-secret-keys technosophos >path/to/keyring.secret
+$ helm package --sign --key technosophos --keyring path/to/keyring.secret mychart
 ```
 
 As a result, the `package` command should produce both a `.tgz` file and a
@@ -176,7 +183,7 @@ At this point, you can now use `helm verify` or any of the commands with a
 `--verify` flag:
 
 ```console
-$ helm verify somechart-1.2.3.tgz --keyring ~/.gnupg/pubring.kbx
+$ helm verify somechart-1.2.3.tgz
 ```
 
 ### Reasons a chart may not verify
