@@ -29,7 +29,8 @@ effectively.
 
 Prerequisites:
 
-- A valid PGP keypair in a binary (not ASCII-armored) format
+- A valid PGP keypair, with the private key exported to a binary or
+  ASCII-armored keyring file for signing
 - The `helm` command line tool
 - GnuPG command line tools (optional)
 - Keybase command line tools (optional)
@@ -68,35 +69,37 @@ private key exported to a keyring file (binary or ASCII-armored). If your
 secret key exists only in GnuPG's modern key store, export it first:
 
 ```console
-$ gpg --export-secret-keys >~/.gnupg/secring.gpg
+$ gpg --export-secret-keys 'John Smith' >path/to/keyring.secret
 ```
 
 At this point, you should see both `mychart-0.1.0.tgz` and
 `mychart-0.1.0.tgz.prov`. Both files should eventually be uploaded to your
 desired chart repository.
 
-You can verify a chart using `helm verify`:
+You can verify a chart using `helm verify`. With Helm 4.3.0+ and GnuPG 2.1+,
+pass the public keybox file explicitly:
 
 ```console
-$ helm verify mychart-0.1.0.tgz
+$ helm verify mychart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
 ```
 
 A failed verification looks like this:
 
 ```console
-$ helm verify topchart-0.1.0.tgz
+$ helm verify topchart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
 Error: sha256 sum does not match for topchart-0.1.0.tgz: "sha256:1939fbf7c1023d2f6b865d137bbb600e0c42061c3235528b1e8c82f4450c12a7" != "sha256:5a391a90de56778dd3274e47d789a2c84e0e106e1a37ef8cfa51fd60ac9e623a"
 ```
 
 To verify during an install, use the `--verify` flag.
 
 ```console
-$ helm install --generate-name --verify mychart-0.1.0.tgz
+$ helm install --generate-name --verify mychart-0.1.0.tgz --keyring ~/.gnupg/pubring.kbx
 ```
 
-If the keyring containing the public key associated with the signed chart is not
-in the default location, you may need to point to the keyring with `--keyring
-PATH` as in the `helm package` example.
+The default `--keyring` location is `~/.gnupg/pubring.gpg`.
+Helm does not automatically select GnuPG's `pubring.kbx`, so pass its path
+with `--keyring PATH` when verifying a chart or installing with `--verify`.
+The verification keyring must contain the signer's public key.
 
 If verification fails, the install will be aborted before the chart is even
 rendered.
@@ -121,14 +124,14 @@ The first step is to import your keybase keys into your local GnuPG keyring:
 $ keybase pgp export -s | gpg --import
 ```
 
-This will convert your Keybase key into the OpenPGP format, and then import it
-locally into your `~/.gnupg/secring.gpg` file.
+This imports the OpenPGP key into GnuPG's local key store.
+GnuPG 2.1+ does not create `~/.gnupg/secring.gpg` when importing a secret key.
 
 You can double check by running `gpg --list-secret-keys`.
 
 ```console
 $ gpg --list-secret-keys
-/Users/mattbutcher/.gnupg/secring.gpg
+~/.gnupg/pubring.kbx
 -------------------------------------
 sec   2048R/1FC18762 2016-07-25
 uid                  technosophos (keybase.io/technosophos) <technosophos@keybase.io>
@@ -143,10 +146,11 @@ technosophos (keybase.io/technosophos) <technosophos@keybase.io>
 
 That is the full name of your key.
 
-Next, you can package and sign a chart with `helm package`. Make sure you use at
-least part of that name string in `--key`.
+Export the secret key to a keyring file, then package and sign a chart with
+`helm package`. Make sure you use at least part of that name string in `--key`.
 
 ```console
+$ gpg --export-secret-keys technosophos >~/.gnupg/secring.gpg
 $ helm package --sign --key technosophos --keyring ~/.gnupg/secring.gpg mychart
 ```
 
@@ -166,13 +170,13 @@ $ keybase pgp pull
 
 The first command above tracks the user `technosophos`. Next `keybase pgp pull`
 downloads the OpenPGP keys of all of the accounts you follow, placing them in
-your GnuPG keyring (`~/.gnupg/pubring.gpg`).
+your GnuPG public keyring.
 
 At this point, you can now use `helm verify` or any of the commands with a
 `--verify` flag:
 
 ```console
-$ helm verify somechart-1.2.3.tgz
+$ helm verify somechart-1.2.3.tgz --keyring ~/.gnupg/pubring.kbx
 ```
 
 ### Reasons a chart may not verify
