@@ -113,5 +113,152 @@ Let's do this one in Wasm runtime now too…
 - Go 1.25 installed
 
 :::warning
-To-do: add this section
+These steps are written from the plugin schema source and the template repository, but have **not** been verified end-to-end against Helm 4. End-to-end verification is blocked pending an upstream schema fix: the Wasm postrenderer schema uses `*bytes.Buffer`, which JSON-serializes to `{}` and prevents the post-renderer round-trip from passing (see [helm/helm#31832](https://github.com/helm/helm/issues/31832)).
 :::
+
+Let's build the same label-injector as a Wasm plugin. It adds the `postrendered-by: helm-label-injector-plugin` label to every resource, just like the Subprocess version.
+
+### 1. Set up repository
+
+Scaffold a new repository from the template (or just clone):
+https://github.com/gjenkins8/helm-extism-plugin-template
+
+### 2. Update plugin manifest
+
+Similar to the Subprocess Postrenderer manifest, except you will do this in your own cloned Git repository. Use a distinct plugin name so the Subprocess and Wasm plugins can coexist.
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: postrenderer/v1
+name: label-injector-wasm
+version: 0.1.0
+runtime: extism/v1
+runtimeConfig:
+  memory:
+    maxPages: 16
+  timeout: 30000
+```
+
+### 3. Update `main.go`
+
+Specify the postrenderer input/output messages. The input contains the rendered manifests and optional arguments; the output contains the modified manifests:
+
+```go title="main.go" showLineNumbers
+type InputMessage struct {
+	Manifests []byte   `json:"manifests"`
+	ExtraArgs []string `json:"extraArgs"`
+}
+
+type OutputMessage struct {
+	Manifests []byte `json:"manifests"`
+}
+```
+
+Replace the template's `replaceMeImplementationGoesHere` function with logic that reads the manifests as YAML documents, adds the label, and encodes the documents again:
+
+```go title="main.go" showLineNumbers
+func labelInjector(input InputMessage) (*OutputMessage, error) {
+	decoder := yaml.NewDecoder(bytes.NewReader(input.Manifests))
+	var manifests bytes.Buffer
+	encoder := yaml.NewEncoder(&manifests)
+	defer encoder.Close()
+
+	for {
+		var document map[string]interface{}
+		err := decoder.Decode(&document)
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, fmt.Errorf("failed to decode manifest: %w", err)
+		}
+		if document == nil {
+			continue
+		}
+
+		metadata, ok := document["metadata"].(map[string]interface{})
+		if !ok {
+			metadata = make(map[string]interface{})
+			document["metadata"] = metadata
+		}
+		labels, ok := metadata["labels"].(map[string]interface{})
+		if !ok {
+			labels = make(map[string]interface{})
+			metadata["labels"] = labels
+		}
+		labels["postrendered-by"] = "helm-label-injector-plugin"
+
+		if err := encoder.Encode(document); err != nil {
+			return nil, fmt.Errorf("failed to encode manifest: %w", err)
+		}
+	}
+
+	return &OutputMessage{Manifests: manifests.Bytes()}, nil
+}
+```
+
+Add these imports alongside the template's existing `fmt` and `pdk` imports:
+
+```go title="main.go" showLineNumbers
+import (
+	"bytes"
+	"fmt"
+	"io"
+
+	pdk "github.com/extism/go-pdk"
+	"gopkg.in/yaml.v3"
+)
+```
+
+Update `runPlugin` to read the postrenderer input and call `labelInjector` instead of `replaceMeImplementationGoesHere`:
+
+```go title="main.go" showLineNumbers
+func runPlugin() error {
+	var input InputMessage
+	if err := pdk.InputJSON(&input); err != nil {
+		return fmt.Errorf("failed to parse input json: %w", err)
+	}
+
+	output, err := labelInjector(input)
+	if err != nil {
+		pdk.Log(pdk.LogError, fmt.Sprintf("failed: %s", err.Error()))
+		return err
+	}
+
+	if err := pdk.OutputJSON(output); err != nil {
+		return fmt.Errorf("failed to write output json: %w", err)
+	}
+	return nil
+}
+```
+
+### 4. Build WebAssembly
+
+```bash
+$ make build
+$ ls -la plugin.wasm
+```
+
+### 5. Install in Dev Mode and Test
+
+Install the plugin from the cloned template directory:
+
+```bash
+$ helm plugin install <dir>
+```
+
+Then render a chart with the Wasm postrenderer:
+
+```bash
+$ helm template ../mychart --post-renderer label-injector-wasm
+```
+
+The expected output includes the label below (illustrative only; the Wasm path has not been verified end-to-end):
+
+```yaml
+metadata:
+  labels:
+    postrendered-by: helm-label-injector-plugin
+```
+
+What you built: A WebAssembly Postrenderer plugin that adds a custom label to every resource!
