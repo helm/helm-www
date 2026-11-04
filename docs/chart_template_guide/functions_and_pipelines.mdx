@@ -266,8 +266,8 @@ to query Kubernetes. If any error is returned when interacting with calling the
 API server (for example due to lack of permission to access a resource), Helm's
 template processing will fail.
 
-Keep in mind that Helm does not contact the Kubernetes API server during
-a `helm template|install|upgrade --dry-run=client` operation. To test `lookup` against a
+Keep in mind that `lookup` does not query the Kubernetes API server during
+`helm template` or a `helm install|upgrade --dry-run=client` operation. To test `lookup` against a
 running cluster, `helm template|install|upgrade --dry-run=server` should be used
 instead to allow cluster connection. `helm uninstall` and `helm rollback` do not
 render templates, so `lookup` is not called by these commands.

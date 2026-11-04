@@ -58,6 +58,7 @@ Common reasons why `lookup` might return empty:
 
 - The resource does not exist in the cluster
 - Running `helm template` without cluster access (use `--dry-run=server` to connect)
+- An incorrect name or namespace, which the API server reports as `NotFound`
 
 Other API errors, such as an RBAC permission denial, cause template rendering to
 fail rather than returning an empty result.
