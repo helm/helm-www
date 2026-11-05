@@ -27,29 +27,34 @@ injecting common tools and side cars in enterprise environments or analysis of
 the manifests before deployment.
 
 ### Prerequisites
-- Helm 3.1+
+- Helm 4
+- An installed plugin with type `postrenderer/v1`. See the
+  [Postrenderer Plugin Tutorial](/plugins/developer/tutorial-postrenderer-plugin.mdx)
+  for an example that adds labels to rendered resources.
 
 ### Usage
-A post-renderer can be any executable that accepts rendered Kubernetes manifests
-on STDIN and returns valid Kubernetes manifests on STDOUT. It should return an
-non-0 exit code in the event of a failure. This is the only "API" between the
-two components. It allows for great flexibility in what you can do with your
-post-render process.
+In Helm 4, the CLI runs post-renderers through the plugin system.
+A post-renderer using the subprocess runtime runs an executable that accepts
+rendered Kubernetes manifests on STDIN and returns valid Kubernetes manifests
+on STDOUT. It must return a non-zero exit code on failure.
 
 A post-renderer can be used with `install`, `upgrade`, and `template`. To use a
-post-renderer, use the `--post-renderer` flag with a path to the renderer
-executable you wish to use:
+post-renderer, pass its installed plugin name to `--post-renderer`.
+For example, after installing the `label-injector` plugin from the tutorial:
 
 ```shell
-$ helm install mychart stable/wordpress --post-renderer ./path/to/executable
+helm template my-release ./mychart --post-renderer label-injector
+helm install my-release ./mychart --post-renderer label-injector
 ```
 
-If the path does not contain any separators, it will search in $PATH, otherwise
-it will resolve any relative paths to a fully qualified path
+Unlike Helm 3, `--post-renderer` does not accept an executable path or search
+`$PATH`. To use an existing renderer executable, wrap it in a subprocess plugin
+as shown in the tutorial. For migration guidance, see
+[Migrate v3 Plugins to Helm 4](/plugins/migrate.md).
 
-If you wish to use multiple post-renderers, call all of them in a script or
-together in whatever binary tool you have built. In bash, this would be as
-simple as `renderer1 | renderer2 | renderer3`.
+If you wish to use multiple post-renderers, a subprocess plugin can call all of
+them in a script or together in a binary tool. In bash, this can be a pipeline
+such as `renderer1 | renderer2 | renderer3`.
 
 You can see an example of using `kustomize` as a post-renderer
 [here](https://github.com/thomastaylor312/advanced-helm-demos/tree/master/post-render).
