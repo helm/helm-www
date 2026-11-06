@@ -113,6 +113,11 @@ By default, Helm refuses to install or upgrade a chart if a resource that is not
 In this case, Helm would display the following error: "resource already exists and is not owned by this release".
 
 Helm tracks resource ownership in the cluster with both Helm-managed annotations and related labels such as `app.kubernetes.io/managed-by`.
+During install and upgrade, Helm adds these annotations to resources built from the release manifest:
+
+- `meta.helm.sh/release-name`: the name of the release.
+- `meta.helm.sh/release-namespace`: the namespace of the release, which can differ from the resource namespace.
+
 This ownership validation process protects you from unintentionally overwriting objects that another tool or release had created.
 
 Use `--take-ownership` on `helm install` or `helm upgrade` when you intentionally want Helm to adopt those existing objects into the release:
