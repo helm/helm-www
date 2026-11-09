@@ -442,6 +442,17 @@ inky-cat        default         1         2026-09-28 12:59:46.550369 +0000 UTC  
 From the output above, we can see that the `happy-panda` release was
 uninstalled.
 
+The `--cascade` flag sets the
+[Kubernetes deletion propagation policy](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion).
+For example, `helm uninstall happy-panda --cascade orphan` still deletes the
+resources listed in the release manifest, such as Deployments, ConfigMaps, and
+Secrets. Kubernetes retains their dependent resources, such as ReplicaSets
+created by a deleted Deployment.
+
+To retain an individual chart resource during uninstall, add the
+`helm.sh/resource-policy: keep` annotation to that resource's chart template.
+See [Tell Helm Not To Uninstall a Resource](/howto/charts_tips_and_tricks.md#tell-helm-not-to-uninstall-a-resource).
+
 In previous versions of Helm, when a release was deleted, a record of its
 deletion would remain. In Helm 3, deletion removes the release record as well.
 If you wish to keep a deletion release record, use `helm uninstall

@@ -36,6 +36,7 @@ this works:
 - [ConfigMap and Secrets utility functions](#configmap-and-secrets-utility-functions)
 - [Encoding](#encoding)
 - [Lines](#lines)
+- [Passing external files](#passing-external-files)
 
 <!-- tocstop -->
 
@@ -239,9 +240,26 @@ If the file you reference is empty or does not exist, `Lines` returns an empty
 list rather than failing. The `range` loop then produces no output, so
 referencing a missing or empty file will not cause template rendering to fail.
 
-There is no way to pass files external to the chart during `helm install`. So if
-you are asking users to supply data, it must be loaded using `helm install -f`
-or `helm install --set`.
+## Passing external files
+
+The `.Files` object only exposes files packaged with the chart. To supply the
+contents of a file outside the chart as a value, use `--set-file`:
+
+```shell
+helm install my-release ./mychart --set-file config=./config.ini
+```
+
+This reads `config.ini` from the current directory and stores its contents as a
+string in `.Values.config`. For example, a ConfigMap template can use:
+
+```yaml
+data:
+  config.ini: |-
+    {{- .Values.config | nindent 4 }}
+```
+
+The file does not become part of `.Files`. Use `-f` to load YAML values files,
+or `--set` to supply individual values directly.
 
 This discussion wraps up our dive into the tools and techniques for writing Helm
 templates. In the next section we will see how you can use one special file,
