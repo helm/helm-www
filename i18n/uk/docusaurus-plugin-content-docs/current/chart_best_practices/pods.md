@@ -2,6 +2,7 @@
 title: Pods та PodTemplates
 description: Розглядається форматування частин Pod і PodTemplate в маніфестах чартів.
 sidebar_position: 6
+default_lang_commit: 243c2d6ac95078256a4b2b56013aae454e67202a
 ---
 
 У цій частині посібника з найкращих практик розглядається форматування частин Pod і PodTemplate у маніфестах чартів.

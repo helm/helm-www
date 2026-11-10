@@ -103,6 +103,64 @@ metadata:
 
 What you built: A Postrenderer plugin using the Subprocess runtime!
 
+### Use kustomize as a Post-Renderer
+
+The same pattern wraps an existing tool. This plugin runs `kustomize build` over the rendered manifests. It requires [`kustomize`](https://kubectl.docs.kubernetes.io/installation/kustomize/) on your `PATH`.
+
+Create a new plugin directory:
+
+```bash
+mkdir -p $HOME/code/helm/plugins/kustomize-renderer
+cd $HOME/code/helm/plugins/kustomize-renderer
+```
+
+```yaml title="plugin.yaml" showLineNumbers
+apiVersion: v1
+type: postrenderer/v1
+name: kustomize-renderer
+version: 0.1.0
+runtime: subprocess
+runtimeConfig:
+  platformCommand:
+    - command: ${HELM_PLUGIN_DIR}/kustomize.sh
+```
+
+The kustomization reads the rendered manifests from `all.yaml`. This example sets every Deployment to 3 replicas:
+
+```yaml title="kustomization.yaml" showLineNumbers
+resources:
+  - all.yaml
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+```
+
+The script writes the manifests from STDIN into a temporary directory next to a copy of the kustomization, then builds it:
+
+```bash title="kustomize.sh" showLineNumbers
+#!/usr/bin/env sh
+set -e
+dir=$(mktemp -d)
+trap 'rm -rf "$dir"' EXIT
+cp "${HELM_PLUGIN_DIR}/kustomization.yaml" "$dir/"
+cat <&0 > "$dir/all.yaml"
+kustomize build "$dir"
+```
+
+Make it executable, install the plugin, and try it:
+
+```bash
+% chmod +x kustomize.sh
+% helm plugin install $HOME/code/helm/plugins/kustomize-renderer
+% helm template ../mychart --post-renderer kustomize-renderer
+```
+
+The Deployment in the output now has `replicas: 3`. If `kustomize build` fails, the script exits non-zero and Helm reports the error.
+
 Let's do this one in Wasm runtime now too…
 
 ## Wasm Runtime

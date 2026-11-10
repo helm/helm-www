@@ -1,5 +1,6 @@
 ---
 title: helm rollback
+default_lang_commit: faf08ad037457f944c476b9526c0c12398ceda17
 ---
 відкотити реліз до попередньої версії
 
@@ -12,7 +13,7 @@ title: helm rollback
 Щоб побачити номери версій, виконайте команду 'helm history RELEASE'.
 
 ```shell
-helm rollback <RELEASE> [REVISION] [flags]
+helm rollback <RELEASE> [REVISION] [прапорці]
 ```
 
 ### Параметри {#options}
@@ -38,7 +39,7 @@ helm rollback <RELEASE> [REVISION] [flags]
       --kube-apiserver string           адреса та порт сервера API Kubernetes
       --kube-as-group stringArray       група для імперсонації під час операції, цей прапор може бути повторений для вказання кількох груп.
       --kube-as-user string             імʼя користувача для імперсонації під час операції
-      --kube-ca-file string             файл центру сертифікаці СА для підключення до сервера API Kubernetes
+      --kube-ca-file string             файл центру сертифікації CA для підключення до сервера API Kubernetes
       --kube-context string             імʼя контексту kubeconfig для використання
       --kube-insecure-skip-tls-verify   якщо встановлено true, сертифікат сервера API Kubernetes не буде перевірятися на дійсність. Це робить ваші HTTPS-зʼєднання небезпечними
       --kube-tls-server-name string     імʼя сервера для перевірки сертифіката сервера API Kubernetes. Якщо не вказано, використовується імʼя хоста, що використовується для підключення до сервера
@@ -53,6 +54,6 @@ helm rollback <RELEASE> [REVISION] [flags]
 
 ### ДИВІТЬСЯ ТАКОЖ {#see-also}
 
-* [helm](/helm/helm.md) — менеджер пакетів Helm для Kubernetes.
+* [helm](/helm/helm.md) — Менеджер пакунків Helm для Kubernetes.
 
-###### Автоматично згенеровано spf13/cobra 11 вересня 2024
+###### Автоматично згенеровано spf13/cobra 15 жовтня 2026

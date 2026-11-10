@@ -402,7 +402,7 @@ that condition has no effect.
 The `--set` parameter can be used as usual to alter tag and condition values.
 
 ```console
-helm install --set tags.front-end=true --set subchart2.enabled=false
+helm install my-release ./parentchart --set tags.front-end=true --set subchart2.enabled=false
 ```
 
 ##### Tags and Condition Resolution
@@ -948,7 +948,7 @@ protocol: https
 ```
 
 ```console
-helm install --set port=443
+helm install my-release ./mychart --set port=443
 ```
 
 Furthermore, the final `.Values` object is checked against *all* subchart
@@ -995,7 +995,7 @@ don't list them in `.helmignore`, and don't put them under `templates/` or
 Schema validation can be disabled by setting the option shown below.
 This is particularly useful in air-gapped environments when a chart's JSON Schema file contains remote references.
 ```console
-helm install --skip-schema-validation
+helm install my-release ./mychart --skip-schema-validation
 ```
 
 ### References

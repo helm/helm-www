@@ -1,5 +1,6 @@
 ---
 title: Мейнтейнери Helm Org
+default_lang_commit: 03aa62bd4fbff76dd3a875fb0f48152ae2f534d6
 ---
 
 <!--

@@ -8,7 +8,7 @@ This guide explains how to set up your environment for developing on Helm.
 
 ## Prerequisites
 
-- The latest version of Go
+- The `go` directive in Helm's [`go.mod`](https://github.com/helm/helm/blob/main/go.mod) file sets the minimum Go version for the branch you build.
 - A Kubernetes cluster w/ kubectl (optional)
 - Git
 
@@ -43,6 +43,30 @@ $ go test -tags helmtest ./...
 
 Without this tag, tests fail during package initialization because test
 binaries lack module version information that the production code paths expect.
+
+### End-to-End Tests
+
+The end-to-end tests run a real `helm` binary against a real OCI registry,
+and optionally against a Kubernetes cluster.
+They use the `e2e` build tag, so `make test` does not run them.
+
+To run them, set the registry to push test charts to and its credentials,
+then run `make test-e2e`:
+
+```console
+$ export HELM_E2E_REGISTRY=ghcr.io/your-org
+$ export HELM_E2E_USERNAME=your-user
+$ export HELM_E2E_PASSWORD=your-token
+$ make test-e2e
+```
+
+The suite works with any OCI registry, including a local one.
+The Kubernetes install test is off by default because it changes the cluster
+that your current kubecontext points to.
+To enable it, set `HELM_E2E_KUBERNETES`.
+
+For all configuration options, including how to run against a local registry
+or Docker Hub, see [Helm end-to-end tests](https://github.com/helm/helm/blob/main/test/e2e/README.md).
 
 ## Running Locally
 
@@ -81,8 +105,7 @@ The code for the Helm project is organized as follows:
 Go dependency management is in flux, and it is likely to change during the
 course of Helm's lifecycle. We encourage developers to _not_ try to manually
 manage dependencies. Instead, we suggest relying upon the project's `Makefile`
-to do that for you. With Helm 3, it is recommended that you are on Go version
-1.13 or later.
+to do that for you.
 
 ### Writing Documentation
 

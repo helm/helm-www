@@ -1,6 +1,13 @@
 SITE_URL ?= http://localhost:3000
 BASE_URL ?= /
 
+# Node >= 25 enables Web Storage by default, and Docusaurus SSG copies every
+# global (including localStorage) into its sandbox, which logs an
+# ExperimentalWarning per render worker. Disable it when this Node accepts the
+# flag (Node 20 rejects it, so NODE_OPTIONS must not carry it there).
+NODE_WEBSTORAGE_OPTS := $(shell node --no-experimental-webstorage -e '' 2>/dev/null && echo --no-experimental-webstorage)
+export NODE_OPTIONS := $(strip $(NODE_OPTIONS) $(NODE_WEBSTORAGE_OPTS))
+
 clean:
 	rm -rf node_modules/ build/ .docusaurus .cache-loader
 

@@ -207,7 +207,7 @@
     "description": "Features section title"
   },
   "home.header.tagline": {
-    "message": "Менеджер пакетів для Kubernetes",
+    "message": "Менеджер пакунків для Kubernetes",
     "description": "Helm tagline"
   },
   "home.header.subtitle": {
@@ -223,7 +223,7 @@
     "description": "Get Helm section title"
   },
   "home.gettingStarted.installHelm": {
-    "message": "Встановіть Helm за допомогою менеджера пакетів або {downloadLink}.",
+    "message": "Встановіть Helm за допомогою менеджера пакунків або {downloadLink}.",
     "description": "Getting started install with package manager sentence with download link"
   },
   "home.gettingStarted.installHelm.downloadLink": {

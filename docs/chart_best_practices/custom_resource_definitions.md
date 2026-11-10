@@ -49,8 +49,7 @@ supported for CRDs. The purpose of "Dry Run" is to validate that the output of
 the chart will actually work if sent to the server. But CRDs are a modification
 of the server's behavior. Helm cannot install the CRD on a dry run, so the
 discovery client will not know about that Custom Resource (CR), and validation
-will fail. You can alternatively move the CRDs to their own chart or use `helm
-template` instead.
+will fail. You can alternatively move the CRDs to their own chart.
 
 Another important point to consider in the discussion around CRD support is how
 the rendering of templates is handled. One of the distinct disadvantages of the

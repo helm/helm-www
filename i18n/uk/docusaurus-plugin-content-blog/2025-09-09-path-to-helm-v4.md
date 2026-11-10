@@ -3,6 +3,7 @@ title: "Шлях до випуску Helm v4"
 slug: "path-to-helm-v4"
 authors: ["mattfarina"]
 date: "2025-09-09"
+default_lang_commit: cae045901bf4c67e0bc19063ec893782f60a52ea
 ---
 
 Випущено [першу альфа-версію Helm v4](https://github.com/helm/helm/releases/tag/v4.0.0-alpha.1). Тепер, коли розробка Helm v4 вступає у фінальну стадію, ми хотіли б поділитися деталями про те, що відбувається, і як широкий загал може долучитися до цього процесу.

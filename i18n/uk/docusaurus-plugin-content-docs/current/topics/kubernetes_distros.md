@@ -2,6 +2,7 @@
 title: Дистрибутиви Kubernetes
 description: Зберігає інформацію про використання Helm у конкретних середовищах Kubernetes.
 sidebar_position: 10
+default_lang_commit: 12e1514477c5047939689bccc80cc1c66b30444f
 ---
 
 Helm повинен працювати з будь-якою [сумісною версією Kubernetes](https://github.com/cncf/k8s-conformance) (незалежно від того, чи є вона [сертифікованою](https://www.cncf.io/certification/software-conformance/) чи ні).
@@ -71,4 +72,4 @@ Kubernetes, налаштований за допомогою `kubeadm`, відо
 
 ## VMware Tanzu Kubernetes Grid
 
-Helm працює на VMware Tanzu Kubernetes Grid, TKG, без необхідності змінювати конфігурацію. Tanzu CLI може управляти встановленням пакетів для [helm-controller](https://fluxcd.io/flux/components/helm/), що дозволяє декларативно управляти релізами чартів Helm. Додаткові відомості доступні в документації TKG для [CLI-Managed Packages](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.6/vmware-tanzu-kubernetes-grid-16/GUID-packages-user-managed-index.html#package-locations-and-dependencies-5).
+Helm працює на VMware Tanzu Kubernetes Grid, TKG, без необхідності змінювати конфігурацію. Tanzu CLI може управляти встановленням пакунків для [helm-controller](https://fluxcd.io/flux/components/helm/), що дозволяє декларативно управляти релізами чартів Helm. Докладніші відомості доступні в [документації Tanzu Kubernetes Grid](https://techdocs.broadcom.com/us/en/vmware-tanzu/standalone-components/tanzu-kubernetes-grid/2-5/tkg/index.html).
