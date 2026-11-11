@@ -42,7 +42,7 @@
     "@docusaurus/types": "^3.10.2",
     "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.11.35",
-    "jsdom": "^27.0.1",
+    "jsdom": "^31.0.0",
     "postcss": "^8.5",
     "search-insights": "^2.0.0",
     "webpack": "^5.112.2"
