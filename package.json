@@ -31,21 +31,21 @@
     "p-limit": "^7.3.0",
     "prism-react-renderer": "^2.3.0",
     "raw-loader": "^4.0.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-icons": "^5.5.0",
     "simple-git": "^4.0.2"
   },
   "devDependencies": {
-    "@algolia/client-search": "^5.0.0",
+    "@algolia/client-search": "^5.61.0",
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@types/react": "^19.0.0",
-    "baseline-browser-mapping": "^2.11.0",
+    "baseline-browser-mapping": "^2.11.35",
     "jsdom": "^27.0.1",
     "postcss": "^8.5",
     "search-insights": "^2.0.0",
-    "webpack": "^5.0.0"
+    "webpack": "^5.112.2"
   },
   "browserslist": {
     "production": [
