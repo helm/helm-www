@@ -132,7 +132,7 @@ The `runtimeConfig` field of [plugin.yaml](#pluginyaml) has different options pe
 If the `runtime` field is `subprocess`, it is a [Subprocess Runtime](#plugin-runtimes) plugin and the following runtime configurations are allowed:
 
 ```yaml
-runtimeconfig:
+runtimeConfig:
     platformCommand: # Configure command to run based on the platform
         - os: OS match, can be empty or omitted to match any OS
           arch: Architecture match, can be empty or omitted to match any architecture
@@ -166,7 +166,7 @@ runtimeconfig:
 If the `runtime` field is `extism/v1`, it is a [Wasm Runtime](#plugin-runtimes) plugin and the following runtime configurations are allowed:
 
 ```yaml
-runtimeconfig:
+runtimeConfig:
     memory: # Describes the limits on the memory the plugin may be allocated
         maxPages: The max amount of pages the plugin can allocate. One page is 64Kib. e.g. 16 pages would require 1MiB. Default is 4 pages (256KiB).
         maxHttpResponseBytes: The max size of an Extism HTTP response in bytes. Default is 4096 bytes (4KiB).
@@ -176,8 +176,25 @@ runtimeconfig:
     fileSystem:
         createTempDir: Whether to create a temporary directory on the filesystem. Can be "true" or "false".
     timeout: The timeout in milliseconds for the plugin to execute
-    hostFunctions: HostFunction names exposed in Helm the plugin may access. See https://extism.org/docs/concepts/host-functions/
+    hostFunctions: HostFunction names exposed in Helm the plugin may access. As of Helm 4.3, Helm does not provide any host functions, so leave this empty. See https://extism.org/docs/concepts/host-functions/
     entryFuncName: The name of entry function name to call in the plugin. Defaults to "helm_plugin_main".
 ```
 
 - `allowedHosts` only has an effect if the plugin makes HTTP requests. If not specified, then no hosts are allowed.
+
+### How Wasm plugins exchange data with Helm
+
+A Wasm plugin must export an entry function, `helm_plugin_main` by default (see `entryFuncName`). Each time Helm runs the plugin, it:
+
+1. Passes the plugin's input message as JSON through the Extism input. The fields depend on the [plugin type](#plugin-types).
+2. Calls the entry function. A non-zero return value tells Helm the plugin failed.
+3. Reads the plugin's Extism output as a JSON output message. The plugin must always write an output message, even an empty object (`{}`), or Helm fails to parse it.
+
+For CLI plugins, Helm also connects stdin, stdout, and stderr to the terminal and passes Helm's environment variables, so the plugin can print output directly. Getter plugins receive Helm's environment variables but not stdin, stdout, or stderr.
+
+| Plugin type | Input message fields | Output message fields |
+|---|---|---|
+| `cli/v1` | `extraArgs`: the arguments passed to the subcommand, without Helm's global flags such as `--namespace` and `--kube-context`. Empty if `ignoreFlags` is `true`. | None. Write results to stdout and return `{}`. |
+| `getter/v1` | `href`: the URL to download<br/>`protocol`: the URL scheme<br/>`options`: download options such as credentials and TLS settings. Keys use Go field names, for example `URL`, `Username`, and `Timeout` (in nanoseconds). | `data`: the downloaded content, base64-encoded |
+
+You can write the plugin in any language that has an [Extism PDK](https://extism.org/docs/concepts/pdk). For a Go starting point, see the [Helm Extism plugin template](https://github.com/gjenkins8/helm-extism-plugin-template).
