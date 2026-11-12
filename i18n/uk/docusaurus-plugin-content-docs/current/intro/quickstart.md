@@ -83,7 +83,7 @@ $ curl http://localhost:9898
 $ helm show chart oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
 ```
 
-Докладніше про роботу з OCI-реєстрами див. у розділі [Використання реєстрів на основі OCI](/docs/topics/registries).
+Докладніше про роботу з OCI-реєстрами див. у розділі [Використання реєстрів на основі OCI](/topics/registries.mdx).
 
 ## Дізнайтеся про релізи {#learn-about-releases}
 
