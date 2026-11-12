@@ -86,7 +86,7 @@ You can preview what a chart contains before installing:
 $ helm show chart oci://ghcr.io/stefanprodan/charts/podinfo --version 6.11.2
 ```
 
-For more details on working with OCI registries, see [Use OCI-based registries](/docs/topics/registries).
+For more details on working with OCI registries, see [Use OCI-based registries](/topics/registries.mdx).
 
 ## Learn About Releases
 
