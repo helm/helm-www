@@ -113,6 +113,12 @@ const BlockList = [
               Upcoming Events
             </Translate>
           </dt>
+          <dd>
+            <em><CustomDate dateString="2027-03-15" endDateString="2027-03-18" formatType="dayRange" /></em> -{" "}
+            <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/">
+              KubeCon Europe 2027
+            </a>
+          </dd>
           <dt>
             <MdCalendarToday className={styles.icon} />
             <Translate
