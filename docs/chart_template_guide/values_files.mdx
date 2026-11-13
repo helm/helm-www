@@ -4,10 +4,6 @@ description: Instructions on how to use the --values flag.
 sidebar_position: 4
 ---
 
-import Helm4 from "/docs/_v4-in-progress.mdx"
-
-<Helm4/>
-
 In the previous section we looked at the built-in objects that Helm templates
 offer. One of the built-in objects is `Values`. This object provides access to
 values passed into the chart. Its contents come from multiple sources:
@@ -15,8 +11,8 @@ values passed into the chart. Its contents come from multiple sources:
 - The `values.yaml` file in the chart
 - If this is a subchart, the `values.yaml` file of a parent chart
 - A values file is passed into `helm install` or `helm upgrade` with the `-f`
-  flag (`helm install -f myvals.yaml ./mychart`)
-- Individual parameters are passed with `--set` (such as `helm install --set foo=bar
+  flag (`helm install my-release ./mychart -f myvals.yaml`)
+- Individual parameters are passed with `--set` (such as `helm install my-release --set foo=bar
   ./mychart`)
 
 The list above is in order of specificity: `values.yaml` is the default, which
@@ -52,14 +48,16 @@ Let's see how this renders.
 
 ```console
 $ helm install geared-marsupi ./mychart --dry-run=client --debug
-install.go:158: [debug] Original chart version: ""
-install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
+level=DEBUG msg="Original chart version" version=""
+level=DEBUG msg="Chart path" path=/path/to/mychart
+level=DEBUG msg="number of dependencies in the chart" chart=mychart dependencies=0
 
 NAME: geared-marsupi
 LAST DEPLOYED: Wed Feb 19 23:21:13 2020
 NAMESPACE: default
 STATUS: pending-install
 REVISION: 1
+DESCRIPTION: Dry run complete
 TEST SUITE: None
 USER-SUPPLIED VALUES:
 {}
@@ -86,14 +84,16 @@ adding a `--set` flag in our call to `helm install`:
 
 ```console
 $ helm install solid-vulture ./mychart --dry-run=client --debug --set favoriteDrink=slurm
-install.go:158: [debug] Original chart version: ""
-install.go:175: [debug] CHART PATH: /home/bagratte/src/playground/mychart
+level=DEBUG msg="Original chart version" version=""
+level=DEBUG msg="Chart path" path=/path/to/mychart
+level=DEBUG msg="number of dependencies in the chart" chart=mychart dependencies=0
 
 NAME: solid-vulture
 LAST DEPLOYED: Wed Feb 19 23:25:54 2020
 NAMESPACE: default
 STATUS: pending-install
 REVISION: 1
+DESCRIPTION: Dry run complete
 TEST SUITE: None
 USER-SUPPLIED VALUES:
 favoriteDrink: slurm
@@ -150,8 +150,8 @@ If you need to delete a key from the default values, you may override the value
 of the key to be `null`, in which case Helm will remove the key from the
 overridden values merge.
 
-For example, the stable Drupal chart allows configuring the liveness probe, in
-case you configure a custom image. Here are the default values:
+For example, suppose `mychart/values.yaml` contains these defaults for a
+container's liveness probe:
 ```yaml
 livenessProbe:
   httpGet:
@@ -160,10 +160,17 @@ livenessProbe:
   initialDelaySeconds: 120
 ```
 
-If you try to override the livenessProbe handler to `exec` instead of `httpGet`
-using `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`, Helm will
-coalesce the default and overridden keys together, resulting in the following
-YAML:
+If you override the `livenessProbe` handler to `exec` instead of `httpGet`
+using `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`, Helm
+merges the default and overridden keys together.
+You can inspect the merged values with a client dry run:
+
+```sh
+helm install my-release ./mychart --dry-run=client --debug \
+  --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'
+```
+
+The `COMPUTED VALUES` section includes both handlers:
 ```yaml
 livenessProbe:
   httpGet:
@@ -180,7 +187,20 @@ However, Kubernetes would then fail because you can not declare more than one
 livenessProbe handler. To overcome this, you may instruct Helm to delete the
 `livenessProbe.httpGet` by setting it to null:
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
+helm install my-release ./mychart --dry-run=client --debug \
+  --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' \
+  --set livenessProbe.httpGet=null
+```
+
+The `COMPUTED VALUES` section now contains only the `exec` handler:
+
+```yaml
+livenessProbe:
+  exec:
+    command:
+    - cat
+    - docroot/CHANGELOG.txt
+  initialDelaySeconds: 120
 ```
 
 At this point, we've seen several built-in objects, and used them to inject
