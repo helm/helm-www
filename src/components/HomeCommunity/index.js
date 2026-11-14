@@ -114,9 +114,9 @@ const BlockList = [
             </Translate>
           </dt>
           <dd>
-            <em><CustomDate dateString="2026-03-23" endDateString="2026-03-26" formatType="dayRange" /></em> -{" "}
+            <em><CustomDate dateString="2027-03-15" endDateString="2027-03-18" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/">
-              KubeCon Europe 2026
+              KubeCon Europe 2027
             </a>
           </dd>
           <dt>
@@ -129,21 +129,21 @@ const BlockList = [
             </Translate>
           </dt>
           <dd>
-            <em><CustomDate dateString="2025-11-10" endDateString="2025-11-13" formatType="dayRange" /></em> -{" "}
+            <em><CustomDate dateString="2026-11-09" endDateString="2026-11-12" formatType="dayRange" /></em> -{" "}
             <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/">
+              KubeCon North America 2026
+            </a>
+          </dd>
+          <dd>
+            <em><CustomDate dateString="2026-03-23" endDateString="2026-03-26" formatType="dayRange" /></em> -{" "}
+            <a href="https://events.linuxfoundation.org/archive/2026/kubecon-cloudnativecon-europe/">
+              KubeCon Europe 2026
+            </a>
+          </dd>
+          <dd>
+            <em><CustomDate dateString="2025-11-10" endDateString="2025-11-13" formatType="dayRange" /></em> -{" "}
+            <a href="https://events.linuxfoundation.org/archive/2025/kubecon-cloudnativecon-north-america/">
               KubeCon North America 2025
-            </a>
-          </dd>
-          <dd>
-            <em><CustomDate dateString="2025-04-01" endDateString="2025-04-04" formatType="dayRange" /></em> -{" "}
-            <a href="https://events.linuxfoundation.org/archive/2025/kubecon-cloudnativecon-europe/">
-              KubeCon Europe 2025
-            </a>
-          </dd>
-          <dd>
-            <em><CustomDate dateString="2024-11-12" endDateString="2024-11-15" formatType="dayRange" /></em> -{" "}
-            <a href="https://events.linuxfoundation.org/archive/2024/kubecon-cloudnativecon-north-america/">
-              KubeCon North America 2024
             </a>
           </dd>
         </dl>
