@@ -14,14 +14,14 @@ package = "./netlify-plugins/cache-docusaurus-dirs-file"
 
 [context.production.environment]
   SITE_URL = "https://helm.sh"
-  CACHE_VERSION = "prod-v1"
+  CACHE_VERSION = "prod-v2"
 
 [context.deploy-preview.environment]
-  CACHE_VERSION = "preview-v1"
+  CACHE_VERSION = "preview-v2"
   CACHE_PER_BRANCH = "false"
 
 [context.branch-deploy.environment]
-  CACHE_VERSION = "branch-v1"
+  CACHE_VERSION = "branch-v2"
 
 # Go module import support handled by static HTML files in /static/
 # These paths serve HTML with go-import meta tags + client-side redirects

@@ -23,16 +23,16 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Check community HIP allowlist is in sync with upstream
         run: node scripts/util/check-community-hip-drift.mjs
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Update community docs
-        run: yarn download-remote-community
+        run: npm run download-remote-community
 
       - name: Create or Update Pull Request
         uses: peter-evans/create-pull-request@v7
@@ -52,7 +52,7 @@ jobs:
             - Creates PR if there are changes
 
             ### Review checklist:
-            - [ ] Verify docs render correctly with `yarn start`
+            - [ ] Verify docs render correctly with `npm start`
             - [ ] Check that no local files were overwritten
 
             ---

@@ -143,7 +143,7 @@ async function main() {
   if (!skipCliDocs) {
     console.log(`\nRegenerating CLI docs for ${targetVersion}...`);
     execSync(
-      `yarn node scripts/regenerate-cli-docs.mjs ${targetVersion} versioned_docs/version-3`,
+      `node scripts/regenerate-cli-docs.mjs ${targetVersion} versioned_docs/version-3`,
       { cwd: PROJECT_ROOT, stdio: "inherit" }
     );
   }

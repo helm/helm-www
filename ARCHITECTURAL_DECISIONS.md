@@ -209,7 +209,7 @@ In this case, anchor links to the given ID will work across all locales since th
 
 ### Troubleshoot broken links
 
-You can run a local build to check for broken links (`yarn build`). If there are broken links, you'll see an error like this in the build output:
+You can run a local build to check for broken links (`npm run build`). If there are broken links, you'll see an error like this in the build output:
 
 ```bash
 Broken link on source page path = /docs/faq/changes_since_helm2
@@ -296,7 +296,7 @@ Migrating legacy Helm documentation (v2 from Hugo, v3 from existing content) to 
 
 ### Solution
 
-**Migration Orchestrators:** `scripts/migrate-v2-docs.js` and `scripts/migrate-v3-docs.js` with corresponding `yarn migrate:v2` and `yarn migrate:v3` commands.
+**Migration Orchestrators:** `scripts/migrate-v2-docs.js` and `scripts/migrate-v3-docs.js` with corresponding `npm run migrate:v2` and `npm run migrate:v3` commands.
 
 **Modular Architecture:** Scripts organized in `scripts/util/`, `scripts/v2/`, `scripts/v3/` directories following UNIX philosophy - each script has a single purpose and can be composed together.
 
@@ -308,7 +308,7 @@ Migrating legacy Helm documentation (v2 from Hugo, v3 from existing content) to 
 
 **Why this approach:** Enables repeatable, testable migrations while maintaining URL compatibility and fixing legacy Hugo-to-Docusaurus link issues.
 
-**For contributors:** Run `yarn migrate:v2` or `yarn migrate:v3` to regenerate versioned documentation. Link fixes are managed via JSON files in each version directory.
+**For contributors:** Run `npm run migrate:v2` or `npm run migrate:v3` to regenerate versioned documentation. Link fixes are managed via JSON files in each version directory.
 
 **Detailed operational guides:**
 - [HELM2-TO-DOCUSAURUS.md](./HELM2-TO-DOCUSAURUS.md) - v2 migration procedures
@@ -375,15 +375,15 @@ The `/community` directory mixes imported files from helm/community with locally
 
 1. **Avoids complex .gitignore patterns** - No need to maintain a parallel list of which specific files to ignore
 2. **Provides clean git status** - Contributors don't see dozens of untracked files during development
-3. **Enables offline development** - With `noRuntimeDownloads: true`, `yarn start` works without network access
+3. **Enables offline development** - With `noRuntimeDownloads: true`, `npm start` works without network access
 4. **Simplifies mental model** - All files in `/community` are tracked, regardless of source
 
 The tradeoff of content duplication is acceptable since these files rarely change structure and the import notices clearly indicate they shouldn't be edited locally.
 
 ### Commands
 
-- `yarn download-remote-community` - Fetch and transform latest content from helm/community repository
-- `yarn clear-remote-community` - Remove imported files (useful for testing)
+- `npm run download-remote-community` - Fetch and transform latest content from helm/community repository
+- `npm run clear-remote-community` - Remove imported files (useful for testing)
 
 ### Automated Updates
 
@@ -401,11 +401,15 @@ To add new community documents:
 1. Add entry to `customFields.communityDocs.remoteDocs` in `docusaurus.config.js`
 2. Include optional `meta` field for frontmatter overrides
 3. Add link exceptions only if specific links need custom mapping
-4. Run `yarn download-remote-community` to test import locally
+4. Run `npm run download-remote-community` to test import locally
 
 To modify transformation logic:
 1. Edit `src/utils/communityDocsTransforms.js` for content processing
-2. Test changes with `yarn download-remote-community`
+2. Test changes with `npm run download-remote-community`
+
+## Package Management
+
+The site uses npm, which ships with Node.js, to simplify contributor and CI setup and allow Dependabot to update security overrides. Commit `package-lock.json` and use `npm ci` for reproducible installs; use nested `overrides` when a transitive dependency needs a different version from a direct dependency. The container and `.nvmrc` both use Node.js 22.
 
 ## Netlify Build Caching
 
@@ -424,6 +428,6 @@ Changed from `make build` (runs destructive `clean`) to `make netlify-build` (pr
 ### Cache Strategy
 - **Production/branches:** Isolated per branch
 - **PR previews:** Shared across PRs via `CACHE_PER_BRANCH=false`
-- **Auto-invalidation:** `yarn.lock` changes, `CACHE_VERSION` environment variable
+- **Auto-invalidation:** `package-lock.json` changes, `CACHE_VERSION` environment variable
 
 See `netlify-plugins/README.md` for configuration details.
