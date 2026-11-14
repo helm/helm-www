@@ -39,6 +39,12 @@
   object-fit: contain;
 }
 
+/* Several supporter logos are white/transparent and need a light backing. */
+:global([data-theme='dark']) .logoItem {
+  background: #fff;
+  border-radius: var(--ifm-global-radius);
+}
+
 /* Large desktop optimization */
 @media (min-width: 1400px) {
   .logoGrid {

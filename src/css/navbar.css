@@ -8,6 +8,15 @@
   border-top: var(--helm-body-border) solid var(--navy);
 }
 
+[data-theme='dark'] .navbar--fixed-top {
+  background-color: #252a3c;
+  background-blend-mode: multiply;
+}
+
+[data-theme='dark'] .navbar__logo img {
+  filter: brightness(0) invert(1);
+}
+
 /* logo */
 .navbar__logo {
   height: 3.5rem;
@@ -39,7 +48,7 @@
 
 /* links */
 .navbar__link {
-  --ifm-navbar-link-color: var(--navy);
+  --ifm-navbar-link-color: var(--helm-navbar-link-color);
   font-family: var(--ifm-heading-font-family);
   font-weight: var(--ifm-heading-font-weight);
 }
