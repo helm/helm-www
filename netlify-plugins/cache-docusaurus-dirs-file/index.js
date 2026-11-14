@@ -1,6 +1,6 @@
 // Netlify Build Plugin to cache directories using file-based caching (stable)
 // - Docusaurus-friendly: cache ".docusaurus", "node_modules", and "build"
-// - node_modules auto-invalidation via yarn.lock hash
+// - node_modules auto-invalidation via package-lock.json hash
 // - On-demand busting via CACHE_VERSION env var per environment
 // - Per-branch cache isolation by default
 
@@ -33,12 +33,12 @@ function makeKey({ dir, repoRoot }) {
 
   let key = dir;
 
-  // Auto-invalidate node_modules with yarn.lock changes
+  // Auto-invalidate node_modules with package-lock.json changes
   if (dir === "node_modules") {
-    const yarnLockPath = path.join(repoRoot, "yarn.lock");
-    const hash = fileSha256(yarnLockPath);
+    const packageLockPath = path.join(repoRoot, "package-lock.json");
+    const hash = fileSha256(packageLockPath);
     if (hash) {
-      key = `${key}@yarn-${hash.slice(0, 16)}`;
+      key = `${key}@npm-${hash.slice(0, 16)}`;
     }
   }
 
@@ -119,14 +119,14 @@ module.exports = {
 
       await restoreDir(utils, abs, key);
 
-      // Guidance for node_modules: ensure yarn.lock exists to keep cache fresh
+      // Guidance for node_modules: ensure package-lock.json exists to keep cache fresh
       if (dir === "node_modules") {
-        const yarnLockPath = path.join(repoRoot, "yarn.lock");
-        if (!fs.existsSync(yarnLockPath)) {
+        const packageLockPath = path.join(repoRoot, "package-lock.json");
+        if (!fs.existsSync(packageLockPath)) {
           utils.status.show({
             title: "node_modules cache warning",
             summary:
-              "yarn.lock not found. Caching node_modules without yarn.lock can lead to stale dependencies. Ensure yarn.lock is committed.",
+              "package-lock.json not found. Caching node_modules without package-lock.json can lead to stale dependencies. Ensure package-lock.json is committed.",
           });
         }
       }

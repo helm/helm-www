@@ -175,7 +175,7 @@ async function main() {
 
   if (!skipCliDocs) {
     console.log(`\nRegenerating CLI docs for ${targetVersion}...`);
-    execSync(`yarn node scripts/regenerate-cli-docs.mjs ${targetVersion} docs`, {
+    execSync(`node scripts/regenerate-cli-docs.mjs ${targetVersion} docs`, {
       cwd: PROJECT_ROOT,
       stdio: "inherit",
     });
@@ -183,7 +183,7 @@ async function main() {
 
   if (!skipChangelog) {
     console.log(`\nRegenerating changelog (${baseRef}..${targetVersion})...`);
-    execSync(`yarn node scripts/v4/changelog.mjs ${baseRef} ${targetVersion}`, {
+    execSync(`node scripts/v4/changelog.mjs ${baseRef} ${targetVersion}`, {
       cwd: PROJECT_ROOT,
       stdio: "inherit",
     });
@@ -191,7 +191,7 @@ async function main() {
 
   if (bumpSdk) {
     console.log(`\nBumping SDK examples to ${targetVersion}...`);
-    execSync(`yarn node scripts/v4/bump-sdk.mjs --version ${targetVersion}`, {
+    execSync(`node scripts/v4/bump-sdk.mjs --version ${targetVersion}`, {
       cwd: PROJECT_ROOT,
       stdio: "inherit",
     });

@@ -12,30 +12,30 @@ clean:
 	rm -rf node_modules/ build/ .docusaurus .cache-loader
 
 install:
-	yarn install --frozen-lockfile
+	npm ci
 
 build: clean install
-	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run build
+	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) npm run build
 
-# Cache-friendly install - only runs if dependencies missing or yarn.lock is newer
+# Cache-friendly install - only runs if dependencies missing or manifests are newer
 install-if-needed:
-	@if [ ! -f "node_modules/.bin/docusaurus" ] || [ "yarn.lock" -nt "node_modules" ]; then \
+	@if [ ! -f "node_modules/.bin/docusaurus" ] || [ "package-lock.json" -nt "node_modules" ] || [ "package.json" -nt "node_modules" ]; then \
 		echo "Installing dependencies..."; \
-		yarn install --frozen-lockfile; \
+		npm ci; \
 	else \
 		echo "Dependencies up to date, skipping install"; \
 	fi
 
 # Cache-friendly build for Netlify - preserves cached directories
 netlify-build: install-if-needed
-	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run build
+	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) npm run build
 
 .PHONY: sdkexamples
 sdkexamples:
 	make -C sdkexamples
 
 serve:
-	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) yarn run start --host 127.0.0.1
+	SITE_URL=$(SITE_URL) BASE_URL=$(BASE_URL) npm run start -- --host 127.0.0.1
 
 IMAGE_NAME ?= helm-www
 

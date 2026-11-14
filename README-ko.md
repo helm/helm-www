@@ -7,13 +7,13 @@
 Helm.sh는 간단한 [Docusaurus](https://docusaurus.io/) 정적 사이트입니다. 웹 사이트를 로컬에서 실행하려면 먼저 의존성을 설치해야 합니다.
 
 ```
-yarn
+npm ci
 ```
 
 그런 다음 사이트를 로컬에서 컴파일하고 실행할 수 있습니다.
 
 ```
-yarn start
+npm start
 ```
 
 ## 배포 [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
@@ -151,7 +151,7 @@ Helm의 사전 릴리스 버전이 GA로 승격될 때, 사전 릴리스 문서�
 
 새 버전을 만들려면:
 
-1. `<version>`이 주요 Helm 버전에 해당하는 정수인 `yarn docusaurus docs:version <version>`을 실행합니다. 예를 들어, Helm v5에 대한 새로운 사전 릴리스 문서를 게시하려면 v4 문서 내용을 새로운 `version-4` 폴더로 복사하기 위해 `yarn docusaurus docs:version 4`를 실행할 수 있습니다.
+1. `<version>`이 주요 Helm 버전에 해당하는 정수인 `npm run docusaurus -- docs:version <version>`을 실행합니다. 예를 들어, Helm v5에 대한 새로운 사전 릴리스 문서를 게시하려면 v4 문서 내용을 새로운 `version-4` 폴더로 복사하기 위해 `npm run docusaurus -- docs:version 4`를 실행할 수 있습니다.
 
    이 명령은 다음을 수행합니다:
 

@@ -17,7 +17,7 @@ Automated migration of Helm v3 documentation from existing Hugo content to Docus
 
 **Simple command:**
 ```bash
-yarn migrate:v3
+npm run migrate:v3
 ```
 
 **Manual steps (if needed):**

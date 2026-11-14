@@ -69,7 +69,7 @@ function skaffoldMajorVersion(majorVersion = 3) {
 
   if (!fs.existsSync(versionDir)) {
     // Create Docusaurus version structure
-    execSync(`yarn docusaurus docs:version ${majorVersion}`, { stdio: 'inherit' });
+    execSync(`npm run docusaurus -- docs:version ${majorVersion}`, { stdio: 'inherit' });
 
     // Empty the directory but keep the structure
     const files = fs.readdirSync(versionDir);

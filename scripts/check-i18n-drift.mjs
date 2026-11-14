@@ -7,7 +7,7 @@ import path from 'path';
 const TRACKING_KEY = 'default_lang_commit';
 
 function usage() {
-  console.log(`Usage: yarn check:i18n-drift [options]
+  console.log(`Usage: npm run check:i18n-drift -- [options]
 
 Checks localized Markdown files for drift from their default English sources.
 
