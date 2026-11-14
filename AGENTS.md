@@ -9,23 +9,23 @@ This is the official Helm project website (helm.sh) - a Docusaurus static site s
 ### Technology Stack
 - Docusaurus (static site generator)
 - React (component framework)
-- Node.js/Yarn (package management)
+- Node.js/npm (package management)
 - Netlify (hosting and deployment)
 
 ## Quick Start
 
 ```bash
 # Install dependencies
-yarn install
+npm ci
 
 # Start development server
-yarn start
+npm start
 
 # Build for production
-yarn build
+npm run build
 
 # Serve production build locally
-yarn serve
+npm run serve
 ```
 
 ## Repository Structure
@@ -52,31 +52,31 @@ Supported: English (en), German (de), Spanish (es), French (fr), Japanese (ja), 
 ### Development
 ```bash
 # Start dev server (usually port 3000)
-yarn start
+npm start
 
 # Start with specific locale
-yarn start --locale ko
+npm start -- --locale ko
 
 # Clear cache if needed
-yarn clear
+npm run clear
 ```
 
 ### Production Build
 ```bash
 # Build all locales
-yarn build
+npm run build
 
 # Build specific locale
-yarn build --locale en
+npm run build -- --locale en
 
 # Build without minification (faster for testing)
-yarn build --no-minify
+npm run build -- --no-minify
 ```
 
 ### Quality Checks
 ```bash
 # Type checking (if TypeScript is added)
-yarn typecheck
+npm run typecheck
 
 # Link checking
 make check-links-ci
@@ -126,7 +126,7 @@ sidebar_position: 1
 #### Creating New Versions
 ```bash
 # Create new version snapshot
-yarn docusaurus docs:version 3.18.0
+npm run docusaurus -- docs:version 3.18.0
 ```
 This creates:
 - `versioned_docs/version-3.18.0/` - Snapshot of current docs
@@ -166,7 +166,7 @@ Images go in the same directory as the blog post or in `blog/assets/`.
 ### Internationalization
 
 #### Adding Translations
-1. Extract strings: `yarn write-translations --locale ko`
+1. Extract strings: `npm run write-translations -- --locale ko`
 2. Translate files in `i18n/{locale}/`
 3. Content structure:
    - `i18n/{locale}/docusaurus-plugin-content-docs/` - Docs translations
@@ -175,7 +175,7 @@ Images go in the same directory as the blog post or in `blog/assets/`.
 
 #### Translation Guidelines
 - Maintain consistent terminology across versions
-- Test with `yarn start --locale {locale}`
+- Test with `npm start -- --locale {locale}`
 - Ensure all navigation and UI elements are translated
 
 ## Code Style and Conventions
@@ -204,16 +204,16 @@ Images go in the same directory as the blog post or in `blog/assets/`.
 ## Deployment
 
 ### Netlify Configuration
-- **Build command**: `yarn install && make build`
+- **Build command**: `make netlify-build`
 - **Publish directory**: `build`
-- **Node version**: Specified in `netlify.toml`
+- **Node version**: Specified in `.nvmrc`
 - **Auto-deploys**: From `main` branch
 - **Preview deploys**: Automatic for PRs
 
 ### Build Process
 1. Netlify clones repository
-2. Installs dependencies with yarn
-3. Runs `make build` which executes `yarn build`
+2. Installs dependencies with npm
+3. Runs `make netlify-build` which executes `npm run build`
 4. Deploys `build/` directory contents
 5. Runs post-build plugins (link checking, etc.)
 
@@ -232,7 +232,7 @@ Images go in the same directory as the blog post or in `blog/assets/`.
 ### Workflow
 1. Fork repository and create feature branch from `main`
 2. Make changes following existing patterns
-3. Test locally: `yarn build && yarn serve`
+3. Test locally: `npm run build && npm run serve`
 4. Commit with sign-off: `git commit -s -m "description"`
 5. Submit PR with clear description
 6. Address review feedback
@@ -298,10 +298,10 @@ If encountering Hugo-specific syntax or structure:
 ### Common Issues
 
 **Build fails with "Cannot find module"**
-- Solution: `rm -rf node_modules .docusaurus && yarn install`
+- Solution: `rm -rf node_modules .docusaurus && npm ci`
 
 **Changes not reflecting in dev server**
-- Solution: `yarn clear && yarn start`
+- Solution: `npm run clear && npm start`
 
 **Version mismatch errors**
 - Solution: Ensure Node.js version matches `.nvmrc` or `netlify.toml`
@@ -310,7 +310,7 @@ If encountering Hugo-specific syntax or structure:
 - Solution: Search for old path, update all references, run link checker
 
 **Translation missing strings**
-- Solution: `yarn write-translations --locale {locale}` to regenerate
+- Solution: `npm run write-translations -- --locale {locale}` to regenerate
 
 ### Getting Help
 - GitHub Issues: https://github.com/helm/helm-www

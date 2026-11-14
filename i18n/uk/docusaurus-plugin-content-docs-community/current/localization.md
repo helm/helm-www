@@ -63,13 +63,13 @@ default_lang_commit: 05df7b1def641f6d5be271947b69f3d7a075bfe5
 1. Якщо ви ще цього не зробили, встановіть залежності:
 
    ```sh
-   yarn install --frozen-lockfile
+   npm ci
    ```
 
-1. Запустіть команду Docusaurus `write-translations`. Наприклад, щоб додати локаль `fr` (французька): `yarn write-translations -- --locale fr`. Це створить необхідну структуру текстових файлів для мови та ініціалізує файли перекладу JSON, необхідні для перекладу елементів сайту, таких як навігаційна панель, нижній колонтитул, цільова сторінка та бічна панель.
+1. Запустіть команду Docusaurus `write-translations`. Наприклад, щоб додати локаль `fr` (французька): `npm run write-translations -- --locale fr`. Це створить необхідну структуру текстових файлів для мови та ініціалізує файли перекладу JSON, необхідні для перекладу елементів сайту, таких як навігаційна панель, нижній колонтитул, цільова сторінка та бічна панель.
 
     ```sh
-    yarn write-translations --locale <language-code>
+    npm run write-translations -- --locale <language-code>
     ```
 
 1. Виконайте мінімальні переклади для нової мови:
@@ -102,7 +102,7 @@ default_lang_commit: 05df7b1def641f6d5be271947b69f3d7a075bfe5
 1. Перевірте зміни, запустивши локалізований сайт у режимі розробки, вказавши локаль:
 
    ```sh
-   yarn start --locale fr
+   npm start -- --locale fr
    ```
 
    :::note
@@ -138,13 +138,13 @@ default_lang_commit: 05df7b1def641f6d5be271947b69f3d7a075bfe5
 * Перевіряйте, чи не змінилося англійське джерело перекладеної сторінки після коміту, зазначеного в метаданих:
 
   ```sh
-  yarn check:i18n-drift
+  npm run check:i18n-drift
   ```
 
   Щоб переглянути перекладені файли, у яких ще немає `default_lang_commit`, виконайте:
 
   ```sh
-  yarn check:i18n-drift -- --list-untracked
+  npm run check:i18n-drift -- --list-untracked
   ```
 
 Щоб перекласти документи та вміст блогу:
@@ -165,13 +165,13 @@ default_lang_commit: 05df7b1def641f6d5be271947b69f3d7a075bfe5
 1. Якщо ви ще цього не зробили, встановіть залежності:
 
    ```sh
-   yarn install --frozen-lockfile
+   npm ci
    ```
 
 1. Перевірте зміни, запустивши локалізований сайт у режимі розробки, вказавши локаль:
 
    ```sh
-   yarn start --locale ko
+   npm start -- --locale ko
    ```
 
    :::note

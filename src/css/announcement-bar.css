@@ -1,7 +1,7 @@
 :root {
   /* set custom var for announcement bar height because
   --docusaurus-announcement-bar-height var is not properly overridden from here
-  during yarn build/serve, eve with !important. use this custom var in
+  during builds and local serving, eve with !important. use this custom var in
   announcement-bar.css until a better solution is found. */
   --helm-announcement-bar-height: 5rem;
 }
@@ -17,7 +17,7 @@
   box-sizing: border-box;
   /* Honor the site's body border visually */
   margin-inline: var(--helm-body-border);
-  /* we must override the default announcement bar height here for yarn build/serve */
+  /* we must override the default announcement bar height here for builds and local serving */
   height: var(--helm-announcement-bar-height);
 }
 

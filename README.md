@@ -7,13 +7,15 @@ This is where you'll find all of the assets that make up [helm.sh](https://helm.
 Helm.sh is a simple [Docusaurus](https://docusaurus.io/) static site. To run the website locally, you'll need to first install the dependencies:
 
 ```
-yarn
+npm ci
 ```
+
+Use the Node.js version in `.nvmrc`. If you previously installed dependencies with Yarn, remove `node_modules` before running `npm ci`.
 
 You can then compile and run the site locally:
 
 ```
-yarn start
+npm start
 ```
 
 ## Deployment [![Netlify Status](https://api.netlify.com/api/v1/badges/8ffabb30-f2f4-45cc-b0fa-1b4adda00b5e/deploy-status)](https://app.netlify.com/sites/helm-merge/deploys)
@@ -46,13 +48,13 @@ The Community section imports content from the [helm/community](https://github.c
 
 #### Download/Update Community Docs
 ```bash
-yarn download-remote-community
+npm run download-remote-community
 ```
 This command fetches the latest community documentation from the helm/community repository and applies transformations for proper integration.
 
 #### Clear Community Docs
 ```bash
-yarn clear-remote-community
+npm run clear-remote-community
 ```
 This removes the imported community documentation files (useful before re-importing or for troubleshooting).
 
@@ -184,7 +186,7 @@ Cutting a new version refers to copying the full `/docs` directory contents to a
 
 To cut a new version:
 
-1. Run `yarn docusaurus docs:version <version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, when we publish Helm 4.0.0 we will run `yarn docusaurus docs:version 4`.
+1. Run `npm run docusaurus -- docs:version <version>`, where `<version>` is an integer that corresponds to a major Helm version. For example, when we publish Helm 4.0.0 we will run `npm run docusaurus -- docs:version 4`.
 
    This command does the following:
 

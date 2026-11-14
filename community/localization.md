@@ -92,13 +92,13 @@ To start a new language:
 1. If you haven't already, install dependencies:
 
    ```
-   yarn install --frozen-lockfile
+   npm ci
    ```
 
-1. Run the Docusaurus `write-translations` command. For example, to add the `fr` (French) locale: `yarn write-translations -- --locale fr`. This creates the required directory structure for the language and initializes the JSON translation files required to translate site elements like the navbar, footer, landing page, and sidebar.
+1. Run the Docusaurus `write-translations` command. For example, to add the `fr` (French) locale: `npm run write-translations -- --locale fr`. This creates the required directory structure for the language and initializes the JSON translation files required to translate site elements like the navbar, footer, landing page, and sidebar.
 
     ```
-    yarn write-translations --locale <language-code>
+    npm run write-translations -- --locale <language-code>
     ```
 
 1. Do the minimum translations for the new language:
@@ -129,7 +129,7 @@ To start a new language:
 1. Test your changes by starting the localized site in dev mode, specifying the locale:
 
    ```
-   yarn start --locale fr
+   npm start -- --locale fr
    ```
    :::note
    Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.
@@ -174,13 +174,13 @@ are redirections for old links which don't exist for new pages.
   commit:
 
   ```sh
-  yarn check:i18n-drift
+  npm run check:i18n-drift
   ```
 
   To see translated files that do not yet have `default_lang_commit`, run:
 
   ```sh
-  yarn check:i18n-drift -- --list-untracked
+  npm run check:i18n-drift -- --list-untracked
   ```
 
 To translate docs and blog content:
@@ -198,13 +198,13 @@ To translate docs and blog content:
 1. If you haven't already, install dependencies:
 
    ```
-   yarn install --frozen-lockfile
+   npm ci
    ```
 
 1. Test your changes by starting the localized site in dev mode, specifying the locale:
 
    ```
-   yarn start --locale ko
+   npm start -- --locale ko
    ```
    :::note
    Each locale is a distinct standalone single-page application. You can only preview one locale at a time. It is not possible to preview all locales at the same time.

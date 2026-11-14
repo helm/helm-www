@@ -1,13 +1,13 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /src
 
 # Tools needed by Make targets
 RUN apk update && apk add --no-cache make
 
-# Use existing Yarn; install deps with lockfile for reproducibility
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Install dependencies with the lockfile for reproducibility
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Copy project files
 COPY . .

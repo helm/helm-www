@@ -17,7 +17,7 @@ Automated migration of Helm v2 documentation from the original source repository
 
 **Simple command:**
 ```bash
-yarn migrate:v2
+npm run migrate:v2
 ```
 
 **Manual steps (if needed):**
