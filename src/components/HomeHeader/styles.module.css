@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   --ifm-hero-background-color: none;
-  --ifm-hero-text-color: var(--navy);
+  --ifm-hero-text-color: var(--helm-light-section-text);
   /* Prevent layout shift on page load/refresh by setting a reasonable default height */
   /* Use 90vh to account for potential announcement bar and avoid exact match with JS calculation */
   min-height: 90vh;
@@ -40,7 +40,7 @@
   font-size: clamp(1rem, 3vw, 1.5rem);
   padding: clamp(1rem, 3vh, 2rem) clamp(0.75rem, 2vw, 1rem);
   border: 5px solid var(--shade-light);
-  background: rgba(255, 255, 255, 0.67);
+  background: var(--helm-hero-subtitle-background);
   font-family: var(--ifm-font-family-base);
   font-weight: unset;
   display: inline-block;

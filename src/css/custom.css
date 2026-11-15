@@ -61,4 +61,27 @@
 
   /* custom site vars */
   --helm-body-border: 8px;
+  --helm-light-section-text: var(--navy);
+  --helm-navbar-link-color: var(--navy);
+  --helm-hero-subtitle-background: rgba(255, 255, 255, 0.67);
+}
+
+/* Docusaurus sets data-theme before the first paint and remembers manual choices. */
+[data-theme='dark'] {
+  --ifm-color-primary: #b7c2e9;
+  --ifm-color-primary-dark: #9caee2;
+  --ifm-color-primary-darker: #8ea2de;
+  --ifm-color-primary-darkest: #6482d2;
+  --ifm-color-primary-light: #d2d6f0;
+  --ifm-color-primary-lighter: #e0e3f5;
+  --ifm-color-primary-lightest: #f5f6fc;
+
+  --ifm-link-color: #8bd4f5;
+  --ifm-link-hover-color: #bce9fa;
+  --ifm-heading-color: #dbe1f3;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.12);
+
+  --helm-light-section-text: var(--ifm-font-color-base);
+  --helm-navbar-link-color: #dbe1f3;
+  --helm-hero-subtitle-background: rgba(29, 34, 51, 0.9);
 }

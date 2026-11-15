@@ -28,7 +28,13 @@ body::before {
 }
 
 main:not(.home) {
-  background: white;
+  background: var(--ifm-background-color);
+}
+
+/* Keep the patterned background without its white pixels in dark mode. */
+[data-theme='dark'] body::before {
+  background-color: #252a3c;
+  background-blend-mode: multiply;
 }
 
 /* fix headers visually cut off by navbar */

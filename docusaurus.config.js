@@ -257,7 +257,8 @@ const config = {
       image: "img/helm-social-card.png",
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       docs: {
         sidebar: {

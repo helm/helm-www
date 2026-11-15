@@ -107,6 +107,10 @@ Uses [CSS Modules](https://docusaurus.io/docs/styling-layout#css-modules) with s
 
 **Why this approach:** Only homepage components import homepage CSS, so other pages don't load unnecessary styles.
 
+## Color Mode
+
+Docusaurus provides the navbar toggle, follows the OS color scheme for first-time visitors, and stores explicit light/dark choices; `defaultMode: "light"` is the fallback when no system preference is available ([color mode configuration](https://docusaurus.io/docs/api/themes/configuration#color-mode)). Helm's patterned backgrounds, navy branding, homepage sections, and image logos need dark-specific CSS variables or overrides; these live alongside the existing site styles rather than introducing a separate theme component.
+
 ## Blog and Docs Layout Consistency
 
 ### Why This Change Was Made

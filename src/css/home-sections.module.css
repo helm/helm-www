@@ -27,13 +27,13 @@
 
 /* Light sections (pattern background, navy text) */
 .sectionLight {
-  color: var(--navy);
+  color: var(--helm-light-section-text);
 }
 
 .sectionLight h2,
 .sectionLight h3,
 .sectionLight h4 {
-  color: var(--navy);
+  color: var(--helm-light-section-text);
 }
 
 /* Dark sections (blue pattern background, white text) */
@@ -69,8 +69,16 @@
   box-shadow: 0 5px 12px var(--ifm-color-secondary-dark);
 }
 
+:global([data-theme='dark']) .sectionLight :global(.card) {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+}
+
 /* Card styles for dark sections */
 .sectionDark :global(.card) {
   --ifm-card-background-color: var(--shade-dark);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+:global([data-theme='dark']) .sectionDark :global(.card) {
+  --ifm-card-background-color: #202a52;
 }
