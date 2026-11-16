@@ -1,5 +1,5 @@
 ---
-title: "Proposal: Search of Distributed Repositories"
+title: 'Proposal: Search of Distributed Repositories'
 ---
 
 <!--
