@@ -71,7 +71,7 @@ function frontMatterToYaml(frontmatter, restContent) {
   const frontmatterYaml = yaml.dump(frontmatter, {
     indent: 2,
     lineWidth: 120,
-    quotingType: '"',
+    quoteStyle: 'double',
     forceQuotes: false
   }).trim();
 

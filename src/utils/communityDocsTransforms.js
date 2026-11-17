@@ -53,7 +53,7 @@ function buildFrontMatter(meta) {
   // This handles special characters, arrays, etc. correctly
   const yamlStr = yaml.dump(cleanMeta, {
     lineWidth: -1, // Don't wrap long lines
-    quotingType: '"', // Use double quotes when needed
+    quoteStyle: 'double', // Use double quotes when needed
     forceQuotes: false, // Only quote when necessary
   });
 
