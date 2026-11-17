@@ -5,7 +5,7 @@ authors: ["mattfarina"]
 date: "2021-03-05"
 ---
 
-Helm has now completed a second security audit, funded by the [CNCF](https://cncf.io). The [first audit](https://helm.sh/blog/2019-11-04-helm-security-audit-results/) focused on the source code for the Helm client along with the process Helm uses to handle security. The second audit, performed by [Trail of Bits](https://www.trailofbits.com/), looked at the source code for the Helm client along with a threat model for the use of Helm.<!-- truncate -->
+Helm has now completed a second security audit, funded by the [CNCF](https://cncf.io). The [first audit](https://helm.sh/blog/2019/11/04/helm-security-audit-results/) focused on the source code for the Helm client along with the process Helm uses to handle security. The second audit, performed by [Trail of Bits](https://www.trailofbits.com/), looked at the source code for the Helm client along with a threat model for the use of Helm.<!-- truncate -->
 
 The following diagram is from the [threat model](https://github.com/helm/community/blob/main/security-audit/Helm%20Threat%20Model%202020.pdf) and looks at the connections Helm makes along with how it stores files on the local filesystem.
 

@@ -5,7 +5,7 @@ authors: ["martinhickey"]
 date: "2024-07-16"
 ---
 
-Over four years ago, we [introduced Helm 3](https://helm.sh/blog/helm-3-released/), a major evolution in Helm's development. And we [announced](https://helm.sh/blog/2019-10-22-helm-2150-released/) at that time that Helm 2 would receive patches and security updates for a year. We also provided a [migration path to Helm 3 from Helm 2](https://helm.sh/docs/topics/v2_v3_migration/) and a tool [helm-2to3](https://github.com/helm/helm-2to3) to automate migration.<!-- truncate -->
+Over four years ago, we [introduced Helm 3](https://helm.sh/blog/helm-3-released/), a major evolution in Helm's development. And we [announced](https://helm.sh/blog/2019/10/22/helm-2150-released/) at that time that Helm 2 would receive patches and security updates for a year. We also provided a [migration path to Helm 3 from Helm 2](https://helm.sh/docs/topics/v2_v3_migration/) and a tool [helm-2to3](https://github.com/helm/helm-2to3) to automate migration.<!-- truncate -->
 
 One year later, [Helm 2 became unsupported](https://helm.sh/blog/helm-2-becomes-unsupported/).
 
