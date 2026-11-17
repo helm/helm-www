@@ -1,5 +1,5 @@
 ---
-title: "Appendx C: Removed Sections"
+title: 'Appendx C: Removed Sections'
 ---
 
 <!--

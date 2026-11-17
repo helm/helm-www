@@ -1,5 +1,5 @@
 ---
-title: "Appendix A: A Helm Controller"
+title: 'Appendix A: A Helm Controller'
 ---
 
 <!--

@@ -1,5 +1,5 @@
 ---
-title: "Appendix B: What Is a Package Manager?"
+title: 'Appendix B: What Is a Package Manager?'
 ---
 
 <!--
