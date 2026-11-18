@@ -102,7 +102,7 @@ The core maintainers are really excited to release Helm 3.0. Helm's next phase o
 
 ### Helm 2 Support Plan
 
-In the Helm 2.15.0 release announcement, we shared details about the future plans for Helm 2. You can read more about those plans in [the announcement post](https://helm.sh/blog/2019-10-22-helm-2150-released/).
+In the Helm 2.15.0 release announcement, we shared details about the future plans for Helm 2. You can read more about those plans in [the announcement post](https://helm.sh/blog/2019/10/22/helm-2150-released/).
 
 ## Relation of Helm 3 to Helm 1 and 2
 

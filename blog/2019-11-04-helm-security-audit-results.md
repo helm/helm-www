@@ -24,7 +24,7 @@ A [report from the security audit is available in the Helm community repo](https
 * Manipulation of chart files
 * TLS handling for communications
 
-From the Cure53 analysis there was only one noteworthy finding and it did not lead not an exploit. While the audit and issue were found to be in Helm v3 we also found the issue was present in Helm v2. Since Helm v2 has stable releases we announced a [security vulnerability](https://helm.sh/blog/2019-10-30-helm-symlink-security-notice/) and created a CVE.
+From the Cure53 analysis there was only one noteworthy finding and it did not lead not an exploit. While the audit and issue were found to be in Helm v3 we also found the issue was present in Helm v2. Since Helm v2 has stable releases we announced a [security vulnerability](https://helm.sh/blog/2019/10/30/helm-symlink-security-notice/) and created a CVE.
 
 The [entire report](https://github.com/helm/community/blob/main/security-audit/HLM-01-report.pdf) is worth reading as no summary can do it justice. Cure53 provided a conclusion as part of their summary which reads:
 
