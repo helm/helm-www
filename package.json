@@ -37,12 +37,12 @@
     "simple-git": "^4.0.2"
   },
   "devDependencies": {
-    "@algolia/client-search": "^5.61.0",
+    "@algolia/client-search": "^5.64.0",
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@types/react": "^19.0.0",
-    "baseline-browser-mapping": "^2.11.35",
-    "jsdom": "^31.0.0",
+    "baseline-browser-mapping": "^2.11.37",
+    "jsdom": "^31.0.1",
     "postcss": "^8.5",
     "search-insights": "^2.0.0",
     "webpack": "^5.112.2"
