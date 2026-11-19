@@ -18,4 +18,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # pin@v7.0.1
       - name: Check for typos
-        uses: crate-ci/typos@v1.52.0
+        uses: crate-ci/typos@v1.52.2

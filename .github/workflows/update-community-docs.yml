@@ -35,7 +35,7 @@ jobs:
         run: npm run download-remote-community
 
       - name: Create or Update Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore(community): update docs from upstream'
