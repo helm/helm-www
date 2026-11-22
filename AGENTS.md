@@ -129,8 +129,8 @@ sidebar_position: 1
 npm run docusaurus -- docs:version 4
 ```
 This creates:
-- `versioned_docs/version-3.18.0/` - Snapshot of current docs
-- `versioned_sidebars/version-3.18.0-sidebars.json` - Sidebar config
+- `versioned_docs/version-4/` - Snapshot of current docs
+- `versioned_sidebars/version-4-sidebars.json` - Sidebar config
 - Updates `versions.json`
 
 #### CLI Reference Documentation
