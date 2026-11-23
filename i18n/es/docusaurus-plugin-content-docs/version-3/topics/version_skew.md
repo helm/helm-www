@@ -1,7 +1,7 @@
 ---
 title: "Política de Soporte de Versiones de Helm"
 description: "Describe la política de lanzamiento de parches de Helm, así como la diferencia máxima de versiones soportada entre Helm y Kubernetes."
-default_lang_commit: 838e8c053469d6f676d145efc305470a23765f0b
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Este documento describe la diferencia máxima de versiones soportada entre Helm y
@@ -48,6 +48,8 @@ con su clúster.
 
 | Versión de Helm | Versiones de Kubernetes Soportadas |
 |-----------------|------------------------------------|
+| 3.22.x          | 1.37.x - 1.34.x                    |
+| 3.21.x          | 1.36.x - 1.33.x                    |
 | 3.20.x          | 1.35.x - 1.32.x                    |
 | 3.19.x          | 1.34.x - 1.31.x                    |
 | 3.18.x          | 1.33.x - 1.30.x                    |

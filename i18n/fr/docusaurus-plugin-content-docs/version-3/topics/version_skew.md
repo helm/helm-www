@@ -1,7 +1,7 @@
 ---
 title: "Politique de Prise en Charge des Versions Helm"
 description: "Décrit la politique de publication des correctifs de Helm ainsi que le décalage de version maximal pris en charge entre Helm et Kubernetes."
-default_lang_commit: cae045901bf4c67e0bc19063ec893782f60a52ea
+default_lang_commit: d1219bdd629216a33c8112704440352714fa40f1
 ---
 
 Ce document décrit le décalage de version maximal pris en charge entre Helm et
@@ -49,6 +49,8 @@ est compatible avec votre cluster.
 
 | Version Helm | Versions Kubernetes Prises en Charge |
 |--------------|--------------------------------------|
+| 3.22.x       | 1.37.x - 1.34.x                      |
+| 3.21.x       | 1.36.x - 1.33.x                      |
 | 3.20.x       | 1.35.x - 1.32.x                      |
 | 3.19.x       | 1.34.x - 1.31.x                      |
 | 3.18.x       | 1.33.x - 1.30.x                      |
