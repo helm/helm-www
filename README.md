@@ -182,7 +182,7 @@ When a pre-release version of Helm is promoted to GA, do the following to move p
 
 Cutting a new version refers to copying the full `/docs` directory contents to a versioned folder in `versioned_docs`. You cut a version when you are ready to publish a new _major_ pre-release version of the docs. This is usually when a new alpha version of Helm is being developed and is ready to be documented.
 
-**Note:** Cutting a new version is _not_ recommend until a pre-release version of Helm is being developed and is ready to be documented. Otherwise, the docs will need to be maintained in two places (both `/docs` and the latest `/versioned_docs` folder), creating extra work for maintainers to make sure they stay in-sync. Instead, see _How to move pre-release docs to GA_ below.
+**Note:** Cutting a new version is _not_ recommended until a pre-release version of Helm is being developed and is ready to be documented. Otherwise, the docs will need to be maintained in two places (both `/docs` and the latest `/versioned_docs` folder), creating extra work for maintainers to make sure they stay in-sync. Instead, see _How to move pre-release docs to GA_ below.
 
 To cut a new version:
 
@@ -196,7 +196,7 @@ To cut a new version:
 
 1. Update the `docusaurus.config.js` file:
 
-   1. Set `lastVersion` to to the latest GA version. This ensures that the docs at helm.sh/docs are served from the latest versioned_docs folders. And, the docs at helm.sh/docs/next are served from the main `/docs` folder.
+   1. Set `lastVersion` to the latest GA version. This ensures that the docs at helm.sh/docs are served from the latest versioned_docs folders. And, the docs at helm.sh/docs/next are served from the main `/docs` folder.
 
       For example, if you just cut the Helm v4 docs to a `versioned_docs/version-4/` directory, and want to publish pre-release docs for version Helm v5.0.0-alpha.1, then set `lastVersion` to `'4'`.
 
