@@ -2,7 +2,7 @@
 title: Чарти
 description: Пояснення формату чартів та основні рекомендації щодо створення чартів з використанням Helm.
 sidebar_position: 1
-default_lang_commit: 9f8c5e5d797d2c708ffc948c00f56aead761013a
+default_lang_commit: fea2edb3d06eb9fea11de79ce5c8b36fe37f8902
 ---
 
 import Helm4 from "../_v4-in-progress.mdx"
@@ -312,7 +312,7 @@ tags:
 Параметр `--set` можна використовувати як зазвичай для зміни значень міток та умов.
 
 ```console
-helm install --set tags.front-end=true --set subchart2.enabled=false
+helm install my-release ./parentchart --set tags.front-end=true --set subchart2.enabled=false
 ```
 
 ##### Опрацювання Tags та Conditions {/* #tags-and-conditions-resolution */}
@@ -762,7 +762,7 @@ protocol: https
 ```
 
 ```console
-helm install --set port=443
+helm install my-release ./mychart --set port=443
 ```
 
 Крім того, фінальний обʼєкт `.Values` перевіряється на відповідність _усім_ схемам субчартів. Це означає, що обмеження на субчарт не можуть бути обійдені батьківським чартом. Це також працює в зворотному напрямку — якщо субчарт має вимогу, яка не виконується у файлі `values.yaml` субчарту, батьківський чарт _повинен_ задовольняти ці вимоги, щоб бути дійсним.
@@ -770,7 +770,7 @@ helm install --set port=443
 Перевірку схеми можна вимкнути, встановивши наведену нижче опцію. Це особливо корисно в ізольованих середовищах, коли файл JSON Schema чарту містить віддалені посилання.
 
 ```console
-helm install --skip-schema-validation
+helm install my-release ./mychart --skip-schema-validation
 ```
 
 ### Довідники {/* #references */}

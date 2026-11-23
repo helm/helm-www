@@ -2,7 +2,7 @@
 title: Benannte Templates
 description: Wie man benannte Templates definiert.
 sidebar_position: 9
-default_lang_commit: f1c342d7bbd8fca5494262a93699b27012859e24
+default_lang_commit: ba552a20cbe232493e23226f44bce119adb704e1
 ---
 
 Nun ist es an der Zeit, über ein einzelnes Template hinauszugehen und weitere zu
@@ -322,7 +322,7 @@ Um diesen Fall zu umgehen, bietet Helm eine Alternative zu `template`, die den
 Inhalt eines Templates in die aktuelle Pipeline importiert, wo er an andere
 Funktionen in der Pipeline weitergegeben werden kann.
 
-Hier ist das obige Beispiel, korrigiert mit `indent`, um das `mychart.app`-
+Hier ist das obige Beispiel, korrigiert mit `nindent`, um das `mychart.app`-
 Template korrekt einzurücken:
 
 ```yaml
@@ -331,13 +331,13 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
   labels:
-{{ include "mychart.app" . | indent 4 }}
+    {{- include "mychart.app" . | nindent 4 }}
 data:
   myvalue: "Hello World"
   {{- range $key, $val := .Values.favorite }}
   {{ $key }}: {{ $val | quote }}
   {{- end }}
-{{ include "mychart.app" . | indent 2 }}
+  {{- include "mychart.app" . | nindent 2 }}
 ```
 
 Jetzt ist das erzeugte YAML für jeden Abschnitt korrekt eingerückt:

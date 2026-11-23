@@ -2,7 +2,7 @@
 title: Файли значень
 description: Інструкції щодо використання прапорця --values.
 sidebar_position: 4
-default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
+default_lang_commit: 09a7e6ac71548a9f65d6907b2671a2a357427d8f
 ---
 
 У попередньому розділі ми розглянули вбудовані обʼєкти, які пропонують шаблони Helm. Один з вбудованих обʼєктів — це `Values`. Цей обʼєкт надає доступ до значень, переданих у чарт. Його вміст походить з кількох джерел:
@@ -139,7 +139,7 @@ livenessProbe:
   initialDelaySeconds: 120
 ```
 
-Якщо ви спробуєте перевизначити обробник livenessProbe на `exec` замість `httpGet`, використовуючи `--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`, Helm обʼєднає стандартні ключі разом з перевизначеними, що дасть нам наступний YAML:
+Якщо ви спробуєте перевизначити обробник livenessProbe на `exec` замість `httpGet`, використовуючи `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`, Helm обʼєднає стандартні ключі разом з перевизначеними, що дасть нам наступний YAML:
 
 ```yaml
 livenessProbe:
@@ -156,7 +156,7 @@ livenessProbe:
 Однак Kubernetes тоді видасть помилку, оскільки не можна оголошувати більше одного обробника livenessProbe. Щоб це обійти, ви можете інструктувати Helm видалити `livenessProbe.httpGet`, встановивши його значення в null:
 
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
 ```
 
 На цьому етапі ми розглянули кілька вбудованих обʼєктів і використали їх для вставки інформації в шаблон. Тепер ми розглянемо інший аспект шаблонного механізму: функції та конвеєри.

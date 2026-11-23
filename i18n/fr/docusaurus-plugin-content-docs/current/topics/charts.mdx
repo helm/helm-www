@@ -2,7 +2,7 @@
 title: Charts
 description: Explique le format des charts et fournit des conseils de base pour créer des charts avec Helm.
 sidebar_position: 1
-default_lang_commit: 9f8c5e5d797d2c708ffc948c00f56aead761013a
+default_lang_commit: fea2edb3d06eb9fea11de79ce5c8b36fe37f8902
 ---
 
 import Helm4 from "/docs/_v4-in-progress.mdx"
@@ -425,7 +425,7 @@ Le paramètre `--set` peut être utilisé comme d'habitude pour modifier les
 valeurs des tags et conditions.
 
 ```console
-helm install --set tags.front-end=true --set subchart2.enabled=false
+helm install my-release ./parentchart --set tags.front-end=true --set subchart2.enabled=false
 ```
 
 ##### Résolution des tags et conditions {/* #tags-and-condition-resolution */}
@@ -980,7 +980,7 @@ protocol: https
 ```
 
 ```console
-helm install --set port=443
+helm install my-release ./mychart --set port=443
 ```
 
 De plus, l'objet `.Values` final est vérifié par rapport aux schémas de *tous*
@@ -994,7 +994,7 @@ La validation de schéma peut être désactivée avec l'option montrée ci-desso
 C'est particulièrement utile dans les environnements isolés lorsque le fichier
 JSON Schema d'un chart contient des références distantes.
 ```console
-helm install --skip-schema-validation
+helm install my-release ./mychart --skip-schema-validation
 ```
 
 ### Références {/* #references */}

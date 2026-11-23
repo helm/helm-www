@@ -2,7 +2,7 @@
 title: Archivos Values
 description: Instrucciones sobre cómo usar la opción --values.
 sidebar_position: 4
-default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
+default_lang_commit: 09a7e6ac71548a9f65d6907b2671a2a357427d8f
 ---
 
 En la sección anterior vimos los objetos integrados que ofrecen las plantillas
@@ -162,7 +162,7 @@ livenessProbe:
 ```
 
 Si intenta sobrescribir el handler del livenessProbe a `exec` en lugar de
-`httpGet` usando `--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`,
+`httpGet` usando `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`,
 Helm fusionará las claves por defecto y las sobrescritas, resultando en el
 siguiente YAML:
 ```yaml
@@ -181,7 +181,7 @@ Sin embargo, Kubernetes fallaría porque no se puede declarar más de un handler
 de livenessProbe. Para resolver esto, puede indicar a Helm que elimine
 `livenessProbe.httpGet` estableciéndolo como null:
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
 ```
 
 En este punto, hemos visto varios objetos integrados y los hemos usado para
