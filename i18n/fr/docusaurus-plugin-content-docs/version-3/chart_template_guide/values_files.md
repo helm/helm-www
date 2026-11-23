@@ -2,7 +2,7 @@
 title: Fichiers Values
 description: Instructions sur l'utilisation du flag --values.
 sidebar_position: 4
-default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
+default_lang_commit: 09a7e6ac71548a9f65d6907b2671a2a357427d8f
 ---
 
 Dans la section précédente, nous avons examiné les objets intégrés que les templates Helm proposent. L'un de ces objets intégrés est `Values`. Cet objet donne accès aux valeurs passées dans le chart. Son contenu provient de plusieurs sources :
@@ -139,7 +139,7 @@ livenessProbe:
   initialDelaySeconds: 120
 ```
 
-Si vous essayez de remplacer le handler livenessProbe par `exec` au lieu de `httpGet` en utilisant `--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]`, Helm fusionnera les clés par défaut et celles surchargées, produisant le YAML suivant :
+Si vous essayez de remplacer le handler livenessProbe par `exec` au lieu de `httpGet` en utilisant `--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'`, Helm fusionnera les clés par défaut et celles surchargées, produisant le YAML suivant :
 
 ```yaml
 livenessProbe:
@@ -156,7 +156,7 @@ livenessProbe:
 Cependant, Kubernetes échouera car vous ne pouvez pas déclarer plus d'un handler livenessProbe. Pour contourner ce problème, vous pouvez demander à Helm de supprimer `livenessProbe.httpGet` en le définissant à null :
 
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
 ```
 
 À ce stade, nous avons vu plusieurs objets intégrés et les avons utilisés pour injecter des informations dans un template. Nous allons maintenant examiner un autre aspect du moteur de templates : les fonctions et les pipelines.

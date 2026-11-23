@@ -2,7 +2,7 @@
 title: Die .helmignore-Datei
 description: Die `.helmignore`-Datei wird verwendet, um Dateien anzugeben, die Sie nicht in Ihr Helm Chart aufnehmen möchten.
 sidebar_position: 12
-default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
+default_lang_commit: c4624cd8526f3d0927fa871facd19c9a0cf5b810
 ---
 
 Die `.helmignore`-Datei wird verwendet, um Dateien anzugeben, die Sie nicht in
@@ -45,11 +45,12 @@ mydir/
 # Match any file named ab.txt, ac.txt, or ad.txt
 a[b-d].txt
 
-# Match any file under subdir matching temp*
-*/temp*
+# Match any file under subdir matching draft*
+*/draft*
 
-*/*/temp*
-temp?
+# Match draft files two levels deep (e.g., foo/bar/draft123)
+*/*/draft*
+draft?
 ```
 
 Einige bemerkenswerte Unterschiede zu .gitignore:

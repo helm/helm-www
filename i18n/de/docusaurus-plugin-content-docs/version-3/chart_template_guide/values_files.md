@@ -2,7 +2,7 @@
 title: Values-Dateien
 description: Anleitung zur Verwendung des --values-Flags.
 sidebar_position: 4
-default_lang_commit: 07caa4dd6e58a47e79ac2ec7949e57157f1a2b2a
+default_lang_commit: 09a7e6ac71548a9f65d6907b2671a2a357427d8f
 ---
 
 Im vorherigen Abschnitt haben wir die eingebauten Objekte betrachtet, die Helm
@@ -164,7 +164,7 @@ livenessProbe:
 ```
 
 Wenn Sie versuchen, den livenessProbe-Handler mit
-`--set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt]` auf `exec` statt
+`--set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}'` auf `exec` statt
 `httpGet` zu überschreiben, führt Helm die Standard- und überschriebenen
 Schlüssel zusammen, was zu folgendem YAML führt:
 ```yaml
@@ -183,7 +183,7 @@ Kubernetes würde dann jedoch einen Fehler melden, da Sie nicht mehr als einen
 livenessProbe-Handler deklarieren können. Um dies zu umgehen, können Sie Helm
 anweisen, `livenessProbe.httpGet` zu löschen, indem Sie es auf null setzen:
 ```sh
-helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt] --set livenessProbe.httpGet=null
+helm install stable/drupal --set image=my-registry/drupal:0.1.0 --set 'livenessProbe.exec.command={cat,docroot/CHANGELOG.txt}' --set livenessProbe.httpGet=null
 ```
 
 Bisher haben wir mehrere eingebaute Objekte kennengelernt und verwendet, um
