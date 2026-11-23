@@ -78,8 +78,8 @@ npm run build -- --no-minify
 # Type checking (if TypeScript is added)
 npm run typecheck
 
-# Link checking
-make check-links-ci
+# Link checking (the build fails on broken links and anchors)
+npm run build
 
 # Spell checking
 typos
@@ -125,12 +125,12 @@ sidebar_position: 1
 
 #### Creating New Versions
 ```bash
-# Create new version snapshot
-npm run docusaurus -- docs:version 3.18.0
+# Create new version snapshot (the version is the major Helm version)
+npm run docusaurus -- docs:version 4
 ```
 This creates:
-- `versioned_docs/version-3.18.0/` - Snapshot of current docs
-- `versioned_sidebars/version-3.18.0-sidebars.json` - Sidebar config
+- `versioned_docs/version-4/` - Snapshot of current docs
+- `versioned_sidebars/version-4-sidebars.json` - Sidebar config
 - Updates `versions.json`
 
 #### CLI Reference Documentation
@@ -263,7 +263,7 @@ Images go in the same directory as the blog post or in `blog/assets/`.
 4. Add translations to `i18n/{locale}/` directories
 
 ### Fixing Broken Links
-1. Run link checker: `make check-links-ci`
+1. Run `npm run build`; it fails on broken links and anchors (`onBrokenLinks` and `onBrokenAnchors` are set to `throw` in `docusaurus.config.js`)
 2. Review output for broken links
 3. Fix links in source files
 4. Verify in both current and versioned docs if applicable
