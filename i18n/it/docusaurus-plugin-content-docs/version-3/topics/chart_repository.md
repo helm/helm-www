@@ -107,15 +107,15 @@ Questa parte mostra diversi modi per servire un chart repository..
 Il primo passo è quello di **creare il proprio bucket GCS**. Chiameremo il nostro
 `fantastic-charts`.
 
-![Creare un bucket GCS](https://helm.sh/img/create-a-bucket.png)
+![Creare un bucket GCS](/img/helm2/create-a-bucket.png)
 
 Quindi, rendete il vostro bucket pubblico **modificando i permessi del bucket**.
 
-![Modifica permessi](https://helm.sh/img/edit-permissions.png)
+![Modifica permessi](/img/helm2/edit-permissions.png)
 
 Inserire questa voce per **rendere pubblico il bucket**:
 
-![Rendi pubblico il bucket](https://helm.sh/img/make-bucket-public.png)
+![Rendi pubblico il bucket](/img/helm2/make-bucket-public.png)
 
 Congratulazioni, ora avete un bucket GCS vuoto pronto per servire i chart!
 
@@ -155,13 +155,13 @@ $ git checkout -b gh-pages
 
 Oppure tramite browser web usando il pulsante **Branch** sul repository GitHub:
 
-![Crea branch GitHub Pages](https://helm.sh/img/create-a-gh-page-button.png)
+![Crea branch GitHub Pages](/img/helm2/create-a-gh-page-button.png)
 
 Successivamente, ci si deve assicurare che il branch **gh-pages** sia impostato come GitHub Pages,
 cliccare sulle **Impostazioni** del proprio repository e scorrere fino alla sezione **Pagine GitHub** e
 e impostare come indicato di seguito:
 
-![Crea branch GitHub Pages](https://helm.sh/img/set-a-gh-page.png)
+![Crea branch GitHub Pages](/img/helm2/set-a-gh-page.png)
 
 Per impostazione predefinita, **Source** viene solitamente impostato su **gh-pages branch**. Se questo non è
 impostato per impostazione predefinita, selezionarlo.
