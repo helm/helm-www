@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Octokit } from "@octokit/rest";
-import simpleGit from "simple-git";
+import { simpleGit } from "simple-git";
 import pLimit from "p-limit";
 import ora from "ora";
 
