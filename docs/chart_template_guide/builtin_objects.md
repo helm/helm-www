@@ -47,8 +47,11 @@ access in your templates.
   - `Files.GetBytes` is a function for getting the contents of a file as an
     array of bytes instead of as a string. This is useful for things like
     images.
-  - `Files.Glob` is a function that returns a list of files whose names match
-    the given shell glob pattern.
+  - `Files.MustGlob` is a function that returns a list of files whose names
+    match the given shell glob pattern. Template rendering fails if the pattern
+    is invalid. Available in Helm 4.4.0 and later.
+  - `Files.Glob` is a deprecated function that works like `Files.MustGlob`,
+    but matches every file in the chart when the pattern is invalid.
   - `Files.Lines` is a function that reads a file line-by-line. This is useful
     for iterating over each line in a file.
   - `Files.AsSecrets` is a function that returns the file bodies as Base 64

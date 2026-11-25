@@ -125,12 +125,15 @@ The imported functions are:
 ## Glob patterns
 
 As your chart grows, you may find you have a greater need to organize your files
-more, and so we provide a `Files.Glob(pattern string)` method to assist in
+more, and so we provide a `Files.MustGlob(pattern string)` method to assist in
 extracting certain files with all the flexibility of [glob
 patterns](https://godoc.org/github.com/gobwas/glob).
 
-`.Glob` returns a `Files` type, so you may call any of the `Files` methods on
+`.MustGlob` returns a `Files` type, so you may call any of the `Files` methods on
 the returned object.
+If the pattern is not a valid glob pattern, such as `foo/[`,
+template rendering fails with an error that names the invalid pattern.
+A valid pattern that matches no files returns an empty `Files` object.
 
 For example, imagine the directory structure:
 
@@ -147,7 +150,7 @@ You have multiple options with Globs:
 
 ```yaml
 {{ $currentScope := .}}
-{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
+{{ range $path, $_ :=  .Files.MustGlob  "**.yaml" }}
     {{- with $currentScope}}
         {{ .Files.Get $path }}
     {{- end }}
@@ -157,10 +160,19 @@ You have multiple options with Globs:
 Or
 
 ```yaml
-{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
+{{ range $path, $_ :=  .Files.MustGlob  "**.yaml" }}
       {{ $.Files.Get $path }}
 {{ end }}
 ```
+
+:::note
+`Files.MustGlob` is available in Helm 4.4.0 and later.
+It replaces `Files.Glob`, which is deprecated.
+`Files.Glob` takes the same pattern, but when the pattern is invalid it matches
+every file in the chart instead of failing.
+This can add unintended files to the ConfigMaps and Secrets that your chart renders.
+Use `Files.Glob` only in charts that must render with Helm versions earlier than 4.4.0.
+:::
 
 ## ConfigMap and Secrets utility functions
 
@@ -171,7 +183,7 @@ Secrets, for mounting into your pods at run time. To help with this, we provide
 a couple utility methods on the `Files` type.
 
 For further organization, it is especially useful to use these methods in
-conjunction with the `Glob` method.
+conjunction with the `MustGlob` method.
 
 Given the directory structure from the [Glob](#glob-patterns) example above:
 
@@ -182,7 +194,7 @@ kind: ConfigMap
 metadata:
   name: conf
 data:
-  {{- (.Files.Glob "foo/*").AsConfig | nindent 2 }}
+  {{- (.Files.MustGlob "foo/*").AsConfig | nindent 2 }}
 ---
 apiVersion: v1
 kind: Secret
@@ -190,7 +202,7 @@ metadata:
   name: very-secret
 type: Opaque
 data:
-  {{- (.Files.Glob "bar/*").AsSecrets | nindent 2 }}
+  {{- (.Files.MustGlob "bar/*").AsSecrets | nindent 2 }}
 ```
 
 ## Encoding
