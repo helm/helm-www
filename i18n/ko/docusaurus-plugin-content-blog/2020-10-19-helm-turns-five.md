@@ -5,7 +5,7 @@ authors: ["mattbutcher", "mattfarina"]
 date: "2020-10-19"
 ---
 
-{{< figure src="https://helm.sh/blog/images/happy-5th.png" alt="헬름의 5번째 생일 축하" >}}
+![헬름의 5번째 생일 축하](images/happy-5th.png)
 
 5년 전, Deis(그 후 마이크로스프트에 인수됨)의 해커톤에서 헬름이 탄생했다.
 <!-- truncate -->
@@ -26,7 +26,7 @@ Date:   Mon Oct 19 17:43:26 2015 -0600
 
 최근, 구글의 공식 헬름 차트 저장소 지원기간이 종료되었다. 지난 몇 년동안 구글이 헬름 차트 저장소를 호스팅해준 것에 대해 감사한다. 또한 이 일은 차트 개발 파이프라인을 깃헙과 통합할 수 있는 기회가 되었다.
 
-{{< figure src="../images/octocat.png" alt="Hello Github Octocat!" width="350px" >}}
+![Hello Github Octocat!](images/octocat.png)
 
 그래서 오늘의 생일 축하 행사에서,  헬름 `stable` 및 `incubator` 차트 저장소가 깃헙에서 직접 호스팅된다는 것을 알리고자 한다. 또한, 깃헙 액션으로 차트 게시를 위한 파이프라인이 강화되었다. 깃헙의 엄청 빠른 네트워크 덕분에 차트 다운로드가 그 어느 때보다 더욱 빨라졌다!
 
