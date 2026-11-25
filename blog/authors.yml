@@ -5,6 +5,14 @@ adamkorczynski:
   socials:
     github: AdamKorcz
     linkedin: adam-korczynski-731909119
+adityareddy:
+  name: Aditya Reddy
+  image_url: https://github.com/adityareddy-dev.png
+  page: true
+  socials:
+    github: adityareddy-dev
+    linkedin: adityareddy-dev
+    website: https://adityareddy.dev/
 andrewblock:
   name: Andrew Block
   image_url: https://github.com/sabre1041.png
