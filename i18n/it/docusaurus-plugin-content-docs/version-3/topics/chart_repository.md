@@ -33,7 +33,7 @@ Cloud Storage (GCS), Amazon S3, GitHub Pages o addirittura creare il proprio ser
 ### La struttura del chart repository
 
 Un chart repository è composto da chart pacchettizzati e da un file speciale chiamato`index.yaml` che contiene un indice di tutti i chart presenti nel repository.
-Spesso, i chart che `index.yaml` descrive sono ospitati sullo stesso server, così come i [file di provenienza] ({{< ref "provenance.md" >}}).Per esempio, il layout del repository `https://example.com/charts` potrebbe essere così:
+Spesso, i chart che `index.yaml` descrive sono ospitati sullo stesso server, così come i [file di provenienza](provenance.md).Per esempio, il layout del repository `https://example.com/charts` potrebbe essere così:
 
 ```
 charts/

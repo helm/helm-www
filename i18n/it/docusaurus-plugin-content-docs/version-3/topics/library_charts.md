@@ -5,7 +5,7 @@ aliases: ["docs/library_charts/"]
 weight: 4
 ---
 
-Un library chart è un tipo di [[Helm chart]] ({{< ref "/docs/topics/charts.md" >}})
+Un library chart è un tipo di [Helm chart](charts.md)
 che definisce primitive o definizioni di chart che possono essere condivise dai template di Helm in altri chart. 
 Questo permette agli utenti di condividere frammenti di codice che possono essere
 riutilizzabili tra i vari chart, evitando ripetizioni e mantenendo i chart
@@ -25,7 +25,7 @@ il tipo di chart.
 
 ## Creare un Simple Library Chart
 
- Come accennato in precedenza, un library chart è un tipo di [Helm chart]({{< ref "/docs/topics/charts.md" >}}).  
+ Come accennato in precedenza, un library chart è un tipo di [Helm chart](charts.md).  
 Ciò significa che si può iniziare creando un chart:
 
 ```console

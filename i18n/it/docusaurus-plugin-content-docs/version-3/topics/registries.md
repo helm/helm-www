@@ -44,7 +44,7 @@ Il rilascio di [Helm v3.7.0](https://github.com/helm/helm/releases/tag/v3.7.0) h
 
 ### Helm repositories in registry OCI-based
 
-Un [repository Helm] ({{< ref "chart_repository.md" >}}) è un modo per ospitare e distribuire i chart Helm pacchettizzati. Un registry basato su OCI può contenere zero o più repository Helm e ognuno di questi repository può contenere zero o più chart Helm pacchettizzati.
+Un [repository Helm](chart_repository.md) è un modo per ospitare e distribuire i chart Helm pacchettizzati. Un registry basato su OCI può contenere zero o più repository Helm e ognuno di questi repository può contenere zero o più chart Helm pacchettizzati.
 
 ### Use hosted registries
 
@@ -65,7 +65,7 @@ Seguire la documentazione del fornitore del container registry ospitati per crea
 
 ### Usare sigstore per firmare i chart basati su OCI
 
-Il plugin [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) permette di usare [Sigstore](https://sigstore.dev/) per firmare i chart Helm con gli stessi strumenti usati per firmare le immagini dei container.  Questo fornisce un'alternativa alla [Provenienza basata su GPG]({{< ref "provenance.md" >}}) supportata dai classici [chart repository]({{< ref "chart_repository.md" >}}).
+Il plugin [`helm-sigstore`](https://github.com/sigstore/helm-sigstore) permette di usare [Sigstore](https://sigstore.dev/) per firmare i chart Helm con gli stessi strumenti usati per firmare le immagini dei container.  Questo fornisce un'alternativa alla [Provenienza basata su GPG](provenance.md) supportata dai classici [chart repository](chart_repository.md).
 
 Per maggiori dettagli sull'uso del plugin `helm sigstore`, vedere [la documentazione del progetto](https://github.com/sigstore/helm-sigstore/blob/main/USAGE.md).
 
@@ -115,11 +115,11 @@ attualmente un requisito rigoroso.
 Alcuni registry richiedono che il repository e/o lo spazio dei nomi (se specificato).
 siano stati creati in precedenza. In caso contrario, verrà prodotto un errore durante l'operazione `helm push`.
 
-Se è stato creato un [file di provenienza] ({{< ref "provenance.md" >}}) (`.prov`), ed è presente accanto al file `.tgz` del chart, esso sarà
+Se è stato creato un [file di provenienza](provenance.md) (`.prov`), ed è presente accanto al file `.tgz` del chart, esso sarà
  automaticamente caricato nel registry al momento del `push`. Questo comporta
 un livello in più nel [Helm chart manifest] (#helm-chart-manifest).
 
-Gli utenti del plugin [helm-push](https://github.com/chartmuseum/helm-push) (per caricare i chart su [ChartMuseum]({{< ref "chart_repository.md" >}}#chartmuseum-repository-server))
+Gli utenti del plugin [helm-push](https://github.com/chartmuseum/helm-push) (per caricare i chart su [ChartMuseum](chart_repository.md#chartmuseum-repository-server))
 potrebbe avere dei problemi, poiché il plugin va in conflitto con il nuovo `push` integrato.
 A partire dalla versione v0.10.0, il plugin è stato rinominato in `cm-push`.
 
@@ -217,7 +217,7 @@ Esempio di manifest del chart Helm rappresentato in un registry
 ```
 
 Il seguente esempio contiene un 
-[provenance file]({{< ref "provenance.md" >}})
+[provenance file](provenance.md)
 (notare il layer extra):
 
 ```json
@@ -245,7 +245,7 @@ Il seguente esempio contiene un
 
 ## Migrazione da un chart repo
 
-La migrazione dai classici [chart repository]({{< ref "chart_repository.md" >}})
+La migrazione dai classici [chart repository](chart_repository.md)
 (repository basati su index.yaml) è semplice usando `helm pull`, poi `helm push` per caricare i file `.tgz` in un registry.
 
 
