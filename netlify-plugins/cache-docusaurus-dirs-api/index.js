@@ -6,7 +6,6 @@
 
 const path = require("path");
 const fs = require("fs");
-const crypto = require("crypto");
 
 function dirExists(dirPath) {
   try {
@@ -17,71 +16,54 @@ function dirExists(dirPath) {
   }
 }
 
-function fileSha256(filePath) {
-  try {
-    const data = fs.readFileSync(filePath);
-    return crypto.createHash("sha256").update(data).digest("hex");
-  } catch {
-    return null;
-  }
-}
-
-function makeKey({ dir, repoRoot }) {
-  const cacheVersion = process.env.CACHE_VERSION || "";
+// @netlify/cache-utils has no concept of an arbitrary cache "key": a cached
+// entry's identity is just the path being cached, resolved under `cacheDir`
+// (which defaults to, and must stay inside, `.netlify/cache/` - that's the
+// directory Netlify's build image actually persists between builds). So
+// cache-version busting and per-branch isolation have to be expressed as a
+// nested `cacheDir`, not as a `{ key }` option (the underlying API doesn't
+// accept one).
+function getCacheOpts({ repoRoot }) {
+  const cacheVersion = process.env.CACHE_VERSION || "default";
   const perBranch = process.env.CACHE_PER_BRANCH !== "false"; // default true
-  const branch = process.env.NETLIFY_BRANCH || process.env.BRANCH || "unknown";
+  const branch = perBranch
+    ? process.env.NETLIFY_BRANCH || process.env.BRANCH || "unknown"
+    : "shared";
 
-  let key = dir;
-
-  // Auto-invalidate node_modules with package-lock.json changes
-  if (dir === "node_modules") {
-    const packageLockPath = path.join(repoRoot, "package-lock.json");
-    const hash = fileSha256(packageLockPath);
-    if (hash) {
-      key = `${key}@npm-${hash.slice(0, 16)}`;
-    }
-  }
-
-  // On-demand busting
-  if (cacheVersion) {
-    key = `${key}@cv-${cacheVersion}`;
-  }
-
-  // Per-branch isolation
-  if (perBranch) {
-    key = `${key}@${branch}`;
-  }
-  return key;
+  return {
+    cwd: repoRoot,
+    cacheDir: path.join(".netlify", "cache", branch, cacheVersion),
+  };
 }
 
-async function restoreDir(utils, absPath, key) {
+async function restoreDir(utils, absPath, dir, cacheOpts) {
   try {
-    const restored = await utils.cache.restore(absPath, { key });
+    const restored = await utils.cache.restore(absPath, cacheOpts);
     utils.status.show({
-      title: restored ? `Cache restored: ${key}` : `No cache: ${key}`,
+      title: restored ? `Cache restored: ${dir}` : `No cache: ${dir}`,
       summary: `${restored ? "Restored" : "No prior cache"} into ${absPath}`,
     });
     return restored;
   } catch (err) {
     utils.status.show({
-      title: `Cache restore failed: ${key}`,
+      title: `Cache restore failed: ${dir}`,
       summary: err.message,
     });
     return false;
   }
 }
 
-async function saveDir(utils, absPath, key) {
+async function saveDir(utils, absPath, dir, cacheOpts) {
   try {
-    const saved = await utils.cache.save(absPath, { key });
+    const saved = await utils.cache.save(absPath, cacheOpts);
     utils.status.show({
-      title: saved ? `Cache saved: ${key}` : `Cache skipped: ${key}`,
+      title: saved ? `Cache saved: ${dir}` : `Cache skipped: ${dir}`,
       summary: `${saved ? "Saved" : "Skipped"} from ${absPath}`,
     });
     return saved;
   } catch (err) {
     utils.status.show({
-      title: `Cache save failed: ${key}`,
+      title: `Cache save failed: ${dir}`,
       summary: err.message,
     });
     return false;
@@ -93,12 +75,12 @@ module.exports = {
   async onPreBuild({ inputs, utils }) {
     const repoRoot = process.cwd();
     const dirs = inputs.dirs;
+    const cacheOpts = getCacheOpts({ repoRoot });
 
     for (const dir of dirs) {
-      const key = makeKey({ dir, repoRoot });
       const abs = path.resolve(repoRoot, dir);
 
-      await restoreDir(utils, abs, key);
+      await restoreDir(utils, abs, dir, cacheOpts);
 
       // Guidance for node_modules: ensure package-lock.json exists to keep cache fresh
       if (dir === "node_modules") {
@@ -117,9 +99,9 @@ module.exports = {
   async onPostBuild({ inputs, utils }) {
     const repoRoot = process.cwd();
     const dirs = inputs.dirs;
+    const cacheOpts = getCacheOpts({ repoRoot });
 
     for (const dir of dirs) {
-      const key = makeKey({ dir, repoRoot });
       const abs = path.resolve(repoRoot, dir);
 
       if (!dirExists(abs)) {
@@ -139,7 +121,14 @@ module.exports = {
         continue;
       }
 
-      await saveDir(utils, abs, key);
+      // package-lock.json is a digest file for node_modules: cache-utils
+      // uses it to skip re-saving when dependencies haven't changed.
+      const saveOpts =
+        dir === "node_modules"
+          ? { ...cacheOpts, digests: [path.join(repoRoot, "package-lock.json")] }
+          : cacheOpts;
+
+      await saveDir(utils, abs, dir, saveOpts);
     }
   },
 };

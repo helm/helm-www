@@ -16,7 +16,8 @@
     "migrate:v2": "node scripts/migrate-v2-docs.js",
     "migrate:v3": "node scripts/migrate-v3-docs.js",
     "download-remote-community": "docusaurus download-remote-community",
-    "clear-remote-community": "docusaurus clear-remote-community"
+    "clear-remote-community": "docusaurus clear-remote-community",
+    "test": "node --test netlify-plugins"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
@@ -40,6 +41,7 @@
     "@algolia/client-search": "^5.65.0",
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
+    "@netlify/cache-utils": "^7.1.3",
     "@types/react": "^19.0.0",
     "baseline-browser-mapping": "^2.11.39",
     "jsdom": "^31.0.1",
