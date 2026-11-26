@@ -56,6 +56,9 @@ in the chart's state, the live state was left unchanged.
 In Helm 3, we now use a three-way strategic merge patch. Helm considers the old
 manifest, its live state, and the new manifest when generating a patch.
 
+For more information about how Helm 3 updates and replaces resources, see
+[Resource Upgrades](/topics/resource_upgrades.md).
+
 #### Examples
 
 Let's go through a few common examples what this change impacts.
