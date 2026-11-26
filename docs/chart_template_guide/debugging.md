@@ -13,16 +13,16 @@ There are a few commands that can help you debug.
 - `helm lint` is your go-to tool for verifying that your chart follows best
   practices
 - `helm template --debug` will test rendering chart templates locally.  
-- `helm install --dry-run --debug` will also render your chart locally without
-installing it, but will also check if conflicting resources are already running
-on the cluster. Setting `--dry-run=server` will additionally execute any
-`lookup` in your chart towards the server.
+- `helm install --dry-run=client --debug` will also render your chart locally
+  without installing it or connecting to the cluster. Setting `--dry-run=server`
+  also checks for conflicting resources in the cluster and executes any `lookup`
+  in your chart against the server.
 - `helm get manifest`: This is a good way to see what templates are installed on
   the server.
 
 When your YAML is failing to parse, but you want to see what is generated, one
 easy way to retrieve the YAML is to comment out the problem section in the
-template, and then re-run `helm install --dry-run --debug`:
+template, and then re-run `helm install --dry-run=client --debug`:
 
 ```yaml
 apiVersion: v2
@@ -43,20 +43,22 @@ errors blocking.
 
 ## Debugging the `lookup` function
 
-The [`lookup` function](/chart_template_guide/functions_and_pipelines.mdx#using-the-lookup-function) queries Kubernetes resources during template rendering. When `lookup` returns an empty result, it can be difficult to determine why. To see diagnostic messages, enable debug mode:
+The [`lookup` function](/chart_template_guide/functions_and_pipelines.mdx#using-the-lookup-function) queries Kubernetes resources during template rendering. To see its `NotFound` diagnostic messages, enable debug mode and connect to the API server with a server dry run:
 
 ```bash
-helm install --debug myrelease ./mychart
+helm install --dry-run=server --debug myrelease ./mychart
 ```
 
-With debug logging enabled, Helm logs the apiVersion, kind, namespace, and name when a lookup returns empty:
+When the API server returns `NotFound` for a lookup, debug logging includes the apiVersion, kind, namespace, and name:
 
-- **"lookup: resource not found"** — The specific resource was not found in the cluster (for single-object lookups like `lookup "v1" "ConfigMap" "default" "my-config"`)
-- **"lookup: resource list not found"** — No resources matched the query (for list lookups like `lookup "v1" "ConfigMap" "default" ""`)
+- **"lookup: resource not found"**: The API server returned `NotFound` for a single-object lookup such as `lookup "v1" "ConfigMap" "default" "my-config"`.
+- **"lookup: resource list not found"**: The API server returned `NotFound` for a list lookup such as `lookup "v1" "ConfigMap" "default" ""`. A successful list with no matching resources returns an empty `items` list without this message.
 
 Common reasons why `lookup` might return empty:
 
 - The resource does not exist in the cluster
-- RBAC permissions prevent access to the resource
 - Running `helm template` without cluster access (use `--dry-run=server` to connect)
-- Incorrect apiVersion, kind, namespace, or name parameters
+- An incorrect name or namespace, which the API server reports as `NotFound`
+
+Other API errors, such as an RBAC permission denial, cause template rendering to
+fail rather than returning an empty result.
