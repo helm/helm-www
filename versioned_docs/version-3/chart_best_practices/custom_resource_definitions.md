@@ -69,3 +69,32 @@ any resources that use that CRD in _another_ chart.
 
 In this method, each chart must be installed separately. However, this workflow
 may be more useful for cluster operators who have admin access to a cluster
+
+## CRDs in the `templates/` Directory
+
+Helm does not upgrade or delete CRDs in the `crds/` directory. A CRD in the
+`templates/` directory is different: Helm manages it like any other resource in
+the release. Helm updates it on `helm upgrade` and deletes it on
+`helm uninstall`, or when an upgrade or rollback removes it from the release.
+The `--skip-crds` flag has no effect on CRDs in `templates/`.
+
+Deleting a CRD also deletes all of its custom resources across all namespaces in
+the cluster. To prevent Helm from deleting a CRD in `templates/`, add the
+`helm.sh/resource-policy: keep` annotation to it:
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  # ...
+```
+
+On `helm uninstall`, Helm reads this annotation from the release manifest, not
+from the CRD in the cluster. If the release is already installed, upgrade it
+with the annotated CRD before you uninstall it. For more information about this
+annotation, see
+[Tell Helm Not To Uninstall a Resource](/howto/charts_tips_and_tricks.md#tell-helm-not-to-uninstall-a-resource).
